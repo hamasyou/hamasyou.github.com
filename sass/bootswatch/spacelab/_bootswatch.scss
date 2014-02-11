@@ -88,12 +88,6 @@ h1, h2, h3, h4, h5, h6 {
   color: $gray-darker;
 }
 
-.entry-content h2 {
-  padding: 5px 0 5px 5px;
-  border-left: 5px solid $brand-success;
-  border-bottom: 1px dotted $gray-light;
-}
-
 // Tables =====================================================================
 
 // Forms ======================================================================
@@ -113,6 +107,36 @@ h1, h2, h3, h4, h5, h6 {
 // Progress bars ==============================================================
 
 // Containers =================================================================
+
+.entry-content {
+  padding: $padding-large-horizontal;
+
+  h2 {
+    padding: 5px 0 5px 8px;
+    border-left: 5px solid $brand-success;
+    border-bottom: 1px dotted $gray-light;
+  }
+
+  dl {
+    padding: 0.5em 20px;
+    border: 1px solid #ccc;
+    @include border-top-radius(4px);
+    @include border-bottom-radius(4px);
+    @include border-left-radius(4px);
+    @include border-right-radius(4px);
+  }
+  dt {
+    margin: 0.7em 0 0.4em 0;
+    padding-bottom: 0.3em;
+    border-bottom: 1px dotted $gray-light;
+    font-weight: bold;
+    color: $brand-primary;
+  }
+  dd {
+    margin: 0.5em 0 1em;
+  }
+
+}
 
 .panel-primary {
   .panel-title {
@@ -135,3 +159,10 @@ h1, h2, h3, h4, h5, h6 {
 .btn-asin {
   @include button-variant($btn-asin-color, $btn-asin-bg, $btn-asin-border);
 }
+
+.asin-thumbnail {
+  max-width: 224px;
+  height: auto;
+}
+
+

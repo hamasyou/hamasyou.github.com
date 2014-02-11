@@ -3,9 +3,9 @@ layout: post
 title: "HIBERNATE覚書き"
 date: 2005-12-31 08:11
 comments: true
-categories: [Engineer-Soul]
+categories: [Blog]
 keywords: "Hibernate,O/Rマッピング,インピーダンスミスマッチ,覚え書き"
-tags: []
+tags: [Hibernate,O/Rマッピング]
 author: hamasyou
 amazon_url: ""
 amazon_author: ""
@@ -14,7 +14,7 @@ amazon_publisher: ""
 ---
 
 <p>
-[ target="_blank"><img src="http://images-jp.amazon.com/images/P/4797330805.09._OU09_PE0_SCMZZZZZZZ_.jpg"  border="0" alt="HIBERNATE イン アクション" />](http://www.amazon.co.jp/exec/obidos/ASIN/4797330805/sorehabooks-22/503-4739464-7671922?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2)
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797330805/sorehabooks-22/503-4739464-7671922?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow"></a>
 </p>
 
 Hibernate は O/R マッピングツールと呼ばれる、リレーショナルデータベースとオブジェクトモデルとの間を埋めるフレームワークです。
@@ -196,16 +196,16 @@ Hibernate: insert into hibernate.&quot;MESSAGE&quot; (&quot;MESSAGE_TEXT&quot;, 
 <h2>参考</h2>
 
 + JSF、SpringFramework、Hibernateの3つを同時に学べる良書
-<div class="rakuten"><table  width="400" border="0" cellpadding="5"><tr><td colspan="2">[ target="_blank">Light Weight Java―JSF/Hibernate/SpringによるフレームワークでWebアプリケーションの開発効率向上](http://www.amazon.co.jp/exec/obidos/ASIN/4839917779/sorehabooks-22/ref=nosim/)</td></tr><tr><td valign="top">[ target="_blank"><img src="http://images.amazon.com/images/P/4839917779.01._SCMZZZZZZZ_.jpg"   border="0" alt="Light Weight Java―JSF/Hibernate/SpringによるフレームワークでWebアプリケーションの開発効率向上" />](http://www.amazon.co.jp/exec/obidos/ASIN/4839917779/sorehabooks-22/ref=nosim/)</td><td valign="top" /><font size="-1">岡本 隆史 金子 崇之 吉田 英嗣 <br /><br /><strong>おすすめ平均</strong> <img src="http://g-images.amazon.com/images/G/01/detail/stars-4-0.gif"   /><br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif" alt="stars"   />Java最新技術が手っ取り早く分かる<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-3-0.gif" alt="stars"   />ＪＳＦがメインの本。HibernateやSpringには期待しないこと。<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-4-0.gif" alt="stars"   />システム開発のコツをまとめてあります<br /><br />[ target="_blank" />Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/4839917779/sorehabooks-22/ref=nosim/)</font><font size="-2"> by [ >G-Tools](http://www.goodpic.com/mt/aws/index.html)</font></td></tr></table></div>
+<div class="rakuten"><table  width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4839917779/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
 
 + 薄いながらもよくまとまっています
-<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2">[ target="_blank">Hibernate](http://www.amazon.co.jp/exec/obidos/ASIN/487311215X/sorehabooks-22/ref=nosim/)</td></tr><tr><td valign="top">[ target="_blank"><img src="http://images.amazon.com/images/P/487311215X.09._SCMZZZZZZZ_.jpg"   border="0" alt="Hibernate" />](http://www.amazon.co.jp/exec/obidos/ASIN/487311215X/sorehabooks-22/ref=nosim/)</td><td valign="top" /><font size="-1">James Elliott <br /><br /><strong>おすすめ平均</strong> <img src="http://g-images.amazon.com/images/G/01/detail/stars-3-0.gif"   /><br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-2-0.gif" alt="stars"   />物足りない・・・<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-4-0.gif" alt="stars"   />コンパクトにまとまっている良書<br /><br />[ target="_blank" />Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/487311215X/sorehabooks-22/ref=nosim/)</font><font size="-2"> by [ >G-Tools](http://www.goodpic.com/mt/aws/index.html)</font></td></tr></table></div>
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311215X/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
 
 + ProシリーズのHibernate本。おそらくかなりの良書だと思われます（読んでない^^;)
-<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2">[ target="_blank">Pro Hibernate 3 (Expert's Voice)](http://www.amazon.co.jp/exec/obidos/ASIN/1590595114/sorehabooks-22/ref=nosim/)</td></tr><tr><td valign="top">[ target="_blank"><img src="http://images.amazon.com/images/P/1590595114.01._SCMZZZZZZZ_.jpg"   border="0" alt="Pro Hibernate 3 (Expert's Voice)" />](http://www.amazon.co.jp/exec/obidos/ASIN/1590595114/sorehabooks-22/ref=nosim/)</td><td valign="top" /><font size="-1">Dave Minter Jeff Linwood <br /><br /><br />[ target="_blank">Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/1590595114/sorehabooks-22/ref=nosim/)</font><font size="-2"> by [ >G-Tools](http://www.goodpic.com/mt/aws/index.html)</font></td></tr></table></div>
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/1590595114/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
 
 + ProfessionalシリーズのHibernate本。こちらもかなりの良書だと思われます
-<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2">[ target="_blank">Professional Hibernate (Programmer to Programmer)](http://www.amazon.co.jp/exec/obidos/ASIN/0764576771/sorehabooks-22/ref=nosim/)</td></tr><tr><td valign="top">[ target="_blank"><img src="http://images.amazon.com/images/P/0764576771.01._SCMZZZZZZZ_.jpg"   border="0" alt="Professional Hibernate (Programmer to Programmer)" />](http://www.amazon.co.jp/exec/obidos/ASIN/0764576771/sorehabooks-22/ref=nosim/)</td><td valign="top" /><font size="-1">Eric Pugh Joseph D. Gradecki <br /><br /><br />[ target="_blank">Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/0764576771/sorehabooks-22/ref=nosim/)</font><font size="-2"> by [ >G-Tools](http://www.goodpic.com/mt/aws/index.html)</font></td></tr></table></div>
+<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764576771/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
 
 
 

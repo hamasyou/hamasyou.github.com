@@ -57,7 +57,7 @@ MARKDOWN
 
   def formatted_body
     body.join.
-      gsub(/<a href="(.*?)">*(.*?)<\/a>/i, '[\2](\1)').
+      gsub(/<a href="(.*?)".*>(.*?)<\/a>/i, '<a href="\1" rel="external nofollow">\2</a>').
       gsub("<!--more-->", "\n\n<!-- more -->\n\n")
   end
 

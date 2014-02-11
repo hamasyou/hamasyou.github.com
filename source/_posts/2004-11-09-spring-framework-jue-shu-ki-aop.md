@@ -3,9 +3,9 @@ layout: post
 title: "Spring Framework 覚書き - AOP"
 date: 2004-11-09 10:14
 comments: true
-categories: [Engineer-Soul]
+categories: [Blog]
 keywords: "Spring,Framework,覚書き,スプリング,フレームワーク,アーキテクチャ,DI,IoC,AOP,アスペクト,横断的関心,Pointcut,Advice,インターセプト"
-tags: []
+tags: [Spring]
 author: hamasyou
 amazon_url: ""
 amazon_author: ""
@@ -14,23 +14,23 @@ amazon_publisher: ""
 ---
 
 <p>
-[ target="_blank"><img src="http://images-jp.amazon.com/images/P/0764558315.01.MZZZZZZZ.jpg" />](http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22)
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow"></a>
 </p>
 
-アメリカではほとんどデフェクトスタンダードとなっている「[ target="_blank" class="extlink"><b>Spring Framework</b>](http://www.springframework.org/)」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。
+アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow"></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。
 
 <abbr title="Aspect Oriented Programming">AOP</abbr>(アスペクト指向プログラミング) はクラスの直接的な責務ではない、各モジュールから共通で使われる処理を、独立して切り出す手法です。「クラスの直接的な責務でない」とは、例えば「ログ」や「トランザクション」、「認証」などです。多くのクラスに重複コードが生まれてしまうような処理は、<b>アスペクト(横断的関心事)</b> として別のモジュールにしてしまうという手法をとることが出来ます。Spring AOP は、このアスペクトを扱うものです。
-参考：[ target="_blank" class="extlink">『AspectJによるアスペクト指向プログラミング入門』 ソフトバンクパブリッシング](http://www.amazon.co.jp/exec/obidos/ASIN/4797326387/sorehabooks-22)
+参考：<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797326387/sorehabooks-22" rel="external nofollow">『AspectJによるアスペクト指向プログラミング入門』 ソフトバンクパブリッシング</a>
 　
-Springの詳細については、ほかにもっとよいサイト([ target="_blank" class="extlink">Spring-Java/J2EEアプリケーションフレームワークリファレンスドキュメント](http://www.andore.com/money/trans/spring_ref_ja.html)や[ target="_blank" class="extlink">Springフレームワークの紹介](http://www.andore.com/money/trans/spring_ja.html))があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。
+Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。
 
 <section>
 
 <h4>参考</h4>
 
-[ target="_blank" class="extlink">Spring Pad - Wiki](http://wiki.bmedianode.com/Spring/?FrontPage)
+<a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow">Spring Pad - Wiki</a>
 
-[ target="_blank" class="extlink">JavaWorld 7月号 2004年](http://direct.idg.co.jp/detail_1.msp?id=1066&class=10005&n=2)
+<a href="http://direct.idg.co.jp/detail_1.msp?id=1066&class=10005&n=2" rel="external nofollow">JavaWorld 7月号 2004年</a>
 
 </section>
 
@@ -39,12 +39,12 @@ Springの詳細については、ほかにもっとよいサイト([ target="_bl
 
 <h2>Spring AOP フレームワーク</h2>
 
-<ul><li>[Spring AOP 用語](#Spring AOP 用語)</li>
-<li>[Spring AOP とは](#Spring AOP とは)</li>
-<li>[Spring AOP で使われる主なクラス / インターフェース](#Spring AOP で使われる主なクラス / インターフェース)</li>
-<li>[ProxyFactoryBean を使ったサンプルコード](#ProxyFactoryBean を使ったサンプルコード)</li>
-<li>[Advisor とは？](#Advisor とは？)</li>
-<li>[ハマった点](#ハマった点)</li>
+<ul><li><a href="#Spring AOP 用語" rel="external nofollow">Spring AOP 用語</a></li>
+<li><a href="#Spring AOP とは" rel="external nofollow">Spring AOP とは</a></li>
+<li><a href="#Spring AOP で使われる主なクラス / インターフェース" rel="external nofollow">Spring AOP で使われる主なクラス / インターフェース</a></li>
+<li><a href="#ProxyFactoryBean を使ったサンプルコード" rel="external nofollow">ProxyFactoryBean を使ったサンプルコード</a></li>
+<li><a href="#Advisor とは？" rel="external nofollow">Advisor とは？</a></li>
+<li><a href="#ハマった点" rel="external nofollow">ハマった点</a></li>
 </ul>
 
 <h2 id="Spring AOP 用語">Spring AOP 用語</h2>
@@ -96,13 +96,13 @@ Spring AOP で出てくる主要な用語まとめです。
 
 <h2 id="Spring AOP とは">Spring AOP とは</h2>
 
-Spring AOP は[インターセプト](#インターセプト)をベースにしています。つまり、「処理に何らかの付加を付け加える目的でAOPが使われている。」と言えます。ただし、Spring でも、インターフェースの動的実装のみの目的としてのみ[イントロダクション](#イントロダクション)は使えます。
+Spring AOP は<a href="#インターセプト" rel="external nofollow">イントロダクション</a>は使えます。
 
-Spring AOP は、[ジョインポイント](#ジョインポイント)に[アスペクト](#アスペクト)を織り込む方法として、インターセプトを使います。処理の流れはこんな感じです。
+Spring AOP は、<a href="#ジョインポイント" rel="external nofollow">アスペクト</a>を織り込む方法として、インターセプトを使います。処理の流れはこんな感じです。
 
 <ol><li>Spring は実行時に、アスペクト対象クラスのプロキシオブジェクトを生成します。</li><li>そして、プロキシオブジェクトの内部で、アスペクト対象クラスの処理を実行します。</li><li>ジョインポイントとして、アスペクト対象クラスが指定されると、プロキシの中でインターセプトクラスのアドバイスメソッドが呼ばれます。</li></ol>
 
-Spring AOP では、[ポイントカット](#ポイントカット)と[アドバイス](#アドバイス)を一緒に扱う「<b>アドバイザー (Advisor)</b>」というものを使います。任意のポイントカットとアドバイスを組み合わせて使います。
+Spring AOP では、<a href="#ポイントカット" rel="external nofollow">アドバイス</a>を一緒に扱う「<b>アドバイザー (Advisor)</b>」というものを使います。任意のポイントカットとアドバイスを組み合わせて使います。
 
 <h2 id="Spring AOP で使われる主なクラス / インターフェース">Spring AOP で使われる主なクラス / インターフェース</h2>
 
@@ -128,11 +128,11 @@ AOP Proxy 戦略を行うための FactoryBean です。簡単に言うと、Spr
 
 <h3>org.springframework.aop.Pointcut</h3>
 
-[ポイントカット](#ポイントカット)はアドバイスの挿入地点であるジョインポイントの部分集合です。クラス名やメソッド名のマッチング条件を指定することにより、ジョインポイントの集合を表すことが出来ます。
+<a href="#ポイントカット" rel="external nofollow">ポイントカット</a>はアドバイスの挿入地点であるジョインポイントの部分集合です。クラス名やメソッド名のマッチング条件を指定することにより、ジョインポイントの集合を表すことが出来ます。
 
 <h3>org.springframework.aop.MethodMatcher</h3>
 
-[ポイントカット](#ポイントカット)の一部です。呼び出されたメソッドがポイントカットの集合に含まれるかどうかを判定します。静的な呼び出しである場合には、引数が2つの matches メソッドが呼び出されます。動的な呼び出しである場合には、引数が3つの matches メソッドが呼び出されます。
+<a href="#ポイントカット" rel="external nofollow">ポイントカット</a>の一部です。呼び出されたメソッドがポイントカットの集合に含まれるかどうかを判定します。静的な呼び出しである場合には、引数が2つの matches メソッドが呼び出されます。動的な呼び出しである場合には、引数が3つの matches メソッドが呼び出されます。
 
 Spring AOP では、ポイントカットは Union (和集合) と Intersection (交差) で表せます。 org.springframework.aop.support.Pointcuts クラスを使います。
 
@@ -152,7 +152,7 @@ Spring AOP では、ポイントカットは Union (和集合) と Intersection 
 
 <h3>org.aopalliance.aop.Advice</h3>
 
-[アドバイス](#アドバイス)はポイントカットに挿入する処理を定義するインターフェースです。Spring では「Around Advice」、「Before Advice」、「Throws Advice」、「After returning Advice」の 4 種類をサポートしています。
+<a href="#アドバイス" rel="external nofollow">アドバイス</a>はポイントカットに挿入する処理を定義するインターフェースです。Spring では「Around Advice」、「Before Advice」、「Throws Advice」、「After returning Advice」の 4 種類をサポートしています。
 
 <dl><dt>org.aopalliance.intercept.MethodInterceptor</dt>
 <dd><p>Around Advice を実装するためのインターフェースです。Around Advice は アドバイスの処理が、アスペクト対象の処理の前後に及ぶため、自分で Advice のタイミングを実装しなければなりません。Advice の処理の中で、 invocation.proceed() を呼び出す必要があります。このインターフェースの実装の仕方によっては、4種類全部の Advice を表現できます。</p></dd>
@@ -176,7 +176,7 @@ public void afterThrowing(java.lang.refrect.Method m, Object[] args, Object targ
 
 <h3>org.springframework.aop.Advisor</h3>
 
-[ポイントカット](#ポイントカット)と[アドバイス](#アドバイス)を一緒に扱うインターフェースです。Spring の世界では、おそらく「<b>インターセプト = アドバイス</b>」と言えると思います。
+<a href="#ポイントカット" rel="external nofollow">アドバイス</a>を一緒に扱うインターフェースです。Spring の世界では、おそらく「<b>インターセプト = アドバイス</b>」と言えると思います。
 
 <h2 id="ProxyFactoryBean を使ったサンプルコード">ProxyFactoryBean を使ったサンプルコード</h2>
 
@@ -255,7 +255,7 @@ Debug interceptor: next returned
 
 <h2 id="Advisor とは？">Advisor (アドバイザー)とは？</h2>
 
-Advisor (アドバイザー)とは、[ポイントカット](#ポイントカット)と[アドバイス](#アドバイス)をセットにしたものと考えればよさそうです。アドバイスとはアスペクトとして付け加える処理のことです。ポイントカットはアドバイスを付け加える位置のことです。つまり、<b>アドバイザーとは、自身がアドバイスであり、ポイントカットである</b>わけです。
+Advisor (アドバイザー)とは、<a href="#ポイントカット" rel="external nofollow">アドバイス</a>をセットにしたものと考えればよさそうです。アドバイスとはアスペクトとして付け加える処理のことです。ポイントカットはアドバイスを付け加える位置のことです。つまり、<b>アドバイザーとは、自身がアドバイスであり、ポイントカットである</b>わけです。
 
 <section>
 
@@ -318,28 +318,28 @@ Bean 定義書を見ると分かるのですが、ProxyFactoryBean の target �
 <h2>参考</h2>
 
 + Spring Framework の本家です。
-[ target="_blank" class="extlink">Spring Framework](http://www.springframework.org/)<img src="/images/linkext.gif" alt="linkext" />
+<a href="http://www.springframework.org/" rel="external nofollow">Spring Framework</a><img src="/images/linkext.gif" alt="linkext" />
 
 + Spring Framework の 日本語 Wiki です。大量の情報があります。
-[ target="_blank" class="extlink">Spring Pad](http://wiki.bmedianode.com/Spring/?FrontPage)<img src="/images/linkext.gif" alt="linkext" />
+<a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow">Spring Pad</a><img src="/images/linkext.gif" alt="linkext" />
 
 + Spring-Java/J2EEアプリケーションフレームワークリファレンスドキュメント (日本語訳)
-[ target="_blank" class="extlink">Spring-Java/J2EEアプリケーションフレームワークドキュメント](http://www.andore.com/money/trans/spring_ref_ja.html)<img src="/images/linkext.gif" alt="linkext" />
+<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow">Spring-Java/J2EEアプリケーションフレームワークドキュメント</a><img src="/images/linkext.gif" alt="linkext" />
 
 + Spring フレームワークに関しての概要です。TECHSCORE さんの記事は読みやすいなぁ (^^ ;
-[ target="_blank" class="extlink">TECHSCORE - Spring Framework](http://www.techscore.com/tech/Java/Spring/1.html)<img src="/images/linkext.gif" alt="linkext" />
+<a href="http://www.techscore.com/tech/Java/Spring/1.html" rel="external nofollow">TECHSCORE - Spring Framework</a><img src="/images/linkext.gif" alt="linkext" />
 
 + Spring を含めた、軽量コンポーネントのお話です。
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">[軽快なJava―Better,Faster,Lighter Java](http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/)</td></tr><tr><td valign="top">[<img src="http://images-jp.amazon.com/images/P/487311201X.09.MZZZZZZZ.jpg"   border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/)</td><td valign="top"><font size="-1">ブルース・A. テイトジャスティン ゲットランドBruce A. TateJustin Gehtland岩谷 宏<br /><br /><iframe scrolling="no" frameborder="0" width="200" height="40" hspace="0" vspace="0" marginheight="0" marginwidth="0" src="http://webservices.amazon.co.jp/onca/xml?Service=AWSProductData&SubscriptionId=0G91FPYVW6ZGWBH4Y9G2&AssociateTag=goodpic-22&Operation=ItemLookup&IdType=ASIN&ContentType=text/html&Page=1&ResponseGroup=Offers&ItemId=487311201X&Version=2004-10-04&Style=http://www.g-tools.net/xsl/priceFFFFFF.xsl"></iframe><br /><b>おすすめ平均</b><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   /><br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />率直な筆者の経験は必読<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />シンプル<br /><br />[Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/)</font><img src="http://www.goodpic.com/mt/images/spacer.gif"   width="30" height="1" /><font size="-2">by [G-Tools](http://www.goodpic.com/mt/aws/)</font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
 
 + Spring の ロッドジョンソンが贈る、J2EE技術者のためのバイブル
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">[実践J2EE システムデザイン&業務運用[仮題・予定価格]](http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/)</td></tr><tr><td valign="top">[<img src="http://images-jp.amazon.com/images/P/4797322888.09.MZZZZZZZ.jpg"   border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/)</td><td valign="top"><font size="-1">ロッド・ジョンソン<br /><br /><iframe scrolling="no" frameborder="0" width="200" height="40" hspace="0" vspace="0" marginheight="0" marginwidth="0" src="http://webservices.amazon.co.jp/onca/xml?Service=AWSProductData&SubscriptionId=0G91FPYVW6ZGWBH4Y9G2&AssociateTag=goodpic-22&Operation=ItemLookup&IdType=ASIN&ContentType=text/html&Page=1&ResponseGroup=Offers&ItemId=4797322888&Version=2004-10-04&Style=http://www.g-tools.net/xsl/priceFFFFFF.xsl"></iframe><br /><b>おすすめ平均</b><img src="http://g-images.amazon.com/images/G/01/detail/stars-4-5.gif"   /><br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />Spring Freamworkの作者に迫れる唯一の本<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-3-0.gif"   />坊主にくけりゃ袈裟までにくい?<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-4-0.gif"   />内容は充実、ただ経験、印象に頼るところも<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />まさに実践まさに必携<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />「現場主義」といったスタンスが根底に貫かれている<br /><br />[Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/)</font><img src="http://www.goodpic.com/mt/images/spacer.gif"   width="30" height="1" /><font size="-2">by [G-Tools](http://www.goodpic.com/mt/aws/)</font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
 
 + Spring のロッドジョンソンによる Spring ユーザのための本 (洋書)
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">[Professional Java Development With The Spring Framework](http://www.amazon.co.jp/exec/obidos/ASIN/0764574833/sorehabooks-22/)</td></tr><tr><td valign="top">[<img src="http://images-jp.amazon.com/images/P/0764574833.01.MZZZZZZZ.jpg"   border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/0764574833/sorehabooks-22/)</td><td valign="top"><font size="-1">Rod JohnsonJuergen HoellerALEF ARENDSENDMITRIY KOPYLENKOTHOMAS RISBERG<br /><br /><iframe scrolling="no" frameborder="0" width="200" height="40" hspace="0" vspace="0" marginheight="0" marginwidth="0" src="http://webservices.amazon.co.jp/onca/xml?Service=AWSECommerceService&SubscriptionId=0G91FPYVW6ZGWBH4Y9G2&AssociateTag=goodpic-22&Operation=ItemLookup&IdType=ASIN&ContentType=text/html&Page=1&ResponseGroup=Offers&ItemId=0764574833&Version=2004-10-04&Style=http://www.g-tools.net/xsl/priceFFFFFF.xsl"></iframe><br />[Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/0764574833/sorehabooks-22/)</font><img src="http://www.goodpic.com/mt/images/spacer.gif"   width="30" height="1" /><font size="-2">by [G-Tools](http://www.goodpic.com/mt/aws/)</font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764574833/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
 
 + SpringでWebアプリケーションを作りながら、Springの全体像がわかりやすく解説されています。
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2">[ target="_blank">Java press (Vol.41)](http://www.amazon.co.jp/exec/obidos/ASIN/4774122793/sorehabooks-22/)</td></tr><tr><td valign="top">[ target="_blank"><img src="http://images-jp.amazon.com/images/P/4774122793.09.MZZZZZZZ.jpg"   border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/4774122793/sorehabooks-22/)</td><td valign="top"><font size="-1"><br /><br />[ target="_blank">Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/4774122793/sorehabooks-22/)</font>    <font size="-2">by [ >G-Tools](http://www.goodpic.com/mt/aws/)</font><br /></td></tr></table></div>
+<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774122793/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
 
 
 

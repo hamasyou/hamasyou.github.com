@@ -3,9 +3,9 @@ layout: post
 title: "WebLogic でカスタムキーストアを使って SSL 通信を行うおぼえがき"
 date: 2007-10-27 23:03
 comments: true
-categories: [Engineer-Soul]
+categories: [Blog]
 keywords: "WebLogic Server 9.2J,WebLogic,おぼえがき,キーストア,SSL"
-tags: []
+tags: [WebLogic,SSL]
 author: hamasyou
 amazon_url: ""
 amazon_author: ""
@@ -17,7 +17,7 @@ WebLogic9.2J でカスタムキーストアを使ってSSL通信を行うおぼ�
 
 使用した WebLogic は、下記のサイトからダウンロードしました。
 
-[ target="_blank" class="extlink">日本BEAシステムズ株式会社 Evaluation Center](http://www.beasys.co.jp/evaluation/index.html)
+<a href="http://www.beasys.co.jp/evaluation/index.html" rel="external nofollow">日本BEAシステムズ株式会社 Evaluation Center</a>
 
 <section>
 
@@ -42,7 +42,7 @@ WebLogic9.2J でカスタムキーストアを使ってSSL通信を行うおぼ�
 
 キーストアとは、暗号化に必要な鍵や証明書をエントリとして保管する箱です。それぞれのエントリをエイリアスをつけて管理します。キーストアを操作するツールに、Java の keytool があります。
 
-[ target="_blank" class="extlink">keytool - 鍵と証明書の管理ツール](http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/tooldocs/solaris/keytool.html)
+<a href="http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/tooldocs/solaris/keytool.html" rel="external nofollow">keytool - 鍵と証明書の管理ツール</a>
 
 <h3>WebLogic のキーストア</h3>
 
@@ -161,7 +161,7 @@ myKeystore.jks
 <dt>-keyalg</dt>
 <dd><p>暗号化アルゴリズムを指定します。指定しない場合は <strong>DSA</strong> になります。<em>WebLogic Server 9.2J の試用版では DSA アルゴリズムはサポートされていないので、明示的に <strong>RSA</strong> を指定します。</em></p>
 
-<p>[ target="_blank" class="extlink">WebLogic ドキュメント - SSL を使用するクライアントの開発](http://www.hi-sv.com/e-docs/wls/docs92/client/security.html#wp1077561)</p></dd>
+<p><a href="http://www.hi-sv.com/e-docs/wls/docs92/client/security.html#wp1077561" rel="external nofollow">WebLogic ドキュメント - SSL を使用するクライアントの開発</a></p></dd>
 </dl>
 
 <h3>サーバ証明書発行要求を作成する</h3>
@@ -436,7 +436,7 @@ WebLogic に先ほど作成したキーストアを設定します。WebLogic �
 
 今回は、秘密鍵、サーバ証明書ともに同じキーストアに入れているので、両方とも同じ設定を行います。
 
-[ target="_blank"><img src="http://hamasyou.com/images/WebLogicSSL/weblogic_keystore.jpg" width="600" alt="キーストアの設定" />](http://hamasyou.com/images/WebLogicSSL/weblogic_keystore.jpg)
+<a href="http://hamasyou.com/images/WebLogicSSL/weblogic_keystore.jpg" rel="external nofollow"></a>
 
 <h3>WebLogic の SSL の設定</h3>
 
@@ -444,13 +444,13 @@ WebLogic の SSL の設定を行います。WebLogic の管理サーバの管理
 
 ID キーストアに指定したキーストアの中から秘密鍵エントリのエントリを指定します。
 
-[ target="_blank"><img src="http://hamasyou.com/images/WebLogicSSL/weblogic_ssl.jpg" width="600" alt="SSL の設定" />](http://hamasyou.com/images/WebLogicSSL/weblogic_ssl.jpg)
+<a href="http://hamasyou.com/images/WebLogicSSL/weblogic_ssl.jpg" rel="external nofollow"></a>
 
 <dl>
 <dt class="warn">公開鍵暗号アルゴリズムに注意</dt>
 <dd><p>WebLogic Server 9.2J MP2 の試用版では、公開鍵暗号に DSA はサポートされていません。秘密鍵は keytool -genkey の -keyalg で <strong>RSA</strong> を指定したものを指定します。</p>
 
-<p>[ target="_blank" class="extlink">WebLogic ドキュメント - SSL を使用するクライアントの開発](http://www.hi-sv.com/e-docs/wls/docs92/client/security.html#wp1077561)</p></dd>
+<p><a href="http://www.hi-sv.com/e-docs/wls/docs92/client/security.html#wp1077561" rel="external nofollow">WebLogic ドキュメント - SSL を使用するクライアントの開発</a></p></dd>
 </dl>
 
 <h2>クライアント（ブラウザ）に CA 局の証明書をインストールする</h2>
@@ -466,7 +466,7 @@ ID キーストアに指定したキーストアの中から秘密鍵エント�
 <section>
 <h4>参考</h4>
 
-[ target="_blank" class="extlink">IEが表示する「信頼する会社」とは・・・](http://maruyama-mitsuhiko.cocolog-nifty.com/security/2005/01/ie.html)
+<a href="http://maruyama-mitsuhiko.cocolog-nifty.com/security/2005/01/ie.html" rel="external nofollow">IEが表示する「信頼する会社」とは・・・</a>
 
 </section>
 
@@ -510,7 +510,7 @@ CA 局のサーバ証明書は安全な方法（改ざんされない方法）�
 <h2>参考</h2>
 
 <div class="rakuten">
-<table width="400"  border="0" cellpadding="5"><tr><td colspan="2">[ target="_blank">BEA WebLogic Server 9.x/10 構築・運用ガイド](http://www.amazon.co.jp/exec/obidos/ASIN/4798113328/sorehabooks-22/ref=nosim/)</td></tr><tr><td valign="top">[ target="_blank"><img src="http://ecx.images-amazon.com/images/I/51W3GF2aETL._SL160_.jpg" border="0" alt="BEA WebLogic Server 9.x/10 構築・運用ガイド" />](http://www.amazon.co.jp/exec/obidos/ASIN/4798113328/sorehabooks-22/ref=nosim/)</td><td valign="top"><font size="-1">伊藤忠テクノソリューションズ株式会社 日本BEAシステムズ株式会社 <br /><br /><strong>おすすめ平均</strong> <img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif" /><br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif" alt="stars" />前作と同様わかりやすいつくり<br /><br />[ target="_blank">Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/4798113328/sorehabooks-22/ref=nosim/)</font><font size="-2"> by [ >G-Tools](http://www.goodpic.com/mt/aws/index.html)</font></td></tr></table>
+<table width="400"  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798113328/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table>
 </div>
 
 

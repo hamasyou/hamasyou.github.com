@@ -3,9 +3,9 @@ layout: post
 title: "Struts Bridge - Portal Bridges"
 date: 2006-04-19 23:04
 comments: true
-categories: [Engineer-Soul]
+categories: [Blog]
 keywords: "Portal Bridges, Struts Bridge, Portal, Portlet, Java, 覚書"
-tags: []
+tags: [Struts,uPortal]
 author: hamasyou
 amazon_url: ""
 amazon_author: ""
@@ -14,7 +14,7 @@ amazon_publisher: ""
 ---
 
 <p>
-[ target="_blank"><img src="http://portals.apache.org/images/apache-portals.gif"   alt="Portal Bridges" />](http://portals.apache.org/pluto/)
+<a href="http://portals.apache.org/pluto/" rel="external nofollow"></a>
 </p>
 
 Portal Bridges は、Portlet 以外で作られた Web フレームワークと、JSR-168 に準拠した Portlet を橋渡しするライブラリです。The Apache Software Foundation によって提供されています。
@@ -27,7 +27,7 @@ Portal Bridges は、Portlet 以外で作られた Web フレームワークと�
 
 <h4>[参考]</h4>
 
-+ [ target="_blank" class="extlink">Struts Bridge - Portal Bridges](http://portals.apache.org/bridges/multiproject/portals-bridges-struts/index.html)
++ <a href="http://portals.apache.org/bridges/multiproject/portals-bridges-struts/index.html" rel="external nofollow">Struts Bridge - Portal Bridges</a>
 
 </section>
 
@@ -37,26 +37,26 @@ Portal Bridges は、Portlet 以外で作られた Web フレームワークと�
 <h2>Struts Bridge 目次</h2>
 
 <ul>
-<li>[言葉の定義おさらい](#chapter1)
+<li><a href="#chapter1" rel="external nofollow">言葉の定義おさらい</a>
 </li>
-<li>[Portal Bridgesとは](#chapter2)
+<li><a href="#chapter2" rel="external nofollow">Portal Bridgesとは</a>
 </li>
-<li>[Struts をブリッジしてみる](#chapter3)
+<li><a href="#chapter3" rel="external nofollow">Struts をブリッジしてみる</a>
 <ul>
-<li>[なんか、めちゃめちゃ難しいとかいわれてますが・・・](#section1)</li>
-<li>[コードやJSPを変更しなくても Portlet に対応できる。ただし、条件が・・・](#section2)</li>
+<li><a href="#section1" rel="external nofollow">なんか、めちゃめちゃ難しいとかいわれてますが・・・</a></li>
+<li><a href="#section2" rel="external nofollow">コードやJSPを変更しなくても Portlet に対応できる。ただし、条件が・・・</a></li>
 </ul>
 </li>
-<li>[Struts Bridge が提供するもの](#chapter4)
+<li><a href="#chapter4" rel="external nofollow">Struts Bridge が提供するもの</a>
 <ul>
-<li>[PortletURL を Struts 用のURLに変える](#section3)</li>
-<li>[ServletAPI にアクセスする標準の方法を提供](#section4)</li>
-<li>[必要ならば、ServletContextProvider を拡張できます](#section5)</li>
-<li>[Portlet のAction リクエストを自動的に Struts のアクションとレンダリングに分ける](#section6)</li>
-<li>[ActionRequest と RenderRequest の間で、アトリビュートを受け渡す](#section7)</li>
-<li>[Tags サポート](#section8)</li>
-<li>[RequestProcessor が用意されている](#section9)</li>
-<li>[Portal モードと、スタンドアローンモードを同時に使える](#section10)</li>
+<li><a href="#section3" rel="external nofollow">PortletURL を Struts 用のURLに変える</a></li>
+<li><a href="#section4" rel="external nofollow">ServletAPI にアクセスする標準の方法を提供</a></li>
+<li><a href="#section5" rel="external nofollow">必要ならば、ServletContextProvider を拡張できます</a></li>
+<li><a href="#section6" rel="external nofollow">Portlet のAction リクエストを自動的に Struts のアクションとレンダリングに分ける</a></li>
+<li><a href="#section7" rel="external nofollow">ActionRequest と RenderRequest の間で、アトリビュートを受け渡す</a></li>
+<li><a href="#section8" rel="external nofollow">Tags サポート</a></li>
+<li><a href="#section9" rel="external nofollow">RequestProcessor が用意されている</a></li>
+<li><a href="#section10" rel="external nofollow">Portal モードと、スタンドアローンモードを同時に使える</a></li>
 </ul>
 </li>
 </ul>
@@ -64,13 +64,13 @@ Portal Bridges は、Portlet 以外で作られた Web フレームワークと�
 <h4>Struts Bridge を使ってみる 目次</h4>
 
 <ul>
-<li>[Struts アプリケーションを Portlet に対応させる](#chapter5)
+<li><a href="#chapter5" rel="external nofollow">Struts アプリケーションを Portlet に対応させる</a>
 <ul>
-<li>[web.xml を編集する](#section11)</li>
-<li>[struts-config.xml を編集する](#section12)</li>
-<li>[JSP で使っている Struts HTML Taglib を変更する](#section13)</li>
-<li>[struts-portlet-config.xml ファイルを作成する](#section14)</li>
-<li>[portlet.xml を作成する](#section15)</li>
+<li><a href="#section11" rel="external nofollow">web.xml を編集する</a></li>
+<li><a href="#section12" rel="external nofollow">struts-config.xml を編集する</a></li>
+<li><a href="#section13" rel="external nofollow">JSP で使っている Struts HTML Taglib を変更する</a></li>
+<li><a href="#section14" rel="external nofollow">struts-portlet-config.xml ファイルを作成する</a></li>
+<li><a href="#section15" rel="external nofollow">portlet.xml を作成する</a></li>
 </ul>
 </li>
 </ul>
@@ -192,9 +192,9 @@ Struts アプリケーションを、Portal とスタンドアローンとで、
 
 <h4>[参考]</h4>
 
-+ [ target="_blank" class="extlink">Struts Bridge - uPortal Wiki](http://www.ja-sig.org/wiki/display/PLT/Struts+Bridge)
++ <a href="http://www.ja-sig.org/wiki/display/PLT/Struts+Bridge" rel="external nofollow">Struts Bridge - uPortal Wiki</a>
 
-今回は、[ target="_blank" class="extlink">uPortal](http://www.uportal.org/) という Portlet 製品に Struts アプリケーションを乗せることを考えます。
+今回は、<a href="http://www.uportal.org/" rel="external nofollow">uPortal</a> という Portlet 製品に Struts アプリケーションを乗せることを考えます。
 
 <h2 id="chapter5">Struts アプリケーションを Portlet に対応させる</h2>
 

@@ -3,9 +3,9 @@ layout: post
 title: "Spring Framework 覚書き - MVCフレームワーク"
 date: 2004-11-06 14:00
 comments: true
-categories: [Engineer-Soul]
+categories: [Blog]
 keywords: "Spring,Framework,覚書き,スプリング,フレームワーク,アーキテクチャ,DI,IoC,MVC,Web"
-tags: []
+tags: [Spring]
 author: hamasyou
 amazon_url: ""
 amazon_author: ""
@@ -14,24 +14,24 @@ amazon_publisher: ""
 ---
 
 <p>
-[ target="_blank"><img src="http://images-jp.amazon.com/images/P/0764558315.01.MZZZZZZZ.jpg" border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22)
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow"></a>
 </p>
 
-アメリカではほとんどデフェクトスタンダードとなっている「[ target="_blank" class="extlink"><b>Spring Framework</b>](http://www.springframework.org/)」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。
+アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow"></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。
 
 Springは MVCフレームワークを提供しています。Springのフレームワークは、すべてインターフェースベースになっているので、単一継承の JAVA にとっては非常にありがたいものです。Spring MVC の View には、JSP の他、Velocity、XSLT、JSFなどといったさまざまな技術が使えます。
 
 Validation 機能は、Web システムにとって非常に重要なものとなっています。Springでは、 Validation は Web パッケージと切り離されているので、単体テストも簡単に出来るようになっています。
 
-Springの詳細については、ほかにもっとよいサイト([ target="_blank" class="extlink">Spring-Java/J2EEアプリケーションフレームワークリファレンスドキュメント](http://www.andore.com/money/trans/spring_ref_ja.html)や[ target="_blank" class="extlink">Springフレームワークの紹介](http://www.andore.com/money/trans/spring_ja.html))があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。
+Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。
 
 <section>
 
 <h4>参考</h4>
 
-[ target="_blank" class="extlink">Spring Pad - Wiki](http://wiki.bmedianode.com/Spring/?FrontPage)
+<a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow">Spring Pad - Wiki</a>
 
-[ target="_blank" class="extlink">JavaWorld 7月号 2004年](http://direct.idg.co.jp/detail_1.msp?id=1066&class=10005&n=2)
+<a href="http://direct.idg.co.jp/detail_1.msp?id=1066&class=10005&n=2" rel="external nofollow">JavaWorld 7月号 2004年</a>
 
 </section>
 
@@ -40,19 +40,19 @@ Springの詳細については、ほかにもっとよいサイト([ target="_bl
 
 <h2>Spring MVC フレームワーク</h2>
 
-<ul><li>[Spring MVC フレームワークとは](#Spring MVC フレームワークとは)</li>
-<li>[Spring MVC で使われる主なクラス / インターフェース](#Spring MVC で使われる主なクラス / インターフェース)</li>
-<li>[コントローラ・サーブレットの設定 (web.xml)](#コントローラ・サーブレットの設定 (web.xml))</li>
-<li>[ModelAndView のサンプルコード](#ModelAndView のサンプルコード)</li>
-<li>[ViewResolverの例](#ViewResolverの例)</li>
-<li>[Validateを使った妥当性チェックの方法](#Validateを使った妥当性チェックの方法)</li>
-<li>[Bind を使ったエラーメッセージの表示方法](#Bind を使ったエラーメッセージの表示方法)</li>
-<li>[型変換時のエラーメッセージを独自のメッセージにする方法](#型変換時のエラーメッセージを独自のメッセージにする方法)</li>
-<li>[独自の型変換を使う方法](#独自の型変換を使う方法)</li>
-<li>[Command コントローラ一覧](#Command コントローラ一覧)</li>
-<li>[コントローラマッピング](#コントローラマッピング)</li>
-<li>[ハマった点](#ハマった点)</li>
-<li>[Spring MVC フレームワークに出てくる用語](#Spring MVC フレームワークに出てくる用語)</li>
+<ul><li><a href="#Spring MVC フレームワークとは" rel="external nofollow">Spring MVC フレームワークとは</a></li>
+<li><a href="#Spring MVC で使われる主なクラス / インターフェース" rel="external nofollow">Spring MVC で使われる主なクラス / インターフェース</a></li>
+<li><a href="#コントローラ・サーブレットの設定 (web.xml)" rel="external nofollow">コントローラ・サーブレットの設定 (web.xml)</a></li>
+<li><a href="#ModelAndView のサンプルコード" rel="external nofollow">ModelAndView のサンプルコード</a></li>
+<li><a href="#ViewResolverの例" rel="external nofollow">ViewResolverの例</a></li>
+<li><a href="#Validateを使った妥当性チェックの方法" rel="external nofollow">Validateを使った妥当性チェックの方法</a></li>
+<li><a href="#Bind を使ったエラーメッセージの表示方法" rel="external nofollow">Bind を使ったエラーメッセージの表示方法</a></li>
+<li><a href="#型変換時のエラーメッセージを独自のメッセージにする方法" rel="external nofollow">型変換時のエラーメッセージを独自のメッセージにする方法</a></li>
+<li><a href="#独自の型変換を使う方法" rel="external nofollow">独自の型変換を使う方法</a></li>
+<li><a href="#Command コントローラ一覧" rel="external nofollow">Command コントローラ一覧</a></li>
+<li><a href="#コントローラマッピング" rel="external nofollow">コントローラマッピング</a></li>
+<li><a href="#ハマった点" rel="external nofollow">ハマった点</a></li>
+<li><a href="#Spring MVC フレームワークに出てくる用語" rel="external nofollow">Spring MVC フレームワークに出てくる用語</a></li>
 </ul>
 
 <h2 id="Spring MVC フレームワークとは">Spring MVC フレームワークとは</h2>
@@ -120,7 +120,7 @@ Spring MVC を利用する場合に使われる主なクラスやインターフ
 
 <dl>
 <dt>org.springframework.web.servlet.mvc.AbstractController</dt>
-<dd>[Template Method パターン](http://hamasyou.com/archives/000173)を利用した、便利なコントローラ抽象クラスです。
+<dd><a href="http://hamasyou.com/archives/000173" rel="external nofollow">Template Method パターン</a>を利用した、便利なコントローラ抽象クラスです。
 
 <section>
 
@@ -173,7 +173,7 @@ Spring MVC を利用する場合に使われる主なクラスやインターフ
 
 <h4>[参考]</h4>
 
-[ target="_blank" class="extlink">Spring Pad - PropertyEditorだよ](http://wiki.bmedianode.com/Spring/?PropertyEditor%A4%C0%A4%E8)
+<a href="http://wiki.bmedianode.com/Spring/?PropertyEditor%A4%C0%A4%E8" rel="external nofollow">Spring Pad - PropertyEditorだよ</a>
 
 </section>
 
@@ -260,7 +260,7 @@ ModelAndView 《メソッド名》(HttpServletRequest request, HttpServletRespon
 
 ビュー名とビューのマッピングを行うクラスです。ResourceBundleViewResolver クラスは、マッピング情報を設定ファイルに指定できます。InternalResourceViewResolver はマッピングを MVCアプリケーション定義ファイルにしていします。
 
-Spring で言う 「ビュー」とは、レスポンスを返すクラスのことです。例えば、JSTL と JSP を使ってレスポンスを返す場合には、org.springframework.web.servlet.view.JstlView を使用します。Velocity などのテンプレートエンジンや JSF などを使用する場合には、別のビュークラスを指定します([参考](#ViewResolverの例))
+Spring で言う 「ビュー」とは、レスポンスを返すクラスのことです。例えば、JSTL と JSP を使ってレスポンスを返す場合には、org.springframework.web.servlet.view.JstlView を使用します。Velocity などのテンプレートエンジンや JSF などを使用する場合には、別のビュークラスを指定します(<a href="#ViewResolverの例" rel="external nofollow">参考</a>)
 
 <h3>org.springframework.web.servlet.HandlerInterceptor</h3>
 
@@ -274,7 +274,7 @@ Spring で言う 「ビュー」とは、レスポンスを返すクラスのこ
 
 <h4>[参考]</h4>
 
-[ target="_balnk" class="extlink">Spring Pad- Servlet 環境への導入](http://wiki.bmedianode.com/Spring/?Servlet%B4%C4%B6%AD%A4%D8%A4%CE%C6%B3%C6%FE)
+<a href="http://wiki.bmedianode.com/Spring/?Servlet%B4%C4%B6%AD%A4%D8%A4%CE%C6%B3%C6%FE" rel="external nofollow">Spring Pad- Servlet 環境への導入</a>
 
 </section>
 
@@ -477,9 +477,9 @@ ViewResolver を指定する場合には、MVCアプリケーション定義フ�
 
 <h2 id="Validateを使った妥当性チェックの方法">Validateを使った妥当性チェックの方法</h2>
 
-データ検証について、『[ target="_blank" class="extlink">実践J2EE](http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22)』から、少し抜粋します。(P.532)
+データ検証について、『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22" rel="external nofollow">実践J2EE</a>』から、少し抜粋します。(P.532)
 
-{% blockquote 『[ target="_blank" class="extlink">実践J2EE](http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22)』 %}
+{% blockquote 『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22" rel="external nofollow">実践J2EE</a>』 %}
 データ検証 (Validation) は、「構文」の検証と「セマンティクス」の検証とに分類されます。構文検証には、データが存在するか、データの長さが許容範囲にあるか、データが有効なフォーマット(数字など)であるかといった、単純な操作が含まれます。通常、これはビジネスロジックではありません。セマンティクス検証はこれより手が込んだもので、ビジネスロジックやデータアクセスまでが含まれます。
 
 
@@ -602,7 +602,7 @@ typeMismatch.command.dateField={0} は yyyy/mm/dd の形で入力してくださ
 
 <h4>[参考]</h4>
 
-[ target="_blank" class="extlink">Spring Framework API - DefaultMessageCodesResolver](http://www.springframework.org/docs/api/org/springframework/validation/DefaultMessageCodesResolver.html)
+<a href="http://www.springframework.org/docs/api/org/springframework/validation/DefaultMessageCodesResolver.html" rel="external nofollow">Spring Framework API - DefaultMessageCodesResolver</a>
 
 <h2 id="独自の型変換を使う方法">独自の型変換を使う方法</h2>
 
@@ -624,7 +624,7 @@ Spring MVC フレームワークで使われるコントローラの中で、基
 <section>
 
 <h4>[参考]</h4>
-「[ target="_blank" class="extlink">Spring Framework リファレンス - 12.3.4. CommandControllers](http://www.springframework.org/docs/reference/mvc.html#mvc-controller-command)」
+「<a href="http://www.springframework.org/docs/reference/mvc.html#mvc-controller-command" rel="external nofollow">Spring Framework リファレンス - 12.3.4. CommandControllers</a>」
 
 </section>
 
@@ -678,7 +678,7 @@ Spring MVCフレームワークに出てくる用語をまとめておきます�
 <dt>ハンドラマッピング</dt>
 <dd><p>リクエストをリクエストコントローラに結びつける役割を担います。コントローラサーブレットは、ハンドラマッピングを元にリクエストを委譲するリクエストコントローラを判断します。<i>org.springframework.web.servlet.HandlerMapping</i> インターフェースを実装する必要があります。実装クラスには BeanNameUrlHandlerMapping, SimpleUrlHandlerMapping などがあります。</p>
 
-<p>[ target="_blank" class="extlink">Handler mappings](http://www.springframework.org/docs/reference/mvc.html#mvc-handlermapping)</p></dd>
+<p><a href="http://www.springframework.org/docs/reference/mvc.html#mvc-handlermapping" rel="external nofollow">Handler mappings</a></p></dd>
 <dt>ModelAndView</dt>
 <dd><p>MVC アーキテクチャにおける モデルとビューのホルダーです。ビュー名にモデルをバインドして、リクエストコントローラから返されます。</p></dd>
 <dt>ビュー</dt>
@@ -686,7 +686,7 @@ Spring MVCフレームワークに出てくる用語をまとめておきます�
 <dt>ビューリゾルバ</dt>
 <dd><p>ModelAndView のビュー名から、ビューオブジェクトを解決するクラスです。実装クラスには UrlBasedViewResolver などがあります。</p>
 
-<p>[ target="_blank" class="extlink">View and resolving them](http://www.springframework.org/docs/reference/mvc.html#mvc-viewresolver)</p></dd>
+<p><a href="http://www.springframework.org/docs/reference/mvc.html#mvc-viewresolver" rel="external nofollow">View and resolving them</a></p></dd>
 <dt>ワークフロー</dt>
 <dd><p>コントローラにおける処理の流れのことです。ウィザード形式のフォームコントローラを使用する場合など、画面間における必須項目のチェックなどを行えます。</p></dd>
 <dt>ハンドラインターセプター</dt>
@@ -698,28 +698,28 @@ Spring MVCフレームワークに出てくる用語をまとめておきます�
 <h2>参考</h2>
 
 + Spring Framework の本家です。
-[ target="_blank" class="extlink">Spring Framework](http://www.springframework.org/)<img src="/images/linkext.gif" alt="linkext" />
+<a href="http://www.springframework.org/" rel="external nofollow">Spring Framework</a><img src="/images/linkext.gif" alt="linkext" />
 
 + Spring Framework の 日本語 Wiki です。大量の情報があります。
-[ target="_blank" class="extlink">Spring Pad](http://wiki.bmedianode.com/Spring/?FrontPage)<img src="/images/linkext.gif" alt="linkext" />
+<a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow">Spring Pad</a><img src="/images/linkext.gif" alt="linkext" />
 
 + Spring-Java/J2EEアプリケーションフレームワークリファレンスドキュメント (日本語訳)
-[ target="_blank" class="extlink">Spring-Java/J2EEアプリケーションフレームワークドキュメント](http://www.andore.com/money/trans/spring_ref_ja.html)<img src="/images/linkext.gif" alt="linkext" />
+<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow">Spring-Java/J2EEアプリケーションフレームワークドキュメント</a><img src="/images/linkext.gif" alt="linkext" />
 
 + Spring フレームワークに関しての概要です。TECHSCORE さんの記事は読みやすいなぁ (^^ ;
-[ target="_blank" class="extlink">TECHSCORE - Spring Framework](http://www.techscore.com/tech/Java/Spring/1.html)<img src="/images/linkext.gif" alt="linkext" />
+<a href="http://www.techscore.com/tech/Java/Spring/1.html" rel="external nofollow">TECHSCORE - Spring Framework</a><img src="/images/linkext.gif" alt="linkext" />
 
 + Spring を含めた、軽量コンポーネントのお話です。
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">[軽快なJava―Better,Faster,Lighter Java](http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/)</td></tr><tr><td valign="top">[<img src="http://images-jp.amazon.com/images/P/487311201X.09.MZZZZZZZ.jpg"   border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/)</td><td valign="top"><font size="-1">ブルース・A. テイトジャスティン ゲットランドBruce A. TateJustin Gehtland岩谷 宏<br /><br /><iframe scrolling="no" frameborder="0" width="200" height="40" hspace="0" vspace="0" marginheight="0" marginwidth="0" src="http://webservices.amazon.co.jp/onca/xml?Service=AWSProductData&SubscriptionId=0G91FPYVW6ZGWBH4Y9G2&AssociateTag=goodpic-22&Operation=ItemLookup&IdType=ASIN&ContentType=text/html&Page=1&ResponseGroup=Offers&ItemId=487311201X&Version=2004-10-04&Style=http://www.g-tools.net/xsl/priceFFFFFF.xsl"></iframe><br /><b>おすすめ平均</b><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   /><br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />率直な筆者の経験は必読<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />シンプル<br /><br />[Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/)</font><img src="http://www.goodpic.com/mt/images/spacer.gif"   width="30" height="1" /><font size="-2">by [G-Tools](http://www.goodpic.com/mt/aws/)</font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
 
 + Spring の ロッドジョンソンが贈る、J2EE技術者のためのバイブル
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">[実践J2EE システムデザイン&業務運用[仮題・予定価格]](http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/)</td></tr><tr><td valign="top">[<img src="http://images-jp.amazon.com/images/P/4797322888.09.MZZZZZZZ.jpg"   border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/)</td><td valign="top"><font size="-1">ロッド・ジョンソン<br /><br /><iframe scrolling="no" frameborder="0" width="200" height="40" hspace="0" vspace="0" marginheight="0" marginwidth="0" src="http://webservices.amazon.co.jp/onca/xml?Service=AWSProductData&SubscriptionId=0G91FPYVW6ZGWBH4Y9G2&AssociateTag=goodpic-22&Operation=ItemLookup&IdType=ASIN&ContentType=text/html&Page=1&ResponseGroup=Offers&ItemId=4797322888&Version=2004-10-04&Style=http://www.g-tools.net/xsl/priceFFFFFF.xsl"></iframe><br /><b>おすすめ平均</b><img src="http://g-images.amazon.com/images/G/01/detail/stars-4-5.gif"   /><br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />Spring Freamworkの作者に迫れる唯一の本<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-3-0.gif"   />坊主にくけりゃ袈裟までにくい?<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-4-0.gif"   />内容は充実、ただ経験、印象に頼るところも<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />まさに実践まさに必携<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />「現場主義」といったスタンスが根底に貫かれている<br /><br />[Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/)</font><img src="http://www.goodpic.com/mt/images/spacer.gif"   width="30" height="1" /><font size="-2">by [G-Tools](http://www.goodpic.com/mt/aws/)</font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
 
 + Spring のロッドジョンソンによる Spring ユーザのための本 (洋書)
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">[Professional Java Development With The Spring Framework](http://www.amazon.co.jp/exec/obidos/ASIN/0764574833/sorehabooks-22/)</td></tr><tr><td valign="top">[<img src="http://images-jp.amazon.com/images/P/0764574833.01.MZZZZZZZ.jpg"   border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/0764574833/sorehabooks-22/)</td><td valign="top"><font size="-1">Rod JohnsonJuergen HoellerALEF ARENDSENDMITRIY KOPYLENKOTHOMAS RISBERG<br /><br /><iframe scrolling="no" frameborder="0" width="200" height="40" hspace="0" vspace="0" marginheight="0" marginwidth="0" src="http://webservices.amazon.co.jp/onca/xml?Service=AWSECommerceService&SubscriptionId=0G91FPYVW6ZGWBH4Y9G2&AssociateTag=goodpic-22&Operation=ItemLookup&IdType=ASIN&ContentType=text/html&Page=1&ResponseGroup=Offers&ItemId=0764574833&Version=2004-10-04&Style=http://www.g-tools.net/xsl/priceFFFFFF.xsl"></iframe><br />[Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/0764574833/sorehabooks-22/)</font><img src="http://www.goodpic.com/mt/images/spacer.gif"   width="30" height="1" /><font size="-2">by [G-Tools](http://www.goodpic.com/mt/aws/)</font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764574833/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
 
 + SpringでWebアプリケーションを作りながら、Springの全体像がわかりやすく解説されています。
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2">[ target="_blank">Java press (Vol.41)](http://www.amazon.co.jp/exec/obidos/ASIN/4774122793/sorehabooks-22/)</td></tr><tr><td valign="top">[ target="_blank"><img src="http://images-jp.amazon.com/images/P/4774122793.09.MZZZZZZZ.jpg"   border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/4774122793/sorehabooks-22/)</td><td valign="top"><font size="-1"><br /><br />[ target="_blank">Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/4774122793/sorehabooks-22/)</font>    <font size="-2">by [ >G-Tools](http://www.goodpic.com/mt/aws/)</font><br /></td></tr></table></div>
+<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774122793/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
 
 
 

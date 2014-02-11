@@ -3,9 +3,9 @@ layout: post
 title: "Spring Framework 覚書き - JDBC抽象化"
 date: 2004-11-04 13:35
 comments: true
-categories: [Engineer-Soul]
+categories: [Blog]
 keywords: "Spring,Framework,覚書き,スプリング,フレームワーク,アーキテクチャ,DI,IoC,JDBC,抽象化"
-tags: []
+tags: [Spring]
 author: hamasyou
 amazon_url: ""
 amazon_author: ""
@@ -14,22 +14,22 @@ amazon_publisher: ""
 ---
 
 <p>
-[ target="_blank"><img src="http://images-jp.amazon.com/images/P/0764558315.01.MZZZZZZZ.jpg"  border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22)
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow"></a>
 </p>
 
-アメリカではほとんどデフェクトスタンダードとなっている「[ target="_blank" class="extlink"><b>Spring Framework</b>](http://www.springframework.org/)」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。
+アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow"></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。
 
 Springは JDBCを抽象化した層を持っています。JDBCを使ったプログラミングで、共通化できる部分や、煩雑な部分をすっきりとした統一的な方法でアクセスできる手段を提供してくれます。
 
-Springの詳細については、ほかにもっとよいサイト([ target="_blank" class="extlink">Spring-Java/J2EEアプリケーションフレームワークリファレンスドキュメント](http://www.andore.com/money/trans/spring_ref_ja.html)や[ target="_blank" class="extlink">Springフレームワークの紹介](http://www.andore.com/money/trans/spring_ja.html))があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。
+Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。
 
 <section>
 
 <h4>参考</h4>
 
-[ target="_blank" class="extlink">Spring Pad - Wiki](http://wiki.bmedianode.com/Spring/?FrontPage)
+<a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow">Spring Pad - Wiki</a>
 
-[ target="_blank" class="extlink">JavaWorld 7月号 2004年](http://direct.idg.co.jp/detail_1.msp?id=1066&class=10005&n=2)
+<a href="http://direct.idg.co.jp/detail_1.msp?id=1066&class=10005&n=2" rel="external nofollow">JavaWorld 7月号 2004年</a>
 
 </section>
 
@@ -38,11 +38,11 @@ Springの詳細については、ほかにもっとよいサイト([ target="_bl
 
 <h2>JDBC抽象化フレームワーク</h2>
 
-<ul><li>[JDBC抽象化層とは？](#JDBC抽象化層とは？)</li>
-<li>[JDBC抽象化層で使われる主な クラス / インターフェース](#JDBC抽象化層で使われる主な クラス / インターフェース)</li>
-<li>[JdbcTemplateを使った基本的なSQL文の実行](#JdbcTemplateを使った基本的なSQL文の実行)</li>
-<li>[DataSource の設定の仕方](#DataSource の設定の仕方)</li>
-<li>[SqlFunction クラスを使った単一問い合わせのサンプル](#SqlFunction クラスを使った単一問い合わせのサンプル)</li>
+<ul><li><a href="#JDBC抽象化層とは？" rel="external nofollow">JDBC抽象化層とは？</a></li>
+<li><a href="#JDBC抽象化層で使われる主な クラス / インターフェース" rel="external nofollow">JDBC抽象化層で使われる主な クラス / インターフェース</a></li>
+<li><a href="#JdbcTemplateを使った基本的なSQL文の実行" rel="external nofollow">JdbcTemplateを使った基本的なSQL文の実行</a></li>
+<li><a href="#DataSource の設定の仕方" rel="external nofollow">DataSource の設定の仕方</a></li>
+<li><a href="#SqlFunction クラスを使った単一問い合わせのサンプル" rel="external nofollow">SqlFunction クラスを使った単一問い合わせのサンプル</a></li>
 </ul>
 
 <h2 id="JDBC抽象化層とは？">JDBC抽象化層とは？</h2>
@@ -81,7 +81,7 @@ Beanのプロパティを使ってJDBCドライバ構成を組み立てます。
 
 </section>
 
-接続設定を直接書くのではなくて、設定ファイルに定義しておいて、その値を読み込むといったことも出来ます。詳しくは 『[ target="_blank" class="extlink">Spring-Java/J2EE アプリケーションフレームワークドキュメント (3.6.2 PropertyPlaceholderConfigurer)](http://www.andore.com/money/trans/spring_ref_p4_ja.html#doc1_3.6.2)』をどうぞ。
+接続設定を直接書くのではなくて、設定ファイルに定義しておいて、その値を読み込むといったことも出来ます。詳しくは 『<a href="http://www.andore.com/money/trans/spring_ref_p4_ja.html#doc1_3.6.2" rel="external nofollow">Spring-Java/J2EE アプリケーションフレームワークドキュメント (3.6.2 PropertyPlaceholderConfigurer)</a>』をどうぞ。
 
 <h3>org.springframework.jdbc.object.MappingSqlQuery</h3>
 
@@ -104,7 +104,7 @@ SQLの更新を表すクラスです。MappingSqlQueryと同様に再利用な�
 
 <h3>org.springframework.jdbc.core.JdbcTemplate</h3>
 
-JDBC抽象化層のコアクラスです。通常のSQLクエリを抽象化します。RowCallbackHandler を使って、ResultSet をオブジェクトに変換する処理が書けます([サンプルコード](#JdbcTemplateを使った基本的なSQL文の実行)参照)。
+JDBC抽象化層のコアクラスです。通常のSQLクエリを抽象化します。RowCallbackHandler を使って、ResultSet をオブジェクトに変換する処理が書けます(<a href="#JdbcTemplateを使った基本的なSQL文の実行" rel="external nofollow">サンプルコード</a>参照)。
 
 <dl>
 <dt>query メソッド</dt>
@@ -219,28 +219,28 @@ SqlFunction クラスを使うと、単一の問い合わせを表現するこ�
 <h2>参考</h2>
 
 + Spring Framework の本家です。
-[ target="_blank" class="extlink">Spring Framework](http://www.springframework.org/)<img src="/images/linkext.gif" alt="linkext" />
+<a href="http://www.springframework.org/" rel="external nofollow">Spring Framework</a><img src="/images/linkext.gif" alt="linkext" />
 
 + Spring Framework の 日本語 Wiki です。大量の情報があります。
-[ target="_blank" class="extlink">Spring Pad](http://wiki.bmedianode.com/Spring/?FrontPage)<img src="/images/linkext.gif" alt="linkext" />
+<a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow">Spring Pad</a><img src="/images/linkext.gif" alt="linkext" />
 
 + Spring-Java/J2EEアプリケーションフレームワークリファレンスドキュメント (日本語訳)
-[ target="_blank" class="extlink">Spring-Java/J2EEアプリケーションフレームワークドキュメント](http://www.andore.com/money/trans/spring_ref_ja.html)<img src="/images/linkext.gif" alt="linkext" />
+<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow">Spring-Java/J2EEアプリケーションフレームワークドキュメント</a><img src="/images/linkext.gif" alt="linkext" />
 
 + Spring フレームワークに関しての概要です。TECHSCORE さんの記事は読みやすいなぁ (^^ ;
-[ target="_blank" class="extlink">TECHSCORE - Spring Framework](http://www.techscore.com/tech/Java/Spring/1.html)<img src="/images/linkext.gif" alt="linkext" />
+<a href="http://www.techscore.com/tech/Java/Spring/1.html" rel="external nofollow">TECHSCORE - Spring Framework</a><img src="/images/linkext.gif" alt="linkext" />
 
 + Spring を含めた、軽量コンポーネントのお話です。
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">[軽快なJava―Better,Faster,Lighter Java](http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/)</td></tr><tr><td valign="top">[<img src="http://images-jp.amazon.com/images/P/487311201X.09.MZZZZZZZ.jpg"   border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/)</td><td valign="top"><font size="-1">ブルース・A. テイトジャスティン ゲットランドBruce A. TateJustin Gehtland岩谷 宏<br /><br /><iframe scrolling="no" frameborder="0" width="200" height="40" hspace="0" vspace="0" marginheight="0" marginwidth="0" src="http://webservices.amazon.co.jp/onca/xml?Service=AWSProductData&SubscriptionId=0G91FPYVW6ZGWBH4Y9G2&AssociateTag=goodpic-22&Operation=ItemLookup&IdType=ASIN&ContentType=text/html&Page=1&ResponseGroup=Offers&ItemId=487311201X&Version=2004-10-04&Style=http://www.g-tools.net/xsl/priceFFFFFF.xsl"></iframe><br /><b>おすすめ平均</b><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   /><br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />率直な筆者の経験は必読<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />シンプル<br /><br />[Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/)</font><img src="http://www.goodpic.com/mt/images/spacer.gif"   width="30" height="1" /><font size="-2">by [G-Tools](http://www.goodpic.com/mt/aws/)</font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
 
 + Spring の ロッドジョンソンが贈る、J2EE技術者のためのバイブル
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">[実践J2EE システムデザイン&業務運用[仮題・予定価格]](http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/)</td></tr><tr><td valign="top">[<img src="http://images-jp.amazon.com/images/P/4797322888.09.MZZZZZZZ.jpg"   border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/)</td><td valign="top"><font size="-1">ロッド・ジョンソン<br /><br /><iframe scrolling="no" frameborder="0" width="200" height="40" hspace="0" vspace="0" marginheight="0" marginwidth="0" src="http://webservices.amazon.co.jp/onca/xml?Service=AWSProductData&SubscriptionId=0G91FPYVW6ZGWBH4Y9G2&AssociateTag=goodpic-22&Operation=ItemLookup&IdType=ASIN&ContentType=text/html&Page=1&ResponseGroup=Offers&ItemId=4797322888&Version=2004-10-04&Style=http://www.g-tools.net/xsl/priceFFFFFF.xsl"></iframe><br /><b>おすすめ平均</b><img src="http://g-images.amazon.com/images/G/01/detail/stars-4-5.gif"   /><br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />Spring Freamworkの作者に迫れる唯一の本<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-3-0.gif"   />坊主にくけりゃ袈裟までにくい?<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-4-0.gif"   />内容は充実、ただ経験、印象に頼るところも<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />まさに実践まさに必携<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />「現場主義」といったスタンスが根底に貫かれている<br /><br />[Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/)</font><img src="http://www.goodpic.com/mt/images/spacer.gif"   width="30" height="1" /><font size="-2">by [G-Tools](http://www.goodpic.com/mt/aws/)</font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
 
 + Spring のロッドジョンソンによる Spring ユーザのための本 (洋書)
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">[Professional Java Development With The Spring Framework](http://www.amazon.co.jp/exec/obidos/ASIN/0764574833/sorehabooks-22/)</td></tr><tr><td valign="top">[<img src="http://images-jp.amazon.com/images/P/0764574833.01.MZZZZZZZ.jpg"   border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/0764574833/sorehabooks-22/)</td><td valign="top"><font size="-1">Rod JohnsonJuergen HoellerALEF ARENDSENDMITRIY KOPYLENKOTHOMAS RISBERG<br /><br /><iframe scrolling="no" frameborder="0" width="200" height="40" hspace="0" vspace="0" marginheight="0" marginwidth="0" src="http://webservices.amazon.co.jp/onca/xml?Service=AWSECommerceService&SubscriptionId=0G91FPYVW6ZGWBH4Y9G2&AssociateTag=goodpic-22&Operation=ItemLookup&IdType=ASIN&ContentType=text/html&Page=1&ResponseGroup=Offers&ItemId=0764574833&Version=2004-10-04&Style=http://www.g-tools.net/xsl/priceFFFFFF.xsl"></iframe><br />[Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/0764574833/sorehabooks-22/)</font><img src="http://www.goodpic.com/mt/images/spacer.gif"   width="30" height="1" /><font size="-2">by [G-Tools](http://www.goodpic.com/mt/aws/)</font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764574833/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
 
 + SpringでWebアプリケーションを作りながら、Springの全体像がわかりやすく解説されています。
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2">[ target="_blank">Java press (Vol.41)](http://www.amazon.co.jp/exec/obidos/ASIN/4774122793/sorehabooks-22/)</td></tr><tr><td valign="top">[ target="_blank"><img src="http://images-jp.amazon.com/images/P/4774122793.09.MZZZZZZZ.jpg"   border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/4774122793/sorehabooks-22/)</td><td valign="top"><font size="-1"><br /><br />[ target="_blank">Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/4774122793/sorehabooks-22/)</font>    <font size="-2">by [ >G-Tools](http://www.goodpic.com/mt/aws/)</font><br /></td></tr></table></div>
+<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774122793/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
 
 
 
