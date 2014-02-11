@@ -1,0 +1,522 @@
+---
+layout: post
+title: "WebLogic でカスタムキーストアを使って SSL 通信を行うおぼえがき"
+date: 2007-10-27 23:03
+comments: true
+categories: [Engineer-Soul]
+keywords: "WebLogic Server 9.2J,WebLogic,おぼえがき,キーストア,SSL"
+tags: []
+author: hamasyou
+amazon_url: ""
+amazon_author: ""
+amazon_image: ""
+amazon_publisher: ""
+---
+
+WebLogic9.2J でカスタムキーストアを使ってSSL通信を行うおぼえがきです。
+
+使用した WebLogic は、下記のサイトからダウンロードしました。
+
+[ target="_blank" class="extlink">日本BEAシステムズ株式会社 Evaluation Center](http://www.beasys.co.jp/evaluation/index.html)
+
+<section>
+
+<h4>環境</h4>
+
+使用した環境は以下のとおりです。
+
+<ul>
+<li>Red Hat</li>
+<li>WebLogic Server 9.2J & MP</li>
+<li>OpenSSL</li>
+</ul>
+
+</section>
+
+
+<!-- more -->
+
+<h2>WebLogic と キーストア</h2>
+
+<h3>キーストアとは</h3>
+
+キーストアとは、暗号化に必要な鍵や証明書をエントリとして保管する箱です。それぞれのエントリをエイリアスをつけて管理します。キーストアを操作するツールに、Java の keytool があります。
+
+[ target="_blank" class="extlink">keytool - 鍵と証明書の管理ツール](http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/tooldocs/solaris/keytool.html)
+
+<h3>WebLogic のキーストア</h3>
+
+WebLogic は ID キーストアと信頼キーストアの2つのキーストアをセキュリティのために使い分けています。
+
+ID キーストアは、主に秘密鍵を格納するのに使います。信頼キーストアはサーバ証明書を格納するのに使います。
+
+秘密鍵は公開鍵暗号を行うサーバにとってとても重要なものになります。逆にサーバ証明書は複数のユーザで共有することができます。そのため、ID キーストアは root 権限での読み取りのみ、信頼キーストアは他からアクセス可能なパーミッションというような使い分けを行います。
+
+WebLogic はデフォルトで「デモ ID とデモ信頼」という2つのキーストアを用意しています。
+
+この2つのキーストアは <code>$WL_HOME/server/lib</code> の下にあります。
+
+<dl>
+<dt>デモ ID キーストア</dt>
+<dd>DemoIdentity.jks</dd>
+<dt>デモ信頼キーストア</dt>
+<dd>DemoTrust.jks</dd>
+</dl>
+
+<p class="option">デモ用のキーストアのパスワードはそれぞれ「<strong>DemoIdentityKeyStorePassPhrase</strong>」「<strong>DemoTrustKeyStorePassPhrase</strong>」に設定されています。</p>
+
+それぞれ、次のような秘密鍵エントリと証明書が入っています。
+
+<pre class="console">[weblogic@localhost]# > <kbd>keytool -list -keystore DemoIdentity.jks -storepass DemoIdentityKeyStorePassPhrase</kbd>
+ 
+キーストアのタイプ: jks
+キーストアのプロバイダ: SUN
+ 
+キーストアには 1 エントリが含まれます。
+ 
+demoidentity, 2007/10/27, keyEntry,
+証明書のフィンガープリント (MD5): 46:EA:6B:F9:D5:5D:CC:36:78:B3:E0:C1:41:30:CC:9E
+</pre>
+
+<pre class="console">[weblogic@localhost]# > <kbd>keytool -list -keystore DemoTrust.jks -storepass DemoTrustKeyStorePassPhrase</kbd>
+ 
+キーストアのタイプ: jks
+キーストアのプロバイダ: SUN
+ 
+キーストアには 4 エントリが含まれます。
+ 
+certgenca, 2002/03/23, trustedCertEntry,
+証明書のフィンガープリント (MD5): 8E:AB:55:50:A4:BC:06:F3:FE:C6:A9:72:1F:4F:D3:89
+wlsdemocanew2, 2003/01/25, trustedCertEntry,
+証明書のフィンガープリント (MD5): 5B:10:D5:3C:C8:53:ED:75:43:58:BF:D5:E5:96:1A:CF
+wlsdemocanew1, 2003/01/25, trustedCertEntry,
+証明書のフィンガープリント (MD5): A1:17:A1:73:9B:70:21:B9:72:85:4D:83:01:69:C8:37
+wlscertgencab, 2003/01/25, trustedCertEntry,
+証明書のフィンガープリント (MD5): A2:18:4C:E0:1C:AB:82:A7:65:86:86:03:D0:B3:D8:FE
+</pre>
+
+<h3>カスタムキーストアとサーバ証明書</h3>
+
+WebLogic サーバを一般公開しSSL通信を行う場合、デモ証明書では不十分です。きちんとした CA 局（認証機関）が発行したサーバ証明書を使う必要があります。
+
+そういうときには、カスタムキーストアを作成し、信頼できる CA 局が発行したサーバ証明書を保存し、利用する必要があります。
+
+<dl>
+<dt class="info">オレオレ証明書</dt>
+<dd><p>keytool でキーストアを作成すると秘密鍵と公開鍵のペアと公開鍵を自己署名証明書でサインした証明書が作成されます。いわゆるオレオレ証明書です。</p>
+
+<p>オレオレ証明書では、ユーザにサーバを信頼してもらうことはできません。そのため、公開鍵を信頼されている CA 局の証明書でサインしてもらいます。</p>
+
+<p>ブラウザにはあらかじめ信頼されている CA 局の証明書がインストールされています。ブラウザにインストールされていない CA 局の証明書でサインされているサーバの公開鍵は、警告が表示されますが、CA 局の証明書をブラウザに手動でインストールすれば警告はでなくなります。</p></dd>
+</dl>
+
+<h2>カスタムキーストアをつくる</h2>
+
+今回はオレオレ CA 局に OpenSSL で作成したものを使います。
+
+<h3>キーストアを作成する</h3>
+
+keytool を使ってキーストアを作成します。
+
+<pre class="console">[weblogic@localhost]# > <kbd>keytool -genkey -alias myserver -keyalg RSA -keystore myKeystore.jks</kbd>
+キーストアのパスワードを入力してください:  <kbd>weblogic</kbd>
+姓名を入力してください。
+   [Unknown]:  <kbd>myserver</kbd>
+組織単位名を入力してください。
+   [Unknown]:  <kbd>hamasyou</kbd>
+組織名を入力してください。
+   [Unknown]:  <kbd>hamasyou</kbd>
+都市名または地域名を入力してください。
+   [Unknown]:  <kbd>tokyo</kbd>
+州名または地方名を入力してください。
+   [Unknown]:  <kbd>tokyo</kbd>
+この単位に該当する 2 文字の国番号を入力してください。
+   [Unknown]:  <kbd>jp</kbd>
+CN=myserver, OU=hamasyou, O=hamasyou, L=tokyo, ST=tokyo, C=jp でよろしいですか? 
+   [no]:  <kbd>yes</kbd>
+ 
+&lt;myserver&gt; の鍵パスワードを入力してください。
+        (キーストアのパスワードと同じ場合は RETURN を押してください): <kbd>[Enter]</kbd>
+ 
+[weblogic@localhost]# > <kbd>ls</kbd>
+myKeystore.jks   
+</pre>
+
+<dl>
+<dt class="notice">姓名の入力に注意</dt>
+<dd><p>「姓名」のところには、サーバのホスト名を入力します。今回は myserver とつけました。この場合、クライアント（ブラウザ）からは https://myserver/ のようにアクセスします。</p>
+
+<p>「姓名」で設定した値と、ホスト名が違うと、ブラウザには次のような警告が表示されます。</p>
+
+<img src="http://hamasyou.com/images/WebLogicSSL/warn_ssl_hostname.gif" alt="SSL 証明書のホスト名が違う" />
+
+<p>ホスト名ごとにサーバ証明書は作る必要があるので注意が必要です。</p></dd>
+</dl>
+
+<dl>
+<dt>-keysotre</dt>
+<dd><p>指定されたキーストアが存在しない場合は新たにキーストアが作成されます。</p></dd>
+<dt>-alias</dt>
+<dd><p>このキーストアに作成される秘密鍵と公開鍵のペアに名前（エイリアス）をつけます。キーのペアはこのエイリアスを用いてアクセスされます。</p></dd>
+<dt>-keyalg</dt>
+<dd><p>暗号化アルゴリズムを指定します。指定しない場合は <strong>DSA</strong> になります。<em>WebLogic Server 9.2J の試用版では DSA アルゴリズムはサポートされていないので、明示的に <strong>RSA</strong> を指定します。</em></p>
+
+<p>[ target="_blank" class="extlink">WebLogic ドキュメント - SSL を使用するクライアントの開発](http://www.hi-sv.com/e-docs/wls/docs92/client/security.html#wp1077561)</p></dd>
+</dl>
+
+<h3>サーバ証明書発行要求を作成する</h3>
+
+キーストアを作っただけだと、自己署名によるサーバ証明書しかありません。CA 局にサーバ証明書を作ってもらうために、サーバ証明書発行要求をつくります。
+
+<pre class="console">[weblogic@localhost]# > <kbd>keytool -certreq -alias myserver -keystore myKeystore.jks -file myserver_certreq.csr</kbd>
+キーストアのパスワードを入力してください:  <kbd>weblogic</kbd>
+ 
+[weblogic@localhost]# > <kbd>ls</kbd>
+myKeystore.jks  myserver_certreq.csr
+</pre>
+
+ここで作成したサーバ証明書発行要求は、CA 局がサーバ証明書をつくる元になります。
+
+<h3>オレオレ CA 局を作成する</h3>
+
+OpenSSL の CA 作成スクリプトを CA 局を作成します。自分の環境では openssl の CA 作成スクリプトは <code>/usr/share/ssl/misc</code> にありました。
+
+これを、適当なディレクトリにコピーして利用します。
+
+<pre class="console">[weblogic@localhost]# > <kbd>./CA -newca</kbd>
+ 
+CA certificate filename (or enter to create) <kbd>[Enter]</kbd>
+ 
+Making CA certificate ...
+Generating a 1024 bit RSA private key
+..........++++++
+...........................++++++
+writing new private key to './demoCA/private/./cakey.pem'
+Enter PEM pass phrase: <kbd>weblogic</kbd>
+Verifying - Enter PEM pass phrase: <kbd>weblogic</kbd>
+You are about to be asked to enter information that will be incorporated 
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+Country Name (2 letter code) [GB]:<kbd>jp</kbd>
+State or Province Name (full name) [Berkshire]:<kbd>tokyo</kbd>
+Locality Name (eg, city) [Newbury]:<kbd>tokyo</kbd>
+Organization Name (eg, company) [My Company Ltd]:<kbd>hamasyou</kbd>
+Organizational Unit Name (eg, section) []:<kbd>hamasyou</kbd>
+Common Name (eg, your name or your server's hostname) []:<kbd>oreoreca</kbd>
+Email Address []:<kbd>xxxxxx@hamasyou.com</kbd>
+</pre>
+
+<dl>
+<dt class="warn">Organization Name と 組織名に注意</dt>
+<dd><p>CA の「Organization Name」とサーバの「組織名」（keytool -genkey で指定したもの）が違うと、エラーが発生します。</p>
+
+<pre class="console">[weblogic@localhost]# > <kbd>openssl ca -keyfile demoCA/private/cakey.pem -cert demoCA/cacert.pem -in myserver_certreq.csr -out myserver_cert.csr</kbd>
+Using configuration from /usr/share/ssl/openssl.cnf
+Enter pass phrase for demoCA/private/cakey.pem:
+Check that the request matches the signature
+Signature ok
+The organizationName field needed to be the same in the
+CA certificate (hamasyou) and the request (xxxxx)
+</pre></dd>
+</dl>
+
+CA スクリプトを実行したディレクトリの配下に次のようなディレクトリが作成されているはずです。
+
+<pre class="console">[weblogic@localhost]# > <kbd>tree demoCA</kbd>
+demoCA/
+    |-- cacert.pem
+    |-- certs
+    |-- crl
+    |-- index.txt
+    |-- newcerts
+    |-- private
+    |   `-- cakey.pem
+    `-- serial
+</pre>
+
+<dl>
+<dt>demoCA/cacert.pem</dt>
+<dd><p>このファイルが CA 局のサーバ証明書です。今回はオレオレCA 局なので、このサーバ証明書もキーストアに保存しなければなりません。</p></dd>
+<dt>demoCA/private/cakey.pem</dt>
+<dd><p>CA 局の秘密鍵です。この CA 局からサーバ証明書を発行してもらうときに使います。</p></dd>
+</dl>
+
+<h3>オレオレ CA 局にサーバ証明書を発行してもらう</h3>
+
+今作った CA 局のサーバ証明書を使って、サーバ証明書を発行します。
+
+<pre class="console">[weblogic@localhost]# > <kbd>openssl ca -keyfile demoCA/private/cakey.pem -cert demoCA/cacert.pem -in myserver_certreq.csr -out myserver_cert.csr</kbd>
+ 
+Using configuration from /usr/share/ssl/openssl.cnf
+Enter pass phrase for demoCA/private/cakey.pem: weblogic
+Check that the request matches the signature
+Signature ok
+Certificate Details:
+        Serial Number: 1 (0x1)
+        Validity
+            Not Before: Oct 27 12:11:19 2007 GMT
+            Not After : Oct 26 12:11:19 2008 GMT
+        Subject:
+            countryName               = jp
+            stateOrProvinceName       = tokyo
+            organizationName          = hamasyou
+            organizationalUnitName    = hamasyou
+            commonName                = myserver
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+            CA:FALSE
+            Netscape Comment:
+            OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier:
+            16:2F:BB:44:06:C5:A1:20:8F:D1:70:0D:70:6B:07:54:D2:13:6B:9C
+            X509v3 Authority Key Identifier:
+            keyid:BE:04:55:2E:63:2E:37:FC:94:1B:D6:9D:09:96:78:7A:B1:BF:A9:F6
+            DirName:/C=jp/ST=tokyo/L=tokyo/O=hamasyou/OU=hamasyou
+/CN=oreoreca/emailAddress=xxxxx@hamasyou.com
+            serial:00
+ 
+Certificate is to be certified until Oct 26 12:11:19 2008 GMT (365 days)
+Sign the certificate? [y/n]:<kbd>y</kbd>
+ 
+ 
+1 out of 1 certificate requests certified, commit? [y/n]<kbd>y</kbd>
+Write out database with 1 new entries
+Data Base Updated
+ 
+[weblogic@localhost]# > <kbd>ls -F</kbd>
+CA*  demoCA/  myKeystore.jks  myserver_cert.csr  myserver_certreq.csr 
+</pre>
+
+作成されたサーバ証明書を見てみると、証明データ以外にヘッダーがついています。キーストアに保存する際にはヘッダー部は不要なので削除します。
+
+「<code>-----BEGIN CERTIFICATE-----</code>」から「<code>-----END CERTIFICATE-----</code>」までを残して、他は削除します。
+
+<h4>編集前</h4>
+
+<pre class="console">[weblogic@localhost]# > <kbd>cat myserver_cert.csr</kbd>
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1 (0x1)
+        Signature Algorithm: md5WithRSAEncryption
+        Issuer: C=jp, ST=tokyo, L=tokyo, O=hamasyou, OU=hamasyou, CN=oreoreca/emailAddress=xxxxx@hamasyou.com
+        Validity
+            Not Before: Oct 27 12:11:19 2007 GMT
+            Not After : Oct 26 12:11:19 2008 GMT
+        Subject: C=jp, ST=tokyo, O=hamasyou, OU=hamasyou, CN=myserver
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+            RSA Public Key: (1024 bit)
+                Modulus (1024 bit):
+                    00:9d:61:fa:c1:92:ab:74:a5:cd:ec:bc:01:55:eb:
+                    6c:9d:67:92:b6:cf:1c:de:f0:65:ba:82:7f:8b:a4:
+                    9d:d6:0a:17:41:69:7b:86:41:3e:aa:8b:47:80:0e:
+                    8c:0a:89:30:04:75:d1:34:46:6d:21:97:46:db:0b:
+                    11:2c:2f:15:b5:05:48:d0:a9:db:1f:1b:7a:40:6b:
+                    4f:44:89:f7:ea:3b:ae:c8:3f:6b:1c:c2:fa:9d:74:
+                    16:32:f8:25:95:b4:24:76:18:52:97:8b:0e:ba:77:
+                    a9:34:51:ae:89:4a:2e:1c:37:a8:78:73:8c:03:25:
+                    4f:66:77:55:d5:6f:91:bd:a5
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+            CA:FALSE
+            Netscape Comment:
+            OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier:
+            16:2F:BB:44:06:C5:A1:20:8F:D1:70:0D:70:6B:07:54:D2:13:6B:9C
+            X509v3 Authority Key Identifier:
+            keyid:BE:04:55:2E:63:2E:37:FC:94:1B:D6:9D:09:96:78:7A:B1:BF:A9:F6
+            DirName:/C=jp/ST=tokyo/L=tokyo/O=hamasyou/OU=hamasyou
+/CN=oreoreca/emailAddress=xxxxx@hamasyou.com
+            serial:00
+ 
+    Signature Algorithm: md5WithRSAEncryption
+        42:fb:ee:73:5b:03:e5:60:95:b6:eb:72:ac:bd:6a:c1:37:17:
+        8b:2f:e6:6b:d1:28:e8:73:2d:d6:1b:d9:cd:cb:34:93:5d:4c:
+        dd:4d:5a:b3:89:47:9e:dc:81:ca:d4:d0:e1:79:68:2a:5a:d6:
+        fe:30:25:56:e8:3c:b2:18:fc:65:35:e4:19:0c:94:67:36:59:
+        66:f4:ae:28:6b:66:7d:5a:be:50:0f:8a:cb:a3:72:af:3b:c7:
+        v04:52:5e:c7:29:b0:79:3b:a6:4d:22:f7:5d:73:25:26:53:46:
+        94:b2:e6:d0:50:5f:37:00:f0:5b:fc:7b:3c:20:76:f7:37:c5:
+        f6:a4
+-----BEGIN CERTIFICATE-----
+MIIDbTCCAtagAwIBAgIBATANBgkqhkiG9w0BAQQFADCBiTELMAkGA1UEBhMCanAx
+DjAMBgNVBAgTBXRva3lvMQ4wDAYDVQQHEwV0b2t5bzERMA8GA1UEChMIaGFtYXN5
+b3UxETAPBgNVBAsTCGhhbWFzeW91MREwDwYDVQQDEwhvcmVvcmVjYTEhMB8GCSqG
+SIb3DQEJARYSeHh4eHhAaGFtYXN5b3UuY29tMB4XDTA3MTAyNzEyMTExOVoXDTA4
+MTAyNjEyMTExOVowVjELMAkGA1UEBhMCanAxDjAMBgNVBAgTBXRva3lvMREwDwYD
+VQQKEwhoYW1hc3lvdTERMA8GA1UECxMIaGFtYXN5b3UxETAPBgNVBAMTCG15c2Vy
+dmVyMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCdYfrBkqt0pc3svAFV62yd
+Z5K2zxze8GW6gn+LpJ3WChdBaXuGQT6qi0eADowKiTAEddE0Rm0hl0bbCxEsLxW1
+BUjQqdsfG3pAa09EiffqO67IP2scwvqddBYy+CWVtCR2GFKXiw66d6k0Ua6JSi4c
+N6h4c4wDJU9md1XVb5G9pQIDAQABo4IBFTCCAREwCQYDVR0TBAIwADAsBglghkgB
+hvhCAQ0EHxYdT3BlblNTTCBHZW5lcmF0ZWQgQ2VydGlmaWNhdGUwHQYDVR0OBBYE
+FBYvu0QGxaEgj9FwDXBrB1TSE2ucMIG2BgNVHSMEga4wgauAFL4EVS5jLjf8lBvW
+nQmWeHqxv6n2oYGPpIGMMIGJMQswCQYDVQQGEwJqcDEOMAwGA1UECBMFdG9reW8x
+DjAMBgNVBAcTBXRva3lvMREwDwYDVQQKEwhoYW1hc3lvdTERMA8GA1UECxMIaGFt
+YXN5b3UxETAPBgNVBAMTCG9yZW9yZWNhMSEwHwYJKoZIhvcNAQkBFhJ4eHh4eEBo
+YW1hc3lvdS5jb22CAQAwDQYJKoZIhvcNAQEEBQADgYEAQvvuc1sD5WCVtutyrL1q
+wTcXiy/ma9Eo6HMt1hvZzcs0k11M3U1as4lHntyBytTQ4XloKlrW/jAlVug8shj8
+ZTXkGQyUZzZZZvSuKGtmfVq+UA+Ky6NyrzvHBFJexymweTumTSL3XXMlJlNGlLLm
+0FBfNwDwW/x7PCB29zfF9qQ=
+-----END CERTIFICATE-----
+</pre>
+
+<h4>編集後</h4>
+
+<pre class="console">[weblogic@localhost]# > <kbd>cat myserver_cert_after.csr</kbd>
+-----BEGIN CERTIFICATE-----
+MIIDbTCCAtagAwIBAgIBATANBgkqhkiG9w0BAQQFADCBiTELMAkGA1UEBhMCanAx
+DjAMBgNVBAgTBXRva3lvMQ4wDAYDVQQHEwV0b2t5bzERMA8GA1UEChMIaGFtYXN5
+b3UxETAPBgNVBAsTCGhhbWFzeW91MREwDwYDVQQDEwhvcmVvcmVjYTEhMB8GCSqG
+SIb3DQEJARYSeHh4eHhAaGFtYXN5b3UuY29tMB4XDTA3MTAyNzEyMTExOVoXDTA4
+MTAyNjEyMTExOVowVjELMAkGA1UEBhMCanAxDjAMBgNVBAgTBXRva3lvMREwDwYD
+VQQKEwhoYW1hc3lvdTERMA8GA1UECxMIaGFtYXN5b3UxETAPBgNVBAMTCG15c2Vy
+dmVyMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCdYfrBkqt0pc3svAFV62yd
+Z5K2zxze8GW6gn+LpJ3WChdBaXuGQT6qi0eADowKiTAEddE0Rm0hl0bbCxEsLxW1
+BUjQqdsfG3pAa09EiffqO67IP2scwvqddBYy+CWVtCR2GFKXiw66d6k0Ua6JSi4c
+N6h4c4wDJU9md1XVb5G9pQIDAQABo4IBFTCCAREwCQYDVR0TBAIwADAsBglghkgB
+hvhCAQ0EHxYdT3BlblNTTCBHZW5lcmF0ZWQgQ2VydGlmaWNhdGUwHQYDVR0OBBYE
+FBYvu0QGxaEgj9FwDXBrB1TSE2ucMIG2BgNVHSMEga4wgauAFL4EVS5jLjf8lBvW
+nQmWeHqxv6n2oYGPpIGMMIGJMQswCQYDVQQGEwJqcDEOMAwGA1UECBMFdG9reW8x
+DjAMBgNVBAcTBXRva3lvMREwDwYDVQQKEwhoYW1hc3lvdTERMA8GA1UECxMIaGFt
+YXN5b3UxETAPBgNVBAMTCG9yZW9yZWNhMSEwHwYJKoZIhvcNAQkBFhJ4eHh4eEBo
+YW1hc3lvdS5jb22CAQAwDQYJKoZIhvcNAQEEBQADgYEAQvvuc1sD5WCVtutyrL1q
+wTcXiy/ma9Eo6HMt1hvZzcs0k11M3U1as4lHntyBytTQ4XloKlrW/jAlVug8shj8
+ZTXkGQyUZzZZZvSuKGtmfVq+UA+Ky6NyrzvHBFJexymweTumTSL3XXMlJlNGlLLm
+0FBfNwDwW/x7PCB29zfF9qQ=
+-----END CERTIFICATE-----
+</pre>
+
+<h3>オレオレ CA 局サーバ証明書をキーストアに保存する</h3>
+
+サーバ証明書を発行した CA 局のサーバ証明書をキーストアに保存します。キーストアにサーバ証明書にサインした CA のサーバ証明書がない場合にはエラーになります。
+
+<pre class="console">[weblogic@localhost]# > <kbd>keytool -import -noprompt -trustcacerts -alias oreoreca -file demoCA/cacert.pem -keystore myKeystore.jks -storepass weblogic</kbd>
+証明書がキーストアに追加されました。
+</pre>
+
+<dl>
+<dt class="warn">証明書の登録順に注意</dt>
+<dd><p>CA 局のサーバ証明書を先にキーストアに保存していない場合、証明連鎖できずにエラーになります。</p>
+
+<pre class="console">[weblogic@localhost]# > <kbd>keytool -import -noprompt -alias myserver -file myserver_cert_after.csr -keystore myKeystore.jks -storepass weblogic</kbd>
+keytool エラー: java.lang.Exception: 応答から連鎖を確立できませんでした。
+</pre></dd>
+</dl>
+
+<h3>サーバ証明書をキーストアに保存する</h3>
+
+CA 局に発行されたサーバ証明書を保存します。このとき、最初に keytool -genkey で指定したエイリアスと同じ値を指定した場合は証明連鎖（CA 局と自己署名）になります。
+
+<pre class="console">[weblogic@localhost]# > <kbd>keytool -import -noprompt -alias myserver -file myserver_cert_after.csr -keystore myKeystore.jks -storepass weblogic</kbd>
+証明書応答がキーストアにインストールされました。 
+</pre>
+
+<img src="http://hamasyou.com/images/WebLogicSSL/certchain.gif" alt="証明連鎖" />
+
+<dl>
+<dt class="notice">証明書のエイリアスに注意</dt>
+<dd><p>最初に keytool -genkey で作成したときのエイリアスと別のエイリアスでサーバ証明書を保存した場合、CA 局による署名が使われず自己署名が使われます。</p>
+
+<img src="http://hamasyou.com/images/WebLogicSSL/oreorecert.gif" alt="自己署名" /></dd>
+</dl>
+
+<h2>WebLogic でカスタムキーストアを設定する</h2>
+
+<h3>WebLogic のカスタムキーストアの設定</h3>
+
+WebLogic に先ほど作成したキーストアを設定します。WebLogic の管理サーバの管理画面を開き、[サーバ]-[コンフィグレーション]-[キーストア]を開きます。
+
+キーストアに「カスタム ID とカスタム信頼」を選択します。
+
+今回は、秘密鍵、サーバ証明書ともに同じキーストアに入れているので、両方とも同じ設定を行います。
+
+[ target="_blank"><img src="http://hamasyou.com/images/WebLogicSSL/weblogic_keystore.jpg" width="600" alt="キーストアの設定" />](http://hamasyou.com/images/WebLogicSSL/weblogic_keystore.jpg)
+
+<h3>WebLogic の SSL の設定</h3>
+
+WebLogic の SSL の設定を行います。WebLogic の管理サーバの管理画面を開き、[サーバ]-[コンフィグレーション]-[SSL]を開きます。
+
+ID キーストアに指定したキーストアの中から秘密鍵エントリのエントリを指定します。
+
+[ target="_blank"><img src="http://hamasyou.com/images/WebLogicSSL/weblogic_ssl.jpg" width="600" alt="SSL の設定" />](http://hamasyou.com/images/WebLogicSSL/weblogic_ssl.jpg)
+
+<dl>
+<dt class="warn">公開鍵暗号アルゴリズムに注意</dt>
+<dd><p>WebLogic Server 9.2J MP2 の試用版では、公開鍵暗号に DSA はサポートされていません。秘密鍵は keytool -genkey の -keyalg で <strong>RSA</strong> を指定したものを指定します。</p>
+
+<p>[ target="_blank" class="extlink">WebLogic ドキュメント - SSL を使用するクライアントの開発](http://www.hi-sv.com/e-docs/wls/docs92/client/security.html#wp1077561)</p></dd>
+</dl>
+
+<h2>クライアント（ブラウザ）に CA 局の証明書をインストールする</h2>
+
+ブラウザで WebLogic サーバにアクセスすると、今回作成した SSL 証明書が使われるわけですが、次のような警告が出ると思います。
+
+「このセキュリティ証明書は、信頼する会社から発行されていません。証明書を表示して、この証明機関を信頼するかどうかを決定してください。」
+
+<img src="http://hamasyou.com/images/WebLogicSSL/warn_cert.gif" alt="セキュリティ証明書エラー" />
+
+今回、オレオレ CA 局を作りましたが、この CA 局の CA 証明書はクライアント（ブラウザ）に信頼されていません。
+
+<section>
+<h4>参考</h4>
+
+[ target="_blank" class="extlink">IEが表示する「信頼する会社」とは・・・](http://maruyama-mitsuhiko.cocolog-nifty.com/security/2005/01/ie.html)
+
+</section>
+
+今回作った CA 局を証明機関として正しくクライアントに認識してもらうために、CA局の証明書をクライアント（ブラウザ）にインストールします。
+
+<h3>CA 局のサーバ証明書をブラウザにインポートする</h3>
+
+CA 局のサーバ証明書は <code>demoCA/cacert.pem</code> になります。これをブラウザにインストールします。
+
+ブラウザの [ツール]-[インターネット オプション] の [コンテンツ] タブにある [証明書...] を開きます。
+
+<img src="http://hamasyou.com/images/WebLogicSSL/ie_option.gif" alt="インターネット オプション" />
+
+
+[信頼されたルート証明機関] タブを開き、[インポート(I)...] を開きます。
+
+<img src="http://hamasyou.com/images/WebLogicSSL/cert_import.gif" alt="証明書のインポート" />
+
+<img src="http://hamasyou.com/images/WebLogicSSL/import1.gif" alt="証明書インポート 手順1" />
+
+[参照...] を選択して [ファイルの種類] を「すべて」にし、CA 局のサーバ証明書を選択します。
+
+<img src="http://hamasyou.com/images/WebLogicSSL/import2.gif" alt="証明書インポート 手順2" />
+
+証明書のストア場所を、「信頼されたルート証明機関」を選択します。
+
+<img src="http://hamasyou.com/images/WebLogicSSL/import3.gif" alt="証明書インポート 手順3" />
+
+<img src="http://hamasyou.com/images/WebLogicSSL/import4.gif" alt="証明書インポート 手順4" />
+
+<img src="http://hamasyou.com/images/WebLogicSSL/import5.gif" alt="証明書インポート 手順5" />
+
+「はい」を選択すると、CA 局の証明書が「ルート証明機関」として認識されるようになります。
+
+<img src="http://hamasyou.com/images/WebLogicSSL/import6.gif" alt="証明書インポート 手順6" />
+
+CA 局のサーバ証明書は安全な方法（改ざんされない方法）で取得する必要があります。また、本当に信頼する CA 局のサーバ証明書のみをクライアントにはインストールするようにします。
+
+良くわからない CA 局のサーバ証明書はインストールしてはいけません。
+
+<h2>参考</h2>
+
+<div class="rakuten">
+<table width="400"  border="0" cellpadding="5"><tr><td colspan="2">[ target="_blank">BEA WebLogic Server 9.x/10 構築・運用ガイド](http://www.amazon.co.jp/exec/obidos/ASIN/4798113328/sorehabooks-22/ref=nosim/)</td></tr><tr><td valign="top">[ target="_blank"><img src="http://ecx.images-amazon.com/images/I/51W3GF2aETL._SL160_.jpg" border="0" alt="BEA WebLogic Server 9.x/10 構築・運用ガイド" />](http://www.amazon.co.jp/exec/obidos/ASIN/4798113328/sorehabooks-22/ref=nosim/)</td><td valign="top"><font size="-1">伊藤忠テクノソリューションズ株式会社 日本BEAシステムズ株式会社 <br /><br /><strong>おすすめ平均</strong> <img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif" /><br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif" alt="stars" />前作と同様わかりやすいつくり<br /><br />[ target="_blank">Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/4798113328/sorehabooks-22/ref=nosim/)</font><font size="-2"> by [ >G-Tools](http://www.goodpic.com/mt/aws/index.html)</font></td></tr></table>
+</div>
+
+
+
+
+
+
+
+

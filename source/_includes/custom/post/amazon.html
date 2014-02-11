@@ -1,0 +1,27 @@
+{% if page.amazon_url != '' %}
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="{{ page.amazon_url }}" title="{{ page.title }}" rel="external nofollow">
+      <img src="{{ page.amazon_image }}" class="asin-thumbnail" alt="{{ page.title }}" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      {% if page.title %}
+      <dt>タイトル</dt>
+      <dd><p><a href="{{ page.amazon_url }}" title="{{ page.title }}" rel="external nofollow">{{ page.title }}</a></p></dd>
+      {% endif %}
+      {% if page.amazon_author %}
+      <dt>著者</dt>
+      <dd><p>{{ page.amazon_author }}</p></dd>
+      {% endif %}
+      {% if page.amazon_publisher %}
+      <dt>出版社</dt>
+      <dd><p>{{ page.amazon_publisher }}</p></dd>
+      {% endif %}
+    </dl>
+    <a href="{{ page.amazon_url }}" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+{% endif %}
+

@@ -1,0 +1,77 @@
+---
+layout: post
+title: "EJB3.0 プログラミング 覚書"
+date: 2006-09-18 21:44
+comments: true
+categories: [Engineer-Soul]
+keywords: "EJB3.0,プログラミング,覚書"
+tags: []
+author: hamasyou
+amazon_url: ""
+amazon_author: ""
+amazon_image: ""
+amazon_publisher: ""
+---
+
+<p>
+[ target="_blank"><img src="http://images.amazon.com/images/P/4797333367.01._SCMZZZZZZZ_V60780079_.jpg" border="0" alt="標準EJB 3.0プログラミング" />](http://www.amazon.co.jp/gp/product/4797333367/250-5903137-8246621?ie=UTF8&tag=sorehabooks-22&linkCode=xm2&camp=247&creativeASIN=4797333367)
+</p>
+
+EJB3.0 を使ったプログラミング覚書です。EJB3.0は [ target="_blank" class="extlink">Hibernate](http://www.hibernate.org/)、[ target="_blank" class="extlink">TopLink](http://www.oracle.com/technology/products/ias/toplink/)、[ target="_blank" class="extlink">SpringFramework](http://www.springframework.org/) の良いところを取り入れた、次期バージョンのの EJB です。
+
+EJB3.0 は、EJB2.1 の問題点をいろいろと改善し、ほぼデフェクトスタンダードと言える Hibernate や SpringFramework などのフレームワークを参考にした機能を、標準化しています。
+
+また、POJO の採用によるテストの効率化アップなど、 Ease of Development（EoD : 易しい開発）を追求しています。
+
+Ejb3.0 は、次のような特徴を持っています。
+
+<ul><li>Java Persistence API（JPA : 永続化 API ）による永続化フレームワークの標準化</li>
+<li>アノテーションの採用</li>
+<li>デフォルト値の多用</li>
+<li>POJO のサポート、EJB インターフェースからの開放</li>
+<li>Dependency Injection（DI : 依存性の注入）の採用</li></ul>
+
+Ejb3.0 の覚書をチョコチョコと書いていこうと思います。
+
+
+<!-- more -->
+
+<h2>覚書</h2>
+
+<h3>環境</h3>
+
+<ul><li>JDK1.5.0_06</li>
+<li>JBoss-4.0.4.GA-Patch1</li>
+<li>HSQLDB1.8.0</li></ul>
+
+<h2>ハマった点</h2>
+
+<h3>JBoss4.0.4RC1 で NullPointerException が出る</h3>
+
+JBoss4.0.4RC1 で JPA を使ったサンプルを動かそうとしたら、下のような例外がでました。
+
+<pre>[java]&nbsp;21:38:11,820&nbsp;INFO&nbsp;&nbsp;[Environment]&nbsp;Hibernate&nbsp;3.1.2
+[java]&nbsp;21:38:11,836&nbsp;INFO&nbsp;&nbsp;[Environment]&nbsp;hibernate.properties&nbsp;not&nbsp;found
+[java]&nbsp;21:38:11,836&nbsp;INFO&nbsp;&nbsp;[Environment]&nbsp;using&nbsp;CGLIB&nbsp;reflection&nbsp;optimizer
+[java]&nbsp;21:38:11,852&nbsp;INFO&nbsp;&nbsp;[Environment]&nbsp;using&nbsp;JDK&nbsp;1.4&nbsp;java.sql.Timestamp&nbsp;handling
+[java]&nbsp;21:38:12,070&nbsp;DEBUG&nbsp;[Ejb3Configuration]&nbsp;Trying&nbsp;to&nbsp;find&nbsp;persistence&nbsp;unit:&nbsp;SamplePersistenceUnit
+[java]&nbsp;21:38:12,102&nbsp;FATAL&nbsp;[PersistenceXmlLoader]&nbsp;SamplePersistenceUnit&nbsp;RESOURCE_LOCAL
+[java]&nbsp;javax.persistence.PersistenceException:&nbsp;java.lang.NullPointerException
+[java]&nbsp;at&nbsp;org.hibernate.ejb.Ejb3Configuration.createEntityManagerFactory(Ejb3Configuration.java:173)
+[java]&nbsp;at&nbsp;org.hibernate.ejb.HibernatePersistence.createEntityManagerFactory(HibernatePersistence.java:103)
+[java]&nbsp;at&nbsp;javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:37)
+[java]&nbsp;at&nbsp;javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:27)
+[java]&nbsp;at&nbsp;com.hamasyou.ejb3.client.Client.execute(Client.java:40)
+[java]&nbsp;at&nbsp;com.hamasyou.ejb3.client.Client.main(Client.java:31)
+[java]&nbsp;Caused&nbsp;by:&nbsp;java.lang.NullPointerException
+[java]&nbsp;at&nbsp;org.hibernate.ejb.packaging.PersistenceXmlLoader.deploy(PersistenceXmlLoader.java:68)
+[java]&nbsp;at&nbsp;org.hibernate.ejb.Ejb3Configuration.createEntityManagerFactory(Ejb3Configuration.java:139)
+[java]&nbsp;...&nbsp;5&nbsp;more</pre>
+
+Persistence-Unit のルックアップのところで <code>NullPointerException</code> が出てしまいました。原因はよくわかりませんが、JBoss4.0.4-RC1 は ejb3.deployer が無いそうなので、そのあたりが原因なのかなぁと・・・。
+
+対処方法は、JBoss をアップグレードすること。JBoss-4.0.4.GA-Patch1 に入れ替えたら動くようになりました。
+
+
+
+

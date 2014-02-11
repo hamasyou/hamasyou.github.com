@@ -1,0 +1,88 @@
+---
+layout: post
+title: "Dependency Injection (DI) の乱用！？"
+date: 2004-11-13 02:10
+comments: true
+categories: [Engineer-Soul]
+keywords: "Dependency Injection,DI,IoC,Inversion of Control,依存性注入,制御の反転,乱用"
+tags: []
+author: hamasyou
+amazon_url: ""
+amazon_author: ""
+amazon_image: ""
+amazon_publisher: ""
+---
+
+<p>
+[ target="_blank"><img src="http://images-jp.amazon.com/images/P/487311201X.09.MZZZZZZZ.jpg" border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22)
+</p>
+
+[ target="_blank" class="extlink">Dependency Injection (DI) ](http://www.kakutani.com/trans/fowler/injection.html)は、「依存性の注入」という言葉で最近話題になっています。「EJB は重過ぎて使えない」とか「軽量コンテナは疎結合だからすばらしい」といった声をよく聞くようになりました。
+
+Dependency Injection (DI) はサービスコンポーネント間の関係を疎に保ったままアプリケーションを構築するというものです。「<b>設定を利用から分離する</b>」という原則が、DIの本質です。
+
+いろんな書籍が出始めてきた中で、依存性注入の何がステキなのか、疎結合だと幸せだよねといったことは非常に良く分かるようになりました。それでも、自分の中で何かしらの引っ掛かりがあります。それをつらつら書き連ねてしまおうかと思っています。
+
+<section>
+
+<h4>参考</h4>
+
+[ target="_blank" class="extlink">Inversion of Control コンテナと Dependency Injection パターン](http://www.kakutani.com/trans/fowler/injection.html)
+
+</section>
+
+
+<!-- more -->
+
+<h2>感じたこと</h2>
+
+DIコンテナの役割は、マーチン・ファウラーの言葉を借りるとこういうことです。 
+
+{% blockquote マーチンファウラー %}
+軽量コンテナは、異なるプロジェクトのコンポーネントをひとまとまりのアプリケーションとして組み立てることを支援する。このようなコンテナの根底には、コンポーネントの結び付け方についての共通したパターンがある。そのパターンのコンセプトは「Inversion of Control(制御の反転)」と、まことに包括的な名前で呼ばれている。《中略》 「<b>設定を利用から分離する</b>」原則こそが重要なのだ。
+
+
+{% endblockquote %}
+
+DIコンテナの役割は、「<b>異なるプロジェクトのコンポーネント</b>をひとまとまり」にするための糊として動くといっています。僕も非常にこの部分に同意します。異なるプロジェクトコンポーネントと言っているのが味噌です。でも、コンポーネントって何でしょうか？
+
+{% blockquote 『[ target="_blank" class="extlink">IT用語辞典 - コンポーネント](http://e-words.jp/w/E382B3E383B3E3839DE383BCE3838DE383B3E38388.html)』 %}
+ソフトウェアコンポーネントは、それぞれ特定の機能を持っているが、<b>基本的に単体では使用できず、他のプログラムと組み合わせて機能を実現、ないし追加するために用いられる</b>。また、オブジェクトの一種として、特定の機能を持つが単独では意味を持たないようなオブジェクト、と言うこともできる。
+
+
+{% endblockquote %}
+
+コンポーネントとは、「<b>それだけでは機能しない、正しいインターフェースを持ったソフトウェアモジュール</b>」であると言えます。DIコンテナは、「それだけでは機能しないソフトウェアモジュールを組み合わせて一つのアプリケーションにするもの」だと言うことができます。
+
+<h3>DI のサンプルは、DIの本質をつかんでいないのではないか？</h3>
+
+さて、DIの本質は、「コンポーネント同士を貼り付ける糊」だと言うことが一般的なようでした。しかし、DIコンテナのサンプルを見ると、ドメインモデル間の関係をDIしている例が見受けられます。これって変ですよね？
+
+DIは異なるコンポーネント、つまり<strong>お互いに帰属関係のない概念</strong>を結合する場合に使うべきものです。ドメインモデルと言うものは、同一の概念レベルにあるものではないでしょうか？
+
+帰属関係のない概念とは、例えば、データアクセスオブジェクトとデータソース、サーブレットコントローラとトランザクション、リソース管理とロギングの関係などです。これらはコンポーネントとしての機能を持っていますが、単体では動きません。こういうモノを組み合わせるためにDIコンテナを利用するべきではないかと考えます。
+
+<h3>DIはいつ使うべきか？</h3>
+
+DI自体はとてもすばらしい考えだと思います。コンポーネントの関係を疎結合にするというのは、保守を考えたとき、テストを考えたときにとても幸せになれます。ただ、ドメインモデル同士の関係に、DIを使うのはどうかと思います。ドメインモデルでは関係があるはずなのに、実装コードを見たら関係が見つからないと言うのでは、逆に保守が大変だと思います。
+
+アプリケーションのコンフィギュレーションをリソース化する場合の基本は以下のようなものがあります。
+
+<dl>
+<dt>横断的/共通的な概念</dt><dd>データソース、データベースの名前、ユーザ名やパスワードなどは、設定ファイルとして切り出す。</dd>
+<dt>外部との接点</dt><dd>既存システムとの連結部、ビジネスルール、サービスの開始部などは、インターフェースでやり取りし、カスタマイズできる部分を設定可能にする。</dd>
+<dt>外部資源</dt><dd>トランザクション、ログファイル、データソースなどはカスタマイズ可能です。あちこちに分散しそうな設定は外部化しておく。</dd>
+</dl>
+
+アプリケーションのコンフィギュレーションをリソース化できる部分が、実はDependency Injection が使える重要ポイントなのではないかと考えています。コンポーネントは、コンテキストにもよりますが、それ自体が交換可能なものです。リソースもまた、交換可能なものです。それぞれが正しいインターフェースを提供することで、Dependency Injection が可能になるはずです。
+
+「<em>コンポーネント同士の結合部分、コンフィギュレーションとして切り出せる部分、プラグイン化可能な部分</em>」こそ、Dependency Injectionを使うべきところで、それ以外のところでは、異なる概念でなければむやみに使わないほうがいいように思います。何でもかんでも疎結合にしようというのは、ちょっと考え物。
+
+<h2>参考</h2>
+
++ コンポーネントとは何かを調べるときに使いました。
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">[オブジェクト指向とコンポーネントによるソフトウェア工学―UMLを使って](http://www.amazon.co.jp/exec/obidos/ASIN/4894712636/sorehabooks-22/)</td></tr><tr><td valign="top">[<img src="http://images-jp.amazon.com/images/P/4894712636.09.MZZZZZZZ.jpg"   border="0" />](http://www.amazon.co.jp/exec/obidos/ASIN/4894712636/sorehabooks-22/)</td><td valign="top"><font size="-1">ペルディタ スティーブンス　ロブ プーリー　Perdita Stevens　Rob Pooley　児玉 公信<br /><br /><iframe scrolling="no" frameborder="0" width="200" height="40" hspace="0" vspace="0" marginheight="0" marginwidth="0" src="http://webservices.amazon.co.jp/onca/xml?Service=AWSProductData&SubscriptionId=0G91FPYVW6ZGWBH4Y9G2&AssociateTag=goodpic-22&Operation=ItemLookup&IdType=ASIN&ContentType=text/html&Page=1&ResponseGroup=Offers&ItemId=4894712636&Version=2004-10-04&Style=http://www.g-tools.net/xsl/priceFFFFFF.xsl"></iframe><br /><b>おすすめ平均　</b><img src="http://g-images.amazon.com/images/G/01/detail/stars-4-5.gif"   /><br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-4-0.gif"   />思ったより、実践的な本でした<br /><img src="http://g-images.amazon.com/images/G/01/detail/stars-5-0.gif"   />オブジェクト指向の教祖本に！<br /><br />[Amazonで詳しく見る](http://www.amazon.co.jp/exec/obidos/ASIN/4894712636/sorehabooks-22/)</font><img src="http://www.goodpic.com/mt/images/spacer.gif"   width="30" height="1" /><font size="-2">by [G-Tools](http://www.goodpic.com/mt/aws/)</font><br /></td></tr></table></div>
+
+
+
+
