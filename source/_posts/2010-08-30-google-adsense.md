@@ -1,0 +1,101 @@
+---
+layout: post
+title: "Google 検索向け AdSense で検索パラメータ名を変更する方法"
+date: 2010-08-30 21:18
+comments: true
+categories: [Blog]
+keywords: "Google Adsense"
+tags: [Google]
+author: hamasyou
+amazon_url: ""
+amazon_author: ""
+amazon_image: ""
+amazon_publisher: ""
+---
+
+このサイトでも <strong>Google 検索 AdSense</strong> を使っていますが、とある事情で Google 検索で使われる q というクエリパラメータ（検索パラメータ）名を別の値に変更したいと思い試行錯誤の末（そんなに難しくはないです。。。）変更の仕方が分かったのでメモです。
+
+
+<!-- more -->
+
+<h2>Google 検索のパラメータ名を変更する方法</h2>
+
+<h3>Google サイト内検索の結果をブログデザインに合わせる</h3>
+
+一応背景を。
+
+ブログを作ってると、サイトのデザインを保ったまま出来るだけ Google AdSense を組み込みたいって思いますよね？Google AdSense にはコンテンツ向けの広告と別に<em>検索向け AdSense</em> なんてものがあります。
+
+検索向け AdSense は Google 検索の結果に広告を表示させるというものですが、​自分のサイト内で使う場合には検索結果画面のデザインを細かく指定することができません。（もちろんリンクやテキストの文字とかはできます。）
+
+<h3>Google 検索向け AdSense の結果表示タイプ</h3>
+
+検索向け AdSense には次の3つの検索結果表示の仕方があります。
+
+<dl>
+<dt>結果を Google の同じウィンドウに表示</dt>
+<dd>Google の簡素でチープな検索結果画面が表示されます。サイトのデザインとかけ離れててイヤーーーって感じです。</dd>
+<dt>結果を Google の新しいウィンドウに表示</dt>
+<dd>単に別ウィンドウ（別タブ）に検索結果を表示するだけです。簡素でチープな（ry</dd>
+<dt>自分のサイトに結果を表示する</dt>
+<dd>自分のサイトのデザインにできるだけあわせるならこれを選ぶべし</dd>
+</dl>
+
+<h3>自分のサイトに結果を表示する</h3>
+
+「検索結果を表示する URL を入力」と「検索結果領域の幅を入力」というパラメータを設定できます。これの仕組みは、インラインフレームを使って検索結果をサイト内に配置するというものです。
+
+なので、検索結果画面のデザインを用意しておいて、結果表示部分をこいつに置き換えてやれば、デザインはほとんどそのままで結果をサイト内に表示すると言うことが出来ます。
+
+<img alt="GoogleAds_Screen.jpg" src="http://hamasyou.com/blog/archives/images/GoogleAds_Screen.jpg" width="639px" class="mt-image-none" style="" />
+
+<h3>どういう仕組みでやってるの？</h3>
+
+<em>Movable Type</em> の場合ですが、検索は mt-search.cgi を呼び出して検索結果画面を表示するという仕組みになっています。
+
+このとき、Google の検索用クエリパラメータ（q=xxx ってやつ）を結果画面にわたしてやると、検索結果画面に埋め込まれた Google のスクリプトが <em>window.location.search</em> からクエリパラメータを取り出してインラインフレーム内に検索結果を作り出すという感じになります。
+
+<h3>検索用クエリパラメータ(q)を変更するには？</h3>
+
+Movable Type の mt-search.cgi が必要とする検索用クエリパラメータは search という名前になっています。で、Google 検索は q。なんとか Google 検索で使うクエリパラメータ名を search に変えたいところ。ということで調べました。
+
+実は簡単で、検索結果画面側に含める Google のスクリプトにグローバル変数で下のようにクエリパラメータ名を与えるだけでした。
+
+<section>
+
+<h4>検索結果画面に記述する google スクリプト</h4>
+
+<pre class="code"><code><span class="tag">&lt;div <span class="attr">id=</span><span class="value">&quot;cse-search-results&quot;</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;script <span class="attr">type=</span><span class="value">&quot;text/javascript&quot;</span>&gt;</span>
+  <span class="keyword">var</span> googleSearchIframeName = <span class="str">&quot;cse-search-results&quot;</span>;
+  <span class="keyword">var</span> googleSearchFormName = <span class="str">&quot;cse-search-box&quot;</span>;
+  <span class="keyword">var</span> googleSearchFrameWidth = <span class="num">693</span>;
+  <span class="keyword">var</span> googleSearchDomain = <span class="str">&quot;www.google.co.jp&quot;</span>;
+  <span class="keyword">var</span> googleSearchPath = <span class="str">&quot;/cse&quot;</span>;
+  <span class="keyword">var</span> googleSearchQueryString = <span class="str">&quot;search&quot;</span>;  <span class="rem">// &lt;--- これ！</span>
+<span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script <span class="attr">type=</span><span class="value">&quot;text/javascript&quot;</span> <span class="attr">src=</span><span class="value">&quot;http://www.google.com/afsonline/show_afs_search.js&quot;</span>&gt;</span><span class="tag">&lt;/script&gt;</span>
+</code></pre>
+
+</section>
+
+これで、検索フォーム内で好きな検索パラメータ名を使用することができるようになります。
+
+<h3>ひとつ問題が。。</h3>
+
+検索フォームのテキスト入力部分にウォーターマーク（下参照）を表示できるのですが、Google のスクリプトの中で入力フォーム名は q で決めうちされているっぽく、検索パラメータ名を変更するとウォーターマークが表示されなくなってしまいます。必要なら自分で jQuery 等使って補ってください。
+
+<script type="text/javascript">
+$(document).ready(function() {
+  var f = document.getElementById("markdemo_field");
+  f.style.background = '#FFFFFF url(http:\x2F\x2Fwww.google.co.jp\x2Fcse\x2Fintl\x2Fja\x2Fimages\x2Fgoogle_custom_search_watermark.gif) left no-repeat';
+});
+</script>
+
+<h4>ほんとはウォーターマークが下のようにつくはず</h4>
+
+<pre><input type="text" id="markdemo_field" size="20" /></pre>
+
+
+
+
