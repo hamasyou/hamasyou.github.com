@@ -9,6 +9,9 @@ single: true
   <article class="hentry col-md-9" role="article">
   {% endif %}
   {% include article.html %}
+  {% unless page.related_posts == false %}
+    {% include post/related_posts.html %}
+  {% endunless %}
     <hr />
     <footer>
       <p class="meta">
