@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: テスト技法 | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/tesutoji-fa/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[JUnitと単体テスト技法―JUnit4対応]]></title>
+    <link href="http://hamasyou.com/blog/2006/10/09/4883732304/"/>
+    <updated>2006-10-09T13:19:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2006/10/09/4883732304</id>
+    <content type="html"><![CDATA[<p>本書は、JUnit の使い方と単体テストについての知識を得られるものになっています。JUnit を使ったテストファーストの流れを説明し、テストとは何か（単体テスト、結合テスト、システムテスト）ということを解説しています。</p>
+
+<p>対象読者は次のような人です。</p>
+
+<ul><li>JUnit を使ったテストファーストを学んでみたい</li>
+<li>単体テストでどんなテストを行えばよいのか迷っている</li>
+<li>テスト技法に関してさらっと基礎をつかんでおきたい</li>
+</ul>
+
+
+
+
+<h4>テストファーストに関してさらに学びたい人にはこちらがお勧めです</h4>
+
+
+<p>『<a href="http://www.amazon.co.jp/gp/product/479810714X/503-3688169-6412757?ie=UTF8&tag=sorehabooks-22&linkCode=xm2&camp=247&creativeASIN=479810714X" rel="external nofollow">バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発</a>』</p>
+
+<dl>
+<dt class="info">Information</dt>
+<dd>本書で説明されている JUnit のバージョンは 3.8.1 です。付録に JUnit4 の説明が20数ページ割かれています。</dd>
+</dl>
+
+
+
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+
+
+<h3>単体テストがターゲット</h3>
+
+
+<p>本書は単体テストをターゲットにした本になっています。単体テストには JUnit を使います。</p>
+
+<p><a href="http://www.techscore.com/tech/Others/JUnit/1.html" rel="external nofollow">単体テストとJUnit-TECHSCORE</a></p>
+
+<h4>単体テストとは</h4>
+
+
+<p><blockquote><p>単体テストは、モジュールを単位としたテストです。Java の場合、クラス、メソッドが単体テスト対象となります。&lt;中略&gt; 単体テストとは、開発者（プログラマ）が自分で作ったプログラムが「ちゃんと動くか」調べる作業です。</p></p><p><p></p><footer><strong>本書 P.59 「単体テストの技法」より</strong></footer></blockquote></p>
+
+<p>単体テストは、プログラマが自分の作ったプログラムをテストすることを指します。単体テストでは、テスト対象だけでテストが実行できることがベストです。そのためには、外部に依存する部分をモックオブジェク（Mock Object）などを使ってテストしやすくする必要があります。</p>
+
+<p><a href="http://bobchin.ddo.jp/simpletest/mock_objects_documentation.html" rel="external nofollow">モックオブジェクトとは - SimpleTest for PHP</a></p>
+
+<h4>単体テスト項目</h4>
+
+
+<p>単体テストでは、次のような項目をテストします。</p>
+
+<ul><li>境界値</li>
+<li>条件分岐</li>
+<li>網羅性（カバレッジ）</li>
+<li>例外ケース</li>
+<li>エラーが出そうな値（マイナス値、巨大な値、0、NULL）</li>
+<li>パフォーマンス</li></ul>
+
+
+<p>上記のテストを、正常系とエラー系に分けてそれぞれテストを行います。</p>
+
+<h3>テストファーストを体験できる</h3>
+
+
+<p>本書は、単体テストをテストファーストという開発手法で行う手順を解説しています。テストファーストとは、テストを最初に行う開発手法のことです。</p>
+
+<dl>
+<dt class="tips">Tips</dt>
+<dd>ここでいうテストとは、プログラムを書いた後に記述するテストとは少し意味合いが異なると僕は考えています。テストファーストで記述するテストは、動くことの確認という意味合いよりも、こう動かなければいけないという仕様を強くあらわしていると考えています。そのため、仕様が決まっていなければテストファーストを実行することができません。これにより、「仕様は決まってないんだけど、とりあえずコーディングする」という悪行が防げます。</dd>
+</dl>
+
+
+
+
+<h3>テスト技法のおさらいができる</h3>
+
+
+<p>本書で上げられているテスト技法には次のものがあります。</p>
+
+<ul><li>ブラックボックステスト</li><li>ホワイトボックステスト</li></ul>
+
+
+
+
+<h4>ブラックボックステスト</h4>
+
+
+<p>ブラックボックステストは、プログラムの仕様を元にテストを行うものです。プログラムの内部構造は考慮せず、入出力の仕様に注力します。ブラックボックステストとして、次の4つのテストがあげられています。</p>
+
+<ul><li>同値クラステスト</li><li>境界値テスト</li><li>デシジョンテーブルテスト</li><li>強制エラーテスト</li><li>グレーボックステスト</li></ul>
+
+
+
+
+<h4>ホワイトボックステスト</h4>
+
+
+<p>ホワイトボックステストは、プログラムの内部構造を元にテストを行うものです。条件分岐、データ構造、実装方法などのプログラムの内部を熟知した上でですとを行います。JUnit を用いた単体テストは、主にこのホワイトボックステストを行います。</p>
+
+<ul><li>制御フローテスト</li><li>データフローテスト</li></ul>
+
+
+
+
+<h3>テストの種類がまとまっている</h3>
+
+
+<p>単体テスト以外にも、結合テスト、システムテストといったテストの説明がされています。</p>
+
+<h4>結合テスト</h4>
+
+
+<p>単体テストが完了したモジュールを組み合わせて行うテストのことです。テストシナリオを考えてテストを行います。</p>
+
+<ul><li>トップダウンテスト</li><li>ボトムアップテスト</li><li>サンドイッチテスト</li><li>ビックバンテスト</li></ul>
+
+
+
+
+<h4>システムテスト</h4>
+
+
+<p>システム全体のテストを行います。</p>
+
+<ul><li>性能テスト（パフォーマンステスト）</li><li>負荷テスト</li><li>例外処理テスト</li><li>操作性テスト</li></ul>
+
+
+
+
+<h2>覚書</h2>
+
+
+<p>JUnit4 についてすごくよくまとまっているサイトを見つけたので参考に。</p>
+
+<p><a href="http://www.okisoft.co.jp/esc/testing/JUnit4-TestNG.html" rel="external nofollow">JUnit 4 &amp; TestNG</a></p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>ソフトウェアテストのバイブル</li>
+</ul>
+
+
+<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282511/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>ソフトウェアテストのバイブル その二</li>
+</ul>
+
+
+<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822281132/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>バイブルからよいとこ取りした鉄則書</li>
+</ul>
+
+
+<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/482228154X/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>TDD（テスト駆動開発）の発案者による本</li>
+</ul>
+
+
+<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894717115/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java/Eclipseソフトウェアテスト・チュートリアルブック]]></title>
+    <link href="http://hamasyou.com/blog/2004/07/21/4798006084/"/>
+    <updated>2004-07-21T02:42:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/07/21/4798006084</id>
+    <content type="html"><![CDATA[<p>本書は、JavaプログラムのテストをJUnitを使ってEclipse上で行ってしまおうという、いかにもJavaプログラムにうけがいい内容をもってきています。しかし、中身はというと、非常に実践向けの、テストの何たるかを開発者の視点から語っているわかりやすい内容になっています。</p>
+
+<p>Eclipse上でJUnitを使う方法が後半に載っています。丁寧な解説とわかりやすい図で、こちらも迷うことはないと思います。</p>
+
+<p>プログラミング初心者の書いたコードに限らず、テストがしっかりとできていないコードというのは、品質に問題があります。動けばいいという考えはそろそろやめにして、とりあえず流行のテスティングにのっかってみましょう。絶対損はないはずですから。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+<p>「テストの重要性は、耳にたこができるほど聞いた。でも、実際にどうやればいいの？」という人にこそ、本書をおすすめします。まず、テストの何たるかを前半で、中盤ではどんなテストを行えばいいのかまた、どのようにテストを行えばいいのかを。後半では、EclipseとJUnitという2大ツールの使い方を学べます。</p>
+
+<p>複数回実行されたときの状態をテストしたいとき、スレッド関連のテストをしたいとき、例外が発生したとこにテストをを行いたいときなど、少し変わったテストに関しても解説してあります。テストの応用編もあり、Antによる自動実行の方法もあり、実際に現場で使える技術・技法を学べます。</p>
+
+<p>テストをしやすくする方法も書いてあります。これは、プログラムをどう作ればいいかの手ほどきになっていて、初心者プログラマだけでなく、実際に現場でバリバリの中堅プログラマの人も教わる点はあると思います。</p>
+
+<p>少しリファクタリングぽっくなっているのが、実際にどうすればいいのかという疑問に答えてくれると思います。</p>
+
+<p>かなり使える現場向けのテスト解説本になっています。今すぐ全部を読む必要はないですが、現場に一冊あると効果的かと思います。おすすめ！</p>
+
+<h2>覚書き</h2>
+
+
+
+
+<h3>どんなときにテストするのか</h3>
+
+
+<p>テストは「不安に思ったらする」です。「このメソッド動かなさそ〜」とか、「ここはバグが出たらまずい。」といった不安がでたら、まずテストする。不安がなくなるまでテストする。自分の作ったプログラムに責任を持ち、正しく動くかどうかを不安に思わなければならないのです。</p>
+
+<h3>どんなテストをすればいいのか</h3>
+
+
+<p>コードをテストを意識せずに書いてはいけない。テストケースを考えながらコーディングすることで、仕様の抜けや問題点が明確になります。設計自体も洗練されていき、わかりやすいコードになります。</p>
+
+<p>テストしなければならないのは、「正しく動作するか疑問な部分」です。非常に明快で、バグがないことがはっきりわかるくらいのコードなら、テストする必要すらないでしょう。明快な部分をテストするのではなく、<strong>動くか疑問、正しさが証明できない</strong>部分を重点的にテストするべきです。</p>
+
+<p>限界値のテストはもちろんするに越したことはないのです。また、メソッドを呼び出すことで内部状態が変わるものは、その呼び出し順序がどのようであっても正しく動くかをテストするべきです。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>JUnitの情報はこちら</li>
+</ul>
+
+
+<p><a href="http://www.junit.org/" rel="external nofollow">JUnit</a></p>
+
+<p><a href="http://www.alles.or.jp/~torutk/oojava/maneuver/2000/6-3.html" rel="external nofollow">テスティングフレームワーク JUnit</a></p>
+
+<ul>
+<li>Eclipseの情報はこちら</li>
+</ul>
+
+
+<p><a href="http://www.eclipse.org/" rel="external nofollow">Eclipse</a></p>
+
+<ul>
+<li>JUnitに関する解説本です。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325143/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+<ul>
+<li>テスト駆動の開発入門書です。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894717115/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+<ul>
+<li>C++ によるテスト実践書です。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798005711/sorehabooks-22/ref=nosim/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

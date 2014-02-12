@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: モジュール | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/moziyuru/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処]]></title>
+    <link href="http://hamasyou.com/blog/2013/03/05/titanium/"/>
+    <updated>2013-03-05T08:52:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/03/05/titanium</id>
+    <content type="html"><![CDATA[<p>モジュールを作成して、デモアプリ等で利用する際に実機転送時に</p>
+
+<pre><code>[ERROR] : ** BUILD FAILED **
+[ERROR] : The following build commands failed:
+[ERROR] :   Ld build/Debug-iphoneos/gpuimagedemo.app/gpuimagedemo normal armv7
+[ERROR] : (1 failure)
+</code></pre>
+
+<p>のようなエラーが発生する場合がある。
+これは、Titanium がビルド時に最適化で利用していない内部モジュールとのリンクを切ってしまうために起こる。</p>
+
+<p>build ディレクトリの下の Xcode のプロジェクトを開くと</p>
+
+<pre><code>Undefined symbols for architecture arvm7:
+    ...
+":_OBJC_CLASS_$_TiUIImageView":, referenced from:
+    ...
+</code></pre>
+
+<p>のようにビルドエラーが発生している。</p>
+
+<p>これを解決するには、モジュールで利用している内部クラスを、JavaScript 側のソースコードに現れるようにする。</p>
+
+<p>例えば、今回の場合だと、TiUIImageView の参照先が見つからないとなっているので JavaScript のコードの方に</p>
+
+<pre><code class="javascript">if (false) {
+    Ti.UI.createImageView({
+        image: 'demo.jpg'
+    });
+}
+</code></pre>
+
+<p>のようなコードを加えれば良い。バッドノウハウですね。。</p>
+]]></content>
+  </entry>
+  
+</feed>

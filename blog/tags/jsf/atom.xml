@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: JSF | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/jsf/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[JSF-カスタムコンポーネント覚書き]]></title>
+    <link href="http://hamasyou.com/blog/2005/10/22/jsf/"/>
+    <updated>2005-10-22T13:44:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/10/22/jsf</id>
+    <content type="html"><![CDATA[<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/249-1404088-2131559?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow"></a>
+</p>
+
+
+<p>JSFでカスタムコンポーネントを作るときの覚書きです。参考にした『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/249-1404088-2131559?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow">JavaServer Faces完全ガイド</a>』は、ツリーコンポーネントをカスタムコンポーネントとして作る手順が載っていました。</p>
+
+<p>ここでは、カスタムコンポーネントを作るときに必要となるパーツと、注意点などをまとめておこうと思います。カスタムコンポーネントは大きく、入力用のコンポーネントと出力用のコンポーネントの2つに分けれます。入力用のコンポーネントはリクエスト間で値の保存・読み込みやデコードレンダリングなどを行わなければなりません。出力用のコンポーネントの場合は、値を保持し、エンコードレンダリングを行うことで機能を表現します。</p>
+
+<p>ここでは、出力用のコンポーネントの話をしています。説明が断片的なので、上記の本を読んだほうが手っ取り早いかも・・・ ^^;</p>
+
+<p><section></p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.wakhok.ac.jp/~tomoharu/jsf2004/text/index_c11.html" rel="external nofollow">JSFによるWebアプリケーション開発/カスタム・コンポーネント</a></li>
+</ul>
+
+
+<p></section></p>
+
+<!-- more -->
+
+
+
+
+<h2>作るもの</h2>
+
+
+
+
+<table>
+<tr><th>&nbsp;</th><th>コンポーネント</th><th>レンダラー</th><th>タグハンドラ</th></tr><tr><th>継承</th><td>UIComponentBase</td><td>Renderer</td><td>UIComponentTag<br />UIComponentBodyTag</td></tr><tr><th>famiry名</th><td>任意<br />（getFamiryメソッドで返すようにする）</td><td>任意<br />（コンポーネントとあわせる必要がある。faces-context.xmlに定義する)</td><td>不要</td></tr><tr><th>タイプ</th><td>完全クラス名。定数で定義するとよい。</td><td>完全クラス名。定数で定義するとよい。</td><td>getComponentTypeで使用するコンポーネントタイプを返す。<br />getRendererTypeで使用するレンダラータイプを返す。</td></tr><tr><th>実装するメソッド</th><td>コンポーネントで使用するプロパティのget/set等</td><td>encode系メソッド</td><td>setPropertiesメソッド、タグで受け取る属性のget/set等</td></tr><tr><th>その他</th><td>faces-context.xmlにcomponentの定義を記述</td><td>faces-context.xmlにrendererの定義を記述</td><td>TLDファイルを作成する</td></tr>
+</table>
+
+
+
+
+<h2>コンポーネントクラス</h2>
+
+
+<p>コンポーネントクラスはjavax.faces.component.UIComponentBaseを継承して作ります。似たようなコンポーネントを継承して作ってもいいでしょう。コンポーネントが特殊で、レンダラーの責務を別クラスにする必要がない場合は、コンポーネントの encode系メソッドを実装します。</p>
+
+<p>コンポーネントは、famiryを定義します。同一のfamiry名を持つコンポーネントとレンダラがセットで使われます。コンポーネントのfamiryは getFamiryメソッドで返すようにします。</p>
+
+<p>ValueBindingで値を受け取らない場合は、setValueBinding(String, ValueBinding)をオーバーライドして、特定の値しかValueBindingで受け取らないことを明示するとよい。</p>
+
+<p><section></p>
+
+<h4>setValueBindingのオーバーライド例</h4>
+
+
+
+
+<pre class="code"><code><span class="comment">// @Overwride</span>
+<span class="keyword">public</span> <span class="keyword">void</span> setValueBinding(<span class="keyword">final</span> String name, ValueBinding bind) {
+  <span class="keyword">if</span> (name.equals(<span class="literal">"value"</span>)) {
+    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="literal">"valueは値結合でなければなりません。"</span>);
+  }        
+  <span class="keyword">super</span>.setValueBinding(name, bind);
+}
+</code></pre>
+
+
+<p></section></p>
+
+<p>ValueBindingで受け取る値を返すgetメソッドは、getValueBindingメソッドを使って値結合を解決しなければならない。毎回、値結合を解決するとパフォーマンスが悪くなるので、キャッシュするようにする。</p>
+
+<p><section></p>
+
+<h4>ValueBindingされている値のgetメソッド例</h4>
+
+
+
+
+<pre class="code"><code><span class="keyword">public</span> Object getValue() {
+  <span class="keyword">if</span> (<span class="keyword">this</span>.value != <span class="keyword">null</span>) {
+    <span class="keyword">return</span> <span class="keyword">this</span>.value;
+  } <span class="keyword">else</span> {
+    ValueBinding bind = getValueBinding(<span class="literal">"value"</span>);
+    <span class="keyword">if</span> (bind != <span class="keyword">null</span>) {
+      <span class="keyword">this</span>.value = bind.getValue(getFacesContext()); 
+      <span class="keyword">return</span> <span class="keyword">this</span>.value;
+    } <span class="keyword">else</span> {
+      <span class="keyword">return</span> <span class="keyword">null</span>;
+    }
+  }
+}
+</code></pre>
+
+
+<p></section></p>
+
+<h3>レンダラー</h3>
+
+
+<p>javax.faces.render.Rendererクラスを継承して作ります。主にオーバーライドして使うのは下のメソッド。</p>
+
+<ul><li>encodeBegin(FacesContext, UIComponent)</li>
+<li>encodeChildren(FacesContext, UIComponent)</li>
+<li>encodeEnd(FacesContext, UIComponent)</li>
+<li>getRendersChildren()</li></ul>
+
+
+<p>レンダラーは、基本的には自分が処理できるコンポーネントだけをレンダリングします。ただし、&lt;h:dataTable&gt;などは、子に現れる&lt;h:column&gt;などのコンポーネントも処理します。子のコンポーネントの処理も自分で行う場合は、getRendersChildren()で <code>true</code> を返す必要があります。</p>
+
+<p>子のコンポーネントを処理する場合に、例えば次のようにします。</p>
+
+<pre class="code"><code><span class="tag">&lt;h:dataTable <span class="attr">value=</span><span class="value">&quot;#{xxx}&quot;</span> <span class="attr">var=</span><span class="value">&quot;child&quot;</span>&gt;</span> 
+  <span class="tag">&lt;h:column&gt;</span> 
+    <span class="tag">&lt;h:outputText <span class="attr">value=</span><span class="value">&quot;#{child.name}&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;/h:column&gt;</span> 
+<span class="tag">&lt;/h:dataTable&gt;</span>
+</code></pre>
+
+
+<p>child の部分に格納される値をセットしておかなければならない場合があります。これは、リクエストにコンポーネントのvar変数が表す名前（ここではchild)をキーとして、値をセットしておくことで対応できます。</p>
+
+<p><section></p>
+
+<h4>子コンポーネントに値を受け渡す方法</h4>
+
+
+
+
+<pre class="code"><code>Map requestMap = facesContext.getExternalContext().getRequestMap(); 
+requestMap.put(component.getVar(), component.getVarValue());
+</code></pre>
+
+
+<p></section></p>
+
+<p>エンコードは、encodeBegin、getRendersChildrenがtrueを返すときencodeChildren、encodeEndの順で処理されます。</p>
+
+<h3>タグハンドラー</h3>
+
+
+<p>タグにbodyが必要ない場合はjavax.faces.webapp.UIComponentTagクラスを継承します。例えば&lt;h:outputText /&gt; のようなタグの場合です。</p>
+
+<p>タグにbodyが必要な場合は javax.faces.webapp.UIComponentBodyTagクラスを継承します。このクラスの方が多少パフォーマンスが悪いようです。bodyが不要の場合はUIComponentTagを使うようにします。</p>
+
+<p>実装するメソッドは次の2つです。</p>
+
+<ul><li>getComponentType</li><li>getRendererType</li></ul>
+
+
+<p>前者はコンポーネントのタイプ（完全クラス名にしておくことをおすすめ）を返すようにします。後者はレンダラーのタイプ（完全クラス名にしておくことをおすすめ）を返すようにします。</p>
+
+<p>さらに、タグハンドラーには、タグの属性の値を保持するプロパティを実装します。</p>
+
+<p><section></p>
+
+<h4>タグハンドラの例1</h4>
+
+
+
+
+<pre class="code"><code><span class="keyword">import</span> javax.faces.component.UIComponent;
+<span class="keyword">import</span> javax.faces.context.FacesContext;
+<span class="keyword">import</span> javax.faces.el.ValueBinding;
+<span class="keyword">import</span> javax.faces.webapp.UIComponentTag;
+ 
+<span class="keyword">public</span> <span class="keyword">class</span> MyComponentTag <span class="keyword">extends</span> UIComponentTag {
+    
+  <span class="keyword">private</span> String value;
+  <span class="keyword">private</span> String var;
+  <span class="keyword">private</span> String onmouseover;
+ 
+  <span class="keyword">protected</span> <span class="keyword">void</span> setProperties(UIComponent component) {
+    <span class="keyword">super</span>.setProperties(component);
+        
+    FacesContext context = getFacesContext();
+    MyComponent mycomp = (MyComponent) component;
+    <span class="keyword">if</span> (<span class="keyword">this</span>.value != <span class="keyword">null</span>) {
+      <span class="keyword">if</span> (UIComponentTag.isValueReference(<span class="keyword">this</span>.value)) {
+        ValueBinding bind =
+          context.getApplication().createValueBinding(<span class="keyword">this</span>.value);
+        component.setValueBinding(<span class="literal">"value"</span>, bind);
+      } <span class="keyword">else</span> {
+        mycomp.setValue(<span class="keyword">this</span>.value);
+      }
+    }
+    <span class="keyword">if</span> (<span class="keyword">this</span>.var != <span class="keyword">null</span>) {
+      mycomp.setVar(this.var);
+    }
+    <span class="keyword">if</span> (<span class="keyword">this</span>.onmouseover != <span class="keyword">null</span>) {
+      <span class="keyword">if</span> (UIComponentTag.isValueReference(<span class="keyword">this</span>.onmouseover)) {
+        ValueBinding bind =
+          context.getApplication().createValueBinding(<span class="keyword">this</span>.onmouseover);
+        component.setValueBinding(<span class="literal">"onmouseover"</span>, bind);
+      } <span class="keyword">else</span> {
+        mycomp.setOnmouseover(<span class="keyword">this</span>.onmouseover);
+      }
+    }
+  }
+ 
+  <span class="keyword">public</span> String getComponentType() {
+    <span class="keyword">return</span> MyComponent.COMPONENT_TYPE;
+  }
+ 
+  <span class="keyword">public</span> String getRendererType() {
+    <span class="keyword">return</span> MyComponentRenderer.RENDERER_TYPE;
+  }
+ 
+  <span class="keyword">public</span> String getOnmouseover() {
+    <span class="keyword">return</span> onmouseover;
+  }
+ 
+  <span class="keyword">public</span> <span class="keyword">void</span> setOnmouseover(String onmouseover) {
+    <span class="keyword">this</span>.onmouseover = onmouseover;
+  }
+ 
+  <span class="keyword">public</span> String getValue() {
+    <span class="keyword">return</span> value;
+  }
+ 
+  <span class="keyword">public</span> <span class="keyword">void</span> setValue(String value) {
+    <span class="keyword">this</span>.value = value;
+  }
+ 
+  <span class="keyword">public</span> String getVar() {
+    <span class="keyword">return</span> var;
+  }
+ 
+  <span class="keyword">public</span> <span class="keyword">void</span> setVar(String var) {
+    <span class="keyword">this</span>.var = var;
+  }
+}
+</code></pre>
+
+
+<div class="clear"></div>
+
+
+<p></section></p>
+
+<p>注目するメソッドはsetProperties(UIComponent)です。このメソッドでは、タグの属性で指定された値をコンポーネントにセットする役割があります。　ValueBinding される可能性のある属性は、18行目のように UIComponentTag.isValueReference を使ってValueBinding形式かどうかを判定します。ValueBindingの場合は、FacesContextからValueBindingインスタンスを作成し、UIComponentのsetValueBindingを使ってセットします。</p>
+
+<p>ただの値の場合には、コンポーネントのsetメソッドを使って直接セットします。</p>
+
+<h3>faces-context.xml と タグディスクリプションファイル（TLD)の作成</h3>
+
+
+<p>faces-context.xml に、カスタムコンポーネントとレンダラーの設定を書きます。TLDファイルには、タグハンドラの設定を書きます。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>一番詳しい解説書</li>
+</ul>
+
+
+<div class="rakuten"><table  width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>リファレンスとしては秀逸</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798008303/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>概念を学ぶにはいい本</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4883732096/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JSFフレームワーク覚書き]]></title>
+    <link href="http://hamasyou.com/blog/2004/10/06/jsf/"/>
+    <updated>2004-10-06T14:19:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/10/06/jsf</id>
+    <content type="html"><![CDATA[<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" rel="external nofollow"></a>
+</p>
+
+
+<p>JSFは今後期待されるWebアプリケーションフレームワークの一つです。標準規格ということで、普及してくるのではないかと思います。</p>
+
+<p>JSFはユーザインターフェース周りの処理を簡単に実装できるということを目標に開発されたフレームワークで、WebでGUIアプリケーションを作っているような感覚でコーディングが出来ます。</p>
+
+<p>アクションやイベントといった概念を扱っていて、非常に直感的に流れが分かるようなフレームワークになっています。ということで、今回はJSFフレームワークの流れについての覚書きです。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+
+
+<ul>
+<li>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" rel="external nofollow">はじめてのJSF</a>』 日経BP社</li>
+<li><a href="http://www.atmarkit.co.jp/fjava/special/jsf01/jsf01.html" rel="external nofollow">@IT：特別企画  JavaServer Facesを理解する(前編)</a></li>
+</ul>
+
+
+<p></section></p>
+
+<!-- more -->
+
+
+
+
+<h2>覚書き</h2>
+
+
+<p>JSFのライフサイクルの覚書きです。JSFには6つのフェーズがあり、それぞれ役割分担がきっちりされています。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://www.atmarkit.co.jp/fjava/special/jsf01/jsf01.html#ap03" rel="external nofollow">JSFライフサイクルの図 (@IT)</a></p>
+
+<p></section></p>
+
+<p>JSFはJavaのWebアプリケーションフレームワークですので、サーブレットとして動作します。javax.faces.webapp.FacesServlet というのがそうです。クライアントのリクエストをサーブレットが受け取ってレスポンスを返すという処理は、通常のWebアプリケーションと一緒です。(当たり前ですが・・・)</p>
+
+<p>JSFはリクエストを受け取って、レスポンスを返すまでのサイクルが6つに分かれています。</p>
+
+<ol><li><a href="#Viewの復元" rel="external nofollow">レスポンスのレンダリング(Render Response)</a></li></ol>
+
+
+
+
+<h3 id="Viewの復元">Viewの復元(Reconstitute Request Tree)</h3>
+
+
+<p>レスポンス時に保存してあったコンポーネントツリーを復元するフェーズです。</p>
+
+<p>初めてのリクエストや、JSF以外のページからのリクエストの場合は、コンポーネントツリーが存在しないので、新しくコンポーネントツリーを生成し、[<a href="#レスポンスのレンダリング" rel="external nofollow">レスポンスのレンダリング</a>]フェーズに移行する。</p>
+
+<p>このように途中のフェーズを省略して[<a href="#レスポンスのレンダリング" rel="external nofollow">レスポンスのレンダリング</a>]フェーズに移行するためには、FacesContext#renderResponse メソッドを呼び出す。</p>
+
+<pre>
+JSFフレームワークは、UIコンポーネントという単位で画面を作っています。UIコンポーネントとは情報を持った塊のことで、下記のようなコンポーネントがある。
+
+<ul><li>フォーム(<a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/component/UIForm.html" rel="external nofollow">UICommand</a>)</li></ul></pre>
+
+
+<p>開発者はUIコンポーネントに対して処理を行っていく。サーバー側ではUIコンポーネントは親子関係を持ったツリーの形で保持される。</p>
+
+<h3 id="リクエスト値の適用">リクエスト値の適用(Apply Request Values)</h3>
+
+
+<p>クライアントが入力した値を、対応するUIコンポーネントに保存する。</p>
+
+<p>入力フィールド(UIInput)であれば値をコンポーネントに保存し、ボタン(UICommand)であればイベントをキューに追加する。<b>この段階ではモデルには値は反映されない。</b></p>
+
+<p>編集可能なUIコンポーネント(<a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/component/EditableValueHolder.html" rel="external nofollow">EditableValueHolderインターフェース</a>を実装したコンポーネント、例えばUIInputクラス)はこのフェーズで2種類の処理に分岐される。</p>
+
+<p><section></p>
+
+<h4>immediate属性が true の場合</h4>
+
+
+<p>バリデータを呼び出して入力検証を行う。成功した場合UIコンポーネントに値を保存して、ValueChangeEventをキューにつめる。通常この処理は[<a href="#入力値の検証" rel="external nofollow">入力値の検証</a>]フェーズで行われる。その後、ValueChangeEventのリスナーや、対応するアクションが呼ばれる。</p>
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>immediate属性が false の場合(属性がない場合)</h4>
+
+
+<p>UIコンポーネントに値を保存して、次のフェーズ[<a href="#入力値の検証" rel="external nofollow">入力値の検証</a>]に移行する。</p>
+
+<p></section></p>
+
+<pre>
+イベントキューにイベントが追加された場合、次のProcess Eventsが処理される。(<a href="http://www.atmarkit.co.jp/fjava/special/jsf01/jsf01.html#ap03" rel="external nofollow">レスポンスのレンダリング</a>]フェーズに移行する(Render Response)。
+</pre>
+
+
+<p>つまり、この後のフェーズが実行されない。これは、例えば「キャンセル」ボタンや「戻る」ボタンを実装したい場合に使う。[<a href="#入力値の検証" rel="external nofollow">入力値の検証</a>]が行われては困る場合には immediate属性をコントロールするべし。</div></p>
+
+<h3 id="入力値の検証">入力値の検証(Process Validations)</h3>
+
+
+<p>[<a href="#リクエスト値の適用" rel="external nofollow">リクエスト値の適用</a>]フェーズでUIコンポーネントに適用された値を、バリデータによって検証する。ここでは、画面に表示されるUIコンポーネントのみがチェックされる(rendered属性がtrueのもの)。</p>
+
+<pre>
+1. UIコンポーネントに保持されている値を型変換する。型変換エラーが出た場合には <a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/convert/ConverterException.html" rel="external nofollow">ConverterException</a>例外をスローする。
+2. 型変換された値に対してバリデータを使って検証する。検証エラーが出た場合には <a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/validator/ValidatorException.html" rel="external nofollow">ValidatorException</a>例外をスローする。
+3. 例外が発生した場合には、FacesContextにエラーメッセージを追加して、Render Response処理に移行する。
+</pre>
+
+
+<p>このフェーズでバリデーションエラーが出た場合には、モデルの値は更新されずに下の画面に戻る。</p>
+
+<p>通常であれば、[<a href="#Viewの復元" rel="external nofollow">アプリケーションロジックの呼び出し</a>]フェーズで次の画面のコンポーネントルート(UIViewRoot)が設定されて次の画面に遷移する。</p>
+
+<p>しかし、途中でエラーがでて、次の画面のコンポーネントルート(UIViewRoot)が設定されない場合には、元の画面のコンポーネントルート(UIViewRoot)が残っているために、元の画面に戻ってしまうのである。</p>
+
+<h3 id="モデルの更新">モデルの更新(Update Model Values)</h3>
+
+
+<p>UIコンポーネントに設定された値を、対応するモデル(JavaBean)にセットする。UIコンポーネントの型からモデルの型に変換できずにエラー(<a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/convert/ConverterException.html" rel="external nofollow">ConvertException</a>)が発生した場合には、Response Renderが呼ばれてレスポンス処理に入る。</p>
+
+<h3 id="アプリケーションロジックの呼び出し">アプリケーションロジックの呼び出し(Invoke Application)</h3>
+
+
+<p>ボタンを押したなどのアクションに対してロジックを呼び出します。このロジックの結果によって次の画面遷移先を決定します。</p>
+
+<p>イベントが発生するとイベントのリスナーが呼ばれます。リスナーはaddActionListenerメソッドで追加する方法(アクションリスナー)とsetActionメソッドでセットする方法(アクションハンドラ)がある。フレームワークはアクションリスナーを先に呼び出します。</p>
+
+<pre>
+リスナーの設定は基本的にはJSP内でタグを使って設定する。
+・アクションリスナーを設定するには、UIInputやUICommandコンポーネントに 〜Listener という属性があるので、そこにメソッド・バインディングという方法を用いて指定する。
+ 
+・アクションハンドラを設定するにはUICommandコンポーネントの action という属性にメソッド・バインディングを使って指定する。
+</pre>
+
+
+
+
+<h3 id="レスポンスのレンダリング">レスポンスのレンダリング(Render Response)</h3>
+
+
+<p>次の画面を構築します。FacesContextに設定されているUIViewRootを使って、次の画面を決定します。</p>
+
+<h2>参考</h2>
+
+
+<p> <a href="http://dream.mods.jp/first_jsf/part5.html" rel="external nofollow">JSFのタグ一覧</a></p>
+
+<p> <a href="http://www.atmarkit.co.jp/fjava/special/jsf01/jsf01.html" rel="external nofollow">@IT：特別企画  JavaServer Facesを理解する(前編)</a></p>
+
+<ul>
+<li>オライリーから発売中のJSFに関する書籍です。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+<ul>
+<li>リファレンス的な使い方も出来る結構情報量の多い本です。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798008303/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[はじめてのJSF―Web開発を変えるJavaフレームワークのすべて]]></title>
+    <link href="http://hamasyou.com/blog/2004/09/06/4822221253/"/>
+    <updated>2004-09-06T09:45:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/09/06/4822221253</id>
+    <content type="html"><![CDATA[<p>本書は、JSFフレームワークがどんな流れで処理を進めていくのかがよくわかるので非常に初心者向けだと思います。実際、僕が最初にJSFをやることになって、いろいろと書籍を見た中では、フレームワークの流れが一番よくわかる本だと思いました。</p>
+
+<p>JSFにはライフサイクルというものがあり、6つのフェーズからできています。この6つのフェーズ（Viewの復元・リクエスト値の適用・入力値の検証・モデル値の更新・アプリケーションロジックの呼び出し・レスポンスレンダリング）のそれぞれに関してフレームワークがどのように処理を進めていくのかを、丁寧に解説しています。</p>
+
+<p>JSFは、これから使われてくる技術であり、これからのWebアプリケーション開発を変えてしまうものだと思っているので、本書を元に流れを理解しておくと、今後のJSF旋風に飲み込まれた時に役立つと思います。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+<p>本書は、次世代Webアプリケーションフレームワークである<b>Java Server Faces</b>について解説しているものです。この記事を書いている現在では、まだJSFに関する書籍が4, 5冊くらいしかありません。その中でもっともJSFの流れがわかる本だと思っています。</p>
+
+<p>本書が他のJSF解説書と比べていいと思ったのは、フレームワークのライフサイクルに関して詳しく説明してある本だったからです。ライフサイクルには6つのフェーズがあり、それぞれ</p>
+
+<ul><li>Viewの復元</li><li>リクエスト値の適用</li><li>入力値の検証</li><li>モデル値の更新</li><li>アプリケーションロジックの呼び出し</li><li>レスポンスレンダリング</li></ul>
+
+
+<p>に分かれています。</p>
+
+<p>一つ一つのフェーズで、JSFフレームワークがどんなことをやっているのか、どんなことをするのかという根本の解説が一番よくわかるのが本書でした。詳しい解説でおなじみのオライリーからも『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22" rel="external nofollow">JavaServer Faces完全ガイド</a>』という本が出版されていますが、本書の方が図を使っていてわかりやすく、日本人著者が書いているのではるかにわかりやすいです。</p>
+
+<p>サンプルアプリケーションも載っていて、一通り本書を読みながらアプリケーションを作れば、JSFの流れは完全に理解できるかと思います。本書を読んだあと、オライリーの『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22" rel="external nofollow">JavaServer Faces完全ガイド</a>』を読むとさらに理解が深まると思います。</p>
+
+<h2>覚書き</h2>
+
+
+
+
+<h3>javax.faces.model.SelectItem を使ったときのプロパティの型</h3>
+
+
+<p>selectOneMenuなどのコンポーネントを使った場合に使用する「selectItem、selectItems」タグを使用するときに使える javax.faces.model.SelectItem というクラスには setValue というセッターメソッドがある。このメソッドの引数は Object 型になっていて、ここで<strong>セットした型と同じ型でBeanのプロパティを作らないと、Convert Invalid となってしまう</strong>ので注意。</p>
+
+<h3>アクションでエラーが起こった場合に画面遷移しないようにするには</h3>
+
+
+<p>アクションやリスナーメソッドでエラーが起こった場合に、画面遷移をしたくない場合がある。そんなときは、戻りの ViewID を null にしてやるといい。具体的には、アクションメソッドの戻り値を null にする。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>安くてボリュームも少なく、JSFって何ぞや？という人向けの雑誌タイプの書籍です。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798008435/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+<ul>
+<li>解説本というよりはリファレンス的な意味合いが強いです。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798008303/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+<ul>
+<li>オライリーから詳説本でました。日本語訳はちょっとな感じですが、さすがに詳しいです。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

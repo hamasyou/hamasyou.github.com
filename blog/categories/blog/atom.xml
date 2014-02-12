@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Blog | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/blog/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-12T19:01:02+09:00</updated>
+  <updated>2014-02-12T19:22:37+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -14,92 +14,44 @@
 
   
   <entry>
-    <title type="html"><![CDATA[それはBooks スタイル一覧]]></title>
-    <link href="http://hamasyou.com/blog/2003/04/07/style/"/>
-    <updated>2003-04-07T02:25:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2003/04/07/style</id>
-    <content type="html"><![CDATA[<p>自分用のエントリーです。</p>
+    <title type="html"><![CDATA[#qiita_sushi に参加した]]></title>
+    <link href="http://hamasyou.com/blog/2013/03/04/qiita-sushi/"/>
+    <updated>2013-03-04T23:15:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/03/04/qiita-sushi</id>
+    <content type="html"><![CDATA[<p>Qiita を運営されている Increments さんが一周年ということで、白ワイン持参で参加させていただきました。</p>
 
-<p>それはBooks で使っているスタイルの意味を定義しておくページです。</p>
+<p>寿司職人が目の前で握ってくれる本格派！</p>
 
-<!-- more -->
+<p><img src="/images/qiita_sushi.jpg" width="320"></p>
 
+<p>次の Qiita イベントにも是非参加します！今後とも、エンジニアのためのサービスをガンガンリリースしてもらいたいと思います。うちの会社もエンジニアの会社なので期待しています！</p>
 
-<h2>タイトルタグ (h1, h2, h3, h4)</h2>
+<p>一周年、おめでとうございます！</p>
 
-<p>タイトルにつけるタグ。h1 は記事のタイトルに使うので、記事の中では使いません。h2 は記事の中で大きな区分を表すときに使います。h3 は区分の中でのひとつのトピック（セクション）を表すときに使います。。h4 はトピックの中のそれぞれの部品の見出しに使います。。h5、h6 は使いません。</p>
+<p>ちなみに、Qiita イベントの出席者は、Perl 界隈の人と Ruby 界隈の人が半々くらいな感じ。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text2 で Titanium Mobile のコード補完を効かせる方法]]></title>
+    <link href="http://hamasyou.com/blog/2013/01/29/sublime-text2-titanium-mobile/"/>
+    <updated>2013-01-29T13:23:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/01/29/sublime-text2-titanium-mobile</id>
+    <content type="html"><![CDATA[<p>Qiita にも書きました。 <a href="http://qiita.com/items/ef8c332710960e2730d6" rel="external nofollow">Qiita: http://qiita.com/items/ef8c332710960e2730d6</a></p>
 
-<h1>これが h1 タグです</h1>
-
-<h2>これが h2 タグです</h2>
-
-<h3>これが h3 タグです</h3>
-
-<h4>これが h4 タグです</h4>
-
-<h2>テキスト装飾</h2>
-
-<h3>文章を書くとき</h3>
-
-<p>通常は、この文字で記述します。少し強調したい場合は <em>em</em> タグを使って装飾します。 さらに強調したい場合やキーワードには <strong>strong</strong> タグを使います。</p>
-
-<p>文章中で br タグは使いません。段落の区切りは p タグで区切ります。</p>
-
-<h2>引用</h2>
-
-<p>引用には <em>q</em> タグか <em>blockquote</em> タグを使います。文章中で引用を行うときに q タグの方を使います。</p>
-
-<p><blockquote><p>段落を引用する場合は blockquote タグを使います。blockquote タグを使う場合には、cite タグを使って引用元を明記します。</p><footer><strong>どこかしらから引用</strong></footer></blockquote></p>
-
-<h2>説明・定義</h2>
-
-<p>説明文や定義には、<em>dl</em>、<em>dt</em>、<em>dd</em> タグを使います。</p>
-
-<dl>
-<dt>これが説明・定義する言葉です</dt>
-<dd>ここに説明文を記述します。dd タグはブロック要素とインライン要素をとれるため、段落を含めてもかまいません。</dd>
-</dl>
-
-<h2>箇条書き</h2>
-
-<p>箇条書きは、単一行で説明できる文章をリスト化するときに使います。順番の必要がない場合は <em>ul</em> タグを使います。順番が必要なときは <em>ol</em> タグを使用します。</p>
-
-<ul>
-<li>リスト1</li>
-<li>リスト2</li>
-<li>リスト3</li>
-</ul>
+<h3>1. Package Manager で SublimeCodeIntel をインストールする</h3>
 
 
-<p>順番が必要なとき</p>
+<p>Sublime Text2 の PackageManager を使って SublimeCodeIntel をインストールします。</p>
 
-<ol>
-<li>リスト4</li>
-<li>リスト5</li>
-<li>リスト6</li>
-</ol>
+<p><i class="fa fa-search"></i> <a href="http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html" rel="external nofollow">http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html</a></p>
+
+<h3>2. jsca2.js を使って Titanium Mobile の API doc を JavaScript 化する。</h3>
 
 
-<h2>リンク</h2>
+<p><i class="fa fa-search"></i> <a href="https://github.com/navinpeiris/jsca2js" rel="external nofollow">jsca2js: https://github.com/navinpeiris/jsca2js</a></p>
 
-<p>リンクには <em>a</em> タグを使います。外部リンク（それはBlog の外にでるとき）は、<em>rel</em> に <strong>external nofollow</strong> を付ける。</p>
-
-<p><a href="http://www.google.co.jp" rel="external nofollow">http://www.google.co.jp</a></a></p>
-
-<h2>整形済みテキスト・ソースコード</h2>
-
-<p>整形済みテキストには <em>pre</em> を使います。pre タグにはインライン要素しか含めることができないので、空行が入る場合には、スペースをひとつ含めるようにします。（これは Movable Type の改行を勝手に p タグにしてくれる機能を回避するため）</p>
-
-<pre><code>たとえば、こんな風に書く。
-
-改行を含めるときは、空行にスペースを忘れずに！
-</code></pre>
-
-<p><section></p>
-
-<h3>コンソールのように見せるには</h3>
-
-<p>整形済みテキストをコンソールのように見せる。</p>
+<p>git clone で落としてきて</p>
 
 <p><div class="terminal-window">
           <nav class="terminal-control-window">
@@ -108,74 +60,174 @@
             <a href="#" class="terminal-deactivate">deactivate</a>
           </nav>
           <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>sudo su -</span></code></pre></td></tr></table></div></div>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>./titanium-mobile.py 3.0.0</span></code></pre></td></tr></table></div></div>
         </div></p>
 
-<p></section></p>
+<p>のように、生成した API のバージョンを指定すればOK。</p>
 
-<p><section></p>
+<h4>Titanium 3.0.0 のコードをインストールする場合の注意</h4>
 
-<h3>ソースコードのように見せるには</h3>
 
-<pre><code class="java">/**
- * This is a style test code.
- *
- * @author hamasyou
- */
-public class HogeClass implements FooClass {
+<p>titanium-mobile.py の中でバージョン毎に参照先の URL を変えるようにしていますが、3.0.0 の API Doc 参照先が間違っています。</p>
 
-  public String getMessage(BarClass fooBar) {
-    return "テストメッセージ";
-  }
-}
+<p>なので、URL を修正してあげる必要があります。titanium-mobile.py を開き 23行目辺りにある URL を次のように書き換えます。</p>
+
+<pre><code class="python titanium-mobile.py">if version.startswith('2.'):
+  url = 'http://docs.appcelerator.com/titanium/data/' + version + '/api.json'
+else:
+  #url = 'http://developer.appcelerator.com/apidoc/mobile/' + version + '/api.json'
+  url = 'http://docs.appcelerator.com/titanium/data/' + version + '/api.json'
 </code></pre>
 
-<p></section></p>
+<h3>3. 生成された titanium-mobile-3.0.0.js を ~/.codeintel/extra にコピーする</h3>
 
-<h2>Table タグ</h2>
 
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">Left align </th>
-<th style="text-align:right;"> Right align </th>
-<th style="text-align:center;"> Center align</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">This       </td>
-<td style="text-align:right;">        This </td>
-<td style="text-align:center;">     This</td>
-</tr>
-<tr>
-<td style="text-align:left;">column     </td>
-<td style="text-align:right;">      column </td>
-<td style="text-align:center;">    column</td>
-</tr>
-<tr>
-<td style="text-align:left;">will       </td>
-<td style="text-align:right;">        will </td>
-<td style="text-align:center;">     will</td>
-</tr>
-<tr>
-<td style="text-align:left;">be         </td>
-<td style="text-align:right;">          be </td>
-<td style="text-align:center;">      be</td>
-</tr>
-<tr>
-<td style="text-align:left;">left       </td>
-<td style="text-align:right;">       right </td>
-<td style="text-align:center;">    center</td>
-</tr>
-<tr>
-<td style="text-align:left;">aligned    </td>
-<td style="text-align:right;">     aligned </td>
-<td style="text-align:center;">   aligned</td>
-</tr>
-</tbody>
-</table>
+<p>SublimeCodeIntel をインストールすると ~/.codeintel というフォルダが作られているはずです。</p>
 
+<p>追加の補完用コードをまとめるために、extra フォルダを作ってそこに生成された titanium-mobile-3.0.0.js をコピーします。</p>
+
+<h3>4. SublimeCodeIntel に extra フォルダのパスを通す</h3>
+
+
+<p>~/.codeintel/config を開いて次のコードを追記します。</p>
+
+<pre class="code"><code>{
+  "JavaScript": {
+    "javascriptExtraPaths": ["~/.codeintel/extra"]
+  }
+}</code></pre>
+
+
+<p>これで、 SublimeCodeIntel が JavaScript ファイルで Titanium Mobile のコード補完を行うようになります。</p>
+
+<h3>5. (オプション) CoffeeScript でもコード補完を効かせる</h3>
+
+
+<p>SublimeCodeIntel が CoffeeScript のコード補完に対応していないので CoffeeScript のシンタックスを JavaScript に設定してやります。</p>
+
+<p>Sublime Text2 の > Preferences > Package Settings > SublimeCodeIntel > Settings - User を開いて次の設定を追加します。</p>
+
+<pre class="code"><code>{
+  "codeintel_syntax_map":
+  {
+    "CoffeeScript": "JavaScript"
+  }
+}</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Titanium Alloy でつくったアプリをリリースしました]]></title>
+    <link href="http://hamasyou.com/blog/2013/01/22/titanium-alloy/"/>
+    <updated>2013-01-22T11:22:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/01/22/titanium-alloy</id>
+    <content type="html"><![CDATA[<p>Titanium Mobile プラットフォームの開発元である Appcelerator が公開している公式のフレームワーク <strong>Alloy</strong> を使って作ったアプリを公開しました。</p>
+
+<p>アプリ紹介ページは下になります。
+<a href="http://mountposition.co.jp/obento/" rel="external nofollow">Thankお弁当: http://mountposition.co.jp/obento/</a></p>
+
+<p><img alt="phones.png" src="http://hamasyou.com/images/phones.png" width="324" height="367" class="mt-image-none" style="" /></p>
+
+<p>Titanium Mobile は JavaScript を使ってスマホアプリを開発できるプラットフォームです。iPhone や Android 向けのアプリを手軽に開発することが出来ます。</p>
+
+<p>Alloy はそんな Titanium Mobile での開発に規約と規律を導入した MVC フレームワークになります。Ruby On Rails に似てる感じです。</p>
+
+<p>Alloy を使うといろいろいいことがありますが、それはまた別の記事で紹介します。</p>
+
+<p>以上、アプリの宣伝でした！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Rails] carrierwave と fog で Amazon S3 をストレージとして使う]]></title>
+    <link href="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"/>
+    <updated>2012-02-21T21:54:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3</id>
+    <content type="html"><![CDATA[<p>Rails のプラグイン <a href="https://github.com/jnicklas/carrierwave" rel="external nofollow">carrierwave</a> と fog を使って、<em>Amazon S3</em> をストレージとして使う方法のメモです。</p>
+
+<h3>使用環境</h3>
+
+
+
+
+<ul>
+<li>Rails 3.2.1</li>
+<li>carrierwave 0.6.0.beta</li>
+<li>fog 1.1.2</li>
+</ul>
+
+
+
+
+<h3>carrierwave のインストール</h3>
+
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>gem install carrierwave</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<h3>config の書き方</h3>
+
+
+<p>initializers に carrierwave.rb というファイルを作成し、以下のような設定を書きます。</p>
+
+<pre><code class="ruby initializers/carrierwave.rb">#-*- encoding: utf-8 -*-
+
+unless Rails.env.test?
+  CarrierWave.configure do |config|
+    config.cache_dir = "#{Rails.root}/tmp/uploads"
+    config.storage                          = :fog
+    config.fog_credentials                  = {
+        :provider              =&gt; 'AWS',
+        :aws_access_key_id     =&gt; ENV["AWS_S3_KEY_ID"],
+        :aws_secret_access_key =&gt; ENV["AWS_S3_SECRET_KEY"]
+    }
+    config.fog_directory                    = ENV["AWS_S3_BUCKET"]
+    config.fog_public                       = false
+    config.fog_authenticated_url_expiration = 60
+  end
+else
+  CarrierWave.configure do |config|
+    config.storage = :file
+  end
+end
+</code></pre>
+
+<p>ENV[&ldquo;AWS_S3_KEY_ID&rdquo;] にはユーザアクセスID、ENV[&ldquo;AWS_S3_SECRET_KEY&rdquo;] にはシークレットアクセスキー、ENV[&ldquo;AWS_S3_BUCKET&rdquo;] にはバケット名をそれぞれ設定する。</p>
+
+<p>各値は、Amazon S3 の設定画面で確認できる。</p>
+
+<p>この設定を行い、carrierwave で Uploader を作成して、ファイルをアップロードすると、S3 にファイルを置くことができる。また、S3 上のファイルの URL には、60秒のタイムアウト設定を掛けており、アプリからのアクセスでのみ参照可能なURLが表示されるようになる。（config.fog_public = false、config.fog_authenticated_url_expiration = 60 の設定）</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[『のほほんビレッジ〜みんなのカフェ〜』の御礼]]></title>
+    <link href="http://hamasyou.com/blog/2011/09/12/game/"/>
+    <updated>2011-09-12T20:16:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/09/12/game</id>
+    <content type="html"><![CDATA[<p>携帯向けの GREE ソーシャルアプリ『<strong>のほほんビレッジ〜みんなのカフェ〜</strong>』を遊んでくださっている皆様、本当にありがとうございます。</p>
+
+<p>のほほんビレッジは、<a href="http://www.ediva.jp/" rel="external nofollow">株式会社Ediva</a>さんと共同で製作したゲームです。</p>
+
+<p><a href="http://hamasyou.com/blog/archives/images/%E7%B4%B9%E4%BB%8B%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%86%E3%82%B9%E3%83%8805.jpg" rel="external nofollow"></a></p>
+
+<p><a href="http://gree.jp/community/3035925" rel="external nofollow">公式コミュニティ</a>の方にもあげられていますが、<em>皆様からの要望</em>はすべて目を通しています。</p>
+
+<p>要望の中から少しずつですがプログラムを実装して、今後も皆様にお届けしていきたいと思います。</p>
+
+<p>致命的なバグに関しては出来る限り早く、要望の実装は定期メンテナンスで導入という感じで運営していますので、末永くお付き合い下さい。</p>
+
+<p>今回の定期メンテナンスで導入されなかった機能も、次回のメンテナンスには導入されるかも！？というような楽しみ方もしていただけると。。。</p>
+
+<p><a href="http://mpf.gree.jp/2733" rel="external nofollow">のほほんビレッジ〜みんなのカフェ〜</a>（携帯用アプリトップ）</p>
 ]]></content>
   </entry>
   

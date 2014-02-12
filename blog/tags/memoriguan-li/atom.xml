@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: メモリ管理 | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/memoriguan-li/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[cocos2d] CCSpriteSheet や CCAnimation を使った時の CCSprite の後始末のしかた]]></title>
+    <link href="http://hamasyou.com/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/"/>
+    <updated>2010-10-27T22:58:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite</id>
+    <content type="html"><![CDATA[<p>cocos2d を使ったときの CCSprite の後始末のしかたのメモです。</p>
+
+<p>CCSpriteSheet から CCSprite を作ったときの破棄と CCAnimation が終わったタイミングでの CCSprite の破棄の方法をメモしています。</p>
+
+<!-- more -->
+
+
+
+
+<h2>CCSpriteSheet から作ったスプライトの後処理</h2>
+
+
+<p>CCSpriteSheet から CCSprite を作成する場合、次のように書きます。</p>
+
+<pre class="code"><span class="class">CCSpriteSheet</span> *sheet = [<span class="class">CCSpriteSheet</span> spriteSheetWithFile:<span class="literal">@&quot;missile.png&quot;</span>];
+[<span class="keyword">self</span> addChild:sheet];
+  
+<span class="class">CCSprite</span> *missile = [<span class="class">CCSprite</span> spriteWithSpriteSheet:sheet rect:CGRectMake(<span class="num">0</span>, <span class="num">0</span>, <span class="num">32</span>, <span class="num">32</span>)];
+[sheet addChild:missile];</pre>
+
+
+<p>このように、CCSpriteSheet から CCSprite を作成した場合、CCLayer（self） にはスプライトシートのオブジェクトを追加して、スプライトはスプライトシートに追加する形で記述します。</p>
+
+<p>こうすると、スプライトが必要なくなってスプライトを破棄したくなった場合に、スプライトシートから取り除く必要があります。</p>
+
+<p>この時 スプライトシートの removeChild:cleanup: メソッドでは上手くいきません。</p>
+
+<p>それではどうするかというと、スプライトの方の <strong>removeFromParentAndCleanup:</strong> メソッドを使います。</p>
+
+<pre class="code">[sprite removeFromParentAndCleanup:<span class="keyword">YES</span>];</pre>
+
+
+
+
+<h2>CCAction や CCAnimation が終わったタイミングでのスプライトの後処理</h2>
+
+
+<p>スプライトにアクションやアニメーションを付ける場合は、CCAction や CCAnimation を使います。</p>
+
+<p>そして、アクションやアニメーションが終了したタイミングでスプライトを削除したい場合には、アクションの最後で <strong>CCCallFuncND</strong> を使って <em>removeFromParentAndCleanup:</em> メソッドを呼び出すようにします。（19行目）</p>
+
+<p>次に例を載せておきます。この例は、ミサイルが爆発したときの爆発をアニメーションで表したものです。CCAnimation を使うので、burst.plist を別途記述して、アニメーションの定義をしています。コード例のあとに載せてあるのがそうです。</p>
+
+<p>また、burst.png は 8×8 の爆発を表現する画像が9つ並んだものになっています。</p>
+
+<h4>burst.m</h4>
+
+
+
+
+<pre class="code"><span class="rem">// アニメーションの定義（個別のスプライトの定義）をスプライトキャッシュに登録して、後で呼び出せるようにする</span>
+[[<span class="class">CCSpriteFrameCache</span> sharedSpriteFrameCache] addSpriteFramesWithFile:<span class="literal">@&quot;burst.plist&quot;</span>];
+ 
+<span class="rem">// アニメーション定義と対応するスプライトの画像を読み込む</span> 
+<span class="class">CCSpriteSheet</span> *sheet = [<span class="class">CCSpriteSheet</span> spriteSheetWithFile:<span class="literal">@&quot;burst.png&quot;</span>];
+[<span class="keyword">self</span> addChild:sheet];
+ 
+<span class="rem">// アニメーションの最初のスプライトを読み込む</span>  
+<span class="class">CCSprite</span> *sprite = [<span class="class">CCSprite</span> spriteWithSpriteFrameName:<span class="literal">@&quot;burst01&quot;</span>];
+sprite.position = <span class="keyword">ccp</span>(<span class="literal">160</span>, <span class="literal">240</span>);
+[sheet addChild:sprite];
+ 
+<span class="rem">// アニメーションのコマに対応するスプライトをフレームとして作成する</span>  
+<span class="class">NSMutableArray</span> *animFrames = [<span class="class">NSMutableArray</span> array];
+<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="literal">2</span>; i &lt;= <span class="literal">9</span>; i++) {
+  <span class="class">CCSpriteFrame</span> *frame = [[<span class="class">CCSpriteFrameCache</span> sharedSpriteFrameCache] spriteFrameByName:[<span class="class">NSString</span> stringWithFormat:<span class="literal">@&quot;burst%02d&quot;</span>, i]];
+  [animFrames addObject:frame];
+}
+ 
+<span class="rem">// アニメーションフレームをアニメーションにしてスプライトと紐付ける</span>
+<span class="rem">// アニメーションの最後に removeFromParentAndCleanup: を呼び出してスプライトを破棄する</span>
+<span class="class">CCAnimation</span> *animation = [<span class="class">CCAnimation</span> animationWithName:<span class="literal">@&quot;burst&quot;</span> delay:<span class="literal">0.2f</span> frames:animFrames];
+[sprite runAction:[<span class="class">CCSequence</span> actions:
+                   [<span class="class">CCAnimate</span> actionWithAnimation:animation restoreOriginalFrame:NO],
+                   <em>[<span class="class">CCCallFuncND</span> actionWithTarget:sprite selector:<span class="keyword">@selector</span>(removeFromParentAndCleanup:) data:(<span class="keyword">void</span> *)<span class="keyword">YES</span>]</em>,
+                   <span class="keyword">nil</span>]];</pre>
+
+
+
+
+<h4>burst.png</h4>
+
+
+<p><img alt="missile.png" src="http://hamasyou.com/images/missile.png" width="64" height="8" class="mt-image-none" style="" /></p>
+
+<h4>burst.plist</h4>
+
+
+
+
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;dict&gt;
+  &lt;key&gt;texture&lt;/key&gt;
+  &lt;dict&gt;
+    &lt;key&gt;width&lt;/key&gt;
+    &lt;integer&gt;72&lt;/integer&gt;
+    &lt;key&gt;height&lt;/key&gt;
+    &lt;integer&gt;8&lt;/integer&gt;
+  &lt;/dict&gt;
+  &lt;key&gt;frames&lt;/key&gt;
+  &lt;dict&gt;
+    &lt;key&gt;burst01&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst02&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst03&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;16&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst04&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;24&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst05&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;32&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst06&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;40&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst07&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;48&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst08&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;56&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst09&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;64&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+  &lt;/dict&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;</pre>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[iPhone] UIViewController の dealloc と viewDidUnload]]></title>
+    <link href="http://hamasyou.com/blog/2010/10/18/objective-c-viewdidunload-dealloc/"/>
+    <updated>2010-10-18T17:52:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/10/18/objective-c-viewdidunload-dealloc</id>
+    <content type="html"><![CDATA[<p>UIViewController でメモリの確保と破棄を行う際に viewDidUnload と dealloc をどのように使い分けたらよいか間違って覚えている人が多いように思います。</p>
+
+<p>Web上にあるサンプルや書籍でさえも間違っているものが多くあります。</p>
+
+<p>本記事では、UIViewController の viewDidUnload と dealloc の使い分けを整理していこうと思います。</p>
+
+<!-- more -->
+
+
+
+
+<h2>UIViewController のメモリ管理まとめ</h2>
+
+
+
+
+<h3>メモリの確保と破棄</h3>
+
+
+<p>UIViewController 内で確保したメモリの破棄場所は、結構ややこしいです。とくに <em>viewDidUnload</em> と <em>dealloc</em> の違いは抑えておく必要があります。</p>
+
+<p>NSObject のメモリ管理の定石である <strong>init で確保したメモリは dealloc で破棄する</strong>ことは間違えないのですが UIViewController では viewDidload で確保したメモリを viewDidUnload で破棄して dealloc で破棄しない例がよくあるので間違えないようにしなければなりません。</p>
+
+<p class="option"><strong>viewDidload で確保したメモリは dealloc でも破棄しなければならない</strong></p>
+
+
+<p>viewDidload と viewDidUnload は名前が似ているため対のメソッドのように思いがちですが<em>そうではありません</em>。</p>
+
+<h3>viewDidUnload</h3>
+
+
+<p>viewDidUnload はメモリ不足警告をアプリが受け取った場合に didReceiveMemoryWarning メソッドから呼び出されるものです。</p>
+
+<p>メモリ不足警告が起こらない場合には viewDidUnload は呼び出されません。なので、viewDidload で確保したメモリの破棄処理を viewDidUnload のみに記述し dealloc に記述しないと、メモリ不足警告がでない場合にメモリの破棄がされません。</p>
+
+<h3>メモリの確保と破棄の正確な例</h3>
+
+
+<p>UIViewController でのメモリ確保と破棄の定石は次のようになります。</p>
+
+<ul>
+<li>init で確保したメモリは dealloc で破棄する</li>
+<li>viewDidload で確保したメモリは viewDidUnload と dealloc で破棄する</li>
+</ul>
+
+
+<p>なお、init と viewDidload の使い分けは次のような感じで行えばよいとおもいます。</p>
+
+<dl>
+<dt>init</dt>
+<dd><p>インスタンス変数の初期化処理</p></dd>
+<dt>viewDidload</dt>
+<dd><p>ビューが作成された際に行う処理。動的に画面部品を作成したり、サービス（現在位置の取得等）を実行したりする</p></dd>
+</dl>
+
+
+
+
+<h3>サンプルコード</h3>
+
+
+<p>インスタンス変数 myData<em> 、locationManager</em> をそれぞれ init と viewDidload で初期化します。</p>
+
+<p>locationManager_ は viewDidUnload と dealloc でそれぞれ初期化し、viewDidUnload の方では release 後に nil を設定しています。</p>
+
+<p>これは、nil を設定せずに他の場所で呼び出されるとメモリアクセスエラーが発生するためです。</p>
+
+<p>Objective-C は nil に対しての呼出は何も起こらないことになっているので、viewDidUnload で nil を設定しておくことで dealloc で再度 release しても問題がでないようにしています。</p>
+
+<pre class="code"><span class="rem">//</span>
+<span class="rem">//  SampleViewController.m</span>
+<span class="rem">//  SampleApp</span>
+<span class="rem">//</span>
+<span class="rem">//  Created by 濱田 章吾 on 10/10/18.</span>
+<span class="rem">//  Copyright 2010 hamasyou. All rights reserved.</span>
+<span class="rem">//</span>
+ 
+<span class="keyword">#import</span> <span class="str">&quot;SampleViewController.h&quot;</span>
+ 
+<span class="keyword">@implementation</span> SampleViewController
+ 
+<span class="keyword">@synthesize</span> myData = myData_;
+<span class="keyword">@synthesize</span> locationManager = locationManager_;
+ 
+<span class="rem">// Interface Builder で作成する UIViewController の指定イニシャライザ</span>
+- (<span class="keyword">id</span>)initWithCoder:(<span class="class">NSCoder</span> *)aDecoder {
+  <span class="keyword">if</span> ( (<span class="keyword">self</span> = [<span class="keyword">super</span> initWithCoder: aDecoder]) ) {
+    myData_ = [[<span class="class">NSMutableArray</span> alloc] init];
+  }
+  <span class="keyword">return</span> <span class="keyword">self</span>;
+}
+ 
+- (<span class="keyword">void</span>)viewDidLoad {
+  [<span class="keyword">super</span> viewDidLoad];
+  
+  <span class="keyword">if</span> (!locationManager_) {
+    locationManager_ = [[<span class="class">CLLocationManager</span> alloc] init];
+  }
+  locationManager_.delegate = <span class="keyword">self</span>;
+  locationManager_.desiredAccuracy = kCLLocationAccuracyBest;
+  locationManager_.distanceFilter = <span class="num">100</span>;
+  [locationManager_ startUpdatingLocation];
+}
+ 
+- (<span class="keyword">void</span>)viewDidUnload {
+  [locationManager_ release];
+  locationManager_ = <span class="keyword">nil</span>;
+  
+  [<span class="keyword">super</span> viewDidUnload];
+}
+ 
+- (<span class="keyword">void</span>)dealloc {
+  [myData_ release];
+  [locationManager_ release];
+ 
+  [<span class="keyword">super</span> dealloc];
+}
+ 
+<span class="keyword">@end</span></pre>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Objective-C] retain と release の関係について]]></title>
+    <link href="http://hamasyou.com/blog/2010/10/12/objective-c-retain-release/"/>
+    <updated>2010-10-12T08:13:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/10/12/objective-c-retain-release</id>
+    <content type="html"><![CDATA[<p>Objective-C ではガーベージコレクション機能が用意されていますが、iPhone アプリ開発などではメモリ管理をガーベージコレクションに任せずに自分で管理する必要があったりします。</p>
+
+<p>メモリ管理のルールとして、自分でメモリを割り当てたものは自分で開放する、自分で retain をしたものは 自分で release するなど、いくつかルールがあるのでそのメモです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>retain と release についてのメモ</h2>
+
+
+
+
+<h3>init〜 で始まるメソッドで確保したオブジェクトは release する必要がある</h3>
+
+
+<p>Objective-C のオブジェクト初期化メソッドのルールに、<em>init〜</em> で始まるメソッドで確保したオブジェクトは自身で解放する必要がある、というものがあります。</p>
+
+<p>例えば次の例のような場合は、自分で責任をもって <em>release</em> する必要があります。</p>
+
+<pre class="code"><span class="class">NSMutableArray</span> *array = [[<span class="class">NSMutableArray</span> alloc] initWithObjects:<span class="literal">@"hoge"</span>, <span class="literal">@"foo"</span>, <span class="keyword">nil</span>];
+ 
+[array release];</pre>
+
+
+<p>init〜 で始まらないメソッドで確保したオブジェクトは自身で解放してはいけません。</p>
+
+<pre class="code"><span class="class">NSMutableArray</span> *array = [<span class="class">NSMutableArray</span> arrayWithObjects:<span class="literal">@"hoge"</span>, <span class="literal">@"foo"</span>, <span class="keyword">nil</span>];</pre>
+
+
+
+
+<h3>メソッド内でのみ使用するローカル変数を init〜 で確保した場合は autorelease をつける</h3>
+
+
+<p>テクニックの一つとして、メソッド内でのみ使用するローカル変数を init〜 メソッドで初期化した場合は autorelease を付けて release し忘れを防ぐようにします。</p>
+
+<p><section></p>
+
+<h4>Google Objective-Cスタイルガイド 日本語訳</h4>
+
+
+<p>参考: <a href="http://www.textdrop.net/google-styleguide-ja/objcguide.xml" rel="external nofollow">Google Objective-Cスタイルガイド 日本語訳</a></p>
+
+<p></section></p>
+
+<pre class="code">- (<span class="keyword">void</span>)doSomething
+{
+  <span class="class">NSArray</span> *array = [[[<span class="class">NSArray</span> alloc] initWithObjects:<span class="literal">@"hoge"</span>, <span class="literal">@"foo"</span>, <span class="keyword">nil</span>] <span class="keyword">autorelease</span>];
+  <span class="comment">// なにかの処理</span>
+}</pre>
+
+
+
+
+<h3>メンバ変数を使用してオブジェクトを保持する場合のルール</h3>
+
+
+<p>次のいずれかの方法でメンバ変数でオブジェクトを保持する場合は dealloc メソッドで release を行う必要があります。</p>
+
+<ol><li>メンバ変数に init〜 で始まるメソッドで初期化したオブジェクトを割り当てている場合</li>
+<li>メンバ変数に明示的に retain して保持することを示したオブジェクトを割り当てた場合</li>
+<li>プロパティに retain 属性または copy 属性が付いていて、プロパティでオブジェクトを割り当てた場合</li></ol>
+
+
+<p><section></p>
+
+<h4>MyClass.h</h4>
+
+
+
+
+<pre class="code"><span class="keyword">@interface</span> MyClass : <span class="class">NSObject</span> {
+  <span class="keyword">@private</span>
+  <span class="class">NSMutableArray</span> *array_;
+  <span class="class">NSString</span> *message_;
+}
+ 
+<span class="keyword">@property</span>(<span class="keyword">retain</span>) <span class="class">NSMutableArray</span> *array;
+<span class="keyword">@property</span>(<span class="keyword">copy</span>) <span class="class">NSString</span> *message;
+<span class="keyword">@end</span></pre>
+
+
+
+
+<h4>MyClass.m</h4>
+
+
+
+
+<pre class="code"><span class="keyword">#import</span> <span class="literal">&quot;MyClass.h&quot;</span>
+<span class="keyword">@implementation</span> MyClass
+<span class="keyword">@synthesize</span> array = array_;
+<span class="keyword">@synthesize</span> message = message_;
+ 
+- (<span class="keyword">id</span>)init
+{ 
+  <span class="keyword">if</span> ( (<span class="keyword">self</span> = [<span class="keyword">super</span> init]) ) {
+  
+    <span class="comment">// 1) メンバ変数に init〜 で設定したオブジェクトを割り当てる場合は dealloc で release する</span>
+    array_ = [[<span class="class">NSMutableArray</span> alloc] initWithObjects:<span class="literal">@"hoge"</span>, <span class="literal">@"foo"</span>, <span class="keyword">nil</span>];
+  
+    <span class="comment">// 2) メンバ変数に明示的に retain してオブジェクトを保持することをマークした場合は dealloc で release する</span>
+    message_ = [[array_ objectAtIndex:<span class="literal">0</span>] retain];
+  
+    <span class="comment">// 3.1) メンバ変数にプロパティでオブジェクトを割り当てた場合は dealloc で release する</span>
+    <span class="keyword">self</span>.array = [<span class="class">NSMutableArray</span> arrayWithObjects:<span class="literal">@"hoge"</span>, <span class="literal">@"foo"</span>, <span class="keyword">nil</span>];
+    
+    <span class="comment">// 3.2) init〜 で始まるメソッドでオブジェクトを割り当てる場合はプロパティ形式で直接受け取ってはいけない。二重の参照カウントになってしまう。</span>
+    <span class="comment">//      init〜 で確保したオブジェクトをメンバ変数に割り当てる場合は直接割り当てるか次のようにする</span>
+    <span class="class">NSMutableArray</span> *tmp = [[<span class="class">NSMutableArray</span> alloc] initWithObjects:<span class="literal">@"hoge"</span>, <span class="literal">@"foo"</span>, <span class="keyword">nil</span>];
+    <span class="keyword">self</span>.array = tmp;
+    [tmp release];
+  }
+  <span class="keyword">return</span> <span class="keyword">self</span>;
+}
+ 
+- (<span class="keyword">void</span>)dealloc
+{
+  <span class="comment">// 適切な release </span>
+  <span class="keyword">self</span>.array = <span class="keyword">nil</span>;
+  <span class="keyword">self</span>.message = <span class="keyword">nil</span>;
+  [<span class="keyword">super</span> dealloc];
+}</pre>
+
+
+<p></section></p>
+
+<p>プラクティスとして、init〜 メソッドの内部ではプロパティ形式（3.1みたなやつ）でメンバ変数を初期化するのは避けるほうがよいです。</p>
+]]></content>
+  </entry>
+  
+</feed>

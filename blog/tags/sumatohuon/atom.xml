@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: スマートフォン | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/sumatohuon/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)]]></title>
+    <link href="http://hamasyou.com/blog/2011/06/18/4798123986/"/>
+    <updated>2011-06-18T10:01:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/06/18/4798123986</id>
+    <content type="html"><![CDATA[<p>本書は、スマートフォンアプリ開発に使う開発ツールを探している人、<strong>Titanium Mobile</strong> という名前を聞いたことがあるけど実際にどういうものかを知りたい人、Titanium Mobile を使って開発を始めたけどこういう書き方で合っているのか不安な人向けの、概要書兼リファレンスブック的な位置づけにあたります。</p>
+
+<p><section></p>
+
+<h4>Titanium Mobile</h4>
+
+
+<p><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow">Titanium Mobile - Appcelerator</a></p>
+
+<p></section></p>
+
+<p>Titanium Mobile を開発、提供している Appcelerator が用意してくれている Web 上のドキュメントは、Titanium Mobile を始めたばかりの人には分かりづらく、「こういうことがしたいんだけどどう書けばいいの？」という時には使いづらいのです。</p>
+
+<p>本書は、そんな Titanium Mobile のドキュメントの弱さを補い、Titanium Mobile とはどういうふうに動作しているのか、こういうことをするときはどう書けばいいのかを学ぶのに最適な本です。</p>
+
+<p>iPhone、Android 向けスマートフォンアプリとはいえ、プラットフォーム SDK が備える機能はとても豊富です。これらの SDK を JavaScript から扱えてしまう Titanium Mobile をよくここまでまとめたなぁという印象の良書です。</p>
+
+<div class="option"><p>スマートフォン開発は、Windows や Mac などの GUI アプリケーションと同様、イベントドリブンモデルの開発になります。そのため、GUI アプリ開発の経験がない人には Titanium Mobile を使って JavaScript で開発を行うと、どうしても戸惑うことが出てくると思います。</p>
+
+<p>本書をとりあえず読んでみて、<em>Titanium Mobile 上で JavaScript で GUI 開発（スマートフォンアプリ開発）ってこういうふうにするんだ</em>というのを体感してもらい、リファレンスとしてのお供にされるといいと思います。</p></div>
+
+
+<p>本書の対象者は、<em>Titanium Mobile を使って開発を始めたい人、実際に開発を始めたがまとまった情報がほしい人</em>です。Titanium Mobile を使ってとにかく何か作ってみたいひとは、本書内のサンプルを写経してみるといいと思います。</p>
+
+<p>Titanium Mobile を使って開発をしてみたものの、不安が残っている人に最適な一冊です。</p>
+
+<!-- more -->
+
+
+
+
+<h2>本書の目次</h2>
+
+
+
+
+<ol>
+<li>Appcelerator Titanium Mobile について
+  <ol>
+  <li>Appcelerator 社と Titanium シリーズ</li>
+  <li>Titanium Mobile について
+    <ol class="fontSmall">
+    <li>Titanium Mobile が提供する機能</li>
+    <li>Titanium Mobile の動作原理</li>
+    <li>オープンソース開発されている Titanium Mobile </li>
+    <li>日本で注目を集める Titanium Mobile</li>
+    <li>今後のロードマップ</li>
+    </ol>
+  </li>
+  <li>価格体系／ライセンス</li>
+  <li>Titanium Mobile を利用するのに必要な環境
+    <ol class="fontSmall">
+      <li>iOS には Mac OS X 環境が必要</li>
+      <li>Android 開発について</li>
+    </ol>      
+   </li>
+   <li>ネイティブアプリケーション開発で代替手段を選択するリスク</li>
+   </ol>
+</li>
+<li>開発環境導入とアプリケーションの第一歩
+  <ol>
+  <li>iOS 用開発環境の構築
+    <ol class="fontSmall">
+      <li>iOS SDK と Xcode</li>
+      <li>IOS Developer Program の登録</li>
+    </ol>
+  </li>
+  <li>Android 用開発環境の構築
+    <ol class="fontSmall">
+      <li>JDK の確認と Android SDK の入手</li>
+      <li>Mac OS への導入</li>
+      <li>Windows7 へのインストール</li>
+    </ol>
+  </li>
+  <li>Titanium Developer のインストール
+    <ol class="fontSmall">
+      <li>Mac OS X の場合</li>
+      <li>Windows7 の場合</li>
+      <li>Titanium Developer の起動とサインアップ</li>
+    </ol>
+  </li>
+  <li>Titanium Developer の画面解説
+    <ol class="fontSmall">
+      <li>パースペクティブ</li>
+      <li>最新版 SDK のアップデート</li>
+    </ol>
+  </li>
+  <li>Hello World プロジェクトの作成
+    <ol class="fontSmall">
+      <li>プロジェクトの新規作成</li>
+      <li>iPhone(iPod touch)の場合</li>
+      <li>Andorid の場合</li>
+      <li>iPad の場合</li>
+    </ol>
+  </li>
+  <li>Hello World プロジェクトを実機で動かす
+    <ol class="fontSmall">
+      <li>iOS(iPhone/iPad/iPod touch)の場合</li>
+      <li>Android の場合</li>
+    </ol>
+  </li>
+  <li>プロジェクトの中を探索する
+    <ol class="fontSmall">
+      <li>プロジェクトのフォルダ構成</li>
+      <li>app.js の解説</li>
+      <li>プラットフォームによる UI の違い</li>
+    </ol>
+  </li>
+  <li>ネイティブ UI の部品紹介と KitchenSink
+    <ol class="fontSmall">
+      <li>ネイティブ UI の部品カタログ</li>
+      <li>KitchenSink とは何か？</li>
+    </ol>
+  </li>
+  <li>Hello World の中身をいじってみる
+    <ol class="fontSmall">
+      <li>win1 に機能を追加する</li>
+      <li>win2 に機能を追加する</li>
+      <li>Tab を使わない画面デザイン</li>
+      <li>WebView を用いた HTML5 アプリケーション</li>
+    </ol>
+  </li>
+  <li>アプリケーションアイコン／スプラッシュスクリーンを変更
+    <ol class="fontSmall">
+      <li>アプリケーションアイコン</li>
+      <li>スプラッシュスクリーン（起動時画像）</li>
+    </ol>
+  </li>
+  <li>アプリケーションの設定と拡張
+    <ol class="fontSmall">
+      <li>tiapp.xml</li>
+      <li>iOS プラットフォームに依存したビルド</li>
+      <li>Android プラットフォームに依存したビルド</li>
+    </ol>
+  </li>
+  </ol>
+</li>
+<li>実践！ Twitter クライアントアプリ開発
+  <ol>
+  <li>TiTweets の目標</li>
+  <li>プロジェクト作成</li>
+  <li>タイムラインの表示
+    <ol class="fontSmall">
+      <li>HTTP クライアントとネットワークの状態の取得</li>
+      <li>ログ出力メソッド</li>
+      <li>TableView への表示</li>
+      <li>TableViewRow の使用</li>
+    </ol>
+  </li>
+  <li>app.js からスクリプトファイルの分割
+    <ol class="fontSmall">
+      <li>Titanium.include によるファイル分割</li>
+      <li>Titanium.UI.createWindow の url 指定での分割</li>
+      <li>ファイル分割と実行コンテキスト</li>
+      <li>コンテキスト間の値の受け渡し</li>
+      <li>アプリケーションプロパティを用いて実行コンテキストの違いを回避する</li>
+    </ol>
+  </li>
+  <li>プラットフォームごとの再読込 UI の実装
+    <ol class="fontSmall">
+      <li>iPhoen の場合：ナビゲーションボタンを利用する</li>
+      <li>Android の場合：メニューを利用する</li>
+      <li>プラットフォームの違いを吸収する</li>
+      <li>再読込処理を実装する</li>
+    </ol>
+  </li>
+  <li>検索結果の表示を行う
+    <ol class="fontSmall">
+      <li>固定したハッシュタグの検索</li>
+      <li>任意の検索文字列に基づく検索</li>
+      <li>前回検索値の保存</li>
+    </ol>
+  </li>
+  <li>共通ソースのオブジェクト化
+    <ol class="fontSmall">
+      <li>オブジェクトのひな形</li>
+      <li>titwitter.js を実装する</li>
+      <li>アプリケーション連携（OpenURL とインテント）</li>
+    </ol>
+  </li>
+  <li>国際化対応（i18N）
+    <ol class="fontSmall">
+      <li>メッセージ定義ファイルの準備</li>
+      <li>メッセージ定義ファイルの使用</li>
+      <li>メッセージ中の文字列置き換え</li>
+    </ol>
+  </li>
+  <li>もうすこし機能拡張
+    <ol class="fontSmall">
+      <li>タブの整理</li>
+      <li>Tweet の単独表示</li>
+      <li>Read it Later 連携</li>
+    </ol>
+  </li>
+  <li>AppStore / Android Market への公開
+    <ol class="fontSmall">
+      <li>iOS の場合（Ad Hoc 配布／App Store 公開）</li>
+      <li>Android Market への公開</li>
+    </ol>
+  </li>
+  </ol>
+</li>
+<li>ライブラリやデバイスの活用 <span class="fontSmall">〜続・Twitter クライアントアプリ開発〜</span>
+  <ol>
+  <li>TinyTweet の目標</li>
+  <li>OAuth 認証の設定をする
+    <ol class="fontSmall">
+      <li>アプリケーションを登録する</li>
+      <li>OAuth 認証の動作検証を行う</li>
+      <li>ホームタイムラインを取得する</li>
+    </ol>
+  </li>
+  <li>Tweet を Post する
+    <ol class="fontSmall">
+      <li>TextArea を配置する</li>
+      <li>キーボードツールバー（iOS のみ）</li>
+      <li>返信機能などに対応する</li>
+    </ol>
+  </li>
+  <li>カメラ撮影／フォトギャラリーの活用
+    <ol class="fontSmall">
+      <li>カメラ撮影の呼び出し</li>
+      <li>撮影済みの写真データの取得</li>
+      <li>TwitPic へのアップロード</li>
+      <li>画像ファイルのリサイズ（iOS のみ）</li>
+      <li>Andriod の場所のキーボードツールバー実現方法</li>
+    </ol>
+  </li>
+  <li>アプリケーションの完成
+    <ol class="fontSmall">
+      <li>カメラ処理部分をソース分割する（require の活用）</li>
+      <li>設定画面を作成する</li>
+    </ol>
+  </li>
+  </ol>
+</li>
+<li>GPS 活用アプリケーション「食べナビ」
+  <ol>
+  <li>「食べナビ」における目標</li>
+  <li>食べログ API に基づきデータを表示する
+    <ol class="fontSmall">
+      <li>API の動作検証</li>
+      <li>テスト用モックデータ取得処理</li>
+      <li>「もっと読む」機能</li>
+      <li>店舗情報の出力</li>
+    </ol>
+  </li>
+  <li>位置情報に基づいて地図を表示する
+    <ol class="fontSmall">
+      <li>地図表示部品 MapView の利用</li>
+      <li>tiapps.xml への設定（Android のみ）</li>
+      <li>latitudeDelta と longitudeDelta</li>
+      <li>Annotation（マーカー／ピンの表示）</li>
+    </ol>
+  </li>
+  <li>GPS で現在地の位置情報を取得する
+    <ol class="fontSmall">
+      <li>位置情報を取得する GPS 関連 API の利用</li>
+      <li>軽遺族的な位置情報の取得</li>
+    </ol>
+  </li>
+  <li>カバーフローによる写真一覧表示（iOSのみ）
+    <ol class="fontSmall">
+      <li>CoverFlowView</li>
+      <li>問い合せ結果との組み合わせ</li>
+    </ol>
+  </li>
+  <li>取得したデータをデータベースに保存する
+    <ol class="fontSmall">
+      <li>テーブルレイアウトと検証</li>
+      <li>データの追加と更新</li>
+      <li>お気に入りの表示</li>
+      <li>データの削除</li>
+    </ol>
+  </li>
+  </ol>
+</li>
+<li>Titanium Mobile API 簡易リファレンス
+  <ol>
+  <li>簡易リファレンスの読み方</li>
+  <li>Window と View</li>
+  <li>コントロール</li>
+  <li>デバイス</li>
+  <li>プラットフォーム</li>
+  <li>通信</li>
+  <li>その他</li>
+  </ol>
+</li>
+<li>Appendix
+  <ol style="list-style-type: none;margin-left: 0">
+  <li>付録1  モダンな JavaScript コーディングの第一歩</li>
+  <li>付録2  自動レイアウトと JSS 機能</li>
+  <li>付録3  2DMatrix アニメーション</li>
+  <li>付録4  Xib2js による UI 作成</li>
+  <li>付録5  開発版ビルド（Continuous Build）を活用する</li>
+  <li>付録6  モジュールを使う</li>
+  <li>付録7  Titanium Studio</li>
+  <li>付録8  Titanium Mobile 困ったときの情報源</li>
+  </ol>
+</li>
+</ol>
+
+
+
+
+<h2>覚書</h2>
+
+
+
+
+<h3>Titanium Mobile の動作原理</h3>
+
+
+<p>Titanium Mobile は JavaScript でソースコードを記述しますが、動作時には<em>Titanium Mobile の JS インタプリタ上で解釈されて動作します。</em></p>
+
+<p>よく、JavaScript のコードがコンパイルされてネイティブコードに変換されているという誤解をしそうになりますが、そうではありません。</p>
+
+<p>なので、ゲームなどのアニメーションをゴリゴリするようなアプリには、Titanium Mobile の利用は考えたほうが良いです。</p>
+
+<p>Titanium Mobile が向いている分野としては</p>
+
+<ul><li>Web上のサービスをクライアントから利用するアプリ</li>
+<li>ちょっとしたユーティリティアプリ</li></ul>
+
+
+<p>だと思います。（<a href="http://mogsnap.jp/" rel="external nofollow">MogSnap</a> のようなここまで Titanium で出来るのか！？っていうものもありますが）</p>
+
+<h3>Appcelerator 社提供のアイコンリソース</h3>
+
+
+<p>自分でアプリをつくろうと思ったときに「アイコン画像とか、俺つくれねーーー！！」ってなることがあります。。そんなときに利用出来るのがこれ！</p>
+
+<p>Appcelerator から提供されているアイコンのリソースです。是非ご利用ください。</p>
+
+<p><a href="http://developer.appcelerator.com/blog/2010/12/festivus-celebration-day-two-airing-of-grievances.html" rel="external nofollow">Festivus Celebration Day Two - Airing of Grievances - Appcelerator Developer Blog</a></p>
+
+<h3>実行コンテキスト</h3>
+
+
+<p>Titanium Mobilde で開発する際、Window ごとの処理を別々のソースコードに切り出すことができます。</p>
+
+<p>このとき、実行コンテキストが分かれます。簡単に言うと、変数のスコープが分かれるというものです。</p>
+
+<p><a href="http://developer.appcelerator.com/blog/2010/08/execution-contexts.html" rel="external nofollow">Understanding Execution Contexts - Appcelerator Developer Blog</a></p>
+
+<h2>本書に書いていないこと</h2>
+
+
+
+
+<h3>モジュールの開発</h3>
+
+
+<p>Titanium Mobile は、プラットフォーム SDK のネイティブ機能へのラッパーを数多く提供してくれているので、ほとんどのことが Titanium Mobile のコンポーネントの組み合わせだけで行えます。</p>
+
+<p>ただ、たまに、もうちょっとこの部分がこうなっていればいいのに！という、コンポーネントを拡張したい場合があります。</p>
+
+<p>Titanium Mobile にはモジュールという形で、SDK を使って直接ネイティブコードを書いて、それを JavaScript から呼び出すということができます。</p>
+
+<p>モジュールのインターフェースは、Titanium Mobile 上の呼び出し規約に沿った形で作成する必要があります。</p>
+
+<p>モジュールの詳しい作り方は、公式のドキュメントを読むのが手っ取り早いと思います。そんなに難しい英語ではないのですんなり理解できるかと思います。</p>
+
+<p><a href="http://developer.appcelerator.com/doc/mobile/guides" rel="external nofollow">Titanium Mobile Programming Guides - Appcelerator</a></p>
+
+<h3>テスト</h3>
+
+
+<p>Titanium Mobile での開発は JavaScript で記述したアプリケーションコードが Titanium のインタプリタ上で動くというアーキテクチャになっているため、GUI の実際の動作を確認するのは実機かエミュレータ（シミュレータ）を使う必要があります。</p>
+
+<p>ただ、毎回実行してコードが意図したとおりに動いているかを確認するのは時間がかかります。</p>
+
+<p>そういうことで、実装時には GUI の動作とロジックの部分をできるだけ分けて実装しておいて、下に挙げるようなテストフレームワークを使うよいと思います。</p>
+
+<h4>テストフレームワーク</h4>
+
+
+
+
+<dl><dt>drillbit</dt>
+<dd><a href="http://d.hatena.ne.jp/Ehren/20110329/1301417692" rel="external nofollow">Titanium mobile で drillbit動いた - Ehrenの日記</a></dd>
+<dt>QUnit</dt>
+<dd><a href="http://higelog.brassworks.jp/?p=692" rel="external nofollow">Titaniumでユニットテスト - ひげろぐ</a></dd></dl>
+
+
+
+
+<h3>同期処理のための Deferred</h3>
+
+
+<p>JavaScript はシングルスレッドアーキテクチャなので、割り込みをコールバックという形で実装しています。</p>
+
+<p>スマートフォンアプリのようなイベントドリブンモデルのプラットフォームでは、ユーザの反応をイベントとして発火し、リスナがそのイベントを処理するというモデルで実装していきます。</p>
+
+<p>つまり、JavaScript で実装すると、イベントリスナをコールバック関数として実装して、イベントハンドラ（GUIコンポーネント）に登録しておくという書き方になります。</p>
+
+<pre><code class="javascript">var button = Titanium.UI.createButton({...});
+button.addEventListener(function(e) {
+  // 処理
+});
+</code></pre>
+
+<p>Titanium Mobile で開発をしているとコールバックを多用するため、処理が非同期に進んでしまって、何かのイベントの結果で処理を分岐するという事をしたいときに悩むことがあります。</p>
+
+<p>そんなときは、Deferred を使って非同期処理の待ち合わせを行うとよいです。</p>
+
+<p><a href="http://hamasyou.com/blog/archives/000398" rel="external nofollow">[Titanium] JSDeferred を使って現在位置の取得を順次処理する - それはBlog</a></p>
+
+<h2>追記</h2>
+
+
+
+
+<h3>Titanium Mobile 1.7ならびにTitanium Studio 1.0対応について</h3>
+
+
+<p>Titanium Mobile1.7、Titanium Studio1.0 がリリースされたことで、本書の2章の内容が現実と合わなくなっています。</p>
+
+<p>著者の方がフォローしてくれていますので、活用してみてください。</p>
+
+<p><a href="http://code.google.com/p/titanium-mobile-doc-ja/downloads/detail?name=TMINTRO_ch02Plus.pdf" target="_blank" class="extlink">Titanium Mobileで開発するiPhone/Androidアプリ 第二章 補完稿 -  <br/>
+titanium-mobile-doc-ja</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iPhoneのオモチャ箱 iPhone SDKプログラミング]]></title>
+    <link href="http://hamasyou.com/blog/2010/10/28/4862670857/"/>
+    <updated>2010-10-28T23:06:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/10/28/4862670857</id>
+    <content type="html"><![CDATA[<p>本書は、iPhone アプリを実際に作っている著者の方が、実体験やノウハウをもとに執筆されたものが集まっています。</p>
+
+<p>iPhone とはなんなのか、iPhone アプリはどういうもので、どうあると面白いのか、自分たちはどう考えるのか、こういう機能をもったアプリを作るときはこうやって自分たちは作った。そういう話がたくさん載っています。</p>
+
+<p>実際に iPhone アプリを始めて見たい人は、本書の姉妹本である『<a href="http://www.amazon.co.jp/gp/product/486267058X?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=486267058X" rel="external nofollow">ユメみるiPhone ―クリエイターのためのiPhone SDKプログラミング</a>』から読み始めると良いと思います。それから実際に自分で手を動かしてみて、「アレ？こういう機能ってどうやって実装したらいいのかな？」という疑問が湧いてきたら本書を読むと良いと思います。</p>
+
+<p>章ごとに筆者が違うし、紹介している技術やライブラリも違うので、iPhone アプリ開発を体系的に学ぶのには適していませんが、こういうことがしたい！という目的がある人は、本書に解決の糸口を見出しすことができるかもしれません。</p>
+
+<p>読みやすいですし、チュートリアル的に書かれているところもあり理解しやすいです。なかなかオススメの一冊です。</p>
+
+<!-- more -->
+
+
+
+
+<h2>もくじ</h2>
+
+
+
+
+<ol>
+<li>INTRODUCTION
+  <ol>
+  <li>Why iPhone?</li>
+  <li>Designing iPhone Apps</li>
+  <li>Making of TiltShift Generator</li>
+  </ol>
+</li>
+<li>Sample
+  <ol>
+  <li>Web APIの使い方とMapKitを用いた地図の表示</li>
+  <li>Nビル.app-OpenCVを使ったリアルタイムの画像処理とAR</li>
+  <li>HTML+CSS+JavaScriptで作るWebアプリ</li>
+  <li>cocos2dでゲームを作ろう[基礎編]</li>
+  <li>cocos2dでゲームを作ろう[Box2D編]</li>
+  <li>カメラとCore Animationを使用した画像の描画とアニメーション</li>
+  <li>目的に特化したテーブルビューの使い方</li>
+  <li>カメラを使った音のエフェクターの開発</li>
+  <li>ピアツーピア接続を使ったアプリケーションの開発</li>
+  <li>AudioVisual Mixer for INTO INFINITYのダウンロードのしくみ</li>
+  </ol>
+</li>
+<li>RECIPE
+  <ol>
+  <li>AudioIOクラス</li>
+  <li>MPMoviePlayerControllerを自由に扱う</li>
+  <li>CustomFontLabelクラス</li>
+  <li>テーブルビューレシピ1-もう1つの追加ボタンUI</li>
+  <li>テーブルビューレシピ2-データの保存</li>
+  <li>テーブルビューレシピ3-WebKitを使う</li>
+  <li>テーブルビューレシピ4-セルの再利用</li>
+  <li>テーブルビューレシピ5-グループテーブルビュー</li>
+  <li>テーブルビューレシピ6-セルのカスタマイズとパフォーマンス</li>
+  </ol>
+</li>
+<li>APPENDIX
+  <ol>
+  <li>iPhoneアプリを実機で動かす</li>
+  <li>iPad用に変換する</li>
+  </ol>
+</li>
+</ol>
+
+
+
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>iPhone の特徴</h3>
+
+
+<p>おもしろい iPhone アプリを開発するためには、きちんと iPhone の特徴をつかんでおくことが大事です。</p>
+
+<table>
+  <tr>
+    <th>特徴</th><th>説明</th>
+  </tr>
+  <tr>
+    <td class="nowrap">3G回線による常時接続</td><td>第三世代通信方式（3G）による高速通信がいつでもどこでも行えます。ネットワークを意識した設計、ネットワークにつながらないときにどう振舞うかを考える必要があります。</td>
+  </tr>
+  <tr>
+    <td class="nowrap">加速度センサー</td><td>iPhone が今どのくらい傾けられているか、どれくらい振られたか、そういった情報を入力にすることができます。</td>
+  </tr>
+  <tr>
+    <td class="nowrap">電子コンパス</td><td>iPhone が今どの向きを向いているか、向きを入力にすることができます。</td>
+  </tr>
+  <tr>
+    <td class="nowrap">GPS</td><td>ユーザの現在位置を取得することができます。位置に合わせた情報やどこからどこに移動したか、どういう経路をたどったかなどの情報を利用した設計ができます。</td>
+  </tr>
+  <tr>
+    <td class="nowrap">オーディオ</td><td>スピーカーとマイクを利用することができます。音や声による入力出力を組み合わせてアプリを設計できます。</td>
+  </tr>
+  <tr>
+    <td class="nowrap">タッチスクリーン</td><td>マルチタッチ可能なタッチスクリーンは、iPhone への入力の大きなものです。この入力方式をどのように利用出来るか、利用の仕方次第でおもしろいことができそうです。</td>
+  </tr>
+  <tr>
+    <td class="nowrap">カメラ</td><td>オートフォーカス可能なカメラは、写真を取ってその場で加工したり、物を写すことでその対象を別の入力にしたり、現実と仮想を組み合わせたり（AR）、色々とおもしろい使い方ができます。</td>
+  </tr>
+</table>
+
+
+<p>おもしろい iPhone アプリをつくるコツは</p>
+
+<ul>
+<li>機能のかけ算</li>
+<li>ユーザの好奇心、想像力、創造力をつっつく</li>
+<li>アプリケーションを立ち上げるたびに新しいことが起こる/なにが起こるかわからないを提供する</li>
+<li>こだわりを持つ</li>
+</ul>
+
+
+<p>このあたりに尽きると思います。</p>
+
+<h3>カメラ画像の取得</h3>
+
+
+<p>現実環境（カメラで写した世界）に情報や映像を付加提示する技術のことを拡張現実（Augmented Reality:AR）といいます。iPhone ではこの AR を簡単に実現できます。</p>
+
+<p>カメラ画像をリアルタイムに解析する方法のひとつに、<em>UIGetScreenImage()</em> メソッドがあります。このメソッドは SDK のドキュメントに載っていないため Apple からいつ使用が制限されるかわかりませんが、カメラで表示している画面を画像として取得して処理することができるメソッドになっています。</p>
+
+<p>ここで取得した画像を利用してリアルタイム処理を行うことが出来ます。</p>
+
+<p>オープンソースの画像解析用のライブラリに <a href="http://opencv.jp/" rel="external nofollow">OpenCV</a> があり、このライブラリを使った画像処理のチュートリアルが、本書には載っています。</p>
+
+<h3>cocos2d</h3>
+
+
+<p>cocos2d は OpenGL を手軽に扱えるように設計されたライブラリで、画像の読み込み、描画、アニメーションなどを手軽に実装することができるようになります。</p>
+
+<p>OpenGL を使うため、処理速度が必要なゲームなどで使用すると良いと思います。本当に簡単につかえるライブラリなので、iPhone でゲームを作りたいと考えている人は利用していると良いと思います。</p>
+
+<p>また、Box2D という物理演算エンジンと cocos2d を使ったゲームを作るチュートリアルも本書に載っているので、このあたりの日本語の情報が欲しい人は参考になるかと思います。</p>
+
+<p><a href="http://www.cocos2d-iphone.org/" rel="external nofollow">cocos2d for iPhone</a></p>
+
+<p><a href="http://www.box2d.org/" rel="external nofollow">Box2D</a></p>
+
+<h3>テーブルビュー</h3>
+
+
+<p>ユーティリティアプリをつくろうと考えている人は、テーブルビューを使う機会が出てくると思います。本書では、テーブルビューを使った様々な機能の実現方法をサンプルを交えて解説しています。</p>
+
+<ul>
+<li>行の追加・編集・削除</li>
+<li>大量のデータを効率よく表示する方法</li>
+<li>グルーピングの方法</li>
+<li>行の表示をカスタマイズする方法</li>
+</ul>
+
+
+
+
+<h3>オーディオ処理</h3>
+
+
+<p>本書ではリアルタイムに音を処理するサンプルが載っています。iPhone にはオーディオをあつかう API がいくつかありますが、本書では Audio Unit を使用したサンプルが載っています。</p>
+
+<p>iPhone で利用できるオーディオ API の一覧を本書から引用です。</p>
+
+<table class="table table-border">
+  <tr>
+    <th>API（およびそれを含むフレームワーク）</th><th>概要</th>
+  </tr>
+  <tr>
+    <td>AVAudioPlayer, AVAudioRecorder (AV Foundation Framework)</td><td>音のファイルを再生・録音できる</td>
+  </tr>
+  <tr>
+    <td>System Sound Services (Audio Toolbox Framework)</td><td>短い音のファイルを再生できる</td>
+  </tr>
+  <tr>
+    <td>Audio Queue Services (Audio Toolbox Framework)</td><td>音をリアルタイムに再生・録音できる</td>
+  </tr>
+  <tr>
+    <td>Audio Unit Framework</td><td>Remote IO Audio Unitを使って音をリアルタイムに再生・録音できる</td>
+  </tr>
+  <tr>
+    <td>OpenAL</td><td>3Dの空間の中で音を再生できる</td>
+  </tr>
+</table>
+
+
+
+
+<h3>Bluetooth を使った P2P の実現</h3>
+
+
+<p>本書では、Bluetooth を使った Peer to Peer アプリのサンプルが載っています。Game Kit フレームワークの GKPeerPickerController を使って基本的な通信を行うところから、Picker を使わずにピアツーピアを実現するところまで載っています。</p>
+]]></content>
+  </entry>
+  
+</feed>

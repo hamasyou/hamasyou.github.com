@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Rails3 | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/rails3/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Rails] carrierwave と fog で Amazon S3 をストレージとして使う]]></title>
+    <link href="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"/>
+    <updated>2012-02-21T21:54:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3</id>
+    <content type="html"><![CDATA[<p>Rails のプラグイン <a href="https://github.com/jnicklas/carrierwave" rel="external nofollow">carrierwave</a> と fog を使って、<em>Amazon S3</em> をストレージとして使う方法のメモです。</p>
+
+<h3>使用環境</h3>
+
+
+
+
+<ul>
+<li>Rails 3.2.1</li>
+<li>carrierwave 0.6.0.beta</li>
+<li>fog 1.1.2</li>
+</ul>
+
+
+
+
+<h3>carrierwave のインストール</h3>
+
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>gem install carrierwave</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<h3>config の書き方</h3>
+
+
+<p>initializers に carrierwave.rb というファイルを作成し、以下のような設定を書きます。</p>
+
+<pre><code class="ruby initializers/carrierwave.rb">#-*- encoding: utf-8 -*-
+
+unless Rails.env.test?
+  CarrierWave.configure do |config|
+    config.cache_dir = "#{Rails.root}/tmp/uploads"
+    config.storage                          = :fog
+    config.fog_credentials                  = {
+        :provider              =&gt; 'AWS',
+        :aws_access_key_id     =&gt; ENV["AWS_S3_KEY_ID"],
+        :aws_secret_access_key =&gt; ENV["AWS_S3_SECRET_KEY"]
+    }
+    config.fog_directory                    = ENV["AWS_S3_BUCKET"]
+    config.fog_public                       = false
+    config.fog_authenticated_url_expiration = 60
+  end
+else
+  CarrierWave.configure do |config|
+    config.storage = :file
+  end
+end
+</code></pre>
+
+<p>ENV[&ldquo;AWS_S3_KEY_ID&rdquo;] にはユーザアクセスID、ENV[&ldquo;AWS_S3_SECRET_KEY&rdquo;] にはシークレットアクセスキー、ENV[&ldquo;AWS_S3_BUCKET&rdquo;] にはバケット名をそれぞれ設定する。</p>
+
+<p>各値は、Amazon S3 の設定画面で確認できる。</p>
+
+<p>この設定を行い、carrierwave で Uploader を作成して、ファイルをアップロードすると、S3 にファイルを置くことができる。また、S3 上のファイルの URL には、60秒のタイムアウト設定を掛けており、アプリからのアクセスでのみ参照可能なURLが表示されるようになる。（config.fog_public = false、config.fog_authenticated_url_expiration = 60 の設定）</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ActiveRecord#previous_changes で変更のあった属性を取り出す]]></title>
+    <link href="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"/>
+    <updated>2011-06-14T09:43:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes</id>
+    <content type="html"><![CDATA[<p>ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。</p>
+
+<p><section></p>
+
+<h4>環境</h4>
+
+
+
+
+<dl><dt>Rails</dt><dd>3.0.7</dd></dl>
+
+
+<p></section></p>
+
+<!-- more -->
+
+
+<p>ActiveRecord で更新があった属性を取得するメソッドに、previous_changes があります。</p>
+
+<p>これを使えば、データ更新後に、更新した属性のみをメールに書いて送る！みたいな処理が簡単に書けますね。</p>
+
+<dl><dt>previous_changes</dt>
+<dd>Returns a Hash of previous changes before the object was persisted, with the attribute names as the keys, and the values being an array of the old and new value for that field.</dd></dl>
+
+
+<pre><code class="ruby">user = User.find(params[:id])
+user.name
+  # =&gt; "Syougo Hamada"
+user.name = "hamasyou"
+user.age
+  # =&gt; 28
+user.age = 29
+user.save
+
+user.previous_changes
+  # =&gt; {"name"=&gt;["Syougo Hamada", "hamasyou"], "age"=&gt;[28, 29]}
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails のコントローラの中で View の画像URLを取得する方法]]></title>
+    <link href="http://hamasyou.com/blog/2011/06/14/rails-view-url/"/>
+    <updated>2011-06-14T09:09:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/06/14/rails-view-url</id>
+    <content type="html"><![CDATA[<p>コントローラの中で、ビューの image_tag 等で表示される画像の URL を取得したい時があります。</p>
+
+<p>そんな時は <em>view_context</em> が使えます。</p>
+
+<p><section></p>
+
+<h4>環境</h4>
+
+
+
+
+<dl><dt>Rails</dt><dd>3.0.7</dd><dt>Ruby</dt><dd>1.9.2-p180</dd><dt>Paperclip</dt><dd>2.3.11</dd></dl>
+
+
+<p></section></p>
+
+<!-- more -->
+
+
+<p>コントローラの中でビューの image_tag に渡すパスを取得したい時があります。</p>
+
+<p>例えば、Paperclip を使って画像を管理しているときに、外部サービスに Paperclip の画像の URL を渡したい時などです。</p>
+
+<p>Paperclip を使って画像を管理していると、<code>url</code> メソッドで取得できる URL に、コントローラの中では ActionController の AssetHost の設定が付与されません。</p>
+
+<p>そんな時は、<strong>view_context</strong> を使うと、ビューのコンテキストで評価してくれるので、ActionController の AssetHost の設定もきくようになります。</p>
+
+<p><section></p>
+
+<h4>コントローラの例</h4>
+
+
+<pre><code class="ruby">#-*- encoding: utf-8 -*-
+
+class CallbackController &lt; ApplicationController
+  def send
+    user = User.new
+    user.avatar = params[:user][:avatar]
+    user.avatar.url
+      # =&gt; "/users/avatars/4/original_me.jpg"
+    view_context.image_path(user.avatar.url)
+      # =&gt; "http://image.serverhost/users/avatars/4/original_me.jpg"
+  end
+end
+</code></pre>
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>models/user.rb</h4>
+
+
+<pre><code class="ruby">class User &lt; ActiveRecord::Base
+  has_attached_file :avatar
+end
+</code></pre>
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>application.rb</h4>
+
+
+<pre><code class="ruby">require File.expand_path('../boot', __FILE__)
+require 'rails/all'
+Bundler.require(:default, Rails.env) if defined?(Bundler)
+
+module MyApp
+  class Application &lt; Rails::Application
+    config.action_controller.asset_host = "http://image.serverhost"
+    ...(略)...
+  end
+end
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Rails] RSpec でコントローラのテストを記述する例]]></title>
+    <link href="http://hamasyou.com/blog/2010/11/19/rspec/"/>
+    <updated>2010-11-19T01:44:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/11/19/rspec</id>
+    <content type="html"><![CDATA[<p>Ruby on Railsで、RSpec を使ってコントローラのテストをしたテストコードの例を載せておきます。</p>
+
+<p>環境は、Ruby on Rails3、Ruby1.9.2 を使っています。RSpec の使い方の参考になれば幸いです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>RSpec で Controller のテストを書いてみた</h2>
+
+
+<p>Ruby on Rails3, Ruby1.9.2 で Controller クラスの RSpec を書いてみました。</p>
+
+<p>Controller でテストしたのは次の3点です。</p>
+
+<ol>
+<li>ルーティングが合っているか</li>
+<li>処理が通って 200 OK を返すか</li>
+<li>処理が通って期待通りの結果（Blog が保存されることによって count がひとつ増える）になっているか</li>
+</ol>
+
+
+
+
+<pre class="code"><span class="comment"># coding: UTF-8</span>
+<span class="keyword">require</span> <span class="literal">'spec_helper'</span>
+ 
+<span class="keyword">describe</span> <span class="class">BlogsController</span> <span class="keyword">do</span>
+  <span class="keyword">describe</span> <span class="literal">&quot;GET /blogs/:id&quot;</span> <span class="keyword">do</span>
+    <span class="keyword">describe</span> <span class="symbol">:routes</span> <span class="keyword">do</span>
+      subject { {<span class="symbol">:get</span> =&gt; <span class="literal">&quot;/blogs/1&quot;</span>} }
+      it { should route_to(<span class="symbol">controller:</span> <span class="literal">&quot;blogs&quot;</span>, <span class="symbol">action:</span> <span class="literal">&quot;show&quot;</span>, <span class="symbol">id:</span> <span class="literal">&quot;1&quot;</span>) }
+    <span class="keyword">end</span>
+ 
+    <span class="keyword">before</span> { get <span class="symbol">:show</span>, <span class="symbol">:id</span> =&gt; <span class="literal">&quot;1&quot;</span> }
+ 
+    <span class="keyword">describe</span> <span class="symbol">:response</span> <span class="keyword">do</span>
+      subject { response }
+      it { should be_success }
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+ 
+  <span class="keyword">describe</span> <span class="literal">&quot;POST /blogs&quot;</span> <span class="keyword">do</span>
+    <span class="keyword">def</span> do_post
+      post <span class="symbol">:create</span>, <span class="symbol">:article</span> =&gt; <span class="literal">&quot;xxx&quot;</span>
+    <span class="keyword">end</span>
+ 
+    <span class="keyword">describe</span> <span class="symbol">:routes</span> <span class="keyword">do</span>
+      subject { {<span class="symbol">:post</span> =&gt; <span class="literal">&quot;/blogs&quot;</span>} }
+      it { should route_to(<span class="symbol">controller:</span> <span class="literal">&quot;blogs&quot;</span>, <span class="symbol">action:</span> <span class="literal">&quot;create&quot;</span>) }
+    <span class="keyword">end</span>
+    
+    <span class="keyword">before</span> { do_post }
+ 
+    <span class="keyword">describe</span> <span class="symbol">:response</span> <span class="keyword">do</span>
+      subject { response }
+      it { should be_success }
+    <span class="keyword">end</span>
+ 
+    <span class="keyword">describe</span> <span class="symbol">:blog</span>, <span class="symbol">:save</span> <span class="keyword">do</span>
+      <span class="keyword">before</span> { controller.stub!(<span class="symbol">:authenticate</span>).and_return(<span class="keyword">true</span>) }
+      subject { expect { do_post } }
+      it { should change(<span class="class">Blog</span>, <span class="symbol">:count</span>).by(<span class="literal">1</span>) }
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre>
+
+
+
+
+<h2>ソースコード解説</h2>
+
+
+
+
+<h3>ルーティングのテスト</h3>
+
+
+<p><em>describe</em> にはテスト対象を記述しています。コントローラのテストなので、それぞれのルーティングごとにテストを記述しています。</p>
+
+<p><em>:routes</em> でテストしているのは、期待したリクエスト URL が期待したコントローラの呼び出しになっているかどうかです。</p>
+
+<p><em>subject</em> にはこのテストの実際のテスト対象で、:routes では、ルーティングリクエストを記述しています。続く it で実際に期待する処理を書いています。should にレシーバを記述しない場合には subject の中身がレシーバになります。</p>
+
+<p><em>route_to</em> で期待するルーティングを記述してルーティングのテストをしています。</p>
+
+<h3>コントローラの処理が正常に終了するかどうかのテスト</h3>
+
+
+<p><em>response</em> オブジェクトを subject にして success を返すかどうかをテストしています。</p>
+
+<h3>コントローラが期待した処理を行ったかどうかをテストする</h3>
+
+
+<p>コントローラが期待した処理を行ったことを確認するには、二つやり方があると思っています。</p>
+
+<p>ひとつは、<strong>コントローラをブラックボックスにして、コントローラを通る前の状態とコントローラを通った後の状態を比較するやり方</strong>。</p>
+
+<p>もうひとつは、<strong>コントローラをホワイトボックスにして、モックオブジェクを使って should_receive や should_not_receive で期待した処理を通ったかどうかを確認するやり方</strong>。</p>
+
+<p>今回は、一つ目のやり方でテストをしています。これは、should_receive や should_not_receive を使ってテストしてしまうと、リファクタリングでメソッド名を変更した際にテストも直さなければならないからです。</p>
+
+<p>個人的には、コントローラのテストでは should_receive や should_not_receive はあまり使わず、実際にデータベースに書き込みを行ってテストをするのが良いと思っています。（Rails ではテスト用のDBは別に用意されますので）</p>
+
+<p>なお、<em>before</em> では controller.stub! を使って、コントローラに認証が必要な場合に認証を素通りする例を記述しています。</p>
+
+<h2>参考</h2>
+
+
+
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/t-wada/20100228/p1" rel="external nofollow">RSpec の入門とその一歩先へ - t-wadaの日記</a></li>
+<li><a href="http://rspec.info/" rel="external nofollow">rspec-1.3.1 | rspec-rails-1.3.3 - RSpec</a></li>
+<li><a href="http://jp.rubyist.net/magazine/?0021-Rspec" rel="external nofollow">スはスペックのス 【第 1 回】 RSpec の概要と、RSpec on Rails - Rubyist Magazine</a></li>
+</ul>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Rails3] Rails3 がリリースされたのでまとめ]]></title>
+    <link href="http://hamasyou.com/blog/2010/08/31/rails3/"/>
+    <updated>2010-08-31T10:52:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/08/31/rails3</id>
+    <content type="html"><![CDATA[<p>ついに、2010年8月30日（公式では Aug 29, 2010 ってなってるけど）に、<strong>Rails3</strong> がリリースされました。</p>
+
+<p><strong>Ruby1.9.2</strong> も2010年8月18日にリリースされているので、今後は Ruby1.9.2 と Rails3 での開発が増えてくる予感です。個人的には、Ruby1.9 から文字エンコーディング周りが大幅に変わっているので、View テンプレートにマジックコメントをいちいち書かないといけないのがめんどくさかったり。。</p>
+
+<p>ということで、Rails3 系の記事の簡易まとめメモです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>Rails3</h2>
+
+
+
+
+<h3>Rails の公式サイト</h3>
+
+
+<p><a href="http://rubyonrails.org/" rel="external nofollow"></a></p>
+
+<p><a href="http://rubyonrails.org/" rel="external nofollow">Ruby On Rails - 37Signals</a></p>
+
+<h3>Rails3 リリースノート</h3>
+
+
+
+
+<h4>Rails3 の新機能（英語）</h4>
+
+
+
+
+<ul><li><a href="http://rubyonrails.org/screencasts/rails3" rel="external nofollow">Dive into Rails3 - 37Signals</a></li>
+<li><a href="http://assets.en.oreilly.com/1/event/40/The%20Rails%203%20Ropes%20Course%20Presentation.pdf" rel="external nofollow">上のプレゼン資料（PDF）</a></li></ul>
+
+
+
+
+<h4>和訳</h4>
+
+
+
+
+<ul><li><a href="http://d.hatena.ne.jp/willnet/20100206/1265467594" rel="external nofollow">Rails 3.0 リリースノート和訳 - 前編 - おもしろWEBサービス開発日記</a></li>
+<li><a href="http://d.hatena.ne.jp/willnet/20100303/1267608419" rel="external nofollow">Rails 3.0 リリースノート和訳 - 後編 - おもしろWEBサービス開発日記</a></li>
+<li><a href="http://d.hatena.ne.jp/gom68/20100206/1265469879" rel="external nofollow">Rails3 リリースノート全文和訳 (ただし適当) - うっかりプログラミング日誌</a></li>
+<li><a href="http://blog.bluemoderns.com/articles/2010/02/07/ruby-on-rails-3-1/" rel="external nofollow">Ruby on Rails 3 リリースノート翻訳 (1) - Blue Moderns Blog</a></li>
+<li><a href="http://blog.bluemoderns.com/articles/2010/02/08/ruby-on-rails-3-2/" rel="external nofollow">Ruby on Rails 3 リリースノート翻訳 (2) - Blue Moderns Blog</a></li>
+<li><a href="http://blog.bluemoderns.com/articles/2010/02/11/ruby-on-rails-3-3/" rel="external nofollow">Ruby on Rails 3 リリースノート翻訳 (3) - Blue Moderns Blog</a></li></ul>
+
+
+
+
+<h3>Rails3 インストール</h3>
+
+
+<p>Ruby3 が正式にリリースされたので、ほとんどのサイトの説明にある &ndash;pre は不要です。</p>
+
+<p><section></p>
+
+<h4>Rails のインストールコマンド</h4>
+
+
+
+
+<pre class="console">gem install rails</pre>
+
+
+<p></section></p>
+
+<p><section></p>
+
+<h4 class="note">Ruby の環境を切り替えてつかう rvm</h4>
+
+
+
+
+<p class="option">
+複数の Ruby 環境を切り替えることができる <strong>rvm</strong> というRubyバージョン管理ツールがあります。便利なので使いましょう。これで、既存の環境を残したまま、Ruby1.9.2 と Rails3 を試してみることが出来ます。
+</p>
+
+
+<p>rvm のインストールは、<em>GitHub</em> からするのが推奨されています。gem でインストールするのが簡単なんですけどね。。。</p>
+
+<ul><li><a href="http://rvm.beginrescueend.com/rvm/install/" rel="external nofollow">Installing RVM - RVM: Ruby Version Manager</a></li>
+<li><a href="http://gihyo.jp/dev/serial/01/ruby/0039" rel="external nofollow">第39回　RVM（Ruby Version Manager）による環境構築 - Gihyo.jp</a></li>
+<li><a href="http://gihyo.jp/dev/serial/01/ruby/0040" rel="external nofollow">第40回　RVM（Ruby Version Manager）による環境構築（2） - Gihyo.jp</a></li>
+<li><a href="http://doruby.kbmj.com/hoge/20100615/RVM_Rails_" rel="external nofollow">RVMでRailsのバージョンを管理する - DoRuby!</a></li></ul>
+
+
+<p></section></p>
+
+<h3>Rails3 Doc</h3>
+
+
+
+
+<h4>Rails3 Doc（英語）</h4>
+
+
+
+
+<ul><li><a href="http://api.rubyonrails.org/" rel="external nofollow">Rails: Complete API - 37Signals</a></li></ul>
+
+
+
+
+<h4>Rails3 ドキュメント翻訳プロジェクト</h4>
+
+
+
+
+<ul><li><a href="http://wiki.github.com/lifo/docrails/translating-rails-guides" rel="external nofollow">Translating Rails Guides - GitHub</a></li></ul>
+
+
+
+
+<h3>Rails3 に対応しているプラグイン一覧</h3>
+
+
+
+
+<ul><li><a href="http://railsplugins.org/plugins" rel="external nofollow">Browse Plugins - RailsPlugins.org</a></li></ul>
+
+
+
+
+<h3>Rails3 に関するそのほか</h3>
+
+
+<p><section></p>
+
+<h4>WEB+DB PRESS Vol.58 の Rails3 記事がすごくいい！</h4>
+
+
+
+
+<div class="bookInfo">
+<div class="bookImg">
+<a href="http://www.amazon.co.jp/gp/product/4774143243?ie=UTF8&tag=sorehabooks-22&linkCode=xm2&camp=247&creativeASIN=4774143243" rel="external nofollow"></a>
+</div>
+<ul><li><em>WEB+DB PRESS Vol.58</em></li><li>編 (著), WEB+DB PRESS編集部 (編集)</li><li>技術評論社</li></ul>
+<div class="clear"></div>
+</div>
+
+
+
+
+<ul><li><a href="http://www.machu.jp/diary/20100821.html" rel="external nofollow">WEB+DB PRESS vol.58 の Rails 3 / Ruby1.9.2 記事が素晴らしすぎる件 - まちゅダイアリー</a></li></ul>
+
+
+<p></section></p>
+
+<h4>そのほか</h4>
+
+
+
+
+<ul><li><a href="http://www.oiax.jp/rails/zakkan/test_frameworks_for_rails_3_x_era.html" rel="external nofollow">Rails 3.x 時代のテストフレームワーク - Ruby on Rails with OIAX</a></li>
+<li><a href="http://maskana.homedns.org/rails/pro" rel="external nofollow">Ruby on Rails 入門、基礎編 - Ruby on Rails Pro</a></li></ul>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

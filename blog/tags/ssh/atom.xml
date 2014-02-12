@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: SSH | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/ssh/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[GitHub で複数アカウントを使う]]></title>
+    <link href="http://hamasyou.com/blog/2010/10/28/github/"/>
+    <updated>2010-10-28T14:37:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/10/28/github</id>
+    <content type="html"><![CDATA[<p>GitHub で複数アカウントを使った場合に、SSH の鍵管理周りではまったので解決方法のメモです。</p>
+
+<p>Special Thanks <a href="http://twitter.com/bongole" rel="external nofollow">@bongole</a></p>
+
+<!-- more -->
+
+
+
+
+<h2>GitHub で複数アカウントを使う</h2>
+
+
+<p>GitHub で複数アカウントを利用するときの設定です。</p>
+
+<p>GitHub は、アカウントと紐付けて SSH の鍵を管理します。なので、複数アカウントを利用すると同じ SSH の鍵を使えません。</p>
+
+<p>そこで、複数アカウントの SSH の鍵の管理をする方法のメモです。</p>
+
+<p class="option">この記事で別アカウントとして作成するアカウントは mountposition とします。記事中に出てくる mountposition という文字は適宜ご自分の別アカウントのIDに変更してください。</p>
+
+
+
+
+<h3>git の SSH の動き</h3>
+
+
+<p>git で push を行うと、デフォルトで ~/.ssh/id_rsa 秘密鍵が利用されます。</p>
+
+<p>デフォルトのファイル名以外の秘密鍵を使いたい場合には、 ~/.ssh/config ファイルを設定します。</p>
+
+<p><section></p>
+
+<h4>~/.ssh/config</h4>
+
+
+
+
+<pre>Host github.com
+ User git
+ Port 22
+ Hostname github.com
+ IdentityFile ~/.ssh/github_id_rsa
+ TCPKeepAlive yes
+ IdentitiesOnly yes </pre>
+
+
+<p></section></p>
+
+<p><em>IdentityFile</em> で指定した鍵ファイルが github.com への接続で使われるようになります。</p>
+
+<h3>GitHub の別アカウント用の SSH 鍵を用意する</h3>
+
+
+<p>ssh-keygen を利用して、別アカウント用の秘密鍵を作成します。作った秘密鍵と対になる公開鍵を GitHub に登録します。</p>
+
+<p>その後、~/.ssh/config に次の部分を追加します。</p>
+
+<p><section></p>
+
+<h4>~/.ssh/config 追記</h4>
+
+
+
+
+<pre># Client user (mountposition)
+Host github-mountposition
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/github_mountposition_rsa
+</pre>
+
+
+<p></section></p>
+
+<p>github-mountposition というホストへの SSH 接続には ~/.ssh/github_mountposition_rsa 鍵ファイルを使うという設定です。</p>
+
+<p>github-mountposition というのは、この後 git remote add で設定する GitHub 上の別アカウントが所有するリポジトリのホストです。</p>
+
+<p class="option">GitHub ではアカウントごとのリポジトリへ、 git@github-{client名} でつなぐことができるようです。</p>
+
+
+
+
+<h3>git remote add で GitHub 上のリポジトリにアクセスできるようにする</h3>
+
+
+<p>git remote add を使って GitHub 上のリポジトリへアクセスできるようにします。このとき、通常は git@github.com:{リポジトリのURL} とするところを、git@github-{アカウント名}:{リポジトリのURL} に変更していることに注意してください。</p>
+
+<pre class="console">$ <kbd>git remote add origin git@github-mountposition:{リポジトリのURL}</kbd></pre>
+
+
+<p>GitHub は SSH でつなぐ先を通常の github.com とは別に、github-{アカウント名} でもアクセスできるようになっています。この github-{アカウント名} という形式を用いて git から SSH で接続することによって、~/.ssh/config の HOST の設定を切り分けられるようにしています。</p>
+
+<h3>~/.ssh/config の IdentityFile を複数書くことで対応する？</h3>
+
+
+<p>いろいろなところで、~/.ssh/config ファイルの IdentityFile は複数書くことができるとあったのですが、実際にやってみるとうまくいきませんでした。</p>
+
+<h3>Special Thanks</h3>
+
+
+<p>Special Thanks <a href="http://twitter.com/bongole" rel="external nofollow">@bongole</a></p>
+]]></content>
+  </entry>
+  
+</feed>

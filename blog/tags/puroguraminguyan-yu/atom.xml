@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: プログラミング言語 | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/puroguraminguyan-yu/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[７つの言語 ７つの世界]]></title>
+    <link href="http://hamasyou.com/blog/2011/08/27/4274068579/"/>
+    <updated>2011-08-27T22:11:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/08/27/4274068579</id>
+    <content type="html"><![CDATA[<p>本書は、はじめてプログラミングを知ったときに楽しさを思い出させてくれるものです。紹介されているプログラミング言語は7つ。</p>
+
+<ul><li>Ruby</li>
+<li>Io</li>
+<li>Prolog</li>
+<li>Scala</li>
+<li>Erlang</li>
+<li>Clojure</li>
+<li>Haskell</li></ul>
+
+
+<p>単なる言語紹介の本ではなく、<strong>言語を知る</strong>本です。</p>
+
+<p>本書を読むことで、各言語の長所、短所、原理、思想を知ることができます。プログラマとして一皮向けたい人に、おすすめです。</p>
+
+<p><blockquote><p>禅の指導者は、数学ができるようになりたければラテン語を勉強せよと言うだろう。プログラミングでも同じだ。オブジェクト指向プログラミングの本質を深く理解するには、論理プログラミングや関数型プログラミング（FP）を勉強する必要がある。関数型プログラミングに上達したければ、アセンブラを勉強する必要がある。</p></p><p><p></p><footer><strong>本書序文より</strong></footer></blockquote></p>
+
+<p><blockquote><p>プログラミングとは結局、理解することであり、理解できるかどうかはどれだけアイデアの引き出しがあるかにかかっている。したがって、新しい言語を直接体験することは、プログラミングが何たるかをより深く理解するために欠かせない。</p></p><p><p></p><footer><strong>本書序文より</strong></footer></blockquote></p>
+
+<!-- more -->
+
+
+
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h2>Ruby</h2>
+
+
+<p><strong>Ruby</strong> は純粋なオブジェクト指向言語である。オブジェクト指向の設計哲学において重要な、実装ではなくインターフェースに合わせてコーディングを行うというのを、Ruby では<em>ダックタイピング</em>によって実現する。</p>
+
+<p>Ruby には多くのシンタックスシュガーが用意されており、開発者の生産性を高める工夫が数多く用意されている。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://ja.wikipedia.org/wiki/Ruby" rel="external nofollow">Ruby - Wikipedia</a></p>
+
+<p></section></p>
+
+<p><blockquote><p>スプーン一杯の砂糖があるだけで、苦い薬も飲めるのよ。</p></p><p><p></p><footer><strong>メリー・ポピンズ</strong></footer></blockquote></p>
+
+<h2>Io</h2>
+
+
+<p><strong>Io</strong>（イオ）は<em>プロトタイプ言語</em>であり、すべてのオブジェクトは別のオブジェクトのクローンである。</p>
+
+<p>Io はオブジェクト指向言語で、シンタックスは単純にメッセージをチェーン接続したものになる。各メッセージはオブジェクトを返す。すべてのものは別のレシーバを返すメッセージである。</p>
+
+<p>Io にはキーワードはない。ただし、キーワードのように振る舞う文字がいくつかある。</p>
+
+<p>クラスとオブジェクトの両方を意識する必要はなく、もっぱらオブジェクトだけを扱えばよい。必要に応じてオブジェクトを複製する。これらのクローンは<em>プロトタイプ</em>と呼ばれる。</p>
+
+<p>プロトタイプベースの言語では、すべてのオブジェクトが既存のオブジェクトのクローンとなる。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://ja.wikipedia.org/wiki/Io_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E)" rel="external nofollow">Io（プログラミング言語） - Wikipedia</a></p>
+
+<p></section></p>
+
+<p><section></p>
+
+<h3>オブジェクト、タイプ、インスタンス</h3>
+
+
+<pre><code class="io"># ルートオブジェクトである Object を複製して Person オブジェクトを生成する
+Person := Object clone
+# Person オブジェクトを複製して hamasyou というスロットを作成する
+hamasyou := Person clone
+</code></pre>
+
+<p>慣習上、Io ではタイプの先頭文字に大文字を使う。先頭が大文字のオブジェクトを Io はタイプとして認識する。</p>
+
+<p></section></p>
+
+<p><section></p>
+
+<h3>メソッド</h3>
+
+
+<p>Io ではメソッドは次のように定義する。</p>
+
+<pre><code class="io">method(name, writeln("Hello ", name))
+</code></pre>
+
+<p>メソッドもオブジェクトなので、スロットに代入できる。</p>
+
+<pre><code class="io">Person greet := method(name, writeln("Hello ", name))
+</code></pre>
+
+<p></section></p>
+
+<p><section></p>
+
+<h3>プロトタイプ・プログラミングのパラダイム</h3>
+
+
+<p><blockquote><p>- すべてのモノはオブジェクトである。<br/>- オブジェクトとのすべてのやり取りはメッセージを介して行う。<br/>- クラスをインスタンス化するのではなく、他のオブジェクト（プロトタイプという）を複製する（クローンを作成する）。<br/>- オブジェクトは自身のプロトタイプを記憶している。<br/>- オブジェクトにはスロットがある。<br/>- スロットにはオブジェクト（メソッドオブジェクトを含む）が格納される。<br/>- メッセージはスロットが保持している値を返したり、スロットに格納されているメソッドを呼び出したりする。<br/>- オブジェクトは、自分が応答できないメッセージを自分のプロトタイプに送信する。</p><footer><strong>本書P.48より</strong></footer></blockquote></p>
+
+<p></section></p>
+
+<p><section></p>
+
+<h3>コレクション</h3>
+
+
+<p>Io には List と Map の二つのコレクションが用意されている。</p>
+
+<pre><code class="io">myList := list("Hello", "Good bye")
+myMap := Map clone
+</code></pre>
+
+<p>list は List プロトタイプを作成するメソッドである。Map を作成する方法はクローンしかない。</p>
+
+<p></section></p>
+
+<p><section></p>
+
+<h3>true, false, nil, シングルトン</h3>
+
+
+<p>true, false, nil はシングルトンとして定義されている。自分のクラスをシングルトンとして定義するには次のようにする。</p>
+
+<pre><code class="io">MySingleton := Object clone
+MySingleton clone := MySingleton
+</code></pre>
+
+<p></section></p>
+
+<p><section></p>
+
+<h3>メッセージ</h3>
+
+
+<p>Io ではほとんどすべてのものがメッセージになる。メッセージは <em>sender（送信元、呼び出し元）</em>、<em>target（送信先、宛先、呼び出し先）</em>、<em>arguments（引数）</em>のコンポーネントからなる。</p>
+
+<p>call メソッドを使うと、任意のメッセージに関するメタ情報を参照できる。</p>
+
+<pre><code class="io">objA := Object clone
+# =&gt; Object_0x000000aa
+objA myMethod := method(call sender)
+
+objB := Object clone
+# =&gt; Object_0x000000bb
+objB myMethod := method(objA myMethod)
+
+objB myMethod
+# =&gt; Object_0x000000bb
+</code></pre>
+
+<p>objA の myMethod スロットは、メソッドの呼び出し元の情報を表示する call sender が定義されている。これを、objB の myMethod スロットが呼び出すことによって、sender は objB が参照されるため、objB のメタ情報が表示される。</p>
+
+<p></section></p>
+
+<p>（Io を Mac OS X にインストールしようとしたところ、make でエラーが出てしまってインストール出来なかったため、おぼえがきはここまで。。）</p>
+
+<h2>Prolog</h2>
+
+
+<p><em>ルールベース言語</em>である <strong>Prolog</strong> を使えば、論理を表現したり質問をしたりできる。Prolog もデータベースを扱うが、論理ルールと関係から成り、データを表現する部分とデータに質問する部分で構成される。</p>
+
+<p>Prolog は次の構成要素からなる。</p>
+
+<dl><dt>事実</dt>
+<dd><p>特定の世界についての基本的な表明</p></dd>
+<dt>ルール</dt>
+<dd><p>その世界の事実に関する推論</p></dd>
+<dt>質問</dt>
+<dd><p>その世界に関する質問</p></dd>
+</dl>
+
+
+<p>Prolog では、答えに至る道筋をコーディングするのではなく、純粋な論理を使って知識をコーディングする。あとは Prolog がその知識を組み合わせて答えを見つけてくれる。我々プログラマは、知識ベースに論理を組み込んで、それに対して質問をするという形になる。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://ja.wikipedia.org/wiki/Prolog" rel="external nofollow">Prolog - Wikipedia</a></p>
+
+<p></section></p>
+
+<h3>アトムと変数</h3>
+
+
+<p>Prolog では小文字で始まる単語を<em>アトム</em>と呼び、固定値の定義になる。大文字かアンダースコアで始まる単語は変数である。</p>
+
+<h3>知識ベース（事実、ルール）</h3>
+
+
+<p>Prolog のプログラムの例</p>
+
+<pre><code class="prolog">likes(hamasyou, udon).
+likes(taro, udon).
+likes(jiro, ramen).
+
+friend(X, Y) :- ＼+(X = Y), likes(X, Z), likes(Y, Z).
+</code></pre>
+
+<p>likes(.., ..) の部分が事実になり、 friend(.., ..) の部分がルールになる。＼+ は否定なので、friend のルールは、X と Y が一致せず、X が Z を好きで、Y が Z を好きな場合となる。</p>
+
+<h3>地図の塗り分け問題の例</h3>
+
+
+<p>本書より抜粋</p>
+
+<p><img alt="map.gif" src="http://hamasyou.com/images/map.gif" width="320" height="360" class="mt-image-none" style="" /></p>
+
+<pre><code class="prolog">different(red, green).
+different(red, blue).
+different(green, red).
+different(green, blue).
+different(blue, red).
+different(blue, green).
+
+coloring(Alabama, Mississippi, Georgia, Tennessee, Florida) :-
+  different(Mississippi, Tennessee),
+  different(Mississippi, Alabama),
+  different(Alabama, Tennessee),
+  different(Alabama, Mississippi),
+  different(Alabama, Georgia),
+  different(Alabama, Florida),
+  different(Georgia, Florida),
+  different(Georgia, Tennessee).
+</code></pre>
+
+<p>隣接する州を同じ色にぬらないように色を決めるというコーディングが、たったこれだけでかけてしまう。</p>
+
+<p>Prolog では、事実と推論でロジックを表現し、利用者に質問させる。手順を追った解法を作る必要はない。</p>
+
+<h3>Prolog の得意とする問題</h3>
+
+
+<p><blockquote><p>Prolog では問題の解法を記述する必要はない。問題を記述するだけでよい。そして、問題を記述するための言語は純粋な論理だけだ。事実と推論から始めれば、あとは Prolog がやってくれる。Prolog のプログラムは高レベルの抽象化を実現する。この事例のスケジュール作成と行動パターンは、Prolog が得意とする問題だ。</p></p><p><p></p><footer><strong>本書P.84</strong></footer></blockquote></p>
+
+<h3>再帰処理のメモリ不足</h3>
+
+
+<p>ルールをネストする場合、繰り返しか再帰を使う必要がある。宣言型言語である Prolog ではこの問題の場合、再帰を使う。</p>
+
+<p>宣言型言語は、再帰によるスタック領域の消費にともなるメモリ不足への対応として、<em>末尾再帰最適化</em>という手法で解決していることが多い。Prolog は再帰部分がサブゴールの最後にある場合、最適化を行うため、メモリ不足に対処することができる。</p>
+
+<h3>リストとタプル</h3>
+
+
+<p>リストは、[1, 2, 3]、タプルは (1, 2, 3) のように宣言する。リストは可変長、タプルは固定長である。</p>
+
+<p>リストには、[Head|Tail] という構文でリストを分割する機能がある。_（アンダースコア）はワイルドカードで、何にでもマッチングすることを表す。</p>
+
+<pre><code class="prolog">(1, 2, 3) = (1, 2, 3).
+[1, 2, 3] = [1, 2, 3].
+[1, 2, 3] = [Head|Tail].
+# =&gt; Head = 1
+# =&gt; Tail = [2,3]
+[a, b, c, d, e] = [_, _|[Head|_]].
+# =&gt; Head = c
+</code></pre>
+
+<h3>リストと数値計算</h3>
+
+
+<p>Prolog でリストの合計値を計算する sum を処理するには、次のようにする。</p>
+
+<pre><code class="prolog">sum(0, []).
+sum(Total, [Head|Tail]) :- sum(Sum, Tail), Total is Head + Sum.
+
+| ?- &lt;kbd&gt;sum(What, [2, 4, 6])&lt;/kbd&gt;
+What is 12 ?
+</code></pre>
+
+<p>合計のルールとして、「空のリストの合計は0であり、Tail の合計（Sum）と Head を足したものが Total になる」ということを与えてやるだけで、Prolog が合計の出してくれる。</p>
+
+<h3>Prolog が活躍する場面</h3>
+
+
+<p>Prolog によるプログラミングはまず知識ベースを構築し、その問題領域に関する質問をすることで行う。一部の質問は表明であり、yes、no で答える。変数を含む質問を行うことで、その変数に入る値の組み合わせを求めることができる。</p>
+
+<p>単純な代入はなく、<em>ユニフィケーション</em>と<em>バックトラック</em>という技法を使用して、変数のとりうる値の推論を行っていく。</p>
+
+<ul><li>自然言語処理</li><li>ゲームの解法</li><li>セマンティックWeb</li><li>人工知能</li><li>スケジューリング</li></ul>
+
+
+<p>知識ベース、ルールが与えられ解を求めるといったようなコンテキストに置いて、Prolog は力を発揮する。</p>
+
+<h2>Scala</h2>
+
+
+<p><strong>Scala</strong> は異なるプログラミングパラダイム間の橋渡しをする言語である。主に Java との橋渡しをする。</p>
+
+<ul><li>Java 仮想マシン上で動作するため、既存の環境で共存できる。</li>
+<li>Java のライブラリを使用できる。また、Java のフレームワークも利用出来る。</li>
+<li>静的に型付けされた言語である。<strong>オブジェクト指向と関数型プログラミング言語のパラダイム</strong>を持つ、マルチパラダイム言語。</li>
+</ul>
+
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://ja.wikipedia.org/wiki/Scala" rel="external nofollow">Scala - Wikipedia</a></p>
+
+<p></section></p>
+
+<h3>Scala の特徴</h3>
+
+
+
+
+<dl><dt>型推論</dt>
+<dd><p>Scala は出来る限り変数の型を推論する。</p></dd>
+<dt>関数型概念</dt>
+<dd><p>既存の関数をさまざまな方法で用いて新しい関数を作ることができる。</p></dd>
+<dt>変更不能な変数</dt>
+<dd><p>Scala は、変数は変更不可能な <em>val</em> と変更可能な <em>var</em> を使い分ける。</p></dd>
+<dt>アクター理論</dt>
+<dd><p>マルチコア時代に対応した並行処理の仕組みを持つ。</p></dd>
+</dl>
+
+
+
+
+<h3>Scala の型</h3>
+
+
+<p>Scala では全てはクラスのインスタンスであり、Java のプリミティブ型も Scala ではオブジェクトとして扱う。ただし、メソッドはオブジェクトではない。関数はクラスのインスタンスであるのでオブジェクトである。</p>
+
+<p>Scala は型推論によってほとんどの変数の型を自動的に解決する。これはコンパイル時に行われる。</p>
+
+<p>Scala には<em>タプル</em>が用意されている。タプルは固定長のオブジェクトリストのことで、それぞれのオブジェクトは型が違っていても構わない。純粋な関数型言語ではオブジェクトとその属性をタプルで表すことが多い。</p>
+
+<p>Scala のルートクラスには <em>Any</em> という型がある。Scala のすべてのクラスは Any を継承している。Scala にはすべてのクラスのサブクラスである <em>Nothing</em> 型もある。</p>
+
+<h3>クラス定義</h3>
+
+
+<p>Scala でクラスを定義する場合は次のように記述する。</p>
+
+<pre><code class="scala">class Person(firstName: String, lastName: String) {
+  val fullName = firstName + " " + lastName
+
+  def name():String = {
+    return fullName
+  }
+}
+
+val person = new Person("syougo", "hamada")
+println(person.name)
+// =&gt; syougo hamada
+</code></pre>
+
+<p>クラスの定義はコンストラクタになる。クラス名に続いてコンストラクタに渡す引数を記述する。</p>
+
+<h3>クラスメソッドの定義</h3>
+
+
+<p>Java ではクラスメソッドを定義するのに static を利用するが、Scala ではクラスメソッドはシングルトンオブジェクトのインスタンスメソッドとして定義する。</p>
+
+<p>インスタンスを一つしか持たないシングルトンクラスを定義するには <em>object</em> キーワードを使う。</p>
+
+<pre><code class="scala">object Configuration {
+ def config = ...
+}
+</code></pre>
+
+<p>Scala では <em>class 定義と object 定義に同じ名前を使うことができる</em>。クラスメソッドを定義したいときは class 定義で使った名前と同じクラス名を object で使い、クラスメソッドを object 定義内に記述する。</p>
+
+<p>このような class と object で同名のクラスを持つようなオブジェクトを<em>コンパニオンオブジェクト</em>と呼ぶ。</p>
+
+<h3>トレイト</h3>
+
+
+<p>Java のインターフェースを Scala では<em>トレイト</em>と呼ぶ。トレイトには実装も記述することができる。</p>
+
+<p>トレイトはクラスを部分的に実装したものと考えることができ、単一の関心事を実装するのに使うのがよい。</p>
+
+<pre><code class="scala">trait Nice {
+  def greet() = println("Hello!")
+}
+</code></pre>
+
+<h3>変更不可能な変数</h3>
+
+
+<p>Scala は並行プログラミングを重視しているため、変更不可能な変数の定義が簡単に行える。Java では final を付けて変数を宣言するが、Scala では <em>val</em> キーワードで変数を定義する。</p>
+
+<p>Scala では可変状態は有害であり、変数は衝突状態をさけるために変更不能（immutable:イミュータブル）にすることが推奨される。</p>
+
+<p>オブジェクト指向プログラミングでは状態はオブジェクトにカプセル化されており、可変であることが多いが、<em>関数型プログラミングの設計哲学では可変状態は並行性を制限するため有害である</em>としている。</p>
+
+<h3>nil の扱い</h3>
+
+
+<p>Scala では Null はトレイトであり null は Null のインスタンスである。Nil は空のリストになっている。</p>
+
+<h3>高階関数</h3>
+
+
+<p>高階関数とは、他の関数を入力として受け取る関数、または出力として関数を返す関数のこと。</p>
+
+<p>Scala のコレクションには foreach という関数を引数にとり繰り返し処理するメソッドが用意されている。</p>
+
+<pre><code class="scala">def foreach[U](f: Elem =&gt; U): Unit = {
+  val it = iterator
+  while (it.hasNext) f(it.next())
+}
+</code></pre>
+
+<p>foreach の引数 <code>(f: Elem =&gt; U)</code> の部分が関数を受け取ることを表している。Scala では関数の入力を 入力の型 =&gt; 出力の型 という形で表す。</p>
+
+<p>上記の場合、Elem 型のオブジェクトを引数にとり型パラメータ U を返す関数を表す。foreach は例えば次のように利用する。</p>
+
+<pre><code class="scala">val list = List("hoge", "foo", "bar")
+list.foreach(elem =&gt; println(elem))
+// =&gt; hoge
+// =&gt; foo
+// =&gt; bar
+</code></pre>
+
+<p>foreach に、無名関数を作成して渡している。無名関数のコードブロックは 変数名 =&gt; コード の形で作成する。ここでは、引数 elem に String 型のオブジェクト（list の要素）が渡され、コードの部分が実行される。</p>
+
+<h3>アクターとメッセージパッシング</h3>
+
+
+<p>Scala は並行性を実現するのに<em>アクター</em>と<em>メッセージパッシング</em>を利用する。アクターは厳密に管理されたキューで構成され、状態を更新したりアクセスしたりするときには必ずメッセージ交換に寄って通信する。</p>
+
+<p>Scala でアクターを利用する場合は react または receive メソッドを loop でラップした形をしている。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://www.ibm.com/developerworks/jp/java/library/j-scala04109.html" rel="external nofollow">多忙な Java 開発者のための Scala ガイド: Scala の並行性を掘り下げる - developerWorks</a></p>
+
+<p></section></p>
+
+<h2>Erlang</h2>
+
+
+<p><strong>Erlang</strong>（アーラン）は、並行処理指向言語で、スケーラブルな並行性と信頼性を備えている。Erlang は<em>関数型言語</em>で、最大の特徴はプロセスをできるだけ軽量にするという軽量プロセスによる、並行処理である。</p>
+
+<p>Erlang には魅力的な機能が備わっている。</p>
+
+<ul><li>エラー処理機構</li>
+<li>動的なコード更新メカニズム</li>
+<li>ビットレベルのパターンマッチング</li>
+</ul>
+
+
+<p>Erlang のモットーは「非防御的」プログラミングと「クラッシュさせろ」である。</p>
+
+<p>Erlang は<em>難しいことを簡単にし、簡単なことを難しくする</em>言語であり。「普通」のプログラムを書くのは簡単ではない。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://ja.wikipedia.org/wiki/Erlang" rel="external nofollow">Erlang - Wikipedia</a></p>
+
+<p><a href="http://erlangworld.web.fc2.com/" rel="external nofollow">Erlang World</a></p>
+
+<p></section></p>
+
+<h3>関数型言語</h3>
+
+
+
+
+<ul><li>プログラムはすべて関数で作成する。オブジェクトは登場しない。</li>
+<li>関数は通常、入力が同じであれば出力が同じになる。</li>
+<li>関数は通常、副作用を持たない。</li>
+<li>すべての変数への代入は1回に限られる。</li>
+</ul>
+
+
+<p>Erlang は<em>純粋な関数型言語ではない</em>。例外が幾つかある。</p>
+
+<h3>軽量プロセス</h3>
+
+
+<p>Erlang は<em>軽量プロセス</em>という考え方を採用している。Erlang もアクターを用いて並行処理を実現している。</p>
+
+<p>Scala ではアクターはオブジェクトでありスレッドプールが動作基盤になっていたが、Erlang では<em>アクターは軽量プロセス</em>である。</p>
+
+<h3>信頼性</h3>
+
+
+<p>Erlang の哲学は「クラッシュさせろ」であり、何かエラーがあればすぐにプロセスを強制終了させ新しいプロセスを作成することができる。</p>
+
+<p>Erlang はコードのホットスワップ（停止させずにアプリケーションの一部を取り替えること）ができる。</p>
+
+<p>Erlang にはメッセージパッシング、プロセスの生成、プロセスの監視の機能が備わっているため、並行処理を行うのがとても容易になっている。</p>
+
+<h3>変数とアトム</h3>
+
+
+<p>Erlang では変数は大文字で始める必要がある。小文字で始めた場合はアトム（定数、シンボル）になる。</p>
+
+<pre><code class="erlang">apple.
+% =&gt; apple
+Fluit = banana.
+% =&gt; banana
+</code></pre>
+
+<h3>パターンマッチング</h3>
+
+
+<p>Erlang では、データ構造をマッチングすることで、変数をタプル内の各値に代入する。</p>
+
+<pre><code class="erlang">Person = {person, {name, "Syougo Hamada"}, {age, 29}}.
+{person, {name, Name}, {age, Age} = Person.
+Name.
+% =&gt; Syougo Hamada
+Age.
+% =&gt; 29
+</code></pre>
+
+<p>Erlang では複数のマッチング文と複数の種類のタプルを使うことがよくあるので、上記のように、タプルの先頭にデータ構造を表すアトムを入れておくデータ構造をよく使う。</p>
+
+<h3>関数</h3>
+
+
+<p>Erlang は、関数を .erl という拡張子を持つファイルに格納する。ファイルを実行するにはコンパイルが必要になる。コンパイルを行うと .beam という実行ファイルが生成される。コンパイル済みのモジュールは beam という仮想マシン内で動作する。</p>
+
+<p><section></p>
+
+<pre><code class="erlang basic.erl">-module(basic).
+-export([mirror/1]).
+
+mirror(Arg) -&gt; Arg.
+</code></pre>
+
+<p>basic モジュール内に mirror という関数を定義した。<code>mirror/1</code> は一つの引数を取るという意味。export で外部に公開する関数を指定する。実行するにはコンパイルを行い、次のように呼び出す。</p>
+
+<pre><code class="erlang">c(basic).
+basic:mirror(hamasyou).
+% =&gt; hamasyou
+</code></pre>
+
+<p>関数は、モジュール名を修飾して呼び出す必要がある。</p>
+
+<p></section></p>
+
+<p><section></p>
+
+<pre><code class="erlang matching_number.erl">-module(matching_number).
+-export([number/1]).
+
+number(one) -&gt; 1;
+number(two) -&gt; 2;
+number(three) -&gt; 3.
+</code></pre>
+
+<pre><code class="erlang">c(matching_number).
+matching_number:number(one).
+% =&gt; 1
+matching_number:number(two).
+% =&gt; 2
+matching_number:number(three).
+% =&gt; 3
+</code></pre>
+
+<p>関数のコードは Prolog のように記述できる。つまり、マッチングである。複数のマッチングの可能性があるコードは終端を ; で終える。最後のケースは . で終わる。</p>
+
+<p></section></p>
+
+<h3>無名関数</h3>
+
+
+<pre><code class="erlang">Negate = fun(I) -&gt; -I end.
+Negate(1).
+% =&gt; -1
+</code></pre>
+
+<p>無名関数は fun というキーワードで定義する。関数は変数に代入することができる。</p>
+
+<h3>リスト内包表記</h3>
+
+
+<p>関数型言語で最も重要な関数の一つは map である。map はリスト要素に何かを適用しリストを変形させる。</p>
+
+<pre><code class="erlang">List = [1, 2, 3, 4, 5].
+Double = fun(X) -&gt; X * 2 end.
+lists:map(Double, List).
+% =&gt; [2, 4, 6, 8, 10]
+</code></pre>
+
+<p>Erlang は、これと同じことをリスト内包表記と呼ぶ構文で用意している。</p>
+
+<pre><code class="erlang">[Double(X) || X &lt;- List].
+</code></pre>
+
+<p>リスト内包表記の完全な形式は次のとおり。</p>
+
+<ul><li>リスト内包表記は [式 || 節1, 節2, ..., 節N] という形式を持つ。</li>
+<li>リスト内包表記には任意の数の節を含めることができる。</li>
+<li>節には、ジェネレータまたはフィルタを指定できる。</li>
+<li>フィルタには、ブール式またはブール値を返す関数を指定できる。</li>
+<li><code>Match &lt;- List</code> という形式のジェネレータは、左辺のパターンを右辺のリストの各要素とマッチングする。</li>
+</ul>
+
+
+<pre><code class="erlang">[{X, Y} || X &lt;- [1, 2, 3, 4, 5], X &lt; 3, Y &lt;- [5, 6]].
+% =&gt; [{1,5},{1,6},{2,5},{2,6}]
+</code></pre>
+
+<h3>並行性を実現するプリミティブ</h3>
+
+
+<p>Erlang では並行性を実現する基本プリミティブは、<em>メッセージの送信（!を使用）</em>、<em>プロセスの生成（spawn を使用）</em>、<em>メッセージの受信（receive）</em>の3つになる。</p>
+
+<h3>非同期通信</h3>
+
+
+<p>非同期プロセス側の受信ロジックの例を次に示す。</p>
+
+<pre><code class="erlang">-module(mymodule).
+-export([loop/0]).
+
+loop() -&gt;
+  receive
+    "hoge" -&gt;
+      io:format("hoge"),
+      loop();
+
+    "foo" -&gt;
+      io:format("foo"),
+      loop();
+
+    _ -&gt;
+      io:format("don't understand"),
+      loop()
+end.
+</code></pre>
+
+<p>受信は receive で行う。無限ループを実行しているが、Erlang も末尾再帰が最適化されるため loop() がreceive 節の最後の処理である限りオーバーヘッドはない。これが Erlang で無限ループを書く際のイディオムの一つである。</p>
+
+<p>次に、非同期プロセスを生成する側のコードを示す。</p>
+
+<pre><code class="erlang">c(mymodule).
+Pid = spawn(fun mymodule:loop/0).
+</code></pre>
+
+<p>プロセスの生成は spawn で行う。spawn は関数を引数に取る関数である。</p>
+
+<p>最後に、生成したプロセスに対してメッセージを送るコード例を示す。</p>
+
+<pre><code class="erlang">Pid ! "hoge".
+</code></pre>
+
+<p>プロセスへのメッセージ送信は ! を使う。</p>
+
+<h3>同期プロセス</h3>
+
+
+<p>同期プロセスを使う場合は、receive でプロセスのIDと受け取ったメッセージが対となるタプルをマッチさせる。このIDにメッセージを送ることで応答を返す。</p>
+
+<pre><code class="erlang">receive
+  {Pid, "hoge"} -&gt;
+    Pid ! "Received",
+    loop();
+    ...
+</code></pre>
+
+<p>送信側は、応答を待つようにする必要がある。</p>
+
+<pre><code class="erlang">Pid ! "hoge",
+  receive
+    Message -&gt; do_something_with(Message)
+  end.
+</code></pre>
+
+<p>送信側も、receive を使って応答を待つようにする。</p>
+
+<h3>OTP ライブラリ</h3>
+
+
+<p>Erlang は電話会社で開発されたため、主要なライブラリ OTP(Open Telecom Platform)が用意されている。耐障害性、スケーラビリティ、トランザクション整合性、ホットスワップなどの機能が組み込まれている。</p>
+
+<h3>（おまけ）処理系のインストール</h3>
+
+
+<p>Erlang を公式サイトからダウンロードしてきて make を行うと下のようなエラーがでた。</p>
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line output'>make[3]: *** No rule to make target <code>erl_alloc_types.h', needed by</code>obj/i386-apple-darwin10.8.0/opt/plain/atom.o'.  Stop.</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<p>Makefile.in に erl_alloc_types のコンパイル方法が書かれていないせいらしい。github にパッチが上がっていたので、Makefile.in を書き換えると上手くコンパイルができた。</p>
+
+<p><a href="https://github.com/erlang/otp/blob/dev/erts/emulator/Makefile.in" rel="external nofollow">Erlang Makefile.in patch</a></p>
+
+<h2>Clojure</h2>
+
+
+<p><strong>Clojure</strong> は JVM 上で動く Lisp である。</p>
+
+<ul><li>Lisp はリストの言語である。関数呼び出しでは、<em>リストの最初の要素を関数</em>として、<em>残りの要素を引数</em>として用いる。</li>
+<li>Lisp は自分自身のデータ構造を用いてコードを表現する。「<em>データとしてのコード</em>」(code as data)の思想で設計されておりマクロ機構をもつ。</li></ul>
+
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://ja.wikipedia.org/wiki/Clojure" rel="external nofollow">Clojure - Wikipedia</a></p>
+
+<p></section></p>
+
+<h3>関数の呼び出し</h3>
+
+
+<p>Clojure は関数呼び出し全体を括弧で囲む。最初の要素は関数名、残りが引数になる。</p>
+
+<pre><code class="clojure">(println "Hello Clojure")
+(+ 1 1)
+; =&gt; 2
+</code></pre>
+
+<h3>リスト、マップ、セット、ベクタ、シーケンス</h3>
+
+
+<p>Clojure では慣用的に、<em>コードにはリスト</em>を、<em>データにはベクタ</em>を使用する。</p>
+
+<p><section></p>
+
+<h4>リスト</h4>
+
+
+<p><em>リスト</em>は関数として評価されるため、リストでデータを扱う場合は次のようにする。</p>
+
+<pre><code class="clojure">(list 1 2 3)
+</code></pre>
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>ベクタ</h4>
+
+
+<p><em>ベクタ</em>は各カッコ（[]）で表す。ベクタは順序付きのコレクション。</p>
+
+<pre><code class="clojure">[:hoge :foo :bar]
+</code></pre>
+
+<p>ベクタも関数であるため、引数にインデックスを取ることができる。</p>
+
+<pre><code class="clojure">([:hoge :foo :bar] 0)
+; =&gt; :hoge
+</code></pre>
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>セット</h4>
+
+
+<p><em>セット</em>は順序なしのコレクション。#{} で囲んで定義する。</p>
+
+<pre><code class="clojure">#{:foo :hoge :bar}
+; =&gt; #{:hoge :foo :bar}
+</code></pre>
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>マップ</h4>
+
+
+<p><em>マップ</em>はキーと値のセットで {} で囲んで定義する。</p>
+
+<pre><code class="clojure">{:key1 :hoge, :key2 :foo}
+</code></pre>
+
+<p><em>Clojure ではカンマを空白として扱う</em>ため、空白の代わりにカンマを使ってもいい。</p>
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>シーケンス</h4>
+
+
+<p><em>シーケンス</em>は Clojure のコンテナを実装に依存しない形で抽象化したもの。シーケンスを使うとすべてのコレクションを総称的に扱うことができる。</p>
+
+<p></section></p>
+
+<p>Clojure では先頭に : が付いている単語は<em>キーワード</em>として扱われる。Clojure のキーワードは Ruby のシンボル、Prolog や Erlang のアトムと同じものである。</p>
+
+<h3>変数の定義</h3>
+
+
+<p>Clojure で変数を定義するのには <em>def</em> を使う。</p>
+
+<pre><code class="clojure">(def mentors {:dearth-vader "obi wan", :luke "yoda"})
+</code></pre>
+
+<h3>関数の定義</h3>
+
+
+<p>Clojure で関数を定義するには <em>defn</em> を使う。形式は <em><code>(defn name [params] body)</code></em> である。</p>
+
+<pre><code class="clojure">(defn greet [] (println "Hello"))
+</code></pre>
+
+<p>関数には説明文を指定することもできる。</p>
+
+<pre><code class="clojure">(defn greet
+      "This function greet 'Hello'"
+      []
+      (println "Hello"))
+</code></pre>
+
+<h3>無名関数の定義</h3>
+
+
+<p>Clojure では無名関数は <em>fn</em> で定義する。<em><code>(fn [params] body)</code></em> の形式になる。# という<em>リーダーマクロ</em>を使って簡略化して書くこともできる。リーダーマクロを使うと % がシーケンスの各項にバインドされる。</p>
+
+<pre><code class="clojure">(def people ["hamasyou" "taro"])
+(map (fn [w] (* 2 (count w))) people)
+; =&gt; (16 8)
+(map #(* 2 (count %)) people)
+; =&gt; (16 8)
+</code></pre>
+
+<h3>バインディング</h3>
+
+
+<p>関数の引数に実引数の値を代入することを<em>バインディング（束縛）</em>という。Clojure ではバインディングする引数の任意の部分にだけパラメータとしてアクセスする機能がある。それを<em>デストラクチャリング（分配束縛）</em>という。</p>
+
+<p>無視するパラメータには慣習として _ を使う。</p>
+
+<pre><code class="clojure">(def board [[:x :o :x] [:o :x :o] [:o :x :o]])
+(defn center [[_ [_ c _] _]] c)
+(center board)
+; =&gt; :x
+</code></pre>
+
+<p><em>let</em> を使えば引数リスト内以外でもデストラクチャリングを起こすことができる。</p>
+
+<pre><code class="clojure">(def person {:name "hamasyou", :age 29})
+(let [{name :name} person] (str "The person's name is " name))
+</code></pre>
+
+<p>let の第一引数はバインドするシンボルとバインドされる値からなるベクタ。第二引数は式。</p>
+
+<h3>再帰</h3>
+
+
+<p>Clojure は JVM の制約のため末尾再帰最適化をサポートしていない。そのため、loop と recur を使って再帰を定義する必要がある。</p>
+
+<p><a href="http://sassylog.blogspot.com/2010/03/clojure_7760.html" rel="external nofollow">Clojure 再帰 - sassy log</a></p>
+
+<h3>マクロ展開</h3>
+
+
+<p>Clojure はマクロ展開と呼ばれる段階を経て、コードを実装または解釈する。</p>
+
+<p><a href="http://d.hatena.ne.jp/sDaigo/20101031/1288509314" rel="external nofollow">Clojure Macro 入門 - Playground of Mine</a></p>
+
+<h3>ソフトウェアトランザクショナルメモリ(STM)</h3>
+
+
+<p>Clojure では並行性をサポートするために<em>ソフトウェアトランザクショナルメモリ(STM)</em>を用いる。参照を作成するのに ref を使う。</p>
+
+<pre><code class="clojure">(def movie (ref "Star Wars"))
+(deref movie)
+; =&gt; "Star Wars"
+@movie
+; =&gt; "Star Wars"
+</code></pre>
+
+<p>参照先を参照するのには deref を使う。@ を使ったシンタックスシュガーも用意されている。</p>
+
+<p>参照先の値を書き換えるときには、トランザクション内で実行する必要がある。トランザクションをオープンするのには dosync 関数を使う。</p>
+
+<pre><code class="clojure">(dosync (ref-set movie "Star Wars: The Revenge of the Sith"))
+@movie
+; =&gt; "Star Wars: The Revenge of the Sith"
+</code></pre>
+
+<h3>アトム</h3>
+
+
+<p>他のアクティビティと連携しない共有データは、単にスレッド安全性を保証したいだけの場合が多い。その場合は<em>アトム</em>を使う。アトムを使うとトランザクション外でもデータの変更を許す。</p>
+
+<pre><code class="clojure">(def config (atom "Configuration Data"))
+</code></pre>
+
+<h3>エージェント、フューチャ</h3>
+
+
+<p>アトムと同様に<em>エージェント</em>を使うとデータを非同期に変更できる。エージェントは Io のフューチャと同じで、デリファレンスされた（参照がとりだされた）エージェントの状態は、値が使用可能になるまでブロックされる。</p>
+
+<p>結果が返されるまで待ちたくない場合はフューチャを使う。</p>
+
+<p><section></p>
+
+<h4>もろもろの並行性に関しての参考</h4>
+
+
+<p><a href="http://d.hatena.ne.jp/marblejenka/20100626/1277528587" rel="external nofollow">clojureでのrefsの実装について - marblejenkaの日記</a></p>
+
+<p></section></p>
+
+<h2>Haskell</h2>
+
+
+<p><strong>Haskell</strong> は純粋関数型プログラミング言語である。Haskell は<em>遅延評価</em>を重視している。</p>
+
+<p><section></p>
+
+<h4>参照</h4>
+
+
+<p><a href="http://ja.wikipedia.org/wiki/Haskell" rel="external nofollow">Haskell - Wikipedia</a></p>
+
+<p></section></p>
+
+<h3>関数の定義</h3>
+
+
+<p>Haskell の関数定義は型指定と実装に分けて指定する。型指定は省略が可能である。</p>
+
+<p><section></p>
+
+<pre><code class="haskell double.hs">module Main where
+
+  double :: Integer -&gt; Integer
+  double x = x + x
+</code></pre>
+
+<p>Main という名前のモジュールに double という関数を定義している。Integer 型の引数を取り Integer 型を返すという型定義をしている。この型定義は省略できる。</p>
+
+<p>Haskell のモジュールは関連するコードを同じスコープ内に集めたもの。Main モジュールは特別なモジュールでトップレベルのモジュールになる。</p>
+
+<p></section></p>
+
+<h3>ガードを使った関数の定義</h3>
+
+
+<p>再帰を利用した階乗計算を行う関数を定義する。</p>
+
+<pre><code class="haskell">module Main where
+
+ factorial :: Integer -&gt; Integer
+ factorial x
+   | x &gt; 1 = x * factorial (x - 1)
+   | otherwise = 1
+</code></pre>
+
+<p>Haskell ではガードは引数の値を制限する条件として使われる。ガードはパターンマッチング代わりに利用される。</p>
+
+<h3>タプル</h3>
+
+
+<p>Haskell のタプル（固定要素のコレクション）はカンマで区切った要素を括弧で囲む。</p>
+
+<pre><code class="haskell">(1, 2, 3)
+</code></pre>
+
+<h3>リスト</h3>
+
+
+<p>Haskell のリストは [] を使う。</p>
+
+<pre><code class="haskell">let (h:t) = [1, 2, 3, 4]
+h
+-- =&gt; 1
+t
+-- =&gt; [2,3,4]
+</code></pre>
+
+<p><em>let</em> はローカルスコープ内で変数を関数にバインドする。(h:t) という表記は Prolog の[Head|Tail]  構文と同じでリストを分割する。: はリストを作成するときにも使える</p>
+
+<pre><code class="haskell">1:[2, 3]
+-- =&gt; [1,2,3]
+</code></pre>
+
+<p>リスト内包表記は、Erlang と同じように使える。</p>
+
+<pre><code class="haskell">[x * 2 | x &lt;- [1, 2, 3]]
+-- =&gt; [2,4,6]
+</code></pre>
+
+<h3>無名関数</h3>
+
+
+<p>Haskell で無名関数を定義するには <em><code>(＼param1 .. paramn) -&gt; body)</code></em> と書く。</p>
+
+<pre><code class="haskell">(＼x -&gt; x) "hemasyou"
+-- =&gt; "hamasyou"
+</code></pre>
+
+<h3>部分適用関数とカリー化</h3>
+
+
+<p>Haskell のすべての関数は一つの引数を取る。Haskell において2つの引数をとる関数は、1つの引数をとり「1つの引数をとる関数」を返す関数同義である。</p>
+
+<p>このように、関数を返すことですべての関数を1つの引数をとる関数として表現することを<em>カリー化</em>と呼ぶ。</p>
+
+<p>次の例は引数を2つとってそれぞれをかけたものを返す関数である。</p>
+
+<pre><code class="haskell">let prod x y = x * y
+prod 3 4
+-- =&gt; 12
+</code></pre>
+
+<p>この関数は、次のように動作する。</p>
+
+<ul><li><code>prod 3</code> を実行して <code>(＼y = 3 * y)</code> という関数を返す</li>
+<li><code>(＼y = 3 * y) 4</code> を実行して12を得る</li></ul>
+
+
+
+
+<h3>クラス</h3>
+
+
+<p>Haskell の<em>クラス</em>は、入力に応じてどの演算が実行可能かを定義したものである。Clojure のプロトコルと同じ。</p>
+
+<h3>モナド</h3>
+
+
+<p><em>モナド</em>は特別なやり方で複数の関数を組み合わせるための方法である。Haskell は純粋関数型言語なので命令形式で問題を表現したりプログラムの実行結果を蓄積したりする処理が難しくなる。モナドは関数をラップして数珠つなぎにする型構成子である。</p>
+
+<p>モナドは基本的には3つの要素で構成される。</p>
+
+<ul><li>コンテナとなるものの型を変数に取る型構成子。どのコンテナを選ぶかはモナドで何を実行するかによって異なる。</li>
+<li>関数をラップしてコンテナに格納する return という名前の関数。</li>
+<li>関数をラップする &gt;&gt;=（バインド）と言う名前の関数。バインドを使って関数を数珠つなぎにする。</li></ul>
+
+
+<p><a href="http://www.sampou.org/haskell/a-a-monads/html/" rel="external nofollow">モナドのすべて - All About Monads</a></p>
+]]></content>
+  </entry>
+  
+</feed>

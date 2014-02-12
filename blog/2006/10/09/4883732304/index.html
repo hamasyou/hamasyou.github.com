@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <title>JUnitと単体テスト技法―JUnit4対応 - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ">
+  <meta name="keywords" content="JUnit,JUnit4対応,単体テスト,技法,4883732304">
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2006/10/09/4883732304">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate subscribe-rss" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">JUnitと単体テスト技法―JUnit4対応</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2006-10-09T13:19:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 9<span>th</span>, 2006</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/junit/">JUnit</a>
+    
+      <a class="tag label label-info" href="/blog/tags/tesutoji-fa/">テスト技法</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4883732304/503-3688169-6412757?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4883732304" title="JUnitと単体テスト技法―JUnit4対応" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/51WDKXDA6AL._SL500_AA300_.jpg" class="asin-thumbnail" alt="JUnitと単体テスト技法―JUnit4対応" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/gp/product/4883732304/503-3688169-6412757?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4883732304" title="JUnitと単体テスト技法―JUnit4対応" rel="external nofollow">JUnitと単体テスト技法―JUnit4対応</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>福島 竜 (著)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>ソフトリサーチセンター</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4883732304/503-3688169-6412757?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4883732304" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+<div class="entry-content"><p>本書は、JUnit の使い方と単体テストについての知識を得られるものになっています。JUnit を使ったテストファーストの流れを説明し、テストとは何か（単体テスト、結合テスト、システムテスト）ということを解説しています。</p>
+
+<p>対象読者は次のような人です。</p>
+
+<ul><li>JUnit を使ったテストファーストを学んでみたい</li>
+<li>単体テストでどんなテストを行えばよいのか迷っている</li>
+<li>テスト技法に関してさらっと基礎をつかんでおきたい</li>
+</ul>
+
+
+
+
+<h4>テストファーストに関してさらに学びたい人にはこちらがお勧めです</h4>
+
+
+<p>『<a href="http://www.amazon.co.jp/gp/product/479810714X/503-3688169-6412757?ie=UTF8&tag=sorehabooks-22&linkCode=xm2&camp=247&creativeASIN=479810714X" rel="external nofollow">バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発</a>』</p>
+
+<dl>
+<dt class="info">Information</dt>
+<dd>本書で説明されている JUnit のバージョンは 3.8.1 です。付録に JUnit4 の説明が20数ページ割かれています。</dd>
+</dl>
+
+
+
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+
+
+<h3>単体テストがターゲット</h3>
+
+
+<p>本書は単体テストをターゲットにした本になっています。単体テストには JUnit を使います。</p>
+
+<p><a href="http://www.techscore.com/tech/Others/JUnit/1.html" rel="external nofollow">単体テストとJUnit-TECHSCORE</a></p>
+
+<h4>単体テストとは</h4>
+
+
+
+
+<blockquote><p>単体テストは、モジュールを単位としたテストです。Java の場合、クラス、メソッドが単体テスト対象となります。&lt;中略&gt; 単体テストとは、開発者（プログラマ）が自分で作ったプログラムが「ちゃんと動くか」調べる作業です。</p><footer><strong>本書 P.59 「単体テストの技法」より</strong></footer></blockquote>
+
+
+<p>単体テストは、プログラマが自分の作ったプログラムをテストすることを指します。単体テストでは、テスト対象だけでテストが実行できることがベストです。そのためには、外部に依存する部分をモックオブジェク（Mock Object）などを使ってテストしやすくする必要があります。</p>
+
+<p><a href="http://bobchin.ddo.jp/simpletest/mock_objects_documentation.html" rel="external nofollow">モックオブジェクトとは - SimpleTest for PHP</a></p>
+
+<h4>単体テスト項目</h4>
+
+
+<p>単体テストでは、次のような項目をテストします。</p>
+
+<ul><li>境界値</li>
+<li>条件分岐</li>
+<li>網羅性（カバレッジ）</li>
+<li>例外ケース</li>
+<li>エラーが出そうな値（マイナス値、巨大な値、0、NULL）</li>
+<li>パフォーマンス</li></ul>
+
+
+<p>上記のテストを、正常系とエラー系に分けてそれぞれテストを行います。</p>
+
+<h3>テストファーストを体験できる</h3>
+
+
+<p>本書は、単体テストをテストファーストという開発手法で行う手順を解説しています。テストファーストとは、テストを最初に行う開発手法のことです。</p>
+
+<dl>
+<dt class="tips">Tips</dt>
+<dd>ここでいうテストとは、プログラムを書いた後に記述するテストとは少し意味合いが異なると僕は考えています。テストファーストで記述するテストは、動くことの確認という意味合いよりも、こう動かなければいけないという仕様を強くあらわしていると考えています。そのため、仕様が決まっていなければテストファーストを実行することができません。これにより、「仕様は決まってないんだけど、とりあえずコーディングする」という悪行が防げます。</dd>
+</dl>
+
+
+
+
+<h3>テスト技法のおさらいができる</h3>
+
+
+<p>本書で上げられているテスト技法には次のものがあります。</p>
+
+<ul><li>ブラックボックステスト</li><li>ホワイトボックステスト</li></ul>
+
+
+
+
+<h4>ブラックボックステスト</h4>
+
+
+<p>ブラックボックステストは、プログラムの仕様を元にテストを行うものです。プログラムの内部構造は考慮せず、入出力の仕様に注力します。ブラックボックステストとして、次の4つのテストがあげられています。</p>
+
+<ul><li>同値クラステスト</li><li>境界値テスト</li><li>デシジョンテーブルテスト</li><li>強制エラーテスト</li><li>グレーボックステスト</li></ul>
+
+
+
+
+<h4>ホワイトボックステスト</h4>
+
+
+<p>ホワイトボックステストは、プログラムの内部構造を元にテストを行うものです。条件分岐、データ構造、実装方法などのプログラムの内部を熟知した上でですとを行います。JUnit を用いた単体テストは、主にこのホワイトボックステストを行います。</p>
+
+<ul><li>制御フローテスト</li><li>データフローテスト</li></ul>
+
+
+
+
+<h3>テストの種類がまとまっている</h3>
+
+
+<p>単体テスト以外にも、結合テスト、システムテストといったテストの説明がされています。</p>
+
+<h4>結合テスト</h4>
+
+
+<p>単体テストが完了したモジュールを組み合わせて行うテストのことです。テストシナリオを考えてテストを行います。</p>
+
+<ul><li>トップダウンテスト</li><li>ボトムアップテスト</li><li>サンドイッチテスト</li><li>ビックバンテスト</li></ul>
+
+
+
+
+<h4>システムテスト</h4>
+
+
+<p>システム全体のテストを行います。</p>
+
+<ul><li>性能テスト（パフォーマンステスト）</li><li>負荷テスト</li><li>例外処理テスト</li><li>操作性テスト</li></ul>
+
+
+
+
+<h2>覚書</h2>
+
+
+<p>JUnit4 についてすごくよくまとまっているサイトを見つけたので参考に。</p>
+
+<p><a href="http://www.okisoft.co.jp/esc/testing/JUnit4-TestNG.html" rel="external nofollow">JUnit 4 &amp; TestNG</a></p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>ソフトウェアテストのバイブル</li>
+</ul>
+
+
+<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282511/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>ソフトウェアテストのバイブル その二</li>
+</ul>
+
+
+<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822281132/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>バイブルからよいとこ取りした鉄則書</li>
+</ul>
+
+
+<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/482228154X/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>TDD（テスト駆動開発）の発案者による本</li>
+</ul>
+
+
+<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894717115/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+</div>
+
+
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2006-10-09T13:19:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 9<span>th</span>, 2006</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/junit/">JUnit</a>
+    
+      <a class="tag label label-info" href="/blog/tags/tesutoji-fa/">テスト技法</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul class="list-inline">
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/10/09/4883732304/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2006/10/09/4883732304/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2006/10/09/4883732304/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2006/10/09/4883732304/"></div>
+    </li>
+    
+    
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2006/10/09/4883732304/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2006/10/09/4883732304/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2006/09/18/ejb/" title="Previous Post:
+      EJB3.0 プログラミング 覚書"><i class="fa fa-arrow-circle-left"></i> EJB3.0 プログラミング 覚書</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2006/10/27/eclipse/"
+                            title="Next Post: [自分用] Eclipse 開発環境">[自分用] Eclipse 開発環境 <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="thumbnail" />
+    </div>
+    <div class="col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/05/482228493X/">世界でもっとも強力な9のアルゴリズム</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">94</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js" rel="external nofollow"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2006/10/09/4883732304/';
+  var disqus_url = 'http://hamasyou.com/blog/2006/10/09/4883732304/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

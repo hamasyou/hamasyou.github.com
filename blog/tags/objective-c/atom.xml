@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Objective-C | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/objective-c/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[cocos2dで作る iPhone＆iPadゲームプログラミング]]></title>
+    <link href="http://hamasyou.com/blog/2011/08/17/4844330411/"/>
+    <updated>2011-08-17T10:16:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/08/17/4844330411</id>
+    <content type="html"><![CDATA[<p>待望の、<strong>cocos2d</strong> 詳細解説本がでました！ 本書を読めば、cocos2d のすべてが分かると言ってもいいんじゃないかというぐらい幅広く詳しく cocos2d のことが書いてあります。</p>
+
+<p>本書は、cocos2d を使ってゲームアプリをつくりながら、cocos2d の機能や cocos2d を使ってゲームアプリを開発する際の手順、こういうふうに設計したら cocos2d ではうまくいくというような事を解説しています。</p>
+
+<p>cocos2d は Objective-C で書かれていて、ゲームアプリも Objective-C を使って作ります。cocos2d が内部に OpenGL-ES を隠してくれているので、すごく簡単に 2D ゲームを作ることができるようになります。</p>
+
+<p>iPhone 用のゲームアプリを作ってみたいがどうやって作ればいいのかわからない人、どのフレームワークを使えばいいか迷っている人に、特におすすめです。</p>
+
+<p>僕の持っている版は cocos2d のバージョン 0.99.5 が解説されています。</p>
+
+<p><section></p>
+
+<p><i class="fa fa-search"></i> <a href="http://www.cocos2d-iphone.org/" rel="external nofollow">cocos2d for iPhone</a></p>
+
+<p></section></p>
+
+<!-- more -->
+
+
+
+
+<h2>各章の紹介</h2>
+
+
+<p>本書第1章の概要から、各章の紹介の抜粋です。（一部、誤訳や説明の抜けがあったので補足しています）</p>
+
+<dl><dt>第２章　プログラミングを始めるための準備</dt>
+<dd><p>cocos2d を使って開発を行うための準備、プロジェクトテンプレートのインストール、最初の「Hello World」プロジェクトの作成について説明します。ここでは、<em>シーンやノードといった cocos2d の基礎</em>を学びます。</p></dd>
+<dt>第３章　基礎</dt>
+<dd><p><em>Sprite、Transition、Action など、最もよく使われる cocos2d の基本クラス</em>と、そしてもちろん、それらの使用法について説明します。</p></dd>
+<dt>第４章　初めてのゲーム</dt>
+<dd><p>これは、あなたが初めて作るゲームとなります。ゲーム内容は、画面上から降ってくる敵をデバイスを傾けてかわします。<em>傾きを加速度センサーから取得する方法</em>についても学びます。</p></dd>
+<dt>第５章　ゲームの構成要素</dt>
+<dd><p>ゲームの規模が大きくなればなるほど、よりしっかりとしたコード構成が必要になります。心の準備はできているでしょうか。ここでは、<em>シーンとノードが階層化される仕組み</em>と、<em>ゲームオブジェクトの間で情報を交換するためのさまざまな方法</em>を取り上げます。</p></dd>
+<dt>第６章　スプライトの詳細</dt>
+<dd><p><em>テクスチャアトラスとは何</em>か、それを次のゲームに使うのはなぜかについて説明し、Zwoptex ツールを使ってテクスチャアトラスを作成する方法を紹介します。</p></dd>
+<dt>第７章　スクロールを使った処理</dt>
+<dd><p>テクスチャアトラスの準備ができたところで、<em>タッチ入力によって制御されるパララックススクロール対応</em>のシューティングゲームの実装方法を紹介します。</p></dd>
+<dt>第８章　アクションとアニメーションの処理</dt>
+<dd><p>シューティングゲームを作る際には、敵がいないとゲームとして成立しません。この章では、<em>敵の大軍を生成するコードとともに、移動、攻撃、アニメーションの作成を行うためのゲームプレイコードを追加する方法</em>を紹介します。</p></dd>
+<dt>第９章　パーティクル効果</dt>
+<dd><p>ParticleDesigner ツールを使って、横にスクロールするゲームに<em>パーティクル効果を追加</em>します。</p></dd>
+<dt>第１０章　タイルマップの処理</dt>
+<dd><p>ここで一気に弾みをつけましょう。横にスクロールするゲームから学んだことを<em>横向きモードに応用</em>し、これも人気の高い iOS ゲームジャンルのゲームを作成します。</p></dd>
+<dt>第１１章　等角タイルマップ</dt>
+<dd><p><em>cocos2d は TMX ファイルフォーマットをサポートしている</em>ため、ここでは Tiled エディタを使ってタイルベースのゲームを作成する方法について見ていきます。</p></dd>
+<dt>第１２章　物理エンジン</dt>
+<dd><p>指先の動きで目的の場所を指し示す --- ここでは、この機能がどのようにして実現されるのかを示します。<em>Chipmunk と Box2D の2つの物理エンジンを紹介</em>し、それらを驚きの手法で実装します。</p></dd>
+<dt>第１３章　ピンボールゲーム</dt>
+<dd><p>重力のない宇宙空間で惑星が跳ね返るボールシューティングに実際の物理学を応用します。ゲームの内容は非現実的ですが、この章で扱う物理計算は、公式そのものです。難しい箇所がありますが、面白いので是非読んでください。</p></dd>
+<dt>第１４章　Game Center</dt>
+<dd><p><em>Game Center と Game Kit API を利用してプレイヤーの認証、スコアの記録、Leaderboard の表示を行う方法</em>について見ていきます。</p></dd>
+<dt>第１５章　非凡であれ</dt>
+<dd><p>以上が本書の内容ですが、ご心配なく。あなたの旅はここで終わりません。ここからどこへ進めばよいかのヒントがここにあります。</p><dd>
+</dl>
+
+
+
+
+<h2>本書の感想</h2>
+
+
+<p>僕は、Objective-C を使ってゲームを作りたいと思っていたときに cocos2d に出会いました。当時は cocos2d の公式HPくらいしか cocos2d に関する情報が載っておらず、プログラミングをしていて cocos2d の使い方はこれでいいのかな？というようなところが結構ありました。</p>
+
+<p>当時、試行錯誤してたどり着いたコードが、今手元の本のサンプルに書いてあり、どうしてこういうコードを書くのかという説明がされています。あの時、この本が欲しかった！！ほんとにそう思える、cocos2d の詳細解説本になっています。</p>
+
+<p>cocos2d に興味がある人、ちょっと触ってみてみようかなという人は、是非本書を呼んでみてください。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Objective-C] Xcode の単体テスト環境]]></title>
+    <link href="http://hamasyou.com/blog/2010/10/19/objective-c-xcode/"/>
+    <updated>2010-10-19T17:46:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/10/19/objective-c-xcode</id>
+    <content type="html"><![CDATA[<p>iPhone アプリで利用している Xcode 上に単体テスト環境を構築する手順のメモです。</p>
+
+<p>GUI の構築が多い iPhone アプリ開発ですが、一部ロジックもあります。ロジックのテストはあったほうがいいし、なきゃ不安。</p>
+
+<p>ということで単体テスト環境の構築方法をいろいろしらべてやってみた手順のまとめです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>開発環境</h2>
+
+
+<p>僕の Xcode の環境です。この環境でテスト環境を作っていきます。</p>
+
+<dl>
+<dt>OS のバージョン</dt>
+<dd><p>Mac OS X 10.6.4 Snow Leopard</p></dd>
+<dt>Xcode のバージョン</dt>
+<dd><p>3.2.4</p></dd>
+<dt>iOS のバージョン</dt>
+<dd><p>4.1</p></dd>
+</dl>
+
+
+
+
+<h2>単体テスト環境の作り方 - 手順</h2>
+
+
+<p>Xcode には 単体テスト（<em>OCUnit</em>）用の <em>SenTestingKit</em> というフレームワークが用意されています。</p>
+
+<p>ここでは、iPhone 用のプロジェクトで OCUnit を使った単体テスト環境を構築する手順を紹介します。</p>
+
+<h3>手順1 - テスト対象のプロジェクトを作成する</h3>
+
+
+<p>まずは、iPhone アプリ開発用のプロジェクトを作成します。すでにプロジェクトがある場合にはそれを使います。</p>
+
+<p><img alt="スクリーンショット（2010-10-19 16.40.39）.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.40.39%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+
+<p>プロジェクト名は OCUnitDemo としました。</p>
+
+<p><img alt="スクリーンショット（2010-10-19 16.43.25）.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.43.25%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+
+<p>ここでビルドしてみて、エラーがでないことを確かめます。</p>
+
+<h3>手順2 - テスト用ターゲットを作成する</h3>
+
+
+<p>つぎに、テスト用のターゲットを作成します。「プロジェクト」→「新規ターゲット」をたどり <em>Unit Test Bundle</em> を選びます。</p>
+
+<p><img alt="スクリーンショット（2010-10-19 16.45.39）.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.45.39%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+
+<p>ターゲット名はなんでもよいのですが、ここでは UnitTest としました。</p>
+
+<h3>手順3 - テストクラスを置くためのフォルダを作成する</h3>
+
+
+<p>つぎに、テストクラスを置くためのフォルダとグループを作成します。この手順は省略しても構いませんがテストクラスとアプリケーションのクラスが同一のフォルダにあると分かりづらくなるので分けておくほうが良いと思います。</p>
+
+<p>Finder でプロジェクトのフォルダを開き TestCases というフォルダを作成します。</p>
+
+<p><img alt="スクリーンショット（2010-10-19 17.03.41）.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.03.41%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+
+<p>Xcode に戻って左のツリーの最初にあるプロジェクトアイコン（OCUnitDemo）を右クリックして「追加」→「既存のファイル」をクリックして今作った TestCases を選択します。</p>
+
+<p>このとき「デスティネーショングループのフォルダに項目をコピーする（必要な場合）」のチェックは外しておきます。</p>
+
+<p>また、<em>「ターゲットに追加」で UnitTest にのみチェックが入っている状態にします。</em></p>
+
+<p><img alt="スクリーンショット（2010-10-19 17.07.14）.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.07.14%EF%BC%89.png" width="438" height="403" class="mt-image-none" style="" /></p>
+
+<h3>手順4 - テストクラスを作成する</h3>
+
+
+<p>つぎに、テストクラスを作成します。今追加した TestCases フォルダを右クリックし「追加」→「新規ファイル」から Objective-C test case class を選択します。</p>
+
+<p>ファイル名はなんでもよいです。ここでは FirstTest.m としました。保存場所が TestCases、ターゲットが UnitTest になっていることを確認して作成します。</p>
+
+<p><img alt="スクリーンショット（2010-10-19 17.09.03）.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.09.03%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+
+<p>ここまでできたら、一度ビルドしてみます。「ビルド」→「ビルド」をクリックしてみます。</p>
+
+<p>おそらくエラーが3件（もしくは2件）、警告が1件でるはずです。次はこれを直していきます。</p>
+
+<p><img alt="スクリーンショット（2010-10-19 17.14.21）.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.14.21%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+
+<p class="option">エラーのうち、1件はテストのエラー、2件（もしくは1件）は Xcode3.2.4 で iOS4.1 以上を使っている場合にでるエラーになります。警告はガーベージコレクションが無効になっていることを示すもののはずです。</p>
+
+
+
+
+<h3>手順5 - テストクラスを修正する</h3>
+
+
+<p>iPhone アプリ開発用のプロジェクトでテストクラスを作成すると、テストケースは次のようになっていると思います。</p>
+
+<p><section></p>
+
+<h4>FirstTest.m</h4>
+
+
+
+
+<pre class="code"><span class="keyword">#if USE_APPLICATION_UNIT_TEST</span>     <span class="rem">// all code under test is in the iPhone Application</span>
+ 
+- (<span class="keyword">void</span>) testAppDelegate {
+  
+  <span class="keyword">id</span> yourApplicationDelegate = [[<span class="class">UIApplication</span> sharedApplication] delegate];
+  <span class="keyword">STAssertNotNil</span>(yourApplicationDelegate, <span class="literal">@&quot;UIApplication failed to find the AppDelegate&quot;</span>);
+  
+}
+ 
+<span class="keyword">#else</span>
+<span class="rem">//...</span></pre>
+
+
+<p></section></p>
+
+<p>1行目の #if USE_APPLICATION_UNIT_TEST というところがエラーの一つめのテストが失敗した原因になります。iPhone アプリ開発のプロジェクトでプロジェクトを作成するとこのマクロが追加されるようです。</p>
+
+<p>今回はロジックの単体テストをおこなうつもりなので、この部分は削除してしまいます。削除したあとのコードは次のようになりました。</p>
+
+<p><section></p>
+
+<h4>FirstTest.h</h4>
+
+
+
+
+<pre class="code"><span class="keyword">#import</span> <span class="literal">&lt;SenTestingKit/SenTestingKit.h&gt;</span>
+<span class="rem">//#import &quot;application_headers&quot; as required</span>
+ 
+<span class="keyword">@interface</span> FirstTest : <span class="class">SenTestCase</span> {
+ 
+}
+ 
+- (<span class="keyword">void</span>) testMath;              <span class="rem">// simple standalone test</span>
+ 
+<span class="keyword">@end</span></pre>
+
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>FirstTest.m</h4>
+
+
+
+
+<pre class="code"><span class="keyword">#import</span> <span class="literal">&quot;FirstTest.h&quot;</span>
+ 
+<span class="keyword">@implementation</span> FirstTest
+ 
+- (<span class="keyword">void</span>) testMath {
+  
+  <span class="keyword">STAssertTrue</span>((<span class="num">1</span>+<span class="num">1</span>)==<span class="num">2</span>, <span class="literal">@&quot;Compiler isn't feeling well today :-(&quot;</span> );
+  
+}
+ 
+<span class="keyword">@end</span></pre>
+
+
+<p></section></p>
+
+<p>UIKit に関する #import 文も削除しました。</p>
+
+<h3>手順6 その1 - An internal error occurred when handling command output: -[XCBuildLogCommandInvocationSection setTestsPassedString:]: unrecognized selector sent to instance エラー対策をする</h3>
+
+
+<p>つぎに、なにやら長ったらしいエラーの対策をします。</p>
+
+<pre>An internal error occurred when handling command output: -[XCBuildLogCommandInvocationSection setTestsPassedString:]: unrecognized selector sent to instance 0x207543c40</pre>
+
+
+<p>これは Xcode3.2.4 で iOS4.1 の SDK をいれるとでるエラーらしいです。対応として、次の github にあるソースコードをプロジェクトに追加します。</p>
+
+<p><section></p>
+
+<h4>gist:58296</h4>
+
+
+<p><a href="http://gist.github.com/586296" rel="external nofollow">gist:586296 - GitHub</a></p>
+
+<p></section></p>
+
+<p>ファイルをダウンロードまたは、中身をコピーして、TestCases の下にソースコードとして追加します。追加後のツリーはこんな感じになります。</p>
+
+<p><img alt="スクリーンショット（2010-10-19 17.34.12）.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.34.12%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+
+<p>おそらく、Xcode のバージョンアップでそのうち直ると思いますが、それまではこの対応が必要になりそうです。</p>
+
+<h3>手順6 その2 - An internal error occurred when handling command output: -[XCBuildLogCommandInvocationSection setTestsPassedString:]: unrecognized selector sent to instance エラー対策をする</h3>
+
+
+<p>手順6 その1 を試してみても長ったらしいエラーがなくならない場合は、次の手順を試してみてください。その1で治らないということはおそらく iOS のバージョンが 4.1 ではないのだと思います。iPad アプリのテストの場合などは、こちらを試すと良いと思います。</p>
+
+<ol>
+<li>左側に出ている「グループとファイル」のツリーから、[ターゲット]-[UnitTest] を開きます</li>
+<li>[スクリプトを実行] をダブルクリックして、情報ペインを表示します</li>
+<li>&quot;${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests&quot; の行の最後に 1&gt; /dev/null を追記します</li>
+</ol>
+
+
+<p><img alt="スクリーンショット（2010-11-06 12.15.47）.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-06%2012.15.47%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://stackoverflow.com/questions/3516745/sentestcase-in-xcode-3-2-and-xcbuildlogcommandinvocationsection-errors" rel="external nofollow">SenTestCase in Xcode 3.2 and XCBuildLogCommandInvocationSection Errors - stackoverflow</a></p>
+
+<h3>手順7 - ビルドしてみる</h3>
+
+
+<p>ここまでできたらビルドしてみます。エラーがなくなればテストが上手く通ったことになります。</p>
+
+<p><img alt="スクリーンショット（2010-10-19 17.35.58）.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.35.58%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+
+<p>FirstTest.m の testMath メソッドの中身を変えて、テストが失敗するようにしてビルドを行うと、エラーが発生することを確認します。エラーがきちんと発生していればテスト環境が整ったことになります。</p>
+
+<p><img alt="スクリーンショット（2010-10-19 17.36.27）.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.36.27%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+
+<p>あとは、テスト対象のクラスをごにょごにょしたりして単体テストを満喫すれば良いと思います。</p>
+
+<h3>手順8 - テスト対象のクラスをコンパイルする</h3>
+
+
+<p>上までの手順が整ったら、テストを書いて行けばよいのですが、実際にテスト対象クラスを #import したところでちょっとつまずいたのでメモです。</p>
+
+<p>UnitTest ターゲットを作ってテストケースクラスはこっちに追加することは上に書きましたが、実際のテスト対象クラスは OCUnitDemo ターゲットに追加されているだけで、UnitTest ターゲットに追加されていません。</p>
+
+<p>UnitTest ターゲット側でテスト対象のクラスを見えるようにするには、テスト対象のクラスを UnitTest ターゲットの[ソースをコンパイル] のフェーズにドラッグ＆ドロップして追加する必要があります。</p>
+
+<p><img alt="スクリーンショット（2010-11-06 15.58.45）.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-06%2015.58.45%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+
+<h3>（おまけ？）手順9 - UnitTest ターゲットの設定変更</h3>
+
+
+<p>僕の環境では手順7まででエラーなくテストが実行出来るようになったのですが、一部プラットフォーム（アーキテクチャのベース SDK）を iOS4.1 から Mac OS X に変えたり、Objective-C ガーベージコレクションの非対応を必須に変えたりしないといけないみたいな情報をちらちら見かけたので、手順7までで上手くいかない場合には試してみてください。</p>
+
+<h2>参考</h2>
+
+
+<p>参考にしたサイトです。</p>
+
+<ul>
+<li><a href="http://okajima.air-nifty.com/b/2008/07/iphone_577f.html" rel="external nofollow">iPhoneと単体テスト環境構築メモ - 人生を書き換える者すらいた。</a></li>
+<li><a href="http://sites.google.com/site/smgakusyuu/ocunit" rel="external nofollow">OCUnitの使い方（Cocoa Application編） - [SM gakusyuu];</a></li>
+<li><a href="http://d.hatena.ne.jp/rabbit2go/20100919/1284859385" rel="external nofollow">Xcode3.2.4のユニットテスト失敗に対処する - Basic</a></li>
+<li><a href="http://blazingcloud.net/2010/02/20/test-driven-development-for-iphone/" rel="external nofollow">Test Driven Development for iPhone - Blazing Cloud</a></li>
+</ul>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Objective-C] retain と release の関係について]]></title>
+    <link href="http://hamasyou.com/blog/2010/10/12/objective-c-retain-release/"/>
+    <updated>2010-10-12T08:13:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/10/12/objective-c-retain-release</id>
+    <content type="html"><![CDATA[<p>Objective-C ではガーベージコレクション機能が用意されていますが、iPhone アプリ開発などではメモリ管理をガーベージコレクションに任せずに自分で管理する必要があったりします。</p>
+
+<p>メモリ管理のルールとして、自分でメモリを割り当てたものは自分で開放する、自分で retain をしたものは 自分で release するなど、いくつかルールがあるのでそのメモです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>retain と release についてのメモ</h2>
+
+
+
+
+<h3>init〜 で始まるメソッドで確保したオブジェクトは release する必要がある</h3>
+
+
+<p>Objective-C のオブジェクト初期化メソッドのルールに、<em>init〜</em> で始まるメソッドで確保したオブジェクトは自身で解放する必要がある、というものがあります。</p>
+
+<p>例えば次の例のような場合は、自分で責任をもって <em>release</em> する必要があります。</p>
+
+<pre class="code"><span class="class">NSMutableArray</span> *array = [[<span class="class">NSMutableArray</span> alloc] initWithObjects:<span class="literal">@"hoge"</span>, <span class="literal">@"foo"</span>, <span class="keyword">nil</span>];
+ 
+[array release];</pre>
+
+
+<p>init〜 で始まらないメソッドで確保したオブジェクトは自身で解放してはいけません。</p>
+
+<pre class="code"><span class="class">NSMutableArray</span> *array = [<span class="class">NSMutableArray</span> arrayWithObjects:<span class="literal">@"hoge"</span>, <span class="literal">@"foo"</span>, <span class="keyword">nil</span>];</pre>
+
+
+
+
+<h3>メソッド内でのみ使用するローカル変数を init〜 で確保した場合は autorelease をつける</h3>
+
+
+<p>テクニックの一つとして、メソッド内でのみ使用するローカル変数を init〜 メソッドで初期化した場合は autorelease を付けて release し忘れを防ぐようにします。</p>
+
+<p><section></p>
+
+<h4>Google Objective-Cスタイルガイド 日本語訳</h4>
+
+
+<p>参考: <a href="http://www.textdrop.net/google-styleguide-ja/objcguide.xml" rel="external nofollow">Google Objective-Cスタイルガイド 日本語訳</a></p>
+
+<p></section></p>
+
+<pre class="code">- (<span class="keyword">void</span>)doSomething
+{
+  <span class="class">NSArray</span> *array = [[[<span class="class">NSArray</span> alloc] initWithObjects:<span class="literal">@"hoge"</span>, <span class="literal">@"foo"</span>, <span class="keyword">nil</span>] <span class="keyword">autorelease</span>];
+  <span class="comment">// なにかの処理</span>
+}</pre>
+
+
+
+
+<h3>メンバ変数を使用してオブジェクトを保持する場合のルール</h3>
+
+
+<p>次のいずれかの方法でメンバ変数でオブジェクトを保持する場合は dealloc メソッドで release を行う必要があります。</p>
+
+<ol><li>メンバ変数に init〜 で始まるメソッドで初期化したオブジェクトを割り当てている場合</li>
+<li>メンバ変数に明示的に retain して保持することを示したオブジェクトを割り当てた場合</li>
+<li>プロパティに retain 属性または copy 属性が付いていて、プロパティでオブジェクトを割り当てた場合</li></ol>
+
+
+<p><section></p>
+
+<h4>MyClass.h</h4>
+
+
+
+
+<pre class="code"><span class="keyword">@interface</span> MyClass : <span class="class">NSObject</span> {
+  <span class="keyword">@private</span>
+  <span class="class">NSMutableArray</span> *array_;
+  <span class="class">NSString</span> *message_;
+}
+ 
+<span class="keyword">@property</span>(<span class="keyword">retain</span>) <span class="class">NSMutableArray</span> *array;
+<span class="keyword">@property</span>(<span class="keyword">copy</span>) <span class="class">NSString</span> *message;
+<span class="keyword">@end</span></pre>
+
+
+
+
+<h4>MyClass.m</h4>
+
+
+
+
+<pre class="code"><span class="keyword">#import</span> <span class="literal">&quot;MyClass.h&quot;</span>
+<span class="keyword">@implementation</span> MyClass
+<span class="keyword">@synthesize</span> array = array_;
+<span class="keyword">@synthesize</span> message = message_;
+ 
+- (<span class="keyword">id</span>)init
+{ 
+  <span class="keyword">if</span> ( (<span class="keyword">self</span> = [<span class="keyword">super</span> init]) ) {
+  
+    <span class="comment">// 1) メンバ変数に init〜 で設定したオブジェクトを割り当てる場合は dealloc で release する</span>
+    array_ = [[<span class="class">NSMutableArray</span> alloc] initWithObjects:<span class="literal">@"hoge"</span>, <span class="literal">@"foo"</span>, <span class="keyword">nil</span>];
+  
+    <span class="comment">// 2) メンバ変数に明示的に retain してオブジェクトを保持することをマークした場合は dealloc で release する</span>
+    message_ = [[array_ objectAtIndex:<span class="literal">0</span>] retain];
+  
+    <span class="comment">// 3.1) メンバ変数にプロパティでオブジェクトを割り当てた場合は dealloc で release する</span>
+    <span class="keyword">self</span>.array = [<span class="class">NSMutableArray</span> arrayWithObjects:<span class="literal">@"hoge"</span>, <span class="literal">@"foo"</span>, <span class="keyword">nil</span>];
+    
+    <span class="comment">// 3.2) init〜 で始まるメソッドでオブジェクトを割り当てる場合はプロパティ形式で直接受け取ってはいけない。二重の参照カウントになってしまう。</span>
+    <span class="comment">//      init〜 で確保したオブジェクトをメンバ変数に割り当てる場合は直接割り当てるか次のようにする</span>
+    <span class="class">NSMutableArray</span> *tmp = [[<span class="class">NSMutableArray</span> alloc] initWithObjects:<span class="literal">@"hoge"</span>, <span class="literal">@"foo"</span>, <span class="keyword">nil</span>];
+    <span class="keyword">self</span>.array = tmp;
+    [tmp release];
+  }
+  <span class="keyword">return</span> <span class="keyword">self</span>;
+}
+ 
+- (<span class="keyword">void</span>)dealloc
+{
+  <span class="comment">// 適切な release </span>
+  <span class="keyword">self</span>.array = <span class="keyword">nil</span>;
+  <span class="keyword">self</span>.message = <span class="keyword">nil</span>;
+  [<span class="keyword">super</span> dealloc];
+}</pre>
+
+
+<p></section></p>
+
+<p>プラクティスとして、init〜 メソッドの内部ではプロパティ形式（3.1みたなやつ）でメンバ変数を初期化するのは避けるほうがよいです。</p>
+]]></content>
+  </entry>
+  
+</feed>

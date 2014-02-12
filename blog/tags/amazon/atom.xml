@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Amazon | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/amazon/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Rails] carrierwave と fog で Amazon S3 をストレージとして使う]]></title>
+    <link href="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"/>
+    <updated>2012-02-21T21:54:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3</id>
+    <content type="html"><![CDATA[<p>Rails のプラグイン <a href="https://github.com/jnicklas/carrierwave" rel="external nofollow">carrierwave</a> と fog を使って、<em>Amazon S3</em> をストレージとして使う方法のメモです。</p>
+
+<h3>使用環境</h3>
+
+
+
+
+<ul>
+<li>Rails 3.2.1</li>
+<li>carrierwave 0.6.0.beta</li>
+<li>fog 1.1.2</li>
+</ul>
+
+
+
+
+<h3>carrierwave のインストール</h3>
+
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>gem install carrierwave</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<h3>config の書き方</h3>
+
+
+<p>initializers に carrierwave.rb というファイルを作成し、以下のような設定を書きます。</p>
+
+<pre><code class="ruby initializers/carrierwave.rb">#-*- encoding: utf-8 -*-
+
+unless Rails.env.test?
+  CarrierWave.configure do |config|
+    config.cache_dir = "#{Rails.root}/tmp/uploads"
+    config.storage                          = :fog
+    config.fog_credentials                  = {
+        :provider              =&gt; 'AWS',
+        :aws_access_key_id     =&gt; ENV["AWS_S3_KEY_ID"],
+        :aws_secret_access_key =&gt; ENV["AWS_S3_SECRET_KEY"]
+    }
+    config.fog_directory                    = ENV["AWS_S3_BUCKET"]
+    config.fog_public                       = false
+    config.fog_authenticated_url_expiration = 60
+  end
+else
+  CarrierWave.configure do |config|
+    config.storage = :file
+  end
+end
+</code></pre>
+
+<p>ENV[&ldquo;AWS_S3_KEY_ID&rdquo;] にはユーザアクセスID、ENV[&ldquo;AWS_S3_SECRET_KEY&rdquo;] にはシークレットアクセスキー、ENV[&ldquo;AWS_S3_BUCKET&rdquo;] にはバケット名をそれぞれ設定する。</p>
+
+<p>各値は、Amazon S3 の設定画面で確認できる。</p>
+
+<p>この設定を行い、carrierwave で Uploader を作成して、ファイルをアップロードすると、S3 にファイルを置くことができる。また、S3 上のファイルの URL には、60秒のタイムアウト設定を掛けており、アプリからのアクセスでのみ参照可能なURLが表示されるようになる。（config.fog_public = false、config.fog_authenticated_url_expiration = 60 の設定）</p>
+]]></content>
+  </entry>
+  
+</feed>

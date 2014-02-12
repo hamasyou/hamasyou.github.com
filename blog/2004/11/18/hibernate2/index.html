@@ -1,0 +1,1341 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <title>Hibernate で O/Rマッピング してみる ： 関係編 - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ">
+  <meta name="keywords" content="Hibernate,O/Rマッピング,フレームワーク,データベース,関係,テーブル,マッピング">
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2004/11/18/hibernate2">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate subscribe-rss" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">Hibernate で o/rマッピング してみる ： 関係編</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-11-18T14:02:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 18<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/hibernate/">Hibernate</a>
+    
+      <a class="tag label label-info" href="/blog/tags/o-slash-rmatupingu/">O/Rマッピング</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/193239415X/sorehabooks-22" rel="external nofollow"></a>
+</p>
+
+
+<p>Hibernate は O/R マッピングツールと呼ばれる、リレーショナルデータベースとオブジェクトモデルとの間を埋めるフレームワークです。</p>
+
+<p>関連するテーブルのオブジェクトを管理する方法が、十数種類あります。<a href="http://www.xylax.net/hibernate/" rel="external nofollow">Index of Relationships</a> のサイトに、Hibernate でサポートされる関係の一覧が載っています。非常に分かりやすかったのですが、さらに理解を深めるために、車輪の再発明をしてみようと思います。</p>
+
+<p>こちらのサイトでも、<a href="http://park21.wakwak.com/~fumi/hibernate/mapping/index.htm" rel="external nofollow">Hibernate 入門記 - koichik</a>」 はすごい ・・・ (^^;</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+
+
+<ul>
+<li><a href="http://www.hibernate.org/hib_docs/reference/ja/html/" rel="external nofollow">Hibernate リファレンスマニュアル</a></li>
+<li><a href="http://wiki.bmedianode.com/Hibernate/" rel="external nofollow">Hibernate Pad</a></li>
+<li><a href="http://park21.wakwak.com/~fumi/hibernate/mapping/index.htm" rel="external nofollow">Hibernate - マッピング体験記</a></li>
+<li><a href="http://www.wikiroom.com/koichik/?Hibernate%20%C6%FE%CC%E7%B5%AD" rel="external nofollow">Hibernate 入門記</a></li>
+</ul>
+
+
+<p><section></p>
+
+<!-- more -->
+
+
+
+
+<h2>Hibernate がサポートする関係</h2>
+
+
+
+
+<ol>
+<li><a href="#One-to-One (一対一)関係" rel="external nofollow">One-to-One (一対一)関係</a></li>
+<li><a href="#Many-to-One (多対一)関係" rel="external nofollow">Many-to-One (多対一)関係</a></li>
+<li><a href="#One-to-Many (一対多)関係" rel="external nofollow">One-to-Many (一対多)関係</a></li>
+<li><a href="#Many-to-Many (多対多)関係" rel="external nofollow">Many-to-Many (多対多)関係</a></li>
+<li><a href="#Collection 単一列値 関係" rel="external nofollow">Collection 単一列値 関係</a></li>
+<li><a href="#継承 マッピング" rel="external nofollow">継承 マッピング (table per class)</a></li>
+<li><a href="#Composite マッピング" rel="external nofollow">Composite マッピング</a></li>
+<li><a href="#再帰的な関連" rel="external nofollow">再帰的な関連</a></li>
+<li><a href="#そのほかの関係" rel="external nofollow">そのほかの関係</a></li>
+<li><a href="#コレクションに関して" rel="external nofollow">コレクションに関して</a></li>
+<li><a href="#Open Session in View" rel="external nofollow">Open Session in View</a></li>
+</ol>
+
+
+
+
+<h2 id="One-to-One (一対一)関係">One-to-One (一対一)関係</h2>
+
+
+<p>One-to-One は<strong>同一の主キー</strong>を持つテーブルの関係を表します。派生関係とも言います。同一の主キーを持つテーブル同士の関係をマッピングできます。関連元の主キーと関連先の主キーが同じものを関連にします。</p>
+
+<p><img src="http://hamasyou.com/images/hibernate/onetoone.gif" alt="One-to-Oneの関係" /></p>
+
+<p>マッピングは次のように行います。</p>
+
+<pre class="code"><code><span class="tag">&lt;hibernate-mapping&gt;</span> 
+  <span class="tag">&lt;class 
+      <span class="attr">name=</span><span class="value">&quot;com.hamasyou.model.Product&quot;</span> 
+      <span class="attr">table=</span><span class="value">&quot;PRODUCT&quot;</span>&gt;</span> 
+          ... 
+      <span class="tag">&lt;one-to-one 
+          <span class="attr">name=</span><span class="value">&quot;attribute&quot;</span> 
+          <span class="attr">class=</span><span class="value">&quot;com.hamasyou.model.ProductAttribute&quot;</span> 
+          <span class="attr">cascade=</span><span class="value">&quot;all&quot;</span> 
+          <span class="attr">outer-join=</span><span class="value">&quot;auto&quot;</span> 
+          <span class="attr">constrained=</span><span class="value">&quot;false&quot;</span> /&gt;</span> 
+          ... 
+  <span class="tag">&lt;/class&gt;</span> 
+<span class="tag">&lt;/hibernate-mapping&gt;</span>
+</code></pre>
+
+
+<p>XDoclet で書くとこうなります。関連元のクラスから <strong>@hibernate.one-to-one</strong> を指定しています。</p>
+
+<p><section></p>
+
+<h4>Product.java</h4>
+
+
+
+
+<pre class="code"><code><span class="comment">/** 
+ * 販売品目属性 
+ * @return 
+ * 
+ * @hibernate.one-to-one  
+ *      class=&quot;com.hamasyou.model.ProductAttribute&quot; 
+ *      cascade=&quot;all&quot; 
+ */</span>
+<span class="keyword">public</span> ProductAttribute getAttribute() { 
+</code></pre>
+
+
+<p></section></p>
+
+<p>関連先の ProductAttribute クラスは特別なタグは必要ありません。通常の @hibernate.class タグでテーブルと永続化クラスのマッピングを指定して、主キーのカラムに @hibernate.id を指定するだけです。</p>
+
+<p><section></p>
+
+<h4>ProductAttribute.java</h4>
+
+
+
+
+<pre class="code"><code><span class="comment">/** 
+ * ProductAttribute 
+ * 
+ * @hibernate.class 
+ *      table=&quot;PRODUCT_ATTR&quot; 
+ */</span>
+<span class="keyword">public</span> <span class="keyword">class</span> ProductAttribute <span class="keyword">implements</span> Serializable { 
+    ... 中略 ... 
+    <span class="comment">/** 
+     * 品目No 
+     * @return 
+     *  
+     * @hibernate.id 
+     *      column=&quot;PRODUCT_NO&quot; 
+     *      generator-class=&quot;assigned&quot; 
+     */</span>
+    <span class="keyword">public</span> Integer getProductNo() { 
+</code></pre>
+
+
+<p></section></p>
+
+<p>品目 (Product) と 販売品目属性 (ProductAttribute) は同じ主キーを持つので、One-to-One の関係をもてます。今回は、品目のほうに One-to-One の関係を持たせたので、品目のインスタンスを取得した時点で、販売品目属性のインスタンスも検索します。</p>
+
+<p><strong>カスケード (cascade) 属性</strong>は、オブジェクトに対して行った処理を関連オブジェクトにまで伝播するかどうかを指定するものです。 all、none、save-update、delete を指定できます。 all は更新と削除の両方を、save-update は更新を、delete は削除をそれぞれ伝播させます。</p>
+
+<p><section></p>
+
+<h4>[ソースコード実行後の結果画面]</h4>
+
+
+
+
+<pre class="console">
+[品目No:1  名前：パソコン] [品目No:1  原価：300000]
+[品目No:2  名前：冷蔵庫] [品目No:2  原価：130000]
+[品目No:3  名前：エアコン] [品目No:3  原価：80000]
+[品目No:4  名前：テレビ] [品目No:4  原価：40000]
+</pre>
+
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>[ソースコード]</h4>
+
+
+<p><a href="http://hamasyou.com/images/hibernate/src/onetoone/Main.java" rel="external nofollow"> hibernate.cfg.xml </a></p>
+
+<p></section></p>
+
+<h2 id="Many-to-One (多対一)関係">Many-to-One (多対一)関係</h2>
+
+
+<p>Many-to-One は<strong>参照関係</strong>を持つテーブルの関係を表します。外部キーを使って参照するときに使います。<strong>外部キーを持つ側から見た場合の関係</strong>です。</p>
+
+<p><img src="http://hamasyou.com/images/hibernate/manytoone.gif" alt="Many-to-Oneの関係" /></p>
+
+<p>マッピングは次のように行います。</p>
+
+<pre class="code"><code><span class="tag">&lt;hibernate-mapping&gt;</span> 
+  <span class="tag">&lt;class 
+      <span class="attr">name=</span><span class="value">&quot;com.hamasyou.model.Product&quot;</span> 
+      <span class="attr">table=</span><span class="value">&quot;PRODUCT&quot;</span>&gt;</span> 
+          ... 
+       <span class="tag">&lt;many-to-one 
+          <span class="attr">name=</span><span class="value">&quot;category&quot;</span> 
+          <span class="attr">class=</span><span class="value">&quot;com.hamasyou.model.Category&quot;</span> 
+          <span class="attr">cascade=</span><span class="value">&quot;all&quot;</span> 
+          <span class="attr">outer-join=</span><span class="value">&quot;auto&quot;</span> 
+          <span class="attr">update=</span><span class="value">&quot;true&quot;</span> 
+          <span class="attr">insert=</span><span class="value">&quot;true&quot;</span> 
+          <span class="attr">access=</span><span class="value">&quot;property&quot;</span> 
+          <span class="attr">column=</span><span class="value">&quot;CATEGORY_NO&quot;</span> 
+          <span class="attr">not-null=</span><span class="value">&quot;true&quot;</span> /&gt;</span> 
+          ... 
+  <span class="tag">&lt;/class&gt;</span> 
+<span class="tag">&lt;/hibernate-mapping&gt;</span>
+</code></pre>
+
+
+<p>XDoclet で書くとこうなります。</p>
+
+<p><section></p>
+
+<h4>Product.java</h4>
+
+
+
+
+<pre class="code"><code><span class="comment">/** 
+ * カテゴリ 
+ * @return 
+ *  
+ * @hibernate.many-to-one 
+ *      column=&quot;CATEGORY_NO&quot; 
+ *      class=&quot;com.hamasyou.model.Category&quot; 
+ *      not-null=&quot;true&quot; 
+ *      cascade=&quot;all&quot; 
+ */</span>
+<span class="keyword">public</span> Category getCategory() { 
+</code></pre>
+
+
+<p></section></p>
+
+<p>column 属性でテーブルのどのカラムが関連先の主キーと関連付けされているかを指定しています。外部キーを指定していると言ったほうが分かりやすいですね。Category クラスには、特別なタグは不要です。 @hibernate.class タグでテーブルを指定して、 @hibernate.id で主キーを指定するだけです。</p>
+
+<p>Many-to-One の関係も、One-to-One と同じく、品目 (Product) オブジェクトが検索された時点で、カテゴリ (Category) オブジェクトも検索されます。カスケード設定を行うことで、外部キーの参照先 (カテゴリオブジェクト) から登録されます。</p>
+
+<p>結果画面を見ると面白いことに、カテゴリオブジェクトは、同一のカテゴリの場合には、一つのインスタンスしか生成されていません。</p>
+
+<p><section></p>
+
+<h4>[ソースコード実行後の結果画面]</h4>
+
+
+
+
+<pre class="console">
+[品目No:1名前：HibernateinAction@127fa12][カテゴリNo:1名前：本@17f409c]
+[品目No:2名前：SpringinAction@1c05ffd][カテゴリNo:1名前：本@17f409c]
+[品目No:3名前：パソコン@de1b8a][カテゴリNo:2名前：家電@18bbc5a]
+[品目No:4名前：テレビ@1e232b5][カテゴリNo:2名前：家電@18bbc5a]
+[品目No:5名前：長袖の服@16f144c][カテゴリNo:3名前：衣服@13c6a22]
+</pre>
+
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>[ソースコード]</h4>
+
+
+<p><a href="http://hamasyou.com/images/hibernate/src/manytoone/Main.java" rel="external nofollow"> hibernate.cfg.xml </a></p>
+
+<p></section></p>
+
+<h2 id="One-to-Many (一対多)関係">One-to-Many (一対多)関係</h2>
+
+
+<p>One-to-Many は<strong>親子関係</strong>を持つテーブルを表します。オブジェクトから返されるものがコレクション型になります。遅延ロードを行うことができます。コレクション型は、基本的には <strong>Set</strong> を使うのが推奨されます。Set は一意なインスタンスの集合を表すからです。</p>
+
+<p><img src="http://hamasyou.com/images/hibernate/onetomany.gif" alt="One-to-Manyの関係" /></p>
+
+<p>マッピングは次のように行います。</p>
+
+<pre class="code"><code><span class="tag">&lt;hibernate-mapping&gt;</span> 
+  <span class="tag">&lt;class 
+      <span class="attr">name=</span><span class="value">&quot;com.hamasyou.model.Order&quot;</span> 
+      <span class="attr">table=</span><span class="value">&quot;ORDER_HEADER&quot;</span>&gt;</span> 
+          ... 
+      <span class="tag">&lt;set 
+          <span class="attr">name=</span><span class="value">&quot;specifics&quot;</span> 
+          <span class="attr">table=</span><span class="value">&quot;ORDER_SPECIFIC&quot;</span> 
+          <span class="attr">lazy=</span><span class="value">&quot;true&quot;</span> 
+          <span class="attr">inverse=</span><span class="value">&quot;false&quot;</span> 
+          <span class="attr">cascade=</span><span class="value">&quot;all&quot;</span> 
+          <span class="attr">sort=</span><span class="value">&quot;unsorted&quot;</span>&gt;</span> 
+            <span class="tag">&lt;key <span class="attr">column=</span><span class="value">&quot;ORDER_NO&quot;</span>/&gt;</span> 
+            <span class="tag">&lt;one-to-many 
+                <span class="attr">class=</span><span class="value">&quot;com.hamasyou.model.OrderSpecific&quot;</span> /&gt;</span> 
+      <span class="tag">&lt;/set&gt;</span> 
+          ... 
+  <span class="tag">&lt;/class&gt;</span> 
+<span class="tag">&lt;/hibernate-mapping&gt;</span>
+</code></pre>
+
+
+<p>XDoclet ではこう書きます。</p>
+
+<p><section></p>
+
+<h4>Order.java</h4>
+
+
+
+
+<pre class="code"><code><span class="comment">/** 
+ * 受注明細 
+ * @return 
+ *  
+ * @hibernate.set 
+ *      table=&quot;ORDER_SPECIFIC&quot; 
+ *      cascade=&quot;all&quot; 
+ *      lazy=&quot;true&quot; 
+ * @hibernate.collection-key 
+ *      column=&quot;ORDER_NO&quot; 
+ * @hibernate.collection-one-to-many  
+ *      class=&quot;com.hamasyou.model.OrderSpecific&quot; 
+ */</span>
+<span class="keyword">public</span> Set getSpecifics() { 
+</code></pre>
+
+
+<p></section></p>
+
+<p>今回は、受注明細クラス (OrderSpecific.java) との関係が親子関係であったので、Set を使いました。<strong>Set、Bag をコレクション型として使う場合 (@hibernate.set, @hibernate.bag) は、@hibernate.collection-key を指定する必要があります。</strong>コレクション要素が一意になることを保証するキーを指定しなければなりません。今回は、ORDER_SPECIFIC テーブルの ORDER_NO カラムをキーに指定しました。</p>
+
+<p>今回のように、関連先が複数のインスタンスになる場合、遅延ロードという手法をとることが出来ます。インスタンスの生成を、最初のアクセスまで遅らせることが出来る機能です。 <strong>lazy 属性</strong> に true を指定することで、遅延ロードが出来るようになります。</p>
+
+<dl>
+<dt class="notice">遅延ロードの注意</dt>
+<dd><p>遅延ロードする場合の注意点として、遅延ロードされるオブジェクトがロードされる際には、親オブジェクトに有効なセッションが関連付けられていなければなりません。</p>
+
+<p>Webアプリケーションにおける遅延ロードの問題点は「<a href="#Open Session in View" rel="external nofollow">Open Session in View</a>」 をご覧ください。</p></dd>
+</dl>
+
+
+<p>受注明細クラスに、複合キー (composite-id) というものをつかいました。これは、複数のキーをあわせて主キーにするためのものです。複合キーを使うには、<strong>複合キー用のクラスを用意する必要があります</strong>。今回は、 OrderSpecificID というクラスを複合キークラスとして使用しました。</p>
+
+<p>複合キークラスに必要な特性として下記の2点があります。</p>
+
+<p><section></p>
+
+<h4>複合キークラスが必要な特性</h4>
+
+
+
+
+<ol><li>java.io.Serializable を実装しなければならない</li><li>equals と hashCode をオーバーライドしなければならない</li></ol>
+
+
+<p></section></p>
+
+<p>これは、複合キーが一意な値を表現するために必要なことになります。</p>
+
+<p>XDoclet で複合キーを表現するには、複合キークラスを作成し、それを @hibernate.id タグで関連付ければいいだけです。</p>
+
+<p><section></p>
+
+<h4>OrderSpecific.java</h4>
+
+
+
+
+<pre class="code"><code><span class="comment">/**
+ * 受注明細の主キー
+ * @return
+ * 
+ * @hibernate.id
+ *      generator-class=&quot;assigned&quot;
+ *      type=&quot;com.hamasyou.model.type.OrderSpecificID&quot;
+ */</span>
+<span class="keyword">public</span> OrderSpecificID getSpecificId() {
+  <span class="keyword">return</span> specificId;
+}
+<span class="keyword">public</span> <span class="keyword">void</span> setSpecificId(OrderSpecificID specificId) {
+  <span class="keyword">this</span>.specificId = specificId;
+}
+</code></pre>
+
+
+<p></section></p>
+
+<p>OrderSpecificID クラスのプロパティには、@hibernate.property タグが指定されています。@hibernate.class タグは必要ありません。これはつまり、OrderSpecificID クラスは、OrderSpecific クラスから使われると言うことがわかっているということになります。</p>
+
+<p><section></p>
+
+<h4>[ソースコード実行後の結果画面]</h4>
+
+
+
+
+<pre class="console">
+[受注No:1受注日：2004-08-05 00:00:00.0@16acdd1]
+  └ [受注No:1受注行No：1値段：1000@149d886]
+  └ [受注No:1受注行No：3値段：920@1fe88d]
+  └ [受注No:1受注行No：2値段：1500@1267649]
+[受注No:2受注日：2004-04-0700:00:00.0@7cbde6]
+  └ [受注No:2受注行No：1値段：150@148662]
+  └ [受注No:2受注行No：2値段：300@1829e6f]
+[受注No:3受注日：2004-11-1800:00:00.0@1977b9b]
+  └ [受注No:3受注行No：1値段：5000@180f96c]
+  └ [受注No:3受注行No：2値段：3000@7736bd]
+</pre>
+
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>[ソースコード]</h4>
+
+
+<p><a href="http://hamasyou.com/images/hibernate/src/onetomany/Main.java" rel="external nofollow"> hibernate.cfg.xml </a></p>
+
+<h2 id="Many-to-Many (多対多)関係">Many-to-Many (多対多)関係</h2>
+
+
+<p>Many-to-Many (多対多)関係 は<strong>関係テーブル</strong>を表します。多重度が互いに 0以上 の場合、導出されるテーブルだと言えます。ログテーブルなんかも、Many-to-Many の関係になると思います。</p>
+
+<p><img src="http://hamasyou.com/images/hibernate/manytomany.gif" alt="Many-to-Manyの関係" /></p>
+
+<p>マッピングは次のように行います。</p>
+
+<pre class="code"><code><span class="tag">&lt;hibernate-mapping&gt;</span> 
+  <span class="tag">&lt;class 
+      <span class="attr">name=</span><span class="value">&quot;com.hamasyou.model.Employee&quot;</span> 
+      <span class="attr">table=</span><span class="value">&quot;EMPLOYEE&quot;</span>&gt;</span> 
+          ... 
+      <span class="tag">&lt;set 
+          <span class="attr">name=</span><span class="value">&quot;projects&quot;</span> 
+          <span class="attr">table=</span><span class="value">&quot;PROJECT_ASSIGN&quot;</span> 
+          <span class="attr">lazy=</span><span class="value">&quot;true&quot;</span> 
+          <span class="attr">inverse=</span><span class="value">&quot;false&quot;</span> 
+          <span class="attr">cascade=</span><span class="value">&quot;all&quot;</span> 
+          <span class="attr">sort=</span><span class="value">&quot;unsorted&quot;</span>&gt;</span> 
+            <span class="tag">&lt;key <span class="attr">column=</span><span class="value">&quot;EMP_NO&quot;</span> /&gt;</span> 
+            <span class="tag">&lt;many-to-many 
+                <span class="attr">class=</span><span class="value">&quot;com.hamasyou.model.Project&quot;</span> 
+                <span class="attr">column=</span><span class="value">&quot;PROJECT_NO&quot;</span> 
+                <span class="attr">outer-join=</span><span class="value">&quot;auto&quot;</span> /&gt;</span> 
+      <span class="tag">&lt;/set&gt;</span> 
+          ... 
+  <span class="tag">&lt;/class&gt;</span> 
+<span class="tag">&lt;/hibernate-mapping&gt;</span>
+</code></pre>
+
+
+<p>多重度が、相互に多対多の場合、関連テーブルと言うものを作って管理します。しかし、オブジェクト指向設計では関連テーブルと言うのは普通は意識しません。その証拠に、今回はクラスにプロジェクト割り当て (PROJECT_ASSIGN) 用のクラスが出てきませんでした。</p>
+
+<p>逆にオブジェクトモデリングにおいては、関連クラスと言うものを導出する場合があります。関連クラスは、関連に意味がある場合に導出されます。通常、関連クラスは操作を持ちます。そういう場合は、クラスとして作成されます。関連クラスを作成した場合は、関連クラスと各々のクラスとで、Many-to-One の関係を定義すればよさそうです。</p>
+
+<p>One-to-Many や Many-to-Many の関係では、片方のクラスから、他方のクラスのコレクションを返すメソッド用意しました。コレクションを定義する場合のマッピングを書くときには、以下の3つの点を守ればよさそうです。</p>
+
+<p>&lt;ol<li><strong>コレクションの型を指定する</strong></li><li><strong>自分の主キーとマッピングする相手のテーブルのカラムを指定する</strong></li><li><strong>相手のクラスとの関係を指定する</strong></li></ol></p>
+
+<p>XDoclet で書くと、こんな感じになります。</p>
+
+<p><section></p>
+
+<h4>Employee.java</h4>
+
+
+
+
+<pre class="code"><code><span class="comment">/** 
+ * 割り当てプロジェクト 
+ * @return  
+ *  
+ * @hibernate.set 
+ *      cascade=&quot;all&quot; 
+ *      lazy=&quot;true&quot; 
+ *      table=&quot;PROJECT_ASSIGN&quot; 
+ * @hibernate.collection-key  
+ *      column=&quot;EMP_NO&quot; 
+ * @hibernate.collection-many-to-many  
+ *      column=&quot;PROJECT_NO&quot; 
+ *      class=&quot;com.hamasyou.model.Project&quot; 
+ */</span>
+<span class="keyword">public</span> Set getProjects() {
+</code></pre>
+
+
+<div class="clear"></div>
+
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>Project.java</h4>
+
+
+
+
+<pre class="code"><code><span class="comment">/** 
+ * 割り当てられた社員 
+ *  
+ * @hibernate.set 
+ *      inverse=&quot;true&quot; 
+ *      cascade=&quot;all&quot; 
+ *      lazy=&quot;true&quot; 
+ *      table=&quot;PROJECT_ASSIGN&quot; 
+ * @hibernate.collection-key 
+ *      column=&quot;PROJECT_NO&quot; 
+ * @hibernate.collection-many-to-many 
+ *      column=&quot;EMP_NO&quot; 
+ *      class=&quot;com.hamasyou.model.Employee&quot; 
+ */</span>
+<span class="keyword">public</span> Set getEmployees() { 
+</code></pre>
+
+
+<div class="clear"></div>
+
+
+<p></section></p>
+
+<p>[Employee.java]5行目がコレクション型の指定です。8行目が自クラスの主キーに対応させる関係テーブルのカラム指定です。PROJECT_ASSIGN テーブルの EMP_NO カラムと自クラスの主キーを対応させています。11行目が、相手クラスとどういう関係かをあわしています。多対多の関係ですので、many-to-many を使っています。Projectクラスの主キーを関係テーブルのどのカラムにマッピングさせるかと言うことも指定しています。</p>
+
+<p>[Project.java]5行目のinverse属性がポイントです。 many-to-many の関係は双方向関連になるので、Hibernateにどちらが逆関連かを教えてやることができます。どちらの方向が逆になるかはあまり深く考えなくてもいいようです。</p>
+
+<p>Many-to-Many の関係の場合、プロジェクト割り当て (PROJECT_ASSIGN) テーブル用のクラスを作っていなかったので、3行目のコレクション指定時に table 属性でテーブル名を指定しました。また、many-to-many の関係では、 相手のクラスの主キーが、関連クラスのどのカラムに対応するかと言うことも指定しなければなりません。 @hibernate.collection-many-to-many で column を指定するのはそういう理由です。</p>
+
+<p><section></p>
+
+<h4>[ソースコード実行後の結果画面]</h4>
+
+
+
+
+<pre class="console">
+---社員からプロジェクトを検索---
+[社員No:1名前：山田太郎@ee6681]
+  └[プロジェクトNO：1名前：翻訳プロジェクト@147c1db]
+  └[プロジェクトNO：3名前：システム開発X@82d37]
+[社員No:2名前：佐藤次郎@2f0df1]
+  └[プロジェクトNO：2名前：社内開発A@1f3ce5c]
+  └[プロジェクトNO：1名前：翻訳プロジェクト@147c1db]
+[社員No:3名前：加藤三郎@13c6a22]
+  └[プロジェクトNO：3名前：システム開発X@82d37]
+[社員No:4名前：榊原四郎@15c07d8]
+ 
+---プロジェクトから社員を検索---
+[プロジェクトNO：1名前：翻訳プロジェクト@147c1db]
+  └[社員No:2名前：佐藤次郎@2f0df1]
+  └[社員No:1名前：山田太郎@ee6681]
+[プロジェクトNO：2名前：社内開発A@1f3ce5c]
+  └[社員No:2名前：佐藤次郎@2f0df1]
+[プロジェクトNO：3名前：システム開発X@82d37]
+  └[社員No:3名前：加藤三郎@13c6a22]
+  └[社員No:1名前：山田太郎@ee6681]
+</pre>
+
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>[ソースコード]</h4>
+
+
+<p><a href="http://hamasyou.com/images/hibernate/src/manytomany/Main.java" rel="external nofollow"> hibernate.cfg.xml </a></p>
+
+<p></section></p>
+
+<h2 id="Collection 単一列値 関係">Collection 単一列値 関係</h2>
+
+
+<p>Collection 単一列値 関係 は、親子関係または参照関係にあるテーブルの特定のカラムだけを保持するコレクションを扱う関係です。</p>
+
+<p><img src="http://hamasyou.com/images/hibernate/collectionrawdata.gif" alt="Collection   単一列値の関係" /></p>
+
+<p>マッピングは次のように行います。</p>
+
+<pre class="code"><code><span class="tag">&lt;list 
+      <span class="attr">name=</span><span class="value">&quot;moneys&quot;</span> 
+      <span class="attr">table=</span><span class="value">&quot;ORDER_SPECIFIC&quot;</span> 
+      <span class="attr">lazy=</span><span class="value">&quot;true&quot;</span> 
+      <span class="attr">inverse=</span><span class="value">&quot;false&quot;</span> 
+      <span class="attr">cascade=</span><span class="value">&quot;none&quot;</span>&gt;</span> 
+ 
+      <span class="tag">&lt;key <span class="attr">column=</span><span class="value">&quot;ORDER_NO&quot;</span> /&gt;</span> 
+ 
+      <span class="tag">&lt;index 
+          <span class="attr">column=</span><span class="value">&quot;SPECIFIC_NO&quot;</span> 
+          <span class="attr">type=</span><span class="value">&quot;integer&quot;</span> /&gt;</span> 
+ 
+      <span class="tag">&lt;element 
+          <span class="attr">column=</span><span class="value">&quot;MONEY&quot;</span> 
+          <span class="attr">type=</span><span class="value">&quot;java.lang.Integer&quot;</span> 
+          <span class="attr">not-null=</span><span class="value">&quot;false&quot;</span> 
+          <span class="attr">unique=</span><span class="value">&quot;false&quot;</span> /&gt;</span> 
+  <span class="tag">&lt;/list&gt;</span>
+</code></pre>
+
+
+<p>XDoclet で書くと、大体こうなります。</p>
+
+<pre class="code"><code><span class="comment">/** 
+ * 金額リスト 
+ * @return 
+ *  
+ * @hibernate.list  
+ *      lazy=&quot;true&quot; 
+ *      table=&quot;ORDER_SPECIFIC&quot; 
+ * @hibernate.collection-key 
+ *      column=&quot;ORDER_NO&quot; 
+ * @hibernate.collection-index 
+ *      column=&quot;SPECIFIC_NO&quot; 
+ *      type=&quot;java.lang.Integer&quot;  
+ * @hibernate.collection-element  
+ *      column=&quot;MONEY&quot; 
+ *      type=&quot;java.lang.Integer&quot;  
+ */</span>
+<span class="keyword">public</span> List getMoneyList() { 
+</code></pre>
+
+
+<div class="clear"></div>
+
+
+<p>単一列値を生データとして取り出す関係です。MONEY 列は、ユニークではないので、コレクションに list を使いました。</p>
+
+<p>コレクションを使う場合は、自クラスの主キーとマッピングする列を、key として指定します。XDoclet の場合は @hibernate.collection-key がそれにあたります。相手のクラスの外部キーの列を指定します。</p>
+
+<p>コレクションに含める値を element として指定します。XDoclet では @hibernate.collection-element で指定しました。MONEY 列を java.lang.Integer として格納すると支持しています。getMoneyList() の戻り値 List には、Integer 型でコレクション要素が入ります。</p>
+
+<dl>
+<dt class="notice">リスト型の注意点</dt>
+<dd>
+<p>コレクションの型を list にしたときは、index 要素 (XDoclet では @hibernate.collection-index) を指定しなければいけません。これは、Foo[i] の i の部分を保持するテーブル上のカラムです。</p>
+
+<p>今回は、SPECIFIC_NO 列が、明細行ごとにシーケンシャルな値を振られることにしているので、この列を指定しました。<strong>シーケンシャル値は 0 から格納しなければなりません。</strong> そうしないと、シーケンス番号がない部分には null が格納されることになります。</p></dd>
+</dl>
+
+
+<p><section></p>
+
+<h4>[ソースコード]</h4>
+
+
+<p><a href="http://hamasyou.com/images/hibernate/src/collectionrawdata/Main.java" rel="external nofollow"> OrderSpecific.hbm.xml </a></p>
+
+<p></section></p>
+
+<h2 id="継承 マッピング">継承 マッピング (table per class)</h2>
+
+
+<p>継承 マッピングは、テーブル内のカラム値によってサブクラスを変えるような関係です。継承関係のクラスを単一のテーブルにマッピングします。そのため、サブクラスを判断するカラムが必要になります。</p>
+
+<p><img src="http://hamasyou.com/images/hibernate/inheritance.gif" alt="継承   マッピング" /></p>
+
+<p>マッピングは次のように行います。</p>
+
+<pre class="code"><code><span class="tag">&lt;class 
+    <span class="attr">name=</span><span class="value">&quot;com.hamasyou.model.Product&quot;</span> 
+    <span class="attr">table=</span><span class="value">&quot;PRODUCT&quot;</span> 
+    <span class="attr">dynamic-update=</span><span class="value">&quot;false&quot;</span> 
+    <span class="attr">dynamic-insert=</span><span class="value">&quot;false&quot;</span> 
+    <span class="attr">select-before-update=</span><span class="value">&quot;false&quot;</span> 
+    <span class="attr">optimistic-lock=</span><span class="value">&quot;version&quot;</span> 
+    <span class="attr">discriminator-value=</span><span class="value">&quot;0&quot;</span>&gt;</span> 
+      ... 
+    <span class="tag">&lt;discriminator <span class="attr">column=</span><span class="value">&quot;CATEGORY&quot;</span> /&gt;</span> 
+      ... 
+    <span class="tag">&lt;subclass 
+        <span class="attr">name=</span><span class="value">&quot;com.hamasyou.model.ElectricProduct&quot;</span> 
+        <span class="attr">dynamic-update=</span><span class="value">&quot;false&quot;</span> 
+        <span class="attr">dynamic-insert=</span><span class="value">&quot;false&quot;</span> 
+        <span class="attr">discriminator-value=</span><span class="value">&quot;1&quot;</span>&gt;</span> 
+    <span class="tag">&lt;/subclass&gt;</span> 
+    <span class="tag">&lt;subclass 
+        <span class="attr">name=</span><span class="value">&quot;com.hamasyou.model.ClothingProduct&quot;</span> 
+        <span class="attr">dynamic-update=</span><span class="value">&quot;false&quot;</span> 
+        <span class="attr">dynamic-insert=</span><span class="value">&quot;false&quot;</span> 
+        <span class="attr">discriminator-value=</span><span class="value">&quot;2&quot;</span>&gt;</span> 
+    <span class="tag">&lt;/subclass&gt;</span> 
+<span class="tag">&lt;/class&gt;</span>
+</code></pre>
+
+
+<p>XDoclet で書くと、大体こうなります。Product クラスが スーパークラスで、ElectricProduct と ClothingProduct がサブクラスになっています。</p>
+
+<p><section></p>
+
+<h4>Product.java</h4>
+
+
+
+
+<pre class="code"><code><span class="comment">/** 
+ * Product 
+ *  
+ * @hibernate.class 
+ *      table=&quot;PRODUCT&quot; 
+ *      discriminator-value=&quot;0&quot; 
+ * @hibernate.discriminator 
+ *      column=&quot;CATEGORY&quot; 
+ */</span>
+<span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> Product <span class="keyword">implements</span> Serializable { 
+</code></pre>
+
+
+<p></section></p>
+
+<p>サブクラスはこんな感じです。</p>
+
+<p><section></p>
+
+<h4>ElectricProduct &amp; ClothingProduct</h4>
+
+
+
+
+<pre class="code"><code><span class="comment">/** 
+ * ElectricProduct 
+ *  
+ * @hibernate.subclass  
+ *      discriminator-value=&quot;1&quot; 
+ */</span>
+<span class="keyword">public</span> <span class="keyword">class</span> ElectricProduct <span class="keyword">extends</span> Product { 
+... 
+<span class="comment">/** 
+ * ClothingProduct 
+ *  
+ * @hibernate.subclass  
+ *      discriminator-value=&quot;2&quot; 
+ */</span>
+<span class="keyword">public</span> <span class="keyword">class</span> ClothingProduct <span class="keyword">extends</span> Product { 
+</code></pre>
+
+
+<p>テーブル内の特定のカラムの値によって、生成するサブクラスを切り替えることが出来ます。</p>
+
+<p>特徴的なのは、 <strong>discriminator</strong> タグと <strong>subclass</strong> タグです。XDoclet では <strong>@hibernate.discriminator</strong> と <strong>@hibernate.subclass</strong> です。discriminator で指定されたカラムの値をサブクラスの切り替え材料にします。</p>
+
+<p>XDoclet ではスーパークラスに @hibernate.discriminator タグを指定します。column タグで指定したカラム値を元に、@hibernate.subclass discriminator-value で指定された値と一致するサブクラスが生成されます。</p>
+
+<dl>
+<dt class="notice">net.sf.hibernate.WrongClassException がスローされる場合</dt>
+<dd>
+<p>discriminator-value で指定されていない値がデータベースに格納されていた場合、エラーになります。ただし、<em>スーパークラスの @hibernate.discriminator の force 属性を true にすることで、discriminator-value で指定されていない値がデータベースに格納されていた場合は、インスタンスを復元しなくなります</em>。</p>
+ 
+<h4>[出力される例外]</h4>
+
+<pre>net.sf.hibernate.WrongClassException</pre></dd>
+</dl>
+
+
+<p><section></p>
+
+<h4>discriminator-value</h4>
+
+
+<p>「discriminator-value が指定したもの以外はこのサブクラスを使う」といった指定は出来なさそうです。discriminator-value を複数取ることも出来ませんでした。また、discriminator-value は大文字・小文字の区別をするようです。</p>
+
+<p></section></p>
+
+<p><section></p>
+
+<h4>[ソースコード]</h4>
+
+
+<p><a href="http://hamasyou.com/images/hibernate/src/inheritance/Main.java" rel="external nofollow"> Product.hbm.xml </a></p>
+
+<h2 id="Composite マッピング">Composite マッピング</h2>
+
+
+<p>Composite マッピングは、コンポジションモデルを一つのテーブルにマッピングする方法です。今回の例では、住所オブジェクトは、会社オブジェクトにコンポジションされています。が、住所オブジェクト用の独立したテーブルは存在せず、会社テーブルの一部となっています。</p>
+
+<p><img src="http://hamasyou.com/images/hibernate/composite.gif" alt="Composite   マッピング" /></p>
+
+<p>マッピングは次のように行います。</p>
+
+<pre class="code"><code><span class="tag">&lt;class 
+    <span class="attr">name=</span><span class="value">&quot;com.hamasyou.model.Company&quot;</span> 
+    <span class="attr">table=</span><span class="value">&quot;COMPANY&quot;</span> 
+    <span class="attr">dynamic-update=</span><span class="value">&quot;false&quot;</span> 
+    <span class="attr">dynamic-insert=</span><span class="value">&quot;false&quot;</span> 
+    <span class="attr">select-before-update=</span><span class="value">&quot;false&quot;</span> 
+    <span class="attr">optimistic-lock=</span><span class="value">&quot;version&quot;</span>&gt;</span> 
+        .... 
+    <span class="tag">&lt;component 
+        <span class="attr">name=</span><span class="value">&quot;address&quot;</span> 
+        <span class="attr">class=</span><span class="value">&quot;com.hamasyou.model.Address&quot;</span>&gt;</span> 
+      <span class="tag">&lt;property 
+          <span class="attr">name=</span><span class="value">&quot;city&quot;</span> 
+          <span class="attr">type=</span><span class="value">&quot;java.lang.String&quot;</span> 
+          <span class="attr">update=</span><span class="value">&quot;true&quot;</span> 
+          <span class="attr">insert=</span><span class="value">&quot;true&quot;</span> 
+          <span class="attr">access=</span><span class="value">&quot;property&quot;</span> 
+          <span class="attr">column=</span><span class="value">&quot;CITY&quot;</span> 
+          <span class="attr">not-null=</span><span class="value">&quot;true&quot;</span> /&gt;</span> 
+ 
+      <span class="tag">&lt;property 
+          <span class="attr">name=</span><span class="value">&quot;prefectural&quot;</span> 
+          <span class="attr">type=</span><span class="value">&quot;java.lang.String&quot;</span> 
+          <span class="attr">update=</span><span class="value">&quot;true&quot;</span> 
+          <span class="attr">insert=</span><span class="value">&quot;true&quot;</span> 
+          <span class="attr">access=</span><span class="value">&quot;property&quot;</span> 
+          <span class="attr">column=</span><span class="value">&quot;PREFECTURAL&quot;</span> 
+          <span class="attr">not-null=</span><span class="value">&quot;true&quot;</span> /&gt;</span> 
+ 
+      <span class="tag">&lt;property 
+          <span class="attr">name=</span><span class="value">&quot;zip&quot;</span> 
+          <span class="attr">type=</span><span class="value">&quot;java.lang.String&quot;</span> 
+          <span class="attr">update=</span><span class="value">&quot;true&quot;</span> 
+          <span class="attr">insert=</span><span class="value">&quot;true&quot;</span> 
+          <span class="attr">access=</span><span class="value">&quot;property&quot;</span> 
+          <span class="attr">column=</span><span class="value">&quot;ZIP&quot;</span> 
+          <span class="attr">not-null=</span><span class="value">&quot;true&quot;</span> /&gt;</span> 
+    <span class="tag">&lt;/component&gt;</span> 
+        .... 
+<span class="tag">&lt;/class&gt;</span>
+</code></pre>
+
+
+<p>XDoclet で書くと、大体こうなります。Address クラスは JavaBean で、getter / setter には @hibernate.property タグが指定されています。@hibernate.class タグは必要ありません。</p>
+
+<pre class="code"><code><span class="comment">/** 
+ * 住所 
+ * @return 
+ *  
+ * @hibernate.component 
+ *      class=&quot;com.hamasyou.model.Address&quot; 
+ */</span>
+<span class="keyword">public</span> Address getAddress() { 
+</code></pre>
+
+
+<p>ライフサイクルが同じオブジェクトは、コンポジションとしてモデリングされることが多いです。コンポジットマッピングはコンポジットモデルを、単一のテーブルに割り当てる場合に使われます。</p>
+
+<p>特別難しいものはなく、コンポジットの親となる 会社クラスの内部に 住所オブジェクトを持たせるだけです。XDoclet の指定では、getAddress() メソッドに <strong>@hibernate.component</strong> タグを指定するだけです。</p>
+
+<p>One-to-One 関係との違いは、単純にテーブルが分かれているか分かれていないかな気がします。</p>
+
+<p><section></p>
+
+<h4>[ソースコード]</h4>
+
+
+<p><a href="http://hamasyou.com/images/hibernate/src/composite/Main.java" rel="external nofollow"> Company.hbm.xml </a></p>
+
+<p></section></p>
+
+<h2 id="再帰的な関連">再帰的な関連</h2>
+
+
+<p>再帰的な関連とは自分自身への関連を持っているような場合です。ツリー型を構成するようなオブジェクトの関係がそうです。</p>
+
+<p><img src="http://hamasyou.com/images/hibernate/recursion.gif" alt="再帰的な関連" /></p>
+
+<p>この関係を表すには、子要素のオブジェクトからの視点を持ってマッピングファイルを作ることで可能になります。つまり、親となるレコードのIDを持つようにすればいいのです。マッピングファイルでは <strong>many-to-one</strong> の関係になります。</p>
+
+<pre class="code"><code><span class="tag">&lt;hibernate-mapping&gt;</span> 
+  <span class="tag">&lt;class <span class="attr">name=</span><span class="value">&quot;com.hamasyou.hibernate.Organization&quot;</span> 
+      <span class="attr">table=</span><span class="value">&quot;Organization&quot;</span>&gt;</span> 
+        ... 
+    <span class="tag">&lt;many-to-one 
+          <span class="attr">name=</span><span class="value">&quot;parentOrganization&quot;</span> 
+          <span class="attr">class=</span><span class="value">&quot;com.hamasyou.hibernate.Organization&quot;</span> 
+          <span class="attr">column=</span><span class="value">&quot;parent_organization_id&quot;</span>/&gt;</span> 
+        ... 
+  <span class="tag">&lt;/class&gt;</span> 
+<span class="tag">&lt;/hibernate-mapping&gt;</span>
+</code></pre>
+
+
+<p>このように、自クラスに対して many-to-one の関係を指定してあげることで、親クラスへの参照を内部に持つようになります。</p>
+
+<h2 id="そのほかの関係">そのほかの関係</h2>
+
+
+<p>他の関係については、『<a href="http://park21.wakwak.com/~fumi/hibernate/mapping/index.htm" rel="external nofollow">Hibernate - マッピング体験記</a>』 に非常に詳しく載っているので、そっちを参考にすることにします。参考にしたい関係があれば、随時更新するつもりです。</p>
+
+<h2 id="コレクションに関して">コレクションに関して</h2>
+
+
+<p>基本的にコレクション型は、<strong>Set</strong>か <strong>Bag</strong> を利用するのが良いようです。Javaでよく使われる List は、Hibernate では、テーブルにインデックス用のカラム (Foo[i] の i を保持するカラム) がなければ利用不可能です。例えば、シーケンシャルなIDみたいなものを順次インクリメントする場合であれば利用できます。</p>
+
+<p>Set は一意な値を保持することを保証するコレクションなので、主キーを保持するオブジェクト型を格納するときには、これを使います。Bag は複数回格納されたことを保持する Set の派生と考えればよさそうです。</p>
+
+<p>List は、Foo[i] の i を保持するカラムがテーブルに存在しなければ使えません。順次インクリメントされる ID のようなカラムがあれば使用できます。その際、<strong>ID は 0から始まるようにしなければいけません</strong>。さもなければ、足らない部分に null が挿入された List が出来上がってしまいます。</p>
+
+<p>コレクション要素を使用する場合は、key 属性 (XDoclet では @hibernate.collection-key) が必須項目になります。また、インデックスを使って要素にアクセスする <strong>Map</strong>, <strong>List</strong>, <strong>配列</strong> は、index属性 (XDoclet では @hibernate.collection-index) が必須になります。Set, Bag では必要ありません。コレクションが Map の場合は <strong>index-many-to-many (XDoclet では @hibernate.index-many-to-many)</strong> を使う。</p>
+
+<h2 id="Open Session in View">Open Session in View</h2>
+
+
+<p><strong>Open Session in View</strong> とは、ビューで Session の開始と終了を管理するパターンです。Hibernate は<strong>遅延ロード (lazy load)</strong> をサポートしています。この遅延ロードは、 Session が開かれていなければならないと言う条件があります。JSP + Servlet + JavaBean という形で開発を行った場合、遅延ロードは多くの場合  JSP でアクセスされたときに最初にロードされるようになります。</p>
+
+<p>Session の開始と終了をビューで行わなければ、JSP で最初にアクセスされた場合に例外が発生してしまいます。これを防ぐのが「<strong>Open Session in View パターン</strong>」と言われるものです。具体的なコードは、Hibernate.org にサンプルが載っています。</p>
+
+<p><section></p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.hibernate.org/Documentation/OpenSessionInView/" rel="external nofollow">Open Session in View のサンプルコード</a></li>
+</ul>
+
+
+<p></section></p>
+
+<p>実装には、サーブレットフィルタを利用します。リクエストがきたときに Session を開き、レスポンスを返すときに Session を閉じます。HIbernate は Session にオブジェクトのキャッシュを持ちますので、リクエストの最初から最後まで同じ Session を使いまわすことはパフォーマンスの向上が期待できます。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li><p>Hibernate のリファレンスドキュメント (日本語)
+<a href="http://www.hibernate.org/hib_docs/reference/ja/html/index.html" rel="external nofollow">Hibernate Reference Document</a></p></li>
+<li><p>Hibernate で使える関係を全部まとめて紹介しています。
+<a href="http://park21.wakwak.com/~fumi/hibernate/mapping/index.htm" rel="external nofollow">Hibernate - マッピング体験記</a></p></li>
+<li><p>Hibernate だけでなく、データベース設計にまで触れられていておすすめ。</p></li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/193239415X/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>薄いながらも十分な情報量。HibernateとSpringにも触れられています。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+<ul>
+<li>Hibernate の基本的な使い方が載っています。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774119016/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+<ul>
+<li>開発者のための Hibernate の解説書が日本語で登場しました。</li>
+</ul>
+
+
+<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311215X/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+</div>
+
+
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-11-18T14:02:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 18<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/hibernate/">Hibernate</a>
+    
+      <a class="tag label label-info" href="/blog/tags/o-slash-rmatupingu/">O/Rマッピング</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul class="list-inline">
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/11/18/hibernate2/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2004/11/18/hibernate2/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2004/11/18/hibernate2/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2004/11/18/hibernate2/"></div>
+    </li>
+    
+    
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/11/18/hibernate2/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/11/18/hibernate2/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2004/11/18/hibernate1/" title="Previous Post:
+      Hibernate で O/Rマッピング してみる ： 基本編"><i class="fa fa-arrow-circle-left"></i> Hibernate で O/Rマッピング して...</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2004/11/25/4837971946/"
+                            title="Next Post: 巧みな説明ができる人できない人    知的生きかた文庫">巧みな説明ができる人できない人    知的生き... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="thumbnail" />
+    </div>
+    <div class="col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/05/482228493X/">世界でもっとも強力な9のアルゴリズム</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">94</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js" rel="external nofollow"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2004/11/18/hibernate2/';
+  var disqus_url = 'http://hamasyou.com/blog/2004/11/18/hibernate2/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

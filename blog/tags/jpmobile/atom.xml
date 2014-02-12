@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: jpmobile | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/jpmobile/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応]]></title>
+    <link href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"/>
+    <updated>2011-06-14T11:29:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis</id>
+    <content type="html"><![CDATA[<p>jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。</p>
+
+<p><section></p>
+
+<h4>環境</h4>
+
+
+
+
+<dl><dt>Rails</dt><dd>3.0.7</dd><dt>jpmobile</dt><dd>0.1.6</dd><dt>kaminari</dt><dd>0.12.4</dd></dl>
+
+
+<p></section></p>
+
+<!-- more -->
+
+
+<p>jpmobile の mobile_filter を通して kaminari でページングを行うときに、invalid byte sequence in Shift_JIS エラーが出る場合があります。</p>
+
+<p>これは、kaminari で生成するページングリンク内に、UTF-8 の文字エンコーディングの日本語文字が入っているのが原因です。</p>
+
+<p>kaminari がページリンクを作成するときに、日本語文字をパーセントエンコード（URLエンコード）していて、jpmobile の mobile_filter がエンコードされている文字を UTF-8 だと認識出来ずに表示してしまうのが原因になっています。</p>
+
+<p>この組み合わせで kaminari のページリンク内に日本語パラメータがはいってしまうのは、おそらくフォームのサブミットボタンの value が原因だと思います。</p>
+
+<p>ほとんどの場合、サブミットボタンの value は必要ないと思うので、submit_tag の :name オプションに nil を設定してサブミットボタンの value を送らないようにするといいかと思います。</p>
+
+<pre><code class="html+erb">&lt;%= form_tag user_path do %&gt;
+  &lt;%= select_tag "category", options_from_collection_for_select(Category.all, :id, :label, params[:category]) %&gt;
+  &lt;%= submit_tag "表示", :name =&gt; nil %&gt;
+&lt;% end %&gt;
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

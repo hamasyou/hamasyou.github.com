@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: インフラ | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/inhura/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Web開発者のための]大規模サービス技術入門 ―データ構造、メモリ、OS、DB、サーバ/インフラ]]></title>
+    <link href="http://hamasyou.com/blog/2010/11/20/4774143073/"/>
+    <updated>2010-11-20T19:32:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/11/20/4774143073</id>
+    <content type="html"><![CDATA[<p>大規模サービスの運営、大変だということは分かっていても、じゃあ実際にどういうふうに大変なのか。実際に体験してみないとこの大変さはわからないと思います。</p>
+
+<p>でも、実際に大規模サービスの開発・運営に携わることになったら！？</p>
+
+<p>本書は、はてなで実際に運用されているサービスを元に、大規模サービス技術のノウハウを解説しています。実際にはてなのインターンシップで講義資料として使われているものがベースになっているので、分かりやすくかつ、実用的です。</p>
+
+<p>Web サービスはいつユーザ数が爆発するかわからないという面白さがある一方、きちんとサービスのノウハウがないとシステムダウンにすぐに繋がってしまうという怖さがあります。</p>
+
+<p>すべてのWeb サービス開発エンジニアにおすすめです。本書で本質的な知識を得て、準備万端にしておくと良いと思います。</p>
+
+<!-- more -->
+
+
+
+
+<h2>本書の目次</h2>
+
+
+
+
+<ol>
+<li>大規模Webサービスの開発オリエンテーション - <span class="fontSmall">全体像を把握する</span>
+  <ol>
+  <li>本書の源 - <span class="fontSmall">本書で説明すること、しないこと</span></li>
+  <li>大規模なサービスと小規模なサービス</li>
+  <li>成長し続けるサービスと、大規模化の壁</li>
+  <li>サービス開発の現場</li>
+  </ol>
+</li>
+<li>大規模データ処理入門 - <span class="fontSmall">メモリとディスク、Webアプリケーションと負荷</span>
+  <ol>
+  <li>はてなブックマークのデータ規模 - <span class="fontSmall">データが大きいと処理に時間がかかる</span></li>
+  <li>大規模データ処理の難所 - <span class="fontSmall">メモリとディスク</span></li>
+  <li>スケーリングの要所</li>
+  <li>大規模データを扱うための基礎知識</li>
+  </ol>
+</li>
+<li>OSのキャッシュと分散 - <span class="fontSmall">大きなデータを効率良く扱うしくみ</span>
+  <ol>
+  <li>OSのキャッシュ機構</li>
+  <li>I/O負荷の軽減策</li>
+  <li>局所性を活かす分散</li>
+  </ol>
+</li>
+<li>DBのスケールアウト戦略 - <span class="fontSmall">分散を考慮したMySQLの運用</span>
+  <ol>
+  <li>インデックスを正しく運用する - <span class="fontSmall">分散を考慮したMySQL運用の大前提</span></li>
+  <li>MySQLの分散 - <span class="fontSmall">スケーリング前提のシステム設計</span></li>
+  <li>MySQLのスケールアウトとパーティショニング</li>
+  </ol>
+</li>
+<li>大規模データ処理[実践]入門 - <span class="fontSmall">アプリケーション開発の勘所</span>
+  <ol>
+  <li>用途特化型インデクシング - <span class="fontSmall">大規模データを捌く</span></li>
+  <li>理論と実践の両側から取り組む</li>
+  </ol>
+</li>
+<li>[課題]圧縮プログラミング - <span class="fontSmall">データサイズ、I/O高速化との関係を意識する</span>
+  <ol>
+  <li>[課題]整数データをコンパクトに持つ</li>
+  <li>VB Codeと速度感覚</li>
+  <li>課題の詳細と回答例</li>
+  </ol>  
+</li>
+<li>アルゴリズムの実用化 - <span class="fontSmall">身近な例で見る理論・研究の実戦投入</span>
+  <ol>
+  <li>アルゴリズムと評価</li>
+  <li>はてなダイアリーのキーワードリンク</li>
+  <li>はてなブックマークの記事カテゴライズ</li>
+  </ol>
+</li>
+<li>[課題]はてなキーワードリンクの実装 - <span class="fontSmall">応用への道筋を知る</span>
+  <ol>
+  <li>[課題]はてなキーワードリンクを作る</li>
+  <li>回答例と考え方</li>
+  </ol>
+</li>
+<li>全文検索技術に挑戦 - <span class="fontSmall">大規模データ処理のノウハウ満載</span>
+  <ol>
+  <li>全文検索技術の応用範囲</li>
+  <li>検索システムのアーキテクチャ</li>
+  <li>検索エンジンの内部構造</li>
+  </ol>
+</li>
+<li>[課題]全文検索エンジンの作成 - <span class="fontSmall">基本部分、作り込み、速度と精度の追求</span>
+  <ol>
+  <li>[課題]はてなブックマーク全文検索を作る</li>
+  <li>回答例と考え方</li>
+  </ol>
+</li>
+<li>大規模データ処理を支えるサーバ/インフラ入門 - <span class="fontSmall">Webサービスのバックエンド</span>
+  <ol>
+  <li>エンタープライズ vs. Webサービス</li>
+  <li>クラウド vs. 自前インフラ</li>
+  </ol>
+</li>
+<li>スケーラビリティの確保に必要な考え方 - <span class="fontSmall">規模の増大とシステムの拡張</span>
+  <ol>
+  <li>レイヤとスケーラビリティ</li>
+  <li>負荷の把握、チューニング</li>
+  </ol>
+</li>
+<li>冗長性の確保、システムの安定化 - <span class="fontSmall">ほぼ100%の稼働率を実現するしくみ</span>
+  <ol>
+  <li>冗長性の確保</li>
+  <li>システムの安定化</li>
+  <li>システムの安定化対策</li>
+  </ol>
+</li>
+<li>効率向上作戦 - <span class="fontSmall">ハードウェアのリソースの使用率を上げる</span>
+  <ol>
+  <li>仮想化技術</li>
+  <li>ハードウェアと効率向上 - <span class="fontSmall">低コストを実現する要素技術</span></li>
+  </ol>
+</li>
+<li>Webサービスとネットワーク - <span class="fontSmall">ネットワークで見えてくるサービスの成長</span>
+  <ol>
+  <li>ネットワークの分岐点</li>
+  <li>さらなる上限へ</li>
+  </ol>
+</li>
+<li>いまどきのWebサービス構築に求められる実践技術 - <span class="fontSmall">大規模サービスに対応するために</span>
+  <ol>
+  <li>ジョブキューシステム - <span class="fontSmall">TheSchwartz, Gearman</span></li>
+  <li>ストレージの選択 - <span class="fontSmall">RDBMSかkey-valueストアか</span></li>
+  <li>キャッシュシステム - <span class="fontSmall">Squid、Varnish</span></li>
+  <li>計算クラスタ - <span class="fontSmall">Hadoop</span></li>
+  </ol>
+</li>
+</ol>
+
+
+
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>小規模サービスと大規模サービスの違い</h3>
+
+
+
+
+<h4>スケーラビリティの確保と負荷分散</h4>
+
+
+<p><blockquote><p>大量のアクセスがあるサービスでは、サーバ1台では処理しきれない負荷を同処理するかが一番の問題です。ここ10年のトレンドとしてはいわゆる「スケールアウト」がこの問題に対する戦略の基礎になります。</p></blockquote></p>
+
+<p>大量のアクセスのある大規模サービスでは、<strong>スケーラビリティの確保</strong>と<strong>負荷分散</strong>が重要な問題になります。</p>
+
+<p>ハードウェアが安くなってきた最近では、高価なハードウェアを購入するよりもコストを削減できます。ただその代わりに考えないといけないことも増えます。</p>
+
+<p>複数のハードウェアを効率良く使うための負荷分散のしくみや、データの同期の問題、ネットワークのレイテンシ（遅延時間）をどうするか。</p>
+
+<h4>冗長性</h4>
+
+
+<p>スケールアウトでサーバを複数台用意すると、サーバの故障率は高くなります。どこかのサーバが1台故障したからといって、サービスが停止してしまうことは避けなければなりません。</p>
+
+<h4>省力運用</h4>
+
+
+<p>サーバ台数が増えてくると、それぞれのサーバの状況を把握することが困難になってきます。セキュリティ設定、ソフトウェアのバージョンなど、管理しなければならないことも増えてきます。</p>
+
+<p>監視用ソフトウェアを使って自動化を行ったとしても実際に確認するのは人間の役目になります。いかに手間を掛けずに健康状態を維持するか。</p>
+
+<h4>開発方法の統制</h4>
+
+
+<p>大規模サービスになると、当然そのサービスに携わる人は増えてきます。効率化を図るための標準化や標準ツールの策定、教育やマネージメントなどの必要性が出てきます。</p>
+
+<h3>大規模データの処理</h3>
+
+
+<p><blockquote><p>大規模Webアプリケーションを運用するにあたっての苦労の多くは、この大規模データの扱いに集約されます。</p></p><p><p>データが小さいうちは、とくに工夫をしなくてもすべてメモリで処理できますし、複雑なアルゴリズムを使うよりもナイーブなアルゴリズムのほうがオーバーヘッドがないため早い、なんてこともままあって、I/O負荷などはまず問題となりません。しかし、サービスがある程度以上の規模になるとデータは増加します。このデータ量が分水域を超えたところで問題が顕在化します。そしてその対策は、応急処置ではなかなかに難しい。ここが大規模サービスの難所です。</p></p><p><p></p></blockquote></p>
+
+<h3>ミニマムスタートと、変化を見込んだ管理と設計</h3>
+
+
+<p>サービスが小規模の時には、あれこれ考えて早過ぎる最適化を行うのはよくありません。かといって、何も考えずにシステムを設計するのもまたよくありません。</p>
+
+<p>サービス設計時にある程度のキャパシティ管理とデータが莫大に増加してしまわないような設計を行った上で、ミニマムスタートをきる。それがサービスを開始するときのコツです。</p>
+
+<h3>大規模データ処理の難所</h3>
+
+
+<p>大規模データ処理の難しいポイントは、<strong>メモリ内で計算ができない</strong>ことです。</p>
+
+<p>コンピュータはメモリとディスクとで、10<sup>5</sup>〜10<sup>6</sup>倍以上の探索速度の差があります。また、メモリとディスクの転送速度では、メモリが約7.5GB/秒ほど出るのに対して、ディスクは58MB/秒ほどしかでません。</p>
+
+<p>SSD(Solid State Drive) などの記憶装置が出てきたことで探索速度の差は縮まってきていますが、転送速度の差は埋めることがまだ出来ていない状況です。</p>
+
+<h4>単一ホストの負荷</h4>
+
+
+<p><blockquote><p>「負荷分散」と言う言葉から思い浮かべるのは、多くの場合、複数のホストに処理を担当させる文字通りの「分散」です。しかし、そもそも1台で処理できるはずの負荷をサーバ10数台で分散するのは本末転倒です。単一のサーバの性能を十分に引き出すことができてはじめて、複数サーバでの負荷分散が意味をなします。</p></blockquote></p>
+
+<h4>ボトルネック見極め作業の基本的な流れ</h4>
+
+
+
+
+<p class="option"><em>推測するな、計測せよ</em></p>
+
+
+
+
+<ul><li>ロードアベレージを見る</li>
+<li>CPU、I/Oのいずれがボトルネックかを探る</li>
+<li>CPUの場合、ディスクやメモリはボトルネックになっていないかを確認。プログラムのバグも確認する</li>
+<li>I/Oの場合、スワップが発生していないかを確認。メモリの使い方が適切か、足りているかを確認する</li></ul>
+
+
+
+
+<div class="row">
+<div class="col-sm-2">
+<a href="http://www.amazon.co.jp/gp/product/4774135666?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774135666" rel="external nofollow">
+<img src="http://ecx.images-amazon.com/images/I/51uK4ACymiL._SL160_.jpg" />
+</a>
+</div>
+<div class="col-sm-10">
+<ul><li>『<em><a href="http://www.amazon.co.jp/gp/product/4774135666?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774135666" rel="external nofollow">[24時間365日] サーバ/インフラを支える技術 ~スケーラビリティ、ハイパフォーマンス、省力運用</a></em>』</li><li>著者: 安井 真伸, 横川 和哉, ひろせ まさあき, 伊藤 直也, 田中 慎司, 勝見 祐己</li><li>出版社: 技術評論社</li></ul>
+</div>
+</div>
+
+
+
+
+<h3>大規模データを扱う勘所</h3>
+
+
+
+
+<h4>プログラミングの3つの勘所</h4>
+
+
+
+
+<ol><li>いかにメモリで済ませるか</li>
+<li>データ量の増加に強いアルゴリズムを使う</li>
+<li>データ圧縮や検索技術を駆使する</li></ol>
+
+
+
+
+<h4>3つの基礎知識</h4>
+
+
+
+
+<ol><li>OSのキャッシュ</li>
+<li>分散を考慮したRDBMSの運用</li>
+<li>アルゴリズムとデータ構造</li></ol>
+
+
+
+
+<h3>OSのキャッシュのしくみ</h3>
+
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+
+
+<ul><li><a href="http://d.hatena.ne.jp/naoya/20070521/1179754203" rel="external nofollow">Linux のページキャッシュ - Hatena::Diary::naoya</a></li></ul>
+
+
+<p></section></p>
+
+<p>キャッシュを前提に I/O を軽減するというのが、I/O 対策の基本です。扱うデータ規模に対して十分な物理メモリを用意しておくことで、データがすべてキャッシュにのるので I/O が軽減できます。</p>
+
+<p>また、データを圧縮することによって、そのままではキャッシュに全部のらなかったものがのるようになって、効率化ができるようになります。</p>
+
+<h3>分散のポイント</h3>
+
+
+<p>CPU が追いついていないときにサーバを増やす分には単純に増やせばよいですが、<em>ディスクアクセスによる負荷を軽減する場合は単純に増やすことはできません。</em></p>
+
+<p>OS のキャッシュによって I/O を軽減する目的でサーバを増設する場合には、アクセスパターンを考慮して十分にデータがキャッシュにのるようにサーバを増やす必要があります。つまり、<em>単純に同じサーバを増やすというのでは効果がないことがあります。</em></p>
+
+<p>特に、データベースがボトルネックになっているときには、データ量が多いテーブルをメモリが潤沢なサーバに移すなどのアクセスパターンによってサーバを分散させるようにする必要があります。</p>
+
+<h3>局所性を考慮した分散</h3>
+
+
+<p>いかにしてデータをキャッシュにのせた状態で処理するかを考えて、分散を行う必要があります。例えば、データベースの分散の手法には様々ありますが、主なものには次のものがあります。</p>
+
+<dl><dt>テーブル単位での分割</dt>
+<dd><p>1台のサーバのメモリ上にのるように、テーブル単位でサーバを分割する方法。アプリケーション側の変更も必要になる</p></dd>
+<dt>データの途中で分割</dt>
+<dd><p>テーブル単位で分割ではなくデータの途中から別のサーバに分割する方法。たとえば、イニシャルがA〜M、N〜Zでサーバを分ける。これも、アプリケーション側の変更が必要になる</p></dd>
+<dt>リクエストパターンによって分割する</dt>
+<dd><p>最近のデータ、過去のデータなどといった感じでリクエストのパターンによってデータを分割し、サーバを分散する方法。API からのリクエスト、検索エンジンからのリクエストなどで分けたりもする</p></dd>
+</dl>
+
+
+<p><em>テーブルを分散させるときには、アプリケーション側で JOIN を極力使わないようにする必要があります。</em>多くの RDBMS では別サーバにあるテーブルどうしを JOIN することができません。</p>
+
+<h3>サーバ再起動時には一度データをリードする</h3>
+
+
+<p><blockquote><p>MySQLなどのDBサーバを運用するにあたって、大規模なデータを扱う場合にはここに注意が必要です。たとえば、メンテナンスなどでサーバを再起動した場合、それまでにメモリにキャッシュされていたページキャッシュは、すべてフラッシュされてしまいます。(中略）。一度必要なデータ全体に読み込みをかけてから、プロダクション環境に戻すといった工夫が必要になります。</p></blockquote></p>
+
+<h3>Bツリーインデックスはハードディスクのアクセスと相性がいい</h3>
+
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+
+
+<ul><li><a href="http://www.atmarkit.co.jp/fdb/rensai/oraobstacle03/oraobstacle03_1.html" rel="external nofollow">Bツリーインデックスに最高のパフォーマンスを - @IT</a></li></ul>
+
+
+<p></section></p>
+
+<p>Bツリーはそのデータ構造上、ページキャッシュと相性がいいです。なので、データベースでインデックスを貼る際にはBツリーインデックスを使うことが多いです。また、Bツリーをさらに最適化したものに、<a href="http://www.atmarkit.co.jp/icd/root/24/21256624.html" rel="external nofollow">B+ツリー</a>というものもあります。</p>
+
+<h4>MySQLのインデックスの癖</h4>
+
+
+<p><blockquote><p>複数のカラムがインデックス利用の対象になった場合です。(中略)。MySQLは1回のクエリでインデックスを1つしか使わない、という癖を持っているのが原因です。</p></blockquote></p>
+
+<div class="row">
+<div class="col-sm-2">
+<a href="http://www.amazon.co.jp/gp/product/4873114268?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114268" rel="external nofollow">
+<img src="https://images-na.ssl-images-amazon.com/images/I/51s%2Bp62hCgL._SL160_.jpg" alt="実践ハイパフォーマンスMySQL 第2版" />
+</a>
+</div>
+<div class="col-sm-10">
+<ul><li>『<em><a href="http://www.amazon.co.jp/gp/product/4873114268?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114268" rel="external nofollow">実践ハイパフォーマンスMySQL 第2版</a></em>』</li><li>著者: Baron Schwartz (著), Peter Zaitsev (著), Vadim Tkachenko (著), Jeremy D. Zawodny (著), Arjen Lentz (著), Derek J. Balling (著), 伊藤 直也 (監訳) (翻訳), 田中 慎司 (監訳) (翻訳), 吉川 英興 (監訳) (翻訳), 株式会社クイープ (翻訳)</li><li>出版社: オライリージャパン</li></ul>
+</div>
+</div>
+
+
+<p>インデックスが効くかどうかは、explain コマンドを使うと確認できます。</p>
+
+<ul><li><a href="http://nippondanji.blogspot.com/2009/03/mysqlexplain.html" rel="external nofollow">MySQLのEXPLAINを徹底解説!! - 漢のコンピュータ道</a></li></ul>
+
+
+
+
+<h3>更新系のデータベースでもスケールしやすい kye-value ストア</h3>
+
+
+<p>RDBMS を使っていると、参照系のクエリに関しては、キャッシュに注意すればサーバを増設するだけなのでスケールしやすいです。しかし、更新系のクエリとなるとサーバの増設はとたんに難しくなります。</p>
+
+<p>そこで、そもそも RDBMS を使わないという選択肢をとることも考えられます。単に値を書きこんで取り出すだけで、RDBMS の統計処理やソートなどが不要なのであれば、key-value ストアを使用するという方法を考えるといいです。</p>
+
+<p><blockquote><p>単に値を保存して取り出すだけで、RDBが持つ複雑な統計処理や汎用的なソート処理が必要ないなら、key-valueストアはオーバーヘッドも少なく圧倒的に速いし、スケールしやすいんです。</p></blockquote></p>
+
+<h3>圧縮アルゴリズム</h3>
+
+
+
+
+<ul><li><a href="http://d.hatena.ne.jp/naoya/20090804/1249380645" rel="external nofollow">γ符号、δ符号、ゴロム符号による圧縮効果 - Hatena::Diary::naoya</a></li></ul>
+
+
+
+
+<h3>アルゴリズムのオーダー表記</h3>
+
+
+<p>右に行くほど計算量が多くなります。</p>
+
+<pre>O(1) &lt; O(log n) &lt; O(n) &lt; O(n log n) &lt; O(n<sup>2</sup>) &lt; O(n<sup>3</sup>) ... O(n<sup>k</sup>) &lt; O(2<sup>n</sup>)</pre>
+
+
+
+
+<h3>はてなで使っている（使っていたいた）マッチングアルゴリズムやデータ構造</h3>
+
+
+
+
+<ul><li>パターンマッチング: <a href="http://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%82%A4%E6%9C%A8" rel="external nofollow">Trie(トライ木)</a></li>
+<li>パターンマッチング: <a href="http://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%A4%E3%83%9B-%E3%82%B3%E3%83%A9%E3%82%B7%E3%83%83%E3%82%AF%E6%B3%95" rel="external nofollow">Aho-Corasick法(AC法)</a></li>
+<li>カテゴリ判定: <a href="http://ja.wikipedia.org/wiki/%E3%83%99%E3%82%A4%E3%82%B8%E3%82%A2%E3%83%B3%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF" rel="external nofollow">ベイジアンフィルタ</a></li>
+</ul>
+
+
+
+
+<h3>検索システムの6つのステージ</h3>
+
+
+<p>全文検索システムを作る上で、大まかに作業を分けると、6つのステージに分解できます。</p>
+
+<dl><dt>クロール</dt>
+<dd><p>検索する対象のドキュメントを見つける</p></dd>
+<dt>格納</dt>
+<dd><p>ドキュメントを保存・格納する</p></dd>
+<dt>インデクシング</dt>
+<dd><p>ドキュメントからインデックスを構築する</p></dd>
+<dt>検索</dt>
+<dd><p>インデックスを元にクエリを含むドキュメントを検索する</p></dd>
+<dt>スコアリング/ランキング</dt>
+<dd><p>検索結果をどのような順番で表示するかを決める</p></dd>
+<dt>結果表示</dt>
+<dd><p>結果を表示する</p></dd>
+</dl>
+
+
+
+
+<div class="row">
+<div class="col-sm-2">
+<a href="http://www.amazon.co.jp/gp/product/0521865719?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=0521865719" rel="external nofollow">
+<img src="https://images-na.ssl-images-amazon.com/images/I/41xVx99-4yL._SL160_.jpg" alt="Introduction to Information Retrieval" />
+</a>
+</div>
+<div class="col-sm-10">
+<ul><li>『<em><a href="http://www.amazon.co.jp/gp/product/0521865719?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=0521865719" rel="external nofollow">Introduction to Information Retrieval</a></em>』</li><li>著者: Christopher D. Manning (著), Prabhakar Raghavan (著), Hinrich Schuetze (著)</li><li>出版社: Cambridge University Press; Anniversary</li></ul>
+</div>
+</div>
+
+
+
+
+<h3>仮想化のデメリット</h3>
+
+
+<p>はてなでの経験則だそうですが、だいたい、</p>
+
+<ul><li>CPUで2〜3%</li>
+<li>メモリの性能も1割くらい</li>
+<li>ネットワークの性能は半分くらい</li>
+<li>I/O性能が5%くらい</li></ul>
+
+
+<p>落ちるようです。</p>
+
+<h3>SSDの寿命</h3>
+
+
+<p><blockquote><p>SSDを扱う上で一番気になるのは、いつどのように壊れるのか、ということです。HDDが時間と共に消耗して壊れるのは周知の事実なのですが、SSDも時間とともに消耗して壊れる、と考えるのが自然です。</p></blockquote></p>
+
+<p>フラッシュメモリも書き込みの消耗で壊れてしまうようです。新しいメディアを使うときは、それがどのように壊れるのかをきちんと確認して、監視する仕組みを整えておくことが必要です。</p>
+
+<h3>ネットワークの限界</h3>
+
+
+<p>1つのサブネットは500ホストくらいが限界のようです。サブネット内にホストがたくさんあると、ブロードキャストパケットの受信だけでも結構 CPU を食うようです。</p>
+
+<h3>ジョブキュー、ストレージ、キャッシュシステム、計算クラスタ</h3>
+
+
+<p><section></p>
+
+<h4>いまどきのWebサービスに求められる実践技術</h4>
+
+
+
+
+<ul><li>ジョブキューシステム -- TheSchwartz, Gearman</li>
+<li>ストレージ -- RDBMS, key-valueストア</li>
+<li>キャッシュシステム -- Squid, Varnish</li>
+<li>計算クラスタ -- Hadoop</li></ul>
+
+
+<p></section></p>
+
+<h4>ストレージ選択のフローチャート</h4>
+
+
+<p>本書より</p>
+
+<p><img alt="flowchart.png" src="http://hamasyou.com/images/flowchart.png" width="558" height="474" class="mt-image-none" style="" /></p>
+]]></content>
+  </entry>
+  
+</feed>

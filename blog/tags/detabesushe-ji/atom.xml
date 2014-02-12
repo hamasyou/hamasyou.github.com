@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: データベース設計 | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/detabesushe-ji/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[楽々ERDレッスン]]></title>
+    <link href="http://hamasyou.com/blog/2006/07/17/4798110663/"/>
+    <updated>2006-07-17T08:36:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2006/07/17/4798110663</id>
+    <content type="html"><![CDATA[<p>本書は、著者である羽生 章洋さんのご自分の経験を元に、データベース設計を行う底力を教えてくれる教科書です。テーブル設計のやり方や、コード体系の考え方、経営資産としてのデータベース、RDBMSを資産活用するためのSQLの書き方など、筆者の経験を惜しみなく公開されているという感じです。</p>
+
+<p>最近はデータモデリングという言葉がもてはやされています。データモデリングにも色々な流派があり、コード体系、識別子、主キーの扱い、関係の扱いなど考え方がさまざまです。僕が読んできたデータモデリングの本で、これまでで一番共感が持てる考えが本書の考え方でした。もちろん、これまで読んできた本に書かれていることも多く、同じ考えをしているところも多々あります。ただ、本書はそういった部分を筆者の経験を元に解説しているので、非常にわかりやすいのです。</p>
+
+<p>本書はデータモデリングとは何か、RDBの設計の練習がしたい人、ER設計に興味がある人が読者対象です。プログラマからSE、コンサルタントまで読んでおくと必ず為になる一冊だと思います。おすすめです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>覚書</h2>
+
+
+
+
+<h3>エンティティの候補</h3>
+
+
+<p>データベースを設計する上で、もっとも重要なことは 「<strong>何を記録するか</strong>」 です。記録しないもの、記録したくないものはデータベース設計は行いません。この、記録したいものを2つの種類に分類すると次のようになります。</p>
+
+<p><blockquote><p>「モノ」 に関する記録のことを 「リソース（資源）系エンティティ」、「出来事」 についての記録のことを 「イベント系エンティティ」 と読んだりします。</p></p><p><p></p><footer><strong>本書 p.25 「エンティティ名の決め方」 より抜粋</strong></footer></blockquote></p>
+
+<p>出てきたエンティティは、業務上のモデルと <strong>6W3H</strong> で照らし合わせて確認することができます。</p>
+
+<p><blockquote><p>「リソース系」</p></p><p><ul><li>誰に （Whom）</li><br/><li>誰が （Who）</li><br/><li>何を （What）</li><br/><li>どこへ （Where）</li></ul></p><p><br/><p>「イベント系」</p></p><p><ul><li>どのように （How）</li></ul></p><p><br/><p>「属性の候補」</p></p><p><ul><li>いつ （When）</li><br/><li>どれくらい （How many）</li><br/><li>いくら （How much）</li></ul></p><p><br/><p>「ビジネス上の正規化の対象となってくるもの」</p></p><p><ul><li>なぜ （Why）</li></ul></p><p><br/><p></p><footer><strong>本書 P.25 「エンティティ名の決め方」 より抜粋</strong></footer></blockquote></p>
+
+<h3>コードとキーの違い</h3>
+
+
+
+
+<h4>キーの種類</h4>
+
+
+<p>データベース上で扱われるキーには大きく3つに分けられます。</p>
+
+<ol><li>主キー</li><li>外部キー</li><li>ユニークキー</li></ol>
+
+
+<p>主キーは、「候補キー」 の中から選ばれ、レコードを一意に識別することができるキーのことです。外部キーは、他のレコードを参照する際のキーのことです。ユニークキーは、他のレコードと重複が無い一意な値をもつキーのことです。</p>
+
+<p>「候補キー」 は、レコードを一意に識別することができるキーの集まりのことです。例えば、シーケンシャル番号や社会保障番号、名前と生年月日の組み合わせも候補キーとして使えるかもしれません（業務による）。業務で使っている 「<strong>コード</strong>」 も候補キーの一つといえます。</p>
+
+<h4>コードとキーの違い</h4>
+
+
+<p><blockquote><p></p></p><p><ul style="margin-top:0px; margin-bottom: 0px"><li>コード体系は、ユーザがレコードに容易に到達するためのユーザインターフェースである</li><br/><li>コード体系は、システムの都合ではなくビジネスの都合によって決定されるものである</li></ul></p><p><br/><p></p><footer><strong>本書 P.30</strong></footer></blockquote></p>
+
+<p>つまり、コードはユニークキー、さらに言えば候補キーになるということです。しかし、コードはビジネスの都合によって変えられることがあるので、主キーとしてはふさわしくありません。主キーを考えることは、レコードのID （アイデンティファイア） を考えることと同じことなのです。</p>
+
+<p><blockquote><p>アイデンティファイアは、インスタンスのライフサイクル （一般にデータライフサイクル：DLCとも呼ばれます。） を表現していると考えればいいでしょう。その集合中に属してから消滅するまでの間、特定のインスタンスであることを示す座標として機能しているわけです。</p></p><p><p></p><footer><strong>本書 P.33</strong></footer></blockquote></p>
+
+<p>コードは、ビジネスに合わせて柔軟に変更できるべきであるが、アイデンティファイア はそのレコードが存在する間は変更されてはいけないのです。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>データモデリングの一つの流派。リソースとイベントとというエンティティの分け方についてよくわかります。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4883732169/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>データモデリングを学ぶならはずせない一冊</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4534032501/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>業務知識と共にDB設計を</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798109274/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

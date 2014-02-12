@@ -1,0 +1,515 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <title>サーバーサイドJavaプログラマー養成講座―ケーススタディで実践するオブジェクト指向開発プロセス - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ">
+  <meta name="keywords" content="サーバーサイド,Java,プログラマー,養成,ケーススタディ,実践,オブジェクト指向,プロセス,サーブレット,JSP,設計">
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2004/12/24/4797325976">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate subscribe-rss" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">サーバーサイドJavaプログラマー養成講座―ケーススタディで実践するオブジェクト指向開発プロセス</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-12-24T05:41:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Dec 24<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/j2ee/">J2EE</a>
+    
+      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
+    
+      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/">オブジェクト指向</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325976/sorehabooks-22" title="サーバーサイドJavaプログラマー養成講座―ケーススタディで実践するオブジェクト指向開発プロセス" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/5114lvx381L._SL500_AA300_.jpg" class="asin-thumbnail" alt="サーバーサイドJavaプログラマー養成講座―ケーススタディで実践するオブジェクト指向開発プロセス" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325976/sorehabooks-22" title="サーバーサイドJavaプログラマー養成講座―ケーススタディで実践するオブジェクト指向開発プロセス" rel="external nofollow">サーバーサイドJavaプログラマー養成講座―ケーススタディで実践するオブジェクト指向開発プロセス</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>レッドフォックス (著), 勝又 啓太 (著), 河野 勝則 (著), 浅利 和範 (著)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>ソフトバンクパブリッシング</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325976/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+<div class="entry-content"><p>「サーバーサイドJavaがはじめての人向け」の本でもなく、「J2EE技術をフルに使って複雑なアプリケーションを開発する人向け」の本でもありません。本書は、その中間「『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797314095/sorehabooks-22" rel="external nofollow">はじめてのJSP&amp;サーブレット</a>』は読んだけど、次に何を読めば上達するの？」という人向けになっています。</p>
+
+<p>当然、サーブレット・JSPとは？という初歩的なことは書いてありません。逆に、J2EEシステムの設計技法やアンチパターンについても書いてありません。本書に載っているのは、オーソドックスなJ2EEアプリケーションのアーキテクチャを適用した場合の開発ケースです。</p>
+
+<p>企業プログラマーとしてデビューしたけど、本格的なJ2EEアプリケーションは初めてと言う人向けの書籍になっています。内容的にも、無難なところで収まっていると言う感じです。濃すぎず、薄すぎずと言ったところです。</p>
+
+<p>J2EEアプリケーション開発者としてデビューした時は、「アーキテクチャ」なんて言葉を始めて聞いたし、「UML」なんて言葉は知りませんでした。DAO(Data Access Object)パターンやMVC(Model View Controller)パターンなんてのも、イメージすらわきませんでした。本書では、実際の開発プロセスを流れにそって進めているので、開発というものの雰囲気をとてもよくつかめるようになっています。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+<p>「UMLを使ってRUPを使って開発をします。」と言われてピンと来ないJ2EE開発者は本書が開発の全体像を照らす指針になってくれると思います。</p>
+
+<p>バウンダリ・コントロール・エンティティ(BCE)と分けてWebアプリケーションを設計する「<strong>ロバストネス分析</strong>」という方法を本書では解説しています。バウンダリでは「FrontControllerパターン」を、コントローラでは、「<strong>Commandパターン</strong>」を、エンティティでは「<strong>DAOパターン</strong>」を使って実装する方法が載っています。プロジェクト全体では、テスティングに関して「<b>JUnitやCactusやMock Object</b>」を使う方法が解説されています。<strong>リファクタリング</strong>の方法やAntを使った自動デプロイ、応用アーキテクチャの説明と、実際のJ2EEアプリケーション開発(サーブレット・JSPを使った場合)を意識されています。</p>
+
+<p>ケーススタディには、レコードショップのサンプルが使われています。検索・登録・更新・削除を盛り込んだ、実践的なものだと思います。</p>
+
+<p>読み進めるためには、多少の予備知識(UMLの知識、サーブレット/JSPの知識)が必要となりますが、初心者にもおすすめできる内容です。「サーバーサイドの歩き方ガイドブック」の名に恥じない出来だと思います。新人研修等の参考におすすめです。</p>
+
+<h2>覚書き</h2>
+
+
+
+
+<h3>Commandパターン</h3>
+
+
+<p>コマンドは、ユースケースにつき1クラスを定義します。コマンドクラスとユースケースを一対一で対応させることで、シンプルで理解しやすい設計になります。</p>
+
+<p>コマンドクラスは、executeメソッドを持つ Commandインターフェースを実装します。ユースケースの処理は、コマンドクラスのexecuteメソッドに書くことにします。</p>
+
+<h3>DAOパターン</h3>
+
+
+<p>DAOは1エンティティにつき1つのDAOを対応させて定義します。状態を保持せず、追加(Create)、検索(Refer)、更新(Update)、削除(Delete)のメソッドのみを持ちます(CRUDメソッドと呼びます)。</p>
+
+<p>エンティティオブジェクトとは、ユースケースで使用するデータベースのレコードと同じデータ構造を持つクラスです。ただし、<b>1テーブル=1エンティティとは限りません</b>。ユースケースの視点からエンティティを捉えるので、テーブルを結合したデータであっても1エンティティと捕らえることもあります。</p>
+
+<h3>応用アーキテクチャ</h3>
+
+
+<p>FrontControllerパターンと呼ばれる、一つのメインサーブレットがすべてのリクエストを受け取り、個別のコマンドクラスに処理を委譲するパターンがあります(詳しくは、『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22" rel="external nofollow">実践J2EE</a>』を見るとよく分かります)。最近のフレームワークではほとんどこのパターンが使われています。</p>
+
+<p>メインサーブレットと個別のコマンドクラス(コントローラクラス)は、外部XMLでマッピングされるのが多いです。</p>
+
+<p>例外処理に関しては、メインサーブレットで例外処理を行います。それぞれの層(レイヤー)で送出された例外を元に処理を切り分けます。こうすることで、例外処理がコマンドクラスやDAOクラスに散らばらずに管理できます。層ごとに送出する例外クラスを定義するのが普通です。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>サーブレット/JSPの仕組みを理解するならこれから。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797324120/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+<ul>
+<li>実際のJ2EE開発に慣れてきたらさらに踏み込むために本書を。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+<ul>
+<li>J2EE パターンを学ぶならイチオシ。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714345/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+</div>
+
+
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-12-24T05:41:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Dec 24<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/j2ee/">J2EE</a>
+    
+      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
+    
+      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/">オブジェクト指向</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul class="list-inline">
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/12/24/4797325976/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2004/12/24/4797325976/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2004/12/24/4797325976/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2004/12/24/4797325976/"></div>
+    </li>
+    
+    
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/12/24/4797325976/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/12/24/4797325976/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2004/12/19/4822229718/" title="Previous Post:
+      Webアプリケーションのセキュリティ完全対策―不正アクセスや情報漏洩を防ぐ"><i class="fa fa-arrow-circle-left"></i> Webアプリケーションのセキュリティ完全対策―...</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2005/01/02/4798106976/"
+                            title="Next Post: Javaプログラミングの処方箋">Javaプログラミングの処方箋 <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="thumbnail" />
+    </div>
+    <div class="col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/05/482228493X/">世界でもっとも強力な9のアルゴリズム</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">94</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js" rel="external nofollow"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2004/12/24/4797325976/';
+  var disqus_url = 'http://hamasyou.com/blog/2004/12/24/4797325976/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

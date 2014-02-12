@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: DI | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/di/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Dependency Injection (DI) の乱用！？]]></title>
+    <link href="http://hamasyou.com/blog/2004/11/13/di/"/>
+    <updated>2004-11-13T02:10:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/11/13/di</id>
+    <content type="html"><![CDATA[<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22" rel="external nofollow"></a>
+</p>
+
+
+<p><a href="http://www.kakutani.com/trans/fowler/injection.html" rel="external nofollow">Dependency Injection (DI) </a>は、「依存性の注入」という言葉で最近話題になっています。「EJB は重過ぎて使えない」とか「軽量コンテナは疎結合だからすばらしい」といった声をよく聞くようになりました。</p>
+
+<p>Dependency Injection (DI) はサービスコンポーネント間の関係を疎に保ったままアプリケーションを構築するというものです。「<b>設定を利用から分離する</b>」という原則が、DIの本質です。</p>
+
+<p>いろんな書籍が出始めてきた中で、依存性注入の何がステキなのか、疎結合だと幸せだよねといったことは非常に良く分かるようになりました。それでも、自分の中で何かしらの引っ掛かりがあります。それをつらつら書き連ねてしまおうかと思っています。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://www.kakutani.com/trans/fowler/injection.html" rel="external nofollow">Inversion of Control コンテナと Dependency Injection パターン</a></p>
+
+<p></section></p>
+
+<!-- more -->
+
+
+
+
+<h2>感じたこと</h2>
+
+
+<p>DIコンテナの役割は、マーチン・ファウラーの言葉を借りるとこういうことです。</p>
+
+<p><blockquote><p>軽量コンテナは、異なるプロジェクトのコンポーネントをひとまとまりのアプリケーションとして組み立てることを支援する。このようなコンテナの根底には、コンポーネントの結び付け方についての共通したパターンがある。そのパターンのコンセプトは「Inversion of Control(制御の反転)」と、まことに包括的な名前で呼ばれている。《中略》 「<b>設定を利用から分離する</b>」原則こそが重要なのだ。</p></p><p><p></p><footer><strong>マーチンファウラー</strong></footer></blockquote></p>
+
+<p>DIコンテナの役割は、「<b>異なるプロジェクトのコンポーネント</b>をひとまとまり」にするための糊として動くといっています。僕も非常にこの部分に同意します。異なるプロジェクトコンポーネントと言っているのが味噌です。でも、コンポーネントって何でしょうか？</p>
+
+<p><blockquote><p>ソフトウェアコンポーネントは、それぞれ特定の機能を持っているが、<b>基本的に単体では使用できず、他のプログラムと組み合わせて機能を実現、ないし追加するために用いられる</b>。また、オブジェクトの一種として、特定の機能を持つが単独では意味を持たないようなオブジェクト、と言うこともできる。</p></p><p><p></p><footer><strong>『<a href="http://e-words.jp/w/E382B3E383B3E3839DE383BCE3838DE383B3E38388.html" rel="external nofollow">IT用語辞典 - コンポーネント</a>』</strong></footer></blockquote></p>
+
+<p>コンポーネントとは、「<b>それだけでは機能しない、正しいインターフェースを持ったソフトウェアモジュール</b>」であると言えます。DIコンテナは、「それだけでは機能しないソフトウェアモジュールを組み合わせて一つのアプリケーションにするもの」だと言うことができます。</p>
+
+<h3>DI のサンプルは、DIの本質をつかんでいないのではないか？</h3>
+
+
+<p>さて、DIの本質は、「コンポーネント同士を貼り付ける糊」だと言うことが一般的なようでした。しかし、DIコンテナのサンプルを見ると、ドメインモデル間の関係をDIしている例が見受けられます。これって変ですよね？</p>
+
+<p>DIは異なるコンポーネント、つまり<strong>お互いに帰属関係のない概念</strong>を結合する場合に使うべきものです。ドメインモデルと言うものは、同一の概念レベルにあるものではないでしょうか？</p>
+
+<p>帰属関係のない概念とは、例えば、データアクセスオブジェクトとデータソース、サーブレットコントローラとトランザクション、リソース管理とロギングの関係などです。これらはコンポーネントとしての機能を持っていますが、単体では動きません。こういうモノを組み合わせるためにDIコンテナを利用するべきではないかと考えます。</p>
+
+<h3>DIはいつ使うべきか？</h3>
+
+
+<p>DI自体はとてもすばらしい考えだと思います。コンポーネントの関係を疎結合にするというのは、保守を考えたとき、テストを考えたときにとても幸せになれます。ただ、ドメインモデル同士の関係に、DIを使うのはどうかと思います。ドメインモデルでは関係があるはずなのに、実装コードを見たら関係が見つからないと言うのでは、逆に保守が大変だと思います。</p>
+
+<p>アプリケーションのコンフィギュレーションをリソース化する場合の基本は以下のようなものがあります。</p>
+
+<dl>
+<dt>横断的/共通的な概念</dt><dd>データソース、データベースの名前、ユーザ名やパスワードなどは、設定ファイルとして切り出す。</dd>
+<dt>外部との接点</dt><dd>既存システムとの連結部、ビジネスルール、サービスの開始部などは、インターフェースでやり取りし、カスタマイズできる部分を設定可能にする。</dd>
+<dt>外部資源</dt><dd>トランザクション、ログファイル、データソースなどはカスタマイズ可能です。あちこちに分散しそうな設定は外部化しておく。</dd>
+</dl>
+
+
+<p>アプリケーションのコンフィギュレーションをリソース化できる部分が、実はDependency Injection が使える重要ポイントなのではないかと考えています。コンポーネントは、コンテキストにもよりますが、それ自体が交換可能なものです。リソースもまた、交換可能なものです。それぞれが正しいインターフェースを提供することで、Dependency Injection が可能になるはずです。</p>
+
+<p>「<em>コンポーネント同士の結合部分、コンフィギュレーションとして切り出せる部分、プラグイン化可能な部分</em>」こそ、Dependency Injectionを使うべきところで、それ以外のところでは、異なる概念でなければむやみに使わないほうがいいように思います。何でもかんでも疎結合にしようというのは、ちょっと考え物。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>コンポーネントとは何かを調べるときに使いました。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712636/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,809 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <title>技術メモ - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ">
+  <meta name="keywords" content="技術,メモ">
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2008/06/19/memo">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate subscribe-rss" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">技術メモ</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2008-06-19T11:59:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 19<span>th</span>, 2008</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/dom/">DOM</a>
+    
+      <a class="tag label label-info" href="/blog/tags/rails/">Rails</a>
+    
+      <a class="tag label label-info" href="/blog/tags/weblogic/">WebLogic</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ffftp/">FFFTP</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>技術メモ用のエントリ</p>
+
+<p><a href="http://hamasyou.com/archives/000247" rel="external nofollow">技術者の宝石箱</a>の続きエントリ</p>
+
+<!-- more -->
+
+
+
+
+<h2>インデックス</h2>
+
+
+
+
+<ul>
+<li><a href="#DOM で複数選択可能なリストボックスを作成する（IE）" rel="external nofollow">DOM で複数選択可能なリストボックスを作成する（IE）</a> 2007/4/28追加</li>
+<li><a href="#要求と要件の違い" rel="external nofollow">要求と要件の違い</a> 2007/5/22追加</li>
+<li><a href="#Maven2のpom.xmlのXMLスキーマ" rel="external nofollow">Maven2のpom.xmlのXMLスキーマ</a> 2007/10/23追加</li>
+<li><a href="#Excelでファイルの最終更新日を取得する" rel="external nofollow">Excelでファイルの最終更新日を取得する</a> 2007/10/24追加</li>
+<li><a href="#Ruby on Rails2.0で、NoMethodError in AdminController#index" rel="external nofollow">Ruby on Rails2.0で、NoMethodError in AdminController#index</a> 2007/12/30追加</li>
+<li><a href="#WebLogicでAPP-INFを使って共通Jarを配置するときは、ClassLoaderに注意する" rel="external nofollow">WebLogicでAPP-INFを使って共通Jarを配置するときは、ClassLoaderに注意する</a> 2008/5/27追加</li>
+<li><a href="#WebLogicが発行するSession Cookieのパスはデフォルトで/（スラッシュ）" rel="external nofollow">WebLogicが発行するSession Cookieのパスはデフォルトで / （スラッシュ）</a> 2008/6/19追加</li>
+<li><a href="#FFFTPでシンボリックリンクを削除する方法" rel="external nofollow">FFFTPでシンボリックリンクを削除する方法</a> 2008/6/24追加</li>
+<li><a href="#Railsをやってて気になったこと" rel="external nofollow">Railsをやってて気になったこと</a> 2008/7/24追加</li>
+<li><a href="#Commons HttpClient のマルチパートで日本語ファイル名が文字化けする" rel="external nofollow">Commons HttpClient のマルチパートで日本語ファイル名が文字化けする</a> 2008/8/14追加</li>
+<li><a href="#JBoss Seamでログイン後にセッションIDを変更する" rel="external nofollow">JBoss Seamでログイン後にセッションIDを変更する</a> 2008/11/20追加</li>
+</ul>
+
+
+
+
+<h2>一覧</h2>
+
+
+
+
+<h3 id="DOM で複数選択可能なリストボックスを作成する（IE）">DOM で複数選択可能なリストボックスを作成する（IE）</h3>
+
+
+<p>Internet Explorer（IE）で DOM を使って複数選択可能なリストボックスを作成する方法です。</p>
+
+<pre class="code"><code><span class="keyword">var</span> select = <span class="keyword">null</span>;
+<span class="keyword">if</span> (navigator.appName.match(/Internet Explorer/)) {
+    select = document.createElement(<span class="str">&quot;&lt;select multiple&gt;&quot;</span>);
+} <span class="keyword">else</span> {
+    select = document.createElement(<span class="str">&quot;select&quot;</span>);
+    select.multiple = <span class="keyword">true</span>;
+}
+</code></pre>
+
+
+
+
+<h3 id="要求と要件の違い">要求と要件の違い</h3>
+
+
+
+
+<dl><dt>要求</dt>
+<dd>お客さんのこんなことをしたい、こんなことができるといいなという望み</dd>
+<dt>要件</dt>
+<dd>要求をシステム化「する」と決めたもの</dd>
+</dl>
+
+
+<p>お客さんは、自分がどんなことをしたいのかとか、どんなものが欲しいのかということをうまく説明できないことが多い。だから、要求は「開発する」（掘り起こす）もの。</p>
+
+<p>うまく要求が掘り起こせたら、今度はシステム開発者がじゃあどういう仕様でどういうシステムを作ろうかと考える。だから、要件は「定義する」もの。</p>
+
+<h3 id="Maven2のpom.xmlのXMLスキーマ">Maven2のpom.xmlのXMLスキーマ</h3>
+
+
+<p>Maven2 の pom.xml の XMLスキーマおぼえがき</p>
+
+<pre class="code"><code><span class="tag">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> 
+<span class="tag">&lt;project <span class="attr">xmlns=</span><span class="value">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>  
+         <span class="attr">xmlns:xsi=</span><span class="value">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>  
+         <span class="attr">xsi:schemaLocation=</span><span class="value">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</span>&gt;</span> 
+<span class="tag">&lt;/project&gt;</span>
+</code></pre>
+
+
+
+
+<h3 id="Excelでファイルの最終更新日を取得する">Excelでファイルの最終更新日を取得する</h3>
+
+
+<p>Excel でファイルの最終更新日を自動で再計算する方法。</p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://www.relief.jp/itnote/archives/000271.php" rel="external nofollow">インストラクターのネタ帳：ファイルの最終更新日時を取得したい−ユーザー定義関数</a></p>
+
+<h3 id="Ruby on Rails2.0で、NoMethodError in AdminController#index">Ruby on Rails2.0で、NoMethodError in AdminController#index</h3>
+
+
+<p>書籍『<a href="http://www.amazon.co.jp/gp/product/4274066401?ie=UTF8&tag=sorehabooks-22&linkCode=xm2&camp=247&creativeASIN=4274066401" rel="external nofollow">RailsによるアジャイルWebアプリケーション開発</a>』を Rails2.0 で作業していくと、<strong>scaffold :product</strong> のところで次のようなエラーが発生する。</p>
+
+<pre>NoMethodError in AdminController#index
+undefined method `scaffold' for AdminController:Class</pre>
+
+
+<p>これは、Rails2.0 からは各種ライブラリ類がプラグインとして切り出されたためだそうだ。ということで、必要なプラグインを入れるとよい。</p>
+
+<p>まずは、scaffolding プラグインから。</p>
+
+<pre class="console">\workspace\depot><kbd>ruby script/plugin install scaffolding</kbd>
++ ./MIT-LICENSE
++ ./README
++ ./Rakefile
++ ./init.rb
++ ./lib/scaffolding.rb
++ ./lib/templates/edit.erb
++ ./lib/templates/layout.erb
++ ./lib/templates/list.erb
++ ./lib/templates/new.erb
++ ./lib/templates/show.erb
++ ./test/scaffolding_test.rb
+</pre>
+
+
+<p>つぎに、paginate というプラグインを入れなければならない。scaffold だけ入れた状態だと次のようなエラーが発生する。</p>
+
+<pre>NoMethodError (undefined method `paginate' for #<EntriesController:0x4829610>):</pre>
+
+
+<p>ということで、paginate プラグインをインストールする。</p>
+
+<pre class="console">\workspace\depot><kbd>ruby script/plugin install http://tools.assembla.com/svn/breakout/breakout/vendor/plugins/classic_pagination/</kbd>
++ ./CHANGELOG
++ ./README
++ ./Rakefile
++ ./init.rb
++ ./install.rb
++ ./lib/pagination.rb
++ ./lib/pagination_helper.rb
++ ./test/fixtures/companies.yml
++ ./test/fixtures/company.rb
++ ./test/fixtures/developer.rb
++ ./test/fixtures/developers.yml
++ ./test/fixtures/developers_projects.yml
++ ./test/fixtures/project.rb
++ ./test/fixtures/projects.yml
++ ./test/fixtures/replies.yml
++ ./test/fixtures/reply.rb
++ ./test/fixtures/schema.sql
++ ./test/fixtures/topic.rb
++ ./test/fixtures/topics.yml
++ ./test/helper.rb
++ ./test/pagination_helper_test.rb
++ ./test/pagination_test.rb
+ 
+ 
+Pagination
+==========
+ 
+To install:
+ 
+  script/plugin install svn://errtheblog.com/svn/plugins/classic_pagination
+ 
+This code was extracted from Rails trunk after the release 1.2.3.
+WARNING: this code is dead. It is unmaintained, untested and full of cruft.
+ 
+There is a much better pagination plugin called will_paginate.
+Install it like this and glance through the README:
+ 
+  script/plugin install svn://errtheblog.com/svn/plugins/will_paginate
+ 
+It doesn&#8217;t have the same API, but is in fact much nicer. You can
+have both plugins installed until you change your controller/view code that
+handles pagination. Then, simply uninstall classic_pagination.
+</pre>
+
+
+<p>インストールすると、will_paginate を使ったほうが良いという警告がでる。なので、will_paginate も一緒にいれる。</p>
+
+<pre class="console">\workspace\depot><kbd>ruby script/plugin install http://tools.assembla.com/svn/breakout/breakout/vendor/plugins/will_paginate/</kbd>
++ ./README
++ ./Rakefile
++ ./init.rb
++ ./lib/will_paginate/collection.rb
++ ./lib/will_paginate/finder.rb
++ ./lib/will_paginate/view_helpers.rb
++ ./test/boot.rb
++ ./test/console
++ ./test/finder_test.rb
++ ./test/fixtures/admin.rb
++ ./test/fixtures/companies.yml
++ ./test/fixtures/company.rb
++ ./test/fixtures/developer.rb
++ ./test/fixtures/developers_projects.yml
++ ./test/fixtures/project.rb
++ ./test/fixtures/projects.yml
++ ./test/fixtures/replies.yml
++ ./test/fixtures/reply.rb
++ ./test/fixtures/schema.sql
++ ./test/fixtures/topic.rb
++ ./test/fixtures/topics.yml
++ ./test/fixtures/user.rb
++ ./test/fixtures/users.yml
++ ./test/helper.rb
++ ./test/lib/activerecord_test_connector.rb
++ ./test/lib/load_fixtures.rb
++ ./test/pagination_test.rb
+</pre>
+
+
+<p>これで、正常に動くようになる。</p>
+
+<h3 id="WebLogicでAPP-INFを使って共通Jarを配置するときは、ClassLoaderに注意する">WebLogicでAPP-INFを使って共通Jarを配置するときは、ClassLoaderに注意する</h3>
+
+
+<p>WebLogic8.1 から EAR 直下の APP-INF/lib、APP-INF/classes に各モジュール（WAR）から利用される共通ライブラリ（JAR）やクラスを配置できます。これは WebLogic の独自仕様のようですが。</p>
+
+<p>このとき、APP-INF 以下に置いたライブラリやクラスは各モジュール（WAR）とは別のクラスローダでロードされます。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://www-06.ibm.com/jp/software/websphere/developer/j2ee/strategy/" rel="external nofollow">IBM: クラスローダーとJ2EEパッケージング戦略を理解する</a></p>
+
+<p></section></p>
+
+<pre>EAR ルート
+├ APP-INF　　　　← EAR クラスローダ（親）
+│  ├ classes
+│　└ lib
+├ WAR1　　　　　 ← WAR1 クラスローダ（子）
+│　└ WEB-INF
+└ WAR2　　　　　 ← WAR2 クラスローダ（子）
+└ WEB-INF
+</pre>
+
+
+<p>親のクラスローダで読み込んだクラスは子のクラスローダからは見つけることができますが、子で読み込んだクラスは親のクラスローダからは見つけることができません。</p>
+
+<p>EAR クラスローダで読み込まれたクラスは各モジュールで共有されるため、static 領域のインスタンスや値も共有されます。</p>
+
+<p>また、親と子のどちらで見つけたクラスを先に読み込むかによってシングルトンクラスの動作に影響が出たりすることがあります。</p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://www-06.ibm.com/jp/software/websphere/developer/j2ee/strategy/2.html" rel="external nofollow">IBM: クラスローダーを理解する - シングルトンがシングルトンでなくなる日</a></p>
+
+<h3 id="WebLogicが発行するSession Cookieのパスはデフォルトで/（スラッシュ）">WebLogicが発行するSession Cookieのパスはデフォルトで / （スラッシュ）</h3>
+
+
+<p>WebLogic のデフォルト設定でのセッション Cookieのルールは以下の通り。</p>
+
+<table>
+<tr><th>要素名</th><th>デフォルト値</th><th>説明</th></tr>
+<tr><th>cookie-name</th><td>JSESSIONID</td><td>セッションIDの長さは52文字</td></tr>
+<tr><th>cookie-path</th><td>null</td><td>デフォルトは / (スラッシュ)<a href="#※1" rel="external nofollow">※1</a>。デフォルト値では、ブラウザは、<em>WebLogic Server で指定されているすべての URL にクッキーを送信する</em>。</td></tr>
+<tr><th>cookie-domain</th><td>null</td><td>デフォルトは、クッキーを発行した<em>サーバのドメイン</em><a href="#※2" rel="external nofollow">※2</a></td></tr>
+<tr><th>cookie-secure</th><td>false</td><td>Cookie を https 接続のときのみブラウザから送り出すか。</td></tr>
+<tr><th>cookie-max-age-secs</th><td>-1</td><td>無期限。ブラウザを閉じると削除される。</td></tr>
+<tr><th>timeout-secs</th><td>3600</td><td>セッションタイムアウト時間。デフォルトで3600秒。</td></tr>
+</table>
+
+
+<p>同一ホスト名でいくつものアプリケーションを管理している場合、WebLogic はデフォルトで、cookie-path を / にしてしまうため、セッションCookieの上書き（セッションIDの上書き）がされることがあります。きちんと path 属性をコンテキストパス、domain 属性を ホスト名に設定しましょう。はまりそうなので注意！</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://edocs.beasys.co.jp/e-docs/wls/docs92/webapp/weblogic_xml.html#wp1071982" rel="external nofollow">BEA：weblogic.xml デプロイメント記述子の要素</a></p>
+
+<p></section></p>
+
+<p><a name="※1"></a>
+※1 Cookieパスは /（スラッシュ）：Cookie の仕様では、Cookie を送出するリクエストヘッダに含まれている要求したドキュメントのパスと同じになります。
+<a name="※2"></a>
+※2 サーバのドメイン：ホスト名ではないことに注意。Cookie の仕様では、domain を指定しない場合はサーバのホスト名になります。</p>
+
+<h3 id="FFFTPでシンボリックリンクを削除する方法">FFFTPでシンボリックリンクを削除する方法</h3>
+
+
+<p>FFFTP でシンボリックリンクを削除する方法。</p>
+
+<pre>[コマンド(C)] -> [任意のコマンド(C)...]</pre>
+
+
+<p>を選択して、</p>
+
+<pre>DELE ファイル名</pre>
+
+
+<p>でOK。シンボリックリンクをプログラムから作っちゃったけど、削除できない〜ってなったのでメモ。サーバアカウントが発行されていて、コンソールにつなげる場合は、コマンドラインから削除すればOK。ロリポップは、FTP しかあいてなかったのであせった。</p>
+
+<h3 id="Railsをやってて気になったこと">Railsをやってて気になったこと</h3>
+
+
+
+
+<h4>Rest ちっくな URL で更新画面みたいなのの定義の仕方</h4>
+
+
+<p>/comment/new/preview 見たいな感じで定義する。</p>
+
+<pre class="code"><code>routes.rb map.resources :comment, :new =&gt; {:preview =&gt; :post}
+</code></pre>
+
+
+
+
+<h4>Rest ちっくなアプリで Ajax によるサーバサイドバリデーションするURL</h4>
+
+
+<p>/comment/new/validate 見たいな感じでいいのかな。</p>
+
+<pre class="code"><code>routes.rb map.resources :comment, :new =&gt; {:validate =&gt; :post}
+</code></pre>
+
+
+
+
+<h4>確認画面を挟む登録で、ファイルアップロードがある場合</h4>
+
+
+<p>attachement_fu を使ってうまくやる方法がわからなかったので、仕方ないから自分で一時ファイルの仕組みを作った。</p>
+
+<p>※ そのうち追加するかも</p>
+
+<h3 id="Commons HttpClient のマルチパートで日本語ファイル名が文字化けする">Commons HttpClient のマルチパートで日本語ファイル名が文字化けする</h3>
+
+
+<p>Commons HttpClient を使って、日本語ファイル名のファイルをマルチパートでアップロードすると、ファイル名が文字化けします。
+これ、ソースを追っていくと驚愕の事実が・・・。</p>
+
+<p><section></p>
+
+<h4>org.apache.commons.httpclient.methods.multipart.FilePart#sendDispositionHeader</h4>
+
+
+
+
+<pre class="code"><code><span class="rem">/**
+ * Write the disposition header to the output stream
+ * @param out The output stream
+ * @throws IOException If an IO problem occurs
+ * @see Part#sendDispositionHeader(OutputStream)
+ */</span>
+<span class="keyword">protected</span> <span class="keyword">void</span> sendDispositionHeader(OutputStream out) 
+    <span class="keyword">throws</span> IOException {
+  LOG.trace(<span class="str">&quot;enter sendDispositionHeader(OutputStream out)&quot;</span>);
+  <span class="keyword">super</span>.sendDispositionHeader(out);
+  String filename = <span class="keyword">this</span>.source.getFileName();
+  <span class="keyword">if</span> (filename != null) {
+    out.write(FILE_NAME_BYTES);
+    out.write(QUOTE_BYTES);
+    out.write(EncodingUtil.getAsciiBytes(filename));
+    out.write(QUOTE_BYTES);
+  }
+}
+</code></pre>
+
+
+<p></section></p>
+
+<p>ファイル名のエンコーディングを ASCII でやってる・・・。 Orz&hellip;</p>
+
+<p>日本語ファイル名の文字化けを回避する方法ですが、私は FilePart を継承して sendDispositionHeader をオーバーライドして、Encoding を自分で指定できるようにしました。他にも、URLEncoding して、サーバ側で Decode するという方法もあります。</p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://d.hatena.ne.jp/w650/20080324/p1" rel="external nofollow">HttpClientでの日本語ファイルのアップロード</a></p>
+
+<h3 id="JBoss Seamでログイン後にセッションIDを変更する">JBoss Seamでログイン後にセッションIDを変更する</h3>
+
+
+<p>JBoss で<code>Session#invalidate()</code> した後に、<code>HttpServletRequest#getSession(true)</code> しても、セッションIDが新しくならい問題の解決方法。</p>
+
+<p>JBoss サーバの $JBOSS_SERVER/deploy/jboss-web.deployer/server.xml の emptySessionPath 箇所を false に変更する。</p>
+
+<pre class="code"><code><span class="tag">&lt;Connector <span class="attr">port=</span><span class="value">&quot;8080&quot;</span> <span class="attr">address=</span><span class="value">&quot;${jboss.bind.address}&quot;</span>    
+         <span class="attr">maxThreads=</span><span class="value">&quot;250&quot;</span> <span class="attr">maxHttpHeaderSize=</span><span class="value">&quot;8192&quot;</span>
+         <span class="attr">emptySessionPath=</span><span class="value">&quot;false&quot;</span> <span class="attr">protocol=</span><span class="value">&quot;HTTP/1.1&quot;</span>
+         <span class="attr">enableLookups=</span><span class="value">&quot;false&quot;</span> <span class="attr">redirectPort=</span><span class="value">&quot;8443&quot;</span> <span class="attr">acceptCount=</span><span class="value">&quot;100&quot;</span>
+         <span class="attr">connectionTimeout=</span><span class="value">&quot;20000&quot;</span> <span class="attr">disableUploadTimeout=</span><span class="value">&quot;true&quot;</span> /&gt;</span>
+</code></pre>
+
+
+<p>emptySessionPath は、セッションCookie のパスを &amp;/&amp; にする設定のようで、ポータルなどの別コンテキスト間でセッションを継続したい場合などに使う設定のようです。これが false でないと、JBoss で <code>Session#invalidate</code> しても、セッションIDが新しくならないっぽいです。</p>
+
+<p>この値を設定したところ、JBoss Seam で <code>Seam#invalidateSession</code> を呼び出した後、新しくセッションIDが発行されるようになりました。</p>
+
+<p>ということで、JBoss Seamのログイン後処理（PostLoginEvent）で一度セッションを新しくすると良いかもです。<em>ただし、セッションを新しくした後、ログイン状態を保持する方法がわかりません。。。</em>中身入れ替えるとかすればいいのかもですが、<code>Seam#invalidateSession</code> は、Seam の処理を抜けるときにセッションを破棄するので、その場では新しいセッションIDがとれません＞＜；
+やり方、確認中です。誰かわかる人教えてください。。</p>
+</div>
+
+
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2008-06-19T11:59:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 19<span>th</span>, 2008</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/dom/">DOM</a>
+    
+      <a class="tag label label-info" href="/blog/tags/rails/">Rails</a>
+    
+      <a class="tag label label-info" href="/blog/tags/weblogic/">WebLogic</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ffftp/">FFFTP</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul class="list-inline">
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2008/06/19/memo/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2008/06/19/memo/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2008/06/19/memo/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2008/06/19/memo/"></div>
+    </li>
+    
+    
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2008/06/19/memo/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2008/06/19/memo/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2007/12/28/4873113539/" title="Previous Post:
+      RESTful Webサービス"><i class="fa fa-arrow-circle-left"></i> RESTful Webサービス</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2008/06/29/4798116173/"
+                            title="Next Post: ドメイン駆動">ドメイン駆動 <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="thumbnail" />
+    </div>
+    <div class="col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/05/482228493X/">世界でもっとも強力な9のアルゴリズム</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">94</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js" rel="external nofollow"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2008/06/19/memo/';
+  var disqus_url = 'http://hamasyou.com/blog/2008/06/19/memo/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: MVC | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/mvc/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理]]></title>
+    <link href="http://hamasyou.com/blog/2012/09/23/487311554X/"/>
+    <updated>2012-09-23T22:05:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/09/23/487311554X</id>
+    <content type="html"><![CDATA[<p>本書は、クライアントサイド（ブラウザ）で JavaScript を使ってリッチなアプリを作る際のプラクティスを説明しています。</p>
+
+<p>前半では、JavaScript によるオブジェクト指向開発の方法や MVC 開発の方法を、後半では、JavaScript の MVC デザインパターンに則った、各種ライブラリの説明が行われています。</p>
+
+<p>最近では、ユーザビリティの良いアプリを開発するのに必須なクライアントサイドでの JavaScript の使い方が複雑になってきているように思います。ちょっと jQuery を使って DOM 操作していればよかった頃と比べて、最近では色々なライブラリを組み合わせる必要があったり、クライアントサイドでも MVC パターンが必要になったりと、大変です。</p>
+
+<p>本書は、そんな JavaScript でリッチアプリケーションを作成する際の取っ掛かりを学ぶのに良いと思います。オライリー本なので、読むのが簡単ということはなく、むしろ格式高い感じすらしますが、多少 JavaScript でオブジェクト指向の経験があれば、読み進めるのは難しく無いと思います。</p>
+
+<!-- more -->
+
+
+
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>インスタンスメソッド定義のイディオム</h3>
+
+
+<p>JavaScript ではクラスのプロトタイプに対して関数を追加することでインスタンスメソッドを定義できます。</p>
+
+<pre><code class="javascript">Person.prototype.breath = function() { /* ... */ };
+var person = new Person();
+person.breath();
+</code></pre>
+
+<p>クラスのプロトタイプに <em>fn</em> というエイリアスを設定することが広く行われています。</p>
+
+<pre><code class="javascript">Person.fn = Person.prototype;
+Person.fn.run = function() { /* ... */ };
+</code></pre>
+
+<h3>関数呼び出しのコンテキスト</h3>
+
+
+<p>apply() と call() を使うと、関数の呼び出しコンテキストを変更できます。jQuery の API ではイベントハンドラや each() による繰り返しの中で、コンテキスト（this の値）が変更されています。</p>
+
+<pre><code class="javascript">$('.btn').click(function() {
+  $(this).hide();
+});
+</code></pre>
+
+<p>元のコンテキストにアクセスするには、良く self などの名前で this を保存しておき、後で参照する方法がとられます。</p>
+
+<pre><code class="javascript">var self = this;
+
+$('.btn').click(function() {
+  self.btnClicked();
+});
+</code></pre>
+
+<p>apply() を使うと、self を使わなくても同じことができます。</p>
+
+<pre><code class="javascript">var proxy = function(func, context) {
+  return (function() {
+    return func.apply(context, arguments);
+  });
+};
+
+$('.btn').click(proxy(function() {
+  this.btnClicked();
+}, this);
+</code></pre>
+
+<p>jQuery の proxy() メソッドがまさしく、これと同じことをしています。</p>
+
+<h3>イベントの発生順序</h3>
+
+
+<p>ある要素とその祖先の要素が同じ種類のイベントに対してイベントハンドラを登録している場合、先に呼び出されるのはブラウザによって違います。</p>
+
+<p>イベントが呼び出される順番は2種類あり、<strong>イベントキャプチャリング</strong> と<strong>イベントバブリング</strong>になります。</p>
+
+<h4>イベントキャプチャリング</h4>
+
+
+<p>最も上位（外側）の要素からイベントが発生した要素へとイベントリスナが呼び出されます。つまり、祖先の要素、内側の要素の順番でイベントリスナが呼び出されます。</p>
+
+<h4>イベントバブリング</h4>
+
+
+<p>イベントが発生した要素（内側）から祖先要素へとイベントリスナが呼び出されます。</p>
+
+<p>W3C の仕様では、addEventListener() の3つめの引数に true を指定するとイベントキャプチャリングで呼び出され、false か 指定しないとイベントバブリングで呼び出されます。</p>
+
+<p>バブリングが行われている際には、イベントオブジェクトの stopPropagation() を呼び出すことによって、バブリングを中止することができます。</p>
+
+<pre><code class="javascript">link.addEventListener('click', function(e) {
+  e.stopPropagation();
+  /* ... */
+});
+</code></pre>
+
+<p>ブラウザによってそれぞれのイベントに対するデフォルトのアクションが定義されています。たとえば、リンクのクリックでは、src で指定された URL に遷移する動作や、チェックボックスのクリックで項目が選択状態になる動作などです。</p>
+
+<p>これらのデフォルトのアクションはイベントの伝播が完了した後で実行されます。このデフォルトのアクションを中止するには、 preventDefault() 関数を呼び出します。また、イベントハンドラの戻り値で false を返すことで、preventDefault() を呼び出したのと同じ動作になります。</p>
+
+<pre><code class="javascript">form.addEventListener('submit', function(e) {
+  /* e.preventDefault() */
+  return confirm('本当に送信しますか？');
+});
+</code></pre>
+
+<h3>イベントの委譲</h3>
+
+
+<p>イベントバブリングの性質を考えると、複数ある子孫の要素それぞれにイベントリスナを設定するより、祖先の要素一つだけにイベントハンドラを設定する方が効率がよくなります。</p>
+
+<p>jQuery では、これを delgate() メソッドを使って実装できます。</p>
+
+<pre><code class="javascript">/* 望ましくないコード */
+$('ul li').click(function() { /* ... */ });
+
+// こちらのほうが効率が良い
+$('ul').delegate('li', 'click', function() { /* ... */ });
+</code></pre>
+
+<p>このように、イベント処理を委譲することによるメリットは、動的に追加された要素についても、自動でイベントリスナが適用されることです。</p>
+
+<h3>画面表示時の初期データの読み込み</h3>
+
+
+<p>ページ上のデータは、最初に読み込まれるページに含まれているか、Ajax や JSONP を使った HTTP リクエストによって事後的に読み込まれます。多くのデータを初期表示時に読み込むのには時間がかかりますが、Ajax や JSONP によるリクエストは、<em>並列処理が可能</em>であるので高速に処理できます。</p>
+
+<p>また、HTTP リクエストで取得したデータは、ローカルのストレージにキャッシュすることができます。ストレージには2種類あり、 <code>localStorage</code> と <code>sessionStorage</code> というオブジェクトでアクセスできます。</p>
+
+<h4>ローカルストレージ</h4>
+
+
+<p>ブラウザが終了した後も保持される。</p>
+
+<h4>セッションストレージ</h4>
+
+
+<p>ブラウザが開いている間のみ保持される。</p>
+
+<h3>コントローラと内部状態</h3>
+
+
+<p>まず言えるのは、<em>DOM 内にモデルの内部状態やその他の情報を保持するべきではありません</em>。頑強な MVC アーキテクチャの実現のためには、内部状態やその他の情報は、コントローラ内に保持させる方がよい。</p>
+
+<p>ビューごとにコントローラを1つずつ用意するというのがよく使われているパターンです。</p>
+
+<h3>リソースとURL</h3>
+
+
+<p>通常、Ajax などでリソースとなるデータをロードした場合、ブラウザの URL は変化しません。しかし、Web 上の個々のリソースには URL が割り当てられていると考えるのが一般的で、URL が変わらない状況というのは好ましくありません。</p>
+
+<p>そこで、この問題に対しては、内部状態が変化したら URL を変化させるようにします。このとき、よく使われるのが、URL のハッシュ（#以降の文字列）を変更するというものです。ハッシュの値はサーバに送信されないため、ページの再読込を発生させることなく変更できます。</p>
+
+<p>location.hash を使うと、ページのハッシュを取得できます。</p>
+
+<p>主要なブラウザでは、URL のハッシュが変更されたかどうかを調べるのに、hashchange イベントが使えます。</p>
+
+<p>JavaScript で作られたページは、クローラにとってはすべて同じ URL のように見えてしまいます。そこで、Google は、<a href="http://code.google.com/web/ajaxcrawling/index.html" rel="external nofollow">Ajax Crawling</a> という仕様を提案しています。</p>
+
+<h3>Backbone.js ライブラリ</h3>
+
+
+<p><a href="http://backbonejs.org/" rel="external nofollow"></a> は JavaScript アプリケーションの構築のための優れたライブラリです。Backbone.js も MVC 構造でアプリケーションを作成していきます。</p>
+
+<h2>参考</h2>
+
+
+
+
+<ul><li><a href="http://fingaholic.github.com/posts/2012-06-27-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 1章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-02-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 2章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-17-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 3章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-20-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 4章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-23-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 5章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-25-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 6章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-08-01-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 11章 その1 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-08-07-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 11章 その2 - jekylog</a></li>
+</ul>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

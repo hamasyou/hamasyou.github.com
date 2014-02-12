@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: ユニットテスト | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/yunitutotesuto/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[djUnitで Virtual Mock Objects ユニットテスト]]></title>
+    <link href="http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/"/>
+    <updated>2004-10-24T18:38:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects</id>
+    <content type="html"><![CDATA[<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798101281/sorehabooks-22" rel="external nofollow"></a>
+</p>
+
+
+<p>「JUnitでユニットテストをするときに、クラス間の関係が問題でテストできない。」なんて事ありませんか？ <abbr title="Test Driven Developement">TDD</abbr>(テスト駆動開発)で行っている場合は、クラスの関係をそのつど考えながら進めていくので、こういった問題はあまり起きません。しかし、TDDはまだまだ敷居が高いと思う開発者が多いように思います。</p>
+
+<p><a href="http://www.h6.dion.ne.jp/~junpei/tdd.html" rel="external nofollow">テスト駆動開発考察</a></p>
+
+<p>djUnit を使うと、<a href="http://www.xprogramming.com/xpmag/virtualMockObjects.htm" rel="external nofollow">JCoverage</a>』というツールを使ったカバレッジテストの結果をエディタ上で見ることが出来るようになります。</p>
+
+<p>djUnitは JUnti の機能と Aspect の機能を併せ持ったユニットテストツールとなっています。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://works.dgic.co.jp/djwiki/Viewpage.do?pid=@646A556E6974" rel="external nofollow">djUnit Wiki</a></p></p>
+
+<p></section></p>
+
+<!-- more -->
+
+
+
+
+<h2>解説</h2>
+
+
+
+
+<h3>JUnitの問題とは？</h3>
+
+
+<p>JUnitでユニットテストを行うときに問題となる「<strong>クラス間の関係</strong>」は、<a href="http://www.ingrid.org/jajakarta/cactus/doc/mockobjects.html" rel="external nofollow">Mock Object(モックオブジェクト)</a>を使ってテストするというのが通例になっているようです。しかし、この Mock Object も、クラス設計によっては使えない場合が多いのです。</p>
+
+<p>例えば、クラスの内部で他のクラスに依存している場合などは、外側(テストケース側)からMock Object を注入することが出来ません。そのため、最近話題の <abbr title="Dependency Injection">DI</abbr>(依存性注入)を使ってテストケースを組み立てることが不可能になります。</p>
+
+<h3>djUnitを使うとどうなるのか</h3>
+
+
+<p>djUnitは Eclipse のプラグインとして動作する、ユニットテストツールです。JUnitよりも簡単にユニットテストを行うことが出来るようになります。最新版では<a href="http://ant.apache.org/" rel="external nofollow">Ant</a>のタスクとして使うことも出来るようになっています。</p>
+
+<p>djUnitを使うと、Virtual Mock Objects という手法を用いて、クラス内部の処理をAspect技術を使って切り替えることが出来てしまいます。例えばテストしたいメソッドの内部で、リソースファイルに依存した処理があるとします。</p>
+
+<pre class="code"><code><span class="keyword">public</span> String getProperty(String key, String defaultValue) {
+  ResourceBundle resource = 
+        ResourceBundle.getBundle(<span class="literal">"config.properties"</span>);
+  <span class="keyword">if</span> (resource == <span class="keyword">null</span>) {
+    <span class="keyword">return</span> defaultValue;
+  }
+ 
+  String val = resource.getString(key);
+  <span class="keyword">if</span> (val == <span class="keyword">null</span> || <span class="literal">""</span>.equals(val)) {
+    <span class="keyword">return</span> defaultValue;
+  } <span class="keyword">else</span> {
+    <span class="keyword">return</span> val;
+  }
+}
+</code></pre>
+
+
+<p>この例では、リソースバンドルを外部から取得しているため外部に依存してしまっています。つまり、ユニットテストがしにくいのです。本来なら、Mock Object を使って、ResourceBundle を擬似クラスで模倣してテストするのですが、それにはメソッドをリファクタリングする必要がでてきます。</p>
+
+<p>Virtual Mock Objects を使うと、メソッドはそのままで、<b>ResourceBundle#getBundle の戻り値だけを Mock Object に変更することが出来ます</b>。また、<b>ResourceBundle#getString も戻り値も好きなものに変更することもできます</b>。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://works.dgic.co.jp/djwiki/Viewpage.do?pid=@5669727475616C204D6F636B204F626A65637473E38292E4BDBFE381A3E3819FE38386E382B9E38388" rel="external nofollow">Virtual Mock Objects とは？ djWiki</a></p>
+
+<p></section></p>
+
+<h3>djUnitの使い方</h3>
+
+
+<p>djUnitの詳しい使い方は、『<a href="http://works.dgic.co.jp/djwiki/Viewpage.do?pid=@5669727475616C204D6F636B204F626A65637473E38292E4BDBFE381A3E3819FE38386E382B9E38388" rel="external nofollow">Virtual Mock Objects を使ったテスト</a>』を参考にしてください。非常に詳しく書いてあります。一度つかったら、Virtual Mock Objects の使いやすさを実感できると思います。</p>
+
+<p>djUnitのもう一つの利点としては、カバレッジテストレポートが出力できる点です。djUnit は <a href="http://www.eclipse.org/" rel="external nofollow">Eclipse</a> の Plugin として提供されているので統合環境上でカバレッジテストの結果が見えるのはかなり便利です。どの処理がテストされていないかをエディター上に表示してくれる点は、テストケースの抜けを未然に防げるので重宝しそうです。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://works.dgic.co.jp/djwiki/Viewpage.do?pid=@E382ABE38390E383ACE38383E382B8E383ACE3839DE383BCE38388E38292E8A68BE3828B" rel="external nofollow">カバレッジレポートを見る</a></p>
+
+<h3>Virtual Mock Objects の気になるところ</h3>
+
+
+<p>Virtual Mock Objects は非常に簡単に、楽しくユニットテストが実行できる優れたツールだと思います。しかし、いくつか気になる点があります。(個人的にですが・・・)</p>
+
+<pre><ul><li> JUnit + Aspect の概念が分からないと、仕組みが理解しづらいかも</li><li>どんなにクラスの関連が複雑でもとりあえずテストできてしまう</li><li>リファクタリングでよい設計にしようとする気力が薄れる可能性がある</li><li>テストケースが失敗したのが、Aspect が問題なのか処理が問題なのか切り分けがつかない場合があるかもしれない</li><li>JCoverageの結果は参考程度に受け取るべし</li></ul></pre>
+
+
+<p>テストしづらいプログラムでも何とかなってしまうというのが Virtual Mock Objects の気になるところではありますが、<b>カバレッジツールを使うだけでも djUnit を使う価値はある</b>かと思います(他に良いカバレッジツールがあればdjUnitは不要なのか？？？・・・)。通常はJUnitの代わりとして使い、どうしてもJUnitではテストが難しい部分や、外部に依存してしまっている部分は Virtual Mock Objects を使うというのがいいのかもしれません。どちらにしても、かなり面白いテストツールだと思います。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li><p>djUnitを作っているところです。Wiki に非常に詳しく使い方が載っています。
+<a href="http://works.dgic.co.jp/djwiki/Viewpage.do?pid=@646A556E6974" rel="external nofollow">djUnit Wiki</a></p></li>
+<li><p>上記と同じサイト内の、Virtual Mock Objects に関するページへのリンクです。
+<a href="http://works.dgic.co.jp/djwiki/Viewpage.do?pid=@5669727475616C204D6F636B204F626A65637473E38292E4BDBFE381A3E3819FE38386E382B9E38388" rel="external nofollow">Virtual Mock Objects を使ったテスト(in djUnit Wiki)</a></p></li>
+<li><p>エクリプスに関する日本語の Wiki サイトです。djUnitの概要が分かりやすく載っています。
+<a href="http://eclipsewiki.net/eclipse/?djUnit" rel="external nofollow">エクリプス Wiki</a></p></li>
+<li><p>Virtual Mock Objects に関するドキュメントです。英文ですが興味深い内容です。
+<a href="http://www.xprogramming.com/xpmag/virtualMockObjects.htm" rel="external nofollow">Virtual Mock Objects using AspectJ with JUNIT</a></p></li>
+<li><p>エクリプス本家へのリンクです。djUnitは Eclipse のプラグインとして動作します。
+<a href="http://www.eclipse.org/" rel="external nofollow">Eclipse.org</a></p></li>
+<li><p>JUnitの使い方がたっぷり載っている書籍です。</p></li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325143/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

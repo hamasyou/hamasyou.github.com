@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <title>15分で知ったかぶりWebService - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ">
+  <meta name="keywords" content="WebService,Webサービス,SOAP,WSDL,UDDI">
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2004/05/27/15webservice">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate subscribe-rss" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">15分で知ったかぶりWebService</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-05-27T14:15:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 27<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/websabisu/">Webサービス</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>15分でWebServiceについて、知ったかぶりできる知識をまとめておきます。</p>
+
+<h3>Web Serviceとは</h3>
+
+
+<p>Webサービスとは最近流行の技術の一つです。実は、Webサービスの定義は結構曖昧で、その人や、その時々によってまちまちです。そこで今回はWebサービスを以下のように定義します。</p>
+
+<dl>
+<dt>Webサービスとは</dt>
+<dd><b>「コンピュータが利用可能な、ネットワーク上のソフトウェアコンポーネント」</b>。「コンピュータが利用可能」、「ネットワーク上」、「ソフトウェアコンポーネント」という3つのキーワードがWebサービスの特徴</dd>
+</dl>
+
+
+
+
+<!-- more -->
+
+
+
+
+<h2>コンピュータが利用可能</h2>
+
+
+<p>コンピュータが利用可能とはどういう意味でしょうか。たとえば、Googleの検索サービスを例にとって解説します。
+たとえば、Googleの検索サービスを使うには、Googleのサイトにアクセスして、検索を行う必要があります。その場合、キーワード欄にはユーザが入力して検索を行います。これは先ほどのコンピュータが利用可能とは反対の、ユーザが利用する場合になります。</p>
+
+<p><img src="/images/webservice/google1.gif" /></p>
+
+<p>対して、コンピュータが利用するというのは、例えばユーザが自分のホームページからGoogleの検索機能を呼び出して、結果を加工して表示するような場合です。</p>
+
+<p><img src="/images/webservice/google2.gif" /></p>
+
+<p>「加工して」というのがポイントで、Webサービスによって取得した情報は、そのまま利用することも、データを加工して利用することもできます。</p>
+
+<p>さて、Googleの検索機能を呼び出すには実際にはどのようにすればいいのでしょうか?  どのコンピュータからも利用してもらうには、インターフェースを決めないといけません。そのインターフェースとなるのが「<a href="http://e-words.jp/w/WSDL.html" rel="external nofollow"></a>」というものです。</p>
+
+<p>詳しくは別の機会に解説しようと思いますが、WSDLとは、Webサービスのインターフェースを記述するための言語です。XML形式の言語になっています。WSDL文書には、利用したいWebサービスがどこにあるのか、Webサービスを利用するために、どんなフォーマットのメッセージをやり取りするのか、どんなプロトコルに乗せてメッセージを送受信するのか、などの情報を記述します。</p>
+
+<p>WSDLによって定義されたWebサービス仕様をもとに、自分のホームページ上で、Googleの検索機能を利用することができるようになります。</p>
+
+<h2>ネットワーク上のリソースを使う</h2>
+
+
+<p>Webサービスを定義するときに出てきた2つ目のキーワード「ネットワーク上」ですが、これはどういうことかといいますと、Webサービスはネットワーク上に置かれたサービスであるということです。</p>
+
+<p>サービスの提供者（前回の例で言うと Googleの検索機能を提供する者）がサービスをネットワーク上に公開します。
+ネットワーク上といったのは、例えばインターネットに公開するサービスと、イントラネット上で公開するサービスといったように、用途によってサービスの公開する範囲を決められるということです。</p>
+
+<p><img src="/images/webservice/soap1.gif" /></p>
+
+<p>さて、先ほど、「WSDL」の説明で出てきた、どんなフォーマットのメッセージをやり取りするのかという話がありました。Webサービスはサービスの提供者とサービスの利用者がメッセージをやり取りすることで成り立ちます。このメッセージのフォーマットを定めた規格が「<strong><a href="http://e-words.jp/w/SOAP.html" rel="external nofollow">SOAP</a></strong>」です。このSOAPの規格に準拠したメッセージをSOAPメッセージと呼びます。SOAPメッセージはXML形式で記述されます。</p>
+
+<p>SOAPは、プラットフォーム非依存のメッセージプロトコルになっています。 基本的にSOAPの規格はメッセージのフォーマットを定めているだけです。したがって、SOAPは通信プロトコルに依存しません。通信プロトコルには、現在はオープンなインターネットプロトコルが使用されることが多いです。</p>
+
+<h2>ソフトウェアコンポーネント</h2>
+
+
+<p>Webサービスの3つ目のキーワードである「ソフトウェアコンポーネント」とは、いったいなんでしょうか。ソフトウェアコンポーネントとは、何らかのサービスを提供する部品の塊です。例えばGoogleでいうと、Googleの検索機能を提供するサービスのことを指します。</p>
+
+<p>さて、Webサービスとしてあるソフトウェアコンポーネントを利用したい時、サービスをどのように調べればよいのでしょう?</p>
+
+<p>そこで登場するのが「<a href="http://e-words.jp/w/UDDI.html" rel="external nofollow"></a>」です。UDDIとは、サービスを公開したり、発見したりする際の仕組みを定めた規格です。</p>
+
+<p>現在のUDDI規格では、Webサービスのための専用のデータベースであるUDDIレジストリの仕様を定めています。UDDIレジストリ自体も実はWebサービスでできているので、Webサービスの登録、更新、検索の機能をSOAPメッセージを通して行うことができます。</p>
+
+<h2>まとめ</h2>
+
+
+
+
+<ul><li>WebサービスにはSOAPというプロトコルを使用する</li>
+<li>サービスのインターフェースはWSDLという言語を用いて定義する</li>
+<li>サービスの検索はUDDIというレジストリ情報から検索する</li>
+</ul>
+
+
+<p>これからのWebサービスの用途として、１）情報発信を目的にしたシステム ２）企業内アプリケーションシステム ３）グループ企業間のシステム連携 ４）サービスを動的に検索、結合 といったものがあげられます。</p>
+
+<p>Webサービスは、まだ発展途上の技術であるため、ビジネス上必須であるがまだ確定されていない技術も少なくありません。例えば、トランザクション処理を必要とする業務システムに組み込む場合、Webサービス間のトランザクション処理の統一的な方法はまだ確立されていません。</p>
+
+<p>これらの方法が確立されれば、現在のインターネットビジネスは画期的に変わるかもしれません。</p>
+
+<ul>
+<li>WebServiceに関する書籍のおすすめを買いませんか?</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798007064/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+</div>
+
+
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-05-27T14:15:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 27<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/websabisu/">Webサービス</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul class="list-inline">
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/27/15webservice/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2004/05/27/15webservice/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2004/05/27/15webservice/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2004/05/27/15webservice/"></div>
+    </li>
+    
+    
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/05/27/15webservice/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/05/27/15webservice/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2004/05/27/4822281574/" title="Previous Post:
+      サーバーサイドJavaアンチパターン"><i class="fa fa-arrow-circle-left"></i> サーバーサイドJavaアンチパターン</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2004/05/28/4893699598/"
+                            title="Next Post: Developing Applications with JAVA and UML -プログラマーのための統一モデリング">Developing Applications... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="thumbnail" />
+    </div>
+    <div class="col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/05/482228493X/">世界でもっとも強力な9のアルゴリズム</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">94</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js" rel="external nofollow"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2004/05/27/15webservice/';
+  var disqus_url = 'http://hamasyou.com/blog/2004/05/27/15webservice/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

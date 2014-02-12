@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: J2EE | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/j2ee/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Click@J2EE Web Application Framework]]></title>
+    <link href="http://hamasyou.com/blog/2006/03/12/click/"/>
+    <updated>2006-03-12T17:00:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2006/03/12/click</id>
+    <content type="html"><![CDATA[<p><strong><a href="http://click.sourceforge.net/" rel="external nofollow">Velocity</a> を内部で使っていて、テンプレートモデルで、ページを作成します。</p>
+
+<p>ここでは、Click の覚書きをしておきます。あくまで個人用なので、あてにしないようにお願いします。間違い等発見された方は、ご連絡いただけると助かります。</p>
+
+<dl>
+<dt class="info">使用バージョン</dt>
+<dd><ul><li>version Click 0.1.8</li></ul>
+
+<p>Clickはドキュメントがしっかりできているので、ドキュメントを読むのが一番です</p></dd>
+</dl>
+
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<ul>
+<li><a href="http://click.sourceforge.net/" rel="external nofollow">[SourceForge]Click Home</a></li>
+<li><a href="http://www3.vis.ne.jp/~asaki/p_diary/diary.cgi?Search=%5BClick%5D" rel="external nofollow">新・たけぞう瀕死の日記</a></li>
+<li><a href="http://d.hatena.ne.jp/tanigon/searchdiary?word=%2a%5bClick%5d" rel="external nofollow">Click 勉強記</a></li>
+</ul>
+
+
+<p></section></p>
+
+<!-- more -->
+
+
+
+
+<h2>覚書き</h2>
+
+
+
+
+<ul><li><a href="#Clickとは" rel="external nofollow">Clickとは</a></li>
+<li><a href="#Page" rel="external nofollow">Page</a></li>
+<li><a href="#Control" rel="external nofollow">Control</a></li>
+<li><a href="#ページ遷移の仕組み" rel="external nofollow">ページ遷移の仕組み</a></li>
+<li><a href="#ClickをSpring Frameworkと一緒に使う" rel="external nofollow">ClickをSpring Frameworkと一緒に使う</a></li></ul>
+
+
+
+
+<h2 id="Clickとは">Clickとは</h2>
+
+
+<p>Clickはコンポーネント＆ページ指向のイベントドリブンアーキテクチャを持つ、J2EE Webアプリケーションフレームワークです。シンプルなアーキテクチャになっていて、JSFよりも直感的でわかりやすいプログラミングができます。</p>
+
+<p>Clickには大きく2つのコンポーネントが用意されています。一つは、Pageです。これは、その名の通り、一つのページを表すコンポーネントです。もう一つは、Controlで、これは、ページの要素(例えばリンクやボタンなど）を表します。</p>
+
+<p>ページは複数のコントロールを持つことができます。ページのレンダリング時には、これらのコントロールをVelocityテンプレートと照らし合わせてレンダリングを行います。コントロールに付けた名前が、Velocityテンプレート中で使えるモデルの名前になります。</p>
+
+<p>Clickの本体は、net.sf.click.ClickServlet です。このクラスか、このクラスを継承したサブクラスをサーブレットとして使います。</p>
+
+<p>Clickの慣習で、マッピングパターンは、<em>*.htm</em> にするようです。</p>
+
+<pre class="code"><code><span class="tag">&lt;servlet&gt;</span> 
+  <span class="tag">&lt;servlet-name&gt;</span>click-servlet<span class="tag">&lt;/servlet-name&gt;</span> 
+  <span class="tag">&lt;servlet-class&gt;</span>net.sf.click.ClickServlet<span class="tag">&lt;/servlet-class&gt;</span> 
+  <span class="tag">&lt;load-on-startup&gt;</span>0<span class="tag">&lt;/load-on-startup&gt;</span> 
+<span class="tag">&lt;/servlet&gt;</span> 
+ 
+<span class="tag">&lt;servlet-mapping&gt;</span> 
+  <span class="tag">&lt;servlet-name&gt;</span>click-servlet<span class="tag">&lt;/servlet-name&gt;</span> 
+  <span class="tag">&lt;url-pattern&gt;</span>*.htm<span class="tag">&lt;/url-pattern&gt;</span> 
+<span class="tag">&lt;/servlet-mapping&gt;</span>
+</code></pre>
+
+
+
+
+<h3 id="Page">net.sf.click.Page</h3>
+
+
+<p>一ページを表すクラスです。開発者はこのクラスを継承してページクラスを作成します。ページには、複数のControlを持たせることができます。</p>
+
+<p>ページには、次の2つの種類のメソッドを定義することができます。</p>
+
+<ol><li>ページのライフサイクルに関するイベントハンドリングメソッド</li><li>コントロールのイベントリスナメソッド</li></ol>
+
+
+
+
+<h3>ページのライフサイクルに関するイベントハンドリングメソッド</h3>
+
+
+<p>ページは、あらかじめ決められたイベントハンドリングポイントが用意されています。以下のメソッドをオーバーライドすることで、イベントハンドリングを実装できます。</p>
+
+<dl>
+<dt>onInit()</dt><dd>サーブレットがリクエストを受けて、ページをロードしたときに呼び出されます</dd>
+<dt>onSecurityCheck()</dt><dd>onInit()の後に呼び出されます。アクセス制御等のセキュリティ確認を行える場所です</dd>
+<dt>onGet()</dt><dd>Getメソッドのリクエストの場合に呼び出されます。onSecurityCheck()の後に呼び出されます</dd>
+<dt>onPost()</dt><dd>Postメソッドのリクエストの場合に呼び出されます。onSecurityCheck()の後に呼び出されます</dd>
+<dt>onDestroy()</dt><dd>ページが廃棄されるときに呼び出されます</li></dd>
+</dl>
+
+
+<p>これらのメソッドは、ページのイベントシーケンスにしたがって呼び出されます。</p>
+
+<h4>参考</h4>
+
+
+<ul>
+<li><a href="http://click.sourceforge.net/docs/pages.html#page-execution" rel="external nofollow">Click#Page-Execution</a></li>
+</ul>
+
+
+<h3>コントロールのイベントリスナメソッド</h3>
+
+
+<p>リスナメソッドをコントロールに登録することで、コントロールに対するイベントが発生した場合にハンドリング処理ができるようになります。イベントリスナメソッドは、次の2つのルールを満たさなければなりません。</p>
+
+<ol><li>引数は無し</li><li>boolean もしくは java.lang.Boolean を戻り値で返す</li></ol>
+
+
+<p>イベントリスナメソッドの戻り値は、次のような意味を持ちます。</p>
+
+<dl>
+<dt>true の場合</dt><dd><p>続けて他のコントロールの onProcess() メソッドが呼び出されます。その後、ページのonGet() メソッド または、 onPost() メソッドが呼び出されます。</p></dd>
+<dt>falseの場合</dt><dd><p>他のコントロールの処理は実行されません。また、ページの onGet()、onPost() メソッドも呼び出されません。そのままページの遷移処理、またはレンダリング処理に入ります。</p></dd>
+</dl>
+
+
+<p>上記の動作から分かることは、イベントハンドリング処理で、ページの遷移等を行う場合は、戻り値を false にする必要があるということです。ページ遷移を伴わないイベントハンドリング処理の場合は、true を返すようにします。</p>
+
+<h3>サーブレットAPIを使うには</h3>
+
+
+<p>Clickには、コンテキスト（net.sf.click.Context）と言うものがあります。ClickServletは、リクエストを受けると、要求されたページとコンテキストを結び付けます。ページ内のメソッドからは、このコンテキストを通して、通常のServletAPIを使用することができます。コンテキストを取得するには、Page#getContext() メソッドを呼び出します。</p>
+
+<h3>コントロールはデフォルトコンストラクタの中で追加する</h3>
+
+
+<p>ページが要求されると、ClickServletは、ページのインスタンス化を行います。このとき、引数のないデフォルトコンストラクタが呼び出されます。
+※ ただし、この動作はClickServletのデフォルト実装によるもので、サブクラスでは、インスタンス化の方法をオーバーライドすることができます。</p>
+
+<p>インスタンス化されたページは、そのままページの処理シーケンスに突入します。そのため、インスタンス化された時点で静的なコントロールは new しておくことが望ましいです。もちろん、処理シーケンス中で、動的にコントロールを作成することも可能です。</p>
+
+<pre class="code"><code><span class="keyword">public</span> <span class="keyword">class</span> Login <span class="keyword">extends</span> Page {
+  <span class="keyword">private</span> Form loginForm = <span class="keyword">new</span> Form(<span class="literal">"loginForm"</span>);
+  <span class="keyword">public</span> Login() {
+    <span class="keyword">this</span>.loginForm.add(<span class="keyword">new</span> TextField(<span class="literal">"userName"</span>, <span class="literal">"ユーザ名"</span>, <span class="keyword">true</span>));
+    <span class="keyword">this</span>.loginForm.add(<span class="keyword">new</span> PasswordField(<span class="literal">"password"</span>, <span class="keyword">true</span>));
+    <span class="keyword">this</span>.loginForm.add(<span class="keyword">new</span> Submit(<span class="literal">"login"</span>, <span class="literal">" ログイン "</span>, <span class="keyword">this</span>, <span class="literal">"onLoginClicked"</span>));
+    <span class="keyword">super</span>.addControl(<span class="keyword">this</span>.loginForm);
+  }
+ 
+  <span class="comment">/* その他の実装 */</span>
+}
+</code></pre>
+
+
+<p>コントロールを動的に追加するには、onGet() メソッドか onPost() メソッド中で実装すると良いと思います。</p>
+
+<pre class="code"><code>@Override
+<span class="keyword">public</span> <span class="keyword">void</span> onGet() {
+  <span class="keyword">this</span>.onHandleRequest();
+}
+ 
+@Override
+<span class="keyword">public</span> <span class="keyword">void</span> onPost() {        
+  <span class="keyword">this</span>.onHandleRequest();
+}
+ 
+<span class="keyword">protected</span> <span class="keyword">void</span> onHandleRequest() {
+  String userName = 
+        <span class="keyword">super</span>.getContext().getRequestParameter(<span class="literal">"userName"</span>);
+  <span class="keyword">if</span> (<span class="literal">"admin"</span>.equals(userName)) {
+    <span class="keyword">super</span>.addControl(<span class="keyword">new</span> Label(<span class="literal">"menu"</span>, <span class="literal">"管理者メニュー"</span>));
+  } <span class="keyword">else</span> {
+    <span class="keyword">super</span>.addControl(<span class="keyword">new</span> Label(<span class="literal">"menu"</span>, <span class="literal">"一般メニュー"</span>));
+  }
+}
+</code></pre>
+
+
+
+
+<h3>モデルを画面に表示する</h3>
+
+
+<p>addModel メソッドを呼びだして、名前を指定してモデルを登録します。ここで指定した名前で Velocityテンプレートから参照することができます。</p>
+
+<h2 id="Control">net.sf.click.Control</h2>
+
+
+<p>ページを構成するコンポーネント（例えば、フォームやリンク、ボタン、テキストボックスなど）です。コントロールには次のような大分類に分けられます。</p>
+
+<dl>
+<dt>ActionLink</dt><dd>リンクを表します。リスナを登録することで、コールバック（イベント）を受け取ることができます</dd>
+<dt>Field</dt><dd>フォームと一緒に使われる入力フィールドです。フィールドは、自分自身をバリデーションします</dd>
+<dt>Form</dt><dd>入力フォームです。自分自身とフィールドのバリデーション機能を持ちます。また、フォームは、独自のレイアウトを持ちます</dd>
+</dl>
+
+
+
+
+<h3>ActionLink</h3>
+
+
+<p>アンカーを持つリンクです。</p>
+
+<p>リスナを登録することで、リンクがクリックされたときのイベントをハンドリングできます。</p>
+
+<h4>参考</h4>
+
+
+<ul>
+<li><a href="http://click.sourceforge.net/docs/controls.html#control-callback" rel="external nofollow">Control#Callback</a></li>
+</ul>
+
+
+<h3>Field</h3>
+
+
+<p>フォームの入力フィールドです。様々な種類があります。フィールドは、自分自身でバリデーションを行うことができます。必須入力、最大・最小文字長等のチェックを行います。</p>
+
+<h4>参考</h4>
+
+
+<ul>
+<li><a href="http://click.sourceforge.net/docs/click-api/net/sf/click/control/Field.html" rel="external nofollow">Control#Field</a></li>
+</ul>
+
+
+<h3>Form</h3>
+
+
+<p>フォームコントロールです。フォームに入力フィールドを追加して使います。フォームは、レイアウトフォーマットを持っています。フィールドの数等によってフォームのレイアウトが自動で設定されます。また、フォームには、入力値をオブジェクトに変換する役割もあります。</p>
+
+<h4>参考</h4>
+
+
+<ul>
+<li><a href="http://click.sourceforge.net/docs/click-api/net/sf/click/control/Form.html" rel="external nofollow">Control#Form</a></li>
+</ul>
+
+
+<h2 id="ページ遷移の仕組み">ページ遷移の仕組み</h2>
+
+
+<p>Click には3つのページ遷移の方法があります。</p>
+
+<ul><li>Forward</li><li>Redirect</li><li>テンプレート置き換え</li></ul>
+
+
+
+
+<h3>Forward</h3>
+
+
+<p>サーブレットの request.getRequestDispatcher を使ってページを遷移します。Fowardさせるには、Pageクラスのイベントハンドラで、setFoward() を呼び出します。</p>
+
+<pre class="code"><code>@Override
+<span class="keyword">public</span> <span class="keyword">void</span> onPost() {
+  <span class="keyword">super</span>.setForward(<span class="literal">"login.htm"</span>);
+}
+</code></pre>
+
+
+<p>setForward() に与えるページパスは、パスの先頭に &ldquo;/&rdquo; 先頭にを含めません。フォワード先にパラメータを送りたい場合は、getContext().setRequestAttribute() を呼び出します。</p>
+
+<h4>参考</h4>
+
+
+<ul>
+<li><a href="http://click.sourceforge.net/docs/pages.html#page-navigation" rel="external nofollow">Page#Forward Parameter Passing</a></li>
+</ul>
+
+
+<p>getContext().createPage() を呼び出して、遷移先のページを作成するというやり方もあります。この例も、上の「参考」に例があります。</p>
+
+<h3>Redirect</h3>
+
+
+<p>サーブレットの response.sendRedirect() を呼び出して、ページを遷移します。リダイレクトしたい場合は、Page#setRedirect() を呼び出して、リダイレクト先のパスを設定します。リダイレクト先のパスの先頭に &ldquo;/&rdquo; を付けると、コンテキストルートからのパスという意味になります。（つまり、パスの先頭にコンテキスト名が付与されます）</p>
+
+<h3>テンプレート置き換え</h3>
+
+
+<p>setForward() も setRedirect() もされていない場合は、Velocityテンプレートをレンダリングします。使われるVelocityテンプレートは、Page#getTemplate() の戻り値になります。これは、デフォルトで、パス名と同じファイルになります。getTemplate() をオーバーライドして、テンプレート名を変えることで、出力を変えることができます。</p>
+
+<h2 id="ClickをSpring Frameworkと一緒に使う">ClickをSpring Frameworkと一緒に使う</h2>
+
+
+<p>Clickを <a href="http://www.springframework.org/" rel="external nofollow">Spring Framework</a> と一緒に使う方法です。Clickをダウンロードするとついてくる click-extras.jar を使います。このライブラリに含まれている net.sf.click.extras.spring.SpringClickServlet を ClickServlet の代わりに使います。そして、Spring Framework のアプリケーションコンテキスト定義（applicationContext.xml）のパスを与えてやります。</p>
+
+<pre class="code"><code><span class="tag">&lt;servlet&gt;</span>
+   <span class="tag">&lt;servlet-name&gt;</span>click-servlet<span class="tag">&lt;/servlet-name&gt;</span>
+   <span class="tag">&lt;servlet-class&gt;</span>net.sf.click.extras.spring.SpringClickServlet<span class="tag">&lt;/servlet-class&gt;</span>
+   <span class="tag">&lt;init-param&gt;</span>
+     <span class="tag">&lt;param-name&gt;</span>spring-path<span class="tag">&lt;/param-name&gt;</span>
+     <span class="tag">&lt;param-value&gt;</span>/WEB-INF/applicationContext.xml<span class="tag">&lt;/param-value&gt;</span>
+   <span class="tag">&lt;/init-param&gt;</span>
+   <span class="tag">&lt;load-on-startup&gt;</span>0<span class="tag">&lt;/load-on-startup&gt;</span>
+<span class="tag">&lt;/servlet&gt;</span>
+</code></pre>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[エンタープライズ アプリケーションアーキテクチャパターン]]></title>
+    <link href="http://hamasyou.com/blog/2006/02/05/4798105538/"/>
+    <updated>2006-02-05T11:43:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2006/02/05/4798105538</id>
+    <content type="html"><![CDATA[<p>本書は、業務アプリケーションのアーキテクチャパターンをカタログ化したパターン本です。アーキテクチャ設計において考えなければならない必須要素（下記箇条書き）に関して、例を示しながら説明しています。</p>
+
+<ul><li>レイヤ化</li><li>プレゼンテーション層の構築</li><li>ビジネスロジック層の構築</li><li>インテグレーション層（O/Rマッピング）の構築</li><li>分散環境に関するパターン</li><li>セッションステートパターン</li><li>基本パターン</li></ul>
+
+
+<p>アーキテクチャは開発者の実作業に大きな影響を与えます。良いアーキテクチャは、システムに要求されている事柄を容易に構築できる環境を提供します。悪いアーキテクチャは一つのことを成し遂げるのに苦労を伴います。</p>
+
+<p>良いアーキテクチャか悪いアーキテクチャかというのは、設計の良し悪しで決まることもありますが、ほとんどはそうではないと思います。アーキテクチャの良し悪しは、そのアーキテクチャの<strong>使いどころ</strong>がぴったりはまっているかどうかだと思います。</p>
+
+<p>本書は、それぞれのアーキテクチャパターンの長所・短所、使いどころ、使用上の注意などがまとめられています。初めてアーキテクチャ設計に携わるような開発者に是非とも読んでもらいたい一冊です。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+<p>本書は、業務アプリケーションのアーキテクチャパターンをカタログ化したものです。Amazonのカスタマーレビューにも書いてある通り、目新しいアーキテクチャは出てきません。業務アプリケーションのアーキテクチャ設計を経験した人なら誰でも考えたことがあるような設計が載っているだけです。</p>
+
+<p>とはいえ、アーキテクチャ設計のパターンをカタログ化し、それぞれの長所・短所、注意点、使いどころ等がまとめられていますので、手元においておく価値は十分にあります。ただし、邦訳は日本語がちょっとアレなので（人のことは言えませんが・・・^^;）、英語が苦にならない人は原著をおすすめします。『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321127420/sorehabooks-22/250-8893783-2139434?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow">Patterns of Enterprise Application Architecture</a>』</p>
+
+<h3>どこかで見たことあるぞ！</h3>
+
+
+<p>本書にまとめられているパターンは、アーキテクチャ設計に興味のある人ならどこかで目にしたことがあるものが多いと思います。特に目新しいパターンはありません。</p>
+
+<p>レイヤ化のパターンを例にとると、プレゼンテーション層・ビジネスロジック層・データソース層に分けるということが書いてあります。3階層のアーキテクチャというのはどこかで聞いたことがあるのではないでしょうか？このパターンを使うときは、ビジネスロジック層とデータソース層はプレゼンテーション層に依存してはいけないと言う明確なルールがありますと書かれています。</p>
+
+<p>こういった、各パターンについて、使い方や注意点が<strong>マーチン・ファウラー</strong>によってまとめられていると言うところに、本書の価値があるのだと思います。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>J2EEパターンの優良本</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282287/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>業務アプリケーション開発の異端児?</li>
+</ul>
+
+
+<div class="rakuten"><table  width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321200683/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>パターンを使って設計をリファクタリングする本</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282384/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[J2EEデザインパターン]]></title>
+    <link href="http://hamasyou.com/blog/2005/07/31/4873111781/"/>
+    <updated>2005-07-31T22:49:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/07/31/4873111781</id>
+    <content type="html"><![CDATA[<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282287/sorehabooks-22/249-1102280-5865166?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow">J2EEパターン 第２版</a>』で紹介されているパターン ＋ トランザクション、メッセージング、アンチパターン といった構成になっています。J2EEのデザインパターンに関する書籍としては、かなり上位のレベルの本です。</p>
+
+<p>デザインパターンは、Javaプログラマならどこかで一度は聞いたことがある、良い設計の模範のことです。繰返しあらわれる設計に名前を付けて管理したものです。本書は、J2EEにおけるデザインパターンの解説書、リファレンスになっています。</p>
+
+<p>オライリーから出版されているというだけで、かなり濃い内容で詳細に書かれていることが分かると思います。本書は、オライリー本にしては珍しく、<b class="red">とても分かりやすい</b>です。</p>
+
+<p>J2EEデザインパターンを勉強したい人。良い設計について学びたい人におすすめです。実際に使う機会がまだないとしても、良い設計とはどんなものなのかということを勉強しておくことは良いことです。J2EEのデザインパターン本で迷ったら、本書を購入してみてください。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+
+
+<h3>J2EEパターンのことで書かれていないことはない！</h3>
+
+
+<p>とにかく詳しく、幅広い知識を得ることができます。すべてのパターンが書かれているというのは言いすぎかもしれませんが、本書の内容以外の情報が必要になる場合と言うのは、特殊な案件か、濃い中でも濃い分野だと思います。</p>
+
+<h3>ソースコードが多い</h3>
+
+
+<p>サンプルとなるソースコードが多いです。文章を読んでイメージがわかないときでも、サンプルコードを読めば何が言いたいのか理解できるでしょう。オライリー本らしく、絵はあまり多くないです。文章とソースコードで読ませていく本です。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>J2EEパターンについて分かりやすく書かれています。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282287/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>エンタープライズ系のシステムを構築する場合のパターン集</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798105538/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[J2EEアンチパターン]]></title>
+    <link href="http://hamasyou.com/blog/2005/06/25/4822281981/"/>
+    <updated>2005-06-25T20:24:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/06/25/4822281981</id>
+    <content type="html"><![CDATA[<p>本書は、J2EE技術を使ったアプリケーション作成でおちいりやすい罠について説明されています。おちいりやすい罠とは例えば、ユースケースの一つ一つについてサービスクラスを作ってしまうようなものを言っています(Tiny Serviceアンチパターン)。</p>
+
+<p>デザインパターンとは違った面白さがここにはあります。私が感じた面白さの一つは、「自分もこんな間違えやってるなー」といった敗北感や、「前にやった設計、このアンチパターンを回避してたぜ」みたいな安心感などを読みながら感じられるところです。</p>
+
+<p>J2EEというと範囲がとても広いと思ってしまいます。確かに、ページ数は500ページを超える分厚い部類に入ると思います。ただ、本書のようなある種のパターン本は最初から最後まで全部読む必要はなく、必要になったとき(例えば設計やコードレビューのとき)にパラパラめくるだけでいいと思います。</p>
+
+<p>サーブレット、JSP、EJB、分散、永続化、サービス層、そしてWebサービス。粒度は違えど、すべてJ2EEに関係のあるものばかりです。リファレンス感覚で、手元においておくのはどうですか？値段だけで決めるとしても、決して高くないと思いますよ。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+
+
+<h3>リファレンスとしてもっておくのがベスト</h3>
+
+
+<p>やっぱり、リファレンス用途としてもっておくのがいいと思います。本書の構成は、</p>
+
+<ol><li>パターン名</li><li>別名</li><li>頻出規模(例：アーキテクチャ、アプリケーション、システム)</li><li>リファクタリング(改善するときに使うリファクタリングのこと)</li><li>基本原因</li><li>挿話証拠(この言葉を聞いたら要注意)</li></ol>
+
+
+<p>でアンチパターンを定義し、「<strong>背景</strong>」、「<strong>一般形式</strong>」、「<strong>症状と結果</strong>」、「<strong>典型的な原因</strong>」、「<strong>既知の例外</strong>」、「<strong>リファクタリング</strong>」、「<strong>変種</strong>」、「<strong>例</strong>」、「<strong>関連するソリューション</strong>」の9の項目について書かれています。</p>
+
+<p>面白いのは、「既知の例外」という項目があるところです。基本的にはアンチパターンなんだけどこの場合は仕方ない、もしくはこのままのがよいということが書かれています。結構勉強になります。</p>
+
+<h3>反面教師</h3>
+
+
+<p>アンチパターンは、「反面教師」です。こういうふうにしてはいけない、ということがまとめられています。本書ではさらに、このアンチパターンを良くするにはどうすればよいかと言うことまで言及しています。ここが一つの本書のポイントだと思います。</p>
+
+<p>厚い本なので、手に取るのを躊躇するかもしれませんが、手元においておいて損はないのではないでしょうか。結構楽しめると思います。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>ソフトウェア開発のアンチパターン</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797321385/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>EJBのアンチパターン</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822281841/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>サーブレット、JSPのアンチパターン</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822281574/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>Javaプログラミングのアンチパターン</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774114901/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[一番やさしいJSP&amp;サーブレット入門塾]]></title>
+    <link href="http://hamasyou.com/blog/2005/01/31/4798103470/"/>
+    <updated>2005-01-31T09:53:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/01/31/4798103470</id>
+    <content type="html"><![CDATA[<p>本書は、JavaでWebアプリケーションを作る際に必要となる基礎的な知識をほとんど網羅しています。「Webアプリケーションとは何なのか？」、「サーブレットはどのように動くのか？」、「JSPとサーブレットは何が違うのか？」、「JSP + サーブレット + JavaBeans を使ったWebアプリケーションとは？」など、誰かが教えてくれそうで教えてくれなかったことについて説明してあります。</p>
+
+<p>本書一冊ではWebアプリケーションを開発することはできないかもしれません。ただ、本質的な部分を網羅しているので、最終的なWebアプリケーションの質が向上すると思います。セキュリティに気をつけるにはどこをチェックすればよいかなど、はずせないポイントも満載です。</p>
+
+<p>対象読者は、CGI を書いたことがある人、Webアプリケーションの動作原理を多少でも知っている人 〜 JSP &amp; サーブレットの基本を学びたい人、質の高いWebアプリケーションを作ろうと思っている人です。</p>
+
+<p>感想は、「<strong>小さいくせに内容は濃い</strong>」です。サイズが小さくちょっとした合間に読むことができる本です。JSP &amp; サーブレットの基本動作を理解したいときに、サクッと読むのにもってこいだと思います。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+<p>Webアプリケーションを開発するときに、それぞれの技術(JSP、サーブレット、JavaBeans、データベース)がどのように連携するのかを理解できます。なぜこの構造がよいのかを、順を追って説明し、サンプルコードが洗練されていく様を見ると、しっかりとした知識を取得できます。</p>
+
+<p>タイトルの「一番やさしい」というのは、たぶんうそです。もっと簡単に書いてあって、読者を煙に巻いたように分かった気にさせる本はたくさんあります。本書は、「分かりやすく書いているけど、しっかり理解させる」スタンスが貫かれているように思います。入門書で「<strong>セキュリティ</strong>」に関しても説明している書籍はあまり無いと思います。</p>
+
+<p>新人研修などで、「本書」、「JSP + サーブレットの言語仕様を学べる本」、「Webアプリケーションにおける設計技法に関する本」 の3つを用意すれば大方のWebアプリケーション開発には間に合うかと思います。セキュリティや個人情報保護など、別途必要な知識はありますが。</p>
+
+<p>かなりコストパフォーマンスに優れているので、買って損は無いと思います。通勤途中、新人研修、勉強会で利用できます。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>JSP &amp; サーブレットの言語仕様等を学ぶのにおすすめ。</li>
+</ul>
+
+
+<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797324120/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+<ul>
+<li>Webアプリケーションにおける設計技法(デザインパターン)を学ぶのに超おすすめ。</li>
+</ul>
+
+
+<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714345/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+<ul>
+<li>J2EEの現場でもまれたロッドジョンソンによる、J2EEの本質。実践向けという感じです。</li>
+</ul>
+
+
+<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

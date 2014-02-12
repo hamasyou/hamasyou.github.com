@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Linux | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/linux/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Linuxコマンド 覚書]]></title>
+    <link href="http://hamasyou.com/blog/2005/10/04/linux/"/>
+    <updated>2005-10-04T10:31:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/10/04/linux</id>
+    <content type="html"><![CDATA[<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311151X/sorehabooks-22/250-7698465-6388212?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow"></a>
+</p>
+
+
+<p>Unix,Linuxで使えるコマンドラインの覚書です。使えそうなコマンドがあれば、随時更新していこうと思います。もし、間違いなどありましたら、連絡いただけると助かります。</p>
+
+<p>申し訳ないですが、コマンドを実行した結果は保証しません。ご自分の責任でお願いします。 &lt;<em>(</em> <em>)</em>></p>
+
+<!-- more -->
+
+
+
+
+<h2>覚書</h2>
+
+
+
+
+<h3>目次</h3>
+
+
+
+
+<ol>
+<li><a href="#アクセスログの中からトップ１０のファイル名を表示する" rel="external nofollow">アクセスログの中からトップ１０のファイル名を表示する</a></li>
+<li><a href="#find で検索してマッチしたファイルを cp する" rel="external nofollow">find で検索してマッチしたファイルを cp する</a></li>
+<li><a href="#find で検索して、条件にマッチしたファイルだけ、ファイル名を変更する" rel="external nofollow">find で検索して、条件にマッチしたファイルだけ、ファイル名を変更する</a></li>
+<li><a href="#正規表現で検索して、マッチした部分だけを表示する" rel="external nofollow">正規表現で検索して、マッチした部分だけを表示する</a></li>
+</ol>
+
+
+
+
+<h3 id="アクセスログの中からトップ１０のファイル名を表示する">アクセスログの中からトップ１０のファイル名を表示する</h3>
+
+
+
+
+<pre class="console">for x in `cat access_log | awk '{print $7}' | sort | uniq`; do \ 
+grep $x access_log | wc -l | tr -d '\n'; \
+echo &quot;  $x&quot;; \
+done | sort +0 -rn | head -10</pre>
+
+
+<p>for 文は「for <i>変数</i> in <i>単語リスト</i>; do <i>コマンド</i> done」の構文で使います。 <i>変数</i>はコマンドのところで使えます。$<i>変数</i> のようにすると呼び出すことができます。</p>
+
+<p>「<code></code>」で囲まれた部分は、囲まれた中をコマンドとして実行し、その結果を返すものです。 access_log を開いて、その中の空白で区切られた単語の区切りの7番目をawkによって抽出し( awk &lsquo;{print $7}&rsquo;)、その結果を一意なものにしています。</p>
+
+<p>上記のコマンドによってできた<i>単語リスト</i>（ここでは、ファイル名のリストを取得しているつもり)を繰り返し処理していきます。最初に、取得したファイル名を含む行数を「grep $x access_log | wc -l 」で取り出します。 wc の結果には改行が含まれるので 「tr -d &lsquo;\n'」で改行を削除しています。「tr」コマンドの -d オプションは、その次にくる文字を削除するオプションです。オプションをつけずに2つ渡すと置換になります。</p>
+
+<p>※<i> 「tr &lsquo;GET&rsquo; &lsquo;POST'」とすると、最初の引数の各文字に対応する第2引数の文字が置換されます。つまり、 文章中に HTTP とある場合、この置換をかけると HSSP と変換されてしまいます。</i></p>
+
+<p>ファイル中に現れる行数を最初に出力した後で、 echo でファイル名を出力しています。forループを抜けた後、これまで処理した結果を sort しています。 +0 オプションは、1番目の単語でソートするオプションです。 +3 とすると 4単語目でソートすることになります。 -r オプションは、逆順（降順）でソートするオプションです。 -n は、ソート項目を数字として判断するオプションです。</p>
+
+<p>最後に、「head -10 」として 最初の10件を取り出しています。</p>
+
+<h4>[参考]</h4>
+
+
+<p>Linuxサーバ Hacks P.16</p>
+
+<h3 id="find で検索してマッチしたファイルを cp する">find で検索してマッチしたファイルを mv する</h3>
+
+
+
+
+<pre class="console">for x in `find . | grep ".*.txt"`; do \
+echo "$x" "/home/hamasyou/$x"; \
+done | xargs -n2 cp</pre>
+
+
+<p>「find」コマンドで、カレントディレクトリから .txtで終わるファイルを見つけ出します。見つかったファイルを echo で 元のファイル名 移動先 というように出力します。この結果を xargs で取り込み、 -n<i>数字</i> オプションによって引数を2つとるようにします。</p>
+
+<p>これを cp コマンドに引き渡すことで、echo で出力した場所にファイルをコピーすることができました。</p>
+
+<h3 id="find で検索して、条件にマッチしたファイルだけ、ファイル名を変更する">find で検索して、条件にマッチしたファイルだけ、ファイル名を変更する</h3>
+
+
+
+
+<pre class="console">find . | grep &quot;.*.java&quot; | sed -n 's/\(.*\)\.java/mv &amp; \1.vm/p' |sh</pre>
+
+
+<p>find と grep で、拡張子が .java のファイルを検索します。マッチしたファイル名を sed に送り込み、/s 関数を使ってファイル名を置換したものを mv コマンドに見えるように出力します。その結果を パイプでつないで sh に渡します。</p>
+
+<p>sed の -n オプションは読み込んだ行を表示しないというオプションです。 s//p 関数で .java 拡張子を持つファイル名を、 「mv 読み込みファイル名 マッチした部分.vm」 という出力になるように置換して、 p コマンドで出力しています。</p>
+
+<p>s関数中にある &amp; は 読み込んだファイル名を返す参照変数です。</p>
+
+<h4>[参考]</h4>
+
+
+<p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116823/sorehabooks-22/250-7698465-6388212?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow">新TheUNIX SuperText[上]</a></p>
+
+<h3 id="正規表現で検索して、マッチした部分だけを表示する">正規表現で検索して、マッチした部分だけを表示する</h3>
+
+
+
+
+<pre class="console">find . | grep '.*.java' | xargs cat | sed -n 's/.*\(キーワード\).*/\1/p'</pre>
+
+
+<p>find と grep で拡張子が .java のファイルを取得し、ファイルの中身を cat で表示します。その結果を sed に送り、キーワードのみを後方参照として取得できるようにしておきます。 s//p 関数で中で \1 を使ってマッチしたキーワードのみを出力するようにしています。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linux 怒濤のQ&A]]></title>
+    <link href="http://hamasyou.com/blog/2004/05/25/4871937356/"/>
+    <updated>2004-05-25T08:35:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/05/25/4871937356</id>
+    <content type="html"><![CDATA[<p>すべてのLinuxディストリビューションに共通のQ&amp;Aが載っています。ログイン・ログアウトに関するQ&amp;Aから基本コマンド、インストール、カーネル、ネットワークに関するQ&amp;Aまで一通りのことが書いてあります。</p>
+
+<!-- more -->
+
+
+<p>Linuxを使っていてわからないことがあれば、まずこの本を開きましょう。そうすればおそらく解答が載っている。それくらい一般的な問題点に関する答えが載っている。非常に情報量が多く、説明が丁寧な秀作だと思う。</p>
+
+<p>コマンドに関するQ&amp;Aからひとつ。例えばテキストの行数を鑑定する場合に空行を抜きたいという場合、</p>
+
+<pre class="console">cat hoge.txt | grep -v '^[]*$' | wc</pre>
+
+
+<p>とすればよい。</p>
+
+<p>上記のコマンドにいたる道筋を順に追って説明しているのが、このQ&amp;Aの丁寧なところだろう。決して冗長にならない程度に簡潔に説明しているにもかかわらず、Linux初心者にもわかりやすい。</p>
+
+<p>Linuxを使う人にはおすすめの本だ。Webで検索すればよいと考えるかもしれないが、問題にぶちあたっと時に、ネットワークが常に使える環境にいるとは限りませんよ。</p>
+
+<ul>
+<li>「ディストリビューションとは?」について解説しているサイトです。Linux入門者でディストリビューションと聞いて「?」が浮かぶ人はこちらを参考にしてください。</li>
+</ul>
+
+
+<p><a href="http://linux.ascii24.com/linux/db/support/1999/11/11/172640-000.html" rel="external nofollow">ディストリビューションとは(日刊アスキーLinux)</a></p>
+
+<ul>
+<li><p>怒涛シリーズの第二弾、ネットワークに関する書籍が載っています。Linuxに限らず、すべてのネットワーカーにおすすめの本です。
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4871937984/sorehabooks-22" rel="external nofollow">怒濤のLinuxネットワーク</a></p></li>
+<li><p>怒涛シリーズを買いませんか？絶対損はないはず。超おすすめです。</p></li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4871937984/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[とってもかんたん！ Vine Linux 早わかりガイド]]></title>
+    <link href="http://hamasyou.com/blog/2004/05/23/4774110515/"/>
+    <updated>2004-05-23T18:01:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/05/23/4774110515</id>
+    <content type="html"><![CDATA[<p>LinuxはフリーのOSで、こういう解説書なんかを買うとついてくるんですが、インターネットで探しても見つかります。Linux自体はフリーで、インストールにお金はかかりません。</p>
+
+<!-- more -->
+
+
+<p>Linuxの種類にもいろいろあって、ディストリビューションというのですが、いくつかのプログラムがセットになっています。このVineLinuxというのは数あるディストリビューションの中で、日本語対応が十分にされています。初心者にはこのVineLinuxをおすすめします。</p>
+
+<p>さて、この本の評価ですが、本を読みながら自宅のパソコンにLinuxを入れてみましたが、確かに簡単です。まあ、最近のディストリビューションはほとんどインストールは自動で行ってくれるので、どれも似たようなものです。しかし、最初から気兼ねなく日本語を使えるというのがお勧めです。</p>
+
+<p>VineLinuxのインストールから、XWindowの設定、ユーザ作成、インターネットの設定という流れになっています。とりあえず、この一冊で一般のユーザが使う設定はできそうです。</p>
+
+<p>ただ、あえてLinuxをパソコンにインストールするユーザが、インターネットの設定までで納得するかは微妙です。この本は、ほんとの初心者が、興味本位にLinuxを触る手助けをするものだと割り切ったほうがいいでしょう。</p>
+
+<p>VineLinux のホームページです。ちなみに、Vineというのは英語で「ブドウの木」という意味らしいです。</p>
+
+<p><a href="http://vinelinux.org/" rel="external nofollow">Vine Linux Home Page</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GTK+とGladeで作るLinuxプログラミング超入門]]></title>
+    <link href="http://hamasyou.com/blog/2004/05/23/4883990494/"/>
+    <updated>2004-05-23T01:40:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/05/23/4883990494</id>
+    <content type="html"><![CDATA[<p>GTK+とGladeではじめるLinuxプログラミング。こうやって聞くとなんか難しそうですが、この本を読みながら進めれば、結構簡単に出来ます。ただし、この本を使って、自分でGUIアプリケーションをLinuxで作る必要があるのかを考えたほうがいいでしょう。</p>
+
+<!-- more -->
+
+
+<p>確かに、本を読みながらプログラミングすれば何とかアプリケーションを作ることができました。が、今の時代、自分でGUIアプリをLinux上に作る必要があるのかを先に考えたほうが、はるかに時間を有効に使えると思います。</p>
+
+<p>業務などでLinuxアプリをGUIでつくる必要があるかもしれません。しかし、その場合は、もっと別の書籍を探したほうがいいでしょう。この本は、初心者向けのわりに、初心者にはとっつきにくく、上級者が必要とする情報はほとんどないといってもいいと思います。</p>
+
+<p>きついことを書きましたが、それでも読んでみたければ止めはしません。時間を有効に使ってくださいね。</p>
+]]></content>
+  </entry>
+  
+</feed>

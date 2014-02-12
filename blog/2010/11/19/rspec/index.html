@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <title>[Rails] RSpec でコントローラのテストを記述する例 - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ">
+  <meta name="keywords" content="Rails3, Ruby1.9, RSpec, テストコード">
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2010/11/19/rspec">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate subscribe-rss" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">[Rails] RSpec でコントローラのテストを記述する例</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-11-19T01:44:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 19<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/rails3/">Rails3</a>
+    
+      <a class="tag label label-info" href="/blog/tags/rspec/">RSpec</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby1-dot-9/">Ruby1.9</a>
+    
+      <a class="tag label label-info" href="/blog/tags/sanpuru/">サンプル</a>
+    
+      <a class="tag label label-info" href="/blog/tags/tesutokodo/">テストコード</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>Ruby on Railsで、RSpec を使ってコントローラのテストをしたテストコードの例を載せておきます。</p>
+
+<p>環境は、Ruby on Rails3、Ruby1.9.2 を使っています。RSpec の使い方の参考になれば幸いです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>RSpec で Controller のテストを書いてみた</h2>
+
+
+<p>Ruby on Rails3, Ruby1.9.2 で Controller クラスの RSpec を書いてみました。</p>
+
+<p>Controller でテストしたのは次の3点です。</p>
+
+<ol>
+<li>ルーティングが合っているか</li>
+<li>処理が通って 200 OK を返すか</li>
+<li>処理が通って期待通りの結果（Blog が保存されることによって count がひとつ増える）になっているか</li>
+</ol>
+
+
+
+
+<pre class="code"><span class="comment"># coding: UTF-8</span>
+<span class="keyword">require</span> <span class="literal">'spec_helper'</span>
+ 
+<span class="keyword">describe</span> <span class="class">BlogsController</span> <span class="keyword">do</span>
+  <span class="keyword">describe</span> <span class="literal">&quot;GET /blogs/:id&quot;</span> <span class="keyword">do</span>
+    <span class="keyword">describe</span> <span class="symbol">:routes</span> <span class="keyword">do</span>
+      subject { {<span class="symbol">:get</span> =&gt; <span class="literal">&quot;/blogs/1&quot;</span>} }
+      it { should route_to(<span class="symbol">controller:</span> <span class="literal">&quot;blogs&quot;</span>, <span class="symbol">action:</span> <span class="literal">&quot;show&quot;</span>, <span class="symbol">id:</span> <span class="literal">&quot;1&quot;</span>) }
+    <span class="keyword">end</span>
+ 
+    <span class="keyword">before</span> { get <span class="symbol">:show</span>, <span class="symbol">:id</span> =&gt; <span class="literal">&quot;1&quot;</span> }
+ 
+    <span class="keyword">describe</span> <span class="symbol">:response</span> <span class="keyword">do</span>
+      subject { response }
+      it { should be_success }
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+ 
+  <span class="keyword">describe</span> <span class="literal">&quot;POST /blogs&quot;</span> <span class="keyword">do</span>
+    <span class="keyword">def</span> do_post
+      post <span class="symbol">:create</span>, <span class="symbol">:article</span> =&gt; <span class="literal">&quot;xxx&quot;</span>
+    <span class="keyword">end</span>
+ 
+    <span class="keyword">describe</span> <span class="symbol">:routes</span> <span class="keyword">do</span>
+      subject { {<span class="symbol">:post</span> =&gt; <span class="literal">&quot;/blogs&quot;</span>} }
+      it { should route_to(<span class="symbol">controller:</span> <span class="literal">&quot;blogs&quot;</span>, <span class="symbol">action:</span> <span class="literal">&quot;create&quot;</span>) }
+    <span class="keyword">end</span>
+    
+    <span class="keyword">before</span> { do_post }
+ 
+    <span class="keyword">describe</span> <span class="symbol">:response</span> <span class="keyword">do</span>
+      subject { response }
+      it { should be_success }
+    <span class="keyword">end</span>
+ 
+    <span class="keyword">describe</span> <span class="symbol">:blog</span>, <span class="symbol">:save</span> <span class="keyword">do</span>
+      <span class="keyword">before</span> { controller.stub!(<span class="symbol">:authenticate</span>).and_return(<span class="keyword">true</span>) }
+      subject { expect { do_post } }
+      it { should change(<span class="class">Blog</span>, <span class="symbol">:count</span>).by(<span class="literal">1</span>) }
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre>
+
+
+
+
+<h2>ソースコード解説</h2>
+
+
+
+
+<h3>ルーティングのテスト</h3>
+
+
+<p><em>describe</em> にはテスト対象を記述しています。コントローラのテストなので、それぞれのルーティングごとにテストを記述しています。</p>
+
+<p><em>:routes</em> でテストしているのは、期待したリクエスト URL が期待したコントローラの呼び出しになっているかどうかです。</p>
+
+<p><em>subject</em> にはこのテストの実際のテスト対象で、:routes では、ルーティングリクエストを記述しています。続く it で実際に期待する処理を書いています。should にレシーバを記述しない場合には subject の中身がレシーバになります。</p>
+
+<p><em>route_to</em> で期待するルーティングを記述してルーティングのテストをしています。</p>
+
+<h3>コントローラの処理が正常に終了するかどうかのテスト</h3>
+
+
+<p><em>response</em> オブジェクトを subject にして success を返すかどうかをテストしています。</p>
+
+<h3>コントローラが期待した処理を行ったかどうかをテストする</h3>
+
+
+<p>コントローラが期待した処理を行ったことを確認するには、二つやり方があると思っています。</p>
+
+<p>ひとつは、<strong>コントローラをブラックボックスにして、コントローラを通る前の状態とコントローラを通った後の状態を比較するやり方</strong>。</p>
+
+<p>もうひとつは、<strong>コントローラをホワイトボックスにして、モックオブジェクを使って should_receive や should_not_receive で期待した処理を通ったかどうかを確認するやり方</strong>。</p>
+
+<p>今回は、一つ目のやり方でテストをしています。これは、should_receive や should_not_receive を使ってテストしてしまうと、リファクタリングでメソッド名を変更した際にテストも直さなければならないからです。</p>
+
+<p>個人的には、コントローラのテストでは should_receive や should_not_receive はあまり使わず、実際にデータベースに書き込みを行ってテストをするのが良いと思っています。（Rails ではテスト用のDBは別に用意されますので）</p>
+
+<p>なお、<em>before</em> では controller.stub! を使って、コントローラに認証が必要な場合に認証を素通りする例を記述しています。</p>
+
+<h2>参考</h2>
+
+
+
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/t-wada/20100228/p1" rel="external nofollow">RSpec の入門とその一歩先へ - t-wadaの日記</a></li>
+<li><a href="http://rspec.info/" rel="external nofollow">rspec-1.3.1 | rspec-rails-1.3.3 - RSpec</a></li>
+<li><a href="http://jp.rubyist.net/magazine/?0021-Rspec" rel="external nofollow">スはスペックのス 【第 1 回】 RSpec の概要と、RSpec on Rails - Rubyist Magazine</a></li>
+</ul>
+
+
+
+</div>
+
+
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-11-19T01:44:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 19<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/rails3/">Rails3</a>
+    
+      <a class="tag label label-info" href="/blog/tags/rspec/">RSpec</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby1-dot-9/">Ruby1.9</a>
+    
+      <a class="tag label label-info" href="/blog/tags/sanpuru/">サンプル</a>
+    
+      <a class="tag label label-info" href="/blog/tags/tesutokodo/">テストコード</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul class="list-inline">
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/11/19/rspec/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2010/11/19/rspec/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2010/11/19/rspec/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2010/11/19/rspec/"></div>
+    </li>
+    
+    
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2010/11/19/rspec/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2010/11/19/rspec/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2010/11/18/api-rest/" title="Previous Post:
+      [REST] 認証が必要な API を REST っぽく作るときのメモ"><i class="fa fa-arrow-circle-left"></i> [REST] 認証が必要な API を RES...</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2010/11/20/rails-activerecord/"
+                            title="Next Post: [Rails] ActiveRecord でツリー関係の関連を定義する">[Rails] ActiveRecord でツ... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="thumbnail" />
+    </div>
+    <div class="col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/05/482228493X/">世界でもっとも強力な9のアルゴリズム</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">94</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js" rel="external nofollow"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2010/11/19/rspec/';
+  var disqus_url = 'http://hamasyou.com/blog/2010/11/19/rspec/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

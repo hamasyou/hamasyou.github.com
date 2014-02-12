@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: SELinux | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/selinux/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SELinux覚書き-アクセス制御の仕組み]]></title>
+    <link href="http://hamasyou.com/blog/2005/02/23/selinux/"/>
+    <updated>2005-02-23T20:11:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/02/23/selinux</id>
+    <content type="html"><![CDATA[<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221113/sorehabooks-22" rel="external nofollow"></a>
+</p>
+
+
+<p>大学で、SELinuxの講習会をうけたので、そのメモです。かなり基礎的な部分の説明で、アクセス制御の部分を集中的に教えてもらいました。</p>
+
+<p>セキュアOSと呼ばれるOSの中でも、フリーで手に入るSELinuxは今後かなり注目されそうです。今日は、アクセス制御の仕組みとロールの付与の仕方について勉強しましたが、そのほかにもいろんな機能がある様子。詳しくは、『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221113/sorehabooks-22" rel="external nofollow">SELinux徹底ガイド</a>』を読むのが良いらしいです。(宣伝宣伝っと 笑)</p>
+
+<p>セキュアOSとは何ぞやって事とSELinuxのアクセス制御(<strong>Type Enforcement</strong>)の方法、<strong>セキュリティ属性</strong>、<strong>Role-Based Access Control</strong> あたりをメモっておきます。かなり適当なメモなので、読むだけだと分からないかも・・・。『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221113/sorehabooks-22" rel="external nofollow">SELinux徹底ガイド</a>』買おっかな。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+
+
+<h3>セキュアOSとは</h3>
+
+
+<p>大まかに2つの機能。強制アクセス制御機能とシステム管理権限を複数のユーザに分割する機能を持つOSのこと。</p>
+
+<p>強制アクセス制御は、<strong>MAC</strong> (Mandatory Access Control)と呼ばれる。あらかじめ設定された<strong>セキュリティポリシー</strong>にしたがって、カーネルレベルでリソースへのアクセスを制御する仕組み。</p>
+
+<p>システム管理権限を複数のユーザに分割するとは、<strong>RBAC</strong> (Role-Based Access Control) と呼ばれるロールベースのシステム管理方法。権限を細分化することで、root権限の分散を実現している。</p>
+
+<h3>これまでのLinuxOSの問題点</h3>
+
+
+<p>これまでのOSの仕組みでは、リソースへのアクセス権を<strong>DAC</strong> (Discreationary Access Control) と呼ばれる任意アクセス制御によって行っていた。これは、リソースの所有者が任意にアクセス許可を設定できる。プロセスのUID(ユーザID)とGID(グループID)、リソースの所有者とグループの比較により、アクセス権をチェックしていた。</p>
+
+<p>これでは、管理者がいくらセキュリティポリシーを作っても、全ユーザにポリシーを守らせることは難しいし、root権限を奪取されてしまった場合にすべてのアクセスを許す結果になってしまう。</p>
+
+<p>また、root権限は最高位権限で、あらゆる処理を行えてしまう。いったんroot権限を奪われたら、コンピュータを乗っ取られたのと同じことになる。</p>
+
+<p>そこで考え出されたのが、<em>強制アクセス制御と権限の細分化</em>である。強制アクセス制御によって、セキュリティポリシーで許可されていないアクセスは、たとえrootであっても拒否される。権限の細分化により、アプリケーション管理者とシステム管理者とで行えることが違うという設定が可能になった。</p>
+
+<h3>セキュリティコンテキスト</h3>
+
+
+<p>SELinuxでは、<strong>セキュリティコンテキスト</strong>と呼ばれるセキュリティ属性を使ってアクセス制御や<acronym title="Role-Based Access Control">RBAC</acronym> を制御する。セキュリティ属性は、以下の3つの要素からなる。</p>
+
+<p><img src="http://hamasyou.com/images/selinux/security_context.gif" alt="セキュリティコンテキスト" /></p>
+
+<p>ユーザ属性は、SELinuxがユーザを識別するのに使います。ロール属性は、RBACで設定されたアクセス権を示します。タイプ属性が、リソースへのアクセス制御に使われるものです。この、<em>タイプ属性をセキュリティポリシーと比較することで、リソースへのアクセス許可を出します</em>。</p>
+
+<pre>
+例： hamasyou:sysadm_r:sysadm_t
+ユーザ識別子： hamasyou
+ロール： sysadm_r
+タイプ： sysadm_t
+</pre>
+
+
+
+
+<h3>ドメイン遷移</h3>
+
+
+<p><em>セキュリティポリシーが存在しない場合、親プロセスから生成された子プロセスは、親プロセスのタイプ属性を継承します</em>。これは、かなり危険で、例えば httpd デーモンをセキュリティ管理者権限を持つプロセスが実行した場合、httpd から生成される子プロセスは、セキュリティ管理者権限を持ってしまいます。</p>
+
+<p>そこで、ドメイン遷移定義を設定することで、あるタイプ属性を持つプロセスが起動したプロセス(親プロセス)から割り当てられるプロセス(子プロセス)のタイプ属性を任意に設定できます。</p>
+
+<h3>Role-Based Access Control</h3>
+
+
+<p><acronym title="Role-Based Access Control"><strong>RBAC</strong></acronym>は root 権限にすべての権限が集中してしまうのを改善する目的で導入されたものです。権限の細分化によって、管理者権限の厳重な管理を行います。</p>
+
+<p>権限は、ロールというものに割り当てます。SELinuxでは、ロールごとにタイプ属性を付与します。作成したロールは、ユーザごとに割り振ります。ユーザに付与されたロールは、シェルの起動に使われます。シェルは、ロールに付与されたタイプ属性の権限で動きます。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li><p>SELinuxのインストール方法
+<a href="http://www.stackasterisk.jp/tech/systemConstruction/seLinux01_01.jsp" rel="external nofollow">スタックアスタリスク - SELinux によるセキュアOS構築</a></p></li>
+<li><p>国内 SELinux コミュニティーサイト
+<a href="http://www.selinux.jp/" rel="external nofollow">SELinux コミュニティーサイト</a></p></li>
+<li><p>SELinux を徹底的に知りたい人には、これしかないでしょう</p></li>
+</ul>
+
+
+<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221113/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

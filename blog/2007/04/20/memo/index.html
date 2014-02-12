@@ -1,0 +1,1533 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <title>技術者の宝石箱 - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ">
+  <meta name="keywords" content="技術者,玉手箱,ノウハウ">
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2007/04/20/memo">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate subscribe-rss" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">技術者の宝石箱</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2007-04-20T23:35:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Apr 20<span>th</span>, 2007</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/falseuhau/">ノウハウ</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>技術者として、気づいたこと、感じたこと、困ったことなどを書き連ねていこうと思います。この先気づいたことがあれば増やしていきたいとおもいます。</p>
+
+<p>間違いなどあると思います。業務で利用する場合、そのまま鵜呑みにしないようにお願いします。できるだけ責任のある情報を載せたいと思います。訂正等ありましたら、ご連絡いただけると幸いです。</p>
+
+<p><a href="http://hamasyou.com/archives/000337" rel="external nofollow">技術メモ</a> もあります。</p>
+
+<!-- more -->
+
+
+
+
+<h2>インデックス</h2>
+
+
+
+
+<ul><li><a href="#DBで日付を扱う時の操作" rel="external nofollow">DBで日付を扱う時の操作</a></li>
+<li><a href="#LINUXでファイルの一覧から特定文字を含むファイルを表示する" rel="external nofollow">LINUXでファイルの一覧から特定文字を含むファイルを表示する</a></li>
+<li><a href="#コマンドプロンプトで画面をクリアする方法" rel="external nofollow">コマンドプロンプトで画面をクリアする方法</a></li>
+<li><a href="#Oracleで表示件数を絞り込む方法" rel="external nofollow">Oracleで表示件数を絞り込む方法</a></li>
+<li><a href="#ファイルダウンロード" rel="external nofollow">ファイルダウンロード</a></li>
+<li><a href="#JavaScriptからテキスト文字を取得する" rel="external nofollow">JavaScriptからテキスト文字を取得する</a></li>
+<li><a href="#エンコード" rel="external nofollow">エンコード</a></li>
+<li><a href="#SQL文のチューニング" rel="external nofollow">SQL文のチューニング</a></li>
+<li><a href="#ORACLE IMP ツール" rel="external nofollow">ORACLE IMP ツール</a></li>
+<li><a href="#JBuilderでTomcat使うときに sun/tools/javac/Main が見つかりませんエラーの対応" rel="external nofollow">JBuilderでTomcat使うときに sun/tools/javac/Main が見つかりませんエラーの対応</a></li>
+<li><a href="#文字化けする文字一覧" rel="external nofollow">文字化けする文字一覧</a></li>
+<li><a href="#トークンの導入" rel="external nofollow">トークンの導入</a></li>
+<li><a href="#Shift_JISとWindows-31Jの相違点" rel="external nofollow">Shift_JISとWindows-31Jの相違点</a></li>
+<li><a href="#マテリアライズドビューの作り方" rel="external nofollow">マテリアライズドビューの作り方</a></li>
+<li><a href="#マテリアライズドビューの更新(リフレッシュ)" rel="external nofollow">マテリアライズドビューの更新(リフレッシュ)</a></li>
+<li><a href="#マテリアライズドビューの自動更新" rel="external nofollow">マテリアライズドビューの自動更新</a></li>
+<li><a href="#Oracleのデータベース文字コード" rel="external nofollow">Oracleのデータベース文字コード</a></li>
+<li><a href="#AccessからOracleへのエクスポート" rel="external nofollow">AccessからOracleへのエクスポート</a></li>
+<li><a href="#DB2で抽出データ件数を指定する方法" rel="external nofollow">DB2で抽出データ件数を指定する方法</a></li>
+<li><a href="#DBの型がDecimal型の場合は BigDecimal 型で受けよう" rel="external nofollow">DBの型がDecimal型の場合は BigDecimal 型で受けよう</a></li>
+<li><a href="#行ロックをかける" rel="external nofollow">行ロックをかける</a></li>
+<li><a href="#java.lang.String の replaceAll" rel="external nofollow">ブラウザのキャッシュ戦略をぶっこわせ</a></li>
+<li><a href="#DB2でカナのソートについて" rel="external nofollow">DB2でカナのソートについて</a></li>
+<li><a href="#みんなに使われるクラス" rel="external nofollow">みんなに使われるクラス</a></li>
+<li><a href="#DBのMAX_LENGTH とWEBのMAX_LENGTHは違う" rel="external nofollow">DBのMAX_LENGTH とWEBのMAX_LENGTHは違う</a></li>
+<li><a href="#BigDecimal の double を引数にとるコンストラクタに注意" rel="external nofollow">BigDecimal の double を引数にとるコンストラクタに注意</a></li>
+<li><a href="#HTMLのフォームエレメントを動的に作成する" rel="external nofollow">HTMLのフォームエレメントを動的に作成する</a></li>
+<li><a href="#Jakarta Commons" rel="external nofollow">FTPバッチの作り方</a></li>
+<li><a href="#&lt;%@ include %&gt; と &lt;jsp:include &gt; の違い" rel="external nofollow">&lt;%@ include %&gt; と &lt;jsp:include &gt; の違い</a></li>
+<li><a href="#フォームの属性を囲むクォートはにするべし" rel="external nofollow">フォームの属性を囲むクォートは「&#8221;」にするべし</a></li>
+<li><a href="#HTMLリファレンス文字列一覧" rel="external nofollow">HTMLリファレンス文字列一覧</a></li>
+<li><a href="#Command パターン" rel="external nofollow">Command パターン</a></li>
+<li><a href="#検証(verification)と妥当性(validation)" rel="external nofollow">検証(verification)と妥当性(validation)</a></li>
+<li><a href="#Exception クラスの派生" rel="external nofollow">Exception クラスの派生</a></li>
+<li><a href="#不正チェック" rel="external nofollow">不正チェック</a></li>
+<li><a href="#Excel のエスケープシーケンス" rel="external nofollow">Excel のエスケープシーケンス</a></li>
+<li><a href="#Windowsで名前解決する方法" rel="external nofollow">Windowsで名前解決する方法</a></li>
+<li><a href="#日付型の配列を使う場合 long型の配列で保持する" rel="external nofollow">日付型の配列を使う場合 long型の配列で保持する</a></li>
+<li><a href="#ファイルのパスとリソースのパスの違い" rel="external nofollow">ファイルのパスとリソースのパスの違い</a></li>
+<li><a href="#SQL文の動的条件追加" rel="external nofollow">SQL文の動的条件追加</a></li>
+<li><a href="#表の結合順序と効率" rel="external nofollow">表の結合順序と効率</a></li>
+<li><a href="#SessionBeanの賢い使い方" rel="external nofollow">SessionBeanの賢い使い方</a></li>
+<li><a href="#EJBの設計" rel="external nofollow">EJBの設計</a></li>
+<li><a href="#Oracleの空文字の扱い" rel="external nofollow">Oracleの空文字の扱い</a> 2004/7/14追加</li>
+<li><a href="#依存関係逆転の法則" rel="external nofollow">依存関係逆転の法則</a> 2004/7/15追加</li>
+<li><a href="#String.replaceメソッドでString index out of rangeがでる" rel="external nofollow">String.replaceメソッドでString index out of rangeがでる</a> 2004/8/23追加</li>
+<li><a href="#実装の継承とインターフェイスの継承" rel="external nofollow">実装の継承とインターフェイスの継承</a> 2004/10/1追加</li>
+<li><a href="#linuxで変なファイル名が出来ちゃったときに消す方法" rel="external nofollow">linuxで変なファイル名が出来ちゃったときに消す方法</a> 2004/10/21追加</li>
+<li><a href="#メールアドレスの@より前に使える文字" rel="external nofollow">メールアドレスの@より前に使える文字</a> 2004/10/26追加</li>
+<li><a href="#行ロックとマルチスレッドとトランザクションを考える" rel="external nofollow">行ロックとマルチスレッドとトランザクションを考える</a> 2004/10/27追加</li>
+<li><a href="#Tomcat で lib に xdoclet 関連のライブラリがあると例外" rel="external nofollow">Tomcat で lib に xdoclet 関連のライブラリがあると例外</a> 2004/11/05追加</li>
+<li><a href="#JavaBeanの定義" rel="external nofollow">JavaBeanの定義</a> 2004/11/09追加</li>
+<li><a href="#JSP2.0 の web.xml 定義" rel="external nofollow">JSP2.0 の web.xml 定義</a> 2004/11/10追加</li>
+<li><a href="#WinSCP でログイン時にリストの取得でエラーが起こる" rel="external nofollow">WinSCP でログイン時にリストの取得でエラーが起こる</a> 2004/12/04追加</li>
+<li><a href="#SSH接続で公開鍵認証を使うときに、公開鍵を authorized_keys にコピーし忘れないようにしましょう" rel="external nofollow">SSH接続で公開鍵認証を使うときに、公開鍵を authorized_keys にコピーし忘れないようにしましょう</a> 2004/12/04追加</li>
+<li><a href="#要求モデリングのポイント" rel="external nofollow">要求モデリングのポイント</a> 2004/12/10追加</li>
+<li><a href="#マウス右クリックしたフォルダからコマンドプロンプトを開く" rel="external nofollow">マウス右クリックしたフォルダからコマンドプロンプトを開く</a> 2004/12/13追加</li>
+<li><a href="#プロジェクト管理における7つの鉄則" rel="external nofollow">プロジェクト管理における7つの鉄則</a> 2005/1/13追加</li>
+<li><a href="#Authorization(承認) と Authentication(認証)" rel="external nofollow">Authorization(承認) と Authentication(認証)</a> 2005/1/16追加</li>
+<li><a href="#ホームページ・Flashのテンプレート、テンプレートモンスター" rel="external nofollow">ホームページ・Flashのテンプレート、テンプレートモンスター</a> 2005/1/24追加</li>
+<li><a href="#JDBCドライバのタイプの違い" rel="external nofollow">JDBCドライバのタイプの違い</a>2005/2/9追加</li>
+<li><a href="#Linuxでファイルの文字コードを調べる方法" rel="external nofollow">Linuxでファイルの文字コードを調べる方法</a> 2005/2/10追加</li>
+<li><a href="#モデリング共通パターン" rel="external nofollow">モデリング共通パターン</a> 2005/2/28追加</li>
+<li><a href="#find, grep, nkf を使って、ファイルの中身を検索" rel="external nofollow">find, grep, nkf を使って、ファイルの中身を検索</a></li>
+<li><a href="#メールの件名で日本語を使うと文字化けする" rel="external nofollow">メールの件名で日本語を使うと文字化けする</a> 2005/8/16追加</li>
+<li><a href="#ログイン後にすぐにセッションが切れてしまう" rel="external nofollow">ログイン後にすぐにセッションが切れてしまう</a> 2006/2/9追加</li>
+<li><a href="#XML Schema の SchemaLocation" rel="external nofollow">XML Schema の SchemaLocation</a> 2006/6/6追加</li>
+<li><a href="#ラジオボタンのチェックを文字をクリックでも行えるようにする" rel="external nofollow">ラジオボタンのチェックを文字をクリックでも行えるようにする</a> 2006/7/14追加
+<li><a href="#IEでSSLでのファイルダウンロードに失敗する" rel="external nofollow">IEでSSLでのファイルダウンロードに失敗する</a> 2007/3/1追加</li>
+<li><a href="#マウス右クリックしたフォルダからCygwinを開く" rel="external nofollow">マウス右クリックしたフォルダからCygwinを開く</a> 2007/4/20追加</li>
+</ul>
+
+
+
+
+<h2>ノウハウ一覧</h2>
+
+
+
+
+<h3 id="DBで日付を扱う時の操作">DBで日付を扱う時の操作</h3>
+
+
+
+
+<pre class="code"><code>GregorianCalendar cal = <span class="keyword">new</span> GregorianCalendar(2002, 9 - 1, 27, 15, 15, 15); 
+java.util.Date date = cal.getTime(); 
+<span class="keyword">long</span> time = date.getTime(); 
+Timestamp timestamp = <span class="keyword">new</span> Timestamp(time); </code></pre>
+
+
+
+
+<h3 id="LINUXでファイルの一覧から特定文字を含むファイルを表示する">LINUXでファイルの一覧から特定文字を含むファイルを表示する</h3>
+
+
+
+
+<pre class="console">> <kbd>find . -type f -name "*.jsp" -exec grep -l 検索文字 {} \;</kbd></pre>
+
+
+
+
+<h3 id="コマンドプロンプトで画面をクリアする方法">コマンドプロンプトで画面をクリアする方法</h3>
+
+
+
+
+<ul><li>windows: clsコマンド</li>
+<li>unix,linux: Ctrl + L</li>
+</ul>
+
+
+
+
+<h3 id="Oracleで表示件数を絞り込む方法">Oracleで表示件数を絞り込む方法</h3>
+
+
+
+
+<h4>結果の最初から10件のみ表示する</h4>
+
+
+
+
+<pre>SELECT * FROM DUAL WHERE ROWNUM &lt;= 10;</pre>
+
+
+<p><em>検索結果の10件目から15件目をとりたい場合は、ROWNUMは使えません。</em>どうするのかというと、<strong>row_number()</strong>という問い合わせ関数を使います。(Oracle 9i 以上)</p>
+
+<pre>SELECT 受注数, 受注者名, 型番 FROM (SELECT <em>row_number() over (ORDER BY 受注数) rn</em>, 受注数, 受注者名, 型番 FROM 受注テーブル ) WHERE 10 <= rn and rn <= 15</pre>
+
+
+
+
+<h4>[参考URL]</h4>
+
+
+<ul>
+<li><a href="http://homepage2.nifty.com/sak/w_sak3/doc/sysbrd/sq_kj04_2.htm" rel="external nofollow">SQL 問い合わせ - スカラー副問い合わせ、cursor、row_number、over、with</a></li>
+</ul>
+
+
+<h3 id="ファイルダウンロード">ファイルダウンロード</h3>
+
+
+
+
+<pre class="code"><code>response.setContentType(<span class="str">&quot;application/octet-stream&quot;</span>); 
+response.setHeader(<span class="str">&quot;Content-Disposition&quot;</span>, <span class="str">&quot;inline; filename=\&quot;&quot;</span> + filename + <span class="str">&quot;\&quot;&quot;</span>);
+</code></pre>
+
+
+
+
+<h3 id="JavaScriptからテキスト文字を取得する">JavaScriptからテキスト文字を取得する</h3>
+
+
+<p>span タグに id をつけて、 id.innerHTML で、spanタグに囲まれたテキストが取得できる</p>
+
+<pre>document.all("fieldName").innerHTML;</pre>
+
+
+
+
+<h3 id="エンコード">エンコード</h3>
+
+
+<p>Javaでは文字を格納するデータ型として char と byte を使います。Unicode文字の場合には char型を、Unicode文字以外のエンコーディングの場合には byte型を使用します。</p>
+
+<p>EUCで byte配列に格納していた文字列をStringに直すときは new String(byte[], &ldquo;EUC-JP&rdquo;);</p>
+
+<p>String文字列をEUC-JPのbyte配列として取得するには String.getBytes(&ldquo;EUC-JP&rdquo;);</p>
+
+<p>ファイルダウンロードなどでエンコードするときは PrintWriter を使わない。PrintWriter はデフォルトのエンコーディングを使っている。InputStream OutputStream を使用する</p>
+
+<h3 id="SQL文のチューニング">SQL文のチューニング</h3>
+
+
+<p>SQL*PLUS で set autotrace on とするとインデックスが使用されているかされていないかをチェック出来る。</p>
+
+<p>SQLの発行にかかった時間を取得するには set timing on とする。</p>
+
+<h3 id="ORACLE IMP ツール">ORACLE IMP ツール</h3>
+
+
+<p>ダンプファイルのインポートをする場合 IMP を使う。一件ずつコミットする場合 imp system/manager@dbname commit=y とする。</p>
+
+<h3 id="JBuilderでTomcat使うときに sun/tools/javac/Main が見つかりませんエラーの対応">JBuilderでTomcat使うときに sun/tools/javac/Main が見つかりませんエラーの対応</h3>
+
+
+<p>C:\JBuilder8\jdk1.4\ の下に lib フォルダが有り、 tools.jar があるかを確認</p>
+
+<h3 id="文字化けする文字一覧">文字化けする文字一覧</h3>
+
+
+
+
+<pre>ソ噂浬欺圭構蚕十申曾箪貼能表暴予禄兔喀媾彌拿杤歃濬畚秉綵臀藹觸軆鐔饅鷭</pre>
+
+
+
+
+<h3 id="トークンの導入">トークンの導入</h3>
+
+
+<p>Webで問題となる２度押しやブックマークなどの問題に トークン を導入する。</p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756143075/sorehabooks-22" rel="external nofollow">Strutsプログラミング講座(トランザクショントークン)</a></li>
+</ul>
+
+
+<h3 id="Shift_JISとWindows-31Jの相違点">Shift_JISとWindows-31Jの相違点</h3>
+
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://www.ingrid.org/java/i18n/encoding/shift_jis.html" rel="external nofollow">Shift_JISのエイリアスの変更について</a></p>
+
+<p></section></p>
+
+<p>&ldquo;Shift_JIS&#8221;と&#8221;Windows-31J&#8221;は，IANAに正式に登録されている文字集合の名称であり，前者はJIS X 0208で定められており，後者はMicrosoftのコードページ932に相当します．この2つの文字集合には，次のような重要な違いがあります．</p>
+
+<pre>１．収録されている文字が異なります．たとえば，Windows-31JはNEC特殊文字，IBM特殊文字を含んでいますが，Shift_JISは含んでいません． 
+２．Windows-31Jは，MS-DOSにおけるNECやIBMの拡張した文字群を収録していますが，一部の重複している文字は，Unicodeの同じコードポイントに割り当てられています．このために，一度読み込んでUnicodeに変換してしまうと，元のファイルに戻すことができないことがあります． 
+３．一部の文字に対して，Unicodeに変換する際のコードポイントが違います(〜, ‖, −, ¢, £, ¬など)． </pre>
+
+
+<p>特に最後の違いがあるために，JavaのようなUnicodeベースの環境では，単純にWindows-31JをShift_JISのスーパーセットとして扱うことはできないことに注意してください．</p>
+
+<h4>「今回の修正の影響範囲と対処方法」</h4>
+
+
+<p>今回の修正の影響範囲と対処方法は，次の通りです．</p>
+
+<pre>1, プログラムやデータ，通信で"Shift_JIS"と明示的に指定していない/されない場合 
+プログラムの実行に影響はありません． 
+2, プログラムやデータ，通信で"Shift_JIS"と明示的に指定している/される場合 
+ほとんどがWindows-31Jを用いたデータを扱っているにもかかわらず，
+誤って"Shift_JIS"と指定していた場合だと思いますが，
+拡張された文字や一部の記号類(〜, ‖, −)が'?'に文字化けしますので，
+正しく"Windows-31J"と指定してください．なお，この修正は1.4.1bを待つ必要はありません． 
+a) Servletの場合
+res.setContentType("text/html; charset=Windows-31J");
+PrintWriter out = res.getWriter();
+ 
+b) JSPの場合
+&lt;%@ page contentType="text/html; charset=Windows-31J" %&gt;
+ 
+3, "MS932"と明示的に指定していた場合 
+プログラムの実行に影響はありません．
+ただし，"Windows-31J"に書き換えることを薦めます．なお，この修正は1.4.1bを待つ必要はありません． 
+4, "SJIS"と明示的に指定していた場合 
+プログラムの実行に影響はありません． 
+1.4.1b以降では，"Shift_JIS"でも正しく動作するようになりますので，"Shift_JIS"に書き換えてください．</pre>
+
+
+
+
+<h3 id="マテリアライズドビューの作り方">マテリアライズドビューの作り方</h3>
+
+
+
+
+<pre>CREATE MATERIALIZED VIEW m_view　←ビュー名
+AS SELECT deptno,AVG(sal) FROM emp GROUP　BY deptno　←元データのSELECT文</pre>
+
+
+
+
+<h3 id="マテリアライズドビューの更新(リフレッシュ)">マテリアライズドビューの更新(リフレッシュ)</h3>
+
+
+<p>手動で単一のスナップショットをリフレッシュする</p>
+
+<pre>execute dbms_snapshot.refresh('XXXX','?');</pre>
+
+
+<p>注）XXXXはスナップショット名</p>
+
+<h4>オプションの種類</h4>
+
+
+
+
+<dl><dt>&#8216;f&#8217;</dt><dd>高速リフレッシュ</dd><dt>&#8216;c&#8217;</dt><dd>完全リフレッシュ</dd><dt>&#8217;?&#8217;</dt><dd>デフォルトのリフレッシュ</dd></dl>
+
+
+
+
+<h3 id="マテリアライズドビューの自動更新">マテリアライズドビューの自動更新</h3>
+
+
+
+
+<pre>CREATE MATERIALIZED VIEW m_view　←ビュー名
+REFRESH FORCE ON COMMIT</pre>
+
+
+<p>ただし、 distinct を指定した SELECT 文の時は指定できない。</p>
+
+<h3 id="Oracleのデータベース文字コード">Oracleのデータベース文字コード</h3>
+
+
+<p>Oracleデータベースを作る際は、Shift_JIS の文字コード + &lsquo;〜&rsquo; を登録可能とする。文字コード、 SJISTIRDA と言うものがある。</p>
+
+<h3 id="AccessからOracleへのエクスポート">AccessからOracleへのエクスポート</h3>
+
+
+<p>最初に、Oracle Net Manager にサービス・ネーミングを作成し、その名前でAccessからエクスポートする。Oracle Net Manager で作成しない場合、 Enterprise Manager で接続を作成すると XXX_192.168.0.X というサービス・ネーミングが作成される。この名前でも Access からエクスポートできる。
+エクスポートする前に、 ODBC の接続を作成しておく必要がある。「管理ツール」のデータソースでデータソースを作成し、それを上で作ったサービスに結びつける。
+あとは、Access からエクスポートを選ぶだけ。</p>
+
+<h3 id="DB2で抽出データ件数を指定する方法">DB2で抽出データ件数を指定する方法</h3>
+
+
+
+
+<pre>SELECT * FROM XXX fetch first 10 rows only</pre>
+
+
+
+
+<h3 id="DBの型がDecimal型の場合は BigDecimal 型で受けよう">DBの型がDecimal型の場合は BigDecimal 型で受けよう</h3>
+
+
+<p>DBの型が Decimal 型の場合は Java 側では BigDecimal 型で受けるべし。</p>
+
+<h3 id="行ロックをかける">行ロックをかける</h3>
+
+
+<p>問い合わせで行ロックする方法として、for update 句がある。for update nowait は、ロック解除を待たずにエラーを返す。次の例は、ロックされていたら待って問い合わせる。</p>
+
+<pre>select * from testm where key = 'a001' for update;</pre>
+
+
+<p>nowait はエラー構文となった。</p>
+
+<pre>select * from testm where key = 'a001' for update nowait;</pre>
+
+
+<p><a name="java.lang.String の replaceAll"></a> <h4>java.lang.String の replaceAll</h4></p>
+
+<p>replaceAll の リプレース文字列(第二引数)に $ が付くとエラーになる。対応は $ を \$ にする。 プログラムで $ を \$ に直すには以下のようにする。</p>
+
+<pre class="code"><code>str.replaceAll(<span class="literal">"\\$"</span>, <span class="literal">"\\\\\\$"</span>);
+</code></pre>
+
+
+
+
+<h3 id="ブラウザのキャッシュ戦略をぶっこわせ">ブラウザのキャッシュ戦略をぶっこわせ</h3>
+
+
+
+
+<pre>&lt;meta http-equiv="Pragma" content="no-cache"&gt;
+&lt;meta http-equiv="Cache-Control" content="no-cache"&gt; 
+&lt;meta http-equiv="expires" content="Sun, 10 Jan 1990 01:01:01 GMT"&gt;</pre>
+
+
+
+
+<h3 id="DB2でカナのソートについて">DB2でカナのソートについて</h3>
+
+
+<p>カナのソート(SELECT)の方法（単純にorder byにすると一部並びがおかしくなる。）</p>
+
+<pre>ORDER BY HEX(SUBSTR(項目名,スタート位置,桁数))
+例 order by hex(substr(kaisha_kana,1,20))</pre>
+
+
+
+
+<h3 id="みんなに使われるクラス">みんなに使われるクラス</h3>
+
+
+<p>意図しない使われ方をしないように作りましょう。たとえば、コンストラクタの公開キーワードを private にするとか。</p>
+
+<h3 id="DBのMAX_LENGTH とWEBのMAX_LENGTHは違う">DBのMAX_LENGTH とWEBのMAX_LENGTHは違う</h3>
+
+
+<p>DBのMAX_LENGTH はバイトで計られることが多い -&gt; 10バイト(日本語は5文字)</p>
+
+<p>WEBのフォームのMAX_LENGTH は文字数 -&gt; 10文字(日本語10文字入る)</p>
+
+<h3 id="BigDecimal の double を引数にとるコンストラクタに注意">BigDecimal の double を引数にとるコンストラクタに注意</h3>
+
+
+<p>このコンストラクタの結果は予想外である可能性があります。new BigDecimal(.1) は正確に .1 と等しいと思われるかもしれませんが、実際には .1000000000000000055511151231257827021181583404541015625 となります。</p>
+
+<p>これは .1 を double (または有限長 2 進小数) として正確に表現できないためです。したがって、コンストラクタに渡されている long 値は正確に .1 と等しいわけではありません。</p>
+
+<p>一方、String を引数とするコンストラクタは予測可能です。new BigDecimal(&ldquo;.1&rdquo;) は、「正確に」 .1 と等しくなります。</p>
+
+<p>そのため、通常は、double を引数とするコンストラクタの代わりにString を引数とするコンストラクタを使用することをお勧めします。</p>
+
+<h3 id="HTMLのフォームエレメントを動的に作成する">HTMLのフォームエレメントを動的に作成する</h3>
+
+
+
+
+<pre>document.all.span_id.insertAdjacentHTML('afterBegin', '&lt;INPUT type="text" name="ero" value="hoge"&gt;');
+&lt;span id="span_id"&gt;&lt;/span&gt;</pre>
+
+
+<p>上記JavaScriptで span タグの後ろにフォームエレメントができる!</p>
+
+<h3 id="Jakarta Commons">Jakarta Commons</h3>
+
+
+<p>訳すと関数インターフェイスでしょうか。コレクションの各要素に対して、f(x)の処理を行うインターフェイス群です。以下のようなものがあります。</p>
+
+<dl>
+<dt>Factory  Object create()</dt><dd>作る</dd>
+<dt>Predicate  boolean evaluate(Object input)</dt><dd>判定する</dd>
+<dt>Closure  void execute(Object input)</dt><dd>実行する</dd>
+<dt>Transformer  Object transform(Object input)</dt><dd>変換する</dd>
+</dl>
+
+
+
+
+<h3 id="FTPバッチの作り方">FTPバッチの作り方</h3>
+
+
+
+
+<pre>ftp -s:test.scr    &lt;- バッチ1 でこのように書く
+ 
+guest               &lt;- test.scr ファイルにこのように書く（ユーザID)
+guest               &lt;- (パスワード)
+put file1           &lt;- コマンド
+quit</pre>
+
+
+
+
+<h3 id="&lt;%@ include %&gt; と &lt;jsp:include &gt; の違い">&lt;%@ include %&gt; と &lt;jsp:include &gt; の違い</h3>
+
+
+
+
+<h4>&lt;%@ include %&gt;</h4>
+
+
+<p>このタグによって指定されたファイルは、JSPがサーブレットのファイルに変換される前に、JSPの一部としてインクルードされます。そして、インクルードされたものを含めてサーブレットに変換されてから実行されます。このタグでインクルードされたファイルが更新されても、JSP自体が更新されなければJSPに更新は反映されません。</p>
+
+<h4>&lt;jsp:include &gt;</h4>
+
+
+<p>このタグは、指定されたファイルをJSPの一部としてインクルードするのではなく、指定されたURLにリクエストを送信し、その応答内容を動的にリクエスト元に挿入して表示します。インクルードされるページとインクルードを行うJSPとは独立したページとして存在するため、インクルードされたファイルが更新されれば、元のJSP自体が更新されていなくても、動的に更新内容が結果に反映されます。</p>
+
+<h3 id="フォームの属性を囲むクォートはにするべし">フォームの属性を囲むクォートは「&#8221;」にするべし</h3>
+
+
+<p>&lt;input type=&ldquo;text&rdquo;&gt; 等の属性を囲むクォートは「&#8221;」にしたほうがよい。なぜなら、初期値として「&#8221;」を含むような値を表示したい場合「&amp;quot;」を使用して「&#8221;」を表示すればよい。シングルクウォート「&#8217;」を表示する場合「&amp;#39;」を使用する。</p>
+
+<h3 id="HTMLリファレンス文字列一覧">HTMLリファレンス文字列一覧</h3>
+
+
+
+
+<pre>"  -&gt; &amp;quot;
+&lt;  -&gt; &amp;lt;
+&gt;  -&gt; &amp;gt;
+&amp;  -> &amp;amp;
+空白文字-> &amp;nbsp;
+the letter "a" with a small circle above it -> &amp;#229; the Cyrillic capital letter "I". -> &amp;#1048; the Chinese character for water -> &amp;#x6C34;</pre>
+
+
+
+
+<h3 id="Command パターン">Commandパターン</h3>
+
+
+<p><q>One important purpose of the Command pattern is to keep the program and user interface objects completely separate from the actions that they initiate.</q></p>
+
+<p>コマンドパターンの重要な目的の一つに、プログラムとユーザインターフェースオブジェクトをコマンドの起動者から完全に切り離すということがある。・・・つまりコマンドの起動者はコマンドがどのように動くかということは知らなくてよくなる。（コマンドが何をするかは知る必要があると思うが）</p>
+
+<h3 id="検証(verification)と妥当性(validation)">検証(verification)と妥当性(validation)</h3>
+
+
+<p>知識の「正しさ」を知る方法には実は2種類ある（「正しさ」に2種類あるといってもいい）。</p>
+
+<p>1つは検証（verification）と呼ばれるもの、もう1つは妥当性確認（validation）と呼ばれるものだ。この使い分けは微妙で難しいが（分野によっても違うかもしれない）、大ざっぱにいうと</p>
+
+<ul><li>検証とは自分たちがこういうものを作ろうと決めたとおりにできているかどうかを確かめること、</li>
+<li>妥当性確認とはできたものが本当に欲しかったものかどうかを確かめることだ</li></ul>
+
+
+<p>例えばテスト仕様書を書き、テスト仕様に従ってソフトウェアを実行したときにどのような答えが出るかをチェックする。これが検証。検証できたからといって、そのソフトウェアが「本当に」正しいとは限らない。</p>
+
+<p>だって仕様書にすべての場合を列挙することはできないし、そもそも仕様書が顧客の意図したものになっているとは限らない。それに対してユーザーや顧客が欲しかったソフトウェアになっているかどうかをチェックするのが妥当性確認。</p>
+
+<h3 id="Exception クラスの派生">Exception クラスの派生</h3>
+
+
+<p>Exception クラスを派生させてエラーオブジェクトを作るときは、エラーコードを持たせられるといいかも。ってか、エラー処理機構をアーキテクチャ的に考えよう！</p>
+
+<h3 id="不正チェック">不正チェック</h3>
+
+
+
+
+<blockquote><p>「不正な」データ値をチェックするのは間違いなのです。それよりも、何が「正しい 」のかをきちんと決め、データがその定義に合致しているかをチェックし、その定義に合致しないデータはどんなものでも拒否するようにすべきなのです。</p><p>通常表現を使って一致をチェックする場合には必ず、データの最初（通常、^記号が付きます）と最後（通常、$が付きます）が一致することをチェックするようにしてください。</p><p>理想的にはユーザーにファイル名を選ばせないようにするか、それができなければ文字を小さなパターン、例えば</p><p><pre>^[A-Za-z0-9][A-Za-z0-9._\-]*$</pre></p><p>に限定するようにします。</p><p>ユーザーが攻撃者かも知れないので、ロケール値を検証する必要があります。私はロケールが次のパターンに一致するかどうかを確認するようにお勧めしたいと思います。</p><p><pre>^[A-Za-z][A-Za-z0-9_,+@\-\.=]*$</pre></p><footer><strong>出典不明</strong></footer></blockquote>
+
+
+
+
+<h4>クッキー</h4>
+
+
+<p>Webアプリケーションではよく、重要なデータにクッキーの値を使います。後ほど説明しますが、ユーザーがクッキーの値やフォームのデータをリセットして、ユーザーの好きなように設定できることは重要ですので良く覚えておいてください。</p>
+
+<p>それとは別に、ここで言っておいた方が良い検証のトリックがあるのです。もしクッキーの値を受け付ける場合には、そのドメイン値が想定したもの（つまりあなたのサイトの一つ）に
+なっていることをチェックしてください。そうしないと、（おそらく改変された）関連のサイトが、変なクッキーを挿入できてしまうかも知れないのです。</p>
+
+<p>この攻撃がどのように動作するかに興味があれば、IETF RFC 2965に詳細が説明されています（参考文献にリンクがあります）。</p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www-6.ibm.com/jp/developerworks/linux/040326/j_l-sp2.html" rel="external nofollow">セキュアなプログラマー：入力を検証する</a></li>
+</ul>
+
+
+<h3 id="Excel のエスケープシーケンス">Excel のエスケープシーケンス ~</h3>
+
+
+<p>Excel のエスケープシーケンスは ~（チルダ)</p>
+
+<h3 id="Windowsで名前解決する方法">Windowsで名前解決する方法</h3>
+
+
+
+
+<pre>C:\Windows\system32\drivers\etc\hosts</pre>
+
+
+<p>に IP と 名前 を書くと、そのWindowsでDNSの名前解決ができる。</p>
+
+<h3 id="日付型の配列を使う場合 long型の配列で保持する">日付型の配列を使う場合 long型の配列で保持する</h3>
+
+
+<p>Date型の配列で日付を保持するより、long型で日付を保持したほうがパフォーマンスも良いし、何かと便利。</p>
+
+<h3 id="ファイルのパスとリソースのパスの違い">ファイルのパスとリソースのパスの違い</h3>
+
+
+<p>ファイルのパスは、現在の場所からの相対・絶対パスになる。リソースのパスは、クラスパスが通ったところからの相対・絶対パスになる。</p>
+
+<pre>Javaの実装例：
+FileInputStream#FileInputStream();
+Class#getResourceAsStream();</pre>
+
+
+
+
+<h3 id="SQL文の動的条件追加">SQL文の動的条件追加</h3>
+
+
+<p>(2004/6/27追加)</p>
+
+<p>動的条件を付け足すときに、最初から 「1=1」のような条件を WHERE 句につけておくと便利。</p>
+
+<pre class="code"><code>StringBuffer sql = <span class="keyword">new</span> StringBuffer(<span class="literal">"SELECT * FROM TABLE_NAME WHERE <em>1=1</em>"</span>); 
+<span class="keyword">if</span> (isInput()) { 
+  sql.append(<span class="literal">" AND COLUMN = 'hoge' "</span>); 
+} 
+ 
+<span class="keyword">if</span> (isInput2()) { 
+  sql.append(<span class="literal">" AND COLUMN2 = 'foo' "</span>); 
+} 
+</code></pre>
+
+
+<p>上記のように、どの条件が最初に来るかわからない場合でも、「AND」から条件を付け始められる。</p>
+
+<h3 id="表の結合順序と効率">表の結合順序と効率</h3>
+
+
+<p>(2004/6/30追加)(oracleにて)</p>
+
+<p>ネストされたループ結合では、「処理対象件数の少ない表を外部表にする」「結合列に索引が存在し、その索引によって効率的にアクセス可能な表を内部表とする」「外部表に件数が少ないほうが効率がよい。」</p>
+
+<p>ソート・マージ結合では、それぞれの表をソートし、双方のソート済みのデータを上から順番に付き合わせて、一致する行同士を結合します。</p>
+
+<p>ハッシュ結合では、「結合する２つの表でデータ量の少ない表の結合列にハッシュ関数を適用」「データ量の多いほうの結合列にもハッシュ関数を適用」「ハッシュと結合」ハッシュ結合は等結合(=)を指定している場合のみ、利用できる</p>
+
+<p>結合順序は、ルールベースの場合、FROM句に指定した表の打ち、後ろに記述した表から順に結合される。CBOでは、オプティマイザによって順序がきめられる。ヒント句を指定できる。</p>
+
+<h3 id="SessionBeanの賢い使い方">SessionBeanの賢い使い方</h3>
+
+
+<p>(2004/7/7追加)</p>
+
+<p>EJBで使用する<em>Session Beanは、システムの分析時に作成したユースケースの単位で作成すると良い。</em>システムの構成がシンプルになり、保守しやすくなる。</p>
+
+<p>Session BeanからSession Beanを呼び出す場合はリモートインターフェースを使うと分散環境を構築しやすくなる。ただし、リモート呼び出しになるため、パフォーマンスなどのコストがかかるので、Session BeanからSession Beanを呼び出す処理を多用するのは避ける。</p>
+
+<p>EJBのクライアントからSession Beanを直接呼び出すと、密結合となりシステムの柔軟性が落ちる。解決策として、EJBクライアントからのリクエストを受け取り、Session Beanを呼び出すクラスを作る。このクラスはPOJI(Plain Old Java Object)として作成すればよい。</p>
+
+<p>このように、Session Beanを呼び出す処理を委譲する設計を「Business Delegateパターン」という。プレゼンテーション層とサービス層を分離できるので、保守が容易になる。MVCパターンでいう、C(コントローラ)を作るイメージです)</p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://direct.idg.co.jp/detail_1.msp?id=1055&class=10005&n=2" rel="external nofollow">Java World 2004年6月号</a></li>
+</ul>
+
+
+<h3 id="EntityBeanの設計">EntityBeanの設計</h3>
+
+
+<p>(2004/7/7追加)</p>
+
+<p>Entity Beanは本来、オブジェクト指向の観点からドメインモデルを作成しそれに沿って作るのが望ましい。が、従来のデータベース設計からはじめた場合は、ER図をベースにドメインモデルを作り、Entity Bean を作る方が設計は上手くいくと思う。</p>
+
+<p>Entity Beanはローカルインターフェースを実装し、EJBクライアントから直接呼び出せないようにする。これによって、呼び出しによるパフォーマンスが向上するほか、プレゼンテーション層とインテグレーション層を確実に分離できる。</p>
+
+<p>Entity Beanにローカルインターフェースを実装させた場合、呼び出しは同一マシン上に配置したSession Beanから呼び出すようにする。</p>
+
+<h3 id="EJBの設計">EJBの設計</h3>
+
+
+<p>(2004/7/7追加)</p>
+
+<p>Enterprise Beanを作る際に、コールバックメソッド(ejbCreateやejbActivateなどのメソッド)を実装する必要があるが、コールバックメソッドを実装したAdapterクラスを作ると便利である。</p>
+
+<p>各Enterprise Beanは、Adapterクラスを継承するようにすることで、個別にコールバックメソッドを実装sるう必要がなくなる。</p>
+
+<h3 id="Oracleの空文字の扱い">Oracleの空文字の扱い</h3>
+
+
+<p>(2004/7/14追加)</p>
+
+<p>Oracleでは、空文字と null の区別がない。insertで空文字を登録しても実際は null として登録される。DB2やSQL Serverはきちんと空文字と null とを区別する。</p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.db2.jp/online/apl/apl05.html" rel="external nofollow">Oracleからのアプリケーション移植 長さ0の文字列の扱いの違い</a></li>
+</ul>
+
+
+<h3 id="依存関係逆転の法則">依存関係逆転の法則</h3>
+
+
+<p>(2004/7/15追加)</p>
+
+<blockquote><p>上位のモジュールは下位のモジュールに依存してはならない。どちらのモジュールも「抽象」に依存すべきである。</p><p>「抽象」は実装の詳細に依存してはならない。実装の詳細が「抽象」に依存すべきである。</p><footer><strong>出典不明</strong></footer></blockquote>
+
+
+<p><img src="http://hamasyou.com/images/engineer_soul/layer.gif" /></p>
+
+<p>上記の図は、上位モジュールであるPolicy層が下位モジュールのService層やUtility層に依存してしまっている。この依存関係を反転させたのが下記の図である。</p>
+
+<p><img src="http://hamasyou.com/images/engineer_soul/new_layer.gif" /></p>
+
+<p>上位のモジュールは、下位のモジュールに依存しなくなっている。注目なのは、下位のモジュールが、上位モジュールと同レベルの「抽象」に依存した点である。このように、<em>上位のモジュールがインターフェースを宣言し、下位のレベルのモジュールはそれに従った実装を請け負うのが、真のオブジェクト指向である。</em></p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22" rel="external nofollow">アジャイルソフトウェア開発の奥義</a></li>
+</ul>
+
+
+<h3 id="String.replaceメソッドでString index out of rangeがでる">String.replaceメソッドでString index out of rangeがでる</h3>
+
+
+<p>(2004/8/23追加)</p>
+
+<p>String.replaceFirst や String.replaceAll メソッドで、正規表現で使われるエスケープ文字が使われると、String index out of range エラーが発生します。これを回避するには、下記の様に正規表現エスケープ文字をエスケープする必要があります。</p>
+
+<pre class="code"><code><span class="rem">/** 
+ * target 文字列の pattern にマッチする最初の文字列を replace 文字列で置き換える。 
+ * java.lang.String の replaceAll で '$' が replace に含まれていると 
+ * エラーが出るものに対応 
+ * @param target        変換対象文字列 
+ * @param pattern       変換パターン 
+ * @param replace       変換文字列 
+ * @return 変換後の文字列を返します。 
+ * @author Syougo Hamada 
+ */</span> 
+<span class="keyword">public</span> <span class="keyword">static</span> String replaceFirst(String target, String pattern, String replace) { 
+  String escape = replace.replaceAll(<span class="str">&quot;\\\\&quot;</span>, <span class="str">&quot;\\\\\\\\&quot;</span>); <span class="rem">// エスケープ文字のエスケープ </span>
+  <span class="keyword">return</span> target.replaceFirst(pattern, escape.replaceAll(<span class="str">&quot;\\$&quot;</span>, <span class="str">&quot;\\\\\\$&quot;</span>)); 
+}
+</code></pre>
+
+
+
+
+<h3 id="実装の継承とインターフェイスの継承">実装の継承とインターフェイスの継承</h3>
+
+
+<p>(2004/10/1追加)</p>
+
+<p>継承には、実装の継承とインターフェイスの継承とがある。実装の継承とは、Javaでいう extends を使う方法である。インターフェイスの継承とはJavaでいう implements を使う方法である。</p>
+
+<p>使い分けるルールとしては</p>
+
+<ol><li>クラスが「もの」や「こと」の種類を表している場合は実装の継承</li><li>サービス、機能を継承する場合はインターフェイスの継承</li></ol>
+
+
+
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22" rel="external nofollow">軽快なJava</a>』 オライリージャパン</li>
+</ul>
+
+
+<h3 id="linuxで変なファイル名が出来ちゃったときに消す方法">linuxで変なファイル名が出来ちゃったときに消す方法</h3>
+
+
+<p>(2004/10/21追加)</p>
+
+<p>Linuxを使っていて、たまに変なファイル名を付けちゃったときに消す方法です。変なファイル名というのは、例えば「スペース」「\」「-」「*」とか入れちゃった場合です。</p>
+
+<h4>【ファイル名を「&#8217; (シングルクウォート)」で囲む方法】</h4>
+
+
+
+
+<pre>消せるファイル種類
+・「スペース」が入っているファイル名　　 例： rm 'Program Files'
+・「#」で囲まれているファイル名　　　　　例： rm '#back_file#'
+・「\」だけのファイル名　　　　　　　　　　例： rm '\'
+・「*」の入ったファイル名　　　　　　　　　例： rm '****'
+・「~ユーザ名」と同じファイル名　　　　　例： rm '~hamasyou'</pre>
+
+
+
+
+<h4>【「&#8217;」(シングルクウォート)を\(エスケープ)する方法】</h4>
+
+
+
+
+<pre>消せるファイル種類
+・「'」が入っているファイル名　　　　　　　例： rm \'\'</pre>
+
+
+
+
+<h4>【「&#8211;」でオプションを無効化する方法】</h4>
+
+
+
+
+<pre>消せるファイル種類
+・「-」が先頭にあるファイル　　　　　　　　例： rm -- -exclude</pre>
+
+
+
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.u-waza.org/linux-tips/magazine/linux-tips-0009.html" rel="external nofollow">このファイル消せますか？(rm, bash, シェル)</a></li>
+<li><a href="http://www.u-waza.org/linux-tips/magazine/linux-tips-0011.html" rel="external nofollow">このファイル消せますか？(rm, bash, シェル) その２</a></li>
+<li><a href="http://www.u-waza.org/linux-tips/magazine/linux-tips-0013.html" rel="external nofollow">このファイル消せますか？(rm, bash, シェル) その3</a></li>
+</ul>
+
+
+<h3 id="メールアドレスの@より前に使える文字">メールアドレスの@より前に使える文字</h3>
+
+
+<p>(2004/10/26追加)</p>
+
+<p>メールアドレスの「@」よりも前につかえる文字の一覧です。</p>
+
+<ul><li>英数字</li><li>! (エクスクラメーションマーク)</li><li># (いげた)</li><li>$ (ドルマーク)</li><li>% (パーセント)</li><li>&amp; (アンパサンド)</li><li>&#8217; (シングルクウォート)</li><li>+ (プラス)</li><li>- (マイナス)</li><li>/ (スラッシュ)</li><li>? (クエスチョンマーク)</li><li>^ (カレット)</li>_ (アンダーバー)</li><li>` (バッククウォート)</li><li> { (中括弧開く)</li><li>| (パイプライン)</li><li>} (中括弧閉じる)</li><li>~ (チルダ)</li><li>. (ピリオド)</li></ul>
+
+
+<p>` (バッククウォート) や $ (ドルマーク） が使えるとは、結構びっくりでした。<b class="red">サーバ側でメールアドレスの処理をするときは、<a href="http://www.hotfix.jp/archives/word/2004/word04-17.html" rel="external nofollow">サニタイジング</a> を忘れないようにしましょう。</b></p>
+
+<p>なお、使用にはいくつか制約があるので注意。例えば &quot;.(ピリオド)&quot; はテキスト文字に囲まれているときのみ利用可能で、ピリオドの連続や、@の直前のピリオドは無効となります。詳しくは、参考リンクを参照のこと。</p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.faqs.org/rfcs/rfc2822.html" rel="external nofollow">RFC 2822</a></li>
+<li><a href="http://hxxk.jp/2004/10/10/1539" rel="external nofollow">メールアドレスに使える文字</a></li>
+</ul>
+
+
+<h3 id="行ロックとマルチスレッドとトランザクションを考える">行ロックとマルチスレッドとトランザクションを考える</h3>
+
+
+<p>(2004/10/27追加)</p>
+
+<p>業務ロジックで、「DBに登録してあるIDをインクリメントして使う」という処理があるとします。例えば、下記のようなテーブル構成があるとします(テーブルの中身についてはつっこみはなしでお願いします・・・)</p>
+
+<p><img src="http://hamasyou.com/images/engineer_soul/emp_table_rel.gif" alt="従業員テーブルとIDとの関連" /></p>
+
+<p>このテーブルでは、「従業員テーブルのEMP_ID」と「従業員IDテーブルのEMP_ID」が参照関係にあります。ここでは、下記のルールを元に考えます。</p>
+
+<pre>1. 従業員テーブル(以下EMPT)のEMP_IDは、従業員IDテーブル(以下IDT)のEMP_IDを元に決められる。
+2. 一度使われたIDTのEMP_IDはインクリメントされる</pre>
+
+
+<p>ここで考えられる処理としては、</p>
+
+<p class="option">IDTから現在の最大EMP_IDを取り出して、インクリメントしたものをもとに、EMPTのEMP_IDを決めてインサート処理を行う。その後、IDTのEMP_IDを更新する。</p>
+
+
+<p>というのがあります。ソースコードにすると、こんな感じですか。</p>
+
+<pre class="code"><code><span class="keyword">public</span> <span class="keyword">void</span> insertNewEmployee(<span class="keyword">long</span> companyID) { 
+  <span class="keyword">long</span> currentEmpID = getLastEmpID(companyID); 
+  Employee newEmp = <span class="keyword">new</span> Employee(companyID, currentEmpID + 1); 
+  newEmp.save(); 
+  saveLastEmpID(companyID, currentEmpID + 1); 
+} 
+ 
+<span class="keyword">private</span> <span class="keyword">long</span> getLastEmpID(<span class="keyword">long</span> companyID) { 
+    <span class="comment">// select EMP_ID from EMP_ID_TABLE where COMPANY_ID = x </span>
+    <span class="keyword">return</span> 現在の最後の従業員IDをかえす 
+} 
+ 
+<span class="keyword">private</span> <span class="keyword">void</span> saveLastEmpID(<span class="keyword">long</span> companyID, <span class="keyword">long</span> empID) {         
+    <span class="comment">// update EMP_ID_TABLE set EMP_ID = x where COMPANY_ID = y  </span>
+} 
+</code></pre>
+
+
+<div class="clear"></div>
+
+
+<p>細かい処理は省いています。この処理には、<em>かなり致命的だけど、実際に起こってみるまでわかりにくいバグ</em>が潜んでいます。</p>
+
+<h4>問題点は？</h4>
+
+
+<p>上記処理の問題点は2つあります。一つ目に、<em>insertNewEmployee メソッドがマルチスレッド環境化では登録者IDが重複してしまう可能性がある</em>という点です。二つ目に、<em>getLastEmpID メソッド内の select文 が、排他ロックになっていない</em>ことです。</p>
+
+<p>マルチスレッド環境化で実行されて2行目と3行目の間で割り込みが発生すると、同じ従業員IDが割り振られる可能性があります。また、select文が排他ロックになっていないので、2行目が実行された後に、他のアプリケーションから従業員IDを変更されてしまう可能性があります。</p>
+
+<p><section></p>
+
+<h4>問題点改善後のソースコード</h4>
+
+
+
+
+<pre class="code"><code><span class="keyword">public</span> synchronized <span class="keyword">void</span> insertNewEmployee(<span class="keyword">long</span> companyID) { 
+  <span class="comment">// 後は同じ </span>
+} 
+ 
+<span class="keyword">public</span> <span class="keyword">long</span> getLastEmpID(<span class="keyword">long</span> companyID) { 
+  <span class="comment">// 排他的ロックをかけて、他から更新されないようにする </span>
+  <span class="comment">// select EMP_ID from EMP_ID_TABLE where COMPANY_ID = x </span>
+  <span class="comment">// for update </span>
+  <span class="keyword">return</span> 現在の最後の従業員IDを返す 
+} 
+ 
+<span class="keyword">private</span> <span class="keyword">void</span> saveLastEmpID(<span class="keyword">long</span> companyID, <span class="keyword">long</span> empID) { 
+  <span class="comment">// 同じ </span>
+} 
+</code></pre>
+
+
+<div class="clear"></div>
+
+
+<p></section></p>
+
+<p>insertNewEmployee メソッドを <em>synchronized</em> にして、7行目の select文に<em>排他ロック</em>をかけました。</p>
+
+<p>結局　結局言いたいことは、主キーとなるIDを生成する場合は、DBMSの機能を使うか、確実に一つの値しか生成されないように工夫する(今回のように select for update文を使うとか)ようにしましょう。</p>
+
+<p>免責： 上記のソースコードを利用したいかなる問題も責任は負いかねます。 (^^;</p>
+
+<h3 id="Tomcat で lib に xdoclet 関連のライブラリがあると例外">Tomcat で lib に xdoclet 関連のライブラリがあると例外</h3>
+
+
+<p>Tomcat を動かすときに、 Webアプリケーションで XDoclet 関連のライブラリ (xdoclet-1.2.jar, xdoclet-ojb-module-1.2.jar, xdoclet-xdoclet-module-1.2.jar and xjavadoc-1.0.2.jar) があると下記の例外が発生する可能性がある。</p>
+
+<pre class="console">情報: Starting Servlet Engine: Apache Tomcat/5.0.19 
+2004/11/05 12:04:29 org.apache.catalina.core.StandardHost start 
+情報: XML検証は無効です 
+java.lang.reflect.InvocationTargetException 
+ at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) 
+ at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39) 
+ at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25) 
+ at java.lang.reflect.Method.invoke(Method.java:324) 
+ at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:297) 
+ at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:398) 
+Caused by: java.lang.IllegalArgumentException: <em>javacc,ant,commons-collections,commons-logging,log4j,junit-Extension-Name</em> 
+ at java.util.jar.Attributes$Name.&lt;init&gt;(Attributes.java:434) 
+ at java.util.jar.Attributes.getValue(Attributes.java:97) 
+ at org.apache.catalina.util.ManifestResource.getRequiredExtensions(ManifestResource.java:243) 
+ at org.apache.catalina.util.ManifestResource.processManifest(ManifestResource.java:212) 
+ at org.apache.catalina.util.ManifestResource.&lt;init&gt;(ManifestResource.java:96) 
+ at org.apache.catalina.util.ExtensionValidator.validateApplication(ExtensionValidator.java:250) 
+ at org.apache.catalina.core.StandardContext.start(StandardContext.java:4133) 
+ at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1126) 
+ at org.apache.catalina.core.StandardHost.start(StandardHost.java:832) 
+ at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1126) 
+ at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:521) 
+ at org.apache.catalina.core.StandardService.start(StandardService.java:519) 
+ at org.apache.catalina.core.StandardServer.start(StandardServer.java:2345) 
+ at org.apache.catalina.startup.Catalina.start(Catalina.java:594) 
+ ... 6 more </pre>
+
+
+<p>対処法は、XDoclet 関連のライブラリを含めないことかな？</p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.mail-archive.com/xdoclet-user@lists.sourceforge.net/msg08148.html" rel="external nofollow">AW: [Xdoclet-user] XDoclet + Tomcat = LifecycleException</a></li>
+</ul>
+
+
+<h3 id="JavaBeanの定義">JavaBeanの定義</h3>
+
+
+<p>(2004/11/09追加)</p>
+
+<p>JavaBean とは 「<em>再利用可能なソフトウェアコンポーネント</em>」です。</p>
+
+<dl>
+<dt>プロパティ</dt><dd><p>設定可能な内部状態のこと。読み取り専用のプロパティもあるが、通常は、「読み書きの出来るフィールド」だと思えばよい。</p></dd>
+<dt>イベント</dt><dd><p>内部状態に変化があったことを通知するもの。なんらかの処理が行われた場合に起こる。</p></dd>
+<dt>メソッド</dt><dd><p>コンポーネントに対して行わせたい処理を呼び出す手段。例えば、計算や画面表示など。</p></dd>
+</dl>
+
+
+
+
+<h4>JavaBean の特性</h4>
+
+
+
+
+<dl>
+<dt>Simple 特性</dt><dd><p>一つのプロパティに対して対となる get/set メソッドが用意されている。</p></dd>
+<dt>Indexed 特性</dt><dd><p>配列やリストを取るプロパティに対して、全体を get/set できるメソッドが用意されている。また、個別の要素に対して、インデックスでアクセスできる get/set が用意されている。</p></dd>
+<dt>Bound 特性</dt><dd><p>コンポーネントの内部状態に変更が起こった場合、適切なイベントが発生する。例えば、コンポーネントの状態が変更された場合、それに紐付くコンポーネントや、バインドされたコンポーネントにも、変更が通知される。</p></dd>
+<dt>Constrained 特性</dt><dd><p>コンポーネントの内部状態に変化が起こった場合、それに関連するオブジェクトの状態も適切に変化させる。</p></dd>
+</dl>
+
+
+<p>プログラム中で JavaBean を表現するときには、デフォルトコンストラクタと、プロパティに対する get/set メソッドを定義しておけば、標準の JavaBean として扱えると思います。</p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.seto.nanzan-u.ac.jp/~amikio/NISE/member-niit/mashima/JavaBeans/JavaBeans.html" rel="external nofollow">JavaBeans</a></li>
+<li><a href="http://blog.csdn.net/arielxp/archive/2004/10/05/125020.aspx" rel="external nofollow">JavaBean的属性</a></li>
+</ul>
+
+
+<h3 id="JSP2.0 の web.xml 定義">JSP2.0 の web.xml 定義</h3>
+
+
+<p>JSP 2.0 から web.xml の書き方が変わったようです。</p>
+
+<pre class="code"><code><span class="tag">&lt;?xml version=&quot;1.0&quot; ?&gt;</span> 
+<span class="tag">&lt;web-app <span class="attr">xmlns=</span><span class="value">&quot;http://java.sun.com/xml/ns/j2ee&quot;</span> 
+    <span class="attr">xmlns:xsi=</span><span class="value">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> 
+    <span class="attr">xsi:schemaLocation=</span><span class="value">&quot;http://java.sun.com/xml/ns/j2ee http:// 
+java.sun.com/xml/ns/j2ee/web-app_2_4.xsd&quot;</span> 
+    <span class="attr">version=</span><span class="value">&quot;2.4&quot;</span>&gt;</span> 
+<span class="rem">&lt;!-- xsi:schemaLocation は本当は一行で書く --&gt;</span>
+</code></pre>
+
+
+<p>タグリブの定義の仕方も少し変わったみたいです。「<em>jsp-config</em>」というタグで囲む必要があります。(囲まないでも大丈夫!?)</p>
+
+<pre class="code"><code><span class="tag">&lt;jsp-config&gt;</span>     
+  <span class="tag">&lt;taglib&gt;</span> 
+    <span class="tag">&lt;taglib-uri&gt;</span>/spring<span class="tag">&lt;/taglib-uri&gt;</span> 
+    <span class="tag">&lt;taglib-location&gt;</span> 
+      /WEB-INF/lib/spring.tld 
+    <span class="tag">&lt;/taglib-location&gt;</span> 
+  <span class="tag">&lt;/taglib&gt;</span> 
+<span class="tag">&lt;/jsp-config&gt;</span>
+</code></pre>
+
+
+
+
+<h4>ELバージョンのJSTL coreライブラリー用taglib指示子</h4>
+
+
+<p>&lt;%@&nbsp;taglib&nbsp;<span style="color:#993300;">uri</span>=<span style="color:#3399CC;">&quot;http://java.sun.com/jsp/jstl/core&quot;</span>&nbsp;<span style="color:#993300;">prefix</span>=<span style="color:#3399CC;">&quot;c&quot;</span>&nbsp;%&gt;</p>
+
+<h4>formatライブラリ用のtaglib指示子</h4>
+
+
+<p>&lt;%@&nbsp;taglib&nbsp;<span style="color:#993300;">uri</span>=<span style="color:#3399CC;">&quot;http://java.sun.com/jsp/jstl/fmt&quot;</span>&nbsp;<span style="color:#993300;">prefix</span>=<span style="color:#3399CC;">&quot;fmt&quot;</span>&nbsp;%&gt;</p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.limy.org/program/tomcat/jsp2_0.html" rel="external nofollow">JSP2.0</a></li>
+</ul>
+
+
+<h3 id="WinSCP でログイン時にリストの取得でエラーが起こる">WinSCP でログイン時にリストの取得でエラーが起こる</h3>
+
+
+
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.geocities.jp/winscp_jp/" rel="external nofollow">WinSCP 日本語化</a></li>
+</ul>
+
+
+<p>これは接続先のlsのエイリアス設定やLANGなどの環境変数によって生じるエラーです。 WinSCPのオプション(「エイリアスのクリア」や「環境変数のクリア」)で解決できる場合もありますが、 できない場合には以下の方法から1つ選んで対応してください。</p>
+
+<ol><li>WinSCPのログイン画面→[環境]→[SCP]のシェルで[入力]を選択し、&#8221;/bin/bash&#8221; と入力する。 </li>
+<li>サーバ側の ~/.login ファイルに次のように記述する(csh系の場合)。<pre>if ($?SSH_CLIENT && ! $?SSH_TTY) setenv LANG C </pre></li></ol>
+
+
+
+
+<h3 id="SSH接続で公開鍵認証を使うときに、公開鍵を authorized_keys にコピーし忘れないようにしましょう">SSH接続で公開鍵認証を使うときに、公開鍵を authorized_keys にコピーし忘れないようにしましょう</h3>
+
+
+<p>SSHで接続するときに、公開鍵認証方式を使って接続する場合に、 サーバーにOpenSSH を使っている場合の注意点。</p>
+
+<p>公開鍵と秘密鍵をクライアントマシンで作ったあと、公開鍵をサーバーにアップしなければなりません。その際、ファイル名は適当でいいのですが、authorized_keys ファイルに公開鍵の内容を書き写さないと、公開鍵を見つけてもらえませんでした。</p>
+
+<h3 id="要求モデリングのポイント">要求モデリングのポイント</h3>
+
+
+<p>要求モデリング (概念モデリング)を行う際に、どんな点に気をつけたらいいかのメモ。</p>
+
+<ol><li>コンテキストを理解する。(システムに名前をつける)</li>
+<li>システムのアクターを知る (システムを使う人を聞いていく)</li>
+<li>どんな機能が必要かを聞き出し、大まかにグルーピング(例：顧客管理、在庫管理、会計)</li>
+<li>他機能と関係が多くなりそうな部分からモデリングをはじめる。</li>
+<li>顧客からの情報 + 他のシステム(amazonとか)で使われている機能の情報などをあわせて、モデリングしていく</li></ol>
+
+
+<p><em>モデリングの視点を一つに決める</em>ことが重要。例えば、機能として「顧客管理」と「在庫管理」があった場合、主システムが「在庫管理」であれば、「在庫の注文」より「在庫の受注」として、在庫管理システムからの視点で記述する。</p>
+
+<p><em>モデル化対象のシステムが、モデルに現れたらおかしくないか疑う</em>べし。自社システムを開発している場合、モデル中に「自社」というエンティティが出てきたら、おかしい。</p>
+
+<p><em>履歴を管理したい場合は、「期間」を限定子としてモデリングする</em>。また、<strong>同一の時間軸でモデリングする</strong>こと。ばらばらの時間軸で登場するモデルが存在すると、混乱する。</p>
+
+<p>与えられたインスタンスを基に概念（型）を発見したり発明したりするのがモデリングだ。</p>
+
+<h3 id="マウス右クリックしたフォルダからコマンドプロンプトを開く">マウス右クリックしたフォルダからコマンドプロンプトを開く</h3>
+
+
+<p>エクスプローラで、このフォルダから「コマンドプロンプト」を開きたい！と思うときありませんか？レジストリをいじると、フォルダを右クリックしてコマンドプロンプトを開くことができるようになります。以下手順です。</p>
+
+<ol><li>「スタート」-&gt;「ファイル名を指定して実行」で「<em>regedit</em>」と入力する</li>
+<li>「HKEY_CLASSES_ROOT」 - 「Folder」 - 「shell」の下に、新規キーで適当なキーを作成する</li>
+<li>作成したキーの「既定」をダブルクリックして、マウス右クリック時に表示される文言を入力する(例：ここからcmdを開く)</li>
+<li>作成したキーにさらにサブキーとして、「<em>command</em>」というキーを作成する</li>
+<li>commandキーの「既定」をダブルクリックして、「cmd.exe」のパス + 「/k」 + 「cd &quot;%L&quot;」を設定する(例：「C:\WINDOWS\system32\cmd.exe /k cd &quot;%L&quot;」)</li></ol>
+
+
+
+
+<h4>図1. 2,3番を実行した結果</h4>
+
+
+<p><img src="http://hamasyou.com/images/engineer_soul/regedit1.gif" alt="2,3番を実行した結果" /></p>
+
+<h4>図2. 4,5番を実行した結果</h4>
+
+
+<p><img src="http://hamasyou.com/images/engineer_soul/regedit2.gif" alt="4,5番を実行した結果" /></p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/technet/prodtechnol/windows2000serv/tips/regtweak.asp" rel="external nofollow">Windows 2000 レジストリの調整</a></li>
+</ul>
+
+
+<p><em>※ レジストリをいじるので、自己責任で行ってください。</em></p>
+
+<h3 id="プロジェクト管理における7つの鉄則">プロジェクト管理における7つの鉄則</h3>
+
+
+
+
+<dl><dt>ドキュメンテーションよりもコミュニケーション</dt><dd>ドキュメントは、コミュニケーションの手段にするべきです。ドキュメントは、メンテナンスコストがかかるので、本当に必要な場合以外は作成しないほうがよい。</dd>
+<dt>ファースト・トラッキング</dt><dd>「ファースト・トラッキング」と「クラッシング」を活用せよ</dd></dl>
+
+
+
+</div>
+
+
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2007-04-20T23:35:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Apr 20<span>th</span>, 2007</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/falseuhau/">ノウハウ</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul class="list-inline">
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2007/04/20/memo/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2007/04/20/memo/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2007/04/20/memo/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2007/04/20/memo/"></div>
+    </li>
+    
+    
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2007/04/20/memo/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2007/04/20/memo/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2007/01/27/4873113075/" title="Previous Post:
+      エンジニアのための時間管理術"><i class="fa fa-arrow-circle-left"></i> エンジニアのための時間管理術</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2007/04/28/477412950X/"
+                            title="Next Post: ソースコードリーディングから学ぶ Javaの設計と実装">ソースコードリーディングから学ぶ Javaの設... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="thumbnail" />
+    </div>
+    <div class="col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/05/482228493X/">世界でもっとも強力な9のアルゴリズム</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">94</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js" rel="external nofollow"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2007/04/20/memo/';
+  var disqus_url = 'http://hamasyou.com/blog/2007/04/20/memo/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

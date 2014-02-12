@@ -1,0 +1,1179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: JavaScript | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/javascript/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理]]></title>
+    <link href="http://hamasyou.com/blog/2012/09/23/487311554X/"/>
+    <updated>2012-09-23T22:05:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/09/23/487311554X</id>
+    <content type="html"><![CDATA[<p>本書は、クライアントサイド（ブラウザ）で JavaScript を使ってリッチなアプリを作る際のプラクティスを説明しています。</p>
+
+<p>前半では、JavaScript によるオブジェクト指向開発の方法や MVC 開発の方法を、後半では、JavaScript の MVC デザインパターンに則った、各種ライブラリの説明が行われています。</p>
+
+<p>最近では、ユーザビリティの良いアプリを開発するのに必須なクライアントサイドでの JavaScript の使い方が複雑になってきているように思います。ちょっと jQuery を使って DOM 操作していればよかった頃と比べて、最近では色々なライブラリを組み合わせる必要があったり、クライアントサイドでも MVC パターンが必要になったりと、大変です。</p>
+
+<p>本書は、そんな JavaScript でリッチアプリケーションを作成する際の取っ掛かりを学ぶのに良いと思います。オライリー本なので、読むのが簡単ということはなく、むしろ格式高い感じすらしますが、多少 JavaScript でオブジェクト指向の経験があれば、読み進めるのは難しく無いと思います。</p>
+
+<!-- more -->
+
+
+
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>インスタンスメソッド定義のイディオム</h3>
+
+
+<p>JavaScript ではクラスのプロトタイプに対して関数を追加することでインスタンスメソッドを定義できます。</p>
+
+<pre><code class="javascript">Person.prototype.breath = function() { /* ... */ };
+var person = new Person();
+person.breath();
+</code></pre>
+
+<p>クラスのプロトタイプに <em>fn</em> というエイリアスを設定することが広く行われています。</p>
+
+<pre><code class="javascript">Person.fn = Person.prototype;
+Person.fn.run = function() { /* ... */ };
+</code></pre>
+
+<h3>関数呼び出しのコンテキスト</h3>
+
+
+<p>apply() と call() を使うと、関数の呼び出しコンテキストを変更できます。jQuery の API ではイベントハンドラや each() による繰り返しの中で、コンテキスト（this の値）が変更されています。</p>
+
+<pre><code class="javascript">$('.btn').click(function() {
+  $(this).hide();
+});
+</code></pre>
+
+<p>元のコンテキストにアクセスするには、良く self などの名前で this を保存しておき、後で参照する方法がとられます。</p>
+
+<pre><code class="javascript">var self = this;
+
+$('.btn').click(function() {
+  self.btnClicked();
+});
+</code></pre>
+
+<p>apply() を使うと、self を使わなくても同じことができます。</p>
+
+<pre><code class="javascript">var proxy = function(func, context) {
+  return (function() {
+    return func.apply(context, arguments);
+  });
+};
+
+$('.btn').click(proxy(function() {
+  this.btnClicked();
+}, this);
+</code></pre>
+
+<p>jQuery の proxy() メソッドがまさしく、これと同じことをしています。</p>
+
+<h3>イベントの発生順序</h3>
+
+
+<p>ある要素とその祖先の要素が同じ種類のイベントに対してイベントハンドラを登録している場合、先に呼び出されるのはブラウザによって違います。</p>
+
+<p>イベントが呼び出される順番は2種類あり、<strong>イベントキャプチャリング</strong> と<strong>イベントバブリング</strong>になります。</p>
+
+<h4>イベントキャプチャリング</h4>
+
+
+<p>最も上位（外側）の要素からイベントが発生した要素へとイベントリスナが呼び出されます。つまり、祖先の要素、内側の要素の順番でイベントリスナが呼び出されます。</p>
+
+<h4>イベントバブリング</h4>
+
+
+<p>イベントが発生した要素（内側）から祖先要素へとイベントリスナが呼び出されます。</p>
+
+<p>W3C の仕様では、addEventListener() の3つめの引数に true を指定するとイベントキャプチャリングで呼び出され、false か 指定しないとイベントバブリングで呼び出されます。</p>
+
+<p>バブリングが行われている際には、イベントオブジェクトの stopPropagation() を呼び出すことによって、バブリングを中止することができます。</p>
+
+<pre><code class="javascript">link.addEventListener('click', function(e) {
+  e.stopPropagation();
+  /* ... */
+});
+</code></pre>
+
+<p>ブラウザによってそれぞれのイベントに対するデフォルトのアクションが定義されています。たとえば、リンクのクリックでは、src で指定された URL に遷移する動作や、チェックボックスのクリックで項目が選択状態になる動作などです。</p>
+
+<p>これらのデフォルトのアクションはイベントの伝播が完了した後で実行されます。このデフォルトのアクションを中止するには、 preventDefault() 関数を呼び出します。また、イベントハンドラの戻り値で false を返すことで、preventDefault() を呼び出したのと同じ動作になります。</p>
+
+<pre><code class="javascript">form.addEventListener('submit', function(e) {
+  /* e.preventDefault() */
+  return confirm('本当に送信しますか？');
+});
+</code></pre>
+
+<h3>イベントの委譲</h3>
+
+
+<p>イベントバブリングの性質を考えると、複数ある子孫の要素それぞれにイベントリスナを設定するより、祖先の要素一つだけにイベントハンドラを設定する方が効率がよくなります。</p>
+
+<p>jQuery では、これを delgate() メソッドを使って実装できます。</p>
+
+<pre><code class="javascript">/* 望ましくないコード */
+$('ul li').click(function() { /* ... */ });
+
+// こちらのほうが効率が良い
+$('ul').delegate('li', 'click', function() { /* ... */ });
+</code></pre>
+
+<p>このように、イベント処理を委譲することによるメリットは、動的に追加された要素についても、自動でイベントリスナが適用されることです。</p>
+
+<h3>画面表示時の初期データの読み込み</h3>
+
+
+<p>ページ上のデータは、最初に読み込まれるページに含まれているか、Ajax や JSONP を使った HTTP リクエストによって事後的に読み込まれます。多くのデータを初期表示時に読み込むのには時間がかかりますが、Ajax や JSONP によるリクエストは、<em>並列処理が可能</em>であるので高速に処理できます。</p>
+
+<p>また、HTTP リクエストで取得したデータは、ローカルのストレージにキャッシュすることができます。ストレージには2種類あり、 <code>localStorage</code> と <code>sessionStorage</code> というオブジェクトでアクセスできます。</p>
+
+<h4>ローカルストレージ</h4>
+
+
+<p>ブラウザが終了した後も保持される。</p>
+
+<h4>セッションストレージ</h4>
+
+
+<p>ブラウザが開いている間のみ保持される。</p>
+
+<h3>コントローラと内部状態</h3>
+
+
+<p>まず言えるのは、<em>DOM 内にモデルの内部状態やその他の情報を保持するべきではありません</em>。頑強な MVC アーキテクチャの実現のためには、内部状態やその他の情報は、コントローラ内に保持させる方がよい。</p>
+
+<p>ビューごとにコントローラを1つずつ用意するというのがよく使われているパターンです。</p>
+
+<h3>リソースとURL</h3>
+
+
+<p>通常、Ajax などでリソースとなるデータをロードした場合、ブラウザの URL は変化しません。しかし、Web 上の個々のリソースには URL が割り当てられていると考えるのが一般的で、URL が変わらない状況というのは好ましくありません。</p>
+
+<p>そこで、この問題に対しては、内部状態が変化したら URL を変化させるようにします。このとき、よく使われるのが、URL のハッシュ（#以降の文字列）を変更するというものです。ハッシュの値はサーバに送信されないため、ページの再読込を発生させることなく変更できます。</p>
+
+<p>location.hash を使うと、ページのハッシュを取得できます。</p>
+
+<p>主要なブラウザでは、URL のハッシュが変更されたかどうかを調べるのに、hashchange イベントが使えます。</p>
+
+<p>JavaScript で作られたページは、クローラにとってはすべて同じ URL のように見えてしまいます。そこで、Google は、<a href="http://code.google.com/web/ajaxcrawling/index.html" rel="external nofollow">Ajax Crawling</a> という仕様を提案しています。</p>
+
+<h3>Backbone.js ライブラリ</h3>
+
+
+<p><a href="http://backbonejs.org/" rel="external nofollow"></a> は JavaScript アプリケーションの構築のための優れたライブラリです。Backbone.js も MVC 構造でアプリケーションを作成していきます。</p>
+
+<h2>参考</h2>
+
+
+
+
+<ul><li><a href="http://fingaholic.github.com/posts/2012-06-27-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 1章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-02-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 2章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-17-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 3章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-20-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 4章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-23-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 5章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-25-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 6章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-08-01-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 11章 その1 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-08-07-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 11章 その2 - jekylog</a></li>
+</ul>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[オブジェクト指向JavaScript]]></title>
+    <link href="http://hamasyou.com/blog/2012/04/27/4048706705/"/>
+    <updated>2012-04-27T12:54:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/04/27/4048706705</id>
+    <content type="html"><![CDATA[<p>本書は、JavaScript を理解するためのものです。JavaScript はプロトタイプベースの言語で、クラスがなかったり、プロパティのアクセス修飾子がなかったり、継承の仕方が特別だったりします。</p>
+
+<p>JavaScript を理解するには、JavaScript は全てがオブジェクトであることを覚えておく必要があります。本書は、こう言った、JavaScript が他のオブジェクト指向言語と違う点を整理し、JavaScript ではこう書くというのを丁寧に解説してくれています。</p>
+
+<p>「JavaScript はブラウザ上で動く小さな言語」という認識だった昔とは、昨今では JavaScript の扱いは変わりました。サーバサイドでも JavaScript を動かしたり、スマートフォンの開発に JavaScript を使ったりと、JavaScript が使える舞台は広がっています。</p>
+
+<p>JavaScript をもう一度ちゃんと理解したいという人に、本書はおすすめです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>プリミティブデータ型</h3>
+
+
+
+
+<dl>
+<dt>Number</dt>
+<dd>1, 100, 3.14 などの数値。浮動小数点を含む。</dd>
+<dt>String</dt>
+<dd>'hoge', &quot;foo bar&quot;, などで表現される文字列。</dd>
+<dt>Boolean</dt>
+<dd>true と false。</dd>
+<dt>undefined</dt>
+<dd>まだ存在していない変数にアクセスすると得られる値。</dd>
+<dt>null</dt>
+<dd>値がないことを表す値。</dd>
+</dl>
+
+
+
+
+<h3>変数の型をしる <code>typeof</code> 演算子</h3>
+
+
+<p>変数や値の型を調べるときに使える <strong>typeof演算子</strong>は、<em>&quot;number&quot;</em>、<em>&quot;string&quot;</em>、<em>&quot;boolean&quot;</em>、<em>&quot;undefined&quot;</em>、<em>&quot;object&quot;</em>、<em>&quot;function&quot;</em> のいずれかの値（文字列）を返す。</p>
+
+<h3>Infinity（無限）</h3>
+
+
+<p><strong>Infinity</strong> は JavaScript で扱えない大きな数値を表すのにつかう値。JavaScript で扱える最大の数値は 1.7976931348623157e+308、最小は 5e-324である。</p>
+
+<pre><code class="javascript">&gt;&gt;&gt; Infinity
+Infinity
+&gt;&gt;&gt; typeof Infinity
+"number"
+&gt;&gt;&gt; 1e309
+Infinity
+</code></pre>
+
+<h3>Boolean に変換されると false になる値</h3>
+
+
+
+
+<ul>
+<li>空文字列&quot;&quot;</li>
+<li>null</li>
+<li>undefined</li>
+<li>数値の 0</li>
+<li>数値の NaN</li>
+<li>Boolean型の false</li>
+</ul>
+
+
+
+
+<h3>型変換の Tips</h3>
+
+
+<p>数字のような文字列を数値に変換する方法は parseInt() 関数を使う方法の他に、1 を掛けるという方法もある。</p>
+
+<pre><code class="javascript">&gt;&gt;&gt; var s = "100";
+&gt;&gt;&gt; s = s * 1;
+&gt;&gt;&gt; typeof s;
+"number"
+</code></pre>
+
+<p>文字列に変換する場合、空文字と結合する方法がある。</p>
+
+<pre><code class="javascript">&gt;&gt;&gt; var n = 10;
+&gt;&gt;&gt; n = "" + n;
+&gt;&gt;&gt; typeof n;
+"string"
+</code></pre>
+
+<h3>配列の要素の削除</h3>
+
+
+<p>配列の要素の削除には delete 演算子を使うが、この演算子は配列の要素を減らすわけではなく、undefined を設定する。</p>
+
+<pre><code class="javascript">&gt;&gt;&gt; var a = [1, 2, 3];
+&gt;&gt;&gt; delete a[1];
+true
+&gt;&gt;&gt; a.length;
+3
+&gt;&gt;&gt; a;
+[1, undefined, 3]
+</code></pre>
+
+<h3>変数が定義されていて、値が割り当てられているかどうかを確認する方法</h3>
+
+
+<pre><code class="javascript">if (typeof something !== "undefined") {
+  // 何かの処理
+}
+</code></pre>
+
+<h3>自分自身を書き換える関数</h3>
+
+
+<p>自分自身を書き換える関数の仕組みは、初期化などの一度だけ行ないたい処理がある場合に使う。</p>
+
+<pre><code class="javascript">var a = function() {
+  function someSetup() {
+    var setup = 'done';
+  }
+  function actualWork() {
+    alert('Worky-worky');
+  }
+  someSetup();
+  return actualWork;
+}();
+</code></pre>
+
+<h2>オブジェクト</h2>
+
+
+
+
+<h3>オブジェクトリテラル表記</h3>
+
+
+<p>{} を使ってオブジェクトを定義することをオブジェクトリテラル表記を呼ぶ。</p>
+
+<pre><code class="javascript">var hero = {
+  breed: 'Turtle',
+  occupation: 'Ninja'
+};
+</code></pre>
+
+<p>オブジェクトのプロパティ名はクウォートしないのが推奨されている。ちなみに、連想配列（ハッシュ）のキーは文字列である。</p>
+
+<h3>コンストラクタ関数</h3>
+
+
+<p>関数を new してオブジェクトを作ることで、関数をコンストラクタとして利用することができる。</p>
+
+<pre><code class="javascript">function Hero(name) {
+  this.name = name;
+}
+
+&gt;&gt;&gt; var h1 = new Hero('hamasyou');
+&gt;&gt;&gt; h1.name;
+"hamasyou"
+</code></pre>
+
+<h3>グローバル変数</h3>
+
+
+<p>JavaScript のプログラムは様々なホスト環境（たとえばブラウザ環境）で動作する。JavaScript のホスト環境はグローバルオブジェクトを提供していて、グローバル変数はグローバルオブジェクトのプロパティになる。</p>
+
+<p>たとえば、ブラウザ環境では <em>window</em> というグローバルオブジェクトが提供されており、グローバル変数はすべて、window のプロパティになる。</p>
+
+<p class="option">コンストラクタ関数を定義したにもかかわらず、new でオブジェクトをつくらなかった場合、this はグローバルオブジェクトを指すことになる。</p>
+
+
+
+
+<h3>constructor プロパティ</h3>
+
+
+<p>オブジェクトが作成されると、<em>constructor</em> プロパティと呼ばれる特別なプロパティに、オブジェクトを作成したときに使われたコンストラクタ関数がセットされる。</p>
+
+<pre><code class="javascript">&gt;&gt;&gt; h1.constructor;
+Hero(name)
+</code></pre>
+
+<h3>instanceof 演算子</h3>
+
+
+<p><em>instanceof 演算子</em>を使うと constructor プロパティが指定した関数かどうかを調べることができる。</p>
+
+<pre><code class="javascript">&gt;&gt;&gt; h1 instanceof Hero;
+true
+</code></pre>
+
+<h3>オブジェクトの比較</h3>
+
+
+<p>オブジェクト同士を比較すると、両方の変数が同じオブジェクトの参照の場合のみ true を返す。</p>
+
+<h2>プロトタイプ</h2>
+
+
+<p><blockquote><p></p></p><p><ul><br/><li>このプロパティは関数がコンストラクタのときのみ使われる</li><br/><li>この関数を使って作られたオブジェクトも、prototype プロパティを持ち、関数の prototype と同じオブジェクトを参照する。このオブジェクトのプロパティは自分のプロパティと同じように使える</li><br/></ul></p><p><br/><p></p></blockquote></p>
+
+<h3>prototype プロパティ</h3>
+
+
+<p>関数は、<em>prototype</em> と呼ばれるプロパティを保持している。初期値は空のオブジェクトになっている。</p>
+
+<pre><code class="javascript">function multiply(a, b) {
+  return a * b;
+}
+&gt;&gt;&gt; multiply.constructor;
+Function()
+
+&gt;&gt;&gt; typeof multiply.prototype;
+"object"
+
+&gt;&gt;&gt; multiply.prototype;
+multiply {}
+</code></pre>
+
+<p>prototype プロパティに設定されているオブジェクトには、プロパティとメソッドを追加していくことができる。このオブジェクトは、multiply 関数自身にはなんの影響も与えない。追加したプロパティとメソッドは、multiply をコンストラクタとして利用した場合にのみ使われる。</p>
+
+<pre><code class="javascript">&gt;&gt;&gt; multiply.prototype.name = 'hamasyou';
+&gt;&gt;&gt; multiply.name;
+"multiply"
+
+&gt;&gt;&gt; var hoge = new multiply();
+&gt;&gt;&gt; hoge.name;
+"hamasyou"
+</code></pre>
+
+<p>prototype プロパティをいつ変更しても、すべてのオブジェクトが影響を受ける点は注意が必要。</p>
+
+<h3>prototype オブジェクトのプロパティを上書きする</h3>
+
+
+<p>オブジェクト自身のプロパティの方が、prototype オブジェクトのプロパティよりも優先して解決される。</p>
+
+<pre><code class="javascript">var Salary = (function() {
+  var salary = function() {};
+  salary.prototype.base = 50000;
+  salary.prototype.total = function() {
+    return this.base * 1.05;
+  };
+  return salary;
+})();
+
+&gt;&gt;&gt; var hoge_salary = new Salary();
+&gt;&gt;&gt; hoge_salary.base = 20000;
+&gt;&gt;&gt; hoge_salary.total();
+21000
+
+var hama_salary = new Salary();
+&gt;&gt;&gt; hama_salary.total();
+52500
+</code></pre>
+
+<h2>継承</h2>
+
+
+
+
+<h3>プロトタイプチェーンで継承を実現する</h3>
+
+
+<p>JavaScript の prototype プロパティはオブジェクトであるので、自身の prototype も持っている。このように prototype をチェーンして辿っていくことで、継承を実現することができる。</p>
+
+<p>次の例は、本書 P.183 のプロトタイプチェーンの例である。</p>
+
+<pre><code class="javascript">function Shape() {
+  this.name = 'shape';
+  this.toString = function() { return this.name; }
+}
+
+function TwoDShape() {
+  this.name = '2D shape';
+}
+
+function Triangle(side, height) {
+  this.name = 'Triangle';
+  this.side = side;
+  this.height = height;
+  this.getArea = function() {
+    return this.side * this.height / 2;
+  };
+}
+
+TwoDShape.prototype = new Shape();
+Triangle.prototype = new TwoDShape();
+TwoDShape.prototype.constructor = TwoDShape;
+Triangle.prototype.constructor = Triangle;
+
+&gt;&gt;&gt; var my = new Triangle(5, 10);
+&gt;&gt;&gt; my.getArea();
+25
+&gt;&gt;&gt; my.toString();
+"Triangle"
+</code></pre>
+
+<p>Triangle クラスには toString メソッドは定義されていないが、Shape 関数で定義されていることで、プロトタイプチェーンをたどって呼び出すことができる。</p>
+
+<p class="option">継承を行った後は、constructor を再設定しておくとよい。</p>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[テスト駆動JavaScript]]></title>
+    <link href="http://hamasyou.com/blog/2012/01/21/4048707868/"/>
+    <updated>2012-01-21T10:35:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/01/21/4048707868</id>
+    <content type="html"><![CDATA[<p>JavaScript のテストに関して書かれた、体系的な本がやっと出た！という感じにまとめられています。</p>
+
+<p>本書では、JavaScript にスポットを当て、テストしやすい JavaScript のコードとはどんなものか、実際にテスト駆動で JavaScript のコードを書くにはどういう手順で進めていけばよいかについて書かれています。</p>
+
+<p>本書は大まかに、次の4部に分けて解説されています。</p>
+
+<ul>
+<li>第1部: テスト駆動開発</li>
+<li>第2部: プログラマのためのJavaScript</li>
+<li>第3部: JavaScriptテスト駆動開発の実際</li>
+<li>第4部: テストのパターン</li>
+</ul>
+
+
+<p>第1部では、一般的な自動テストやテスト駆動開発（<strong>TDD</strong>）の概念を説明しながら、JavaScript 用の単体テストフレームワークを紹介しています。</p>
+
+<p>第2部では、JavaScript という言語をおさらいしながら、大きな特徴である<em>関数</em>、<em>クロージャ</em>、<em>プロトタイプ継承</em>、<em>ECMAScript 第五版</em>、<em>控えめなJavaScript</em>、<em>機能検出（クロスプラットフォーム）</em>について説明を掘り下げています。</p>
+
+<p>第3部では、実際に小さなプロジェクトを開発しながらテスト駆動による JavaScript の開発を体験できるようになっています。<em>Ajax</em>、<em>Comet</em> によるデータストリーミング、<em>Node.js</em> によるサーバサイド JavaScript、これらを使ったチャットプログラムの作成を体験できるようになっています。</p>
+
+<p>第4部では、<em>モック</em>や<em>スタブ</em>といったいわゆる単体テストのテクニックや、優れた単体テストを書くためのテスト名の付け方や、振る舞いのテストを書くときにはどう書いたらよいか、わかりやすい単体テストコードを書くためのテクニックが説明されています。</p>
+
+<p>『<strong>テスト駆動JavaScript</strong>』の名にふさわしい内容で、他の言語でも共通する単体テストのお作法も学べる本書は、TDD難民の人にオススメです。</p>
+
+<!-- more -->
+
+
+<p>おぼえがきです。</p>
+
+<h2>テスト駆動開発（Test-Driven Development）</h2>
+
+
+<p>単体テストの対象は、最も小さな単位である<em>関数</em>になる。テストのエントリポイントは<em>公開されている</em>メソッドからにする。</p>
+
+<h3>テスト駆動開発における設計</h3>
+
+
+<p><blockquote><p><strong>テスト駆動開発では、「あらかじめ決められた大きな設計」はないが「最初の段階では設計はない」というわけではない。</strong></p></p><p><p>TDD は、何も無いところから優れた設計を自動的に生み出すわけではなく、作業の進展とともに設計を進化させやすくするのである。TDD は、単体テストに強く依存しているため、他の部分から切り離して単独のコンポーネントに力を注ぐ開発スタイルになる。そのため、<em>コードの疎結合を保ち</em>、<em>単一責任の原則を守り</em>、不必要にコードが水ぶくれすることを防ぐために大きな力になる。TDD は設計プロセスをしっかりと制御するため、<em>設計に関する多くの決定をどうしてもそれが必要な時まで先送りする</em>ことができる。</p></p><p><p></p><footer><strong>本書 P.48</strong></footer></blockquote></p>
+
+<p>TDD で開発を始める最初は、大きな設計は不要であるが、ある程度最初に時間を割いて設計を行う。最初の設計の時に考えることは、「<em>特定の状況下でコードがどのように振舞わなければならないか</em>（<strong>単一責任の原則</strong>）」、「<em>コンポーネント間でどのように仕事を委譲しあうのか</em>（<strong>GRASPパターン</strong>）」である。</p>
+
+<h3>単一責任の原則を尊重する</h3>
+
+
+<p>TDD の単体テストでは、<em>依存コンポーネントのテストをしてはならない</em>ので、依存コンポーネントはフェイク（モックやスタブ）に置き換えなければならない。</p>
+
+<h3>テストフレームワーク</h3>
+
+
+<p><blockquote><p>JavaScript のテストをするための事実上の標準はない。実際、JavaScript は汎用の標準ライブラリというものを持たないので、ブラウザのスクリプティングと直接関係のないプログラミングタスクはどれでも事実上の標準を持たないのである。この状況を改善するために、もともとはサーバーサイド JavaScript の標準化を目指していた CommonJS という活動がある。</p></p><p><p></p><footer><strong>本書 P.64</strong></footer></blockquote></p>
+
+<p>JavaScript のテストを行おうとすると、ブラウザ毎の挙動の違いや JavaScript の実装の違いにより動作が異なってきてしまう。そのような問題を解決しようと、Google 作った <strong>JsTestDriver</strong> が注目を集めている。</p>
+
+<p>JsTestDriver もいくつかの欠点はあるため、YUI Test との使い分けをしていくとよさそう。</p>
+
+<h2>プログラマのための JavaScript</h2>
+
+
+
+
+<h3>関数の引数</h3>
+
+
+<p>JavaScript は関数を呼び出すときに引数の個数をチェックしない。実引数が渡されなかった仮引数は undefined になる。</p>
+
+<h3>スコープと実行コンテキスト</h3>
+
+
+<p>JavaScript には、グローバルスコープと関数スコープの2種類のスコープしかない。関数スコープでは、変数を関数内のどこで宣言しても、関数のどこでも参照することができる。</p>
+
+<h3>this キーワード</h3>
+
+
+<p>多くのオブジェクト指向言語で、this はレシーバオブジェクトを指すが、JavaScript ではthis の値は呼び出し元によって決まる。</p>
+
+<p><blockquote><p>this は、かっこを受かって関数を呼び出したときに暗黙のうちに設定される。<em>関数として呼び出すとグローバルオブジェクト、メソッドとして呼び出すとその呼出に使ったオブジェクトが this になる</em>。</p></p><p><p></p><footer><strong>本書 P.104</strong></footer></blockquote></p>
+
+<h3>名前空間</h3>
+
+
+<p>オブジェクトを名前空間として使うには、グローバルスコープでオブジェクトを定義し、関数やオブジェクトをそのオブジェクトのプロパティとして定義すれば良い。</p>
+
+<pre><code class="javascript">var tddjs = {
+  lightbox: { /* ... */ },
+  anchorLightbox: function(anchor, options) {
+    /* ... */
+  }
+};
+</code></pre>
+
+<p>大きなライブラリを作るようなときは、名前空間を構造化したい場合がある。そんなときは、namespace 関数を使うと良い。</p>
+
+<pre><code class="javascript">var tddjs = (function() {
+  function namespace(str) {
+    var object = this;
+    var levels = str.split(".");
+
+    for (var i = 0, len = levels.length; i &lt; len; i++) {
+      if (typeof object[levels[i]] == "undefined") {
+        object[levels[i]] = {};
+      }
+      object = object[levels[i]];
+    }
+    return object;
+  }
+
+  return {
+    namespace: namespace
+  };
+}());
+
+var custome = { namespace: tddjs.namespace };
+custome.namespace("dom.event");
+/* custome.dom.event  namespace */
+</code></pre>
+
+<h2>控えめなJavaScript</h2>
+
+
+<p><blockquote><p>セマンティックマークアップは、文書の構造に関わるものであり、文書の構造だけを対象とする。セマンティックHTMLは、アクセシビリティ向上の可能性を広げるだけでなく、CSS と JavaScript とのフックを増やす。視覚的なスタイルやレイアウトは CSS の領域である。表示に関わる属性や要素は使わないようにすべきだ。動作は、JavaScript の領域であり、外部スクリプトを介して関わるようにすべきだ。</p></p><p><p></p><footer><strong>本書 P.185</strong></footer></blockquote></p>
+
+<p>控えめな JavaScript の7つのルールは次のようになる。</p>
+
+<ul>
+<li>思い込みをするな</li>
+<li>フック（接点）と関係を見つけよ</li>
+<li>反復処理を専用ルーチンに委ねよ</li>
+<li>ブラウザとユーザーを理解せよ</li>
+<li>イベントを理解せよ</li>
+<li>他者と上手く折り合いをつけよ</li>
+<li>次のデベロッパのために仕事をせよ</li>
+</ul>
+
+
+<p>HTML と JavaScript の結合度を下げるために、イベントハンドラを使うとよい。また、テクニックの一つとして、イベントデリゲーションが推奨されている。</p>
+
+<p><strong>イベントデリゲーション</strong>は、ほとんどのユーザイベントがターゲット要素だけでなく、DOM 階層の上位コンテナでも発生することである。</p>
+
+<p>ひとつ一つの要素にイベントハンドラを仕込むのではなく、その上位の要素でハンドリングし、子要素の状態によって処理を管理するようにするとすっきりとしたコードになることが多い。</p>
+
+<h2>優れた単体テストを書く</h2>
+
+
+<p>テスト名の付け方として、「いかに」ではなく「何を」と「なぜ」を中心につけるとよい</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)]]></title>
+    <link href="http://hamasyou.com/blog/2011/06/18/4798123986/"/>
+    <updated>2011-06-18T10:01:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/06/18/4798123986</id>
+    <content type="html"><![CDATA[<p>本書は、スマートフォンアプリ開発に使う開発ツールを探している人、<strong>Titanium Mobile</strong> という名前を聞いたことがあるけど実際にどういうものかを知りたい人、Titanium Mobile を使って開発を始めたけどこういう書き方で合っているのか不安な人向けの、概要書兼リファレンスブック的な位置づけにあたります。</p>
+
+<p><section></p>
+
+<h4>Titanium Mobile</h4>
+
+
+<p><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow">Titanium Mobile - Appcelerator</a></p>
+
+<p></section></p>
+
+<p>Titanium Mobile を開発、提供している Appcelerator が用意してくれている Web 上のドキュメントは、Titanium Mobile を始めたばかりの人には分かりづらく、「こういうことがしたいんだけどどう書けばいいの？」という時には使いづらいのです。</p>
+
+<p>本書は、そんな Titanium Mobile のドキュメントの弱さを補い、Titanium Mobile とはどういうふうに動作しているのか、こういうことをするときはどう書けばいいのかを学ぶのに最適な本です。</p>
+
+<p>iPhone、Android 向けスマートフォンアプリとはいえ、プラットフォーム SDK が備える機能はとても豊富です。これらの SDK を JavaScript から扱えてしまう Titanium Mobile をよくここまでまとめたなぁという印象の良書です。</p>
+
+<div class="option"><p>スマートフォン開発は、Windows や Mac などの GUI アプリケーションと同様、イベントドリブンモデルの開発になります。そのため、GUI アプリ開発の経験がない人には Titanium Mobile を使って JavaScript で開発を行うと、どうしても戸惑うことが出てくると思います。</p>
+
+<p>本書をとりあえず読んでみて、<em>Titanium Mobile 上で JavaScript で GUI 開発（スマートフォンアプリ開発）ってこういうふうにするんだ</em>というのを体感してもらい、リファレンスとしてのお供にされるといいと思います。</p></div>
+
+
+<p>本書の対象者は、<em>Titanium Mobile を使って開発を始めたい人、実際に開発を始めたがまとまった情報がほしい人</em>です。Titanium Mobile を使ってとにかく何か作ってみたいひとは、本書内のサンプルを写経してみるといいと思います。</p>
+
+<p>Titanium Mobile を使って開発をしてみたものの、不安が残っている人に最適な一冊です。</p>
+
+<!-- more -->
+
+
+
+
+<h2>本書の目次</h2>
+
+
+
+
+<ol>
+<li>Appcelerator Titanium Mobile について
+  <ol>
+  <li>Appcelerator 社と Titanium シリーズ</li>
+  <li>Titanium Mobile について
+    <ol class="fontSmall">
+    <li>Titanium Mobile が提供する機能</li>
+    <li>Titanium Mobile の動作原理</li>
+    <li>オープンソース開発されている Titanium Mobile </li>
+    <li>日本で注目を集める Titanium Mobile</li>
+    <li>今後のロードマップ</li>
+    </ol>
+  </li>
+  <li>価格体系／ライセンス</li>
+  <li>Titanium Mobile を利用するのに必要な環境
+    <ol class="fontSmall">
+      <li>iOS には Mac OS X 環境が必要</li>
+      <li>Android 開発について</li>
+    </ol>      
+   </li>
+   <li>ネイティブアプリケーション開発で代替手段を選択するリスク</li>
+   </ol>
+</li>
+<li>開発環境導入とアプリケーションの第一歩
+  <ol>
+  <li>iOS 用開発環境の構築
+    <ol class="fontSmall">
+      <li>iOS SDK と Xcode</li>
+      <li>IOS Developer Program の登録</li>
+    </ol>
+  </li>
+  <li>Android 用開発環境の構築
+    <ol class="fontSmall">
+      <li>JDK の確認と Android SDK の入手</li>
+      <li>Mac OS への導入</li>
+      <li>Windows7 へのインストール</li>
+    </ol>
+  </li>
+  <li>Titanium Developer のインストール
+    <ol class="fontSmall">
+      <li>Mac OS X の場合</li>
+      <li>Windows7 の場合</li>
+      <li>Titanium Developer の起動とサインアップ</li>
+    </ol>
+  </li>
+  <li>Titanium Developer の画面解説
+    <ol class="fontSmall">
+      <li>パースペクティブ</li>
+      <li>最新版 SDK のアップデート</li>
+    </ol>
+  </li>
+  <li>Hello World プロジェクトの作成
+    <ol class="fontSmall">
+      <li>プロジェクトの新規作成</li>
+      <li>iPhone(iPod touch)の場合</li>
+      <li>Andorid の場合</li>
+      <li>iPad の場合</li>
+    </ol>
+  </li>
+  <li>Hello World プロジェクトを実機で動かす
+    <ol class="fontSmall">
+      <li>iOS(iPhone/iPad/iPod touch)の場合</li>
+      <li>Android の場合</li>
+    </ol>
+  </li>
+  <li>プロジェクトの中を探索する
+    <ol class="fontSmall">
+      <li>プロジェクトのフォルダ構成</li>
+      <li>app.js の解説</li>
+      <li>プラットフォームによる UI の違い</li>
+    </ol>
+  </li>
+  <li>ネイティブ UI の部品紹介と KitchenSink
+    <ol class="fontSmall">
+      <li>ネイティブ UI の部品カタログ</li>
+      <li>KitchenSink とは何か？</li>
+    </ol>
+  </li>
+  <li>Hello World の中身をいじってみる
+    <ol class="fontSmall">
+      <li>win1 に機能を追加する</li>
+      <li>win2 に機能を追加する</li>
+      <li>Tab を使わない画面デザイン</li>
+      <li>WebView を用いた HTML5 アプリケーション</li>
+    </ol>
+  </li>
+  <li>アプリケーションアイコン／スプラッシュスクリーンを変更
+    <ol class="fontSmall">
+      <li>アプリケーションアイコン</li>
+      <li>スプラッシュスクリーン（起動時画像）</li>
+    </ol>
+  </li>
+  <li>アプリケーションの設定と拡張
+    <ol class="fontSmall">
+      <li>tiapp.xml</li>
+      <li>iOS プラットフォームに依存したビルド</li>
+      <li>Android プラットフォームに依存したビルド</li>
+    </ol>
+  </li>
+  </ol>
+</li>
+<li>実践！ Twitter クライアントアプリ開発
+  <ol>
+  <li>TiTweets の目標</li>
+  <li>プロジェクト作成</li>
+  <li>タイムラインの表示
+    <ol class="fontSmall">
+      <li>HTTP クライアントとネットワークの状態の取得</li>
+      <li>ログ出力メソッド</li>
+      <li>TableView への表示</li>
+      <li>TableViewRow の使用</li>
+    </ol>
+  </li>
+  <li>app.js からスクリプトファイルの分割
+    <ol class="fontSmall">
+      <li>Titanium.include によるファイル分割</li>
+      <li>Titanium.UI.createWindow の url 指定での分割</li>
+      <li>ファイル分割と実行コンテキスト</li>
+      <li>コンテキスト間の値の受け渡し</li>
+      <li>アプリケーションプロパティを用いて実行コンテキストの違いを回避する</li>
+    </ol>
+  </li>
+  <li>プラットフォームごとの再読込 UI の実装
+    <ol class="fontSmall">
+      <li>iPhoen の場合：ナビゲーションボタンを利用する</li>
+      <li>Android の場合：メニューを利用する</li>
+      <li>プラットフォームの違いを吸収する</li>
+      <li>再読込処理を実装する</li>
+    </ol>
+  </li>
+  <li>検索結果の表示を行う
+    <ol class="fontSmall">
+      <li>固定したハッシュタグの検索</li>
+      <li>任意の検索文字列に基づく検索</li>
+      <li>前回検索値の保存</li>
+    </ol>
+  </li>
+  <li>共通ソースのオブジェクト化
+    <ol class="fontSmall">
+      <li>オブジェクトのひな形</li>
+      <li>titwitter.js を実装する</li>
+      <li>アプリケーション連携（OpenURL とインテント）</li>
+    </ol>
+  </li>
+  <li>国際化対応（i18N）
+    <ol class="fontSmall">
+      <li>メッセージ定義ファイルの準備</li>
+      <li>メッセージ定義ファイルの使用</li>
+      <li>メッセージ中の文字列置き換え</li>
+    </ol>
+  </li>
+  <li>もうすこし機能拡張
+    <ol class="fontSmall">
+      <li>タブの整理</li>
+      <li>Tweet の単独表示</li>
+      <li>Read it Later 連携</li>
+    </ol>
+  </li>
+  <li>AppStore / Android Market への公開
+    <ol class="fontSmall">
+      <li>iOS の場合（Ad Hoc 配布／App Store 公開）</li>
+      <li>Android Market への公開</li>
+    </ol>
+  </li>
+  </ol>
+</li>
+<li>ライブラリやデバイスの活用 <span class="fontSmall">〜続・Twitter クライアントアプリ開発〜</span>
+  <ol>
+  <li>TinyTweet の目標</li>
+  <li>OAuth 認証の設定をする
+    <ol class="fontSmall">
+      <li>アプリケーションを登録する</li>
+      <li>OAuth 認証の動作検証を行う</li>
+      <li>ホームタイムラインを取得する</li>
+    </ol>
+  </li>
+  <li>Tweet を Post する
+    <ol class="fontSmall">
+      <li>TextArea を配置する</li>
+      <li>キーボードツールバー（iOS のみ）</li>
+      <li>返信機能などに対応する</li>
+    </ol>
+  </li>
+  <li>カメラ撮影／フォトギャラリーの活用
+    <ol class="fontSmall">
+      <li>カメラ撮影の呼び出し</li>
+      <li>撮影済みの写真データの取得</li>
+      <li>TwitPic へのアップロード</li>
+      <li>画像ファイルのリサイズ（iOS のみ）</li>
+      <li>Andriod の場所のキーボードツールバー実現方法</li>
+    </ol>
+  </li>
+  <li>アプリケーションの完成
+    <ol class="fontSmall">
+      <li>カメラ処理部分をソース分割する（require の活用）</li>
+      <li>設定画面を作成する</li>
+    </ol>
+  </li>
+  </ol>
+</li>
+<li>GPS 活用アプリケーション「食べナビ」
+  <ol>
+  <li>「食べナビ」における目標</li>
+  <li>食べログ API に基づきデータを表示する
+    <ol class="fontSmall">
+      <li>API の動作検証</li>
+      <li>テスト用モックデータ取得処理</li>
+      <li>「もっと読む」機能</li>
+      <li>店舗情報の出力</li>
+    </ol>
+  </li>
+  <li>位置情報に基づいて地図を表示する
+    <ol class="fontSmall">
+      <li>地図表示部品 MapView の利用</li>
+      <li>tiapps.xml への設定（Android のみ）</li>
+      <li>latitudeDelta と longitudeDelta</li>
+      <li>Annotation（マーカー／ピンの表示）</li>
+    </ol>
+  </li>
+  <li>GPS で現在地の位置情報を取得する
+    <ol class="fontSmall">
+      <li>位置情報を取得する GPS 関連 API の利用</li>
+      <li>軽遺族的な位置情報の取得</li>
+    </ol>
+  </li>
+  <li>カバーフローによる写真一覧表示（iOSのみ）
+    <ol class="fontSmall">
+      <li>CoverFlowView</li>
+      <li>問い合せ結果との組み合わせ</li>
+    </ol>
+  </li>
+  <li>取得したデータをデータベースに保存する
+    <ol class="fontSmall">
+      <li>テーブルレイアウトと検証</li>
+      <li>データの追加と更新</li>
+      <li>お気に入りの表示</li>
+      <li>データの削除</li>
+    </ol>
+  </li>
+  </ol>
+</li>
+<li>Titanium Mobile API 簡易リファレンス
+  <ol>
+  <li>簡易リファレンスの読み方</li>
+  <li>Window と View</li>
+  <li>コントロール</li>
+  <li>デバイス</li>
+  <li>プラットフォーム</li>
+  <li>通信</li>
+  <li>その他</li>
+  </ol>
+</li>
+<li>Appendix
+  <ol style="list-style-type: none;margin-left: 0">
+  <li>付録1  モダンな JavaScript コーディングの第一歩</li>
+  <li>付録2  自動レイアウトと JSS 機能</li>
+  <li>付録3  2DMatrix アニメーション</li>
+  <li>付録4  Xib2js による UI 作成</li>
+  <li>付録5  開発版ビルド（Continuous Build）を活用する</li>
+  <li>付録6  モジュールを使う</li>
+  <li>付録7  Titanium Studio</li>
+  <li>付録8  Titanium Mobile 困ったときの情報源</li>
+  </ol>
+</li>
+</ol>
+
+
+
+
+<h2>覚書</h2>
+
+
+
+
+<h3>Titanium Mobile の動作原理</h3>
+
+
+<p>Titanium Mobile は JavaScript でソースコードを記述しますが、動作時には<em>Titanium Mobile の JS インタプリタ上で解釈されて動作します。</em></p>
+
+<p>よく、JavaScript のコードがコンパイルされてネイティブコードに変換されているという誤解をしそうになりますが、そうではありません。</p>
+
+<p>なので、ゲームなどのアニメーションをゴリゴリするようなアプリには、Titanium Mobile の利用は考えたほうが良いです。</p>
+
+<p>Titanium Mobile が向いている分野としては</p>
+
+<ul><li>Web上のサービスをクライアントから利用するアプリ</li>
+<li>ちょっとしたユーティリティアプリ</li></ul>
+
+
+<p>だと思います。（<a href="http://mogsnap.jp/" rel="external nofollow">MogSnap</a> のようなここまで Titanium で出来るのか！？っていうものもありますが）</p>
+
+<h3>Appcelerator 社提供のアイコンリソース</h3>
+
+
+<p>自分でアプリをつくろうと思ったときに「アイコン画像とか、俺つくれねーーー！！」ってなることがあります。。そんなときに利用出来るのがこれ！</p>
+
+<p>Appcelerator から提供されているアイコンのリソースです。是非ご利用ください。</p>
+
+<p><a href="http://developer.appcelerator.com/blog/2010/12/festivus-celebration-day-two-airing-of-grievances.html" rel="external nofollow">Festivus Celebration Day Two - Airing of Grievances - Appcelerator Developer Blog</a></p>
+
+<h3>実行コンテキスト</h3>
+
+
+<p>Titanium Mobilde で開発する際、Window ごとの処理を別々のソースコードに切り出すことができます。</p>
+
+<p>このとき、実行コンテキストが分かれます。簡単に言うと、変数のスコープが分かれるというものです。</p>
+
+<p><a href="http://developer.appcelerator.com/blog/2010/08/execution-contexts.html" rel="external nofollow">Understanding Execution Contexts - Appcelerator Developer Blog</a></p>
+
+<h2>本書に書いていないこと</h2>
+
+
+
+
+<h3>モジュールの開発</h3>
+
+
+<p>Titanium Mobile は、プラットフォーム SDK のネイティブ機能へのラッパーを数多く提供してくれているので、ほとんどのことが Titanium Mobile のコンポーネントの組み合わせだけで行えます。</p>
+
+<p>ただ、たまに、もうちょっとこの部分がこうなっていればいいのに！という、コンポーネントを拡張したい場合があります。</p>
+
+<p>Titanium Mobile にはモジュールという形で、SDK を使って直接ネイティブコードを書いて、それを JavaScript から呼び出すということができます。</p>
+
+<p>モジュールのインターフェースは、Titanium Mobile 上の呼び出し規約に沿った形で作成する必要があります。</p>
+
+<p>モジュールの詳しい作り方は、公式のドキュメントを読むのが手っ取り早いと思います。そんなに難しい英語ではないのですんなり理解できるかと思います。</p>
+
+<p><a href="http://developer.appcelerator.com/doc/mobile/guides" rel="external nofollow">Titanium Mobile Programming Guides - Appcelerator</a></p>
+
+<h3>テスト</h3>
+
+
+<p>Titanium Mobile での開発は JavaScript で記述したアプリケーションコードが Titanium のインタプリタ上で動くというアーキテクチャになっているため、GUI の実際の動作を確認するのは実機かエミュレータ（シミュレータ）を使う必要があります。</p>
+
+<p>ただ、毎回実行してコードが意図したとおりに動いているかを確認するのは時間がかかります。</p>
+
+<p>そういうことで、実装時には GUI の動作とロジックの部分をできるだけ分けて実装しておいて、下に挙げるようなテストフレームワークを使うよいと思います。</p>
+
+<h4>テストフレームワーク</h4>
+
+
+
+
+<dl><dt>drillbit</dt>
+<dd><a href="http://d.hatena.ne.jp/Ehren/20110329/1301417692" rel="external nofollow">Titanium mobile で drillbit動いた - Ehrenの日記</a></dd>
+<dt>QUnit</dt>
+<dd><a href="http://higelog.brassworks.jp/?p=692" rel="external nofollow">Titaniumでユニットテスト - ひげろぐ</a></dd></dl>
+
+
+
+
+<h3>同期処理のための Deferred</h3>
+
+
+<p>JavaScript はシングルスレッドアーキテクチャなので、割り込みをコールバックという形で実装しています。</p>
+
+<p>スマートフォンアプリのようなイベントドリブンモデルのプラットフォームでは、ユーザの反応をイベントとして発火し、リスナがそのイベントを処理するというモデルで実装していきます。</p>
+
+<p>つまり、JavaScript で実装すると、イベントリスナをコールバック関数として実装して、イベントハンドラ（GUIコンポーネント）に登録しておくという書き方になります。</p>
+
+<pre><code class="javascript">var button = Titanium.UI.createButton({...});
+button.addEventListener(function(e) {
+  // 処理
+});
+</code></pre>
+
+<p>Titanium Mobile で開発をしているとコールバックを多用するため、処理が非同期に進んでしまって、何かのイベントの結果で処理を分岐するという事をしたいときに悩むことがあります。</p>
+
+<p>そんなときは、Deferred を使って非同期処理の待ち合わせを行うとよいです。</p>
+
+<p><a href="http://hamasyou.com/blog/archives/000398" rel="external nofollow">[Titanium] JSDeferred を使って現在位置の取得を順次処理する - それはBlog</a></p>
+
+<h2>追記</h2>
+
+
+
+
+<h3>Titanium Mobile 1.7ならびにTitanium Studio 1.0対応について</h3>
+
+
+<p>Titanium Mobile1.7、Titanium Studio1.0 がリリースされたことで、本書の2章の内容が現実と合わなくなっています。</p>
+
+<p>著者の方がフォローしてくれていますので、活用してみてください。</p>
+
+<p><a href="http://code.google.com/p/titanium-mobile-doc-ja/downloads/detail?name=TMINTRO_ch02Plus.pdf" target="_blank" class="extlink">Titanium Mobileで開発するiPhone/Androidアプリ 第二章 補完稿 -  <br/>
+titanium-mobile-doc-ja</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[JavaScript] JavaScript の変数宣言のスコープ]]></title>
+    <link href="http://hamasyou.com/blog/2010/09/24/javascript-1/"/>
+    <updated>2010-09-24T10:57:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/09/24/javascript-1</id>
+    <content type="html"><![CDATA[<p>JavaScript で忘れがちな変数宣言に関してのメモ。</p>
+
+<!-- more -->
+
+
+
+
+<h2>変数の宣言</h2>
+
+
+
+
+<h3>変数宣言は関数のどこでしても関数の先頭から有効</h3>
+
+
+<p>変数を宣言せずに使用すると &ldquo;変数&rdquo; is not defined と怒られます。</p>
+
+<pre class="code">alert(hoge);
+<span class="rem">// =&gt; hoge is not defined</span></pre>
+
+
+<p>使用する場所よりも後で宣言していると <em>undefined</em> となります。</p>
+
+<p>宣言はされていても、初期化されていないということです。</p>
+
+<pre class="code">alert(hoge);
+ 
+<span class="keyword">var</span> hoge = <span class="str">&quot;Hello World&quot;</span>;
+<span class="rem">// =&gt; undefined</span></pre>
+
+
+<p>宣言は関数のどこでしても有効になるが、初期化や代入は宣言順になります。</p>
+
+<h3>変数宣言は同一関数内のすべての場所で有効</h3>
+
+
+<p>if 文や for ループの中で変数を宣言しても、やっぱり関数の先頭で宣言したこととになります。</p>
+
+<p>if 文で条件が一致しない場合の方で宣言していても有効になる。（undefined なのは宣言はされているが初期化されていないからです。）</p>
+
+<pre class="code">alert(hoge);
+ 
+if (0) {
+  <span class="keyword">var</span> hoge = <span class="str">&quot;Hello World&quot;</span>;
+}
+<span class="rem">// =&gt; undefined</span></pre>
+
+
+
+
+<h3>関数がネストされているところで宣言されるのはだめ</h3>
+
+
+<p>関数の中で関数を宣言して、そこで変数を宣言してもダメ。同一の関数内でのみ変数宣言は有効になります。</p>
+
+<pre class="code">(<span class="keyword">function</span>() {
+  alert(hoge);
+  (<span class="keyword">function</span>() {
+    <span class="keyword">var</span> hoge = <span class="str">&quot;Hello World&quot;</span>;
+  })();
+})();
+<span class="rem">// =&gt; hoge is not defined</span></pre>
+
+
+
+
+<h3>まとめ: 変数宣言は関数の最初に行う</h3>
+
+
+<p>変数宣言は関数の最初にまとめて行うのがよさそうです。</p>
+]]></content>
+  </entry>
+  
+</feed>

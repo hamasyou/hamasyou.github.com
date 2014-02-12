@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: ゲームプログラミング | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/gemupuroguramingu/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ロールプレイングゲームプログラミング]]></title>
+    <link href="http://hamasyou.com/blog/2004/07/02/4797316802/"/>
+    <updated>2004-07-02T02:10:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/07/02/4797316802</id>
+    <content type="html"><![CDATA[<p>最近のゲームは個人のレベルで作るには量も質も大きすぎて手の届かないところまで言ってしまった感じがある。一昔前の、「<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00005OVEB/sorehabooks-22" rel="external nofollow">カルドセプト</a>」などは、僕の中で大ヒットなゲームでした。</p>
+
+<p>そんなシミュレーションRPGや、斜め上から見下ろす感じのテーブルRPG(?)みたいなゲームを作れるようになっちゃうのが本書です。「いまさら自作のRPGなんてなぁ・・・」って人も、本書一冊で、自分の好きなRPGゲームが作れちゃうなんてすげーと思って、本書を読んでみたらどうですか？</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+<p>本書は、開発環境に<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00009PJON/sorehabooks-22" rel="external nofollow">Visual C++6.0</a> を使って、自分でシミュレーションRPGを作れるようになってしまう本です。Windowsプログラミングが始めてという人にも、丁寧な解説がついているので恐れることはありません。初めてRPGを作る人にはRPGって、こうやってやるんだーっという驚きが出るにちがいありません。</p>
+
+<p>ゲームシステムの設計からウィンドウ表示のやり方、マップ・キャラクターの書き方まで本書だけで一通りのシミュレーションRPGゲームはつくれてしまいます。サンプルに出来上がったゲームがついているのもうれしいです。プログラミング中にハマった場合に、サンプルを見て確認したり、息抜きにやってみたりできます。</p>
+
+<p>本格的にゲーム作りをしたい人も、初めてゲーム作りを体験する人も、最初は本書からやってみるといいと思います。ゲーム作りのノウハウ、キャラクターやマップの作り方まで、一通りのことを覚えることができます。</p>
+
+<h2>ノウハウかじり</h2>
+
+
+
+
+<h3>CPUの行動ルーチンの考え方</h3>
+
+
+<p>基本的にCPUが行動を判別するときに使う考え方は「数値化」です。数値が高いか低いかを選択するようにします。たまに、ランダムな行動をとらせたり、少し低い数値を選んだりすることで、CPUの強さを調節し、ゲームバランスを整えます。</p>
+
+<p>ゲームルールを作るうえで考慮する点として、「<strong>ルール上でプレイヤーを不利に作らない</strong>」ということがあります。例えば、数値化した場合に端数が出た場合、プレイヤーに不利にならない用にします。(端数切捨てなど)そうしないと、プレイヤーはいかさまをされている印象を受けてしまいます。</p>
+
+<h3>ビットマップの概要</h3>
+
+
+<p>Windowsが扱うビットマップには大きく分けて3つ種類があります。</p>
+
+<dl>
+<dt>デバイス依存ビットマップ(DDB)</dt>
+<dd>HBITMAP型のハンドルで扱われ、CreateBitmapなどの関数で作られる。</dd>
+<dt>デバイスに依存しないビットマップ(DIB)</dt>
+<dd>メモリ上のフォーマットを規定したもので、作成用のAPIは用意されていない。</dd>
+<dt>両方の特徴を持ったビットマップ(DIBSection)</dt>
+<dd>CreateDIBSectionで作られる、両方の特徴を持ったもの。</dd>
+</dl>
+
+
+<p>DIBSectionはWindowsのリソースを消費するため、表示を行わない場合は使用しないほうが良いでしょう。<strong>特別な理由がない限り、DIBを利用するようにします。</strong>DDBは、HBITMAP型のハンドルが必要な場合(プログラムの都合で必要な場合)に使います。</p>
+
+<p>DIBの構造仕様は、Windowsに定められていますが、本書には実装サンプルが存在します。</p>
+
+<h3>移動の考え方</h3>
+
+
+<p>移動は、一歩の移動を考えて、それの応用になります。例えば、二歩の移動は、1歩の処理 + 1歩の処理 になります。一般式で書くと 1歩の処理 + (n-1)歩の処理 = n歩の処理 になります。再起処理を使えば、移動処理を簡単に書けるということです。</p>
+
+<h3>マップデータ</h3>
+
+
+<p>マップは、設定ファイルに構造を書いておき、それを解析する方法が一般的です。起伏のあるマップを表現したい場合は、設定ファイルに数値化しておき、それを解析するという手法がとられます。</p>
+
+<h3>戦闘の考え方</h3>
+
+
+<p>戦闘シーンでのCPUの考え方としては、そのマップのクリア条件を満たすように行動させるのがポイントです。クリア条件には、例えばキャラクターの全滅などとします。複雑なルール、例えば属性の効果などは、仮想計算を行い一番効果的な手段を選択するようにします。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>ドット絵のキャラクタを、本格的に書きたいと思ったら、この本が絶対的におすすめです。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4844357050/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+<ul>
+<li>アドベンチャーゲームを作りたくなったら、本書をおすすめ！</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797320273/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Professionalゲームプログラミング]]></title>
+    <link href="http://hamasyou.com/blog/2004/06/23/4797314222/"/>
+    <updated>2004-06-23T12:07:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/06/23/4797314222</id>
+    <content type="html"><![CDATA[<p>ゲームプログラミングというのは、一般業務で使うアプリケーションとは違った、もっとテクニック重視の技法を使う必要がでてきます。ゲーム会社などでは、ひとつのゲームを作る為だけに、専用のツール(マップを作成するものなど)をつくることもあるそうです。そんな、ある意味変わったゲームプログラミングを、本書を通じて体験してみてはいかがですか？</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+<p>本書はMicrosoft Windowsの<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00009PJOD/sorehabooks-22" rel="external nofollow">Visual C++</a>というプログラミングツール対応です。つまり、Windowsプログラミング用の本ということになります。</p>
+
+<p>ゲームプログラミングと同様に、Windowsプログラミングも、少し癖があります。本書ではWindowsプログラミングに関しては必要最低限のことしか書いてありません。まあ、ゲームプログラミングに関する本なので、仕方ないというところですが、最初からつまづかないためにも、別に一冊Windowsプログラミング用の本を手元に置いておくことをおすすめします。</p>
+
+<p>本書の内容はこのようになっています。</p>
+
+<h4>基本項目</h4>
+
+
+
+
+<ul><li>ウィンドウの作成(フルスクリーン表示)</li><li>CGを読み込んで表示する</li><li>画像ファイルの書き込み</li><li>CGの重ね合わせ</li><li>画面効果(ワイプ・スクロール・フェード・リージョンを使ったワイプ)</li><li>CGの切り替え</li><li>アニメーション(目パチ)</li></ul>
+
+
+
+
+<h4>ゲーム作成(RPG・カードゲーム)</h4>
+
+
+
+
+<ul><li>マップの表示</li><li>キャラクターの移動</li><li>戦闘(アルゴリズム・マップの表示)</li><li>カード作成</li><li>カードのシャッフルと移動</li></ul>
+
+
+
+
+<h4>その他</h4>
+
+
+
+
+<ul><li>音楽を演奏する</li><li>DirectDrawを使う</li><li>セーブデータ</li><li>データ管理</li></ul>
+
+
+<p>僕が本書を購入した動機は、クォータービューのRPGを作りたいと思ったからです。本書で説明しているRPGは、ドラクエやFFとは違う、<strong>「戦略シュミレーションRPG」のようなタイプ</strong>です。マスに沿ってキャラクターを移動させていくタイプです。</p>
+
+<p>本書の解説は、わかりやすく技法(ワイプやスクロール)などを使ったときの効果や、リージョンを使ったときの注意点なども網羅しています。ゲームを始めて作る人には、本書に載っていることは知らないことだらけかも知れませんが、説明が図入りで丁寧なので、なんとかついていけるのではないかと思います。</p>
+
+<p>ゲームプログラミングに関しての技法を身につけたいならば本書はおすすめです。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>Microsoft 公式ホームページ</li>
+</ul>
+
+
+<p><a href="http://www.microsoft.com/japan/msdn/visualc/" rel="external nofollow">Microsoft Visual C++.NET</a></p>
+
+<ul>
+<li>本書で使用されているツール、Visual C++ が欲しい人はこちら。Microsoftのツールは非常に優秀で、業務アプリケーションから、Windowsアプリ、ゲームまで幅広くサポートします。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top" width="80"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00009PJOC/sorehabooks-22/ref=nosim/" rel="external nofollow"></a><br /><iframe scrolling="no" frameborder="0" width="250" height="40" hspace="0" vspace="0" marginheight="0" marginwidth="0" src="http://xml-jp.amznxslt.com/onca/xml3?dev-t=D2JW5SAFEH7L0B&t=goodpic-22&f=http://www.g-tools.com/xsl/aws-price-ffffff.xsl&locale=jp&type=lite&AsinSearch=B00009PJOC"></iframe><br />業務アプリケーション開発から、ゲーム開発までプログラミングに関することならこれひとつで十分</td></tr></table>
+</div>
+
+
+<ul>
+<li>ロールプレイングゲームを始めたいならこちら</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797316802/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+<ul>
+<li>Windows以外でゲームを作りたいならこれ！</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4627844115/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+<ul>
+<li>Javaでゲームプログラミングを始める方へ</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797318422/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[第３版　ゲーム作りで学ぶJAVAプログラミング]]></title>
+    <link href="http://hamasyou.com/blog/2004/05/22/4886478581/"/>
+    <updated>2004-05-22T22:08:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/05/22/4886478581</id>
+    <content type="html"><![CDATA[<p>この本を買った当時は僕はまったくの初心者でJavaなんて名前しか聞いたことのない奴でした。そういう人にとってはこの本はやさしく評価できるんじゃないかなって思います。でも少しくらいJavaをかじったことのある人にはこの本は簡単すぎてつまらないかもしれません。</p>
+
+<!-- more -->
+
+
+<p>表紙の裏面にこの本で学ぶ項目が書いてあって、どんなゲームを作るか載っているんですけど、これを見れば少しJavaを勉強した人でも容易に本を見なくてもゲームが作れちゃうんじゃないかな。</p>
+
+<p>例を挙げる、「文字や図を表示する」からはじまって、「じゃんけんゲームを作ろう」、「スロットマシーンを作ろう」など、ゲーム作りを行っていくうえでプログラミング能力を伸ばそうというのがこの本の特徴。</p>
+
+<p>説明がアプレットを中心にしているところも好き嫌いが分かれるところだと思います。基本的に、初心者向けの本は、GUIが出てこないとプログラミングしている気がしないらしいので、完全に初心者向けです。</p>
+]]></content>
+  </entry>
+  
+</feed>

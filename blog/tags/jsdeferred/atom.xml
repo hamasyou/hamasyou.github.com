@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: JSDeferred | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/jsdeferred/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Titanium] JSDeferred を使って現在位置の取得を順次処理する]]></title>
+    <link href="http://hamasyou.com/blog/2011/02/04/titanium-jsdeferred/"/>
+    <updated>2011-02-04T20:32:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/02/04/titanium-jsdeferred</id>
+    <content type="html"><![CDATA[<p>Titanium で、JSDeferred を使って順次処理するサンプルです。</p>
+
+<p><blockquote><p><site><a href="http://gihyo.jp/dev/feature/01/jsdeferred/0001" rel="external nofollow">JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp</a></site></p></blockquote></p>
+
+<p><section></p>
+
+<p><section></p>
+
+<h4>バージョン -- 追記（2011/03/23）</h4>
+
+
+
+
+<dl><dt>Titanium</dt><dd>1.5.1</dd>
+<dt>JSDeferred</dt><dd>0.4.0</dd></dl>
+
+
+<p>Titanium 1.6.1 で動かない問題は、<a href="http://twitter.com/Seasons" rel="external nofollow">@Seasons</a> さんがパッチを書いてくださいました。感謝！！ パッチが公開されたらリンクします！</p>
+
+<p><a href="http://d.hatena.ne.jp/Seasons/" rel="external nofollow">Seasons.NET</a></p>
+
+<p></section></p>
+
+<h3>サンプルコード</h3>
+
+
+<pre><code class="javascript">Titanium.include(Titanium.App.appURLToPath("app://lib/jsdeferred.js"));
+Deferred.define();
+
+var currentLocation = null;
+(function() {
+  var deferred = new Deferred();
+  Titanium.Geolocation.addEventListener("location", function(e) {
+    currentLocation = e.coords;
+    deferred.call();
+  });
+  return deferred;
+})().
+next(function() {
+  alert(currentLocation);
+});
+
+alert("ここは必ずしも、alert(currentLocation)の後に呼び出されるとはかぎらない!");
+</code></pre>
+
+<p>alert(currentLocation) としているところに現在位置を取得した後のコードを記述することで、現在位置を取得して何か処理をするというのを順序を保証して処理することができるようになります。</p>
+
+<p>ただし、next の外側の処理は非同期で進んでしまうため、必ずしも、alert(currentLocation) との順序は保たれません。</p>
+
+<p></section></p>
+
+<p><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow">Titanium Mobile - appcelerator</a></p>
+
+<p><a href="http://cho45.stfuawsc.com/jsdeferred/" rel="external nofollow">JSDeferred</a></p>
+
+<h3>Titanium で include でファイルを読むときのテクニック</h3>
+
+
+<pre><code class="javascript">Titanium.include(Titanium.App.appURLToPath("app://lib/jsdeferred.js"));
+</code></pre>
+
+<p>上記の様に、 app: プロトコルを使用して、appURLToPath メソッドでファイルを読み込むことで、Titanium のResources フォルダからの相対パスで書けるようになります。</p>
+]]></content>
+  </entry>
+  
+</feed>

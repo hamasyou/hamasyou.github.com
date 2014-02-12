@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: リファクタリング | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/rihuakutaringu/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[プレファクタリング―リファクタリング軽減のための新設計]]></title>
+    <link href="http://hamasyou.com/blog/2006/08/19/4873112729/"/>
+    <updated>2006-08-19T13:34:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2006/08/19/4873112729</id>
+    <content type="html"><![CDATA[<p><blockquote><p>「プレファクタリング」（Prefactoring）とは、pre（事前に） + refactoring（リファクタリング）という意味の新造語です。リファクタリングとは、コーディング中にコードの動きを変えずにコードを改善する手法のこと。そして、プレファクタリングは、コーディング前にリファクタリングを行うことで、リファクタリングの効率をさらに上げようというもので、&hellip; （略）</p></p><p><p></p><footer><strong>本書裏表紙のコメントより抜粋</strong></footer></blockquote></p>
+
+<p>プレファクタリングは、自分のこれまでの経験や知識さらには他人の経験や知識を元に、リファクタリングの効率を上げるような設計を行うというものです。かなり簡単に言ってしまうと、設計や実装時のイディオムを覚えるということになると思います。例えば、「コンポーネントは、どのように機能するのかよりもどう役に立つのかを考えることで、インターフェースに意識を集中し、抽象化を行うようにする」といった具合です。</p>
+
+<p>これまで、コーディングにおけるイディオム、良い設計への指針などについて書かれた本はいくつかありました。それらをまとめたものが本書です。全体で250ページ強のボリュームながら、良いことが書かれているなーという印象を受けました。</p>
+
+<p>コーディングに携わるプログラマや、クラス設計に携わる人にぜひお勧めする一冊です。オライリーの本なので、品質の高さは保証つきです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>すべての状況に対して効果があるものは存在しない</h3>
+
+
+<p>ある原則を適用するかどうかは、その状況（コンテキスト）により異なります。それは例えば、医療システムのようにシステムのバグが人の命に関わるような状況であれば、どれだけ冗長な例外チェックも必要とされるかもしれないということです。</p>
+
+<h3>名前の意味</h3>
+
+
+<p>あるものを表す言葉に、適切な名前をつけなければ後々混乱することになります。例えば、「ポテトチップス」という名前は、「一袋のポテトチップス」を表すのか（物）、「レシートに印字されるポテトチップス」を表すのか（種類）、どちらのことを言っているのかがわかるようにしなければなりません。</p>
+
+<h3>ほとんどの String は 単なる String 以上のものである</h3>
+
+
+<p>String は単なる文字列を表します。それ以上でもそれ以下でもありません。つまり、String は基本データ型なのです。人の属性を表す「名前」には、String ではなく、Name という抽象データ型を使いましょう。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>変な癖がつく前に読むべし！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756136494/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>リファクタリングはいまや標準</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712288/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>Javaを使うなら、絶対に読んでおくべき一冊</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714361/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[リファクタリングワークブック]]></title>
+    <link href="http://hamasyou.com/blog/2005/06/04/4756145027/"/>
+    <updated>2005-06-04T16:58:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/06/04/4756145027</id>
+    <content type="html"><![CDATA[<p>「リファクタリング」とは、プログラムの振る舞いを変えずに、内部設計を改善する技術です。良い設計が生み出す利益は計り知れません。最初から良い設計を行うのは、非常に難しい技術が伴います。また、時間もかかります。</p>
+
+<p>リファクタリングを行いながらプログラミングを進めることで、最初から良い設計を行おうとして時間がかかってしまうのを防ぐことが出来ます。本書は、そんな<b>リファクタリングを、ワーク形式で勉強できる本</b>になっています。</p>
+
+<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712288/sorehabooks-22/250-3258762-7997812?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow">リファクタリング</a>』に載っている数十個の臭いに対するリファクタリングが載っています。臭いとは、リファクタリングが必要だと思われる怪しい箇所のことです。</p>
+
+<p>本書の対象読者は、プログラミングをしたことがある人だと思います。一度でもプログラミングをしたことがあれば、臭いのする場所がなんとなく理解できるのではないかと思います。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+<p>本書の特徴は、実践形式つまりプログラムでリファクタリングを学べるところです。『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712288/sorehabooks-22/250-3258762-7997812?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow">リファクタリング</a>』にも、ソースコードは載っていました。が、リファクタリングの手順に関するものがほとんどで、実際にリファクタリングの勘所をつかむには、四苦八苦する必要がありました。</p>
+
+<p>本書は、一つの臭いに対して、複数の演習が用意されています。いくつもの演習を行っていくうちに、自然とリファクタリングの勘所が分かってくるように作られています。プログラミング経験の少ない人にもおすすめできる理由が、この演習が多いということです。</p>
+
+<p>プログラミングの勉強に、リファクタリングの勉強に、一石二鳥の本書は、これからリファクタリングを勉強しようと思っているエンジニアの人におすすめです。</p>
+
+<h2>特徴</h2>
+
+
+<ul>
+<li>リファクタリングの大元</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712288/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>リファクタリングを現場で使うための本</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797329769/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Refactoring to Patterns メモ]]></title>
+    <link href="http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/"/>
+    <updated>2004-10-29T11:15:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns</id>
+    <content type="html"><![CDATA[<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321213351/sorehabooks-22" rel="external nofollow"></a>
+</p>
+
+
+<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321213351/sorehabooks-22" rel="external nofollow">『リファクタリング―プログラムの体質改善テクニック』</a>の続編になっています。</p>
+
+<p>例のごとく、自分で読み直したときにどんな場合にどのリファクタリングが使えるかのメモにしようと思ってます。2005年中くらいには、本書の和訳が出版される予定です。</p>
+
+<p>現在、洋書読破中。記事もそのつど更新していくつもりです。(最終更新日：2004/10/29)</p>
+
+<p>本家サイトはこちらになります。カタログ一覧あります。</p>
+
+<p><a href="http://www.industriallogic.com/xp/refactoring/" rel="external nofollow">Refactoring To Patterns</a></p>
+
+<!-- more -->
+
+
+
+
+<h2>インデックス</h2>
+
+
+
+
+<ul><li><a href="#Form Template Method" rel="external nofollow">Form Template Method</a></li>
+<li><a href="#Introduce Polymorphic Creation with Factory Method" rel="external nofollow">Introduce Polymorphic Creation with Factory Method</a></li>
+<li><a href="#Chain Constructors" rel="external nofollow">Chain Constructors</a></li>
+<li><a href="#Replace One/Many Distinctions with Composite" rel="external nofollow">Replace One/Many Distinctions with Composite</a></li>
+<li><a href="#Extract Composite" rel="external nofollow">Extract Composite</a></li>
+<li><a href="#Unify Interfaces with Adapter" rel="external nofollow">Unify Interfaces with Adapter</a></li>
+<li><a href="#Introduce Null Object" rel="external nofollow">Introduce Null Object</a></li>
+<li><a href="#Compose Method" rel="external nofollow">Compose Method</a></li>
+<li><a href="#Move Accumulation to Collectiong Parameter" rel="external nofollow">Move Accumulation to Collectiong Parameter</a></li>
+<li><a href="#Replace Conditional Dispatcher with Command" rel="external nofollow">Replace Conditional Dispatcher with Command</a></li>
+<li><a href="#Move Accumulation to Visitor" rel="external nofollow">Move Accumulation to Visitor</a></li>
+<li><a href="#Replace Conditional Logic with Strategy" rel="external nofollow">Replace Conditional Logic with Strategy</a></li>
+<li><a href="#Move Embellishment to Decorator" rel="external nofollow">Move Embellishment to Decorator</a></li>
+<li><a href="#Replace State-Altering Conditionals with State" rel="external nofollow">Replace State-Altering Conditionals with State</a></li>
+<li><a href="#Replace Type Code with Class" rel="external nofollow">Replace Type Code with Class</a></li>
+<li><a href="#Replace Implicit Language with Interpreter" rel="external nofollow">Replace Implicit Language with Interpreter</a></li>
+<li><a href="#Encapsulate Composite with Builder" rel="external nofollow">Encapsulate Composite with Builder</a></li>
+<li><a href="#Replace Constructors with Creation Methods" rel="external nofollow">Replace Constructors with Creation Methods</a></li>
+<li><a href="#Move Creation Knowledge to Factory" rel="external nofollow">Move Creation Knowledge to Factory</a></li>
+<li><a href="#Encapsulate Classes with Factory" rel="external nofollow">Encapsulate Classes with Factory</a></li>
+<li><a href="#Inline Singleton" rel="external nofollow">Inline Singleton</a></li>
+<li><a href="#Replace Implicit Tree with Composite" rel="external nofollow">Replace Implicit Tree with Composite</a></li></ul>
+
+
+
+
+<h2>場合別リファクタリングカタログ</h2>
+
+
+<p>カタログ名のリンクをクリックすると、別ウィンドウで本家のイメージ図が開きます。一緒に見るとイメージがわくかも。</p>
+
+<h3 id="Form Template Method"><a href="http://www.industriallogic.com/xp/refactoring/formTemplateMethod.html" rel="external nofollow">Form Template Method</a></h3>
+
+
+<p>継承関係にあるサブクラス間の明白な、または微妙な重複コードを取り除く</p>
+
+<h3 id="Introduce Polymorphic Creation with Factory Method"><a href="http://www.industriallogic.com/xp/refactoring/polymorphicCreationFactory.html" rel="external nofollow">Introduce Polymorphic Creation with Factory Method</a></h3>
+
+
+<p>サブクラスで似たような処理を実装している場合、オブジェクト生成段階で Template Method パターンを用いることによって重複コードを減らすことができる。</p>
+
+<p>オブジェクト生成をポリモーフィズムで行うことで、オブジェクト指向っぽくなります。このリファクタリングを行った後のコードは、サブクラス間で重複した同じようなコードがなくなります。</p>
+
+<p>Factory Method パターンと Template Method パターンはよく同時に使われます。</p>
+
+<h3 id="Chain Constructors"><a href="http://www.industriallogic.com/xp/refactoring/chainConstructors.html" rel="external nofollow">Chain Constructors</a></h3>
+
+
+<p>コンストラクタで似たような処理が重複している場合、このパターンで重複を除去できる。</p>
+
+<h3 id="Replace One/Many Distinctions with Composite"><a href="http://www.industriallogic.com/xp/refactoring/onemanyDistinctionsWithComposite.html" rel="external nofollow">Replace One/Many Distinctions with Composite</a></h3>
+
+
+<p>一つのオブジェクトもしくはオブジェクトのコレクションを処理するコードが散らばっているような場合に、重複を除去できる可能性がある。</p>
+
+<h3 id="Extract Composite"><a href="http://www.industriallogic.com/xp/refactoring/extractComposite.html" rel="external nofollow">Extract Composite</a></h3>
+
+
+<p>階層関係にあるサブクラスで、個々のクラスがコンポジット関係にある場合、実装はほとんど同じである場合が多い。そのようなときに使える。</p>
+
+<h3 id="Unify Interfaces with Adapter"><a href="http://www.industriallogic.com/xp/refactoring/interfacesWithAdapter.html" rel="external nofollow">Unify Interfaces with Adapter</a></h3>
+
+
+<p>異なったインターフェースを持つからという理由で、単に違うオブジェクトを処理するのなら、Adapterと統一のインターフェースを利用して、共通のロジックを除去出来るかもしれない。</p>
+
+<h3 id="Introduce Null Object"><a href="http://www.industriallogic.com/xp/refactoring/nullObject.html" rel="external nofollow">Introduce Null Object</a></h3>
+
+
+<p>オブジェクトが null の場合に条件句で何の処理も行わない場合が多くある時、このパターンで重複が減らせるかもしれない。</p>
+
+<h3 id="Compose Method"><a href="http://www.industriallogic.com/xp/refactoring/composeMethod.html" rel="external nofollow">Compose Method</a></h3>
+
+
+<p>長くて理解しにくいメソッドがある場合、処理を構成する部分をわける。この方法は、リファクタリングの Extract Method を多く用いる。</p>
+
+<p>処理を区切るときの注意点として、<strong>同じ処理の詳細レベルになるようにメソッド化する</strong>ことがあげられる。</p>
+
+<p>このリファクタリングを適用すると、private メソッドや小さな処理単位のメソッドが非常にたくさんできる。その場合は、Extract Class リファクタリングを用いて、クラスを分けるなどして対応するとよい。</p>
+
+<h3 id="Move Accumulation to Collectiong Parameter"><a href="http://www.industriallogic.com/xp/refactoring/accumulationToCollection.html" rel="external nofollow">Move Accumulation to Collectiong Parameter</a></h3>
+
+
+<p>情報を変換していく作業がある場合、処理を構成する別々のメソッドを定義して、処理の順番で一つの情報を構成するようにする。</p>
+
+<h3 id="Replace Conditional Dispatcher with Command"><a href="http://www.industriallogic.com/xp/refactoring/conditionDispatcherWithCommand.html" rel="external nofollow">Replace Conditional Dispatcher with Command</a></h3>
+
+
+<p>条件文 (switch 文など)によって処理を分岐させるようなコーディングは、ハードコードになり、新しい条件が付け加わったりリクエストが増えたりした場合に、修正が追いつかなくなる。</p>
+
+<p>対応策として、Command パターンを用いるとよい。Command クラスにパラメータやリクエストを保持させるようにし、処理内容を Command 自体に行わせる。条件パラメータやリクエストが増えたら、新しいCommand クラスを作ることで対応できるようになる。</p>
+
+<h3 id="Move Accumulation to Visitor"><a href="http://www.industriallogic.com/xp/refactoring/accumulationToVisitor.html" rel="external nofollow">Move Accumulation to Visitor</a></h3>
+
+
+<p>異なったインターフェースのオブジェクトから情報を取得するために、巨大な switch 文を使うくらいなら、Visitor パターンを利用してデータを集めるようにする。</p>
+
+<h3 id="Replace Conditional Logic with Strategy"><a href="http://www.industriallogic.com/xp/refactoring/conditionalWithStrategy.html" rel="external nofollow">Replace Conditional Logic with Strategy</a></h3>
+
+
+<p>条件によって処理のアルゴリズムが違うような場合は、 条件句をStrategy パターンで置き換える。</p>
+
+<p>このパターンを使う動機の一つとしてこのようなことがあげられる。まず、条件分岐のロジックを書く場合というのはよく、アルゴリズムを決めるためということが多い。Decompose Conditional パターンや <a href="http://www.industriallogic.com/xp/refactoring/composeMethod.html" rel="external nofollow">Compose Method</a>パターンを用いてこのロジックの部分をシンプルに、分かりやすくすることが出来る。</p>
+
+<p>しかし一方では、Decompose Conditionalパターンや Compose Method パターンを使ってロジックをメソッドに分割すると、小さなメソッドがたくさん出来てしまう。それを防ぐために、このReplace Conditional Logic with Strategy パターンを使う。</p>
+
+<h3 id="Move Embellishment to Decorator"><a href="http://www.industriallogic.com/xp/refactoring/embellishmentToDecorator.html" rel="external nofollow">Move Embellishment to Decorator</a></h3>
+
+
+<p>クラスの核となる責務を装飾するようなコードは、条件句で装飾をするかどうかを判断するのではなくて、装飾するコードをDecoratorクラスに委譲するようにする。</p>
+
+<p>Decorator(装飾するクラス)とDecoratee(装飾されるクラス)は同じインターフェースを持つ。しかし、オブジェクトのクラスが一致するかどうかを判定するような場合(instanceof演算子を使う場合)は注意する必要があります。Decorateされたインスタンスは、Decorateeと同じインターフェースを持ちますが、通常は継承関係にはないので、クラスが一致することはありません。</p>
+
+<p>クラスの同一性に依存するようなコードがクライアントにない場合にのみ、Decoratorパターンを使います。Decorator クラスは状態(フィールド)を持たない方がいいです。なぜならDecorator クラスは不必要な状態(フィールド)があったとしても、継承せざるを得なくなるからです。</p>
+
+<h3 id="Replace State-Altering Conditionals with State"><a href="http://www.industriallogic.com/xp/refactoring/alteringConditionalsWithState.html" rel="external nofollow">Replace State-Altering Conditionals with State</a></h3>
+
+
+<p>オブジェクトの状態遷移が複雑になるとき、Stateパターンを使って状態遷移を簡略化する。</p>
+
+<p>状態遷移のロジックというのは、さまざまなところに重複ロジックが散乱することが多い。状態遷移のロジックを他のクラス(Stateクラス)に移動させることで、コードがシンプルになる。ただし、最初からこのリファクタリングを適用するのではなく、通常はもっと簡単な<i>Extract Method</i>パターンを適用する。</p>
+
+<dl>
+<dt class="info">Stateパターンと Strategyパターンの違い</dt>
+<dd>Stateパターンと Strategyパターンは、考え方の違いである(最終的なクラス図はほとんど同じ形)。Stateパターンは、状態クラスのインスタンス間で状態遷移のロジックが簡単になるように使われる。一方の Strategyパターンは、ストラテジークラスのインスタンスにアルゴリズムの実行を委譲(delegate)する目的で使う。</dd>
+</dl>
+
+
+
+
+<h3 id="Replace Type Code with Class"><a href="http://www.industriallogic.com/xp/refactoring/typeCodeWithClass.html" rel="external nofollow">Replace Type Code with Class</a></h3>
+
+
+<p>プリミティブ型をつかって型(タイプ)を判別しているようなら、 Type クラスを作って、型の安全性を保証したほうがよい。</p>
+
+<h3 id="Replace Implicit Language with Interpreter"><a href="http://www.industriallogic.com/xp/refactoring/implicitLanguageWithInterpreter.html" rel="external nofollow">Replace Implicit Language with Interpreter</a></h3>
+
+
+<p>クラスの責務が、プリミティブ型の組み合わせで成り立つような場合、ある種の言語と考えて Interpreter パターンを使うといいかもしれない。</p>
+
+<h3 id="Encapsulate Composite with Builder"><a href="http://www.industriallogic.com/xp/refactoring/compositeWithBulder.html" rel="external nofollow">Encapsulate Composite with Builder</a></h3>
+
+
+<p>Compositeパターンを使った再帰的な構造を組み立てる場合に Builder を使うとクライアントはシンプルになる。</p>
+
+<p>通常、Compositeパターンを使って構造を組み立てる場合、実装クラスに関連してしまう(カタログの場合 TagNode クラス)。Compositeを組み立てる Builder クラスを用意することで、実装を知らずにクライアントは構造を組み立てることが出来るようになる。</p>
+
+<dl>
+<dt class="info">このパターンを使う動機</dt>
+<dd>
+<pre>
+１． 複雑なオブジェクトを構築しなければならない場合にクライアントの実装はシンプルに保ちたい
+２． クライアントをCompositeの詳細から切り離したい
+</pre>
+</dd>
+</dl>
+
+
+<p>CompositeパターンとBuilderパターンは同時に使われることが多い。理由は2番の動機のように、クライアントがCompositeの詳細を知らなくてもすむようにしたいから。このように設計しておくことで、Compositeの実装が変わった場合にBuilderでクライアントの変更を吸収出来る場合が多くなる</p>
+
+<h3 id="Replace Constructors with Creation Methods"><a href="http://www.industriallogic.com/xp/refactoring/constructorCreation.html" rel="external nofollow">Replace Constructors with Creation Methods</a></h3>
+
+
+<p>クラスにコンストラクタがたくさんあり、プログラマーがどのコンストラクタを呼べばよいのか分かりにくい場合にこのリファクタリングが使える。複数のコンストラクタよりも、Create Method を用意したほうが良い理由は、<b>メソッドに名前が付けられるから、どんな処理が行われるのか名前から判断できる</b>から。(コンストラクタじゃ全部同じ名前で分からない)</p>
+
+<h3 id="Move Creation Knowledge to Factory"><a href="http://www.industriallogic.com/xp/refactoring/creationWithFactory.html" rel="external nofollow">Move Creation Knowledge to Factory</a></h3>
+
+
+<p>色々なクラスにインスタンス生成の情報が広がってしまっている場合、単一のFactoryクラスを作成することでシンプルになるかもしれない。</p>
+
+<p>インスタンス生成の役割は色々なクラスに広がるべきではない。今回のようなaStringNodeインスタンス生成の方法をaParser、aStringParser、StringNodeに散らばらせるのではなく、NodeFactoryを導入しインスタンス生成と設定をカプセル化すべき。(クラスには単一の責務のみを持たせるべきだから)</p>
+
+<p>生成するインスタンスがロジックによって違ってくるような場合、AbstractFactoryパターンを使ってFactoryを分けることで対応できるようになる。aParserにインスタンス生成の責務を負わせていると、条件分岐のロジックが重複してしまう可能性が高い。</p>
+
+<h3 id="Encapsulate Classes with Factory"><a href="http://www.industriallogic.com/xp/refactoring/classesWithFactory.html" rel="external nofollow">Encapsulate Classes with Factory</a></h3>
+
+
+<p>クラスのクライアントが直接、実装に依存してしまう関連よりも Factory メソッドを用意して抽象に依存させるようにする。</p>
+
+<p>「<strong>抽象に依存せよ。実装に依存するな。</strong>」は、良いクラス設計のポイントです。このパターンを適用することでクライアントは実装に依存せずに、抽象インターフェースにのみ依存するようになります。</p>
+
+<p>ただし一つ問題があります。このパターンでは、子クラスが増えた場合に Factory クラスを修正しなければなりません。インターフェースの変更(追加)を行わなければならなくなるので、子クラスがほとんど追加されないような場合にだけ使った方が良いと思います。</p>
+
+<h3 id="Inline Singleton"><a href="http://www.industriallogic.com/xp/refactoring/inlinesingleton.html" rel="external nofollow">Inline Singleton</a></h3>
+
+
+<p>不適切なSingletonの使い方をしている部分をリファクタリングします。</p>
+
+<p>Singletonパターンを必要としない場面は下記のようなときがあります。</p>
+
+<ul><li>Singletonオブジェクトを使うクラスが、Singletonオブジェクトを引数などで簡単に渡してもらえる場合</li><li>些細なメモリやパフォーマンスを改善するためだけに使われるSingletonオブジェクト</li><li>下層のクラスが同一層のリソース以外を使う目的で使われているSingletonオブジェクト</li></ul>
+
+
+<p>Singletonを使うべき理由は以下だけです。</p>
+
+<p><strong>たった一つのインスタンスであることを保証したい場合とグローバルアクセスポイントを提供したい場合</strong></p>
+
+<dl>
+<dt class="info">図の説明</dt>
+<dd>
+<p>カタログに載ってる図は、アプリケーション層にある Blackjackクラスが 上位層の Console クラスに依存している。リファクタリング前のコードでは、ConsoleクラスをHitStayResponseオブジェクトを上位層から下位層に渡すためのRegistの役割に使っている。</p>
+
+<p>リファクタリング後のコードでは、素直に Blackjackクラスにセッターメソッドを用意して、無駄なRegistクラスを作らないように修正されている。</p>
+</dd>
+</dl>
+
+
+
+
+<h3 id="Replace Implicit Tree with Composite"><a href="http://www.industriallogic.com/xp/refactoring/implicitTreeWithComposite.html" rel="external nofollow">Replace Implicit Tree with Composite</a></h3>
+
+
+<p>ツリー構造を構成するような処理を、<i>Composite</i> パターンをを使って分かりやすくします。</p>
+
+<p>XMLデータなどのツリー形式を構成するデータ構造を扱う場合、<i>Composite</i> パターンを使ってクラスを分割すると、ロジックがすっきりすることがあります。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li><p>Refactoring to Patterns のWikiです。随時サンプルコードが増えていく予定のようです。
+<img src="http://hamasyou.com/images/img-link.gif"   align="middle" /><a href="http://capsctrl.que.jp/kdmsnr/wiki/RtP/" rel="external nofollow">Refactorint to Patterns Wiki(サンプルコード有)</a></p></li>
+<li><p>GoFのデザインパターンを学ぶ定番です。</p></li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+<ul>
+<li>GoF以外のデザインパターンが載ってます。PLoPで扱われている中で主なものを選んであります。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797314397/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+<ul>
+<li>エンタープライズで使えるパターン集のバイブル的本です。(洋書)</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321127420/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[リファクタリング覚書き]]></title>
+    <link href="http://hamasyou.com/blog/2004/06/29/post-8/"/>
+    <updated>2004-06-29T03:06:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/06/29/post-8</id>
+    <content type="html"><![CDATA[<p>リファクタリングとは「ソフトウェアの外部的振る舞いを保ったままで、内部の構造を改善していく作業」をいいます。と、こんな説明は世の中腐るほど出ています。僕のおすすめの「<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712288/sorehabooks-22" rel="external nofollow">リファクタリング プログラミングの体質改善テクニック</a>」という本もあります。</p>
+
+<p>ここでは、プロジェクト中のちょっとしたときに、リファクタリングを行えるような覚書きをまとめておこうかと思います。すべてのリファクタリングに先立って<strong>自動テストを行うことがリファクタリングの最低条件</strong>である。</p>
+
+<!-- more -->
+
+
+
+
+<h2>コードの嫌な匂い</h2>
+
+
+
+
+<ul>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#1" rel="external nofollow">重複したコード</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#2" rel="external nofollow">長すぎるメソッド</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#3" rel="external nofollow">大きすぎるクラス</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#4" rel="external nofollow">多すぎる引数</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#5" rel="external nofollow">変更クラスが複数</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#6" rel="external nofollow">変更箇所が多い</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#7" rel="external nofollow">他クラスの属性ばかり使っている</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#8" rel="external nofollow">まとまったデータ</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#9" rel="external nofollow">基本データ型よりオブジェクト</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#10" rel="external nofollow">スイッチ文</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#11" rel="external nofollow">継承する毎に変更が入る</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#12" rel="external nofollow">無駄なクラス</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#13" rel="external nofollow">不要な一般化</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#14" rel="external nofollow">一時属性の多用</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#15" rel="external nofollow">過剰なメッセージチェーン</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#16" rel="external nofollow">過剰な委譲</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#17" rel="external nofollow">相互リンク</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#18" rel="external nofollow">処理は同じで名前が違う</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#19" rel="external nofollow">未熟なクラスライブラリ</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#20" rel="external nofollow">データクラス</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#21" rel="external nofollow">親クラスがほとんど不要</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#22" rel="external nofollow">コメント</a></li>
+</ul>
+
+
+
+
+<h2>リファクタリングカタログ</h2>
+
+
+
+
+<ul>
+<li><a href="#メソッドの抽出" rel="external nofollow">メソッドの抽出</a></li>
+<li><a href="#一時変数の置き換え" rel="external nofollow">一時変数の置き換え</a></li>
+<li><a href="#説明用変数の導入" rel="external nofollow">説明用変数の導入</a></li>
+<li><a href="#複数の意味を持つ変数は避ける" rel="external nofollow">複数の意味を持つ変数は避ける</a></li>
+<li><a href="#引数でわたされた変数への代入を避ける" rel="external nofollow">引数でわたされた変数への代入を避ける</a></li>
+<li><a href="#メソッドの移動" rel="external nofollow">メソッドの移動</a></li>
+<li><a href="#クラスの分割" rel="external nofollow">クラスの分割</a></li>
+<li><a href="#デメテルの法則" rel="external nofollow">デメテルの法則</a></li>
+<li><a href="#自己カプセル化" rel="external nofollow">自己カプセル化</a></li>
+<li><a href="#オブジェクトによるデータの置き換え" rel="external nofollow">オブジェクトによるデータの置き換え</a></li>
+<li><a href="#コレクションのカプセル化" rel="external nofollow">コレクションのカプセル化</a></li>
+<li><a href="#条件記述の分解" rel="external nofollow">条件記述の分解</a></li>
+<li><a href="#ガード節による条件記述の置き換え" rel="external nofollow">ガード節による条件記述の置き換え</a></li>
+<li><a href="#ポリモーフィズムによる条件記述の置き換え" rel="external nofollow">ポリモーフィズムによる条件記述の置き換え</a></li>
+<li><a href="#ヌルオブジェクトの導入" rel="external nofollow">ヌルオブジェクトの導入</a></li>
+<li><a href="#メソッドに関して" rel="external nofollow">メソッドに関して</a></li>
+<li><a href="#メソッドの名前変更" rel="external nofollow">メソッドの名前変更</a></li>
+<li><a href="#問い合わせと更新の分離" rel="external nofollow">問い合わせと更新の分離</a></li>
+<li><a href="#引数オブジェクトの導入" rel="external nofollow">引数オブジェクトの導入</a></li>
+<li><a href="#setメソッドの削除" rel="external nofollow">setメソッドの削除</a></li>
+<li><a href="#Factoryメソッドによるコンストラクタの置き換え" rel="external nofollow">Factoryメソッドによるコンストラクタの置き換え</a></li>
+<li><a href="#ダウンキャストの隠蔽" rel="external nofollow">ダウンキャストの隠蔽</a></li>
+<li><a href="#メソッドの引き上げ" rel="external nofollow">メソッドの引き上げ</a></li>
+<li><a href="#インターフェースの抽出" rel="external nofollow">インターフェースの抽出</a></li>
+<li><a href="#委譲による継承の置き換え" rel="external nofollow">委譲による継承の置き換え</a></li>
+</ul>
+
+
+
+
+<h3 id="メソッドの抽出">メソッドの抽出</h3>
+
+
+
+
+<ul><li>長すぎるメソッド</li><li>コメントがないと処理が理解できない部分</li></ul>
+
+
+<p>メソッド抽出できる合図です。ただし、<strong>メソッドに良い名前が付けられる場合だけ</strong>抽出します。メソッドには、どんな処理をするかではなく、<b>何をするか</b>によって命名する。<b>メソッド名と本体との意味的な距離が重要であって、メソッド名の長さは関係ない。</b>明快さが向上するなら、メソッド名がコードよりも長くても抽出すべきである。</p>
+
+<h3 id="一時変数の置き換え">一時変数の置き換え</h3>
+
+
+<p>一度だけ代入される一時変数がある。そんな時、メソッドの問い合わせによる置き換えを検討する。ただ、パフォーマンスなど考慮する場合もあるので、ほとんどの場合無視できる。他のリファクタリングの邪魔になったときだけ実行する。</p>
+
+<h3 id="説明用変数の導入">説明用変数の導入</h3>
+
+
+<p>長くて、よく考えないとわからないような評価式があった場合、一時変数を使って意味のわかるようにする。条件ロジックにおいて、各条件記述の意味を適切な名前の一時変数を使って説明するのは有効です。ただし、メソッドの抽出を行える場合は、そちらを優先する。メソッドにすることで他の場所でも使える可能性ができる。</p>
+
+<h3 id="複数の意味を持つ変数は避ける">複数の意味を持つ変数は避ける</h3>
+
+
+<p>ループ変数や、値を集める変数でもなく、複数回代入されるようなものは、意味ごとに変数を分けるべき。その際、<b>適切な名前を付ける</b>こと。</p>
+
+<h3 id="引数でわたされた変数への代入を避ける">引数でわたされた変数への代入を避ける</h3>
+
+
+<p>メソッドの引数に渡された変数に、値を代入することはさける。「値渡し」と「参照渡し」の混乱をさけるために、代入はしない。結果用の別の変数を用意して、そっちをつかう。</p>
+
+<h3 id="メソッドの移動">メソッドの移動</h3>
+
+
+<p>メソッドの定義されたクラスの属性よりも、他のクラスの属性のほうをよく使っている場合、属性を良く使うクラスの方にメソッドを移動させたほうがよい。<b>クラス間の結合度を下げるために。</b>逆に、属性を移動させる方法もある。どちらにするかは、やってみてぴったりくる方にする。</p>
+
+<h3 id="クラスの分割">クラスの分割</h3>
+
+
+<p>ひとつのクラスに、メソッドが多くなりすぎた場合や、責務が複数ある場合は、別々のクラスに分割する。責務で分割する粒度を決める。</p>
+
+<h3 id="デメテルの法則">デメテルの法則</h3>
+
+
+<p><a href="http://homepage3.nifty.com/masarl/article/oo-principles.html" rel="external nofollow">オブジェクト指向の法則集</a></p>
+
+<p>あるオブジェクトから取得したオブジェクトには、直接アクセスしてはいけない。デメテルの法則について、詳しくは<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712741/sorehabooks-22" rel="external nofollow">達人プログラマー</a>をご覧あれ。</p>
+
+<h3 id="自己カプセル化">自己カプセル化</h3>
+
+
+<p>自分のクラスの属性であっても、アクセサメソッドを使ってアクセスする。サブクラスが情報の取り出し方をメソッドによってオーバーライドできること、遅延初期化のようにデータ管理面で、
+柔軟性を持たせられることがその理由。逆に、変数に直接アクセスすると、コードが読みやすくなる利点がある。</p>
+
+<h3 id="オブジェクトによるデータの置き換え">オブジェクトによるデータの置き換え</h3>
+
+
+<p>引数で渡されたデータだけを使って処理をしたり、他のクラスの属性を使って処理をしたりしている場合、それらのデータをクラスとして切り出し、振る舞いを持たせることができる。</p>
+
+<p><b>配列の各要素がそれぞれ別々の意味を持つようなデータ構造を考えた場合も、オブジェクトとして切り出したほうがすっきりする。</b>配列や、リストなどのコレクションを使う場合は、同じ種類のオブジェクトを保持するときだけにする。</p>
+
+<h3 id="コレクションのカプセル化">コレクションのカプセル化</h3>
+
+
+<p>getアクセサメソッドで、直接コレクションオブジェクトを返すのはやめにしましょう。コレクションの中身を直接書き換えられてしまう可能性があります。コレクションを隠蔽し、getメソッドでは、読み取り専用のオブジェクトを、コレクションに値を加えたい場合は、クラスにaddメソッドを用意しましょう。コレクションにsetメソッドは必要ありません。自らが仲介役を果たしましょう。</p>
+
+<h3 id="条件記述の分解">条件記述の分解</h3>
+
+
+<p>複雑な条件記述がある場合、その条件部をメソッドとして切り出します。抽出するメソッドは小さくても、メソッドのほうが条件式よりもコメントのように楽に読めます。</p>
+
+<p><b>条件記述の抽出は、何を行っているかの記述をなぜ行っているかの文で置き換えることになる</b>ため、非常に読みやすくなります。</p>
+
+<h3 id="ガード節による条件記述の置き換え">ガード節による条件記述の置き換え</h3>
+
+
+<p><b>if-then-else構造が使われるときには、if部にもelse部にも同じウェイトが置かれています。</b></p>
+
+<p>これは、読み手に、両方とも等しく起こる、等しく重要であるということを伝えます。ガード節は「めったに起きないが、起きたときは何もしないで出て行く」ということを伝えます。ガード節はreturnするか例外を投げるかのどちらかです。</p>
+
+<p>ガード節による入れ子条件の置き換えを行う場合のヒントは、条件記述を逆にすることでしばしば行える。</p>
+
+<h3 id="ポリモーフィズムによる条件記述の置き換え">ポリモーフィズムによる条件記述の置き換え</h3>
+
+
+<p>オブジェクトのタイプや状態でのswitch文が存在する場合、その部分をオブジェクトのポリモーフィズムに置き換えることができます。ポリモーフィズムの真髄は、オブジェクトの振る舞いが型によって変わるとき、明示的な条件記述を書かなくてもすむようにすることです。</p>
+
+<p>このリファクタリングを行う前に、適切かつ必要な継承関係を持っていることが必要です。</p>
+
+<h3 id="ヌルオブジェクトの導入">ヌルオブジェクトの導入</h3>
+
+
+<p>null のチェックが繰り返し行われる場合、ポリモーフィズムを利用した、nullオブジェクトを導入するとよい。<a href="http://www.hyuki.com/dp/dpinfo.html#NullObject" rel="external nofollow">Null Objectパターン</a></p>
+
+<h3 id="メソッドに関して">メソッドに関して</h3>
+
+
+<p>優れたオブジェクト指向のソフトウェアを開発するには、理解が容易で使いやすいインターフェースを提供することが秘訣となります。状態を更新するメソッドと、状態を問い合わせるメソッドを明確に分離することは非常に良いことである。よいインターフェースは、何をすべきかだけを示し、それ以上は何も語らない。クラスのユーザにダウンキャストを強要するのはできるだけさける。</p>
+
+<h3 id="メソッドの名前変更">メソッドの名前変更</h3>
+
+
+<p>メソッドの名前は、そのメソッドの処理にコメントを付けるとどうなるかを考え、それをそのまま名前にしてしまうとよい。名前だけでなく、シグネチャの部分(引数)の順序を変更することで、メソッドの意図が明確になるなら、変更するべきです。</p>
+
+<h3 id="問い合わせと更新の分離">問い合わせと更新の分離</h3>
+
+
+<p>値を返す関数は、クラスの状態を変更するなどの副作用がないのが好ましい。<strong>副作用のあるメソッドと、ないメソッドを明確に分離するのは、非常によいこと</strong>です。問い合わせと更新は、明確に分離するべきです。</p>
+
+<p><blockquote><p>ファンクション(関数)とプロシージャ(手続き)を明確に区別したほうがプログラムは分かりやすくなります。ファンクションとは、戻り値を記述して値の取得を意図するもの。プロシージャは、オブジェクトに対して何かしらの処理を行うもの。</p></p><p><p><b>ファンクション名には、戻り値を記述するものをつけると良い。</b>例えば、cos()、sin()、currentPenColor()などは良い例です。<b>プロシージャ名には、動詞 + 目的語を記述する良い。</b>例えば、calcMoney()、printReport()、formatDocument()などは良い例です。</p></p><p><p></p><footer><strong>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756102107/sorehabooks-22" rel="external nofollow">コードコンプリート―完全なプログラミングを目指して</a>』 アスキー</strong></footer></blockquote></p>
+
+<h3 id="引数オブジェクトの導入">引数オブジェクトの導入</h3>
+
+
+<p>本来一緒に扱うべきデータを引数としてたくさん渡している場合、引数オブジェクトの導入を検討する。長い引数リストは理解しづらいものです。引数オブジェクトを導入することで、振る舞いもそのクラスに移動できる場合があります。<b>クラスの責務を単純明快にするのは、オブジェクト指向の原則です。</b></p>
+
+<h3 id="setメソッドの削除">setメソッドの削除</h3>
+
+
+<p>setメソッドを提供するというのは、フィールドが変更される可能性があるということを示しています。オブジェクトを生成した後、フィールドを変更したくないのであれば、setメソッドを削除し、フィールドをfinalに設定するべきです。</p>
+
+<h3 id="Factoryメソッドによるコンストラクタの置き換え">Factoryメソッドによるコンストラクタの置き換え</h3>
+
+
+<p>このリファクタリングは、主にサブクラス化することによって、タイプコードを置き換えたい場合に利用されます。また、単に引数の数値や型の違いではすまない生成時におけるさまざまな振る舞いを実現できます。</p>
+
+<h3 id="ダウンキャストの隠蔽">ダウンキャストの隠蔽</h3>
+
+
+<p>クラスのユーザにダウンキャストを強要するのはなるべくさけたほうがよい。それは、変更が分散してしまうからです。メソッドが返すオブジェクトは、メソッド内でキャストしてやり、できるだけ特化された戻り値を使用するほうが好ましいです。ただし、インターフェースで返す場合は別の話です。そもそも、インターフェースを使う場合はダウンキャストを使う必要はほとんどありません。</p>
+
+<h3 id="メソッドの引き上げ">メソッドの引き上げ</h3>
+
+
+<p>まったく同じ処理を行っている2つのクラスがあった場合、共通のクラスを作り、そこにメソッドを移動してやる。オブジェクト指向では、重複するコードは書かないという原則がある。</p>
+
+<p>2つのメソッドが非常によく似ているが、まったく同じではない場合は、<a href="http://www.hellohiro.com/pattern/templatemethod.htm" rel="external nofollow">Template Method パターン</a>が利用できるかもしれない。</p>
+
+<h3 id="インターフェースの抽出">インターフェースの抽出</h3>
+
+
+<p>ひととまとまりのクライアントが、あるクラスの責任のうち一部だけを利用することがあります。その場合、責任をインターフェースとして抽出することで、責務を明確にすることができます。</p>
+
+<p>インターフェースが機能を追加するように働く場合は、名前に able と付けるとわかりやすい。</p>
+
+<h3 id="委譲による継承の置き換え">委譲による継承の置き換え</h3>
+
+
+<p>継承を行ったはいいが、スーパークラスの多くの操作がサブクラスではふさわしくないことに気づくことがあります。この場合、多くは正しくインターフェースが切り出せていないのが原因です。これらの状況をすっきりさせるには、継承ではなく、メッセージの委譲を行うことで、必要な機能だけを利用している状況をはっきりさせることができます。</p>
+
+<p>逆に、すべてのインターフェースに対して委譲を行っているような場合は、委譲をクラスの継承で置き換えるべきです。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li><p>C言語によるリファクタリングの例です。
+<a href="http://www.s34.co.jp/cpptechdoc/article/c_refactoring/" rel="external nofollow">Refactoring C-code</a></p></li>
+<li><p>リファクタリングのWebページ版
+<a href="http://www.alles.or.jp/~torutk/oojava/maneuver/2000/6-2.html" rel="external nofollow">リファクタリング勉強ノート</a></p></li>
+<li><p>コードの嫌な匂いのリファクタリング例が載ってます。(PDF)
+<a href="http://www.metabolics.co.jp/OOTechnology/Object2001/Refactoring.pdf" rel="external nofollow">リファクタリング</a></p></li>
+<li><p>J2EEのリファクタリング例が載ってます。Tokenの導入などあります。(PDF)
+<a href="http://www-6.ibm.com/jp/software/websphere/developer/j2ee/pdf/4_2.pdf" rel="external nofollow">J2EE リファクタリング</a></p></li>
+<li><p>すばらしき良書。この本に出会って、変わった気がする。</p></li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712288/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+<ul>
+<li>「リファクタリング」をワークブック形式で学べます。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756145027/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+<ul>
+<li>洋書ですが、リファクタリングをデザインパターンで行うといった趣旨の本です。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321213351/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

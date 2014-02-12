@@ -1,0 +1,1064 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Rails | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/rails/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Railsで手書きの図や絵をプログラムに取り込む方法]]></title>
+    <link href="http://hamasyou.com/blog/2013/12/03/rails/"/>
+    <updated>2013-12-03T19:05:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/12/03/rails</id>
+    <content type="html"><![CDATA[<p>スマホやタブレットが増えてきて、Railsアプリでも手書きで書いた絵や図を取り込みたいというような案件があるのではないでしょうか？手書き画像が保存する方法はいろいろありますが、そのひとつをちょっとメモのため残しておきます。特別なgemとかは必要ありません。使うのは HTML5 の canvas だけです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>環境</h2>
+
+
+
+
+<ul>
+<li>Ruby 2.0.0p353</li>
+<li>Rails 4.0.1</li>
+<li>bundler</li>
+</ul>
+
+
+
+
+<h2>手順</h2>
+
+
+<p>まず、Rails 環境を作成して足場をつくります。</p>
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>rails new blog &ndash;skip-bundle</span><span class='line output'>      create
+</span><span class='line output'>      create  README.rdoc
+</span><span class='line output'>      create  Rakefile
+</span><span class='line output'>      create  config.ru
+</span><span class='line output'>      create  .gitignore
+</span><span class='line output'>      create  Gemfile
+</span><span class='line output'>      create  app
+</span><span class='line output'>      create  app/assets/javascripts/application.js
+</span><span class='line output'>      create  app/assets/stylesheets/application.css
+</span><span class='line output'>      create  app/controllers/application_controller.rb
+</span><span class='line output'>      create  app/helpers/application_helper.rb
+</span><span class='line output'>      create  app/views/layouts/application.html.erb
+</span><span class='line output'>      create  app/assets/images/.keep
+</span><span class='line output'>      create  app/mailers/.keep
+</span><span class='line output'>      create  app/models/.keep
+</span><span class='line output'>      create  app/controllers/concerns/.keep
+</span><span class='line output'>      create  app/models/concerns/.keep
+</span><span class='line output'>      create  bin
+</span><span class='line output'>      create  bin/bundle
+</span><span class='line output'>      create  bin/rails
+</span><span class='line output'>      create  bin/rake
+</span><span class='line output'>      create  config
+</span><span class='line output'>      create  config/routes.rb
+</span><span class='line output'>      create  config/application.rb
+</span><span class='line output'>      create  config/environment.rb
+</span><span class='line output'>      create  config/environments
+</span><span class='line output'>      create  config/environments/development.rb
+</span><span class='line output'>      create  config/environments/production.rb
+</span><span class='line output'>      create  config/environments/test.rb
+</span><span class='line output'>      create  config/initializers
+</span><span class='line output'>      create  config/initializers/backtrace_silencers.rb
+</span><span class='line output'>      create  config/initializers/filter_parameter_logging.rb
+</span><span class='line output'>      create  config/initializers/inflections.rb
+</span><span class='line output'>      create  config/initializers/mime_types.rb
+</span><span class='line output'>      create  config/initializers/secret_token.rb
+</span><span class='line output'>      create  config/initializers/session_store.rb
+</span><span class='line output'>      create  config/initializers/wrap_parameters.rb
+</span><span class='line output'>      create  config/locales
+</span><span class='line output'>      create  config/locales/en.yml
+</span><span class='line output'>      create  config/boot.rb
+</span><span class='line output'>      create  config/database.yml
+</span><span class='line output'>      create  db
+</span><span class='line output'>      create  db/seeds.rb
+</span><span class='line output'>      create  lib
+</span><span class='line output'>      create  lib/tasks
+</span><span class='line output'>      create  lib/tasks/.keep
+</span><span class='line output'>      create  lib/assets
+</span><span class='line output'>      create  lib/assets/.keep
+</span><span class='line output'>      create  log
+</span><span class='line output'>      create  log/.keep
+</span><span class='line output'>      create  public
+</span><span class='line output'>      create  public/404.html
+</span><span class='line output'>      create  public/422.html
+</span><span class='line output'>      create  public/500.html
+</span><span class='line output'>      create  public/favicon.ico
+</span><span class='line output'>      create  public/robots.txt
+</span><span class='line output'>      create  test/fixtures
+</span><span class='line output'>      create  test/fixtures/.keep
+</span><span class='line output'>      create  test/controllers
+</span><span class='line output'>      create  test/controllers/.keep
+</span><span class='line output'>      create  test/mailers
+</span><span class='line output'>      create  test/mailers/.keep
+</span><span class='line output'>      create  test/models
+</span><span class='line output'>      create  test/models/.keep
+</span><span class='line output'>      create  test/helpers
+</span><span class='line output'>      create  test/helpers/.keep
+</span><span class='line output'>      create  test/integration
+</span><span class='line output'>      create  test/integration/.keep
+</span><span class='line output'>      create  test/test_helper.rb
+</span><span class='line output'>      create  tmp/cache
+</span><span class='line output'>      create  tmp/cache/assets
+</span><span class='line output'>      create  vendor/assets/javascripts
+</span><span class='line output'>      create  vendor/assets/javascripts/.keep
+</span><span class='line output'>      create  vendor/assets/stylesheets
+</span><span class='line output'>      create  vendor/assets/stylesheets/.keep
+</span><span class='line command'>cd blog</span><span class='line command'>bundle install &ndash;path vendor/bundle</span><span class='line output'>Fetching gem metadata from https://rubygems.org/……….
+</span><span class='line output'>Fetching gem metadata from https://rubygems.org/..
+</span><span class='line output'>Resolving dependencies…
+</span><span class='line output'>Installing rake (10.1.0)
+</span><span class='line output'>Installing i18n (0.6.5)
+</span><span class='line output'>Installing minitest (4.7.5)
+</span><span class='line output'>Installing multi_json (1.8.2)
+</span><span class='line output'>Installing atomic (1.1.14)
+</span><span class='line output'>Installing thread_safe (0.1.3)
+</span><span class='line output'>Installing tzinfo (0.3.38)
+</span><span class='line output'>Installing activesupport (4.0.1)
+</span><span class='line output'>Installing builder (3.1.4)
+</span><span class='line output'>Installing erubis (2.7.0)
+</span><span class='line output'>Installing rack (1.5.2)
+</span><span class='line output'>Installing rack-test (0.6.2)
+</span><span class='line output'>Installing actionpack (4.0.1)
+</span><span class='line output'>Installing mime-types (1.25.1)
+</span><span class='line output'>Installing polyglot (0.3.3)
+</span><span class='line output'>Installing treetop (1.4.15)
+</span><span class='line output'>Installing mail (2.5.4)
+</span><span class='line output'>Installing actionmailer (4.0.1)
+</span><span class='line output'>Installing activemodel (4.0.1)
+</span><span class='line output'>Installing activerecord-deprecated_finders (1.0.3)
+</span><span class='line output'>Installing arel (4.0.1)
+</span><span class='line output'>Installing activerecord (4.0.1)
+</span><span class='line output'>Using bundler (1.3.1)
+</span><span class='line output'>Installing coffee-script-source (1.6.3)
+</span><span class='line output'>Installing execjs (2.0.2)
+</span><span class='line output'>Installing coffee-script (2.2.0)
+</span><span class='line output'>Installing thor (0.18.1)
+</span><span class='line output'>Installing railties (4.0.1)
+</span><span class='line output'>Installing coffee-rails (4.0.1)
+</span><span class='line output'>Installing hike (1.2.3)
+</span><span class='line output'>Installing jbuilder (1.5.2)
+</span><span class='line output'>Installing jquery-rails (3.0.4)
+</span><span class='line output'>Installing json (1.8.1)
+</span><span class='line output'>Installing tilt (1.4.1)
+</span><span class='line output'>Installing sprockets (2.10.1)
+</span><span class='line output'>Installing sprockets-rails (2.0.1)
+</span><span class='line output'>Installing rails (4.0.1)
+</span><span class='line output'>Installing rdoc (3.12.2)
+</span><span class='line output'>Installing sass (3.2.12)
+</span><span class='line output'>Installing sass-rails (4.0.1)
+</span><span class='line output'>Installing sdoc (0.3.20)
+</span><span class='line output'>Installing sqlite3 (1.3.8)
+</span><span class='line output'>Installing turbolinks (1.3.1)
+</span><span class='line output'>Installing uglifier (2.3.2)
+</span><span class='line command'>bundle exec rails g scaffold post</span><span class='line output'>      invoke  active_record
+</span><span class='line output'>      create    db/migrate/20131203101546_create_posts.rb
+</span><span class='line output'>      create    app/models/post.rb
+</span><span class='line output'>      invoke    test_unit
+</span><span class='line output'>      create      test/models/post_test.rb
+</span><span class='line output'>      create      test/fixtures/posts.yml
+</span><span class='line output'>      invoke  resource_route
+</span><span class='line output'>       route    resources :posts
+</span><span class='line output'>      invoke  scaffold_controller
+</span><span class='line output'>      create    app/controllers/posts_controller.rb
+</span><span class='line output'>      invoke    erb
+</span><span class='line output'>      create      app/views/posts
+</span><span class='line output'>      create      app/views/posts/index.html.erb
+</span><span class='line output'>      create      app/views/posts/edit.html.erb
+</span><span class='line output'>      create      app/views/posts/show.html.erb
+</span><span class='line output'>      create      app/views/posts/new.html.erb
+</span><span class='line output'>      create      app/views/posts/_form.html.erb
+</span><span class='line output'>      invoke    test_unit
+</span><span class='line output'>      create      test/controllers/posts_controller_test.rb
+</span><span class='line output'>      invoke    helper
+</span><span class='line output'>      create      app/helpers/posts_helper.rb
+</span><span class='line output'>      invoke      test_unit
+</span><span class='line output'>      create        test/helpers/posts_helper_test.rb
+</span><span class='line output'>      invoke    jbuilder
+</span><span class='line output'>      create      app/views/posts/index.json.jbuilder
+</span><span class='line output'>      create      app/views/posts/show.json.jbuilder
+</span><span class='line output'>      invoke  assets
+</span><span class='line output'>      invoke    coffee
+</span><span class='line output'>      create      app/assets/javascripts/posts.js.coffee
+</span><span class='line output'>      invoke    scss
+</span><span class='line output'>      create      app/assets/stylesheets/posts.css.scss
+</span><span class='line output'>      invoke  scss
+</span><span class='line output'>      create    app/assets/stylesheets/scaffolds.css.scss
+</span><span class='line command'>bundle exec rake db:migrate</span><span class='line output'>==  CreatePosts: migrating ====================================================
+</span><span class='line output'>– create_table(:posts)
+</span><span class='line output'>   -> 0.0010s
+</span><span class='line output'>==  CreatePosts: migrated (0.0011s) ===========================================</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<p><code>app/views/posts/_form.html.erb</code> を開いて次のコードを追加します。このコードが手書き入力部分（canvas）になります。</p>
+
+<pre><code class="erb app/views/posts/_form.html.erb">  &lt;canvas id="paper" class="paper" width="400" height="400" data-target="#sign"&gt;
+    ご利用のブラウザではサインは表示できません。
+  &lt;/canvas&gt;
+  &lt;button type="button" name="clearCanvas" class="clear-canvas"&gt;クリア&lt;/button&gt;
+  &lt;input type="hidden" id="sign" name="sign" value="" /&gt;
+</code></pre>
+
+<p><code>app/assets/javascripts</code> に paint.js.coffee ファイルを作成し、次のコードをコピペします。</p>
+
+<pre><code class="coffeescript app/assets/javascripts/paint.js.coffee">jQuery ($) -&gt;
+    screen2client = (e) -&gt;
+        [px, py] = if e.type.startsWith('touch') then [e.originalEvent.touches[0].clientX, e.originalEvent.touches[0].clientY] else [e.clientX, e.clientY]
+        rect = e.target.getBoundingClientRect()
+        {x: px - rect.left, y: py - rect.top}
+    drawFlag = false
+    oldX = 0
+    oldY = 0
+    $canvas = $('#paper')
+    $canvas.on 'mousedown touchstart', (e) -&gt;
+        drawFlag = true
+        {x, y} = screen2client(e)
+        [oldX, oldY] = [x, y]
+    $canvas.on 'mouseup mouseout touchend touchcancel', -&gt;
+        drawFlag = false
+        data = $canvas[0].toDataURL()
+        $($canvas.data('target')).val(data)
+    $canvas.on 'mousemove touchmove', (e) -&gt;
+        return unless drawFlag
+        {x, y} = screen2client(e)
+        context = $canvas[0].getContext('2d')
+        context.strokeStyle = '#C71C22'
+        context.lineWidth = 1
+        context.beginPath()
+        context.moveTo(oldX, oldY)
+        context.lineTo(x, y)
+        context.stroke()
+        context.closePath()
+        oldX = x
+        oldY = y
+        e.preventDefault()
+        return
+    $('.clear-canvas').on 'click', -&gt;
+        context = $canvas[0].getContext('2d')
+        context.clearRect(0, 0, $canvas[0].width, $canvas[0].height)
+        $($canvas.data('target')).val(null)
+</code></pre>
+
+<p><code>app/assets/javascript/application.js</code> を開き、ファイルの最後に次のコードを追加します。</p>
+
+<pre><code class="javascript app/assets/javascript/application.js">if (typeof String.prototype.startsWith != 'function') {
+    String.prototype.startsWith = function(str) {
+        return this.substring(0, str.length) === str;
+    }
+}
+</code></pre>
+
+<p>最後に、画像データを受け取って画像ファイルにする処理をコントローラに追加します。<code>app/controllers/posts_controller.rb</code> を開き、<code>def create</code> に次のコードを追加します。</p>
+
+<pre><code class="ruby app/controllers/posts_controller.rb">f = Tempfile.new(['sign', '.png'], encoding: Encoding::BINARY)
+f.write Base64.decode64(params[:sign].sub('data:image/png;base64,', ''))
+f
+</code></pre>
+
+<p>これで、一時ファイルにキャンバスデータを書き込んでファイル化できます。サーバを起動して <code>http://localhost:3000/posts/new</code> にアクセスして試してみてください。</p>
+
+<p><img src="/images/2013-12-03-rails-ss.png" height="526" width="517" alt="スクリーンショット" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応]]></title>
+    <link href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"/>
+    <updated>2011-06-14T11:29:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis</id>
+    <content type="html"><![CDATA[<p>jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。</p>
+
+<p><section></p>
+
+<h4>環境</h4>
+
+
+
+
+<dl><dt>Rails</dt><dd>3.0.7</dd><dt>jpmobile</dt><dd>0.1.6</dd><dt>kaminari</dt><dd>0.12.4</dd></dl>
+
+
+<p></section></p>
+
+<!-- more -->
+
+
+<p>jpmobile の mobile_filter を通して kaminari でページングを行うときに、invalid byte sequence in Shift_JIS エラーが出る場合があります。</p>
+
+<p>これは、kaminari で生成するページングリンク内に、UTF-8 の文字エンコーディングの日本語文字が入っているのが原因です。</p>
+
+<p>kaminari がページリンクを作成するときに、日本語文字をパーセントエンコード（URLエンコード）していて、jpmobile の mobile_filter がエンコードされている文字を UTF-8 だと認識出来ずに表示してしまうのが原因になっています。</p>
+
+<p>この組み合わせで kaminari のページリンク内に日本語パラメータがはいってしまうのは、おそらくフォームのサブミットボタンの value が原因だと思います。</p>
+
+<p>ほとんどの場合、サブミットボタンの value は必要ないと思うので、submit_tag の :name オプションに nil を設定してサブミットボタンの value を送らないようにするといいかと思います。</p>
+
+<pre><code class="html+erb">&lt;%= form_tag user_path do %&gt;
+  &lt;%= select_tag "category", options_from_collection_for_select(Category.all, :id, :label, params[:category]) %&gt;
+  &lt;%= submit_tag "表示", :name =&gt; nil %&gt;
+&lt;% end %&gt;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[kaminari の paginate_array が便利]]></title>
+    <link href="http://hamasyou.com/blog/2011/06/14/kaminari-paginate-array/"/>
+    <updated>2011-06-14T09:31:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/06/14/kaminari-paginate-array</id>
+    <content type="html"><![CDATA[<p>will_paginate に代わるページングのライブラリ、kaminari ですが、ページングが scope 扱いで配列に対して使えなかったのでちょっと不便なときがあったのですが、なんと paginate_array なるものを発見しました。</p>
+
+<p><section></p>
+
+<h4>環境</h4>
+
+
+
+
+<dl><dt>kaminari</dt><dd>0.12.4</dd></dl>
+
+
+<p></section></p>
+
+<!-- more -->
+
+
+<p><a href="http://rubygems.org/gems/kaminari" rel="external nofollow">kaminari</a> の <strong>Kaminari.paginate_array</strong> が激しく便利！</p>
+
+<p>もともと、kaminari が扱う page は scope だったかと思います。なので、配列（Array）に対しては使えませんでした。</p>
+
+<p>で、ちょっとソースを見ていたらびっくりするものを発見！</p>
+
+<p><strong>Kaminari.paginate_array</strong></p>
+
+<p>なんと、配列をページングできるようになっていました。これで、Entity.all したものもページングできるようになりますね。</p>
+
+<p>使い方は、scope の方の page と同じ。</p>
+
+<pre><code class="ruby">Kaminari.paginate_array(array_obj).page(params[:page])
+</code></pre>
+
+<p>激しくべんり！</p>
+
+<p><section></p>
+
+<h4>kaminari の解説で参考になるサイト</h4>
+
+
+<p><a href="http://memo.yomukaku.net/entries/238" rel="external nofollow">Kaminariの使い方 Rails3時代のpaginationの標準候補 - YomuKaku Memo</a></p>
+
+<p></section></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Rails] ActiveRecord でツリー関係の関連を定義する]]></title>
+    <link href="http://hamasyou.com/blog/2010/11/20/rails-activerecord/"/>
+    <updated>2010-11-20T01:54:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/11/20/rails-activerecord</id>
+    <content type="html"><![CDATA[<p>Ruby on Rails で、ActiveRecord を使ってツリー関係の関連を定義する方法のメモです。</p>
+
+<p>ツリー関係を表す関連にはひとつのテーブルで表す方法と関連テーブルを使って表す方法とがありますが、今回は関連テーブルを使ってツリー関係を表す方法のメモです。</p>
+
+<p>環境は Rails3.0.1、ActiveRecord3.0.1 で確認しています。</p>
+
+<!-- more -->
+
+
+
+
+<h2>ActiveRecord でツリー関係を表す方法</h2>
+
+
+<p>下のようなツリー関係のあるモデルを、<em>belongs_to</em>、<em>has_one</em>、<em>has_many</em> を使って表す方法のメモです。</p>
+
+<p><img alt="スクリーンショット（2010-11-20 0.58.43）2.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-20%200.58.43%EF%BC%892.png" width="693" class="mt-image-none" style="" /></p>
+
+<h3>モデルの説明</h3>
+
+
+<p>このモデルは、カテゴリ（Category）とカテゴリ関係（CategoryRel）の二つのテーブルを使ってカテゴリのツリー関係を表したものです。</p>
+
+<p>カテゴリ（Category）は親カテゴリを has_one で、サブカテゴリを has_many で保持します。</p>
+
+<p>カテゴリ関連（CategoryRel）は belongs_to で親カテゴリとサブカテゴリをそれぞれ定義しています。</p>
+
+<h4>Category モデル</h4>
+
+
+
+
+<pre class="code">
+<span class="keyword">class</span> <span class="class">Category</span> &lt; <span class="class">ActiveRecord::Base</span>
+ 
+  <span class="comment"># 親カテゴリ</span>
+  <span class="keyword">has_one</span> <span class="symbol">:parent_rels</span>, <span class="symbol">:class_name</span> =&gt; <span class="literal">&quot;CategoryRel&quot;</span>, <span class="symbol">:foreign_key</span> =&gt; <span class="literal">&quot;sub_category_id&quot;</span>
+  <span class="keyword">has_one</span> <span class="symbol">:parent_category</span>, <span class="symbol">:through</span> =&gt; <span class="symbol">:parent_rels</span>, <span class="symbol">:source</span> =&gt; <span class="symbol">:parent_category</span>
+ 
+  <span class="comment"># サブカテゴリ</span>
+  <span class="keyword">has_many</span> <span class="symbol">:category_rels</span>
+  <span class="keyword">has_many</span> <span class="symbol">:sub_categories</span>, <span class="symbol">:through</span> =&gt; <span class="symbol">:category_rels</span>, <span class="symbol">:source</span> =&gt; <span class="symbol">:sub_category</span>
+<span class="keyword">end</span></pre>
+
+
+
+
+<h4>CategoryRel モデル</h4>
+
+
+
+
+<pre class="code">
+<span class="keyword">class</span> <span class="class">CategoryRel</span> &lt; <span class="class">ActiveRecord::Base</span>
+  <span class="comment"># 親カテゴリ</span>
+  <span class="keyword">belongs_to</span> <span class="symbol">:parent_category</span>, <span class="symbol">:class_name</span> =&gt; <span class="literal">&quot;Category&quot;</span>, <span class="symbol">:foreign_key</span> =&gt; <span class="literal">&quot;category_id&quot;</span>
+  <span class="comment"># サブカテゴリ</span>
+  <span class="keyword">belongs_to</span> <span class="symbol">:sub_category</span>, <span class="symbol">:class_name</span> =&gt; <span class="literal">&quot;Category&quot;</span>, <span class="symbol">:foreign_key</span> =&gt; <span class="literal">&quot;sub_category_id&quot;</span>
+<span class="keyword">end</span></pre>
+
+
+
+
+<h3>has_many :through :source</h3>
+
+
+<p>関連をひとつだけもつ場合には <strong>has_one</strong> を、1対多、多対多 を表す場合には <strong>has_many</strong> を使います。<em>:through</em> オプションと <em>:source</em> オプションはそれぞれ次のような意味です。</p>
+
+<dl>
+<dt>:through</dt>
+<dd><p>has_many で定義した関連をどういう経路で取得するかを示す。</p></dd>
+<dt>:source</dt>
+<dd><p>:through で示された経路の先で、どの関連を使用するかを示す。</p></dd>
+</dl>
+
+
+
+
+<h3>親カテゴリを表す has_one と外部キーの指定の仕方</h3>
+
+
+<p>今回の例で見ていくと、カテゴリは親カテゴリを 0 or 1 持ちます。なので、has_one を指定しています。</p>
+
+<p>親カテゴリの定義では、最初に直接の関連であるカテゴリ関連の定義をしています。それが、<code>has_one :parent_rels, :class_name =&gt; &quot;CategoryRel&quot;, :foreign_key =&gt; &quot;sub_category_id&quot;</code> の部分です。</p>
+
+<p>この関連は、:class_name で指定したクラスの関連、すなわちカテゴリ関連になります。カテゴリ関連との関係を <em>:foreign_key</em> で指定しています。親カテゴリは、カテゴリ関連の sub_category_id が自分のIDと一致するレコードのカテゴリのことになるので、:foreign_key には自分のIDと対応するカラムである sub_category_id を指定しています。</p>
+
+<h4>関連のショートカットを定義する</h4>
+
+
+<p>次に、毎回 parent_rels 関連をたどって親カテゴリオブジェクトを取得するのは面倒くさいので、:through を使ってショートカットを定義しています。それが <code> has_one :parent_category, :through =&gt; :parent_rels, :source =&gt; :parent_category</code> の部分です。</p>
+
+<p><em>:through</em> にはどの経路を使ってオブジェクトを得るかを指定します。:source には :through でたどった先に関連が二つ以上ある場合にどれを使うかを指定します。カテゴリ関連には親カテゴリとサブカテゴリを表す関連があるので、親カテゴリの関連である :parent_category を指定しています。</p>
+
+<p class="option"><em>:source の考え方</em><br />最初、:source は関連の元（ソース）はどっちか？を表すオプションだと思っていたので、自分のインスタンスから見て自分を表すのはどれか？を指定していましたが、これは間違いです。<br /><br />:source オプションは自分がどっちを表すものではなく、<strong>:through で表される経路の取得先を示す</strong>ものです。なので、自分から見て親カテゴリを表す関連はどっちか？を指定します。</p>
+
+
+
+
+<h3>サブカテゴリを表す has_many</h3>
+
+
+<p>サブカテゴリも、基本的には親カテゴリと同じです。サブカテゴリは複数取り得るので <em>has_many</em> を指定しています。</p>
+
+<p>最初に直接の関連であるカテゴリ関連を has_many で定義します。定義名のみを書いておくと、ActiveRecord がモデル名の規約から適切に関連を定義してくれます。</p>
+
+<p>今回は、カテゴリ関連の複数形である :category_rels を has_many で定義しているので、ActiveRecord が自動的に CateogryRel モデルの関連を張ってくれます。</p>
+
+<p>次に、<code>has_many :sub_categories, :through =&gt; :category_rels, :source =&gt; :sub_category</code> の定義で category_rels の関連を経由して、カテゴリ関連の :sub_category で定義されている関連をサブカテゴリとして定義しています。</p>
+
+<h2>まとめ</h2>
+
+
+<p>説明がわかりずらく、逆にわからなくなったかもしれませんが、要は、has_many :through でたどった先に複数の関連がある場合（厳密には規約から推測できない関連があった場合）、:source を使ってどの関連をソースにしてオブジェクトを集めるかを指定する必要があるということです。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[技術メモ]]></title>
+    <link href="http://hamasyou.com/blog/2008/06/19/memo/"/>
+    <updated>2008-06-19T11:59:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2008/06/19/memo</id>
+    <content type="html"><![CDATA[<p>技術メモ用のエントリ</p>
+
+<p><a href="http://hamasyou.com/archives/000247" rel="external nofollow">技術者の宝石箱</a>の続きエントリ</p>
+
+<!-- more -->
+
+
+
+
+<h2>インデックス</h2>
+
+
+
+
+<ul>
+<li><a href="#DOM で複数選択可能なリストボックスを作成する（IE）" rel="external nofollow">DOM で複数選択可能なリストボックスを作成する（IE）</a> 2007/4/28追加</li>
+<li><a href="#要求と要件の違い" rel="external nofollow">要求と要件の違い</a> 2007/5/22追加</li>
+<li><a href="#Maven2のpom.xmlのXMLスキーマ" rel="external nofollow">Maven2のpom.xmlのXMLスキーマ</a> 2007/10/23追加</li>
+<li><a href="#Excelでファイルの最終更新日を取得する" rel="external nofollow">Excelでファイルの最終更新日を取得する</a> 2007/10/24追加</li>
+<li><a href="#Ruby on Rails2.0で、NoMethodError in AdminController#index" rel="external nofollow">Ruby on Rails2.0で、NoMethodError in AdminController#index</a> 2007/12/30追加</li>
+<li><a href="#WebLogicでAPP-INFを使って共通Jarを配置するときは、ClassLoaderに注意する" rel="external nofollow">WebLogicでAPP-INFを使って共通Jarを配置するときは、ClassLoaderに注意する</a> 2008/5/27追加</li>
+<li><a href="#WebLogicが発行するSession Cookieのパスはデフォルトで/（スラッシュ）" rel="external nofollow">WebLogicが発行するSession Cookieのパスはデフォルトで / （スラッシュ）</a> 2008/6/19追加</li>
+<li><a href="#FFFTPでシンボリックリンクを削除する方法" rel="external nofollow">FFFTPでシンボリックリンクを削除する方法</a> 2008/6/24追加</li>
+<li><a href="#Railsをやってて気になったこと" rel="external nofollow">Railsをやってて気になったこと</a> 2008/7/24追加</li>
+<li><a href="#Commons HttpClient のマルチパートで日本語ファイル名が文字化けする" rel="external nofollow">Commons HttpClient のマルチパートで日本語ファイル名が文字化けする</a> 2008/8/14追加</li>
+<li><a href="#JBoss Seamでログイン後にセッションIDを変更する" rel="external nofollow">JBoss Seamでログイン後にセッションIDを変更する</a> 2008/11/20追加</li>
+</ul>
+
+
+
+
+<h2>一覧</h2>
+
+
+
+
+<h3 id="DOM で複数選択可能なリストボックスを作成する（IE）">DOM で複数選択可能なリストボックスを作成する（IE）</h3>
+
+
+<p>Internet Explorer（IE）で DOM を使って複数選択可能なリストボックスを作成する方法です。</p>
+
+<pre class="code"><code><span class="keyword">var</span> select = <span class="keyword">null</span>;
+<span class="keyword">if</span> (navigator.appName.match(/Internet Explorer/)) {
+    select = document.createElement(<span class="str">&quot;&lt;select multiple&gt;&quot;</span>);
+} <span class="keyword">else</span> {
+    select = document.createElement(<span class="str">&quot;select&quot;</span>);
+    select.multiple = <span class="keyword">true</span>;
+}
+</code></pre>
+
+
+
+
+<h3 id="要求と要件の違い">要求と要件の違い</h3>
+
+
+
+
+<dl><dt>要求</dt>
+<dd>お客さんのこんなことをしたい、こんなことができるといいなという望み</dd>
+<dt>要件</dt>
+<dd>要求をシステム化「する」と決めたもの</dd>
+</dl>
+
+
+<p>お客さんは、自分がどんなことをしたいのかとか、どんなものが欲しいのかということをうまく説明できないことが多い。だから、要求は「開発する」（掘り起こす）もの。</p>
+
+<p>うまく要求が掘り起こせたら、今度はシステム開発者がじゃあどういう仕様でどういうシステムを作ろうかと考える。だから、要件は「定義する」もの。</p>
+
+<h3 id="Maven2のpom.xmlのXMLスキーマ">Maven2のpom.xmlのXMLスキーマ</h3>
+
+
+<p>Maven2 の pom.xml の XMLスキーマおぼえがき</p>
+
+<pre class="code"><code><span class="tag">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> 
+<span class="tag">&lt;project <span class="attr">xmlns=</span><span class="value">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>  
+         <span class="attr">xmlns:xsi=</span><span class="value">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>  
+         <span class="attr">xsi:schemaLocation=</span><span class="value">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</span>&gt;</span> 
+<span class="tag">&lt;/project&gt;</span>
+</code></pre>
+
+
+
+
+<h3 id="Excelでファイルの最終更新日を取得する">Excelでファイルの最終更新日を取得する</h3>
+
+
+<p>Excel でファイルの最終更新日を自動で再計算する方法。</p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://www.relief.jp/itnote/archives/000271.php" rel="external nofollow">インストラクターのネタ帳：ファイルの最終更新日時を取得したい−ユーザー定義関数</a></p>
+
+<h3 id="Ruby on Rails2.0で、NoMethodError in AdminController#index">Ruby on Rails2.0で、NoMethodError in AdminController#index</h3>
+
+
+<p>書籍『<a href="http://www.amazon.co.jp/gp/product/4274066401?ie=UTF8&tag=sorehabooks-22&linkCode=xm2&camp=247&creativeASIN=4274066401" rel="external nofollow">RailsによるアジャイルWebアプリケーション開発</a>』を Rails2.0 で作業していくと、<strong>scaffold :product</strong> のところで次のようなエラーが発生する。</p>
+
+<pre>NoMethodError in AdminController#index
+undefined method `scaffold' for AdminController:Class</pre>
+
+
+<p>これは、Rails2.0 からは各種ライブラリ類がプラグインとして切り出されたためだそうだ。ということで、必要なプラグインを入れるとよい。</p>
+
+<p>まずは、scaffolding プラグインから。</p>
+
+<pre class="console">\workspace\depot><kbd>ruby script/plugin install scaffolding</kbd>
++ ./MIT-LICENSE
++ ./README
++ ./Rakefile
++ ./init.rb
++ ./lib/scaffolding.rb
++ ./lib/templates/edit.erb
++ ./lib/templates/layout.erb
++ ./lib/templates/list.erb
++ ./lib/templates/new.erb
++ ./lib/templates/show.erb
++ ./test/scaffolding_test.rb
+</pre>
+
+
+<p>つぎに、paginate というプラグインを入れなければならない。scaffold だけ入れた状態だと次のようなエラーが発生する。</p>
+
+<pre>NoMethodError (undefined method `paginate' for #<EntriesController:0x4829610>):</pre>
+
+
+<p>ということで、paginate プラグインをインストールする。</p>
+
+<pre class="console">\workspace\depot><kbd>ruby script/plugin install http://tools.assembla.com/svn/breakout/breakout/vendor/plugins/classic_pagination/</kbd>
++ ./CHANGELOG
++ ./README
++ ./Rakefile
++ ./init.rb
++ ./install.rb
++ ./lib/pagination.rb
++ ./lib/pagination_helper.rb
++ ./test/fixtures/companies.yml
++ ./test/fixtures/company.rb
++ ./test/fixtures/developer.rb
++ ./test/fixtures/developers.yml
++ ./test/fixtures/developers_projects.yml
++ ./test/fixtures/project.rb
++ ./test/fixtures/projects.yml
++ ./test/fixtures/replies.yml
++ ./test/fixtures/reply.rb
++ ./test/fixtures/schema.sql
++ ./test/fixtures/topic.rb
++ ./test/fixtures/topics.yml
++ ./test/helper.rb
++ ./test/pagination_helper_test.rb
++ ./test/pagination_test.rb
+ 
+ 
+Pagination
+==========
+ 
+To install:
+ 
+  script/plugin install svn://errtheblog.com/svn/plugins/classic_pagination
+ 
+This code was extracted from Rails trunk after the release 1.2.3.
+WARNING: this code is dead. It is unmaintained, untested and full of cruft.
+ 
+There is a much better pagination plugin called will_paginate.
+Install it like this and glance through the README:
+ 
+  script/plugin install svn://errtheblog.com/svn/plugins/will_paginate
+ 
+It doesn't have the same API, but is in fact much nicer. You can
+have both plugins installed until you change your controller/view code that
+handles pagination. Then, simply uninstall classic_pagination.
+</pre>
+
+
+<p>インストールすると、will_paginate を使ったほうが良いという警告がでる。なので、will_paginate も一緒にいれる。</p>
+
+<pre class="console">\workspace\depot><kbd>ruby script/plugin install http://tools.assembla.com/svn/breakout/breakout/vendor/plugins/will_paginate/</kbd>
++ ./README
++ ./Rakefile
++ ./init.rb
++ ./lib/will_paginate/collection.rb
++ ./lib/will_paginate/finder.rb
++ ./lib/will_paginate/view_helpers.rb
++ ./test/boot.rb
++ ./test/console
++ ./test/finder_test.rb
++ ./test/fixtures/admin.rb
++ ./test/fixtures/companies.yml
++ ./test/fixtures/company.rb
++ ./test/fixtures/developer.rb
++ ./test/fixtures/developers_projects.yml
++ ./test/fixtures/project.rb
++ ./test/fixtures/projects.yml
++ ./test/fixtures/replies.yml
++ ./test/fixtures/reply.rb
++ ./test/fixtures/schema.sql
++ ./test/fixtures/topic.rb
++ ./test/fixtures/topics.yml
++ ./test/fixtures/user.rb
++ ./test/fixtures/users.yml
++ ./test/helper.rb
++ ./test/lib/activerecord_test_connector.rb
++ ./test/lib/load_fixtures.rb
++ ./test/pagination_test.rb
+</pre>
+
+
+<p>これで、正常に動くようになる。</p>
+
+<h3 id="WebLogicでAPP-INFを使って共通Jarを配置するときは、ClassLoaderに注意する">WebLogicでAPP-INFを使って共通Jarを配置するときは、ClassLoaderに注意する</h3>
+
+
+<p>WebLogic8.1 から EAR 直下の APP-INF/lib、APP-INF/classes に各モジュール（WAR）から利用される共通ライブラリ（JAR）やクラスを配置できます。これは WebLogic の独自仕様のようですが。</p>
+
+<p>このとき、APP-INF 以下に置いたライブラリやクラスは各モジュール（WAR）とは別のクラスローダでロードされます。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://www-06.ibm.com/jp/software/websphere/developer/j2ee/strategy/" rel="external nofollow">IBM: クラスローダーとJ2EEパッケージング戦略を理解する</a></p>
+
+<p></section></p>
+
+<pre>EAR ルート
+├ APP-INF　　　　← EAR クラスローダ（親）
+│  ├ classes
+│　└ lib
+├ WAR1　　　　　 ← WAR1 クラスローダ（子）
+│　└ WEB-INF
+└ WAR2　　　　　 ← WAR2 クラスローダ（子）
+└ WEB-INF
+</pre>
+
+
+<p>親のクラスローダで読み込んだクラスは子のクラスローダからは見つけることができますが、子で読み込んだクラスは親のクラスローダからは見つけることができません。</p>
+
+<p>EAR クラスローダで読み込まれたクラスは各モジュールで共有されるため、static 領域のインスタンスや値も共有されます。</p>
+
+<p>また、親と子のどちらで見つけたクラスを先に読み込むかによってシングルトンクラスの動作に影響が出たりすることがあります。</p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://www-06.ibm.com/jp/software/websphere/developer/j2ee/strategy/2.html" rel="external nofollow">IBM: クラスローダーを理解する - シングルトンがシングルトンでなくなる日</a></p>
+
+<h3 id="WebLogicが発行するSession Cookieのパスはデフォルトで/（スラッシュ）">WebLogicが発行するSession Cookieのパスはデフォルトで / （スラッシュ）</h3>
+
+
+<p>WebLogic のデフォルト設定でのセッション Cookieのルールは以下の通り。</p>
+
+<table>
+<tr><th>要素名</th><th>デフォルト値</th><th>説明</th></tr>
+<tr><th>cookie-name</th><td>JSESSIONID</td><td>セッションIDの長さは52文字</td></tr>
+<tr><th>cookie-path</th><td>null</td><td>デフォルトは / (スラッシュ)<a href="#※1" rel="external nofollow">※1</a>。デフォルト値では、ブラウザは、<em>WebLogic Server で指定されているすべての URL にクッキーを送信する</em>。</td></tr>
+<tr><th>cookie-domain</th><td>null</td><td>デフォルトは、クッキーを発行した<em>サーバのドメイン</em><a href="#※2" rel="external nofollow">※2</a></td></tr>
+<tr><th>cookie-secure</th><td>false</td><td>Cookie を https 接続のときのみブラウザから送り出すか。</td></tr>
+<tr><th>cookie-max-age-secs</th><td>-1</td><td>無期限。ブラウザを閉じると削除される。</td></tr>
+<tr><th>timeout-secs</th><td>3600</td><td>セッションタイムアウト時間。デフォルトで3600秒。</td></tr>
+</table>
+
+
+<p>同一ホスト名でいくつものアプリケーションを管理している場合、WebLogic はデフォルトで、cookie-path を / にしてしまうため、セッションCookieの上書き（セッションIDの上書き）がされることがあります。きちんと path 属性をコンテキストパス、domain 属性を ホスト名に設定しましょう。はまりそうなので注意！</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://edocs.beasys.co.jp/e-docs/wls/docs92/webapp/weblogic_xml.html#wp1071982" rel="external nofollow">BEA：weblogic.xml デプロイメント記述子の要素</a></p>
+
+<p></section></p>
+
+<p><a name="※1"></a>
+※1 Cookieパスは /（スラッシュ）：Cookie の仕様では、Cookie を送出するリクエストヘッダに含まれている要求したドキュメントのパスと同じになります。
+<a name="※2"></a>
+※2 サーバのドメイン：ホスト名ではないことに注意。Cookie の仕様では、domain を指定しない場合はサーバのホスト名になります。</p>
+
+<h3 id="FFFTPでシンボリックリンクを削除する方法">FFFTPでシンボリックリンクを削除する方法</h3>
+
+
+<p>FFFTP でシンボリックリンクを削除する方法。</p>
+
+<pre>[コマンド(C)] -> [任意のコマンド(C)...]</pre>
+
+
+<p>を選択して、</p>
+
+<pre>DELE ファイル名</pre>
+
+
+<p>でOK。シンボリックリンクをプログラムから作っちゃったけど、削除できない〜ってなったのでメモ。サーバアカウントが発行されていて、コンソールにつなげる場合は、コマンドラインから削除すればOK。ロリポップは、FTP しかあいてなかったのであせった。</p>
+
+<h3 id="Railsをやってて気になったこと">Railsをやってて気になったこと</h3>
+
+
+
+
+<h4>Rest ちっくな URL で更新画面みたいなのの定義の仕方</h4>
+
+
+<p>/comment/new/preview 見たいな感じで定義する。</p>
+
+<pre class="code"><code>routes.rb map.resources :comment, :new =&gt; {:preview =&gt; :post}
+</code></pre>
+
+
+
+
+<h4>Rest ちっくなアプリで Ajax によるサーバサイドバリデーションするURL</h4>
+
+
+<p>/comment/new/validate 見たいな感じでいいのかな。</p>
+
+<pre class="code"><code>routes.rb map.resources :comment, :new =&gt; {:validate =&gt; :post}
+</code></pre>
+
+
+
+
+<h4>確認画面を挟む登録で、ファイルアップロードがある場合</h4>
+
+
+<p>attachement_fu を使ってうまくやる方法がわからなかったので、仕方ないから自分で一時ファイルの仕組みを作った。</p>
+
+<p>※ そのうち追加するかも</p>
+
+<h3 id="Commons HttpClient のマルチパートで日本語ファイル名が文字化けする">Commons HttpClient のマルチパートで日本語ファイル名が文字化けする</h3>
+
+
+<p>Commons HttpClient を使って、日本語ファイル名のファイルをマルチパートでアップロードすると、ファイル名が文字化けします。
+これ、ソースを追っていくと驚愕の事実が・・・。</p>
+
+<p><section></p>
+
+<h4>org.apache.commons.httpclient.methods.multipart.FilePart#sendDispositionHeader</h4>
+
+
+
+
+<pre class="code"><code><span class="rem">/**
+ * Write the disposition header to the output stream
+ * @param out The output stream
+ * @throws IOException If an IO problem occurs
+ * @see Part#sendDispositionHeader(OutputStream)
+ */</span>
+<span class="keyword">protected</span> <span class="keyword">void</span> sendDispositionHeader(OutputStream out) 
+    <span class="keyword">throws</span> IOException {
+  LOG.trace(<span class="str">&quot;enter sendDispositionHeader(OutputStream out)&quot;</span>);
+  <span class="keyword">super</span>.sendDispositionHeader(out);
+  String filename = <span class="keyword">this</span>.source.getFileName();
+  <span class="keyword">if</span> (filename != null) {
+    out.write(FILE_NAME_BYTES);
+    out.write(QUOTE_BYTES);
+    out.write(EncodingUtil.getAsciiBytes(filename));
+    out.write(QUOTE_BYTES);
+  }
+}
+</code></pre>
+
+
+<p></section></p>
+
+<p>ファイル名のエンコーディングを ASCII でやってる・・・。 Orz&hellip;</p>
+
+<p>日本語ファイル名の文字化けを回避する方法ですが、私は FilePart を継承して sendDispositionHeader をオーバーライドして、Encoding を自分で指定できるようにしました。他にも、URLEncoding して、サーバ側で Decode するという方法もあります。</p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://d.hatena.ne.jp/w650/20080324/p1" rel="external nofollow">HttpClientでの日本語ファイルのアップロード</a></p>
+
+<h3 id="JBoss Seamでログイン後にセッションIDを変更する">JBoss Seamでログイン後にセッションIDを変更する</h3>
+
+
+<p>JBoss で<code>Session#invalidate()</code> した後に、<code>HttpServletRequest#getSession(true)</code> しても、セッションIDが新しくならい問題の解決方法。</p>
+
+<p>JBoss サーバの $JBOSS_SERVER/deploy/jboss-web.deployer/server.xml の emptySessionPath 箇所を false に変更する。</p>
+
+<pre class="code"><code><span class="tag">&lt;Connector <span class="attr">port=</span><span class="value">&quot;8080&quot;</span> <span class="attr">address=</span><span class="value">&quot;${jboss.bind.address}&quot;</span>    
+         <span class="attr">maxThreads=</span><span class="value">&quot;250&quot;</span> <span class="attr">maxHttpHeaderSize=</span><span class="value">&quot;8192&quot;</span>
+         <span class="attr">emptySessionPath=</span><span class="value">&quot;false&quot;</span> <span class="attr">protocol=</span><span class="value">&quot;HTTP/1.1&quot;</span>
+         <span class="attr">enableLookups=</span><span class="value">&quot;false&quot;</span> <span class="attr">redirectPort=</span><span class="value">&quot;8443&quot;</span> <span class="attr">acceptCount=</span><span class="value">&quot;100&quot;</span>
+         <span class="attr">connectionTimeout=</span><span class="value">&quot;20000&quot;</span> <span class="attr">disableUploadTimeout=</span><span class="value">&quot;true&quot;</span> /&gt;</span>
+</code></pre>
+
+
+<p>emptySessionPath は、セッションCookie のパスを &amp;/&amp; にする設定のようで、ポータルなどの別コンテキスト間でセッションを継続したい場合などに使う設定のようです。これが false でないと、JBoss で <code>Session#invalidate</code> しても、セッションIDが新しくならないっぽいです。</p>
+
+<p>この値を設定したところ、JBoss Seam で <code>Seam#invalidateSession</code> を呼び出した後、新しくセッションIDが発行されるようになりました。</p>
+
+<p>ということで、JBoss Seamのログイン後処理（PostLoginEvent）で一度セッションを新しくすると良いかもです。<em>ただし、セッションを新しくした後、ログイン状態を保持する方法がわかりません。。。</em>中身入れ替えるとかすればいいのかもですが、<code>Seam#invalidateSession</code> は、Seam の処理を抜けるときにセッションを破棄するので、その場では新しいセッションIDがとれません＞＜；
+やり方、確認中です。誰かわかる人教えてください。。</p>
+]]></content>
+  </entry>
+  
+</feed>

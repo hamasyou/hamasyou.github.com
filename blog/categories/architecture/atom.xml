@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Architecture | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/categories/architecture/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[バッドデータハンドブック ―データにまつわる問題への19の処方箋]]></title>
+    <link href="http://hamasyou.com/blog/2013/11/14/4873116406/"/>
+    <updated>2013-11-14T11:45:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/11/14/4873116406</id>
+    <content type="html"><![CDATA[<p><blockquote><p>値の欠落、形式から外れたレコード、エンコーディング形式が不明な文字列。「バッドデータ」と聞いた時に思い浮べる典型例です。しかし、これら以外にも「そもそもデータにアクセスできない」「消えてしまった」「昨日と違っている」「データはあるが形式が処理に適していない」など、データを収集・分析するエンジニアは、これらの「バッドデータ」と正面から向きあわなければならないことが多々あります。本書では、これらの問題のあるデータのパターンを紹介し、その対処法を解説しています。<br/>19人のデータ分析の専門家が、自らの経験を通して得た、さまざまな教訓、実践的な方法論等を詳述した本書は、ビッグデータ時代のエンジニアにとって必携の一冊となるでしょう。</p></p><p><p></p><footer><strong>O'REILLY</strong></footer></blockquote></p>
+
+<p>本書はプログラミングやデータ解析の時に扱うデータの内容やフォーマットについて書かれています。プログラミングの時に扱いやすいデータフォーマット、こういう点に気をつけてデータを扱え、こういうフォーマットが使いやすいなどについて書かれています。</p>
+
+<p>コンピュータで扱うデータは大きく分けて<strong>コンピュータのためにフォーマットするデータ</strong>と<strong>人間のためにフォーマットするデータ</strong>があります。これらをごっちゃにしてしまうと扱いづらいデータ（<strong>バッドデータ</strong>）になってしまいます。本書はバッドデータをよりよく扱う方法、バッドデータにしない方法について、いろいろな点で考えられるようにアイデアや体験談を与えてくれます。</p>
+
+<p>最近 API をよく作ってるんだけど通信データのフォーマットに困ってるというような Web プログラマにオススメです！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Amazon Web Services クラウドデザインパターン 設計ガイド]]></title>
+    <link href="http://hamasyou.com/blog/2012/09/13/4822211967/"/>
+    <updated>2012-09-13T10:19:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/09/13/4822211967</id>
+    <content type="html"><![CDATA[<!-- more -->
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Web開発者のための]大規模サービス技術入門 ―データ構造、メモリ、OS、DB、サーバ/インフラ]]></title>
+    <link href="http://hamasyou.com/blog/2010/11/20/4774143073/"/>
+    <updated>2010-11-20T19:32:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/11/20/4774143073</id>
+    <content type="html"><![CDATA[<p>大規模サービスの運営、大変だということは分かっていても、じゃあ実際にどういうふうに大変なのか。実際に体験してみないとこの大変さはわからないと思います。</p>
+
+<p>でも、実際に大規模サービスの開発・運営に携わることになったら！？</p>
+
+<p>本書は、はてなで実際に運用されているサービスを元に、大規模サービス技術のノウハウを解説しています。実際にはてなのインターンシップで講義資料として使われているものがベースになっているので、分かりやすくかつ、実用的です。</p>
+
+<p>Web サービスはいつユーザ数が爆発するかわからないという面白さがある一方、きちんとサービスのノウハウがないとシステムダウンにすぐに繋がってしまうという怖さがあります。</p>
+
+<p>すべてのWeb サービス開発エンジニアにおすすめです。本書で本質的な知識を得て、準備万端にしておくと良いと思います。</p>
+
+<!-- more -->
+
+
+
+
+<h2>本書の目次</h2>
+
+
+
+
+<ol>
+<li>大規模Webサービスの開発オリエンテーション - <span class="fontSmall">全体像を把握する</span>
+  <ol>
+  <li>本書の源 - <span class="fontSmall">本書で説明すること、しないこと</span></li>
+  <li>大規模なサービスと小規模なサービス</li>
+  <li>成長し続けるサービスと、大規模化の壁</li>
+  <li>サービス開発の現場</li>
+  </ol>
+</li>
+<li>大規模データ処理入門 - <span class="fontSmall">メモリとディスク、Webアプリケーションと負荷</span>
+  <ol>
+  <li>はてなブックマークのデータ規模 - <span class="fontSmall">データが大きいと処理に時間がかかる</span></li>
+  <li>大規模データ処理の難所 - <span class="fontSmall">メモリとディスク</span></li>
+  <li>スケーリングの要所</li>
+  <li>大規模データを扱うための基礎知識</li>
+  </ol>
+</li>
+<li>OSのキャッシュと分散 - <span class="fontSmall">大きなデータを効率良く扱うしくみ</span>
+  <ol>
+  <li>OSのキャッシュ機構</li>
+  <li>I/O負荷の軽減策</li>
+  <li>局所性を活かす分散</li>
+  </ol>
+</li>
+<li>DBのスケールアウト戦略 - <span class="fontSmall">分散を考慮したMySQLの運用</span>
+  <ol>
+  <li>インデックスを正しく運用する - <span class="fontSmall">分散を考慮したMySQL運用の大前提</span></li>
+  <li>MySQLの分散 - <span class="fontSmall">スケーリング前提のシステム設計</span></li>
+  <li>MySQLのスケールアウトとパーティショニング</li>
+  </ol>
+</li>
+<li>大規模データ処理[実践]入門 - <span class="fontSmall">アプリケーション開発の勘所</span>
+  <ol>
+  <li>用途特化型インデクシング - <span class="fontSmall">大規模データを捌く</span></li>
+  <li>理論と実践の両側から取り組む</li>
+  </ol>
+</li>
+<li>[課題]圧縮プログラミング - <span class="fontSmall">データサイズ、I/O高速化との関係を意識する</span>
+  <ol>
+  <li>[課題]整数データをコンパクトに持つ</li>
+  <li>VB Codeと速度感覚</li>
+  <li>課題の詳細と回答例</li>
+  </ol>  
+</li>
+<li>アルゴリズムの実用化 - <span class="fontSmall">身近な例で見る理論・研究の実戦投入</span>
+  <ol>
+  <li>アルゴリズムと評価</li>
+  <li>はてなダイアリーのキーワードリンク</li>
+  <li>はてなブックマークの記事カテゴライズ</li>
+  </ol>
+</li>
+<li>[課題]はてなキーワードリンクの実装 - <span class="fontSmall">応用への道筋を知る</span>
+  <ol>
+  <li>[課題]はてなキーワードリンクを作る</li>
+  <li>回答例と考え方</li>
+  </ol>
+</li>
+<li>全文検索技術に挑戦 - <span class="fontSmall">大規模データ処理のノウハウ満載</span>
+  <ol>
+  <li>全文検索技術の応用範囲</li>
+  <li>検索システムのアーキテクチャ</li>
+  <li>検索エンジンの内部構造</li>
+  </ol>
+</li>
+<li>[課題]全文検索エンジンの作成 - <span class="fontSmall">基本部分、作り込み、速度と精度の追求</span>
+  <ol>
+  <li>[課題]はてなブックマーク全文検索を作る</li>
+  <li>回答例と考え方</li>
+  </ol>
+</li>
+<li>大規模データ処理を支えるサーバ/インフラ入門 - <span class="fontSmall">Webサービスのバックエンド</span>
+  <ol>
+  <li>エンタープライズ vs. Webサービス</li>
+  <li>クラウド vs. 自前インフラ</li>
+  </ol>
+</li>
+<li>スケーラビリティの確保に必要な考え方 - <span class="fontSmall">規模の増大とシステムの拡張</span>
+  <ol>
+  <li>レイヤとスケーラビリティ</li>
+  <li>負荷の把握、チューニング</li>
+  </ol>
+</li>
+<li>冗長性の確保、システムの安定化 - <span class="fontSmall">ほぼ100%の稼働率を実現するしくみ</span>
+  <ol>
+  <li>冗長性の確保</li>
+  <li>システムの安定化</li>
+  <li>システムの安定化対策</li>
+  </ol>
+</li>
+<li>効率向上作戦 - <span class="fontSmall">ハードウェアのリソースの使用率を上げる</span>
+  <ol>
+  <li>仮想化技術</li>
+  <li>ハードウェアと効率向上 - <span class="fontSmall">低コストを実現する要素技術</span></li>
+  </ol>
+</li>
+<li>Webサービスとネットワーク - <span class="fontSmall">ネットワークで見えてくるサービスの成長</span>
+  <ol>
+  <li>ネットワークの分岐点</li>
+  <li>さらなる上限へ</li>
+  </ol>
+</li>
+<li>いまどきのWebサービス構築に求められる実践技術 - <span class="fontSmall">大規模サービスに対応するために</span>
+  <ol>
+  <li>ジョブキューシステム - <span class="fontSmall">TheSchwartz, Gearman</span></li>
+  <li>ストレージの選択 - <span class="fontSmall">RDBMSかkey-valueストアか</span></li>
+  <li>キャッシュシステム - <span class="fontSmall">Squid、Varnish</span></li>
+  <li>計算クラスタ - <span class="fontSmall">Hadoop</span></li>
+  </ol>
+</li>
+</ol>
+
+
+
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>小規模サービスと大規模サービスの違い</h3>
+
+
+
+
+<h4>スケーラビリティの確保と負荷分散</h4>
+
+
+<p><blockquote><p>大量のアクセスがあるサービスでは、サーバ1台では処理しきれない負荷を同処理するかが一番の問題です。ここ10年のトレンドとしてはいわゆる「スケールアウト」がこの問題に対する戦略の基礎になります。</p></blockquote></p>
+
+<p>大量のアクセスのある大規模サービスでは、<strong>スケーラビリティの確保</strong>と<strong>負荷分散</strong>が重要な問題になります。</p>
+
+<p>ハードウェアが安くなってきた最近では、高価なハードウェアを購入するよりもコストを削減できます。ただその代わりに考えないといけないことも増えます。</p>
+
+<p>複数のハードウェアを効率良く使うための負荷分散のしくみや、データの同期の問題、ネットワークのレイテンシ（遅延時間）をどうするか。</p>
+
+<h4>冗長性</h4>
+
+
+<p>スケールアウトでサーバを複数台用意すると、サーバの故障率は高くなります。どこかのサーバが1台故障したからといって、サービスが停止してしまうことは避けなければなりません。</p>
+
+<h4>省力運用</h4>
+
+
+<p>サーバ台数が増えてくると、それぞれのサーバの状況を把握することが困難になってきます。セキュリティ設定、ソフトウェアのバージョンなど、管理しなければならないことも増えてきます。</p>
+
+<p>監視用ソフトウェアを使って自動化を行ったとしても実際に確認するのは人間の役目になります。いかに手間を掛けずに健康状態を維持するか。</p>
+
+<h4>開発方法の統制</h4>
+
+
+<p>大規模サービスになると、当然そのサービスに携わる人は増えてきます。効率化を図るための標準化や標準ツールの策定、教育やマネージメントなどの必要性が出てきます。</p>
+
+<h3>大規模データの処理</h3>
+
+
+<p><blockquote><p>大規模Webアプリケーションを運用するにあたっての苦労の多くは、この大規模データの扱いに集約されます。</p></p><p><p>データが小さいうちは、とくに工夫をしなくてもすべてメモリで処理できますし、複雑なアルゴリズムを使うよりもナイーブなアルゴリズムのほうがオーバーヘッドがないため早い、なんてこともままあって、I/O負荷などはまず問題となりません。しかし、サービスがある程度以上の規模になるとデータは増加します。このデータ量が分水域を超えたところで問題が顕在化します。そしてその対策は、応急処置ではなかなかに難しい。ここが大規模サービスの難所です。</p></p><p><p></p></blockquote></p>
+
+<h3>ミニマムスタートと、変化を見込んだ管理と設計</h3>
+
+
+<p>サービスが小規模の時には、あれこれ考えて早過ぎる最適化を行うのはよくありません。かといって、何も考えずにシステムを設計するのもまたよくありません。</p>
+
+<p>サービス設計時にある程度のキャパシティ管理とデータが莫大に増加してしまわないような設計を行った上で、ミニマムスタートをきる。それがサービスを開始するときのコツです。</p>
+
+<h3>大規模データ処理の難所</h3>
+
+
+<p>大規模データ処理の難しいポイントは、<strong>メモリ内で計算ができない</strong>ことです。</p>
+
+<p>コンピュータはメモリとディスクとで、10<sup>5</sup>〜10<sup>6</sup>倍以上の探索速度の差があります。また、メモリとディスクの転送速度では、メモリが約7.5GB/秒ほど出るのに対して、ディスクは58MB/秒ほどしかでません。</p>
+
+<p>SSD(Solid State Drive) などの記憶装置が出てきたことで探索速度の差は縮まってきていますが、転送速度の差は埋めることがまだ出来ていない状況です。</p>
+
+<h4>単一ホストの負荷</h4>
+
+
+<p><blockquote><p>「負荷分散」と言う言葉から思い浮かべるのは、多くの場合、複数のホストに処理を担当させる文字通りの「分散」です。しかし、そもそも1台で処理できるはずの負荷をサーバ10数台で分散するのは本末転倒です。単一のサーバの性能を十分に引き出すことができてはじめて、複数サーバでの負荷分散が意味をなします。</p></blockquote></p>
+
+<h4>ボトルネック見極め作業の基本的な流れ</h4>
+
+
+
+
+<p class="option"><em>推測するな、計測せよ</em></p>
+
+
+
+
+<ul><li>ロードアベレージを見る</li>
+<li>CPU、I/Oのいずれがボトルネックかを探る</li>
+<li>CPUの場合、ディスクやメモリはボトルネックになっていないかを確認。プログラムのバグも確認する</li>
+<li>I/Oの場合、スワップが発生していないかを確認。メモリの使い方が適切か、足りているかを確認する</li></ul>
+
+
+
+
+<div class="row">
+<div class="col-sm-2">
+<a href="http://www.amazon.co.jp/gp/product/4774135666?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774135666" rel="external nofollow">
+<img src="http://ecx.images-amazon.com/images/I/51uK4ACymiL._SL160_.jpg" />
+</a>
+</div>
+<div class="col-sm-10">
+<ul><li>『<em><a href="http://www.amazon.co.jp/gp/product/4774135666?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774135666" rel="external nofollow">[24時間365日] サーバ/インフラを支える技術 ~スケーラビリティ、ハイパフォーマンス、省力運用</a></em>』</li><li>著者: 安井 真伸, 横川 和哉, ひろせ まさあき, 伊藤 直也, 田中 慎司, 勝見 祐己</li><li>出版社: 技術評論社</li></ul>
+</div>
+</div>
+
+
+
+
+<h3>大規模データを扱う勘所</h3>
+
+
+
+
+<h4>プログラミングの3つの勘所</h4>
+
+
+
+
+<ol><li>いかにメモリで済ませるか</li>
+<li>データ量の増加に強いアルゴリズムを使う</li>
+<li>データ圧縮や検索技術を駆使する</li></ol>
+
+
+
+
+<h4>3つの基礎知識</h4>
+
+
+
+
+<ol><li>OSのキャッシュ</li>
+<li>分散を考慮したRDBMSの運用</li>
+<li>アルゴリズムとデータ構造</li></ol>
+
+
+
+
+<h3>OSのキャッシュのしくみ</h3>
+
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+
+
+<ul><li><a href="http://d.hatena.ne.jp/naoya/20070521/1179754203" rel="external nofollow">Linux のページキャッシュ - Hatena::Diary::naoya</a></li></ul>
+
+
+<p></section></p>
+
+<p>キャッシュを前提に I/O を軽減するというのが、I/O 対策の基本です。扱うデータ規模に対して十分な物理メモリを用意しておくことで、データがすべてキャッシュにのるので I/O が軽減できます。</p>
+
+<p>また、データを圧縮することによって、そのままではキャッシュに全部のらなかったものがのるようになって、効率化ができるようになります。</p>
+
+<h3>分散のポイント</h3>
+
+
+<p>CPU が追いついていないときにサーバを増やす分には単純に増やせばよいですが、<em>ディスクアクセスによる負荷を軽減する場合は単純に増やすことはできません。</em></p>
+
+<p>OS のキャッシュによって I/O を軽減する目的でサーバを増設する場合には、アクセスパターンを考慮して十分にデータがキャッシュにのるようにサーバを増やす必要があります。つまり、<em>単純に同じサーバを増やすというのでは効果がないことがあります。</em></p>
+
+<p>特に、データベースがボトルネックになっているときには、データ量が多いテーブルをメモリが潤沢なサーバに移すなどのアクセスパターンによってサーバを分散させるようにする必要があります。</p>
+
+<h3>局所性を考慮した分散</h3>
+
+
+<p>いかにしてデータをキャッシュにのせた状態で処理するかを考えて、分散を行う必要があります。例えば、データベースの分散の手法には様々ありますが、主なものには次のものがあります。</p>
+
+<dl><dt>テーブル単位での分割</dt>
+<dd><p>1台のサーバのメモリ上にのるように、テーブル単位でサーバを分割する方法。アプリケーション側の変更も必要になる</p></dd>
+<dt>データの途中で分割</dt>
+<dd><p>テーブル単位で分割ではなくデータの途中から別のサーバに分割する方法。たとえば、イニシャルがA〜M、N〜Zでサーバを分ける。これも、アプリケーション側の変更が必要になる</p></dd>
+<dt>リクエストパターンによって分割する</dt>
+<dd><p>最近のデータ、過去のデータなどといった感じでリクエストのパターンによってデータを分割し、サーバを分散する方法。API からのリクエスト、検索エンジンからのリクエストなどで分けたりもする</p></dd>
+</dl>
+
+
+<p><em>テーブルを分散させるときには、アプリケーション側で JOIN を極力使わないようにする必要があります。</em>多くの RDBMS では別サーバにあるテーブルどうしを JOIN することができません。</p>
+
+<h3>サーバ再起動時には一度データをリードする</h3>
+
+
+<p><blockquote><p>MySQLなどのDBサーバを運用するにあたって、大規模なデータを扱う場合にはここに注意が必要です。たとえば、メンテナンスなどでサーバを再起動した場合、それまでにメモリにキャッシュされていたページキャッシュは、すべてフラッシュされてしまいます。(中略）。一度必要なデータ全体に読み込みをかけてから、プロダクション環境に戻すといった工夫が必要になります。</p></blockquote></p>
+
+<h3>Bツリーインデックスはハードディスクのアクセスと相性がいい</h3>
+
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+
+
+<ul><li><a href="http://www.atmarkit.co.jp/fdb/rensai/oraobstacle03/oraobstacle03_1.html" rel="external nofollow">Bツリーインデックスに最高のパフォーマンスを - @IT</a></li></ul>
+
+
+<p></section></p>
+
+<p>Bツリーはそのデータ構造上、ページキャッシュと相性がいいです。なので、データベースでインデックスを貼る際にはBツリーインデックスを使うことが多いです。また、Bツリーをさらに最適化したものに、<a href="http://www.atmarkit.co.jp/icd/root/24/21256624.html" rel="external nofollow">B+ツリー</a>というものもあります。</p>
+
+<h4>MySQLのインデックスの癖</h4>
+
+
+<p><blockquote><p>複数のカラムがインデックス利用の対象になった場合です。(中略)。MySQLは1回のクエリでインデックスを1つしか使わない、という癖を持っているのが原因です。</p></blockquote></p>
+
+<div class="row">
+<div class="col-sm-2">
+<a href="http://www.amazon.co.jp/gp/product/4873114268?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114268" rel="external nofollow">
+<img src="https://images-na.ssl-images-amazon.com/images/I/51s%2Bp62hCgL._SL160_.jpg" alt="実践ハイパフォーマンスMySQL 第2版" />
+</a>
+</div>
+<div class="col-sm-10">
+<ul><li>『<em><a href="http://www.amazon.co.jp/gp/product/4873114268?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114268" rel="external nofollow">実践ハイパフォーマンスMySQL 第2版</a></em>』</li><li>著者: Baron Schwartz (著), Peter Zaitsev (著), Vadim Tkachenko (著), Jeremy D. Zawodny (著), Arjen Lentz (著), Derek J. Balling (著), 伊藤 直也 (監訳) (翻訳), 田中 慎司 (監訳) (翻訳), 吉川 英興 (監訳) (翻訳), 株式会社クイープ (翻訳)</li><li>出版社: オライリージャパン</li></ul>
+</div>
+</div>
+
+
+<p>インデックスが効くかどうかは、explain コマンドを使うと確認できます。</p>
+
+<ul><li><a href="http://nippondanji.blogspot.com/2009/03/mysqlexplain.html" rel="external nofollow">MySQLのEXPLAINを徹底解説!! - 漢のコンピュータ道</a></li></ul>
+
+
+
+
+<h3>更新系のデータベースでもスケールしやすい kye-value ストア</h3>
+
+
+<p>RDBMS を使っていると、参照系のクエリに関しては、キャッシュに注意すればサーバを増設するだけなのでスケールしやすいです。しかし、更新系のクエリとなるとサーバの増設はとたんに難しくなります。</p>
+
+<p>そこで、そもそも RDBMS を使わないという選択肢をとることも考えられます。単に値を書きこんで取り出すだけで、RDBMS の統計処理やソートなどが不要なのであれば、key-value ストアを使用するという方法を考えるといいです。</p>
+
+<p><blockquote><p>単に値を保存して取り出すだけで、RDBが持つ複雑な統計処理や汎用的なソート処理が必要ないなら、key-valueストアはオーバーヘッドも少なく圧倒的に速いし、スケールしやすいんです。</p></blockquote></p>
+
+<h3>圧縮アルゴリズム</h3>
+
+
+
+
+<ul><li><a href="http://d.hatena.ne.jp/naoya/20090804/1249380645" rel="external nofollow">γ符号、δ符号、ゴロム符号による圧縮効果 - Hatena::Diary::naoya</a></li></ul>
+
+
+
+
+<h3>アルゴリズムのオーダー表記</h3>
+
+
+<p>右に行くほど計算量が多くなります。</p>
+
+<pre>O(1) &lt; O(log n) &lt; O(n) &lt; O(n log n) &lt; O(n<sup>2</sup>) &lt; O(n<sup>3</sup>) ... O(n<sup>k</sup>) &lt; O(2<sup>n</sup>)</pre>
+
+
+
+
+<h3>はてなで使っている（使っていたいた）マッチングアルゴリズムやデータ構造</h3>
+
+
+
+
+<ul><li>パターンマッチング: <a href="http://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%82%A4%E6%9C%A8" rel="external nofollow">Trie(トライ木)</a></li>
+<li>パターンマッチング: <a href="http://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%A4%E3%83%9B-%E3%82%B3%E3%83%A9%E3%82%B7%E3%83%83%E3%82%AF%E6%B3%95" rel="external nofollow">Aho-Corasick法(AC法)</a></li>
+<li>カテゴリ判定: <a href="http://ja.wikipedia.org/wiki/%E3%83%99%E3%82%A4%E3%82%B8%E3%82%A2%E3%83%B3%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF" rel="external nofollow">ベイジアンフィルタ</a></li>
+</ul>
+
+
+
+
+<h3>検索システムの6つのステージ</h3>
+
+
+<p>全文検索システムを作る上で、大まかに作業を分けると、6つのステージに分解できます。</p>
+
+<dl><dt>クロール</dt>
+<dd><p>検索する対象のドキュメントを見つける</p></dd>
+<dt>格納</dt>
+<dd><p>ドキュメントを保存・格納する</p></dd>
+<dt>インデクシング</dt>
+<dd><p>ドキュメントからインデックスを構築する</p></dd>
+<dt>検索</dt>
+<dd><p>インデックスを元にクエリを含むドキュメントを検索する</p></dd>
+<dt>スコアリング/ランキング</dt>
+<dd><p>検索結果をどのような順番で表示するかを決める</p></dd>
+<dt>結果表示</dt>
+<dd><p>結果を表示する</p></dd>
+</dl>
+
+
+
+
+<div class="row">
+<div class="col-sm-2">
+<a href="http://www.amazon.co.jp/gp/product/0521865719?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=0521865719" rel="external nofollow">
+<img src="https://images-na.ssl-images-amazon.com/images/I/41xVx99-4yL._SL160_.jpg" alt="Introduction to Information Retrieval" />
+</a>
+</div>
+<div class="col-sm-10">
+<ul><li>『<em><a href="http://www.amazon.co.jp/gp/product/0521865719?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=0521865719" rel="external nofollow">Introduction to Information Retrieval</a></em>』</li><li>著者: Christopher D. Manning (著), Prabhakar Raghavan (著), Hinrich Schuetze (著)</li><li>出版社: Cambridge University Press; Anniversary</li></ul>
+</div>
+</div>
+
+
+
+
+<h3>仮想化のデメリット</h3>
+
+
+<p>はてなでの経験則だそうですが、だいたい、</p>
+
+<ul><li>CPUで2〜3%</li>
+<li>メモリの性能も1割くらい</li>
+<li>ネットワークの性能は半分くらい</li>
+<li>I/O性能が5%くらい</li></ul>
+
+
+<p>落ちるようです。</p>
+
+<h3>SSDの寿命</h3>
+
+
+<p><blockquote><p>SSDを扱う上で一番気になるのは、いつどのように壊れるのか、ということです。HDDが時間と共に消耗して壊れるのは周知の事実なのですが、SSDも時間とともに消耗して壊れる、と考えるのが自然です。</p></blockquote></p>
+
+<p>フラッシュメモリも書き込みの消耗で壊れてしまうようです。新しいメディアを使うときは、それがどのように壊れるのかをきちんと確認して、監視する仕組みを整えておくことが必要です。</p>
+
+<h3>ネットワークの限界</h3>
+
+
+<p>1つのサブネットは500ホストくらいが限界のようです。サブネット内にホストがたくさんあると、ブロードキャストパケットの受信だけでも結構 CPU を食うようです。</p>
+
+<h3>ジョブキュー、ストレージ、キャッシュシステム、計算クラスタ</h3>
+
+
+<p><section></p>
+
+<h4>いまどきのWebサービスに求められる実践技術</h4>
+
+
+
+
+<ul><li>ジョブキューシステム -- TheSchwartz, Gearman</li>
+<li>ストレージ -- RDBMS, key-valueストア</li>
+<li>キャッシュシステム -- Squid, Varnish</li>
+<li>計算クラスタ -- Hadoop</li></ul>
+
+
+<p></section></p>
+
+<h4>ストレージ選択のフローチャート</h4>
+
+
+<p>本書より</p>
+
+<p><img alt="flowchart.png" src="http://hamasyou.com/images/flowchart.png" width="558" height="474" class="mt-image-none" style="" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Webを支える技術 -HTTP、URI、HTML、そしてREST]]></title>
+    <link href="http://hamasyou.com/blog/2010/05/31/4774142042/"/>
+    <updated>2010-05-31T18:31:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/05/31/4774142042</id>
+    <content type="html"><![CDATA[<p>Webで成功するサービスを作る究極の指針は「シンプルであること」だと思います。これは別にWebに限らずそうだと思います。例えば、AppleやSONYやDELLなどの起業が成功したのは、シンプルな製品、サービスを作り出したからではないかと思います。Googleの検索窓なんかは、究極のシンプルだと思います（だんだんといろんなものがつき始めましたが。。。）</p>
+
+<p>業務で使用するWebサービス、コンシューマ向けのWebアプリケーションAPIなどもこの設計指針が当てはまると思いますし、本書はこのことだけが追求されて書かれている良書です。</p>
+
+<p>Webの成り立ち、ここまで成長してきたのは何故か、Webをより良く使うための設計方針が本書には詰まっています。Web開発の初心者にはもちろん、Web開発をバンバンにやってきた人にも、一度は目を通して欲しい本です。かなりオススメですし、読めば必ず目から鱗間違いなしです。</p>
+
+<!-- more -->
+
+
+<p>RESTについては、<a href="http://hamasyou.com/archives/000343" rel="external nofollow">RESTful Webサービス</a>の記事も参考にしてください。</p>
+
+<h2>Webを支える技術</h2>
+
+
+
+
+<dl>
+  <dt>HTTP、URI、HTML</dt>
+  <dd><p>HTTPというシンプルなプロトコルの上で、リソースを一意に特定するURIを用いて、HTMLで記述されたメディアを読む。Webはそんなシンプルな技術によって成り立っています。</p></dd>
+  <dt>ハイパーメディア</dt>
+  <dd><p>テキスト、画像、音声、動画などをハイパーリンクで結びつけたシステムをハイパーメディアと呼びます。Webで最も重要なのはこのハイパーリンクによってメディアがリンクしているということです。</p></dd>  
+  <dt>分散システム</dt>
+  <dd><p>Webはひとつのシステムで成り立っているわけではなく、大量のコンピュータが組み合わさっています。ネットワーク上に散らばったこれらのコンピュータが相互動作するのは、シンプルなプロトコルだからこそと言えるでしょう。</p></dd>
+</dl>
+
+
+
+
+<h2>REST-Webのアーキテクチャスタイル</h2>
+
+
+<p>RESTとはアーキテクチャスタイルでRESTアーキテクチャスタイルなアーキテクチャのことをRESTfulアーキテクチャと呼びます。</p>
+
+<p><blockquote><p>RESTはWeb全体のアーキテクチャスタイルでもあり、個別のWebサービスやWeb APIのアーキテクチャスタイルでもあります。一人一人が作る個別のWebサービスやWeb APIでも、RESTの約束を守ることが重要です。個別のWebサービスが全体の調和を乱しては、全体が統一したアーキテクチャスタイルを守れないからです。</p></p><p><p></p><footer><strong>本書 P.27</strong></footer></blockquote></p>
+
+<h3>リソース</h3>
+
+
+<p>RESTの重要な概念の一つにリソースがあります。<strong>リソースとはWeb上に存在する名前を持った情報</strong>の事をいいます。WebではこれをURIで表します。</p>
+
+<p>RESTfulアーキテクチャではこのリソースを「アドレス可能な状態」にしておくことで、システムとして綺麗な形（シンプルなプログラムが可能）になります。</p>
+
+<p><blockquote><p>URIが備える、リソースを簡単に指し示せる性質のことを「アドレス可能性」（Addressability）と呼びます。リソースをアドレス可能な状態、すなわちきちんと名前が付いており適切な手段でアクセスできる状態にすると、プログラムをとても作りやすくなります。</p></p><p><p></p><footer><strong>本書 P.29</strong></footer></blockquote></p>
+
+<p>リソースは複数のURIを持つことができます。例えば、</p>
+
+<pre>
+http://www.hamasyou.com/reports/newest
+</pre>
+
+
+
+
+<pre>
+http://www.hamasyou.com/reports/system/2010-05-31/1
+</pre>
+
+
+<p>は同じリソースを指すことができます。ただし、一つ目のURIは時間の経過とともに指し示すリソースが変わってしまうことがあります。常に同じリソースを表したい場合には、パーマネントリンクなどを参考にすると良いでしょう。</p>
+
+<h3>クールなURIは変わらない</h3>
+
+
+<p>良いURIやきれいなURIの事を「<strong>クールURI</strong>」と呼ぶそうです。「URIが変わらないべきである。変わらないURIこそが最上のURIである。」</p>
+
+<p>クールURIにするためには、次のことに気をつければ良さそうです。</p>
+
+<ul>
+  <li>プログラミング言語に依存した拡張子やパスを含めない</li>
+  <li>メソッド名やセッションIDを含めない</li>
+  <li>URIはリソースを表現する名詞にする</li>
+</ul>
+
+
+
+
+<h4>プログラミング言語に依存した拡張子やパスを含めない</h4>
+
+
+<p>例えば、JavaのStrutsを使うと、スタンダードなURIは「.do」という拡張子がつけることが多くあります。また、CGIなどの場合には、スクリプト言語の拡張子（.pl、.rb、.cgi など）をそのまま使うことがあります。</p>
+
+<p>また、CGIなどの場合、「cgi-bin」などのディレクトリ名をパスに含めることがあります。これもプログラミング言語に依存したパスを含めていることになります。</p>
+
+<p>こういった、プログラミング言語のデファクト、パス情報、ファイル拡張子などをURIに含めないようにすると、URIが変わりにくくなります。</p>
+
+<h4>メソッド名やセッションIDを含めない</h4>
+
+
+<p>リソースに対する処理メソッド名をURIに含めると、使っているフレームワークや仕様変更によりURIが変わりやすくなってしまいます。また、セッションIDなどをURIに含めるとアクセスする度にURIが変わってしまいかねないという状況になってしまいます。</p>
+
+<pre>
+http://www.hamasyou.com/sample/execute?cmdName=showPage&page=3;jssessionid=1234567890
+</pre>
+
+
+<p>URIにはメソッド名やセッションIDを含めないようにすると良いです。RESTfulアーキテクチャでは、統一インターフェースとしてHTTPのメソッド（GET, POST, PUT, DELETE）を使用すると良いでしょう。</p>
+
+<h4>URIはリソースを表現する名詞にする</h4>
+
+
+<p>URIにはメソッド名を含めずに、HTTPメソッドを使用して処理を分けると良いです。</p>
+
+<pre>
+悪い（×）： http://www.hamasyou.com/show/articles?id=10 （POSTでアクセスする）
+</pre>
+
+
+
+
+<pre>
+良い（◯）： http://www.hamasyou.com/articles/10  (GETでアクセスする）
+</pre>
+
+
+
+
+<h2>URI設計のテクニック</h2>
+
+
+
+
+<h3>拡張子で表現を指定する</h3>
+
+
+<p><blockquote><p>ここまで、拡張子はURIの設計にとって悪であると述べてきました。しかし、悪いのは「.cgi」や「.pl」など実装に依存した拡張子です。実装に依存していない拡張子は良い側面を持つ場合もあります。</p></p><p><p></p><footer><strong>本書 P.60</strong></footer></blockquote></p>
+
+<dl>
+  <dt>言語を指定する拡張子</dt>
+  <dd>言語を指定する拡張子「.ja」「.en」をリソースに含める。</dd>
+  <dt>フォーマットを指定する拡張子</dt>
+  <dd>「.html」「.atom」「.xml」「.json」などの表現フォーマットを指定する拡張子をリソースに含める。</dd>
+</dl>
+
+
+
+
+<h2>その他</h2>
+
+
+
+
+<h3>統一インターフェース</h3>
+
+
+
+
+<dl>
+  <dt>GET</dt>
+  <dd>リソースを取得する場合に使う。冪等（べきとう）。</dd>
+  <dt>POST</dt>
+  <dd>リソースを作成するときに使う。レスポンスとしてリソースのURIを返してくれることを希望する（新規作成の場合など）。新しいリソースのURIはLocationヘッダで返される（POST後はリダイレクトされる）。冪等ではない。</dd>
+  <dt>PUT</dt>
+  <dd>リソースを更新するときに使う。リソースのURIは変わらない。冪等だがリソースの状態は変わる。</dd>
+  <dt>DELETE</dt>
+  <dd>リソースを削除する時に使う。リソースのURIがわかっている場合に使い、なんど呼び出しても結果は変わらないべき。つまり、存在しないリソースに対してのDELETEは何もいわずに成功するし、DELETEによって他のリソースのURI表現が変わることはないようにする。冪等。</dd>
+</dl>
+
+
+
+
+<h3>検索結果にリソース表現</h3>
+
+
+
+
+<pre>
+http://www.hamasyou.com/articles/search?q={query}
+</pre>
+
+
+<p>searchというメソッド名をURIを含めているじゃないかと思うが、そうではなく、これは検索結果というリソースを表している（searchは名詞の方の検索）。</p>
+
+<h3>オブジェクトモデルにおける関連のリソース表現</h3>
+
+
+<p>関連のどちらがトップレベルリソース（上にくるリソース）かを考え、URIの階層構造でURIを表す。</p>
+
+<p>記事群-設計カテゴリ-最新記事の場合。</p>
+
+<pre>
+http://www.hamasyou.com/articles/system/newest
+</pre>
+
+
+<p>設計カテゴリ-記事群-最新記事の場合。</p>
+
+<pre>
+http://www.hamasyou.com/system/articles/newest
+</pre>
+
+
+
+
+<h3>ロック機構をリソースで表す</h3>
+
+
+<p>Web APIによってはロック機構を組み込みたい場合があります。この場合は、ロックを表す子リソースを作ることで対応できます。</p>
+
+<p>リソースに対して、ロックリソースを作成し、そのロックリソースをDELETEすることでロック解除を表す。</p>
+
+<p>本書 P.289より抜粋。</p>
+
+<pre>
+POST /1120034 HTTP/1.1
+Host: zip.ricollab.jp
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic ...
+ 
+scope=exclusive&timeout=300
+</pre>
+
+
+<p>ロック用のパラメータをリソースに対して送信し、ロックリソースを作成する。</p>
+
+<pre>
+HTTP/1.1 201 Created
+Location: http://zip.ricollab.jp/1120034/lock
+Content-Type: application/json
+ 
+{
+ "locktype": "exclusive",
+ "timeout": "2010-09-07T10:00:30Z",
+ "owner": "yohei"
+}
+</pre>
+
+
+<p>ロック解除は、POSTで作成された子リソース（lock）を削除することで行う。</p>
+
+<pre>
+DELETE /1120034/lock HTTP/1.1
+Host: zip.ricollab.jp
+Authorization: Basic ... 
+</pre>
+
+
+
+
+<pre>
+HTTP/1.1 200 OK
+</pre>
+
+
+
+
+<h2>参考</h2>
+
+
+
+
+<div class="rakuten">
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/RESTful-Web%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9-Leonard-Richardson/dp/4873113539%3FSubscriptionId%3D15SMZCTB9V8NGR2TW082%26tag%3Dsorehabooks-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D4873113539" rel="external nofollow">G-Tools</a></font></td></tr></table>
+</div>
+
+
+
+
+<div class="rakuten">
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/Web%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3-Sanjiva-Weerawarana/dp/4434073435%3FSubscriptionId%3D15SMZCTB9V8NGR2TW082%26tag%3Dsorehabooks-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D4434073435" rel="external nofollow">G-Tools</a></font></td></tr></table>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ドメイン駆動]]></title>
+    <link href="http://hamasyou.com/blog/2008/06/29/4798116173/"/>
+    <updated>2008-06-29T22:46:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2008/06/29/4798116173</id>
+    <content type="html"><![CDATA[<p>本書は、<strong>ドメイン駆動設計（DDD:Domain Driven Design）</strong>について書かれているで、<strong>ドメインモデル</strong>、エンタープライズアプリケーションアーキテクチャ、アーキテクチャパターン、テスト駆動開発を勉強する本です。</p>
+
+<p>この本のお勧めの点の一つが、筆者の経験をもとにした生きたサンプルにあります。「システム開発は○○の理由でドメイン駆動設計を行ったほうがよい。こういう背景があって、こういうアーキテクチャパターンの適用を考えていく。」こういった生きた経験が本書にちりばめられています。</p>
+
+<p>対象読者は業務アプリケーション開発に携わるアーキテクチャ、システムエンジニア、開発者さん達です。最近は定着したドメイン駆動設計（ドメイン駆動開発）という言葉ですが、現場で実際に使われているのは実は少ないのではないでしょうか。ドメイン駆動で設計するとはどういったことなのか？本書を読めば、新しい視点が学べると思います。お薦めの一冊です。</p>
+
+<!-- more -->
+
+
+
+
+<h2>ドメイン駆動設計とは</h2>
+
+
+<p><blockquote><p>この本の最大のテーマは、ドメインモデルをクリーンに作りつつ、永続記憶とも仲良くする方法である。ドメインモデルのようなもののための永続記憶はどのように構成されるかを示し、ドメインモデルとデータベースの間に橋をかける。</p></p><p><p></p><footer><strong>本書:序章より</strong></footer></blockquote></p>
+
+<h3>ユースケースとトランザクションスクリプト</h3>
+
+
+<p>ユースケースとはシステムの一つの機能（振る舞い）をユーザの視点から記述するものです。著者の Jimmy Nilsson は、かつてはユースケース一つにつき一つのクラスを作って機能を設計していたそうです。おそらく、いわゆる「3階層アーキテクチャのビジネスロジック層における<strong>サービスクラス</strong>」のことだと思われます。</p>
+
+<p>この方法で設計を行うと、機能を呼び出して結果を得るのに一つのサービスクラスの一つのメソッドを呼び出すだけという構造になります。これが手続き型のトランザクションスクリプトというアーキテクチャパターンです。ユースケースを一つにつきサービスクラスを一つ作ると、一つの機能がそのクラスにカプセル化され処理の見通しはよくなります。</p>
+
+<h3>ドメイン駆動設計（Domain Driven Design）を重視する理由</h3>
+
+
+<p>ユースケースは確かに顧客との話し合いにはとても有効なものです。しかし、システムを設計するのにユースケースにとらわれる必要はないというのが筆者らの主張のようです。ユースケースでシステムの外観（インターフェース）を設計し、モデルによってドメインの主要コンセプト、業務のコアを定義し設計していくというのが効率的なシステム開発につながるのではないかと考えています。</p>
+
+<p>最近の技術の発達のおかげで、顧客とモデルをベースに議論を行うことも不可能ではなくなってきました。</p>
+
+<h3>オブジェクト指向とドメインモデル</h3>
+
+
+<p>モデルを重視してシステムを設計すればおのずとオブジェクト指向でシステムを開発することになります。これをすんなり実装に落とすとなれば、当然ドメインモデルパターンのアーキテクチャを適用するのが自然の流れです。</p>
+
+<p>ドメインをモデリングし、それをすんなり実装に落とすためにビジネスロジックにドメインモデルパターンを適用するのがドメイン駆動設計のコアの考え方です。</p>
+
+<h2>ドメインモデルとデータベース</h2>
+
+
+
+
+<h3>データベースの設計方針</h3>
+
+
+<p>ドメインモデルで設計を進めていくと、当然データベースの設計をドメインモデル寄りにする必要が出てきます。しかしここで問題がでてくることになります。</p>
+
+<p>データベースは今でもリレーショナルデータベースが一般的に使われています。リレーショナルデータベースは集合を基礎としたものになっています。ドメインモデルも集合を基礎としているのは変わりません。しかしドメインモデル（オブジェクト指向）はオブジェクトのデータ構造を出来るだけカプセル化し、振る舞いをオブジェクトに持たせようとするためデータベースのモデルと集合の粒度が異なるのです。</p>
+
+<p><blockquote><p>設計ということでは、粒度が大きく異なる。例を使ってこの点を明らかにしよう。特定の人物について、家庭用電話番号ひとつと仕事用電話番号ひとつを管理したいとする。（中略）</p></p><p><p>ここで重要なのは、1:1でもすべてのカラムが通常一つのテーブルで定義されていることである。オブジェクト指向モデルでは、Person と PhoneNumber の2つのクラスを作るのが普通だろう。そして Person のインスタンスは 2つの PhoneNumber インスタンスを組み合わせたものになる。リレーショナルモデルでも同じようなことができなわけではないが、通常は無意味である。<b>リレーショナルモデルでは、テーブルの定義に動作を結び付けたりはしないので、定義を再利用しようなどとは考えない。これはオブジェクト指向モデルの逆である。</b></p></p><p><p></p><footer><strong>本書:第1章「尊重すべき価値」P.19より</strong></footer></blockquote></p>
+
+<p>もう一つあるのは、データベースは継承をサポートしないことです。つまり、ポリモーフィズムが実現できないのです。オブジェクト指向では継承（ポリモーフィズム）は重要な概念です。</p>
+
+<h3>データマッパー（O/Rマッパー）</h3>
+
+
+<p>上で述べたようなデータベースモデルとオブジェクト指向モデルの乖離（かいり）のことを<strong>インピーダンスミスマッチ</strong>と呼びます。そして、このインピーダンスミスマッチを埋める目的で導入されるものに、データマッパー（O/Rマッパー）があります。Java では Hibernate が有名です。</p>
+
+<h2>本書に書いてあること</h2>
+
+
+
+
+<ul>
+<li>ドメイン駆動設計</li>
+<li>ドメインモデルが重要な理由</li>
+<li>アーキテクチャパターンとしてのドメインモデルの有効性</li>
+<li>テスト駆動開発によるモデルの見つけ方</li>
+<li>ドメインモデルに対するルール</li>
+<li>永続化方針</li>
+<li>PoEAA の応用としてのインフラパターン</li>
+<li>NHibernate（.Net ようのO/Rマッパー）の導入</li>
+<li>設計テクニック：SOA、DI、AOP</li>
+<li>UIに関する設計</li>
+<li>ドメインモデルパターン再考</li>
+</ul>
+
+
+<p>ドメインモデルを現場にどうやって適用するか、なぜドメインモデルなのか、ドメインモデルを使った実際の設計例などが知りたい人は、ぜひ本書を読んでください。440ページ近くありますが、すんなり読めてしまうくらいどっぷりはまれます。</p>
+
+<h2>参考</h2>
+
+
+
+
+<div class="rakuten">
+<table width="400"  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798105538/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table>
+</div>
+
+
+
+
+<div class="rakuten">
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321125215/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table>
+</div>
+
+
+
+
+<div class="rakuten">
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798109037/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: XML | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/xml/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Titanium] Titanium 版 XML2JSON - XML を JSON に変換する]]></title>
+    <link href="http://hamasyou.com/blog/2010/09/15/titanium-xml2json-xml-json/"/>
+    <updated>2010-09-15T01:39:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/09/15/titanium-xml2json-xml-json</id>
+    <content type="html"><![CDATA[<p><s>Titanium は、JavaScript でコードがかけると言っても色々と制約があり、<em>eval()</em> を使うようなライブラリは使用できません。</s></p>
+
+<p><section></p>
+
+<h4>2013/02/28追記</h4>
+
+
+<p>dom2json に渡すオブジェクトを dom.documentElement に変更しました。dom を直接渡すと、Android でエラーが発生することがあります。</p>
+
+<h4>2011/01/18追記</h4>
+
+
+<p>Titanium.include(&ldquo;TiDOMParser.js&rdquo;) だと実機のほうでエラーが発生するという報告を頂いたので、TiDomParser に変更しました。合わせて、プログラム中の TiDOMParser を TiDomParser に変更しました。ご報告ありがとうございました。</p>
+
+<h4>2010/09/15追記</h4>
+
+
+<p><em>eval()</em> が使えないと書きましたが、使えることが判明しました。。。KitchenSink のサンプルにもありました。。 僕の環境で動かないと思っていたのは、eval(&ldquo;1+1&rdquo;); と試していたからで、eval() の中はコードになるので正確にはセミコロンが必要で、eval(&ldquo;1+1;&rdquo;); としないとダメでした。。訂正です。。</p>
+
+<p></section></p>
+
+<p>XML を JSON にするライブラリに、<a href="http://www.thomasfrank.se/xml_to_json.html" rel="external nofollow">XML to JSON</a> というライブラリがありますが、<s>内部で eval を使っているため動きません。</s>（中身を書き換えれば動きそうですね。。）</p>
+
+<p>そこで、DOM から JSON に変換する <a href="http://www.kawa.net/works/js/xml/objtree.html" rel="external nofollow">XML.ObjTree</a> というライブラリを元に、Titanium 上で XML を JSON に変換するライブラリを作ってみました。</p>
+
+<p>ライセンスとか気にしたつもりですが、ObjTree のライセンスに引っかかるとかあればご連絡ください。すぐに対応します。</p>
+
+<!-- more -->
+
+
+
+
+<h2>Titanium で XML を JSON に変換する</h2>
+
+
+<p>Titanium 上で XML を JSON に変換するには次のような手順を踏みます。</p>
+
+<ol><li>XML 文字列を <em>Titanium.XML.parseString()</em> を使って DOM に変換する</li>
+<li>DOM を本ライブラリを使ってパースし、JSON に変換する</li></ol>
+
+
+<p>もともと、<a href="http://www.kawa.net/works/js/xml/objtree.html" rel="external nofollow">XML.ObjTree</a> というライブラリを使う予定でしたが、<em>Titanium.XML.parseString()</em> で得られるオブジェクトは純粋な DOM ではなく、<strong>TiDOMDocument</strong> というオブジェクトのため ObjTree をそのままでは使えませんでした。</p>
+
+<p>そこで、一部修正して、内部で TiDOMDocument を処理できるようにしてみました。使い方は次の通り。</p>
+
+<pre class="code">Titanium.include(<span class="str">&quot;TiDomParser.js&quot;</span>);
+<span class="keyword">var</span> parser = <span class="keyword">new</span> com.hamasyou.XML.TiDomParser();
+<span class="keyword">var</span> dom = Titanium.XML.parseString(xml);
+<span class="keyword">var</span> json = parser.dom2Json(dom.documentElement);</pre>
+
+
+<p>バグやおかしな点があれば、コメントください。</p>
+
+<h4>Download</h4>
+
+
+
+
+<ul><li><a href="http://hamasyou.com/blog/archives/misc/TiDomParser.js" rel="external nofollow">TiDomParser.js</a></li></ul>
+
+
+
+
+<h2>ソースコード全文</h2>
+
+
+
+
+<h4>TiDomParser.js</h4>
+
+
+
+
+<pre class="code"><span class="rem">/**
+ * @author hamasyou
+ * Copyright (C) 2010 hamasyou, INC. All Rights Reserved.
+ *
+ * @License:
+ * This program is free software; you can redistribute it
+ * and/or modify it under the Artistic license.
+ * Or whatever license I choose, which I will do instead of
+ * keeping this documentation like it is.
+ *
+ * @See http://www.kawa.net/works/js/xml/objtree.html - ObjTree.js
+ */</span>
+<span class="keyword">var</span> com = {};
+<span class="keyword">if</span> (<span class="keyword">typeof</span>(com.hamasyou) == <span class="str">&quot;undefined&quot;</span>) com.hamasyou = {};
+<span class="keyword">if</span> (<span class="keyword">typeof</span>(com.hamasyou.XML) == <span class="str">&quot;undefined&quot;</span>) com.hamasyou.XML = {};
+(<span class="keyword">function</span>() {
+  <span class="keyword">var</span> Node = {
+    ELEMENT_NODE: <span class="num">1</span>,
+    ATTRIBUTE_NODE: <span class="num">2</span>,
+    TEXT_NODE: <span class="num">3</span>,
+    CDATA_SECTION_NODE: <span class="num">4</span>,
+    ENTITY_REFERENCE_NODE: <span class="num">5</span>,
+    ENTITY_NODE: <span class="num">6</span>,
+    PROCESSING_INSTRUCTION_NODE: <span class="num">7</span>,
+    COMMENT_NODE: <span class="num">8</span>,
+    DOCUMENT_NODE: <span class="num">9</span>,
+    DOCUMENT_TYPE_NODE: <span class="num">10</span>,
+    DOCUMENT_FRAGMENT_NODE: <span class="num">11</span>,
+    NOTATION_NODE: <span class="num">12</span>
+  };
+
+  <span class="keyword">var</span> ns = com.hamasyou.XML;
+  ns.TiDomParser = <span class="keyword">function</span>() {
+    <span class="keyword">this</span>.initialize.apply(<span class="keyword">this</span>, arguments);
+  };
+  ns.TiDomParser.<span class="keyword">prototype</span> = {
+    initialize: <span class="keyword">function</span>() {
+    },
+
+    dom2Json: <span class="keyword">function</span>(root) {
+      <span class="keyword">this</span>.__force_array = {};
+      <span class="keyword">if</span> (<span class="keyword">this</span>.force_array) {
+        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="num">0</span>; i &lt; <span class="keyword">this</span>.force_array.length; i++) {
+          <span class="keyword">this</span>.__force_array[<span class="keyword">this</span>.force_array[i]] = <span class="num">1</span>;
+        }
+      }
+
+      <span class="keyword">var</span> json = <span class="keyword">this</span>._parseElement(root); <span class="rem">// parse root node</span>
+      <span class="keyword">if</span> (<span class="keyword">this</span>.__force_array[root.nodeName]) {
+        json = [json];
+      }
+      <span class="keyword">if</span> (root.nodeType != Node.DOCUMENT_FRAGMENT_NODE) {
+        <span class="keyword">var</span> tmp = {};
+        tmp[root.nodeName] = json; <span class="rem">// root nodeName</span>
+        json = tmp;
+      }
+      <span class="keyword">return</span> json;
+    },
+
+    _parseElement: <span class="keyword">function</span>(elem) {
+      <span class="keyword">if</span> (elem.nodeType == Node.COMMENT_NODE) {
+        <span class="keyword">return</span>;
+      }
+
+      <span class="keyword">if</span> (elem.nodeType == Node.TEXT_NODE || elem.nodeType == Node.CDATA_SECTION_NODE) {
+        <span class="keyword">var</span> bool = elem.text.match(/[^\x00-\x20\u00A0]/);
+        <span class="keyword">if</span> (bool == <span class="keyword">null</span>) <span class="keyword">return</span>; <span class="rem">// ignore white spaces</span>
+        <span class="keyword">return</span> elem.text;
+      }
+
+      <span class="keyword">var</span> retval;
+      <span class="keyword">var</span> cnt = {};
+      <span class="rem">//  parse attributes</span>
+      <span class="keyword">if</span> (elem.attributes &amp;&amp; elem.attributes.length) {
+        retval = {};
+        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="num">0</span>, len = elem.attributes.length; i &lt; len; i++) {
+          <span class="keyword">var</span> key = elem.attributes.item(i).nodeName;
+          <span class="keyword">if</span> (<span class="keyword">typeof</span>(key) != <span class="str">&quot;string&quot;</span>) <span class="keyword">continue</span>;
+          <span class="keyword">var</span> val = elem.attributes.item(i).nodeValue;
+          <span class="keyword">if</span> (!val) <span class="keyword">continue</span>;
+          <span class="keyword">if</span> (<span class="keyword">typeof</span>(cnt[key]) == <span class="str">&quot;undefined&quot;</span>) cnt[key] = <span class="num">0</span>;
+          cnt[key]++;
+          <span class="keyword">this</span>._addNode(retval, key, cnt[key], val);
+        }
+      }
+
+      <span class="rem">//  parse child nodes (recursive)</span>
+      <span class="keyword">if</span> (elem.childNodes &amp;&amp; elem.childNodes.length) {
+        <span class="keyword">var</span> textonly = <span class="keyword">true</span>;
+        <span class="keyword">if</span> (retval) textonly = <span class="keyword">false</span>; <span class="rem">// some attributes exists</span>
+        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="num">0</span>, len = elem.childNodes.length; i &lt; len &amp;&amp; textonly; i++) {
+          <span class="keyword">var</span> ntype = elem.childNodes.item(i).nodeType;
+          <span class="keyword">if</span> (ntype == Node.TEXT_NODE || ntype == Node.CDATA_SECTION_NODE) <span class="keyword">continue</span>;
+          textonly = <span class="keyword">false</span>;
+        }
+        <span class="keyword">if</span> (textonly) {
+          <span class="keyword">if</span> (!retval) retval = <span class="str">&quot;&quot;</span>;
+          <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="num">0</span>, len = elem.childNodes.length; i &lt; len; i++) {
+            retval += elem.childNodes.item(i).text;
+          }
+        } <span class="keyword">else</span> {
+          <span class="keyword">if</span> (!retval) retval = {};
+          <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="num">0</span>, len = elem.childNodes.length; i &lt; len; i++) {
+            <span class="keyword">var</span> key = elem.childNodes.item(i).nodeName;
+            <span class="keyword">if</span> (<span class="keyword">typeof</span>(key) != <span class="str">&quot;string&quot;</span>) <span class="keyword">continue</span>;
+            <span class="keyword">var</span> val = <span class="keyword">this</span>._parseElement(elem.childNodes.item(i));
+            <span class="keyword">if</span> (!val) <span class="keyword">continue</span>;
+            <span class="keyword">if</span> (<span class="keyword">typeof</span>(cnt[key]) == <span class="str">&quot;undefined&quot;</span>) cnt[key] = <span class="num">0</span>;
+            cnt[key]++;
+            <span class="keyword">this</span>._addNode(retval, key, cnt[key], val);
+          }
+        }
+      }
+      <span class="keyword">return</span> retval;
+    },
+
+    _addNode: <span class="keyword">function</span>(hash, key, cnts, val) {
+      <span class="keyword">if</span> (<span class="keyword">this</span>.__force_array[key]) {
+        <span class="keyword">if</span> (cnts == <span class="num">1</span>) hash[key] = [];
+        hash[key][hash[key].length] = val; <span class="rem">// push</span>
+      } <span class="keyword">else</span> <span class="keyword">if</span> (cnts == <span class="num">1</span>) { <span class="rem">// 1st sibling</span>
+        hash[key] = val;
+      } <span class="keyword">else</span> <span class="keyword">if</span> (cnts == <span class="num">2</span>) { <span class="rem">// 2nd sibling</span>
+        hash[key] = [hash[key], val];
+      } <span class="keyword">else</span> { <span class="rem">// 3rd sibling and more</span>
+        hash[key][hash[key].length] = val;
+      }
+    }
+  };
+
+  ns.TiDomParser.VERSION = <span class="num">0.1</span>;
+})();</pre>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[XML+XSLによるWebサイトの構築と活用]]></title>
+    <link href="http://hamasyou.com/blog/2004/05/22/4797313404/"/>
+    <updated>2004-05-22T18:38:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/05/22/4797313404</id>
+    <content type="html"><![CDATA[<p>実践で使えるXMLを解説している本ですが、基本も一通り学べます。XMLの概念を深くまで勉強したい人にとっては物足りないですけど、初めてXMLをさわる人にとっては敷居が低いと思います。つまり初心者向けってことです。</p>
+
+<!-- more -->
+
+
+<p>内容は、チュートリアル的なものが多く、サンプルも豊富ですし、読みながら手を動かすのがよいと思います。実際、僕もそうやってこの本を読みました。言葉も丁寧で読みやすかったです。</p>
+
+<p>XMLをホームページに応用する方法が載っていて、XML と XSL を同時に学ぶことができる、かなりお薦めのXMLの本です（実際はXSL重視です）。これの他にもう一冊XMLを詳細に解説している本があればパーフェクトです。</p>
+]]></content>
+  </entry>
+  
+</feed>

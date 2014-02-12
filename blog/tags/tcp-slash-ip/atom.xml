@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: TCP/IP | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/tcp-slash-ip/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[プロなら知っておきたいネットワークの重要知識]]></title>
+    <link href="http://hamasyou.com/blog/2006/04/02/4756147208/"/>
+    <updated>2006-04-02T12:40:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2006/04/02/4756147208</id>
+    <content type="html"><![CDATA[<p>本書は、TCP/IPの仕組み、WWWで使われている技術、ネットワーク構築のノウハウの解説を集めたムックになっています。もともと『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B000EWQSKA/sorehabooks-22/503-2767694-1914321?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow">NetworkMagazin</a>』 で紹介されていた記事を集めたものになっています。</p>
+
+<p>（※ ちなみに、ムックとは「雑誌(Magazine)」 + 「本(Book)」 = 「ムック(Mook)」 のことらしいです。 <a href="http://www.zasshipark.com/mook/about_mook.html" rel="external nofollow">ざっしパークとは</a>）</p>
+
+<p>本書のおすすめポイントは、TCP/IP の仕組みについてかなり詳しく解説されている点です。TCP/IP なんて、普段はあまり意識していないと思います。Windowsならネットワーク設定できるけど、UnixやLinuxになるとちょっと設定できませんという人もいると思います。</p>
+
+<p>本書は、TCP/IP とは何かというところから、通信ではどういった情報を送っているのかをパケットレベルで解説しています。さらに、ルーティングプロトコルについてや、DNSの名前解決の仕組みなども解説されています。</p>
+
+<p>WWWの技術にも触れられていて、まあ、ネットワークを知っている人なら知らないことはないというくらいの軽いものです。他には、パケットを調べるツール（Ethereal）の使い方や、進入検知システム（Snort）の解説がされています。</p>
+
+<p>僕がおすすめなポイント2点目は、ネットワーク設計のノウハウがまとめられている点です。目的別ネットワーク設計のノウハウということで、近年要求されているネットワークに対する無理難題をどうやって解決するかと言うことがまとめられています。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+<p>TCP/IP の仕組みがパケットレベルで解説されている点、ルーティングに関して詳しく説明されている点が、本書を購入した動機です。本書を読めば、ネットワークに関する基本知識はかなり整理されると思います。</p>
+
+<h3>Ethernetの縁の下の力持ち ARP</h3>
+
+
+<p>Ethernetで通信先のパソコンにパケットを送信するには、相手のパソコンのMACアドレスを知らなければなりません。IPアドレスからMACアドレスを解決してくれるのが、ARP（Address Resolution Protocol）です。このプロトコルは、送信したいIPを持つMACアドレスを調べるために、ブロードキャストを行って、MACアドレスを調べます。そして、MACアドレスが分かると、無事にパケットを送信することができるようになります。</p>
+
+<h3>ルーティング</h3>
+
+
+<p>通信先のパソコンが同じネットワーク上にあれば、ARPでMACアドレスを解決し、パケットを送信できます。しかし、インターネットが間にいたりして、IPをMACアドレスに変更できない場合は、どうにかしなければパケットを送信できません。そこで、ルーティングの出番なわけです。</p>
+
+<p>ルーティングを行ってくれる装置に、ルータと言うものがあります。こいつは、中にルーティングテーブルというものを持っていて、送信先のIPをどのネットワークに転送すればよいかを知っています。</p>
+
+<p>ルーティングテーブルで解決できない宛先には、デフォルトゲートウェイが使われます。このゲートウェイを通ってパケットはネットワークに出て行きます。</p>
+
+<h2>参考</h2>
+
+
+<p></p>
+
+<ul>
+<li>これを読めば、TCP/IP は完璧。これまで読んだ中で、一番分かりやすいのでは？</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4274064530/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>スイッチ、ルータがすっきり分かる！</li>
+</ul>
+
+
+<div class="rakuten"><table  width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756145884/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>TCP/IP がすっきり分かる！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756145876/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>DNS、メールがすっきり分かる！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756145906/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>VPN がすっきり分かる！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756145892/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>ネットワーク管理がすっきり分かる！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756146600/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

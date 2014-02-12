@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: セキュリティ | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/sekiyuritei/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Webアプリセキュリティ対策入門]]></title>
+    <link href="http://hamasyou.com/blog/2006/07/02/4774127027/"/>
+    <updated>2006-07-02T10:44:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2006/07/02/4774127027</id>
+    <content type="html"><![CDATA[<p>Webアプリケーションのセキュリティを高めるために使える本です。セキュリティ対策とは何をすることかということから始まり、Webアプリケーションが狙われる手法などを解説しています。固有の名称を持つWebサイト攻撃法を紹介し、それに対する防御手段を解説しているところが実用的なところだと思います。</p>
+
+<p>Webアプリケーションに特化したセキュリティ対策本ですが、Webアプリケーションだけでもこんなにたくさんの攻撃方法があるのかとちょっと怖さも感じました。</p>
+
+<p><blockquote><p>物理的なセキュリティ対策と比べ、ソフトウェアセキュリティ対策に漏れがないか検証することのほうが難しいです。プログラムのソースコードがない場合、安全性の検証はさらに難しくなります。ソフトウェアのセキュリティ対策は非常にもろいものであることがほとんどです。このため、使用中のソフトウェアが安全であるか情報を収集し、安全性が保たれているか継続的に確認することが重要であるとともに、複数の安全対策を実施することが重要です。</p></p><p><p></p><footer><strong>本書「セキュリティ対策の基礎知識」より</strong></footer></blockquote></p>
+
+<p>本書の対象読者は、Webアプリケーションの開発者やそのマネージャ、管理者です。Webアプリケーションのセキュリティは、仕組みをよく理解して適切な対策を行わなければ意味がありません。さらには、その対策を複数行わなければ安全性を確保することが難しいです。本書を何度も読み直して、セキュリティ向上に役立てられるといいと思います。</p>
+
+<!-- more -->
+
+
+
+
+<h2>Webサイトの攻撃法まとめ</h2>
+
+
+
+
+<h3>クロスサイトスクリプティング （XSS）</h3>
+
+
+<p>脆弱なサイト上で第三者による任意の JavaScript を実行できてしまうことにより、そのサイトにアクセスしたユーザに被害を及ぼすもの。Cookie を盗み出したりすることができるため、セッション乗っ取りが行われる危険性がある。対策は、Webサイトの出力にHTMLタグのエスケープ処理等を行うこと。</p>
+
+<h3>XXXインジェクション</h3>
+
+
+<p>SQLインジェクション、LDAPインジェクション、XMLインジェクション、コマンドインジェクションなど第三者による任意のコマンドが実行されてしまう脆弱性。対策は、適切なエスケープを行うこと。</p>
+
+<h3>クロスサイトリクエストフォージェリ　（CSRF）</h3>
+
+
+<p>ログインが必要なサイトですでにログイン済みのユーザが、攻撃用のURLをクリックすることで意図していないフォーム送信（たとえば、データの削除など）が行われてしまう脆弱性。対策にはサーバ側でリファラのチェックを行うことやPOSTのみを受け付けるようにする。もちろん、リファラを送信しない環境もありえるので、完全な対策にはならないし、JavaScript を使って POST 送信にすることもできるので抜け道はある。　</p>
+
+<h4>参考</h4>
+
+
+<ul>
+<li><a href="http://kaede.to/~canada/doc/anti-csrf-method-and-effect" rel="external nofollow">おさかなラボ 「CSRF対策法と効果」</a></li>
+</ul>
+
+
+<h3>ディレクトリトラバーサル</h3>
+
+
+<p>ユーザにファイルパスを入力させたり、選択させたりする場合に、「.」 や 「..」 などのパス指定文字列が含まれていて、予期せぬディレクトリのファイルが開かれてしまう脆弱性。対策は、入力値の確認を行い、不正な文字列が入力されていないかチェックする。（ . 、 .. 、 / , \ ） などがチェック対象。また、閲覧可能なディレクトリを制限しておく。</p>
+
+<h3>セッションハイジャック</h3>
+
+
+<p>セッションID が盗まれてしまい、成りすまされてしまう脆弱性。セッションID が盗まれるのは、クロスサイトスクリプティングやネットワーク盗聴、セッションID の推測、セッションID の固定化などが原因になる。対策は、セッションID には予測不可能な文字列をつかい、セッションID に有効期限を設定する。ネットワーク盗聴には SSL/TLS を用いて通信経路を暗号化し、セッションID は必ずサーバ側で作成する。（クライアントから送られてきた有効でないセッションID は使用しない）</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>不正アクセス対策をはじめる前の基礎知識</li>
+</ul>
+
+
+<div class="rakuten"><table  width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810938X/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>暗号化についてののバイブル</li>
+</ul>
+
+
+<div class="rakuten"><table  width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322977/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>クラッカーによるクラッキング方法を知っていれば、セキュリティ対策にも身が入る!?</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873112303/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[暗号と認証  基礎から身につくネットワーク技術シリーズ]]></title>
+    <link href="http://hamasyou.com/blog/2005/12/29/4822212696/"/>
+    <updated>2005-12-29T13:55:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/12/29/4822212696</id>
+    <content type="html"><![CDATA[<p>インターネットが一般に普及し、ネットワークを使う機会が増えてきました。銀行の残高を確認するのにもインターネットを使うことができるようになって、セキュリティに関する問題も多くとりだたされています。</p>
+
+<p>本書は、ネットワーク技術（主にセキュリティに関する技術）の基礎を解説したものです。タイトル（『暗号と認証』）が示すとおり、<strong>暗号化と認証の仕組み</strong>に焦点を絞った解説が行われています。</p>
+
+<p>暗号化の目的はたった一つ、暗号の解き方を知らない第3者に内容が分からないようにすることです。クレジットカードの番号が誰にでも分かるようにネットワークを流れたら、知らない人に勝手に使われてしまって大問題です。</p>
+
+<p>もう一つの話題である認証も、目的はたったの一つです。相手に自分は本物だと認めてもらうことです。ネットワーク上では、データの送信者が本当に認められた人かどうかを判断することは難しいのです。</p>
+
+<p>本書は、暗号と認証について基礎から分かりやすく解説されています。暗号化の仕組み、暗号化技術の中身を丁寧に解説しています。また、認証を正しく行う方法について、詳しく丁寧に書かれています。</p>
+
+<p>ネットワークについてはあまり知識がない人に、本書はおすすめです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+
+
+<h3>暗号化技術の説明が詳しい</h3>
+
+
+<p>暗号方式の一つであるDES（デス)やRSAの暗号化の手順や復号化の手順が詳しく説明されています。また、PGPを使ったメールの暗号化の方法も書かれています。</p>
+
+<p><blockquote><p>DESの処理が面白いのは、暗号化と復号が同じ処理になること。同じ処理回路（「ファイステル構造」と呼ばれる）に暗号データを通すと必ず復号できる。実際のDESでは、鍵を使う順番だけを逆にして、暗号化と同じ処理を16回繰り返す。こうすれば、暗号データが元データに戻る。</p></p><p><p></p><footer><strong>本書</strong></footer></blockquote></p>
+
+<h3>安全な通信を行うための4つの条件</h3>
+
+
+<p>安全な通信を行うためには下記の4つの条件が必要になります。それぞれがどんな内容なのかは、参考リンクをご覧ください。</p>
+
+<dl>
+<dt>機密性</dt><dd>データが第3者に漏れないこと。また、漏れたとしても解読できないこと</dd>
+<dt>完全性</dt><dd>途中で改ざんされないこと。また、改ざんされたとしても検知できること</dd>
+<dt>認証</dt><dd>他人へのなりすましができないこと。また、なりすましを検知できること</dd>
+<dt>否認防止</dt><dd>データを送ったことを認めさせることができること。また、自己証明できること</dd>
+</dl>
+
+
+
+
+<h4>参考</h4>
+
+
+<p><a href="http://c4t.jp/introduction/cryptography/cryptography01.html" rel="external nofollow">暗号入門：暗号とは？</a></p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>暗号化の世界へようこそ！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322977/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>フリーの暗号化ライブラリについての解説書。SSLを知らずして、暗号化を語ることなかれ！？</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4274065731/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>セキュアなプログラムを書くために守らなければならないこと(言語不問)</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111757/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>気をつけること。守るべきこと。危ないこと。良いこと。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4891004460/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SELinux覚書き-アクセス制御の仕組み]]></title>
+    <link href="http://hamasyou.com/blog/2005/02/23/selinux/"/>
+    <updated>2005-02-23T20:11:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/02/23/selinux</id>
+    <content type="html"><![CDATA[<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221113/sorehabooks-22" rel="external nofollow"></a>
+</p>
+
+
+<p>大学で、SELinuxの講習会をうけたので、そのメモです。かなり基礎的な部分の説明で、アクセス制御の部分を集中的に教えてもらいました。</p>
+
+<p>セキュアOSと呼ばれるOSの中でも、フリーで手に入るSELinuxは今後かなり注目されそうです。今日は、アクセス制御の仕組みとロールの付与の仕方について勉強しましたが、そのほかにもいろんな機能がある様子。詳しくは、『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221113/sorehabooks-22" rel="external nofollow">SELinux徹底ガイド</a>』を読むのが良いらしいです。(宣伝宣伝っと 笑)</p>
+
+<p>セキュアOSとは何ぞやって事とSELinuxのアクセス制御(<strong>Type Enforcement</strong>)の方法、<strong>セキュリティ属性</strong>、<strong>Role-Based Access Control</strong> あたりをメモっておきます。かなり適当なメモなので、読むだけだと分からないかも・・・。『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221113/sorehabooks-22" rel="external nofollow">SELinux徹底ガイド</a>』買おっかな。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+
+
+<h3>セキュアOSとは</h3>
+
+
+<p>大まかに2つの機能。強制アクセス制御機能とシステム管理権限を複数のユーザに分割する機能を持つOSのこと。</p>
+
+<p>強制アクセス制御は、<strong>MAC</strong> (Mandatory Access Control)と呼ばれる。あらかじめ設定された<strong>セキュリティポリシー</strong>にしたがって、カーネルレベルでリソースへのアクセスを制御する仕組み。</p>
+
+<p>システム管理権限を複数のユーザに分割するとは、<strong>RBAC</strong> (Role-Based Access Control) と呼ばれるロールベースのシステム管理方法。権限を細分化することで、root権限の分散を実現している。</p>
+
+<h3>これまでのLinuxOSの問題点</h3>
+
+
+<p>これまでのOSの仕組みでは、リソースへのアクセス権を<strong>DAC</strong> (Discreationary Access Control) と呼ばれる任意アクセス制御によって行っていた。これは、リソースの所有者が任意にアクセス許可を設定できる。プロセスのUID(ユーザID)とGID(グループID)、リソースの所有者とグループの比較により、アクセス権をチェックしていた。</p>
+
+<p>これでは、管理者がいくらセキュリティポリシーを作っても、全ユーザにポリシーを守らせることは難しいし、root権限を奪取されてしまった場合にすべてのアクセスを許す結果になってしまう。</p>
+
+<p>また、root権限は最高位権限で、あらゆる処理を行えてしまう。いったんroot権限を奪われたら、コンピュータを乗っ取られたのと同じことになる。</p>
+
+<p>そこで考え出されたのが、<em>強制アクセス制御と権限の細分化</em>である。強制アクセス制御によって、セキュリティポリシーで許可されていないアクセスは、たとえrootであっても拒否される。権限の細分化により、アプリケーション管理者とシステム管理者とで行えることが違うという設定が可能になった。</p>
+
+<h3>セキュリティコンテキスト</h3>
+
+
+<p>SELinuxでは、<strong>セキュリティコンテキスト</strong>と呼ばれるセキュリティ属性を使ってアクセス制御や<acronym title="Role-Based Access Control">RBAC</acronym> を制御する。セキュリティ属性は、以下の3つの要素からなる。</p>
+
+<p><img src="http://hamasyou.com/images/selinux/security_context.gif" alt="セキュリティコンテキスト" /></p>
+
+<p>ユーザ属性は、SELinuxがユーザを識別するのに使います。ロール属性は、RBACで設定されたアクセス権を示します。タイプ属性が、リソースへのアクセス制御に使われるものです。この、<em>タイプ属性をセキュリティポリシーと比較することで、リソースへのアクセス許可を出します</em>。</p>
+
+<pre>
+例： hamasyou:sysadm_r:sysadm_t
+ユーザ識別子： hamasyou
+ロール： sysadm_r
+タイプ： sysadm_t
+</pre>
+
+
+
+
+<h3>ドメイン遷移</h3>
+
+
+<p><em>セキュリティポリシーが存在しない場合、親プロセスから生成された子プロセスは、親プロセスのタイプ属性を継承します</em>。これは、かなり危険で、例えば httpd デーモンをセキュリティ管理者権限を持つプロセスが実行した場合、httpd から生成される子プロセスは、セキュリティ管理者権限を持ってしまいます。</p>
+
+<p>そこで、ドメイン遷移定義を設定することで、あるタイプ属性を持つプロセスが起動したプロセス(親プロセス)から割り当てられるプロセス(子プロセス)のタイプ属性を任意に設定できます。</p>
+
+<h3>Role-Based Access Control</h3>
+
+
+<p><acronym title="Role-Based Access Control"><strong>RBAC</strong></acronym>は root 権限にすべての権限が集中してしまうのを改善する目的で導入されたものです。権限の細分化によって、管理者権限の厳重な管理を行います。</p>
+
+<p>権限は、ロールというものに割り当てます。SELinuxでは、ロールごとにタイプ属性を付与します。作成したロールは、ユーザごとに割り振ります。ユーザに付与されたロールは、シェルの起動に使われます。シェルは、ロールに付与されたタイプ属性の権限で動きます。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li><p>SELinuxのインストール方法
+<a href="http://www.stackasterisk.jp/tech/systemConstruction/seLinux01_01.jsp" rel="external nofollow">スタックアスタリスク - SELinux によるセキュアOS構築</a></p></li>
+<li><p>国内 SELinux コミュニティーサイト
+<a href="http://www.selinux.jp/" rel="external nofollow">SELinux コミュニティーサイト</a></p></li>
+<li><p>SELinux を徹底的に知りたい人には、これしかないでしょう</p></li>
+</ul>
+
+
+<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221113/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Webアプリケーションのセキュリティ完全対策―不正アクセスや情報漏洩を防ぐ]]></title>
+    <link href="http://hamasyou.com/blog/2004/12/19/4822229718/"/>
+    <updated>2004-12-19T16:19:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/12/19/4822229718</id>
+    <content type="html"><![CDATA[<p>セキュリティーとか個人情報保護とか、ソフトウェア開発においても守るべきこと、気をつけるべきことがたくさんあります。特に、Webアプリケーションでは、不特定多数のクライアントから、ネットワークを通じてアプリケーションを動作させます。</p>
+
+<p>クライアント側で何を行われているか、サーバーサイドからでは分からない分、スタンドアローンのアプリケーションに比べて、注意する点が多くあります。入力値のチェックから、SQLインジェクション、セッション乗っ取りなど、さまざまなことに対処しなければなりません。</p>
+
+<p>本書では、Webアプリケーションに焦点を当てて、実際の攻撃方法とその予防策を例を挙げて説明しています。Webアプリケーション開発において、最低限対応しなければならないことが分かりやすく説明されています。本書に載っている予防は、ベター(better) ではなく マスト(must) の要件になります。</p>
+
+<!-- more -->
+
+
+
+
+<h2>覚書き</h2>
+
+
+
+
+<h3>セキュア・プログラミングの一般原則</h3>
+
+
+<p>とにかく、セキュアなシステムを作ろうと思ったら、「信用」しないことが大切。プログラム同士はもとより、クライアントから送られてきたデータは、絶対にそのまま信頼しない。セキュアなシステムを構築するには、以下の点に注意する。</p>
+
+<dl>
+<dt>フェイルセーフ</dt><dd>不測の事態、エラーが少しでも起こったら、直ちに安全な方向に処理を誘導する。</dd>
+<dt>明示的に許可されないもの以外はすべて禁止</dt><dd>許可できない文字を決めるのではなくて、許可できる文字を決めてそれ以外はすべて禁止するように処理を施す。</dd>
+<dt>相互不信</dt><dd>プログラム同士はお互いに信用しない。クライアントの入力を、チェックなしで許可するようには絶対にしない。</dd>
+<dt>最低限のユーザ権限</dt><dd>アプリケーションを実行するユーザの権限は、最低限のものにしておく。管理者権限で動かすようなことはしない。</dd>
+</dl>
+
+
+
+
+<h3>Webアプリケーションの一般原則</h3>
+
+
+<p>Webアプリケーションは特にセキュリティを意識しなければならないシステムの一つです。</p>
+
+<dl>
+<dt>入力文字種チェック</dt><dd>アプリケーション仕様で許可された文字以外はすべて禁止するようにして、不正な文字列を入力されてもビクともしないようにする。</dd>
+<dt>エスケープ処理</dt><dd>入力文字に関して、エスケープ処理を施す。Webブラウザでの特殊文字「&quot;」「&amp;」「&lt;」「&gt;」や、SQL文で使われるクウォート、コメント文字などをエスケープして、不正な処理を行えないようにする。</dd>
+<dt>Webサーバの設定</dt><dd>Webサーバの設定で、公開を意図していないファイルに関して保護できるような設定を心がける。</dd>
+<dt>セッション管理</dt><dd>HIddenフィールドやCookieの使い方に気をつけ、セッション乗っ取りされないようにする。</dd>
+</dl>
+
+
+
+
+<h3>ディレクトリ・リスティング</h3>
+
+
+
+
+<h4>内容</h4>
+
+
+<p>ディレクトリ配下にあるファイルの一覧を見られてしまう。それによって、重要なファイルが置いてあったり、公開を意図していないファイルをダウンロードされてしまったりする。</p>
+
+<h4>原因</h4>
+
+
+<p>主な原因はWebサーバの設定にある。基本的に、ディレクトリ名で終了されたURLは、index.html/index.htm というファイルがなければ、ファイルの一覧を表示する仕組みになっている。</p>
+
+<h4>対策</h4>
+
+
+<p>主な対策としては、すべてのディレクトリに、「index.html」ファイルを置く。これは、ほとんどのWebサーバでデフォルトの表示ファイルが index.html になっていることに帰伏する。そのほか、Webサーバの設定で、ディレクトリ一覧を表示しないようにすることでも対応できる。</p>
+
+<h4>その他</h4>
+
+
+<p>ディレクトリ・リスティング以外にも、類推しやすいファイル名を付けてしまうと、URLを直接入力された場合に見つけられてしまう可能性がある。重要なファイルは、公開ディレクトリに置かないことが大切であり、一時的に公開ディレクトリにおく場合でも、類推しにくいランダムな値をファイル名にしたりする処置をとる必要がある。</p>
+
+<h3>SQLインジェクション</h3>
+
+
+
+
+<h4>内容</h4>
+
+
+<p>ユーザの入力によって、不正なSQL文が実行されてしまい、データの改ざんや個人情報の流出、成りすましなどがおこなわれてしまう。</p>
+
+<h4>原因</h4>
+
+
+<p>ユーザの入力をそのままSQL文として使ってしまう。SQL文で使われるパラメータなどは、適切にエスケープする必要がある。</p>
+
+<h4>対策</h4>
+
+
+<p>ビジネスルールに従って、不正な入力は入力エラーとしてチェックする。不正な入力ではないが、SQLの特殊文字だった場合には、適切にエスケープする。言語に実装されている、「コンパイル済みSQL」を使って、エスケープ抜けを防ぐこともできる。</p>
+
+<h4>その他</h4>
+
+
+<p>SQLインジェクションの例としては、「' (シングルクウォート)」を入力される場合に起こることが多い。また、「&ndash; (コメント)」 の入力を許可した場合にも起こる。</p>
+
+<h3>クロスサイト・スクリプティング (XSS)</h3>
+
+
+
+
+<h4>内容</h4>
+
+
+<p>Webページに埋め込まれたリンクなどによって、不正な JavaScript や VBScript が実行され、ユーザの成りすましやCookie による個人情報の漏洩などが起こる。</p>
+
+<h4>原因</h4>
+
+
+<p>掲示板など、入力された文字をそのまま画面に出力してしまう場合に起こる。悪意のあるスクリプトによって、Cookie などの情報が漏洩してしまい、ユーザの成りすましやセッションハイジャックなどが起こる。</p>
+
+<h4>対策</h4>
+
+
+<p>HTMLタグの適切なエスケープ。「&lt;」「&gt;」「&amp;」「&quot;」などを、それぞれ「&amp;lt;」「&amp;lt;」「&amp;amp;」「&amp;quot;」にエスケープする。</p>
+
+<h4>その他</h4>
+
+
+<p>掲示板や、ゲストブックなどの、HTMLタグを含む文字列を入力された場合に発生する場合があるので注意。</p>
+
+<h3>チェックリスト</h3>
+
+
+<p>本書に書かれていることを実践して、初めて「<b>最低限のセキュリティが保たれる</b>」レベルになると思います。本書は、非常に基礎的でオーソドックスなポイントを紹介しています。ですが、これだけでは絶対に足りないと思います。セキュリティポリシーを定めたり、日ごろからログのチェックを行ったりといったことも実践していくべきです。</p>
+
+<p>本書に載っている点で、心にとまった点をリストアップしておきます。</p>
+
+<ol><li>ファイアーウォールは、セキュリティホールに関しては無力</li>
+<li>画面遷移の正当性チェックを「Referrer」のみに依存させない。Referrer は容易に書き換えられる</li>
+<li>HTMLエンコードを怠ると、「<a href="http://e-words.jp/w/E382AFE383ADE382B9E382B5E382A4E38388E382B9E382AFE383AAE38397E38386E382A3E383B3E382B0.html" rel="external nofollow">クロスサイトスクリプティング</a>」の餌食にされる</li>
+<li>フェイルセーフを心がける</li>
+<li>許可していないものはすべて禁止</li>
+<li>プログラム同士をお互いに信用しない</li>
+<li>アプリケーションは、最低限のユーザ権限で実行する</li>
+<li>入力文字チェックを忘れない</li>
+<li>エスケープ処理を忘れない</li>
+<li>Webサーバの設定は適切か</li>
+<li>Hiddenフィールドや Cookie に重要な情報を持たせない</li>
+<li>ディレクトリ・リスティングされないようになっているか</li>
+<li>重要なファイルのファイル名を類推しやすいものになっていないか</li>
+<li>公開ディレクトリに不要なファイルが存在しないか</li>
+<li>重要なページが検索エンジンに登録されないようになっているか</li>
+<li>HTMLコメントに、設定情報などが書かれていないか</li>
+<li>認証は、安全な方法で行われるようになっているか</li>
+<li>データベースへパスワードを格納するとき、「<a href="http://e-words.jp/w/E383A1E38383E382BBE383BCE382B8E38380E382A4E382B8E382A7E382B9E38388.html" rel="external nofollow">メッセージダイジェスト</a>」になっているか</li>
+<li>セッションIDに、連番などの類推しやすい値が使われていないか</li>
+<li>URLパラメータの変更で、重要なページが表示されてしまわないか</li>
+<li>一覧画面から詳細画面への遷移で、再度アクセス権限チェックをおこなっているか</li>
+<li>Cookie の有効期限は適切か</li>
+<li>セキュアページ(SSL)の Cookie は secure  属性が付けられているか</li>
+<li>Referrer 漏洩対策にリダイレクタ等の仕組みを使っているか</li>
+<li>SQLインジェクション対策がなされているか</li>
+<li>チェック漏れのアプリケーション例外が画面に表示されないようになっているか</li>
+<li>SQLで使われる特殊文字はエスケープされているか</li>
+<li>RDBMSの権限は、最小のものが付与されているか</li>
+<li>ファイル名のパスを入力される場合、「パスの乗り換え」が発生しないか</li>
+<li>OSコマンドを入力させる場合、安全な方法で実行できているか</li>
+<li>HTMLタグが反映されるようになっていないか</li></ol>
+
+
+
+
+<h4>参考</h4>
+
+
+<p><a href="http://www.atmarkit.co.jp/fsecurity/rensai/webhole01/webhole01.html" rel="external nofollow">@IT 「Webアプリケーションに潜むセキュリティホール」</a></p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>@IT の記事で、Webアプリケーションのセキュリティ対策記事がありました。</li>
+</ul>
+
+
+<p><a href="http://www.atmarkit.co.jp/fsecurity/rensai/webhole01/webhole01.html" rel="external nofollow">@IT 「Webアプリケーションに含むセキュリティホール」</a></p>
+
+<ul>
+<li>「IPA ISEC セキュア・プログラミング講座」より</li>
+</ul>
+
+
+<p><a href="http://www.ipa.go.jp/security/awareness/vendor/programming/intro.html" rel="external nofollow">IPA ISEC セキュア・プログラミング講座</a></p>
+
+<ul>
+<li>「マイクロソフトでの必読書」といわれている、セキュリティ対策本です。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4891004460/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4891004479/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+<ul>
+<li>セキュアなコードを書くための本です。C/C++ プログラマ向けの濃い本です。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282104/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+<ul>
+<li>オライリーから発売している、セキュアプログラミングの本です。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111757/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[技術者のためのプログラミングによるセキュリティ強化ガイド]]></title>
+    <link href="http://hamasyou.com/blog/2004/06/11/4774116335/"/>
+    <updated>2004-06-11T13:58:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/06/11/4774116335</id>
+    <content type="html"><![CDATA[<p><blockquote><p>ネットワーク管理者任せは、もうやめませんか。これからは、開発者がセキュリティを考える時代です。不正アクセス防止のためのWebアプリケーション強化入門。</p></p><p><p></p><footer><strong>本書帯</strong></footer></blockquote></p>
+
+<p>個人情報の流出、重大なセキュリティホールの発見などアプリケーションに求められる堅固さセキュアレベルは非常に高まっています。本書は、プログラマーレベルで対処できるアプリケーションのセキュリティ強化に関して書かれた本です。</p>
+
+<!-- more -->
+
+
+
+
+<h2>対象読者</h2>
+
+
+<p>本書の対象は、Webアプリケーションを開発する必要のある技術者である。「WebフォームのGETとPOSTの違い」や「passwordフィールドは安全か？」、「汚染チェック(サニタイジング)」など、Webアプリケーションを作るときに気をつけるべきことが網羅されていて、技術者のみならずWeb開発に携わるすべての人に読んで欲しい。</p>
+
+<h2>特徴</h2>
+
+
+<p>Webアプリケーションで問題となるセキュリティーホールを防ぐための手法が網羅されている。本書の目次は次のようになっている。</p>
+
+<ul><li>Webサーバのセキュリティ</li><li>セッション管理</li><li>汚染チェック</li><li>遷移制御</li><li>クロスサイトスクリプティング</li><li>情報流出対策</li><li>ユーザー認証とアクセス制御</li><li>Web掲示板</li><li>その他の注意点</li><li>SSL</li><li>データベース</li><li>運用/メンテナンスガイド</li><li>サーバのセキュリティ管理</li><li>実践編</li></ul>
+
+
+<p>少しでもWebアプリケーションのセキュリティに関心がある人なら、大体どんなことが書いてあるのか想像できると思います。一つ一つのトピックに丁寧に解説が加えられていて、読みやすいです。実装は、Perlで書かれていますが、他の言語を使っているWebプログラマーにも読めるくらい簡単です。</p>
+
+<p>「汚染チェック」から、クライアント側による入力値のチェックの短所について。クライアント側のスクリプトによる入力チェックは、上手く用いれば利用者の利便性を向上させたり、
+サーバの負荷を下げたりできます。しかし、セキュリティの観点から言えば、何もチェックしていないのと同じです。
+クライアント側スクリプトの入力チェックを使用する場合は、その処理に依存せず、<strong>サーバ側のチェックを必ず併用しなくてはなりません。</strong></p>
+
+<h2>参考</h2>
+
+
+<p>セキュリティに関する本は、他にもたくさんでています。一冊読んだだけですべてをわかった気にならずに、いくつか書籍を読むのがいいと思います。</p>
+
+<ul>
+<li>@IT</li>
+</ul>
+
+
+<p><a href="http://www.atmarkit.co.jp/fsecurity/rensai/webhole01/webhole01.html" rel="external nofollow">Webアプリケーションに潜むセキュリティホール</a></p>
+
+<ul>
+<li>IPA ISEC</li>
+</ul>
+
+
+<p><a href="http://www.ipa.go.jp/security/awareness/vendor/programming/" rel="external nofollow">セキュアプログラミング講座</a></p>
+
+<ul>
+<li>関連おすすめ書籍</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4534031270/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111757/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

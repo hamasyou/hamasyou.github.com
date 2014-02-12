@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Network | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/categories/network/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[プロなら知っておきたいネットワークの重要知識]]></title>
+    <link href="http://hamasyou.com/blog/2006/04/02/4756147208/"/>
+    <updated>2006-04-02T12:40:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2006/04/02/4756147208</id>
+    <content type="html"><![CDATA[<p>本書は、TCP/IPの仕組み、WWWで使われている技術、ネットワーク構築のノウハウの解説を集めたムックになっています。もともと『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B000EWQSKA/sorehabooks-22/503-2767694-1914321?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow">NetworkMagazin</a>』 で紹介されていた記事を集めたものになっています。</p>
+
+<p>（※ ちなみに、ムックとは「雑誌(Magazine)」 + 「本(Book)」 = 「ムック(Mook)」 のことらしいです。 <a href="http://www.zasshipark.com/mook/about_mook.html" rel="external nofollow">ざっしパークとは</a>）</p>
+
+<p>本書のおすすめポイントは、TCP/IP の仕組みについてかなり詳しく解説されている点です。TCP/IP なんて、普段はあまり意識していないと思います。Windowsならネットワーク設定できるけど、UnixやLinuxになるとちょっと設定できませんという人もいると思います。</p>
+
+<p>本書は、TCP/IP とは何かというところから、通信ではどういった情報を送っているのかをパケットレベルで解説しています。さらに、ルーティングプロトコルについてや、DNSの名前解決の仕組みなども解説されています。</p>
+
+<p>WWWの技術にも触れられていて、まあ、ネットワークを知っている人なら知らないことはないというくらいの軽いものです。他には、パケットを調べるツール（Ethereal）の使い方や、進入検知システム（Snort）の解説がされています。</p>
+
+<p>僕がおすすめなポイント2点目は、ネットワーク設計のノウハウがまとめられている点です。目的別ネットワーク設計のノウハウということで、近年要求されているネットワークに対する無理難題をどうやって解決するかと言うことがまとめられています。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+<p>TCP/IP の仕組みがパケットレベルで解説されている点、ルーティングに関して詳しく説明されている点が、本書を購入した動機です。本書を読めば、ネットワークに関する基本知識はかなり整理されると思います。</p>
+
+<h3>Ethernetの縁の下の力持ち ARP</h3>
+
+
+<p>Ethernetで通信先のパソコンにパケットを送信するには、相手のパソコンのMACアドレスを知らなければなりません。IPアドレスからMACアドレスを解決してくれるのが、ARP（Address Resolution Protocol）です。このプロトコルは、送信したいIPを持つMACアドレスを調べるために、ブロードキャストを行って、MACアドレスを調べます。そして、MACアドレスが分かると、無事にパケットを送信することができるようになります。</p>
+
+<h3>ルーティング</h3>
+
+
+<p>通信先のパソコンが同じネットワーク上にあれば、ARPでMACアドレスを解決し、パケットを送信できます。しかし、インターネットが間にいたりして、IPをMACアドレスに変更できない場合は、どうにかしなければパケットを送信できません。そこで、ルーティングの出番なわけです。</p>
+
+<p>ルーティングを行ってくれる装置に、ルータと言うものがあります。こいつは、中にルーティングテーブルというものを持っていて、送信先のIPをどのネットワークに転送すればよいかを知っています。</p>
+
+<p>ルーティングテーブルで解決できない宛先には、デフォルトゲートウェイが使われます。このゲートウェイを通ってパケットはネットワークに出て行きます。</p>
+
+<h2>参考</h2>
+
+
+<p></p>
+
+<ul>
+<li>これを読めば、TCP/IP は完璧。これまで読んだ中で、一番分かりやすいのでは？</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4274064530/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>スイッチ、ルータがすっきり分かる！</li>
+</ul>
+
+
+<div class="rakuten"><table  width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756145884/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>TCP/IP がすっきり分かる！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756145876/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>DNS、メールがすっきり分かる！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756145906/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>VPN がすっきり分かる！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756145892/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>ネットワーク管理がすっきり分かる！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756146600/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[暗号と認証  基礎から身につくネットワーク技術シリーズ]]></title>
+    <link href="http://hamasyou.com/blog/2005/12/29/4822212696/"/>
+    <updated>2005-12-29T13:55:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/12/29/4822212696</id>
+    <content type="html"><![CDATA[<p>インターネットが一般に普及し、ネットワークを使う機会が増えてきました。銀行の残高を確認するのにもインターネットを使うことができるようになって、セキュリティに関する問題も多くとりだたされています。</p>
+
+<p>本書は、ネットワーク技術（主にセキュリティに関する技術）の基礎を解説したものです。タイトル（『暗号と認証』）が示すとおり、<strong>暗号化と認証の仕組み</strong>に焦点を絞った解説が行われています。</p>
+
+<p>暗号化の目的はたった一つ、暗号の解き方を知らない第3者に内容が分からないようにすることです。クレジットカードの番号が誰にでも分かるようにネットワークを流れたら、知らない人に勝手に使われてしまって大問題です。</p>
+
+<p>もう一つの話題である認証も、目的はたったの一つです。相手に自分は本物だと認めてもらうことです。ネットワーク上では、データの送信者が本当に認められた人かどうかを判断することは難しいのです。</p>
+
+<p>本書は、暗号と認証について基礎から分かりやすく解説されています。暗号化の仕組み、暗号化技術の中身を丁寧に解説しています。また、認証を正しく行う方法について、詳しく丁寧に書かれています。</p>
+
+<p>ネットワークについてはあまり知識がない人に、本書はおすすめです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+
+
+<h3>暗号化技術の説明が詳しい</h3>
+
+
+<p>暗号方式の一つであるDES（デス)やRSAの暗号化の手順や復号化の手順が詳しく説明されています。また、PGPを使ったメールの暗号化の方法も書かれています。</p>
+
+<p><blockquote><p>DESの処理が面白いのは、暗号化と復号が同じ処理になること。同じ処理回路（「ファイステル構造」と呼ばれる）に暗号データを通すと必ず復号できる。実際のDESでは、鍵を使う順番だけを逆にして、暗号化と同じ処理を16回繰り返す。こうすれば、暗号データが元データに戻る。</p></p><p><p></p><footer><strong>本書</strong></footer></blockquote></p>
+
+<h3>安全な通信を行うための4つの条件</h3>
+
+
+<p>安全な通信を行うためには下記の4つの条件が必要になります。それぞれがどんな内容なのかは、参考リンクをご覧ください。</p>
+
+<dl>
+<dt>機密性</dt><dd>データが第3者に漏れないこと。また、漏れたとしても解読できないこと</dd>
+<dt>完全性</dt><dd>途中で改ざんされないこと。また、改ざんされたとしても検知できること</dd>
+<dt>認証</dt><dd>他人へのなりすましができないこと。また、なりすましを検知できること</dd>
+<dt>否認防止</dt><dd>データを送ったことを認めさせることができること。また、自己証明できること</dd>
+</dl>
+
+
+
+
+<h4>参考</h4>
+
+
+<p><a href="http://c4t.jp/introduction/cryptography/cryptography01.html" rel="external nofollow">暗号入門：暗号とは？</a></p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>暗号化の世界へようこそ！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322977/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>フリーの暗号化ライブラリについての解説書。SSLを知らずして、暗号化を語ることなかれ！？</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4274065731/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>セキュアなプログラムを書くために守らなければならないこと(言語不問)</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111757/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>気をつけること。守るべきこと。危ないこと。良いこと。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4891004460/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[技術者のためのプログラミングによるセキュリティ強化ガイド]]></title>
+    <link href="http://hamasyou.com/blog/2004/06/11/4774116335/"/>
+    <updated>2004-06-11T13:58:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/06/11/4774116335</id>
+    <content type="html"><![CDATA[<p><blockquote><p>ネットワーク管理者任せは、もうやめませんか。これからは、開発者がセキュリティを考える時代です。不正アクセス防止のためのWebアプリケーション強化入門。</p></p><p><p></p><footer><strong>本書帯</strong></footer></blockquote></p>
+
+<p>個人情報の流出、重大なセキュリティホールの発見などアプリケーションに求められる堅固さセキュアレベルは非常に高まっています。本書は、プログラマーレベルで対処できるアプリケーションのセキュリティ強化に関して書かれた本です。</p>
+
+<!-- more -->
+
+
+
+
+<h2>対象読者</h2>
+
+
+<p>本書の対象は、Webアプリケーションを開発する必要のある技術者である。「WebフォームのGETとPOSTの違い」や「passwordフィールドは安全か？」、「汚染チェック(サニタイジング)」など、Webアプリケーションを作るときに気をつけるべきことが網羅されていて、技術者のみならずWeb開発に携わるすべての人に読んで欲しい。</p>
+
+<h2>特徴</h2>
+
+
+<p>Webアプリケーションで問題となるセキュリティーホールを防ぐための手法が網羅されている。本書の目次は次のようになっている。</p>
+
+<ul><li>Webサーバのセキュリティ</li><li>セッション管理</li><li>汚染チェック</li><li>遷移制御</li><li>クロスサイトスクリプティング</li><li>情報流出対策</li><li>ユーザー認証とアクセス制御</li><li>Web掲示板</li><li>その他の注意点</li><li>SSL</li><li>データベース</li><li>運用/メンテナンスガイド</li><li>サーバのセキュリティ管理</li><li>実践編</li></ul>
+
+
+<p>少しでもWebアプリケーションのセキュリティに関心がある人なら、大体どんなことが書いてあるのか想像できると思います。一つ一つのトピックに丁寧に解説が加えられていて、読みやすいです。実装は、Perlで書かれていますが、他の言語を使っているWebプログラマーにも読めるくらい簡単です。</p>
+
+<p>「汚染チェック」から、クライアント側による入力値のチェックの短所について。クライアント側のスクリプトによる入力チェックは、上手く用いれば利用者の利便性を向上させたり、
+サーバの負荷を下げたりできます。しかし、セキュリティの観点から言えば、何もチェックしていないのと同じです。
+クライアント側スクリプトの入力チェックを使用する場合は、その処理に依存せず、<strong>サーバ側のチェックを必ず併用しなくてはなりません。</strong></p>
+
+<h2>参考</h2>
+
+
+<p>セキュリティに関する本は、他にもたくさんでています。一冊読んだだけですべてをわかった気にならずに、いくつか書籍を読むのがいいと思います。</p>
+
+<ul>
+<li>@IT</li>
+</ul>
+
+
+<p><a href="http://www.atmarkit.co.jp/fsecurity/rensai/webhole01/webhole01.html" rel="external nofollow">Webアプリケーションに潜むセキュリティホール</a></p>
+
+<ul>
+<li>IPA ISEC</li>
+</ul>
+
+
+<p><a href="http://www.ipa.go.jp/security/awareness/vendor/programming/" rel="external nofollow">セキュアプログラミング講座</a></p>
+
+<ul>
+<li>関連おすすめ書籍</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4534031270/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111757/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[セキュアプログラミング―失敗から学ぶ設計・実装・運用・管理]]></title>
+    <link href="http://hamasyou.com/blog/2004/06/08/4873111757/"/>
+    <updated>2004-06-08T01:22:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/06/08/4873111757</id>
+    <content type="html"><![CDATA[<p>本書は、セキュアなアプリケーションを作成する際のバイブルとして、是非とも有効活用して欲しい一冊です。</p>
+
+<p><blockquote><p>小手先のテクニックとしての対策では、後手のセキュリティからは脱却できません。セキュリティ対策は先手でこそ意味があるのです。そして、セキュリティの奥深さに興味を持ってください。人間の心の闇が根本原因であることにも気づいてください。</p></p><p><p></p><footer><strong>本書推薦の言葉</strong></footer></blockquote></p>
+
+<!-- more -->
+
+
+<p>今日さまざまなウイルス、ワーム、クラッカーが世の中に出回っています。ソフトウェアの中にも、潜在的なバグ、目に見えるバグ、多くのセキュリティホールが存在しています。本書は、「セキュリティとは何か」のレベルから、アプリケーション開発におけるすべての段階において実施すべきことを解説しています。</p>
+
+<p>ありきたりなソフトウェアの実装は最小限に抑え、「なぜセキュリティホールが生み出されてしまうのか」「どのようなことに注意するべきなのか」といったことを詳細に記述しています。</p>
+
+<p>セキュアなアプリケーションを構築するためのノウハウが、ぎっしり詰まった非常におすすめの一冊です。本書のタイトルに「セキュアプログラミング」とありますが、プログラミングだけに焦点を絞った本ではありません。「設計」「実装」「運用」「管理」のそれぞれのパートで、気をつけるべきこと、セキュリティホールになりえる事例、それを防ぐ手立てを、余すことなく解説しています。</p>
+
+<h2>例</h2>
+
+
+<p>実装の章から参考となるチェックリストをあげておきます。チェックリストの解説や、他のチェック項目も知りたい人は、本書を買ってください。(^^;</p>
+
+<ul>
+<li>データの汚染チェック(サニタイジング)</li>
+<li>境界チェックを行う</li>
+<li>URLを疑う</li>
+<li>Webコンテンツに注意する</li>
+<li>データに妥当な初期値を設定する</li>
+<li>データの入力源をチェックする</li>
+<li>処理が成功すると仮定しない</li>
+<li>信頼できないもので認証しない</li>
+</ul>
+
+
+
+
+<h2>ほんとにおすすめです</h2>
+
+
+<p>アプリケーション開発に携わるひとには、必ず読んで欲しい一冊です。本書の前書きでも、べた褒めでした。まさか、そこまで褒めることないじゃん・・・なんて思って読んだら、「セキュリティに気をつけるって、こんなことまで対応しないといけなかったんだ。知らなかった」なんてことが絶対出てきます。ほんとにおすすめの一冊です。是非、本書をそばにおいてやってください。</p>
+
+<ul>
+<li>セキュリティ関係のほかのおすすめ本</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111595/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311151X/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+<ul>
+<li>「マイクロソフトではこの本を読むことが必要条件である &ndash; ビル・ゲイツ」だそうです。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4891002913/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linux 怒濤のQ&A]]></title>
+    <link href="http://hamasyou.com/blog/2004/05/25/4871937356/"/>
+    <updated>2004-05-25T08:35:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/05/25/4871937356</id>
+    <content type="html"><![CDATA[<p>すべてのLinuxディストリビューションに共通のQ&amp;Aが載っています。ログイン・ログアウトに関するQ&amp;Aから基本コマンド、インストール、カーネル、ネットワークに関するQ&amp;Aまで一通りのことが書いてあります。</p>
+
+<!-- more -->
+
+
+<p>Linuxを使っていてわからないことがあれば、まずこの本を開きましょう。そうすればおそらく解答が載っている。それくらい一般的な問題点に関する答えが載っている。非常に情報量が多く、説明が丁寧な秀作だと思う。</p>
+
+<p>コマンドに関するQ&amp;Aからひとつ。例えばテキストの行数を鑑定する場合に空行を抜きたいという場合、</p>
+
+<pre class="console">cat hoge.txt | grep -v '^[]*$' | wc</pre>
+
+
+<p>とすればよい。</p>
+
+<p>上記のコマンドにいたる道筋を順に追って説明しているのが、このQ&amp;Aの丁寧なところだろう。決して冗長にならない程度に簡潔に説明しているにもかかわらず、Linux初心者にもわかりやすい。</p>
+
+<p>Linuxを使う人にはおすすめの本だ。Webで検索すればよいと考えるかもしれないが、問題にぶちあたっと時に、ネットワークが常に使える環境にいるとは限りませんよ。</p>
+
+<ul>
+<li>「ディストリビューションとは?」について解説しているサイトです。Linux入門者でディストリビューションと聞いて「?」が浮かぶ人はこちらを参考にしてください。</li>
+</ul>
+
+
+<p><a href="http://linux.ascii24.com/linux/db/support/1999/11/11/172640-000.html" rel="external nofollow">ディストリビューションとは(日刊アスキーLinux)</a></p>
+
+<ul>
+<li><p>怒涛シリーズの第二弾、ネットワークに関する書籍が載っています。Linuxに限らず、すべてのネットワーカーにおすすめの本です。
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4871937984/sorehabooks-22" rel="external nofollow">怒濤のLinuxネットワーク</a></p></li>
+<li><p>怒涛シリーズを買いませんか？絶対損はないはず。超おすすめです。</p></li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4871937984/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

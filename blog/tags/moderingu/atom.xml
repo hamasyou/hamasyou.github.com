@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: モデリング | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/moderingu/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[楽々ERDレッスン]]></title>
+    <link href="http://hamasyou.com/blog/2006/07/17/4798110663/"/>
+    <updated>2006-07-17T08:36:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2006/07/17/4798110663</id>
+    <content type="html"><![CDATA[<p>本書は、著者である羽生 章洋さんのご自分の経験を元に、データベース設計を行う底力を教えてくれる教科書です。テーブル設計のやり方や、コード体系の考え方、経営資産としてのデータベース、RDBMSを資産活用するためのSQLの書き方など、筆者の経験を惜しみなく公開されているという感じです。</p>
+
+<p>最近はデータモデリングという言葉がもてはやされています。データモデリングにも色々な流派があり、コード体系、識別子、主キーの扱い、関係の扱いなど考え方がさまざまです。僕が読んできたデータモデリングの本で、これまでで一番共感が持てる考えが本書の考え方でした。もちろん、これまで読んできた本に書かれていることも多く、同じ考えをしているところも多々あります。ただ、本書はそういった部分を筆者の経験を元に解説しているので、非常にわかりやすいのです。</p>
+
+<p>本書はデータモデリングとは何か、RDBの設計の練習がしたい人、ER設計に興味がある人が読者対象です。プログラマからSE、コンサルタントまで読んでおくと必ず為になる一冊だと思います。おすすめです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>覚書</h2>
+
+
+
+
+<h3>エンティティの候補</h3>
+
+
+<p>データベースを設計する上で、もっとも重要なことは 「<strong>何を記録するか</strong>」 です。記録しないもの、記録したくないものはデータベース設計は行いません。この、記録したいものを2つの種類に分類すると次のようになります。</p>
+
+<p><blockquote><p>「モノ」 に関する記録のことを 「リソース（資源）系エンティティ」、「出来事」 についての記録のことを 「イベント系エンティティ」 と読んだりします。</p></p><p><p></p><footer><strong>本書 p.25 「エンティティ名の決め方」 より抜粋</strong></footer></blockquote></p>
+
+<p>出てきたエンティティは、業務上のモデルと <strong>6W3H</strong> で照らし合わせて確認することができます。</p>
+
+<p><blockquote><p>「リソース系」</p></p><p><ul><li>誰に （Whom）</li><br/><li>誰が （Who）</li><br/><li>何を （What）</li><br/><li>どこへ （Where）</li></ul></p><p><br/><p>「イベント系」</p></p><p><ul><li>どのように （How）</li></ul></p><p><br/><p>「属性の候補」</p></p><p><ul><li>いつ （When）</li><br/><li>どれくらい （How many）</li><br/><li>いくら （How much）</li></ul></p><p><br/><p>「ビジネス上の正規化の対象となってくるもの」</p></p><p><ul><li>なぜ （Why）</li></ul></p><p><br/><p></p><footer><strong>本書 P.25 「エンティティ名の決め方」 より抜粋</strong></footer></blockquote></p>
+
+<h3>コードとキーの違い</h3>
+
+
+
+
+<h4>キーの種類</h4>
+
+
+<p>データベース上で扱われるキーには大きく3つに分けられます。</p>
+
+<ol><li>主キー</li><li>外部キー</li><li>ユニークキー</li></ol>
+
+
+<p>主キーは、「候補キー」 の中から選ばれ、レコードを一意に識別することができるキーのことです。外部キーは、他のレコードを参照する際のキーのことです。ユニークキーは、他のレコードと重複が無い一意な値をもつキーのことです。</p>
+
+<p>「候補キー」 は、レコードを一意に識別することができるキーの集まりのことです。例えば、シーケンシャル番号や社会保障番号、名前と生年月日の組み合わせも候補キーとして使えるかもしれません（業務による）。業務で使っている 「<strong>コード</strong>」 も候補キーの一つといえます。</p>
+
+<h4>コードとキーの違い</h4>
+
+
+<p><blockquote><p></p></p><p><ul style="margin-top:0px; margin-bottom: 0px"><li>コード体系は、ユーザがレコードに容易に到達するためのユーザインターフェースである</li><br/><li>コード体系は、システムの都合ではなくビジネスの都合によって決定されるものである</li></ul></p><p><br/><p></p><footer><strong>本書 P.30</strong></footer></blockquote></p>
+
+<p>つまり、コードはユニークキー、さらに言えば候補キーになるということです。しかし、コードはビジネスの都合によって変えられることがあるので、主キーとしてはふさわしくありません。主キーを考えることは、レコードのID （アイデンティファイア） を考えることと同じことなのです。</p>
+
+<p><blockquote><p>アイデンティファイアは、インスタンスのライフサイクル （一般にデータライフサイクル：DLCとも呼ばれます。） を表現していると考えればいいでしょう。その集合中に属してから消滅するまでの間、特定のインスタンスであることを示す座標として機能しているわけです。</p></p><p><p></p><footer><strong>本書 P.33</strong></footer></blockquote></p>
+
+<p>コードは、ビジネスに合わせて柔軟に変更できるべきであるが、アイデンティファイア はそのレコードが存在する間は変更されてはいけないのです。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>データモデリングの一つの流派。リソースとイベントとというエンティティの分け方についてよくわかります。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4883732169/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>データモデリングを学ぶならはずせない一冊</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4534032501/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>業務知識と共にDB設計を</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798109274/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[できる人のモデル思考力 -データモデルはこう使え!!]]></title>
+    <link href="http://hamasyou.com/blog/2005/11/12/4774124346/"/>
+    <updated>2005-11-12T10:44:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/11/12/4774124346</id>
+    <content type="html"><![CDATA[<p>「<strong>ビジネスマンだからこそモデリングを覚えるべきだ！</strong>」本書はこう主張しています。その根拠は、システムはビジネスでやりたいこと（What）を具現化したものだから、ビジネスマンがモデリングを覚えてシステムのモデルを整理できることが一番正確で一番早いから、です。</p>
+
+<p>しかし現実はそうかんたんには行きません。ビジネスマンにはモデリングを覚えることよりももっと他に優先度の高いことがあります。だからこそ、RFP（提案依頼書）作成の代行サービスが流行っているのです。</p>
+
+<p>本書は、そんな<strong>時間の無いビジネスマンに、モデリングという作業を分かりやすく短時間で身に着けてもらうための本</strong>になっています。SI業務でデータベース設計をやったことがある人や、要件定義やシステム分析をバリバリにやっているコンサルタントやSEには少し物足りない内容になっています。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特長</h2>
+
+
+
+
+<h3>ビジネスのモデル化とはビジネスルールを記述すること</h3>
+
+
+<p>モデリングという作業は、モノを整理する作業です。モデリングは別にシステム開発だけにかかわる技術ではありません。色々なものを、色々なときにモデリングという作業を通して、整理し、理解することが出来るようになります。</p>
+
+<p>システム開発にスポットを当てて考えてみると、ビジネスマンは何をモデリングするべきなのでしょうか？それは、<strong>ビジネスルール</strong>なのです。システムが行うことと言うのは、このビジネスルールを実行することに他なりません。</p>
+
+<p>本書では、このビジネスルールのモデリングに焦点を当てています。ビジネスルールのモデリングをさらに詳細化すると、<strong>データ</strong>、<strong>プロセス</strong>、<strong>インターフェース</strong>に分けられます。この中で、<strong>データ</strong>に重きを置いて考える方法論に<strong>DOA（データ指向アプローチ）</strong>と言うものがあります。</p>
+
+<p>本書の後半は、このDOAについての説明と、DOAの考え方でデータモデリングを行っていく実際の方法を説明しています。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>データモデリングをさらに詳しく勉強したいならコレ！</li>
+</ul>
+
+
+<div class="rakuten"><table  width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4534032501/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>データモデリングとは何か？もっと基礎的で、もっと実践的な解説はコレ！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798103853/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>DOAの権威による、彼独特の表記法で学ぶ方法論</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798109851/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>データベース設計方法論。T字形ERモデルと言えば分かる人にはわかる</li>
+</ul>
+
+
+<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4883732169/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[UMLによるオブジェクト指向モデリングセルフレビューノート]]></title>
+    <link href="http://hamasyou.com/blog/2005/09/11/4886487440/"/>
+    <updated>2005-09-11T17:35:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/09/11/4886487440</id>
+    <content type="html"><![CDATA[<p>本書は、モデルを検証する視点を学ぶ本です。UMLで書かれたモデルの<strong>適切さ</strong>、<strong>正しさ</strong>をどのような観点で評価すればよいか学べます。</p>
+
+<p>クラス図を描いたけど、本当にコレでよいのか。シーケンス図上ではこうなっているけど、コレで上手くいくのか。こんな疑問に答えてくれるのが本書です。主に<strong>クラス図</strong>、<strong>シーケンス図</strong>、<strong>ユースケース図</strong>について書かれています。</p>
+
+<p>対象読者は、初心者モデラー、設計を行うSEです。プログラマーにはあまり関係ない内容だと思います。</p>
+
+<p>「<strong>設計に正解はない</strong>」と言われますが、十分に適切であるかの評価は出来ます。それは本書を読めば分かるでしょう。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特長</h2>
+
+
+
+
+<h3>モデルを検証する基本ワザ</h3>
+
+
+<p>モデルを検証する方法が3種類取り上げられています。<strong>読んでみる</strong>、<strong>数えてみる</strong>、<strong>絵として見る</strong></p>
+
+<p>それが正しいかどうかはテストすることで分かります。プログラムが正しいことを確認するのにテストを行うように、モデルが正しいことを確認するのにテストを行う必要があります。</p>
+
+<p>本書は、上記の3つのワザを使って、<strong>モデルのテスト</strong>を行います。このワザを身に付ければ、人の書いたモデルを評価できますし、自分のモデルは洗練することが出来ます。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>モデルに本質を描くために参考になる本</li>
+</ul>
+
+
+<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798107123/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>UMLを実践で使うために</li>
+</ul>
+
+
+<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894713861/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>モデリングのエッセンス教えます</li>
+</ul>
+
+
+<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221180/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ワークブック形式で学ぶUMLオブジェクトモデリング―「ユースケース駆動」でソフトウェアを開発する]]></title>
+    <link href="http://hamasyou.com/blog/2005/07/16/4797320192/"/>
+    <updated>2005-07-16T16:10:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/07/16/4797320192</id>
+    <content type="html"><![CDATA[<p>数少ない「<strong>ICONIXプロセス</strong>」について書かれている本です。ICONIXプロセスは、「<strong>ユースケース駆動</strong>」で進める軽量な開発プロセスです。UMLを用います。分析・設計・実装の各段階の前後のトレーサビリティを重要視します。</p>
+
+<p>ICONIXプロセスでは、「<strong>ロバストネス分析</strong>」を行います。分析の「what」と実装の「how」のギャップを埋めるために使われます。本書はこのロバストネス分析に使われる「<strong>ロバストネス図</strong>」というUMLの拡張(ステレオタイプを使う)も解説しています。</p>
+
+<p>本の作りは非常にシンプルでかつ実践的になっています。各章の最初の数ページで、その章のポイントを解説します。その後、実際に起こりやすい間違いトップ１０という形で実例を解説し、演習問題を解くという流れになっています。</p>
+
+<p>実際に<strong>ICONIXプロセス</strong>を体験しながら覚えたい人、<strong>ロバストネス図</strong>って聞いたことあるけどどんなものなんだろうと思っている人。そういう人に本書はおすすめです。演習を行いながら読み進められるので、頭に残りやすいのが特徴です。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+
+
+<h3>ICONIXプロセスに関する数少ない書籍</h3>
+
+
+<p>私が知る限り、ICONIXプロセスについて書かれている本は本書と『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894713772/sorehabooks-22/249-6138668-6440307?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow">ユースケース入門―ユーザマニュアルからプログラムを作る</a>』くらいだと思います。(違ったらごめんなさい)　開発プロセスは理論より実践しないと身につかないと思います。</p>
+
+<p>本書は、「ワークブック形式」ということで、演習が多く載っています。実際にICONIXプロセスを実体験できるので、プロジェクトで使う前に評価できるところがうれしいです。</p>
+
+<p>内容的にはそれほど難しくなく、平易な日本語で書かれています。モデリング初心者の人でも読みこなせるレベルの本だと思います。</p>
+
+<h3>ロバストネス図ってなんだ！？</h3>
+
+
+<p>本書は「<strong>ロバストネス図</strong>」についても解説しています。ロバストネス図とは分析(what)と実装(how)のギャップを埋めるために用いられる図で、UMLで表すことができます。</p>
+
+<p>ICONIXプロセスではこのロバストネス図を使った「<strong>ロバストネス分析</strong>」が重要な位置を占めます。この分析手法に関しても、実践を通して学ぶことが出来ます。</p>
+
+<p>モデリング初心者からどなたでもためになる本です。おすすめの一冊です。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>ロバストネス図を描くには本書は必須</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894713772/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>ユースケースを駆動する。最高レベルのユースケース記述書。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798101273/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>ユースケースを書くためのケーススタディを多く収録。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894711869/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[業務モデルとデータモデルの考え方]]></title>
+    <link href="http://hamasyou.com/blog/2005/07/03/4798106453/"/>
+    <updated>2005-07-03T17:00:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/07/03/4798106453</id>
+    <content type="html"><![CDATA[<p>僕は最初この本を読んだとき、内容をあまり理解できませんでした。それは、趣味でしかモデリングをやっていなかったからです。つまり、業務の知識がまったくなかったのです。</p>
+
+<p>本書は、業務をどうデータモデルに落とすか、ER図に落とすかというところを解説しています。そこには、どんなツールを使うか、どんなフローを書けばいいのかといったことまで含まれています。</p>
+
+<p>「なんだか実務をこなしているみたい」と、読後は思いました。それくらい、<strong>実践よりの本</strong>になっています。データモデリング初心者でも読みこなせる優しい文章になっていますが、<b>業務知識がないと読み進めることがつらい</b>です。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+
+
+<h3>業務プロセスの話も含まれている</h3>
+
+
+<p>データモデルの本と言うのは、実はあまり<strong>業務プロセス</strong>について触れられていなかったりします。</p>
+
+<p>本書は、業務プロセス、ビジネスフローについても書かれています。ビジネスの現場でモデリングを使うには、当然ビジネスプロセスの話も必要になってきます。本書は、業務プロセスの分析とモデリングを一緒に解説しています。</p>
+
+<h3>ツールの解説が豊富</h3>
+
+
+<p>例えば、ビジネスフローについて解析したいとき、便利なのは「Xupper（ケン・システムコンサルティング）」であったり、IDEF0のツールとして有名なのは「All Fusion Process Modeler(コンピュータ・アソシエイツ）」であるといったことが本書では挙げられています。</p>
+
+<p>モデリングの説明ばかりでなく、ツールの説明までしているところが、実際の現場で役に立ちそうだといえます。ツールだけでなく、命名規則の話や、識別子のつけかたの話など、盛りだくさんです。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>データモデリングってどうやるんだろうという人にご紹介！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798103853/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>データベース設計を理解したいひとにおすすめ</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798101109/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+<ul>
+<li>データベース設計ってどうやるんだろうという人にご紹介！</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810566X/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

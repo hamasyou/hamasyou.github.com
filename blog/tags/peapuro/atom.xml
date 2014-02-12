@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: ペアプロ | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/peapuro/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[プラグインSangam(サンガム)でペアプロ!!]]></title>
+    <link href="http://hamasyou.com/blog/2004/05/26/sangam/"/>
+    <updated>2004-05-26T00:18:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/05/26/sangam</id>
+    <content type="html"><![CDATA[<p>Sangam(サンガム)とは、リモートでペアプログラミング(通称ペアプロ)をEclipse上で行うためのものだ。
+Eclipseのプラグインとして提供されており、リモートでファイルロックと同期を取りながらペアプロを行うことができる。</p>
+
+<p>ペアプロとは、2人1組でプログラミングする方法で、片方がドライバ(プログラミングする方)ともう一方がオブザーバ(見ているほう)という役割を行いながら進めていきます。詳しくは<a href="http://www.objectclub.jp/community/XP-jp/xp_relate/xp-intro" rel="external nofollow">こちら</a>を参考に。</p>
+
+<p>さて、Sangamの話に戻ります。このプラグインでペアプロを行う場合はインターネット越しでも使えるので、会社と自宅とでペアプロを行いたい場合もぜんぜん使えます。</p>
+
+<p>設定項目も非常にわかりやすく、ローカルエリア内で使用する分には、パフォーマンスも気にならない。ネットワークが遅い環境で、サイズの大きなファイルをペアプロするとどうなるかはわからないです。</p>
+
+<p>まずは、Sangamをダウンロードして、Eclipseにインストールしましょう。</p>
+
+<!-- more -->
+
+
+<ul>
+<li>Sangamのダウンロードはこちら</li>
+</ul>
+
+
+<p><a href="http://sourceforge.net/projects/sangam/" rel="external nofollow">Sangam(サンガム)のダウンロード</a></p>
+
+<ul>
+<li>Eclipseのダウンロードとインストールはこちら(私はEclipse version2.1を使いました。)</li>
+</ul>
+
+
+<p><a href="http://www.eclipse.org/downloads/index.php" rel="external nofollow">Eclipseダウンロード</a></p>
+
+<p><a href="http://www.eclipsewiki.net/eclipse/index.php?%A5%A4%A5%F3%A5%B9%A5%C8%A1%BC%A5%EB" rel="external nofollow">Eclipseインストール</a></p>
+
+<ul>
+<li>Sangamのインストールと設定はこちら(日本語解説)</li>
+</ul>
+
+
+<p><a href="http://eclipsewiki.net/eclipse/index.php?Sangam%A5%D7%A5%E9%A5%B0%A5%A4%A5%F3" rel="external nofollow">Sangamインストール/設定</a></p>
+
+<p>設定について少し補足します。まず、<strong>クライアント側のServer Pathの部分はローカルエリア内で使用する場合も必ず「http://」からはじめる。</strong>これはローカルエリア内で使用するときに結構忘れがちですが、「http://」から始まっていないとコネクションがつながりません。</p>
+
+<p>また、<strong>実際の使用時はファイルはVSSやCVSなどのリポジトリを使用してまったく同じファイル(コメントの位置や行数までまったく同じ)でないと、ファイルの同期がおかしくなります。</strong>実際、行番号の違うファイルで行ったら、ドライバの操作している行と同一の行が編集されてしまい、意図しない部分に書き込まれるといったことがありました。</p>
+
+<p>さて、実際に使ってみた感想ですが、非常に面白い。チャット機能がついていてネットワーク越しにペアプロしながらでも、会話ができます。チャットウィンドウは日本語文字も通るので心配なしです。</p>
+
+<p>実際のプロジェクト運用時に使用できるほどまだまだ安全性等は足りないと思いますが、趣味で行う場合なんかは、仲の良い友達と隣同士なかよくペアプロなんかも絵になるんじゃないかと思います。</p>
+
+<p>ペアプロはソースコードの品質をあげるのに非常に効果があるみたいです。実際<a href="http://www.objectclub.jp/community/XP-jp//" rel="external nofollow">eXtream Programinng</a>(通称XP)では品質あがったという実績もあります。</p>
+
+<p>これを機会にあなたも是非ペアプログラミングに挑戦してみるのはどうですか?</p>
+
+<h3>5/26追記：</h3>
+
+
+<p>このプラグイン、プログラミング講習会みたいなところでも使えるかもしれないですね。講師の人がオブザーバをやって、受講者の方々がそれぞれドライバーをやれば、マルチウィンドウでファイルを見つつ、受講者のソースコードをチェックすることができますよね。ペアプロ以外の使い方も色々できそうです。</p>
+
+<ul>
+<li>ペアプロの指南書がAmazonから出ています。</li>
+</ul>
+
+
+<p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894716992/sorehabooks-22" rel="external nofollow">ペアプログラミング―エンジニアとしての指南書</a></p>
+
+<ul>
+<li>Eclipseの書籍でおすすめがあります。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325046/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+<ul>
+<li>XPに興味がでたら、この本を買いませんか?</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798003743/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

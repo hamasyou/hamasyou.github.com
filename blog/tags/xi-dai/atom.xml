@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: 携帯 | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/xi-dai/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[docomo のユーザエージェントからiモードブラウザ1.0かどうかを判断する方法]]></title>
+    <link href="http://hamasyou.com/blog/2011/07/25/docomo-i10/"/>
+    <updated>2011-07-25T19:24:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/07/25/docomo-i10</id>
+    <content type="html"><![CDATA[<p>docomo 携帯のユーザエージェントから、iモードブラウザ1.0かどうかを判断する方法</p>
+
+<ul>
+<li>UA が DoCoMo/1.0 で始まっている</li>
+<li>UA が DoCoMo/2.0 <機種名>(c100; で始まっている</li>
+</ul>
+
+
+<p>DoCoMo/1.0 で始まっているのは、PDC 端末。DoCoMo/2.0 で始まっているのは FOMA 端末になります。</p>
+
+<p>FOMA 端末のうち、iモードブラウザ1.0 なのは、キャッシュサイズが 500KB ではないものになります。<a href="http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/" rel="external nofollow">ドコモのユーザエージェント一覧</a>を見る限り、キャッシュが 100KB のものは iモードブラウザ1.0 と判断できます。</p>
+
+<p>Ruby の正規表現で書くとこんな感じ？</p>
+
+<pre class="code"><span class="keyword">def</span> imode1_0?
+  request.user_agent =~ /^DoCoMo\/1.0/ ||
+  request.user_agent =~ /^DoCoMo\/2.0[^(]+\(c100;/
+<span class="keyword">end</span></pre>
+
+]]></content>
+  </entry>
+  
+</feed>

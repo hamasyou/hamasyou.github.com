@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Dropbox | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/dropbox/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Dropbox] .app ファイルを共有すると動かなくなる]]></title>
+    <link href="http://hamasyou.com/blog/2010/09/25/dropbox-app/"/>
+    <updated>2010-09-25T13:14:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/09/25/dropbox-app</id>
+    <content type="html"><![CDATA[<p><strong>Dropbox</strong> で .app ファイルを共有すると、転送先で動かなくなるという現象が発生したので、解決方法のメモです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>Dropbox で .app ファイルを共有すると、実行権限が外れる</h2>
+
+
+<p><a href="https://www.dropbox.com/" rel="external nofollow">Dropbox</a> で他人とフォルダを共有し、アプリケーションを共有する場合があるかと思います。</p>
+
+<p>Mac 限定だと思いますが、.app を直接フォルダに置いておくと、Dropbox が実行権限を削除してしまい、コンソールに下のようなエラーが発生します。</p>
+
+<pre>posix_spawn(&quot;実行したファイル名&quot;): Permission denied</pre>
+
+
+<p>Mac のアプリケーション .app は、実行ファイルのように見えてディレクトリになっていて、.app ディレクトリの下に Contents/MacOS/実際の実行ファイル というふうになっています。</p>
+
+<p>この MacOS ディレクトリの下にある実際の実行ファイルの実行権限が Dropbox で共有を行うと外れてしまうようです。</p>
+
+<h3>対処法</h3>
+
+
+<p>Terminal を開いて、.app/Contents/MacOS ディレクトリに移動して、 chmod +x ファイル名 を行えば実行出来るようになります。</p>
+
+<p>または、.app の形で直接置かなければよいので、Zip で固めてディレクトリに置くのもよいでしょう。</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: J2SE | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/j2se/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[J2SE5.0 覚書き]]></title>
+    <link href="http://hamasyou.com/blog/2005/01/27/j2se/"/>
+    <updated>2005-01-27T07:03:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2005/01/27/j2se</id>
+    <content type="html"><![CDATA[<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873112141/sorehabooks-22" rel="external nofollow"></a>
+</p>
+
+
+<p>Javaの新バージョン「<strong>J2SE5.0 Tiger</strong>」の新機能のメモ。詳しい使い方などは、参考文献や他のサイトをご覧ください。</p>
+
+<p>J2SE5.0 Tiger では、言語構文が大幅に追加されています。<strong>Generics</strong> や <strong>オートボクシング</strong>、<strong>Enum(列挙型)</strong>、<strong>可変長引数</strong>、<strong>アノテーション</strong>、<strong>拡張for ステートメント</strong>、<strong>Static インポート</strong>など、目を見張る機能がたくさん付け加わっています。</p>
+
+<p>J2SE5.0 Tiger は、EoD (Easy Of Development) を行うための道具です。今後はさらに普及してきて、J2SE1.4 に確実に置き換わると思います。今のうちに概要や変わったところをチェックしておくのがいいと思います。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<ul>
+<li><p><a href="http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/index.html" rel="external nofollow">J2SE5.0 API JavaDoc</a></p></li>
+<li><p><a href="http://java.sun.com/j2se/1.5.0/ja/download.html" rel="external nofollow">JDK5.0 Download</a></p></li>
+<li><p><a href="http://www5.airnet.ne.jp/sakuraba/java/laboratory/J2SE1.5/contents.html" rel="external nofollow">J2SE5.0 虎の穴</a></p></li>
+</ul>
+
+
+<p></section></p>
+
+<!-- more -->
+
+
+
+
+<h2>覚書き一覧</h2>
+
+
+
+
+<ol><li><a href="#基本クラス、コレクションクラスの変更点" rel="external nofollow">基本クラス、コレクションクラスの変更点</a></li>
+<li><a href="#Generics - ジェネリクス" rel="external nofollow">Generics - ジェネリクス</a></li>
+<li><a href="#Enum - 列挙型" rel="external nofollow">Enum - 列挙型</a></li>
+<li><a href="#ボクシング、アンボクシング" rel="external nofollow">ボクシング、アンボクシング</a></li>
+<li><a href="#可変長引数" rel="external nofollow">可変長引数</a></li>
+<li><a href="#アノテーション" rel="external nofollow">アノテーション</a></li>
+<li><a href="#拡張 for ステートメント" rel="external nofollow">拡張 for ステートメント</a></li></ol>
+
+
+
+
+<h2 id="基本クラス、コレクションクラスの変更点">基本クラス、コレクションクラスの変更点</h2>
+
+
+
+
+<ul>
+<li><a href="#java.util.Arraysの変更" rel="external nofollow">java.util.Arraysの変更</a></li>
+<li><a href="#java.util.Queueインターフェース" rel="external nofollow">java.util.Queueインターフェース</a></li>
+<li><a href="#戻り型のオーバーライド" rel="external nofollow">戻り型のオーバーライド</a></li>
+<li><a href="#Unicode4.0 のサポート" rel="external nofollow">Unicode4.0 のサポート</a></li>
+<li><a href="#StringBuilderクラスを使う" rel="external nofollow">StringBuilderクラスを使う</a></li>
+</ul>
+
+
+
+
+<h3 id="java.util.Arraysの変更">java.util.Arrays の変更</h3>
+
+
+<p><em>java.util.Arrays</em>クラスに toString() が付け加わりました。配列をプリントできるようになります。デバッグ時に楽になります。deepToString() は2次元配列以上の配列の中身を再帰的にプリントします。</p>
+
+<h3 id="java.util.Queueインターフェース">java.util.Queue インターフェース</h3>
+
+
+<p><em>java.util.Queue</em>インターフェースが追加されました。キューは FIFO (先入れ、先出し)の性質を持ち、先に挿入した値が最初に取得できるコレクションです。キューでは、offer() と poll()、element()、peek() を利用します。</p>
+
+<dl>
+<dt class="warn">要素がない場合の挙動に注意</dt>
+<dd>キューのコレクションメソッドである add() や remove() は要素がない場合の挙動が例外をスローするようになっています。</dd>
+</dl>
+
+
+<p>java.util.Queue はインターフェースで、実装クラスは <em>LinkedList</em> や他のList 実装が使えます。</p>
+
+<pre class="code"><code>Queue q = <span class="keyword">new</span> LinkedList();
+</code></pre>
+
+
+
+
+<h3 id="戻り型のオーバーライド">戻り型のオーバーライド</h3>
+
+
+<p>J2SE5.0 Tiger から<em>戻り型がオーバーライドできる</em>ようになりました。今までは、メソッドのオーバーライドはメソッドの戻り型を含めてシグネチャが一致しなければなりませんでしたが、それが変更されています。</p>
+
+<p><section></p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www5.airnet.ne.jp/sakuraba/java/laboratory/J2SE1.5/LangSpec/Generics/Generics.html" rel="external nofollow">J2SE5.0 Tiger 虎の巻(Generics) - 戻り値だけ違うメソッドのオーバライド</a></li>
+</ul>
+
+
+<p></section></p>
+
+<h3 id="Unicode4.0 のサポート">Unicode4.0 のサポート</h3>
+
+
+<p><em>Unicode4.0</em> をサポートするようになりました。これにより、Unicode が16ビットに収まらなくなり、charで表現できない文字が存在することになります。この場合 int を使うことになります。</p>
+
+<p>Unicode4.0 のサポートにより、16bit に収まらない文字を扱うには、char ではなく、int を使います。</p>
+
+<h3 id="StringBuilderクラスを使う">StringBuilder クラスを使う</h3>
+
+
+<p><em>StringBuilder</em> クラスが追加されました。これは StringBuffer の非同期クラスの位置づけになっています。コレクションフレームワークにより、Vector よりも ArrayList を、HashTable より HashMap を使うのが好まれるように、StringBuffer よりも StringBuilder を使うようになります。ただし、非同期処理の場合に限ります。</p>
+
+<p>非同期処理ですむ場合は、StringBuffer の代わりに StringBuilder を使うようにします。</p>
+
+<h2 id="Generics - ジェネリクス">Generics - ジェネリクス</h2>
+
+
+
+
+<ul><li><a href="#Generics 構文" rel="external nofollow">Generics 構文</a></li>
+<li><a href="#Iterator の型パラメータに関して" rel="external nofollow">Iterator の型パラメータに関して</a></li>
+<li><a href="#ワイルドカードを使用する" rel="external nofollow">ワイルドカードを使用する</a></li>
+</ul>
+
+
+
+
+<h3 id="Generics 構文">Generics 構文</h3>
+
+
+<p><em>Generics</em> は C++ 言語のテンプレートと同じ役割をします。主にコレクションを使うときに、型の安全性を保証するのに使います。また、Iterator を使う場合にキャストが不要になるという利点もあります。</p>
+
+<pre class="code"><code>List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();
+</code></pre>
+
+
+<p><em>オートボクシング</em> という機能が J2SE5.0 Tiger から追加されました。これはプリミティブ型とオブジェクト型の変換をコンパイル時に解決してくれると言う機能です。この機能を使うと、Generics を使ってプリミティブ型をコレクションに追加することができるようになっています。その場合、下記のようにします。</p>
+
+<pre class="code"><code>List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;(); 
+list.add(8); 
+list.add(5); 
+</code></pre>
+
+
+<p>型パラメータとして指定できるのは Object型 だけですので注意が必要です。プリミティブ型は指定できません。</p>
+
+<p><em>java.util.Map</em> は型パラメータを二つとります。 key に指定する型と value に指定する型です。</p>
+
+<h3 id="Iterator の型パラメータに関して">Iterator の型パラメータに関して</h3>
+
+
+<p><em>Iterator</em> とコレクションは常にペアで考える必要があります。コレクションに型パラメータが指定されていれば、Iterator にも同じ型パラメータを指定する必要があります。</p>
+
+<pre class="code"><code>List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;(); 
+list.add(8); 
+list.add(5); 
+ 
+Iterator&lt;Integer&gt; iter = list.iterator(); 
+<span class="keyword">while</span> (iter.hasNext()) { 
+    <span class="keyword">int</span> n = iter.next(); 
+} 
+</code></pre>
+
+
+<p>J2SE5.0 Tiger を使って開発を行う場合、できる限り Generics を使って、型の安全性を確保するのがよい作法です。</p>
+
+<h3 id="ワイルドカードを使用する">ワイルドカードを使用する</h3>
+
+
+<p>型パラメータには <em>ワイルドカード (?) を使うことができる</em>。これを指定すると、どんな型でも受け入れるという事を示すことになる。ただし、ワイルドカードを使った場合、そのコレクションは<strong>読み取り専用</strong>になる。つまり、 add()、addAll()、set() などのメソッド呼び出しはコンパイルエラーになる。</p>
+
+<pre class="code"><code>List&lt;?&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;(); 
+ 
+<span class="comment">/* ワイルドカードを使っているので、読み取り専用になっている */</span>
+<span class="comment">//list.add(&quot;Hey&quot;); </span>
+<span class="comment">//list.add(&quot;Good&quot;); </span>
+<span class="comment">//list.add(&quot;Hello&quot;); </span>
+ 
+<span class="keyword">for</span> (Iterator&lt;?&gt; iter = list.iterator(); iter.hasNext(); ) { 
+System.out.println(iter.next()); 
+} 
+ 
+</code></pre>
+
+
+
+
+<h2 id="Enum - 列挙型">Enum - 列挙型</h2>
+
+
+<p><em>Enum (列挙型)</em> は、型のチェックが行われる、定数の範囲とでも考えればいいと思います。</p>
+
+<p><section></p>
+
+<h4>Category.java</h4>
+
+
+
+
+<pre class="code"><code> 
+<span class="keyword">package</span> com.hamasyou; 
+ 
+<span class="keyword">public</span> enum Category {  
+    BOOK,  
+    WEB,  
+    COMPUTER,  
+    SYSTEM 
+}; 
+</code></pre>
+
+
+<p></section></p>
+
+<p class="option">慣習では Enum クラス名は 単語の区切りが大文字、列挙の識別子はすべて大文字とされています。</p>
+
+
+<p>列挙型は == や equals() で比較できます。また、compareTo() を使って比較することができます。デフォルトの順序は、識別子の順番になります。</p>
+
+<p>toString() と valueOf() メソッドが提供されます。</p>
+
+<pre>
+(例： Category.SYSTEM.toString().equals(&quot;SYSTEM&quot;) )
+(例： Category.BOOK&nbsp;==&nbsp;Category.valueOf(&quot;BOOK&quot;))
+※ toString() をオーバーライドする場合は、 valueOf もオーバーライドしなければならない。常にペアで修正すること。
+</pre>
+
+
+<p>J2SE5.0 Tiger から、列挙型による <em>switch 文の分岐</em>ができるようになりました。switch 文ではラベルに識別子を使う場合、enum クラス名を付けるとコンパイルエラーになります。</p>
+
+<pre class="code"><code>Category c = Category.BOOK; 
+<span class="keyword">switch</span> (c) { 
+    <span class="keyword">case</span> Category.SYSTEM:    <span class="comment">// コンパイルエラー </span>
+        System.out.println(<span class="literal">"BOKE"</span>); 
+        <span class="keyword">break</span>; 
+    <span class="keyword">case</span> WEB: 
+        System.out.println(<span class="literal">"BOKE"</span>); 
+        <span class="keyword">break</span>; 
+    <span class="keyword">case</span> BOOK: 
+        System.out.println(<span class="literal">"OK"</span>); 
+        <span class="keyword">break</span>;                 
+} 
+</code></pre>
+
+
+<p><section></p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www5.airnet.ne.jp/sakuraba/java/laboratory/J2SE1.5/LangSpec/TypesafeEnum/TypesafeEnum.html" rel="external nofollow">enum の詳しい説明 - (J2SE5.0 Tiger 虎の穴)</a></li>
+</ul>
+
+
+<p></section></p>
+
+<h2 id="ボクシング、アンボクシング">ボクシング、アンボクシング</h2>
+
+
+<p>プリミティブ型からオブジェクトラッパー型へ、オブジェクトラッパー型からプリミティブ型への変換を、コンパイル時に行ってくれる機能が<em>オートボクシング、アンボクシング</em> です。</p>
+
+<pre class="code"><code>Integer obj = 10; 
+<span class="keyword">int</span> n = <span class="keyword">new</span> Integer(8); 
+obj++; 
+</code></pre>
+
+
+<p>上のような事ができます。例えばメソッドの引数で、int をとる場合でも、Integer インスタンスを渡すことができるようになります。</p>
+
+<dl>
+<dt class="notice">プリミティブへの null の代入に注意</dt>
+<dd><p>オブジェクトラッパー型のインスタンスには null が指定できました。しかし、アンボクシング時に null インスタンスであると、NullPointerException が発生します。</p>
+
+<pre class="code"><code>Integer nullObj = <span class="keyword">null</span>; 
+<span class="keyword">int</span> n = nullObj;    <span class="comment">// NullPointerException </span>
+</code></pre></dd>
+</dl>
+
+
+
+
+<h2 id="可変長引数">可変長引数</h2>
+
+
+<p><em>可変長引数</em>の機能により、同じ型の可変の引数を取ることができます。引数の数をコンパイル時または実行時に決定することができます。可変長引数は<em>省略記号(&hellip;)</em>を使います。</p>
+
+<pre class="code"><code><span class="keyword">public</span> Constructor(String name, String... args)
+</code></pre>
+
+
+<p>可変長引数は、１メソッドにつき、１つの省略記号しか使えない。また、省略記号は最後の引数として指定しなければならない。</p>
+
+<p>可変長引数には、引数を0個以上指定できる。引数に何も指定しないことも可能です。</p>
+
+<p>可変長引数は、メソッドの中では配列のように使用できる。<em>引数を指定せずに呼び出すことも可能なので、プログラマはこのことを念頭に入れてメソッドを実装しなければなりません。</em>。</p>
+
+<h2 id="アノテーション">アノテーション</h2>
+
+
+
+
+<ul><li><a href="#アノテーションとは" rel="external nofollow">アノテーションとは</a></li>
+<li><a href="#標準アノテーション" rel="external nofollow">標準アノテーション</a></li>
+<li><a href="#メタアノテーション" rel="external nofollow">メタアノテーション</a></li></ul>
+
+
+
+
+<h3 id="アノテーションとは">アノテーションとは</h3>
+
+
+<p><strong>アノテーション</strong>とは、実行可能なコードではなく、コードを説明する付加情報のことです。ツールによって分析・解析される情報になります。J2SE5.0 Tiger で採択されたアノテーションは、明確に定義されたメタデータを使って、コードを補足するものと考えられます。</p>
+
+<p>アノテーションは、コンパイラによってチェックされます。アノテーションの綴りが間違っている場合にはコンパイルエラーになります。<span class="border_bottom">アノテーションは、意図していることを表すための重要なものなので、使用することをお勧めします</span>。</p>
+
+<h3 id="標準アノテーション">標準アノテーション</h3>
+
+
+
+
+<dl><dt>@Override</dt>
+<dd><p>このメソッドが、スーパークラスのメソッドをオーバーライドすることを示します。</p>
+
+<pre class="code"><code><span class="keyword">public</span> String toString() { 
+... 
+} 
+</code></pre></dd>
+<dt>@Deprecated</dt>
+<dd><p>このメソッドまたは要素の使用が廃止されたことを示します。このアノテーションは、メソッド宣言と同じ行に宣言します。</p>
+
+<pre class="code"><code>@Deprecated <span class="keyword">public</span> <span class="keyword">void</span> hoge() { 
+... 
+} 
+</code></pre></dd>
+<dt>@SuppressWarnings</dt>
+<dd><p>初期化子に対するコンパイラの警告を無効にすることを示します。</p>
+
+<pre class="code"><code>@SuppressWarnings(<span class="literal">"unchecked"</span>) 
+<span class="keyword">public</span> <span class="keyword">void</span> warnMethod() { 
+... 
+} 
+</code></pre></dd>
+</dl>
+
+
+
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www5.airnet.ne.jp/sakuraba/java/laboratory/J2SE1.5/LangSpec/Metadata/Metadata.html" rel="external nofollow">アノテーションの詳細 - J2SE5.0 Tiger 虎の穴</a></li>
+</ul>
+
+
+<h3 id="メタアノテーション">メタアノテーション</h3>
+
+
+<p><em>メタアノテーション</em>、つまりアノテーションのアノテーションには4つの標準のものが用意されています。</p>
+
+<dl>
+<dt>@Target</dt>
+<dd><p>アノテーションを定義できるプログラム要素を指定する。</p>
+
+<ul><li>ElementType.TYPE</li><li>ElementType.FIELD</li><li>ElementType.METHOD</li><li>ElementType.PARAMETER</li><li>ElementType.CONSTRUCTOR</li><li>ElementType.LOCAL_VARIABLE</li><li>ElementType.ANNOTATION_TYPE</li><li>ElementType.PACKAGE</li></ul></dd>
+<dt>@Retention</dt>
+<dd><p>アノテーションの定義をどこまで残すかを指定する。コンパイル時に無視することもできるし、クラスファイルに埋め込むこともできる。</p></dd>
+<dt>@Documented</dt><dd><p>アノテーションをJavaDocに表示するかどうかを指定する。第三者が書いたコードのトラブルシューティング、アップデート情報、管理を行うための情報を記載するときに使う。</p></dd>
+<dt>@Inherited</dt><dd><p>アノテーションを継承先のクラスにも反映させるかどうかを指定する。</p></dd>
+</dl>
+
+
+
+
+<h2 id="拡張 for ステートメント">拡張 for ステートメント</h2>
+
+
+
+
+<pre class="code"><code><span class="keyword">for</span> (Object element : list) { 
+    element.toString(); 
+}
+</code></pre>
+
+
+<p>この拡張 for ステートメントにより、java.util.Iterator を使う機会がグッと減る。<span class="border_bottom">for 文に使えるクラスは、java.lang.Iterable インターフェースを実装している配列またはオブジェクト出なければならない</span>。</p>
+
+<p>拡張 for ステートメントでできないことに、「現在の要素位置を特定すること。」、「ループ中で要素を削除する。」、「二つ以上の配列を同一インデックスでアクセスする。」などがあります。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>J2SEの易しい解説を求める人へ。</li>
+</ul>
+
+
+<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4872834100/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

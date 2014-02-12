@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: JNDI | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/jndi/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[JNDIでオブジェクト管理]]></title>
+    <link href="http://hamasyou.com/blog/2004/05/29/jndi/"/>
+    <updated>2004-05-29T04:05:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/05/29/jndi</id>
+    <content type="html"><![CDATA[<p>JNDIは、オブジェクトに名前をつけて管理するネーミングサービスの共通インターフェースを提供します。JAVAアプリケーションはこのJNDIを使って統一された手法でネーミングサービスにアクセスすることができます。</p>
+
+<p>JNDI(Java Naming and Directory Interface)とは、Javaでネーミングサービスを扱うためのAPIを定めたものです。JNDIが定められた目的はアプリケーションがさまざまなネーミング/ディレクトリサービスを統一的に利用することができるようにすることです。</p>
+
+<p>ネーミングサービスとは、名前とオブジェクトを関連付けて管理するサービスのことです。例えば 管理人 =&gt; 「ハマショウというオブジェクト」 というように、<strong>管理人</strong>という名前を<strong>ハマショウ</strong>というオブジェクトに結び付け、<b>管理人 = ハマショウ</b>という関連を作ることと説明できます。</p>
+
+<!-- more -->
+
+
+<p>このネーミングサービスの例として、データベースへのコネクションをプーリングして管理するデータソースに名前をつけて、WebアプリケーションからJNDIを利用してデータソースを取得するという手法が良く使われます。</p>
+
+<p><img src="http://hamasyou.com/images/jndi/jndi_call.gif" /></p>
+
+<h2>JNDIの仕組み</h2>
+
+
+<p>JNDIはService Provider Interface(SPI)とこれにアクセスするためのAPIを提供します。SPIは主にネーミング/ディレクトサービスを提供するサードパティのためのもので、このインターフェースにしたがっているサービスをAPIからアクセスすることができるようになります。</p>
+
+<p>ディレクトリサービスとは、ネーミングをディレクトリ階層で管理するものです。</p>
+
+<p><img src="http://hamasyou.com/images/jndi/directory.gif" /></p>
+
+<p>身近な例を出すと、ファイル管理システムがあります。Linuxを思い浮かべるとわかると思いますが、ルートディレクト(/)があり、その下にサブディレクトリ(etc, usr, home)ディレクトリ、その下にさらにサブディレクトリとファイルが存在しています。index.htmlファイルにアクセスするにはLinuxのファイルディレクトリサービスを呼び出して、/home/hamasyou/index.html という名前でアクセスすることになります。</p>
+
+<p>これが、ネーミング/ディレクトサービスの概要です。このようなサービスをデータソースの検索に利用したのが、先ほどの例であげたデータベース接続の取得などになります。</p>
+
+<h2>JNDIの用語</h2>
+
+
+<p>JNDIに出てくる用語として名前、コンテキスト、イニシャルコンテキスト、名前空間、ディレクトサービスというのがあります。</p>
+
+<dl>
+<dt>名前</dt>
+<dd>
+オブジェクトを識別するためのものです。ネーミングサービスはこの名前を使ってオブジェクトを管理します。
+</dd>
+<dt>コンテキスト</dt>
+<dd>
+名前とオブジェクトを結びつけた集合をコンテキストといいます。ファイル管理の例で言うところの、ディレクトリに当たります。コンテキストには、サブコンテキストを含めることもできます。ネーミングサービスはこのコンテキストからオブジェクトを取り出します。
+</dd>
+<dt>イニシャルコンテキスト</dt>
+<dd>コンテキストルートのことです。ファイル管理の例で言うところの、ルートディレクトリになります。このイニシャルコンテキストから、ネーミングサービスはオブジェクトの検索を始めます。
+</dd>
+<dt>名前空間</dt>
+<dd>コンテキストの集合、つまりひとつのディレクトリサービスを識別するものが名前空間となります。</dd>
+<dt>ディレクトリサービス</dt>
+<dd>
+ネーミングサービスの多くはディレクトリサービスを提供しています。このディレクトリサービスはオブジェクトに名前をつけて管理するだけでなく、属性をつけることもできます。これも、ファイルシステムを思い浮かべればよいでしょう。ファイルには日付やアクセス許可などの属性がついています。
+</dd>
+</dl>
+
+
+
+
+<h2>JAVAでのコーディング例</h2>
+
+
+<p>こちらのサイトで詳しく説明しているので、ご覧ください。</p>
+
+<p><a href="http://www.hellohiro.com/jndi.htm" rel="external nofollow">JavaでHelloWorld JNDI編</a></p>
+
+<h2>まとめ</h2>
+
+
+<p>JNDIはネーミング/ディレクトリサービスにアクセスするための統一的な方法を提供します。また、アクセスするだけでなく、オブジェクトの格納も行うことができます。これらのネーミング/ディレクトリサービスは、サードパティから入手することができます。</p>
+
+<p>例えば、WebアプリケーションでデータソースをJNDIで取得するネーミング/ディレクトリサービスは、Tomcatなどに実装されています。</p>
+
+<p>ネーミング/ディレクトリサービスを使って、アプリケーションに統一的なオブジェクトアクセスの方法を導入することで、別の環境に移った場合でも、ソースコードを変更することなく、環境の整備だけで対処することができます。ネーミング/ディレクトリサービスの種類はたくさんあるので、探してみるのも面白いでしょう。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>JNDIを使ってHello Worldを表示させるもの。詳しく書いてあって、サンプルを打ち込むだけでも良くわかります。</li>
+</ul>
+
+
+<p><a href="http://www.hellohiro.com/jndi.htm" rel="external nofollow">JavaでHelloWorld JNDI編</a></p>
+
+<ul>
+<li>JNDIを使って、JDBCコネクションプーリングを行う手順を説明しています。(Web+Tomcat)</li>
+</ul>
+
+
+<p><a href="http://www.atmarkit.co.jp/fjava/javatips/004container003.html" rel="external nofollow">@IT: JNDI活用でデータソース管理を一元化する</a></p>
+
+<ul>
+<li>JDBC接続をDataSouceで管理する方法</li>
+</ul>
+
+
+<p><a href="http://www.hellohiro.com/datasource.htm" rel="external nofollow">JavaでHelloWorld DataSource編</a></p>
+
+<ul>
+<li>JNDIだけでなく、J2EEで使われている技術全般に関して説明しています。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756144209/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

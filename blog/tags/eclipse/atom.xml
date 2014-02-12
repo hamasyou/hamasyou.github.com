@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Eclipse | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/eclipse/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[自分用] Eclipse 開発環境]]></title>
+    <link href="http://hamasyou.com/blog/2006/10/27/eclipse/"/>
+    <updated>2006-10-27T00:14:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2006/10/27/eclipse</id>
+    <content type="html"><![CDATA[<p>
+<a href="http://www.amazon.co.jp/gp/product/4774129313/503-7529252-6625510?ie=UTF8&tag=sorehabooks-22&linkCode=xm2&camp=247&creativeASIN=4774129313" rel="external nofollow"></a>
+</p>
+
+
+<p>自分用の Eclipse 開発環境メモ。『Web+DB Press vol.35 の実演テスト駆動開発』 を読んで、自分用の開発環境テンプレートを作ろうとやっと決心したので ( ..)φメモメモ （といっても、ほとんど記事の内容そのままだけど）</p>
+
+<p>ちなみに、TDD（Test Driven Development: テスト駆動開発） の利点は、「テスト可能なコードになる」、「コード利用者の視点を得る事ができる」、「インターフェースと実装を分けて考えることができる」。 2番目のコード利用者の視点を得ることができるというのに特に共感できる。自分の中で、インターフェースはユーザ（コードの利用者）が決めるものだ！というポリシーがあるので。t-wadaさんには、一度だけお会いしたことがある（名刺交換だけだけど）。</p>
+
+<!-- more -->
+
+
+
+
+<h2>Eclipse 環境</h2>
+
+
+
+
+<h3>ライブラリ</h3>
+
+
+
+
+<ul><li><a href="http://www.meisei-u.ac.jp/mirror/apache/dist/maven/binaries/" rel="external nofollow">Maven2</a></li>
+<li><a href="http://db.apache.org/derby/" rel="external nofollow">Apache Derby</a></li></ul>
+
+
+
+
+<h3>Eclipse プラグイン</h3>
+
+
+
+
+<ul><li><a href="http://m2eclipse.codehaus.org/" rel="external nofollow">Maven 2.x Plug-in for Eclipse (m2eclipse)</a></li>
+<li><a href="http://subclipse.tigris.org/" rel="external nofollow">Subclipse</a></li>
+<li><a href="http://www.geocities.com/uwe_ewald/dbedit.html" rel="external nofollow">DbEdit Plugin for Eclipse (http://dbedit.sourceforge.net/update)</a></li>
+<li><a href="http://www.xmlbuddy.com/" rel="external nofollow">XMLBuddy</a></li></ul>
+
+
+
+
+<h3>キーバインド</h3>
+
+
+
+
+<ul><li>Ctrl + U  （Linu Up）</li><li>Ctrl + L  （Next Column）</li><li>Ctrl + N  （Line Down）</li><li>Ctrl + H  （Prev Column）</li></ul>
+
+
+
+
+<h2>Web アプリケーション用のディレクトリ構成</h2>
+
+
+
+
+<h3>1. Web アプリケーション用のディレクトリを作成する</h3>
+
+
+<p>Eclipse のワークスペースで下記のコマンドを実行する</p>
+
+<pre class="console">> <kbd>mvn archetype:create -DgroupId=&lt;&lt;プロジェクトのパッケージ 例：com.hamasyou.webapp&gt;&gt; -DartifactId=&lt;&lt;プロジェクト名（アプリケーションコンテキスト名）&gt;&gt; -DarchetypeArtifactId=maven-archetype-webapp</kbd>
+</pre>
+
+
+
+
+<h3>2. Eclipse プロジェクトに変換する</h3>
+
+
+<p>作成されたディレクトリに移動して下記のコマンドを実行する。</p>
+
+<pre class="console">> <kbd>mvn eclipse:eclipse</kbd></pre>
+
+
+
+
+<h3>3. Eclipse にインポートする</h3>
+
+
+<p>「ファイル」-「インポート」-「既存プロジェクトをワークスペースへ」</p>
+
+<h3>4. ソースディレクトリの作成する</h3>
+
+
+<p>「新規」-「ソースフォルダ」で下記のソースフォルダを作成する。</p>
+
+<ul><li>src/main/java</li><li>src/test/java</li><li>src/test/resources</li></ul>
+
+
+
+
+<h3>5. Maven2 の pom.xml にソースディレクトリを要素を記述する</h3>
+
+
+
+
+<pre class="code"><code><span class="tag">&lt;project <span class="attr">xmlns=</span><span class="value">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="attr">xmlns:xsi=</span><span class="value">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> 
+  <span class="attr">xsi:schemaLocation=</span><span class="value">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</span>&gt;</span> 
+  <span class="tag">&lt;modelVersion&gt;</span>4.0.0<span class="tag">&lt;/modelVersion&gt;</span> 
+  <span class="tag">&lt;groupId&gt;</span>com.hamasyou.todocal<span class="tag">&lt;/groupId&gt;</span> 
+  <span class="tag">&lt;artifactId&gt;</span>todocal<span class="tag">&lt;/artifactId&gt;</span> 
+  <span class="tag">&lt;packaging&gt;</span>war<span class="tag">&lt;/packaging&gt;</span> 
+  <span class="tag">&lt;version&gt;</span>1.0<span class="tag">&lt;/version&gt;</span> 
+  <span class="tag">&lt;name&gt;</span>TODO Calendar<span class="tag">&lt;/name&gt;</span> 
+ 
+  <span class="tag">&lt;dependencies&gt;</span> 
+    <span class="tag">&lt;dependency&gt;</span> 
+      <span class="tag">&lt;groupId&gt;</span>junit<span class="tag">&lt;/groupId&gt;</span> 
+      <span class="tag">&lt;artifactId&gt;</span>junit<span class="tag">&lt;/artifactId&gt;</span> 
+      <span class="tag">&lt;version&gt;</span>4.1<span class="tag">&lt;/version&gt;</span> 
+      <span class="tag">&lt;scope&gt;</span>test<span class="tag">&lt;/scope&gt;</span> 
+    <span class="tag">&lt;/dependency&gt;</span> 
+  <span class="tag">&lt;/dependencies&gt;</span> 
+ 
+  <span class="tag">&lt;build&gt;</span> 
+    <span class="tag">&lt;finalName&gt;</span>todocal<span class="tag">&lt;/finalName&gt;</span> 
+    <span class="tag">&lt;sourceDirectory&gt;</span>src/main/java<span class="tag">&lt;/sourceDirectory&gt;</span> 
+    <span class="tag">&lt;testSourceDirectory&gt;</span>src/test/java<span class="tag">&lt;/testSourceDirectory&gt;</span> 
+  <span class="tag">&lt;/build&gt;</span> 
+<span class="tag">&lt;/project&gt;</span>
+</code></pre>
+
+
+
+
+<h3>6. Eclipse の出力フォルダを変更する</h3>
+
+
+<p>パッケージエクスプローラのプロジェクトのプロパティで 「ビルドパス」-「「出力フォルダ」 を選択して、「特定の出力フォルダ」を有効にして src/test/java と src/test/resources の出力フォルダを 「target/test-classes」 等にする。</p>
+
+<h3>7. m2eclipse プラグイン環境変数を削除する</h3>
+
+
+<p>パッケージエクスプローラのプロジェクトのプロパティの 「ビルドパス」-「ビルドパスの構成」 から M2_REPO の行を除去する。
+※ m2eclipse を使う場合は M2_REPO の参照は不要らしい。</p>
+
+<h3>8. Eclipse の m2eclipse プラグインを有効にする</h3>
+
+
+<p>パッケージエクスプローラのプロジェクトを右クリックし、「Maven2」-「Enable」 をクリックする。</p>
+
+<h3>9. Maven2 がライブラリをダウンロードするときに一緒にソースコードもダウンロードする</h3>
+
+
+<p>メニューの 「ウィンドウ」-「設定」 の Maven2 の設定から 「Download Artifact Sources」 にチェックを入れる。</p>
+
+<h2>テスト環境を整える</h2>
+
+
+
+
+<h3>1. jetty プラグインを設定する</h3>
+
+
+<p>pom.xml に下記を記述する</p>
+
+<pre class="code"><code><span class="rem">&lt;!--中略--&gt;</span>
+  <span class="tag">&lt;build&gt;</span>
+    <span class="tag">&lt;finalName&gt;</span>todocal<span class="tag">&lt;/finalName&gt;</span>
+    <span class="tag">&lt;sourceDirectory&gt;</span>src/main/java<span class="tag">&lt;/sourceDirectory&gt;</span>
+    <span class="tag">&lt;testSourceDirectory&gt;</span>src/test/java<span class="tag">&lt;/testSourceDirectory&gt;</span>
+    <span class="tag">&lt;plugins&gt;</span>
+      <span class="tag">&lt;plugin&gt;</span>
+        <span class="tag">&lt;groupId&gt;</span>org.mortbay.jetty<span class="tag">&lt;/groupId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>maven-jetty-plugin<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;configuration&gt;</span>
+          <span class="tag">&lt;contextPath&gt;</span>/todocal<span class="tag">&lt;/contextPath&gt;</span>
+          <span class="tag">&lt;scanIntervalSeconds&gt;</span>10<span class="tag">&lt;/scanIntervalSeconds&gt;</span>
+          <span class="tag">&lt;connectors&gt;</span>
+            <span class="tag">&lt;connector <span class="attr">implementation=</span><span class="value">&quot;org.mortbay.jetty.nio.SelectChannelConnector&quot;</span>&gt;</span>
+              <span class="tag">&lt;port&gt;</span>8080<span class="tag">&lt;/port&gt;</span>
+              <span class="tag">&lt;maxIdleTime&gt;</span>6000<span class="tag">&lt;/maxIdleTime&gt;</span>
+            <span class="tag">&lt;/connector&gt;</span>
+          <span class="tag">&lt;/connectors&gt;</span>
+        <span class="tag">&lt;/configuration&gt;</span>
+      <span class="tag">&lt;/plugin&gt;</span>
+    <span class="tag">&lt;/plugins&gt;</span>
+  <span class="tag">&lt;/build&gt;</span>
+<span class="tag">&lt;/project&gt;</span>
+</code></pre>
+
+
+
+
+<h3>2. jetty サーバを起動する</h3>
+
+
+<p>プロジェクトディレクトリに移動して、下記のコマンドを実行する。</p>
+
+<pre class="console">> <kbd>mvn jetty:run</kbd></pre>
+
+
+<p>jetty はクラスファイルの更新検知機能があるので、クラスファイルが更新されると自動で再起動される。</p>
+
+<h3>3. HttpUnit と Apache Geronimo をインストールする</h3>
+
+
+<p>pom.xml に下記を記述する</p>
+
+<pre class="code"><code><span class="rem">&lt;!--中略--&gt;</span>
+  <span class="tag">&lt;dependencies&gt;</span>
+    <span class="tag">&lt;dependency&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>junit<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>junit<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;version&gt;</span>4.1<span class="tag">&lt;/version&gt;</span>
+      <span class="tag">&lt;scope&gt;</span>test<span class="tag">&lt;/scope&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
+    <span class="tag">&lt;dependency&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>httpunit<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>httpunit<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;version&gt;</span>1.6.1<span class="tag">&lt;/version&gt;</span>
+      <span class="tag">&lt;scope&gt;</span>test<span class="tag">&lt;/scope&gt;</span>      
+    <span class="tag">&lt;/dependency&gt;</span>
+    <span class="tag">&lt;dependency&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>geronimo-spec<span class="tag">&lt;/groupId&gt;</span>      
+      <span class="tag">&lt;artifactId&gt;</span>geronimo-spec-servlet<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;version&gt;</span>2.4-rc4<span class="tag">&lt;/version&gt;</span>
+      <span class="tag">&lt;scope&gt;</span>provided<span class="tag">&lt;/scope&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
+  <span class="tag">&lt;/dependencies&gt;</span>
+<span class="rem">&lt;!--中略--&gt;</span>
+</code></pre>
+
+
+
+
+<h2>その他</h2>
+
+
+<p>maven2 のプラグインで、アプリケーションがアプリケーションサーバにロードされたタイミングで Apache Derby も起動するようなのがないかなぁ・・・。HSQLDB はそういうことがができたんだけど。</p>
+
+<p><a href="http://amateras.sourceforge.jp/cgi-bin/fswiki/wiki.cgi/free?page=hsqldb" rel="external nofollow">Web アプリケーション起動時に HSQLDB を起動する</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java/Eclipseソフトウェアテスト・チュートリアルブック]]></title>
+    <link href="http://hamasyou.com/blog/2004/07/21/4798006084/"/>
+    <updated>2004-07-21T02:42:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/07/21/4798006084</id>
+    <content type="html"><![CDATA[<p>本書は、JavaプログラムのテストをJUnitを使ってEclipse上で行ってしまおうという、いかにもJavaプログラムにうけがいい内容をもってきています。しかし、中身はというと、非常に実践向けの、テストの何たるかを開発者の視点から語っているわかりやすい内容になっています。</p>
+
+<p>Eclipse上でJUnitを使う方法が後半に載っています。丁寧な解説とわかりやすい図で、こちらも迷うことはないと思います。</p>
+
+<p>プログラミング初心者の書いたコードに限らず、テストがしっかりとできていないコードというのは、品質に問題があります。動けばいいという考えはそろそろやめにして、とりあえず流行のテスティングにのっかってみましょう。絶対損はないはずですから。</p>
+
+<!-- more -->
+
+
+
+
+<h2>特徴</h2>
+
+
+<p>「テストの重要性は、耳にたこができるほど聞いた。でも、実際にどうやればいいの？」という人にこそ、本書をおすすめします。まず、テストの何たるかを前半で、中盤ではどんなテストを行えばいいのかまた、どのようにテストを行えばいいのかを。後半では、EclipseとJUnitという2大ツールの使い方を学べます。</p>
+
+<p>複数回実行されたときの状態をテストしたいとき、スレッド関連のテストをしたいとき、例外が発生したとこにテストをを行いたいときなど、少し変わったテストに関しても解説してあります。テストの応用編もあり、Antによる自動実行の方法もあり、実際に現場で使える技術・技法を学べます。</p>
+
+<p>テストをしやすくする方法も書いてあります。これは、プログラムをどう作ればいいかの手ほどきになっていて、初心者プログラマだけでなく、実際に現場でバリバリの中堅プログラマの人も教わる点はあると思います。</p>
+
+<p>少しリファクタリングぽっくなっているのが、実際にどうすればいいのかという疑問に答えてくれると思います。</p>
+
+<p>かなり使える現場向けのテスト解説本になっています。今すぐ全部を読む必要はないですが、現場に一冊あると効果的かと思います。おすすめ！</p>
+
+<h2>覚書き</h2>
+
+
+
+
+<h3>どんなときにテストするのか</h3>
+
+
+<p>テストは「不安に思ったらする」です。「このメソッド動かなさそ〜」とか、「ここはバグが出たらまずい。」といった不安がでたら、まずテストする。不安がなくなるまでテストする。自分の作ったプログラムに責任を持ち、正しく動くかどうかを不安に思わなければならないのです。</p>
+
+<h3>どんなテストをすればいいのか</h3>
+
+
+<p>コードをテストを意識せずに書いてはいけない。テストケースを考えながらコーディングすることで、仕様の抜けや問題点が明確になります。設計自体も洗練されていき、わかりやすいコードになります。</p>
+
+<p>テストしなければならないのは、「正しく動作するか疑問な部分」です。非常に明快で、バグがないことがはっきりわかるくらいのコードなら、テストする必要すらないでしょう。明快な部分をテストするのではなく、<strong>動くか疑問、正しさが証明できない</strong>部分を重点的にテストするべきです。</p>
+
+<p>限界値のテストはもちろんするに越したことはないのです。また、メソッドを呼び出すことで内部状態が変わるものは、その呼び出し順序がどのようであっても正しく動くかをテストするべきです。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>JUnitの情報はこちら</li>
+</ul>
+
+
+<p><a href="http://www.junit.org/" rel="external nofollow">JUnit</a></p>
+
+<p><a href="http://www.alles.or.jp/~torutk/oojava/maneuver/2000/6-3.html" rel="external nofollow">テスティングフレームワーク JUnit</a></p>
+
+<ul>
+<li>Eclipseの情報はこちら</li>
+</ul>
+
+
+<p><a href="http://www.eclipse.org/" rel="external nofollow">Eclipse</a></p>
+
+<ul>
+<li>JUnitに関する解説本です。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325143/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+<ul>
+<li>テスト駆動の開発入門書です。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894717115/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+<ul>
+<li>C++ によるテスト実践書です。</li>
+</ul>
+
+
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798005711/sorehabooks-22/ref=nosim/" rel="external nofollow"></a><br /></td></tr></table>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[プラグインSangam(サンガム)でペアプロ!!]]></title>
+    <link href="http://hamasyou.com/blog/2004/05/26/sangam/"/>
+    <updated>2004-05-26T00:18:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2004/05/26/sangam</id>
+    <content type="html"><![CDATA[<p>Sangam(サンガム)とは、リモートでペアプログラミング(通称ペアプロ)をEclipse上で行うためのものだ。
+Eclipseのプラグインとして提供されており、リモートでファイルロックと同期を取りながらペアプロを行うことができる。</p>
+
+<p>ペアプロとは、2人1組でプログラミングする方法で、片方がドライバ(プログラミングする方)ともう一方がオブザーバ(見ているほう)という役割を行いながら進めていきます。詳しくは<a href="http://www.objectclub.jp/community/XP-jp/xp_relate/xp-intro" rel="external nofollow">こちら</a>を参考に。</p>
+
+<p>さて、Sangamの話に戻ります。このプラグインでペアプロを行う場合はインターネット越しでも使えるので、会社と自宅とでペアプロを行いたい場合もぜんぜん使えます。</p>
+
+<p>設定項目も非常にわかりやすく、ローカルエリア内で使用する分には、パフォーマンスも気にならない。ネットワークが遅い環境で、サイズの大きなファイルをペアプロするとどうなるかはわからないです。</p>
+
+<p>まずは、Sangamをダウンロードして、Eclipseにインストールしましょう。</p>
+
+<!-- more -->
+
+
+<ul>
+<li>Sangamのダウンロードはこちら</li>
+</ul>
+
+
+<p><a href="http://sourceforge.net/projects/sangam/" rel="external nofollow">Sangam(サンガム)のダウンロード</a></p>
+
+<ul>
+<li>Eclipseのダウンロードとインストールはこちら(私はEclipse version2.1を使いました。)</li>
+</ul>
+
+
+<p><a href="http://www.eclipse.org/downloads/index.php" rel="external nofollow">Eclipseダウンロード</a></p>
+
+<p><a href="http://www.eclipsewiki.net/eclipse/index.php?%A5%A4%A5%F3%A5%B9%A5%C8%A1%BC%A5%EB" rel="external nofollow">Eclipseインストール</a></p>
+
+<ul>
+<li>Sangamのインストールと設定はこちら(日本語解説)</li>
+</ul>
+
+
+<p><a href="http://eclipsewiki.net/eclipse/index.php?Sangam%A5%D7%A5%E9%A5%B0%A5%A4%A5%F3" rel="external nofollow">Sangamインストール/設定</a></p>
+
+<p>設定について少し補足します。まず、<strong>クライアント側のServer Pathの部分はローカルエリア内で使用する場合も必ず「http://」からはじめる。</strong>これはローカルエリア内で使用するときに結構忘れがちですが、「http://」から始まっていないとコネクションがつながりません。</p>
+
+<p>また、<strong>実際の使用時はファイルはVSSやCVSなどのリポジトリを使用してまったく同じファイル(コメントの位置や行数までまったく同じ)でないと、ファイルの同期がおかしくなります。</strong>実際、行番号の違うファイルで行ったら、ドライバの操作している行と同一の行が編集されてしまい、意図しない部分に書き込まれるといったことがありました。</p>
+
+<p>さて、実際に使ってみた感想ですが、非常に面白い。チャット機能がついていてネットワーク越しにペアプロしながらでも、会話ができます。チャットウィンドウは日本語文字も通るので心配なしです。</p>
+
+<p>実際のプロジェクト運用時に使用できるほどまだまだ安全性等は足りないと思いますが、趣味で行う場合なんかは、仲の良い友達と隣同士なかよくペアプロなんかも絵になるんじゃないかと思います。</p>
+
+<p>ペアプロはソースコードの品質をあげるのに非常に効果があるみたいです。実際<a href="http://www.objectclub.jp/community/XP-jp//" rel="external nofollow">eXtream Programinng</a>(通称XP)では品質あがったという実績もあります。</p>
+
+<p>これを機会にあなたも是非ペアプログラミングに挑戦してみるのはどうですか?</p>
+
+<h3>5/26追記：</h3>
+
+
+<p>このプラグイン、プログラミング講習会みたいなところでも使えるかもしれないですね。講師の人がオブザーバをやって、受講者の方々がそれぞれドライバーをやれば、マルチウィンドウでファイルを見つつ、受講者のソースコードをチェックすることができますよね。ペアプロ以外の使い方も色々できそうです。</p>
+
+<ul>
+<li>ペアプロの指南書がAmazonから出ています。</li>
+</ul>
+
+
+<p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894716992/sorehabooks-22" rel="external nofollow">ペアプログラミング―エンジニアとしての指南書</a></p>
+
+<ul>
+<li>Eclipseの書籍でおすすめがあります。</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325046/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+<ul>
+<li>XPに興味がでたら、この本を買いませんか?</li>
+</ul>
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798003743/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

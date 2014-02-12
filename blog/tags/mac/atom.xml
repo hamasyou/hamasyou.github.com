@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Mac | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/mac/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mac で Command+Q でアプリケーションを閉じないようにする方法]]></title>
+    <link href="http://hamasyou.com/blog/2010/09/14/mac-commandq/"/>
+    <updated>2010-09-14T11:39:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/09/14/mac-commandq</id>
+    <content type="html"><![CDATA[<p>Mac のショートカットに、Command + Q でアプリケーションを閉じるというのがあります。多くのアプリでは、Command + W でウィンドウを閉じるので、ブラウザを使っている時なんかに間違って Command + Q を押してしまって「アプリケーション閉じちゃった・・・」となる場面が多々あります。（僕だけ！？）</p>
+
+<p>それを防ぐ方法です。</p>
+
+<ol><li>「システム環境設定」を開く</li>
+<li>「キーボード」-「キーボードショートカット」を開く</li>
+<li>「+」ボタンをクリックする</li>
+<li>「アプリケーション」に設定したいアプリケーションを選択する</li>
+<li>「メニュータイトル」に「アプリケーション名 + " " + "を終了"」と入力する（例）Google Chrome を終了</li>
+<li>「キーボードショートカット」に Command + Q 以外のショートカットを割り当てる</li>
+</ol>
+
+
+<p>メニュータイトルのところが肝で、これは、アプリケーションの終了コマンドのメニュータイトルと一致させる必要があります。ほとんどのアプリケーションが「アプリケーション名」+ 「空白」+「を終了」になっているはずです。</p>
+
+<p><img alt="スクリーンショット（2010-09-14 11.43.39）.png" src="http://hamasyou.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-14%2011.43.39%EF%BC%89.png" width="447" height="221" class="mt-image-none" style="" /></p>
+]]></content>
+  </entry>
+  
+</feed>

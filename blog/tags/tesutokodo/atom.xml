@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: テストコード | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/tesutokodo/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Rails] RSpec でコントローラのテストを記述する例]]></title>
+    <link href="http://hamasyou.com/blog/2010/11/19/rspec/"/>
+    <updated>2010-11-19T01:44:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/11/19/rspec</id>
+    <content type="html"><![CDATA[<p>Ruby on Railsで、RSpec を使ってコントローラのテストをしたテストコードの例を載せておきます。</p>
+
+<p>環境は、Ruby on Rails3、Ruby1.9.2 を使っています。RSpec の使い方の参考になれば幸いです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>RSpec で Controller のテストを書いてみた</h2>
+
+
+<p>Ruby on Rails3, Ruby1.9.2 で Controller クラスの RSpec を書いてみました。</p>
+
+<p>Controller でテストしたのは次の3点です。</p>
+
+<ol>
+<li>ルーティングが合っているか</li>
+<li>処理が通って 200 OK を返すか</li>
+<li>処理が通って期待通りの結果（Blog が保存されることによって count がひとつ増える）になっているか</li>
+</ol>
+
+
+
+
+<pre class="code"><span class="comment"># coding: UTF-8</span>
+<span class="keyword">require</span> <span class="literal">'spec_helper'</span>
+ 
+<span class="keyword">describe</span> <span class="class">BlogsController</span> <span class="keyword">do</span>
+  <span class="keyword">describe</span> <span class="literal">&quot;GET /blogs/:id&quot;</span> <span class="keyword">do</span>
+    <span class="keyword">describe</span> <span class="symbol">:routes</span> <span class="keyword">do</span>
+      subject { {<span class="symbol">:get</span> =&gt; <span class="literal">&quot;/blogs/1&quot;</span>} }
+      it { should route_to(<span class="symbol">controller:</span> <span class="literal">&quot;blogs&quot;</span>, <span class="symbol">action:</span> <span class="literal">&quot;show&quot;</span>, <span class="symbol">id:</span> <span class="literal">&quot;1&quot;</span>) }
+    <span class="keyword">end</span>
+ 
+    <span class="keyword">before</span> { get <span class="symbol">:show</span>, <span class="symbol">:id</span> =&gt; <span class="literal">&quot;1&quot;</span> }
+ 
+    <span class="keyword">describe</span> <span class="symbol">:response</span> <span class="keyword">do</span>
+      subject { response }
+      it { should be_success }
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+ 
+  <span class="keyword">describe</span> <span class="literal">&quot;POST /blogs&quot;</span> <span class="keyword">do</span>
+    <span class="keyword">def</span> do_post
+      post <span class="symbol">:create</span>, <span class="symbol">:article</span> =&gt; <span class="literal">&quot;xxx&quot;</span>
+    <span class="keyword">end</span>
+ 
+    <span class="keyword">describe</span> <span class="symbol">:routes</span> <span class="keyword">do</span>
+      subject { {<span class="symbol">:post</span> =&gt; <span class="literal">&quot;/blogs&quot;</span>} }
+      it { should route_to(<span class="symbol">controller:</span> <span class="literal">&quot;blogs&quot;</span>, <span class="symbol">action:</span> <span class="literal">&quot;create&quot;</span>) }
+    <span class="keyword">end</span>
+    
+    <span class="keyword">before</span> { do_post }
+ 
+    <span class="keyword">describe</span> <span class="symbol">:response</span> <span class="keyword">do</span>
+      subject { response }
+      it { should be_success }
+    <span class="keyword">end</span>
+ 
+    <span class="keyword">describe</span> <span class="symbol">:blog</span>, <span class="symbol">:save</span> <span class="keyword">do</span>
+      <span class="keyword">before</span> { controller.stub!(<span class="symbol">:authenticate</span>).and_return(<span class="keyword">true</span>) }
+      subject { expect { do_post } }
+      it { should change(<span class="class">Blog</span>, <span class="symbol">:count</span>).by(<span class="literal">1</span>) }
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre>
+
+
+
+
+<h2>ソースコード解説</h2>
+
+
+
+
+<h3>ルーティングのテスト</h3>
+
+
+<p><em>describe</em> にはテスト対象を記述しています。コントローラのテストなので、それぞれのルーティングごとにテストを記述しています。</p>
+
+<p><em>:routes</em> でテストしているのは、期待したリクエスト URL が期待したコントローラの呼び出しになっているかどうかです。</p>
+
+<p><em>subject</em> にはこのテストの実際のテスト対象で、:routes では、ルーティングリクエストを記述しています。続く it で実際に期待する処理を書いています。should にレシーバを記述しない場合には subject の中身がレシーバになります。</p>
+
+<p><em>route_to</em> で期待するルーティングを記述してルーティングのテストをしています。</p>
+
+<h3>コントローラの処理が正常に終了するかどうかのテスト</h3>
+
+
+<p><em>response</em> オブジェクトを subject にして success を返すかどうかをテストしています。</p>
+
+<h3>コントローラが期待した処理を行ったかどうかをテストする</h3>
+
+
+<p>コントローラが期待した処理を行ったことを確認するには、二つやり方があると思っています。</p>
+
+<p>ひとつは、<strong>コントローラをブラックボックスにして、コントローラを通る前の状態とコントローラを通った後の状態を比較するやり方</strong>。</p>
+
+<p>もうひとつは、<strong>コントローラをホワイトボックスにして、モックオブジェクを使って should_receive や should_not_receive で期待した処理を通ったかどうかを確認するやり方</strong>。</p>
+
+<p>今回は、一つ目のやり方でテストをしています。これは、should_receive や should_not_receive を使ってテストしてしまうと、リファクタリングでメソッド名を変更した際にテストも直さなければならないからです。</p>
+
+<p>個人的には、コントローラのテストでは should_receive や should_not_receive はあまり使わず、実際にデータベースに書き込みを行ってテストをするのが良いと思っています。（Rails ではテスト用のDBは別に用意されますので）</p>
+
+<p>なお、<em>before</em> では controller.stub! を使って、コントローラに認証が必要な場合に認証を素通りする例を記述しています。</p>
+
+<h2>参考</h2>
+
+
+
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/t-wada/20100228/p1" rel="external nofollow">RSpec の入門とその一歩先へ - t-wadaの日記</a></li>
+<li><a href="http://rspec.info/" rel="external nofollow">rspec-1.3.1 | rspec-rails-1.3.3 - RSpec</a></li>
+<li><a href="http://jp.rubyist.net/magazine/?0021-Rspec" rel="external nofollow">スはスペックのス 【第 1 回】 RSpec の概要と、RSpec on Rails - Rubyist Magazine</a></li>
+</ul>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

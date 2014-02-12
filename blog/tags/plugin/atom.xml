@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: plugin | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/plugin/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[kaminari の paginate_array が便利]]></title>
+    <link href="http://hamasyou.com/blog/2011/06/14/kaminari-paginate-array/"/>
+    <updated>2011-06-14T09:31:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/06/14/kaminari-paginate-array</id>
+    <content type="html"><![CDATA[<p>will_paginate に代わるページングのライブラリ、kaminari ですが、ページングが scope 扱いで配列に対して使えなかったのでちょっと不便なときがあったのですが、なんと paginate_array なるものを発見しました。</p>
+
+<p><section></p>
+
+<h4>環境</h4>
+
+
+
+
+<dl><dt>kaminari</dt><dd>0.12.4</dd></dl>
+
+
+<p></section></p>
+
+<!-- more -->
+
+
+<p><a href="http://rubygems.org/gems/kaminari" rel="external nofollow">kaminari</a> の <strong>Kaminari.paginate_array</strong> が激しく便利！</p>
+
+<p>もともと、kaminari が扱う page は scope だったかと思います。なので、配列（Array）に対しては使えませんでした。</p>
+
+<p>で、ちょっとソースを見ていたらびっくりするものを発見！</p>
+
+<p><strong>Kaminari.paginate_array</strong></p>
+
+<p>なんと、配列をページングできるようになっていました。これで、Entity.all したものもページングできるようになりますね。</p>
+
+<p>使い方は、scope の方の page と同じ。</p>
+
+<pre><code class="ruby">Kaminari.paginate_array(array_obj).page(params[:page])
+</code></pre>
+
+<p>激しくべんり！</p>
+
+<p><section></p>
+
+<h4>kaminari の解説で参考になるサイト</h4>
+
+
+<p><a href="http://memo.yomukaku.net/entries/238" rel="external nofollow">Kaminariの使い方 Rails3時代のpaginationの標準候補 - YomuKaku Memo</a></p>
+
+<p></section></p>
+]]></content>
+  </entry>
+  
+</feed>

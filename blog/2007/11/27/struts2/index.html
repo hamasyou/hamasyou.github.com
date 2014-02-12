@@ -1,0 +1,895 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <title>Struts2 おぼえがき - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ">
+  <meta name="keywords" content="Struts2, おぼえがき, XWork">
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2007/11/27/struts2">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate subscribe-rss" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">Struts2 おぼえがき</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2007-11-27T23:24:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 27<span>th</span>, 2007</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/struts2/">Struts2</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>Struts2 は WebWorks2 をベースとした MVC フレームワークです。Struts1 と変わらずコマンドパターンのフレームワークになっています。</p>
+
+<p>コマンドパターンの実装部分では、OPENSYMHONY の XWork が使われています。</p>
+
+<h3>Struts2の特徴</h3>
+
+
+
+
+<ul>
+<li>WebWorks の後継となる WebWorks2 がベースの MVC フレームワーク</li>
+<li>コマンドパターンが使われている（XWork が使われている）</li>
+<li>アノテーションと XML ファイルによる設定</li>
+<li>ActionForm がない。代わりにアクションにフォームデータを格納する</li>
+<li>アクションは POJO で作成できる</li>
+<li>アクションがスレッドセーフ</li>
+<li>設定ファイルに OGNL 式が書ける</li>
+<li>View に JSP、Freemaker、Velocity、XSLT が使える</li>
+<li>SpringFramework との連携が考慮されている</li>
+<li>Ajax をサポートしている</li>
+<li>プラグインによりフレームワークの拡張が行える</li>
+</ul>
+
+
+<p>情報が正確ではない可能性が大いにあるので（ドキュメント読まずにソース見ながら書いているので・・・）、鵜呑みにしないでください。</p>
+
+<p>随時更新予定です。</p>
+
+<p><section></p>
+
+<h4>執筆時の環境</h4>
+
+
+
+
+<ul>
+<li>JDK1.5.12</li>
+<li><a href="http://struts.apache.org/2.x/" rel="external nofollow">Struts2 2.0.11</a></li>
+</ul>
+
+
+<p></section></p>
+
+<!-- more -->
+
+
+
+
+<h2>目次</h2>
+
+
+
+
+<ol>
+<li><a href="#アーキテクチャ" rel="external nofollow">アーキテクチャ</a>
+<ol>
+    <li><a href="#アーキテクチャ概要図" rel="external nofollow">アーキテクチャ概要図</a></li>
+    <li><a href="#主なクラス" rel="external nofollow">主なクラス</a></li>
+    <li><a href="#概要クラス図とシーケンス図" rel="external nofollow">概要クラス図とシーケンス図</a></li>
+</ol>
+</li>
+<li><a href="#Struts2 の主な機能" rel="external nofollow">Struts2 の主な機能</a>
+<ol>
+    <li><a href="#コンフィグレーションファイルの指定" rel="external nofollow">コンフィグレーションファイルの指定</a></li>    
+    <li><a href="#Zero コンフィグレーション" rel="external nofollow">Zero コンフィグレーション</a></li>
+    <li><a href="#カスタム設定読み込み" rel="external nofollow">カスタム設定読み込み</a></li>
+    <li><a href="#Dependency Injection" rel="external nofollow">Dependency Injection</a></li>
+    <li><a href="#インターセプタ" rel="external nofollow">インターセプタ</a></li>
+    <li><a href="#アクションの作成" rel="external nofollow">アクションの作成</a></li>
+    <li><a href="#Result について" rel="external nofollow">Result について</a></li>
+</ol>
+</li>
+</ol>
+
+
+
+
+<h2 id="アーキテクチャ">アーキテクチャ</h2>
+
+
+
+
+<h3 id="アーキテクチャ概要図">アーキテクチャ概要図</h3>
+
+
+<p><img src="http://hamasyou.com/images/Struts2/archtecture.jpg" alt="Struts2のアーキテクチャ" /></p>
+
+<h2 id="主なクラス">主なクラス（Struts2、XWork）</h2>
+
+
+
+
+<h3>org.apache.struts2.dispatcher.FilterDispatcher</h3>
+
+
+<p>Struts2 のリクエストはすべてこのフィルタが受け付け、適切なクラスに処理をディスパッチします。</p>
+
+<p>ディスパッチする先の Dispatcher クラスは、FilterDispatcher#init(FilterConfig) で作成、初期化されます。</p>
+
+<dl>
+<dt class="info">URLパターン</dt>
+<dd><p>フィルタの url-pattern は「/*」にすることが推奨（JavaDoc によると MUST）されています。</p>
+
+<pre class="code"><code><span class="tag">&lt;filter-mapping&gt;</span> 
+  <span class="tag">&lt;filter-name&gt;</span>struts2<span class="tag">&lt;/filter-name&gt;</span> 
+  <span class="tag">&lt;url-pattern&gt;</span>/*<span class="tag">&lt;/url-pattern&gt;</span> 
+<span class="tag">&lt;/filter-mapping&gt;</span>
+</code></pre></dd>
+</dl>
+
+
+<p>「/struts/」で始まるパスがリクエストされると、FilterDispatcher は静的リソースを検索します。</p>
+
+<p>たとえば「http://localhost:8080/struts2/struts/ajax/dojoRequire.js」のようにアクセスされた場合「/struts/」以下のパスをクラスパスから検索します。</p>
+
+<p>デフォルトでは、</p>
+
+<ul>
+<li>org.apache.struts2.static</li>
+<li>template</li>
+<li>org.apache.struts2.interceptor.debugging</li>
+</ul>
+
+
+<p>のクラスパスが指定されていますので、上記URLにアクセスされた場合は「/org/apache/struts2/static/ajax/dojoRequire.js」「/template/ajax/dojoRequire.js」「/org/apache/struts2/interceptor/debugging/dojoRequire.js」からマッチする静的コンテンツを返すようになります。</p>
+
+<h3>org.apache.struts2.dispatcher.mapper.ActionMapper</h3>
+
+
+<p>Httpリクエストとアクションのマッピングを管理します。リクエストに対応する適切なアクション情報を <code>ActionMapping</code> オブジェクトとして返します。</p>
+
+<h3>org.apache.struts2.dispatcher.Dispatcher</h3>
+
+
+<p>Dispatcher クラスは Struts2 の設定情報を保持し、 FilterDispatcher から呼び出され実際にリクエストをディスパッチします。</p>
+
+<p>Dispatcher インスタンスはすべてのリクエストで共有されます。</p>
+
+<h3>com.opensymphony.xwork2.config.ConfigurationManager</h3>
+
+
+<p>設定情報を司るクラスです。複数の <code>ConfigurationProvider</code> を持ち、<code>ConfigurationProvider</code> から情報を受け取り <code>Configuration</code> インスタンスを作成します。</p>
+
+<h3>com.opensymphony.xwork2.config.ConfigurationProvider</h3>
+
+
+<p>設定情報を提供するクラスです。設定情報ごとにクラスを用意します。たとえば、struts.xml ファイルの設定情報を読み込み、<code>Configuration</code> に設定するのは <code>org.apache.struts2.config.StrutsXmlConfigurationProvider</code> クラスになります。</p>
+
+<h3>com.opensymphony.xwork2.config.Configuration</h3>
+
+
+<p>設定情報を表すクラスです。</p>
+
+<h3>com.opensymphony.xwork2.ActionProxy</h3>
+
+
+<p>アクションのプロキシとなるクラスです。アクションの呼び出しを <code>ActionInvocation</code> に委譲します。</p>
+
+<p><code>ActionProxy</code> の内部では、<code>ActionInvocation</code> が呼び出されます。</p>
+
+<h3>com.opensymphony.xwork2.ActionInvocation</h3>
+
+
+<p>アクションの呼び出しを行います。アクションの実体とインタセプタを保持しています。</p>
+
+<p><code>ActionProxy</code> によって初期化され、起動されます。<code>ActionProxy</code> によって invoke() メソッドが呼び出された後は、インタセプタによって invoke() が再帰呼び出しされます。</p>
+
+<p>すべてのインタセプタの呼び出しが完了した後アクションが呼び出されます。その後、Result の呼び出しが行われます。</p>
+
+<p><a href="http://hamasyou.com/images/Struts2/invoke.gif" rel="external nofollow"></a></p>
+
+<p>Result の実装として、<code>ServletDispatcherResult</code> などがあります。Result は View の実装（ユーザへのレスポンス）に結び付けられています。</p>
+
+<h3>com.opensymphony.xwork2.interceptor.Interceptor</h3>
+
+
+<p>アクションの処理を実行する前や後に処理を追加します。</p>
+
+<p>インターセプタはステートレスなクラスとして作成しなければなりません。</p>
+
+<h3>Action</h3>
+
+
+<p><code>ActionInvocation</code> から呼び出されるアクションクラスです。</p>
+
+<p>デフォルトでは、<code>ActionInvocation</code> から <code>execute</code> メソッドが呼び出されます。</p>
+
+<pre class="code"><code><span class="keyword">public</span> String execute() <span class="keyword">throws</span> Exception
+</code></pre>
+
+
+
+
+<h2 id="概要クラス図とシーケンス図">概要クラス図とシーケンス図</h2>
+
+
+<p><a href="http://hamasyou.com/images/Struts2/action_class_diagram.gif" rel="external nofollow"></a></p>
+
+<p><a href="http://hamasyou.com/images/Struts2/action_sequence.gif" rel="external nofollow"></a></p>
+
+<p>Struts2 では、すべてのリクエストが <code><strong>org.apache.struts2.dispatcher.FilterDispatcher</strong></code> を通して処理されます。</p>
+
+<p><code>FilterDispatcher</code> はリクエストパスからどのアクションを呼び出すかを解決し、<code><strong>org.apache.struts2.dispatcher.Dispatcher</strong></code> の <code>serviceAction</code> を呼び出します。</p>
+
+<p><code>Dispatcher</code> は <code>serviceAction</code> の中で、<code>ActionProxyFactory</code> を使って <code><strong>ActionProxy</strong></code> を作成して</p>
+
+<p>実際にアクションを実行するのは、<code>ActionInvocation</code> の役割になります。</p>
+
+<h2 id="Struts2 の主な機能">Struts2 の主な機能</h2>
+
+
+
+
+<h3 id="コンフィグレーションファイルの指定">コンフィグレーションファイルの指定</h3>
+
+
+<p>web.xml の Filter の設定で init-param に <strong>config</strong> というパラメータを設定すると、Struts2 の設定ファイルを指定できます。</p>
+
+<p>デフォルトは「struts-default.xml,struts-plugin.xml,struts.xml」になっています。このファイルは、クラスパス上から検索されます。</p>
+
+<pre class="code"><code><span class="tag">&lt;filter&gt;</span> 
+  <span class="tag">&lt;filter-name&gt;</span>struts2<span class="tag">&lt;/filter-name&gt;</span> 
+  <span class="tag">&lt;filter-class&gt;</span>org.apache.struts2.dispatcher.FilterDispatcher<span class="tag">&lt;/filter-class&gt;</span> 
+  <span class="tag">&lt;init-param&gt;</span> 
+    <span class="tag">&lt;param-name&gt;</span>config<span class="tag">&lt;/param-name&gt;</span> 
+    <span class="tag">&lt;param-value&gt;</span> 
+    struts-default.xml,struts.xml,my-struts.xml 
+    <span class="tag">&lt;/param-value&gt;</span> 
+  <span class="tag">&lt;/init-param&gt;</span> 
+<span class="tag">&lt;/filter&gt;</span>
+</code></pre>
+
+
+
+
+<h3 id="Zero コンフィグレーション">Zero コンフィグレーション</h3>
+
+
+<p>web.xml の Filter の設定で init-param に <strong>actionPackages</strong> というパラメータを設定すると、Struts2 はこのパッケージにあるクラスで、com.opensymphony.xwork2.Action インターフェースを実装したクラスか、「Action」で終わるクラス名を持つクラスを自動で Action クラスとして認識してくれます。</p>
+
+<p>「,」で区切ることで、複数パッケージ指定することもできます。</p>
+
+<pre class="code"><code><span class="tag">&lt;filter&gt;</span> 
+  <span class="tag">&lt;filter-name&gt;</span>struts2<span class="tag">&lt;/filter-name&gt;</span> 
+  <span class="tag">&lt;filter-class&gt;</span>org.apache.struts2.dispatcher.FilterDispatcher<span class="tag">&lt;/filter-class&gt;</span> 
+  <span class="tag">&lt;init-param&gt;</span> 
+    <span class="tag">&lt;param-name&gt;</span>actionPackages<span class="tag">&lt;/param-name&gt;</span> 
+    <span class="tag">&lt;param-value&gt;</span> 
+    com.hamasyou.struts2.webapp 
+    <span class="tag">&lt;/param-value&gt;</span> 
+  <span class="tag">&lt;/init-param&gt;</span> 
+<span class="tag">&lt;/filter&gt;</span>
+</code></pre>
+
+
+<p>上記のように設定した場合、</p>
+
+<p><img src="http://hamasyou.com/images/Struts2/zero_config.gif" alt="Zeroコンフィグレーション" /></p>
+
+<p>「/usecase1/itemSearch.action」にアクセスすると「com.hamasyou.struts2.webapp.usecase1.ItemRegisterAction」が呼び出されます。</p>
+
+<p>「/usecase2/admin/itemRegister.action」にアクセスすると「com.hamasyou.struts2.webapp.usecase2.admin.ItemRegisterAction」が呼び出されます。</p>
+
+<p>また、「/usecase1/itemSearch!allSearch.action」のように「!メソッド名」でアクションを呼び出すと、指定されたメソッド名が呼び出されます。!メソッド名を指定しない場合は execute メソッドが呼び出されています。</p>
+
+<p>Struts2 のアクションの呼び出しは「<em>.action」という形になります。（Struts1のときは </em>.do でした。）</p>
+
+<h3 id="カスタム設定読み込み">カスタム設定読み込み</h3>
+
+
+<p>Struts2 の起動時に、カスタムプロパティを読み込むことが出来る。</p>
+
+<p>web.xml の init-param に <strong>configProviders</strong> というパラメータを設定すると、Struts2 はこのパラメータに指定されたクラスからカスタムプロパティの読み込みを行うようになります。</p>
+
+<p>指定するクラスは、<strong>com.opensymphony.xwork2.config.ConfigurationProvider</strong> を実装する必要があります。</p>
+
+<p>「,」で区切ることで、クラスを複数指定できます。</p>
+
+<pre class="code"><code><span class="tag">&lt;filter&gt;</span> 
+  <span class="tag">&lt;filter-name&gt;</span>struts2<span class="tag">&lt;/filter-name&gt;</span> 
+  <span class="tag">&lt;filter-class&gt;</span>org.apache.struts2.dispatcher.FilterDispatcher<span class="tag">&lt;/filter-class&gt;</span> 
+  <span class="tag">&lt;init-param&gt;</span> 
+    <span class="tag">&lt;param-name&gt;</span>configProviders<span class="tag">&lt;/param-name&gt;</span> 
+    <span class="tag">&lt;param-value&gt;</span> 
+    com.hamasyou.struts2.webapp.config.MyCustomeConfigurationProvider 
+    <span class="tag">&lt;/param-value&gt;</span> 
+  <span class="tag">&lt;/init-param&gt;</span> 
+<span class="tag">&lt;/filter&gt;</span> 
+</code></pre>
+
+
+
+
+<h3 id="Dependency Injection">Dependency Injection</h3>
+
+
+<p>メソッドかフィールドに <strong>@Inject</strong> を指定することで、型によるインジェクションが行われます。</p>
+
+<p><section></p>
+
+<h4>@Inject の例</h4>
+
+
+
+
+<pre class="code"><code>@Inject 
+<span class="keyword">private</span> MyObject myObject; 
+ 
+<span class="keyword">private</span> MyObject2 myObject2; 
+ 
+@Inject 
+<span class="keyword">public</span> <span class="keyword">void</span> setMyObject2(MyObject2 myObject2) { 
+  <span class="keyword">this</span>.myObject2 = myObject2; 
+} 
+ 
+<span class="keyword">public</span> String execute() <span class="keyword">throws</span> Exception { 
+  System.out.println(<span class="literal">"myObject:"</span> + <span class="keyword">this</span>.myObject); 
+  System.out.println(<span class="literal">"myObject2:"</span> + <span class="keyword">this</span>.myObject2); 
+  <span class="keyword">return</span> <span class="literal">"success"</span>; 
+}
+</code></pre>
+
+
+<p></section></p>
+
+<p>インジェクションするオブジェクトの設定は、struts.xml に記述します。</p>
+
+<pre class="code"><code><span class="tag">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> 
+<span class="tag">&lt;!DOCTYPE struts PUBLIC 
+  &quot;-//Apache Software Foundation//DTD Struts Configuration 2.0//EN&quot; 
+  &quot;http://struts.apache.org/dtds/struts-2.0.dtd&quot;&gt;</span> 
+ 
+<span class="tag">&lt;struts&gt;</span> 
+  <span class="tag">&lt;bean <span class="attr">class=</span><span class="value">&quot;com.hamasyou.struts2.webapp.MyObject&quot;</span> /&gt;</span> 
+  <span class="tag">&lt;bean <span class="attr">class=</span><span class="value">&quot;com.hamasyou.struts2.webapp.MyObject2&quot;</span> /&gt;</span>   
+<span class="tag">&lt;/struts&gt;</span>
+</code></pre>
+
+
+
+
+<pre class="console">myObject:com.hamasyou.struts2.webapp.MyObject@135d18b
+myObject2:com.hamasyou.struts2.webapp.MyObject2@50078e</pre>
+
+
+
+
+<h3 id="インターセプタ">インターセプタ</h3>
+
+
+<p>アクションの呼び出しの前に、<code>ActionInvocation</code> によってインタセプタが呼び出されます。</p>
+
+<p>struts-default.xml を見ると、デフォルトのインターセプタとして以下の設定がされているのがわかります。</p>
+
+<p><section></p>
+
+<h4>struts-default.xml のインターセプタの設定</h4>
+
+
+
+
+<pre class="code"><code><span class="tag">&lt;interceptors&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;alias&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.AliasInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;autowiring&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.spring.interceptor.ActionAutowiringInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;chain&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.ChainingInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;conversionError&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.StrutsConversionErrorInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;cookie&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.CookieInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;createSession&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.CreateSessionInterceptor&quot;</span> /&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;debugging&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.debugging.DebuggingInterceptor&quot;</span> /&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;externalRef&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.ExternalReferencesInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;execAndWait&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.ExecuteAndWaitInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;exception&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;fileUpload&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.FileUploadInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;i18n&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.I18nInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;logger&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.LoggingInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;modelDriven&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;scopedModelDriven&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor&quot;</span>/&gt;</span>
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;params&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.ParametersInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;prepare&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.PrepareInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;staticParams&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.StaticParametersInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;scope&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.ScopeInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;servletConfig&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.ServletConfigInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;sessionAutowiring&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.spring.interceptor.SessionContextAutowiringInterceptor&quot;</span>/&gt;</span>
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;timer&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.TimerInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;token&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.TokenInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;tokenSession&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.TokenSessionStoreInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;validation&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;workflow&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.DefaultWorkflowInterceptor&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;store&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.MessageStoreInterceptor&quot;</span> /&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;checkbox&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.CheckboxInterceptor&quot;</span> /&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;profiling&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.ProfilingActivationInterceptor&quot;</span> /&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;roles&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.RolesInterceptor&quot;</span> /&gt;</span>
+</code></pre>
+
+
+<p></h4></p>
+
+<p>インターセプタは、塊ごとに名前をつけて管理することが出来ます。それが、インターセプタスタックと呼ばれるものです。</p>
+
+<p>struts-default.xml には、以下のような設定がされています。</p>
+
+<pre class="code"><code><span class="rem">&lt;!-- Basic stack --&gt;</span> 
+<span class="tag">&lt;interceptor-stack <span class="attr">name=</span><span class="value">&quot;basicStack&quot;</span>&gt;</span> 
+    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;exception&quot;</span>/&gt;</span> 
+    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;servletConfig&quot;</span>/&gt;</span> 
+    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;prepare&quot;</span>/&gt;</span> 
+    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;checkbox&quot;</span>/&gt;</span> 
+    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;params&quot;</span>/&gt;</span> 
+    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;conversionError&quot;</span>/&gt;</span> 
+<span class="tag">&lt;/interceptor-stack&gt;</span>
+</code></pre>
+
+
+<p>アクションは、次のインターセプタスタックがデフォルトで適用されるようになっています。</p>
+
+<pre class="code"><code><span class="tag">&lt;default-interceptor-ref <span class="attr">name=</span><span class="value">&quot;defaultStack&quot;</span>/&gt;</span></code></pre>
+
+
+<p>struts-default.xml を見るとわかりますが、これらのインターセプタの設定はパッケージごとに行うようです。上記のインターセプタ、インターセプタスタックは、「<strong>struts-default</strong>」というパッケージに定義されています。</p>
+
+<p>自分たちのアクションを struts.xml に登録した際のパッケージは、struts-default を継承する必要がありそうです。</p>
+
+<p><section></p>
+
+<h4>struts.xml の例</h4>
+
+
+
+
+<pre class="code"><code><span class="tag">&lt;package <span class="attr">name=</span><span class="value">&quot;mypackage&quot;</span> <span class="attr">namespace=</span><span class="value">&quot;/mypackage&quot;</span> <span class="attr">extends=</span><span class="value">&quot;struts-default&quot;</span>&gt;</span> 
+     
+    <span class="tag">&lt;action  
+      <span class="attr">name=</span><span class="value">&quot;itemSearch&quot;</span>  
+      <span class="attr">class=</span><span class="value">&quot;com.hamasyou.struts2.webapp.usecase1.ItemSearchAction&quot;</span>&gt;</span> 
+      <span class="tag">&lt;result <span class="attr">name=</span><span class="value">&quot;success&quot;</span>&gt;</span>/WEB-INF/jsp/top/top.jsp<span class="tag">&lt;/result&gt;</span> 
+      <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;debugging&quot;</span> /&gt;</span> 
+    <span class="tag">&lt;/action&gt;</span> 
+     
+    <span class="tag">&lt;action  
+      <span class="attr">name=</span><span class="value">&quot;itemRegister&quot;</span>  
+      <span class="attr">class=</span><span class="value">&quot;com.hamasyou.struts2.webapp.usecase2.admin.ItemRegisterAction&quot;</span>&gt;</span> 
+      <span class="tag">&lt;result <span class="attr">name=</span><span class="value">&quot;success&quot;</span>&gt;</span>/WEB-INF/jsp/top/top.jsp<span class="tag">&lt;/result&gt;</span> 
+      <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;executeAndWaitStack&quot;</span> /&gt;</span> 
+    <span class="tag">&lt;/action&gt;</span>     
+         
+  <span class="tag">&lt;/package&gt;</span>
+</code></pre>
+
+
+<p></section></p>
+
+<p>ここでは、インターセプタを指定しているので、デフォルトのインターセプタ（defaultStack）は使われません。</p>
+
+<h3 id="アクションの作成">アクションの作成</h3>
+
+
+<p>Struts2 のアクションクラスは POJO で作成することができます。デフォルトでは、execute メソッドを持つクラスを作成すればアクションとして実行することができます。</p>
+
+<pre class="code"><code><span class="keyword">public</span> <span class="keyword">class</span> MyAction { 
+  <span class="keyword">public</span> String execute() <span class="keyword">throws</span> Exception { 
+    <span class="keyword">return</span> <span class="literal">"success"</span>; 
+  } 
+}
+</code></pre>
+
+
+<p>アクションの呼び出しは、通常、「struts.xml に記述した &lt;action&gt; の名前 + &quot;.action&quot;」ですが、「struts.xml に記述した &lg;action&gt; の名前 + &quot;!メソッド名.action&quot;」とすることで、execute 以外のメソッドを呼び出すことができます。</p>
+
+<p>また、struts.xml の &lt;action&gt; の設定で、method プロパティを設定することで、execute 以外のメソッドを呼び出すこともできます。</p>
+
+<pre class="code"><code><span class="tag">&lt;action  
+    <span class="attr">name=</span><span class="value">&quot;itemRegister&quot;</span>  
+    <span class="attr">method=</span><span class="value">&quot;hoge&quot;</span> 
+    <span class="attr">class=</span><span class="value">&quot;com.hamasyou.struts2.webapp.usecase2.admin.ItemRegisterAction&quot;</span>&gt;</span> 
+    <span class="tag">&lt;result <span class="attr">name=</span><span class="value">&quot;success&quot;</span>&gt;</span>/WEB-INF/jsp/top/top.jsp<span class="tag">&lt;/result&gt;</span> 
+<span class="tag">&lt;/action&gt;</span>
+</code></pre>
+
+
+
+
+<dl>
+<dt class="info">Zero コンフィグレーション</dt>
+<dd>クラス名を「Action」で終わる名前にしておくことで、Zero コンフィグレーションを利用して、無設定で Action クラスとして実行することができます。</dd> 
+</dl>
+
+
+
+
+<h3 id="Result について">Result について</h3>
+
+
+<p>以下、後で書く</p>
+</div>
+
+
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2007-11-27T23:24:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 27<span>th</span>, 2007</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/struts2/">Struts2</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul class="list-inline">
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2007/11/27/struts2/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2007/11/27/struts2/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2007/11/27/struts2/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2007/11/27/struts2/"></div>
+    </li>
+    
+    
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2007/11/27/struts2/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2007/11/27/struts2/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2007/10/27/weblogic-ssl/" title="Previous Post:
+      WebLogic でカスタムキーストアを使って SSL 通信を行うおぼえがき"><i class="fa fa-arrow-circle-left"></i> WebLogic でカスタムキーストアを使って...</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2007/12/28/4873113539/"
+                            title="Next Post: RESTful Webサービス">RESTful Webサービス <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="thumbnail" />
+    </div>
+    <div class="col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/05/482228493X/">世界でもっとも強力な9のアルゴリズム</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">94</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js" rel="external nofollow"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2007/11/27/struts2/';
+  var disqus_url = 'http://hamasyou.com/blog/2007/11/27/struts2/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

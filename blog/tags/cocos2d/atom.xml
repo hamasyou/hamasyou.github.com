@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: cocos2d | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/cocos2d/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T19:22:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[cocos2dで作る iPhone＆iPadゲームプログラミング]]></title>
+    <link href="http://hamasyou.com/blog/2011/08/17/4844330411/"/>
+    <updated>2011-08-17T10:16:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2011/08/17/4844330411</id>
+    <content type="html"><![CDATA[<p>待望の、<strong>cocos2d</strong> 詳細解説本がでました！ 本書を読めば、cocos2d のすべてが分かると言ってもいいんじゃないかというぐらい幅広く詳しく cocos2d のことが書いてあります。</p>
+
+<p>本書は、cocos2d を使ってゲームアプリをつくりながら、cocos2d の機能や cocos2d を使ってゲームアプリを開発する際の手順、こういうふうに設計したら cocos2d ではうまくいくというような事を解説しています。</p>
+
+<p>cocos2d は Objective-C で書かれていて、ゲームアプリも Objective-C を使って作ります。cocos2d が内部に OpenGL-ES を隠してくれているので、すごく簡単に 2D ゲームを作ることができるようになります。</p>
+
+<p>iPhone 用のゲームアプリを作ってみたいがどうやって作ればいいのかわからない人、どのフレームワークを使えばいいか迷っている人に、特におすすめです。</p>
+
+<p>僕の持っている版は cocos2d のバージョン 0.99.5 が解説されています。</p>
+
+<p><section></p>
+
+<p><i class="fa fa-search"></i> <a href="http://www.cocos2d-iphone.org/" rel="external nofollow">cocos2d for iPhone</a></p>
+
+<p></section></p>
+
+<!-- more -->
+
+
+
+
+<h2>各章の紹介</h2>
+
+
+<p>本書第1章の概要から、各章の紹介の抜粋です。（一部、誤訳や説明の抜けがあったので補足しています）</p>
+
+<dl><dt>第２章　プログラミングを始めるための準備</dt>
+<dd><p>cocos2d を使って開発を行うための準備、プロジェクトテンプレートのインストール、最初の「Hello World」プロジェクトの作成について説明します。ここでは、<em>シーンやノードといった cocos2d の基礎</em>を学びます。</p></dd>
+<dt>第３章　基礎</dt>
+<dd><p><em>Sprite、Transition、Action など、最もよく使われる cocos2d の基本クラス</em>と、そしてもちろん、それらの使用法について説明します。</p></dd>
+<dt>第４章　初めてのゲーム</dt>
+<dd><p>これは、あなたが初めて作るゲームとなります。ゲーム内容は、画面上から降ってくる敵をデバイスを傾けてかわします。<em>傾きを加速度センサーから取得する方法</em>についても学びます。</p></dd>
+<dt>第５章　ゲームの構成要素</dt>
+<dd><p>ゲームの規模が大きくなればなるほど、よりしっかりとしたコード構成が必要になります。心の準備はできているでしょうか。ここでは、<em>シーンとノードが階層化される仕組み</em>と、<em>ゲームオブジェクトの間で情報を交換するためのさまざまな方法</em>を取り上げます。</p></dd>
+<dt>第６章　スプライトの詳細</dt>
+<dd><p><em>テクスチャアトラスとは何</em>か、それを次のゲームに使うのはなぜかについて説明し、Zwoptex ツールを使ってテクスチャアトラスを作成する方法を紹介します。</p></dd>
+<dt>第７章　スクロールを使った処理</dt>
+<dd><p>テクスチャアトラスの準備ができたところで、<em>タッチ入力によって制御されるパララックススクロール対応</em>のシューティングゲームの実装方法を紹介します。</p></dd>
+<dt>第８章　アクションとアニメーションの処理</dt>
+<dd><p>シューティングゲームを作る際には、敵がいないとゲームとして成立しません。この章では、<em>敵の大軍を生成するコードとともに、移動、攻撃、アニメーションの作成を行うためのゲームプレイコードを追加する方法</em>を紹介します。</p></dd>
+<dt>第９章　パーティクル効果</dt>
+<dd><p>ParticleDesigner ツールを使って、横にスクロールするゲームに<em>パーティクル効果を追加</em>します。</p></dd>
+<dt>第１０章　タイルマップの処理</dt>
+<dd><p>ここで一気に弾みをつけましょう。横にスクロールするゲームから学んだことを<em>横向きモードに応用</em>し、これも人気の高い iOS ゲームジャンルのゲームを作成します。</p></dd>
+<dt>第１１章　等角タイルマップ</dt>
+<dd><p><em>cocos2d は TMX ファイルフォーマットをサポートしている</em>ため、ここでは Tiled エディタを使ってタイルベースのゲームを作成する方法について見ていきます。</p></dd>
+<dt>第１２章　物理エンジン</dt>
+<dd><p>指先の動きで目的の場所を指し示す --- ここでは、この機能がどのようにして実現されるのかを示します。<em>Chipmunk と Box2D の2つの物理エンジンを紹介</em>し、それらを驚きの手法で実装します。</p></dd>
+<dt>第１３章　ピンボールゲーム</dt>
+<dd><p>重力のない宇宙空間で惑星が跳ね返るボールシューティングに実際の物理学を応用します。ゲームの内容は非現実的ですが、この章で扱う物理計算は、公式そのものです。難しい箇所がありますが、面白いので是非読んでください。</p></dd>
+<dt>第１４章　Game Center</dt>
+<dd><p><em>Game Center と Game Kit API を利用してプレイヤーの認証、スコアの記録、Leaderboard の表示を行う方法</em>について見ていきます。</p></dd>
+<dt>第１５章　非凡であれ</dt>
+<dd><p>以上が本書の内容ですが、ご心配なく。あなたの旅はここで終わりません。ここからどこへ進めばよいかのヒントがここにあります。</p><dd>
+</dl>
+
+
+
+
+<h2>本書の感想</h2>
+
+
+<p>僕は、Objective-C を使ってゲームを作りたいと思っていたときに cocos2d に出会いました。当時は cocos2d の公式HPくらいしか cocos2d に関する情報が載っておらず、プログラミングをしていて cocos2d の使い方はこれでいいのかな？というようなところが結構ありました。</p>
+
+<p>当時、試行錯誤してたどり着いたコードが、今手元の本のサンプルに書いてあり、どうしてこういうコードを書くのかという説明がされています。あの時、この本が欲しかった！！ほんとにそう思える、cocos2d の詳細解説本になっています。</p>
+
+<p>cocos2d に興味がある人、ちょっと触ってみてみようかなという人は、是非本書を呼んでみてください。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[cocos2d] CCSpriteSheet や CCAnimation を使った時の CCSprite の後始末のしかた]]></title>
+    <link href="http://hamasyou.com/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/"/>
+    <updated>2010-10-27T22:58:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite</id>
+    <content type="html"><![CDATA[<p>cocos2d を使ったときの CCSprite の後始末のしかたのメモです。</p>
+
+<p>CCSpriteSheet から CCSprite を作ったときの破棄と CCAnimation が終わったタイミングでの CCSprite の破棄の方法をメモしています。</p>
+
+<!-- more -->
+
+
+
+
+<h2>CCSpriteSheet から作ったスプライトの後処理</h2>
+
+
+<p>CCSpriteSheet から CCSprite を作成する場合、次のように書きます。</p>
+
+<pre class="code"><span class="class">CCSpriteSheet</span> *sheet = [<span class="class">CCSpriteSheet</span> spriteSheetWithFile:<span class="literal">@&quot;missile.png&quot;</span>];
+[<span class="keyword">self</span> addChild:sheet];
+  
+<span class="class">CCSprite</span> *missile = [<span class="class">CCSprite</span> spriteWithSpriteSheet:sheet rect:CGRectMake(<span class="num">0</span>, <span class="num">0</span>, <span class="num">32</span>, <span class="num">32</span>)];
+[sheet addChild:missile];</pre>
+
+
+<p>このように、CCSpriteSheet から CCSprite を作成した場合、CCLayer（self） にはスプライトシートのオブジェクトを追加して、スプライトはスプライトシートに追加する形で記述します。</p>
+
+<p>こうすると、スプライトが必要なくなってスプライトを破棄したくなった場合に、スプライトシートから取り除く必要があります。</p>
+
+<p>この時 スプライトシートの removeChild:cleanup: メソッドでは上手くいきません。</p>
+
+<p>それではどうするかというと、スプライトの方の <strong>removeFromParentAndCleanup:</strong> メソッドを使います。</p>
+
+<pre class="code">[sprite removeFromParentAndCleanup:<span class="keyword">YES</span>];</pre>
+
+
+
+
+<h2>CCAction や CCAnimation が終わったタイミングでのスプライトの後処理</h2>
+
+
+<p>スプライトにアクションやアニメーションを付ける場合は、CCAction や CCAnimation を使います。</p>
+
+<p>そして、アクションやアニメーションが終了したタイミングでスプライトを削除したい場合には、アクションの最後で <strong>CCCallFuncND</strong> を使って <em>removeFromParentAndCleanup:</em> メソッドを呼び出すようにします。（19行目）</p>
+
+<p>次に例を載せておきます。この例は、ミサイルが爆発したときの爆発をアニメーションで表したものです。CCAnimation を使うので、burst.plist を別途記述して、アニメーションの定義をしています。コード例のあとに載せてあるのがそうです。</p>
+
+<p>また、burst.png は 8×8 の爆発を表現する画像が9つ並んだものになっています。</p>
+
+<h4>burst.m</h4>
+
+
+
+
+<pre class="code"><span class="rem">// アニメーションの定義（個別のスプライトの定義）をスプライトキャッシュに登録して、後で呼び出せるようにする</span>
+[[<span class="class">CCSpriteFrameCache</span> sharedSpriteFrameCache] addSpriteFramesWithFile:<span class="literal">@&quot;burst.plist&quot;</span>];
+ 
+<span class="rem">// アニメーション定義と対応するスプライトの画像を読み込む</span> 
+<span class="class">CCSpriteSheet</span> *sheet = [<span class="class">CCSpriteSheet</span> spriteSheetWithFile:<span class="literal">@&quot;burst.png&quot;</span>];
+[<span class="keyword">self</span> addChild:sheet];
+ 
+<span class="rem">// アニメーションの最初のスプライトを読み込む</span>  
+<span class="class">CCSprite</span> *sprite = [<span class="class">CCSprite</span> spriteWithSpriteFrameName:<span class="literal">@&quot;burst01&quot;</span>];
+sprite.position = <span class="keyword">ccp</span>(<span class="literal">160</span>, <span class="literal">240</span>);
+[sheet addChild:sprite];
+ 
+<span class="rem">// アニメーションのコマに対応するスプライトをフレームとして作成する</span>  
+<span class="class">NSMutableArray</span> *animFrames = [<span class="class">NSMutableArray</span> array];
+<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="literal">2</span>; i &lt;= <span class="literal">9</span>; i++) {
+  <span class="class">CCSpriteFrame</span> *frame = [[<span class="class">CCSpriteFrameCache</span> sharedSpriteFrameCache] spriteFrameByName:[<span class="class">NSString</span> stringWithFormat:<span class="literal">@&quot;burst%02d&quot;</span>, i]];
+  [animFrames addObject:frame];
+}
+ 
+<span class="rem">// アニメーションフレームをアニメーションにしてスプライトと紐付ける</span>
+<span class="rem">// アニメーションの最後に removeFromParentAndCleanup: を呼び出してスプライトを破棄する</span>
+<span class="class">CCAnimation</span> *animation = [<span class="class">CCAnimation</span> animationWithName:<span class="literal">@&quot;burst&quot;</span> delay:<span class="literal">0.2f</span> frames:animFrames];
+[sprite runAction:[<span class="class">CCSequence</span> actions:
+                   [<span class="class">CCAnimate</span> actionWithAnimation:animation restoreOriginalFrame:NO],
+                   <em>[<span class="class">CCCallFuncND</span> actionWithTarget:sprite selector:<span class="keyword">@selector</span>(removeFromParentAndCleanup:) data:(<span class="keyword">void</span> *)<span class="keyword">YES</span>]</em>,
+                   <span class="keyword">nil</span>]];</pre>
+
+
+
+
+<h4>burst.png</h4>
+
+
+<p><img alt="missile.png" src="http://hamasyou.com/images/missile.png" width="64" height="8" class="mt-image-none" style="" /></p>
+
+<h4>burst.plist</h4>
+
+
+
+
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;dict&gt;
+  &lt;key&gt;texture&lt;/key&gt;
+  &lt;dict&gt;
+    &lt;key&gt;width&lt;/key&gt;
+    &lt;integer&gt;72&lt;/integer&gt;
+    &lt;key&gt;height&lt;/key&gt;
+    &lt;integer&gt;8&lt;/integer&gt;
+  &lt;/dict&gt;
+  &lt;key&gt;frames&lt;/key&gt;
+  &lt;dict&gt;
+    &lt;key&gt;burst01&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst02&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst03&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;16&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst04&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;24&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst05&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;32&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst06&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;40&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst07&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;48&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst08&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;56&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;burst09&lt;/key&gt;
+    &lt;dict&gt;
+      &lt;key&gt;x&lt;/key&gt;
+      &lt;integer&gt;64&lt;/integer&gt;
+      &lt;key&gt;y&lt;/key&gt;
+      &lt;integer&gt;0&lt;/integer&gt;
+      &lt;key&gt;width&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;height&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalWidth&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+      &lt;key&gt;originalHeight&lt;/key&gt;
+      &lt;integer&gt;8&lt;/integer&gt;
+    &lt;/dict&gt;
+  &lt;/dict&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;</pre>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>
