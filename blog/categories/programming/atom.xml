@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-13T01:12:07+09:00</updated>
+  <updated>2014-02-13T01:16:14+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -377,7 +377,7 @@
 
 <p><code>app/views/posts/_form.html.erb</code> を開いて次のコードを追加します。このコードが手書き入力部分（canvas）になります。</p>
 
-<pre><code class="erb app/views/posts/_form.html.erb">  &lt;canvas id="paper" class="paper" width="400" height="400" data-target="#sign"&gt;
+<pre><code class="html+erb app/views/posts/_form.html.erb">  &lt;canvas id="paper" class="paper" width="400" height="400" data-target="#sign"&gt;
     ご利用のブラウザではサインは表示できません。
   &lt;/canvas&gt;
   &lt;button type="button" name="clearCanvas" class="clear-canvas"&gt;クリア&lt;/button&gt;
