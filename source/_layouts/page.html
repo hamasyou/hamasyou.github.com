@@ -4,7 +4,7 @@ layout: default
 
 <div class="row">
 {% if page.sidebar == false %}
-<article role="article" class="col-md-12">
+<article role="article" class="col-sm-12">
 {% else %}
 <article role="article" class="col-sm-12 col-md-9">
 {% endif %}
@@ -36,6 +36,7 @@ layout: default
     </footer>
   {% endunless %}
 </article>
+<div class="clearfix visible-sm"></div>
 {% unless page.sidebar == false %}
 <aside class="sidebar-nav col-md-3">
   {% if site.page_asides.size %}
