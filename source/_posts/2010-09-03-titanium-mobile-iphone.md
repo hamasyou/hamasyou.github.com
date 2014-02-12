@@ -24,8 +24,6 @@ Titanium を使っていてハマった点をメモしておきます。
 
 <!-- more -->
 
-<script type="text/javascript">$(document).ready(function() { create_toc(); });</script>
-
 <h2>Titanium で Run Emulator - Launch しても反応が無い</h2>
 
 多分、内部でエラーが発生しているか、単に反応が無いだけかも。一旦シミュレータを終了させるか、Stop ボタンを押して、再度 Launch してみる。

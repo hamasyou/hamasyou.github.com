@@ -23,8 +23,6 @@ GUI の構築が多い iPhone アプリ開発ですが、一部ロジックも�
 
 <!-- more -->
 
-<script type="text/javascript">$(document).ready(function() { create_toc(); });</script>
-
 <h2>開発環境</h2>
 
 僕の Xcode の環境です。この環境でテスト環境を作っていきます。

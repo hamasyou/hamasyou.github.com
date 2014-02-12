@@ -40,18 +40,20 @@ Paperclip を使って画像を管理していると、<code>url</code> メソ�
 
 <h4>コントローラの例</h4>
 
-<pre class="code"><span class="rem">#-*- encoding: utf-8 -*-</span>
- 
-<span class="keyword">class</span> CallbackController &lt; ApplicationController
-  <span class="keyword">def</span> send
+```ruby
+#-*- encoding: utf-8 -*-
+
+class CallbackController < ApplicationController
+  def send
     user = User.new
-    user.avatar = params[<span class="symbol">:user</span>][<span class="symbol">:avatar</span>]
+    user.avatar = params[:user][:avatar]
     user.avatar.url
-      <span class="rem"># =&gt; &quot;/users/avatars/4/original_me.jpg&quot;</span>
-    <strong>view_context</strong>.image_path(user.avatar.url)
-      <span class="rem"># =&gt; &quot;http://image.serverhost/users/avatars/4/original_me.jpg&quot;</span>
-  <span class="keyword">end</span>
-<span class="keyword">end</span></pre>
+      # => "/users/avatars/4/original_me.jpg"
+    view_context.image_path(user.avatar.url)
+      # => "http://image.serverhost/users/avatars/4/original_me.jpg"
+  end
+end
+```
 
 </section>
 
@@ -59,9 +61,11 @@ Paperclip を使って画像を管理していると、<code>url</code> メソ�
 
 <h4>models/user.rb</h4>
 
-<pre class="code"><span class="keyword">class</span> User &lt; ActiveRecord::Base
-  has_attached_file <span class="symbol">:avatar</span>
-<span class="keyword">end</span></pre>
+```ruby
+class User < ActiveRecord::Base
+  has_attached_file :avatar
+end
+```
 
 </section>
 
@@ -69,17 +73,15 @@ Paperclip を使って画像を管理していると、<code>url</code> メソ�
 
 <h4>application.rb</h4>
 
-<pre class="code"><span class="keyword">require</span> File.expand_path(<span class="str">'../boot'</span>, <span class="keyword">__FILE__</span>)
-<span class="keyword">require</span> <span class="str">'rails/all'</span>
-Bundler.require(<span class="symbol">:default</span>, Rails.env) <span class="keyword">if</span> <span class="keyword">defined?</span>(Bundler)
- 
-<span class="keyword">module</span> MyApp
-  <span class="keyword">class</span> Application &lt; Rails::Application
-    config.action_controller.asset_host = <span class="str">&quot;http://image.serverhost&quot;</span>
+```ruby
+require File.expand_path('../boot', __FILE__)
+require 'rails/all'
+Bundler.require(:default, Rails.env) if defined?(Bundler)
+
+module MyApp
+  class Application < Rails::Application
+    config.action_controller.asset_host = "http://image.serverhost"
     ...(略)...
-  <span class="keyword">end</span>
-<span class="keyword">end</span></pre>
-
-
-
-
+  end
+end
+```

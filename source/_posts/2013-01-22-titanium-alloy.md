@@ -18,7 +18,7 @@ Titanium Mobile プラットフォームの開発元である Appcelerator が�
 アプリ紹介ページは下になります。
 <a href="http://mountposition.co.jp/obento/" rel="external nofollow">Thankお弁当: http://mountposition.co.jp/obento/</a>
 
-<img alt="phones.png" src="http://hamasyou.com/blog/archives/images/phones.png" width="324" height="367" class="mt-image-none" style="" />
+<img alt="phones.png" src="/images/phones.png" width="324" height="367" class="mt-image-none" style="" />
 
 Titanium Mobile は JavaScript を使ってスマホアプリを開発できるプラットフォームです。iPhone や Android 向けのアプリを手軽に開発することが出来ます。
 

@@ -19,18 +19,17 @@ Qiita にも書きました。 <a href="http://qiita.com/items/ef8c332710960e273
 
 Sublime Text2 の PackageManager を使って SublimeCodeIntel をインストールします。
 
-<h4 class="note">参考</h4>
-
-<a href="http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html" rel="external nofollow">http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html</a>
-
+<i class="fa fa-search"></i> <a href="http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html" rel="external nofollow">http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html</a>
 
 <h3>2. jsca2.js を使って Titanium Mobile の API doc を JavaScript 化する。</h3>
 
-<a href="https://github.com/navinpeiris/jsca2js" rel="external nofollow">jsca2js: https://github.com/navinpeiris/jsca2js</a>
+<i class="fa fa-search"></i> <a href="https://github.com/navinpeiris/jsca2js" rel="external nofollow">jsca2js: https://github.com/navinpeiris/jsca2js</a>
 
 git clone で落としてきて
 
-<pre class="console"><code>./titanium-mobile.py 3.0.0</code></pre>
+{% terminal %}
+$ ./titanium-mobile.py 3.0.0
+{% endterminal %}
 
 のように、生成した API のバージョンを指定すればOK。
 
@@ -40,11 +39,13 @@ titanium-mobile.py の中でバージョン毎に参照先の URL を変える�
 
 なので、URL を修正してあげる必要があります。titanium-mobile.py を開き 23行目辺りにある URL を次のように書き換えます。
 
-<pre class="code"><code>if version.startswith(<span class="literal">'2.'</span>):
-  url = <span class="literal">'http://docs.appcelerator.com/titanium/data/'</span> + version + <span class="literal">'/api.json'</span>
+```python titanium-mobile.py
+if version.startswith('2.'):
+  url = 'http://docs.appcelerator.com/titanium/data/' + version + '/api.json'
 else:
-  <span class="rem">#url = 'http://developer.appcelerator.com/apidoc/mobile/' + version + '/api.json'</span>
-  <em>url = <span class="literal">'http://docs.appcelerator.com/titanium/data/'</span> + version + <span class="literal">'/api.json'</span></em></code></pre>
+  #url = 'http://developer.appcelerator.com/apidoc/mobile/' + version + '/api.json'
+  url = 'http://docs.appcelerator.com/titanium/data/' + version + '/api.json'
+```
 
 <h3>3. 生成された titanium-mobile-3.0.0.js を ~/.codeintel/extra にコピーする</h3>
 

@@ -23,8 +23,6 @@ Titanium Module Development のメモその2です。
 
 <!-- more -->
 
-<script type="text/javascript">$(document).ready(function() { create_toc(); });</script>
-
 <h2>Titanium の基本クラスを拡張する</h2>
 
 Titanium の Module をつくる方法は基本的には次のドキュメントを理解すればよい。

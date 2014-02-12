@@ -25,32 +25,36 @@ Rails のプラグイン <a href="https://github.com/jnicklas/carrierwave" rel="
 
 <h3>carrierwave のインストール</h3>
 
-<pre class="console"><kbd>gem install carrierwave</kbd></pre>
+{% terminal %}
+$ gem install carrierwave
+{% endterminal %}
 
 <h3>config の書き方</h3>
 
 initializers に carrierwave.rb というファイルを作成し、以下のような設定を書きます。
 
-<pre class="code"><span class="rem">#-*- encoding: utf-8 -*-</span>
- 
-<span class="keyword">unless</span> Rails.env.test?
-  CarrierWave.configure <span class="keyword">do</span> |config|
-    config.cache_dir = <span class="str">&quot;#{Rails.root}/tmp/uploads&quot;</span>
-    config.storage                          = <em>:fog</em>
+```ruby initializers/carrierwave.rb
+#-*- encoding: utf-8 -*-
+
+unless Rails.env.test?
+  CarrierWave.configure do |config|
+    config.cache_dir = "#{Rails.root}/tmp/uploads"
+    config.storage                          = :fog
     config.fog_credentials                  = {
-        :provider              =&gt; <span class="str">'AWS'</span>,
-        :aws_access_key_id     =&gt; ENV[<span class="str">&quot;AWS_S3_KEY_ID&quot;</span>],
-        :aws_secret_access_key =&gt; ENV[<span class="str">&quot;AWS_S3_SECRET_KEY&quot;</span>]
+        :provider              => 'AWS',
+        :aws_access_key_id     => ENV["AWS_S3_KEY_ID"],
+        :aws_secret_access_key => ENV["AWS_S3_SECRET_KEY"]
     }
-    config.fog_directory                    = ENV[<span class="str">&quot;AWS_S3_BUCKET&quot;</span>]
-    config.fog_public                       = <span class="keyword">false</span>
-    config.fog_authenticated_url_expiration = <span class="num">60</span>
-  <span class="keyword">end</span>
-<span class="keyword">else</span>
-  CarrierWave.configure <span class="keyword">do</span> |config|
+    config.fog_directory                    = ENV["AWS_S3_BUCKET"]
+    config.fog_public                       = false
+    config.fog_authenticated_url_expiration = 60
+  end
+else
+  CarrierWave.configure do |config|
     config.storage = :file
-  <span class="keyword">end</span>
-<span class="keyword">end</span></pre>
+  end
+end
+```
 
 ENV["AWS_S3_KEY_ID"] にはユーザアクセスID、ENV["AWS_S3_SECRET_KEY"] にはシークレットアクセスキー、ENV["AWS_S3_BUCKET"] にはバケット名をそれぞれ設定する。
 

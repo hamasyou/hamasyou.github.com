@@ -44,8 +44,6 @@ Game Center を使うためのプログラミングは形式的ながら、視�
 
 <!-- more -->
 
-<script type="text/javascript">$(document).ready(function() { create_toc(); });</script>
-
 <h2>Game Center を使った対戦機能開発のメモ</h2>
 
 Game Center を使ったアプリの開発手順は、<a href="http://developer.apple.com/jp/devcenter/ios/library/documentation/GameKit_Guide.pdf" rel="external nofollow">『Game Kit プログラミングガイド』</a> - Apple Developer（PDF）に詳しく載っています。わかりやすい説明で読めば大体理解できると思います。対戦相手とのマッチングの部分だけ、自分と相手がいるのと、非同期で処理がされていくためどのメソッドがどの役割かが最初は混乱するかもしれません。
@@ -99,19 +97,21 @@ SDK が Game Center に対応しているか（GKLocalPlayer クラスが参照�
 
 Game Center が利用出来るかどうかは、最初の一度だけ行えば良い。すなわち、メンバ変数にキャッシュできる。以降、gameCenterAvailable 変数がそれ。
 
-<pre class="code">- (<span class="keyword">BOOL</span>)isGameCenterAvailable
+```objective-c
+- (BOOL)isGameCenterAvailable
 {
-  <span class="rem">// Test for Game Center availability</span>
-  <span class="class">Class</span> gameKitLocalPlayerClass = NSClassFromString(<span class="str">@&quot;GKLocalPlayer&quot;</span>);
-  <span class="keyword">BOOL</span> localPlayerAvailable = (gameKitLocalPlayerClass != <span class="keyword">nil</span>);
-  
-  <span class="rem">// Test if device is running iOS 4.1 or higher</span>
-  <span class="class">NSString</span> *requireSysVer = <span class="str">@&quot;4.1&quot;</span>;
-  <span class="class">NSString</span> *currentSysVer = [[<span class="class">UIDevice</span> currentDevice] systemVersion];
-  <span class="keyword">BOOL</span> isOSVer41 = ([currentSysVer compare:requireSysVer options:NSNumericSearch] != NSOrderedAscending);
-  
-  <span class="keyword">return</span> localPlayerAvailable &amp;&amp; isOSVer41;
-}</pre>
+  // Test for Game Center availability
+  Class gameKitLocalPlayerClass = NSClassFromString(@"GKLocalPlayer");
+  BOOL localPlayerAvailable = (gameKitLocalPlayerClass != nil);
+
+  // Test if device is running iOS 4.1 or higher
+  NSString *requireSysVer = @"4.1";
+  NSString *currentSysVer = [[UIDevice currentDevice] systemVersion];
+  BOOL isOSVer41 = ([currentSysVer compare:requireSysVer options:NSNumericSearch] != NSOrderedAscending);
+
+  return localPlayerAvailable && isOSVer41;
+}
+```
 
 <h3>Game Center の認証</h3>
 
@@ -119,22 +119,24 @@ authenticateWithCompletionHandler メソッドで Game Center を使って認証
 
 認証が済んだら、できるだけはやくゲーム招待を処理するためのハンドラを登録する。
 
-<pre class="code">- (<span class="keyword">void</span>)authenticateLocalPlayer 
+```objective-c
+- (void)authenticateLocalPlayer
 {
-  <span class="keyword">if</span> (gameCenterAvailable) {
-    <span class="class">GKLocalPlayer</span> *localPlayer = [<span class="class">GKLocalPlayer</span> localPlayer];
-    <span class="keyword">if</span> (!localPlayer.authenticated) {
-      [localPlayer authenticateWithCompletionHandler:^(<span class="class">NSError</span> *error) {
-        <span class="keyword">self</span>.error = error
-        
-        <span class="keyword">if</span> (error == <span class="keyword">nil</span>) {
-          <span class="rem">// ゲーム招待を処理するためのハンドラを設定する</span>
-          [<span class="keyword">self</span> initMatchInviteHandler];
+  if (gameCenterAvailable) {
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    if (!localPlayer.authenticated) {
+      [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
+        self.error = error
+
+        if (error == nil) {
+          // ゲーム招待を処理するためのハンドラを設定する
+          [self initMatchInviteHandler];
         }
       }];
     }
   }
-}</pre>
+}
+```
 
 <h3>ゲーム招待を処理するハンドラを登録する</h3>
 
@@ -145,31 +147,32 @@ authenticateWithCompletionHandler メソッドで Game Center を使って認証
 <li>playersToInviteパラメータは、対戦をホストするGame Centerアプリケーションから直接ゲームが起動されるとnil以外の値になります。このパラメータは、ゲームが対戦に招待すべきプレーヤーを示したプレーヤー識別子の配列を保持します。ゲームは新しい対戦要求を作成し、 通常通りにパラメータを割り当ててから、対戦要求のplayersToInviteプロパティをplayersToInviteパラメータで渡された値に設定する必要があります。マッチメーク画面が表示されると、すでに対戦に参加しているプレーヤーのリストがあらかじめ読み込まれます。</li>
 </ul>
 
-
 {% endblockquote %}
 
-<pre class="code">- (<span class="keyword">void</span>)initMatchInviteHandler
+```objective-c
+- (void)initMatchInviteHandler
 {
-    <span class="keyword">if</span> (gameCenterAvailable) {
-    [<span class="class">GKMatchmaker</span> sharedMatchmaker].inviteHandler = ^(<span class="class">GKInvite</span> *acceptedInvite, <span class="class">NSArray</span> *playersToInvite) {
-      <span class="rem">// 既存のマッチングを破棄する</span>
-      <span class="keyword">self</span>.currentMatch = <span class="keyword">nil</span>;
-      
-      <span class="keyword">if</span> (acceptedInvite) {
-        <span class="rem">// ゲーム招待を利用してマッチメイク画面を開く</span>
-        [<span class="keyword">self</span> showMatchmakerWithInvite:acceptedInvite];
-      } <span class="keyword">else</span> <span class="keyword">if</span> (playersToInvite) {
-        <span class="rem">// 招待するユーザを指定してマッチメイク要求を作成する</span>
-        <span class="class">GKMatchRequest</span> *request = [[[<span class="class">GKMatchRequest</span> alloc] init] autorelease];
-        request.minPlayers = <span class="num">2</span>;
-        request.maxPlayers = <span class="num">2</span>;
+    if (gameCenterAvailable) {
+    [GKMatchmaker sharedMatchmaker].inviteHandler = ^(GKInvite *acceptedInvite, NSArray *playersToInvite) {
+      // 既存のマッチングを破棄する
+      self.currentMatch = nil;
+
+      if (acceptedInvite) {
+        // ゲーム招待を利用してマッチメイク画面を開く
+        [self showMatchmakerWithInvite:acceptedInvite];
+      } else if (playersToInvite) {
+        // 招待するユーザを指定してマッチメイク要求を作成する
+        GKMatchRequest *request = [[[GKMatchRequest alloc] init] autorelease];
+        request.minPlayers = 2;
+        request.maxPlayers = 2;
         request.playersToInvite = playersToInvite;
-        
-        [<span class="keyword">self</span> showMatchmakerWithRequest:request];
+
+        [self showMatchmakerWithRequest:request];
       }
     };
   }
-}</pre>
+}
+```
 
 <h3>マッチメイク画面を開く</h3>
 
@@ -177,19 +180,21 @@ authenticateWithCompletionHandler メソッドで Game Center を使って認証
 
 インターフェースはほとんど同じになる。
 
-<pre class="code">- (<span class="keyword">void</span>)showMatchmakerWithRequest:(<span class="class">GKMatchRequest</span> *)request
+```objective-c
+- (void)showMatchmakerWithRequest:(GKMatchRequest *)request
 {
-  <span class="class">GKMatchmakerViewController</span> *viewController = [[[<span class="class">GKMatchmakerViewController</span> alloc] initWithMatchRequest:request] autorelease];
-  viewController.matchmakerDelegate = <span class="keyword">self</span>;
-  [<span class="keyword">self</span> presentModalViewController:viewController animated:<span class="keyword">YES</span>];
+  GKMatchmakerViewController *viewController = [[[GKMatchmakerViewController alloc] initWithMatchRequest:request] autorelease];
+  viewController.matchmakerDelegate = self;
+  [self presentModalViewController:viewController animated:YES];
 }
- 
-- (<span class="keyword">void</span>)showMatchmakerWithInvite:(<span class="class">GKInvite</span> *)invite
+
+- (void)showMatchmakerWithInvite:(GKInvite *)invite
 {
-  <span class="class">GKMatchmakerViewController</span> *viewController = [[[<span class="class">GKMatchmakerViewController</span> alloc] initWithInvite:invite] autorelease];
-  viewController.matchmakerDelegate = <span class="keyword">self</span>;
-  [<span class="keyword">self</span> presentModalViewController:viewController animated:<span class="keyword">YES</span>];
-}</pre>
+  GKMatchmakerViewController *viewController = [[[GKMatchmakerViewController alloc] initWithInvite:invite] autorelease];
+  viewController.matchmakerDelegate = self;
+  [self presentModalViewController:viewController animated:YES];
+}
+```
 
 <h3>自分で対戦要求を作成する場合</h3>
 
@@ -197,18 +202,20 @@ authenticateWithCompletionHandler メソッドで Game Center を使って認証
 
 対戦要求は任意のタイミングで作成すればよい。例えば、メニューで「ふたりで対戦する」ボタンが押されたとき等。
 
-<pre class="code">- (<span class="keyword">void</span>)requestMatch
+```objective-c
+- (void)requestMatch
 {
-  <span class="class">GKLocalPlayer</span> *localPlayer = [<span class="class">GKLocalPlayer</span> localPlayer];
-  <span class="keyword">if</span> (localPlayer.authenticated) {
-    <span class="rem">// 対戦相手を決める</span>
-    <span class="class">GKMatchRequest</span> *request = [[[<span class="class">GKMatchRequest</span> alloc] init] autorelease];
-    request.minPlayers = <span class="num">2</span>;
-    request.maxPlayers = <span class="num">2</span>;
-    
-    [<span class="keyword">self</span> showMatchmakerWithRequest:request];
+  GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+  if (localPlayer.authenticated) {
+    // 対戦相手を決める
+    GKMatchRequest *request = [[[GKMatchRequest alloc] init] autorelease];
+    request.minPlayers = 2;
+    request.maxPlayers = 2;
+
+    [self showMatchmakerWithRequest:request];
   }
-}</pre>
+}
+```
 
 <h3>対戦相手が決まった際に呼び出されるコールバック</h3>
 
@@ -218,17 +225,19 @@ authenticateWithCompletionHandler メソッドで Game Center を使って認証
 
 matchStarted はゲームがスタートしているかどうかを表すメンバ変数。<em>match.expectedPlayerCount</em> は対戦要求にあと何人の必要プレイヤーがいるかを表す値。0になれば、必要なプレイヤーが揃ったことになる。
 
-<pre class="code">- (<span class="keyword">void</span>)matchmakerViewController:(<span class="class">GKMatchmakerViewController</span> *)viewController didFindMatch:(<span class="class">GKMatch</span> *)match
+```objective-c
+- (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFindMatch:(GKMatch *)match
 {
-  [<span class="keyword">self</span> dismissModalViewController];
-  <span class="keyword">self</span>.currentMatch = match;
-  
-  <span class="rem">// 全ユーザが揃ったかどうか</span>
-  <span class="keyword">if</span> (!matchStarted &amp;&amp; match.expectedPlayerCount == <span class="num">0</span>) {
-    matchStarted = <span style="keyword">YES</span>;
-    <span class="rem">// ゲーム開始の処理</span>
+  [self dismissModalViewController];
+  self.currentMatch = match;
+
+  // 全ユーザが揃ったかどうか
+  if (!matchStarted && match.expectedPlayerCount == 0) {
+    matchStarted = YES;
+    // ゲーム開始の処理
   }
-}</pre>
+}
+```
 
 <h3>対戦相手にデータを送る</h3>
 
@@ -240,15 +249,17 @@ GKMatchSendDataUnreliable モードは、いわゆる UDP で送信するイメ�
 
 データの内容や型は、アプリ側で好きに決めることができる。ほとんどの場合、カスタムの構造体を作成してデータを送信する。構造体を作れば、sizeof(myData) でバイトサイズを取得できる。
 
-<pre class="code">- (<span class="keyword">void</span>)sendDataToAllPlayers:(<span class="keyword">void</span> *)data sizeInBytes:(<span class="class">NSUInteger</span>)sizeInBytes
+```objective-c
+- (void)sendDataToAllPlayers:(void *)data sizeInBytes:(NSUInteger)sizeInBytes
 {
-  <span class="keyword">if</span> (gameCenterAvailable) {
-    <span class="class">NSError</span> *error = <span class="keyword">nil</span>;
-    <span class="class">NSData</span> *packetData = [<span class="class">NSData</span> dataWithBytes:data length:sizeInBytes];
-    [currentMatch sendDataToAllPlayers:packetData withDataMode:GKMatchSendDataUnreliable error:&amp;error];
-    <span class="keyword">self</span>.error = error;
+  if (gameCenterAvailable) {
+    NSError *error = nil;
+    NSData *packetData = [NSData dataWithBytes:data length:sizeInBytes];
+    [currentMatch sendDataToAllPlayers:packetData withDataMode:GKMatchSendDataUnreliable error:&error];
+    self.error = error;
   }
-}</pre>
+}
+```
 
 <h3>対戦相手からデータを受け取る</h3>
 
@@ -256,10 +267,12 @@ GKMatchSendDataUnreliable モードは、いわゆる UDP で送信するイメ�
 
 対戦相手からデータを受け取った場合には、次のコールバックメソッドが呼び出されます。
 
-<pre class="code">- (<span class="keyword">void</span>)match:(<span class="class">GKMatch</span> *)match didReceiveData:(<span class="class">NSData</span> *)data fromPlayer:(<span class="class">NSString</span> *)playerID
+```objective-c
+- (void)match:(GKMatch *)match didReceiveData:(NSData *)data fromPlayer:(NSString *)playerID
 {
-  <span class="rem">// データを受け取ってアプリで利用する</span>
-}</pre>
+  // データを受け取ってアプリで利用する
+}
+```
 
 <h2>対戦機能をテストする方法</h2>
 
@@ -287,7 +300,7 @@ Game Center の機能をテストするために、Apple はサンドボック�
 
 アプリを立ち上げて、認証機能を実行すると、下の図のようなダイアログが表示されます。
 
-<img alt="Game Center 認証画面" src="http://hamasyou.com/blog/archives/images/%E5%86%99%E7%9C%9F.PNG" width="320" height="480" class="mt-image-none" style="" />
+<img alt="Game Center 認証画面" src="/images/%E5%86%99%E7%9C%9F.PNG" width="320" height="480" class="mt-image-none" style="" />
 
 Game Center のアカウントを持っていない場合は、ここで開発用のアカウントを作成します。すでに持っている場合は、Use Existing Account を選択して、既存のアカウントでサインインします。
 
@@ -295,7 +308,7 @@ Game Center のアカウントを持っていない場合は、ここで開発�
 
 サンドボックス環境にスイッチできたかどうかは、一度アプリを終了させ、Game Center アプリを起動することで確認できます。
 
-<img alt="GameCenterサンドボックス" src="http://hamasyou.com/blog/archives/images/%E5%86%99%E7%9C%9F%20%281%29.PNG" width="320" height="480" class="mt-image-none" style="" />
+<img alt="GameCenterサンドボックス" src="/images/%E5%86%99%E7%9C%9F%20%281%29.PNG" width="320" height="480" class="mt-image-none" style="" />
 
 <h3>サンドボックス環境で友だちを招待する</h3>
 
@@ -309,7 +322,7 @@ Game Center のアカウントを持っていない場合は、ここで開発�
 
 下の図は、<a href="#title8" rel="external nofollow">requestMatch</a> メソッドを呼び出した時の画面です。
 
-<img alt="Game Center マッチメイク画面" src="http://hamasyou.com/blog/archives/images/%E5%86%99%E7%9C%9F%20%282%29.PNG" width="320" height="480" class="mt-image-none" style="" />
+<img alt="Game Center マッチメイク画面" src="/images/%E5%86%99%E7%9C%9F%20%282%29.PNG" width="320" height="480" class="mt-image-none" style="" />
 
 <h2>cocos2d 本おすすめ</h2>
 

@@ -17,7 +17,7 @@ Qiita を運営されている Increments さんが一周年ということで�
 
 寿司職人が目の前で握ってくれる本格派！
 
-<img alt="qiita_sushi.JPG" src="http://hamasyou.com/blog/images/qiita_sushi.JPG" width="320" class="mt-image-none" style="" />
+{% img /images/qiita_sushi.jpg 320 %}
 
 次の Qiita イベントにも是非参加します！今後とも、エンジニアのためのサービスをガンガンリリースしてもらいたいと思います。うちの会社もエンジニアの会社なので期待しています！
 

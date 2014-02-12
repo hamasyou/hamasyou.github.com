@@ -33,19 +33,16 @@ ActiveRecord で更新があった属性を取得するメソッドに、previou
 <dl><dt>previous_changes</dt>
 <dd>Returns a Hash of previous changes before the object was persisted, with the attribute names as the keys, and the values being an array of the old and new value for that field.</dd></dl>
 
-<pre class="code">user = User.find(params[<span class="symbol">:id</span>])
+```ruby
+user = User.find(params[:id])
 user.name
-  <span class="rem"># =&gt; &quot;Syougo Hamada&quot;</span>
-user.name = <span class="str">&quot;hamasyou&quot;</span>
+  # => "Syougo Hamada"
+user.name = "hamasyou"
 user.age
-  <span class="rem"># =&gt; 28</span>
-user.age = <span class="num">29</span>
+  # => 28
+user.age = 29
 user.save
- 
+
 user.previous_changes
-  <span class="rem"># =&gt; {&quot;name&quot;=&gt;[&quot;Syougo Hamada&quot;, &quot;hamasyou&quot;], &quot;age&quot;=&gt;[28, 29]}</span></pre>
-
-
-
-
-
+  # => {"name"=>["Syougo Hamada", "hamasyou"], "age"=>[28, 29]}
+```

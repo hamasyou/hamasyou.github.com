@@ -38,7 +38,9 @@ will_paginate に代わるページングのライブラリ、kaminari ですが
 
 使い方は、scope の方の page と同じ。
 
-<pre class="code">Kaminari.paginate_array(array_obj).page(params[<span class="symbol">:page</span>])</pre>
+```ruby
+Kaminari.paginate_array(array_obj).page(params[:page])
+```
 
 激しくべんり！
 

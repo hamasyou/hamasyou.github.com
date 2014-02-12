@@ -36,11 +36,9 @@ kaminari がページリンクを作成するときに、日本語文字をパ�
 
 ほとんどの場合、サブミットボタンの value は必要ないと思うので、submit_tag の :name オプションに nil を設定してサブミットボタンの value を送らないようにするといいかと思います。
 
-<pre class="code">&lt;%= form_tag user_path <span class="keyword">do</span> %&gt;
-  &lt;%= select_tag <span class="str">&quot;category&quot;</span>, options_from_collection_for_select(Category.all, <span class="symbol">:id</span>, <span class="symbol">:label</span>, params[<span class="symbol">:category</span>]) %&gt;
-  &lt;%= submit_tag <span class="str">&quot;表示&quot;</span>, <span class="symbol">:name</span> =&gt; <span class="keyword">nil</span> %&gt;
-&lt;% <span class="keyword">end</span> %&gt;</pre>
-
-
-
-
+```html+erb
+<%= form_tag user_path do %>
+  <%= select_tag "category", options_from_collection_for_select(Category.all, :id, :label, params[:category]) %>
+  <%= submit_tag "表示", :name => nil %>
+<% end %>
+```
