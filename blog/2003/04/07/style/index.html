@@ -17,10 +17,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <link rel="canonical" href="http://hamasyou.github.io/blog/2003/04/07/style">
+  <link rel="canonical" href="http://hamasyou.com/blog/2003/04/07/style">
 
   <link href="/favicon.ico" rel="shortcut icon" />
-  <link href="/stylesheets/bootstrap/bootstrap.css?1" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/font-awesome.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -68,14 +68,13 @@
           <i class="fa fa-rss"></i>
         </a>
       </li>
-      
     </ul>
 
     
     <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
       <fieldset role="search">
-        <input type="hidden" name="q" value="site:hamasyou.github.io" />
-        <input class="search-query form-control col-lg-8" type="text" name="q" data-results="0" placeholder="Search" />
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
       </fieldset>
     </form>
     
@@ -84,7 +83,7 @@
   <!-- /.nav-collapse -->
 </div>
 </nav>
-  <div class="container">
+  <div role="main" class="container">
     <div class="row">
   
   <article class="hentry col-md-9" role="article">
@@ -110,6 +109,7 @@
 
 
 <time datetime="2003-04-07T02:25:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Apr 7<span>th</span>, 2003</time>
+        <span class="divider"></span>
         <span class="categories">
   
     
@@ -128,6 +128,9 @@
   
 </span>
 
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
         
       </p>
     
@@ -177,11 +180,8 @@
 
 <dl>
 <dt>これが説明・定義する言葉です</dt>
-<dd>
-ここに説明文を記述します。dd タグはブロック要素とインライン要素をとれるため、段落を含めてもかまいません。
-</dd>
+<dd>ここに説明文を記述します。dd タグはブロック要素とインライン要素をとれるため、段落を含めてもかまいません。</dd>
 </dl>
-
 
 <h2>箇条書き</h2>
 
@@ -190,11 +190,17 @@
 <ul>
 <li>リスト1</li>
 <li>リスト2</li>
-<li><p>リスト3</p></li>
-<li><p>リスト4</p></li>
+<li>リスト3</li>
+</ul>
+
+
+<p>順番が必要なとき</p>
+
+<ol>
+<li>リスト4</li>
 <li>リスト5</li>
 <li>リスト6</li>
-</ul>
+</ol>
 
 
 <h2>リンク</h2>
@@ -270,41 +276,41 @@
 <table>
 <thead>
 <tr>
-<th align="left"> Left align </th>
-<th align="right"> Right align </th>
-<th align="center"> Center align</th>
+<th style="text-align:left;">Left align </th>
+<th style="text-align:right;"> Right align </th>
+<th style="text-align:center;"> Center align</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"> This       </td>
-<td align="right">        This </td>
-<td align="center">     This</td>
+<td style="text-align:left;">This       </td>
+<td style="text-align:right;">        This </td>
+<td style="text-align:center;">     This</td>
 </tr>
 <tr>
-<td align="left"> column     </td>
-<td align="right">      column </td>
-<td align="center">    column</td>
+<td style="text-align:left;">column     </td>
+<td style="text-align:right;">      column </td>
+<td style="text-align:center;">    column</td>
 </tr>
 <tr>
-<td align="left"> will       </td>
-<td align="right">        will </td>
-<td align="center">     will</td>
+<td style="text-align:left;">will       </td>
+<td style="text-align:right;">        will </td>
+<td style="text-align:center;">     will</td>
 </tr>
 <tr>
-<td align="left"> be         </td>
-<td align="right">          be </td>
-<td align="center">      be</td>
+<td style="text-align:left;">be         </td>
+<td style="text-align:right;">          be </td>
+<td style="text-align:center;">      be</td>
 </tr>
 <tr>
-<td align="left"> left       </td>
-<td align="right">       right </td>
-<td align="center">    center</td>
+<td style="text-align:left;">left       </td>
+<td style="text-align:right;">       right </td>
+<td style="text-align:center;">    center</td>
 </tr>
 <tr>
-<td align="left"> aligned    </td>
-<td align="right">     aligned </td>
-<td align="center">   aligned</td>
+<td style="text-align:left;">aligned    </td>
+<td style="text-align:right;">     aligned </td>
+<td style="text-align:center;">   aligned</td>
 </tr>
 </tbody>
 </table>
@@ -312,6 +318,7 @@
 </div>
 
 
+    <hr />
     <footer>
       <p class="meta">
         
@@ -328,6 +335,7 @@
 
 
 <time datetime="2003-04-07T02:25:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Apr 7<span>th</span>, 2003</time>
+        <span class="divider"></span>
         <span class="categories">
   
     
@@ -348,21 +356,77 @@
 
       </p>
       
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://hamasyou.github.io/blog/2003/04/07/style/" data-via="hamasyou" data-counturl="http://hamasyou.github.io/blog/2003/04/07/style/" >Tweet</a>
-  
-  
-  
+      
+
+
+<div class="sharing well">
+  <ul class="list-inline">
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2003/04/07/style/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2003/04/07/style/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2003/04/07/style/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2003/04/07/style/"></div>
+    </li>
+    
+    
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2003/04/07/style/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2003/04/07/style/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
 </div>
 
       
-      
+
       <ul class="pager">
         
-        <li><a href="/blog/archives">Archives</a></li>
         
       </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
     </footer>
   </article>
   
@@ -417,11 +481,34 @@
 <p>
   Copyright &copy; 2014 - hamasyou -
   <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
 </p>
 
 </footer>
   
-  <script type="text/javascript">
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js" rel="external nofollow"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js" rel="external nofollow"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-18255094-1']);
     _gaq.push(['_trackPageview']);
@@ -431,37 +518,35 @@
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-  </script>
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2003/04/07/style/';
+  var disqus_url = 'http://hamasyou.com/blog/2003/04/07/style/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
 
-
-
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" rel="external nofollow"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js" rel="external nofollow"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js" rel="external nofollow"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js" rel="external nofollow"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
-<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
 
 </body>
 </html>

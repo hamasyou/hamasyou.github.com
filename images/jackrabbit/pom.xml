@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hamasyou.jcr</groupId>
+  <artifactId>jackrabbit-demo</artifactId>
+  <version>0.0.1</version>
+  <description></description>
+
+  <repositories>
+  	<repository>
+  	  <id>magnolia</id>
+  	  <url>http://magnolia.sourceforge.net/m2repo</url>
+  	</repository>
+  </repositories> 
+      
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.jackrabbit</groupId>
+      <artifactId>jackrabbit-core</artifactId>
+      <version>1.0</version>
+    </dependency>  
+    <dependency>
+      <groupId>jsr170</groupId>
+      <artifactId>jcr</artifactId>
+      <version>1.0</version>
+    </dependency>    
+  </dependencies>  
+</project>

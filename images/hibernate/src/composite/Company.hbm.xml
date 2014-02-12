@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="jp.dip.xlegend.model.Company"
+        table="COMPANY"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="companyNo"
+            column="COMPANY_NO"
+            type="java.lang.Integer"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Company.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <component
+            name="address"
+            class="jp.dip.xlegend.model.Address"
+        >
+        <property
+            name="city"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CITY"
+            not-null="true"
+        />
+
+        <property
+            name="prefectural"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="PREFECTURAL"
+            not-null="true"
+        />
+
+        <property
+            name="zip"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ZIP"
+            not-null="true"
+        />
+
+        </component>
+
+        <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NAME"
+            not-null="true"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Company.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

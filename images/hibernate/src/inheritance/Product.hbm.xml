@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="jp.dip.xlegend.model.Product"
+        table="PRODUCT"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+        discriminator-value="0"
+    >
+
+        <id
+            name="productNo"
+            column="PRODUCT_NO"
+            type="java.lang.Integer"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Product.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <discriminator
+            column="CATEGORY"
+        />
+
+        <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NAME"
+            not-null="false"
+        />
+
+        <property
+            name="cost"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="COST"
+            not-null="true"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Product.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+        <subclass
+            name="jp.dip.xlegend.model.ElectricProduct"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="1"
+        >
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-ElectricProduct.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+        <subclass
+            name="jp.dip.xlegend.model.ClothingProduct"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="2"
+        >
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-ClothingProduct.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>

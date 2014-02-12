@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tag: スタイル | それはBooks]]></title>
-  <link href="http://hamasyou.github.io/blog/tags/sutairu/atom.xml" rel="self"/>
-  <link href="http://hamasyou.github.io/"/>
-  <updated>2014-02-12T09:04:32+09:00</updated>
-  <id>http://hamasyou.github.io/</id>
+  <link href="http://hamasyou.com/blog/tags/sutairu/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-12T18:37:59+09:00</updated>
+  <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[それはBooks スタイル一覧]]></title>
-    <link href="http://hamasyou.github.io/blog/2003/04/07/style/"/>
+    <link href="http://hamasyou.com/blog/2003/04/07/style/"/>
     <updated>2003-04-07T02:25:00+09:00</updated>
-    <id>http://hamasyou.github.io/blog/2003/04/07/style</id>
+    <id>http://hamasyou.com/blog/2003/04/07/style</id>
     <content type="html"><![CDATA[<p>自分用のエントリーです。</p>
 
 <p>それはBooks で使っているスタイルの意味を定義しておくページです。</p>
@@ -57,11 +57,8 @@
 
 <dl>
 <dt>これが説明・定義する言葉です</dt>
-<dd>
-ここに説明文を記述します。dd タグはブロック要素とインライン要素をとれるため、段落を含めてもかまいません。
-</dd>
+<dd>ここに説明文を記述します。dd タグはブロック要素とインライン要素をとれるため、段落を含めてもかまいません。</dd>
 </dl>
-
 
 <h2>箇条書き</h2>
 
@@ -70,11 +67,17 @@
 <ul>
 <li>リスト1</li>
 <li>リスト2</li>
-<li><p>リスト3</p></li>
-<li><p>リスト4</p></li>
+<li>リスト3</li>
+</ul>
+
+
+<p>順番が必要なとき</p>
+
+<ol>
+<li>リスト4</li>
 <li>リスト5</li>
 <li>リスト6</li>
-</ul>
+</ol>
 
 
 <h2>リンク</h2>
@@ -87,11 +90,10 @@
 
 <p>整形済みテキストには <em>pre</em> を使います。pre タグにはインライン要素しか含めることができないので、空行が入る場合には、スペースをひとつ含めるようにします。（これは Movable Type の改行を勝手に p タグにしてくれる機能を回避するため）</p>
 
-<p>```
-たとえば、こんな風に書く。</p>
+<pre><code>たとえば、こんな風に書く。
 
-<p>改行を含めるときは、空行にスペースを忘れずに！
-```</p>
+改行を含めるときは、空行にスペースを忘れずに！
+</code></pre>
 
 <p><section></p>
 
@@ -106,7 +108,7 @@
             <a href="#" class="terminal-deactivate">deactivate</a>
           </nav>
           <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>sudo su &ndash;</span></code></pre></td></tr></table></div></div>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>sudo su -</span></code></pre></td></tr></table></div></div>
         </div></p>
 
 <p></section></p>
@@ -115,22 +117,18 @@
 
 <h3>ソースコードのように見せるには</h3>
 
-<p>```java
-/<em>*
+<pre><code class="java">/**
  * This is a style test code.
  *
  * @author hamasyou
- </em>/
-public class HogeClass implements FooClass {</p>
+ */
+public class HogeClass implements FooClass {
 
-<p>  public String getMessage(BarClass fooBar) {</p>
-
-<pre><code>return "テストメッセージ";
-</code></pre>
-
-<p>  }
+  public String getMessage(BarClass fooBar) {
+    return "テストメッセージ";
+  }
 }
-```</p>
+</code></pre>
 
 <p></section></p>
 
@@ -139,41 +137,41 @@ public class HogeClass implements FooClass {</p>
 <table>
 <thead>
 <tr>
-<th align="left"> Left align </th>
-<th align="right"> Right align </th>
-<th align="center"> Center align</th>
+<th style="text-align:left;">Left align </th>
+<th style="text-align:right;"> Right align </th>
+<th style="text-align:center;"> Center align</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"> This       </td>
-<td align="right">        This </td>
-<td align="center">     This</td>
+<td style="text-align:left;">This       </td>
+<td style="text-align:right;">        This </td>
+<td style="text-align:center;">     This</td>
 </tr>
 <tr>
-<td align="left"> column     </td>
-<td align="right">      column </td>
-<td align="center">    column</td>
+<td style="text-align:left;">column     </td>
+<td style="text-align:right;">      column </td>
+<td style="text-align:center;">    column</td>
 </tr>
 <tr>
-<td align="left"> will       </td>
-<td align="right">        will </td>
-<td align="center">     will</td>
+<td style="text-align:left;">will       </td>
+<td style="text-align:right;">        will </td>
+<td style="text-align:center;">     will</td>
 </tr>
 <tr>
-<td align="left"> be         </td>
-<td align="right">          be </td>
-<td align="center">      be</td>
+<td style="text-align:left;">be         </td>
+<td style="text-align:right;">          be </td>
+<td style="text-align:center;">      be</td>
 </tr>
 <tr>
-<td align="left"> left       </td>
-<td align="right">       right </td>
-<td align="center">    center</td>
+<td style="text-align:left;">left       </td>
+<td style="text-align:right;">       right </td>
+<td style="text-align:center;">    center</td>
 </tr>
 <tr>
-<td align="left"> aligned    </td>
-<td align="right">     aligned </td>
-<td align="center">   aligned</td>
+<td style="text-align:left;">aligned    </td>
+<td style="text-align:right;">     aligned </td>
+<td style="text-align:center;">   aligned</td>
 </tr>
 </tbody>
 </table>
