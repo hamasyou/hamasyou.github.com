@@ -26,7 +26,7 @@ amazon_publisher: ""
 
 <p class="option">Template Methodパターンは、処理の流れがほとんど同じなんだけど、一部ちょっとだけ違うときに、その部分を入れ替えて使えるパターンです。</p>
 
-<img src="http://hamasyou.com/images/template_method/template_method.gif" alt="Template   Method のクラス図" />
+<img src="/images/template_method/template_method.gif" alt="Template   Method のクラス図" />
 
 うーん、ちょっと説明がわかりにくそうですね。このパターンが使われている例としては、<a href="http://allabout.co.jp/career/swengineer/closeup/CU20030525A/" rel="external nofollow">フレームワーク</a>があります。
 

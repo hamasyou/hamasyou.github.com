@@ -81,7 +81,7 @@ sprite.position = <span class="keyword">ccp</span>(<span class="literal">160</sp
 
 <h4>burst.png</h4>
 
-<img alt="missile.png" src="http://hamasyou.com/blog/archives/images/missile.png" width="64" height="8" class="mt-image-none" style="" />
+<img alt="missile.png" src="/images/missile.png" width="64" height="8" class="mt-image-none" style="" />
 
 <h4>burst.plist</h4>
 

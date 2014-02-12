@@ -26,7 +26,7 @@ Ruby on Rails で、ActiveRecord を使ってツリー関係の関連を定義�
 
 下のようなツリー関係のあるモデルを、<em>belongs_to</em>、<em>has_one</em>、<em>has_many</em> を使って表す方法のメモです。
 
-<img alt="スクリーンショット（2010-11-20 0.58.43）2.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-20%200.58.43%EF%BC%892.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-11-20 0.58.43）2.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-20%200.58.43%EF%BC%892.png" width="693" class="mt-image-none" style="" />
 
 <h3>モデルの説明</h3>
 

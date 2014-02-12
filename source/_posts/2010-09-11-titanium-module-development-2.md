@@ -110,7 +110,7 @@ iOS SDK を4.1にバージョンアップした場合、titanium コマンドで
 
 その場合、「プロジェクト - プロジェクト設定を編集」を開いて、「ベースSDK」の値を 「iOS デバイス 4.1」に変更するとよい。
 
-<img alt="スクリーンショット（2010-09-11 10.47.15）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.47.15%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-09-11 10.47.15）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.47.15%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 </section>
 
@@ -136,7 +136,7 @@ iOS SDK を4.1にバージョンアップした場合、titanium コマンドで
 
 <pre>[INFO] module is => [object ComHamasyouModule]</pre>
 
-<img alt="スクリーンショット（2010-09-11 10.54.53）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.54.53%EF%BC%89.png" width="414" height="770" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-09-11 10.54.53）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.54.53%EF%BC%89.png" width="414" height="770" class="mt-image-none" style="" />
 
 <h2>既存クラスを継承する</h2>
 
@@ -146,9 +146,9 @@ iOS SDK を4.1にバージョンアップした場合、titanium コマンドで
 
 ファイル名は「<em>モジュール名 + クラス名 + View</em>」という規約で作成する必要がある。今回は、ComHamasyouMyWebView.m と入力した。ファイルの保存場所を Classes 以下にし忘れないようにして View クラスを作成する。
 
-<img alt="スクリーンショット（2010-09-11 10.56.29）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.56.29%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-09-11 10.56.29）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.56.29%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
-<img alt="スクリーンショット（2010-09-11 10.58.12）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.58.12%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-09-11 10.58.12）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.58.12%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 <h3>ComHamasyouMyWebView に TiUIWebView を継承させる</h3>
 
@@ -175,13 +175,13 @@ iOS SDK を4.1にバージョンアップした場合、titanium コマンドで
 
 Objective-C のコードと JavaScript のコードを橋渡しする Proxy クラスを作成する。「ファイル - 新規ファイル」から TiViewProxy を選択する。
 
-<img alt="スクリーンショット（2010-09-11 11.05.46）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.05.46%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-09-11 11.05.46）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.05.46%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 ファイル名は View と同じように「<em>モジュール名 + クラス名 + ViewProxy</em>」とする必要がある。今回は、ComHamasyouMyWebViewProxy とした。保存場所を Classes 以下にすることを忘れずに。
 
-<img alt="スクリーンショット（2010-09-11 11.06.02）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.06.02%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-09-11 11.06.02）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.06.02%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
-<img alt="スクリーンショット（2010-09-11 11.08.13）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.08.13%EF%BC%89.png" width="506" height="388" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-09-11 11.08.13）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.08.13%EF%BC%89.png" width="506" height="388" class="mt-image-none" style="" />
 
 <h3>example/app.js を変更して、作ったモジュールをテストする</h3>
 
@@ -204,7 +204,7 @@ window.open();</pre>
 
 ここまでできたら、再度 titanium run コマンドを実行してみる。iPhone シミュレータ上で Web ページが表示されれば無事に、TiUIWebView　を継承した自分のモジュールが呼び出されている。
 
-<img alt="スクリーンショット（2010-09-11 11.11.53）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.11.53%EF%BC%89.png" width="414" height="770" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-09-11 11.11.53）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.11.53%EF%BC%89.png" width="414" height="770" class="mt-image-none" style="" />
 
 あとは、好きなように拡張していけばよい。
 

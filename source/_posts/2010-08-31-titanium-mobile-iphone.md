@@ -35,7 +35,7 @@ iPhone アプリを JavaScript で開発できるというこの Titanium は、
 
 Titanium Desktop の方には興味ないので、以下 Titanium と言ったら Titanium Mobile のことです。早速 <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow">Titanium Mobile - appcelerator</a> でダウンロードします。
 
-<img alt="appcelerator_titanium.jpg" src="http://hamasyou.com/blog/archives/images/appcelerator_titanium.jpg" width="693" class="mt-image-none" style="" />
+<img alt="appcelerator_titanium.jpg" src="/images/appcelerator_titanium.jpg" width="693" class="mt-image-none" style="" />
 
 <h3>iPhone アプリ開発には iPhone SDK が必要</h3>
 

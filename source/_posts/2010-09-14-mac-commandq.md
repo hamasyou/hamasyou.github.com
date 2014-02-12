@@ -27,4 +27,4 @@ Mac のショートカットに、Command + Q でアプリケーションを閉�
 
 メニュータイトルのところが肝で、これは、アプリケーションの終了コマンドのメニュータイトルと一致させる必要があります。ほとんどのアプリケーションが「アプリケーション名」+ 「空白」+「を終了」になっているはずです。
 
-<img alt="スクリーンショット（2010-09-14 11.43.39）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-14%2011.43.39%EF%BC%89.png" width="447" height="221" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-09-14 11.43.39）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-14%2011.43.39%EF%BC%89.png" width="447" height="221" class="mt-image-none" style="" />

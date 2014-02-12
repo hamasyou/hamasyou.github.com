@@ -46,11 +46,11 @@ Xcode には 単体テスト（<em>OCUnit</em>）用の <em>SenTestingKit</em> �
 
 まずは、iPhone アプリ開発用のプロジェクトを作成します。すでにプロジェクトがある場合にはそれを使います。
 
-<img alt="スクリーンショット（2010-10-19 16.40.39）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.40.39%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-10-19 16.40.39）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.40.39%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 プロジェクト名は OCUnitDemo としました。
 
-<img alt="スクリーンショット（2010-10-19 16.43.25）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.43.25%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-10-19 16.43.25）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.43.25%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 ここでビルドしてみて、エラーがでないことを確かめます。
 
@@ -58,7 +58,7 @@ Xcode には 単体テスト（<em>OCUnit</em>）用の <em>SenTestingKit</em> �
 
 つぎに、テスト用のターゲットを作成します。「プロジェクト」→「新規ターゲット」をたどり <em>Unit Test Bundle</em> を選びます。
 
-<img alt="スクリーンショット（2010-10-19 16.45.39）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.45.39%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-10-19 16.45.39）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.45.39%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 ターゲット名はなんでもよいのですが、ここでは UnitTest としました。
 
@@ -68,7 +68,7 @@ Xcode には 単体テスト（<em>OCUnit</em>）用の <em>SenTestingKit</em> �
 
 Finder でプロジェクトのフォルダを開き TestCases というフォルダを作成します。
 
-<img alt="スクリーンショット（2010-10-19 17.03.41）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.03.41%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-10-19 17.03.41）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.03.41%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 Xcode に戻って左のツリーの最初にあるプロジェクトアイコン（OCUnitDemo）を右クリックして「追加」→「既存のファイル」をクリックして今作った TestCases を選択します。
 
@@ -76,7 +76,7 @@ Xcode に戻って左のツリーの最初にあるプロジェクトアイコ�
 
 また、<em>「ターゲットに追加」で UnitTest にのみチェックが入っている状態にします。</em>
 
-<img alt="スクリーンショット（2010-10-19 17.07.14）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.07.14%EF%BC%89.png" width="438" height="403" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-10-19 17.07.14）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.07.14%EF%BC%89.png" width="438" height="403" class="mt-image-none" style="" />
 
 <h3>手順4 - テストクラスを作成する</h3>
 
@@ -84,13 +84,13 @@ Xcode に戻って左のツリーの最初にあるプロジェクトアイコ�
 
 ファイル名はなんでもよいです。ここでは FirstTest.m としました。保存場所が TestCases、ターゲットが UnitTest になっていることを確認して作成します。
 
-<img alt="スクリーンショット（2010-10-19 17.09.03）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.09.03%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-10-19 17.09.03）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.09.03%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 ここまでできたら、一度ビルドしてみます。「ビルド」→「ビルド」をクリックしてみます。
 
 おそらくエラーが3件（もしくは2件）、警告が1件でるはずです。次はこれを直していきます。
 
-<img alt="スクリーンショット（2010-10-19 17.14.21）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.14.21%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-10-19 17.14.21）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.14.21%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 <p class="option">エラーのうち、1件はテストのエラー、2件（もしくは1件）は Xcode3.2.4 で iOS4.1 以上を使っている場合にでるエラーになります。警告はガーベージコレクションが無効になっていることを示すもののはずです。</p>
 
@@ -175,7 +175,7 @@ UIKit に関する #import 文も削除しました。
 
 ファイルをダウンロードまたは、中身をコピーして、TestCases の下にソースコードとして追加します。追加後のツリーはこんな感じになります。
 
-<img alt="スクリーンショット（2010-10-19 17.34.12）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.34.12%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-10-19 17.34.12）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.34.12%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 おそらく、Xcode のバージョンアップでそのうち直ると思いますが、それまではこの対応が必要になりそうです。
 
@@ -189,7 +189,7 @@ UIKit に関する #import 文も削除しました。
 <li>&quot;${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests&quot; の行の最後に 1&gt; /dev/null を追記します</li>
 </ol>
 
-<img alt="スクリーンショット（2010-11-06 12.15.47）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-06%2012.15.47%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-11-06 12.15.47）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-06%2012.15.47%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 <h4>参考</h4>
 
@@ -199,11 +199,11 @@ UIKit に関する #import 文も削除しました。
 
 ここまでできたらビルドしてみます。エラーがなくなればテストが上手く通ったことになります。
 
-<img alt="スクリーンショット（2010-10-19 17.35.58）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.35.58%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-10-19 17.35.58）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.35.58%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 FirstTest.m の testMath メソッドの中身を変えて、テストが失敗するようにしてビルドを行うと、エラーが発生することを確認します。エラーがきちんと発生していればテスト環境が整ったことになります。
 
-<img alt="スクリーンショット（2010-10-19 17.36.27）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.36.27%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-10-19 17.36.27）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.36.27%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 あとは、テスト対象のクラスをごにょごにょしたりして単体テストを満喫すれば良いと思います。
 
@@ -215,7 +215,7 @@ UnitTest ターゲットを作ってテストケースクラスはこっちに�
 
 UnitTest ターゲット側でテスト対象のクラスを見えるようにするには、テスト対象のクラスを UnitTest ターゲットの[ソースをコンパイル] のフェーズにドラッグ＆ドロップして追加する必要があります。
 
-<img alt="スクリーンショット（2010-11-06 15.58.45）.png" src="http://hamasyou.com/blog/archives/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-06%2015.58.45%EF%BC%89.png" width="693" class="mt-image-none" style="" />
+<img alt="スクリーンショット（2010-11-06 15.58.45）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-06%2015.58.45%EF%BC%89.png" width="693" class="mt-image-none" style="" />
 
 <h3>（おまけ？）手順9 - UnitTest ターゲットの設定変更</h3>
 

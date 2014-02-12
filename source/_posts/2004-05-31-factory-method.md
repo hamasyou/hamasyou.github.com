@@ -29,7 +29,7 @@ amazon_publisher: ""
 <p class="option">Factory Methodパターンは、生成するインスタンスの種類が多くなりそうな場合に、
 インスタンス生成の責務を外に切り出して、保守性を高めるパターンです。</p>
 
-<img src="http://hamasyou.com/images/factory_method/factory_method.gif" alt="Factory   Methodのクラス図" />
+<img src="/images/factory_method/factory_method.gif" alt="Factory   Methodのクラス図" />
 
 例えば、ショッピングサイトシステムを作っているとしましょう。このショッピングサイトでは、現在では5種類の商品しか販売していないのですが、この先商品の種類が増える可能性があります。しかし、どのような種類の商品が増えるかはわかりません。
 
@@ -103,7 +103,7 @@ Factory Methodパターンの実装方法をもっと詳しく知りたい場合
 
 + Open/Closed Principleについての解説
 
-<img src="http://hamasyou.com/images/img-link.gif"   align="middle" /><a href="http://homepage3.nifty.com/masarl/article/dp-ocp-2.html" rel="external nofollow">Open-Closed Principle とデザインパターン</a>
+<img src="/images/img-link.gif"   align="middle" /><a href="http://homepage3.nifty.com/masarl/article/dp-ocp-2.html" rel="external nofollow">Open-Closed Principle とデザインパターン</a>
 
 + デザインパターンのお勧め書籍
 

@@ -28,7 +28,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 <p class="option">Decoratorパターンは、既存のクラスに機能を付け加えたい場合、
 既存機能に、少しだけ修飾を加えたい場合に使われるパターンです。</p>
 
-<img src="http://hamasyou.com/images/design_pattern/decorator.gif" alt="Decoratorのクラス図" />
+<img src="/images/design_pattern/decorator.gif" alt="Decoratorのクラス図" />
 
 Javaのクラスライブラリの例として、java.ioパッケージが最初に思い浮かびます。Javaには入出力(I/O)機能として、java.ioパッケージが用意されています。ファイルから一行ずつ読み取り、行番号をつけてファイルに書き込むという処理があるとします。
 

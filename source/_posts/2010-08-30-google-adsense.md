@@ -47,7 +47,7 @@ amazon_publisher: ""
 
 なので、検索結果画面のデザインを用意しておいて、結果表示部分をこいつに置き換えてやれば、デザインはほとんどそのままで結果をサイト内に表示すると言うことが出来ます。
 
-<img alt="GoogleAds_Screen.jpg" src="http://hamasyou.com/blog/archives/images/GoogleAds_Screen.jpg" width="639px" class="mt-image-none" style="" />
+<img alt="GoogleAds_Screen.jpg" src="/images/GoogleAds_Screen.jpg" width="639px" class="mt-image-none" style="" />
 
 <h3>どういう仕組みでやってるの？</h3>
 

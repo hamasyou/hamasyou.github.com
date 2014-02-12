@@ -29,7 +29,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 難しい言い方をすると、「全体-部分」のモデルを同一視するパターンといえます。
 
-<img src="http://hamasyou.com/images/design_pattern/composite.gif" alt="Compositeのクラス図" />
+<img src="/images/design_pattern/composite.gif" alt="Compositeのクラス図" />
 
 よくある例として、Windowsのフォルダとファイルがあります。フォルダが「全体」を表し、ファイルが「部分」を表します。フォルダの中にはまたフォルダがあり、その中にはまたフォルダがある...というような再起構造も持っています。
 
