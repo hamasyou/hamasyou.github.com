@@ -9,15 +9,30 @@ single: true
   <article class="hentry col-md-9" role="article">
   {% endif %}
   {% include article.html %}
+    <hr />
     <footer>
       <p class="meta">
         {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
+        <span class="divider"></span>
         {% include post/categories.html %}
         {% include post/tags.html %}
       </p>
       {% unless page.sharing == false %}
       {% include post/sharing.html %}
       {% endunless %}
+
+      <ul class="pager">
+        {% if page.previous.url %}
+        <li class="previous"><a class="basic-alignment left"
+                                href="{{page.previous.url}}" title="Previous Post:
+      {{page.previous.title}}"><i class="fa fa-arrow-circle-left"></i> {{ page.previous.title | truncate:26 }}</a></li>
+        {% endif %}
+        {% if page.next.url %}
+        <li class="next"><a class="basic-alignment right" href="{{page.next.url}}"
+                            title="Next Post: {{page.next.title}}">{{ page.next.title | truncate:26 }} <i class="fa fa-arrow-circle-right"></i></a></li>
+        {% endif %}
+      </ul>
+
       {% if site.disqus_short_name and page.comments == true %}
       <section>
         <h1>Comments</h1>
@@ -25,18 +40,6 @@ single: true
         <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
       </section>
       {% endif %}
-      <ul class="pager">
-        {% if page.previous.url %}
-        <li class="previous"><a class="basic-alignment left"
-                                href="{{page.previous.url}}" title="Previous Post:
-      {{page.previous.title}}">&laquo; {{ page.previous.title | truncate:26 }}</a></li>
-        {% endif %}
-        {% if page.next.url %}
-        <li class="next"><a class="basic-alignment right" href="{{page.next.url}}"
-                            title="Next Post: {{page.next.title}}">{{ page.next.title | truncate:26 }}
-          &raquo;</a></li>
-        {% endif %}
-      </ul>
     </footer>
   </article>
   {% unless page.sidebar == false %}

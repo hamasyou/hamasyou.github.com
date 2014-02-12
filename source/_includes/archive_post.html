@@ -2,6 +2,7 @@
 <h2 class="h3"><a href="{{ root_url }}{{ post.url }}">{{post.title}}</a></h2>
 <footer>
   {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
+  <span class="divider"></span>
   {% include post/categories.html %}
   {% include post/tags.html %}
 </footer>

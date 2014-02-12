@@ -19,7 +19,12 @@
     </ul>
 
     {% if site.simple_search %}
-    {% include google_search.html %}
+    <form class="pull-right navbar-form navbar-search" action="{{ site.simple_search }}" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:{{ site.url | shorthand_url }}" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
     {% endif %}
 
   </div>

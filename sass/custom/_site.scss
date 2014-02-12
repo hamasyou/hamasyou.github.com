@@ -1,8 +1,13 @@
-
 @import "sharing";
 
 #scroll-to-top {
   padding-right: 30px;
+}
+
+span.divider:before {
+  content: '\00a0|\00a0';
+  padding: 0 5px;
+  color: lighten(#000, 80%);
 }
 
 // Containers =================================================================
@@ -62,7 +67,6 @@
   max-width: 224px;
   height: auto;
 }
-
 
 .link_btn {
   background-color: $navbar-inverse-bg;

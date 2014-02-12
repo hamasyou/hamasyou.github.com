@@ -32,31 +32,29 @@ Titanium 1.6.1 で動かない問題は、<a href="http://twitter.com/Seasons" r
 
 <a href="http://d.hatena.ne.jp/Seasons/" rel="external nofollow">Seasons.NET</a>
 
-{% blockquote  %}
-<p><site>twitter より</site></p>
-{% endblockquote %}
-
 </section>
 
 <h3>サンプルコード</h3>
 
-<pre class="code">Titanium.include(Titanium.App.appURLToPath(<span class="str">&quot;app://lib/jsdeferred.js&quot;</span>));
+```javascript
+Titanium.include(Titanium.App.appURLToPath("app://lib/jsdeferred.js"));
 Deferred.define();
- 
-<span class="keyword">var</span> currentLocation = <span class="keyword">null</span>;
-(<span class="keyword">function</span>() {
-  <span class="keyword">var</span> deferred = <span class="keyword">new</span> Deferred();
-  Titanium.Geolocation.addEventListener(<span class="str">&quot;location&quot;</span>, <span class="keyword">function</span>(e) {
+
+var currentLocation = null;
+(function() {
+  var deferred = new Deferred();
+  Titanium.Geolocation.addEventListener("location", function(e) {
     currentLocation = e.coords;
     deferred.call();
   });
-  <span class="keyword">return</span> deferred;
+  return deferred;
 })().
-next(<span class="keyword">function</span>() {
+next(function() {
   alert(currentLocation);
 });
- 
-alert(<span class="str">&quot;ここは必ずしも、alert(currentLocation)の後に呼び出されるとはかぎらない!&quot;</span>);</pre>
+
+alert("ここは必ずしも、alert(currentLocation)の後に呼び出されるとはかぎらない!");
+```
 
 alert(currentLocation) としているところに現在位置を取得した後のコードを記述することで、現在位置を取得して何か処理をするというのを順序を保証して処理することができるようになります。
 
@@ -70,7 +68,9 @@ alert(currentLocation) としているところに現在位置を取得した後
 
 <h3>Titanium で include でファイルを読むときのテクニック</h3>
 
-<pre class="code">Titanium.include(Titanium.App.appURLToPath(<span class="str">&quot;app://lib/jsdeferred.js&quot;</span>));</pre>
+```javascript
+Titanium.include(Titanium.App.appURLToPath("app://lib/jsdeferred.js"));
+```
 
 上記の様に、 app: プロトコルを使用して、appURLToPath メソッドでファイルを読み込むことで、Titanium のResources フォルダからの相対パスで書けるようになります。
 

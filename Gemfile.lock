@@ -26,6 +26,8 @@ GEM
       syntax (>= 1.0.0)
     mustache (0.99.5)
     posix-spawn (0.3.6)
+    puma (2.7.1)
+      rack (>= 1.1, < 2.0)
     pygments.rb (0.3.4)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
@@ -59,6 +61,7 @@ DEPENDENCIES
   jekyll (~> 0.12)
   liquid (~> 2.3.0)
   mustache
+  puma
   pygments.rb (~> 0.3.4)
   rake (~> 0.9)
   rb-fsevent (~> 0.9)

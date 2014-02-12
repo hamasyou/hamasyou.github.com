@@ -48,33 +48,35 @@ Rails で使う場合は次のようにします。
 
 <h2>サンプルソースコード</h2>
 
-<pre class="code">require <span class="str">&quot;mail&quot;</span>
- 
-Mail.defaults <span class="keyword">do</span>
-  retriever_method :imap, {<span class="symbol">:address</span> =&gt; <span class="str">&quot;imap.gmail.com&quot;</span>,
-                           <span class="symbol">:port</span> =&gt; <span class="num">993</span>,
-                           <span class="symbol">:user_name</span> =&gt; <span class="str">&quot;&lt;mailaddress@domain.com&gt;&quot;</span>,
-                           <span class="symbol">:password</span> =&gt; <span class="str">&quot;&lt;password&gt;&quot;</span>,
-                           <span class="symbol">:enable_ssl</span> =&gt; <span class="keyword">true</span>}
-<span class="keyword">end</span>
- 
-Mail.all(<span class="symbol">:delete_after_find</span> =&gt; <span class="keyword">true</span>).each <span class="keyword">do</span> |email|
-  <span class="keyword">begin</span>
-    <span class="keyword">if</span> !email.attachments.blank?
-      subject = email.subject   <span class="rem"># =&gt; 件名（日本語可OK） UTF-8 で取得できる</span>
-      body = email.parts[<span class="num">0</span>].body.to_s.encode(<span class="str">&quot;UTF-8&quot;</span>, <span class="str">&quot;ISO-2022-JP&quot;</span>)    <span class="rem"># =&gt; 本文は UTF-8 に変換する必要がある</span>
-      from = email[<span class="symbol">:from</span>]       <span class="rem"># =&gt; &quot;\&quot;濱田 章吾\&quot; hamasyou@gmail.com&quot;</span>
+```ruby
+require "mail"
+
+Mail.defaults do
+  retriever_method :imap, {:address => "imap.gmail.com",
+                           :port => 993,
+                           :user_name => "<mailaddress@domain.com>",
+                           :password => "<password>",
+                           :enable_ssl => true}
+end
+
+Mail.all(:delete_after_find => true).each do |email|
+  begin
+    if !email.attachments.blank?
+      subject = email.subject   # => 件名（日本語可OK） UTF-8 で取得できる
+      body = email.parts[0].body.to_s.encode("UTF-8", "ISO-2022-JP")    # => 本文は UTF-8 に変換する必要がある
+      from = email[:from]       # => "\"濱田 章吾\" hamasyou@gmail.com"
       sent_at = email.date
-      email.attachments.each <span class="keyword">do</span> |attachment|
-        tmp = File.new(<span class="str">&quot;tmp/photos/#{attachment.filename}&quot;</span>, <span class="str">&quot;wb&quot;</span>)
-        tmp &lt;&lt; attachment.read.force_encoding(<span class="str">&quot;UTF-8&quot;</span>)
+      email.attachments.each do |attachment|
+        tmp = File.new("tmp/photos/#{attachment.filename}", "wb")
+        tmp << attachment.read.force_encoding("UTF-8")
         tmp.close
-      <span class="keyword">end</span>
-    <span class="keyword">end</span>
-  <span class="keyword">rescue</span> =&gt; ignore
-    p <span class="str">&quot;[error]:&quot;</span> + ignore.to_s
-  <span class="keyword">end</span>
-<span class="keyword">end</span></pre>
+      end
+    end
+  rescue => ignore
+    p "[error]:" + ignore.to_s
+  end
+end
+```
 
 ここでは、マルチパートの場合メールのパートの最初に本文があることを決め打ちしています。また、メールのエンコーディングが ISO-2022-JP であることも決め打ちしています。
 

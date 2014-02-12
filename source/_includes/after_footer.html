@@ -1,5 +1,6 @@
 {% include custom/after_footer.html %}
 
+<link href="{{ root_url }}/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" rel="external nofollow"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js" rel="external nofollow"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js" rel="external nofollow"></script>
@@ -14,7 +15,9 @@
   a = function (u, i) {
     if (!d.getElementById(i)) {
       j = d.createElement('script');
+      j.type = 'text/javascript';
       j.src = u;
+      j.async = true;
       if (i) {j.id = i;}
       s.parentNode.insertBefore(j, s);
     }
