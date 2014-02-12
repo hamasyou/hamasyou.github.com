@@ -89,6 +89,90 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2004/11/06/spring-framework-mvc/">Spring Framework 覚書き - MVCフレームワーク</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-11-06T14:00:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 6<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/spring/">Spring</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2004/11/06/spring-framework-mvc/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow"></a>
+</p>
+
+
+<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow"></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
+
+<p>Springは MVCフレームワークを提供しています。Springのフレームワークは、すべてインターフェースベースになっているので、単一継承の JAVA にとっては非常にありがたいものです。Spring MVC の View には、JSP の他、Velocity、XSLT、JSFなどといったさまざまな技術が使えます。</p>
+
+<p>Validation 機能は、Web システムにとって非常に重要なものとなっています。Springでは、 Validation は Web パッケージと切り離されているので、単体テストも簡単に出来るようになっています。</p>
+
+<p>Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
+
+<p><section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow">Spring Pad - Wiki</a></p>
+
+<p><a href="http://direct.idg.co.jp/detail_1.msp?id=1066&class=10005&n=2" rel="external nofollow">JavaWorld 7月号 2004年</a></p>
+
+<p></section></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2004/11/06/spring-framework-mvc/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2004/11/04/spring-framework/">Spring Framework 覚書き - トランザクション管理</a></h1>
     
     
@@ -787,77 +871,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/12/ant/">Antを勉強する</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-10-12T16:00:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 12<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/ant/">Ant</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/10/12/ant/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774120006/sorehabooks-22" rel="external nofollow"></a>
-</p>
-
-
-<p>Antはビルドツールです。OSや環境に依存しないビルドツールということで幅広く使われています。</p>
-
-<p>個人的にAntを使う理由というのは、ビルド以外のいろんな設定が簡単に出来ることです。例えば、環境ごとに異なった設定ファイルを作りたいときに、ベースとなるファイルを一つ用意するだけで、Filterという機能を使って設定ファイルの内容を変化させることが出来ます。</p>
-
-<p>他にも、JUnitを使ったときに、Reportを自動で生成する機能や、Webアプリケーション用のwarファイルを作りそのままデプロイしたりと、色々なことが連続的に出来るのが気に入っています。作業と作業の間に人の手を入れずに実行できるので、作業忘れが発生しないというのが特徴です。　</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2004/10/12/ant/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/20/">&larr; Older</a></li>
@@ -894,6 +907,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
       </li>
     
@@ -917,10 +934,6 @@
         <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/02/05/482228493X/">世界でもっとも強力な9のアルゴリズム</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -928,7 +941,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">94</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

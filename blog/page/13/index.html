@@ -89,6 +89,89 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2005/10/22/jsf/">JSF-カスタムコンポーネント覚書き</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-10-22T13:44:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 22<span>nd</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/jsf/">JSF</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/10/22/jsf/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/249-1404088-2131559?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow"></a>
+</p>
+
+
+<p>JSFでカスタムコンポーネントを作るときの覚書きです。参考にした『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/249-1404088-2131559?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow">JavaServer Faces完全ガイド</a>』は、ツリーコンポーネントをカスタムコンポーネントとして作る手順が載っていました。</p>
+
+<p>ここでは、カスタムコンポーネントを作るときに必要となるパーツと、注意点などをまとめておこうと思います。カスタムコンポーネントは大きく、入力用のコンポーネントと出力用のコンポーネントの2つに分けれます。入力用のコンポーネントはリクエスト間で値の保存・読み込みやデコードレンダリングなどを行わなければなりません。出力用のコンポーネントの場合は、値を保持し、エンコードレンダリングを行うことで機能を表現します。</p>
+
+<p>ここでは、出力用のコンポーネントの話をしています。説明が断片的なので、上記の本を読んだほうが手っ取り早いかも・・・ ^^;</p>
+
+<p><section></p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.wakhok.ac.jp/~tomoharu/jsf2004/text/index_c11.html" rel="external nofollow">JSFによるWebアプリケーション開発/カスタム・コンポーネント</a></li>
+</ul>
+
+
+<p></section></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2005/10/22/jsf/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2005/10/09/4839915946/">プログラミングの心理学―または、ハイテクノロジーの人間学</a></h1>
     
     
@@ -733,79 +816,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/07/23/4873112141/">Java 5.0 Tiger 開発者ノートシリーズ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2005-07-23T11:23:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jul 23<span>rd</span>, 2005</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
-    
-      <a class="tag label label-info" href="/blog/tags/jdk/">JDK</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2005/07/23/4873112141/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Javaの最後の言語拡張と言われている「<strong>Java5.0</strong>」通称「<strong>Tiger</strong>」がついに登場しました。Tigerは言語仕様そのものが拡張されています。本書は、この拡張された仕様に関しての解説書になっています。</p>
-
-<p>内容はさすがオライリーと言う感じです。深く説明されているし、注意する点も抜け目なく解説しています。例えばこんなものがあります。</p>
-
-<blockquote><p>Enum を実装する場合、toString()の振る舞いを変更したらvalueOf()の振る舞いも変更する必要がある。この２つのメソッドは常にペアの鏡像になる。</p><footer><strong>本書</strong></footer></blockquote>
-
-
-<p>この記事を書いている現在(2005/07/23)、本書が一番薄くて一番内容が濃いように思いました。本書の後半にあるスレッド処理の章を読んで、「なんか深いな」と感じました。</p>
-
-<p>Java5.0がどんなものか知りたい人、業務でJava5.0を使う人、いろんな人におすすめです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2005/07/23/4873112141/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/14/">&larr; Older</a></li>
@@ -842,6 +852,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
       </li>
     
@@ -865,10 +879,6 @@
         <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/02/05/482228493X/">世界でもっとも強力な9のアルゴリズム</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -876,7 +886,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">94</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

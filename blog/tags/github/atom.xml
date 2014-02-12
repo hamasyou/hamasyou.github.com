@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: GitHub | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/github/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-12T19:22:37+09:00</updated>
+  <updated>2014-02-12T20:14:31+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[GitHubとOctopressで始める無料ブログ]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/12/github-octopress/"/>
+    <updated>2014-02-12T19:33:48+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/12/github-octopress</id>
+    <content type="html"><![CDATA[<p>長いもので、hamasyou.com を初めてから9年経ちました。何年かに一回ブログのデザインを更新したくなるのって普通ですよね。</p>
+
+<p>今までずっと <em>MovableType</em> を使っていたんですが、markdown で書きたくなったのと、MovableType のデザインのいじり方を忘れてしまったため、ブログ環境を一新する決意をしました。</p>
+
+<p>今回作ったブログ環境は次のとおり。</p>
+
+<dl>
+<dt>公開用のサーバ</dt>
+<dd><a href="http://pages.github.com/" rel="external nofollow">GitHub Pages</a></dd>
+<dt>ブログ編集用のCMS</dt>
+<dd>ローカルマシン上に <a href="http://octopress.org/" rel="external nofollow">Octopress</a> で構築</dd>
+</dl>
+
+<!-- more -->
+
+
+<h2>GitHub Pages とは</h2>
+
+<p><a href="http://pages.github.com/" rel="external nofollow"><img title="GitHub Pages" class="img-thumbnail" src="http://hamasyou.com/images/2014-02-12-github-octopress.png" alt="http://pages.github.com/" width="400" height="310" /></a></p>
+
+<p>GitHub Pages とは簡単に言うと GitHub のリポジトリを Web サーバとして利用できるサービスです。リポジトリに HTML ファイルをプッシュすると公開される仕組みです。</p>
+
+<p>これがなかなかよく出来ていて、静的ページしか使えませんが、404ページの設定や DNS の CNAME の設定なんかもできます。</p>
+
+<p>リポジトリ名がサイトのホスト名になります（例: <code>http://hamasyou.github.io</code>）。ドメインを取得すれば当然、独自ドメインで運用するなんてことも可能です。</p>
+
+<h2>Octopress とは</h2>
+
+<p><a href="http://octopress.org/" rel="external nofollow"><img title="Octopress" class="img-thumbnail" src="http://capture.heartrails.com/400x300?http://octopress.org/" alt="http://octopress.org/" width="400" height="300" /></a></p>
+
+<p>Octopress は Ruby 用の GitHub Pages スターターキットです。内部で <code>Jekyll</code> や <code>rdiscount</code> を使っていて、簡単に GitHub Pages を利用する環境が構築できて、markdown ですぐに記事を書き始められます。</p>
+
+<p>Octopress の詳しい使い方は <a href="http://morizyun.github.io/blog/octopress-gitpage-minimum-install-guide/" rel="external nofollow">OctopressでGitHub無料ブログ構築。sourceをBitbucket管理。簡単ガイド！ - 酒と泪とRubyとRailsと</a> が参考になります。</p>
+
+<p>Octopress には様々なテーマが用意されていて、うちのサイトもテーマを使っています。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[GitHub で複数アカウントを使う]]></title>
