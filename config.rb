@@ -17,7 +17,3 @@ fonts_dir                  = "source/fonts"
 
 line_comments = false
 output_style  = :compressed
-
-not_found do
-  send_sinatra_file('404.html') { "Sorry, I cannot find #{request.path}" }
-end

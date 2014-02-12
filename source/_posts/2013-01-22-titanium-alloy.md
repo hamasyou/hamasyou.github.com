@@ -3,7 +3,7 @@ layout: post
 title: "Titanium Alloy でつくったアプリをリリースしました"
 date: 2013-01-22 11:22
 comments: true
-categories: [Blg]
+categories: [Blog]
 keywords: "Titanium, Alloy, mobile, iPhone, Android, Obento, お弁当"
 tags: [Alloy,Android,iPhone,Titanium,アプリ]
 author: hamasyou

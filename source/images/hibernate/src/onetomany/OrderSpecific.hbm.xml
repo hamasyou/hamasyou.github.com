@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="jp.dip.xlegend.model.OrderSpecific"
+        table="ORDER_SPECIFIC"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <composite-id
+            name="specificId"
+            class="jp.dip.xlegend.model.type.OrderSpecificID"
+        >
+                     <key-property
+                        name="orderNo"
+                        type="java.lang.Integer"
+                        column="ORDER_NO"
+                />
+
+                     <key-property
+                        name="specificNo"
+                        type="java.lang.Integer"
+                        column="SPECIFIC_NO"
+                />
+
+        </composite-id>
+
+        <property
+            name="money"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONEY"
+            not-null="true"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-OrderSpecific.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

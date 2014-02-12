@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="jp.dip.xlegend.model.Employee"
+        table="EMPLOYEE"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="empNo"
+            column="EMP_NO"
+            type="java.lang.Integer"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Employee.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NAME"
+            not-null="true"
+        />
+
+        <set
+            name="projects"
+            table="PROJECT_ASSIGN"
+            lazy="true"
+            inverse="false"
+            cascade="all"
+            sort="unsorted"
+        >
+
+              <key
+                  column="EMP_NO"
+              >
+              </key>
+
+              <many-to-many
+                  class="jp.dip.xlegend.model.Project"
+                  column="PROJECT_NO"
+                  outer-join="auto"
+               />
+
+        </set>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Employee.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>
