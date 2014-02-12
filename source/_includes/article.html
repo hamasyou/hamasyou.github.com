@@ -29,5 +29,5 @@
   {% endif %}
 {% else %}
 {% include custom/post/amazon.html %}
-<div class="entry-content">{{ content }}</div>
+<div class="entry-content">{{ content | inject_adsense }}</div>
 {% endif %}
