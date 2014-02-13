@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Java | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/java/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-13T17:32:28+09:00</updated>
+  <updated>2014-02-13T17:48:14+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -78,20 +78,7 @@
 
 <p>また、ちょっと隙を見せるとあっという間にバグに包まれてしまう、そんな問題も多くあります。例えば、次の問題なんか、わかっているのに引っかかってしまうような問題ではないでしょうか？</p>
 
-<p>{% blockquote 『JAVA PUZZLERS』 P.43 パズル21 %}
-<code>Me.class.getName()</code> は、クラス <code>Me</code> の完全修飾名、すなわち <code>&quot;com.javapuzzlers.Me&quot;</code> を返します。このプログラムは何を表示しますか？</p>
-
-<pre class="code"><code><span class="keyword">package</span> com.javapuzzlers; 
- 
-<span class="keyword">public</span> <span class="keyword">class</span> Me { 
-  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) { 
-    System.out.println(Me.class.getName().replaceAll(<span class="literal">"."</span>, <span class="literal">"/"</span>) + <span class="literal">".class"</span>);
-  } 
-} 
-</code></pre>
-
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p><code>Me.class.getName()</code> は、クラス <code>Me</code> の完全修飾名、すなわち <code>&quot;com.javapuzzlers.Me&quot;</code> を返します。このプログラムは何を表示しますか？</p></p><p><pre class="code"><code><span class="keyword">package</span> com.javapuzzlers; <br/> <br/><span class="keyword">public</span> <span class="keyword">class</span> Me { <br/>  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) { <br/>    System.out.println(Me.class.getName().replaceAll(<span class="literal">"."</span>, <span class="literal">"/"</span>) + <span class="literal">".class"</span>);<br/>  } <br/>} <br/></code></pre></p><p><br/><p></p><footer><strong>『JAVA PUZZLERS』 P.43 パズル21</strong></footer></blockquote></p>
 
 <p>どうでしょう？こういうプログラムは、例えばクラスのファイル名に対応するフォルダを検索したりするときに書いたりします。このプログラムの出力結果は、次のようなものです。</p>
 
@@ -414,10 +401,7 @@
 
 <p>さて、これでポートレットの設定は完了したわけですが、これだけではポートレットは呼び出せません。JSR-168 には、</p>
 
-<p>{% blockquote JSR-168 %}
-Portlets are not directly bound to a URL</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>Portlets are not directly bound to a URL</p></p><p><p></p><footer><strong>JSR-168</strong></footer></blockquote></p>
 
 <p>とあります。これはつまり、ブラウザのアドレスバーに URL を直接打ち込んでもポートレットを呼び出すことはできませんということを言っています。例えば、ブラウザのアドレスに http://localhost:8080/pluto/PortletInvoker/AdminPortal 入力してもエラーになります。</p>
 
@@ -644,10 +628,7 @@ Portlets are not directly bound to a URL</p>
 
 <p>JSR-168 では、アクションURL がリクエストされたときには、対応するポートレットの <code>processAction</code> メソッドの呼び出しと、ポータルページに含まれるすべてのポートレットの <code>render</code> メソッドが呼び出されるとされています。</p>
 
-<p>{% blockquote JSR-168 %}
-If the client request is triggered by an action URL, the portal/portlet-container must first trigger the action request by invoking the <i>processAction</i> method of the targeted portlet. &lt;中略&gt; Then, the portal/portlet-container must trigger the render request by invoking the <i>render</i> method for all the portlets in the portal page with the possible exception of portlets for which their content is being cached.</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>If the client request is triggered by an action URL, the portal/portlet-container must first trigger the action request by invoking the <i>processAction</i> method of the targeted portlet. &lt;中略&gt; Then, the portal/portlet-container must trigger the render request by invoking the <i>render</i> method for all the portlets in the portal page with the possible exception of portlets for which their content is being cached.</p></p><p><p></p><footer><strong>JSR-168</strong></footer></blockquote></p>
 
 <p><code>PortletDriverServlet</code> から呼び出されるのは、ポートレットコンテナの <code>doAction</code> メソッドです。この <code>doAction</code> メソッドの中でリクエストを解析し、どのポートレットを呼び出すかを決めます。ポートレットの呼び出しには、サーブレットレスポンスの <code>sendRedirect</code> を使っています。</p>
 

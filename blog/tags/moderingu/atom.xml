@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: モデリング | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/moderingu/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-13T17:32:28+09:00</updated>
+  <updated>2014-02-13T17:48:14+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -39,40 +39,11 @@
 
 <p>データベースを設計する上で、もっとも重要なことは 「<strong>何を記録するか</strong>」 です。記録しないもの、記録したくないものはデータベース設計は行いません。この、記録したいものを2つの種類に分類すると次のようになります。</p>
 
-<p>{% blockquote 本書 p.25 「エンティティ名の決め方」 より抜粋 %}
-「モノ」 に関する記録のことを 「リソース（資源）系エンティティ」、「出来事」 についての記録のことを 「イベント系エンティティ」 と読んだりします。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>「モノ」 に関する記録のことを 「リソース（資源）系エンティティ」、「出来事」 についての記録のことを 「イベント系エンティティ」 と読んだりします。</p></p><p><p></p><footer><strong>本書 p.25 「エンティティ名の決め方」 より抜粋</strong></footer></blockquote></p>
 
 <p>出てきたエンティティは、業務上のモデルと <strong>6W3H</strong> で照らし合わせて確認することができます。</p>
 
-<p>{% blockquote 本書 P.25 「エンティティ名の決め方」 より抜粋 %}
-「リソース系」</p>
-
-<ul><li>誰に （Whom）</li>
-<li>誰が （Who）</li>
-<li>何を （What）</li>
-<li>どこへ （Where）</li></ul>
-
-
-<p>「イベント系」</p>
-
-<ul><li>どのように （How）</li></ul>
-
-
-<p>「属性の候補」</p>
-
-<ul><li>いつ （When）</li>
-<li>どれくらい （How many）</li>
-<li>いくら （How much）</li></ul>
-
-
-<p>「ビジネス上の正規化の対象となってくるもの」</p>
-
-<ul><li>なぜ （Why）</li></ul>
-
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>「リソース系」</p></p><p><ul><li>誰に （Whom）</li><br/><li>誰が （Who）</li><br/><li>何を （What）</li><br/><li>どこへ （Where）</li></ul></p><p><br/><p>「イベント系」</p></p><p><ul><li>どのように （How）</li></ul></p><p><br/><p>「属性の候補」</p></p><p><ul><li>いつ （When）</li><br/><li>どれくらい （How many）</li><br/><li>いくら （How much）</li></ul></p><p><br/><p>「ビジネス上の正規化の対象となってくるもの」</p></p><p><ul><li>なぜ （Why）</li></ul></p><p><br/><p></p><footer><strong>本書 P.25 「エンティティ名の決め方」 より抜粋</strong></footer></blockquote></p>
 
 <h3>コードとキーの違い</h3>
 
@@ -94,20 +65,11 @@
 <h4>コードとキーの違い</h4>
 
 
-<p>{% blockquote 本書 P.30 %}</p>
-
-<ul style="margin-top:0px; margin-bottom: 0px"><li>コード体系は、ユーザがレコードに容易に到達するためのユーザインターフェースである</li>
-<li>コード体系は、システムの都合ではなくビジネスの都合によって決定されるものである</li></ul>
-
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p></p></p><p><ul style="margin-top:0px; margin-bottom: 0px"><li>コード体系は、ユーザがレコードに容易に到達するためのユーザインターフェースである</li><br/><li>コード体系は、システムの都合ではなくビジネスの都合によって決定されるものである</li></ul></p><p><br/><p></p><footer><strong>本書 P.30</strong></footer></blockquote></p>
 
 <p>つまり、コードはユニークキー、さらに言えば候補キーになるということです。しかし、コードはビジネスの都合によって変えられることがあるので、主キーとしてはふさわしくありません。主キーを考えることは、レコードのID （アイデンティファイア） を考えることと同じことなのです。</p>
 
-<p>{% blockquote 本書 P.33 %}
-アイデンティファイアは、インスタンスのライフサイクル （一般にデータライフサイクル：DLCとも呼ばれます。） を表現していると考えればいいでしょう。その集合中に属してから消滅するまでの間、特定のインスタンスであることを示す座標として機能しているわけです。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>アイデンティファイアは、インスタンスのライフサイクル （一般にデータライフサイクル：DLCとも呼ばれます。） を表現していると考えればいいでしょう。その集合中に属してから消滅するまでの間、特定のインスタンスであることを示す座標として機能しているわけです。</p></p><p><p></p><footer><strong>本書 P.33</strong></footer></blockquote></p>
 
 <p>コードは、ビジネスに合わせて柔軟に変更できるべきであるが、アイデンティファイア はそのレコードが存在する間は変更されてはいけないのです。</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Spring | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/spring/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-13T17:32:28+09:00</updated>
+  <updated>2014-02-13T17:48:14+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -1009,10 +1009,7 @@ ModelAndView 《メソッド名》(HttpServletRequest request, HttpServletRespon
 
 <p>データ検証について、『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22" rel="external nofollow">実践J2EE</a>』から、少し抜粋します。(P.532)</p>
 
-<p>{% blockquote 『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22" rel="external nofollow">実践J2EE</a>』 %}
-データ検証 (Validation) は、「構文」の検証と「セマンティクス」の検証とに分類されます。構文検証には、データが存在するか、データの長さが許容範囲にあるか、データが有効なフォーマット(数字など)であるかといった、単純な操作が含まれます。通常、これはビジネスロジックではありません。セマンティクス検証はこれより手が込んだもので、ビジネスロジックやデータアクセスまでが含まれます。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>データ検証 (Validation) は、「構文」の検証と「セマンティクス」の検証とに分類されます。構文検証には、データが存在するか、データの長さが許容範囲にあるか、データが有効なフォーマット(数字など)であるかといった、単純な操作が含まれます。通常、これはビジネスロジックではありません。セマンティクス検証はこれより手が込んだもので、ビジネスロジックやデータアクセスまでが含まれます。</p></p><p><p></p><footer><strong>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22" rel="external nofollow">実践J2EE</a>』</strong></footer></blockquote></p>
 
 <p>Struts では、構文検証もセマンティクス検証も、アクションフォームの validate メソッドで行っています。しかし、Spring ではWeb 層にとらわれない方法でValidation 処理を行うことができます。Validator インターフェースを実装したクラスがそれに当たります。</p>
 
