@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Apache | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/apache/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-13T16:46:58+09:00</updated>
+  <updated>2014-02-13T17:24:26+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -286,7 +286,10 @@
 
 <p>さて、これでポートレットの設定は完了したわけですが、これだけではポートレットは呼び出せません。JSR-168 には、</p>
 
-<p><blockquote><p>Portlets are not directly bound to a URL</p></p><p><p></p><footer><strong>JSR-168</strong></footer></blockquote></p>
+<p>{% blockquote JSR-168 %}
+Portlets are not directly bound to a URL</p>
+
+<p>{% endblockquote %}</p>
 
 <p>とあります。これはつまり、ブラウザのアドレスバーに URL を直接打ち込んでもポートレットを呼び出すことはできませんということを言っています。例えば、ブラウザのアドレスに http://localhost:8080/pluto/PortletInvoker/AdminPortal 入力してもエラーになります。</p>
 
@@ -513,7 +516,10 @@
 
 <p>JSR-168 では、アクションURL がリクエストされたときには、対応するポートレットの <code>processAction</code> メソッドの呼び出しと、ポータルページに含まれるすべてのポートレットの <code>render</code> メソッドが呼び出されるとされています。</p>
 
-<p><blockquote><p>If the client request is triggered by an action URL, the portal/portlet-container must first trigger the action request by invoking the <i>processAction</i> method of the targeted portlet. &lt;中略&gt; Then, the portal/portlet-container must trigger the render request by invoking the <i>render</i> method for all the portlets in the portal page with the possible exception of portlets for which their content is being cached.</p></p><p><p></p><footer><strong>JSR-168</strong></footer></blockquote></p>
+<p>{% blockquote JSR-168 %}
+If the client request is triggered by an action URL, the portal/portlet-container must first trigger the action request by invoking the <i>processAction</i> method of the targeted portlet. &lt;中略&gt; Then, the portal/portlet-container must trigger the render request by invoking the <i>render</i> method for all the portlets in the portal page with the possible exception of portlets for which their content is being cached.</p>
+
+<p>{% endblockquote %}</p>
 
 <p><code>PortletDriverServlet</code> から呼び出されるのは、ポートレットコンテナの <code>doAction</code> メソッドです。この <code>doAction</code> メソッドの中でリクエストを解析し、どのポートレットを呼び出すかを決めます。ポートレットの呼び出しには、サーブレットレスポンスの <code>sendRedirect</code> を使っています。</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: AOP | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/aop/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-13T16:46:58+09:00</updated>
+  <updated>2014-02-13T17:24:26+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -18,7 +18,10 @@
     <link href="http://hamasyou.com/blog/2005/03/10/4797326387/"/>
     <updated>2005-03-10T00:19:00+09:00</updated>
     <id>http://hamasyou.com/blog/2005/03/10/4797326387</id>
-    <content type="html"><![CDATA[<p><blockquote><p><strong>アスペクト指向</strong>を一言で表すなら、各プログラム(モジュール)から共通に利用される機能です。さらに、この機能はさまざまなモジュールにおいて横断的に利用されます。そして、モジュールの機能とは独立しています。</p></p><p><p></p><footer><strong>本書</strong></footer></blockquote></p>
+    <content type="html"><![CDATA[<p>{% blockquote 本書 %}
+<strong>アスペクト指向</strong>を一言で表すなら、各プログラム(モジュール)から共通に利用される機能です。さらに、この機能はさまざまなモジュールにおいて横断的に利用されます。そして、モジュールの機能とは独立しています。</p>
+
+<p>{% endblockquote %}</p>
 
 <p>本書はアスペクト指向の概念を全体像を捕らえながら学べます。アスペクト指向の実装には色々あり、その中の一つである「<strong>AspectJ</strong>」をつかったプログラミングを行うための解説書になっています。</p>
 

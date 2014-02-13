@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: iOS | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/ios/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-13T16:46:58+09:00</updated>
+  <updated>2014-02-13T17:24:26+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -20,7 +20,18 @@
     <id>http://hamasyou.com/blog/2011/08/04/iosgame-center</id>
     <content type="html"><![CDATA[<p>iOS 4.1 から、正式に <em>Game Center</em> が使えるようになりました。Game Center を使うと、ゲームに簡単に対戦やスコア、達成目標などの機能を追加できます。</p>
 
-<p><blockquote><p>Game Centerは、プレー中のゲームについての情報をプレーヤー同士で共有したり、ほかのプレー ヤーと一緒にマルチプレーヤー対戦に参加できるソーシャルゲーミングサービスです。Game Center は、ワイヤレスネットワークと携帯電話ネットワークのどちらからでもサービスを提供できます。 Game Centerの主な機能は、次の通りです。</p></p><p><ul><li><em>認証</em> - プレーヤーはGame Centerでセキュアなアカウントを作成し、iOSベースのデバイスでGame Centerにアクセスできます。</li><br/><li><em>友だち</em> - プレーヤーはGame Centerのほかのプレーヤーを友だちとして登録できます。友だちは、最近遊んだゲームなどプレーヤーの詳細情報を確認できます。</li><br/><li><em>Leaderboard</em> - プレーヤーのスコアをGame Centerに記録したりGame Centerから取得したりできます。<br/><li><em>アチーブメント(Achievement、成績)</em> - そのゲームでのプレーヤーのアチーブメントを管理します。アチーブメントは、Game Centerサービスに記録され、Game Centerアプリケーションとゲームの中で閲覧できます。</li><br/><li><em>オートマッチ</em> - Game Centerを介して複数のプレーヤーとつながるネットワークゲームを作成できます。プレーヤーは友だちを招待したり、まだ会ったことのないプレーヤーと接続して対戦できます。プレーヤーは、ゲームを実行していないときでも対戦への招待を受信できます。その場合、ゲームが自動的に起動し、招待が処理されます。</li><br/><li><em>ボイス</em> - 対戦に接続されたプレーヤー間で音声通信を行うことができます。</li></ul></p><p><br/><p></p><footer><strong>『Game Kit プログラミングガイド』より</strong></footer></blockquote></p>
+<p>{% blockquote 『Game Kit プログラミングガイド』より %}
+Game Centerは、プレー中のゲームについての情報をプレーヤー同士で共有したり、ほかのプレー ヤーと一緒にマルチプレーヤー対戦に参加できるソーシャルゲーミングサービスです。Game Center は、ワイヤレスネットワークと携帯電話ネットワークのどちらからでもサービスを提供できます。 Game Centerの主な機能は、次の通りです。</p>
+
+<ul><li><em>認証</em> - プレーヤーはGame Centerでセキュアなアカウントを作成し、iOSベースのデバイスでGame Centerにアクセスできます。</li>
+<li><em>友だち</em> - プレーヤーはGame Centerのほかのプレーヤーを友だちとして登録できます。友だちは、最近遊んだゲームなどプレーヤーの詳細情報を確認できます。</li>
+<li><em>Leaderboard</em> - プレーヤーのスコアをGame Centerに記録したりGame Centerから取得したりできます。
+<li><em>アチーブメント(Achievement、成績)</em> - そのゲームでのプレーヤーのアチーブメントを管理します。アチーブメントは、Game Centerサービスに記録され、Game Centerアプリケーションとゲームの中で閲覧できます。</li>
+<li><em>オートマッチ</em> - Game Centerを介して複数のプレーヤーとつながるネットワークゲームを作成できます。プレーヤーは友だちを招待したり、まだ会ったことのないプレーヤーと接続して対戦できます。プレーヤーは、ゲームを実行していないときでも対戦への招待を受信できます。その場合、ゲームが自動的に起動し、招待が処理されます。</li>
+<li><em>ボイス</em> - 対戦に接続されたプレーヤー間で音声通信を行うことができます。</li></ul>
+
+
+<p>{% endblockquote %}</p>
 
 <p>Game Center を使うためのプログラミングは形式的ながら、視点が二つ（自分と対戦相手）あるため、どの機能が何に当たるのかを理解していないと混乱しがちです。</p>
 
@@ -157,7 +168,14 @@
 
 <p><strong>GKMatchmaker</strong> の inviteHandler にブロックを渡すことで、招待が処理された際にコールバックされるようになる。</p>
 
-<p><blockquote><p></p></p><p><ul><li>acceptedInviteパラメータは、ゲームが別のプレーヤーから直接招待を受け取るとnil以外の値になります。この場合は、ほかのプレーヤーのゲームがすでに対戦要求を作成しています。 そのため、招待された側のデバイスで実行しているアプリケーションで対戦要求を作成する必要はありません。</li><br/><li>playersToInviteパラメータは、対戦をホストするGame Centerアプリケーションから直接ゲームが起動されるとnil以外の値になります。このパラメータは、ゲームが対戦に招待すべきプレーヤーを示したプレーヤー識別子の配列を保持します。ゲームは新しい対戦要求を作成し、 通常通りにパラメータを割り当ててから、対戦要求のplayersToInviteプロパティをplayersToInviteパラメータで渡された値に設定する必要があります。マッチメーク画面が表示されると、すでに対戦に参加しているプレーヤーのリストがあらかじめ読み込まれます。</li><br/></ul></p><p><br/><p></p><footer><strong>『Game Kit プログラミングガイド』より</strong></footer></blockquote></p>
+<p>{% blockquote 『Game Kit プログラミングガイド』より %}</p>
+
+<ul><li>acceptedInviteパラメータは、ゲームが別のプレーヤーから直接招待を受け取るとnil以外の値になります。この場合は、ほかのプレーヤーのゲームがすでに対戦要求を作成しています。 そのため、招待された側のデバイスで実行しているアプリケーションで対戦要求を作成する必要はありません。</li>
+<li>playersToInviteパラメータは、対戦をホストするGame Centerアプリケーションから直接ゲームが起動されるとnil以外の値になります。このパラメータは、ゲームが対戦に招待すべきプレーヤーを示したプレーヤー識別子の配列を保持します。ゲームは新しい対戦要求を作成し、 通常通りにパラメータを割り当ててから、対戦要求のplayersToInviteプロパティをplayersToInviteパラメータで渡された値に設定する必要があります。マッチメーク画面が表示されると、すでに対戦に参加しているプレーヤーのリストがあらかじめ読み込まれます。</li>
+</ul>
+
+
+<p>{% endblockquote %}</p>
 
 <pre><code class="objective-c">- (void)initMatchInviteHandler
 {

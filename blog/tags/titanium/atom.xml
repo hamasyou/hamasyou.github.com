@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Titanium | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/titanium/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-13T16:46:58+09:00</updated>
+  <updated>2014-02-13T17:24:26+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -75,15 +75,9 @@
 
 <p>git clone で落としてきて</p>
 
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#finder" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>./titanium-mobile.py 3.0.0</span></code></pre></td></tr></table></div></div>
-        </div></p>
+<p>{% terminal %}
+$ ./titanium-mobile.py 3.0.0
+{% endterminal %}</p>
 
 <p>のように、生成した API のバージョンを指定すればOK。</p>
 

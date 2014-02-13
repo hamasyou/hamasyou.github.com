@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: メタプログラミング | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/metapuroguramingu/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-13T16:46:58+09:00</updated>
+  <updated>2014-02-13T17:24:26+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -135,7 +135,10 @@
 <h3>オープンクラスの使い方</h3>
 
 
-<p><blockquote><p>Ruby の <em>class</em> キーワードは、クラス宣言というよりもスコープ演算子のようなものである。もちろん、存在しないクラスは作成する。しかしそれは、副作用と言ってもいいかもしれない。<em>class</em> の主な仕事は、あなたをクラスのコンテキストにつれていくことである。そのコンテキストであなたがメソッドを定義する。</p></p><p><p></p><footer><strong>クラス定義の中身 - 本書P.41</strong></footer></blockquote></p>
+<p>{% blockquote クラス定義の中身 - 本書P.41 %}
+Ruby の <em>class</em> キーワードは、クラス宣言というよりもスコープ演算子のようなものである。もちろん、存在しないクラスは作成する。しかしそれは、副作用と言ってもいいかもしれない。<em>class</em> の主な仕事は、あなたをクラスのコンテキストにつれていくことである。そのコンテキストであなたがメソッドを定義する。</p>
+
+<p>{% endblockquote %}</p>
 
 <p>Ruby でクラスの再オープンをするには、次のように通常のクラス宣言のように書きます。</p>
 
@@ -178,14 +181,24 @@
 <h3>クラス</h3>
 
 
-<p><blockquote><p>クラスはオブジェクトである。だから、オブジェクトに当てはまるものはクラスにも当てはまる。オブジェクトと同じように、クラスにもクラスがある。クラスは Class クラスのインスタンスなのだ。</p></p><p><pre class="code"><code><span class="str">&quot;hello&quot;</span>.<span class="keyword">class</span>    <span class="rem"># String</span><br/>String.<span class="keyword">class</span>     <span class="rem"># Class</span></code></pre></p><p><br/><p></p><footer><strong>クラス再訪 - 本書P.47</strong></footer></blockquote></p>
+<p>{% blockquote クラス再訪 - 本書P.47 %}
+クラスはオブジェクトである。だから、オブジェクトに当てはまるものはクラスにも当てはまる。オブジェクトと同じように、クラスにもクラスがある。クラスは Class クラスのインスタンスなのだ。</p>
+
+<pre class="code"><code><span class="str">&quot;hello&quot;</span>.<span class="keyword">class</span>    <span class="rem"># String</span>
+String.<span class="keyword">class</span>     <span class="rem"># Class</span></code></pre>
+
+
+<p>{% endblockquote %}</p>
 
 <p>クラスはオブジェクトで、<strong>クラス名は定数</strong>です。</p>
 
 <h3>定数</h3>
 
 
-<p><blockquote><p>Ruby では大文字で始まる参照は、クラス名やモジュール名も含めて、すべて<em>定数</em>である。定数のスコープには、変数のスコープとは異なるルールがある。</p></p><p><p></p><footer><strong>定数 - 本書P.49</strong></footer></blockquote></p>
+<p>{% blockquote 定数 - 本書P.49 %}
+Ruby では大文字で始まる参照は、クラス名やモジュール名も含めて、すべて<em>定数</em>である。定数のスコープには、変数のスコープとは異なるルールがある。</p>
+
+<p>{% endblockquote %}</p>
 
 <p>定数はディレクトリのようにツリー上にならんでいて、モジュールを使うことで <em>MyModule::MyClass::MyConst</em> のように書くことができるようになります。このように使うモジュールのことを<strong>ネームスペース</strong>と呼んでいます。</p>
 
@@ -205,7 +218,25 @@
 <h3>モジュールはクラスをラップする</h3>
 
 
-<p><blockquote><p>モジュールをクラスに（あるいは別のモジュールに）インクルードするとき、Ruby はちょっとしたトリックを使う。無名クラスを作ってモジュールをラップし、継承チェーンに挿入するのだ。それはインクルードするクラスの真上に入る。</p></p><p><pre class="code"><code><span class="keyword">module</span> M<br/>  <span class="keyword">def</span> my_method<br/>    <span class="str">&quot;M#my_method()&quot;</span><br/>  <span class="keyword">end</span><br/><span class="keyword">end</span><br/> <br/><span class="keyword">class</span> C<br/>  include M<br/><span class="keyword">end</span><br/> <br/><span class="keyword">class</span> D &lt; C; <span class="keyword">end</span><br/> <br/>D.ancestors <span class="rem"># =&gt; [D, C, M, Object, Kernel, BasicObject]</span></code></pre></p><p><br/><p></p><footer><strong>モジュールとメソッド探索 - 本書P.60</strong></footer></blockquote></p>
+<p>{% blockquote モジュールとメソッド探索 - 本書P.60 %}
+モジュールをクラスに（あるいは別のモジュールに）インクルードするとき、Ruby はちょっとしたトリックを使う。無名クラスを作ってモジュールをラップし、継承チェーンに挿入するのだ。それはインクルードするクラスの真上に入る。</p>
+
+<pre class="code"><code><span class="keyword">module</span> M
+  <span class="keyword">def</span> my_method
+    <span class="str">&quot;M#my_method()&quot;</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+ 
+<span class="keyword">class</span> C
+  include M
+<span class="keyword">end</span>
+ 
+<span class="keyword">class</span> D &lt; C; <span class="keyword">end</span>
+ 
+D.ancestors <span class="rem"># =&gt; [D, C, M, Object, Kernel, BasicObject]</span></code></pre>
+
+
+<p>{% endblockquote %}</p>
 
 <p>Ruby には print() のようなどこからでも呼び出せるメソッドがあります。これは、<em>Kernel</em> モジュールのプライベートメソッドとして定義されているからです。</p>
 
@@ -216,7 +247,12 @@
 <h3>self</h3>
 
 
-<p><blockquote><p>Ruby のコードはオブジェクト（カレントオブジェクト）の内部で実行される。カレントオブジェクトは <em>self</em> とも呼ばれる。<em>self</em> キーワードでアクセスできるからだ。</p></p><p><p><em>self</em> の役割を担うオブジェクトは同時には複数存在しない。長時間その役割を担うオブジェクトも存在しない。メソッドを呼び出すときは、レシーバが <em>self</em> になる。その時点で、すべてのインスタンス変数は <em>self</em> のインスタンス変数になる。レシーバを明示せずにメソッドを呼び出すと、すべて <em>self</em> に対するメソッド呼び出しになる。他のオブジェクトを明示してメソッドを呼び出すと、そのオブジェクトが <em>self</em> になる。</p></p><p><p></p><footer><strong>self の発見 - 本書P.63</strong></footer></blockquote></p>
+<p>{% blockquote self の発見 - 本書P.63 %}
+Ruby のコードはオブジェクト（カレントオブジェクト）の内部で実行される。カレントオブジェクトは <em>self</em> とも呼ばれる。<em>self</em> キーワードでアクセスできるからだ。</p>
+
+<p><em>self</em> の役割を担うオブジェクトは同時には複数存在しない。長時間その役割を担うオブジェクトも存在しない。メソッドを呼び出すときは、レシーバが <em>self</em> になる。その時点で、すべてのインスタンス変数は <em>self</em> のインスタンス変数になる。レシーバを明示せずにメソッドを呼び出すと、すべて <em>self</em> に対するメソッド呼び出しになる。他のオブジェクトを明示してメソッドを呼び出すと、そのオブジェクトが <em>self</em> になる。</p>
+
+<p>{% endblockquote %}</p>
 
 <p>メソッドを呼び出さない時の self 、つまりトップレベルコンテキスト（スクリプトが実行されたときの一番最初のスコープ）では、self は main という Ruby インタプリタが作成したオブジェクトの内部にいます。</p>
 
@@ -252,7 +288,10 @@ obj.instance_eval {|o| hoge }   <span class="rem"># &lt;-- Ruby1.9</span></code>
 
 <p>Ruby は、<em>send()</em> メソッドを使って呼び出したいメソッドをコードの実行時に決めることができます。これを <strong>動的ディスパッチ</strong>と呼びます。send() メソッドにはシンボルを渡すことが適当とされています。</p>
 
-<p><blockquote><p>シンボルと文字列の使い分けは、基本的には慣習なのである。多くの場合、シンボルは「物」の名前に使う。特にメタプログラミングに関するメソッドのような物である。</p></p><p><p></p><footer><strong>シンボル - 本書P.76</strong></footer></blockquote></p>
+<p>{% blockquote シンボル - 本書P.76 %}
+シンボルと文字列の使い分けは、基本的には慣習なのである。多くの場合、シンボルは「物」の名前に使う。特にメタプログラミングに関するメソッドのような物である。</p>
+
+<p>{% endblockquote %}</p>
 
 <h3>メソッドを動的に生成する</h3>
 
@@ -346,7 +385,10 @@ obj.instance_eval {|o| hoge }   <span class="rem"># &lt;-- Ruby1.9</span></code>
 <h3>ブロック</h3>
 
 
-<p><blockquote><p>ブロックは単体では実行できない。コードを実行するには、ローカル変数、インスタンス変数、<em>self</em> といった環境が必要になる。これらはオブジェクトにひもづけられた名前のことで、<em>束縛</em>とも呼ばれる。ブロックとは、これらをまとめて実行するためのものである。ブロックはコードと束縛の集まりで構成される。</p></p><p><p></p><footer><strong>クロージャ - 本書P.110</strong></footer></blockquote></p>
+<p>{% blockquote クロージャ - 本書P.110 %}
+ブロックは単体では実行できない。コードを実行するには、ローカル変数、インスタンス変数、<em>self</em> といった環境が必要になる。これらはオブジェクトにひもづけられた名前のことで、<em>束縛</em>とも呼ばれる。ブロックとは、これらをまとめて実行するためのものである。ブロックはコードと束縛の集まりで構成される。</p>
+
+<p>{% endblockquote %}</p>
 
 <p>ブロックを定義すると、そのとき、その場所にある束縛（<em>binding</em>）を取得できます。ブロックを実行する時、この束縛も一緒にメソッドに渡されます。これにより、メソッドを実行するスコープでブロックを呼び出す変数を宣言することや設定することができるようになります。</p>
 
@@ -490,7 +532,12 @@ obj.hello
 
 <p>class_eval を使うと、<em>self</em> と<em>カレントクラス</em>に変更が加えられます。instance_eval は <em>self</em> のみに変更を加えます。</p>
 
-<p><blockquote><p><em>instance_eval()</em> と <em>class_eval()</em> はどちらを使う？</p></p><p><p>「このオブジェクトをオープンしたいが、クラスのことは気にしない」ならば、instance_eval() がいい。「ここで<em>オープンクラス</em>を使いたい」ならば、class_eval() がいい。</p></p><p><p></p><footer><strong>instance_eval() と class_eval() はどちらを使う？ - 本書P.143</strong></footer></blockquote></p>
+<p>{% blockquote instance_eval() と class_eval() はどちらを使う？ - 本書P.143 %}
+<em>instance_eval()</em> と <em>class_eval()</em> はどちらを使う？</p>
+
+<p>「このオブジェクトをオープンしたいが、クラスのことは気にしない」ならば、instance_eval() がいい。「ここで<em>オープンクラス</em>を使いたい」ならば、class_eval() がいい。</p>
+
+<p>{% endblockquote %}</p>
 
 <h3>クラスインスタンス変数とクラス変数</h3>
 
@@ -626,7 +673,10 @@ obj.hello
 <h2>モジュールをインクルードしてクラスメソッドを定義する</h2>
 
 
-<p><blockquote><p>「来る日も来る日も世界のどこかで、Rubyプログラマがモジュールをインクルードしてクラスメソッドを定義しょうとしている。私もかつてはそうだった。しかし、これではうまくいかない。」</p></p><p><p></p><footer><strong>モジュールの不具合 - 本書P.167</strong></footer></blockquote></p>
+<p>{% blockquote モジュールの不具合 - 本書P.167 %}
+「来る日も来る日も世界のどこかで、Rubyプログラマがモジュールをインクルードしてクラスメソッドを定義しょうとしている。私もかつてはそうだった。しかし、これではうまくいかない。」</p>
+
+<p>{% endblockquote %}</p>
 
 <p>モジュールの中にクラスメソッドを定義して、モジュールをインクルードしたクラスにだけクラスメソッドを定義したいという場合、下のようにしがちですがこれは間違った例です。</p>
 
