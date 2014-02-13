@@ -14,9 +14,12 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。 かなり力技的なところがあるので、もっといいプログラムになると思いいますが、メモということで。 バージョン Ruby1.9.2
-Rails3.0.4
-mail2.2 <ins class &hellip;">
+  <meta name="description" content="Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。 かなり力技的なところがあるので、もっといいプログラムになると思いいますが、メモということで。 バージョン Ruby
+1.9.2
+Rails
+3.0.4
+mail
+2.2 <ins &hellip;">
   <meta name="keywords" content="Ruby, GMail, imap, メール受信">
 
   
@@ -27,9 +30,12 @@ mail2.2 <ins class &hellip;">
 
 <meta property="og:url" content="http://hamasyou.com/blog/2011/03/17/ruby-gmail/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。 かなり力技的なところがあるので、もっといいプログラムになると思いいますが、メモということで。 バージョン Ruby1.9.2
-Rails3.0.4
-mail2.2 <ins class &hellip;" />
+<meta property="og:description" content="Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。 かなり力技的なところがあるので、もっといいプログラムになると思いいますが、メモということで。 バージョン Ruby
+1.9.2
+Rails
+3.0.4
+mail
+2.2 <ins &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -156,24 +162,27 @@ mail2.2 <ins class &hellip;" />
 
 
 
-<div class="entry-content"><p>Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。</p>
+<div class="entry-content"><html><body>
+<p>Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。</p>
 
 <p>かなり力技的なところがあるので、もっといいプログラムになると思いいますが、メモということで。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>バージョン</h4>
 
 
 
 
-<dl><dt>Ruby</dt><dd>1.9.2</dd>
-<dt>Rails</dt><dd>3.0.4</dd>
-<dt>mail</dt><dd>2.2</dd>
+<dl>
+<dt>Ruby</dt>
+<dd>1.9.2</dd>
+<dt>Rails</dt>
+<dd>3.0.4</dd>
+<dt>mail</dt>
+<dd>2.2</dd>
 </dl>
-
-
-<p></section></p>
+<p></p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -198,7 +207,7 @@ mail2.2 <ins class &hellip;" />
 
 
 
-<pre><a href="https://github.com/mikel/mail" rel="external nofollow">mail</a></pre>
+<pre><a href="https://github.com/mikel/mail" rel="external nofollow" title="mail">mail</a></pre>
 
 
 <p>Ruby1.8 までは、TMail というライブラリを使うとメール処理を簡易に書けるようですが、Ruby1.9から文字エンコーディング周りの問題でこのライブラリを使うと良いことを知りました。</p>
@@ -218,67 +227,70 @@ mail2.2 <ins class &hellip;" />
 
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;mail&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">Mail</span><span class="o">.</span><span class="n">defaults</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">retriever_method</span> <span class="ss">:imap</span><span class="p">,</span> <span class="p">{</span><span class="ss">:address</span> <span class="o">=&gt;</span> <span class="s2">&quot;imap.gmail.com&quot;</span><span class="p">,</span>
-</span><span class='line'>                           <span class="ss">:port</span> <span class="o">=&gt;</span> <span class="mi">993</span><span class="p">,</span>
-</span><span class='line'>                           <span class="ss">:user_name</span> <span class="o">=&gt;</span> <span class="s2">&quot;&lt;mailaddress@domain.com&gt;&quot;</span><span class="p">,</span>
-</span><span class='line'>                           <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="s2">&quot;&lt;password&gt;&quot;</span><span class="p">,</span>
-</span><span class='line'>                           <span class="ss">:enable_ssl</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">}</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">Mail</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">:delete_after_find</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">email</span><span class="o">|</span>
-</span><span class='line'>  <span class="k">begin</span>
-</span><span class='line'>    <span class="k">if</span> <span class="o">!</span><span class="n">email</span><span class="o">.</span><span class="n">attachments</span><span class="o">.</span><span class="n">blank?</span>
-</span><span class='line'>      <span class="n">subject</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">subject</span>   <span class="c1"># =&gt; 件名（日本語可OK） UTF-8 で取得できる</span>
-</span><span class='line'>      <span class="n">body</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">parts</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">body</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">,</span> <span class="s2">&quot;ISO-2022-JP&quot;</span><span class="p">)</span>    <span class="c1"># =&gt; 本文は UTF-8 に変換する必要がある</span>
-</span><span class='line'>      <span class="n">from</span> <span class="o">=</span> <span class="n">email</span><span class="o">[</span><span class="ss">:from</span><span class="o">]</span>       <span class="c1"># =&gt; &quot;\&quot;濱田 章吾\&quot; hamasyou@gmail.com&quot;</span>
-</span><span class='line'>      <span class="n">sent_at</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">date</span>
-</span><span class='line'>      <span class="n">email</span><span class="o">.</span><span class="n">attachments</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">attachment</span><span class="o">|</span>
-</span><span class='line'>        <span class="n">tmp</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;tmp/photos/</span><span class="si">#{</span><span class="n">attachment</span><span class="o">.</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">tmp</span> <span class="o">&lt;&lt;</span> <span class="n">attachment</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">force_encoding</span><span class="p">(</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">tmp</span><span class="o">.</span><span class="n">close</span>
-</span><span class='line'>      <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">ignore</span>
-</span><span class='line'>    <span class="nb">p</span> <span class="s2">&quot;[error]:&quot;</span> <span class="o">+</span> <span class="n">ignore</span><span class="o">.</span><span class="n">to_s</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s2">"mail"</span>
+</span><span class="line">
+</span><span class="line"><span class="no">Mail</span><span class="o">.</span><span class="n">defaults</span> <span class="k">do</span>
+</span><span class="line">  <span class="n">retriever_method</span> <span class="ss">:imap</span><span class="p">,</span> <span class="p">{</span><span class="ss">:address</span> <span class="o">=&gt;</span> <span class="s2">"imap.gmail.com"</span><span class="p">,</span>
+</span><span class="line">                           <span class="ss">:port</span> <span class="o">=&gt;</span> <span class="mi">993</span><span class="p">,</span>
+</span><span class="line">                           <span class="ss">:user_name</span> <span class="o">=&gt;</span> <span class="s2">"&lt;mailaddress@domain.com&gt;"</span><span class="p">,</span>
+</span><span class="line">                           <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="s2">"&lt;password&gt;"</span><span class="p">,</span>
+</span><span class="line">                           <span class="ss">:enable_ssl</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">}</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">Mail</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">:delete_after_find</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">email</span><span class="o">|</span>
+</span><span class="line">  <span class="k">begin</span>
+</span><span class="line">    <span class="k">if</span> <span class="o">!</span><span class="n">email</span><span class="o">.</span><span class="n">attachments</span><span class="o">.</span><span class="n">blank?</span>
+</span><span class="line">      <span class="n">subject</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">subject</span>   <span class="c1"># =&gt; 件名（日本語可OK） UTF-8 で取得できる</span>
+</span><span class="line">      <span class="n">body</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">parts</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">body</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"UTF-8"</span><span class="p">,</span> <span class="s2">"ISO-2022-JP"</span><span class="p">)</span>    <span class="c1"># =&gt; 本文は UTF-8 に変換する必要がある</span>
+</span><span class="line">      <span class="n">from</span> <span class="o">=</span> <span class="n">email</span><span class="o">[</span><span class="ss">:from</span><span class="o">]</span>       <span class="c1"># =&gt; "\"濱田 章吾\" hamasyou@gmail.com"</span>
+</span><span class="line">      <span class="n">sent_at</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">date</span>
+</span><span class="line">      <span class="n">email</span><span class="o">.</span><span class="n">attachments</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">attachment</span><span class="o">|</span>
+</span><span class="line">        <span class="n">tmp</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"tmp/photos/</span><span class="si">#{</span><span class="n">attachment</span><span class="o">.</span><span class="n">filename</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span>
+</span><span class="line">        <span class="n">tmp</span> <span class="o">&lt;&lt;</span> <span class="n">attachment</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">force_encoding</span><span class="p">(</span><span class="s2">"UTF-8"</span><span class="p">)</span>
+</span><span class="line">        <span class="n">tmp</span><span class="o">.</span><span class="n">close</span>
+</span><span class="line">      <span class="k">end</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">ignore</span>
+</span><span class="line">    <span class="nb">p</span> <span class="s2">"[error]:"</span> <span class="o">+</span> <span class="n">ignore</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>ここでは、マルチパートの場合メールのパートの最初に本文があることを決め打ちしています。また、メールのエンコーディングが ISO-2022-JP であることも決め打ちしています。</p>
 
 <p>メール本文のエンコーディングを調べて、それを UTF-8 にするようにしたほうが良いです。</p>
-</div>
+</body></html></div>
 
 
   
@@ -288,6 +300,8 @@ mail2.2 <ins class &hellip;" />
       <h1>関連記事</h1>
       <ul>
         
+        <li><a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a></li>
+        
         <li><a href="/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応</a></li>
         
         <li><a href="/blog/2011/06/14/kaminari-paginate-array/">kaminari の paginate_array が便利</a></li>
@@ -295,8 +309,6 @@ mail2.2 <ins class &hellip;" />
         <li><a href="/blog/2010/11/20/rails-activerecord/">[Rails] ActiveRecord でツリー関係の関連を定義する</a></li>
         
         <li><a href="/blog/2010/09/17/4873114454/">Rubyベストプラクティス -プロフェッショナルによるコードとテクニック</a></li>
-        
-        <li><a href="/blog/2010/09/06/4048687158/">メタプログラミングRuby</a></li>
         
       </ul>
     </div>
@@ -454,6 +466,10 @@ mail2.2 <ins class &hellip;" />
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -477,10 +493,6 @@ mail2.2 <ins class &hellip;" />
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -488,7 +500,7 @@ mail2.2 <ins class &hellip;" />
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="Qiita にも書きました。 Qiita: http://qiita.com/items/ef8c332710960e2730d6 1. Package Manager で SublimeCodeIntel をインストールする Sublime Text2 の PackageManager を使って &hellip;">
+  <meta name="description" content="Qiita にも書きました。 Qiita: http://qiita.com/items/ef8c332710960e2730d6 1. Package Manager で SublimeCodeIntel をインストールする Sublime Text2 の PackageManager &hellip;">
   <meta name="keywords" content="Sublime Text2, Titanium Mobile, コード補完">
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/2013/01/29/sublime-text2-titanium-mobile/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Qiita にも書きました。 Qiita: http://qiita.com/items/ef8c332710960e2730d6 1. Package Manager で SublimeCodeIntel をインストールする Sublime Text2 の PackageManager を使って &hellip;" />
+<meta property="og:description" content="Qiita にも書きました。 Qiita: http://qiita.com/items/ef8c332710960e2730d6 1. Package Manager で SublimeCodeIntel をインストールする Sublime Text2 の PackageManager &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -150,30 +150,32 @@
 
 
 
-<div class="entry-content"><p>Qiita にも書きました。 <a href="http://qiita.com/items/ef8c332710960e2730d6" rel="external nofollow">Qiita: http://qiita.com/items/ef8c332710960e2730d6</a></p>
+<div class="entry-content"><html><body>
+<p>Qiita にも書きました。 <a href="http://qiita.com/items/ef8c332710960e2730d6" rel="external nofollow" title="Qiita: http://qiita.com/items/ef8c332710960e2730d6">Qiita: http://qiita.com/items/ef8c332710960e2730d6</a></p>
 
 <h3>1. Package Manager で SublimeCodeIntel をインストールする</h3>
 
 
 <p>Sublime Text2 の PackageManager を使って SublimeCodeIntel をインストールします。</p>
 
-<p><i class="fa fa-search"></i> <a href="http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html" rel="external nofollow">http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html</a></p>
+<p><i class="fa fa-search"></i> <a href="http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html" rel="external nofollow" title="http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html">http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html</a></p>
 
 <h3>2. jsca2.js を使って Titanium Mobile の API doc を JavaScript 化する。</h3>
 
 
-<p><i class="fa fa-search"></i> <a href="https://github.com/navinpeiris/jsca2js" rel="external nofollow">jsca2js: https://github.com/navinpeiris/jsca2js</a></p>
+<p><i class="fa fa-search"></i> <a href="https://github.com/navinpeiris/jsca2js" rel="external nofollow" title="jsca2js: https://github.com/navinpeiris/jsca2js">jsca2js: https://github.com/navinpeiris/jsca2js</a></p>
 
 <p>git clone で落としてきて</p>
 
 <div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+          <nav class="terminal-control-window"><a href="#finder" class="terminal-close" data-rel="close">close</a>
             <a href="#" class="terminal-minimize">minimize</a>
             <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>./titanium-mobile.py 3.0.0</span></code></pre></td></tr></table></div></div>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">./titanium-mobile.py 3.0.0</span></code></pre></td>
+</tr></table></div></div>
         </div>
 
 
@@ -186,17 +188,20 @@
 
 <p>なので、URL を修正してあげる必要があります。titanium-mobile.py を開き 23行目辺りにある URL を次のように書き換えます。</p>
 
-<figure class='code'><figcaption><span>titanium-mobile.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">if</span> <span class="n">version</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;2.&#39;</span><span class="p">):</span>
-</span><span class='line'>  <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://docs.appcelerator.com/titanium/data/&#39;</span> <span class="o">+</span> <span class="n">version</span> <span class="o">+</span> <span class="s">&#39;/api.json&#39;</span>
-</span><span class='line'><span class="k">else</span><span class="p">:</span>
-</span><span class='line'>  <span class="c">#url = &#39;http://developer.appcelerator.com/apidoc/mobile/&#39; + version + &#39;/api.json&#39;</span>
-</span><span class='line'>  <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://docs.appcelerator.com/titanium/data/&#39;</span> <span class="o">+</span> <span class="n">version</span> <span class="o">+</span> <span class="s">&#39;/api.json&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>titanium-mobile.py</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="python"><span class="line"><span class="k">if</span> <span class="n">version</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'2.'</span><span class="p">):</span>
+</span><span class="line">  <span class="n">url</span> <span class="o">=</span> <span class="s">'http://docs.appcelerator.com/titanium/data/'</span> <span class="o">+</span> <span class="n">version</span> <span class="o">+</span> <span class="s">'/api.json'</span>
+</span><span class="line"><span class="k">else</span><span class="p">:</span>
+</span><span class="line">  <span class="c">#url = 'http://developer.appcelerator.com/apidoc/mobile/' + version + '/api.json'</span>
+</span><span class="line">  <span class="n">url</span> <span class="o">=</span> <span class="s">'http://docs.appcelerator.com/titanium/data/'</span> <span class="o">+</span> <span class="n">version</span> <span class="o">+</span> <span class="s">'/api.json'</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 
@@ -227,7 +232,7 @@
 
 <p>SublimeCodeIntel が CoffeeScript のコード補完に対応していないので CoffeeScript のシンタックスを JavaScript に設定してやります。</p>
 
-<p>Sublime Text2 の > Preferences > Package Settings > SublimeCodeIntel > Settings - User を開いて次の設定を追加します。</p>
+<p>Sublime Text2 の &gt; Preferences &gt; Package Settings &gt; SublimeCodeIntel &gt; Settings - User を開いて次の設定を追加します。</p>
 
 <pre class="code"><code>{
   "codeintel_syntax_map":
@@ -235,8 +240,7 @@
     "CoffeeScript": "JavaScript"
   }
 }</code></pre>
-
-</div>
+</body></html></div>
 
 
   
@@ -410,6 +414,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -433,10 +441,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -444,7 +448,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

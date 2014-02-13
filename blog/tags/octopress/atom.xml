@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Octopress | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/octopress/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-13T09:52:23+09:00</updated>
+  <updated>2014-02-13T14:21:39+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,411 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Movable TypeからGitHub+Octopressに乗り換える手順]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress/"/>
+    <updated>2014-02-13T10:53:07+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress</id>
+    <content type="html"><![CDATA[<p>今まではブログを <em>ロリポップ</em> + <em>Movable Type</em> でやっていましたが、ブログデザインを変更したくなり、ついでにブログ環境も変更しました。</p>
+
+<p>Movable Type から <em>WordPress</em> に乗り換えても良かったんですが、エンジニアっぽいブログ環境ってなんだろうと考えた末、<strong>GitHub Pages</strong> と <strong>Octopress</strong> を使ってブログ環境を作ることにしました。</p>
+
+<p><a href="http://octopress.org/">Octopress</a> は <a href="http://jekyllrb.com/">Jekyll</a> を使ってブログ環境を作るためのフレームワークで、Jekyll はブログのような静的サイトを作るための Ruby のファイルジェネレータになります。</p>
+
+<p><a href="http://pages.github.com/">GitHub Pages</a> と組み合わせると無料でブログを始めることができます。</p>
+
+<p>移行でおこなったことの手順です。</p>
+
+<!-- more -->
+
+
+<h2>手順</h2>
+
+<ol>
+<li>公開用のサーバ設定
+
+<ol>
+<li>GitHub にリポジトリを作成する</li>
+<li>Octopress をチェックアウトする</li>
+<li>deploy する</li>
+</ol>
+</li>
+<li>ローカルのブログ環境の設定
+
+<ol>
+<li>ブログの初期設定をおこなう</li>
+<li>テーマを変更する</li>
+<li>最初の記事を書いてみる</li>
+</ol>
+</li>
+<li>環境をバックアップする
+
+<ol>
+<li>BitBucket にリポジトリを作成する</li>
+<li>BitBucket にソースをプッシュする</li>
+</ol>
+</li>
+<li>プラグインをつかう
+
+<ol>
+<li>記事にタグをつける</li>
+</ol>
+</li>
+</ol>
+
+
+<h2>公開用のサーバ設定</h2>
+
+<h3>GitHub にリポジトリを作成する</h3>
+
+<p>まず最初に GitHub にサイト公開用のリポジトリを作成します。</p>
+
+<p><a href="https://github.com/">GitHub</a> にログインして、リポジトリを作成します。リポジトリ名は <strong>username.github.io</strong> とします。<code>username</code> の部分を自分のアカウント名に読みかえてください。僕の場合は hamasyou.github.io になります。</p>
+
+<p>このリポジトリが公開用のサイトになり、<a href="http://username.github.io/">http://username.github.io/</a> が URL になります。</p>
+
+<p><img src="/images/2014-02-13-movable-type-to-octopress-01.png" alt="リポジトリ作成" /></p>
+
+<h3>Octopress をチェックアウトする</h3>
+
+<p>つぎに、ブログ環境を作成するために <a href="http://pages.github.com/">Octopress</a> を github からチェックアウトします。<code>username</code> のところは自分のアカウント名です。</p>
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>git clone git@github.com:imathis/octopress.git username.github.io</span><span class='line output'>Cloning into &lsquo;username.github.io&rsquo;&hellip;
+</span><span class='line output'>remote: Reusing existing pack: 10340, done.
+</span><span class='line output'>remote: Counting objects: 20, done.
+</span><span class='line output'>remote: Compressing objects: 100% (20/20), done.
+</span><span class='line output'>remote: Total 10360 (delta 4), reused 3 (delta 0)
+</span><span class='line output'>Receiving objects: 100% (10360/10360), 2.73 MiB | 785.00 KiB/s, done.
+</span><span class='line output'>Resolving deltas: 100% (4949/4949), done.
+</span><span class='line output'>Checking connectivity&hellip; done.</p>
+</span><span class='line output'>
+</span><span class='line output'><p>$ cd username.github.io</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<h3>deploy する</h3>
+
+<p>Octopress の初期設定を行い、deploy を行います。この時点でデプロイしたくない場合は最後のコマンド <code>bundle exec rake gen_deploy</code> を実行しないようにします。</p>
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>bundle install &ndash;path vendor/bundle</span><span class='line command'>bundle exec rake install</span><span class='line command'>bundle exec rake setup_github_pages</span><span class='line output'>Enter the read/write url for your repository
+</span><span class='line output'>(For example, &lsquo;git@github.com:your_username/your_username.github.io.git)
+</span><span class='line output'>           or 'https://github.com/your_username/your_username.github.io&rsquo;)
+</span><span class='line output'>Repository url: <kbd>git@github.com:username/username.github.io.git<kbd>
+</span><span class='line command'>bundle exec rake gen_deploy</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<h2>ブログの初期設定を行う</h2>
+
+<p>Octopress のブログ設定値は <code>_config.yml</code> というファイルになります。<a href="http://octopress.org/docs/configuring/">Configuring Octopress</a> を参考に変更します。</p>
+
+<h3>テーマを変更する</h3>
+
+<p>デフォルトテーマでも十分カッコいいですが、テーマ変更もできます。Octopress のテーマは <a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a> にまとまっているので、よさそうなテーマを選んでインストールします。</p>
+
+<p>テーマのインストールは、<code>.themes</code> ディレクトリにテーマのリポジトリをチェックアウトして <code>bundle exec rake install['theme-name']</code> でおこないます。</p>
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>git clone git@github.com:kAworu/octostrap3.git .themes/octostrap3</span><span class='line command'>bundle exec rake install[&lsquo;octostrap3&rsquo;]</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<p><a href="http://opthemes.com/"><img src="/images/2014-02-13-movable-type-to-octopress-02.png" alt="Octopress-Themes" /></a></p>
+
+<h3>あたらしい記事を作成する</h3>
+
+<p>新しい記事を書くには <code>bundle exec rake new_post['title']</code> とします。<code>title</code> 部分が記事のファイル名に使われるので、この時点では英語で入力するほうがよいです。</p>
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>bundle exec rake new_post[&lsquo;movable-type-to-octopress&rsquo;]</span><span class='line output'>mkdir -p source/<em>posts
+</span><span class='line output'>Creating new post: source/</em>posts/2014-02-13-movable-type-to-octopress.markdown</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<pre><code>---
+layout: post
+title: "movable-type-to-octopress"
+date: 2014-02-13 13:18:04 +0900
+comments: true
+categories:
+---
+</code></pre>
+
+<p>記事のタイトルに日本語を使いたいときはファイル中の <code>title</code> 部分を書き換えます。また、カテゴリやタグ、ページのキーワードなどもここで変更できます。</p>
+
+<pre><code>---
+layout: post
+title: "Movable TypeからGitHub+Octopressに乗り換える手順"
+date: 2014-02-13 13:18:04 +0900
+comments: true
+categories: [Blog]
+keywords: "Movable Type,GitHub,Octopress,Blog,Liquid,Jekyll,Ruby"
+tags: [Movable Type,GitHub,Octopress,Liquid,Jekyll,Ruby]
+---
+</code></pre>
+
+<h2>BitBucket にソースをコミットする</h2>
+
+<p>GitHub もリポジトリサービスですが、現在は Public なリポジトリしか無料で作ることができません。そこで、<strong>BitBucket</strong> という別のリポジトリサービスを利用して環境をまるごとバックアップします。</p>
+
+<p><a href="https://bitbucket.org/"><img src="http://upload.wikimedia.org/wikipedia/en/f/fc/Bitbucket_Logo.png" alt="BitBucket" /></a></p>
+
+<p>BitBucket は Private なリポジトリが作成できるので、ブログ環境は BitBucket で管理して、サイトデータだけを GitHub にデプロイするようにします。</p>
+
+<h3>リポジトリを作成する</h3>
+
+<p>BitBucket にリポジトリを作成する方法は、GitHub とほとんど変わりません。こちらもリポジトリ名を <code>username.github.io</code> にしておきます。</p>
+
+<p><img src="/images/2014-02-13-movable-type-to-octopress-03.png" alt="BitBucket リポジトリ作成" /></p>
+
+<p>リポジトリを作成したら、ソースコードをプッシュします。</p>
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>git remote add bitbucket git@bitbucket.org:username/username.github.io.git</span><span class='line command'>git add .</span><span class='line command'>git commit -m &lsquo;init&rsquo;</span><span class='line command'>git push bitbucket source</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<h2>その他</h2>
+
+<h3>記事にタグをつけられるようにする</h3>
+
+<p>Octopress にはいろいろなプラグインがあります。自作することも簡単にできます。デフォルトではタグというものが Octopress にはありませんが、カテゴリ機能を参考にすると簡単にタグを管理できるようになります。</p>
+
+<p><a href="http://rcmdnk.github.io/blog/2013/04/12/blog-octopress/">Octopressでのタグ管理</a></p>
+
+<h3>独自ドメインで運用する</h3>
+
+<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages</a> の手順でできます。</p>
+
+<p>要約すると、<code>CNAME</code> というファイルを作成して、メインのサイトドメインを登録する。</p>
+
+<pre><code class="plain source/CNAME">hamasyou.com
+</code></pre>
+
+<p>独自ドメインを取ったら、DNS の設定で A レコードを <code>192.30.252.153</code> と <code>192.30.252.154</code> に向けます。いろいろなサイトで <code>204.232.175.78</code> のアドレスを設定するように書かれていますが、変わったっぽい？ですね。不安なら、A レコード3つ登録すればいいと思います。</p>
+
+<pre><code>hamasyou.com A 204.232.175.78
+hamasyou.com A 192.30.252.153
+hamasyou.com A 192.30.252.154
+</code></pre>
+
+<p>これで、時間がたてば独自ドメイン名で GitHub のページが表示されるようになります。</p>
+
+<h3>Markdown で <code>Definition LIST</code> を使えるようにする</h3>
+
+<p>Octopress の使っている Markdown パーサの rdiscount のバージョンを上げます。2.1.7 からデフォルトで <em>Definition LIST（dl, dt, dd）</em> の拡張記法が使えるようになっているのでアップデート推奨です。</p>
+
+<p><code>Gemfile</code> を開いて <code>gem 'rdiscount', '~&gt; 2.0.7'</code> を <code>gem 'rdiscount'</code> に書き換えます。</p>
+
+<pre><code>- gem 'rdiscount', '~&gt; 2.0.7'
++ gem 'rdiscount
+</code></pre>
+
+<p>bundle update します。</p>
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>bundle update rdiscount</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<p>これで Markdown で Definition LIST がデフォルトで使えるようになります。</p>
+
+<pre><code>これがキーワード
+: キーワードの説明
+
+&lt;dl&gt;
+  &lt;dt&gt;これがキーワード&lt;/dt&gt;
+  &lt;dd&gt;キーワードの説明&lt;/dd&gt;
+&lt;/dl&gt;
+</code></pre>
+
+<h3>Movable Type の記事を Markdown に変換する</h3>
+
+<p>Movable Type の記事エクスポートを Markdown 形式に変換するコードを見つけたので、移行にはこれを使いました。ちょっと手はいれましたが。</p>
+
+<p><div><script src='https://gist.github.com/2351046.js?file=mt_to_markdown.rb'></script>
+<noscript><pre><code>#!/usr/bin/env ruby
+
+require &#39;date&#39;
+require &#39;mustache&#39;
+require &#39;stringex&#39;
+require &#39;cgi&#39;
+
+export     = File.open(ARGV[0])
+target_dir = ARGV[1]
+
+class Post &lt; Mustache
+  self.template = &lt;&lt;-MARKDOWN
+---
+layout: post
+title: &quot;{{title}}&quot;
+date: {{formatted_date}}
+comments: {{comments}}
+categories: {{category}}
+author: {{author}}
+---
+
+{{formatted_body}}
+MARKDOWN
+
+  attr_accessor :author, :title, :category, :comments, :status, :body
+
+  def initialize
+    @body = []
+  end
+
+  def date=(date)
+    case date
+    when String
+      @date = DateTime.strptime(date, &quot;%m/%d/%Y %I:%M:%S %p&quot;)
+    else
+      @date = date
+    end
+  end
+
+  def date
+    @date
+  end
+
+  def formatted_date
+    @date.strftime(&quot;%Y-%m-%d %H:%M&quot;)
+  end
+
+  def comments=(comments)
+    @comments = comments == &quot;1&quot; ? true : false
+  end
+
+  def formatted_body
+    CGI.unescapeHTML(body.join).
+      gsub(/&lt;a href=&quot;(.*?)&quot;&gt;*(.*?)&lt;\/a&gt;/i, &#39;[\2](\1)&#39;).
+      gsub(&quot;&lt;!--more--&gt;&quot;, &quot;\n\n&lt;!-- more --&gt;\n\n&quot;)
+  end
+
+  def file_name
+    &quot;#{date.strftime(&quot;%Y-%m-%d&quot;)}-#{title.to_url}.markdown&quot;
+  end
+end
+
+posts = [Post.new]
+
+KEYWORDS = /(AUTHOR|TITLE|STATUS|COMMENTS|CATEGORY|DATE): (.*)/
+
+def attr_and_value(line)
+  line =~ KEYWORDS
+  [&quot;#{$1.downcase}=&quot;, $2]
+end
+
+puts &quot; # Reading from data &#39;#{ARGV[0]}&#39; ...&quot;
+
+puts &quot; # Generating Markdown ...&quot;
+
+comment_section = false
+
+export.each do |line|
+  if line.strip == &quot;--------&quot;
+    posts &lt;&lt; Post.new
+    print &#39;.&#39;
+    comment_section = false
+    next
+  end
+
+  next if comment_section
+
+  case line.strip
+  when KEYWORDS
+    posts.last.send(*attr_and_value(line))
+  when /BODY/
+    next
+  when &quot;-----&quot;
+    next
+  when /COMMENT:/
+    comment_section = true
+    next
+  else
+    posts.last.body &lt;&lt; line
+  end
+end
+
+puts
+puts &quot; # Writing files to #{target_dir} ...&quot;
+`mkdir -p #{target_dir}`
+`cd #{target_dir} &amp;&amp; rm -rf _posts &amp;&amp; mkdir _posts`
+
+ok, fails = 0, 0
+
+posts.each do |post|
+  begin
+    File.open(File.join(target_dir, &quot;_posts&quot;, post.file_name), &quot;w+&quot;) { |f| f.puts post.render }
+    puts &quot; -&gt; #{post.file_name}&quot;
+    ok += 1
+  rescue
+    puts &quot; # Could not write file for &#39;#{post.title}&#39;&quot;
+    fails += 1
+  end
+end
+
+puts
+puts &quot; # All done! (#{ok}/#{fails})&quot;
+</code></pre></noscript></div>
+</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[GitHubとOctopressで始める無料ブログ]]></title>

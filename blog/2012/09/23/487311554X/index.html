@@ -177,7 +177,8 @@
 
 
 
-<div class="entry-content"><p>本書は、クライアントサイド（ブラウザ）で JavaScript を使ってリッチなアプリを作る際のプラクティスを説明しています。</p>
+<div class="entry-content"><html><body>
+<p>本書は、クライアントサイド（ブラウザ）で JavaScript を使ってリッチなアプリを作る際のプラクティスを説明しています。</p>
 
 <p>前半では、JavaScript によるオブジェクト指向開発の方法や MVC 開発の方法を、後半では、JavaScript の MVC デザインパターンに則った、各種ライブラリの説明が行われています。</p>
 
@@ -208,22 +209,28 @@
 
 <p>JavaScript ではクラスのプロトタイプに対して関数を追加することでインスタンスメソッドを定義できます。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">breath</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">};</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
-</span><span class='line'><span class="nx">person</span><span class="p">.</span><span class="nx">breath</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">breath</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">};</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+</span><span class="line"><span class="nx">person</span><span class="p">.</span><span class="nx">breath</span><span class="p">();</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>クラスのプロトタイプに <em>fn</em> というエイリアスを設定することが広く行われています。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">Person</span><span class="p">.</span><span class="nx">fn</span> <span class="o">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
-</span><span class='line'><span class="nx">Person</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">run</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">Person</span><span class="p">.</span><span class="nx">fn</span> <span class="o">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+</span><span class="line"><span class="nx">Person</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">run</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">};</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 
@@ -233,51 +240,60 @@
 
 <p>apply() と call() を使うと、関数の呼び出しコンテキストを変更できます。jQuery の API ではイベントハンドラや each() による繰り返しの中で、コンテキスト（this の値）が変更されています。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.btn&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">'.btn'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>元のコンテキストにアクセスするには、良く self などの名前で this を保存しておき、後で参照する方法がとられます。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.btn&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">self</span><span class="p">.</span><span class="nx">btnClicked</span><span class="p">();</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">'.btn'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">self</span><span class="p">.</span><span class="nx">btnClicked</span><span class="p">();</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>apply() を使うと、self を使わなくても同じことができます。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.btn&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="nx">proxy</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">btnClicked</span><span class="p">();</span>
-</span><span class='line'><span class="p">},</span> <span class="k">this</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">'.btn'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="nx">proxy</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">btnClicked</span><span class="p">();</span>
+</span><span class="line"><span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>jQuery の proxy() メソッドがまさしく、これと同じことをしています。</p>
@@ -287,7 +303,7 @@
 
 <p>ある要素とその祖先の要素が同じ種類のイベントに対してイベントハンドラを登録している場合、先に呼び出されるのはブラウザによって違います。</p>
 
-<p>イベントが呼び出される順番は2種類あり、<strong>イベントキャプチャリング</strong> と<strong>イベントバブリング</strong>になります。</p>
+<p>イベントが呼び出される順番は2種類あり、<strong class="text-danger">イベントキャプチャリング</strong> と<strong class="text-danger">イベントバブリング</strong>になります。</p>
 
 <h4>イベントキャプチャリング</h4>
 
@@ -303,30 +319,36 @@
 
 <p>バブリングが行われている際には、イベントオブジェクトの stopPropagation() を呼び出すことによって、バブリングを中止することができます。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">link</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">e</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
-</span><span class='line'>  <span class="cm">/* ... */</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">link</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">e</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
+</span><span class="line">  <span class="cm">/* ... */</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>ブラウザによってそれぞれのイベントに対するデフォルトのアクションが定義されています。たとえば、リンクのクリックでは、src で指定された URL に遷移する動作や、チェックボックスのクリックで項目が選択状態になる動作などです。</p>
 
 <p>これらのデフォルトのアクションはイベントの伝播が完了した後で実行されます。このデフォルトのアクションを中止するには、 preventDefault() 関数を呼び出します。また、イベントハンドラの戻り値で false を返すことで、preventDefault() を呼び出したのと同じ動作になります。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="cm">/* e.preventDefault() */</span>
-</span><span class='line'>  <span class="k">return</span> <span class="nx">confirm</span><span class="p">(</span><span class="s1">&#39;本当に送信しますか？&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'submit'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="cm">/* e.preventDefault() */</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">confirm</span><span class="p">(</span><span class="s1">'本当に送信しますか？'</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 
@@ -338,17 +360,20 @@
 
 <p>jQuery では、これを delgate() メソッドを使って実装できます。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="cm">/* 望ましくないコード */</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;ul li&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// こちらのほうが効率が良い</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">).</span><span class="nx">delegate</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">,</span> <span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="cm">/* 望ましくないコード */</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">'ul li'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// こちらのほうが効率が良い</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">'ul'</span><span class="p">).</span><span class="nx">delegate</span><span class="p">(</span><span class="s1">'li'</span><span class="p">,</span> <span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">});</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>このように、イベント処理を委譲することによるメリットは、動的に追加された要素についても、自動でイベントリスナが適用されることです。</p>
@@ -388,31 +413,29 @@
 
 <p>主要なブラウザでは、URL のハッシュが変更されたかどうかを調べるのに、hashchange イベントが使えます。</p>
 
-<p>JavaScript で作られたページは、クローラにとってはすべて同じ URL のように見えてしまいます。そこで、Google は、<a href="http://code.google.com/web/ajaxcrawling/index.html" rel="external nofollow">Ajax Crawling</a> という仕様を提案しています。</p>
+<p>JavaScript で作られたページは、クローラにとってはすべて同じ URL のように見えてしまいます。そこで、Google は、<a href="http://code.google.com/web/ajaxcrawling/index.html" rel="external nofollow" title="Ajax Crawling">Ajax Crawling</a> という仕様を提案しています。</p>
 
 <h3>Backbone.js ライブラリ</h3>
 
 
-<p><a href="http://backbonejs.org/" rel="external nofollow"></a> は JavaScript アプリケーションの構築のための優れたライブラリです。Backbone.js も MVC 構造でアプリケーションを作成していきます。</p>
+<p><a href="http://backbonejs.org/" rel="external nofollow" title=""></a> は JavaScript アプリケーションの構築のための優れたライブラリです。Backbone.js も MVC 構造でアプリケーションを作成していきます。</p>
 
 <h2>参考</h2>
 
 
 
 
-<ul><li><a href="http://fingaholic.github.com/posts/2012-06-27-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 1章 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-07-02-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 2章 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-07-17-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 3章 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-07-20-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 4章 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-07-23-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 5章 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-07-25-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 6章 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-08-01-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 11章 その1 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-08-07-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 11章 その2 - jekylog</a></li>
+<ul>
+<li><a href="http://fingaholic.github.com/posts/2012-06-27-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 1章 - jekylog">ステートフルJavaScript 1章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-02-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 2章 - jekylog">ステートフルJavaScript 2章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-17-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 3章 - jekylog">ステートフルJavaScript 3章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-20-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 4章 - jekylog">ステートフルJavaScript 4章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-23-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 5章 - jekylog">ステートフルJavaScript 5章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-25-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 6章 - jekylog">ステートフルJavaScript 6章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-08-01-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 11章 その1 - jekylog">ステートフルJavaScript 11章 その1 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-08-07-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 11章 その2 - jekylog">ステートフルJavaScript 11章 その2 - jekylog</a></li>
 </ul>
-
-
-
-</div>
+</body></html></div>
 
 
   
@@ -588,6 +611,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -611,10 +638,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -622,7 +645,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

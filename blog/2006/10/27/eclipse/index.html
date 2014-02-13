@@ -148,8 +148,9 @@
 
 
 
-<div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/gp/product/4774129313/503-7529252-6625510?ie=UTF8&tag=sorehabooks-22&linkCode=xm2&camp=247&creativeASIN=4774129313" rel="external nofollow"></a>
+<div class="entry-content"><html><body>
+<p>
+<a href="http://www.amazon.co.jp/gp/product/4774129313/503-7529252-6625510?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774129313" rel="external nofollow" title=""></a>
 </p>
 
 
@@ -180,35 +181,32 @@
 
 
 
-<ul><li><a href="http://www.meisei-u.ac.jp/mirror/apache/dist/maven/binaries/" rel="external nofollow">Maven2</a></li>
-<li><a href="http://db.apache.org/derby/" rel="external nofollow">Apache Derby</a></li></ul>
-
-
-
-
+<ul>
+<li><a href="http://www.meisei-u.ac.jp/mirror/apache/dist/maven/binaries/" rel="external nofollow" title="Maven2">Maven2</a></li>
+<li><a href="http://db.apache.org/derby/" rel="external nofollow" title="Apache Derby">Apache Derby</a></li>
+</ul>
 <h3>Eclipse プラグイン</h3>
 
 
 
 
-<ul><li><a href="http://m2eclipse.codehaus.org/" rel="external nofollow">Maven 2.x Plug-in for Eclipse (m2eclipse)</a></li>
-<li><a href="http://subclipse.tigris.org/" rel="external nofollow">Subclipse</a></li>
-<li><a href="http://www.geocities.com/uwe_ewald/dbedit.html" rel="external nofollow">DbEdit Plugin for Eclipse (http://dbedit.sourceforge.net/update)</a></li>
-<li><a href="http://www.xmlbuddy.com/" rel="external nofollow">XMLBuddy</a></li></ul>
-
-
-
-
+<ul>
+<li><a href="http://m2eclipse.codehaus.org/" rel="external nofollow" title="Maven 2.x Plug-in for Eclipse (m2eclipse)">Maven 2.x Plug-in for Eclipse (m2eclipse)</a></li>
+<li><a href="http://subclipse.tigris.org/" rel="external nofollow" title="Subclipse">Subclipse</a></li>
+<li><a href="http://www.geocities.com/uwe_ewald/dbedit.html" rel="external nofollow" title="DbEdit Plugin for Eclipse (http://dbedit.sourceforge.net/update)">DbEdit Plugin for Eclipse (http://dbedit.sourceforge.net/update)</a></li>
+<li><a href="http://www.xmlbuddy.com/" rel="external nofollow" title="XMLBuddy">XMLBuddy</a></li>
+</ul>
 <h3>キーバインド</h3>
 
 
 
 
-<ul><li>Ctrl + U  （Linu Up）</li><li>Ctrl + L  （Next Column）</li><li>Ctrl + N  （Line Down）</li><li>Ctrl + H  （Prev Column）</li></ul>
-
-
-
-
+<ul>
+<li>Ctrl + U  （Linu Up）</li>
+<li>Ctrl + L  （Next Column）</li>
+<li>Ctrl + N  （Line Down）</li>
+<li>Ctrl + H  （Prev Column）</li>
+</ul>
 <h2>Web アプリケーション用のディレクトリ構成</h2>
 
 
@@ -219,7 +217,7 @@
 
 <p>Eclipse のワークスペースで下記のコマンドを実行する</p>
 
-<pre class="console">> <kbd>mvn archetype:create -DgroupId=&lt;&lt;プロジェクトのパッケージ 例：com.hamasyou.webapp&gt;&gt; -DartifactId=&lt;&lt;プロジェクト名（アプリケーションコンテキスト名）&gt;&gt; -DarchetypeArtifactId=maven-archetype-webapp</kbd>
+<pre class="console">&gt; <kbd>mvn archetype:create -DgroupId=&lt;&lt;プロジェクトのパッケージ 例：com.hamasyou.webapp&gt;&gt; -DartifactId=&lt;&lt;プロジェクト名（アプリケーションコンテキスト名）&gt;&gt; -DarchetypeArtifactId=maven-archetype-webapp</kbd>
 </pre>
 
 
@@ -230,7 +228,7 @@
 
 <p>作成されたディレクトリに移動して下記のコマンドを実行する。</p>
 
-<pre class="console">> <kbd>mvn eclipse:eclipse</kbd></pre>
+<pre class="console">&gt; <kbd>mvn eclipse:eclipse</kbd></pre>
 
 
 
@@ -245,18 +243,18 @@
 
 <p>「新規」-「ソースフォルダ」で下記のソースフォルダを作成する。</p>
 
-<ul><li>src/main/java</li><li>src/test/java</li><li>src/test/resources</li></ul>
-
-
-
-
+<ul>
+<li>src/main/java</li>
+<li>src/test/java</li>
+<li>src/test/resources</li>
+</ul>
 <h3>5. Maven2 の pom.xml にソースディレクトリを要素を記述する</h3>
 
 
 
 
-<pre class="code"><code><span class="tag">&lt;project <span class="attr">xmlns=</span><span class="value">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="attr">xmlns:xsi=</span><span class="value">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> 
-  <span class="attr">xsi:schemaLocation=</span><span class="value">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</span>&gt;</span> 
+<pre class="code"><code><span class="tag">&lt;project <span class="attr">xmlns=</span><span class="value">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi=</span><span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span> 
+  <span class="attr">xsi:schemaLocation=</span><span class="value">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span>&gt;</span> 
   <span class="tag">&lt;modelVersion&gt;</span>4.0.0<span class="tag">&lt;/modelVersion&gt;</span> 
   <span class="tag">&lt;groupId&gt;</span>com.hamasyou.todocal<span class="tag">&lt;/groupId&gt;</span> 
   <span class="tag">&lt;artifactId&gt;</span>todocal<span class="tag">&lt;/artifactId&gt;</span> 
@@ -328,7 +326,7 @@
           <span class="tag">&lt;contextPath&gt;</span>/todocal<span class="tag">&lt;/contextPath&gt;</span>
           <span class="tag">&lt;scanIntervalSeconds&gt;</span>10<span class="tag">&lt;/scanIntervalSeconds&gt;</span>
           <span class="tag">&lt;connectors&gt;</span>
-            <span class="tag">&lt;connector <span class="attr">implementation=</span><span class="value">&quot;org.mortbay.jetty.nio.SelectChannelConnector&quot;</span>&gt;</span>
+            <span class="tag">&lt;connector <span class="attr">implementation=</span><span class="value">"org.mortbay.jetty.nio.SelectChannelConnector"</span>&gt;</span>
               <span class="tag">&lt;port&gt;</span>8080<span class="tag">&lt;/port&gt;</span>
               <span class="tag">&lt;maxIdleTime&gt;</span>6000<span class="tag">&lt;/maxIdleTime&gt;</span>
             <span class="tag">&lt;/connector&gt;</span>
@@ -348,7 +346,7 @@
 
 <p>プロジェクトディレクトリに移動して、下記のコマンドを実行する。</p>
 
-<pre class="console">> <kbd>mvn jetty:run</kbd></pre>
+<pre class="console">&gt; <kbd>mvn jetty:run</kbd></pre>
 
 
 <p>jetty はクラスファイルの更新検知機能があるので、クラスファイルが更新されると自動で再起動される。</p>
@@ -390,8 +388,8 @@
 
 <p>maven2 のプラグインで、アプリケーションがアプリケーションサーバにロードされたタイミングで Apache Derby も起動するようなのがないかなぁ・・・。HSQLDB はそういうことがができたんだけど。</p>
 
-<p><a href="http://amateras.sourceforge.jp/cgi-bin/fswiki/wiki.cgi/free?page=hsqldb" rel="external nofollow">Web アプリケーション起動時に HSQLDB を起動する</a></p>
-</div>
+<p><a href="http://amateras.sourceforge.jp/cgi-bin/fswiki/wiki.cgi/free?page=hsqldb" rel="external nofollow" title="Web アプリケーション起動時に HSQLDB を起動する">Web アプリケーション起動時に HSQLDB を起動する</a></p>
+</body></html></div>
 
 
   
@@ -557,6 +555,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -580,10 +582,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -591,7 +589,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

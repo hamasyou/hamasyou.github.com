@@ -148,13 +148,14 @@
 
 
 
-<div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。GoFの23のパターンが有名です。</p>
+<div class="entry-content"><html><body>
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。GoFの23のパターンが有名です。</p>
 
 <p>デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
 
 <p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
 
-<p>最初は、仕様の違いを吸収する目的で使われる、<strong>Adapter</strong>パターンです。</p>
+<p>最初は、仕様の違いを吸収する目的で使われる、<strong class="text-danger">Adapter</strong>パターンです。</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -177,7 +178,7 @@
 <p class="option">Adapterパターンは、仕様の違い(インターフェースの違いとも言う)を吸収する目的で使われるパターンです。</p>
 
 
-<p><img src="/images/adapter/adapter.gif" alt="Adapterクラス図" /></p>
+<p><img src="/images/adapter/adapter.gif" alt="Adapterクラス図" class="img-thumbnail"></p>
 
 <p>例えば、Javaにはプリミティブ型と呼ばれる非オブジェクト型の存在があります。intやshort、long、byte、float、doubleなどです。これをListに追加するとき、Javaのリストはオブジェクト型しか引数に取ることができないので、直接は格納することができません。</p>
 
@@ -189,13 +190,13 @@ Adapterパターンは、別名ラッパーとも呼ばれます。</p>
 <h2>パターンの適用タイミング</h2>
 
 
-<p>このパターンは仕様の違いを吸収するだけでなく、Adapterとなるクラスを介して、層を増やすことができます。<strong>一般に層を増やすと、変更に強くなり、保守性が高まります。</strong></p>
+<p>このパターンは仕様の違いを吸収するだけでなく、Adapterとなるクラスを介して、層を増やすことができます。<strong class="text-danger">一般に層を増やすと、変更に強くなり、保守性が高まります。</strong></p>
 
-<p><strong>サードパティ製品、例えばExcelをJavaから操作できるようなライブラリ、をプロジェクトで使う場合</strong>などに、Adapterパターンを使うことができます。サードパティ製品と、プロジェクトドメインのクラスとの間にAdapterを噛ますことで、層を増やし、変更に強くすることができます。</p>
+<p><strong class="text-danger">サードパティ製品、例えばExcelをJavaから操作できるようなライブラリ、をプロジェクトで使う場合</strong>などに、Adapterパターンを使うことができます。サードパティ製品と、プロジェクトドメインのクラスとの間にAdapterを噛ますことで、層を増やし、変更に強くすることができます。</p>
 
-<p>また、<strong>サードパティによって提供されている機能の中に、たまたま必要な機能がほんの少し足りない場合</strong>など、Adapterパターンで実装を隠してしまえば、サードパティ製品を利用している他のところと統一的にコーディングすることができます。</p>
+<p>また、<strong class="text-danger">サードパティによって提供されている機能の中に、たまたま必要な機能がほんの少し足りない場合</strong>など、Adapterパターンで実装を隠してしまえば、サードパティ製品を利用している他のところと統一的にコーディングすることができます。</p>
 
-<p>もうひとつ、<strong>ソースコードを直接いじることができないのに機能の追加や呼び出し先の変更を変更する必要がある場合。</strong></p>
+<p>もうひとつ、<strong class="text-danger">ソースコードを直接いじることができないのに機能の追加や呼び出し先の変更を変更する必要がある場合。</strong></p>
 
 <p>例えば、すでに稼働中のアプリケーションで、ある機能を試しに別の機能に変更してみたい場合などがそうです。この場合は、稼働中の機能と共通のインターフェースを実装したAdapterが別の機能を呼び出すようにするといった使い方ができます。</p>
 
@@ -204,8 +205,6 @@ Adapterパターンは、別名ラッパーとも呼ばれます。</p>
 <li>統一的なインターフェースを使いたいのだが、ほんの少しだけ機能が足りない場合</li>
 <li>ソースコードに手を入れられないのだが、機能追加、機能変更を行いたい場合</li>
 </ul>
-
-
 <p>の内のどれか一つに当てはまる場合、このパターンを使えるタイミングかもしれません。</p>
 
 <h2>実装サンプルと参考文献</h2>
@@ -216,57 +215,47 @@ Adapterパターンは、別名ラッパーとも呼ばれます。</p>
 <ul>
 <li>TECHSCORE(Adapterパターン)</li>
 </ul>
-
-
-<p><a href="http://www.techscore.com/tech/DesignPattern/Adapter.html" rel="external nofollow">TECHSCORE</a></p>
+<p><a href="http://www.techscore.com/tech/DesignPattern/Adapter.html" rel="external nofollow" title="TECHSCORE">TECHSCORE</a></p>
 
 <ul>
 <li>デザインパターンのお勧め書籍</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>独習シリーズのデザインパターン編。デザインパターンを一人でも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>Sun Microsystemのお墨付き。GoF以外のパターンも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>UMLを使って、オブジェクト指向のいいとこ取りができます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>デザインパターンだけではなく、ソフトウェア設計の原則やプラクティスまで学びたい人におすすめ</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
-
-
-
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -438,6 +427,10 @@ Adapterパターンは、別名ラッパーとも呼ばれます。</p>
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -461,10 +454,6 @@ Adapterパターンは、別名ラッパーとも呼ばれます。</p>
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -472,7 +461,7 @@ Adapterパターンは、別名ラッパーとも呼ばれます。</p>
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="JavaScript でクラス定義するときのメモ。 <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data &hellip;">
+  <meta name="description" content="JavaScript でクラス定義するときのメモ。 <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" &hellip;">
   <meta name="keywords" content="JavaScript, クラス設計, コーディングテクニック">
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/2010/09/07/javascript/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="JavaScript でクラス定義するときのメモ。 <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data &hellip;" />
+<meta property="og:description" content="JavaScript でクラス定義するときのメモ。 <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -148,7 +148,8 @@
 
 
 
-<div class="entry-content"><p>JavaScript でクラス定義するときのメモ。</p>
+<div class="entry-content"><html><body>
+<p>JavaScript でクラス定義するときのメモ。</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -178,8 +179,8 @@ MyClass.<span class="keyword">prototype</span>.myMethod = <span class="keyword">
   alert(<span class="keyword">this</span>.name);
 }
  
-<span class="keyword">var</span> obj = <span class="keyword">new</span> MyClass(<span class="str">&quot;hamasyou&quot;</span>);
-obj.myMethod();    <span class="rem">// =&gt; &quot;hamasyou&quot;</span>
+<span class="keyword">var</span> obj = <span class="keyword">new</span> MyClass(<span class="str">"hamasyou"</span>);
+obj.myMethod();    <span class="rem">// =&gt; "hamasyou"</span>
 </pre>
 
 
@@ -191,7 +192,7 @@ obj.myMethod();    <span class="rem">// =&gt; &quot;hamasyou&quot;</span>
 <p>いくつかやり方がありますが、一番素直なやり方で。</p>
 
 <pre class="code"><span class="keyword">var</span> com = {};
-<span class="keyword">if</span> (<span class="keyword">typeof</span>(com.hamasyou) == <span class="str">&quot;undefined&quot;</span>) com.hamasyou = {};
+<span class="keyword">if</span> (<span class="keyword">typeof</span>(com.hamasyou) == <span class="str">"undefined"</span>) com.hamasyou = {};
 (<span class="keyword">function</span>() {
   <span class="keyword">var</span> ns = com.hamasyou;
   ns.MyClass = <span class="keyword">function</span>(name) {
@@ -204,31 +205,31 @@ obj.myMethod();    <span class="rem">// =&gt; &quot;hamasyou&quot;</span>
   };
 })();
  
-<span class="keyword">var</span> obj = <span class="keyword">new</span> com.hamasyou.MyClass(<span class="str">&quot;hamasyou&quot;</span>);
-obj.myMethod();        <span class="rem">// =&gt; &quot;hamasyou&quot;</span>
+<span class="keyword">var</span> obj = <span class="keyword">new</span> com.hamasyou.MyClass(<span class="str">"hamasyou"</span>);
+obj.myMethod();        <span class="rem">// =&gt; "hamasyou"</span>
 </pre>
 
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>ネームスペースあれこれ</h4>
 
 
-<p><a href="http://blog.livedoor.jp/dankogai/archives/50754803.html" rel="external nofollow">javascript - ふつうのnamespace - 404 Blog Not Found</a></p>
+<p><a href="http://blog.livedoor.jp/dankogai/archives/50754803.html" rel="external nofollow" title="javascript - ふつうのnamespace - 404 Blog Not Found">javascript - ふつうのnamespace - 404 Blog Not Found</a></p>
 
-<p><a href="http://d.hatena.ne.jp/onozaty/20070326/p1" rel="external nofollow">[JavaScript]undefine - Enjoy*Study</a></p>
+<p><a href="http://d.hatena.ne.jp/onozaty/20070326/p1" rel="external nofollow" title="[JavaScript]undefine - Enjoy*Study">[JavaScript]undefine - Enjoy*Study</a></p>
 
-<p></section></p>
+<p></p>
 
 <h2>クラス定義もうひとつ</h2>
 
 
 <p>プロトタイプを上書きして、コンストラクタをプロトタイプに実装する方法。</p>
 
-<p><a href="http://d.hatena.ne.jp/amachang/20060516/1147778600" rel="external nofollow">JavaScript OOP におけるクラス定義方法 - IT戦記</a></p>
+<p><a href="http://d.hatena.ne.jp/amachang/20060516/1147778600" rel="external nofollow" title="JavaScript OOP におけるクラス定義方法 - IT戦記">JavaScript OOP におけるクラス定義方法 - IT戦記</a></p>
 
 <pre class="code"><span class="keyword">var</span> com = {};
-<span class="keyword">if</span> (<span class="keyword">typeof</span>(com.hamasyou) == <span class="str">&quot;undefined&quot;</span>) com.hamasyou = {};
+<span class="keyword">if</span> (<span class="keyword">typeof</span>(com.hamasyou) == <span class="str">"undefined"</span>) com.hamasyou = {};
 (<span class="keyword">function</span>() {
   <span class="keyword">var</span> ns = com.hamasyou;
   ns.MyClass = <span class="keyword">function</span>() {
@@ -245,13 +246,10 @@ obj.myMethod();        <span class="rem">// =&gt; &quot;hamasyou&quot;</span>
   };
 })();
  
-<span class="keyword">var</span> obj = <span class="keyword">new</span> com.hamasyou.MyClass(<span class="str">&quot;hamasyou&quot;</span>);
-obj.myMethod();        <span class="rem">// =&gt; &quot;hamasyou&quot;</span>
+<span class="keyword">var</span> obj = <span class="keyword">new</span> com.hamasyou.MyClass(<span class="str">"hamasyou"</span>);
+obj.myMethod();        <span class="rem">// =&gt; "hamasyou"</span>
 </pre>
-
-
-
-</div>
+</body></html></div>
 
 
   
@@ -423,6 +421,10 @@ obj.myMethod();        <span class="rem">// =&gt; &quot;hamasyou&quot;</span>
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -446,10 +448,6 @@ obj.myMethod();        <span class="rem">// =&gt; &quot;hamasyou&quot;</span>
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -457,7 +455,7 @@ obj.myMethod();        <span class="rem">// =&gt; &quot;hamasyou&quot;</span>
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

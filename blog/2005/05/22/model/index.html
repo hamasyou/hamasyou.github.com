@@ -150,27 +150,28 @@
 
 
 
-<div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221180/sorehabooks-22/249-4688781-9575529?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow"></a>
+<div class="entry-content"><html><body>
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221180/sorehabooks-22/249-4688781-9575529?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title=""></a>
 </p>
 
 
-<p>概念モデリングでは、「<strong>関連</strong>」と「<strong>多重度</strong>」がモデルを読むときに大切な要素となります。</p>
+<p>概念モデリングでは、「<strong class="text-danger">関連</strong>」と「<strong class="text-danger">多重度</strong>」がモデルを読むときに大切な要素となります。</p>
 
-<p>関連は、あるエンティティとエンティティを結ぶ線のことです。しかし、今回は、もう一歩進んだ関連の使い方である、「<strong>関連の属性のクラス</strong>」と「<strong>関連のクラス</strong>」の違いを整理したいと思います。</p>
+<p>関連は、あるエンティティとエンティティを結ぶ線のことです。しかし、今回は、もう一歩進んだ関連の使い方である、「<strong class="text-danger">関連の属性のクラス</strong>」と「<strong class="text-danger">関連のクラス</strong>」の違いを整理したいと思います。</p>
 
-<p>もう一つの目的として、「多重度」の見方も整理したいと思います。「<strong>種類(品目)と物(特定品目)</strong>」の多重度の違いを理解できればと思います。</p>
+<p>もう一つの目的として、「多重度」の見方も整理したいと思います。「<strong class="text-danger">種類(品目)と物(特定品目)</strong>」の多重度の違いを理解できればと思います。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
-<p><a href="http://watanabek.cocolog-nifty.com/blog/2005/04/post_554e.html" rel="external nofollow">設計者の発言「「関連クラス」をデータモデルで解き明かす（前編）」</a></p>
+<p><a href="http://watanabek.cocolog-nifty.com/blog/2005/04/post_554e.html" rel="external nofollow" title="設計者の発言「「関連クラス」をデータモデルで解き明かす（前編）」">設計者の発言「「関連クラス」をデータモデルで解き明かす（前編）」</a></p>
 
-<p><a href="http://watanabek.cocolog-nifty.com/blog/2005/04/post_6405.html" rel="external nofollow">設計者の発言「「関連クラス」をデータモデルで解き明かす（後編）」</a></p>
+<p><a href="http://watanabek.cocolog-nifty.com/blog/2005/04/post_6405.html" rel="external nofollow" title="設計者の発言「「関連クラス」をデータモデルで解き明かす（後編）」">設計者の発言「「関連クラス」をデータモデルで解き明かす（後編）」</a></p>
 
-<p></section></p>
+<p></p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -190,54 +191,53 @@
 
 <p>「関連の属性のクラス」と「関連のクラス」の違いは2つあります。</p>
 
-<ol><li>表記が違う</li><li>インスタンスの制約が違う</li></ol>
-
-
-
-
+<ol>
+<li>表記が違う</li>
+<li>インスタンスの制約が違う</li>
+</ol>
 <h3>関連の属性のクラス</h3>
 
 
 <p>「関連の属性のクラス」は関連に属性を持たせるために導き出したクラスのことです。</p>
 
-<p><img src="http://hamasyou.com/images/modeling/relation_class.gif" alt="関連の属性のクラス" /></p>
+<p><img src="http://hamasyou.com/images/modeling/relation_class.gif" alt="関連の属性のクラス" class="img-thumbnail"></p>
 
 <p>この例では、新幹線と駅との間に「停車する」という関連が引かれています。「停車する」という関連に属性「発車時刻」と「停車時刻」を持たせたいために、「停車する」という関連の属性のクラスを導き出しました。</p>
 
 <p>この「関連の属性のクラス」では、<em>同じ新幹線と駅の組み合わせは一つだけ</em>しか作ることができません。</p>
 
-<p><img src="http://hamasyou.com/images/modeling/relation_object.gif" alt="関連の属性のクラスのオブジェクト図" /></p>
+<p><img src="http://hamasyou.com/images/modeling/relation_object.gif" alt="関連の属性のクラスのオブジェクト図" class="img-thumbnail"></p>
 
 <h3>関連のクラス</h3>
 
 
-<p>これに対して「関連のクラス」は、いわゆる「<strong>モノ-こと-モノ</strong>」のパターンで関連をクラスとして表現したものです。</p>
+<p>これに対して「関連のクラス」は、いわゆる「<strong class="text-danger">モノ-こと-モノ</strong>」のパターンで関連をクラスとして表現したものです。</p>
 
-<p><img src="http://hamasyou.com/images/modeling/class_of_relation.gif" alt="関連のクラス" /></p>
+<p><img src="http://hamasyou.com/images/modeling/class_of_relation.gif" alt="関連のクラス" class="img-thumbnail"></p>
 
 <p>この「関連のクラス」は、同じモノ-モノの組み合わせをいくつも作ることができます。</p>
 
-<p><img src="http://hamasyou.com/images/modeling/class_of_relation_object.gif" alt="関連のクラスのオブジェクト図" /></p>
+<p><img src="http://hamasyou.com/images/modeling/class_of_relation_object.gif" alt="関連のクラスのオブジェクト図" class="img-thumbnail"></p>
 
 <p>この例では、同じ生徒が同じ履修項目を取ることが出来るようになります。この「関連のクラス」は<b class="red">履歴をとる場合によくつかわれます</b>。</p>
 
 <h2>多重度</h2>
 
 
-<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715775/sorehabooks-22/249-4688781-9575529?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow">ストリームラインオブジェクトモデリング</a>』に「<strong>品目-特定品目</strong>」というパターンが載っています。これは、いわゆる「<strong>種類と物</strong>」の関係です。</p>
+<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715775/sorehabooks-22/249-4688781-9575529?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title="ストリームラインオブジェクトモデリング">ストリームラインオブジェクトモデリング</a>』に「<strong class="text-danger">品目-特定品目</strong>」というパターンが載っています。これは、いわゆる「<strong class="text-danger">種類と物</strong>」の関係です。</p>
 
 <p>品目(種類)と言うのは、例えばビデオレンタル屋のビデオのタイトルなどになります。それに対して特定品目(物)は貸し出すビデオになります。他の例では、ファーストフード店のメニュー(ハンバーガーやポテト、ドリンク)は品目、出てきた商品は特定品目(物)になります。</p>
 
-<p>概念モデリングの世界では、<strong>品目(種類)なのか、特定品目(物)なのかを区別することが非常に重要</strong>です。多くの場合、高価なものは特定品目(物)として扱うことが多いようです。</p>
+<p>概念モデリングの世界では、<strong class="text-danger">品目(種類)なのか、特定品目(物)なのかを区別することが非常に重要</strong>です。多くの場合、高価なものは特定品目(物)として扱うことが多いようです。</p>
 
-<p><img src="http://hamasyou.com/images/modeling/barger_class.gif" alt="ファーストフード店のメニュークラス図" /></p>
+<p><img src="http://hamasyou.com/images/modeling/barger_class.gif" alt="ファーストフード店のメニュークラス図" class="img-thumbnail"></p>
 
 <p>コレは、あるファーストフード店の単品メニューとセットメニューのクラス図とオブジェクト図になります。単品メニューとセットメニューの多重度は「多対多」になっています。オブジェクト図を見ると、こんな関係になります。</p>
 
 <p>あれ？味噌汁のインスタンスが別々のセットメニューと関係を持っています。味噌汁は、一つのセットにしか含まれないはずでは？別々のセットメニューに味噌汁が含まれるって、どういうこと？
 これは、モデリングの知識がある人は、「味噌汁は品目(種類)だから、概念上は別々のセットメニューに含められる」とわかります。</p>
 
-<p>「味噌汁一つのインスタンスは、セットメニュー一つと関係を持つ」と考えると、味噌汁インスタンスは複数のメニューには含まれないような気がします。でも、ここが「<strong>品目(種類)と特定品目(物)</strong>」のややこしいところです。</p>
+<p>「味噌汁一つのインスタンスは、セットメニュー一つと関係を持つ」と考えると、味噌汁インスタンスは複数のメニューには含まれないような気がします。でも、ここが「<strong class="text-danger">品目(種類)と特定品目(物)</strong>」のややこしいところです。</p>
 
 <p>特定品目(物)は確かに「このインスタンス一つにつき・・・」と考えます。しかし、品目(種類)は、「このインスタンス品目は・・・」と考えなければなりません。</p>
 
@@ -249,29 +249,20 @@
 <ul>
 <li>概念モデリングで良く使うパターンを学ぶのに最適</li>
 </ul>
-
-
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"  class="g-tools_title"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715775/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" class="g-tools_title"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715775/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
 
 
 <ul>
 <li>モデリングパターンの王道。ただし、かなり難しいです。</li>
 </ul>
-
-
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"  class="g-tools_title"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894716933/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" class="g-tools_title"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894716933/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
 
 
 <ul>
 <li>アナリシスパターンが読みこなせなかった人はここから始めましょう</li>
 </ul>
-
-
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"  class="g-tools_title"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221180/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
-
-
-
-</div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2" class="g-tools_title"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221180/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
+</body></html></div>
 
 
   
@@ -445,6 +436,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -468,10 +463,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -479,7 +470,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

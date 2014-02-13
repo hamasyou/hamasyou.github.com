@@ -150,7 +150,8 @@
 
 
 
-<div class="entry-content"><p>REST で Web サービスを構築する場合に、いつも認証が必要なリソースの URI の設計で悩むので、今までの経験上こうしたら上手くいったというのをメモしておきます。</p>
+<div class="entry-content"><html><body>
+<p>REST で Web サービスを構築する場合に、いつも認証が必要なリソースの URI の設計で悩むので、今までの経験上こうしたら上手くいったというのをメモしておきます。</p>
 
 <p>RESTful でもなければ、こんなの世に広めるなよ、害悪だ。っていう批判もあるかもしれませんが、Web の世界でセキュリティと上手く付き合っていくために、セッションを使って認証管理をすると何かといいことが多いので。</p>
 
@@ -177,7 +178,7 @@
 <h3>REST とは</h3>
 
 
-<p><strong>REST</strong> に馴染みのない人はまずこっちをみてください。</p>
+<p><strong class="text-danger">REST</strong> に馴染みのない人はまずこっちをみてください。</p>
 
 <h4>参考</h4>
 
@@ -185,19 +186,19 @@
 
 
 <ul>
-<li><a href="http://yohei-y.blogspot.com/2005/04/rest_23.html" rel="external nofollow">yohei-y:weblog</a></li>
-<li><a href="http://hamasyou.com/archives/000343" rel="external nofollow">RESTful Webサービス - それはBooks</a></li>
-<li><a href="http://hamasyou.com/archives/000347" rel="external nofollow">Webを支える技術 -HTTP、URI、HTML、そしてREST - それはBooks</a></li>
+<li><a href="http://yohei-y.blogspot.com/2005/04/rest_23.html" rel="external nofollow" title="yohei-y:weblog">yohei-y:weblog</a></li>
+<li><a href="http://hamasyou.com/archives/000343" rel="external nofollow" title="RESTful Webサービス - それはBooks">RESTful Webサービス - それはBooks</a></li>
+<li><a href="http://hamasyou.com/archives/000347" rel="external nofollow" title="Webを支える技術 -HTTP、URI、HTML、そしてREST - それはBooks">Webを支える技術 -HTTP、URI、HTML、そしてREST - それはBooks</a></li>
 </ul>
-
-
-
-
 <div class="bookInfo">
 <div class="bookImg">
-<a href="http://www.amazon.co.jp/gp/product/4774142042?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774142042" rel="external nofollow"></a>
+<a href="http://www.amazon.co.jp/gp/product/4774142042?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774142042" rel="external nofollow" title=""></a>
 </div>
-<ul><li><em>Webを支える技術 -HTTP、URI、HTML、そしてREST</em></li><li>山本 陽平 (著) </li><li>技術評論社</li></ul>
+<ul>
+<li><em>Webを支える技術 -HTTP、URI、HTML、そしてREST</em></li>
+<li>山本 陽平 (著) </li>
+<li>技術評論社</li>
+</ul>
 <div class="clear"></div>
 </div>
 
@@ -206,9 +207,13 @@
 
 <div class="bookInfo">
 <div class="bookImg">
-<a href="http://www.amazon.co.jp/gp/product/4873113539?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873113539" rel="external nofollow"></a>
+<a href="http://www.amazon.co.jp/gp/product/4873113539?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873113539" rel="external nofollow" title=""></a>
 </div>
-<ul><li><em>RESTful Webサービス</em></li><li>Leonard Richardson (著), Sam Ruby (著), 山本 陽平 (監修), 株式会社クイープ (翻訳)</li><li>オライリー・ジャパン</li></ul>
+<ul>
+<li><em>RESTful Webサービス</em></li>
+<li>Leonard Richardson (著), Sam Ruby (著), 山本 陽平 (監修), 株式会社クイープ (翻訳)</li>
+<li>オライリー・ジャパン</li>
+</ul>
 <div class="clear"></div>
 </div>
 
@@ -237,9 +242,9 @@
 <pre>http://api.twitter.com/1/statuses/home_timeline.format</pre>
 
 
-<p>この URI は認証が必要な URI になっています。この URI には&quot;誰の&quot;タイムラインを取得するかの情報は入っておらず、<em>home_timeline</em>、つまり自分のホームのタイムラインを取得する URI になっています。</p>
+<p>この URI は認証が必要な URI になっています。この URI には&#8221;誰の&#8221;タイムラインを取得するかの情報は入っておらず、<em>home_timeline</em>、つまり自分のホームのタイムラインを取得する URI になっています。</p>
 
-<p>&quot;自分の&quot;とは、<em>認証した人</em>という意味になります。</p>
+<p>&#8220;自分の&#8221;とは、<em>認証した人</em>という意味になります。</p>
 
 <p>この URI は次のような URI になるように設計しても良いはずです。（※ 説明のための例なので、実際に Twitter にこの URI でアクセスしても繋がらないです。）</p>
 
@@ -305,27 +310,22 @@ blog.articles.create(params[<span class="literal">:id</span>])</pre>
 
 <p>上で見たように、セキュリティを考慮すると、認証情報から操作対象のリソースを引っ張る必要がでてきます。このとき、URI に :blog_id が含まれていると</p>
 
-<ul><li>「<em>URI に :blog_id が含まれているので、自分以外のブログも更新できるんだな</em>」と考えられてしまったり、</li>
+<ul>
+<li>「<em>URI に :blog_id が含まれているので、自分以外のブログも更新できるんだな</em>」と考えられてしまったり、</li>
 <li>「<em>URI には :blog_id が含まれているけど使わない</em>」という実装になって、URI の表現と挙動が一致しなくなってしまったり、</li>
 <li>「<em>認証情報から引けるブログの id と URI の :blog_id を毎回比較してエラーチェックをする</em>」といった不要な処理を書くようになってしまったりします。</li>
 </ul>
-
-
-
-
 <h3>RESTful ではないかもしれないけど、認証にセッションをつかうなら</h3>
 
 
 <p>このように、認証が必要なリソースへのアクセスに、認証情報から引ける情報を含めてしまうと、いろいろとめんどうくさいことになりがちです。なので、個人的におすすめするのが、次のように URI を設計する方法です。</p>
 
-<ul><li>1) リソースごとに認証が必要かどうかを考える</li>
+<ul>
+<li>1) リソースごとに認証が必要かどうかを考える</li>
 <li>2) 認証が不要なリソースの場合、URI にはリソースへアクセスするのに必要なパラメータをすべて含めるようにする</li>
 <li>3) メソッドごとに認証が必要なリソースの場合、認証が必要なメソッドに関しては認証情報から引ける情報は含めないようにする</li>
-<li>4) または、認証が必要なリソースを表す URI を別に作成してそちらにリダイレクトする</li></ul>
-
-
-
-
+<li>4) または、認証が必要なリソースを表す URI を別に作成してそちらにリダイレクトする</li>
+</ul>
 <pre>2の例)
 GET     /wiki/<i>:page_name</i>.<i>:format</i>
 PUT     /wiki/<i>:page_name</i>
@@ -344,7 +344,7 @@ DELETE  /articles/<i>:id</i></pre>
 <p>こんなふうに考えると、認証が必要なリソースも上手く扱えるんじゃないかと思います。</p>
 
 <p>他に、上手くやる方法を知っている方がいれば、是非教えていただけると助かります。いつも認証周りの設計で苦労するので。。。</p>
-</div>
+</body></html></div>
 
 
   
@@ -518,6 +518,10 @@ DELETE  /articles/<i>:id</i></pre>
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -541,10 +545,6 @@ DELETE  /articles/<i>:id</i></pre>
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -552,7 +552,7 @@ DELETE  /articles/<i>:id</i></pre>
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

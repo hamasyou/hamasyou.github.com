@@ -14,7 +14,8 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。 環境 Rails3.0.7 <ins class="adsbygoogle" style="display:inline-block;width:728px;height &hellip;">
+  <meta name="description" content="ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。 環境 Rails
+3.0.7 <ins class="adsbygoogle" style="display:inline-block;width:728px; &hellip;">
   <meta name="keywords" content="Rails3, ActiveRecord, previous_changes">
 
   
@@ -25,7 +26,8 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。 環境 Rails3.0.7 <ins class="adsbygoogle" style="display:inline-block;width:728px;height &hellip;" />
+<meta property="og:description" content="ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。 環境 Rails
+3.0.7 <ins class="adsbygoogle" style="display:inline-block;width:728px; &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -150,19 +152,21 @@
 
 
 
-<div class="entry-content"><p>ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。</p>
+<div class="entry-content"><html><body>
+<p>ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>環境</h4>
 
 
 
 
-<dl><dt>Rails</dt><dd>3.0.7</dd></dl>
-
-
-<p></section></p>
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+</dl>
+<p></p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -179,37 +183,37 @@
 
 <p>これを使えば、データ更新後に、更新した属性のみをメールに書いて送る！みたいな処理が簡単に書けますね。</p>
 
-<dl><dt>previous_changes</dt>
-<dd>Returns a Hash of previous changes before the object was persisted, with the attribute names as the keys, and the values being an array of the old and new value for that field.</dd></dl>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="n">user</span><span class="o">.</span><span class="n">name</span>
-</span><span class='line'>  <span class="c1"># =&gt; &quot;Syougo Hamada&quot;</span>
-</span><span class='line'><span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;hamasyou&quot;</span>
-</span><span class='line'><span class="n">user</span><span class="o">.</span><span class="n">age</span>
-</span><span class='line'>  <span class="c1"># =&gt; 28</span>
-</span><span class='line'><span class="n">user</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">29</span>
-</span><span class='line'><span class="n">user</span><span class="o">.</span><span class="n">save</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">user</span><span class="o">.</span><span class="n">previous_changes</span>
-</span><span class='line'>  <span class="c1"># =&gt; {&quot;name&quot;=&gt;[&quot;Syougo Hamada&quot;, &quot;hamasyou&quot;], &quot;age&quot;=&gt;[28, 29]}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
+<dl>
+<dt>previous_changes</dt>
+<dd>Returns a Hash of previous changes before the object was persisted, with the attribute names as the keys, and the values being an array of the old and new value for that field.</dd>
+</dl>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+</span><span class="line"><span class="n">user</span><span class="o">.</span><span class="n">name</span>
+</span><span class="line">  <span class="c1"># =&gt; "Syougo Hamada"</span>
+</span><span class="line"><span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"hamasyou"</span>
+</span><span class="line"><span class="n">user</span><span class="o">.</span><span class="n">age</span>
+</span><span class="line">  <span class="c1"># =&gt; 28</span>
+</span><span class="line"><span class="n">user</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">29</span>
+</span><span class="line"><span class="n">user</span><span class="o">.</span><span class="n">save</span>
+</span><span class="line">
+</span><span class="line"><span class="n">user</span><span class="o">.</span><span class="n">previous_changes</span>
+</span><span class="line">  <span class="c1"># =&gt; {"name"=&gt;["Syougo Hamada", "hamasyou"], "age"=&gt;[28, 29]}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+</body></html></div>
 
 
   
@@ -383,6 +387,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -406,10 +414,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -417,7 +421,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

@@ -177,11 +177,12 @@
 
 
 
-<div class="entry-content"><p>「Executable UML」とは、<b>実行可能なモデル</b>という意味です。Executable UML の目的は 「<strong>ソフトウェア実装上の構成を決定せずに、問題領域の解決に向けての分かりやすいモデルを提供すること</strong>」です。ソフトウェア実装とは例えば、プログラミング言語やプラットフォームといったいわゆる、問題領域の解決につかう道具のことです。逆に問題領域の解決とは、ビジネスモデルやビジネスルールと言われる、ソフトウェアの目的の部分です。</p>
+<div class="entry-content"><html><body>
+<p>「Executable UML」とは、<b>実行可能なモデル</b>という意味です。Executable UML の目的は 「<strong class="text-danger">ソフトウェア実装上の構成を決定せずに、問題領域の解決に向けての分かりやすいモデルを提供すること</strong>」です。ソフトウェア実装とは例えば、プログラミング言語やプラットフォームといったいわゆる、問題領域の解決につかう道具のことです。逆に問題領域の解決とは、ビジネスモデルやビジネスルールと言われる、ソフトウェアの目的の部分です。</p>
 
-<p>Executable UML は、UML のアクションセマンティックス(動作意味論) を提供します。これにより、ソフトウェア実装を決定せずともソフトウェアの動作を表すことができます。しかも、厳密に定義することで、ツールによる解釈・実行が可能になります。<a href="http://www.atmarkit.co.jp/aig/04biz/mda.html" rel="external nofollow"> (モデル駆動アーキテクチャ)</a>は、こうしたExecutable UML によって書かれたモデルを解釈し、コードを自動生成しようとしています。モデルの解釈を行うためには、厳密なセマンティックスが必要とされます。</p>
+<p>Executable UML は、UML のアクションセマンティックス(動作意味論) を提供します。これにより、ソフトウェア実装を決定せずともソフトウェアの動作を表すことができます。しかも、厳密に定義することで、ツールによる解釈・実行が可能になります。<a href="http://www.atmarkit.co.jp/aig/04biz/mda.html" rel="external nofollow" title=" (モデル駆動アーキテクチャ)"> (モデル駆動アーキテクチャ)</a>は、こうしたExecutable UML によって書かれたモデルを解釈し、コードを自動生成しようとしています。モデルの解釈を行うためには、厳密なセマンティックスが必要とされます。</p>
 
-<p>本書は、Executable UML を理解するためのよい書籍だと思います。Executable UML 自体は、新しいモデリング言語と言うわけではありません。<strong>UML の一つの拡張(プロファイル)であり、実行可能なモデルを生み出すためのただの表記法</strong>です。</p>
+<p>本書は、Executable UML を理解するためのよい書籍だと思います。Executable UML 自体は、新しいモデリング言語と言うわけではありません。<strong class="text-danger">UML の一つの拡張(プロファイル)であり、実行可能なモデルを生み出すためのただの表記法</strong>です。</p>
 
 <p>最近は、「モデリング」という言葉をいろんなところで聞けるようになりました。書籍もたくさん出ています。今後は、プログラムだけではなくモデリングも出来なくてはならない時代が来るかもしれません。そうすると、自然とモデルからコードを生成するという発想が生まれてきます。今後は MDA のようなモデルからコードを生成する手法が一般的になってくるかもしれません。Executable UML は次世代のための必須知識と言えるのではないでしょうか。</p>
 
@@ -208,7 +209,8 @@
 
 <p>目次を見ると分かりますが、UML の解説書と見間違うほどです。UML を読めるだけの基本知識があるほうが読み進めやすいと思います。</p>
 
-<ol><li>序論</li>
+<ol>
+<li>序論</li>
 <li>Executable UMLの利用</li>
 <li>ドメインとブリッジ</li>
 <li>ユースケース</li>
@@ -227,10 +229,6 @@
 <li>複数ドメインの結合</li>
 <li>モデルコンパイラ</li>
 </ol>
-
-
-
-
 <h3>Executable UML の利用</h3>
 
 
@@ -246,8 +244,6 @@
 <dt>動的検証</dt>
 <dd>動的検証は、実際の値を使用してモデルを検証するものです。検証するためには「実際のオブジェクト」と「シナリオ」が必要になります。テストシナリオは、モデルごとに作成する方が向いているが、ユースケースには一致している必要があります。</dd>
 </dl>
-
-
 <p>作成したモデルは、モデルコンパイラを使って実装に変換します。モデルコンパイラの種類によって実装コードが変わるため、パフォーマンスのよいものを選択する。よいパフォーマンスが得られない場合は、その部分だけ手でコードを書き、コンパイラによって吐き出されたコードとリンクする措置をとる。</p>
 
 <h3>本書の総括</h3>
@@ -275,13 +271,11 @@
 <dt class="info">ドメインとは</dt>
 <dd>ドメインとは、特徴的な規則と方針に従って振る舞う概念的エンティティによって形成される、自立した、現実的、仮想的、抽象的な世界である。</dd>
 </dl>
-
-
 <p>システムに対して最初に行う作業は、システム全体を構成するいくつかのドメインを識別することです。概念的エンティティはたった一つのドメインの中に定義される。例えば、注文、発注、顧客、会社といった概念エンティティは物流ドメインの一部である。</p>
 
 <p>異なるドメインにおけるエンティティは、たとえ同じ名前だとしても別の概念を意味していなければならない。また、ドメイン内の概念エンティティは同じドメイン内の別の概念エンティティの存在が必要になる。例えば、注文は、顧客がいなければほとんど意味を成さない。ドメイン内の概念エンティティは、別ドメインの概念エンティティの存在を必要としない。</p>
 
-<p><strong>ドメインをモデル化するときは、そのドメインについての用語だけを使う</strong>。ドメインのモデルは、Executable UML において重要な意味をもつ。ドメインの振る舞いが Executable UML におけるモデル群になるからである。Executable UML モデルを構築するには、要件を理解して収集することが必要。そのために、ユースケースをつかう。</p>
+<p><strong class="text-danger">ドメインをモデル化するときは、そのドメインについての用語だけを使う</strong>。ドメインのモデルは、Executable UML において重要な意味をもつ。ドメインの振る舞いが Executable UML におけるモデル群になるからである。Executable UML モデルを構築するには、要件を理解して収集することが必要。そのために、ユースケースをつかう。</p>
 
 <h2>参考</h2>
 
@@ -289,29 +283,26 @@
 <ul>
 <li>Executable UML の実践的な使い方を解説した本です。</li>
 </ul>
-
-
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4789837149/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4789837149/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>モデル駆動アーキテクチャ (MDA) に関しての導入ガイドです。概念がよく分かります。</li>
 </ul>
-
-
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4844318691/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4844318691/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>モデル駆動アーキテクチャ (MDA) の技術的側面を解説しています。結構難しいです。</li>
 </ul>
-
-
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4434038133/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
-
-
-
-</div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4434038133/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -487,6 +478,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -510,10 +505,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -521,7 +512,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

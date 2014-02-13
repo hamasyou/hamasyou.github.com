@@ -152,7 +152,8 @@
 
 
 
-<div class="entry-content"><p>Ruby on Rails で、ActiveRecord を使ってツリー関係の関連を定義する方法のメモです。</p>
+<div class="entry-content"><html><body>
+<p>Ruby on Rails で、ActiveRecord を使ってツリー関係の関連を定義する方法のメモです。</p>
 
 <p>ツリー関係を表す関連にはひとつのテーブルで表す方法と関連テーブルを使って表す方法とがありますが、今回は関連テーブルを使ってツリー関係を表す方法のメモです。</p>
 
@@ -176,7 +177,7 @@
 
 <p>下のようなツリー関係のあるモデルを、<em>belongs_to</em>、<em>has_one</em>、<em>has_many</em> を使って表す方法のメモです。</p>
 
-<p><img alt="スクリーンショット（2010-11-20 0.58.43）2.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-20%200.58.43%EF%BC%892.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-11-20 0.58.43）2.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-20%200.58.43%EF%BC%892.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <h3>モデルの説明</h3>
 
@@ -196,7 +197,7 @@
 <span class="keyword">class</span> <span class="class">Category</span> &lt; <span class="class">ActiveRecord::Base</span>
  
   <span class="comment"># 親カテゴリ</span>
-  <span class="keyword">has_one</span> <span class="symbol">:parent_rels</span>, <span class="symbol">:class_name</span> =&gt; <span class="literal">&quot;CategoryRel&quot;</span>, <span class="symbol">:foreign_key</span> =&gt; <span class="literal">&quot;sub_category_id&quot;</span>
+  <span class="keyword">has_one</span> <span class="symbol">:parent_rels</span>, <span class="symbol">:class_name</span> =&gt; <span class="literal">"CategoryRel"</span>, <span class="symbol">:foreign_key</span> =&gt; <span class="literal">"sub_category_id"</span>
   <span class="keyword">has_one</span> <span class="symbol">:parent_category</span>, <span class="symbol">:through</span> =&gt; <span class="symbol">:parent_rels</span>, <span class="symbol">:source</span> =&gt; <span class="symbol">:parent_category</span>
  
   <span class="comment"># サブカテゴリ</span>
@@ -215,9 +216,9 @@
 <pre class="code">
 <span class="keyword">class</span> <span class="class">CategoryRel</span> &lt; <span class="class">ActiveRecord::Base</span>
   <span class="comment"># 親カテゴリ</span>
-  <span class="keyword">belongs_to</span> <span class="symbol">:parent_category</span>, <span class="symbol">:class_name</span> =&gt; <span class="literal">&quot;Category&quot;</span>, <span class="symbol">:foreign_key</span> =&gt; <span class="literal">&quot;category_id&quot;</span>
+  <span class="keyword">belongs_to</span> <span class="symbol">:parent_category</span>, <span class="symbol">:class_name</span> =&gt; <span class="literal">"Category"</span>, <span class="symbol">:foreign_key</span> =&gt; <span class="literal">"category_id"</span>
   <span class="comment"># サブカテゴリ</span>
-  <span class="keyword">belongs_to</span> <span class="symbol">:sub_category</span>, <span class="symbol">:class_name</span> =&gt; <span class="literal">&quot;Category&quot;</span>, <span class="symbol">:foreign_key</span> =&gt; <span class="literal">&quot;sub_category_id&quot;</span>
+  <span class="keyword">belongs_to</span> <span class="symbol">:sub_category</span>, <span class="symbol">:class_name</span> =&gt; <span class="literal">"Category"</span>, <span class="symbol">:foreign_key</span> =&gt; <span class="literal">"sub_category_id"</span>
 <span class="keyword">end</span></pre>
 
 
@@ -226,7 +227,7 @@
 <h3>has_many :through :source</h3>
 
 
-<p>関連をひとつだけもつ場合には <strong>has_one</strong> を、1対多、多対多 を表す場合には <strong>has_many</strong> を使います。<em>:through</em> オプションと <em>:source</em> オプションはそれぞれ次のような意味です。</p>
+<p>関連をひとつだけもつ場合には <strong class="text-danger">has_one</strong> を、1対多、多対多 を表す場合には <strong class="text-danger">has_many</strong> を使います。<em>:through</em> オプションと <em>:source</em> オプションはそれぞれ次のような意味です。</p>
 
 <dl>
 <dt>:through</dt>
@@ -234,16 +235,12 @@
 <dt>:source</dt>
 <dd><p>:through で示された経路の先で、どの関連を使用するかを示す。</p></dd>
 </dl>
-
-
-
-
 <h3>親カテゴリを表す has_one と外部キーの指定の仕方</h3>
 
 
 <p>今回の例で見ていくと、カテゴリは親カテゴリを 0 or 1 持ちます。なので、has_one を指定しています。</p>
 
-<p>親カテゴリの定義では、最初に直接の関連であるカテゴリ関連の定義をしています。それが、<code>has_one :parent_rels, :class_name =&gt; &quot;CategoryRel&quot;, :foreign_key =&gt; &quot;sub_category_id&quot;</code> の部分です。</p>
+<p>親カテゴリの定義では、最初に直接の関連であるカテゴリ関連の定義をしています。それが、<code>has_one :parent_rels, :class_name =&gt; "CategoryRel", :foreign_key =&gt; "sub_category_id"</code> の部分です。</p>
 
 <p>この関連は、:class_name で指定したクラスの関連、すなわちカテゴリ関連になります。カテゴリ関連との関係を <em>:foreign_key</em> で指定しています。親カテゴリは、カテゴリ関連の sub_category_id が自分のIDと一致するレコードのカテゴリのことになるので、:foreign_key には自分のIDと対応するカラムである sub_category_id を指定しています。</p>
 
@@ -254,7 +251,7 @@
 
 <p><em>:through</em> にはどの経路を使ってオブジェクトを得るかを指定します。:source には :through でたどった先に関連が二つ以上ある場合にどれを使うかを指定します。カテゴリ関連には親カテゴリとサブカテゴリを表す関連があるので、親カテゴリの関連である :parent_category を指定しています。</p>
 
-<p class="option"><em>:source の考え方</em><br />最初、:source は関連の元（ソース）はどっちか？を表すオプションだと思っていたので、自分のインスタンスから見て自分を表すのはどれか？を指定していましたが、これは間違いです。<br /><br />:source オプションは自分がどっちを表すものではなく、<strong>:through で表される経路の取得先を示す</strong>ものです。なので、自分から見て親カテゴリを表す関連はどっちか？を指定します。</p>
+<p class="option"><em>:source の考え方</em><br>最初、:source は関連の元（ソース）はどっちか？を表すオプションだと思っていたので、自分のインスタンスから見て自分を表すのはどれか？を指定していましたが、これは間違いです。<br><br>:source オプションは自分がどっちを表すものではなく、<strong class="text-danger">:through で表される経路の取得先を示す</strong>ものです。なので、自分から見て親カテゴリを表す関連はどっちか？を指定します。</p>
 
 
 
@@ -274,7 +271,7 @@
 
 
 <p>説明がわかりずらく、逆にわからなくなったかもしれませんが、要は、has_many :through でたどった先に複数の関連がある場合（厳密には規約から推測できない関連があった場合）、:source を使ってどの関連をソースにしてオブジェクトを集めるかを指定する必要があるということです。</p>
-</div>
+</body></html></div>
 
 
   
@@ -450,6 +447,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -473,10 +474,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -484,7 +481,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

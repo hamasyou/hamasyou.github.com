@@ -148,28 +148,27 @@
 
 
 
-<div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/249-1404088-2131559?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow"></a>
+<div class="entry-content"><html><body>
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/249-1404088-2131559?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title=""></a>
 </p>
 
 
-<p>JSFでカスタムコンポーネントを作るときの覚書きです。参考にした『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/249-1404088-2131559?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow">JavaServer Faces完全ガイド</a>』は、ツリーコンポーネントをカスタムコンポーネントとして作る手順が載っていました。</p>
+<p>JSFでカスタムコンポーネントを作るときの覚書きです。参考にした『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/249-1404088-2131559?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title="JavaServer Faces完全ガイド">JavaServer Faces完全ガイド</a>』は、ツリーコンポーネントをカスタムコンポーネントとして作る手順が載っていました。</p>
 
 <p>ここでは、カスタムコンポーネントを作るときに必要となるパーツと、注意点などをまとめておこうと思います。カスタムコンポーネントは大きく、入力用のコンポーネントと出力用のコンポーネントの2つに分けれます。入力用のコンポーネントはリクエスト間で値の保存・読み込みやデコードレンダリングなどを行わなければなりません。出力用のコンポーネントの場合は、値を保持し、エンコードレンダリングを行うことで機能を表現します。</p>
 
 <p>ここでは、出力用のコンポーネントの話をしています。説明が断片的なので、上記の本を読んだほうが手っ取り早いかも・・・ ^^;</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>[参考]</h4>
 
 
 <ul>
-<li><a href="http://www.wakhok.ac.jp/~tomoharu/jsf2004/text/index_c11.html" rel="external nofollow">JSFによるWebアプリケーション開発/カスタム・コンポーネント</a></li>
+<li><a href="http://www.wakhok.ac.jp/~tomoharu/jsf2004/text/index_c11.html" rel="external nofollow" title="JSFによるWebアプリケーション開発/カスタム・コンポーネント">JSFによるWebアプリケーション開発/カスタム・コンポーネント</a></li>
 </ul>
-
-
-<p></section></p>
+<p></p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -190,12 +189,43 @@
 
 
 <table>
-<tr><th>&nbsp;</th><th>コンポーネント</th><th>レンダラー</th><th>タグハンドラ</th></tr><tr><th>継承</th><td>UIComponentBase</td><td>Renderer</td><td>UIComponentTag<br />UIComponentBodyTag</td></tr><tr><th>famiry名</th><td>任意<br />（getFamiryメソッドで返すようにする）</td><td>任意<br />（コンポーネントとあわせる必要がある。faces-context.xmlに定義する)</td><td>不要</td></tr><tr><th>タイプ</th><td>完全クラス名。定数で定義するとよい。</td><td>完全クラス名。定数で定義するとよい。</td><td>getComponentTypeで使用するコンポーネントタイプを返す。<br />getRendererTypeで使用するレンダラータイプを返す。</td></tr><tr><th>実装するメソッド</th><td>コンポーネントで使用するプロパティのget/set等</td><td>encode系メソッド</td><td>setPropertiesメソッド、タグで受け取る属性のget/set等</td></tr><tr><th>その他</th><td>faces-context.xmlにcomponentの定義を記述</td><td>faces-context.xmlにrendererの定義を記述</td><td>TLDファイルを作成する</td></tr>
+<tr>
+<th> </th>
+<th>コンポーネント</th>
+<th>レンダラー</th>
+<th>タグハンドラ</th>
+</tr>
+<tr>
+<th>継承</th>
+<td>UIComponentBase</td>
+<td>Renderer</td>
+<td>UIComponentTag<br>UIComponentBodyTag</td>
+</tr>
+<tr>
+<th>famiry名</th>
+<td>任意<br>（getFamiryメソッドで返すようにする）</td>
+<td>任意<br>（コンポーネントとあわせる必要がある。faces-context.xmlに定義する)</td>
+<td>不要</td>
+</tr>
+<tr>
+<th>タイプ</th>
+<td>完全クラス名。定数で定義するとよい。</td>
+<td>完全クラス名。定数で定義するとよい。</td>
+<td>getComponentTypeで使用するコンポーネントタイプを返す。<br>getRendererTypeで使用するレンダラータイプを返す。</td>
+</tr>
+<tr>
+<th>実装するメソッド</th>
+<td>コンポーネントで使用するプロパティのget/set等</td>
+<td>encode系メソッド</td>
+<td>setPropertiesメソッド、タグで受け取る属性のget/set等</td>
+</tr>
+<tr>
+<th>その他</th>
+<td>faces-context.xmlにcomponentの定義を記述</td>
+<td>faces-context.xmlにrendererの定義を記述</td>
+<td>TLDファイルを作成する</td>
+</tr>
 </table>
-
-
-
-
 <h2>コンポーネントクラス</h2>
 
 
@@ -205,7 +235,7 @@
 
 <p>ValueBindingで値を受け取らない場合は、setValueBinding(String, ValueBinding)をオーバーライドして、特定の値しかValueBindingで受け取らないことを明示するとよい。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>setValueBindingのオーバーライド例</h4>
 
@@ -222,11 +252,11 @@
 </code></pre>
 
 
-<p></section></p>
+<p></p>
 
 <p>ValueBindingで受け取る値を返すgetメソッドは、getValueBindingメソッドを使って値結合を解決しなければならない。毎回、値結合を解決するとパフォーマンスが悪くなるので、キャッシュするようにする。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>ValueBindingされている値のgetメソッド例</h4>
 
@@ -249,26 +279,26 @@
 </code></pre>
 
 
-<p></section></p>
+<p></p>
 
 <h3>レンダラー</h3>
 
 
 <p>javax.faces.render.Rendererクラスを継承して作ります。主にオーバーライドして使うのは下のメソッド。</p>
 
-<ul><li>encodeBegin(FacesContext, UIComponent)</li>
+<ul>
+<li>encodeBegin(FacesContext, UIComponent)</li>
 <li>encodeChildren(FacesContext, UIComponent)</li>
 <li>encodeEnd(FacesContext, UIComponent)</li>
-<li>getRendersChildren()</li></ul>
-
-
+<li>getRendersChildren()</li>
+</ul>
 <p>レンダラーは、基本的には自分が処理できるコンポーネントだけをレンダリングします。ただし、&lt;h:dataTable&gt;などは、子に現れる&lt;h:column&gt;などのコンポーネントも処理します。子のコンポーネントの処理も自分で行う場合は、getRendersChildren()で <code>true</code> を返す必要があります。</p>
 
 <p>子のコンポーネントを処理する場合に、例えば次のようにします。</p>
 
-<pre class="code"><code><span class="tag">&lt;h:dataTable <span class="attr">value=</span><span class="value">&quot;#{xxx}&quot;</span> <span class="attr">var=</span><span class="value">&quot;child&quot;</span>&gt;</span> 
+<pre class="code"><code><span class="tag">&lt;h:dataTable <span class="attr">value=</span><span class="value">"#{xxx}"</span> <span class="attr">var=</span><span class="value">"child"</span>&gt;</span> 
   <span class="tag">&lt;h:column&gt;</span> 
-    <span class="tag">&lt;h:outputText <span class="attr">value=</span><span class="value">&quot;#{child.name}&quot;</span>/&gt;</span> 
+    <span class="tag">&lt;h:outputText <span class="attr">value=</span><span class="value">"#{child.name}"</span>/&gt;</span> 
   <span class="tag">&lt;/h:column&gt;</span> 
 <span class="tag">&lt;/h:dataTable&gt;</span>
 </code></pre>
@@ -276,7 +306,7 @@
 
 <p>child の部分に格納される値をセットしておかなければならない場合があります。これは、リクエストにコンポーネントのvar変数が表す名前（ここではchild)をキーとして、値をセットしておくことで対応できます。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>子コンポーネントに値を受け渡す方法</h4>
 
@@ -288,7 +318,7 @@ requestMap.put(component.getVar(), component.getVarValue());
 </code></pre>
 
 
-<p></section></p>
+<p></p>
 
 <p>エンコードは、encodeBegin、getRendersChildrenがtrueを返すときencodeChildren、encodeEndの順で処理されます。</p>
 
@@ -301,14 +331,15 @@ requestMap.put(component.getVar(), component.getVarValue());
 
 <p>実装するメソッドは次の2つです。</p>
 
-<ul><li>getComponentType</li><li>getRendererType</li></ul>
-
-
+<ul>
+<li>getComponentType</li>
+<li>getRendererType</li>
+</ul>
 <p>前者はコンポーネントのタイプ（完全クラス名にしておくことをおすすめ）を返すようにします。後者はレンダラーのタイプ（完全クラス名にしておくことをおすすめ）を返すようにします。</p>
 
 <p>さらに、タグハンドラーには、タグの属性の値を保持するプロパティを実装します。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>タグハンドラの例1</h4>
 
@@ -392,7 +423,7 @@ requestMap.put(component.getVar(), component.getVarValue());
 <div class="clear"></div>
 
 
-<p></section></p>
+<p></p>
 
 <p>注目するメソッドはsetProperties(UIComponent)です。このメソッドでは、タグの属性で指定された値をコンポーネントにセットする役割があります。　ValueBinding される可能性のある属性は、18行目のように UIComponentTag.isValueReference を使ってValueBinding形式かどうかを判定します。ValueBindingの場合は、FacesContextからValueBindingインスタンスを作成し、UIComponentのsetValueBindingを使ってセットします。</p>
 
@@ -409,29 +440,20 @@ requestMap.put(component.getVar(), component.getVarValue());
 <ul>
 <li>一番詳しい解説書</li>
 </ul>
-
-
-<div class="rakuten"><table  width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
 
 
 <ul>
 <li>リファレンスとしては秀逸</li>
 </ul>
-
-
-<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798008303/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798008303/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
 
 
 <ul>
 <li>概念を学ぶにはいい本</li>
 </ul>
-
-
-<div class="rakuten"><table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4883732096/sorehabooks-22/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
-
-
-
-</div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4883732096/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
+</body></html></div>
 
 
   
@@ -597,6 +619,10 @@ requestMap.put(component.getVar(), component.getVarValue());
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -620,10 +646,6 @@ requestMap.put(component.getVar(), component.getVarValue());
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -631,7 +653,7 @@ requestMap.put(component.getVar(), component.getVarValue());
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

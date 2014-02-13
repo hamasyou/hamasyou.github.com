@@ -150,18 +150,15 @@
 
 
 
-<div class="entry-content"><p>Titanium Module Development のメモです。</p>
+<div class="entry-content"><html><body>
+<p>Titanium Module Development のメモです。</p>
 
 <h4>参考</h4>
 
 
 
 
-<ul><li><a href="http://d.hatena.ne.jp/donayama/searchdiary?word=*[Titanium]" rel="external nofollow">JP::HSJ::Junknews::HatenaSide</a></li></ul>
-
-
-
-
+<ul><li><a href="http://d.hatena.ne.jp/donayama/searchdiary?word=*%5BTitanium%5D" rel="external nofollow" title="JP::HSJ::Junknews::HatenaSide">JP::HSJ::Junknews::HatenaSide</a></li></ul>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:inline-block;width:728px;height:90px"
@@ -170,73 +167,81 @@
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-
-
-
-
-
 <h2>Module の種類</h2>
 
 
 <p>Module として作成できるものは次の通り。</p>
 
 <table>
-<tr><th>種類</th><th>説明</th></tr>
-<tr><td>Proxy</td><td>ネイティブコード（Objective-C）と JavaScript の橋渡しをするクラス</td></tr>
-<tr><td>ViewProxy</td><td>View のレンダリングに対応する Proxy</td></tr>
-<tr><td>View</td><td>Titanium で描画できる UI コンポーネントを表すクラス</td></tr>
-<tr><td>Module</td><td>Module セットを表すクラス</td></tr>
+<tr>
+<th>種類</th>
+<th>説明</th>
+</tr>
+<tr>
+<td>Proxy</td>
+<td>ネイティブコード（Objective-C）と JavaScript の橋渡しをするクラス</td>
+</tr>
+<tr>
+<td>ViewProxy</td>
+<td>View のレンダリングに対応する Proxy</td>
+</tr>
+<tr>
+<td>View</td>
+<td>Titanium で描画できる UI コンポーネントを表すクラス</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>Module セットを表すクラス</td>
+</tr>
 </table>
-
-
 <p>Module クラスはモジュールとして提供するパッケージにひとつだけ存在し、Proxy、ViewProxy、View は Module パッケージ内にいくつ存在してもよい。以下、モジュール名を com.hamasyou と定義するものとする。クラス名等のプレフィックスにつく ComHamasyou はモジュール名を表す。</p>
 
 <h2>Proxy</h2>
 
 
-<p>Proxy クラスは <em>TiProxy</em> を継承して作成する。クラス名を &quot;Module 名 + クラス名 + Proxy&quot; にすることで、JavaScript から次のように呼び出すことができるようになる。例えば、ComHamasyouMyOriginalProxy という名前で Proxyクラスを作成すると次のようになる。</p>
+<p>Proxy クラスは <em>TiProxy</em> を継承して作成する。クラス名を &#8220;Module 名 + クラス名 + Proxy&#8221; にすることで、JavaScript から次のように呼び出すことができるようになる。例えば、ComHamasyouMyOriginalProxy という名前で Proxyクラスを作成すると次のようになる。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>JavaScript のコード</h4>
 
 
 
 
-<pre class="code"><span class="keyword">var</span> my_module = <span class="keyword">require</span>(<span class="literal">&quot;com.hamasyou&quot;</span>);
+<pre class="code"><span class="keyword">var</span> my_module = <span class="keyword">require</span>(<span class="literal">"com.hamasyou"</span>);
 <span class="keyword">var</span> obj = my_module.createMyOriginal({ ... });</pre>
 
 
-<p></section></p>
+<p></p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>ComHamasyouMyOriginalProxy.h</h4>
 
 
 
 
-<pre class="code"><span class="keyword">#import</span> <span class="literal">&quot;TiProxy.h&quot;</span>
+<pre class="code"><span class="keyword">#import</span> <span class="literal">"TiProxy.h"</span>
 <span class="keyword">@interface</span> ComHamasyouMyOriginalProxy : TiProxy {
 }
 <span class="keyword">@end</span></pre>
 
 
-<p></section></p>
+<p></p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>ComHamasyouMyOriginalProxy.m</h4>
 
 
 
 
-<pre class="code"><span class="keyword">#import</span> <span class="literal">&quot;ComHamasyouMyOriginalProxy.h&quot;</span>
+<pre class="code"><span class="keyword">#import</span> <span class="literal">"ComHamasyouMyOriginalProxy.h"</span>
 <span class="keyword">@implementation</span> ComHamasyouMyOriginalProxy
 <span class="keyword">@end</span></pre>
 
 
-<p></section></p>
+<p></p>
 
 <h3>Proxy Methods のシグネチャ</h3>
 
@@ -248,7 +253,8 @@
 
 
 
-<div class="option"><span style="color: #0000FF">マクロの内容は要確認。Titanium SKD 1.4.0 で内容が変わっているっぽい。。。</span>
+<div class="option">
+<span style="color: #0000FF">マクロの内容は要確認。Titanium SKD 1.4.0 で内容が変わっているっぽい。。。</span>
 args 引数は <em>NSArray</em> になっている。実際に引数がひとつの場合には <em>ENSURE_SINGLE_ITEM(args, type)</em> のマクロを使って単一引数にする。
 <em>ENSURE_UI_THREAD</em> etc&#8230;</div>
 
@@ -260,7 +266,7 @@ args 引数は <em>NSArray</em> になっている。実際に引数がひとつ
 
 <p>(id)args で受け取った引数は、TiUtils クラスを使って型に変換できる。</p>
 
-<pre class="code"><span class="keyword">#import</span> <span class="literal">&quot;TiUtils.h&quot;</span>
+<pre class="code"><span class="keyword">#import</span> <span class="literal">"TiUtils.h"</span>
 NSInteger f = [TiUtils intValue:args];
 NSString *s1 = [TiUtils stringValue:arg];
 NSString *s2 = [TiUtils stringValue:@"key" properties:dict def:@"default"];</pre>
@@ -288,12 +294,12 @@ NSString *s2 = [TiUtils stringValue:@"key" properties:dict def:@"default"];</pre
 
 <p>createMyOriginal コンストラクタメソッドの引数にプロパティを渡した場合、setter メソッドが定義されていれば setter メソッドが、定義されていなければ dynprops という NSDictionary にプロパティが設定される。</p>
 
-<pre class="code"><span class="keyword">var</span> obj = my_module.createMyOriginal({ name: <span class="literal">&quot;hamasyou&quot;</span> });
+<pre class="code"><span class="keyword">var</span> obj = my_module.createMyOriginal({ name: <span class="literal">"hamasyou"</span> });
 obj.age = 28;</pre>
 
 
 <p>設定されたプロパティをコード内で使用する場合には、<em>valueForKey</em>、<em>valueForUndefinedKey</em> を使う。valueForKey は getter から、valueForUndefinedKey は dynprops からそれぞれ値を取り出す。</p>
-</div>
+</body></html></div>
 
 
   
@@ -467,6 +473,10 @@ obj.age = 28;</pre>
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -490,10 +500,6 @@ obj.age = 28;</pre>
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -501,7 +507,7 @@ obj.age = 28;</pre>
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

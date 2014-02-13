@@ -150,8 +150,9 @@
 
 
 
-<div class="entry-content"><p>
-<a href="http://portals.apache.org/pluto/" rel="external nofollow"></a>
+<div class="entry-content"><html><body>
+<p>
+<a href="http://portals.apache.org/pluto/" rel="external nofollow" title=""></a>
 </p>
 
 
@@ -159,11 +160,14 @@
 
 <p>この覚書きで使っている環境は次の通りです。</p>
 
-<ul><li>Eclipse 3.1.2</li><li>Pluto 1.1 (alpha release 以前)</li><li>Tomcat 5.5.9</li><li>J2SE 5.0</li></ul>
-
-
-<p>参考にしたリソースは次の通りです。<ul><li><a href="http://jcp.org/aboutJava/communityprocess/final/jsr168/index.html" rel="external nofollow">Developing Portlets with Apache Pluto</a></li></ul></p>
-
+<ul>
+<li>Eclipse 3.1.2</li>
+<li>Pluto 1.1 (alpha release 以前)</li>
+<li>Tomcat 5.5.9</li>
+<li>J2SE 5.0</li>
+</ul>
+<p>参考にしたリソースは次の通りです。</p>
+<ul><li><a href="http://jcp.org/aboutJava/communityprocess/final/jsr168/index.html" rel="external nofollow" title="Developing Portlets with Apache Pluto">Developing Portlets with Apache Pluto</a></li></ul>
 <p>Pluto の中を追っていったときの覚書です。ソースコードを手元に読んでいただければ、より理解できるのではないかと思います。</p>
 
 <p>間違い等に気づいた方は、ご連絡いただけると助かります。</p>
@@ -187,13 +191,15 @@
 
 
 <ul>
-<li><a href="#chapter1" rel="external nofollow">環境構築</a>
+<li>
+<a href="#chapter1" rel="external nofollow">環境構築</a>
 <ul>
 <li><a href="#section1" rel="external nofollow">ソースコードをダウンロードする</a></li>
 <li><a href="#section2" rel="external nofollow">インストールする</a></li>
 </ul>
 </li>
-<li><a href="#chapter2" rel="external nofollow">Pluto のアーキテクチャ</a>
+<li>
+<a href="#chapter2" rel="external nofollow">Pluto のアーキテクチャ</a>
 <ul>
 <li><a href="#section3" rel="external nofollow">ポータルもWebアプリケーションだから、サーブレット が使われている</a></li>
 <li><a href="#section4" rel="external nofollow">Pluto で使われる主なクラス群</a></li>
@@ -204,40 +210,36 @@
 </li>
 <li><a href="#chapter3" rel="external nofollow">まとめ</a></li>
 </ul>
-
-
-
-
 <h4>Pluto をもうちょっと詳しく見てみる 目次</h4>
 
 
 
 
 <ul>
-<li><a href="#chapter4" rel="external nofollow">PortalStartupListener の動作</a>
+<li>
+<a href="#chapter4" rel="external nofollow">PortalStartupListener の動作</a>
 </li>
-<li><a href="#chapter5" rel="external nofollow">PortletDriverServlet の動作</a>
+<li>
+<a href="#chapter5" rel="external nofollow">PortletDriverServlet の動作</a>
 <ul>
 <li><a href="#section8" rel="external nofollow">リクエスト種類によって、呼び出しが変わる</a></li>
 </ul>
 </li>
-<li><a href="#chapter6" rel="external nofollow">ポートレットコンテナの動作</a>
+<li>
+<a href="#chapter6" rel="external nofollow">ポートレットコンテナの動作</a>
 <ul>
 <li><a href="#section9" rel="external nofollow">ポートレットコンテナの呼び出しを整理しておくと</a></li>
 <li><a href="#section10" rel="external nofollow">ポートレットの呼び出し方法</a></li>
 </ul>
 </li>
-<li><a href="#chapter7" rel="external nofollow">エラーで困ったら</a>
+<li>
+<a href="#chapter7" rel="external nofollow">エラーで困ったら</a>
 <ul>
 <li><a href="#section11" rel="external nofollow">error.config.context.null</a></li>
 </ul>
 </li>
 <li><a href="#chapter8" rel="external nofollow">検討事項</a></li>
 </ul>
-
-
-
-
 <h2 id="chapter1">環境構築</h2>
 
 
@@ -255,14 +257,14 @@
 <h3 id="section1">ソースコードをダウンロードする</h3>
 
 
-<p>Apache Pluto 1.1 のソースコードは、<a href="http://subversion.tigris.org/" rel="external nofollow">Subversion</a> で管理されています。下記の URL からチェックアウトできます。</p>
+<p>Apache Pluto 1.1 のソースコードは、<a href="http://subversion.tigris.org/" rel="external nofollow" title="Subversion">Subversion</a> で管理されています。下記の URL からチェックアウトできます。</p>
 
-<pre><a href="http://svn.apache.org/repos/asf/portals/pluto/trunk/" rel="external nofollow"> http://svn.apache.org/repos/asf/portals/pluto/trunk/</a></pre>
+<pre><a href="http://svn.apache.org/repos/asf/portals/pluto/trunk/" rel="external nofollow" title=" http://svn.apache.org/repos/asf/portals/pluto/trunk/"> http://svn.apache.org/repos/asf/portals/pluto/trunk/</a></pre>
 
 
 <p>下のコマンドを実行することでも、ソースコードがダウンロードできます。</p>
 
-<pre class="console">> <kbd>svn checkout http://svn.apache.org/repos/asf/portals/pluto/trunk/ pluto-site</kbd></pre>
+<pre class="console">&gt; <kbd>svn checkout http://svn.apache.org/repos/asf/portals/pluto/trunk/ pluto-site</kbd></pre>
 
 
 
@@ -270,14 +272,14 @@
 <h3 id="sectiono2">インストールする</h3>
 
 
-<p>ソースコードをダウンロードしたら、Apache Pluto のサイトにある <a href="http://portals.apache.org/pluto/getting-started.html" rel="external nofollow">Getting Started</a> を見ながら、インストールを行います。ソースコードをダウンロードしたパスに移動して</p>
+<p>ソースコードをダウンロードしたら、Apache Pluto のサイトにある <a href="http://portals.apache.org/pluto/getting-started.html" rel="external nofollow" title="Getting Started">Getting Started</a> を見ながら、インストールを行います。ソースコードをダウンロードしたパスに移動して</p>
 
-<pre class="console">> <kbd>mvn install</kbd></pre>
+<pre class="console">&gt; <kbd>mvn install</kbd></pre>
 
 
 <p>を実行すると、ずらずらと、ライブラリができるので、Getting Started に書いてある Step にしたがって配置していきます。</p>
 
-<p>配置が終了したら、Tomcat を起動します。<a href="http://localhost:8080/pluto/portal" rel="external nofollow">http://localhost:8080/pluto/portal</a> にアクセスすると、Pluto のポータル画面が表示されます。</p>
+<p>配置が終了したら、Tomcat を起動します。<a href="http://localhost:8080/pluto/portal" rel="external nofollow" title="http://localhost:8080/pluto/portal">http://localhost:8080/pluto/portal</a> にアクセスすると、Pluto のポータル画面が表示されます。</p>
 
 <h2 id="chapter2">Pluto のアーキテクチャ</h2>
 
@@ -289,7 +291,7 @@
 
 <p>まず、最初に Pluto がどういう風に動作するのかを簡単にまとめて見ました。（画像をクリックすると大きな画像が表示されます。）</p>
 
-<p><a href="http://hamasyou.com/images/portal_pluto/pluto_class.gif" rel="external nofollow"></a></p>
+<p><a href="http://hamasyou.com/images/portal_pluto/pluto_class.gif" rel="external nofollow" title=""></a></p>
 
 <p>Pluto は、Web ブラウザからリクエストを受けると次のように動作します。</p>
 
@@ -314,11 +316,11 @@
 
 <p>Tomcat を起動した際に webapp ディレクトリにできる pluto フォルダの下には、典型的な Web アプリケーションの構成ができています。</p>
 
-<p><img src="http://hamasyou.com/images/portal_pluto/pluto_dir.gif" alt="pluto   のディレクトリ構成" /></p>
+<p><img src="http://hamasyou.com/images/portal_pluto/pluto_dir.gif" alt="pluto   のディレクトリ構成" class="img-thumbnail"></p>
 
 <p>{TOMCAT_HOME}/webapps/pluto/WEB-INF/web.xml を開くと、こんな記述があると思います。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>web.xml 抜粋</h4>
 
@@ -334,25 +336,25 @@
 </code></pre>
 
 
-<p></section></p>
+<p></p>
 
 <p>このクラスが、ポータルアプリケーションの窓口、ポータルアプリケーションのサーブレットです。ポータルにアクセスしたいときは、このサーブレットにアクセスすることになります。web.xml の下のほうにマッピングが書かれていますので、見てみます。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>web.xml 抜粋</h4>
 
 
 
 
-<pre class="code"></code><span class="tag">&lt;servlet-mapping&gt;</span>  
+<pre class="code"><span class="tag">&lt;servlet-mapping&gt;</span>  
   <span class="tag">&lt;servlet-name&gt;</span>plutoPortalDriver<span class="tag">&lt;/servlet-name&gt;</span>  
   <span class="tag">&lt;url-pattern&gt;</span>/portal/*<span class="tag">&lt;/url-pattern&gt;</span>  
 <span class="tag">&lt;/servlet-mapping&gt;</span>
-</code></pre>
+</pre>
 
 
-<p></section></p>
+<p></p>
 
 <p>つまり、http://localhost:8080/pluto/portal/ にアクセスすることで、このサーブレットが呼ばれ、ポートレットコンテナに格納されているポートレットが呼び出されるわけです。</p>
 
@@ -373,22 +375,14 @@
 <dt>org.apache.pluto.driver.tags.PortletRenderTag</dt>
 <dd><p>ポートレットのレンダリングを呼び出すためのタグクラスです。JSP に記述され、ポートレットのレンダリングリクエストを発行します。<code>&lt;pluto:render /&gt;</code> であらわされます。</p></dd>
 </dl>
-
-
-
-
 <dl>
 <dt class="notice">クロスコンテキストを有効にする必要がある</dt>
-<dd>ポータルは、複数のWeb アプリケーションをまたがるため、クロスコンテキスト(crossContext) が可能でなければなりません。{TOMCAT_HOME}/conf/Catalina/localhost にコピーした pluto.xml には、<code>crossContext=&quot;true&quot;</code> が記述されています。</dd>
+<dd>ポータルは、複数のWeb アプリケーションをまたがるため、クロスコンテキスト(crossContext) が可能でなければなりません。{TOMCAT_HOME}/conf/Catalina/localhost にコピーした pluto.xml には、<code>crossContext="true"</code> が記述されています。</dd>
 </dl>
-
-
-
-
 <h3 id="sectiono5">ポートレットコンテナにポートレットを登録するにはどうすればいいのか？</h3>
 
 
-<p>{TOMCAT_HOME}/webapps/pluto/WEB-INF/web.xml を見ると、いくつかのサーブレットの設定に <code><strong>org.apache.pluto.core.PortletServlet</strong></code> というクラスが使われています。サーブレットの <code>init-param</code> 設定で、<code><strong>portlet-name</strong></code> というパラメータが設定されています。</p>
+<p>{TOMCAT_HOME}/webapps/pluto/WEB-INF/web.xml を見ると、いくつかのサーブレットの設定に <code><strong class="text-danger">org.apache.pluto.core.PortletServlet</strong></code> というクラスが使われています。サーブレットの <code>init-param</code> 設定で、<code><strong class="text-danger">portlet-name</strong></code> というパラメータが設定されています。</p>
 
 <pre class="code"><code><span class="tag">&lt;servlet&gt;</span>  
   <span class="tag">&lt;servlet-name&gt;</span>AdminPortlet<span class="tag">&lt;/servlet-name&gt;</span>  
@@ -426,14 +420,17 @@
 
 <p>さて、これでポートレットの設定は完了したわけですが、これだけではポートレットは呼び出せません。JSR-168 には、</p>
 
-<blockquote><p>Portlets are not directly bound to a URL</p><footer><strong>JSR-168</strong></footer></blockquote>
+<blockquote>
+<p>Portlets are not directly bound to a URL</p>
+<footer><strong class="text-danger">JSR-168</strong></footer>
+</blockquote>
 
 
 <p>とあります。これはつまり、ブラウザのアドレスバーに URL を直接打ち込んでもポートレットを呼び出すことはできませんということを言っています。例えば、ブラウザのアドレスに http://localhost:8080/pluto/PortletInvoker/AdminPortal 入力してもエラーになります。</p>
 
 <p>では、どうすればよいかというと、ポートレットは、ポートレットコンテナから呼び出されることが決められているので、ポートレットコンテナに呼び出しをお願いします。Pluto1.1 の場合、このお願いは {TOMCAT_HOME}/webapps/pluto/WEB-INF/pluto-portal-driver-config.xml に記述することになります。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>(pluto-portal-driver-config.xml 抜粋)</h4>
 
@@ -445,23 +442,23 @@
   <span class="tag">&lt;portlet-app&gt;</span>  
     <span class="tag">&lt;context-path&gt;</span>/pluto<span class="tag">&lt;/context-path&gt;</span>  
     <span class="tag">&lt;portlets&gt;</span>  
-      <span class="tag">&lt;portlet <span class="attr">name=</span><span class="value">&quot;AboutPortlet&quot;</span> /&gt;</span>  
-      <span class="tag">&lt;portlet <span class="attr">name=</span><span class="value">&quot;AdminPortlet&quot;</span> /&gt;</span>  
+      <span class="tag">&lt;portlet <span class="attr">name=</span><span class="value">"AboutPortlet"</span> /&gt;</span>  
+      <span class="tag">&lt;portlet <span class="attr">name=</span><span class="value">"AdminPortlet"</span> /&gt;</span>  
     <span class="tag">&lt;/portlets&gt;</span>  
   <span class="tag">&lt;/portlet-app&gt;</span>  
   ...  
-  <span class="tag">&lt;render-config <span class="attr">default=</span><span class="value">&quot;Pluto Admin&quot;</span>&gt;</span>  
-    <span class="tag">&lt;page <span class="attr">name=</span><span class="value">&quot;Pluto Admin&quot;</span> <span class="attr">uri=</span><span class="value">&quot;/WEB-INF/themes/pluto-default-theme.jsp&quot;</span>&gt;</span>  
-      <span class="tag">&lt;portlet <span class="attr">context=</span><span class="value">&quot;/pluto&quot;</span> <span class="attr">name=</span><span class="value">&quot;AdminPortlet&quot;</span>/&gt;</span>  
+  <span class="tag">&lt;render-config <span class="attr">default=</span><span class="value">"Pluto Admin"</span>&gt;</span>  
+    <span class="tag">&lt;page <span class="attr">name=</span><span class="value">"Pluto Admin"</span> <span class="attr">uri=</span><span class="value">"/WEB-INF/themes/pluto-default-theme.jsp"</span>&gt;</span>  
+      <span class="tag">&lt;portlet <span class="attr">context=</span><span class="value">"/pluto"</span> <span class="attr">name=</span><span class="value">"AdminPortlet"</span>/&gt;</span>  
     <span class="tag">&lt;/page&gt;</span>  
   <span class="tag">&lt;/render-config&gt;</span>  
 <span class="tag">&lt;/pluto-portal-driver&gt;</span>
 </code></pre>
 
 
-<p></section></p>
+<p></p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>portlet-app タグ</h4>
 
@@ -469,14 +466,14 @@
 <p>このタグでポートレットの定義を記述します。</p>
 
 <dl>
-<dt>context-path タグ</dt><dd><p>ここに、ポートレットのコンテキストパスを記述します。ポートレットは別の Web アプリケーションとして作成できるので、コンテキストも Pluto とは別になります。コンテキスト名に使える文字は 「a-z, A-Z, 0-9, _, /」 です。&#8217;.&#8217; や &#8216;-&#8217; は使えないので注意です。</p></dd>
-<dt>portlets タグ</dt><dd><p>このタグを使って、このコンテキストに含まれるポートレットの名前を定義します。ここに記述するのは、portlet.xml に定義したポートレットです。</p></dd>
+<dt>context-path タグ</dt>
+<dd><p>ここに、ポートレットのコンテキストパスを記述します。ポートレットは別の Web アプリケーションとして作成できるので、コンテキストも Pluto とは別になります。コンテキスト名に使える文字は 「a-z, A-Z, 0-9, _, /」 です。&#8217;.&#8217; や &#8216;-&#8217; は使えないので注意です。</p></dd>
+<dt>portlets タグ</dt>
+<dd><p>このタグを使って、このコンテキストに含まれるポートレットの名前を定義します。ここに記述するのは、portlet.xml に定義したポートレットです。</p></dd>
 </dl>
+<p></p>
 
-
-<p></section></p>
-
-<p><section></p>
+<p><section></section></p>
 
 <h4>render-config タグ</h4>
 
@@ -488,7 +485,7 @@
 <pre>http://localhost:8080/pluto/portal/Pluto%20Admin</pre>
 
 
-<p></section></p>
+<p></p>
 
 <p>これで、Pluto を起動したときに、pluto-portal-driver-config.xml が読み込まれ、ポートレット URLを生成したページが表示できるようになります。Pluto は、この設定ファイルを解析して、URL と ポートレットアプリケーションのマッピングを行います。</p>
 
@@ -501,12 +498,9 @@
 
 <pre>[portlet-context-name].[portlet-name]</pre>
 
-<p><code>[portlet-context-name]</code> とは、ポートレットアプリケーションのコンテキスト名のことです。<code>[portlet-name]</code> は、文字通りポートレット名です。これらを &#8216;.&#8217; でつないだものが <strong>Portlet Definition ID</strong> と呼ばれるポートレットの一意な ID です。</p></dd>
+<p><code>[portlet-context-name]</code> とは、ポートレットアプリケーションのコンテキスト名のことです。<code>[portlet-name]</code> は、文字通りポートレット名です。これらを &#8216;.&#8217; でつないだものが <strong class="text-danger">Portlet Definition ID</strong> と呼ばれるポートレットの一意な ID です。</p>
+</dd>
 </dl>
-
-
-
-
 <h3 id="sectiono7">Pluto の設定には、SpringFramework が使われている</h3>
 
 
@@ -514,50 +508,51 @@
 
 <p>Pluto の設定が行われている部分を抜粋します。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>(pluto-portal-driver-service-config.xml 抜粋)</h4>
 
 
 
 
-<pre class="code"><code><span class="tag">&lt;bean <span class="attr">id=</span><span class="value">&quot;DriverConfiguration&quot;</span>  
-  <span class="attr">class=</span><span class="value">&quot;org.apache.pluto.driver.config.impl.DriverConfigurationImpl&quot;</span>&gt;</span>  
+<pre class="code"><code><span class="tag">&lt;bean <span class="attr">id=</span><span class="value">"DriverConfiguration"</span>  
+  <span class="attr">class=</span><span class="value">"org.apache.pluto.driver.config.impl.DriverConfigurationImpl"</span>&gt;</span>  
   <span class="rem">&lt;!-- ===== Portal Services ===== --&gt;</span>  
-  <span class="tag">&lt;constructor-arg&gt;</span><span class="tag">&lt;ref <span class="attr">local=</span><span class="value">&quot;PropertyConfigService&quot;</span>/&gt;</span><span class="tag">&lt;/constructor-arg&gt;</span>  
-  <span class="tag">&lt;constructor-arg&gt;</span><span class="tag">&lt;ref <span class="attr">local=</span><span class="value">&quot;PortletRegistryConfig&quot;</span>/&gt;</span><span class="tag">&lt;/constructor-arg&gt;</span>  
-  <span class="tag">&lt;constructor-arg&gt;</span><span class="tag">&lt;ref <span class="attr">local=</span><span class="value">&quot;RenderConfigService&quot;</span>/&gt;</span><span class="tag">&lt;/constructor-arg&gt;</span>  
+  <span class="tag">&lt;constructor-arg&gt;</span><span class="tag">&lt;ref <span class="attr">local=</span><span class="value">"PropertyConfigService"</span>/&gt;</span><span class="tag">&lt;/constructor-arg&gt;</span>  
+  <span class="tag">&lt;constructor-arg&gt;</span><span class="tag">&lt;ref <span class="attr">local=</span><span class="value">"PortletRegistryConfig"</span>/&gt;</span><span class="tag">&lt;/constructor-arg&gt;</span>  
+  <span class="tag">&lt;constructor-arg&gt;</span><span class="tag">&lt;ref <span class="attr">local=</span><span class="value">"RenderConfigService"</span>/&gt;</span><span class="tag">&lt;/constructor-arg&gt;</span>  
  
   <span class="rem">&lt;!-- === Container Services === --&gt;</span>  
-  <span class="tag">&lt;constructor-arg&gt;</span><span class="tag">&lt;ref <span class="attr">local=</span><span class="value">&quot;PortalCallbackService&quot;</span>/&gt;</span><span class="tag">&lt;/constructor-arg&gt;</span>  
+  <span class="tag">&lt;constructor-arg&gt;</span><span class="tag">&lt;ref <span class="attr">local=</span><span class="value">"PortalCallbackService"</span>/&gt;</span><span class="tag">&lt;/constructor-arg&gt;</span>  
  
   <span class="rem">&lt;!--  Optional Container Services --&gt;</span>  
   <span class="rem">&lt;!--  
-  &lt;property name=&quot;portletPreferencesService&quot; &gt; 
-    &lt;ref local=&quot;PortletPreferencesService&quot; /&gt; 
+  &lt;property name="portletPreferencesService" &gt; 
+    &lt;ref local="PortletPreferencesService" /&gt; 
   &lt;/property&gt;  
-  &lt;property name =&quot;userAttributeService&quot; &gt; 
-    &lt;ref local=&quot;UserAttributeService&quot; /&gt; 
+  &lt;property name ="userAttributeService" &gt; 
+    &lt;ref local="UserAttributeService" /&gt; 
   &lt;/property&gt;  
   --&gt;</span>  
 <span class="tag">&lt;/bean&gt;</span>
 </code></pre>
 
 
-<p></section></p>
+<p></p>
 
 <p>4つのサービスクラスをインジェクションしています。Portal Services とコメントされているサービスクラスは、pluto-portal-driver-service-config.xml を読み込んで、それぞれの担当範囲の設定を返す役割を持っています。</p>
 
 <p>Container Services とコメントされているサービスクラスは、ポートレットコンテナから必要に応じて呼び出されるクラスです。例えば、ポータルのタイトルを設定するときに呼び出されたり、ポートレット URL を生成するクラスの取得に使われたりします。</p>
 
-<p>Pluto の実装を拡張したものに、<a href="http://portals.apache.org/jetspeed-2/" rel="external nofollow">uPortal</a> があります。これらのサービスクラスを拡張して作られています。</p>
+<p>Pluto の実装を拡張したものに、<a href="http://portals.apache.org/jetspeed-2/" rel="external nofollow" title="uPortal">uPortal</a> があります。これらのサービスクラスを拡張して作られています。</p>
 
 <h2 id="chapter3">まとめ</h2>
 
 
 
 
-<ul><li>ポータルはただのWeb アプリケーション</li>
+<ul>
+<li>ポータルはただのWeb アプリケーション</li>
 <li>ポートレットもただのWeb アプリケーション</li>
 <li>ポータルアプリケーションとポートレットアプリケーションは別々に開発できる</li>
 <li>ポータルアプリケーションの設定は{PORTLET_APP}/WEB-INF/portlet.xml を作成することで行う</li>
@@ -565,21 +560,17 @@
 <li>画面デザインの変更は、{PLUTO_HOME}/WEB-INF/themes/pluto-default-theme.jsp、portlet-skin.jsp を変更することで行う</li>
 <li>ポートレットコンテナの初期化に関する設定は、{PLUTO_HOME}/WEB-INF/pluto-portal-driver-service-config.xml に記述する</li>
 </ul>
-
-
 <p>さらに、ポートレットアプリケーションの開発者がやらなければならないのは、次の点です。</p>
 
 <dl>
 <dt class="info">Portlet 開発者がやる作業</dt>
-<dd><ol><li>javax.portlet.GenericPortlet を継承したポートレットを作成する</li>
+<dd><ol>
+<li>javax.portlet.GenericPortlet を継承したポートレットを作成する</li>
 <li>/WEB-INF/portlet.xml を作成し、ポートレットの定義を行う</li>
 <li>web.xml に org.apache.pluto.core.PortletServlet を設定し、<code>portal-name</code> を記述する</li>
-<li>Pluto の pluto-portal-driver-config.xml に、ポートレットの設定を記述する</li></ol></dd>
+<li>Pluto の pluto-portal-driver-config.xml に、ポートレットの設定を記述する</li>
+</ol></dd>
 </dl>
-
-
-
-
 <h2 id="chapter4">PortalStartupListener の動作</h2>
 
 
@@ -587,19 +578,18 @@
 
 <p><code>PortalStartupListener</code> の中で、Pluto で使われるいろいろな初期設定が行われます。このクラスは、Pluto がアプリケーションサーバにロードされると起動します。デフォルトの実装では、次の3つが行われます。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>デフォルトの設定メソッド</h4>
 
 
 
 
-<ul><li>initDriverConfiguration(servletContext);</li>
+<ul>
+<li>initDriverConfiguration(servletContext);</li>
 <li>initAdminConfiguration(servletContext);</li>
 <li>initContainer(servletContext);</li>
 </ul>
-
-
 <p>順番に見ていきます。まずは、<code>initDriverConfiguration</code> です。</p>
 
 <p>このメソッドは、<code>DriverConfiguration</code> の生成と初期化を行います。</p>
@@ -608,13 +598,13 @@
 
 <p>あとは、<code>DriverConfiguration</code> に設定されたサービスクラスの <code>init</code> メソッドが呼び出され、pluto-portal-driver-config.xml のパースを行うという仕組みです。</p>
 
-<p>生成された <code>DriverConfiguration</code> は、<code>ServletContext</code> に <code>&quot;driverConfig&quot;</code>  という名前で格納されます。</p>
+<p>生成された <code>DriverConfiguration</code> は、<code>ServletContext</code> に <code>"driverConfig"</code>  という名前で格納されます。</p>
 
 <p>つぎに、<code>AdminConfiguration</code> の生成と初期化が行われます。</p>
 
 <p>ほとんどの処理が、<code>DriverConfiguration</code> の同じです。違うのは、<code>ServletContext</code> に格納するときのキーが違うくらいです。</p>
 
-<p>&quot;driverAdminConfig&quot;</code> という値で格納されます。</p>
+<p>&#8220;driverAdminConfig&#8221; という値で格納されます。</p>
 
 <p><code>AdminConfiguration</code> は、ポートレットの追加や削除がシステム的に行えるものです。ポートレットを管理するツールを作るときに使えそうです。</p>
 
@@ -622,7 +612,7 @@
 
 <p>ここも大したことをしていません。<code>DriverConfiguration</code> をもとに、コンテナの実装クラスを生成しているだけです。</p>
 
-<p>生成したコンテナは、<code>ServletContext</code> に <code>&quot;portletContainer&quot;</code> というキーで格納されます。</p>
+<p>生成したコンテナは、<code>ServletContext</code> に <code>"portletContainer"</code> というキーで格納されます。</p>
 
 <p>これで Pluto の初期化が完了しました。あとは、<code>PortletDriverServlet</code> と <code>PortletContainer</code> の動作がわかれば、一通り Pluto の動作を追えるかなと思います。</p>
 
@@ -654,7 +644,10 @@
 
 <p>JSR-168 では、アクションURL がリクエストされたときには、対応するポートレットの <code>processAction</code> メソッドの呼び出しと、ポータルページに含まれるすべてのポートレットの <code>render</code> メソッドが呼び出されるとされています。</p>
 
-<blockquote><p>If the client request is triggered by an action URL, the portal/portlet-container must first trigger the action request by invoking the <i>processAction</i> method of the targeted portlet. &lt;中略&gt; Then, the portal/portlet-container must trigger the render request by invoking the <i>render</i> method for all the portlets in the portal page with the possible exception of portlets for which their content is being cached.</p><footer><strong>JSR-168</strong></footer></blockquote>
+<blockquote>
+<p>If the client request is triggered by an action URL, the portal/portlet-container must first trigger the action request by invoking the <i>processAction</i> method of the targeted portlet. &lt;中略&gt; Then, the portal/portlet-container must trigger the render request by invoking the <i>render</i> method for all the portlets in the portal page with the possible exception of portlets for which their content is being cached.</p>
+<footer><strong class="text-danger">JSR-168</strong></footer>
+</blockquote>
 
 
 <p><code>PortletDriverServlet</code> から呼び出されるのは、ポートレットコンテナの <code>doAction</code> メソッドです。この <code>doAction</code> メソッドの中でリクエストを解析し、どのポートレットを呼び出すかを決めます。ポートレットの呼び出しには、サーブレットレスポンスの <code>sendRedirect</code> を使っています。</p>
@@ -674,8 +667,6 @@
 <dt class="notice">クロスコンテキストを有効にする！</dt>
 <dd>ポートレットの呼び出しを行うには、クロスコンテキストを有効にしておかなければなりません。</dd>
 </dl>
-
-
 <p>ポータルは、異なるコンテキスト間のポートレットを呼び出します。そのため、コンテキストをまたいだ呼び出しが可能なように設定を行う必要があります。</p>
 
 <p>Tomcat の場合、これは、クロスコンテキスト（crossContext）というパラメータで行います。{TOMCAT_HOME}/conf/server.xml に記述するコンテキストの設定に <code>crossContext</code> を設定します。</p>
@@ -699,7 +690,7 @@
 
 
 <p>TBD</p>
-</div>
+</body></html></div>
 
 
   
@@ -873,6 +864,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -896,10 +891,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -907,7 +898,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

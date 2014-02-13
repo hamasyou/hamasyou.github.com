@@ -177,7 +177,8 @@
 
 
 
-<div class="entry-content"><p>JavaScript のテストに関して書かれた、体系的な本がやっと出た！という感じにまとめられています。</p>
+<div class="entry-content"><html><body>
+<p>JavaScript のテストに関して書かれた、体系的な本がやっと出た！という感じにまとめられています。</p>
 
 <p>本書では、JavaScript にスポットを当て、テストしやすい JavaScript のコードとはどんなものか、実際にテスト駆動で JavaScript のコードを書くにはどういう手順で進めていけばよいかについて書かれています。</p>
 
@@ -189,9 +190,7 @@
 <li>第3部: JavaScriptテスト駆動開発の実際</li>
 <li>第4部: テストのパターン</li>
 </ul>
-
-
-<p>第1部では、一般的な自動テストやテスト駆動開発（<strong>TDD</strong>）の概念を説明しながら、JavaScript 用の単体テストフレームワークを紹介しています。</p>
+<p>第1部では、一般的な自動テストやテスト駆動開発（<strong class="text-danger">TDD</strong>）の概念を説明しながら、JavaScript 用の単体テストフレームワークを紹介しています。</p>
 
 <p>第2部では、JavaScript という言語をおさらいしながら、大きな特徴である<em>関数</em>、<em>クロージャ</em>、<em>プロトタイプ継承</em>、<em>ECMAScript 第五版</em>、<em>控えめなJavaScript</em>、<em>機能検出（クロスプラットフォーム）</em>について説明を掘り下げています。</p>
 
@@ -199,7 +198,7 @@
 
 <p>第4部では、<em>モック</em>や<em>スタブ</em>といったいわゆる単体テストのテクニックや、優れた単体テストを書くためのテスト名の付け方や、振る舞いのテストを書くときにはどう書いたらよいか、わかりやすい単体テストコードを書くためのテクニックが説明されています。</p>
 
-<p>『<strong>テスト駆動JavaScript</strong>』の名にふさわしい内容で、他の言語でも共通する単体テストのお作法も学べる本書は、TDD難民の人にオススメです。</p>
+<p>『<strong class="text-danger">テスト駆動JavaScript</strong>』の名にふさわしい内容で、他の言語でも共通する単体テストのお作法も学べる本書は、TDD難民の人にオススメです。</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -224,10 +223,14 @@
 
 
 
-<blockquote><p><strong>テスト駆動開発では、「あらかじめ決められた大きな設計」はないが「最初の段階では設計はない」というわけではない。</strong></p><p>TDD は、何も無いところから優れた設計を自動的に生み出すわけではなく、作業の進展とともに設計を進化させやすくするのである。TDD は、単体テストに強く依存しているため、他の部分から切り離して単独のコンポーネントに力を注ぐ開発スタイルになる。そのため、<em>コードの疎結合を保ち</em>、<em>単一責任の原則を守り</em>、不必要にコードが水ぶくれすることを防ぐために大きな力になる。TDD は設計プロセスをしっかりと制御するため、<em>設計に関する多くの決定をどうしてもそれが必要な時まで先送りする</em>ことができる。</p><footer><strong>本書 P.48</strong></footer></blockquote>
+<blockquote>
+<p><strong class="text-danger">テスト駆動開発では、「あらかじめ決められた大きな設計」はないが「最初の段階では設計はない」というわけではない。</strong></p>
+<p>TDD は、何も無いところから優れた設計を自動的に生み出すわけではなく、作業の進展とともに設計を進化させやすくするのである。TDD は、単体テストに強く依存しているため、他の部分から切り離して単独のコンポーネントに力を注ぐ開発スタイルになる。そのため、<em>コードの疎結合を保ち</em>、<em>単一責任の原則を守り</em>、不必要にコードが水ぶくれすることを防ぐために大きな力になる。TDD は設計プロセスをしっかりと制御するため、<em>設計に関する多くの決定をどうしてもそれが必要な時まで先送りする</em>ことができる。</p>
+<footer><strong class="text-danger">本書 P.48</strong></footer>
+</blockquote>
 
 
-<p>TDD で開発を始める最初は、大きな設計は不要であるが、ある程度最初に時間を割いて設計を行う。最初の設計の時に考えることは、「<em>特定の状況下でコードがどのように振舞わなければならないか</em>（<strong>単一責任の原則</strong>）」、「<em>コンポーネント間でどのように仕事を委譲しあうのか</em>（<strong>GRASPパターン</strong>）」である。</p>
+<p>TDD で開発を始める最初は、大きな設計は不要であるが、ある程度最初に時間を割いて設計を行う。最初の設計の時に考えることは、「<em>特定の状況下でコードがどのように振舞わなければならないか</em>（<strong class="text-danger">単一責任の原則</strong>）」、「<em>コンポーネント間でどのように仕事を委譲しあうのか</em>（<strong class="text-danger">GRASPパターン</strong>）」である。</p>
 
 <h3>単一責任の原則を尊重する</h3>
 
@@ -239,10 +242,13 @@
 
 
 
-<blockquote><p>JavaScript のテストをするための事実上の標準はない。実際、JavaScript は汎用の標準ライブラリというものを持たないので、ブラウザのスクリプティングと直接関係のないプログラミングタスクはどれでも事実上の標準を持たないのである。この状況を改善するために、もともとはサーバーサイド JavaScript の標準化を目指していた CommonJS という活動がある。</p><footer><strong>本書 P.64</strong></footer></blockquote>
+<blockquote>
+<p>JavaScript のテストをするための事実上の標準はない。実際、JavaScript は汎用の標準ライブラリというものを持たないので、ブラウザのスクリプティングと直接関係のないプログラミングタスクはどれでも事実上の標準を持たないのである。この状況を改善するために、もともとはサーバーサイド JavaScript の標準化を目指していた CommonJS という活動がある。</p>
+<footer><strong class="text-danger">本書 P.64</strong></footer>
+</blockquote>
 
 
-<p>JavaScript のテストを行おうとすると、ブラウザ毎の挙動の違いや JavaScript の実装の違いにより動作が異なってきてしまう。そのような問題を解決しようと、Google 作った <strong>JsTestDriver</strong> が注目を集めている。</p>
+<p>JavaScript のテストを行おうとすると、ブラウザ毎の挙動の違いや JavaScript の実装の違いにより動作が異なってきてしまう。そのような問題を解決しようと、Google 作った <strong class="text-danger">JsTestDriver</strong> が注目を集めている。</p>
 
 <p>JsTestDriver もいくつかの欠点はあるため、YUI Test との使い分けをしていくとよさそう。</p>
 
@@ -266,7 +272,10 @@
 
 <p>多くのオブジェクト指向言語で、this はレシーバオブジェクトを指すが、JavaScript ではthis の値は呼び出し元によって決まる。</p>
 
-<blockquote><p>this は、かっこを受かって関数を呼び出したときに暗黙のうちに設定される。<em>関数として呼び出すとグローバルオブジェクト、メソッドとして呼び出すとその呼出に使ったオブジェクトが this になる</em>。</p><footer><strong>本書 P.104</strong></footer></blockquote>
+<blockquote>
+<p>this は、かっこを受かって関数を呼び出したときに暗黙のうちに設定される。<em>関数として呼び出すとグローバルオブジェクト、メソッドとして呼び出すとその呼出に使ったオブジェクトが this になる</em>。</p>
+<footer><strong class="text-danger">本書 P.104</strong></footer>
+</blockquote>
 
 
 
@@ -276,68 +285,74 @@
 
 <p>オブジェクトを名前空間として使うには、グローバルスコープでオブジェクトを定義し、関数やオブジェクトをそのオブジェクトのプロパティとして定義すれば良い。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">tddjs</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">lightbox</span><span class="o">:</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">},</span>
-</span><span class='line'>  <span class="nx">anchorLightbox</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">anchor</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="cm">/* ... */</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">tddjs</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">lightbox</span><span class="o">:</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">},</span>
+</span><span class="line">  <span class="nx">anchorLightbox</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">anchor</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="cm">/* ... */</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">};</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>大きなライブラリを作るようなときは、名前空間を構造化したい場合がある。そんなときは、namespace 関数を使うと良い。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">tddjs</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">function</span> <span class="nx">namespace</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">levels</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">levels</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">object</span><span class="p">[</span><span class="nx">levels</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="o">==</span> <span class="s2">&quot;undefined&quot;</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">object</span><span class="p">[</span><span class="nx">levels</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{};</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>      <span class="nx">object</span> <span class="o">=</span> <span class="nx">object</span><span class="p">[</span><span class="nx">levels</span><span class="p">[</span><span class="nx">i</span><span class="p">]];</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">object</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">return</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">namespace</span><span class="o">:</span> <span class="nx">namespace</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'><span class="p">}());</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">custome</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">namespace</span><span class="o">:</span> <span class="nx">tddjs</span><span class="p">.</span><span class="nx">namespace</span> <span class="p">};</span>
-</span><span class='line'><span class="nx">custome</span><span class="p">.</span><span class="nx">namespace</span><span class="p">(</span><span class="s2">&quot;dom.event&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="cm">/* custome.dom.event  namespace */</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">tddjs</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">function</span> <span class="nx">namespace</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">levels</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">levels</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">object</span><span class="p">[</span><span class="nx">levels</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="o">==</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">object</span><span class="p">[</span><span class="nx">levels</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">      <span class="nx">object</span> <span class="o">=</span> <span class="nx">object</span><span class="p">[</span><span class="nx">levels</span><span class="p">[</span><span class="nx">i</span><span class="p">]];</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">object</span><span class="p">;</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">return</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">namespace</span><span class="o">:</span> <span class="nx">namespace</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">}());</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">custome</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">namespace</span><span class="o">:</span> <span class="nx">tddjs</span><span class="p">.</span><span class="nx">namespace</span> <span class="p">};</span>
+</span><span class="line"><span class="nx">custome</span><span class="p">.</span><span class="nx">namespace</span><span class="p">(</span><span class="s2">"dom.event"</span><span class="p">);</span>
+</span><span class="line"><span class="cm">/* custome.dom.event  namespace */</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 
@@ -347,7 +362,10 @@
 
 
 
-<blockquote><p>セマンティックマークアップは、文書の構造に関わるものであり、文書の構造だけを対象とする。セマンティックHTMLは、アクセシビリティ向上の可能性を広げるだけでなく、CSS と JavaScript とのフックを増やす。視覚的なスタイルやレイアウトは CSS の領域である。表示に関わる属性や要素は使わないようにすべきだ。動作は、JavaScript の領域であり、外部スクリプトを介して関わるようにすべきだ。</p><footer><strong>本書 P.185</strong></footer></blockquote>
+<blockquote>
+<p>セマンティックマークアップは、文書の構造に関わるものであり、文書の構造だけを対象とする。セマンティックHTMLは、アクセシビリティ向上の可能性を広げるだけでなく、CSS と JavaScript とのフックを増やす。視覚的なスタイルやレイアウトは CSS の領域である。表示に関わる属性や要素は使わないようにすべきだ。動作は、JavaScript の領域であり、外部スクリプトを介して関わるようにすべきだ。</p>
+<footer><strong class="text-danger">本書 P.185</strong></footer>
+</blockquote>
 
 
 <p>控えめな JavaScript の7つのルールは次のようになる。</p>
@@ -361,11 +379,9 @@
 <li>他者と上手く折り合いをつけよ</li>
 <li>次のデベロッパのために仕事をせよ</li>
 </ul>
-
-
 <p>HTML と JavaScript の結合度を下げるために、イベントハンドラを使うとよい。また、テクニックの一つとして、イベントデリゲーションが推奨されている。</p>
 
-<p><strong>イベントデリゲーション</strong>は、ほとんどのユーザイベントがターゲット要素だけでなく、DOM 階層の上位コンテナでも発生することである。</p>
+<p><strong class="text-danger">イベントデリゲーション</strong>は、ほとんどのユーザイベントがターゲット要素だけでなく、DOM 階層の上位コンテナでも発生することである。</p>
 
 <p>ひとつ一つの要素にイベントハンドラを仕込むのではなく、その上位の要素でハンドリングし、子要素の状態によって処理を管理するようにするとすっきりとしたコードになることが多い。</p>
 
@@ -373,7 +389,7 @@
 
 
 <p>テスト名の付け方として、「いかに」ではなく「何を」と「なぜ」を中心につけるとよい</p>
-</div>
+</body></html></div>
 
 
   
@@ -549,6 +565,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -572,10 +592,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -583,7 +599,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

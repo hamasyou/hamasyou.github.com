@@ -156,7 +156,8 @@ fog 1.1.2 carrierwave のインストール close &hellip;" />
 
 
 
-<div class="entry-content"><p>Rails のプラグイン <a href="https://github.com/jnicklas/carrierwave" rel="external nofollow">carrierwave</a> と fog を使って、<em>Amazon S3</em> をストレージとして使う方法のメモです。</p>
+<div class="entry-content"><html><body>
+<p>Rails のプラグイン <a href="https://github.com/jnicklas/carrierwave" rel="external nofollow" title="carrierwave">carrierwave</a> と fog を使って、<em>Amazon S3</em> をストレージとして使う方法のメモです。</p>
 
 <h3>使用環境</h3>
 
@@ -168,23 +169,20 @@ fog 1.1.2 carrierwave のインストール close &hellip;" />
 <li>carrierwave 0.6.0.beta</li>
 <li>fog 1.1.2</li>
 </ul>
-
-
-
-
 <h3>carrierwave のインストール</h3>
 
 
 
 
 <div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+          <nav class="terminal-control-window"><a href="#finder" class="terminal-close" data-rel="close">close</a>
             <a href="#" class="terminal-minimize">minimize</a>
             <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>gem install carrierwave</span></code></pre></td></tr></table></div></div>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">gem install carrierwave</span></code></pre></td>
+</tr></table></div></div>
         </div>
 
 
@@ -195,55 +193,58 @@ fog 1.1.2 carrierwave のインストール close &hellip;" />
 
 <p>initializers に carrierwave.rb というファイルを作成し、以下のような設定を書きます。</p>
 
-<figure class='code'><figcaption><span>initializers/carrierwave.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#-*- encoding: utf-8 -*-</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">unless</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">test?</span>
-</span><span class='line'>  <span class="no">CarrierWave</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">cache_dir</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="si">}</span><span class="s2">/tmp/uploads&quot;</span>
-</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">storage</span>                          <span class="o">=</span> <span class="ss">:fog</span>
-</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">fog_credentials</span>                  <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>        <span class="ss">:provider</span>              <span class="o">=&gt;</span> <span class="s1">&#39;AWS&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="ss">:aws_access_key_id</span>     <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;AWS_S3_KEY_ID&quot;</span><span class="o">]</span><span class="p">,</span>
-</span><span class='line'>        <span class="ss">:aws_secret_access_key</span> <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;AWS_S3_SECRET_KEY&quot;</span><span class="o">]</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">fog_directory</span>                    <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;AWS_S3_BUCKET&quot;</span><span class="o">]</span>
-</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">fog_public</span>                       <span class="o">=</span> <span class="kp">false</span>
-</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">fog_authenticated_url_expiration</span> <span class="o">=</span> <span class="mi">60</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">else</span>
-</span><span class='line'>  <span class="no">CarrierWave</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="ss">:file</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>initializers/carrierwave.rb</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="c1">#-*- encoding: utf-8 -*-</span>
+</span><span class="line">
+</span><span class="line"><span class="k">unless</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">test?</span>
+</span><span class="line">  <span class="no">CarrierWave</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">cache_dir</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="si">}</span><span class="s2">/tmp/uploads"</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">storage</span>                          <span class="o">=</span> <span class="ss">:fog</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">fog_credentials</span>                  <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">        <span class="ss">:provider</span>              <span class="o">=&gt;</span> <span class="s1">'AWS'</span><span class="p">,</span>
+</span><span class="line">        <span class="ss">:aws_access_key_id</span>     <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">"AWS_S3_KEY_ID"</span><span class="o">]</span><span class="p">,</span>
+</span><span class="line">        <span class="ss">:aws_secret_access_key</span> <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">"AWS_S3_SECRET_KEY"</span><span class="o">]</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">fog_directory</span>                    <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">"AWS_S3_BUCKET"</span><span class="o">]</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">fog_public</span>                       <span class="o">=</span> <span class="kp">false</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">fog_authenticated_url_expiration</span> <span class="o">=</span> <span class="mi">60</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">else</span>
+</span><span class="line">  <span class="no">CarrierWave</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="ss">:file</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
-<p>ENV[&ldquo;AWS_S3_KEY_ID&rdquo;] にはユーザアクセスID、ENV[&ldquo;AWS_S3_SECRET_KEY&rdquo;] にはシークレットアクセスキー、ENV[&ldquo;AWS_S3_BUCKET&rdquo;] にはバケット名をそれぞれ設定する。</p>
+<p>ENV[“AWS_S3_KEY_ID”] にはユーザアクセスID、ENV[“AWS_S3_SECRET_KEY”] にはシークレットアクセスキー、ENV[“AWS_S3_BUCKET”] にはバケット名をそれぞれ設定する。</p>
 
 <p>各値は、Amazon S3 の設定画面で確認できる。</p>
 
 <p>この設定を行い、carrierwave で Uploader を作成して、ファイルをアップロードすると、S3 にファイルを置くことができる。また、S3 上のファイルの URL には、60秒のタイムアウト設定を掛けており、アプリからのアクセスでのみ参照可能なURLが表示されるようになる。（config.fog_public = false、config.fog_authenticated_url_expiration = 60 の設定）</p>
-</div>
+</body></html></div>
 
 
   
@@ -419,6 +420,10 @@ fog 1.1.2 carrierwave のインストール close &hellip;" />
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -442,10 +447,6 @@ fog 1.1.2 carrierwave のインストール close &hellip;" />
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -453,7 +454,7 @@ fog 1.1.2 carrierwave のインストール close &hellip;" />
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

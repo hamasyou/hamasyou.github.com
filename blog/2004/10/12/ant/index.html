@@ -148,8 +148,9 @@
 
 
 
-<div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774120006/sorehabooks-22" rel="external nofollow"></a>
+<div class="entry-content"><html><body>
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774120006/sorehabooks-22" rel="external nofollow" title=""></a>
 </p>
 
 
@@ -181,84 +182,84 @@
 
 <p>Antはビルドファイルを読み込んで動作します。コマンドラインから 「ant」 と打つことで、build.xmlというファイルを読み込んでデフォルトタスクを実行します。ビルドファイルや実行タスクを指定することも出来ます。</p>
 
-<pre class="code"><code><span class="tag">&lt;project <span class="attr">name=</span><span class="value">&quot;AntTask&quot;</span> <span class="attr">default=</span><span class="value">&quot;compile&quot;</span> <span class="attr">basedir=</span><span class="value">&quot;.&quot;</span>&gt;</span>
-  <span class="tag">&lt;property <span class="attr">name=</span><span class="value">&quot;src.dir&quot;</span> <span class="attr">value=</span><span class="value">&quot;./src&quot;</span> /&gt;</span>
-  <span class="tag">&lt;property <span class="attr">name=</span><span class="value">&quot;classes.dir&quot;</span> <span class="attr">location=</span><span class="value">&quot;./classes&quot;</span> /&gt;</span> 
-  <span class="tag">&lt;property <span class="attr">file=</span><span class="value">&quot;project.properties&quot;</span> <span class="attr">prefix=</span><span class="value">&quot;project&quot;</span> /&gt;</span> 
-  <span class="tag">&lt;property <span class="attr">environment=</span><span class="value">&quot;env&quot;</span> /&gt;</span> 
+<pre class="code"><code><span class="tag">&lt;project <span class="attr">name=</span><span class="value">"AntTask"</span> <span class="attr">default=</span><span class="value">"compile"</span> <span class="attr">basedir=</span><span class="value">"."</span>&gt;</span>
+  <span class="tag">&lt;property <span class="attr">name=</span><span class="value">"src.dir"</span> <span class="attr">value=</span><span class="value">"./src"</span> /&gt;</span>
+  <span class="tag">&lt;property <span class="attr">name=</span><span class="value">"classes.dir"</span> <span class="attr">location=</span><span class="value">"./classes"</span> /&gt;</span> 
+  <span class="tag">&lt;property <span class="attr">file=</span><span class="value">"project.properties"</span> <span class="attr">prefix=</span><span class="value">"project"</span> /&gt;</span> 
+  <span class="tag">&lt;property <span class="attr">environment=</span><span class="value">"env"</span> /&gt;</span> 
  
-  <span class="tag">&lt;fileset <span class="attr">id=</span><span class="value">&quot;classpath&quot;</span> <span class="attr">dir=</span><span class="value">&quot;${project.lib}&quot;</span>&gt;</span>
-    <span class="tag">&lt;include <span class="attr">name=</span><span class="value">&quot;*&quot;</span> /&gt;</span> 
-    <span class="tag">&lt;include <span class="attr">name=</span><span class="value">&quot;**/*.jar&quot;</span> /&gt;</span> 
-    <span class="tag">&lt;exclude <span class="attr">name=</span><span class="value">&quot;*.txt&quot;</span> /&gt;</span> 
+  <span class="tag">&lt;fileset <span class="attr">id=</span><span class="value">"classpath"</span> <span class="attr">dir=</span><span class="value">"${project.lib}"</span>&gt;</span>
+    <span class="tag">&lt;include <span class="attr">name=</span><span class="value">"*"</span> /&gt;</span> 
+    <span class="tag">&lt;include <span class="attr">name=</span><span class="value">"**/*.jar"</span> /&gt;</span> 
+    <span class="tag">&lt;exclude <span class="attr">name=</span><span class="value">"*.txt"</span> /&gt;</span> 
   <span class="tag">&lt;/fileset&gt;</span> 
  
-  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">&quot;echo&quot;</span>&gt;</span>
+  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">"echo"</span>&gt;</span>
     <span class="tag">&lt;echo&gt;</span>${src.dir}<span class="tag">&lt;/echo&gt;</span> 
     <span class="tag">&lt;echo&gt;</span>${classes.dir}<span class="tag">&lt;/echo&gt;</span> 
     <span class="tag">&lt;echo&gt;</span>${project.ver}<span class="tag">&lt;/echo&gt;</span> 
     <span class="tag">&lt;echo&gt;</span>${env.Path}<span class="tag">&lt;/echo&gt;</span> 
   <span class="tag">&lt;/target&gt;</span> 
  
-  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">&quot;init&quot;</span>&gt;</span> 
-    <span class="tag">&lt;mkdir <span class="attr">dir=</span><span class="value">&quot;${classes.dir}&quot;</span> /&gt;</span>
+  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">"init"</span>&gt;</span> 
+    <span class="tag">&lt;mkdir <span class="attr">dir=</span><span class="value">"${classes.dir}"</span> /&gt;</span>
   <span class="tag">&lt;/target&gt;</span> 
  
-  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">&quot;compile&quot;</span>&gt;</span> 
-    <span class="tag">&lt;ant <span class="attr">antfile=</span><span class="value">&quot;build.xml&quot;</span> <span class="attr">target=</span><span class="value">&quot;echo&quot;</span> /&gt;</span>
-    <span class="tag">&lt;javac <span class="attr">srcdir=</span><span class="value">&quot;${src.dir}&quot;</span> <span class="attr">destdir=</span><span class="value">&quot;${classes.dir}}&quot;</span> <span class="attr">debug=</span><span class="value">&quot;on&quot;</span>&gt;</span> 
+  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">"compile"</span>&gt;</span> 
+    <span class="tag">&lt;ant <span class="attr">antfile=</span><span class="value">"build.xml"</span> <span class="attr">target=</span><span class="value">"echo"</span> /&gt;</span>
+    <span class="tag">&lt;javac <span class="attr">srcdir=</span><span class="value">"${src.dir}"</span> <span class="attr">destdir=</span><span class="value">"${classes.dir}}"</span> <span class="attr">debug=</span><span class="value">"on"</span>&gt;</span> 
       <span class="tag">&lt;classpath&gt;</span> 
-        <span class="tag">&lt;fileset <span class="attr">refid=</span><span class="value">&quot;classpath&quot;</span> /&gt;</span>           
+        <span class="tag">&lt;fileset <span class="attr">refid=</span><span class="value">"classpath"</span> /&gt;</span>           
       <span class="tag">&lt;/classpath&gt;</span> 
     <span class="tag">&lt;/javac&gt;</span> 
   <span class="tag">&lt;/target&gt;</span> 
  
-  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">&quot;copy&quot;</span> <span class="attr">depends=</span><span class="value">&quot;compile&quot;</span>&gt;</span> 
-    <span class="tag">&lt;copy <span class="attr">todir=</span><span class="value">&quot;${classes.dir}&quot;</span>&gt;</span>
-      <span class="tag">&lt;fileset <span class="attr">dir=</span><span class="value">&quot;${src.dir}&quot;</span>&gt;</span> 
-        <span class="tag">&lt;include <span class="attr">name=</span><span class="value">&quot;**/*.properties&quot;</span> /&gt;</span> 
-        <span class="tag">&lt;include <span class="attr">name=</span><span class="value">&quot;**/*.xml&quot;</span> /&gt;</span> 
-        <span class="tag">&lt;include <span class="attr">name=</span><span class="value">&quot;**/*.dtd&quot;</span> /&gt;</span> 
-        <span class="tag">&lt;exclude <span class="attr">name=</span><span class="value">&quot;build.xml&quot;</span> /&gt;</span> 
+  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">"copy"</span> <span class="attr">depends=</span><span class="value">"compile"</span>&gt;</span> 
+    <span class="tag">&lt;copy <span class="attr">todir=</span><span class="value">"${classes.dir}"</span>&gt;</span>
+      <span class="tag">&lt;fileset <span class="attr">dir=</span><span class="value">"${src.dir}"</span>&gt;</span> 
+        <span class="tag">&lt;include <span class="attr">name=</span><span class="value">"**/*.properties"</span> /&gt;</span> 
+        <span class="tag">&lt;include <span class="attr">name=</span><span class="value">"**/*.xml"</span> /&gt;</span> 
+        <span class="tag">&lt;include <span class="attr">name=</span><span class="value">"**/*.dtd"</span> /&gt;</span> 
+        <span class="tag">&lt;exclude <span class="attr">name=</span><span class="value">"build.xml"</span> /&gt;</span> 
       <span class="tag">&lt;/fileset&gt;</span> 
     <span class="tag">&lt;/copy&gt;</span> 
   <span class="tag">&lt;/target&gt;</span> 
  
-  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">&quot;clean&quot;</span>&gt;</span> 
-    <span class="tag">&lt;delete <span class="attr">dir=</span><span class="value">&quot;${classes.dir}&quot;</span> /&gt;</span> 
+  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">"clean"</span>&gt;</span> 
+    <span class="tag">&lt;delete <span class="attr">dir=</span><span class="value">"${classes.dir}"</span> /&gt;</span> 
     <span class="tag">&lt;delete&gt;</span> 
-      <span class="tag">&lt;fileset <span class="attr">dir=</span><span class="value">&quot;${project.tmp}&quot;</span> <span class="attr">defaultexcludes=</span><span class="value">&quot;no&quot;</span>&gt;</span> 
-        <span class="tag">&lt;include <span class="attr">name=</span><span class="value">&quot;**/*&quot;</span> /&gt;</span> 
+      <span class="tag">&lt;fileset <span class="attr">dir=</span><span class="value">"${project.tmp}"</span> <span class="attr">defaultexcludes=</span><span class="value">"no"</span>&gt;</span> 
+        <span class="tag">&lt;include <span class="attr">name=</span><span class="value">"**/*"</span> /&gt;</span> 
       <span class="tag">&lt;/fileset&gt;</span> 
     <span class="tag">&lt;/delete&gt;</span> 
   <span class="tag">&lt;/target&gt;</span> 
  
-  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">&quot;tests&quot;</span>&gt;</span> 
-    <span class="tag">&lt;junit <span class="attr">printsummary=</span><span class="value">&quot;yes&quot;</span> <span class="attr">haltonfailure=</span><span class="value">&quot;no&quot;</span>&gt;</span>
+  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">"tests"</span>&gt;</span> 
+    <span class="tag">&lt;junit <span class="attr">printsummary=</span><span class="value">"yes"</span> <span class="attr">haltonfailure=</span><span class="value">"no"</span>&gt;</span>
       <span class="tag">&lt;classpath&gt;</span> 
-        <span class="tag">&lt;fileset <span class="attr">refid=</span><span class="value">&quot;${classes.dir}&quot;</span> /&gt;</span> 
-        <span class="tag">&lt;pathelement <span class="attr">path=</span><span class="value">&quot;${java.class.path}&quot;</span> /&gt;</span> 
+        <span class="tag">&lt;fileset <span class="attr">refid=</span><span class="value">"${classes.dir}"</span> /&gt;</span> 
+        <span class="tag">&lt;pathelement <span class="attr">path=</span><span class="value">"${java.class.path}"</span> /&gt;</span> 
       <span class="tag">&lt;/classpath&gt;</span> 
-      <span class="tag">&lt;formatter <span class="attr">type=</span><span class="value">&quot;xml&quot;</span>/&gt;</span> 
-      <span class="tag">&lt;batchtest <span class="attr">fork=</span><span class="value">&quot;yes&quot;</span> <span class="attr">todir=</span><span class="value">&quot;${reports.dir}&quot;</span>&gt;</span> 
-        <span class="tag">&lt;fileset <span class="attr">dir=</span><span class="value">&quot;${src.dir}&quot;</span>&gt;</span> 
-          <span class="tag">&lt;include <span class="attr">name=</span><span class="value">&quot;**/*Test.java&quot;</span>/&gt;</span> 
+      <span class="tag">&lt;formatter <span class="attr">type=</span><span class="value">"xml"</span>/&gt;</span> 
+      <span class="tag">&lt;batchtest <span class="attr">fork=</span><span class="value">"yes"</span> <span class="attr">todir=</span><span class="value">"${reports.dir}"</span>&gt;</span> 
+        <span class="tag">&lt;fileset <span class="attr">dir=</span><span class="value">"${src.dir}"</span>&gt;</span> 
+          <span class="tag">&lt;include <span class="attr">name=</span><span class="value">"**/*Test.java"</span>/&gt;</span> 
         <span class="tag">&lt;/fileset&gt;</span> 
       <span class="tag">&lt;/batchtest&gt;</span> 
     <span class="tag">&lt;/junit&gt;</span> 
-    <span class="tag">&lt;junitreport <span class="attr">todir=</span><span class="value">&quot;${reports.dir}&quot;</span>&gt;</span> 
-      <span class="tag">&lt;fileset <span class="attr">dir=</span><span class="value">&quot;${reports.dir}&quot;</span>&gt;</span> 
-        <span class="tag">&lt;include <span class="attr">name=</span><span class="value">&quot;TEST-*.xml&quot;</span>/&gt;</span> 
+    <span class="tag">&lt;junitreport <span class="attr">todir=</span><span class="value">"${reports.dir}"</span>&gt;</span> 
+      <span class="tag">&lt;fileset <span class="attr">dir=</span><span class="value">"${reports.dir}"</span>&gt;</span> 
+        <span class="tag">&lt;include <span class="attr">name=</span><span class="value">"TEST-*.xml"</span>/&gt;</span> 
       <span class="tag">&lt;/fileset&gt;</span> 
-      <span class="tag">&lt;report <span class="attr">format=</span><span class="value">&quot;frames&quot;</span> <span class="attr">todir=</span><span class="value">&quot;${reports.dir}&quot;</span>/&gt;</span> 
+      <span class="tag">&lt;report <span class="attr">format=</span><span class="value">"frames"</span> <span class="attr">todir=</span><span class="value">"${reports.dir}"</span>/&gt;</span> 
     <span class="tag">&lt;/junitreport&gt;</span> 
   <span class="tag">&lt;/target&gt;</span>    
  
-  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">&quot;setup&quot;</span>&gt;</span> 
-    <span class="tag">&lt;filter <span class="attr">token=</span><span class="value">&quot;VERSION&quot;</span> <span class="attr">value=</span><span class="value">&quot;2.0.1&quot;</span> /&gt;</span>
-    <span class="tag">&lt;copy <span class="attr">file=</span><span class="value">&quot;config-base.properties&quot;</span> 
-             <span class="attr">tofile=</span><span class="value">&quot;config.properties&quot;</span> 
-             <span class="attr">filtering=</span><span class="value">&quot;yes&quot;</span> /&gt;</span> 
+  <span class="tag">&lt;target <span class="attr">name=</span><span class="value">"setup"</span>&gt;</span> 
+    <span class="tag">&lt;filter <span class="attr">token=</span><span class="value">"VERSION"</span> <span class="attr">value=</span><span class="value">"2.0.1"</span> /&gt;</span>
+    <span class="tag">&lt;copy <span class="attr">file=</span><span class="value">"config-base.properties"</span> 
+             <span class="attr">tofile=</span><span class="value">"config.properties"</span> 
+             <span class="attr">filtering=</span><span class="value">"yes"</span> /&gt;</span> 
   <span class="tag">&lt;/target&gt;</span> 
  
 <span class="tag">&lt;/project&gt;</span>
@@ -307,7 +308,7 @@
 
 <p>filesetタスクは、ファイルの集合を定義します。javacやjava コマンドで使用するクラスパスや、ライブラリパスなどを設定するのに便利です。</p>
 
-<p>id属性に指定した名前で、ビルドファイル中から呼び出されます。dir属性は、ファイルの存在場所を指定します。include・exclude属性を使って、集合に含めるファイルを選択します。パターンとして使える文字と意味は<a href="http://homepage1.nifty.com/kuprij/antdoc/common.html#pattern" rel="external nofollow">Ant詳細</a>というページを参考にしてください。</p>
+<p>id属性に指定した名前で、ビルドファイル中から呼び出されます。dir属性は、ファイルの存在場所を指定します。include・exclude属性を使って、集合に含めるファイルを選択します。パターンとして使える文字と意味は<a href="http://homepage1.nifty.com/kuprij/antdoc/common.html#pattern" rel="external nofollow" title="Ant詳細">Ant詳細</a>というページを参考にしてください。</p>
 
 <h3 id="4">4. 13行目: タスクの集合を定義するには、targetタスクを利用します</h3>
 
@@ -345,7 +346,7 @@
 
 
 <p>環境によって設定ファイルを複数用意したい場合があると思います。そんな時、ベースとなる設定ファイルを一つ用意して、Filterタスクを利用して、環境に合わせた設定ファイルを作ることが出来ます。
-参考：<a href="http://members.at.infoseek.co.jp/pokopensjant/j/docs/manual/CoreTasks/filter.html" rel="external nofollow">Filter タスク </a></p>
+参考：<a href="http://members.at.infoseek.co.jp/pokopensjant/j/docs/manual/CoreTasks/filter.html" rel="external nofollow" title="Filter タスク ">Filter タスク </a></p>
 
 <p>Antは、非常にたくさんのことが出来るビルドツールです。CVSから最新のファイルを取得して、コンパイルしてデプロイするなんて動作も、Antの達人にしてみれば朝飯前なことでしょう。僕はまだまだ初心者ですが (^^;)</p>
 
@@ -360,35 +361,36 @@
 
 <p>つまり、Antにはプロジェクト管理の機能が抜けているといえるでしょう。個人で開発を行う上では非常に便利なAntですが、複数人で開発を行うときは、気をつけなければならない点が増えてきてしまいます。</p>
 
-<p>こういった問題点を解決してくれるのが「<a href="http://maven.apache.org/" rel="external nofollow">Maven</a>」です。MavenはApacheプロジェクトで作られている、Java開発プロジェクトの管理および開発チーム間での情報共有のために用いられるツールです。</p>
+<p>こういった問題点を解決してくれるのが「<a href="http://maven.apache.org/" rel="external nofollow" title="Maven">Maven</a>」です。MavenはApacheプロジェクトで作られている、Java開発プロジェクトの管理および開発チーム間での情報共有のために用いられるツールです。</p>
 
 <p>Mavenに関しての詳しい解説は参考ページを見てください。</p>
 
 <ul>
-<li><a href="http://www.ingrid.org/jajakarta/turbine/jp/turbine/maven/" rel="external nofollow">Maven (Jajakarta日本語記事)</a>
-<li><a href="http://www.02.246.ne.jp/~torutk/maven/" rel="external nofollow">Mavenを使った開発</a>
-<li><a href="http://www.objectclub.jp/technicaldoc/tools/maven/maven_top/" rel="external nofollow">Maven ではじめるプロジェクトドライブ ObjectClub</a>
+<li>
+<a href="http://www.ingrid.org/jajakarta/turbine/jp/turbine/maven/" rel="external nofollow" title="Maven (Jajakarta日本語記事)">Maven (Jajakarta日本語記事)</a>
+</li>
+<li>
+<a href="http://www.02.246.ne.jp/~torutk/maven/" rel="external nofollow" title="Mavenを使った開発">Mavenを使った開発</a>
+</li>
+<li>
+<a href="http://www.objectclub.jp/technicaldoc/tools/maven/maven_top/" rel="external nofollow" title="Maven ではじめるプロジェクトドライブ ObjectClub">Maven ではじめるプロジェクトドライブ ObjectClub</a>
+</li>
 </ul>
-
-
-
-
 <h2>参考</h2>
 
 
 <ul>
 <li><p>WebのAnt解説ページです。(詳しい！)
-<a href="http://homepage1.nifty.com/kuprij/antdoc/toc.html" rel="external nofollow">Ant 詳説</a></p></li>
+<a href="http://homepage1.nifty.com/kuprij/antdoc/toc.html" rel="external nofollow" title="Ant 詳説">Ant 詳説</a></p></li>
 <li><p>Antの解説本です。</p></li>
 </ul>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798008540/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798008540/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
-
-
-<p>&#8203;&#8203;</p>
-</div>
+<p>​​</p>
+</body></html></div>
 
 
   
@@ -541,6 +543,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -564,10 +570,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -575,7 +577,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

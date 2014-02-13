@@ -150,8 +150,9 @@
 
 
 
-<div class="entry-content"><p>
-<a href="http://portals.apache.org/pluto/" rel="external nofollow"></a>
+<div class="entry-content"><html><body>
+<p>
+<a href="http://portals.apache.org/pluto/" rel="external nofollow" title=""></a>
 </p>
 
 
@@ -161,17 +162,15 @@
 
 <p>ちなみに、対応している Struts のバージョンは、1.2.4  と 1.2.7 だそうです。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>[参考]</h4>
 
 
 <ul>
-<li><a href="http://portals.apache.org/bridges/multiproject/portals-bridges-struts/index.html" rel="external nofollow">Struts Bridge - Portal Bridges</a></li>
+<li><a href="http://portals.apache.org/bridges/multiproject/portals-bridges-struts/index.html" rel="external nofollow" title="Struts Bridge - Portal Bridges">Struts Bridge - Portal Bridges</a></li>
 </ul>
-
-
-<p></section></p>
+<p></p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -192,17 +191,21 @@
 
 
 <ul>
-<li><a href="#chapter1" rel="external nofollow">言葉の定義おさらい</a>
+<li>
+<a href="#chapter1" rel="external nofollow">言葉の定義おさらい</a>
 </li>
-<li><a href="#chapter2" rel="external nofollow">Portal Bridgesとは</a>
+<li>
+<a href="#chapter2" rel="external nofollow">Portal Bridgesとは</a>
 </li>
-<li><a href="#chapter3" rel="external nofollow">Struts をブリッジしてみる</a>
+<li>
+<a href="#chapter3" rel="external nofollow">Struts をブリッジしてみる</a>
 <ul>
 <li><a href="#section1" rel="external nofollow">なんか、めちゃめちゃ難しいとかいわれてますが・・・</a></li>
 <li><a href="#section2" rel="external nofollow">コードやJSPを変更しなくても Portlet に対応できる。ただし、条件が・・・</a></li>
 </ul>
 </li>
-<li><a href="#chapter4" rel="external nofollow">Struts Bridge が提供するもの</a>
+<li>
+<a href="#chapter4" rel="external nofollow">Struts Bridge が提供するもの</a>
 <ul>
 <li><a href="#section3" rel="external nofollow">PortletURL を Struts 用のURLに変える</a></li>
 <li><a href="#section4" rel="external nofollow">ServletAPI にアクセスする標準の方法を提供</a></li>
@@ -215,17 +218,14 @@
 </ul>
 </li>
 </ul>
-
-
-
-
 <h4>Struts Bridge を使ってみる 目次</h4>
 
 
 
 
 <ul>
-<li><a href="#chapter5" rel="external nofollow">Struts アプリケーションを Portlet に対応させる</a>
+<li>
+<a href="#chapter5" rel="external nofollow">Struts アプリケーションを Portlet に対応させる</a>
 <ul>
 <li><a href="#section11" rel="external nofollow">web.xml を編集する</a></li>
 <li><a href="#section12" rel="external nofollow">struts-config.xml を編集する</a></li>
@@ -235,16 +235,13 @@
 </ul>
 </li>
 </ul>
-
-
-
-
 <h2 id="chapter1">言葉の定義おさらい</h2>
 
 
 
 
-<dl><dt>ActionRequest</dt>
+<dl>
+<dt>ActionRequest</dt>
 <dd>Portlet#processAction を呼び出すトリガーとなるリクエストのこと。アクションリクエスト。</dd>
 <dt>RenderRequest</dt>
 <dd>Portlet#render を呼び出すトリガーとなるリクエストのこと。レンダリングリクエスト</dd>
@@ -255,10 +252,6 @@
 <dt>リクエストパラメータ</dt>
 <dd>URL の後ろにくっつくパラメータのこと。 http://localhost/servlet/index.do?abc=hoge の場合、&#8217;?&#8217; より後ろがリクエストパラメータと呼ばれる。</dd>
 </dl>
-
-
-
-
 <h2 id="chapter2">Portal Bridgesとは</h2>
 
 
@@ -287,18 +280,18 @@
 
 <p>うまいこと作ってあるアプリケーションであれば、コードやJSPファイルを変更せずに Portlet に対応できるそうです。その条件とは</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>条件</h4>
 
 
 
 
-<ol><li>Struts Action configuration にしたがって、適切な MVC アーキテクチャになっていること</li>
-<li>JSP ファイルの中で、すべてのリソースへのリンクが Struts Tag を使って記述されていること</li></ol>
-
-
-<p></section></p>
+<ol>
+<li>Struts Action configuration にしたがって、適切な MVC アーキテクチャになっていること</li>
+<li>JSP ファイルの中で、すべてのリソースへのリンクが Struts Tag を使って記述されていること</li>
+</ol>
+<p></p>
 
 <p>逃げ道として、Struts アプリケーションを単独で動かすことも可能だそうです。その場合には、Portlet の機能は使うことができません。</p>
 
@@ -341,7 +334,8 @@
 
 <p>他にも色々とやってくれるみたいです。</p>
 
-<ul><li>ActionRequest 時のコンテキストを StrutsRenderContext に保存する</li>
+<ul>
+<li>ActionRequest 時のコンテキストを StrutsRenderContext に保存する</li>
 <li>StrutsRenderContext には、ActionForm や ActionMessages/ActionErrors も保存される</li>
 <li>RenderRequest がやってきたら、StrutsRenderContext に保存されているコンテキストを復元する</li>
 <li>StrutsRenderContext は一度しか復元されない</li>
@@ -349,11 +343,8 @@
 <li>ただし、例外があり、入力エラーがあったときだけ、ちょっと違う動きになる</li>
 <li>ActionRequest の後に ActionErrors が見つかったときには、入力元のページに遷移するようになる</li>
 <li>Redirect するときは、Web Browser で行うようにするべし</li>
-<li>Redirect をStruts の中で行った場合、Portlet が予期しない動きをする可能性がある</li></ul>
-
-
-
-
+<li>Redirect をStruts の中で行った場合、Portlet が予期しない動きをする可能性がある</li>
+</ul>
 <h3 id="section7">ActionRequest と RenderRequest の間で、アトリビュートを受け渡す</h3>
 
 
@@ -388,33 +379,29 @@
 
 
 <ul>
-<li><a href="http://www.ja-sig.org/wiki/display/PLT/Struts+Bridge" rel="external nofollow">Struts Bridge - uPortal Wiki</a></li>
+<li><a href="http://www.ja-sig.org/wiki/display/PLT/Struts+Bridge" rel="external nofollow" title="Struts Bridge - uPortal Wiki">Struts Bridge - uPortal Wiki</a></li>
 </ul>
-
-
-<p>今回は、<a href="http://www.uportal.org/" rel="external nofollow">uPortal</a> という Portlet 製品に Struts アプリケーションを乗せることを考えます。</p>
+<p>今回は、<a href="http://www.uportal.org/" rel="external nofollow" title="uPortal">uPortal</a> という Portlet 製品に Struts アプリケーションを乗せることを考えます。</p>
 
 <h2 id="chapter5">Struts アプリケーションを Portlet に対応させる</h2>
 
 
 <p>変更が必要なファイル</p>
 
-<ul><li>JSP ファイル（一部）</li>
+<ul>
+<li>JSP ファイル（一部）</li>
 <li>/WEB-INF/web.xml</li>
-<li>/WEB-INF/struts-config.xml</li></ul>
-
-
+<li>/WEB-INF/struts-config.xml</li>
+</ul>
 <p>新しく作る必要があるファイル（追加する必要があるファイル）</p>
 
-<ul><li>/WEB-INF/portlet.xml</li>
+<ul>
+<li>/WEB-INF/portlet.xml</li>
 <li>/WEB-INF/struts-portlet-config.xml</li>
 <li>/WEB-INF/lib/portals-bridges-common-xxx-SNAPSHOT.jar</li>
 <li>/WEB-INF/lib/portals-bridges-struts-xxx-SNAPSHOT.jar</li>
-<li>/WEB-INF/lib/uPortalContextProvider.jar</li></ul>
-
-
-
-
+<li>/WEB-INF/lib/uPortalContextProvider.jar</li>
+</ul>
 <h3 id="section11">web.xml を編集する</h3>
 
 
@@ -425,7 +412,7 @@
 
 <p>Portlet を使うように設定を追加します。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>(Portlet 設定例)</h4>
 
@@ -454,7 +441,7 @@
 </code></pre>
 
 
-<p></section></p>
+<p></p>
 
 <p>portlet-guid パラメータは、[context-name].[portlet-name] で記述します。Pluto の Portlet Definition ID のことです。</p>
 
@@ -463,8 +450,8 @@
 
 <p>struts-config.xml の &lt;controller&gt; 設定に、次のように記述します。</p>
 
-<pre class="code"><code><span class="tag">&lt;controller <span class="attr">pagePattern=</span><span class="value">&quot;$M$P&quot;</span> <span class="attr">inputForward=</span><span class="value">&quot;false&quot;</span>  
-<span class="attr">processorClass=</span><span class="value">&quot;org.apache.portals.bridges.struts.PortletRequestProcessor&quot;</span> /&gt;</span>
+<pre class="code"><code><span class="tag">&lt;controller <span class="attr">pagePattern=</span><span class="value">"$M$P"</span> <span class="attr">inputForward=</span><span class="value">"false"</span>  
+<span class="attr">processorClass=</span><span class="value">"org.apache.portals.bridges.struts.PortletRequestProcessor"</span> /&gt;</span>
 </code></pre>
 
 
@@ -475,20 +462,22 @@
 
 <p>JSP 中で使っている struts-html Taglib の URI を次のように変更します。</p>
 
-<pre>&lt;@ taglib uri=&quot;http://portals.apache.org/bridges/struts/tags-portlet-html&quot; prefix=&quot;html&quot; %&gt;</pre>
+<pre>&lt;@ taglib uri="http://portals.apache.org/bridges/struts/tags-portlet-html" prefix="html" %&gt;</pre>
 
 
 <p>もしくは</p>
 
-<pre>&lt;@ taglib uri=&quot;http://portals.apache.org/bridges/struts/tags-portlet-html-el&quot; prefix=&quot;html-el&quot; %&gt;</pre>
+<pre>&lt;@ taglib uri="http://portals.apache.org/bridges/struts/tags-portlet-html-el" prefix="html-el" %&gt;</pre>
 
 
-<p>この変更を行うことで、<strong>html:link</strong>、<strong>html:rewrite</strong> タグが拡張され、次の3つの属性を指定することができるようになります。（true / false で指定可能。排他選択）</p>
+<p>この変更を行うことで、<strong class="text-danger">html:link</strong>、<strong class="text-danger">html:rewrite</strong> タグが拡張され、次の3つの属性を指定することができるようになります。（true / false で指定可能。排他選択）</p>
 
-<ul><li>actionURL</li><li>renderURL</li><li>resourceURL</li></ul>
-
-
-<p>何も指定しない場合は、renderURL=&quot;true&quot; が指定されたものとして扱われます。</p>
+<ul>
+<li>actionURL</li>
+<li>renderURL</li>
+<li>resourceURL</li>
+</ul>
+<p>何も指定しない場合は、renderURL=&#8221;true&#8221; が指定されたものとして扱われます。</p>
 
 <p>actionURL、 renderURL、 resourceURL の指定が無い場合にどの種類の URL として扱われるかというのは、次に説明する struts-portlet-config.xml で変更可能です。</p>
 
@@ -499,59 +488,60 @@
 
 <p>このファイルは、taglib によって出力されるURL がどの種類の URL （actionURL、renderURL、resourceURL） かを支持するものです。</p>
 
-<pre class="code"><span class="tag">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> 
+<pre class="code"><span class="tag">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span> 
 <span class="tag">&lt;config&gt;</span> 
   <span class="tag">&lt;render-context&gt;</span> 
-    <span class="tag">&lt;attribute <span class="attr">name=</span><span class="value">&quot;errors&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;attribute <span class="attr">name=</span><span class="value">&quot;message&quot;</span> <span class="attr">keep=</span><span class="value">&quot;true&quot;</span>/&gt;</span> 
+    <span class="tag">&lt;attribute <span class="attr">name=</span><span class="value">"errors"</span>/&gt;</span> 
+    <span class="tag">&lt;attribute <span class="attr">name=</span><span class="value">"message"</span> <span class="attr">keep=</span><span class="value">"true"</span>/&gt;</span> 
   <span class="tag">&lt;/render-context&gt;</span> 
   <span class="tag">&lt;portlet-url-type&gt;</span> 
-    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">&quot;/shop/add&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">&quot;/shop/switch&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">&quot;/shop/remove&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">&quot;/shop/signoff&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">&quot;/shop/viewCategory&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">&quot;/shop/viewItem&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">&quot;/shop/viewProduct&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">&quot;/shop/viewCart&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">&quot;/shop/newOrder&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;render <span class="attr">path=</span><span class="value">&quot;/shop/newOrderForm&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">&quot;/shop/listOrders&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;resource <span class="attr">path=</span><span class="value">&quot;/images/&quot;</span>/&gt;</span> 
+    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">"/shop/add"</span>/&gt;</span> 
+    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">"/shop/switch"</span>/&gt;</span> 
+    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">"/shop/remove"</span>/&gt;</span> 
+    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">"/shop/signoff"</span>/&gt;</span> 
+    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">"/shop/viewCategory"</span>/&gt;</span> 
+    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">"/shop/viewItem"</span>/&gt;</span> 
+    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">"/shop/viewProduct"</span>/&gt;</span> 
+    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">"/shop/viewCart"</span>/&gt;</span> 
+    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">"/shop/newOrder"</span>/&gt;</span> 
+    <span class="tag">&lt;render <span class="attr">path=</span><span class="value">"/shop/newOrderForm"</span>/&gt;</span> 
+    <span class="tag">&lt;action <span class="attr">path=</span><span class="value">"/shop/listOrders"</span>/&gt;</span> 
+    <span class="tag">&lt;resource <span class="attr">path=</span><span class="value">"/images/"</span>/&gt;</span> 
   <span class="tag">&lt;/portlet-url-type&gt;</span> 
 <span class="tag">&lt;/config&gt;</span> </pre>
 
 
 
 
-<dl><dt>render-context タグ</dt>
-<dd><p>Portlet では、ActionRequest で受け取ったパラメータは、RenderRequest では受け取ることができません。RenderRequest でも受け取るには、ActionRequest の処理中に setRenderParameter メソッドを呼び出す必要があります。</p>
+<dl>
+<dt>render-context タグ</dt>
+<dd>
+<p>Portlet では、ActionRequest で受け取ったパラメータは、RenderRequest では受け取ることができません。RenderRequest でも受け取るには、ActionRequest の処理中に setRenderParameter メソッドを呼び出す必要があります。</p>
 
-<p>render-context に記述した属性に関しては、ブリッジによって自動的に ActionRequest から RenderRequest に引き渡してくれるようになります。keep 属性を true にすると、別リクエスト間でも保持するようになります。（つまり、セッションに格納されます）</p></dd>
+<p>render-context に記述した属性に関しては、ブリッジによって自動的に ActionRequest から RenderRequest に引き渡してくれるようになります。keep 属性を true にすると、別リクエスト間でも保持するようになります。（つまり、セッションに格納されます）</p>
+</dd>
 <dt>portlet-url-type タグ</dt>
-<dd><p>JSP 中で記述されている URL が、ActionURL なのか、RenderURL なのか、ResponseURL なのかを指定します。</p>
+<dd>
+<p>JSP 中で記述されている URL が、ActionURL なのか、RenderURL なのか、ResponseURL なのかを指定します。</p>
 
 <p>portlet-url-type の属性の default を action とすることで、URL のデフォルトを render から action へ変更することができます。</p>
 
 <pre class="code"><code><span class="tag">&lt;config&gt;</span> 
-  <span class="tag">&lt;portlet-url-type <span class="attr">default=</span><span class="value">&quot;action&quot;</span>/&gt;</span> 
+  <span class="tag">&lt;portlet-url-type <span class="attr">default=</span><span class="value">"action"</span>/&gt;</span> 
 <span class="tag">&lt;config&gt;</span>
-</code></pre></dd>
+</code></pre>
+</dd>
 </dl>
-
-
-
-
 <h3 id="section15">portlet.xml を作成する</h3>
 
 
 <p>portlet.xml ファイルを作成します。例を次に記述しておきます。</p>
 
-<pre class="code"><code><span class="tag">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> 
-<span class="tag">&lt;portlet-app <span class="attr">xmlns=</span><span class="value">&quot;http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd&quot;</span> <span class="attr">version=</span><span class="value">&quot;1.0&quot;</span> 
- <span class="attr">xmlns:xsi=</span><span class="value">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> 
- <span class="attr">xsi:schemaLocation=</span><span class="value">&quot;http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd 
- http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd&quot;</span>&gt;</span> 
+<pre class="code"><code><span class="tag">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span> 
+<span class="tag">&lt;portlet-app <span class="attr">xmlns=</span><span class="value">"http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd"</span> <span class="attr">version=</span><span class="value">"1.0"</span> 
+ <span class="attr">xmlns:xsi=</span><span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span> 
+ <span class="attr">xsi:schemaLocation=</span><span class="value">"http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd 
+ http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd"</span>&gt;</span> 
    <span class="tag">&lt;portlet&gt;</span> 
     <span class="tag">&lt;portlet-name&gt;</span>JPetstorePortlet<span class="tag">&lt;/portlet-name&gt;</span> 
     <span class="tag">&lt;portlet-class&gt;</span>org.apache.portals.bridges.struts.StrutsPortlet<span class="tag">&lt;/portlet-class&gt;</span> 
@@ -584,7 +574,7 @@
 
 <p>ca.mun.portal.bridges.PortalServletContextProvider というクラスは、ServletContextProvider の実装クラスです。北米のほうで実装されたものがあるということで、今回はこれを使います。uPortal / pluto で使用可能です。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>ca.mun.portal.bridges.PortalServletContextProvider.java</h4>
 
@@ -632,8 +622,8 @@
 </code></pre>
 
 
-<p></section></p>
-</div>
+<p></p>
+</body></html></div>
 
 
   
@@ -799,6 +789,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -822,10 +816,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -833,7 +823,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

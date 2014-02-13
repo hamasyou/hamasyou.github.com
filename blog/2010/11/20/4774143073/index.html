@@ -179,7 +179,8 @@
 
 
 
-<div class="entry-content"><p>大規模サービスの運営、大変だということは分かっていても、じゃあ実際にどういうふうに大変なのか。実際に体験してみないとこの大変さはわからないと思います。</p>
+<div class="entry-content"><html><body>
+<p>大規模サービスの運営、大変だということは分かっていても、じゃあ実際にどういうふうに大変なのか。実際に体験してみないとこの大変さはわからないと思います。</p>
 
 <p>でも、実際に大規模サービスの開発・運営に携わることになったら！？</p>
 
@@ -210,7 +211,8 @@
 <ol>
 <li>大規模Webサービスの開発オリエンテーション - <span class="fontSmall">全体像を把握する</span>
   <ol>
-  <li>本書の源 - <span class="fontSmall">本書で説明すること、しないこと</span></li>
+<li>本書の源 - <span class="fontSmall">本書で説明すること、しないこと</span>
+</li>
   <li>大規模なサービスと小規模なサービス</li>
   <li>成長し続けるサービスと、大規模化の壁</li>
   <li>サービス開発の現場</li>
@@ -218,109 +220,115 @@
 </li>
 <li>大規模データ処理入門 - <span class="fontSmall">メモリとディスク、Webアプリケーションと負荷</span>
   <ol>
-  <li>はてなブックマークのデータ規模 - <span class="fontSmall">データが大きいと処理に時間がかかる</span></li>
-  <li>大規模データ処理の難所 - <span class="fontSmall">メモリとディスク</span></li>
+<li>はてなブックマークのデータ規模 - <span class="fontSmall">データが大きいと処理に時間がかかる</span>
+</li>
+  <li>大規模データ処理の難所 - <span class="fontSmall">メモリとディスク</span>
+</li>
   <li>スケーリングの要所</li>
   <li>大規模データを扱うための基礎知識</li>
   </ol>
 </li>
 <li>OSのキャッシュと分散 - <span class="fontSmall">大きなデータを効率良く扱うしくみ</span>
   <ol>
-  <li>OSのキャッシュ機構</li>
+<li>OSのキャッシュ機構</li>
   <li>I/O負荷の軽減策</li>
   <li>局所性を活かす分散</li>
   </ol>
 </li>
 <li>DBのスケールアウト戦略 - <span class="fontSmall">分散を考慮したMySQLの運用</span>
   <ol>
-  <li>インデックスを正しく運用する - <span class="fontSmall">分散を考慮したMySQL運用の大前提</span></li>
-  <li>MySQLの分散 - <span class="fontSmall">スケーリング前提のシステム設計</span></li>
+<li>インデックスを正しく運用する - <span class="fontSmall">分散を考慮したMySQL運用の大前提</span>
+</li>
+  <li>MySQLの分散 - <span class="fontSmall">スケーリング前提のシステム設計</span>
+</li>
   <li>MySQLのスケールアウトとパーティショニング</li>
   </ol>
 </li>
 <li>大規模データ処理[実践]入門 - <span class="fontSmall">アプリケーション開発の勘所</span>
   <ol>
-  <li>用途特化型インデクシング - <span class="fontSmall">大規模データを捌く</span></li>
+<li>用途特化型インデクシング - <span class="fontSmall">大規模データを捌く</span>
+</li>
   <li>理論と実践の両側から取り組む</li>
   </ol>
 </li>
 <li>[課題]圧縮プログラミング - <span class="fontSmall">データサイズ、I/O高速化との関係を意識する</span>
   <ol>
-  <li>[課題]整数データをコンパクトに持つ</li>
+<li>[課題]整数データをコンパクトに持つ</li>
   <li>VB Codeと速度感覚</li>
   <li>課題の詳細と回答例</li>
-  </ol>  
+  </ol>
 </li>
 <li>アルゴリズムの実用化 - <span class="fontSmall">身近な例で見る理論・研究の実戦投入</span>
   <ol>
-  <li>アルゴリズムと評価</li>
+<li>アルゴリズムと評価</li>
   <li>はてなダイアリーのキーワードリンク</li>
   <li>はてなブックマークの記事カテゴライズ</li>
   </ol>
 </li>
 <li>[課題]はてなキーワードリンクの実装 - <span class="fontSmall">応用への道筋を知る</span>
   <ol>
-  <li>[課題]はてなキーワードリンクを作る</li>
+<li>[課題]はてなキーワードリンクを作る</li>
   <li>回答例と考え方</li>
   </ol>
 </li>
 <li>全文検索技術に挑戦 - <span class="fontSmall">大規模データ処理のノウハウ満載</span>
   <ol>
-  <li>全文検索技術の応用範囲</li>
+<li>全文検索技術の応用範囲</li>
   <li>検索システムのアーキテクチャ</li>
   <li>検索エンジンの内部構造</li>
   </ol>
 </li>
 <li>[課題]全文検索エンジンの作成 - <span class="fontSmall">基本部分、作り込み、速度と精度の追求</span>
   <ol>
-  <li>[課題]はてなブックマーク全文検索を作る</li>
+<li>[課題]はてなブックマーク全文検索を作る</li>
   <li>回答例と考え方</li>
   </ol>
 </li>
 <li>大規模データ処理を支えるサーバ/インフラ入門 - <span class="fontSmall">Webサービスのバックエンド</span>
   <ol>
-  <li>エンタープライズ vs. Webサービス</li>
+<li>エンタープライズ vs. Webサービス</li>
   <li>クラウド vs. 自前インフラ</li>
   </ol>
 </li>
 <li>スケーラビリティの確保に必要な考え方 - <span class="fontSmall">規模の増大とシステムの拡張</span>
   <ol>
-  <li>レイヤとスケーラビリティ</li>
+<li>レイヤとスケーラビリティ</li>
   <li>負荷の把握、チューニング</li>
   </ol>
 </li>
 <li>冗長性の確保、システムの安定化 - <span class="fontSmall">ほぼ100%の稼働率を実現するしくみ</span>
   <ol>
-  <li>冗長性の確保</li>
+<li>冗長性の確保</li>
   <li>システムの安定化</li>
   <li>システムの安定化対策</li>
   </ol>
 </li>
 <li>効率向上作戦 - <span class="fontSmall">ハードウェアのリソースの使用率を上げる</span>
   <ol>
-  <li>仮想化技術</li>
-  <li>ハードウェアと効率向上 - <span class="fontSmall">低コストを実現する要素技術</span></li>
+<li>仮想化技術</li>
+  <li>ハードウェアと効率向上 - <span class="fontSmall">低コストを実現する要素技術</span>
+</li>
   </ol>
 </li>
 <li>Webサービスとネットワーク - <span class="fontSmall">ネットワークで見えてくるサービスの成長</span>
   <ol>
-  <li>ネットワークの分岐点</li>
+<li>ネットワークの分岐点</li>
   <li>さらなる上限へ</li>
   </ol>
 </li>
 <li>いまどきのWebサービス構築に求められる実践技術 - <span class="fontSmall">大規模サービスに対応するために</span>
   <ol>
-  <li>ジョブキューシステム - <span class="fontSmall">TheSchwartz, Gearman</span></li>
-  <li>ストレージの選択 - <span class="fontSmall">RDBMSかkey-valueストアか</span></li>
-  <li>キャッシュシステム - <span class="fontSmall">Squid、Varnish</span></li>
-  <li>計算クラスタ - <span class="fontSmall">Hadoop</span></li>
+<li>ジョブキューシステム - <span class="fontSmall">TheSchwartz, Gearman</span>
+</li>
+  <li>ストレージの選択 - <span class="fontSmall">RDBMSかkey-valueストアか</span>
+</li>
+  <li>キャッシュシステム - <span class="fontSmall">Squid、Varnish</span>
+</li>
+  <li>計算クラスタ - <span class="fontSmall">Hadoop</span>
+</li>
   </ol>
 </li>
 </ol>
-
-
-
-
 <h2>おぼえがき</h2>
 
 
@@ -339,7 +347,7 @@
 <blockquote><p>大量のアクセスがあるサービスでは、サーバ1台では処理しきれない負荷を同処理するかが一番の問題です。ここ10年のトレンドとしてはいわゆる「スケールアウト」がこの問題に対する戦略の基礎になります。</p></blockquote>
 
 
-<p>大量のアクセスのある大規模サービスでは、<strong>スケーラビリティの確保</strong>と<strong>負荷分散</strong>が重要な問題になります。</p>
+<p>大量のアクセスのある大規模サービスでは、<strong class="text-danger">スケーラビリティの確保</strong>と<strong class="text-danger">負荷分散</strong>が重要な問題になります。</p>
 
 <p>ハードウェアが安くなってきた最近では、高価なハードウェアを購入するよりもコストを削減できます。ただその代わりに考えないといけないことも増えます。</p>
 
@@ -367,7 +375,10 @@
 
 
 
-<blockquote><p>大規模Webアプリケーションを運用するにあたっての苦労の多くは、この大規模データの扱いに集約されます。</p><p>データが小さいうちは、とくに工夫をしなくてもすべてメモリで処理できますし、複雑なアルゴリズムを使うよりもナイーブなアルゴリズムのほうがオーバーヘッドがないため早い、なんてこともままあって、I/O負荷などはまず問題となりません。しかし、サービスがある程度以上の規模になるとデータは増加します。このデータ量が分水域を超えたところで問題が顕在化します。そしてその対策は、応急処置ではなかなかに難しい。ここが大規模サービスの難所です。</p></blockquote>
+<blockquote>
+<p>大規模Webアプリケーションを運用するにあたっての苦労の多くは、この大規模データの扱いに集約されます。</p>
+<p>データが小さいうちは、とくに工夫をしなくてもすべてメモリで処理できますし、複雑なアルゴリズムを使うよりもナイーブなアルゴリズムのほうがオーバーヘッドがないため早い、なんてこともままあって、I/O負荷などはまず問題となりません。しかし、サービスがある程度以上の規模になるとデータは増加します。このデータ量が分水域を超えたところで問題が顕在化します。そしてその対策は、応急処置ではなかなかに難しい。ここが大規模サービスの難所です。</p>
+</blockquote>
 
 
 
@@ -382,7 +393,7 @@
 <h3>大規模データ処理の難所</h3>
 
 
-<p>大規模データ処理の難しいポイントは、<strong>メモリ内で計算ができない</strong>ことです。</p>
+<p>大規模データ処理の難しいポイントは、<strong class="text-danger">メモリ内で計算ができない</strong>ことです。</p>
 
 <p>コンピュータはメモリとディスクとで、10<sup>5</sup>〜10<sup>6</sup>倍以上の探索速度の差があります。また、メモリとディスクの転送速度では、メモリが約7.5GB/秒ほど出るのに対して、ディスクは58MB/秒ほどしかでません。</p>
 
@@ -408,22 +419,24 @@
 
 
 
-<ul><li>ロードアベレージを見る</li>
+<ul>
+<li>ロードアベレージを見る</li>
 <li>CPU、I/Oのいずれがボトルネックかを探る</li>
 <li>CPUの場合、ディスクやメモリはボトルネックになっていないかを確認。プログラムのバグも確認する</li>
-<li>I/Oの場合、スワップが発生していないかを確認。メモリの使い方が適切か、足りているかを確認する</li></ul>
-
-
-
-
+<li>I/Oの場合、スワップが発生していないかを確認。メモリの使い方が適切か、足りているかを確認する</li>
+</ul>
 <div class="row">
 <div class="col-sm-2">
-<a href="http://www.amazon.co.jp/gp/product/4774135666?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774135666" rel="external nofollow">
-<img src="http://ecx.images-amazon.com/images/I/51uK4ACymiL._SL160_.jpg" />
-</a>
+<a href="http://www.amazon.co.jp/gp/product/4774135666?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774135666" rel="external nofollow" title="
+">
+<img src="http://ecx.images-amazon.com/images/I/51uK4ACymiL._SL160_.jpg" class="img-thumbnail"></a>
 </div>
 <div class="col-sm-10">
-<ul><li>『<em><a href="http://www.amazon.co.jp/gp/product/4774135666?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774135666" rel="external nofollow">[24時間365日] サーバ/インフラを支える技術 ~スケーラビリティ、ハイパフォーマンス、省力運用</a></em>』</li><li>著者: 安井 真伸, 横川 和哉, ひろせ まさあき, 伊藤 直也, 田中 慎司, 勝見 祐己</li><li>出版社: 技術評論社</li></ul>
+<ul>
+<li>『<em><a href="http://www.amazon.co.jp/gp/product/4774135666?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774135666" rel="external nofollow" title="[24時間365日] サーバ/インフラを支える技術 ~スケーラビリティ、ハイパフォーマンス、省力運用">[24時間365日] サーバ/インフラを支える技術 ~スケーラビリティ、ハイパフォーマンス、省力運用</a></em>』</li>
+<li>著者: 安井 真伸, 横川 和哉, ひろせ まさあき, 伊藤 直也, 田中 慎司, 勝見 祐己</li>
+<li>出版社: 技術評論社</li>
+</ul>
 </div>
 </div>
 
@@ -440,39 +453,33 @@
 
 
 
-<ol><li>いかにメモリで済ませるか</li>
+<ol>
+<li>いかにメモリで済ませるか</li>
 <li>データ量の増加に強いアルゴリズムを使う</li>
-<li>データ圧縮や検索技術を駆使する</li></ol>
-
-
-
-
+<li>データ圧縮や検索技術を駆使する</li>
+</ol>
 <h4>3つの基礎知識</h4>
 
 
 
 
-<ol><li>OSのキャッシュ</li>
+<ol>
+<li>OSのキャッシュ</li>
 <li>分散を考慮したRDBMSの運用</li>
-<li>アルゴリズムとデータ構造</li></ol>
-
-
-
-
+<li>アルゴリズムとデータ構造</li>
+</ol>
 <h3>OSのキャッシュのしくみ</h3>
 
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
 
 
-<ul><li><a href="http://d.hatena.ne.jp/naoya/20070521/1179754203" rel="external nofollow">Linux のページキャッシュ - Hatena::Diary::naoya</a></li></ul>
-
-
-<p></section></p>
+<ul><li><a href="http://d.hatena.ne.jp/naoya/20070521/1179754203" rel="external nofollow" title="Linux のページキャッシュ - Hatena::Diary::naoya">Linux のページキャッシュ - Hatena::Diary::naoya</a></li></ul>
+<p></p>
 
 <p>キャッシュを前提に I/O を軽減するというのが、I/O 対策の基本です。扱うデータ規模に対して十分な物理メモリを用意しておくことで、データがすべてキャッシュにのるので I/O が軽減できます。</p>
 
@@ -492,15 +499,14 @@
 
 <p>いかにしてデータをキャッシュにのせた状態で処理するかを考えて、分散を行う必要があります。例えば、データベースの分散の手法には様々ありますが、主なものには次のものがあります。</p>
 
-<dl><dt>テーブル単位での分割</dt>
+<dl>
+<dt>テーブル単位での分割</dt>
 <dd><p>1台のサーバのメモリ上にのるように、テーブル単位でサーバを分割する方法。アプリケーション側の変更も必要になる</p></dd>
 <dt>データの途中で分割</dt>
 <dd><p>テーブル単位で分割ではなくデータの途中から別のサーバに分割する方法。たとえば、イニシャルがA〜M、N〜Zでサーバを分ける。これも、アプリケーション側の変更が必要になる</p></dd>
 <dt>リクエストパターンによって分割する</dt>
 <dd><p>最近のデータ、過去のデータなどといった感じでリクエストのパターンによってデータを分割し、サーバを分散する方法。API からのリクエスト、検索エンジンからのリクエストなどで分けたりもする</p></dd>
 </dl>
-
-
 <p><em>テーブルを分散させるときには、アプリケーション側で JOIN を極力使わないようにする必要があります。</em>多くの RDBMS では別サーバにあるテーブルどうしを JOIN することができません。</p>
 
 <h3>サーバ再起動時には一度データをリードする</h3>
@@ -516,19 +522,17 @@
 <h3>Bツリーインデックスはハードディスクのアクセスと相性がいい</h3>
 
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
 
 
-<ul><li><a href="http://www.atmarkit.co.jp/fdb/rensai/oraobstacle03/oraobstacle03_1.html" rel="external nofollow">Bツリーインデックスに最高のパフォーマンスを - @IT</a></li></ul>
+<ul><li><a href="http://www.atmarkit.co.jp/fdb/rensai/oraobstacle03/oraobstacle03_1.html" rel="external nofollow" title="Bツリーインデックスに最高のパフォーマンスを - @IT">Bツリーインデックスに最高のパフォーマンスを - @IT</a></li></ul>
+<p></p>
 
-
-<p></section></p>
-
-<p>Bツリーはそのデータ構造上、ページキャッシュと相性がいいです。なので、データベースでインデックスを貼る際にはBツリーインデックスを使うことが多いです。また、Bツリーをさらに最適化したものに、<a href="http://www.atmarkit.co.jp/icd/root/24/21256624.html" rel="external nofollow">B+ツリー</a>というものもあります。</p>
+<p>Bツリーはそのデータ構造上、ページキャッシュと相性がいいです。なので、データベースでインデックスを貼る際にはBツリーインデックスを使うことが多いです。また、Bツリーをさらに最適化したものに、<a href="http://www.atmarkit.co.jp/icd/root/24/21256624.html" rel="external nofollow" title="B+ツリー">B+ツリー</a>というものもあります。</p>
 
 <h4>MySQLのインデックスの癖</h4>
 
@@ -542,23 +546,23 @@
 
 <div class="row">
 <div class="col-sm-2">
-<a href="http://www.amazon.co.jp/gp/product/4873114268?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114268" rel="external nofollow">
-<img src="https://images-na.ssl-images-amazon.com/images/I/51s%2Bp62hCgL._SL160_.jpg" alt="実践ハイパフォーマンスMySQL 第2版" />
-</a>
+<a href="http://www.amazon.co.jp/gp/product/4873114268?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114268" rel="external nofollow" title="
+">
+<img src="https://images-na.ssl-images-amazon.com/images/I/51s%2Bp62hCgL._SL160_.jpg" alt="実践ハイパフォーマンスMySQL 第2版" class="img-thumbnail"></a>
 </div>
 <div class="col-sm-10">
-<ul><li>『<em><a href="http://www.amazon.co.jp/gp/product/4873114268?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114268" rel="external nofollow">実践ハイパフォーマンスMySQL 第2版</a></em>』</li><li>著者: Baron Schwartz (著), Peter Zaitsev (著), Vadim Tkachenko (著), Jeremy D. Zawodny (著), Arjen Lentz (著), Derek J. Balling (著), 伊藤 直也 (監訳) (翻訳), 田中 慎司 (監訳) (翻訳), 吉川 英興 (監訳) (翻訳), 株式会社クイープ (翻訳)</li><li>出版社: オライリージャパン</li></ul>
+<ul>
+<li>『<em><a href="http://www.amazon.co.jp/gp/product/4873114268?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114268" rel="external nofollow" title="実践ハイパフォーマンスMySQL 第2版">実践ハイパフォーマンスMySQL 第2版</a></em>』</li>
+<li>著者: Baron Schwartz (著), Peter Zaitsev (著), Vadim Tkachenko (著), Jeremy D. Zawodny (著), Arjen Lentz (著), Derek J. Balling (著), 伊藤 直也 (監訳) (翻訳), 田中 慎司 (監訳) (翻訳), 吉川 英興 (監訳) (翻訳), 株式会社クイープ (翻訳)</li>
+<li>出版社: オライリージャパン</li>
+</ul>
 </div>
 </div>
 
 
 <p>インデックスが効くかどうかは、explain コマンドを使うと確認できます。</p>
 
-<ul><li><a href="http://nippondanji.blogspot.com/2009/03/mysqlexplain.html" rel="external nofollow">MySQLのEXPLAINを徹底解説!! - 漢のコンピュータ道</a></li></ul>
-
-
-
-
+<ul><li><a href="http://nippondanji.blogspot.com/2009/03/mysqlexplain.html" rel="external nofollow" title="MySQLのEXPLAINを徹底解説!! - 漢のコンピュータ道">MySQLのEXPLAINを徹底解説!! - 漢のコンピュータ道</a></li></ul>
 <h3>更新系のデータベースでもスケールしやすい kye-value ストア</h3>
 
 
@@ -576,11 +580,7 @@
 
 
 
-<ul><li><a href="http://d.hatena.ne.jp/naoya/20090804/1249380645" rel="external nofollow">γ符号、δ符号、ゴロム符号による圧縮効果 - Hatena::Diary::naoya</a></li></ul>
-
-
-
-
+<ul><li><a href="http://d.hatena.ne.jp/naoya/20090804/1249380645" rel="external nofollow" title="γ符号、δ符号、ゴロム符号による圧縮効果 - Hatena::Diary::naoya">γ符号、δ符号、ゴロム符号による圧縮効果 - Hatena::Diary::naoya</a></li></ul>
 <h3>アルゴリズムのオーダー表記</h3>
 
 
@@ -596,20 +596,21 @@
 
 
 
-<ul><li>パターンマッチング: <a href="http://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%82%A4%E6%9C%A8" rel="external nofollow">Trie(トライ木)</a></li>
-<li>パターンマッチング: <a href="http://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%A4%E3%83%9B-%E3%82%B3%E3%83%A9%E3%82%B7%E3%83%83%E3%82%AF%E6%B3%95" rel="external nofollow">Aho-Corasick法(AC法)</a></li>
-<li>カテゴリ判定: <a href="http://ja.wikipedia.org/wiki/%E3%83%99%E3%82%A4%E3%82%B8%E3%82%A2%E3%83%B3%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF" rel="external nofollow">ベイジアンフィルタ</a></li>
+<ul>
+<li>パターンマッチング: <a href="http://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%82%A4%E6%9C%A8" rel="external nofollow" title="Trie(トライ木)">Trie(トライ木)</a>
+</li>
+<li>パターンマッチング: <a href="http://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%A4%E3%83%9B-%E3%82%B3%E3%83%A9%E3%82%B7%E3%83%83%E3%82%AF%E6%B3%95" rel="external nofollow" title="Aho-Corasick法(AC法)">Aho-Corasick法(AC法)</a>
+</li>
+<li>カテゴリ判定: <a href="http://ja.wikipedia.org/wiki/%E3%83%99%E3%82%A4%E3%82%B8%E3%82%A2%E3%83%B3%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF" rel="external nofollow" title="ベイジアンフィルタ">ベイジアンフィルタ</a>
+</li>
 </ul>
-
-
-
-
 <h3>検索システムの6つのステージ</h3>
 
 
 <p>全文検索システムを作る上で、大まかに作業を分けると、6つのステージに分解できます。</p>
 
-<dl><dt>クロール</dt>
+<dl>
+<dt>クロール</dt>
 <dd><p>検索する対象のドキュメントを見つける</p></dd>
 <dt>格納</dt>
 <dd><p>ドキュメントを保存・格納する</p></dd>
@@ -622,18 +623,18 @@
 <dt>結果表示</dt>
 <dd><p>結果を表示する</p></dd>
 </dl>
-
-
-
-
 <div class="row">
 <div class="col-sm-2">
-<a href="http://www.amazon.co.jp/gp/product/0521865719?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=0521865719" rel="external nofollow">
-<img src="https://images-na.ssl-images-amazon.com/images/I/41xVx99-4yL._SL160_.jpg" alt="Introduction to Information Retrieval" />
-</a>
+<a href="http://www.amazon.co.jp/gp/product/0521865719?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=0521865719" rel="external nofollow" title="
+">
+<img src="https://images-na.ssl-images-amazon.com/images/I/41xVx99-4yL._SL160_.jpg" alt="Introduction to Information Retrieval" class="img-thumbnail"></a>
 </div>
 <div class="col-sm-10">
-<ul><li>『<em><a href="http://www.amazon.co.jp/gp/product/0521865719?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=0521865719" rel="external nofollow">Introduction to Information Retrieval</a></em>』</li><li>著者: Christopher D. Manning (著), Prabhakar Raghavan (著), Hinrich Schuetze (著)</li><li>出版社: Cambridge University Press; Anniversary</li></ul>
+<ul>
+<li>『<em><a href="http://www.amazon.co.jp/gp/product/0521865719?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=0521865719" rel="external nofollow" title="Introduction to Information Retrieval">Introduction to Information Retrieval</a></em>』</li>
+<li>著者: Christopher D. Manning (著), Prabhakar Raghavan (著), Hinrich Schuetze (著)</li>
+<li>出版社: Cambridge University Press; Anniversary</li>
+</ul>
 </div>
 </div>
 
@@ -645,12 +646,12 @@
 
 <p>はてなでの経験則だそうですが、だいたい、</p>
 
-<ul><li>CPUで2〜3%</li>
+<ul>
+<li>CPUで2〜3%</li>
 <li>メモリの性能も1割くらい</li>
 <li>ネットワークの性能は半分くらい</li>
-<li>I/O性能が5%くらい</li></ul>
-
-
+<li>I/O性能が5%くらい</li>
+</ul>
 <p>落ちるようです。</p>
 
 <h3>SSDの寿命</h3>
@@ -671,28 +672,28 @@
 <h3>ジョブキュー、ストレージ、キャッシュシステム、計算クラスタ</h3>
 
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>いまどきのWebサービスに求められる実践技術</h4>
 
 
 
 
-<ul><li>ジョブキューシステム &#8211; TheSchwartz, Gearman</li>
+<ul>
+<li>ジョブキューシステム &#8211; TheSchwartz, Gearman</li>
 <li>ストレージ &#8211; RDBMS, key-valueストア</li>
 <li>キャッシュシステム &#8211; Squid, Varnish</li>
-<li>計算クラスタ &#8211; Hadoop</li></ul>
-
-
-<p></section></p>
+<li>計算クラスタ &#8211; Hadoop</li>
+</ul>
+<p></p>
 
 <h4>ストレージ選択のフローチャート</h4>
 
 
 <p>本書より</p>
 
-<p><img alt="flowchart.png" src="/images/flowchart.png" width="558" height="474" class="mt-image-none" style="" /></p>
-</div>
+<p><img alt="flowchart.png" src="/images/flowchart.png" width="558" height="474" class="mt-image-none img-thumbnail" style=""></p>
+</body></html></div>
 
 
   
@@ -870,6 +871,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -893,10 +898,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -904,7 +905,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

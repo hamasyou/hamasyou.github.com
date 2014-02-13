@@ -175,31 +175,25 @@
 
 
 
-<div class="entry-content"><p>本書は、JUnit の使い方と単体テストについての知識を得られるものになっています。JUnit を使ったテストファーストの流れを説明し、テストとは何か（単体テスト、結合テスト、システムテスト）ということを解説しています。</p>
+<div class="entry-content"><html><body>
+<p>本書は、JUnit の使い方と単体テストについての知識を得られるものになっています。JUnit を使ったテストファーストの流れを説明し、テストとは何か（単体テスト、結合テスト、システムテスト）ということを解説しています。</p>
 
 <p>対象読者は次のような人です。</p>
 
-<ul><li>JUnit を使ったテストファーストを学んでみたい</li>
+<ul>
+<li>JUnit を使ったテストファーストを学んでみたい</li>
 <li>単体テストでどんなテストを行えばよいのか迷っている</li>
 <li>テスト技法に関してさらっと基礎をつかんでおきたい</li>
 </ul>
-
-
-
-
 <h4>テストファーストに関してさらに学びたい人にはこちらがお勧めです</h4>
 
 
-<p>『<a href="http://www.amazon.co.jp/gp/product/479810714X/503-3688169-6412757?ie=UTF8&tag=sorehabooks-22&linkCode=xm2&camp=247&creativeASIN=479810714X" rel="external nofollow">バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発</a>』</p>
+<p>『<a href="http://www.amazon.co.jp/gp/product/479810714X/503-3688169-6412757?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=479810714X" rel="external nofollow" title="バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発">バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発</a>』</p>
 
 <dl>
 <dt class="info">Information</dt>
 <dd>本書で説明されている JUnit のバージョンは 3.8.1 です。付録に JUnit4 の説明が20数ページ割かれています。</dd>
 </dl>
-
-
-
-
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:inline-block;width:728px;height:90px"
@@ -208,11 +202,6 @@
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-
-
-
-
-
 <h2>特徴</h2>
 
 
@@ -223,33 +212,36 @@
 
 <p>本書は単体テストをターゲットにした本になっています。単体テストには JUnit を使います。</p>
 
-<p><a href="http://www.techscore.com/tech/Others/JUnit/1.html" rel="external nofollow">単体テストとJUnit-TECHSCORE</a></p>
+<p><a href="http://www.techscore.com/tech/Others/JUnit/1.html" rel="external nofollow" title="単体テストとJUnit-TECHSCORE">単体テストとJUnit-TECHSCORE</a></p>
 
 <h4>単体テストとは</h4>
 
 
 
 
-<blockquote><p>単体テストは、モジュールを単位としたテストです。Java の場合、クラス、メソッドが単体テスト対象となります。&lt;中略&gt; 単体テストとは、開発者（プログラマ）が自分で作ったプログラムが「ちゃんと動くか」調べる作業です。</p><footer><strong>本書 P.59 「単体テストの技法」より</strong></footer></blockquote>
+<blockquote>
+<p>単体テストは、モジュールを単位としたテストです。Java の場合、クラス、メソッドが単体テスト対象となります。&lt;中略&gt; 単体テストとは、開発者（プログラマ）が自分で作ったプログラムが「ちゃんと動くか」調べる作業です。</p>
+<footer><strong class="text-danger">本書 P.59 「単体テストの技法」より</strong></footer>
+</blockquote>
 
 
 <p>単体テストは、プログラマが自分の作ったプログラムをテストすることを指します。単体テストでは、テスト対象だけでテストが実行できることがベストです。そのためには、外部に依存する部分をモックオブジェク（Mock Object）などを使ってテストしやすくする必要があります。</p>
 
-<p><a href="http://bobchin.ddo.jp/simpletest/mock_objects_documentation.html" rel="external nofollow">モックオブジェクトとは - SimpleTest for PHP</a></p>
+<p><a href="http://bobchin.ddo.jp/simpletest/mock_objects_documentation.html" rel="external nofollow" title="モックオブジェクトとは - SimpleTest for PHP">モックオブジェクトとは - SimpleTest for PHP</a></p>
 
 <h4>単体テスト項目</h4>
 
 
 <p>単体テストでは、次のような項目をテストします。</p>
 
-<ul><li>境界値</li>
+<ul>
+<li>境界値</li>
 <li>条件分岐</li>
 <li>網羅性（カバレッジ）</li>
 <li>例外ケース</li>
 <li>エラーが出そうな値（マイナス値、巨大な値、0、NULL）</li>
-<li>パフォーマンス</li></ul>
-
-
+<li>パフォーマンス</li>
+</ul>
 <p>上記のテストを、正常系とエラー系に分けてそれぞれテストを行います。</p>
 
 <h3>テストファーストを体験できる</h3>
@@ -261,40 +253,36 @@
 <dt class="tips">Tips</dt>
 <dd>ここでいうテストとは、プログラムを書いた後に記述するテストとは少し意味合いが異なると僕は考えています。テストファーストで記述するテストは、動くことの確認という意味合いよりも、こう動かなければいけないという仕様を強くあらわしていると考えています。そのため、仕様が決まっていなければテストファーストを実行することができません。これにより、「仕様は決まってないんだけど、とりあえずコーディングする」という悪行が防げます。</dd>
 </dl>
-
-
-
-
 <h3>テスト技法のおさらいができる</h3>
 
 
 <p>本書で上げられているテスト技法には次のものがあります。</p>
 
-<ul><li>ブラックボックステスト</li><li>ホワイトボックステスト</li></ul>
-
-
-
-
+<ul>
+<li>ブラックボックステスト</li>
+<li>ホワイトボックステスト</li>
+</ul>
 <h4>ブラックボックステスト</h4>
 
 
 <p>ブラックボックステストは、プログラムの仕様を元にテストを行うものです。プログラムの内部構造は考慮せず、入出力の仕様に注力します。ブラックボックステストとして、次の4つのテストがあげられています。</p>
 
-<ul><li>同値クラステスト</li><li>境界値テスト</li><li>デシジョンテーブルテスト</li><li>強制エラーテスト</li><li>グレーボックステスト</li></ul>
-
-
-
-
+<ul>
+<li>同値クラステスト</li>
+<li>境界値テスト</li>
+<li>デシジョンテーブルテスト</li>
+<li>強制エラーテスト</li>
+<li>グレーボックステスト</li>
+</ul>
 <h4>ホワイトボックステスト</h4>
 
 
 <p>ホワイトボックステストは、プログラムの内部構造を元にテストを行うものです。条件分岐、データ構造、実装方法などのプログラムの内部を熟知した上でですとを行います。JUnit を用いた単体テストは、主にこのホワイトボックステストを行います。</p>
 
-<ul><li>制御フローテスト</li><li>データフローテスト</li></ul>
-
-
-
-
+<ul>
+<li>制御フローテスト</li>
+<li>データフローテスト</li>
+</ul>
 <h3>テストの種類がまとまっている</h3>
 
 
@@ -305,27 +293,29 @@
 
 <p>単体テストが完了したモジュールを組み合わせて行うテストのことです。テストシナリオを考えてテストを行います。</p>
 
-<ul><li>トップダウンテスト</li><li>ボトムアップテスト</li><li>サンドイッチテスト</li><li>ビックバンテスト</li></ul>
-
-
-
-
+<ul>
+<li>トップダウンテスト</li>
+<li>ボトムアップテスト</li>
+<li>サンドイッチテスト</li>
+<li>ビックバンテスト</li>
+</ul>
 <h4>システムテスト</h4>
 
 
 <p>システム全体のテストを行います。</p>
 
-<ul><li>性能テスト（パフォーマンステスト）</li><li>負荷テスト</li><li>例外処理テスト</li><li>操作性テスト</li></ul>
-
-
-
-
+<ul>
+<li>性能テスト（パフォーマンステスト）</li>
+<li>負荷テスト</li>
+<li>例外処理テスト</li>
+<li>操作性テスト</li>
+</ul>
 <h2>覚書</h2>
 
 
 <p>JUnit4 についてすごくよくまとまっているサイトを見つけたので参考に。</p>
 
-<p><a href="http://www.okisoft.co.jp/esc/testing/JUnit4-TestNG.html" rel="external nofollow">JUnit 4 &amp; TestNG</a></p>
+<p><a href="http://www.okisoft.co.jp/esc/testing/JUnit4-TestNG.html" rel="external nofollow" title="JUnit 4 &amp; TestNG">JUnit 4 &amp; TestNG</a></p>
 
 <h2>参考</h2>
 
@@ -333,37 +323,26 @@
 <ul>
 <li>ソフトウェアテストのバイブル</li>
 </ul>
-
-
-<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282511/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+<div class="rakuten"><table border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282511/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
 
 
 <ul>
 <li>ソフトウェアテストのバイブル その二</li>
 </ul>
-
-
-<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822281132/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+<div class="rakuten"><table border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822281132/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
 
 
 <ul>
 <li>バイブルからよいとこ取りした鉄則書</li>
 </ul>
-
-
-<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/482228154X/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
+<div class="rakuten"><table border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/482228154X/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
 
 
 <ul>
 <li>TDD（テスト駆動開発）の発案者による本</li>
 </ul>
-
-
-<div class="rakuten"><table  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894717115/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table></div>
-
-
-
-</div>
+<div class="rakuten"><table border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894717115/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
+</body></html></div>
 
 
   
@@ -531,6 +510,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -554,10 +537,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -565,7 +544,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

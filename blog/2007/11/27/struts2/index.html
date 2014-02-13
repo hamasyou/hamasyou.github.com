@@ -148,7 +148,8 @@
 
 
 
-<div class="entry-content"><p>Struts2 は WebWorks2 をベースとした MVC フレームワークです。Struts1 と変わらずコマンドパターンのフレームワークになっています。</p>
+<div class="entry-content"><html><body>
+<p>Struts2 は WebWorks2 をベースとした MVC フレームワークです。Struts1 と変わらずコマンドパターンのフレームワークになっています。</p>
 
 <p>コマンドパターンの実装部分では、OPENSYMHONY の XWork が使われています。</p>
 
@@ -170,13 +171,11 @@
 <li>Ajax をサポートしている</li>
 <li>プラグインによりフレームワークの拡張が行える</li>
 </ul>
-
-
 <p>情報が正確ではない可能性が大いにあるので（ドキュメント読まずにソース見ながら書いているので・・・）、鵜呑みにしないでください。</p>
 
 <p>随時更新予定です。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>執筆時の環境</h4>
 
@@ -185,11 +184,9 @@
 
 <ul>
 <li>JDK1.5.12</li>
-<li><a href="http://struts.apache.org/2.x/" rel="external nofollow">Struts2 2.0.11</a></li>
+<li><a href="http://struts.apache.org/2.x/" rel="external nofollow" title="Struts2 2.0.11">Struts2 2.0.11</a></li>
 </ul>
-
-
-<p></section></p>
+<p></p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -210,29 +207,27 @@
 
 
 <ol>
-<li><a href="#アーキテクチャ" rel="external nofollow">アーキテクチャ</a>
+<li>
+<a href="#%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3" rel="external nofollow">アーキテクチャ</a>
 <ol>
-    <li><a href="#アーキテクチャ概要図" rel="external nofollow">アーキテクチャ概要図</a></li>
-    <li><a href="#主なクラス" rel="external nofollow">主なクラス</a></li>
-    <li><a href="#概要クラス図とシーケンス図" rel="external nofollow">概要クラス図とシーケンス図</a></li>
+<li><a href="#%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E6%A6%82%E8%A6%81%E5%9B%B3" rel="external nofollow">アーキテクチャ概要図</a></li>
+    <li><a href="#%E4%B8%BB%E3%81%AA%E3%82%AF%E3%83%A9%E3%82%B9" rel="external nofollow">主なクラス</a></li>
+    <li><a href="#%E6%A6%82%E8%A6%81%E3%82%AF%E3%83%A9%E3%82%B9%E5%9B%B3%E3%81%A8%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E5%9B%B3" rel="external nofollow">概要クラス図とシーケンス図</a></li>
 </ol>
 </li>
-<li><a href="#Struts2 の主な機能" rel="external nofollow">Struts2 の主な機能</a>
+<li>
+<a href="#Struts2%20%E3%81%AE%E4%B8%BB%E3%81%AA%E6%A9%9F%E8%83%BD" rel="external nofollow">Struts2 の主な機能</a>
 <ol>
-    <li><a href="#コンフィグレーションファイルの指定" rel="external nofollow">コンフィグレーションファイルの指定</a></li>    
-    <li><a href="#Zero コンフィグレーション" rel="external nofollow">Zero コンフィグレーション</a></li>
-    <li><a href="#カスタム設定読み込み" rel="external nofollow">カスタム設定読み込み</a></li>
-    <li><a href="#Dependency Injection" rel="external nofollow">Dependency Injection</a></li>
-    <li><a href="#インターセプタ" rel="external nofollow">インターセプタ</a></li>
-    <li><a href="#アクションの作成" rel="external nofollow">アクションの作成</a></li>
-    <li><a href="#Result について" rel="external nofollow">Result について</a></li>
+<li><a href="#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%8C%87%E5%AE%9A" rel="external nofollow">コンフィグレーションファイルの指定</a></li>    
+    <li><a href="#Zero%20%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" rel="external nofollow">Zero コンフィグレーション</a></li>
+    <li><a href="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E8%A8%AD%E5%AE%9A%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF" rel="external nofollow">カスタム設定読み込み</a></li>
+    <li><a href="#Dependency%20Injection" rel="external nofollow">Dependency Injection</a></li>
+    <li><a href="#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF" rel="external nofollow">インターセプタ</a></li>
+    <li><a href="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E4%BD%9C%E6%88%90" rel="external nofollow">アクションの作成</a></li>
+    <li><a href="#Result%20%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" rel="external nofollow">Result について</a></li>
 </ol>
 </li>
 </ol>
-
-
-
-
 <h2 id="アーキテクチャ">アーキテクチャ</h2>
 
 
@@ -241,7 +236,7 @@
 <h3 id="アーキテクチャ概要図">アーキテクチャ概要図</h3>
 
 
-<p><img src="http://hamasyou.com/images/Struts2/archtecture.jpg" alt="Struts2のアーキテクチャ" /></p>
+<p><img src="http://hamasyou.com/images/Struts2/archtecture.jpg" alt="Struts2のアーキテクチャ" class="img-thumbnail"></p>
 
 <h2 id="主なクラス">主なクラス（Struts2、XWork）</h2>
 
@@ -257,16 +252,16 @@
 
 <dl>
 <dt class="info">URLパターン</dt>
-<dd><p>フィルタの url-pattern は「/*」にすることが推奨（JavaDoc によると MUST）されています。</p>
+<dd>
+<p>フィルタの url-pattern は「/*」にすることが推奨（JavaDoc によると MUST）されています。</p>
 
 <pre class="code"><code><span class="tag">&lt;filter-mapping&gt;</span> 
   <span class="tag">&lt;filter-name&gt;</span>struts2<span class="tag">&lt;/filter-name&gt;</span> 
   <span class="tag">&lt;url-pattern&gt;</span>/*<span class="tag">&lt;/url-pattern&gt;</span> 
 <span class="tag">&lt;/filter-mapping&gt;</span>
-</code></pre></dd>
+</code></pre>
+</dd>
 </dl>
-
-
 <p>「/struts/」で始まるパスがリクエストされると、FilterDispatcher は静的リソースを検索します。</p>
 
 <p>たとえば「http://localhost:8080/struts2/struts/ajax/dojoRequire.js」のようにアクセスされた場合「/struts/」以下のパスをクラスパスから検索します。</p>
@@ -278,8 +273,6 @@
 <li>template</li>
 <li>org.apache.struts2.interceptor.debugging</li>
 </ul>
-
-
 <p>のクラスパスが指定されていますので、上記URLにアクセスされた場合は「/org/apache/struts2/static/ajax/dojoRequire.js」「/template/ajax/dojoRequire.js」「/org/apache/struts2/interceptor/debugging/dojoRequire.js」からマッチする静的コンテンツを返すようになります。</p>
 
 <h3>org.apache.struts2.dispatcher.mapper.ActionMapper</h3>
@@ -325,7 +318,7 @@
 
 <p>すべてのインタセプタの呼び出しが完了した後アクションが呼び出されます。その後、Result の呼び出しが行われます。</p>
 
-<p><a href="http://hamasyou.com/images/Struts2/invoke.gif" rel="external nofollow"></a></p>
+<p><a href="http://hamasyou.com/images/Struts2/invoke.gif" rel="external nofollow" title=""></a></p>
 
 <p>Result の実装として、<code>ServletDispatcherResult</code> などがあります。Result は View の実装（ユーザへのレスポンス）に結び付けられています。</p>
 
@@ -352,15 +345,15 @@
 <h2 id="概要クラス図とシーケンス図">概要クラス図とシーケンス図</h2>
 
 
-<p><a href="http://hamasyou.com/images/Struts2/action_class_diagram.gif" rel="external nofollow"></a></p>
+<p><a href="http://hamasyou.com/images/Struts2/action_class_diagram.gif" rel="external nofollow" title=""></a></p>
 
-<p><a href="http://hamasyou.com/images/Struts2/action_sequence.gif" rel="external nofollow"></a></p>
+<p><a href="http://hamasyou.com/images/Struts2/action_sequence.gif" rel="external nofollow" title=""></a></p>
 
-<p>Struts2 では、すべてのリクエストが <code><strong>org.apache.struts2.dispatcher.FilterDispatcher</strong></code> を通して処理されます。</p>
+<p>Struts2 では、すべてのリクエストが <code><strong class="text-danger">org.apache.struts2.dispatcher.FilterDispatcher</strong></code> を通して処理されます。</p>
 
-<p><code>FilterDispatcher</code> はリクエストパスからどのアクションを呼び出すかを解決し、<code><strong>org.apache.struts2.dispatcher.Dispatcher</strong></code> の <code>serviceAction</code> を呼び出します。</p>
+<p><code>FilterDispatcher</code> はリクエストパスからどのアクションを呼び出すかを解決し、<code><strong class="text-danger">org.apache.struts2.dispatcher.Dispatcher</strong></code> の <code>serviceAction</code> を呼び出します。</p>
 
-<p><code>Dispatcher</code> は <code>serviceAction</code> の中で、<code>ActionProxyFactory</code> を使って <code><strong>ActionProxy</strong></code> を作成して</p>
+<p><code>Dispatcher</code> は <code>serviceAction</code> の中で、<code>ActionProxyFactory</code> を使って <code><strong class="text-danger">ActionProxy</strong></code> を作成して</p>
 
 <p>実際にアクションを実行するのは、<code>ActionInvocation</code> の役割になります。</p>
 
@@ -372,7 +365,7 @@
 <h3 id="コンフィグレーションファイルの指定">コンフィグレーションファイルの指定</h3>
 
 
-<p>web.xml の Filter の設定で init-param に <strong>config</strong> というパラメータを設定すると、Struts2 の設定ファイルを指定できます。</p>
+<p>web.xml の Filter の設定で init-param に <strong class="text-danger">config</strong> というパラメータを設定すると、Struts2 の設定ファイルを指定できます。</p>
 
 <p>デフォルトは「struts-default.xml,struts-plugin.xml,struts.xml」になっています。このファイルは、クラスパス上から検索されます。</p>
 
@@ -394,7 +387,7 @@
 <h3 id="Zero コンフィグレーション">Zero コンフィグレーション</h3>
 
 
-<p>web.xml の Filter の設定で init-param に <strong>actionPackages</strong> というパラメータを設定すると、Struts2 はこのパッケージにあるクラスで、com.opensymphony.xwork2.Action インターフェースを実装したクラスか、「Action」で終わるクラス名を持つクラスを自動で Action クラスとして認識してくれます。</p>
+<p>web.xml の Filter の設定で init-param に <strong class="text-danger">actionPackages</strong> というパラメータを設定すると、Struts2 はこのパッケージにあるクラスで、com.opensymphony.xwork2.Action インターフェースを実装したクラスか、「Action」で終わるクラス名を持つクラスを自動で Action クラスとして認識してくれます。</p>
 
 <p>「,」で区切ることで、複数パッケージ指定することもできます。</p>
 
@@ -413,7 +406,7 @@
 
 <p>上記のように設定した場合、</p>
 
-<p><img src="http://hamasyou.com/images/Struts2/zero_config.gif" alt="Zeroコンフィグレーション" /></p>
+<p><img src="http://hamasyou.com/images/Struts2/zero_config.gif" alt="Zeroコンフィグレーション" class="img-thumbnail"></p>
 
 <p>「/usecase1/itemSearch.action」にアクセスすると「com.hamasyou.struts2.webapp.usecase1.ItemRegisterAction」が呼び出されます。</p>
 
@@ -428,9 +421,9 @@
 
 <p>Struts2 の起動時に、カスタムプロパティを読み込むことが出来る。</p>
 
-<p>web.xml の init-param に <strong>configProviders</strong> というパラメータを設定すると、Struts2 はこのパラメータに指定されたクラスからカスタムプロパティの読み込みを行うようになります。</p>
+<p>web.xml の init-param に <strong class="text-danger">configProviders</strong> というパラメータを設定すると、Struts2 はこのパラメータに指定されたクラスからカスタムプロパティの読み込みを行うようになります。</p>
 
-<p>指定するクラスは、<strong>com.opensymphony.xwork2.config.ConfigurationProvider</strong> を実装する必要があります。</p>
+<p>指定するクラスは、<strong class="text-danger">com.opensymphony.xwork2.config.ConfigurationProvider</strong> を実装する必要があります。</p>
 
 <p>「,」で区切ることで、クラスを複数指定できます。</p>
 
@@ -452,9 +445,9 @@
 <h3 id="Dependency Injection">Dependency Injection</h3>
 
 
-<p>メソッドかフィールドに <strong>@Inject</strong> を指定することで、型によるインジェクションが行われます。</p>
+<p>メソッドかフィールドに <strong class="text-danger">@Inject</strong> を指定することで、型によるインジェクションが行われます。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>@Inject の例</h4>
 
@@ -479,18 +472,18 @@
 </code></pre>
 
 
-<p></section></p>
+<p></p>
 
 <p>インジェクションするオブジェクトの設定は、struts.xml に記述します。</p>
 
-<pre class="code"><code><span class="tag">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span> 
+<pre class="code"><code><span class="tag">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span> 
 <span class="tag">&lt;!DOCTYPE struts PUBLIC 
-  &quot;-//Apache Software Foundation//DTD Struts Configuration 2.0//EN&quot; 
-  &quot;http://struts.apache.org/dtds/struts-2.0.dtd&quot;&gt;</span> 
+  "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+  "http://struts.apache.org/dtds/struts-2.0.dtd"&gt;</span> 
  
 <span class="tag">&lt;struts&gt;</span> 
-  <span class="tag">&lt;bean <span class="attr">class=</span><span class="value">&quot;com.hamasyou.struts2.webapp.MyObject&quot;</span> /&gt;</span> 
-  <span class="tag">&lt;bean <span class="attr">class=</span><span class="value">&quot;com.hamasyou.struts2.webapp.MyObject2&quot;</span> /&gt;</span>   
+  <span class="tag">&lt;bean <span class="attr">class=</span><span class="value">"com.hamasyou.struts2.webapp.MyObject"</span> /&gt;</span> 
+  <span class="tag">&lt;bean <span class="attr">class=</span><span class="value">"com.hamasyou.struts2.webapp.MyObject2"</span> /&gt;</span>   
 <span class="tag">&lt;/struts&gt;</span>
 </code></pre>
 
@@ -510,7 +503,7 @@ myObject2:com.hamasyou.struts2.webapp.MyObject2@50078e</pre>
 
 <p>struts-default.xml を見ると、デフォルトのインターセプタとして以下の設定がされているのがわかります。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>struts-default.xml のインターセプタの設定</h4>
 
@@ -518,94 +511,94 @@ myObject2:com.hamasyou.struts2.webapp.MyObject2@50078e</pre>
 
 
 <pre class="code"><code><span class="tag">&lt;interceptors&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;alias&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.AliasInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;autowiring&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.spring.interceptor.ActionAutowiringInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;chain&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.ChainingInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;conversionError&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.StrutsConversionErrorInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;cookie&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.CookieInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;createSession&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.CreateSessionInterceptor&quot;</span> /&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;debugging&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.debugging.DebuggingInterceptor&quot;</span> /&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;externalRef&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.ExternalReferencesInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;execAndWait&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.ExecuteAndWaitInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;exception&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;fileUpload&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.FileUploadInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;i18n&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.I18nInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;logger&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.LoggingInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;modelDriven&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;scopedModelDriven&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor&quot;</span>/&gt;</span>
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;params&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.ParametersInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;prepare&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.PrepareInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;staticParams&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.StaticParametersInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;scope&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.ScopeInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;servletConfig&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.ServletConfigInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;sessionAutowiring&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.spring.interceptor.SessionContextAutowiringInterceptor&quot;</span>/&gt;</span>
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;timer&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.TimerInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;token&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.TokenInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;tokenSession&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.TokenSessionStoreInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;validation&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;workflow&quot;</span> <span class="attr">class=</span><span class="value">&quot;com.opensymphony.xwork2.interceptor.DefaultWorkflowInterceptor&quot;</span>/&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;store&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.MessageStoreInterceptor&quot;</span> /&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;checkbox&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.CheckboxInterceptor&quot;</span> /&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;profiling&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.ProfilingActivationInterceptor&quot;</span> /&gt;</span> 
-  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">&quot;roles&quot;</span> <span class="attr">class=</span><span class="value">&quot;org.apache.struts2.interceptor.RolesInterceptor&quot;</span> /&gt;</span>
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"alias"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.interceptor.AliasInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"autowiring"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.spring.interceptor.ActionAutowiringInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"chain"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.interceptor.ChainingInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"conversionError"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.StrutsConversionErrorInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"cookie"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.CookieInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"createSession"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.CreateSessionInterceptor"</span> /&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"debugging"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.debugging.DebuggingInterceptor"</span> /&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"externalRef"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.interceptor.ExternalReferencesInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"execAndWait"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.ExecuteAndWaitInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"exception"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"fileUpload"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.FileUploadInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"i18n"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.interceptor.I18nInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"logger"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.interceptor.LoggingInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"modelDriven"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"scopedModelDriven"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor"</span>/&gt;</span>
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"params"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.interceptor.ParametersInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"prepare"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.interceptor.PrepareInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"staticParams"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.interceptor.StaticParametersInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"scope"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.ScopeInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"servletConfig"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.ServletConfigInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"sessionAutowiring"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.spring.interceptor.SessionContextAutowiringInterceptor"</span>/&gt;</span>
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"timer"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.interceptor.TimerInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"token"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.TokenInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"tokenSession"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.TokenSessionStoreInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"validation"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"workflow"</span> <span class="attr">class=</span><span class="value">"com.opensymphony.xwork2.interceptor.DefaultWorkflowInterceptor"</span>/&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"store"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.MessageStoreInterceptor"</span> /&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"checkbox"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.CheckboxInterceptor"</span> /&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"profiling"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.ProfilingActivationInterceptor"</span> /&gt;</span> 
+  <span class="tag">&lt;interceptor <span class="attr">name=</span><span class="value">"roles"</span> <span class="attr">class=</span><span class="value">"org.apache.struts2.interceptor.RolesInterceptor"</span> /&gt;</span>
 </code></pre>
 
 
-<p></h4></p>
+<p></p>
 
 <p>インターセプタは、塊ごとに名前をつけて管理することが出来ます。それが、インターセプタスタックと呼ばれるものです。</p>
 
 <p>struts-default.xml には、以下のような設定がされています。</p>
 
 <pre class="code"><code><span class="rem">&lt;!-- Basic stack --&gt;</span> 
-<span class="tag">&lt;interceptor-stack <span class="attr">name=</span><span class="value">&quot;basicStack&quot;</span>&gt;</span> 
-    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;exception&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;servletConfig&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;prepare&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;checkbox&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;params&quot;</span>/&gt;</span> 
-    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;conversionError&quot;</span>/&gt;</span> 
+<span class="tag">&lt;interceptor-stack <span class="attr">name=</span><span class="value">"basicStack"</span>&gt;</span> 
+    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">"exception"</span>/&gt;</span> 
+    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">"servletConfig"</span>/&gt;</span> 
+    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">"prepare"</span>/&gt;</span> 
+    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">"checkbox"</span>/&gt;</span> 
+    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">"params"</span>/&gt;</span> 
+    <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">"conversionError"</span>/&gt;</span> 
 <span class="tag">&lt;/interceptor-stack&gt;</span>
 </code></pre>
 
 
 <p>アクションは、次のインターセプタスタックがデフォルトで適用されるようになっています。</p>
 
-<pre class="code"><code><span class="tag">&lt;default-interceptor-ref <span class="attr">name=</span><span class="value">&quot;defaultStack&quot;</span>/&gt;</span></code></pre>
+<pre class="code"><code><span class="tag">&lt;default-interceptor-ref <span class="attr">name=</span><span class="value">"defaultStack"</span>/&gt;</span></code></pre>
 
 
-<p>struts-default.xml を見るとわかりますが、これらのインターセプタの設定はパッケージごとに行うようです。上記のインターセプタ、インターセプタスタックは、「<strong>struts-default</strong>」というパッケージに定義されています。</p>
+<p>struts-default.xml を見るとわかりますが、これらのインターセプタの設定はパッケージごとに行うようです。上記のインターセプタ、インターセプタスタックは、「<strong class="text-danger">struts-default</strong>」というパッケージに定義されています。</p>
 
 <p>自分たちのアクションを struts.xml に登録した際のパッケージは、struts-default を継承する必要がありそうです。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>struts.xml の例</h4>
 
 
 
 
-<pre class="code"><code><span class="tag">&lt;package <span class="attr">name=</span><span class="value">&quot;mypackage&quot;</span> <span class="attr">namespace=</span><span class="value">&quot;/mypackage&quot;</span> <span class="attr">extends=</span><span class="value">&quot;struts-default&quot;</span>&gt;</span> 
+<pre class="code"><code><span class="tag">&lt;package <span class="attr">name=</span><span class="value">"mypackage"</span> <span class="attr">namespace=</span><span class="value">"/mypackage"</span> <span class="attr">extends=</span><span class="value">"struts-default"</span>&gt;</span> 
      
     <span class="tag">&lt;action  
-      <span class="attr">name=</span><span class="value">&quot;itemSearch&quot;</span>  
-      <span class="attr">class=</span><span class="value">&quot;com.hamasyou.struts2.webapp.usecase1.ItemSearchAction&quot;</span>&gt;</span> 
-      <span class="tag">&lt;result <span class="attr">name=</span><span class="value">&quot;success&quot;</span>&gt;</span>/WEB-INF/jsp/top/top.jsp<span class="tag">&lt;/result&gt;</span> 
-      <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;debugging&quot;</span> /&gt;</span> 
+      <span class="attr">name=</span><span class="value">"itemSearch"</span>  
+      <span class="attr">class=</span><span class="value">"com.hamasyou.struts2.webapp.usecase1.ItemSearchAction"</span>&gt;</span> 
+      <span class="tag">&lt;result <span class="attr">name=</span><span class="value">"success"</span>&gt;</span>/WEB-INF/jsp/top/top.jsp<span class="tag">&lt;/result&gt;</span> 
+      <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">"debugging"</span> /&gt;</span> 
     <span class="tag">&lt;/action&gt;</span> 
      
     <span class="tag">&lt;action  
-      <span class="attr">name=</span><span class="value">&quot;itemRegister&quot;</span>  
-      <span class="attr">class=</span><span class="value">&quot;com.hamasyou.struts2.webapp.usecase2.admin.ItemRegisterAction&quot;</span>&gt;</span> 
-      <span class="tag">&lt;result <span class="attr">name=</span><span class="value">&quot;success&quot;</span>&gt;</span>/WEB-INF/jsp/top/top.jsp<span class="tag">&lt;/result&gt;</span> 
-      <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">&quot;executeAndWaitStack&quot;</span> /&gt;</span> 
+      <span class="attr">name=</span><span class="value">"itemRegister"</span>  
+      <span class="attr">class=</span><span class="value">"com.hamasyou.struts2.webapp.usecase2.admin.ItemRegisterAction"</span>&gt;</span> 
+      <span class="tag">&lt;result <span class="attr">name=</span><span class="value">"success"</span>&gt;</span>/WEB-INF/jsp/top/top.jsp<span class="tag">&lt;/result&gt;</span> 
+      <span class="tag">&lt;interceptor-ref <span class="attr">name=</span><span class="value">"executeAndWaitStack"</span> /&gt;</span> 
     <span class="tag">&lt;/action&gt;</span>     
          
   <span class="tag">&lt;/package&gt;</span>
 </code></pre>
 
 
-<p></section></p>
+<p></p>
 
 <p>ここでは、インターセプタを指定しているので、デフォルトのインターセプタ（defaultStack）は使われません。</p>
 
@@ -622,15 +615,15 @@ myObject2:com.hamasyou.struts2.webapp.MyObject2@50078e</pre>
 </code></pre>
 
 
-<p>アクションの呼び出しは、通常、「struts.xml に記述した &lt;action&gt; の名前 + &quot;.action&quot;」ですが、「struts.xml に記述した &lg;action&gt; の名前 + &quot;!メソッド名.action&quot;」とすることで、execute 以外のメソッドを呼び出すことができます。</p>
+<p>アクションの呼び出しは、通常、「struts.xml に記述した &lt;action&gt; の名前 + &#8220;.action&#8221;」ですが、「struts.xml に記述した &amp;lg;action&gt; の名前 + &#8220;!メソッド名.action&#8221;」とすることで、execute 以外のメソッドを呼び出すことができます。</p>
 
 <p>また、struts.xml の &lt;action&gt; の設定で、method プロパティを設定することで、execute 以外のメソッドを呼び出すこともできます。</p>
 
 <pre class="code"><code><span class="tag">&lt;action  
-    <span class="attr">name=</span><span class="value">&quot;itemRegister&quot;</span>  
-    <span class="attr">method=</span><span class="value">&quot;hoge&quot;</span> 
-    <span class="attr">class=</span><span class="value">&quot;com.hamasyou.struts2.webapp.usecase2.admin.ItemRegisterAction&quot;</span>&gt;</span> 
-    <span class="tag">&lt;result <span class="attr">name=</span><span class="value">&quot;success&quot;</span>&gt;</span>/WEB-INF/jsp/top/top.jsp<span class="tag">&lt;/result&gt;</span> 
+    <span class="attr">name=</span><span class="value">"itemRegister"</span>  
+    <span class="attr">method=</span><span class="value">"hoge"</span> 
+    <span class="attr">class=</span><span class="value">"com.hamasyou.struts2.webapp.usecase2.admin.ItemRegisterAction"</span>&gt;</span> 
+    <span class="tag">&lt;result <span class="attr">name=</span><span class="value">"success"</span>&gt;</span>/WEB-INF/jsp/top/top.jsp<span class="tag">&lt;/result&gt;</span> 
 <span class="tag">&lt;/action&gt;</span>
 </code></pre>
 
@@ -641,15 +634,11 @@ myObject2:com.hamasyou.struts2.webapp.MyObject2@50078e</pre>
 <dt class="info">Zero コンフィグレーション</dt>
 <dd>クラス名を「Action」で終わる名前にしておくことで、Zero コンフィグレーションを利用して、無設定で Action クラスとして実行することができます。</dd> 
 </dl>
-
-
-
-
 <h3 id="Result について">Result について</h3>
 
 
 <p>以下、後で書く</p>
-</div>
+</body></html></div>
 
 
   
@@ -802,6 +791,10 @@ myObject2:com.hamasyou.struts2.webapp.MyObject2@50078e</pre>
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -825,10 +818,6 @@ myObject2:com.hamasyou.struts2.webapp.MyObject2@50078e</pre>
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -836,7 +825,7 @@ myObject2:com.hamasyou.struts2.webapp.MyObject2@50078e</pre>
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

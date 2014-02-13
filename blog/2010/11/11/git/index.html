@@ -148,7 +148,8 @@
 
 
 
-<div class="entry-content"><p>Git のコマンドメモ。</p>
+<div class="entry-content"><html><body>
+<p>Git のコマンドメモ。</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -178,7 +179,7 @@
 
 <p></p>
 
-<p>オプション &ndash;all を指定するとすべてのファイルをステージングエリアに追加する。</p>
+<p>オプション –all を指定するとすべてのファイルをステージングエリアに追加する。</p>
 
 <h3>ステージングエリアから削除する</h3>
 
@@ -190,7 +191,7 @@
 
 <p></p>
 
-<p>git rm を使うと、ファイルを作業ツリーから削除する。&ndash;cached オプションを指定するとステージングエリアから削除するが作業ツリーには残った状態になる。</p>
+<p>git rm を使うと、ファイルを作業ツリーから削除する。–cached オプションを指定するとステージングエリアから削除するが作業ツリーには残った状態になる。</p>
 
 <p>単にステージングエリアへの追加を取り消したい場合は対話モードを使って <em>revert（取り消し）</em>を行う。</p>
 
@@ -241,11 +242,11 @@ Bye.</pre>
 
 
 
-<ul><li>実験的な変更のため</li> 
+<ul>
+<li>実験的な変更のため</li> 
 <li>新しい機能の追加のため</li> 
-<li>バグフィックスのため</li></ul>
-
-
+<li>バグフィックスのため</li>
+</ul>
 <p></p>
 
 <h3>ブランチを作る</h3>
@@ -346,15 +347,14 @@ Bye.</pre>
 
 
 
-<dl><dt>直接マージ</dt> 
+<dl>
+<dt>直接マージ</dt> 
 <dd><p>ブランチを一つ持ってきて、すべてのコミットをマージする</p></dd> 
 <dt>圧縮コミット</dt> 
 <dd><p>あるブランチのコミットを最後の一つに圧縮して現在のブランチにマージする</p></dd> 
 <dt>チェリーピック</dt> 
 <dd><p>別のブランチからコミットを一つ取ってきて現在のブランチにマージする</p></dd>
 </dl>
-
-
 <p></p>
 
 <h3>直接マージ</h3>
@@ -413,7 +413,7 @@ $ git commit</pre>
 <h4>参考</h4>
 
 
-<p><a href="http://progit.org/book/ja/ch3-6.html" rel="external nofollow">Pro Git：リベース</a></p>
+<p><a href="http://progit.org/book/ja/ch3-6.html" rel="external nofollow" title="Pro Git：リベース">Pro Git：リベース</a></p>
 
 <h2>履歴を使った作業</h2>
 
@@ -438,7 +438,7 @@ $ git commit</pre>
 <pre>$ git diff [&lt;option&gt;]</pre>
 
 
-<p>diff で使えるオプションは、log で使ったリビジョンの範囲指定や修飾子が使える。比較するリビジョンを省略した場合は HEAD との比較になる。<strong>HEAD は、最新のコミット</strong>を表す。</p>
+<p>diff で使えるオプションは、log で使ったリビジョンの範囲指定や修飾子が使える。比較するリビジョンを省略した場合は HEAD との比較になる。<strong class="text-danger">HEAD は、最新のコミット</strong>を表す。</p>
 
 <h3>ファイル内の変更がいつ、誰によって行われたかを知る</h3>
 
@@ -473,7 +473,7 @@ $ git commit</pre>
 <pre>$ git reset (--soft|--hard) &lt;commit&gt; </pre>
 
 
-<p>オプション &ndash;soft は、リセットした内容をステージングエリアに戻してくれる。すなわち、リセットした内容をやり直せる。&ndash;hard オプションは即座に消す。コミット名の修飾子には ^ や ~N が使える。<strong>HEAD^ は最新のコミット</strong>を表す。</p>
+<p>オプション –soft は、リセットした内容をステージングエリアに戻してくれる。すなわち、リセットした内容をやり直せる。–hard オプションは即座に消す。コミット名の修飾子には ^ や ~N が使える。<strong class="text-danger">HEAD^ は最新のコミット</strong>を表す。</p>
 
 <h3>前回コミットからの編集をすべてすてて、前回コミットの状態に戻す</h3>
 
@@ -495,7 +495,8 @@ $ git commit</pre>
 
 
 
-<dl><dt>リポジトリ</dt> 
+<dl>
+<dt>リポジトリ</dt> 
 <dd><p>リポジトリは、ローカルのディレクトリにあるかもしれないし、ネットワーク上にあるかもしれない。とにかく、git でコンテンツを格納する場所がリポジトリ。</p></dd> 
 <dt>ローカルリポジトリ</dt> 
 <dd><p>自分専用のリポジトリ。git init で作ることもできるし、git clone で他の場所にあるリポジトリをコピーすることもできる。</p></dd> 
@@ -504,14 +505,10 @@ $ git commit</pre>
 <dt>リモートブランチ</dt> 
 <dd><p>リモートリポジトリから作成したブランチのこと。リモートブランチはローカルリポジトリにできるが、ローカルブランチとは区別される。origin/master というような表記になり、origin がリモートリポジトリの別名になる。</p></dd>
 </dl>
-
-
-
-
 <h4>参考</h4>
 
 
-<p><a href="http://progit.org/book/ja/ch3-5.html" rel="external nofollow">ProGit：リモートブランチ</a></p>
+<p><a href="http://progit.org/book/ja/ch3-5.html" rel="external nofollow" title="ProGit：リモートブランチ">ProGit：リモートブランチ</a></p>
 
 <h3>リモートリポジトリのクローンをつくる</h3>
 
@@ -540,7 +537,7 @@ $ <kbd>git branch -r</kbd>
 
 <p>git branch -r で自分のリモートリポジトリの一覧が表示される。git clone でリポジトリを作成するとデフォルトで origin という名前でリモートサイトの別名が作られる。また、ローカルブランチに master、リモートブランチに origin/master というブランチが作成される。</p>
 
-<p>Git では誰かがリモートリポジトリを更新すると、自分のリモートブランチ（origin/master）と違う歴史がつくられる。リモートリポジトリの更新を取り込むには、リモートブランチ（origin/master）をリモートリポジトリに再接続しなければならない。そのためのコマンドが <strong>fetch</strong> である。</p>
+<p>Git では誰かがリモートリポジトリを更新すると、自分のリモートブランチ（origin/master）と違う歴史がつくられる。リモートリポジトリの更新を取り込むには、リモートブランチ（origin/master）をリモートリポジトリに再接続しなければならない。そのためのコマンドが <strong class="text-danger">fetch</strong> である。</p>
 
 <h3>リモートリポジトリの変更を取り込む（fetch）</h3>
 
@@ -579,8 +576,6 @@ $ <kbd>git branch -r</kbd>
 <p>origin というのはローカルとリモートを区別するためのプレフィックスで、clone で作成した作成元のリポジトリに割り当てられるデフォルトのリモートリポジトリ名である。この名前は、.git/config に設定されている。</p>
 
 <ul><li>origin以外のリモートリポジトリを追加する</li></ul>
-
-
 <p></p>
 
 <pre>$ git remote add &lt;alias&gt; &lt;url&gt;</pre>
@@ -626,10 +621,7 @@ $ <kbd>git branch -r</kbd>
 <p>master ブランチ以外を追跡ブランチするためには、次のコマンドを使用する。</p>
 
 <pre>$ git checkout --track &lt;remotename&gt;/&lt;branch&gt;</pre>
-
-
-
-</div>
+</body></html></div>
 
 
   
@@ -782,6 +774,10 @@ $ <kbd>git branch -r</kbd>
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -805,10 +801,6 @@ $ <kbd>git branch -r</kbd>
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -816,7 +808,7 @@ $ <kbd>git branch -r</kbd>
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

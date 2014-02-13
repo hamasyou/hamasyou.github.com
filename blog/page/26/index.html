@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="15分でWebServiceについて、知ったかぶりできる知識をまとめておきます。 Web Serviceとは Webサービスとは最近流行の技術の一つです。実は、Webサービスの定義は結構曖昧で、その人や、その時々によってまちまちです。そこで今回はWebサービスを以下のように定義します。 &hellip;">
+  <meta name="description" content="JAVAとUMLと方法論をまとめて解説してある。「JAVAだけ」とか「UMLだけ」とか「方法論だけ」といった書籍を読むよりも断然実践的に使える。方法論とUMLを使ってJAVAで実装するところまで解説している本は、希少価値が高いと思う。これらのことというのはやはり別々で学んでも、 &hellip;">
   
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/26/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="15分でWebServiceについて、知ったかぶりできる知識をまとめておきます。 Web Serviceとは Webサービスとは最近流行の技術の一つです。実は、Webサービスの定義は結構曖昧で、その人や、その時々によってまちまちです。そこで今回はWebサービスを以下のように定義します。 &hellip;" />
+<meta property="og:description" content="JAVAとUMLと方法論をまとめて解説してある。「JAVAだけ」とか「UMLだけ」とか「方法論だけ」といった書籍を読むよりも断然実践的に使える。方法論とUMLを使ってJAVAで実装するところまで解説している本は、希少価値が高いと思う。これらのことというのはやはり別々で学んでも、 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -94,16 +94,12 @@
 </div>
 </nav>
   <div role="main" class="container">
-    <div class="row">
+    <html><body><div class="row">
   <div class="col-sm-12 col-md-9">
     
     
     
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/27/15webservice/">15分で知ったかぶりWebService</a></h1>
+    <article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/28/4893699598/">Developing Applications With JAVA and UML -プログラマーのための統一モデリング</a></h1>
     
     
       <p class="meta">
@@ -120,8 +116,56 @@
 
 
 
-<time datetime="2004-05-27T14:15:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 27<span>th</span>, 2004</time>
+<time datetime="2004-05-28T03:52:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 28<span>th</span>, 2004</time><span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
+    
+      <a class="tag label label-info" href="/blog/tags/uml/">UML</a>
+    
+  
+</span>
+
+        
         <span class="divider"></span>
+        <a href="/blog/2004/05/28/4893699598/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header><div class="entry-content">
+<p>JAVAとUMLと方法論をまとめて解説してある。「JAVAだけ」とか「UMLだけ」とか「方法論だけ」といった書籍を読むよりも断然実践的に使える。方法論とUMLを使ってJAVAで実装するところまで解説している本は、希少価値が高いと思う。これらのことというのはやはり別々で学んでも、実際に開発現場ではどうすれば良いのかがどうしても不透明になる。</p>
+
+</div>
+  
+  
+    <footer><a rel="full-article" href="/blog/2004/05/28/4893699598/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/27/15webservice/">15分で知ったかぶりWebService</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-05-27T14:15:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 27<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -144,10 +188,8 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>15分でWebServiceについて、知ったかぶりできる知識をまとめておきます。</p>
+  </header><div class="entry-content">
+<p>15分でWebServiceについて、知ったかぶりできる知識をまとめておきます。</p>
 
 <h3>Web Serviceとは</h3>
 
@@ -156,29 +198,14 @@
 
 <dl>
 <dt>Webサービスとは</dt>
-<dd><b>「コンピュータが利用可能な、ネットワーク上のソフトウェアコンポーネント」</b>。「コンピュータが利用可能」、「ネットワーク上」、「ソフトウェアコンポーネント」という3つのキーワードがWebサービスの特徴</dd>
+<dd>
+<b>「コンピュータが利用可能な、ネットワーク上のソフトウェアコンポーネント」</b>。「コンピュータが利用可能」、「ネットワーク上」、「ソフトウェアコンポーネント」という3つのキーワードがWebサービスの特徴</dd>
 </dl>
-
-
-
-
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/27/15webservice/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/27/4822281574/">サーバーサイドJavaアンチパターン</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/05/27/15webservice/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/27/4822281574/">サーバーサイドJavaアンチパターン</a></h1>
     
     
       <p class="meta">
@@ -195,8 +222,7 @@
 
 
 
-<time datetime="2004-05-27T00:04:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 27<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-05-27T00:04:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 27<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -223,30 +249,16 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>「反面教師」という言葉を聞いたことがあると思います。悪い見本を見せて、良い行いをしてもらおうというものです。本書はサーバーサイドJavaプログラミングにおける、「反面教師」です。</p>
+  </header><div class="entry-content">
+<p>「反面教師」という言葉を聞いたことがあると思います。悪い見本を見せて、良い行いをしてもらおうというものです。本書はサーバーサイドJavaプログラミングにおける、「反面教師」です。</p>
 
 <p>この本の対象読者はJavaプログラミング中級者からアーキテクト担当、システム設計者などです。Javaプログラミングを始めて間もない人や、サーバーサイドプログラミングを始めて行う人には読みこなすのは困難です。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/27/4822281574/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/26/4873110955/">Javaクックブック―Java開発者のためのレシピ集</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/05/27/4822281574/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/26/4873110955/">Javaクックブック―Java開発者のためのレシピ集</a></h1>
     
     
       <p class="meta">
@@ -263,8 +275,7 @@
 
 
 
-<time datetime="2004-05-26T04:10:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 26<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-05-26T04:10:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 26<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -287,29 +298,15 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>文句なしのおすすめ書籍です。Javaの開発者には聖書のような存在になること間違いなしの本です。
+  </header><div class="entry-content">
+<p>文句なしのおすすめ書籍です。Javaの開発者には聖書のような存在になること間違いなしの本です。
 Javaプログラミングにおける「こんなときはどうしよう?」や「あれはどうやればいいんだっけ?」という言葉が、確実に少なくなる逸品です。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/26/4873110955/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/26/sangam/">プラグインSangam(サンガム)でペアプロ!!</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/05/26/4873110955/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/26/sangam/">プラグインSangam(サンガム)でペアプロ!!</a></h1>
     
     
       <p class="meta">
@@ -326,8 +323,7 @@ Javaプログラミングにおける「こんなときはどうしよう?」や
 
 
 
-<time datetime="2004-05-26T00:18:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 26<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-05-26T00:18:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 26<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -352,13 +348,11 @@ Javaプログラミングにおける「こんなときはどうしよう?」や
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>Sangam(サンガム)とは、リモートでペアプログラミング(通称ペアプロ)をEclipse上で行うためのものだ。
+  </header><div class="entry-content">
+<p>Sangam(サンガム)とは、リモートでペアプログラミング(通称ペアプロ)をEclipse上で行うためのものだ。
 Eclipseのプラグインとして提供されており、リモートでファイルロックと同期を取りながらペアプロを行うことができる。</p>
 
-<p>ペアプロとは、2人1組でプログラミングする方法で、片方がドライバ(プログラミングする方)ともう一方がオブザーバ(見ているほう)という役割を行いながら進めていきます。詳しくは<a href="http://www.objectclub.jp/community/XP-jp/xp_relate/xp-intro" rel="external nofollow">こちら</a>を参考に。</p>
+<p>ペアプロとは、2人1組でプログラミングする方法で、片方がドライバ(プログラミングする方)ともう一方がオブザーバ(見ているほう)という役割を行いながら進めていきます。詳しくは<a href="http://www.objectclub.jp/community/XP-jp/xp_relate/xp-intro" rel="external nofollow" title="こちら">こちら</a>を参考に。</p>
 
 <p>さて、Sangamの話に戻ります。このプラグインでペアプロを行う場合はインターネット越しでも使えるので、会社と自宅とでペアプロを行いたい場合もぜんぜん使えます。</p>
 
@@ -369,20 +363,8 @@ Eclipseのプラグインとして提供されており、リモートでファ�
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/26/sangam/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/25/4274063852/">Rubyプログラミング入門</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/05/26/sangam/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/25/4274063852/">Rubyプログラミング入門</a></h1>
     
     
       <p class="meta">
@@ -399,8 +381,7 @@ Eclipseのプラグインとして提供されており、リモートでファ�
 
 
 
-<time datetime="2004-05-25T20:18:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 25<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-05-25T20:18:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 25<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -423,28 +404,14 @@ Eclipseのプラグインとして提供されており、リモートでファ�
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>まず、Rubyの大まかな形がわかって、それから細部が鮮明になっていく。そんな感じでこの本は進んでいきます。後半以降はリファレンスとして使えるし、前半だけで大体Rubyを使えるくらいまでなれるでしょう。Ruby自体、それほど厄介な言語でもないですし、この本を読めば大半はマスターできると思います。</p>
+  </header><div class="entry-content">
+<p>まず、Rubyの大まかな形がわかって、それから細部が鮮明になっていく。そんな感じでこの本は進んでいきます。後半以降はリファレンスとして使えるし、前半だけで大体Rubyを使えるくらいまでなれるでしょう。Ruby自体、それほど厄介な言語でもないですし、この本を読めば大半はマスターできると思います。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/25/4274063852/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/25/4871937356/">Linux 怒濤のQ&A</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/05/25/4274063852/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/25/4871937356/">Linux 怒濤のQ&amp;A</a></h1>
     
     
       <p class="meta">
@@ -461,8 +428,7 @@ Eclipseのプラグインとして提供されており、リモートでファ�
 
 
 
-<time datetime="2004-05-25T08:35:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 25<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-05-25T08:35:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 25<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -485,28 +451,14 @@ Eclipseのプラグインとして提供されており、リモートでファ�
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>すべてのLinuxディストリビューションに共通のQ&amp;Aが載っています。ログイン・ログアウトに関するQ&amp;Aから基本コマンド、インストール、カーネル、ネットワークに関するQ&amp;Aまで一通りのことが書いてあります。</p>
+  </header><div class="entry-content">
+<p>すべてのLinuxディストリビューションに共通のQ&amp;Aが載っています。ログイン・ログアウトに関するQ&amp;Aから基本コマンド、インストール、カーネル、ネットワークに関するQ&amp;Aまで一通りのことが書いてあります。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/25/4871937356/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/25/4891000503/">プログラミングMicrosoft Visual C++6.0 マイクロソフト公式解説書</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/05/25/4871937356/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/25/4891000503/">プログラミングMicrosoft Visual C++6.0 マイクロソフト公式解説書</a></h1>
     
     
       <p class="meta">
@@ -523,8 +475,7 @@ Eclipseのプラグインとして提供されており、リモートでファ�
 
 
 
-<time datetime="2004-05-25T01:39:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 25<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-05-25T01:39:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 25<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -547,28 +498,14 @@ Eclipseのプラグインとして提供されており、リモートでファ�
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>本書を墨から墨まで読めば、VisualC++マスターになれることを保障します。情報量、本の厚さ、価格、どれをとっても超一流の本書はVisualC++を使う必要のある人には必携のバイブルです。</p>
+  </header><div class="entry-content">
+<p>本書を墨から墨まで読めば、VisualC++マスターになれることを保障します。情報量、本の厚さ、価格、どれをとっても超一流の本書はVisualC++を使う必要のある人には必携のバイブルです。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/25/4891000503/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/25/4774112194/">標準 Javaプログラミングブック New Languageシリーズ</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/05/25/4891000503/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/25/4774112194/">標準 Javaプログラミングブック New Languageシリーズ</a></h1>
     
     
       <p class="meta">
@@ -585,8 +522,7 @@ Eclipseのプラグインとして提供されており、リモートでファ�
 
 
 
-<time datetime="2004-05-25T00:52:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 25<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-05-25T00:52:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 25<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -609,28 +545,14 @@ Eclipseのプラグインとして提供されており、リモートでファ�
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>本書は、初心者 → 中級者へのステップアップにちょうど良いガイドだと思う。それぞれのカテゴリ(クラス、ファイル、Swing、スレッド、イベント、ネットワークなど)毎に、【解説】→【例題】→【練習問題】の順で学んでいく。</p>
+  </header><div class="entry-content">
+<p>本書は、初心者 → 中級者へのステップアップにちょうど良いガイドだと思う。それぞれのカテゴリ(クラス、ファイル、Swing、スレッド、イベント、ネットワークなど)毎に、【解説】→【例題】→【練習問題】の順で学んでいく。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/25/4774112194/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/24/4798000620/">標準JAVAプログラミング</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/05/25/4774112194/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/24/4798000620/">標準JAVAプログラミング</a></h1>
     
     
       <p class="meta">
@@ -647,8 +569,7 @@ Eclipseのプラグインとして提供されており、リモートでファ�
 
 
 
-<time datetime="2004-05-24T16:18:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 24<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-05-24T16:18:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 24<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -671,119 +592,45 @@ Eclipseのプラグインとして提供されており、リモートでファ�
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>まずびっくりしたのが、この本は２１５のポイントに分けてJAVAを説明しているのですが、その１ポイントずつにサンプルコードが載っている点です。</p>
+  </header><div class="entry-content">
+<p>まずびっくりしたのが、この本は２１５のポイントに分けてJAVAを説明しているのですが、その１ポイントずつにサンプルコードが載っている点です。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/24/4798000620/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/24/4894711400/">Visual C++6.0入門 初級から学ぶVC++プログラミング</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-24T05:54:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 24<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/c-plus-plus/">C++</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/24/4894711400/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>この本を読むとVisualC++の基本操作がマスターできますね。簡単なプログラムも作れるようになるでしょう。たとえば、HelloWorldと表示させるプログラムとかね・・・。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/24/4894711400/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    <ul class="pager">
-      
-      <li class="previous"><a href="/blog/page/27/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
+    <footer><a rel="full-article" href="/blog/2004/05/24/4798000620/">続きをよむ →</a>
+    </footer></article><ul class="pager">
+<li class="previous"><a href="/blog/page/27/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
       
       
       <li class="next"><a href="/blog/page/25/">Newer <i class="fa fa-arrow-circle-right"></i></a></li>
       
     </ul>
-  </div>
+</div>
   <div class="clearfix visible-sm"></div>
-  <aside class="sidebar-nav col-md-3">
-    
-    <section class="well">
-  <div class="row">
+  <aside class="sidebar-nav col-md-3"><section class="well"><div class="row">
     <div class="col-xs-4 col-sm-3 col-md-5">
-      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
-    </div>
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail">
+</div>
     <div class="col-xs-8 col-sm-9 col-md-7">
       <ul class="list-unstyled">
-        <li>濱田章吾</li>
+<li>濱田章吾</li>
         <li>hamasyou</li>
         <li><ul class="list-inline">
-          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
-          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
-          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
-          </ul>
-        </li>
+<li><a href="https://twitter.com/hamasyou" rel="external nofollow" title=""><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow" title=""><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow" title=""><i class="fa fa-github"></i></a></li>
+          <li><a href="mailto:hamasyou@gmail.com" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul></li>
       </ul>
-    </div>
+</div>
   </div>
-</section>
-<section class="well">
-  <ul id="recent_posts" class="nav nav-list">
-    <li class="nav-header">Recent Posts</li>
+</section><section class="well"><ul id="recent_posts" class="nav nav-list">
+<li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
@@ -809,25 +656,14 @@ Eclipseのプラグインとして提供されており、リモートでファ�
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
-  </ul>
-</section>
-<section class="panel panel-default">
-  <div class="panel-heading">
+  </ul></section><section class="panel panel-default"><div class="panel-heading">
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class="list-group-item" href="/blog/categories/architecture">Architecture <span class="badge">38</span></a><a class="list-group-item" href="/blog/categories/blog">Blog <span class="badge">96</span></a><a class="list-group-item" href="/blog/categories/database">Database <span class="badge">8</span></a><a class="list-group-item" href="/blog/categories/essay">Essay <span class="badge">13</span></a><a class="list-group-item" href="/blog/categories/lifehack">LifeHack <span class="badge">12</span></a><a class="list-group-item" href="/blog/categories/network">Network <span class="badge">7</span></a><a class="list-group-item" href="/blog/categories/programming">Programming <span class="badge">111</span></a><a class="list-group-item" href="/blog/categories/webdesign">WebDesign <span class="badge">4</span></a>
   </div>
-</section>
-
-    
-  </aside>
-</div>
-
+</section></aside>
+</div></body></html>
   </div>
   <footer role="contentinfo" class="page-footer"><hr>
 <p>

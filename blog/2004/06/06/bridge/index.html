@@ -150,7 +150,8 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 
 
-<div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+<div class="entry-content"><html><body>
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
 GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
 
 <p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
@@ -183,7 +184,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <p>例えば、OSに依存するシステムを作るとします。現在は、WindowsとMacのみに対応するシステムだとします。このシステムで提供する機能として、「プリント」機能と「インターネット」機能があるとします。</p>
 
-<p><img src="/images/bridge/bridge1.gif"   style="margin:10px" alt="クラス図1" /></p>
+<p><img src="/images/bridge/bridge1.gif" style="margin:10px" alt="クラス図1" class="img-thumbnail"></p>
 
 <p>通常は、このようなクラス関係で作成すると思います。「オペレーティングシステム」インターフェースが、機能のインターフェースです。「Windowsクラス」「Macintoshクラス」が実装のクラスになります。</p>
 
@@ -191,13 +192,13 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <p>ここでは、「テレビを見る」機能が追加されました。</p>
 
-<p><img src="/images/bridge/bridge2.gif"   style="margin:10px"  alt="クラス図2" /></p>
+<p><img src="/images/bridge/bridge2.gif" style="margin:10px" alt="クラス図2" class="img-thumbnail"></p>
 
 <p>このような変更を行っていくと、機能や実装が増えた場合に、クラスの数が膨大な数になってしまいます。</p>
 
 <p>そこでこのBridgeパターンの出番というわけです。機能のクラスと実装のクラスをそれぞれ別々に管理して、クラスの増殖を防止します。</p>
 
-<p><img src="/images/bridge/bridge3.gif"   style="margin:10px"  alt="クラス図3" /></p>
+<p><img src="/images/bridge/bridge3.gif" style="margin:10px" alt="クラス図3" class="img-thumbnail"></p>
 
 <p>機能のクラスと実装のクラスとで用意する操作が変わったことに注目してください。</p>
 
@@ -214,9 +215,9 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <p>どの実装で機能を満たせるかは知っている必要があります。実装を意識しないのは、OSの例で言うと、どのOS実装が使われるかを意識しないということです。</p>
 
-<p>Bridgeパターンの注意点としては、<strong>機能の拡張は、実装のクラスの組み合わせでできるパターンに限られる</strong>があります。実装に手を加えなければ満たせない機能拡張は、Bridgeパターンの恩恵を受けるどころか、逆に修正の手間を必要としてしまう可能性があります。<b>実装クラスで提供されるインターフェースは、アプリケーション要求・設計時に洗い出しておく必要があります。</b></p>
+<p>Bridgeパターンの注意点としては、<strong class="text-danger">機能の拡張は、実装のクラスの組み合わせでできるパターンに限られる</strong>があります。実装に手を加えなければ満たせない機能拡張は、Bridgeパターンの恩恵を受けるどころか、逆に修正の手間を必要としてしまう可能性があります。<b>実装クラスで提供されるインターフェースは、アプリケーション要求・設計時に洗い出しておく必要があります。</b></p>
 
-<p><strong>機能拡張と実装拡張の組み合わせを動的に行いたい場合</strong>、</strong>サブクラスの作成を意図した組み合わせで管理したい(機能のクラスなのか実装のクラスなのか)</strong>これらの場合に、Bridgeパターンが使えると思います。</p>
+<p><strong class="text-danger">機能拡張と実装拡張の組み合わせを動的に行いたい場合</strong>、サブクラスの作成を意図した組み合わせで管理したい(機能のクラスなのか実装のクラスなのか)これらの場合に、Bridgeパターンが使えると思います。</p>
 
 <h2>実装サンプルと参考文献</h2>
 
@@ -225,57 +226,49 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <ul>
 <li><p>日立ソフト(Bridgeパターン)
-<a href="http://www.dmz.hitachi-sk.co.jp/Java/Tech/pattern/gof/bridge.html" rel="external nofollow">日立ソフト</a></p></li>
-<li><p>Skeleton of GOF&rsquo;s Design Pattern(JavaとC++のサンプルがあります)
-<a href="http://www002.upp.so-net.ne.jp/ys_oota/mdp/Bridge/index.htm" rel="external nofollow">BRIDGEの骸骨</a></p></li>
+<a href="http://www.dmz.hitachi-sk.co.jp/Java/Tech/pattern/gof/bridge.html" rel="external nofollow" title="日立ソフト">日立ソフト</a></p></li>
+<li><p>Skeleton of GOF’s Design Pattern(JavaとC++のサンプルがあります)
+<a href="http://www002.upp.so-net.ne.jp/ys_oota/mdp/Bridge/index.htm" rel="external nofollow" title="BRIDGEの骸骨">BRIDGEの骸骨</a></p></li>
 <li><p>Mac Freaks(Bridgeパターン)
-<a href="http://members.jcom.home.ne.jp/j-klein/java/dp-bridge.html" rel="external nofollow">Mac Freaks</a></p></li>
+<a href="http://members.jcom.home.ne.jp/j-klein/java/dp-bridge.html" rel="external nofollow" title="Mac Freaks">Mac Freaks</a></p></li>
 <li><p>デザインパターンのお勧め書籍</p></li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>独習シリーズのデザインパターン編。デザインパターンを一人でも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>Sun Microsystemのお墨付き。GoF以外のパターンも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>UMLを使って、オブジェクト指向のいいとこ取りができます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>デザインパターンだけではなく、ソフトウェア設計の原則やプラクティスまで学びたい人におすすめ</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
-
-
-
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -447,6 +440,10 @@ GoFの23のパターンが有名です。デザインパターンというのは
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -470,10 +467,6 @@ GoFの23のパターンが有名です。デザインパターンというのは
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -481,7 +474,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

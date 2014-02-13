@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。 環境 Rails3.0.7jpmobile0.1.6kaminari0.12.4 ">
+  <meta name="description" content="本書は、スマートフォンアプリ開発に使う開発ツールを探している人、Titanium Mobile という名前を聞いたことがあるけど実際にどういうものかを知りたい人、Titanium Mobile を使って開発を始めたけどこういう書き方で合っているのか不安な人向けの、 &hellip;">
   
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/4/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。 環境 Rails3.0.7jpmobile0.1.6kaminari0.12.4 " />
+<meta property="og:description" content="本書は、スマートフォンアプリ開発に使う開発ツールを探している人、Titanium Mobile という名前を聞いたことがあるけど実際にどういうものかを知りたい人、Titanium Mobile を使って開発を始めたけどこういう書き方で合っているのか不安な人向けの、 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -94,16 +94,12 @@
 </div>
 </nav>
   <div role="main" class="container">
-    <div class="row">
+    <html><body><div class="row">
   <div class="col-sm-12 col-md-9">
     
     
     
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">Jpmobile と Kaminari を使ったときに Invalid Byte Sequence in Shift_JIS が表示される対応</a></h1>
+    <article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/06/18/4798123986/">Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)</a></h1>
     
     
       <p class="meta">
@@ -120,8 +116,88 @@
 
 
 
-<time datetime="2011-06-14T11:29:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
+<time datetime="2011-06-18T10:01:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 18<span>th</span>, 2011</time><span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/android/">Android</a>
+    
+      <a class="tag label label-info" href="/blog/tags/iphone/">iPhone</a>
+    
+      <a class="tag label label-info" href="/blog/tags/javascript/">JavaScript</a>
+    
+      <a class="tag label label-info" href="/blog/tags/titanium/">Titanium</a>
+    
+      <a class="tag label label-info" href="/blog/tags/sumatohuon/">スマートフォン</a>
+    
+  
+</span>
+
+        
         <span class="divider"></span>
+        <a href="/blog/2011/06/18/4798123986/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header><div class="entry-content">
+<p>本書は、スマートフォンアプリ開発に使う開発ツールを探している人、<strong class="text-danger">Titanium Mobile</strong> という名前を聞いたことがあるけど実際にどういうものかを知りたい人、Titanium Mobile を使って開発を始めたけどこういう書き方で合っているのか不安な人向けの、概要書兼リファレンスブック的な位置づけにあたります。</p>
+
+<p><section></section></p>
+
+<h4>Titanium Mobile</h4>
+
+
+<p><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title="Titanium Mobile - Appcelerator">Titanium Mobile - Appcelerator</a></p>
+
+<p></p>
+
+<p>Titanium Mobile を開発、提供している Appcelerator が用意してくれている Web 上のドキュメントは、Titanium Mobile を始めたばかりの人には分かりづらく、「こういうことがしたいんだけどどう書けばいいの？」という時には使いづらいのです。</p>
+
+<p>本書は、そんな Titanium Mobile のドキュメントの弱さを補い、Titanium Mobile とはどういうふうに動作しているのか、こういうことをするときはどう書けばいいのかを学ぶのに最適な本です。</p>
+
+<p>iPhone、Android 向けスマートフォンアプリとはいえ、プラットフォーム SDK が備える機能はとても豊富です。これらの SDK を JavaScript から扱えてしまう Titanium Mobile をよくここまでまとめたなぁという印象の良書です。</p>
+
+<div class="option">
+<p>スマートフォン開発は、Windows や Mac などの GUI アプリケーションと同様、イベントドリブンモデルの開発になります。そのため、GUI アプリ開発の経験がない人には Titanium Mobile を使って JavaScript で開発を行うと、どうしても戸惑うことが出てくると思います。</p>
+
+<p>本書をとりあえず読んでみて、<em>Titanium Mobile 上で JavaScript で GUI 開発（スマートフォンアプリ開発）ってこういうふうにするんだ</em>というのを体感してもらい、リファレンスとしてのお供にされるといいと思います。</p>
+</div>
+
+
+<p>本書の対象者は、<em>Titanium Mobile を使って開発を始めたい人、実際に開発を始めたがまとまった情報がほしい人</em>です。Titanium Mobile を使ってとにかく何か作ってみたいひとは、本書内のサンプルを写経してみるといいと思います。</p>
+
+<p>Titanium Mobile を使って開発をしてみたものの、不安が残っている人に最適な一冊です。</p>
+
+</div>
+  
+  
+    <footer><a rel="full-article" href="/blog/2011/06/18/4798123986/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">Jpmobile と Kaminari を使ったときに Invalid Byte Sequence in Shift_JIS が表示される対応</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-14T11:29:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -150,40 +226,31 @@
         
       </p>
     
-  </header>
+  </header><div class="entry-content">
+<p>jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。</p>
 
-
-  <div class="entry-content"><p>jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。</p>
-
-<p><section></p>
+<p><section></section></p>
 
 <h4>環境</h4>
 
 
 
 
-<dl><dt>Rails</dt><dd>3.0.7</dd><dt>jpmobile</dt><dd>0.1.6</dd><dt>kaminari</dt><dd>0.12.4</dd></dl>
-
-
-<p></section></p>
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+<dt>jpmobile</dt>
+<dd>0.1.6</dd>
+<dt>kaminari</dt>
+<dd>0.12.4</dd>
+</dl>
+<p></p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/06/14/activerecordprevious-changes/">ActiveRecord#previous_changes で変更のあった属性を取り出す</a></h1>
+    <footer><a rel="full-article" href="/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/06/14/activerecordprevious-changes/">ActiveRecord#previous_changes で変更のあった属性を取り出す</a></h1>
     
     
       <p class="meta">
@@ -200,8 +267,7 @@
 
 
 
-<time datetime="2011-06-14T09:43:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
-        <span class="divider"></span>
+<time datetime="2011-06-14T09:43:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -226,40 +292,27 @@
         
       </p>
     
-  </header>
+  </header><div class="entry-content">
+<p>ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。</p>
 
-
-  <div class="entry-content"><p>ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。</p>
-
-<p><section></p>
+<p><section></section></p>
 
 <h4>環境</h4>
 
 
 
 
-<dl><dt>Rails</dt><dd>3.0.7</dd></dl>
-
-
-<p></section></p>
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+</dl>
+<p></p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2011/06/14/activerecordprevious-changes/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/06/14/kaminari-paginate-array/">Kaminari の Paginate_array が便利</a></h1>
+    <footer><a rel="full-article" href="/blog/2011/06/14/activerecordprevious-changes/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/06/14/kaminari-paginate-array/">Kaminari の Paginate_array が便利</a></h1>
     
     
       <p class="meta">
@@ -276,8 +329,7 @@
 
 
 
-<time datetime="2011-06-14T09:31:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
-        <span class="divider"></span>
+<time datetime="2011-06-14T09:31:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -304,40 +356,27 @@
         
       </p>
     
-  </header>
+  </header><div class="entry-content">
+<p>will_paginate に代わるページングのライブラリ、kaminari ですが、ページングが scope 扱いで配列に対して使えなかったのでちょっと不便なときがあったのですが、なんと paginate_array なるものを発見しました。</p>
 
-
-  <div class="entry-content"><p>will_paginate に代わるページングのライブラリ、kaminari ですが、ページングが scope 扱いで配列に対して使えなかったのでちょっと不便なときがあったのですが、なんと paginate_array なるものを発見しました。</p>
-
-<p><section></p>
+<p><section></section></p>
 
 <h4>環境</h4>
 
 
 
 
-<dl><dt>kaminari</dt><dd>0.12.4</dd></dl>
-
-
-<p></section></p>
+<dl>
+<dt>kaminari</dt>
+<dd>0.12.4</dd>
+</dl>
+<p></p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2011/06/14/kaminari-paginate-array/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/06/14/rails-view-url/">Rails のコントローラの中で View の画像URLを取得する方法</a></h1>
+    <footer><a rel="full-article" href="/blog/2011/06/14/kaminari-paginate-array/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/06/14/rails-view-url/">Rails のコントローラの中で View の画像URLを取得する方法</a></h1>
     
     
       <p class="meta">
@@ -354,8 +393,7 @@
 
 
 
-<time datetime="2011-06-14T09:09:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
-        <span class="divider"></span>
+<time datetime="2011-06-14T09:09:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -380,42 +418,33 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>コントローラの中で、ビューの image_tag 等で表示される画像の URL を取得したい時があります。</p>
+  </header><div class="entry-content">
+<p>コントローラの中で、ビューの image_tag 等で表示される画像の URL を取得したい時があります。</p>
 
 <p>そんな時は <em>view_context</em> が使えます。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>環境</h4>
 
 
 
 
-<dl><dt>Rails</dt><dd>3.0.7</dd><dt>Ruby</dt><dd>1.9.2-p180</dd><dt>Paperclip</dt><dd>2.3.11</dd></dl>
-
-
-<p></section></p>
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+<dt>Ruby</dt>
+<dd>1.9.2-p180</dd>
+<dt>Paperclip</dt>
+<dd>2.3.11</dd>
+</dl>
+<p></p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2011/06/14/rails-view-url/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/06/06/4798029181/">俺のコードのどこが悪い?―コードレビューを攻略する40のルール</a></h1>
+    <footer><a rel="full-article" href="/blog/2011/06/14/rails-view-url/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/06/06/4798029181/">俺のコードのどこが悪い?―コードレビューを攻略する40のルール</a></h1>
     
     
       <p class="meta">
@@ -432,8 +461,7 @@
 
 
 
-<time datetime="2011-06-06T00:01:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 6<span>th</span>, 2011</time>
-        <span class="divider"></span>
+<time datetime="2011-06-06T00:01:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 6<span>th</span>, 2011</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -456,40 +484,26 @@
         
       </p>
     
-  </header>
+  </header><div class="entry-content">
+<p>本書は、プログラミング後のコードレビューを行う視点で、どういった点を確認すれば良いのかを教えてくれるものです。</p>
 
-
-  <div class="entry-content"><p>本書は、プログラミング後のコードレビューを行う視点で、どういった点を確認すれば良いのかを教えてくれるものです。</p>
-
-<p>ソースコードレビューの目的については本書では触れられていませんが、僕が考えるソースコードレビューの目的は、<strong>コードの品質を高める</strong>ためです。</p>
+<p>ソースコードレビューの目的については本書では触れられていませんが、僕が考えるソースコードレビューの目的は、<strong class="text-danger">コードの品質を高める</strong>ためです。</p>
 
 <p>テストではソースコードの品質は高められません。単体テストはあくまでも、コードが意図したどおりに書かれているかを確認するものになります。<b>品質は、ソースコードを書くこと（書き直すこと）でしか高められません。</b></p>
 
-<dl><dt>他人の目から見ることで複雑なところがわかる</dt>
+<dl>
+<dt>他人の目から見ることで複雑なところがわかる</dt>
 <dd><p>自分でコーディングしているときは気づきにくい、処理の複雑な部分が他人の目によって明らかになる</p></dd>
 <dt>他人の経験を生かせる</dt>
-<dd><p>リファクタリングが必要な部分や、もっとシンプルで効率のよいコードに直せるところを指摘してもらえる</p></dd></dl>
-
-
+<dd><p>リファクタリングが必要な部分や、もっとシンプルで効率のよいコードに直せるところを指摘してもらえる</p></dd>
+</dl>
 <p>本書では、こういった他人の目から見たコードの注意点を勉強できるものになっています。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2011/06/06/4798029181/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/17/ruby-gmail/">Ruby から Gmail を受信する（マルチパート編）</a></h1>
+    <footer><a rel="full-article" href="/blog/2011/06/06/4798029181/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/03/17/ruby-gmail/">Ruby から Gmail を受信する（マルチパート編）</a></h1>
     
     
       <p class="meta">
@@ -506,8 +520,7 @@
 
 
 
-<time datetime="2011-03-17T22:24:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Mar 17<span>th</span>, 2011</time>
-        <span class="divider"></span>
+<time datetime="2011-03-17T22:24:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Mar 17<span>th</span>, 2011</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -534,45 +547,33 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。</p>
+  </header><div class="entry-content">
+<p>Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。</p>
 
 <p>かなり力技的なところがあるので、もっといいプログラムになると思いいますが、メモということで。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>バージョン</h4>
 
 
 
 
-<dl><dt>Ruby</dt><dd>1.9.2</dd>
-<dt>Rails</dt><dd>3.0.4</dd>
-<dt>mail</dt><dd>2.2</dd>
+<dl>
+<dt>Ruby</dt>
+<dd>1.9.2</dd>
+<dt>Rails</dt>
+<dd>3.0.4</dd>
+<dt>mail</dt>
+<dd>2.2</dd>
 </dl>
-
-
-<p></section></p>
+<p></p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2011/03/17/ruby-gmail/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/10/titanium/">Titanium 非公式 BBS がオープンしました。</a></h1>
+    <footer><a rel="full-article" href="/blog/2011/03/17/ruby-gmail/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/03/10/titanium/">Titanium 非公式 BBS がオープンしました。</a></h1>
     
     
       <p class="meta">
@@ -589,8 +590,7 @@
 
 
 
-<time datetime="2011-03-10T11:04:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Mar 10<span>th</span>, 2011</time>
-        <span class="divider"></span>
+<time datetime="2011-03-10T11:04:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Mar 10<span>th</span>, 2011</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -615,34 +615,25 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>公式の <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow">Titainum</a> 掲示板の公開が遅いので、@masuidrive さんが非公式ながら BBS をオープンしてくださいました。</p>
+  </header><div class="entry-content">
+<p>公式の <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title="Titainum">Titainum</a> 掲示板の公開が遅いので、@masuidrive さんが非公式ながら BBS をオープンしてくださいました。</p>
 
 <p>日本の Titanium Developer のみなさん、Titanium の質問はこっちにすると親切丁寧な回答を期待できるかも！</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>非公式 Titanium BBS</h4>
 
 
-<p><a href="http://ti.masuidrive.jp/" rel="external nofollow">Titanium BBS(JP unofficial)</a></p>
+<p><a href="http://ti.masuidrive.jp/" rel="external nofollow" title="Titanium BBS(JP unofficial)">Titanium BBS(JP unofficial)</a></p>
 
-<p></section></p>
+<p></p>
 </div>
   
   
 
 
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/16/4774145440/">WEB+DB PRESS Vol.61</a></h1>
+    </article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/02/16/4774145440/">WEB+DB PRESS Vol.61</a></h1>
     
     
       <p class="meta">
@@ -659,8 +650,7 @@
 
 
 
-<time datetime="2011-02-16T21:49:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Feb 16<span>th</span>, 2011</time>
-        <span class="divider"></span>
+<time datetime="2011-02-16T21:49:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Feb 16<span>th</span>, 2011</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -687,32 +677,18 @@
         
       </p>
     
-  </header>
+  </header><div class="entry-content">
+<p><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title=""></a> Titanium で始める、iPhone / Android アプリ開発！</p>
 
+<p><a href="http://d.hatena.ne.jp/r_kurain/" rel="external nofollow" title="マウントポジション">マウントポジション</a>とで特集『<em>実践！Titanium JavaScriptでiPhone/Android本格アプリ開発</em>』を書かせていただきました。Titanium の特集です。</p>
 
-  <div class="entry-content"><p><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow"></a> Titanium で始める、iPhone / Android アプリ開発！</p>
-
-<p><a href="http://d.hatena.ne.jp/r_kurain/" rel="external nofollow">マウントポジション</a>とで特集『<em>実践！Titanium JavaScriptでiPhone/Android本格アプリ開発</em>』を書かせていただきました。Titanium の特集です。</p>
-
-<p>iPhone / Android でアプリを作りたいけど二の足を踏んでいた方、最近 <strong>Titanium</strong> という言葉をよく聞くけど何なんだろう？と思っていた方、おすすめです！</p>
+<p>iPhone / Android でアプリを作りたいけど二の足を踏んでいた方、最近 <strong class="text-danger">Titanium</strong> という言葉をよく聞くけど何なんだろう？と思っていた方、おすすめです！</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2011/02/16/4774145440/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/04/titanium-jsdeferred/">[Titanium] JSDeferred を使って現在位置の取得を順次処理する</a></h1>
+    <footer><a rel="full-article" href="/blog/2011/02/16/4774145440/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/02/04/titanium-jsdeferred/">[Titanium] JSDeferred を使って現在位置の取得を順次処理する</a></h1>
     
     
       <p class="meta">
@@ -729,8 +705,7 @@
 
 
 
-<time datetime="2011-02-04T20:32:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Feb 4<span>th</span>, 2011</time>
-        <span class="divider"></span>
+<time datetime="2011-02-04T20:32:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Feb 4<span>th</span>, 2011</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -755,93 +730,99 @@
         
       </p>
     
-  </header>
+  </header><div class="entry-content">
+<p>Titanium で、JSDeferred を使って順次処理するサンプルです。</p>
+
+<blockquote><p><site><a href="http://gihyo.jp/dev/feature/01/jsdeferred/0001" rel="external nofollow" title="JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp">JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp</a></site></p></blockquote>
 
 
-  <div class="entry-content"><p>Titanium で、JSDeferred を使って順次処理するサンプルです。</p>
+<p><section></section></p>
 
-<blockquote><p><site><a href="http://gihyo.jp/dev/feature/01/jsdeferred/0001" rel="external nofollow">JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp</a></site></p></blockquote>
+<p><section></section></p>
 
-
-<p><section></p>
-
-<p><section></p>
-
-<h4>バージョン &#8211; 追記（2011/03/23）</h4>
+<h4>バージョン – 追記（2011/03/23）</h4>
 
 
 
 
-<dl><dt>Titanium</dt><dd>1.5.1</dd>
-<dt>JSDeferred</dt><dd>0.4.0</dd></dl>
+<dl>
+<dt>Titanium</dt>
+<dd>1.5.1</dd>
+<dt>JSDeferred</dt>
+<dd>0.4.0</dd>
+</dl>
+<p>Titanium 1.6.1 で動かない問題は、<a href="http://twitter.com/Seasons" rel="external nofollow" title="@Seasons">@Seasons</a> さんがパッチを書いてくださいました。感謝！！ パッチが公開されたらリンクします！</p>
 
+<p><a href="http://d.hatena.ne.jp/Seasons/" rel="external nofollow" title="Seasons.NET">Seasons.NET</a></p>
 
-<p>Titanium 1.6.1 で動かない問題は、<a href="http://twitter.com/Seasons" rel="external nofollow">@Seasons</a> さんがパッチを書いてくださいました。感謝！！ パッチが公開されたらリンクします！</p>
-
-<p><a href="http://d.hatena.ne.jp/Seasons/" rel="external nofollow">Seasons.NET</a></p>
-
-<p></section></p>
+<p></p>
 
 <h3>サンプルコード</h3>
 
 
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">Titanium</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">Titanium</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">appURLToPath</span><span class="p">(</span><span class="s2">&quot;app://lib/jsdeferred.js&quot;</span><span class="p">));</span>
-</span><span class='line'><span class="nx">Deferred</span><span class="p">.</span><span class="nx">define</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">currentLocation</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Deferred</span><span class="p">();</span>
-</span><span class='line'>  <span class="nx">Titanium</span><span class="p">.</span><span class="nx">Geolocation</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">currentLocation</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">coords</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">deferred</span><span class="p">.</span><span class="nx">call</span><span class="p">();</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'>  <span class="k">return</span> <span class="nx">deferred</span><span class="p">;</span>
-</span><span class='line'><span class="p">})().</span>
-</span><span class='line'><span class="nx">next</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">currentLocation</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;ここは必ずしも、alert(currentLocation)の後に呼び出されるとはかぎらない!&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">Titanium</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">Titanium</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">appURLToPath</span><span class="p">(</span><span class="s2">"app://lib/jsdeferred.js"</span><span class="p">));</span>
+</span><span class="line"><span class="nx">Deferred</span><span class="p">.</span><span class="nx">define</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">currentLocation</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Deferred</span><span class="p">();</span>
+</span><span class="line">  <span class="nx">Titanium</span><span class="p">.</span><span class="nx">Geolocation</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"location"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">currentLocation</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">coords</span><span class="p">;</span>
+</span><span class="line">    <span class="nx">deferred</span><span class="p">.</span><span class="nx">call</span><span class="p">();</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">deferred</span><span class="p">;</span>
+</span><span class="line"><span class="p">})().</span>
+</span><span class="line"><span class="nx">next</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">alert</span><span class="p">(</span><span class="nx">currentLocation</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">alert</span><span class="p">(</span><span class="s2">"ここは必ずしも、alert(currentLocation)の後に呼び出されるとはかぎらない!"</span><span class="p">);</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>alert(currentLocation) としているところに現在位置を取得した後のコードを記述することで、現在位置を取得して何か処理をするというのを順序を保証して処理することができるようになります。</p>
 
 <p>ただし、next の外側の処理は非同期で進んでしまうため、必ずしも、alert(currentLocation) との順序は保たれません。</p>
 
-<p></section></p>
+<p></p>
 
-<p><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow">Titanium Mobile - appcelerator</a></p>
+<p><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title="Titanium Mobile - appcelerator">Titanium Mobile - appcelerator</a></p>
 
-<p><a href="http://cho45.stfuawsc.com/jsdeferred/" rel="external nofollow">JSDeferred</a></p>
+<p><a href="http://cho45.stfuawsc.com/jsdeferred/" rel="external nofollow" title="JSDeferred">JSDeferred</a></p>
 
 <h3>Titanium で include でファイルを読むときのテクニック</h3>
 
 
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">Titanium</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">Titanium</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">appURLToPath</span><span class="p">(</span><span class="s2">&quot;app://lib/jsdeferred.js&quot;</span><span class="p">));</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">Titanium</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">Titanium</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">appURLToPath</span><span class="p">(</span><span class="s2">"app://lib/jsdeferred.js"</span><span class="p">));</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>上記の様に、 app: プロトコルを使用して、appURLToPath メソッドでファイルを読み込むことで、Titanium のResources フォルダからの相対パスで書けるようになります。</p>
@@ -850,111 +831,38 @@
   
 
 
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/02/facebook-platform-apigraph-apifql/">Facebook Platform API（Graph API、FQL）</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-02-02T19:55:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Feb 2<span>nd</span>, 2011</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/api/">API</a>
-    
-      <a class="tag label label-info" href="/blog/tags/facebook/">facebook</a>
-    
-      <a class="tag label label-info" href="/blog/tags/fql/">FQL</a>
-    
-      <a class="tag label label-info" href="/blog/tags/graph/">Graph</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2011/02/02/facebook-platform-apigraph-apifql/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Facebook Platform の API についてのメモ。間違っているところがあるかも。。。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/02/02/facebook-platform-apigraph-apifql/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    <ul class="pager">
-      
-      <li class="previous"><a href="/blog/page/5/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
+    </article><ul class="pager">
+<li class="previous"><a href="/blog/page/5/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
       
       
       <li class="next"><a href="/blog/page/3/">Newer <i class="fa fa-arrow-circle-right"></i></a></li>
       
     </ul>
-  </div>
+</div>
   <div class="clearfix visible-sm"></div>
-  <aside class="sidebar-nav col-md-3">
-    
-    <section class="well">
-  <div class="row">
+  <aside class="sidebar-nav col-md-3"><section class="well"><div class="row">
     <div class="col-xs-4 col-sm-3 col-md-5">
-      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
-    </div>
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail">
+</div>
     <div class="col-xs-8 col-sm-9 col-md-7">
       <ul class="list-unstyled">
-        <li>濱田章吾</li>
+<li>濱田章吾</li>
         <li>hamasyou</li>
         <li><ul class="list-inline">
-          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
-          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
-          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
-          </ul>
-        </li>
+<li><a href="https://twitter.com/hamasyou" rel="external nofollow" title=""><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow" title=""><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow" title=""><i class="fa fa-github"></i></a></li>
+          <li><a href="mailto:hamasyou@gmail.com" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul></li>
       </ul>
-    </div>
+</div>
   </div>
-</section>
-<section class="well">
-  <ul id="recent_posts" class="nav nav-list">
-    <li class="nav-header">Recent Posts</li>
+</section><section class="well"><ul id="recent_posts" class="nav nav-list">
+<li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
@@ -980,25 +888,14 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
-  </ul>
-</section>
-<section class="panel panel-default">
-  <div class="panel-heading">
+  </ul></section><section class="panel panel-default"><div class="panel-heading">
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class="list-group-item" href="/blog/categories/architecture">Architecture <span class="badge">38</span></a><a class="list-group-item" href="/blog/categories/blog">Blog <span class="badge">96</span></a><a class="list-group-item" href="/blog/categories/database">Database <span class="badge">8</span></a><a class="list-group-item" href="/blog/categories/essay">Essay <span class="badge">13</span></a><a class="list-group-item" href="/blog/categories/lifehack">LifeHack <span class="badge">12</span></a><a class="list-group-item" href="/blog/categories/network">Network <span class="badge">7</span></a><a class="list-group-item" href="/blog/categories/programming">Programming <span class="badge">111</span></a><a class="list-group-item" href="/blog/categories/webdesign">WebDesign <span class="badge">4</span></a>
   </div>
-</section>
-
-    
-  </aside>
-</div>
-
+</section></aside>
+</div></body></html>
   </div>
   <footer role="contentinfo" class="page-footer"><hr>
 <p>

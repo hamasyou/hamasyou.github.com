@@ -14,7 +14,12 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。 環境 Rails3.0.7jpmobile0.1.6kaminari0.12.4 <ins class="adsbygoogle &hellip;">
+  <meta name="description" content="jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。 環境 Rails
+3.0.7
+jpmobile
+0.1.6
+kaminari
+0.12.4 <ins class=" &hellip;">
   <meta name="keywords" content="Rails, Ruby, jpmobile, kaminari">
 
   
@@ -25,7 +30,12 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。 環境 Rails3.0.7jpmobile0.1.6kaminari0.12.4 <ins class="adsbygoogle &hellip;" />
+<meta property="og:description" content="jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。 環境 Rails
+3.0.7
+jpmobile
+0.1.6
+kaminari
+0.12.4 <ins class=" &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -154,19 +164,25 @@
 
 
 
-<div class="entry-content"><p>jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。</p>
+<div class="entry-content"><html><body>
+<p>jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>環境</h4>
 
 
 
 
-<dl><dt>Rails</dt><dd>3.0.7</dd><dt>jpmobile</dt><dd>0.1.6</dd><dt>kaminari</dt><dd>0.12.4</dd></dl>
-
-
-<p></section></p>
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+<dt>jpmobile</dt>
+<dd>0.1.6</dd>
+<dt>kaminari</dt>
+<dd>0.12.4</dd>
+</dl>
+<p></p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -189,17 +205,19 @@
 
 <p>ほとんどの場合、サブミットボタンの value は必要ないと思うので、submit_tag の :name オプションに nil を設定してサブミットボタンの value を送らないようにするといいかと思います。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='html+erb'><span class='line'><span class="cp">&lt;%=</span> <span class="n">form_tag</span> <span class="n">user_path</span> <span class="k">do</span> <span class="cp">%&gt;</span>
-</span><span class='line'>  <span class="cp">&lt;%=</span> <span class="n">select_tag</span> <span class="s2">&quot;category&quot;</span><span class="p">,</span> <span class="n">options_from_collection_for_select</span><span class="p">(</span><span class="no">Category</span><span class="o">.</span><span class="n">all</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:label</span><span class="p">,</span> <span class="n">params</span><span class="o">[</span><span class="ss">:category</span><span class="o">]</span><span class="p">)</span> <span class="cp">%&gt;</span>
-</span><span class='line'>  <span class="cp">&lt;%=</span> <span class="n">submit_tag</span> <span class="s2">&quot;表示&quot;</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="kp">nil</span> <span class="cp">%&gt;</span>
-</span><span class='line'><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="html+erb"><span class="line"><span class="cp">&lt;%=</span> <span class="n">form_tag</span> <span class="n">user_path</span> <span class="k">do</span> <span class="cp">%&gt;</span>
+</span><span class="line">  <span class="cp">&lt;%=</span> <span class="n">select_tag</span> <span class="s2">"category"</span><span class="p">,</span> <span class="n">options_from_collection_for_select</span><span class="p">(</span><span class="no">Category</span><span class="o">.</span><span class="n">all</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:label</span><span class="p">,</span> <span class="n">params</span><span class="o">[</span><span class="ss">:category</span><span class="o">]</span><span class="p">)</span> <span class="cp">%&gt;</span>
+</span><span class="line">  <span class="cp">&lt;%=</span> <span class="n">submit_tag</span> <span class="s2">"表示"</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="kp">nil</span> <span class="cp">%&gt;</span>
+</span><span class="line"><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+</body></html></div>
 
 
   
@@ -217,7 +235,7 @@
         
         <li><a href="/blog/2008/06/19/memo/">技術メモ</a></li>
         
-        <li><a href="/blog/2011/03/17/ruby-gmail/">Ruby から Gmail を受信する（マルチパート編）</a></li>
+        <li><a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a></li>
         
       </ul>
     </div>
@@ -377,6 +395,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -400,10 +422,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -411,7 +429,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

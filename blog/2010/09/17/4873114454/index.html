@@ -179,13 +179,14 @@
 
 
 
-<div class="entry-content"><p>本書は、Ruby プログラミングの中級者向け指南書のようなものです。様々なコーディングテクニック（例えば、順序付き引数の使いどころ、ブロックの使い方、メソッド名のつけ方、メタプログラミング、関数型プログラミングテクニック、プロジェクトでRubyを使う際の慣習などなど）が満載です。</p>
+<div class="entry-content"><html><body>
+<p>本書は、Ruby プログラミングの中級者向け指南書のようなものです。様々なコーディングテクニック（例えば、順序付き引数の使いどころ、ブロックの使い方、メソッド名のつけ方、メタプログラミング、関数型プログラミングテクニック、プロジェクトでRubyを使う際の慣習などなど）が満載です。</p>
 
 <p>さすがオライリーといえる深い内容になっていて、Ruby を始めたばかりの人よりは、<em>一通り Ruby でプログラミングをしたことがある人、Ruby を使いこなせているのか不安な人が読むと良い</em>と思います。</p>
 
 <p>今すぐ使えるテクニック！とはちょっと違うかもしれませんが、Ruby の動的な振る舞いや柔軟な拡張性を理解してさらに Ruby を使いこなすための一冊になると思います。</p>
 
-<p>なお、<strong>Ruby1.9に対応</strong>していますので、サンプルコードは Ruby1.9で動きますし、最新 Ruby ではどうするの？を一発で解決できるようになっています。</p>
+<p>なお、<strong class="text-danger">Ruby1.9に対応</strong>していますので、サンプルコードは Ruby1.9で動きますし、最新 Ruby ではどうするの？を一発で解決できるようになっています。</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -218,10 +219,6 @@
 <li>付録Ｂ Ruby の標準ライブラリを活用する</li>
 <li>付録Ｃ Ruby ワーストプラクティス</li>
 </ul>
-
-
-
-
 <h2>２章 美しい API を設計する - 覚書</h2>
 
 
@@ -230,27 +227,30 @@
 <h3>メソッドの引数にデフォルト値を持つパラメータが複数ある場合は擬似キーワード引数を使う</h3>
 
 
-<p>デフォルト値をもつパラメータが複数ある場合は、Ruby の「メソッドの引数の末尾に要素がひとつ以上のハッシュを渡す際は中括弧（{,}）を省略できる」という仕様を利用して、<strong>擬似キーワード引数</strong>が使えます。</p>
+<p>デフォルト値をもつパラメータが複数ある場合は、Ruby の「メソッドの引数の末尾に要素がひとつ以上のハッシュを渡す際は中括弧（{,}）を省略できる」という仕様を利用して、<strong class="text-danger">擬似キーワード引数</strong>が使えます。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
-</span><span class='line'>  <span class="n">options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">nickname</span><span class="p">:</span> <span class="s2">&quot;hamasyou&quot;</span><span class="p">,</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">28</span> <span class="p">}</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">p</span> <span class="s2">&quot;Hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">! &quot;</span> <span class="o">+</span> <span class="n">options</span><span class="o">.</span><span class="n">to_s</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">hello</span><span class="p">(</span><span class="s2">&quot;Syougo&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># =&gt; &quot;Hello Syougo! {:nickname=&gt;&quot;hamasyou&quot;, :age=&gt;28}&quot;</span>
-</span><span class='line'><span class="n">hello</span><span class="p">(</span><span class="s2">&quot;Syougo&quot;</span><span class="p">,</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">27</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># =&gt; &quot;Hello Syougo! {:nickname=&gt;&quot;hamasyou&quot;, :age=&gt;27}&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+</span><span class="line">  <span class="n">options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">nickname</span><span class="p">:</span> <span class="s2">"hamasyou"</span><span class="p">,</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">28</span> <span class="p">}</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+</span><span class="line">  <span class="nb">p</span> <span class="s2">"Hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">! "</span> <span class="o">+</span> <span class="n">options</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">hello</span><span class="p">(</span><span class="s2">"Syougo"</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; "Hello Syougo! {:nickname=&gt;"hamasyou", :age=&gt;28}"</span>
+</span><span class="line"><span class="n">hello</span><span class="p">(</span><span class="s2">"Syougo"</span><span class="p">,</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">27</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; "Hello Syougo! {:nickname=&gt;"hamasyou", :age=&gt;27}"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 
@@ -260,142 +260,160 @@
 
 <p>Rails の Configuration に使われているオブジェクトショートカットのことです。次のようなコードを</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">server</span> <span class="o">=</span> <span class="no">Server</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">server</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="sr">/hello/i</span><span class="p">)</span> <span class="p">{</span> <span class="s2">&quot;Hello from server at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
-</span><span class='line'><span class="n">server</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="sr">/goodby/i</span><span class="p">)</span> <span class="p">{</span> <span class="s2">&quot;Goodby from server at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
-</span><span class='line'><span class="n">server</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="sr">/name is (\w+)/</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="s2">&quot;Nice to meet you </span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">!&quot;</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">server</span><span class="o">.</span><span class="n">run</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="n">server</span> <span class="o">=</span> <span class="no">Server</span><span class="o">.</span><span class="n">new</span>
+</span><span class="line">
+</span><span class="line"><span class="n">server</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="sr">/hello/i</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"Hello from server at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+</span><span class="line"><span class="n">server</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="sr">/goodby/i</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"Goodby from server at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+</span><span class="line"><span class="n">server</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="sr">/name is (\w+)/</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="s2">"Nice to meet you </span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">!"</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="n">server</span><span class="o">.</span><span class="n">run</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>次のように書けるようにします。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Server</span><span class="o">.</span><span class="n">run</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">handle</span><span class="p">(</span><span class="sr">/hello/i</span><span class="p">)</span> <span class="p">{</span> <span class="s2">&quot;Hello from server at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
-</span><span class='line'>  <span class="n">handle</span><span class="p">(</span><span class="sr">/goodby/i</span><span class="p">)</span> <span class="p">{</span> <span class="s2">&quot;Goodby from server at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
-</span><span class='line'>  <span class="n">handle</span><span class="p">(</span><span class="sr">/name is (\w+)/</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="s2">&quot;Nice to meet you </span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">!&quot;</span> <span class="p">}</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="no">Server</span><span class="o">.</span><span class="n">run</span> <span class="k">do</span>
+</span><span class="line">  <span class="n">handle</span><span class="p">(</span><span class="sr">/hello/i</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"Hello from server at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+</span><span class="line">  <span class="n">handle</span><span class="p">(</span><span class="sr">/goodby/i</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"Goodby from server at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+</span><span class="line">  <span class="n">handle</span><span class="p">(</span><span class="sr">/name is (\w+)/</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="s2">"Nice to meet you </span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">!"</span> <span class="p">}</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>これを実現するには、次のようなコードになります。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Server</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">run</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">server</span> <span class="o">=</span> <span class="no">Server</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">server</span><span class="o">.</span><span class="n">instance_eval</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">server</span><span class="o">.</span><span class="n">run</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Server</span>
+</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">run</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">    <span class="n">server</span> <span class="o">=</span> <span class="no">Server</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+</span><span class="line">    <span class="n">server</span><span class="o">.</span><span class="n">instance_eval</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">    <span class="n">server</span><span class="o">.</span><span class="n">run</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>インスタンス化したオブジェクトの <em>instance_eval()</em> メソッドにブロックを渡すことで、ブロックをそのインスタンスのコンテキストで実行しています。</p>
 
 <p>この方法を使うと、ブロックはインスタンス化したオブジェクトのコンテキストで実行されるため、ブロックのスコープ内で定義されたローカル変数にしかアクセスできません。つまり、次のコードは<em>動きません</em>。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">nickname</span>
-</span><span class='line'>    <span class="s2">&quot;hamasyou&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">my_method</span>
-</span><span class='line'>    <span class="no">Server</span><span class="o">.</span><span class="n">run</span> <span class="k">do</span>
-</span><span class='line'>      <span class="nb">p</span> <span class="s2">&quot;Hello </span><span class="si">#{</span><span class="n">nickname</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">my_method</span>
-</span><span class='line'><span class="c1"># =&gt; NameError: undefined local variable or method `nickname&#39; for #&lt;Server:0x000001020478a8&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">MyClass</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">nickname</span>
+</span><span class="line">    <span class="s2">"hamasyou"</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">my_method</span>
+</span><span class="line">    <span class="no">Server</span><span class="o">.</span><span class="n">run</span> <span class="k">do</span>
+</span><span class="line">      <span class="nb">p</span> <span class="s2">"Hello </span><span class="si">#{</span><span class="n">nickname</span><span class="si">}</span><span class="s2">"</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">my_method</span>
+</span><span class="line"><span class="c1"># =&gt; NameError: undefined local variable or method `nickname' for #&lt;Server:0x000001020478a8&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>この問題を解決するには、ブロックをインスタンスのコンテキストで評価するのではなく、クロージャとして実行すればよいです。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Server</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">run</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">server</span> <span class="o">=</span> <span class="no">Server</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'>    <span class="n">block</span><span class="o">.</span><span class="n">arity</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">?</span> <span class="n">server</span><span class="o">.</span><span class="n">instance_eval</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span> <span class="p">:</span> <span class="n">block</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">server</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">server</span><span class="o">.</span><span class="n">run</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Server</span>
+</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">run</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">    <span class="n">server</span> <span class="o">=</span> <span class="no">Server</span><span class="o">.</span><span class="n">new</span>
+</span><span class="line">    <span class="n">block</span><span class="o">.</span><span class="n">arity</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">?</span> <span class="n">server</span><span class="o">.</span><span class="n">instance_eval</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span> <span class="p">:</span> <span class="n">block</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">server</span><span class="p">)</span>
+</span><span class="line">    <span class="n">server</span><span class="o">.</span><span class="n">run</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">nickname</span>
-</span><span class='line'>    <span class="s2">&quot;hamasyou&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">my_method</span>
-</span><span class='line'>    <span class="no">Server</span><span class="o">.</span><span class="n">run</span> <span class="k">do</span> <span class="o">|</span><span class="n">server</span><span class="o">|</span>
-</span><span class='line'>      <span class="nb">p</span> <span class="s2">&quot;Hello </span><span class="si">#{</span><span class="n">nickname</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">my_method</span>
-</span><span class='line'><span class="c1"># =&gt; &quot;Hello hamasyou&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">MyClass</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">nickname</span>
+</span><span class="line">    <span class="s2">"hamasyou"</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">my_method</span>
+</span><span class="line">    <span class="no">Server</span><span class="o">.</span><span class="n">run</span> <span class="k">do</span> <span class="o">|</span><span class="n">server</span><span class="o">|</span>
+</span><span class="line">      <span class="nb">p</span> <span class="s2">"Hello </span><span class="si">#{</span><span class="n">nickname</span><span class="si">}</span><span class="s2">"</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">my_method</span>
+</span><span class="line"><span class="c1"># =&gt; "Hello hamasyou"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>block.arity を使ってコードブロックに引数がいくつあるかを調べて、引数がひとつ以上あればブロックをクロージャとして呼び出すようにしています。　</p>
@@ -403,35 +421,41 @@
 <h3>method? と method! の意味</h3>
 
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>method? 疑問符</h4>
 
 
-<p><em>method?</em> のようにメソッド名の末尾に疑問符（?）をつけるのは目的は、<strong>オブジェクトに何かを問い合わせる</strong>ことになります。条件分岐などにメソッドを利用する際に使えます。</p>
+<p><em>method?</em> のようにメソッド名の末尾に疑問符（?）をつけるのは目的は、<strong class="text-danger">オブジェクトに何かを問い合わせる</strong>ことになります。条件分岐などにメソッドを利用する際に使えます。</p>
 
 <p>疑問符をつけたメソッドの戻り値は、<em>true</em> か <em>false or nil</em> を返すようにします。</p>
 
-<p></section></p>
+<p></p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>method! 感嘆符</h4>
 
 
-<p><em>method!</em> のようにメソッド名の末尾に感嘆符（!）をつける目的は、<strong>このメソッドは特別だ、「注意しろ！」</strong>になります。</p>
+<p><em>method!</em> のようにメソッド名の末尾に感嘆符（!）をつける目的は、<strong class="text-danger">このメソッドは特別だ、「注意しろ！」</strong>になります。</p>
 
-<blockquote><p>よくある誤解は、受け取ったオブジェクトを変更することを知らせたいときに感嘆符を使う、というものだ。たいていの場合、感嘆符は私たちに何か警告をするものだからだろう。</p><footer><strong>method?とmethod!が何を意味しているか理解しよう - 本書 P.57</strong></footer></blockquote>
+<blockquote>
+<p>よくある誤解は、受け取ったオブジェクトを変更することを知らせたいときに感嘆符を使う、というものだ。たいていの場合、感嘆符は私たちに何か警告をするものだからだろう。</p>
+<footer><strong class="text-danger">method?とmethod!が何を意味しているか理解しよう - 本書 P.57</strong></footer>
+</blockquote>
 
 
 <p>Ruby の組み込みクラスのメソッドには破壊的メソッドでも感嘆符がついているのとついていないものがあります。</p>
 
 <p>これはすなわち、メソッドに感嘆符をつける目的はこのメソッドが特別であることを知らせるのであって、破壊的であるとか危険であることを知らせるのではないということです。</p>
 
-<blockquote><p>したがって、同じようなことをする　foo() メソッドがないのに foo!() メソッドだけがあるのは、あまり意味のないことだ。（中略）感嘆符は必ずしもそのメソッドが<em>破壊的な操作</em>をすることを意味するわけではないと考えると、&#8230;</p><footer><strong>本書 P.59</strong></footer></blockquote>
+<blockquote>
+<p>したがって、同じようなことをする　foo() メソッドがないのに foo!() メソッドだけがあるのは、あまり意味のないことだ。（中略）感嘆符は必ずしもそのメソッドが<em>破壊的な操作</em>をすることを意味するわけではないと考えると、&#8230;</p>
+<footer><strong class="text-danger">本書 P.59</strong></footer>
+</blockquote>
 
 
-<p></section></p>
+<p></p>
 
 <h3>２章のポイント</h3>
 
@@ -448,10 +472,6 @@
 <li>順序付き引数と options ハッシュを組み合わせて使うときは、配列 splat 演算子（*）は使わない</li>
 <li>必須パラメータは、options ハッシュには入れないこと。必須パラメータは順序付き引数として扱う</li>
 </ul>
-
-
-
-
 <h4>ブロック</h4>
 
 
@@ -462,10 +482,6 @@
 <li>&amp;block と instance_eval() を組み合わせると任意のオブジェクトのコンテキストでブロックを実行できる</li>
 <li>yield と block.call の戻り値は、与えられた戻り値と同じにする</li>
 </ul>
-
-
-
-
 <h2>３章 動的な機能を使いこなす - 覚書</h2>
 
 
@@ -476,39 +492,42 @@
 
 <p>メソッドを定義するというのは、クラスのインスタンスメソッドを定義するということなので、動的にインスタンスメソッドを定義するにはクラスのスコープで define_method() を呼び出します。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">define</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">define_method</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">obj</span> <span class="o">=</span> <span class="no">MyClass</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'><span class="n">obj</span><span class="o">.</span><span class="n">hello</span>
-</span><span class='line'><span class="c1"># =&gt; NoMethodError: undefined method `hello&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">MyClass</span><span class="o">.</span><span class="n">define</span><span class="p">(</span><span class="ss">:hello</span><span class="p">)</span> <span class="k">do</span>
-</span><span class='line'>  <span class="s2">&quot;Hello World&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">obj</span><span class="o">.</span><span class="n">hello</span>
-</span><span class='line'><span class="c1"># =&gt; &quot;Hello World&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">MyClass</span>
+</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">define</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">    <span class="n">define_method</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">obj</span> <span class="o">=</span> <span class="no">MyClass</span><span class="o">.</span><span class="n">new</span>
+</span><span class="line"><span class="n">obj</span><span class="o">.</span><span class="n">hello</span>
+</span><span class="line"><span class="c1"># =&gt; NoMethodError: undefined method `hello'</span>
+</span><span class="line">
+</span><span class="line"><span class="no">MyClass</span><span class="o">.</span><span class="n">define</span><span class="p">(</span><span class="ss">:hello</span><span class="p">)</span> <span class="k">do</span>
+</span><span class="line">  <span class="s2">"Hello World"</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">obj</span><span class="o">.</span><span class="n">hello</span>
+</span><span class="line"><span class="c1"># =&gt; "Hello World"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 
@@ -518,43 +537,46 @@
 
 <p>クラスメソッドを定義するには、クラスの特異クラスにメソッドを定義する必要があります。特異クラスをオープンするには、class &lt;&lt; obj 構文を使います。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">define</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">obj</span> <span class="o">=</span> <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span><span class="p">;</span> <span class="nb">self</span><span class="p">;</span> <span class="k">end</span>
-</span><span class='line'>    <span class="n">obj</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:define_method</span><span class="p">,</span> <span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">MyClass</span><span class="o">.</span><span class="n">define</span><span class="p">(</span><span class="ss">:hello</span><span class="p">)</span> <span class="k">do</span>
-</span><span class='line'>  <span class="s2">&quot;Hello World&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">MyClass</span><span class="o">.</span><span class="n">hello</span>
-</span><span class='line'><span class="c1"># =&gt; &quot;Hello World&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">MyClass</span>
+</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">define</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">    <span class="n">obj</span> <span class="o">=</span> <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span><span class="p">;</span> <span class="nb">self</span><span class="p">;</span> <span class="k">end</span>
+</span><span class="line">    <span class="n">obj</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:define_method</span><span class="p">,</span> <span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">MyClass</span><span class="o">.</span><span class="n">define</span><span class="p">(</span><span class="ss">:hello</span><span class="p">)</span> <span class="k">do</span>
+</span><span class="line">  <span class="s2">"Hello World"</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">MyClass</span><span class="o">.</span><span class="n">hello</span>
+</span><span class="line"><span class="c1"># =&gt; "Hello World"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>define_method() は private メソッド</h4>
 
 
 <p>define_method() は特異クラス上でプライベートになっているため、レシーバを指定して呼び出すには send() メソッドを使う必要があります。</p>
 
-<p></section></p>
+<p></p>
 
 <h3>モジュールのメソッドをモジュールのクラスメソッドにする</h3>
 
@@ -566,27 +588,30 @@
 
 <p>extend self を使うと、自信のインスタンスメソッドを特異クラスに定義することになりクラスメソッド化することができます。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">MyModule</span>
-</span><span class='line'>  <span class="kp">extend</span> <span class="nb">self</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">hello</span>
-</span><span class='line'>    <span class="s2">&quot;Hello World&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">MyModule</span><span class="o">.</span><span class="n">hello</span>
-</span><span class='line'><span class="c1"># =&gt; &quot;Hello World&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">MyModule</span>
+</span><span class="line">  <span class="kp">extend</span> <span class="nb">self</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">hello</span>
+</span><span class="line">    <span class="s2">"Hello World"</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">MyModule</span><span class="o">.</span><span class="n">hello</span>
+</span><span class="line"><span class="c1"># =&gt; "Hello World"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 
@@ -604,102 +629,101 @@
 <li>モジュールをクラスに混ぜるとき、include を使うとインスタンスレベルで利用可能になり、extend を使うとクラスレベルで利用可能になる</li>
 <li>フックは特定のクラスやモジュールに実装することができ、それより下位のすべてを捕捉する</li>
 </ul>
-
-
-
-
 <h3>３章のまとめ</h3>
 
 
 <p>３章で学習したことが詰まったコードの読み解きです。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">NativeCampingRoutes</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kp">extend</span> <span class="nb">self</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">R</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">route_lookup</span> <span class="o">=</span> <span class="n">routes</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">klass</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'>    <span class="n">meta</span> <span class="o">=</span> <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">klass</span><span class="p">;</span> <span class="nb">self</span><span class="p">;</span> <span class="k">end</span>
-</span><span class='line'>    <span class="n">meta</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:define_method</span><span class="p">,</span> <span class="ss">:inherited</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">base</span><span class="o">|</span>
-</span><span class='line'>      <span class="k">raise</span> <span class="s2">&quot;Already defined&quot;</span> <span class="k">if</span> <span class="n">route_lookup</span><span class="o">[</span><span class="n">url</span><span class="o">]</span>
-</span><span class='line'>      <span class="n">route_lookup</span><span class="o">[</span><span class="n">url</span><span class="o">]</span> <span class="o">=</span> <span class="n">base</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="n">klass</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">routes</span>
-</span><span class='line'>    <span class="vi">@routes</span> <span class="o">||=</span> <span class="p">{}</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{})</span>
-</span><span class='line'>    <span class="n">routes</span><span class="o">[</span><span class="n">url</span><span class="o">].</span><span class="n">new</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">module</span> <span class="nn">NativeCampingRoutes</span>
-</span><span class='line'>  <span class="k">class</span> <span class="nc">Hello</span> <span class="o">&lt;</span> <span class="n">R</span> <span class="s1">&#39;/hello&#39;</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-</span><span class='line'>      <span class="nb">puts</span> <span class="s2">&quot;hello </span><span class="si">#{</span><span class="n">params</span><span class="o">[</span><span class="ss">:name</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">class</span> <span class="nc">Goodbye</span> <span class="o">&lt;</span> <span class="n">R</span> <span class="s1">&#39;/goodbye&#39;</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-</span><span class='line'>      <span class="nb">puts</span> <span class="s2">&quot;goodbye </span><span class="si">#{</span><span class="n">params</span><span class="o">[</span><span class="ss">:name</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">NativeCampingRoutes</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="s1">&#39;/hello&#39;</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;greg&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># =&gt; hello greg</span>
-</span><span class='line'><span class="no">NativeCampingRoutes</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="s1">&#39;/goodbye&#39;</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;joe&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># =&gt; goodbye joe</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">NativeCampingRoutes</span>
+</span><span class="line">
+</span><span class="line">  <span class="kp">extend</span> <span class="nb">self</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">R</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span><span class="line">    <span class="n">route_lookup</span> <span class="o">=</span> <span class="n">routes</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">klass</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span>
+</span><span class="line">    <span class="n">meta</span> <span class="o">=</span> <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">klass</span><span class="p">;</span> <span class="nb">self</span><span class="p">;</span> <span class="k">end</span>
+</span><span class="line">    <span class="n">meta</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:define_method</span><span class="p">,</span> <span class="ss">:inherited</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">base</span><span class="o">|</span>
+</span><span class="line">      <span class="k">raise</span> <span class="s2">"Already defined"</span> <span class="k">if</span> <span class="n">route_lookup</span><span class="o">[</span><span class="n">url</span><span class="o">]</span>
+</span><span class="line">      <span class="n">route_lookup</span><span class="o">[</span><span class="n">url</span><span class="o">]</span> <span class="o">=</span> <span class="n">base</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">    <span class="n">klass</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">routes</span>
+</span><span class="line">    <span class="vi">@routes</span> <span class="o">||=</span> <span class="p">{}</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{})</span>
+</span><span class="line">    <span class="n">routes</span><span class="o">[</span><span class="n">url</span><span class="o">].</span><span class="n">new</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">module</span> <span class="nn">NativeCampingRoutes</span>
+</span><span class="line">  <span class="k">class</span> <span class="nc">Hello</span> <span class="o">&lt;</span> <span class="n">R</span> <span class="s1">'/hello'</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span class="line">      <span class="nb">puts</span> <span class="s2">"hello </span><span class="si">#{</span><span class="n">params</span><span class="o">[</span><span class="ss">:name</span><span class="o">]</span><span class="si">}</span><span class="s2">"</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">class</span> <span class="nc">Goodbye</span> <span class="o">&lt;</span> <span class="n">R</span> <span class="s1">'/goodbye'</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span class="line">      <span class="nb">puts</span> <span class="s2">"goodbye </span><span class="si">#{</span><span class="n">params</span><span class="o">[</span><span class="ss">:name</span><span class="o">]</span><span class="si">}</span><span class="s2">"</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">NativeCampingRoutes</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="s1">'/hello'</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"greg"</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; hello greg</span>
+</span><span class="line"><span class="no">NativeCampingRoutes</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="s1">'/goodbye'</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"joe"</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; goodbye joe</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 
@@ -759,29 +783,32 @@
 
 <p>YAML というデータシリアライゼーションのための標準ライブラリを使うと、データ構造をプリントしてくれる y() メソッドが使えるようになる。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;yaml&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;hamasyou&quot;</span><span class="p">,</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="ss">address</span><span class="p">:</span> <span class="p">{</span> <span class="ss">zip</span><span class="p">:</span> <span class="s2">&quot;272-0000&quot;</span><span class="p">,</span> <span class="ss">pref</span><span class="p">:</span> <span class="s2">&quot;Chiba&quot;</span><span class="p">,</span> <span class="ss">city</span><span class="p">:</span> <span class="s2">&quot;Ichikawa&quot;</span> <span class="p">}</span> <span class="p">}</span>
-</span><span class='line'><span class="n">y</span> <span class="n">data</span>
-</span><span class='line'><span class="c1">#---</span>
-</span><span class='line'><span class="c1">#:name: hamasyou</span>
-</span><span class='line'><span class="c1">#:age: 28</span>
-</span><span class='line'><span class="c1">#:address:</span>
-</span><span class='line'><span class="c1">#  :zip: 272-0000</span>
-</span><span class='line'><span class="c1">#  :pref: Chiba</span>
-</span><span class='line'><span class="c1">#  :city: Ichikawa</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s2">"yaml"</span>
+</span><span class="line">
+</span><span class="line"><span class="n">data</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"hamasyou"</span><span class="p">,</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="ss">address</span><span class="p">:</span> <span class="p">{</span> <span class="ss">zip</span><span class="p">:</span> <span class="s2">"272-0000"</span><span class="p">,</span> <span class="ss">pref</span><span class="p">:</span> <span class="s2">"Chiba"</span><span class="p">,</span> <span class="ss">city</span><span class="p">:</span> <span class="s2">"Ichikawa"</span> <span class="p">}</span> <span class="p">}</span>
+</span><span class="line"><span class="n">y</span> <span class="n">data</span>
+</span><span class="line"><span class="c1">#---</span>
+</span><span class="line"><span class="c1">#:name: hamasyou</span>
+</span><span class="line"><span class="c1">#:age: 28</span>
+</span><span class="line"><span class="c1">#:address:</span>
+</span><span class="line"><span class="c1">#  :zip: 272-0000</span>
+</span><span class="line"><span class="c1">#  :pref: Chiba</span>
+</span><span class="line"><span class="c1">#  :city: Ichikawa</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 
@@ -792,69 +819,119 @@
 <p>テスト用のデータ生成に、Faker というライブラリが使えます。gem install faker でインストールできます。</p>
 
 <div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+          <nav class="terminal-control-window"><a href="#finder" class="terminal-close" data-rel="close">close</a>
             <a href="#" class="terminal-minimize">minimize</a>
             <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>sudo gem install faker</span></code></pre></td></tr></table></div></div>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">sudo gem install faker</span></code></pre></td>
+</tr></table></div></div>
         </div>
 
 
 <p>次のように使います。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;faker&quot;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;pp&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="mi">5</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span>
-</span><span class='line'>  <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="ss">Faker</span><span class="p">:</span><span class="ss">:Name</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="ss">phone</span><span class="p">:</span> <span class="ss">Faker</span><span class="p">:</span><span class="ss">:PhoneNumber</span><span class="o">.</span><span class="n">phone_number</span> <span class="p">}</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">pp</span> <span class="n">data</span>
-</span><span class='line'><span class="c1">#[{:name=&gt;&quot;Johnathan Lowe III&quot;, :phone=&gt;&quot;(859)707-2471 x1926&quot;},</span>
-</span><span class='line'><span class="c1"># {:name=&gt;&quot;Lucius Murray&quot;, :phone=&gt;&quot;(760)338-6980&quot;},</span>
-</span><span class='line'><span class="c1"># {:name=&gt;&quot;Queen Beahan II&quot;, :phone=&gt;&quot;1-085-613-9274 x52563&quot;},</span>
-</span><span class='line'><span class="c1"># {:name=&gt;&quot;Daniela Boyle&quot;, :phone=&gt;&quot;956.964.3848&quot;},</span>
-</span><span class='line'><span class="c1"># {:name=&gt;&quot;Mrs. Jarret Wisozk&quot;, :phone=&gt;&quot;(760)687-0168 x68429&quot;}]</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s2">"faker"</span>
+</span><span class="line"><span class="nb">require</span> <span class="s2">"pp"</span>
+</span><span class="line">
+</span><span class="line"><span class="n">data</span> <span class="o">=</span> <span class="mi">5</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span>
+</span><span class="line">  <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="ss">Faker</span><span class="p">:</span><span class="ss">:Name</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="ss">phone</span><span class="p">:</span> <span class="ss">Faker</span><span class="p">:</span><span class="ss">:PhoneNumber</span><span class="o">.</span><span class="n">phone_number</span> <span class="p">}</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">pp</span> <span class="n">data</span>
+</span><span class="line"><span class="c1">#[{:name=&gt;"Johnathan Lowe III", :phone=&gt;"(859)707-2471 x1926"},</span>
+</span><span class="line"><span class="c1"># {:name=&gt;"Lucius Murray", :phone=&gt;"(760)338-6980"},</span>
+</span><span class="line"><span class="c1"># {:name=&gt;"Queen Beahan II", :phone=&gt;"1-085-613-9274 x52563"},</span>
+</span><span class="line"><span class="c1"># {:name=&gt;"Daniela Boyle", :phone=&gt;"956.964.3848"},</span>
+</span><span class="line"><span class="c1"># {:name=&gt;"Mrs. Jarret Wisozk", :phone=&gt;"(760)687-0168 x68429"}]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>Faker で作れるダミーデータには次のようなものがあります。</p>
 
 <table class="table table-bordered">
-  <tr><th>クラス</th><th>作れるデータ</th><th>サンプル</th></tr>
-  <tr><td>Faker::Address</td><td>住所データ</td><td><ul class="none"><li>zip_code<br/>&#8220;15832-6995&#8221;</li><li>city<br/>&#8220;South Verlie&#8221;</li></ul></td></tr>
-  <tr><td>Faker::Company</td><td>会社データ</td><td><ul class="none"><li>name<br/>&#8220;Carroll, Kuhlman and Glover&#8221;</li><li>bs<br/>&#8220;orchestrate vertical action-items&#8221;</li></ul></td></tr>
-  <tr><td>Faker::Internet</td><td>ネットワークデータ</td><td><ul class="none"><li>email<br/>&#8220;wiley@andersoncrist.us&#8221;</li><li>free_email<br/>&#8220;aubree.waters@gmail.com&#8221;</li><li>domain_name<br/>&#8220;littel.com&#8221;</li></ul></td></tr>
-  <tr><td>Faker::Lorem</td><td>文章データ</td><td><ul class="none"><li>words<br/>[&#8220;quaerat&#8221;, &#8220;blanditiis&#8221;, &#8220;qui&#8221;]</li><li>sentences<br/>[&#8220;Maiores dicta sed voluptas corrupti repudiandae eos aliquam eligendi.&#8221;, &#8220;Dolorem eius ut nam esse nihil illum.&#8221;, &#8220;Non sapiente accusamus maiores neque eum est ea.&#8221;]</li></ul></td></tr>
-  <tr><td>Faker::Name</td><td>名前データ</td><td><ul class="none"><li>name<br/>&#8220;Nicklaus Swift&#8221;</li><li>first_name<br/>&#8220;Angus&#8221;</li><li>last_name<br/>&#8220;Morissette&#8221;</li></ul></td></tr>
-  <tr><td>Faker::PhoneNumber</td><td>電話番号</td><td><ul class="none"><li>phone_number<br/>&#8220;024-597-6027 x86091&#8221;</li></ul></td></tr>
+<tr>
+<th>クラス</th>
+<th>作れるデータ</th>
+<th>サンプル</th>
+</tr>
+<tr>
+<td>Faker::Address</td>
+<td>住所データ</td>
+<td><ul class="none">
+<li>zip_code<br>&#8220;15832-6995&#8221;</li>
+<li>city<br>&#8220;South Verlie&#8221;</li>
+</ul></td>
+</tr>
+<tr>
+<td>Faker::Company</td>
+<td>会社データ</td>
+<td><ul class="none">
+<li>name<br>&#8220;Carroll, Kuhlman and Glover&#8221;</li>
+<li>bs<br>&#8220;orchestrate vertical action-items&#8221;</li>
+</ul></td>
+</tr>
+<tr>
+<td>Faker::Internet</td>
+<td>ネットワークデータ</td>
+<td><ul class="none">
+<li>email<br>&#8220;wiley@andersoncrist.us&#8221;</li>
+<li>free_email<br>&#8220;aubree.waters@gmail.com&#8221;</li>
+<li>domain_name<br>&#8220;littel.com&#8221;</li>
+</ul></td>
+</tr>
+<tr>
+<td>Faker::Lorem</td>
+<td>文章データ</td>
+<td><ul class="none">
+<li>words<br>[&#8220;quaerat&#8221;, &#8220;blanditiis&#8221;, &#8220;qui&#8221;]</li>
+<li>sentences<br>[&#8220;Maiores dicta sed voluptas corrupti repudiandae eos aliquam eligendi.&#8221;, &#8220;Dolorem eius ut nam esse nihil illum.&#8221;, &#8220;Non sapiente accusamus maiores neque eum est ea.&#8221;]</li>
+</ul></td>
+</tr>
+<tr>
+<td>Faker::Name</td>
+<td>名前データ</td>
+<td><ul class="none">
+<li>name<br>&#8220;Nicklaus Swift&#8221;</li>
+<li>first_name<br>&#8220;Angus&#8221;</li>
+<li>last_name<br>&#8220;Morissette&#8221;</li>
+</ul></td>
+</tr>
+<tr>
+<td>Faker::PhoneNumber</td>
+<td>電話番号</td>
+<td><ul class="none"><li>phone_number<br>&#8220;024-597-6027 x86091&#8221;</li></ul></td>
+</tr>
 </table>
-
-
 <p>Faker::PhoneNumber::Formats に phone_number() メソッドで返される電話番号のフォーマットの一覧が入っています。テスト時にフォーマットをいじることで、phone_number() メソッドの戻り値の形式を変更できます。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">Faker</span><span class="p">:</span><span class="ss">:PhoneNumber</span><span class="o">::</span><span class="no">Formats</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;(###)##-####&quot;</span><span class="p">,</span> <span class="s2">&quot;###-####-####&quot;</span><span class="o">]</span>
-</span><span class='line'><span class="ss">Faker</span><span class="p">:</span><span class="ss">:PhoneNumber</span><span class="o">::</span><span class="n">phone_number</span>
-</span><span class='line'><span class="c1"># =&gt; &quot;(109)29-6592&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="ss">Faker</span><span class="p">:</span><span class="ss">:PhoneNumber</span><span class="o">::</span><span class="no">Formats</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"(###)##-####"</span><span class="p">,</span> <span class="s2">"###-####-####"</span><span class="o">]</span>
+</span><span class="line"><span class="ss">Faker</span><span class="p">:</span><span class="ss">:PhoneNumber</span><span class="o">::</span><span class="n">phone_number</span>
+</span><span class="line"><span class="c1"># =&gt; "(109)29-6592"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 
@@ -869,7 +946,7 @@
 
 <p>Ruby1.9 から多言語対応に注意を払わなければいけなくなりました。<em>M17N（MultilingualizatioN）</em> です。</p>
 
-<p>M17N 可能なプロジェクトで作成するソースコードには、ソースコード中に<strong>マジックコメント</strong>を埋め込む必要があります。</p>
+<p>M17N 可能なプロジェクトで作成するソースコードには、ソースコード中に<strong class="text-danger">マジックコメント</strong>を埋め込む必要があります。</p>
 
 <p>Ruby ソースコード中に #! がない限り、マジックコメントはファイルの一行目に書きます。#! がある場合は2行目に書きます。</p>
 
@@ -890,20 +967,23 @@
 
 <p>例えば、EUC-JP で書かれたファイルを UTF-8 で書かれた Ruby のソースコード上で処理したい場合、次のようにします。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;euc.txt&quot;</span><span class="p">,</span> <span class="ss">encoding</span><span class="p">:</span> <span class="s2">&quot;EUC-JP:UTF-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span>
-</span><span class='line'>  <span class="nb">p</span> <span class="n">line</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"euc.txt"</span><span class="p">,</span> <span class="ss">encoding</span><span class="p">:</span> <span class="s2">"EUC-JP:UTF-8"</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span>
+</span><span class="line">  <span class="nb">p</span> <span class="n">line</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
-<p><em>encoding:</em> パラメータを指定してファイルを開きます。encoding パラメータは &quot;&lt;ファイルのエンコード&gt;:&lt;処理するソースコードのエンコード&gt;&quot; のように書きます。</p>
+<p><em>encoding:</em> パラメータを指定してファイルを開きます。encoding パラメータは &#8220;&lt;ファイルのエンコード&gt;:&lt;処理するソースコードのエンコード&gt;&#8221; のように書きます。</p>
 
-<p>例の場合、EUC-JP で書かれた euc.txt ファイルを UTF-8 のソースコードで処理するので、encoding:&quot;EUC-JP:UTF-8&quot; としています。</p>
+<p>例の場合、EUC-JP で書かれた euc.txt ファイルを UTF-8 のソースコードで処理するので、encoding:&#8221;EUC-JP:UTF-8&#8221; としています。</p>
 
-<p>なお、ファイルのエンコーディングがソースコードのエンコーディングと同じ場合は、encoding: &quot;UTF-8&quot; と書くことができます。</p>
+<p>なお、ファイルのエンコーディングがソースコードのエンコーディングと同じ場合は、encoding: &#8220;UTF-8&#8221; と書くことができます。</p>
 
 <p class="option">encodingオプションを指定しない場合、Ruby は Encoding#default_external で指定されているエンコーディングでファイルを解釈しようとします。</p>
 
@@ -915,9 +995,12 @@
 
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">img</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;hoge.png&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="n">img</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"hoge.png"</span><span class="p">);</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>上記のようにバイナリデータを読み込んでいる場合は注意が必要です。Ruby1.9 からは encoding が指定されない場合、<em>Encoding#default_external</em> の値がエンコーディングとして使われます。</p>
@@ -931,15 +1014,18 @@
 
 <p>７章の P.223 に L10N の話題が載っています。そこで見つけたソースコード。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="p">{</span> <span class="n">given_name</span><span class="p">:</span> <span class="s2">&quot;姉ヶ崎&quot;</span><span class="p">,</span> <span class="ss">surname</span><span class="p">:</span> <span class="s2">&quot;寧々&quot;</span> <span class="p">}</span>
-</span><span class='line'><span class="ss">Gibberish</span><span class="p">:</span><span class="ss">:Simple</span><span class="o">.</span><span class="n">use_language</span><span class="p">(</span><span class="ss">:ja</span><span class="p">)</span> <span class="k">do</span>
-</span><span class='line'>  <span class="nb">p</span> <span class="n">T</span><span class="p">(</span><span class="s2">&quot;{given_name}{surname}&quot;</span><span class="p">,</span> <span class="o">[</span><span class="ss">:name</span><span class="p">,</span> <span class="n">data</span><span class="o">]</span><span class="p">)</span> <span class="c1">#=&gt; &quot;姉ヶ崎寧々&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="n">data</span> <span class="o">=</span> <span class="p">{</span> <span class="n">given_name</span><span class="p">:</span> <span class="s2">"姉ヶ崎"</span><span class="p">,</span> <span class="ss">surname</span><span class="p">:</span> <span class="s2">"寧々"</span> <span class="p">}</span>
+</span><span class="line"><span class="ss">Gibberish</span><span class="p">:</span><span class="ss">:Simple</span><span class="o">.</span><span class="n">use_language</span><span class="p">(</span><span class="ss">:ja</span><span class="p">)</span> <span class="k">do</span>
+</span><span class="line">  <span class="nb">p</span> <span class="n">T</span><span class="p">(</span><span class="s2">"{given_name}{surname}"</span><span class="p">,</span> <span class="o">[</span><span class="ss">:name</span><span class="p">,</span> <span class="n">data</span><span class="o">]</span><span class="p">)</span> <span class="c1">#=&gt; "姉ヶ崎寧々"</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>ね、寧々さん！！？</p>
@@ -966,10 +1052,6 @@
 <dt>Q&amp;A（質問の宛先）</dt>
 <dd>自分たちへの質問の方法を記述する。Eメール、電話、会社の住所などなど。</dd>
 </dl>
-
-
-
-
 <h3>ライブラリのレイアウト</h3>
 
 
@@ -992,7 +1074,7 @@
 </pre>
 
 
-<p>クラス名とファイル名の対応等は、<a href="http://shugo.net/ruby-codeconv/codeconv.html" rel="external nofollow">Ruby コーディング規約 - Shugo.net</a> 等を参考にする。</p>
+<p>クラス名とファイル名の対応等は、<a href="http://shugo.net/ruby-codeconv/codeconv.html" rel="external nofollow" title="Ruby コーディング規約 - Shugo.net">Ruby コーディング規約 - Shugo.net</a> 等を参考にする。</p>
 
 <h4>実行ファイル</h4>
 
@@ -1023,10 +1105,7 @@
       - ...ソースコード...
     - csvparser.rb
   - test</pre>
-
-
-
-</div>
+</body></html></div>
 
 
   
@@ -1044,7 +1123,7 @@
         
         <li><a href="/blog/2012/09/23/487311554X/">ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理</a></li>
         
-        <li><a href="/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応</a></li>
+        <li><a href="/blog/2008/07/05/4873113660/">インターフェイス指向設計 アジャイル手法によるオブジェクト指向設計の実践</a></li>
         
       </ul>
     </div>
@@ -1204,6 +1283,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -1227,10 +1310,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1238,7 +1317,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

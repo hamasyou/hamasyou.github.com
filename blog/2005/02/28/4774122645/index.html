@@ -177,7 +177,8 @@
 
 
 
-<div class="entry-content"><p>Vol25 の注目記事は「<b>アーキテクチャ設計入門</b>」です。J2EEをアーキテクチャ設計の勘所をポイントを抑えて解説しています。最近の典型的な4層構造(プレゼンテーション層、サービス層、ドメイン層、永続化層)のそれぞれの設計ポイントがまとめられています。</p>
+<div class="entry-content"><html><body>
+<p>Vol25 の注目記事は「<b>アーキテクチャ設計入門</b>」です。J2EEをアーキテクチャ設計の勘所をポイントを抑えて解説しています。最近の典型的な4層構造(プレゼンテーション層、サービス層、ドメイン層、永続化層)のそれぞれの設計ポイントがまとめられています。</p>
 
 <p>「<b>開発者のためのドキュメント作成の技術</b>」も新人さんや2〜3年目の社員の方におすすめできる内容だと思います。設計書、マニュアル、議事録、提案書、報告書、メール、嘆願書、ポイント集と項目を挙げるだけでも読みたいと思えるようなものばかりだと思います。</p>
 
@@ -206,7 +207,7 @@
 <h3>コンポーネント作成のポイント</h3>
 
 
-<p>J2EEでアーキテクチャを考える単位は<strong>コンポーネント</strong>である。コンポーネントとは、「インターフェース」、「データ」、「ビジネスロジック」が最低限、集まったものです。</p>
+<p>J2EEでアーキテクチャを考える単位は<strong class="text-danger">コンポーネント</strong>である。コンポーネントとは、「インターフェース」、「データ」、「ビジネスロジック」が最低限、集まったものです。</p>
 
 <p>コンポーネントの粒度は、「処理の単位」、「DBへのアクセス頻度」、「画面表示情報」、「トランザクション処理」、「エラー処理」などを検討しつつ決める用にします。イメージ的には<b>ユースケースの似通った処理をまとめたものがコンポーネント</b>になる感じです。</p>
 
@@ -219,9 +220,9 @@
 
 <p>ユースケースはビジネスの要求を表したものになります。そして、ユースケースは手続き(ビジネスフロー)を表したものになります。つまり、オブジェクト指向でユースケースを実装しようとするとミスマッチが起こります。このミスマッチをサービス層が生めることになります。</p>
 
-<p><strong><a href="http://corej2eepatterns.com/Patterns2ndEd/BusinessObject.htm" rel="external nofollow">ロバストネス図</a>におけるエンティティに固有のロジックをカプセル化したパターンになります。</p>
+<p><strong class="text-danger"><a href="http://corej2eepatterns.com/Patterns2ndEd/BusinessObject.htm" rel="external nofollow" title="ロバストネス図">ロバストネス図</a>におけるエンティティに固有のロジックをカプセル化したパターンになります。</strong></p>
 
-<p><strong>Business Object</strong> パターンのポイントは、サービスを提供するオブジェクトがエンティティ自身になるという点です。そして、粒度の細かいオブジェクト(ex. 注文明細、住所)をエンティティ内にカプセル化します。永続化の処理は、別途<a href="http://www.corej2eepatterns.com/Patterns2ndEd/DataAccessObject.htm" rel="external nofollow">DAO</a>などに任せるような設計にします。このあたりは、O-Rマッピングツールの出番となるところです。</p>
+<p><strong class="text-danger">Business Object</strong> パターンのポイントは、サービスを提供するオブジェクトがエンティティ自身になるという点です。そして、粒度の細かいオブジェクト(ex. 注文明細、住所)をエンティティ内にカプセル化します。永続化の処理は、別途<a href="http://www.corej2eepatterns.com/Patterns2ndEd/DataAccessObject.htm" rel="external nofollow" title="DAO">DAO</a>などに任せるような設計にします。このあたりは、O-Rマッピングツールの出番となるところです。</p>
 
 <h2>参考</h2>
 
@@ -229,37 +230,34 @@
 <ul>
 <li>J2EEを使った設計の極意は本書から盗め</li>
 </ul>
-
-
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>J2EEパターンをポイントポイントに使って、良い設計を心がけよう</li>
 </ul>
-
-
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714345/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714345/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>オブジェクト指向設計の極意！必読です。</li>
 </ul>
-
-
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>アーキテクチャを考えるときに役に立つのは、優れたパターンである</li>
 </ul>
-
-
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/0131422464/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
-
-
-
-</div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0131422464/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -435,6 +433,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -458,10 +460,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -469,7 +467,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

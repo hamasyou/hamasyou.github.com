@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="Titanium Module Development のメモその2です。 参考 JP::HSJ::Junknews::HatenaSide <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" &hellip;">
+  <meta name="description" content="Titanium Module Development のメモその2です。 参考 JP::HSJ::Junknews::HatenaSide <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px &hellip;">
   <meta name="keywords" content="iPhone, Titanium, クラス設計, Objective-C">
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/2010/09/11/titanium-module-development-2/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Titanium Module Development のメモその2です。 参考 JP::HSJ::Junknews::HatenaSide <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" &hellip;" />
+<meta property="og:description" content="Titanium Module Development のメモその2です。 参考 JP::HSJ::Junknews::HatenaSide <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -150,18 +150,15 @@
 
 
 
-<div class="entry-content"><p>Titanium Module Development のメモその2です。</p>
+<div class="entry-content"><html><body>
+<p>Titanium Module Development のメモその2です。</p>
 
 <h4>参考</h4>
 
 
 
 
-<ul><li><a href="http://d.hatena.ne.jp/donayama/searchdiary?word=*[Titanium]" rel="external nofollow">JP::HSJ::Junknews::HatenaSide</a></li></ul>
-
-
-
-
+<ul><li><a href="http://d.hatena.ne.jp/donayama/searchdiary?word=*%5BTitanium%5D" rel="external nofollow" title="JP::HSJ::Junknews::HatenaSide">JP::HSJ::Junknews::HatenaSide</a></li></ul>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:inline-block;width:728px;height:90px"
@@ -170,24 +167,19 @@
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-
-
-
-
-
 <h2>Titanium の基本クラスを拡張する</h2>
 
 
 <p>Titanium の Module をつくる方法は基本的には次のドキュメントを理解すればよい。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>Titanium Module SDK for iPhone/iPad</h4>
 
 
-<p><a href="http://developer.appcelerator.com/doc/mobile/iphone/module_sdk" rel="external nofollow">Titanium Module SDK for iPhone/iPad - Appcelerator</a></p>
+<p><a href="http://developer.appcelerator.com/doc/mobile/iphone/module_sdk" rel="external nofollow" title="Titanium Module SDK for iPhone/iPad - Appcelerator">Titanium Module SDK for iPhone/iPad - Appcelerator</a></p>
 
-<p></section></p>
+<p></p>
 
 <p>既存のクラス、例えば TiUIWebView を継承して独自クラスを作成したい場合の手順を以下にメモ。（ほとんどは上の Titanium Module SDK の PDF の内容のままですが。）</p>
 
@@ -201,16 +193,12 @@
 <li>モジュールを生成する</li>
 <li>既存クラスを継承する</li>
 </ol>
-
-
-
-
 <h2>モジュール作成環境を整える</h2>
 
 
 <p>モジュール作成に必要な環境は次の通り。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>必要環境</h4>
 
@@ -218,16 +206,18 @@
 
 
 <dl>
-<dt>Intel Base の Mac OSX 10.5 以上</dt><dd></dd>
-<dt>XCode 3.2 以上</dt><dd></dd>
-<dt>iOS 4.0 SDK 以上</dt><dd></dd>
-<dt>Titanium 1.4 Mobile SDK 以上</dt><dd></dd>
+<dt>Intel Base の Mac OSX 10.5 以上</dt>
+<dd></dd>
+<dt>XCode 3.2 以上</dt>
+<dd></dd>
+<dt>iOS 4.0 SDK 以上</dt>
+<dd></dd>
+<dt>Titanium 1.4 Mobile SDK 以上</dt>
+<dd></dd>
 </dl>
-
-
 <p>iPhone アプリ開発を Titanium でやろうとしているひとは、おそらく環境は整っているかと。</p>
 
-<p></section></p>
+<p></p>
 
 <h3>titanium コマンドが通るようにする</h3>
 
@@ -237,7 +227,7 @@
 <pre>alias titanium='/Library/Application\ Support/Titanium/mobilesdk/osx/1.4.0/titanium.py'</pre>
 
 
-<p><strong>Titanium 1.4 Mobile SDK</strong> 以外のバージョンを使っている場合は、osx/1.4.0 のところを適宜読み替える。</p>
+<p><strong class="text-danger">Titanium 1.4 Mobile SDK</strong> 以外のバージョンを使っている場合は、osx/1.4.0 のところを適宜読み替える。</p>
 
 <p>記述が終わったらファイルを保存して、設定を再読込する。</p>
 
@@ -271,11 +261,11 @@ Created iphone module project
 </pre>
 
 
-<p>iPhone 用のモジュールを作成するので、 &ndash;platform には iphone を指定する。作るのはモジュールなので &ndash;type には module を指定、&ndash;name にはモジュールの名前を指定し、&ndash;id にはモジュールのIDを指定する。</p>
+<p>iPhone 用のモジュールを作成するので、 –platform には iphone を指定する。作るのはモジュールなので –type には module を指定、–name にはモジュールの名前を指定し、–id にはモジュールのIDを指定する。</p>
 
-<p>コマンドが成功すると、&ndash;name で指定した名前のディレクトリが作成されているはず。ディレクトリの中に、mywebview.xcodeproj という XCode のプロジェクトが作成されているはずなので、XCode で開く。ターミナルで open mywebview.xcodeproj とすれば開ける。</p>
+<p>コマンドが成功すると、–name で指定した名前のディレクトリが作成されているはず。ディレクトリの中に、mywebview.xcodeproj という XCode のプロジェクトが作成されているはずなので、XCode で開く。ターミナルで open mywebview.xcodeproj とすれば開ける。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h3>XCode で環境が「Base SDK Missing」となっている場合</h3>
 
@@ -284,9 +274,9 @@ Created iphone module project
 
 <p>その場合、「プロジェクト - プロジェクト設定を編集」を開いて、「ベースSDK」の値を 「iOS デバイス 4.1」に変更するとよい。</p>
 
-<p><img alt="スクリーンショット（2010-09-11 10.47.15）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.47.15%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-09-11 10.47.15）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.47.15%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
-<p></section></p>
+<p></p>
 
 <p>ここまでできたら、一度モジュールをビルドしてみる。ターミナルで次のコマンドを実行する。</p>
 
@@ -302,17 +292,17 @@ Created iphone module project
 &#8230;(中略)
 [INFO] [object ComHamasyouModule] loaded
 [DEBUG] loading: /var/folders/ms/msSj36DoHze872qn4jHjxE+++TI/-Tmp-/mLtELnQti/mywebview/Resources/com.hamasyou.js, resource: var/folders/ms/msSj36DoHze872qn4jHjxE+++TI/-Tmp-/mLtELnQti/mywebview/Resources/com_hamasyou_js
-[INFO] module is => [object ComHamasyouModule]
+[INFO] module is =&gt; [object ComHamasyouModule]
 [DEBUG] application booted in 23.256958 ms
 </pre>
 
 
 <p>しばらく待つと iPhone シミュレータが起動し、真っ白の画面が表示されるはず。ターミナル中に次の行があることを確認し、これが表示されていればモジュールは実行出来ている。</p>
 
-<pre>[INFO] module is => [object ComHamasyouModule]</pre>
+<pre>[INFO] module is =&gt; [object ComHamasyouModule]</pre>
 
 
-<p><img alt="スクリーンショット（2010-09-11 10.54.53）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.54.53%EF%BC%89.png" width="414" height="770" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-09-11 10.54.53）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.54.53%EF%BC%89.png" width="414" height="770" class="mt-image-none img-thumbnail" style=""></p>
 
 <h2>既存クラスを継承する</h2>
 
@@ -322,28 +312,28 @@ Created iphone module project
 <h3>View クラスを作成する</h3>
 
 
-<p>独自の View モジュールを作成する。XCode で「ファイル - 新規ファイル&hellip;」を選択し、TiUIView テンプレートを選択して、View クラスを作成する。</p>
+<p>独自の View モジュールを作成する。XCode で「ファイル - 新規ファイル…」を選択し、TiUIView テンプレートを選択して、View クラスを作成する。</p>
 
 <p>ファイル名は「<em>モジュール名 + クラス名 + View</em>」という規約で作成する必要がある。今回は、ComHamasyouMyWebView.m と入力した。ファイルの保存場所を Classes 以下にし忘れないようにして View クラスを作成する。</p>
 
-<p><img alt="スクリーンショット（2010-09-11 10.56.29）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.56.29%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-09-11 10.56.29）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.56.29%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
-<p><img alt="スクリーンショット（2010-09-11 10.58.12）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.58.12%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-09-11 10.58.12）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2010.58.12%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <h3>ComHamasyouMyWebView に TiUIWebView を継承させる</h3>
 
 
-<p>作成した ComHamasyouMyWebView.h を開き、#import &ldquo;TiUIWebView.h&rdquo; を追加し、TiUIWebView を継承する。このとき、#import &ldquo;TiUIView.h&rdquo; を削除しないようにする。<em>TiUIView.h をインポートしていないと、なぜか TiUIWebView を解決できなかったので注意。</em></p>
+<p>作成した ComHamasyouMyWebView.h を開き、#import “TiUIWebView.h” を追加し、TiUIWebView を継承する。このとき、#import “TiUIView.h” を削除しないようにする。<em>TiUIView.h をインポートしていないと、なぜか TiUIWebView を解決できなかったので注意。</em></p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>ComHamasyouMyWebView.h</h4>
 
 
 
 
-<pre class="code"><span class="keyword">#import</span> <span class="literal">&quot;TiUIView.h&quot;</span>
-<span class="keyword">#import</span> <span class="literal">&quot;TiUIWebView.h&quot;</span>
+<pre class="code"><span class="keyword">#import</span> <span class="literal">"TiUIView.h"</span>
+<span class="keyword">#import</span> <span class="literal">"TiUIWebView.h"</span>
  
 <span class="keyword">@interface</span> ComHamasyouMyWebView : TiUIWebView {
  
@@ -354,20 +344,20 @@ Created iphone module project
 <span class="keyword">@end</span></pre>
 
 
-<p></section></p>
+<p></p>
 
 <h3>ViewProxy クラスを作成する</h3>
 
 
 <p>Objective-C のコードと JavaScript のコードを橋渡しする Proxy クラスを作成する。「ファイル - 新規ファイル」から TiViewProxy を選択する。</p>
 
-<p><img alt="スクリーンショット（2010-09-11 11.05.46）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.05.46%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-09-11 11.05.46）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.05.46%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <p>ファイル名は View と同じように「<em>モジュール名 + クラス名 + ViewProxy</em>」とする必要がある。今回は、ComHamasyouMyWebViewProxy とした。保存場所を Classes 以下にすることを忘れずに。</p>
 
-<p><img alt="スクリーンショット（2010-09-11 11.06.02）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.06.02%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-09-11 11.06.02）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.06.02%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
-<p><img alt="スクリーンショット（2010-09-11 11.08.13）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.08.13%EF%BC%89.png" width="506" height="388" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-09-11 11.08.13）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.08.13%EF%BC%89.png" width="506" height="388" class="mt-image-none img-thumbnail" style=""></p>
 
 <h3>example/app.js を変更して、作ったモジュールをテストする</h3>
 
@@ -380,10 +370,10 @@ Created iphone module project
 });
  
 <span class="keyword">var</span> myModule = require(<span class="str">'com.hamasyou'</span>);
-Ti.API.info(<span class="str">&quot;module is =&gt; &quot;</span> + myModule);
+Ti.API.info(<span class="str">"module is =&gt; "</span> + myModule);
  
 <span class="keyword">var</span> myWebView = myModule.createMyWebView({
-  url: <span class="str">&quot;http://hamasyou.com/&quot;</span>
+  url: <span class="str">"http://hamasyou.com/"</span>
 });
 window.add(myWebView);
  
@@ -392,10 +382,10 @@ window.open();</pre>
 
 <p>ここまでできたら、再度 titanium run コマンドを実行してみる。iPhone シミュレータ上で Web ページが表示されれば無事に、TiUIWebView　を継承した自分のモジュールが呼び出されている。</p>
 
-<p><img alt="スクリーンショット（2010-09-11 11.11.53）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.11.53%EF%BC%89.png" width="414" height="770" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-09-11 11.11.53）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-11%2011.11.53%EF%BC%89.png" width="414" height="770" class="mt-image-none img-thumbnail" style=""></p>
 
 <p>あとは、好きなように拡張していけばよい。</p>
-</div>
+</body></html></div>
 
 
   
@@ -569,6 +559,10 @@ window.open();</pre>
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -592,10 +586,6 @@ window.open();</pre>
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -603,7 +593,7 @@ window.open();</pre>
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

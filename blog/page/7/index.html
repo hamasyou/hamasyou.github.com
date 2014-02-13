@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="Mac のショートカットに、Command + Q でアプリケーションを閉じるというのがあります。多くのアプリでは、Command + W でウィンドウを閉じるので、ブラウザを使っている時なんかに間違って Command + Q を押してしまって「アプリケーション閉じちゃった・・・」 &hellip;">
+  <meta name="description" content="Titanium は、JavaScript でコードがかけると言っても色々と制約があり、eval() を使うようなライブラリは使用できません。 2013/02/28追記 dom2json に渡すオブジェクトを dom.documentElement に変更しました。dom を直接渡すと、 &hellip;">
   
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/7/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Mac のショートカットに、Command + Q でアプリケーションを閉じるというのがあります。多くのアプリでは、Command + W でウィンドウを閉じるので、ブラウザを使っている時なんかに間違って Command + Q を押してしまって「アプリケーション閉じちゃった・・・」 &hellip;" />
+<meta property="og:description" content="Titanium は、JavaScript でコードがかけると言っても色々と制約があり、eval() を使うようなライブラリは使用できません。 2013/02/28追記 dom2json に渡すオブジェクトを dom.documentElement に変更しました。dom を直接渡すと、 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -94,16 +94,12 @@
 </div>
 </nav>
   <div role="main" class="container">
-    <div class="row">
+    <html><body><div class="row">
   <div class="col-sm-12 col-md-9">
     
     
     
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/14/mac-commandq/">Mac で Command+Q でアプリケーションを閉じないようにする方法</a></h1>
+    <article><header class="page-header"><h1 class="entry-title"><a href="/blog/2010/09/15/titanium-xml2json-xml-json/">[Titanium] Titanium 版 XML2JSON - XML を JSON に変換する</a></h1>
     
     
       <p class="meta">
@@ -120,8 +116,85 @@
 
 
 
-<time datetime="2010-09-14T11:39:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 14<span>th</span>, 2010</time>
+<time datetime="2010-09-15T01:39:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 15<span>th</span>, 2010</time><span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/iphone/">iPhone</a>
+    
+      <a class="tag label label-info" href="/blog/tags/titanium/">Titanium</a>
+    
+      <a class="tag label label-info" href="/blog/tags/xml/">XML</a>
+    
+      <a class="tag label label-info" href="/blog/tags/json/">JSON</a>
+    
+  
+</span>
+
+        
         <span class="divider"></span>
+        <a href="/blog/2010/09/15/titanium-xml2json-xml-json/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header><div class="entry-content">
+<p><s>Titanium は、JavaScript でコードがかけると言っても色々と制約があり、<em>eval()</em> を使うようなライブラリは使用できません。</s></p>
+
+<p><section></section></p>
+
+<h4>2013/02/28追記</h4>
+
+
+<p>dom2json に渡すオブジェクトを dom.documentElement に変更しました。dom を直接渡すと、Android でエラーが発生することがあります。</p>
+
+<h4>2011/01/18追記</h4>
+
+
+<p>Titanium.include(“TiDOMParser.js”) だと実機のほうでエラーが発生するという報告を頂いたので、TiDomParser に変更しました。合わせて、プログラム中の TiDOMParser を TiDomParser に変更しました。ご報告ありがとうございました。</p>
+
+<h4>2010/09/15追記</h4>
+
+
+<p><em>eval()</em> が使えないと書きましたが、使えることが判明しました。。。KitchenSink のサンプルにもありました。。 僕の環境で動かないと思っていたのは、eval(“1+1”); と試していたからで、eval() の中はコードになるので正確にはセミコロンが必要で、eval(“1+1;”); としないとダメでした。。訂正です。。</p>
+
+<p></p>
+
+<p>XML を JSON にするライブラリに、<a href="http://www.thomasfrank.se/xml_to_json.html" rel="external nofollow" title="XML to JSON">XML to JSON</a> というライブラリがありますが、<s>内部で eval を使っているため動きません。</s>（中身を書き換えれば動きそうですね。。）</p>
+
+<p>そこで、DOM から JSON に変換する <a href="http://www.kawa.net/works/js/xml/objtree.html" rel="external nofollow" title="XML.ObjTree">XML.ObjTree</a> というライブラリを元に、Titanium 上で XML を JSON に変換するライブラリを作ってみました。</p>
+
+<p>ライセンスとか気にしたつもりですが、ObjTree のライセンスに引っかかるとかあればご連絡ください。すぐに対応します。</p>
+
+</div>
+  
+  
+    <footer><a rel="full-article" href="/blog/2010/09/15/titanium-xml2json-xml-json/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2010/09/14/mac-commandq/">Mac で Command+Q でアプリケーションを閉じないようにする方法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-09-14T11:39:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 14<span>th</span>, 2010</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -146,38 +219,28 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>Mac のショートカットに、Command + Q でアプリケーションを閉じるというのがあります。多くのアプリでは、Command + W でウィンドウを閉じるので、ブラウザを使っている時なんかに間違って Command + Q を押してしまって「アプリケーション閉じちゃった・・・」となる場面が多々あります。（僕だけ！？）</p>
+  </header><div class="entry-content">
+<p>Mac のショートカットに、Command + Q でアプリケーションを閉じるというのがあります。多くのアプリでは、Command + W でウィンドウを閉じるので、ブラウザを使っている時なんかに間違って Command + Q を押してしまって「アプリケーション閉じちゃった・・・」となる場面が多々あります。（僕だけ！？）</p>
 
 <p>それを防ぐ方法です。</p>
 
-<ol><li>「システム環境設定」を開く</li>
+<ol>
+<li>「システム環境設定」を開く</li>
 <li>「キーボード」-「キーボードショートカット」を開く</li>
 <li>「+」ボタンをクリックする</li>
 <li>「アプリケーション」に設定したいアプリケーションを選択する</li>
-<li>「メニュータイトル」に「アプリケーション名 + &#8221; &#8221; + &#8220;を終了&#8221;」と入力する（例）Google Chrome を終了</li>
+<li>「メニュータイトル」に「アプリケーション名 + ” ” + “を終了”」と入力する（例）Google Chrome を終了</li>
 <li>「キーボードショートカット」に Command + Q 以外のショートカットを割り当てる</li>
 </ol>
-
-
 <p>メニュータイトルのところが肝で、これは、アプリケーションの終了コマンドのメニュータイトルと一致させる必要があります。ほとんどのアプリケーションが「アプリケーション名」+ 「空白」+「を終了」になっているはずです。</p>
 
-<p><img alt="スクリーンショット（2010-09-14 11.43.39）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-14%2011.43.39%EF%BC%89.png" width="447" height="221" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-09-14 11.43.39）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-09-14%2011.43.39%EF%BC%89.png" width="447" height="221" class="mt-image-none img-thumbnail" style=""></p>
 </div>
   
   
 
 
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/11/titanium-module-development-2/">[Titanium] Titanium Module Development メモ - その2</a></h1>
+    </article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2010/09/11/titanium-module-development-2/">[Titanium] Titanium Module Development メモ - その2</a></h1>
     
     
       <p class="meta">
@@ -194,8 +257,7 @@
 
 
 
-<time datetime="2010-09-11T10:14:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 11<span>th</span>, 2010</time>
-        <span class="divider"></span>
+<time datetime="2010-09-11T10:14:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 11<span>th</span>, 2010</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -220,38 +282,20 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>Titanium Module Development のメモその2です。</p>
+  </header><div class="entry-content">
+<p>Titanium Module Development のメモその2です。</p>
 
 <h4>参考</h4>
 
 
 
 
-<ul><li><a href="http://d.hatena.ne.jp/donayama/searchdiary?word=*[Titanium]" rel="external nofollow">JP::HSJ::Junknews::HatenaSide</a></li></ul>
-
-
-
-
+<ul><li><a href="http://d.hatena.ne.jp/donayama/searchdiary?word=*%5BTitanium%5D" rel="external nofollow" title="JP::HSJ::Junknews::HatenaSide">JP::HSJ::Junknews::HatenaSide</a></li></ul>
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2010/09/11/titanium-module-development-2/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/10/titanium-module-development-1/">[Titanium] Titanium Module Development メモ - その1</a></h1>
+    <footer><a rel="full-article" href="/blog/2010/09/11/titanium-module-development-2/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2010/09/10/titanium-module-development-1/">[Titanium] Titanium Module Development メモ - その1</a></h1>
     
     
       <p class="meta">
@@ -268,8 +312,7 @@
 
 
 
-<time datetime="2010-09-10T02:24:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 10<span>th</span>, 2010</time>
-        <span class="divider"></span>
+<time datetime="2010-09-10T02:24:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 10<span>th</span>, 2010</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -294,38 +337,20 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>Titanium Module Development のメモです。</p>
+  </header><div class="entry-content">
+<p>Titanium Module Development のメモです。</p>
 
 <h4>参考</h4>
 
 
 
 
-<ul><li><a href="http://d.hatena.ne.jp/donayama/searchdiary?word=*[Titanium]" rel="external nofollow">JP::HSJ::Junknews::HatenaSide</a></li></ul>
-
-
-
-
+<ul><li><a href="http://d.hatena.ne.jp/donayama/searchdiary?word=*%5BTitanium%5D" rel="external nofollow" title="JP::HSJ::Junknews::HatenaSide">JP::HSJ::Junknews::HatenaSide</a></li></ul>
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2010/09/10/titanium-module-development-1/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/07/javascript/">[JavaScript] JavaScript のクラス定義のイディオム</a></h1>
+    <footer><a rel="full-article" href="/blog/2010/09/10/titanium-module-development-1/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2010/09/07/javascript/">[JavaScript] JavaScript のクラス定義のイディオム</a></h1>
     
     
       <p class="meta">
@@ -342,8 +367,7 @@
 
 
 
-<time datetime="2010-09-07T23:32:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 7<span>th</span>, 2010</time>
-        <span class="divider"></span>
+<time datetime="2010-09-07T23:32:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 7<span>th</span>, 2010</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -366,28 +390,14 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>JavaScript でクラス定義するときのメモ。</p>
+  </header><div class="entry-content">
+<p>JavaScript でクラス定義するときのメモ。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2010/09/07/javascript/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/07/post-2/">緯度・経度から二点間の距離と方向を計算する</a></h1>
+    <footer><a rel="full-article" href="/blog/2010/09/07/javascript/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2010/09/07/post-2/">緯度・経度から二点間の距離と方向を計算する</a></h1>
     
     
       <p class="meta">
@@ -404,8 +414,7 @@
 
 
 
-<time datetime="2010-09-07T13:39:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 7<span>th</span>, 2010</time>
-        <span class="divider"></span>
+<time datetime="2010-09-07T13:39:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 7<span>th</span>, 2010</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -436,10 +445,8 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>ジオ系を触っていて、緯度、経度から二点間の距離とその方向を計算するロジックは色々なところで必要になるので、メモ。</p>
+  </header><div class="entry-content">
+<p>ジオ系を触っていて、緯度、経度から二点間の距離とその方向を計算するロジックは色々なところで必要になるので、メモ。</p>
 
 <p>元記事は下で、JavaScript に書き直しただけです。</p>
 
@@ -448,28 +455,12 @@
 
 
 
-<ul><li><a href="http://prog47.blogdns.org/blog/index.php?e=283" rel="external nofollow">緯度、経度から距離と向きを算出 - 中年プログラマblog</a></li></ul>
-
-
-
-
+<ul><li><a href="http://prog47.blogdns.org/blog/index.php?e=283" rel="external nofollow" title="緯度、経度から距離と向きを算出 - 中年プログラマblog">緯度、経度から距離と向きを算出 - 中年プログラマblog</a></li></ul>
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2010/09/07/post-2/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/06/4048687158/">メタプログラミングRuby</a></h1>
+    <footer><a rel="full-article" href="/blog/2010/09/07/post-2/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2010/09/06/4048687158/">メタプログラミングRuby</a></h1>
     
     
       <p class="meta">
@@ -486,8 +477,7 @@
 
 
 
-<time datetime="2010-09-06T20:17:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 6<span>th</span>, 2010</time>
-        <span class="divider"></span>
+<time datetime="2010-09-06T20:17:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 6<span>th</span>, 2010</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -512,10 +502,8 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p><strong>Ruby</strong> が人気のあるプログラミング言語である理由のひとつに、強力なメタプログラミングがあると思います。Ruby の本当の力を知るのは、このメタプログラミングを理解したときだとも思います。</p>
+  </header><div class="entry-content">
+<p><strong class="text-danger">Ruby</strong> が人気のあるプログラミング言語である理由のひとつに、強力なメタプログラミングがあると思います。Ruby の本当の力を知るのは、このメタプログラミングを理解したときだとも思います。</p>
 
 <p>本書は、Ruby の内部動作をきちんと説明した上で、メタプログラミングの説明をしてくれます。とても丁寧な説明で、少しでもプログラミングの知識があれば理解できる文章になっています。</p>
 
@@ -526,20 +514,8 @@
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2010/09/06/4048687158/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/03/titanium-mobile-iphone/">[Titanium] Titanium Mobile で iPhone 開発 - ハマった点</a></h1>
+    <footer><a rel="full-article" href="/blog/2010/09/06/4048687158/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2010/09/03/titanium-mobile-iphone/">[Titanium] Titanium Mobile で iPhone 開発 - ハマった点</a></h1>
     
     
       <p class="meta">
@@ -556,8 +532,7 @@
 
 
 
-<time datetime="2010-09-03T09:35:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 3<span>rd</span>, 2010</time>
-        <span class="divider"></span>
+<time datetime="2010-09-03T09:35:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 3<span>rd</span>, 2010</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -582,10 +557,8 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p><strong>Titanium Mobile</strong> は iPhone、Android アプリケーションを JavaScript でコーディングできるクロスプラットフォーム環境です。</p>
+  </header><div class="entry-content">
+<p><strong class="text-danger">Titanium Mobile</strong> は iPhone、Android アプリケーションを JavaScript でコーディングできるクロスプラットフォーム環境です。</p>
 
 <p>Titanium を使っていてハマった点をメモしておきます。</p>
 
@@ -594,28 +567,12 @@
 
 
 
-<ul><li><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow">Titanium Mobile - Appcelerator</a></li></ul>
-
-
-
-
+<ul><li><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title="Titanium Mobile - Appcelerator">Titanium Mobile - Appcelerator</a></li></ul>
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2010/09/03/titanium-mobile-iphone/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/31/rails3/">[Rails3] Rails3 がリリースされたのでまとめ</a></h1>
+    <footer><a rel="full-article" href="/blog/2010/09/03/titanium-mobile-iphone/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2010/08/31/rails3/">[Rails3] Rails3 がリリースされたのでまとめ</a></h1>
     
     
       <p class="meta">
@@ -632,8 +589,7 @@
 
 
 
-<time datetime="2010-08-31T10:52:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Aug 31<span>st</span>, 2010</time>
-        <span class="divider"></span>
+<time datetime="2010-08-31T10:52:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Aug 31<span>st</span>, 2010</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -656,32 +612,18 @@
         
       </p>
     
-  </header>
+  </header><div class="entry-content">
+<p>ついに、2010年8月30日（公式では Aug 29, 2010 ってなってるけど）に、<strong class="text-danger">Rails3</strong> がリリースされました。</p>
 
-
-  <div class="entry-content"><p>ついに、2010年8月30日（公式では Aug 29, 2010 ってなってるけど）に、<strong>Rails3</strong> がリリースされました。</p>
-
-<p><strong>Ruby1.9.2</strong> も2010年8月18日にリリースされているので、今後は Ruby1.9.2 と Rails3 での開発が増えてくる予感です。個人的には、Ruby1.9 から文字エンコーディング周りが大幅に変わっているので、View テンプレートにマジックコメントをいちいち書かないといけないのがめんどくさかったり。。</p>
+<p><strong class="text-danger">Ruby1.9.2</strong> も2010年8月18日にリリースされているので、今後は Ruby1.9.2 と Rails3 での開発が増えてくる予感です。個人的には、Ruby1.9 から文字エンコーディング周りが大幅に変わっているので、View テンプレートにマジックコメントをいちいち書かないといけないのがめんどくさかったり。。</p>
 
 <p>ということで、Rails3 系の記事の簡易まとめメモです。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2010/08/31/rails3/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/31/html5/">[HTML5] HTML5 対応の構文バリデータツール</a></h1>
+    <footer><a rel="full-article" href="/blog/2010/08/31/rails3/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2010/08/31/html5/">[HTML5] HTML5 対応の構文バリデータツール</a></h1>
     
     
       <p class="meta">
@@ -698,8 +640,7 @@
 
 
 
-<time datetime="2010-08-31T09:10:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Aug 31<span>st</span>, 2010</time>
-        <span class="divider"></span>
+<time datetime="2010-08-31T09:10:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Aug 31<span>st</span>, 2010</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -724,12 +665,10 @@
         
       </p>
     
-  </header>
+  </header><div class="entry-content">
+<p><strong class="text-danger">HTML5</strong> に対応した構文チェッカーのメモ。</p>
 
-
-  <div class="entry-content"><p><strong>HTML5</strong> に対応した構文チェッカーのメモ。</p>
-
-<p><section></p>
+<p><section></section></p>
 
 <h4>HTML5 に対応した構文チェッカー</h4>
 
@@ -737,143 +676,50 @@
 
 
 <ul>
-<li><a href="http://qa-dev.w3.org/wmvs/HEAD/" rel="external nofollow">Markup Validation Service - W3C</a></li>
-<li><a href="http://html5.validator.nu/" rel="external nofollow">Validator.nu (X)HTML5 Validator - Validator.nu</a></li></ul>
-
-
-<p></section></p>
+<li><a href="http://qa-dev.w3.org/wmvs/HEAD/" rel="external nofollow" title="Markup Validation Service - W3C">Markup Validation Service - W3C</a></li>
+<li><a href="http://html5.validator.nu/" rel="external nofollow" title="Validator.nu (X)HTML5 Validator - Validator.nu">Validator.nu (X)HTML5 Validator - Validator.nu</a></li>
+</ul>
+<p></p>
 
 <p>あと、HTML5 にはまだ対応していないけど、オプションが豊富でよく使う HTML チェッカー。</p>
 
-<ul><li><a href="http://htmllint.itc.keio.ac.jp/htmllint/htmllint.html" rel="external nofollow">Another HTML-lint gateway</a></li></ul>
-
-
-
-
+<ul><li><a href="http://htmllint.itc.keio.ac.jp/htmllint/htmllint.html" rel="external nofollow" title="Another HTML-lint gateway">Another HTML-lint gateway</a></li></ul>
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2010/08/31/html5/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/31/titanium-mobile-iphone/">[Titanium] Titanium Mobile で iPhone 開発 - その1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-08-31T01:10:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Aug 31<span>st</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/iphone/">iPhone</a>
-    
-      <a class="tag label label-info" href="/blog/tags/titanium/">Titanium</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/08/31/titanium-mobile-iphone/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>iPhone アプリの開発をしていて一番の難は <em>Objective-C を使わないといけない</em>ことだと思う。Objective-C が大好きな人もいるかもしれないけど、僕はあの言語の気持ち悪さ（構文的な意味で）が嫌いです。。</p>
-
-<p>で、どうにかならんもんかと調べてみるとなんと、<strong>JavaScript</strong> を使って開発することが出来る開発プラットフォームがあるじゃないですか。</p>
-
-<p>というこで早速使ってみましたよ、<strong>Titanium Mobile</strong>！読み方は、<em>タイタニウム</em> らしいですが、チタニウムのが言いやすいよね。。</p>
-
-<h4>参考</h4>
-
-
-
-
-<ul><li><a href="http://d.hatena.ne.jp/donayama/searchdiary?word=*[Titanium]" rel="external nofollow">JP::HSJ::Junknews::HatenaSide</a></li></ul>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2010/08/31/titanium-mobile-iphone/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    <ul class="pager">
-      
-      <li class="previous"><a href="/blog/page/8/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
+    <footer><a rel="full-article" href="/blog/2010/08/31/html5/">続きをよむ →</a>
+    </footer></article><ul class="pager">
+<li class="previous"><a href="/blog/page/8/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
       
       
       <li class="next"><a href="/blog/page/6/">Newer <i class="fa fa-arrow-circle-right"></i></a></li>
       
     </ul>
-  </div>
+</div>
   <div class="clearfix visible-sm"></div>
-  <aside class="sidebar-nav col-md-3">
-    
-    <section class="well">
-  <div class="row">
+  <aside class="sidebar-nav col-md-3"><section class="well"><div class="row">
     <div class="col-xs-4 col-sm-3 col-md-5">
-      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
-    </div>
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail">
+</div>
     <div class="col-xs-8 col-sm-9 col-md-7">
       <ul class="list-unstyled">
-        <li>濱田章吾</li>
+<li>濱田章吾</li>
         <li>hamasyou</li>
         <li><ul class="list-inline">
-          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
-          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
-          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
-          </ul>
-        </li>
+<li><a href="https://twitter.com/hamasyou" rel="external nofollow" title=""><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow" title=""><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow" title=""><i class="fa fa-github"></i></a></li>
+          <li><a href="mailto:hamasyou@gmail.com" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul></li>
       </ul>
-    </div>
+</div>
   </div>
-</section>
-<section class="well">
-  <ul id="recent_posts" class="nav nav-list">
-    <li class="nav-header">Recent Posts</li>
+</section><section class="well"><ul id="recent_posts" class="nav nav-list">
+<li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
@@ -899,25 +745,14 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
-  </ul>
-</section>
-<section class="panel panel-default">
-  <div class="panel-heading">
+  </ul></section><section class="panel panel-default"><div class="panel-heading">
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class="list-group-item" href="/blog/categories/architecture">Architecture <span class="badge">38</span></a><a class="list-group-item" href="/blog/categories/blog">Blog <span class="badge">96</span></a><a class="list-group-item" href="/blog/categories/database">Database <span class="badge">8</span></a><a class="list-group-item" href="/blog/categories/essay">Essay <span class="badge">13</span></a><a class="list-group-item" href="/blog/categories/lifehack">LifeHack <span class="badge">12</span></a><a class="list-group-item" href="/blog/categories/network">Network <span class="badge">7</span></a><a class="list-group-item" href="/blog/categories/programming">Programming <span class="badge">111</span></a><a class="list-group-item" href="/blog/categories/webdesign">WebDesign <span class="badge">4</span></a>
   </div>
-</section>
-
-    
-  </aside>
-</div>
-
+</section></aside>
+</div></body></html>
   </div>
   <footer role="contentinfo" class="page-footer"><hr>
 <p>

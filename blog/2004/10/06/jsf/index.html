@@ -148,8 +148,9 @@
 
 
 
-<div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" rel="external nofollow"></a>
+<div class="entry-content"><html><body>
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" rel="external nofollow" title=""></a>
 </p>
 
 
@@ -159,7 +160,7 @@
 
 <p>アクションやイベントといった概念を扱っていて、非常に直感的に流れが分かるようなフレームワークになっています。ということで、今回はJSFフレームワークの流れについての覚書きです。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
@@ -167,12 +168,10 @@
 
 
 <ul>
-<li>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" rel="external nofollow">はじめてのJSF</a>』 日経BP社</li>
-<li><a href="http://www.atmarkit.co.jp/fjava/special/jsf01/jsf01.html" rel="external nofollow">@IT：特別企画  JavaServer Facesを理解する(前編)</a></li>
+<li>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" rel="external nofollow" title="はじめてのJSF">はじめてのJSF</a>』 日経BP社</li>
+<li><a href="http://www.atmarkit.co.jp/fjava/special/jsf01/jsf01.html" rel="external nofollow" title="@IT：特別企画  JavaServer Facesを理解する(前編)">@IT：特別企画  JavaServer Facesを理解する(前編)</a></li>
 </ul>
-
-
-<p></section></p>
+<p></p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -192,39 +191,34 @@
 
 <p>JSFのライフサイクルの覚書きです。JSFには6つのフェーズがあり、それぞれ役割分担がきっちりされています。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
-<p><a href="http://www.atmarkit.co.jp/fjava/special/jsf01/jsf01.html#ap03" rel="external nofollow">JSFライフサイクルの図 (@IT)</a></p>
+<p><a href="http://www.atmarkit.co.jp/fjava/special/jsf01/jsf01.html#ap03" rel="external nofollow" title="JSFライフサイクルの図 (@IT)">JSFライフサイクルの図 (@IT)</a></p>
 
-<p></section></p>
+<p></p>
 
 <p>JSFはJavaのWebアプリケーションフレームワークですので、サーブレットとして動作します。javax.faces.webapp.FacesServlet というのがそうです。クライアントのリクエストをサーブレットが受け取ってレスポンスを返すという処理は、通常のWebアプリケーションと一緒です。(当たり前ですが・・・)</p>
 
 <p>JSFはリクエストを受け取って、レスポンスを返すまでのサイクルが6つに分かれています。</p>
 
-<ol><li><a href="#Viewの復元" rel="external nofollow">レスポンスのレンダリング(Render Response)</a></li></ol>
-
-
-
-
+<ol><li><a href="#View%E3%81%AE%E5%BE%A9%E5%85%83" rel="external nofollow">レスポンスのレンダリング(Render Response)</a></li></ol>
 <h3 id="Viewの復元">Viewの復元(Reconstitute Request Tree)</h3>
 
 
 <p>レスポンス時に保存してあったコンポーネントツリーを復元するフェーズです。</p>
 
-<p>初めてのリクエストや、JSF以外のページからのリクエストの場合は、コンポーネントツリーが存在しないので、新しくコンポーネントツリーを生成し、[<a href="#レスポンスのレンダリング" rel="external nofollow">レスポンスのレンダリング</a>]フェーズに移行する。</p>
+<p>初めてのリクエストや、JSF以外のページからのリクエストの場合は、コンポーネントツリーが存在しないので、新しくコンポーネントツリーを生成し、[<a href="#%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%AE%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0" rel="external nofollow">レスポンスのレンダリング</a>]フェーズに移行する。</p>
 
-<p>このように途中のフェーズを省略して[<a href="#レスポンスのレンダリング" rel="external nofollow">レスポンスのレンダリング</a>]フェーズに移行するためには、FacesContext#renderResponse メソッドを呼び出す。</p>
+<p>このように途中のフェーズを省略して[<a href="#%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%AE%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0" rel="external nofollow">レスポンスのレンダリング</a>]フェーズに移行するためには、FacesContext#renderResponse メソッドを呼び出す。</p>
 
 <pre>
 JSFフレームワークは、UIコンポーネントという単位で画面を作っています。UIコンポーネントとは情報を持った塊のことで、下記のようなコンポーネントがある。
 
-<ul><li>フォーム(<a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/component/UIForm.html" rel="external nofollow">UICommand</a>)</li></ul></pre>
-
-
+</pre>
+<ul><li>フォーム(<a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/component/UIForm.html" rel="external nofollow" title="UICommand">UICommand</a>)</li></ul>
 <p>開発者はUIコンポーネントに対して処理を行っていく。サーバー側ではUIコンポーネントは親子関係を持ったツリーの形で保持される。</p>
 
 <h3 id="リクエスト値の適用">リクエスト値の適用(Apply Request Values)</h3>
@@ -234,55 +228,55 @@ JSFフレームワークは、UIコンポーネントという単位で画面を
 
 <p>入力フィールド(UIInput)であれば値をコンポーネントに保存し、ボタン(UICommand)であればイベントをキューに追加する。<b>この段階ではモデルには値は反映されない。</b></p>
 
-<p>編集可能なUIコンポーネント(<a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/component/EditableValueHolder.html" rel="external nofollow">EditableValueHolderインターフェース</a>を実装したコンポーネント、例えばUIInputクラス)はこのフェーズで2種類の処理に分岐される。</p>
+<p>編集可能なUIコンポーネント(<a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/component/EditableValueHolder.html" rel="external nofollow" title="EditableValueHolderインターフェース">EditableValueHolderインターフェース</a>を実装したコンポーネント、例えばUIInputクラス)はこのフェーズで2種類の処理に分岐される。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>immediate属性が true の場合</h4>
 
 
-<p>バリデータを呼び出して入力検証を行う。成功した場合UIコンポーネントに値を保存して、ValueChangeEventをキューにつめる。通常この処理は[<a href="#入力値の検証" rel="external nofollow">入力値の検証</a>]フェーズで行われる。その後、ValueChangeEventのリスナーや、対応するアクションが呼ばれる。</p>
+<p>バリデータを呼び出して入力検証を行う。成功した場合UIコンポーネントに値を保存して、ValueChangeEventをキューにつめる。通常この処理は[<a href="#%E5%85%A5%E5%8A%9B%E5%80%A4%E3%81%AE%E6%A4%9C%E8%A8%BC" rel="external nofollow">入力値の検証</a>]フェーズで行われる。その後、ValueChangeEventのリスナーや、対応するアクションが呼ばれる。</p>
 
-<p></section></p>
+<p></p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>immediate属性が false の場合(属性がない場合)</h4>
 
 
-<p>UIコンポーネントに値を保存して、次のフェーズ[<a href="#入力値の検証" rel="external nofollow">入力値の検証</a>]に移行する。</p>
+<p>UIコンポーネントに値を保存して、次のフェーズ[<a href="#%E5%85%A5%E5%8A%9B%E5%80%A4%E3%81%AE%E6%A4%9C%E8%A8%BC" rel="external nofollow">入力値の検証</a>]に移行する。</p>
 
-<p></section></p>
+<p></p>
 
 <pre>
-イベントキューにイベントが追加された場合、次のProcess Eventsが処理される。(<a href="http://www.atmarkit.co.jp/fjava/special/jsf01/jsf01.html#ap03" rel="external nofollow">レスポンスのレンダリング</a>]フェーズに移行する(Render Response)。
+イベントキューにイベントが追加された場合、次のProcess Eventsが処理される。(<a href="http://www.atmarkit.co.jp/fjava/special/jsf01/jsf01.html#ap03" rel="external nofollow" title="レスポンスのレンダリング">レスポンスのレンダリング</a>]フェーズに移行する(Render Response)。
 </pre>
 
 
-<p>つまり、この後のフェーズが実行されない。これは、例えば「キャンセル」ボタンや「戻る」ボタンを実装したい場合に使う。[<a href="#入力値の検証" rel="external nofollow">入力値の検証</a>]が行われては困る場合には immediate属性をコントロールするべし。</div></p>
+<p>つまり、この後のフェーズが実行されない。これは、例えば「キャンセル」ボタンや「戻る」ボタンを実装したい場合に使う。[<a href="#%E5%85%A5%E5%8A%9B%E5%80%A4%E3%81%AE%E6%A4%9C%E8%A8%BC" rel="external nofollow">入力値の検証</a>]が行われては困る場合には immediate属性をコントロールするべし。</p>
 
 <h3 id="入力値の検証">入力値の検証(Process Validations)</h3>
 
 
-<p>[<a href="#リクエスト値の適用" rel="external nofollow">リクエスト値の適用</a>]フェーズでUIコンポーネントに適用された値を、バリデータによって検証する。ここでは、画面に表示されるUIコンポーネントのみがチェックされる(rendered属性がtrueのもの)。</p>
+<p>[<a href="#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E5%80%A4%E3%81%AE%E9%81%A9%E7%94%A8" rel="external nofollow">リクエスト値の適用</a>]フェーズでUIコンポーネントに適用された値を、バリデータによって検証する。ここでは、画面に表示されるUIコンポーネントのみがチェックされる(rendered属性がtrueのもの)。</p>
 
 <pre>
-1. UIコンポーネントに保持されている値を型変換する。型変換エラーが出た場合には <a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/convert/ConverterException.html" rel="external nofollow">ConverterException</a>例外をスローする。
-2. 型変換された値に対してバリデータを使って検証する。検証エラーが出た場合には <a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/validator/ValidatorException.html" rel="external nofollow">ValidatorException</a>例外をスローする。
+1. UIコンポーネントに保持されている値を型変換する。型変換エラーが出た場合には <a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/convert/ConverterException.html" rel="external nofollow" title="ConverterException">ConverterException</a>例外をスローする。
+2. 型変換された値に対してバリデータを使って検証する。検証エラーが出た場合には <a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/validator/ValidatorException.html" rel="external nofollow" title="ValidatorException">ValidatorException</a>例外をスローする。
 3. 例外が発生した場合には、FacesContextにエラーメッセージを追加して、Render Response処理に移行する。
 </pre>
 
 
 <p>このフェーズでバリデーションエラーが出た場合には、モデルの値は更新されずに下の画面に戻る。</p>
 
-<p>通常であれば、[<a href="#Viewの復元" rel="external nofollow">アプリケーションロジックの呼び出し</a>]フェーズで次の画面のコンポーネントルート(UIViewRoot)が設定されて次の画面に遷移する。</p>
+<p>通常であれば、[<a href="#View%E3%81%AE%E5%BE%A9%E5%85%83" rel="external nofollow">アプリケーションロジックの呼び出し</a>]フェーズで次の画面のコンポーネントルート(UIViewRoot)が設定されて次の画面に遷移する。</p>
 
 <p>しかし、途中でエラーがでて、次の画面のコンポーネントルート(UIViewRoot)が設定されない場合には、元の画面のコンポーネントルート(UIViewRoot)が残っているために、元の画面に戻ってしまうのである。</p>
 
 <h3 id="モデルの更新">モデルの更新(Update Model Values)</h3>
 
 
-<p>UIコンポーネントに設定された値を、対応するモデル(JavaBean)にセットする。UIコンポーネントの型からモデルの型に変換できずにエラー(<a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/convert/ConverterException.html" rel="external nofollow">ConvertException</a>)が発生した場合には、Response Renderが呼ばれてレスポンス処理に入る。</p>
+<p>UIコンポーネントに設定された値を、対応するモデル(JavaBean)にセットする。UIコンポーネントの型からモデルの型に変換できずにエラー(<a href="http://java.sun.com/j2ee/javaserverfaces/1.1/docs/api/javax/faces/convert/ConverterException.html" rel="external nofollow" title="ConvertException">ConvertException</a>)が発生した場合には、Response Renderが呼ばれてレスポンス処理に入る。</p>
 
 <h3 id="アプリケーションロジックの呼び出し">アプリケーションロジックの呼び出し(Invoke Application)</h3>
 
@@ -309,30 +303,25 @@ JSFフレームワークは、UIコンポーネントという単位で画面を
 <h2>参考</h2>
 
 
-<p> <a href="http://dream.mods.jp/first_jsf/part5.html" rel="external nofollow">JSFのタグ一覧</a></p>
+<p> <a href="http://dream.mods.jp/first_jsf/part5.html" rel="external nofollow" title="JSFのタグ一覧">JSFのタグ一覧</a></p>
 
-<p> <a href="http://www.atmarkit.co.jp/fjava/special/jsf01/jsf01.html" rel="external nofollow">@IT：特別企画  JavaServer Facesを理解する(前編)</a></p>
+<p> <a href="http://www.atmarkit.co.jp/fjava/special/jsf01/jsf01.html" rel="external nofollow" title="@IT：特別企画  JavaServer Facesを理解する(前編)">@IT：特別企画  JavaServer Facesを理解する(前編)</a></p>
 
 <ul>
 <li>オライリーから発売中のJSFに関する書籍です。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>リファレンス的な使い方も出来る結構情報量の多い本です。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798008303/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
-
-
-
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798008303/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -498,6 +487,10 @@ JSFフレームワークは、UIコンポーネントという単位で画面を
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -521,10 +514,6 @@ JSFフレームワークは、UIコンポーネントという単位で画面を
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -532,7 +521,7 @@ JSFフレームワークは、UIコンポーネントという単位で画面を
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

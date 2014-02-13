@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="本書は、プログラムにおけるインターフェース設計へアドバイスを与えるものです。GUIやデザインの話ではありません。高凝集度で疎結合な設計を行うためにインタフェース設計をどのように進めたらよいか、どのように考えてインターフェースを作れば良いかなどを説明しています。 システム開発というのは複雑な作業です &hellip;">
+  <meta name="description" content="本書は、プログラムにおけるインターフェース設計へアドバイスを与えるものです。GUIやデザインの話ではありません。高凝集度で疎結合な設計を行うためにインタフェース設計をどのように進めたらよいか、どのように考えてインターフェースを作れば良いかなどを説明しています。 &hellip;">
   <meta name="keywords" content="インターフェース,interface,アジャイル,オブジェクト指向,凝集度,978-4-87311-366-1">
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/2008/07/05/4873113660/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="本書は、プログラムにおけるインターフェース設計へアドバイスを与えるものです。GUIやデザインの話ではありません。高凝集度で疎結合な設計を行うためにインタフェース設計をどのように進めたらよいか、どのように考えてインターフェースを作れば良いかなどを説明しています。 システム開発というのは複雑な作業です &hellip;" />
+<meta property="og:description" content="本書は、プログラムにおけるインターフェース設計へアドバイスを与えるものです。GUIやデザインの話ではありません。高凝集度で疎結合な設計を行うためにインタフェース設計をどのように進めたらよいか、どのように考えてインターフェースを作れば良いかなどを説明しています。 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -179,11 +179,12 @@
 
 
 
-<div class="entry-content"><p>本書は、プログラムにおけるインターフェース設計へアドバイスを与えるものです。GUIやデザインの話ではありません。高凝集度で疎結合な設計を行うためにインタフェース設計をどのように進めたらよいか、どのように考えてインターフェースを作れば良いかなどを説明しています。</p>
+<div class="entry-content"><html><body>
+<p>本書は、プログラムにおけるインターフェース設計へアドバイスを与えるものです。GUIやデザインの話ではありません。高凝集度で疎結合な設計を行うためにインタフェース設計をどのように進めたらよいか、どのように考えてインターフェースを作れば良いかなどを説明しています。</p>
 
-<p>システム開発というのは複雑な作業です。その複雑さを少しでも解消するために<strong>分割して統治せよ（Divide and Conquer）</strong>という理論を用いることが良いことだとされています。このときに大切になってくるのが「<strong>凝集度</strong>」と「<strong>結合度</strong>」になります。</p>
+<p>システム開発というのは複雑な作業です。その複雑さを少しでも解消するために<strong class="text-danger">分割して統治せよ（Divide and Conquer）</strong>という理論を用いることが良いことだとされています。このときに大切になってくるのが「<strong class="text-danger">凝集度</strong>」と「<strong class="text-danger">結合度</strong>」になります。</p>
 
-<p>凝集度は高いほど良い、つまり責任範囲が明確でが軸ぶれないほどよいです。結合度は低いほど、つまりそっちはそっちで勝手にやっててねとできるほどよいです。高凝集で低結合（英語で言うと「High Cohesion and Low Coupling!」）なプログラム部品にするために必要なのが「<strong>良いインターフェース</strong>」なのです。本書は、この良いインターフェースとは何か？どうやって良いインターフェースを設計するか？を解説するものです。</p>
+<p>凝集度は高いほど良い、つまり責任範囲が明確でが軸ぶれないほどよいです。結合度は低いほど、つまりそっちはそっちで勝手にやっててねとできるほどよいです。高凝集で低結合（英語で言うと「High Cohesion and Low Coupling!」）なプログラム部品にするために必要なのが「<strong class="text-danger">良いインターフェース</strong>」なのです。本書は、この良いインターフェースとは何か？どうやって良いインターフェースを設計するか？を解説するものです。</p>
 
 <p>本書の対象読者は、プログラム経験があり設計に興味がある人、DI（Dependency Injection）って流行ってたけど未だに何が良いのかわからない人、テスト容易性が大事って聞くけどどうやって設計したらいいかわからない人です。</p>
 
@@ -219,8 +220,6 @@
 <li>インターフェイス実装は他に危害を加えてはならない</li>
 <li>インターフェイス実装は、責務を果たせない場合にそれを呼び出し元に伝えねばならない</li>
 </ol>
-
-
 <p>つまり、「名前どおりの処理をし」、「後始末は自分でする、自分がエラーでも他に迷惑をかけない」、「自分で処理できないときは、呼び出し元に誤りをいれる」ということ。</p>
 
 <h3>契約（Contract）、契約による設計（Design By Contract）</h3>
@@ -228,11 +227,11 @@
 
 <p>インターフェイスの呼び出し元とインターフェイスとの間で交わされる約束のこと。事前条件、事後条件、不変表明の3つからなる。</p>
 
-<p><strong>事前条件</strong>はインターフェイスの呼び出し元が守らなければならない条件で、事前条件を満たない状態でインターフェイスを呼び出すと正しく動作しない。</p>
+<p><strong class="text-danger">事前条件</strong>はインターフェイスの呼び出し元が守らなければならない条件で、事前条件を満たない状態でインターフェイスを呼び出すと正しく動作しない。</p>
 
-<p><strong>事後条件</strong>はインターフェイスが守らなければならない条件で、事前条件を満たした状態で呼び出しが行われた場合に満たさなければならないもの。事後条件を満たせない場合は Java であれば例外をスローしたりする（原則3）</p>
+<p><strong class="text-danger">事後条件</strong>はインターフェイスが守らなければならない条件で、事前条件を満たした状態で呼び出しが行われた場合に満たさなければならないもの。事後条件を満たせない場合は Java であれば例外をスローしたりする（原則3）</p>
 
-<p><strong>不変表明</strong>はインターフェイスのインスタンスが満たさなければいけない内部状態を表すもの。</p>
+<p><strong class="text-danger">不変表明</strong>はインターフェイスのインスタンスが満たさなければいけない内部状態を表すもの。</p>
 
 <h3>データインターフェイスとサービスインターフェイス</h3>
 
@@ -244,20 +243,20 @@
 <h3>エンティティ、バウンダリ、コントロール</h3>
 
 
-<p><strong>エンティティ</strong>は、データインターフェイスに相当する。</p>
+<p><strong class="text-danger">エンティティ</strong>は、データインターフェイスに相当する。</p>
 
-<p><strong>バウンダリ</strong>は、サービスインターフェイスに相当する。主に GUI やユーザインターフェイスとして動作する種類のサービスインターフェイス。</p>
+<p><strong class="text-danger">バウンダリ</strong>は、サービスインターフェイスに相当する。主に GUI やユーザインターフェイスとして動作する種類のサービスインターフェイス。</p>
 
-<p><strong>コントロール</strong>も、サービスインターフェイスに相当する。主にビジネスロジックやビジネスルール、サービスを処理する種類のサービスインターフェイス。</p>
+<p><strong class="text-danger">コントロール</strong>も、サービスインターフェイスに相当する。主にビジネスロジックやビジネスルール、サービスを処理する種類のサービスインターフェイス。</p>
 
 <h3>ステートフルインターフェイスとステートレスインターフェイス</h3>
 
 
 <p>インターフェイスも状態を持つことができる。</p>
 
-<p><strong>ステートフルインターフェイス</strong>は、メソッドの呼び出しに順序があり、呼び出し順で状態が変わるもの。</p>
+<p><strong class="text-danger">ステートフルインターフェイス</strong>は、メソッドの呼び出しに順序があり、呼び出し順で状態が変わるもの。</p>
 
-<p><strong>ステートレスインターフェイス</strong>は、メソッドの呼び出しに順序がなく振る舞いが変わらないもの。</p>
+<p><strong class="text-danger">ステートレスインターフェイス</strong>は、メソッドの呼び出しに順序がなく振る舞いが変わらないもの。</p>
 
 <h3>凝集度</h3>
 
@@ -283,9 +282,9 @@
 
 <p>リモートインターフェイスとしてのインターフェイスを考える際の種類。</p>
 
-<p><strong>手続き型インターフェイス</strong>は、メソッドの処理を定義するタイプのインターフェイス。CORBA や RMI なんかがそれ。</p>
+<p><strong class="text-danger">手続き型インターフェイス</strong>は、メソッドの処理を定義するタイプのインターフェイス。CORBA や RMI なんかがそれ。</p>
 
-<p><strong>ドキュメント型インターフェイス</strong>は、データメッセージをやり取りするタイプのインターフェイス。JSON や XML なんかがこれに当たる。</p>
+<p><strong class="text-danger">ドキュメント型インターフェイス</strong>は、データメッセージをやり取りするタイプのインターフェイス。JSON や XML なんかがこれに当たる。</p>
 
 <h2>感想</h2>
 
@@ -304,35 +303,28 @@
 
 <p>これは私の持論（？）ですが、インターフェイスの定義というものは、使う側が指定するべきだと思っています。哲学とか入ってきてしまいますが、「自分が今ここにいるのは、他人がそう認識しているから」というイメージです。</p>
 
-<p>「<a href="http://blog.goo.ne.jp/glass-_-onion/e/91d51585d966f1a005f957eacacc01de" rel="external nofollow">依存関係逆転の法則</a>」的な考え方ともいえると思います。</p>
+<p>「<a href="http://blog.goo.ne.jp/glass-_-onion/e/91d51585d966f1a005f957eacacc01de" rel="external nofollow" title="依存関係逆転の法則">依存関係逆転の法則</a>」的な考え方ともいえると思います。</p>
 
 <dl>
 <dt class="tips">Tips</dt>
-<dd>「<strong>インターフェイスが変わるときは、ユーザの要求が変わったときである。</strong>」</dd> 
+<dd>「<strong class="text-danger">インターフェイスが変わるときは、ユーザの要求が変わったときである。</strong>」</dd> 
 </dl>
-
-
-
-
 <h2>参考</h2>
 
 
 
 
 <div class="rakuten">
-<table  width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797347783/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table>
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797347783/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table>
 </div>
 
 
 
 
 <div class="rakuten">
-<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712741/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table>
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712741/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table>
 </div>
-
-
-
-</div>
+</body></html></div>
 
 
   
@@ -510,6 +502,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -533,10 +529,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -544,7 +536,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="アメリカではほとんどデフェクトスタンダードとなっている「」の覚書きです。Spring は簡単に言うと、IoC (制御の反転)、またの名を DI (依存性注入) という仕組みを取り入れた軽量コンテナです。 Springは MVCフレームワークを提供しています。Springのフレームワークは、 &hellip;">
+  <meta name="description" content="アメリカではほとんどデフェクトスタンダードとなっている「」の覚書きです。Spring は簡単に言うと、IoC (制御の反転)、またの名を DI (依存性注入) という仕組みを取り入れた軽量コンテナです。 AOP(アスペクト指向プログラミング) はクラスの直接的な責務ではない、 &hellip;">
   
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/19/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="アメリカではほとんどデフェクトスタンダードとなっている「」の覚書きです。Spring は簡単に言うと、IoC (制御の反転)、またの名を DI (依存性注入) という仕組みを取り入れた軽量コンテナです。 Springは MVCフレームワークを提供しています。Springのフレームワークは、 &hellip;" />
+<meta property="og:description" content="アメリカではほとんどデフェクトスタンダードとなっている「」の覚書きです。Spring は簡単に言うと、IoC (制御の反転)、またの名を DI (依存性注入) という仕組みを取り入れた軽量コンテナです。 AOP(アスペクト指向プログラミング) はクラスの直接的な責務ではない、 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -94,16 +94,12 @@
 </div>
 </nav>
   <div role="main" class="container">
-    <div class="row">
+    <html><body><div class="row">
   <div class="col-sm-12 col-md-9">
     
     
     
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/11/06/spring-framework-mvc/">Spring Framework 覚書き - MVCフレームワーク</a></h1>
+    <article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/11/09/spring-framework-jue-shu-ki-aop/">Spring Framework 覚書き - AOP</a></h1>
     
     
       <p class="meta">
@@ -120,8 +116,75 @@
 
 
 
-<time datetime="2004-11-06T14:00:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 6<span>th</span>, 2004</time>
+<time datetime="2004-11-09T10:14:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 9<span>th</span>, 2004</time><span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/spring/">Spring</a>
+    
+  
+</span>
+
+        
         <span class="divider"></span>
+        <a href="/blog/2004/11/09/spring-framework-jue-shu-ki-aop/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header><div class="entry-content">
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow" title=""></a>
+</p>
+
+
+<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow" title=""></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
+
+<p><abbr title="Aspect Oriented Programming">AOP</abbr>(アスペクト指向プログラミング) はクラスの直接的な責務ではない、各モジュールから共通で使われる処理を、独立して切り出す手法です。「クラスの直接的な責務でない」とは、例えば「ログ」や「トランザクション」、「認証」などです。多くのクラスに重複コードが生まれてしまうような処理は、<b>アスペクト(横断的関心事)</b> として別のモジュールにしてしまうという手法をとることが出来ます。Spring AOP は、このアスペクトを扱うものです。
+参考：<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797326387/sorehabooks-22" rel="external nofollow" title="『AspectJによるアスペクト指向プログラミング入門』 ソフトバンクパブリッシング">『AspectJによるアスペクト指向プログラミング入門』 ソフトバンクパブリッシング</a>
+　
+Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow" title="Springフレームワークの紹介">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
+
+<p><section></section></p>
+
+<h4>参考</h4>
+
+
+<p><a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow" title="Spring Pad - Wiki">Spring Pad - Wiki</a></p>
+
+<p><a href="http://direct.idg.co.jp/detail_1.msp?id=1066&amp;class=10005&amp;n=2" rel="external nofollow" title="JavaWorld 7月号 2004年">JavaWorld 7月号 2004年</a></p>
+
+<p></p>
+
+</div>
+  
+  
+    <footer><a rel="full-article" href="/blog/2004/11/09/spring-framework-jue-shu-ki-aop/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/11/06/spring-framework-mvc/">Spring Framework 覚書き - MVCフレームワーク</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-11-06T14:00:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 6<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -144,50 +207,36 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow"></a>
+  </header><div class="entry-content">
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow" title=""></a>
 </p>
 
 
-<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow"></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
+<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow" title=""></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
 
 <p>Springは MVCフレームワークを提供しています。Springのフレームワークは、すべてインターフェースベースになっているので、単一継承の JAVA にとっては非常にありがたいものです。Spring MVC の View には、JSP の他、Velocity、XSLT、JSFなどといったさまざまな技術が使えます。</p>
 
 <p>Validation 機能は、Web システムにとって非常に重要なものとなっています。Springでは、 Validation は Web パッケージと切り離されているので、単体テストも簡単に出来るようになっています。</p>
 
-<p>Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
+<p>Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow" title="Springフレームワークの紹介">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
-<p><a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow">Spring Pad - Wiki</a></p>
+<p><a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow" title="Spring Pad - Wiki">Spring Pad - Wiki</a></p>
 
-<p><a href="http://direct.idg.co.jp/detail_1.msp?id=1066&class=10005&n=2" rel="external nofollow">JavaWorld 7月号 2004年</a></p>
+<p><a href="http://direct.idg.co.jp/detail_1.msp?id=1066&amp;class=10005&amp;n=2" rel="external nofollow" title="JavaWorld 7月号 2004年">JavaWorld 7月号 2004年</a></p>
 
-<p></section></p>
+<p></p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/11/06/spring-framework-mvc/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/11/04/spring-framework/">Spring Framework 覚書き - トランザクション管理</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/11/06/spring-framework-mvc/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/11/04/spring-framework/">Spring Framework 覚書き - トランザクション管理</a></h1>
     
     
       <p class="meta">
@@ -204,8 +253,7 @@
 
 
 
-<time datetime="2004-11-04T13:38:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 4<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-11-04T13:38:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 4<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -228,48 +276,34 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow"></a>
+  </header><div class="entry-content">
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow" title=""></a>
 </p>
 
 
-<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow"></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control" >IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
+<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow" title=""></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
 
 <p>Springはとても抽象化した方法で、トランザクション管理を行います。抽象化というのは実装に依存していないという意味です。アプリケーションサーバが持つトランザクション機能や、 JDBCのようなリソースを使った DataSource に関しても、共通の方法でトランザクション管理を提供しています。</p>
 
-<p>Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
+<p>Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow" title="Springフレームワークの紹介">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
-<p><a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow">Spring Pad - Wiki</a></p>
+<p><a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow" title="Spring Pad - Wiki">Spring Pad - Wiki</a></p>
 
-<p><a href="http://direct.idg.co.jp/detail_1.msp?id=1066&class=10005&n=2" rel="external nofollow">JavaWorld 7月号 2004年</a></p>
+<p><a href="http://direct.idg.co.jp/detail_1.msp?id=1066&amp;class=10005&amp;n=2" rel="external nofollow" title="JavaWorld 7月号 2004年">JavaWorld 7月号 2004年</a></p>
 
-<p></section></p>
+<p></p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/11/04/spring-framework/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/">Spring Framework 覚書き - JDBC抽象化</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/11/04/spring-framework/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/">Spring Framework 覚書き - JDBC抽象化</a></h1>
     
     
       <p class="meta">
@@ -286,8 +320,7 @@
 
 
 
-<time datetime="2004-11-04T13:35:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 4<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-11-04T13:35:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 4<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -310,48 +343,34 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow"></a>
+  </header><div class="entry-content">
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow" title=""></a>
 </p>
 
 
-<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow"></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
+<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow" title=""></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
 
 <p>Springは JDBCを抽象化した層を持っています。JDBCを使ったプログラミングで、共通化できる部分や、煩雑な部分をすっきりとした統一的な方法でアクセスできる手段を提供してくれます。</p>
 
-<p>Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
+<p>Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow" title="Springフレームワークの紹介">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
-<p><a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow">Spring Pad - Wiki</a></p>
+<p><a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow" title="Spring Pad - Wiki">Spring Pad - Wiki</a></p>
 
-<p><a href="http://direct.idg.co.jp/detail_1.msp?id=1066&class=10005&n=2" rel="external nofollow">JavaWorld 7月号 2004年</a></p>
+<p><a href="http://direct.idg.co.jp/detail_1.msp?id=1066&amp;class=10005&amp;n=2" rel="external nofollow" title="JavaWorld 7月号 2004年">JavaWorld 7月号 2004年</a></p>
 
-<p></section></p>
+<p></p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/">Spring Framework 覚書き - IoC</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/">Spring Framework 覚書き - IoC</a></h1>
     
     
       <p class="meta">
@@ -368,8 +387,7 @@
 
 
 
-<time datetime="2004-11-04T01:14:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 4<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-11-04T01:14:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 4<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -392,48 +410,34 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow"></a>
+  </header><div class="entry-content">
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow" title=""></a>
 </p>
 
 
-<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow"></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
+<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow" title=""></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
 
 <p>Springが他のIoCコンテナと差別化を計っている点として、「<b>ビジネスオブジェクトを管理する方法にフォーカスを当てている</b>」という点があります。また、「レイヤー化されたアーキテクチャであるため、局所的にSpringアーキテクチャを利用できる」、「テストドリブンプロジェクトに理想的なフレームワークになるように設計されている」という利点があります。</p>
 
-<p>Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
+<p>Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow" title="Springフレームワークの紹介">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
-<p><a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow">Spring Pad - Wiki</a></p>
+<p><a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow" title="Spring Pad - Wiki">Spring Pad - Wiki</a></p>
 
-<p><a href="http://direct.idg.co.jp/detail_1.msp?id=1066&class=10005&n=2" rel="external nofollow">JavaWorld 7月号 2004年</a></p>
+<p><a href="http://direct.idg.co.jp/detail_1.msp?id=1066&amp;class=10005&amp;n=2" rel="external nofollow" title="JavaWorld 7月号 2004年">JavaWorld 7月号 2004年</a></p>
 
-<p></section></p>
+<p></p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/30/4816334114/">はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/10/30/4816334114/">はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!</a></h1>
     
     
       <p class="meta">
@@ -450,8 +454,7 @@
 
 
 
-<time datetime="2004-10-30T12:17:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 30<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-10-30T12:17:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 30<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -476,16 +479,23 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>「ユースケース図」から「パッケージ図」までの全10個のUML図を<a href="http://www.umtp-japan.org/examination/index.html" rel="external nofollow">モデリング技能認定試験</a>のL1,L2試験に合格できる程度で紹介されています。UMLは、世界標準のモデリング表記法です。モデリングの共通言語として使われています。</p>
+  </header><div class="entry-content">
+<p>「ユースケース図」から「パッケージ図」までの全10個のUML図を<a href="http://www.umtp-japan.org/examination/index.html" rel="external nofollow" title="モデリング技能認定試験">モデリング技能認定試験</a>のL1,L2試験に合格できる程度で紹介されています。UMLは、世界標準のモデリング表記法です。モデリングの共通言語として使われています。</p>
 
 <p>本書では、下記の10個のUML図について説明しています。</p>
 
-<ol><li>ユースケース図</li><li>クラス図</li><li>シーケンス図</li><li>コラボレーション図</li><li>ステートチャート図</li><li>コンポーネント図</li><li>配置図</li><li>オブジェクト図</li><li>アクティビティ図</li><li>パッケージ図</li></ol>
-
-
+<ol>
+<li>ユースケース図</li>
+<li>クラス図</li>
+<li>シーケンス図</li>
+<li>コラボレーション図</li>
+<li>ステートチャート図</li>
+<li>コンポーネント図</li>
+<li>配置図</li>
+<li>オブジェクト図</li>
+<li>アクティビティ図</li>
+<li>パッケージ図</li>
+</ol>
 <p>UML図以外にも簡単なオブジェクト指向の基本概念やモデリングの必要性などにも触れられています。モデリング技能認定試験の勉強本としての活用が考慮されているのか、Keyword や Step Up といった本文中に出てきた用語の解説も豊富に載っています。</p>
 
 <p>本書で扱われているUMLのバージョンは1.xです。今後は、UMLの2.0が使われ始めると思います。UML2.0では、1.xよりもさらに表現力豊かになった図が使えたり、現在のUML図のいくつかが変更されていたりします。ですが、UML2.0対応の本で始めるよりも、本書のような<b>全体図を見渡せる</b>入門書で基礎から作っていくのが、UMLの理解のコツかと思います。</p>
@@ -493,20 +503,8 @@
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/10/30/4816334114/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/29/refactoring-to-patterns/">Refactoring to Patterns メモ</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/10/30/4816334114/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/10/29/refactoring-to-patterns/">Refactoring to Patterns メモ</a></h1>
     
     
       <p class="meta">
@@ -523,8 +521,7 @@
 
 
 
-<time datetime="2004-10-29T11:15:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 29<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-10-29T11:15:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 29<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -549,15 +546,13 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321213351/sorehabooks-22" rel="external nofollow"></a>
+  </header><div class="entry-content">
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321213351/sorehabooks-22" rel="external nofollow" title=""></a>
 </p>
 
 
-<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321213351/sorehabooks-22" rel="external nofollow">『リファクタリング―プログラムの体質改善テクニック』</a>の続編になっています。</p>
+<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321213351/sorehabooks-22" rel="external nofollow" title="『リファクタリング―プログラムの体質改善テクニック』">『リファクタリング―プログラムの体質改善テクニック』</a>の続編になっています。</p>
 
 <p>例のごとく、自分で読み直したときにどんな場合にどのリファクタリングが使えるかのメモにしようと思ってます。2005年中くらいには、本書の和訳が出版される予定です。</p>
 
@@ -565,25 +560,13 @@
 
 <p>本家サイトはこちらになります。カタログ一覧あります。</p>
 
-<p><a href="http://www.industriallogic.com/xp/refactoring/" rel="external nofollow">Refactoring To Patterns</a></p>
+<p><a href="http://www.industriallogic.com/xp/refactoring/" rel="external nofollow" title="Refactoring To Patterns">Refactoring To Patterns</a></p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/10/29/refactoring-to-patterns/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/28/daoor/">DAOとO/Rマッピングとビジネスロジックと</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/10/29/refactoring-to-patterns/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/10/28/daoor/">DAOとO/Rマッピングとビジネスロジックと</a></h1>
     
     
       <p class="meta">
@@ -600,8 +583,7 @@
 
 
 
-<time datetime="2004-10-28T15:44:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 28<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-10-28T15:44:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 28<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -626,17 +608,15 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4764902834/sorehabooks-22" rel="external nofollow"></a>
+  </header><div class="entry-content">
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4764902834/sorehabooks-22" rel="external nofollow" title=""></a>
 </p>
 
 
-<p>最近、<a href="#ドメインモデリング" rel="external nofollow">ビジネスロジック</a>がふんだんに盛り込まれた業務システムというのはあまりありません。</p>
+<p>最近、<a href="#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0" rel="external nofollow">ビジネスロジック</a>がふんだんに盛り込まれた業務システムというのはあまりありません。</p>
 
-<p>「<strong>データの出し入れ</strong>」が基本ということは、データの格納庫が必要になってくるわけで、それがデータベースになります。最近ではオブジェクト指向データベースも使われ始めましたが、まだまだリレーショナルデータベースの方がよく使われています。</p>
+<p>「<strong class="text-danger">データの出し入れ</strong>」が基本ということは、データの格納庫が必要になってくるわけで、それがデータベースになります。最近ではオブジェクト指向データベースも使われ始めましたが、まだまだリレーショナルデータベースの方がよく使われています。</p>
 
 <p>オブジェクト指向で開発していると、ほとんど必ず問題となるのが、<b>リレーショナルデータベースとオブジェクト指向のインピーダンスミスマッチ</b>です。データベースは「データ」を扱い、オブジェクト指向は「振る舞い」を扱います。つまり、「振る舞い」をいかにして「データ」に落とすかというのが、問題となるわけです。</p>
 
@@ -652,27 +632,11 @@
 <p>ワークフローやUMLのアクティビティー図で分岐処理を行うこと。</p>
 </dd>
 </dl>
-
-
-
-
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/10/28/daoor/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/24/djunit-virtual-mock-objects/">djUnitで Virtual Mock Objects ユニットテスト</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/10/28/daoor/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/10/24/djunit-virtual-mock-objects/">djUnitで Virtual Mock Objects ユニットテスト</a></h1>
     
     
       <p class="meta">
@@ -689,8 +653,7 @@
 
 
 
-<time datetime="2004-10-24T18:38:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 24<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-10-24T18:38:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 24<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -715,48 +678,34 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798101281/sorehabooks-22" rel="external nofollow"></a>
+  </header><div class="entry-content">
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798101281/sorehabooks-22" rel="external nofollow" title=""></a>
 </p>
 
 
 <p>「JUnitでユニットテストをするときに、クラス間の関係が問題でテストできない。」なんて事ありませんか？ <abbr title="Test Driven Developement">TDD</abbr>(テスト駆動開発)で行っている場合は、クラスの関係をそのつど考えながら進めていくので、こういった問題はあまり起きません。しかし、TDDはまだまだ敷居が高いと思う開発者が多いように思います。</p>
 
-<p><a href="http://www.h6.dion.ne.jp/~junpei/tdd.html" rel="external nofollow">テスト駆動開発考察</a></p>
+<p><a href="http://www.h6.dion.ne.jp/~junpei/tdd.html" rel="external nofollow" title="テスト駆動開発考察">テスト駆動開発考察</a></p>
 
-<p>djUnit を使うと、<a href="http://www.xprogramming.com/xpmag/virtualMockObjects.htm" rel="external nofollow">JCoverage</a>』というツールを使ったカバレッジテストの結果をエディタ上で見ることが出来るようになります。</p>
+<p>djUnit を使うと、<a href="http://www.xprogramming.com/xpmag/virtualMockObjects.htm" rel="external nofollow" title="JCoverage">JCoverage</a>』というツールを使ったカバレッジテストの結果をエディタ上で見ることが出来るようになります。</p>
 
 <p>djUnitは JUnti の機能と Aspect の機能を併せ持ったユニットテストツールとなっています。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
-<p><a href="http://works.dgic.co.jp/djwiki/Viewpage.do?pid=@646A556E6974" rel="external nofollow">djUnit Wiki</a></p></p>
+<p><a href="http://works.dgic.co.jp/djwiki/Viewpage.do?pid=@646A556E6974" rel="external nofollow" title="djUnit Wiki">djUnit Wiki</a></p>
 
-<p></section></p>
+<p></p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/10/24/djunit-virtual-mock-objects/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/23/4891003383/">CODE コードから見たコンピュータのからくり</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/10/24/djunit-virtual-mock-objects/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/10/23/4891003383/">CODE コードから見たコンピュータのからくり</a></h1>
     
     
       <p class="meta">
@@ -773,8 +722,7 @@
 
 
 
-<time datetime="2004-10-23T23:09:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 23<span>rd</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-10-23T23:09:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 23<span>rd</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -799,127 +747,49 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>「コンピュータの仕組みを知りたいとは思わないかい？」一般にコンピュータを使っている人ならこの質問には「NO」と答えるだろう。電子工学を勉強している学生の中には、少なからず「YES」と答える人もいるかもしれない。本書はモールス信号からコンピュータの仕組みを理解するところまで持っていってしまうところがすごい。つまりコンピュータのことを知らなくても（モールス信号さえ知っていれば）誰でもコンピュータの仕組みまで理解できてしまうのである。ただし、順を追って読み進めていけばの話ではあるが・・・。</p>
+  </header><div class="entry-content">
+<p>「コンピュータの仕組みを知りたいとは思わないかい？」一般にコンピュータを使っている人ならこの質問には「NO」と答えるだろう。電子工学を勉強している学生の中には、少なからず「YES」と答える人もいるかもしれない。本書はモールス信号からコンピュータの仕組みを理解するところまで持っていってしまうところがすごい。つまりコンピュータのことを知らなくても（モールス信号さえ知っていれば）誰でもコンピュータの仕組みまで理解できてしまうのである。ただし、順を追って読み進めていけばの話ではあるが・・・。</p>
 
 <p>コンピュータの動作原理は「0」と「1」との組み合わせがすべてである。コンピュータを知っている人なら誰でもこう答えるだろう。しかし、最近のコンピュータは音楽を聴いたり、ゲームをしたり、写真を取り込んだりできるのにほんとうに「0」と「1」とでしか出来ていないのかと思う人もいると思う。</p>
 
-<p>500ページという本のなかに、著者のコンピュータを知ってもらいたいという熱い想いを感じ取って欲しいと思います。基本情報技術者試験の試験勉強でコンピュータの仕組みを勉強するよりも、はっきり言って本書で仕組みを理解したほうが深く身につきます。<strong>決して簡単には読み進められないかもしれません。</strong>しかし確実に感動を覚えることはできると思います。少し時間をとって頭の体操にどうぞ！</p>
+<p>500ページという本のなかに、著者のコンピュータを知ってもらいたいという熱い想いを感じ取って欲しいと思います。基本情報技術者試験の試験勉強でコンピュータの仕組みを勉強するよりも、はっきり言って本書で仕組みを理解したほうが深く身につきます。<strong class="text-danger">決して簡単には読み進められないかもしれません。</strong>しかし確実に感動を覚えることはできると思います。少し時間をとって頭の体操にどうぞ！</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/10/23/4891003383/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/18/4774116165/">SOAP/UDDI/WSDL Webサービス技術基礎と実践 徹底解説</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-10-18T09:59:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 18<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/websabisu/">Webサービス</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/10/18/4774116165/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>「ビジネスサービスを動的に発見・接続できるようにする」という、Webサービスの目的。そこで使われる技術というのは、実際にはそれほど新しいものではありません。Webサービスは、既存の技術(例えばXMLやSOAP)の組み合わせによる新しい発想と壮大な思想から生まれたある技術仕様です。</p>
-
-<p>本書は、「サービスの動的発見・接続」を可能にする『SOAP』、『WSDL』、『UDDI』という基本仕様についての解説書になっています。Webサービスは発展途上の技術であるため、さまざまな仕様が検討されています。トランザクションに関するものから、セキュリティに関するものまでいくつかあります、が本書では扱っていません。</p>
-
-<p>『SOAP』、『WSDL』、『UDDI』の基本仕様とXMLの概要説明、Webサービスを .Net と Java で構築するというのが本書のテーマです。手っ取り早くWebサービスを構築したいという人には本書は向かないかもしれません。本書のターゲットは、Webサービスの基本技術をしっかりと学びたいという人向けです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2004/10/18/4774116165/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    <ul class="pager">
-      
-      <li class="previous"><a href="/blog/page/20/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
+    <footer><a rel="full-article" href="/blog/2004/10/23/4891003383/">続きをよむ →</a>
+    </footer></article><ul class="pager">
+<li class="previous"><a href="/blog/page/20/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
       
       
       <li class="next"><a href="/blog/page/18/">Newer <i class="fa fa-arrow-circle-right"></i></a></li>
       
     </ul>
-  </div>
+</div>
   <div class="clearfix visible-sm"></div>
-  <aside class="sidebar-nav col-md-3">
-    
-    <section class="well">
-  <div class="row">
+  <aside class="sidebar-nav col-md-3"><section class="well"><div class="row">
     <div class="col-xs-4 col-sm-3 col-md-5">
-      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
-    </div>
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail">
+</div>
     <div class="col-xs-8 col-sm-9 col-md-7">
       <ul class="list-unstyled">
-        <li>濱田章吾</li>
+<li>濱田章吾</li>
         <li>hamasyou</li>
         <li><ul class="list-inline">
-          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
-          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
-          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
-          </ul>
-        </li>
+<li><a href="https://twitter.com/hamasyou" rel="external nofollow" title=""><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow" title=""><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow" title=""><i class="fa fa-github"></i></a></li>
+          <li><a href="mailto:hamasyou@gmail.com" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul></li>
       </ul>
-    </div>
+</div>
   </div>
-</section>
-<section class="well">
-  <ul id="recent_posts" class="nav nav-list">
-    <li class="nav-header">Recent Posts</li>
+</section><section class="well"><ul id="recent_posts" class="nav nav-list">
+<li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
@@ -945,25 +815,14 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
-  </ul>
-</section>
-<section class="panel panel-default">
-  <div class="panel-heading">
+  </ul></section><section class="panel panel-default"><div class="panel-heading">
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class="list-group-item" href="/blog/categories/architecture">Architecture <span class="badge">38</span></a><a class="list-group-item" href="/blog/categories/blog">Blog <span class="badge">96</span></a><a class="list-group-item" href="/blog/categories/database">Database <span class="badge">8</span></a><a class="list-group-item" href="/blog/categories/essay">Essay <span class="badge">13</span></a><a class="list-group-item" href="/blog/categories/lifehack">LifeHack <span class="badge">12</span></a><a class="list-group-item" href="/blog/categories/network">Network <span class="badge">7</span></a><a class="list-group-item" href="/blog/categories/programming">Programming <span class="badge">111</span></a><a class="list-group-item" href="/blog/categories/webdesign">WebDesign <span class="badge">4</span></a>
   </div>
-</section>
-
-    
-  </aside>
-</div>
-
+</section></aside>
+</div></body></html>
   </div>
   <footer role="contentinfo" class="page-footer"><hr>
 <p>

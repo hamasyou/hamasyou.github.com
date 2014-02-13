@@ -173,7 +173,8 @@
 
 
 
-<div class="entry-content"><p>「データベース技術実践入門」とタイトルにはありますが、この本は入門ではなく「おぼえがき」のようなものだと読んで感じました。データベースの<em>設計</em>を行う際の注意点や、こういう点は押さえておくべきということを広く確認できる構成になっていたからです。</p>
+<div class="entry-content"><html><body>
+<p>「データベース技術実践入門」とタイトルにはありますが、この本は入門ではなく「おぼえがき」のようなものだと読んで感じました。データベースの<em>設計</em>を行う際の注意点や、こういう点は押さえておくべきということを広く確認できる構成になっていたからです。</p>
 
 <p>例えば、インデックスの種類を挙げ、データ数が増えてきた際にどのようにインデックスが効いてくるか、逆に効かなくなってくるかをまとめてあったり、データベースが吐き出すログにはどのようなものがあり、障害時の復旧手順のなかでどのログがどのような役割をになっていたりするかをまとめてあったりします。</p>
 
@@ -217,16 +218,14 @@
 
 
 
-<ol><li>マスタで生成したバイナリログがスレーブで最後まで受信出来ていない</li>
-<li>スレーブでバイナリログの実行が最後まで行われていない</li></ol>
-
-
+<ol>
+<li>マスタで生成したバイナリログがスレーブで最後まで受信出来ていない</li>
+<li>スレーブでバイナリログの実行が最後まで行われていない</li>
+</ol>
 <ol>
 <li><p>の場合はマスタを復旧させ、最新のバイナリログをスレーブに更新しなければ、最新のバイナリログ分のデータロスになる。</p></li>
 <li><p>の場合は、スレーブがマスタの代わりに処理を継続する（マスター昇格）することで障害対応が可能だが、<em>バイナリログを最後まで実行し終わったことを確認</em>してから処理しなければ、データ不整合が発生することになる。</p></li>
 </ol>
-
-
 <h3>片方向/準同期レプリケーション</h3>
 
 
@@ -267,39 +266,35 @@
 
 <p>CPU 使用率で監視すべき点が3つある。</p>
 
-<ul><li>ディスクI/O（%iowait）</li>
+<ul>
+<li>ディスクI/O（%iowait）</li>
 <li>システム空間での使用率（%system）</li>
-<li>ユーザ空間での使用率（%user）</li></ul>
-
-
-
-
-<dl><dt>ディスクI/O（%iowait）</dt>
+<li>ユーザ空間での使用率（%user）</li>
+</ul>
+<dl>
+<dt>ディスクI/O（%iowait）</dt>
 <dd><p><em>ディスクI/Oがボトルネック</em>になっている場合、この値が跳ね上がる。</p></dd>
 <dt>システム空間での使用率（%system）</dt>
 <dd><p>OS 内の処理で使用されている CPU 率。<em>スワップが発生したり、ネットワーク周りでトラブルがおきている場合</em>この値が跳ね上がることがある。</p></dd>
 <dt>ユーザ空間での使用率（%user）</dt>
-<dd><p>CPU を使うような処理が多いことを表す。DB サーバではあまり大きな値になることはないが、大きくなった場合はテーブルスキャンを連発しているなどの問題があることが多い。</p></dd></dl>
-
-
-
-
+<dd><p>CPU を使うような処理が多いことを表す。DB サーバではあまり大きな値になることはないが、大きくなった場合はテーブルスキャンを連発しているなどの問題があることが多い。</p></dd>
+</dl>
 <h3>リストアとリカバリ</h3>
 
 
-<p><strong>リストア（バックアップの結果を戻す）</strong>だけでは、障害直前の状態に復旧することはできない。バックアップ以降にも処理が行われており、その更新結果は<strong>バイナリログ</strong>に記録されている。</p>
+<p><strong class="text-danger">リストア（バックアップの結果を戻す）</strong>だけでは、障害直前の状態に復旧することはできない。バックアップ以降にも処理が行われており、その更新結果は<strong class="text-danger">バイナリログ</strong>に記録されている。</p>
 
 <p>リストアしたあとに、バイナリログの中身を順番に当てていくことで、障害直前の状態に戻すことができる。</p>
 
 <h3>NoSQL</h3>
 
 
-<p>「SQL文のような複雑な言語を使わずにプログラミング言語のライブラリ関数を使って直接データアクセスするほうが高速になるのではないか？」このような背景から生まれたのが <strong>NoSQL</strong>。</p>
+<p>「SQL文のような複雑な言語を使わずにプログラミング言語のライブラリ関数を使って直接データアクセスするほうが高速になるのではないか？」このような背景から生まれたのが <strong class="text-danger">NoSQL</strong>。</p>
 
 <p>NoSQL では、テーブル/ファイルを開っぱなしにして処理性能を高めるようにしている。</p>
 
 <p>一般的な NoSQL では、<em>トランザクションをサポートしていない</em>。また、<em>スキーマレス</em>なため主に XML や JSON を格納して扱う。<em>インデックスは主キー</em>以外使えないと思ったほうがよい。</p>
-</div>
+</body></html></div>
 
 
   
@@ -469,6 +464,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -492,10 +491,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -503,7 +498,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

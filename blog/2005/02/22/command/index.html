@@ -150,12 +150,13 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 
 
-<div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+<div class="entry-content"><html><body>
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
 GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
 
 <p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
 
-<p>16番目のパターンは実行可能なアクション(コマンド)をオブジェクトとして扱い、コマンドの詳細をカプセル化する<strong>Command</strong>パターンです。</p>
+<p>16番目のパターンは実行可能なアクション(コマンド)をオブジェクトとして扱い、コマンドの詳細をカプセル化する<strong class="text-danger">Command</strong>パターンです。</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -178,7 +179,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 <p class="option">Commandパターンは、実行可能なアクション(コマンド)をオブジェクトとして扱い、コマンドの詳細をカプセル化するパターンです。コマンドの追加や削除に対して柔軟になります。</p>
 
 
-<p><img src="http://hamasyou.com/images/design_pattern/command.gif" alt="Commandのクラス図" /></p>
+<p><img src="http://hamasyou.com/images/design_pattern/command.gif" alt="Commandのクラス図" class="img-thumbnail"></p>
 
 <h3>Commandパターンの動き</h3>
 
@@ -187,13 +188,11 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <p>Commandパターンが有効に働く場面</p>
 
-<ul><li>UNDO、ログの記録、トランザクションをサポートしたいとき</li>
+<ul>
+<li>UNDO、ログの記録、トランザクションをサポートしたいとき</li>
 <li>非同期でアクションを実行したい場合。キューなどに入れて異なるタイミングで実行する</li>
-<li>イベントとアクションを分離したい場合。Webアプリケーションの作成時に利用</li></ul>
-
-
-
-
+<li>イベントとアクションを分離したい場合。Webアプリケーションの作成時に利用</li>
+</ul>
 <h3>Commandの考え方</h3>
 
 
@@ -204,7 +203,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 <h3>Commandパターンの例</h3>
 
 
-<p>Commandパターンが使われている例として、JavaのWebアプリケーションフレームワークである<a href="http://www.ingrid.org/jajakarta/struts/" rel="external nofollow">Struts</a>などが有名です。Webアプリケーションを作るときは、Commandパターンを知らず知らずのうちに使っていると思います。</p>
+<p>Commandパターンが使われている例として、JavaのWebアプリケーションフレームワークである<a href="http://www.ingrid.org/jajakarta/struts/" rel="external nofollow" title="Struts">Struts</a>などが有名です。Webアプリケーションを作るときは、Commandパターンを知らず知らずのうちに使っていると思います。</p>
 
 <p>メッセージング処理などもCommandパターンの利用例の一つです。非同期処理をキューに溜め込んで、順次処理をしていくといった方法で使われています。</p>
 
@@ -213,50 +212,47 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <ul>
 <li><p>日立ソフト(Commandパターン)
-<a href="http://www.dmz.hitachi-sk.co.jp/Java/Tech/pattern/gof/command.html" rel="external nofollow">日立ソフト</a></p></li>
-<li><p>Skeleton of GOF&rsquo;s Design Pattern(JavaとC++のサンプルがあります)
-<a href="http://www002.upp.so-net.ne.jp/ys_oota/mdp/Command/index.htm" rel="external nofollow">Commandの骸骨</a></p></li>
+<a href="http://www.dmz.hitachi-sk.co.jp/Java/Tech/pattern/gof/command.html" rel="external nofollow" title="日立ソフト">日立ソフト</a></p></li>
+<li><p>Skeleton of GOF’s Design Pattern(JavaとC++のサンプルがあります)
+<a href="http://www002.upp.so-net.ne.jp/ys_oota/mdp/Command/index.htm" rel="external nofollow" title="Commandの骸骨">Commandの骸骨</a></p></li>
 <li><p>デザインパターンのお勧め書籍</p></li>
 </ul>
-
-
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>独習シリーズのデザインパターン編。デザインパターンを一人でも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>Sun Microsystemのお墨付き。GoF以外のパターンも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>UMLを使って、オブジェクト指向のいいとこ取りができます。</li>
 </ul>
-
-
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>デザインパターンだけではなく、ソフトウェア設計の原則やプラクティスまで学びたい人におすすめ</li>
 </ul>
-
-
-<div class="rakuten"><table width=400 border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
-
-
-
-</div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -428,6 +424,10 @@ GoFの23のパターンが有名です。デザインパターンというのは
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -451,10 +451,6 @@ GoFの23のパターンが有名です。デザインパターンというのは
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -462,7 +458,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

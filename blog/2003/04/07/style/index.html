@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="自分用のエントリーです。 それはBooks で使っているスタイルの意味を定義しておくページです。 <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub &hellip;">
+  <meta name="description" content="自分用のエントリーです。 それはBooks で使っているスタイルの意味を定義しておくページです。 <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca- &hellip;">
   <meta name="keywords" content="それはBooks,スタイル一覧,CSS,定義">
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/2003/04/07/style/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="自分用のエントリーです。 それはBooks で使っているスタイルの意味を定義しておくページです。 <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub &hellip;" />
+<meta property="og:description" content="自分用のエントリーです。 それはBooks で使っているスタイルの意味を定義しておくページです。 <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca- &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -150,7 +150,8 @@
 
 
 
-<div class="entry-content"><p>自分用のエントリーです。</p>
+<div class="entry-content"><html><body>
+<p>自分用のエントリーです。</p>
 
 <p>それはBooks で使っているスタイルの意味を定義しておくページです。</p>
 
@@ -181,7 +182,7 @@
 
 <h3>文章を書くとき</h3>
 
-<p>通常は、この文字で記述します。少し強調したい場合は <em>em</em> タグを使って装飾します。 さらに強調したい場合やキーワードには <strong>strong</strong> タグを使います。</p>
+<p>通常は、この文字で記述します。少し強調したい場合は <em>em</em> タグを使って装飾します。 さらに強調したい場合やキーワードには <strong class="text-danger">strong</strong> タグを使います。</p>
 
 <p>文章中で br タグは使いません。段落の区切りは p タグで区切ります。</p>
 
@@ -189,7 +190,10 @@
 
 <p>引用には <em>q</em> タグか <em>blockquote</em> タグを使います。文章中で引用を行うときに q タグの方を使います。</p>
 
-<blockquote><p>段落を引用する場合は blockquote タグを使います。blockquote タグを使う場合には、cite タグを使って引用元を明記します。</p><footer><strong>どこかしらから引用</strong></footer></blockquote>
+<blockquote>
+<p>段落を引用する場合は blockquote タグを使います。blockquote タグを使う場合には、cite タグを使って引用元を明記します。</p>
+<footer><strong class="text-danger">どこかしらから引用</strong></footer>
+</blockquote>
 
 
 <h2>説明・定義</h2>
@@ -200,7 +204,6 @@
 <dt>これが説明・定義する言葉です</dt>
 <dd>ここに説明文を記述します。dd タグはブロック要素とインライン要素をとれるため、段落を含めてもかまいません。</dd>
 </dl>
-
 <h2>箇条書き</h2>
 
 <p>箇条書きは、単一行で説明できる文章をリスト化するときに使います。順番の必要がない場合は <em>ul</em> タグを使います。順番が必要なときは <em>ol</em> タグを使用します。</p>
@@ -210,8 +213,6 @@
 <li>リスト2</li>
 <li>リスト3</li>
 </ul>
-
-
 <p>順番が必要なとき</p>
 
 <ol>
@@ -219,86 +220,89 @@
 <li>リスト5</li>
 <li>リスト6</li>
 </ol>
-
-
 <h2>リンク</h2>
 
-<p>リンクには <em>a</em> タグを使います。外部リンク（それはBlog の外にでるとき）は、<em>rel</em> に <strong>external nofollow</strong> を付ける。</p>
+<p>リンクには <em>a</em> タグを使います。外部リンク（それはBlog の外にでるとき）は、<em>rel</em> に <strong class="text-danger">external nofollow</strong> を付ける。</p>
 
-<p><a href="http://www.google.co.jp" rel="external nofollow">http://www.google.co.jp</a></a></p>
+<p><a href="http://www.google.co.jp" rel="external nofollow" title="http://www.google.co.jp">http://www.google.co.jp</a></p>
 
 <h2>整形済みテキスト・ソースコード</h2>
 
 <p>整形済みテキストには <em>pre</em> を使います。pre タグにはインライン要素しか含めることができないので、空行が入る場合には、スペースをひとつ含めるようにします。（これは Movable Type の改行を勝手に p タグにしてくれる機能を回避するため）</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>たとえば、こんな風に書く。
-</span><span class='line'> 
-</span><span class='line'>改行を含めるときは、空行にスペースを忘れずに！</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class=""><span class="line">たとえば、こんな風に書く。
+</span><span class="line"> 
+</span><span class="line">改行を含めるときは、空行にスペースを忘れずに！</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
-<p><section></p>
+<p><section></section></p>
 
 <h3>コンソールのように見せるには</h3>
 
 <p>整形済みテキストをコンソールのように見せる。</p>
 
 <div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+          <nav class="terminal-control-window"><a href="#finder" class="terminal-close" data-rel="close">close</a>
             <a href="#" class="terminal-minimize">minimize</a>
             <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>sudo su -</span></code></pre></td></tr></table></div></div>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">sudo su -</span></code></pre></td>
+</tr></table></div></div>
         </div>
 
 
-<p></section></p>
+<p></p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h3>ソースコードのように見せるには</h3>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="cm">/**</span>
-</span><span class='line'><span class="cm"> * This is a style test code.</span>
-</span><span class='line'><span class="cm"> *</span>
-</span><span class='line'><span class="cm"> * @author hamasyou</span>
-</span><span class='line'><span class="cm"> */</span>
-</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HogeClass</span> <span class="kd">implements</span> <span class="n">FooClass</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getMessage</span><span class="o">(</span><span class="n">BarClass</span> <span class="n">fooBar</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="s">&quot;テストメッセージ&quot;</span><span class="o">;</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="java"><span class="line"><span class="cm">/**</span>
+</span><span class="line"><span class="cm"> * This is a style test code.</span>
+</span><span class="line"><span class="cm"> *</span>
+</span><span class="line"><span class="cm"> * @author hamasyou</span>
+</span><span class="line"><span class="cm"> */</span>
+</span><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HogeClass</span> <span class="kd">implements</span> <span class="n">FooClass</span> <span class="o">{</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getMessage</span><span class="o">(</span><span class="n">BarClass</span> <span class="n">fooBar</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="s">"テストメッセージ"</span><span class="o">;</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
-<p></section></p>
+<p></p>
 
 <h2>Table タグ</h2>
 
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:left;">Left align </th>
 <th style="text-align:right;"> Right align </th>
 <th style="text-align:center;"> Center align</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:left;">This       </td>
@@ -332,8 +336,7 @@
 </tr>
 </tbody>
 </table>
-
-</div>
+</body></html></div>
 
 
   
@@ -484,6 +487,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -507,10 +514,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -518,7 +521,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

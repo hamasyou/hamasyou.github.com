@@ -152,7 +152,8 @@
 
 
 
-<div class="entry-content"><p>cocos2d を使ったときの CCSprite の後始末のしかたのメモです。</p>
+<div class="entry-content"><html><body>
+<p>cocos2d を使ったときの CCSprite の後始末のしかたのメモです。</p>
 
 <p>CCSpriteSheet から CCSprite を作ったときの破棄と CCAnimation が終わったタイミングでの CCSprite の破棄の方法をメモしています。</p>
 
@@ -174,7 +175,7 @@
 
 <p>CCSpriteSheet から CCSprite を作成する場合、次のように書きます。</p>
 
-<pre class="code"><span class="class">CCSpriteSheet</span> *sheet = [<span class="class">CCSpriteSheet</span> spriteSheetWithFile:<span class="literal">@&quot;missile.png&quot;</span>];
+<pre class="code"><span class="class">CCSpriteSheet</span> *sheet = [<span class="class">CCSpriteSheet</span> spriteSheetWithFile:<span class="literal">@"missile.png"</span>];
 [<span class="keyword">self</span> addChild:sheet];
   
 <span class="class">CCSprite</span> *missile = [<span class="class">CCSprite</span> spriteWithSpriteSheet:sheet rect:CGRectMake(<span class="num">0</span>, <span class="num">0</span>, <span class="num">32</span>, <span class="num">32</span>)];
@@ -187,7 +188,7 @@
 
 <p>この時 スプライトシートの removeChild:cleanup: メソッドでは上手くいきません。</p>
 
-<p>それではどうするかというと、スプライトの方の <strong>removeFromParentAndCleanup:</strong> メソッドを使います。</p>
+<p>それではどうするかというと、スプライトの方の <strong class="text-danger">removeFromParentAndCleanup:</strong> メソッドを使います。</p>
 
 <pre class="code">[sprite removeFromParentAndCleanup:<span class="keyword">YES</span>];</pre>
 
@@ -199,7 +200,7 @@
 
 <p>スプライトにアクションやアニメーションを付ける場合は、CCAction や CCAnimation を使います。</p>
 
-<p>そして、アクションやアニメーションが終了したタイミングでスプライトを削除したい場合には、アクションの最後で <strong>CCCallFuncND</strong> を使って <em>removeFromParentAndCleanup:</em> メソッドを呼び出すようにします。（19行目）</p>
+<p>そして、アクションやアニメーションが終了したタイミングでスプライトを削除したい場合には、アクションの最後で <strong class="text-danger">CCCallFuncND</strong> を使って <em>removeFromParentAndCleanup:</em> メソッドを呼び出すようにします。（19行目）</p>
 
 <p>次に例を載せておきます。この例は、ミサイルが爆発したときの爆発をアニメーションで表したものです。CCAnimation を使うので、burst.plist を別途記述して、アニメーションの定義をしています。コード例のあとに載せてあるのがそうです。</p>
 
@@ -211,27 +212,27 @@
 
 
 <pre class="code"><span class="rem">// アニメーションの定義（個別のスプライトの定義）をスプライトキャッシュに登録して、後で呼び出せるようにする</span>
-[[<span class="class">CCSpriteFrameCache</span> sharedSpriteFrameCache] addSpriteFramesWithFile:<span class="literal">@&quot;burst.plist&quot;</span>];
+[[<span class="class">CCSpriteFrameCache</span> sharedSpriteFrameCache] addSpriteFramesWithFile:<span class="literal">@"burst.plist"</span>];
  
 <span class="rem">// アニメーション定義と対応するスプライトの画像を読み込む</span> 
-<span class="class">CCSpriteSheet</span> *sheet = [<span class="class">CCSpriteSheet</span> spriteSheetWithFile:<span class="literal">@&quot;burst.png&quot;</span>];
+<span class="class">CCSpriteSheet</span> *sheet = [<span class="class">CCSpriteSheet</span> spriteSheetWithFile:<span class="literal">@"burst.png"</span>];
 [<span class="keyword">self</span> addChild:sheet];
  
 <span class="rem">// アニメーションの最初のスプライトを読み込む</span>  
-<span class="class">CCSprite</span> *sprite = [<span class="class">CCSprite</span> spriteWithSpriteFrameName:<span class="literal">@&quot;burst01&quot;</span>];
+<span class="class">CCSprite</span> *sprite = [<span class="class">CCSprite</span> spriteWithSpriteFrameName:<span class="literal">@"burst01"</span>];
 sprite.position = <span class="keyword">ccp</span>(<span class="literal">160</span>, <span class="literal">240</span>);
 [sheet addChild:sprite];
  
 <span class="rem">// アニメーションのコマに対応するスプライトをフレームとして作成する</span>  
 <span class="class">NSMutableArray</span> *animFrames = [<span class="class">NSMutableArray</span> array];
 <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="literal">2</span>; i &lt;= <span class="literal">9</span>; i++) {
-  <span class="class">CCSpriteFrame</span> *frame = [[<span class="class">CCSpriteFrameCache</span> sharedSpriteFrameCache] spriteFrameByName:[<span class="class">NSString</span> stringWithFormat:<span class="literal">@&quot;burst%02d&quot;</span>, i]];
+  <span class="class">CCSpriteFrame</span> *frame = [[<span class="class">CCSpriteFrameCache</span> sharedSpriteFrameCache] spriteFrameByName:[<span class="class">NSString</span> stringWithFormat:<span class="literal">@"burst%02d"</span>, i]];
   [animFrames addObject:frame];
 }
  
 <span class="rem">// アニメーションフレームをアニメーションにしてスプライトと紐付ける</span>
 <span class="rem">// アニメーションの最後に removeFromParentAndCleanup: を呼び出してスプライトを破棄する</span>
-<span class="class">CCAnimation</span> *animation = [<span class="class">CCAnimation</span> animationWithName:<span class="literal">@&quot;burst&quot;</span> delay:<span class="literal">0.2f</span> frames:animFrames];
+<span class="class">CCAnimation</span> *animation = [<span class="class">CCAnimation</span> animationWithName:<span class="literal">@"burst"</span> delay:<span class="literal">0.2f</span> frames:animFrames];
 [sprite runAction:[<span class="class">CCSequence</span> actions:
                    [<span class="class">CCAnimate</span> actionWithAnimation:animation restoreOriginalFrame:NO],
                    <em>[<span class="class">CCCallFuncND</span> actionWithTarget:sprite selector:<span class="keyword">@selector</span>(removeFromParentAndCleanup:) data:(<span class="keyword">void</span> *)<span class="keyword">YES</span>]</em>,
@@ -243,16 +244,16 @@ sprite.position = <span class="keyword">ccp</span>(<span class="literal">160</sp
 <h4>burst.png</h4>
 
 
-<p><img alt="missile.png" src="/images/missile.png" width="64" height="8" class="mt-image-none" style="" /></p>
+<p><img alt="missile.png" src="/images/missile.png" width="64" height="8" class="mt-image-none img-thumbnail" style=""></p>
 
 <h4>burst.plist</h4>
 
 
 
 
-<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
-&lt;plist version=&quot;1.0&quot;&gt;
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
 &lt;dict&gt;
   &lt;key&gt;texture&lt;/key&gt;
   &lt;dict&gt;
@@ -401,10 +402,7 @@ sprite.position = <span class="keyword">ccp</span>(<span class="literal">160</sp
   &lt;/dict&gt;
 &lt;/dict&gt;
 &lt;/plist&gt;</pre>
-
-
-
-</div>
+</body></html></div>
 
 
   
@@ -580,6 +578,10 @@ sprite.position = <span class="keyword">ccp</span>(<span class="literal">160</sp
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -603,10 +605,6 @@ sprite.position = <span class="keyword">ccp</span>(<span class="literal">160</sp
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -614,7 +612,7 @@ sprite.position = <span class="keyword">ccp</span>(<span class="literal">160</sp
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

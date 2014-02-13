@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="JNDIは、オブジェクトに名前をつけて管理するネーミングサービスの共通インターフェースを提供します。JAVAアプリケーションはこのJNDIを使って統一された手法でネーミングサービスにアクセスすることができます。 JNDI(Java Naming and Directory Interface)とは &hellip;">
+  <meta name="description" content="JNDIは、オブジェクトに名前をつけて管理するネーミングサービスの共通インターフェースを提供します。JAVAアプリケーションはこのJNDIを使って統一された手法でネーミングサービスにアクセスすることができます。 JNDI(Java Naming and Directory Interface) &hellip;">
   <meta name="keywords" content="JNDI,J2EE,ネーミングサービス,ディレクトリサービス,コンテキスト">
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/2004/05/29/jndi/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="JNDIは、オブジェクトに名前をつけて管理するネーミングサービスの共通インターフェースを提供します。JAVAアプリケーションはこのJNDIを使って統一された手法でネーミングサービスにアクセスすることができます。 JNDI(Java Naming and Directory Interface)とは &hellip;" />
+<meta property="og:description" content="JNDIは、オブジェクトに名前をつけて管理するネーミングサービスの共通インターフェースを提供します。JAVAアプリケーションはこのJNDIを使って統一された手法でネーミングサービスにアクセスすることができます。 JNDI(Java Naming and Directory Interface) &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -148,11 +148,12 @@
 
 
 
-<div class="entry-content"><p>JNDIは、オブジェクトに名前をつけて管理するネーミングサービスの共通インターフェースを提供します。JAVAアプリケーションはこのJNDIを使って統一された手法でネーミングサービスにアクセスすることができます。</p>
+<div class="entry-content"><html><body>
+<p>JNDIは、オブジェクトに名前をつけて管理するネーミングサービスの共通インターフェースを提供します。JAVAアプリケーションはこのJNDIを使って統一された手法でネーミングサービスにアクセスすることができます。</p>
 
 <p>JNDI(Java Naming and Directory Interface)とは、Javaでネーミングサービスを扱うためのAPIを定めたものです。JNDIが定められた目的はアプリケーションがさまざまなネーミング/ディレクトリサービスを統一的に利用することができるようにすることです。</p>
 
-<p>ネーミングサービスとは、名前とオブジェクトを関連付けて管理するサービスのことです。例えば 管理人 =&gt; 「ハマショウというオブジェクト」 というように、<strong>管理人</strong>という名前を<strong>ハマショウ</strong>というオブジェクトに結び付け、<b>管理人 = ハマショウ</b>という関連を作ることと説明できます。</p>
+<p>ネーミングサービスとは、名前とオブジェクトを関連付けて管理するサービスのことです。例えば 管理人 =&gt; 「ハマショウというオブジェクト」 というように、<strong class="text-danger">管理人</strong>という名前を<strong class="text-danger">ハマショウ</strong>というオブジェクトに結び付け、<b>管理人 = ハマショウ</b>という関連を作ることと説明できます。</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -167,7 +168,7 @@
 
 <p>このネーミングサービスの例として、データベースへのコネクションをプーリングして管理するデータソースに名前をつけて、WebアプリケーションからJNDIを利用してデータソースを取得するという手法が良く使われます。</p>
 
-<p><img src="/images/jndi/jndi_call.gif" /></p>
+<p><img src="/images/jndi/jndi_call.gif" class="img-thumbnail"></p>
 
 <h2>JNDIの仕組み</h2>
 
@@ -176,7 +177,7 @@
 
 <p>ディレクトリサービスとは、ネーミングをディレクトリ階層で管理するものです。</p>
 
-<p><img src="/images/jndi/directory.gif" /></p>
+<p><img src="/images/jndi/directory.gif" class="img-thumbnail"></p>
 
 <p>身近な例を出すと、ファイル管理システムがあります。Linuxを思い浮かべるとわかると思いますが、ルートディレクト(/)があり、その下にサブディレクトリ(etc, usr, home)ディレクトリ、その下にさらにサブディレクトリとファイルが存在しています。index.htmlファイルにアクセスするにはLinuxのファイルディレクトリサービスを呼び出して、/home/hamasyou/index.html という名前でアクセスすることになります。</p>
 
@@ -206,16 +207,12 @@
 ネーミングサービスの多くはディレクトリサービスを提供しています。このディレクトリサービスはオブジェクトに名前をつけて管理するだけでなく、属性をつけることもできます。これも、ファイルシステムを思い浮かべればよいでしょう。ファイルには日付やアクセス許可などの属性がついています。
 </dd>
 </dl>
-
-
-
-
 <h2>JAVAでのコーディング例</h2>
 
 
 <p>こちらのサイトで詳しく説明しているので、ご覧ください。</p>
 
-<p><a href="http://www.hellohiro.com/jndi.htm" rel="external nofollow">JavaでHelloWorld JNDI編</a></p>
+<p><a href="http://www.hellohiro.com/jndi.htm" rel="external nofollow" title="JavaでHelloWorld JNDI編">JavaでHelloWorld JNDI編</a></p>
 
 <h2>まとめ</h2>
 
@@ -232,34 +229,25 @@
 <ul>
 <li>JNDIを使ってHello Worldを表示させるもの。詳しく書いてあって、サンプルを打ち込むだけでも良くわかります。</li>
 </ul>
-
-
-<p><a href="http://www.hellohiro.com/jndi.htm" rel="external nofollow">JavaでHelloWorld JNDI編</a></p>
+<p><a href="http://www.hellohiro.com/jndi.htm" rel="external nofollow" title="JavaでHelloWorld JNDI編">JavaでHelloWorld JNDI編</a></p>
 
 <ul>
 <li>JNDIを使って、JDBCコネクションプーリングを行う手順を説明しています。(Web+Tomcat)</li>
 </ul>
-
-
-<p><a href="http://www.atmarkit.co.jp/fjava/javatips/004container003.html" rel="external nofollow">@IT: JNDI活用でデータソース管理を一元化する</a></p>
+<p><a href="http://www.atmarkit.co.jp/fjava/javatips/004container003.html" rel="external nofollow" title="@IT: JNDI活用でデータソース管理を一元化する">@IT: JNDI活用でデータソース管理を一元化する</a></p>
 
 <ul>
 <li>JDBC接続をDataSouceで管理する方法</li>
 </ul>
-
-
-<p><a href="http://www.hellohiro.com/datasource.htm" rel="external nofollow">JavaでHelloWorld DataSource編</a></p>
+<p><a href="http://www.hellohiro.com/datasource.htm" rel="external nofollow" title="JavaでHelloWorld DataSource編">JavaでHelloWorld DataSource編</a></p>
 
 <ul>
 <li>JNDIだけでなく、J2EEで使われている技術全般に関して説明しています。</li>
 </ul>
-
-
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756144209/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
-
-
-
-</div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756144209/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -412,6 +400,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -435,10 +427,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -446,7 +434,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

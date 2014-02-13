@@ -150,7 +150,8 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 
 
-<div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+<div class="entry-content"><html><body>
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
 GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
 
 <p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
@@ -180,11 +181,11 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <p><b>具象クラスを指定せずに、関連オブジェクトや従属オブジェクトの集合を生成するための規約を提供する</b>のがこのパターンの目的です。抽象的な話だと、わかったようでわからないということになりかねないので、自分なりに具体的な例でまとめておきます。</p>
 
-<p>僕の中で、<b>Abstract Factoryパターンのイメージは、「<a href="http://hamasyou.com/archives/000171" rel="external nofollow">Factory Method</a> + ポリモーフィズム</b>」だと思っています。Factory Methodパターンには、関連オブジェクトを自分の責務で生成するというものがありました。この目的で使うFactoryクラスを生成するFactoryがこのAbstract Factoryです。</p>
+<p>僕の中で、<b>Abstract Factoryパターンのイメージは、「<a href="http://hamasyou.com/archives/000171" rel="external nofollow" title="Factory Method">Factory Method</a> + ポリモーフィズム</b>」だと思っています。Factory Methodパターンには、関連オブジェクトを自分の責務で生成するというものがありました。この目的で使うFactoryクラスを生成するFactoryがこのAbstract Factoryです。</p>
 
 <p>つまり、関連オブジェクトを生成するFactoryの種類がたくさんあるので、Factoryを生成するFactoryを作った。それがAbstract Factoryだということです。このイメージで、Abstract Factoryパターンのクラス図を見るとわかりやすいと思います。</p>
 
-<p><img src="http://hamasyou.com/images/abstract_factory/abstract_factory1.gif"   style="margin:5px" /></p>
+<p><img src="http://hamasyou.com/images/abstract_factory/abstract_factory1.gif" style="margin:5px" class="img-thumbnail"></p>
 
 <p>「OSFactory」がAbstract Factoryクラスになっていて、「WindowsFactory」、「MacintoshFactory」がそれぞれFactoryクラスです。</p>
 
@@ -195,11 +196,11 @@ GoFの23のパターンが有名です。デザインパターンというのは
 <h2>パターンの適用タイミング</h2>
 
 
-<p>Abstract Factoryパターンの長所は、新たな実装を提供するのに柔軟性があるという点です。先ほどのOSの例だと、Factoryクラスに「UnixFactory」クラスが増えても、<a href="http://www.alles.or.jp/~torutk/oojava/oo/develop/011.html" rel="external nofollow">開放・閉鎖原則</a>は守られています。</p>
+<p>Abstract Factoryパターンの長所は、新たな実装を提供するのに柔軟性があるという点です。先ほどのOSの例だと、Factoryクラスに「UnixFactory」クラスが増えても、<a href="http://www.alles.or.jp/~torutk/oojava/oo/develop/011.html" rel="external nofollow" title="開放・閉鎖原則">開放・閉鎖原則</a>は守られています。</p>
 
-<p>逆に、Abstract Factoryパターンの欠点は、関連オブジェクト(先ほどの例だと「ブラウザ」「ファイルシステム」)の種類が増えた場合、修正箇所がすべてのFactoryクラスに及んでしまう点です。この場合だと、<a href="http://www.alles.or.jp/~torutk/oojava/oo/develop/011.html" rel="external nofollow">開放・閉鎖原則</a>は守られていません。<strong>Abstract Factoryインターフェースを適切に定義しておく必要がある</strong>ということです。</p>
+<p>逆に、Abstract Factoryパターンの欠点は、関連オブジェクト(先ほどの例だと「ブラウザ」「ファイルシステム」)の種類が増えた場合、修正箇所がすべてのFactoryクラスに及んでしまう点です。この場合だと、<a href="http://www.alles.or.jp/~torutk/oojava/oo/develop/011.html" rel="external nofollow" title="開放・閉鎖原則">開放・閉鎖原則</a>は守られていません。<strong class="text-danger">Abstract Factoryインターフェースを適切に定義しておく必要がある</strong>ということです。</p>
 
-<p><strong>関連オブジェクトが複数あり、生成の責務を自分が持つ場合</strong>、<strong>リソースの関連に対して、複数の実装がありえる場合</strong>。これらの場合に、Abstract Factoryパターンが使えると思います。</p>
+<p><strong class="text-danger">関連オブジェクトが複数あり、生成の責務を自分が持つ場合</strong>、<strong class="text-danger">リソースの関連に対して、複数の実装がありえる場合</strong>。これらの場合に、Abstract Factoryパターンが使えると思います。</p>
 
 <h2>実装サンプルと参考文献</h2>
 
@@ -208,57 +209,49 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <ul>
 <li><p>日立ソフト(Abstract Factoryパターン)
-<a href="http://www.dmz.hitachi-sk.co.jp/Java/Tech/pattern/gof/abstract_factory.html" rel="external nofollow">日立ソフト</a></p></li>
-<li><p>Skeleton of GOF&rsquo;s Design Pattern(JavaとC++のサンプルがあります)
-<a href="http://www002.upp.so-net.ne.jp/ys_oota/mdp/AbstractFactory/index.htm" rel="external nofollow">Abstract Factoryの骸骨</a></p></li>
+<a href="http://www.dmz.hitachi-sk.co.jp/Java/Tech/pattern/gof/abstract_factory.html" rel="external nofollow" title="日立ソフト">日立ソフト</a></p></li>
+<li><p>Skeleton of GOF’s Design Pattern(JavaとC++のサンプルがあります)
+<a href="http://www002.upp.so-net.ne.jp/ys_oota/mdp/AbstractFactory/index.htm" rel="external nofollow" title="Abstract Factoryの骸骨">Abstract Factoryの骸骨</a></p></li>
 <li><p>Codian(生成に関するパターン)
-<a href="http://www.kab-studio.biz/Programing/Codian/DesignPattern/02.html" rel="external nofollow">生成に関するパターン</a></p></li>
+<a href="http://www.kab-studio.biz/Programing/Codian/DesignPattern/02.html" rel="external nofollow" title="生成に関するパターン">生成に関するパターン</a></p></li>
 <li><p>デザインパターンのお勧め書籍</p></li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>独習シリーズのデザインパターン編。デザインパターンを一人でも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>Sun Microsystemのお墨付き。GoF以外のパターンも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>UMLを使って、オブジェクト指向のいいとこ取りができます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>デザインパターンだけではなく、ソフトウェア設計の原則やプラクティスまで学びたい人におすすめ</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
-
-
-
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -430,6 +423,10 @@ GoFの23のパターンが有名です。デザインパターンというのは
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -453,10 +450,6 @@ GoFの23のパターンが有名です。デザインパターンというのは
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -464,7 +457,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

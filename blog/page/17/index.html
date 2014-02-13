@@ -14,7 +14,8 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="Javaの新バージョン「J2SE5.0 Tiger」の新機能のメモ。詳しい使い方などは、参考文献や他のサイトをご覧ください。 J2SE5.0 Tiger では、言語構文が大幅に追加されています。Generics や オートボクシング、Enum(列挙型)、可変長引数、アノテーション、拡張for &hellip;">
+  <meta name="description" content="デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、 &hellip;">
   
 
   
@@ -25,7 +26,8 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/17/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Javaの新バージョン「J2SE5.0 Tiger」の新機能のメモ。詳しい使い方などは、参考文献や他のサイトをご覧ください。 J2SE5.0 Tiger では、言語構文が大幅に追加されています。Generics や オートボクシング、Enum(列挙型)、可変長引数、アノテーション、拡張for &hellip;" />
+<meta property="og:description" content="デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -94,16 +96,12 @@
 </div>
 </nav>
   <div role="main" class="container">
-    <div class="row">
+    <html><body><div class="row">
   <div class="col-sm-12 col-md-9">
     
     
     
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/01/27/j2se/">J2SE5.0 覚書き</a></h1>
+    <article><header class="page-header"><h1 class="entry-title"><a href="/blog/2005/01/28/visitor/">実践デザパタ-その15:Visitorパターン</a></h1>
     
     
       <p class="meta">
@@ -120,8 +118,59 @@
 
 
 
-<time datetime="2005-01-27T07:03:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 27<span>th</span>, 2005</time>
+<time datetime="2005-01-28T15:58:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 28<span>th</span>, 2005</time><span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/dezainpatan/">デザインパターン</a>
+    
+  
+</span>
+
+        
         <span class="divider"></span>
+        <a href="/blog/2005/01/28/visitor/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header><div class="entry-content">
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
+
+<p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
+
+<p>15番目のパターンはデータ構造と振る舞いを分離して、振る舞いを実行するクラスの変更や拡張を可能にする<strong class="text-danger">Visitor</strong>パターンのメモです。</p>
+
+</div>
+  
+  
+    <footer><a rel="full-article" href="/blog/2005/01/28/visitor/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2005/01/27/j2se/">J2SE5.0 覚書き</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-01-27T07:03:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 27<span>th</span>, 2005</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -146,51 +195,35 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873112141/sorehabooks-22" rel="external nofollow"></a>
+  </header><div class="entry-content">
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873112141/sorehabooks-22" rel="external nofollow" title=""></a>
 </p>
 
 
-<p>Javaの新バージョン「<strong>J2SE5.0 Tiger</strong>」の新機能のメモ。詳しい使い方などは、参考文献や他のサイトをご覧ください。</p>
+<p>Javaの新バージョン「<strong class="text-danger">J2SE5.0 Tiger</strong>」の新機能のメモ。詳しい使い方などは、参考文献や他のサイトをご覧ください。</p>
 
-<p>J2SE5.0 Tiger では、言語構文が大幅に追加されています。<strong>Generics</strong> や <strong>オートボクシング</strong>、<strong>Enum(列挙型)</strong>、<strong>可変長引数</strong>、<strong>アノテーション</strong>、<strong>拡張for ステートメント</strong>、<strong>Static インポート</strong>など、目を見張る機能がたくさん付け加わっています。</p>
+<p>J2SE5.0 Tiger では、言語構文が大幅に追加されています。<strong class="text-danger">Generics</strong> や <strong class="text-danger">オートボクシング</strong>、<strong class="text-danger">Enum(列挙型)</strong>、<strong class="text-danger">可変長引数</strong>、<strong class="text-danger">アノテーション</strong>、<strong class="text-danger">拡張for ステートメント</strong>、<strong class="text-danger">Static インポート</strong>など、目を見張る機能がたくさん付け加わっています。</p>
 
 <p>J2SE5.0 Tiger は、EoD (Easy Of Development) を行うための道具です。今後はさらに普及してきて、J2SE1.4 に確実に置き換わると思います。今のうちに概要や変わったところをチェックしておくのがいいと思います。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
 <ul>
-<li><p><a href="http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/index.html" rel="external nofollow">J2SE5.0 API JavaDoc</a></p></li>
-<li><p><a href="http://java.sun.com/j2se/1.5.0/ja/download.html" rel="external nofollow">JDK5.0 Download</a></p></li>
-<li><p><a href="http://www5.airnet.ne.jp/sakuraba/java/laboratory/J2SE1.5/contents.html" rel="external nofollow">J2SE5.0 虎の穴</a></p></li>
+<li><p><a href="http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/index.html" rel="external nofollow" title="J2SE5.0 API JavaDoc">J2SE5.0 API JavaDoc</a></p></li>
+<li><p><a href="http://java.sun.com/j2se/1.5.0/ja/download.html" rel="external nofollow" title="JDK5.0 Download">JDK5.0 Download</a></p></li>
+<li><p><a href="http://www5.airnet.ne.jp/sakuraba/java/laboratory/J2SE1.5/contents.html" rel="external nofollow" title="J2SE5.0 虎の穴">J2SE5.0 虎の穴</a></p></li>
 </ul>
-
-
-<p></section></p>
+<p></p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2005/01/27/j2se/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/01/22/4798107123/">思考系UMLモデリング即効エクササイズ</a></h1>
+    <footer><a rel="full-article" href="/blog/2005/01/27/j2se/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2005/01/22/4798107123/">思考系UMLモデリング即効エクササイズ</a></h1>
     
     
       <p class="meta">
@@ -207,8 +240,7 @@
 
 
 
-<time datetime="2005-01-22T09:39:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 22<span>nd</span>, 2005</time>
-        <span class="divider"></span>
+<time datetime="2005-01-22T09:39:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 22<span>nd</span>, 2005</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -233,34 +265,20 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>本書は、UMLモデリングを自主勉強するための問題集になっています。13のお題が与えられ、それに対して自由にモデリングを行うと言うものです。モデリングを行うときの視点や、よくある間違えなど、解説が丁寧なので一人でモデリングの勉強をすることができます。</p>
+  </header><div class="entry-content">
+<p>本書は、UMLモデリングを自主勉強するための問題集になっています。13のお題が与えられ、それに対して自由にモデリングを行うと言うものです。モデリングを行うときの視点や、よくある間違えなど、解説が丁寧なので一人でモデリングの勉強をすることができます。</p>
 
 <p>本書のよい点は、解説が豊富である点です。よくある間違えや、模範解答のモデルにたどり着くための考え方が詳しく載っています。</p>
 
-<p>反対に悪い点は、「<strong>コンテキストが明確になっていない</strong>」点です。ほとんどのお題に言える事ですが、単に「アイスクリームをモデリングせよ」のように問題が出されているだけです。これでは、模範解答のモデルとまったく違うモデルができてしまうこともたびたびあります。</p>
+<p>反対に悪い点は、「<strong class="text-danger">コンテキストが明確になっていない</strong>」点です。ほとんどのお題に言える事ですが、単に「アイスクリームをモデリングせよ」のように問題が出されているだけです。これでは、模範解答のモデルとまったく違うモデルができてしまうこともたびたびあります。</p>
 
-<p>モデリングの肝は、「<strong>コンテキストの理解</strong>」にあると思っています。本書では、これを「<strong>本質を見抜く</strong>」という言葉で表しています。本書はモデリングの本質を見抜くための問題集だと思います。確かに難しいし、唖然とするようなこともありましたが、一度体験しておくとモノの本質を考える能力が発達するのではないかと思います。</p>
+<p>モデリングの肝は、「<strong class="text-danger">コンテキストの理解</strong>」にあると思っています。本書では、これを「<strong class="text-danger">本質を見抜く</strong>」という言葉で表しています。本書はモデリングの本質を見抜くための問題集だと思います。確かに難しいし、唖然とするようなこともありましたが、一度体験しておくとモノの本質を考える能力が発達するのではないかと思います。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2005/01/22/4798107123/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/01/18/4798105600/">かんたんUML</a></h1>
+    <footer><a rel="full-article" href="/blog/2005/01/22/4798107123/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2005/01/18/4798105600/">かんたんUML</a></h1>
     
     
       <p class="meta">
@@ -277,8 +295,7 @@
 
 
 
-<time datetime="2005-01-18T19:52:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 18<span>th</span>, 2005</time>
-        <span class="divider"></span>
+<time datetime="2005-01-18T19:52:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 18<span>th</span>, 2005</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -303,32 +320,18 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>本書は、「<strong>UML (Unified Modeling Language)</strong>」の書き方の本です。モデリングの本だと思って買うと、たぶん期待を裏切られると思います。<a href="http://www.umtp-japan.org/examination/index.html" rel="external nofollow">モデリング技能認定試験 (旧 UML技術者認定制度)</a>のL1-T1 レベル(OOの基礎概念、UML入門的知識)を学ぶための本です。</p>
+  </header><div class="entry-content">
+<p>本書は、「<strong class="text-danger">UML (Unified Modeling Language)</strong>」の書き方の本です。モデリングの本だと思って買うと、たぶん期待を裏切られると思います。<a href="http://www.umtp-japan.org/examination/index.html" rel="external nofollow" title="モデリング技能認定試験 (旧 UML技術者認定制度)">モデリング技能認定試験 (旧 UML技術者認定制度)</a>のL1-T1 レベル(OOの基礎概念、UML入門的知識)を学ぶための本です。</p>
 
 <p>本書は、UMLの使いどころを学ぶのにいいと思います。UML解説の本ですから、(チュートリアルの)ソフトウェア開発設計のすべての場面でUMLを使っているのは、実際の現場からしたら少し考え物ですが、どの段階でどのUML図を使うかを見極める勉強にはなると思います。</p>
 
-<p>モデリング技術についてはそれほど難しいことは出てきません。純粋にUMLの書き方と使いどころを学ぶ本だと思います。UMLをまなぶ最初の本か、2冊目の本にするとちょうどよいレベルだと思います。その後は、「<strong>モデリング</strong>」を学ぶ書籍を読み進めていくといいと思います。読みやすくて好きです。</p>
+<p>モデリング技術についてはそれほど難しいことは出てきません。純粋にUMLの書き方と使いどころを学ぶ本だと思います。UMLをまなぶ最初の本か、2冊目の本にするとちょうどよいレベルだと思います。その後は、「<strong class="text-danger">モデリング</strong>」を学ぶ書籍を読み進めていくといいと思います。読みやすくて好きです。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2005/01/18/4798105600/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/01/16/4569636268/">図解 ビジネス理論30分速習ノート</a></h1>
+    <footer><a rel="full-article" href="/blog/2005/01/18/4798105600/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2005/01/16/4569636268/">図解 ビジネス理論30分速習ノート</a></h1>
     
     
       <p class="meta">
@@ -345,8 +348,7 @@
 
 
 
-<time datetime="2005-01-16T09:30:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 16<span>th</span>, 2005</time>
-        <span class="divider"></span>
+<time datetime="2005-01-16T09:30:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 16<span>th</span>, 2005</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -369,10 +371,8 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>授業でビジネスを勉強したら、こんなノートをがまとめあがると言うような感じの本です。歴史的・経済的に重要な理論を確立した先人の知識をまとめています。ガルプレイス、ドラッカー、ポーター、コトラー、ジェームス・アレンなど、有名どころも軒を連ねています。</p>
+  </header><div class="entry-content">
+<p>授業でビジネスを勉強したら、こんなノートをがまとめあがると言うような感じの本です。歴史的・経済的に重要な理論を確立した先人の知識をまとめています。ガルプレイス、ドラッカー、ポーター、コトラー、ジェームス・アレンなど、有名どころも軒を連ねています。</p>
 
 <p>本書のいいところは、一ページから二ページの間で、その人の確立した理論について簡単ながら解説してあるところです。一つ一つの理論を詳しく説明しているわけではありませんが、ビジネスの現場・経営の現場でよく出てくるような言葉の意味を表面的にでも知るために使えます。</p>
 
@@ -381,20 +381,8 @@
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2005/01/16/4569636268/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/01/12/488373109X/">T字形ER データベース設計技法</a></h1>
+    <footer><a rel="full-article" href="/blog/2005/01/16/4569636268/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2005/01/12/488373109X/">T字形ER データベース設計技法</a></h1>
     
     
       <p class="meta">
@@ -411,8 +399,7 @@
 
 
 
-<time datetime="2005-01-12T16:09:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 12<span>th</span>, 2005</time>
-        <span class="divider"></span>
+<time datetime="2005-01-12T16:09:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 12<span>th</span>, 2005</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -437,10 +424,8 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>見た目は確かに教科書っぽい感じがします。「データベース設計技法」とタイトルにあるので、論理設計もしくは物理設計に関する書籍かと思うかもしれません。しかし本書は、教科書でもないし、DB設計の技術書でもありませんでした。</p>
+  </header><div class="entry-content">
+<p>見た目は確かに教科書っぽい感じがします。「データベース設計技法」とタイトルにあるので、論理設計もしくは物理設計に関する書籍かと思うかもしれません。しかし本書は、教科書でもないし、DB設計の技術書でもありませんでした。</p>
 
 <p>本書は、「<b>ビジネスドメインの解析手法</b>」を学ぶものです。T字形ER手法という考え方を用いて、ビジネスの現場をモデル化する手法を学べます。ページ数も140ページ少々と少なく、見開きでひとつのタイトルを解説しているため、とてもわかりやすく理解しやすいです。</p>
 
@@ -451,20 +436,8 @@
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2005/01/12/488373109X/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/01/08/4797315970/">ウェブユーザビリティの法則―ストレスを感じさせないナビゲーション作法とは</a></h1>
+    <footer><a rel="full-article" href="/blog/2005/01/12/488373109X/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2005/01/08/4797315970/">ウェブユーザビリティの法則―ストレスを感じさせないナビゲーション作法とは</a></h1>
     
     
       <p class="meta">
@@ -481,8 +454,7 @@
 
 
 
-<time datetime="2005-01-08T20:06:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 8<span>th</span>, 2005</time>
-        <span class="divider"></span>
+<time datetime="2005-01-08T20:06:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 8<span>th</span>, 2005</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -509,32 +481,18 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>企業向けウェブサイトの製作者は必読と言えるほど、非常に分かりやすく重要な点が載っていると思いました。個人向けのウェブサイトではそれほど重要視されることの少ない「<b>ユーザビリティ</b>」と言う言葉ですが、本書の内容を少しでも実践するだけで、かなり読みやすいサイトになると思います。</p>
+  </header><div class="entry-content">
+<p>企業向けウェブサイトの製作者は必読と言えるほど、非常に分かりやすく重要な点が載っていると思いました。個人向けのウェブサイトではそれほど重要視されることの少ない「<b>ユーザビリティ</b>」と言う言葉ですが、本書の内容を少しでも実践するだけで、かなり読みやすいサイトになると思います。</p>
 
 <p>「ユーザに考えさせない」、「言葉を省く」、「ナビゲーションをデザインする」など、よくある目次が並んでいますが、実際に目で見て分かるように解説していたり、大胆な言い回しなど、理解しやすいのが特徴です。</p>
 
-<p>主に企業サイト向けのデザインに関して解説しているが、ウェブサイトをデザインする人は、一度読むことをおすすめします。「<strong>デザイン</strong>」と「<strong>ユーザビリティ</strong>」は両立できるため、凝ったデザインでも使いやすいサイト、見やすいサイトにすることは可能です。</p>
+<p>主に企業サイト向けのデザインに関して解説しているが、ウェブサイトをデザインする人は、一度読むことをおすすめします。「<strong class="text-danger">デザイン</strong>」と「<strong class="text-danger">ユーザビリティ</strong>」は両立できるため、凝ったデザインでも使いやすいサイト、見やすいサイトにすることは可能です。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2005/01/08/4797315970/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/01/02/4798106976/">Javaプログラミングの処方箋</a></h1>
+    <footer><a rel="full-article" href="/blog/2005/01/08/4797315970/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2005/01/02/4798106976/">Javaプログラミングの処方箋</a></h1>
     
     
       <p class="meta">
@@ -551,8 +509,7 @@
 
 
 
-<time datetime="2005-01-02T00:11:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 2<span>nd</span>, 2005</time>
-        <span class="divider"></span>
+<time datetime="2005-01-02T00:11:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 2<span>nd</span>, 2005</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -575,32 +532,18 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>対象読者は、「Java入門を終えて、実務や実際のアプリ開発に着手する初級者」な感じです。『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714361/sorehabooks-22" rel="external nofollow">Effective Java プログラミング言語ガイド</a>』ほど濃い内容ではありませんでした。言語の基礎を学び終えて、Javaプログラミングの基礎を身に付ける時に有効に利用できそうです。</p>
+  </header><div class="entry-content">
+<p>対象読者は、「Java入門を終えて、実務や実際のアプリ開発に着手する初級者」な感じです。『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714361/sorehabooks-22" rel="external nofollow" title="Effective Java プログラミング言語ガイド">Effective Java プログラミング言語ガイド</a>』ほど濃い内容ではありませんでした。言語の基礎を学び終えて、Javaプログラミングの基礎を身に付ける時に有効に利用できそうです。</p>
 
 <p>内容は、鉄則ということでこの場合はこうするべしという感じのことが50程載っています。「開発環境に関する鉄則」、「実装に関する鉄則」、「テスト、デバッグに関する鉄則」、「設計に関する鉄則」と、扱う範囲は結構広い感じです。そのため、内容は多少物足りない部分もあります。</p>
 
-<p>言語仕様を理解した後に、実際の業務に利用できるレベルに成長するための実用本として活用できます。本書をマスターした後は、更なるステップのために『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714361/sorehabooks-22" rel="external nofollow">Effective Java プログラミング言語ガイド</a>』を読むのをおすすめします。</p>
+<p>言語仕様を理解した後に、実際の業務に利用できるレベルに成長するための実用本として活用できます。本書をマスターした後は、更なるステップのために『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714361/sorehabooks-22" rel="external nofollow" title="Effective Java プログラミング言語ガイド">Effective Java プログラミング言語ガイド</a>』を読むのをおすすめします。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2005/01/02/4798106976/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/12/24/4797325976/">サーバーサイドJavaプログラマー養成講座―ケーススタディで実践するオブジェクト指向開発プロセス</a></h1>
+    <footer><a rel="full-article" href="/blog/2005/01/02/4798106976/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/12/24/4797325976/">サーバーサイドJavaプログラマー養成講座―ケーススタディで実践するオブジェクト指向開発プロセス</a></h1>
     
     
       <p class="meta">
@@ -617,8 +560,7 @@
 
 
 
-<time datetime="2004-12-24T05:41:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Dec 24<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-12-24T05:41:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Dec 24<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -645,10 +587,8 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>「サーバーサイドJavaがはじめての人向け」の本でもなく、「J2EE技術をフルに使って複雑なアプリケーションを開発する人向け」の本でもありません。本書は、その中間「『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797314095/sorehabooks-22" rel="external nofollow">はじめてのJSP&amp;サーブレット</a>』は読んだけど、次に何を読めば上達するの？」という人向けになっています。</p>
+  </header><div class="entry-content">
+<p>「サーバーサイドJavaがはじめての人向け」の本でもなく、「J2EE技術をフルに使って複雑なアプリケーションを開発する人向け」の本でもありません。本書は、その中間「『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797314095/sorehabooks-22" rel="external nofollow" title="はじめてのJSP&amp;サーブレット">はじめてのJSP&amp;サーブレット</a>』は読んだけど、次に何を読めば上達するの？」という人向けになっています。</p>
 
 <p>当然、サーブレット・JSPとは？という初歩的なことは書いてありません。逆に、J2EEシステムの設計技法やアンチパターンについても書いてありません。本書に載っているのは、オーソドックスなJ2EEアプリケーションのアーキテクチャを適用した場合の開発ケースです。</p>
 
@@ -659,20 +599,8 @@
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/12/24/4797325976/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/12/19/4822229718/">Webアプリケーションのセキュリティ完全対策―不正アクセスや情報漏洩を防ぐ</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/12/24/4797325976/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/12/19/4822229718/">Webアプリケーションのセキュリティ完全対策―不正アクセスや情報漏洩を防ぐ</a></h1>
     
     
       <p class="meta">
@@ -689,8 +617,7 @@
 
 
 
-<time datetime="2004-12-19T16:19:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Dec 19<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-12-19T16:19:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Dec 19<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -713,10 +640,8 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>セキュリティーとか個人情報保護とか、ソフトウェア開発においても守るべきこと、気をつけるべきことがたくさんあります。特に、Webアプリケーションでは、不特定多数のクライアントから、ネットワークを通じてアプリケーションを動作させます。</p>
+  </header><div class="entry-content">
+<p>セキュリティーとか個人情報保護とか、ソフトウェア開発においても守るべきこと、気をつけるべきことがたくさんあります。特に、Webアプリケーションでは、不特定多数のクライアントから、ネットワークを通じてアプリケーションを動作させます。</p>
 
 <p>クライアント側で何を行われているか、サーバーサイドからでは分からない分、スタンドアローンのアプリケーションに比べて、注意する点が多くあります。入力値のチェックから、SQLインジェクション、セッション乗っ取りなど、さまざまなことに対処しなければなりません。</p>
 
@@ -725,121 +650,39 @@
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/12/19/4822229718/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/12/12/4797325720/">JUnitによるテストファースト開発入門</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-12-12T20:27:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Dec 12<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/junit/">JUnit</a>
-    
-      <a class="tag label label-info" href="/blog/tags/tdd/">TDD</a>
-    
-      <a class="tag label label-info" href="/blog/tags/tesutohuasuto/">テストファースト</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/12/12/4797325720/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>「実装を行った後のテスト」と「実装を行う前のテスト」の違いを明確にしてくれる解説が多く、非常にためになりました。本書の中で「<strong>テストファースト</strong>」とは、「実装を行う前にテスト設計を立てること」だという、非常にシンプルな定義がされていて、テストファーストをはじめて聞く人にはわかりやすいのかなと思いました。</p>
-
-<p>テスト段階で考えるべきことを重点的に解説してあり、プロジェクト中のテスト管理についてまで書かれていて、現場の開発者向けのテスト実践書という感じがしました。</p>
-
-<p>テスト担当者や、これからプロジェクトに参加する開発者の人向けの本です。テストツールとして、「<a href="http://www.junit.org/" rel="external nofollow">DBUnit</a>」などのツールにも触れられていて、本書一冊で、現場のテスト実践のベースができてしまう気がしました。</p>
-
-<p>とても参考になる事が載っているので、初学者の方におすすめです。自分なりの「テストファースト論」ができている人には、知っていることばかりかもしれません。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2004/12/12/4797325720/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    <ul class="pager">
-      
-      <li class="previous"><a href="/blog/page/18/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
+    <footer><a rel="full-article" href="/blog/2004/12/19/4822229718/">続きをよむ →</a>
+    </footer></article><ul class="pager">
+<li class="previous"><a href="/blog/page/18/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
       
       
       <li class="next"><a href="/blog/page/16/">Newer <i class="fa fa-arrow-circle-right"></i></a></li>
       
     </ul>
-  </div>
+</div>
   <div class="clearfix visible-sm"></div>
-  <aside class="sidebar-nav col-md-3">
-    
-    <section class="well">
-  <div class="row">
+  <aside class="sidebar-nav col-md-3"><section class="well"><div class="row">
     <div class="col-xs-4 col-sm-3 col-md-5">
-      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
-    </div>
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail">
+</div>
     <div class="col-xs-8 col-sm-9 col-md-7">
       <ul class="list-unstyled">
-        <li>濱田章吾</li>
+<li>濱田章吾</li>
         <li>hamasyou</li>
         <li><ul class="list-inline">
-          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
-          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
-          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
-          </ul>
-        </li>
+<li><a href="https://twitter.com/hamasyou" rel="external nofollow" title=""><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow" title=""><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow" title=""><i class="fa fa-github"></i></a></li>
+          <li><a href="mailto:hamasyou@gmail.com" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul></li>
       </ul>
-    </div>
+</div>
   </div>
-</section>
-<section class="well">
-  <ul id="recent_posts" class="nav nav-list">
-    <li class="nav-header">Recent Posts</li>
+</section><section class="well"><ul id="recent_posts" class="nav nav-list">
+<li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
@@ -865,25 +708,14 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
-  </ul>
-</section>
-<section class="panel panel-default">
-  <div class="panel-heading">
+  </ul></section><section class="panel panel-default"><div class="panel-heading">
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class="list-group-item" href="/blog/categories/architecture">Architecture <span class="badge">38</span></a><a class="list-group-item" href="/blog/categories/blog">Blog <span class="badge">96</span></a><a class="list-group-item" href="/blog/categories/database">Database <span class="badge">8</span></a><a class="list-group-item" href="/blog/categories/essay">Essay <span class="badge">13</span></a><a class="list-group-item" href="/blog/categories/lifehack">LifeHack <span class="badge">12</span></a><a class="list-group-item" href="/blog/categories/network">Network <span class="badge">7</span></a><a class="list-group-item" href="/blog/categories/programming">Programming <span class="badge">111</span></a><a class="list-group-item" href="/blog/categories/webdesign">WebDesign <span class="badge">4</span></a>
   </div>
-</section>
-
-    
-  </aside>
-</div>
-
+</section></aside>
+</div></body></html>
   </div>
   <footer role="contentinfo" class="page-footer"><hr>
 <p>

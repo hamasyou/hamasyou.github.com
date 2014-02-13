@@ -150,8 +150,9 @@
 
 
 
-<div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4839919844/sorehabooks-22/250-1891990-4739433?%5Fencoding=UTF8&camp=247&link%5Fcode=xm2" rel="external nofollow"></a>
+<div class="entry-content"><html><body>
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4839919844/sorehabooks-22/250-1891990-4739433?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title=""></a>
 </p>
 
 
@@ -159,20 +160,21 @@
 
 <p>本書を読んでいて気になったこと、整理したいことをメモしていこうと思います。ちゃんとした説明は、本書を読むほうが良いと思います。</p>
 
-<blockquote><p>プログラミングの基礎からはじめて、30日後にはウィンドウシステムを有する32bitマルチタスクOSをフルスクラッチで作り上げるという入門書。ビギナーでも無理なく作成できるようPCの仕組み・アセンブラ・Cの解説から始まり、試行錯誤を繰り返しながらアルゴリズムを学びつつ、たのしく自由な雰囲気でOSをゼロから構築していくという、他に類を見ない手法による、趣味と実用と学習を兼ね備えたOS作成の入門書です。</p><footer><strong>「Amazon 出版社コメント」</strong></footer></blockquote>
+<blockquote>
+<p>プログラミングの基礎からはじめて、30日後にはウィンドウシステムを有する32bitマルチタスクOSをフルスクラッチで作り上げるという入門書。ビギナーでも無理なく作成できるようPCの仕組み・アセンブラ・Cの解説から始まり、試行錯誤を繰り返しながらアルゴリズムを学びつつ、たのしく自由な雰囲気でOSをゼロから構築していくという、他に類を見ない手法による、趣味と実用と学習を兼ね備えたOS作成の入門書です。</p>
+<footer><strong class="text-danger">「Amazon 出版社コメント」</strong></footer>
+</blockquote>
 
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>[参考]</h4>
 
 
 <ul>
-<li><a href="http://community.osdev.info/" rel="external nofollow">OS Wiki</a></li>
+<li><a href="http://community.osdev.info/" rel="external nofollow" title="OS Wiki">OS Wiki</a></li>
 </ul>
-
-
-<p></section></p>
+<p></p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -193,7 +195,8 @@
 
 
 <ul>
-<li><a href="#chapter0" rel="external nofollow">セグメンテーション おぼえがき</a>
+<li>
+<a href="#chapter0" rel="external nofollow">セグメンテーション おぼえがき</a>
 <ul>
 <li><a href="#section0" rel="external nofollow">セグメンテーションとは</a></li>
 <li><a href="#section1" rel="external nofollow">GDT (Global Descriptor Table) とは</a></li>
@@ -202,17 +205,14 @@
 </ul>
 </li>
 <li><a href="#chapter1" rel="external nofollow">マルチタスクのメモ</a></li>
-<li><a href="#chapter2" rel="external nofollow">割り込み と PIC (Programmable Interrupt Controller)</a>
+<li>
+<a href="#chapter2" rel="external nofollow">割り込み と PIC (Programmable Interrupt Controller)</a>
 <ul>
 <li><a href="#section3" rel="external nofollow">PIC の割り込み信号を命令と受け取る</a></li>
 </ul>
 </li>
 <li><a href="#chapter3" rel="external nofollow">PIT (Programmable Interval Timer) とは</a></li>
 </ul>
-
-
-
-
 <h2 id="chapter0">セグメンテーション おぼえがき</h2>
 
 
@@ -235,14 +235,10 @@
 <dt>ES</dt>
 <dd><p>「エクストラセグメント」 と呼びます。データセグメントの拡張として使用します。DS だけで足りない場合に使います。</p></dd>
 </dl>
-
-
-
-
 <h4>[参考]</h4>
 
 
-<p><a href="http://wisdom.sakura.ne.jp/programming/asm/assembly5.html" rel="external nofollow">セグメントとオフセット</a></p>
+<p><a href="http://wisdom.sakura.ne.jp/programming/asm/assembly5.html" rel="external nofollow" title="セグメントとオフセット">セグメントとオフセット</a></p>
 
 <h3 id="section1">GDT (Global Descriptor Table) とは</h3>
 
@@ -253,14 +249,14 @@
 
 <p>セグメント情報は次の4つの情報で構成されています。</p>
 
-<ol><li>セグメントがどこから始まるのか （セグメントベース） : 32bit</li>
+<ol>
+<li>セグメントがどこから始まるのか （セグメントベース） : 32bit</li>
 <li>セグメントの大きさはどれくらいか （セグメントリミット） : 20bit</li>
-<li>セグメント属性 : 12bit</li></ol>
+<li>セグメント属性 : 12bit</li>
+</ol>
+<p>一つのセグメントに関する情報は、この 8byte の情報によって構成されています。これらセグメント情報を管理するのが <strong class="text-danger">GDT (Global Descriptor Table)</strong> と呼ばれるテーブルです。そして、GDT がメモリのどのアドレスに用意されているかを知らせるためのレジスタが、<strong class="text-danger">GDTR</strong> になります。</p>
 
-
-<p>一つのセグメントに関する情報は、この 8byte の情報によって構成されています。これらセグメント情報を管理するのが <strong>GDT (Global Descriptor Table)</strong> と呼ばれるテーブルです。そして、GDT がメモリのどのアドレスに用意されているかを知らせるためのレジスタが、<strong>GDTR</strong> になります。</p>
-
-<p><img src="/images/30os/GDT.gif" alt="GDT" /></p>
+<p><img src="/images/30os/GDT.gif" alt="GDT" class="img-thumbnail"></p>
 
 <p>セグメントセレクタは 13bit になっています。セグメントレジスタは 16bit ですが、下位 3bit が使えません。なので、セグメントセレクタであらわせる ID の数は 2 ^ 13 = 8,192 個です。ただし、セグメント ID が 0 、つまり最初のセグメント情報はヌルセレクタと呼ばれ、使うことができません。実際はセグメント情報は全部で 8,191 個 です。</p>
 
@@ -272,14 +268,17 @@
 <h4>[参考]</h4>
 
 
-<p><a href="http://www-06.ibm.com/jp/developerworks/linux/060217/j_l-memmod.shtml" rel="external nofollow">Linux メモリー・モデルの探求</a></p>
+<p><a href="http://www-06.ibm.com/jp/developerworks/linux/060217/j_l-memmod.shtml" rel="external nofollow" title="Linux メモリー・モデルの探求">Linux メモリー・モデルの探求</a></p>
 
 <h2 id="chapter1">マルチタスクのメモ</h2>
 
 
 <p>ここから、P.295 のマルチタスクのメモです。</p>
 
-<blockquote><p>CPU はいつでもセグメント番号を扱う命令を実行するたびに GDT の設定を確認しにいくので、今回も JMP 命令を実行するときに普通の far-JMP なのか タスクスイッチなのかを判断しています。</p><footer><strong>本書 P.294 より</strong></footer></blockquote>
+<blockquote>
+<p>CPU はいつでもセグメント番号を扱う命令を実行するたびに GDT の設定を確認しにいくので、今回も JMP 命令を実行するときに普通の far-JMP なのか タスクスイッチなのかを判断しています。</p>
+<footer><strong class="text-danger">本書 P.294 より</strong></footer>
+</blockquote>
 
 
 <p>つまり、GDT に設定しておくセグメントの情報には 2種類あって、実行可能なセグメント（プログラムのこと？） と タスク状態セグメントがあるということらしいです。タスク状態セグメントは、全部で 104byte からなる情報の塊で、これが見つかるとタスクスイッチされます。</p>
@@ -289,7 +288,7 @@
 
 <p>P.127 の割り込みに関する説明のメモです。</p>
 
-<p>CPU は、割り込み信号 （IRQ: Interrupt Request） を一つしか処理することができません。そこで、複数の割り込みを処理できるように CPU の外部に <strong>PIC (Programmable Interrupt Controller)</strong> という装置が用意されています。</p>
+<p>CPU は、割り込み信号 （IRQ: Interrupt Request） を一つしか処理することができません。そこで、複数の割り込みを処理できるように CPU の外部に <strong class="text-danger">PIC (Programmable Interrupt Controller)</strong> という装置が用意されています。</p>
 
 <p>1つの PIC は同時に 8つの割り込みを監視することができます。Intel 製の CPU には、PIC が 2つ付いています。</p>
 
@@ -321,14 +320,14 @@
 
 <p>CPU は、IDT （Interrupt Descriptor Table） を見て割り込み信号に対応する関数の呼び出しを行います。これが割り込み処理です。IDT は、割り込み信号と割り込み処理関数を対応付けたテーブルです。</p>
 
-<p><img src="/images/30os/pic.gif" alt="PICの割り込み処理" /></p>
+<p><img src="/images/30os/pic.gif" alt="PICの割り込み処理" class="img-thumbnail"></p>
 
 <h2 id="chapter3">PIT (Programmable Interval Timer) とは</h2>
 
 
 <p>P.232 のタイマーに関する説明のメモです。</p>
 
-<p>PC でタイマーを利用するときには、<strong>PIT (Programmable Interval Timer)</strong> を設定します。これは、一定期間ごとに割り込みを発生させる装置です。</p>
+<p>PC でタイマーを利用するときには、<strong class="text-danger">PIT (Programmable Interval Timer)</strong> を設定します。これは、一定期間ごとに割り込みを発生させる装置です。</p>
 
 <p>PC では、PIT は IRQ0 につながっています。設定方法は、キーボードやマウスの割り込みを設定するのと同じ方法です。</p>
 
@@ -336,10 +335,9 @@
 
 
 <ul>
-<li><a href="http://community.osdev.info/?(PIT)8254" rel="external nofollow">PIT 8254 のページ</a></li>
+<li><a href="http://community.osdev.info/?(PIT)8254" rel="external nofollow" title="PIT 8254 のページ">PIT 8254 のページ</a></li>
 </ul>
-
-</div>
+</body></html></div>
 
 
   
@@ -494,6 +492,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -517,10 +519,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -528,7 +526,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

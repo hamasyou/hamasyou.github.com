@@ -177,7 +177,8 @@
 
 
 
-<div class="entry-content"><p>本書は日経Linuxで2009年6月号から2012年6月号まで連載されていた「まつもとゆきひろ 技術を斬る」に加筆・修正を加えたものです。2009年からということで古い技術もあるのでは？と思われるかもしれませんが、さすがまつもとさん！きちんと未来を見据えたテーマでかかれていて、すごく参考になりました。</p>
+<div class="entry-content"><html><body>
+<p>本書は日経Linuxで2009年6月号から2012年6月号まで連載されていた「まつもとゆきひろ 技術を斬る」に加筆・修正を加えたものです。2009年からということで古い技術もあるのでは？と思われるかもしれませんが、さすがまつもとさん！きちんと未来を見据えたテーマでかかれていて、すごく参考になりました。</p>
 
 <p>本書は読み物の色がつよく、言語の過去・未来や新しい言語（<em>Go</em>、<em>Dart</em>、<em>CoffeeScript</em>、<em>Lua</em>）の言語作成者ならではの視点での解説、クラウド時代のC10K問題やスケーラビリティの話、ビッグデータ時代の NoSQL の扱い方などをまつもとさん視点で解説しています。</p>
 
@@ -225,10 +226,6 @@
 <dt>ヒエラルキ</dt>
 <dd>ネストしたコンテキスト</dd>
 </dl>
-
-
-
-
 <h3>GC（ガベージコレクション）の3つの基本方式</h3>
 
 
@@ -282,67 +279,73 @@
 
 <p>「関数オブジェクトから外側の変数がアクセス（参照や更新）できる」というのがクロージャを構成する要件の一つ。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">func</span><span class="p">());</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">echo</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">i</span> <span class="o">*</span> <span class="nx">i</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="mi">0</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="mi">1</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="mi">4</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">func</span><span class="p">());</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">echo</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">i</span> <span class="o">*</span> <span class="nx">i</span><span class="p">;</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="o">&gt;</span> <span class="mi">0</span>
+</span><span class="line"><span class="o">&gt;</span> <span class="mi">1</span>
+</span><span class="line"><span class="o">&gt;</span> <span class="mi">4</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>外側のスコープに属する変数を参照している関数オブジェクトは、そのローカル変数を「閉じ込め」る。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">extent</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">n</span><span class="o">++</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;n=&quot;</span> <span class="o">+</span> <span class="nx">n</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">extent</span><span class="p">();</span>
-</span><span class='line'><span class="nx">f</span><span class="p">();</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="nx">n</span><span class="o">=</span><span class="mi">1</span>
-</span><span class='line'><span class="nx">f</span><span class="p">();</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="nx">n</span><span class="o">=</span><span class="mi">2</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">extent</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">n</span><span class="o">++</span><span class="p">;</span>
+</span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"n="</span> <span class="o">+</span> <span class="nx">n</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">extent</span><span class="p">();</span>
+</span><span class="line"><span class="nx">f</span><span class="p">();</span>
+</span><span class="line"><span class="o">&gt;</span> <span class="nx">n</span><span class="o">=</span><span class="mi">1</span>
+</span><span class="line"><span class="nx">f</span><span class="p">();</span>
+</span><span class="line"><span class="o">&gt;</span> <span class="nx">n</span><span class="o">=</span><span class="mi">2</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 
 
-<p class="option">Ruby 1.9では、関数っぽいプログラミングを支援するために、lambda の代わりに「->」という式がつかえるようになり、また「call」メソッドを省略して「f.()」と呼び出せるようになっています。</p>
+<p class="option">Ruby 1.9では、関数っぽいプログラミングを支援するために、lambda の代わりに「-&gt;」という式がつかえるようになり、また「call」メソッドを省略して「f.()」と呼び出せるようになっています。</p>
 
 
 
@@ -354,17 +357,20 @@
 
 <p>Go の関数やメソッドは複数の値を戻り値として返すことができる。</p>
 
-<p>Go には例外機構がないが、戻り値の多値をもちいて、本来の戻り値とエラーが発生したかどうかを区別できる「<strong>コンマOK</strong>」スタイルをとっている。</p>
+<p>Go には例外機構がないが、戻り値の多値をもちいて、本来の戻り値とエラーが発生したかどうかを区別できる「<strong class="text-danger">コンマOK</strong>」スタイルをとっている。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">f</span><span class="p">,</span><span class="nx">ok</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="err">ファイル名</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">O_RDONLY</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span><span class='line'><span class="k">if</span> <span class="nx">ok</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">//... open に失敗したときの処理</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="go"><span class="line"><span class="nx">f</span><span class="p">,</span><span class="nx">ok</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="err">ファイル名</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">O_RDONLY</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class="line"><span class="k">if</span> <span class="nx">ok</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class="line">  <span class="c1">//... open に失敗したときの処理</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 <p>Go の goroutine は、メモリ空間の共有を行い、軽量であり、コンテキストスイッチが自動でマルチコアを活用できる。</p>
@@ -374,12 +380,12 @@
 
 <p><em>ブルームフィルタ</em>は、あるデータが登録されているかどうかを判定できるデータ構造。</p>
 
-<ul><li>判定時間がデータ件数に依存しない（O(1)）</li>
+<ul>
+<li>判定時間がデータ件数に依存しない（O(1)）</li>
 <li>空間効率が非常に良い</li>
 <li>要素の削除ができない</li>
-<li><em>たまに間違える</em></li></ul>
-
-
+<li><em>たまに間違える</em></li>
+</ul>
 <p>ブルームフィルタは、本当は要素に入っていないけれども入っているとみなされるという疑陽性（false positive）がある。</p>
 
 <h3>C10K問題</h3>
@@ -414,7 +420,7 @@
 <p>シングルスレッドで処理をするときに気を付けないといけないのは、そのスレッドが「<em>ブロック</em>」されると、プログラム全体が止まってしまうことである。</p>
 
 <p>ブロックは、<em>入出力待ち</em>の場合がほとんどなため、入出力待ちを以下にブロックしないかが重要になる。</p>
-</div>
+</body></html></div>
 
 
   
@@ -590,6 +596,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -613,10 +623,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -624,7 +630,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

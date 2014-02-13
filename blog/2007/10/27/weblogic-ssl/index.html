@@ -14,8 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="WebLogic9.2J でカスタムキーストアを使ってSSL通信を行うおぼえがきです。 使用した WebLogic は、下記のサイトからダウンロードしました。 日本BEAシステムズ株式会社 Evaluation Center 環境 使用した環境は以下のとおりです。 Red Hat
-WebLogic &hellip;">
+  <meta name="description" content="WebLogic9.2J でカスタムキーストアを使ってSSL通信を行うおぼえがきです。 使用した WebLogic は、下記のサイトからダウンロードしました。 日本BEAシステムズ株式会社 Evaluation Center 環境 使用した環境は以下のとおりです。 Red Hat &hellip;">
   <meta name="keywords" content="WebLogic Server 9.2J,WebLogic,おぼえがき,キーストア,SSL">
 
   
@@ -26,8 +25,7 @@ WebLogic &hellip;">
 
 <meta property="og:url" content="http://hamasyou.com/blog/2007/10/27/weblogic-ssl/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="WebLogic9.2J でカスタムキーストアを使ってSSL通信を行うおぼえがきです。 使用した WebLogic は、下記のサイトからダウンロードしました。 日本BEAシステムズ株式会社 Evaluation Center 環境 使用した環境は以下のとおりです。 Red Hat
-WebLogic &hellip;" />
+<meta property="og:description" content="WebLogic9.2J でカスタムキーストアを使ってSSL通信を行うおぼえがきです。 使用した WebLogic は、下記のサイトからダウンロードしました。 日本BEAシステムズ株式会社 Evaluation Center 環境 使用した環境は以下のとおりです。 Red Hat &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -152,13 +150,14 @@ WebLogic &hellip;" />
 
 
 
-<div class="entry-content"><p>WebLogic9.2J でカスタムキーストアを使ってSSL通信を行うおぼえがきです。</p>
+<div class="entry-content"><html><body>
+<p>WebLogic9.2J でカスタムキーストアを使ってSSL通信を行うおぼえがきです。</p>
 
 <p>使用した WebLogic は、下記のサイトからダウンロードしました。</p>
 
-<p><a href="http://www.beasys.co.jp/evaluation/index.html" rel="external nofollow">日本BEAシステムズ株式会社 Evaluation Center</a></p>
+<p><a href="http://www.beasys.co.jp/evaluation/index.html" rel="external nofollow" title="日本BEAシステムズ株式会社 Evaluation Center">日本BEAシステムズ株式会社 Evaluation Center</a></p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>環境</h4>
 
@@ -167,12 +166,10 @@ WebLogic &hellip;" />
 
 <ul>
 <li>Red Hat</li>
-<li>WebLogic Server 9.2J & MP</li>
+<li>WebLogic Server 9.2J &amp; MP</li>
 <li>OpenSSL</li>
 </ul>
-
-
-<p></section></p>
+<p></p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -197,7 +194,7 @@ WebLogic &hellip;" />
 
 <p>キーストアとは、暗号化に必要な鍵や証明書をエントリとして保管する箱です。それぞれのエントリをエイリアスをつけて管理します。キーストアを操作するツールに、Java の keytool があります。</p>
 
-<p><a href="http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/tooldocs/solaris/keytool.html" rel="external nofollow">keytool - 鍵と証明書の管理ツール</a></p>
+<p><a href="http://sdc.sun.co.jp/java/docs/j2se/1.4/ja/docs/ja/tooldocs/solaris/keytool.html" rel="external nofollow" title="keytool - 鍵と証明書の管理ツール">keytool - 鍵と証明書の管理ツール</a></p>
 
 <h3>WebLogic のキーストア</h3>
 
@@ -218,16 +215,12 @@ WebLogic &hellip;" />
 <dt>デモ信頼キーストア</dt>
 <dd>DemoTrust.jks</dd>
 </dl>
-
-
-
-
-<p class="option">デモ用のキーストアのパスワードはそれぞれ「<strong>DemoIdentityKeyStorePassPhrase</strong>」「<strong>DemoTrustKeyStorePassPhrase</strong>」に設定されています。</p>
+<p class="option">デモ用のキーストアのパスワードはそれぞれ「<strong class="text-danger">DemoIdentityKeyStorePassPhrase</strong>」「<strong class="text-danger">DemoTrustKeyStorePassPhrase</strong>」に設定されています。</p>
 
 
 <p>それぞれ、次のような秘密鍵エントリと証明書が入っています。</p>
 
-<pre class="console">[weblogic@localhost]# > <kbd>keytool -list -keystore DemoIdentity.jks -storepass DemoIdentityKeyStorePassPhrase</kbd>
+<pre class="console">[weblogic@localhost]# &gt; <kbd>keytool -list -keystore DemoIdentity.jks -storepass DemoIdentityKeyStorePassPhrase</kbd>
  
 キーストアのタイプ: jks
 キーストアのプロバイダ: SUN
@@ -241,7 +234,7 @@ demoidentity, 2007/10/27, keyEntry,
 
 
 
-<pre class="console">[weblogic@localhost]# > <kbd>keytool -list -keystore DemoTrust.jks -storepass DemoTrustKeyStorePassPhrase</kbd>
+<pre class="console">[weblogic@localhost]# &gt; <kbd>keytool -list -keystore DemoTrust.jks -storepass DemoTrustKeyStorePassPhrase</kbd>
  
 キーストアのタイプ: jks
 キーストアのプロバイダ: SUN
@@ -270,16 +263,14 @@ wlscertgencab, 2003/01/25, trustedCertEntry,
 
 <dl>
 <dt class="info">オレオレ証明書</dt>
-<dd><p>keytool でキーストアを作成すると秘密鍵と公開鍵のペアと公開鍵を自己署名証明書でサインした証明書が作成されます。いわゆるオレオレ証明書です。</p>
+<dd>
+<p>keytool でキーストアを作成すると秘密鍵と公開鍵のペアと公開鍵を自己署名証明書でサインした証明書が作成されます。いわゆるオレオレ証明書です。</p>
 
 <p>オレオレ証明書では、ユーザにサーバを信頼してもらうことはできません。そのため、公開鍵を信頼されている CA 局の証明書でサインしてもらいます。</p>
 
-<p>ブラウザにはあらかじめ信頼されている CA 局の証明書がインストールされています。ブラウザにインストールされていない CA 局の証明書でサインされているサーバの公開鍵は、警告が表示されますが、CA 局の証明書をブラウザに手動でインストールすれば警告はでなくなります。</p></dd>
+<p>ブラウザにはあらかじめ信頼されている CA 局の証明書がインストールされています。ブラウザにインストールされていない CA 局の証明書でサインされているサーバの公開鍵は、警告が表示されますが、CA 局の証明書をブラウザに手動でインストールすれば警告はでなくなります。</p>
+</dd>
 </dl>
-
-
-
-
 <h2>カスタムキーストアをつくる</h2>
 
 
@@ -290,7 +281,7 @@ wlscertgencab, 2003/01/25, trustedCertEntry,
 
 <p>keytool を使ってキーストアを作成します。</p>
 
-<pre class="console">[weblogic@localhost]# > <kbd>keytool -genkey -alias myserver -keyalg RSA -keystore myKeystore.jks</kbd>
+<pre class="console">[weblogic@localhost]# &gt; <kbd>keytool -genkey -alias myserver -keyalg RSA -keystore myKeystore.jks</kbd>
 キーストアのパスワードを入力してください:  <kbd>weblogic</kbd>
 姓名を入力してください。
    [Unknown]:  <kbd>myserver</kbd>
@@ -310,7 +301,7 @@ CN=myserver, OU=hamasyou, O=hamasyou, L=tokyo, ST=tokyo, C=jp でよろしいで
 &lt;myserver&gt; の鍵パスワードを入力してください。
         (キーストアのパスワードと同じ場合は RETURN を押してください): <kbd>[Enter]</kbd>
  
-[weblogic@localhost]# > <kbd>ls</kbd>
+[weblogic@localhost]# &gt; <kbd>ls</kbd>
 myKeystore.jks   
 </pre>
 
@@ -319,41 +310,35 @@ myKeystore.jks
 
 <dl>
 <dt class="notice">姓名の入力に注意</dt>
-<dd><p>「姓名」のところには、サーバのホスト名を入力します。今回は myserver とつけました。この場合、クライアント（ブラウザ）からは https://myserver/ のようにアクセスします。</p>
+<dd>
+<p>「姓名」のところには、サーバのホスト名を入力します。今回は myserver とつけました。この場合、クライアント（ブラウザ）からは https://myserver/ のようにアクセスします。</p>
 
 <p>「姓名」で設定した値と、ホスト名が違うと、ブラウザには次のような警告が表示されます。</p>
 
-<img src="http://hamasyou.com/images/WebLogicSSL/warn_ssl_hostname.gif" alt="SSL 証明書のホスト名が違う" />
-
-<p>ホスト名ごとにサーバ証明書は作る必要があるので注意が必要です。</p></dd>
+<img src="http://hamasyou.com/images/WebLogicSSL/warn_ssl_hostname.gif" alt="SSL 証明書のホスト名が違う" class="img-thumbnail"><p>ホスト名ごとにサーバ証明書は作る必要があるので注意が必要です。</p>
+</dd>
 </dl>
-
-
-
-
 <dl>
 <dt>-keysotre</dt>
 <dd><p>指定されたキーストアが存在しない場合は新たにキーストアが作成されます。</p></dd>
 <dt>-alias</dt>
 <dd><p>このキーストアに作成される秘密鍵と公開鍵のペアに名前（エイリアス）をつけます。キーのペアはこのエイリアスを用いてアクセスされます。</p></dd>
 <dt>-keyalg</dt>
-<dd><p>暗号化アルゴリズムを指定します。指定しない場合は <strong>DSA</strong> になります。<em>WebLogic Server 9.2J の試用版では DSA アルゴリズムはサポートされていないので、明示的に <strong>RSA</strong> を指定します。</em></p>
+<dd>
+<p>暗号化アルゴリズムを指定します。指定しない場合は <strong class="text-danger">DSA</strong> になります。<em>WebLogic Server 9.2J の試用版では DSA アルゴリズムはサポートされていないので、明示的に <strong class="text-danger">RSA</strong> を指定します。</em></p>
 
-<p><a href="http://www.hi-sv.com/e-docs/wls/docs92/client/security.html#wp1077561" rel="external nofollow">WebLogic ドキュメント - SSL を使用するクライアントの開発</a></p></dd>
+<p><a href="http://www.hi-sv.com/e-docs/wls/docs92/client/security.html#wp1077561" rel="external nofollow" title="WebLogic ドキュメント - SSL を使用するクライアントの開発">WebLogic ドキュメント - SSL を使用するクライアントの開発</a></p>
+</dd>
 </dl>
-
-
-
-
 <h3>サーバ証明書発行要求を作成する</h3>
 
 
 <p>キーストアを作っただけだと、自己署名によるサーバ証明書しかありません。CA 局にサーバ証明書を作ってもらうために、サーバ証明書発行要求をつくります。</p>
 
-<pre class="console">[weblogic@localhost]# > <kbd>keytool -certreq -alias myserver -keystore myKeystore.jks -file myserver_certreq.csr</kbd>
+<pre class="console">[weblogic@localhost]# &gt; <kbd>keytool -certreq -alias myserver -keystore myKeystore.jks -file myserver_certreq.csr</kbd>
 キーストアのパスワードを入力してください:  <kbd>weblogic</kbd>
  
-[weblogic@localhost]# > <kbd>ls</kbd>
+[weblogic@localhost]# &gt; <kbd>ls</kbd>
 myKeystore.jks  myserver_certreq.csr
 </pre>
 
@@ -367,7 +352,7 @@ myKeystore.jks  myserver_certreq.csr
 
 <p>これを、適当なディレクトリにコピーして利用します。</p>
 
-<pre class="console">[weblogic@localhost]# > <kbd>./CA -newca</kbd>
+<pre class="console">[weblogic@localhost]# &gt; <kbd>./CA -newca</kbd>
  
 CA certificate filename (or enter to create) <kbd>[Enter]</kbd>
  
@@ -398,22 +383,22 @@ Email Address []:<kbd>xxxxxx@hamasyou.com</kbd>
 
 <dl>
 <dt class="warn">Organization Name と 組織名に注意</dt>
-<dd><p>CA の「Organization Name」とサーバの「組織名」（keytool -genkey で指定したもの）が違うと、エラーが発生します。</p>
+<dd>
+<p>CA の「Organization Name」とサーバの「組織名」（keytool -genkey で指定したもの）が違うと、エラーが発生します。</p>
 
-<pre class="console">[weblogic@localhost]# > <kbd>openssl ca -keyfile demoCA/private/cakey.pem -cert demoCA/cacert.pem -in myserver_certreq.csr -out myserver_cert.csr</kbd>
+<pre class="console">[weblogic@localhost]# &gt; <kbd>openssl ca -keyfile demoCA/private/cakey.pem -cert demoCA/cacert.pem -in myserver_certreq.csr -out myserver_cert.csr</kbd>
 Using configuration from /usr/share/ssl/openssl.cnf
 Enter pass phrase for demoCA/private/cakey.pem:
 Check that the request matches the signature
 Signature ok
 The organizationName field needed to be the same in the
 CA certificate (hamasyou) and the request (xxxxx)
-</pre></dd>
+</pre>
+</dd>
 </dl>
-
-
 <p>CA スクリプトを実行したディレクトリの配下に次のようなディレクトリが作成されているはずです。</p>
 
-<pre class="console">[weblogic@localhost]# > <kbd>tree demoCA</kbd>
+<pre class="console">[weblogic@localhost]# &gt; <kbd>tree demoCA</kbd>
 demoCA/
     |&#8211; cacert.pem
     |&#8211; certs
@@ -434,16 +419,12 @@ demoCA/
 <dt>demoCA/private/cakey.pem</dt>
 <dd><p>CA 局の秘密鍵です。この CA 局からサーバ証明書を発行してもらうときに使います。</p></dd>
 </dl>
-
-
-
-
 <h3>オレオレ CA 局にサーバ証明書を発行してもらう</h3>
 
 
 <p>今作った CA 局のサーバ証明書を使って、サーバ証明書を発行します。</p>
 
-<pre class="console">[weblogic@localhost]# > <kbd>openssl ca -keyfile demoCA/private/cakey.pem -cert demoCA/cacert.pem -in myserver_certreq.csr -out myserver_cert.csr</kbd>
+<pre class="console">[weblogic@localhost]# &gt; <kbd>openssl ca -keyfile demoCA/private/cakey.pem -cert demoCA/cacert.pem -in myserver_certreq.csr -out myserver_cert.csr</kbd>
  
 Using configuration from /usr/share/ssl/openssl.cnf
 Enter pass phrase for demoCA/private/cakey.pem: weblogic
@@ -481,21 +462,21 @@ Sign the certificate? [y/n]:<kbd>y</kbd>
 Write out database with 1 new entries
 Data Base Updated
  
-[weblogic@localhost]# > <kbd>ls -F</kbd>
+[weblogic@localhost]# &gt; <kbd>ls -F</kbd>
 CA*  demoCA/  myKeystore.jks  myserver_cert.csr  myserver_certreq.csr 
 </pre>
 
 
 <p>作成されたサーバ証明書を見てみると、証明データ以外にヘッダーがついています。キーストアに保存する際にはヘッダー部は不要なので削除します。</p>
 
-<p>「<code>&mdash;&ndash;BEGIN CERTIFICATE&mdash;&ndash;</code>」から「<code>&mdash;&ndash;END CERTIFICATE&mdash;&ndash;</code>」までを残して、他は削除します。</p>
+<p>「<code>—–BEGIN CERTIFICATE—–</code>」から「<code>—–END CERTIFICATE—–</code>」までを残して、他は削除します。</p>
 
 <h4>編集前</h4>
 
 
 
 
-<pre class="console">[weblogic@localhost]# > <kbd>cat myserver_cert.csr</kbd>
+<pre class="console">[weblogic@localhost]# &gt; <kbd>cat myserver_cert.csr</kbd>
 Certificate:
     Data:
         Version: 3 (0x2)
@@ -573,7 +554,7 @@ ZTXkGQyUZzZZZvSuKGtmfVq+UA+Ky6NyrzvHBFJexymweTumTSL3XXMlJlNGlLLm
 
 
 
-<pre class="console">[weblogic@localhost]# > <kbd>cat myserver_cert_after.csr</kbd>
+<pre class="console">[weblogic@localhost]# &gt; <kbd>cat myserver_cert_after.csr</kbd>
 &#8212;&#8211;BEGIN CERTIFICATE&#8212;&#8211;
 MIIDbTCCAtagAwIBAgIBATANBgkqhkiG9w0BAQQFADCBiTELMAkGA1UEBhMCanAx
 DjAMBgNVBAgTBXRva3lvMQ4wDAYDVQQHEwV0b2t5bzERMA8GA1UEChMIaGFtYXN5
@@ -605,7 +586,7 @@ ZTXkGQyUZzZZZvSuKGtmfVq+UA+Ky6NyrzvHBFJexymweTumTSL3XXMlJlNGlLLm
 
 <p>サーバ証明書を発行した CA 局のサーバ証明書をキーストアに保存します。キーストアにサーバ証明書にサインした CA のサーバ証明書がない場合にはエラーになります。</p>
 
-<pre class="console">[weblogic@localhost]# > <kbd>keytool -import -noprompt -trustcacerts -alias oreoreca -file demoCA/cacert.pem -keystore myKeystore.jks -storepass weblogic</kbd>
+<pre class="console">[weblogic@localhost]# &gt; <kbd>keytool -import -noprompt -trustcacerts -alias oreoreca -file demoCA/cacert.pem -keystore myKeystore.jks -storepass weblogic</kbd>
 証明書がキーストアに追加されました。
 </pre>
 
@@ -614,38 +595,34 @@ ZTXkGQyUZzZZZvSuKGtmfVq+UA+Ky6NyrzvHBFJexymweTumTSL3XXMlJlNGlLLm
 
 <dl>
 <dt class="warn">証明書の登録順に注意</dt>
-<dd><p>CA 局のサーバ証明書を先にキーストアに保存していない場合、証明連鎖できずにエラーになります。</p>
+<dd>
+<p>CA 局のサーバ証明書を先にキーストアに保存していない場合、証明連鎖できずにエラーになります。</p>
 
-<pre class="console">[weblogic@localhost]# > <kbd>keytool -import -noprompt -alias myserver -file myserver_cert_after.csr -keystore myKeystore.jks -storepass weblogic</kbd>
+<pre class="console">[weblogic@localhost]# &gt; <kbd>keytool -import -noprompt -alias myserver -file myserver_cert_after.csr -keystore myKeystore.jks -storepass weblogic</kbd>
 keytool エラー: java.lang.Exception: 応答から連鎖を確立できませんでした。
-</pre></dd>
+</pre>
+</dd>
 </dl>
-
-
-
-
 <h3>サーバ証明書をキーストアに保存する</h3>
 
 
 <p>CA 局に発行されたサーバ証明書を保存します。このとき、最初に keytool -genkey で指定したエイリアスと同じ値を指定した場合は証明連鎖（CA 局と自己署名）になります。</p>
 
-<pre class="console">[weblogic@localhost]# > <kbd>keytool -import -noprompt -alias myserver -file myserver_cert_after.csr -keystore myKeystore.jks -storepass weblogic</kbd>
+<pre class="console">[weblogic@localhost]# &gt; <kbd>keytool -import -noprompt -alias myserver -file myserver_cert_after.csr -keystore myKeystore.jks -storepass weblogic</kbd>
 証明書応答がキーストアにインストールされました。 
 </pre>
 
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/certchain.gif" alt="証明連鎖" /></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/certchain.gif" alt="証明連鎖" class="img-thumbnail"></p>
 
 <dl>
 <dt class="notice">証明書のエイリアスに注意</dt>
-<dd><p>最初に keytool -genkey で作成したときのエイリアスと別のエイリアスでサーバ証明書を保存した場合、CA 局による署名が使われず自己署名が使われます。</p>
+<dd>
+<p>最初に keytool -genkey で作成したときのエイリアスと別のエイリアスでサーバ証明書を保存した場合、CA 局による署名が使われず自己署名が使われます。</p>
 
-<img src="http://hamasyou.com/images/WebLogicSSL/oreorecert.gif" alt="自己署名" /></dd>
+<img src="http://hamasyou.com/images/WebLogicSSL/oreorecert.gif" alt="自己署名" class="img-thumbnail">
+</dd>
 </dl>
-
-
-
-
 <h2>WebLogic でカスタムキーストアを設定する</h2>
 
 
@@ -660,7 +637,7 @@ keytool エラー: java.lang.Exception: 応答から連鎖を確立できませ�
 
 <p>今回は、秘密鍵、サーバ証明書ともに同じキーストアに入れているので、両方とも同じ設定を行います。</p>
 
-<p><a href="http://hamasyou.com/images/WebLogicSSL/weblogic_keystore.jpg" rel="external nofollow"></a></p>
+<p><a href="http://hamasyou.com/images/WebLogicSSL/weblogic_keystore.jpg" rel="external nofollow" title=""></a></p>
 
 <h3>WebLogic の SSL の設定</h3>
 
@@ -669,18 +646,16 @@ keytool エラー: java.lang.Exception: 応答から連鎖を確立できませ�
 
 <p>ID キーストアに指定したキーストアの中から秘密鍵エントリのエントリを指定します。</p>
 
-<p><a href="http://hamasyou.com/images/WebLogicSSL/weblogic_ssl.jpg" rel="external nofollow"></a></p>
+<p><a href="http://hamasyou.com/images/WebLogicSSL/weblogic_ssl.jpg" rel="external nofollow" title=""></a></p>
 
 <dl>
 <dt class="warn">公開鍵暗号アルゴリズムに注意</dt>
-<dd><p>WebLogic Server 9.2J MP2 の試用版では、公開鍵暗号に DSA はサポートされていません。秘密鍵は keytool -genkey の -keyalg で <strong>RSA</strong> を指定したものを指定します。</p>
+<dd>
+<p>WebLogic Server 9.2J MP2 の試用版では、公開鍵暗号に DSA はサポートされていません。秘密鍵は keytool -genkey の -keyalg で <strong class="text-danger">RSA</strong> を指定したものを指定します。</p>
 
-<p><a href="http://www.hi-sv.com/e-docs/wls/docs92/client/security.html#wp1077561" rel="external nofollow">WebLogic ドキュメント - SSL を使用するクライアントの開発</a></p></dd>
+<p><a href="http://www.hi-sv.com/e-docs/wls/docs92/client/security.html#wp1077561" rel="external nofollow" title="WebLogic ドキュメント - SSL を使用するクライアントの開発">WebLogic ドキュメント - SSL を使用するクライアントの開発</a></p>
+</dd>
 </dl>
-
-
-
-
 <h2>クライアント（ブラウザ）に CA 局の証明書をインストールする</h2>
 
 
@@ -688,18 +663,18 @@ keytool エラー: java.lang.Exception: 応答から連鎖を確立できませ�
 
 <p>「このセキュリティ証明書は、信頼する会社から発行されていません。証明書を表示して、この証明機関を信頼するかどうかを決定してください。」</p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/warn_cert.gif" alt="セキュリティ証明書エラー" /></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/warn_cert.gif" alt="セキュリティ証明書エラー" class="img-thumbnail"></p>
 
 <p>今回、オレオレ CA 局を作りましたが、この CA 局の CA 証明書はクライアント（ブラウザ）に信頼されていません。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
-<p><a href="http://maruyama-mitsuhiko.cocolog-nifty.com/security/2005/01/ie.html" rel="external nofollow">IEが表示する「信頼する会社」とは・・・</a></p>
+<p><a href="http://maruyama-mitsuhiko.cocolog-nifty.com/security/2005/01/ie.html" rel="external nofollow" title="IEが表示する「信頼する会社」とは・・・">IEが表示する「信頼する会社」とは・・・</a></p>
 
-<p></section></p>
+<p></p>
 
 <p>今回作った CA 局を証明機関として正しくクライアントに認識してもらうために、CA局の証明書をクライアント（ブラウザ）にインストールします。</p>
 
@@ -708,31 +683,31 @@ keytool エラー: java.lang.Exception: 応答から連鎖を確立できませ�
 
 <p>CA 局のサーバ証明書は <code>demoCA/cacert.pem</code> になります。これをブラウザにインストールします。</p>
 
-<p>ブラウザの [ツール]-[インターネット オプション] の [コンテンツ] タブにある [証明書&hellip;] を開きます。</p>
+<p>ブラウザの [ツール]-[インターネット オプション] の [コンテンツ] タブにある [証明書…] を開きます。</p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/ie_option.gif" alt="インターネット オプション" /></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/ie_option.gif" alt="インターネット オプション" class="img-thumbnail"></p>
 
-<p>[信頼されたルート証明機関] タブを開き、[インポート(I)&hellip;] を開きます。</p>
+<p>[信頼されたルート証明機関] タブを開き、[インポート(I)…] を開きます。</p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/cert_import.gif" alt="証明書のインポート" /></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/cert_import.gif" alt="証明書のインポート" class="img-thumbnail"></p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/import1.gif" alt="証明書インポート 手順1" /></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/import1.gif" alt="証明書インポート 手順1" class="img-thumbnail"></p>
 
-<p>[参照&hellip;] を選択して [ファイルの種類] を「すべて」にし、CA 局のサーバ証明書を選択します。</p>
+<p>[参照…] を選択して [ファイルの種類] を「すべて」にし、CA 局のサーバ証明書を選択します。</p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/import2.gif" alt="証明書インポート 手順2" /></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/import2.gif" alt="証明書インポート 手順2" class="img-thumbnail"></p>
 
 <p>証明書のストア場所を、「信頼されたルート証明機関」を選択します。</p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/import3.gif" alt="証明書インポート 手順3" /></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/import3.gif" alt="証明書インポート 手順3" class="img-thumbnail"></p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/import4.gif" alt="証明書インポート 手順4" /></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/import4.gif" alt="証明書インポート 手順4" class="img-thumbnail"></p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/import5.gif" alt="証明書インポート 手順5" /></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/import5.gif" alt="証明書インポート 手順5" class="img-thumbnail"></p>
 
 <p>「はい」を選択すると、CA 局の証明書が「ルート証明機関」として認識されるようになります。</p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/import6.gif" alt="証明書インポート 手順6" /></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/import6.gif" alt="証明書インポート 手順6" class="img-thumbnail"></p>
 
 <p>CA 局のサーバ証明書は安全な方法（改ざんされない方法）で取得する必要があります。また、本当に信頼する CA 局のサーバ証明書のみをクライアントにはインストールするようにします。</p>
 
@@ -744,12 +719,9 @@ keytool エラー: java.lang.Exception: 応答から連鎖を確立できませ�
 
 
 <div class="rakuten">
-<table width="400"  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798113328/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table>
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798113328/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table>
 </div>
-
-
-
-</div>
+</body></html></div>
 
 
   
@@ -915,6 +887,10 @@ keytool エラー: java.lang.Exception: 応答から連鎖を確立できませ�
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -938,10 +914,6 @@ keytool エラー: java.lang.Exception: 応答から連鎖を確立できませ�
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -949,7 +921,7 @@ keytool エラー: java.lang.Exception: 応答から連鎖を確立できませ�
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

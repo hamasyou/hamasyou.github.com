@@ -179,7 +179,8 @@
 
 
 
-<div class="entry-content"><p>PHPは、サーバーサイドスクリプトのひとつで、豊富な関数が標準で備わっているのが
+<div class="entry-content"><html><body>
+<p>PHPは、サーバーサイドスクリプトのひとつで、豊富な関数が標準で備わっているのが
 特徴的です。言語は、C言語に非常に似ていて手続き型でプログラミングできます。
 最近の風潮で、オブジェクト指向がもてはやされています。PHPはクラスを作成することもでき、
 オブジェクト指向でプログラミングできる、非常に優れたスクリプト言語です。</p>
@@ -214,7 +215,12 @@ PHP初心者が、そのままテキストに入力して実行できるとこ�
 
 <p>本書の特徴として下記のことが学べます。</p>
 
-<div class="ref"><dl style="margin:5px"><dt>■PHPの構文と関数の完全理解</dt><dt>■データベースアプリケーション開発のテクニック</dt><dt>■パフォーマンスの最適化のためのデザインと設計</dt><dt>■実践的で効率的なデバッグ</dt></dl></div>
+<div class="ref"><dl style="margin:5px">
+<dt>■PHPの構文と関数の完全理解</dt>
+<dt>■データベースアプリケーション開発のテクニック</dt>
+<dt>■パフォーマンスの最適化のためのデザインと設計</dt>
+<dt>■実践的で効率的なデバッグ</dt>
+</dl></div>
 
 
 <p>本書からの役立ちそうな情報</p>
@@ -231,10 +237,7 @@ require関数では3つのファイルを静的に置き換えるのに対し、
 require(&#8220;ファイル2&#8221;);
 require(&#8220;ファイル3&#8221;);
 
-for ($i = 0; $i < 3; $i++) {
-&nbsp;&nbsp;&nbsp;&nbsp;include("ファイル" . $i);
-}
-</div></div>
+for ($i = 0; $i </div>
 
 
 
@@ -244,26 +247,24 @@ for ($i = 0; $i < 3; $i++) {
 
 <ul>
 <li><p>PHPのほぼすべての関数が載っています。(Webリファレンス)
-<img src="/images/img-link.gif"   align="middle" /><a href="http://php.planetmirror.com/manual/ja/funcref.php" rel="external nofollow">PHP関数リファレンス</a></p></li>
+<img src="/images/img-link.gif" align="middle" class="img-thumbnail"><a href="http://php.planetmirror.com/manual/ja/funcref.php" rel="external nofollow" title="PHP関数リファレンス">PHP関数リファレンス</a></p></li>
 <li><p>日本PHPユーザ会
-<img src="/images/img-link.gif"   align="middle" /><a href="http://www.php.gr.jp/" rel="external nofollow">日本PHPユーザ会</a></p></li>
+<img src="/images/img-link.gif" align="middle" class="img-thumbnail"><a href="http://www.php.gr.jp/" rel="external nofollow" title="日本PHPユーザ会">日本PHPユーザ会</a></p></li>
 <li><p>他のPHPおすすめ書籍</p></li>
 </ul>
-
-
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4871938956/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4871938956/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>プロフェッショナルを目指すなら</li>
 </ul>
-
-
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4844314831/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
-
-
-
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4844314831/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 </div>
+</body></html></div>
 
 
   
@@ -427,6 +428,10 @@ for ($i = 0; $i < 3; $i++) {
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -450,10 +455,6 @@ for ($i = 0; $i < 3; $i++) {
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -461,7 +462,7 @@ for ($i = 0; $i < 3; $i++) {
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

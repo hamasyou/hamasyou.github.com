@@ -177,7 +177,8 @@
 
 
 
-<div class="entry-content"><p>パズラー(Puzzler) とタイトルがつけられていますが、この本は単なる遊びの本ではありません。見つかりにくいバグの原因になる問題ばかり載っています。なんとなくでコーディングしているとはまってしまうバグばかりが集められていて、「どうしてこんな動きをするの？」 と目を疑う問題も多くあります。</p>
+<div class="entry-content"><html><body>
+<p>パズラー(Puzzler) とタイトルがつけられていますが、この本は単なる遊びの本ではありません。見つかりにくいバグの原因になる問題ばかり載っています。なんとなくでコーディングしているとはまってしまうバグばかりが集められていて、「どうしてこんな動きをするの？」 と目を疑う問題も多くあります。</p>
 
 <p>本書に載っている問題はそのほとんどが、Java の言語仕様を理解しているか？、JavaAPI をちゃんと理解しているか？ という問いかけのようなものです。バグを出さないようにするには何に気をつけたらよいのか、を考えるきっかけになる本です。</p>
 
@@ -203,7 +204,12 @@
 
 <p>また、ちょっと隙を見せるとあっという間にバグに包まれてしまう、そんな問題も多くあります。例えば、次の問題なんか、わかっているのに引っかかってしまうような問題ではないでしょうか？</p>
 
-<blockquote><p><code>Me.class.getName()</code> は、クラス <code>Me</code> の完全修飾名、すなわち <code>&quot;com.javapuzzlers.Me&quot;</code> を返します。このプログラムは何を表示しますか？</p><p><pre class="code"><code><span class="keyword">package</span> com.javapuzzlers; <br/> <br/><span class="keyword">public</span> <span class="keyword">class</span> Me { <br/>  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) { <br/>    System.out.println(Me.class.getName().replaceAll(<span class="literal">"."</span>, <span class="literal">"/"</span>) + <span class="literal">".class"</span>);<br/>  } <br/>} <br/></code></pre></p><footer><strong>『JAVA PUZZLERS』 P.43 パズル21</strong></footer></blockquote>
+<blockquote>
+<p><code>Me.class.getName()</code> は、クラス <code>Me</code> の完全修飾名、すなわち <code>"com.javapuzzlers.Me"</code> を返します。このプログラムは何を表示しますか？</p>
+<p></p>
+<pre class="code"><code><span class="keyword">package</span> com.javapuzzlers; <br><br><span class="keyword">public</span> <span class="keyword">class</span> Me { <br><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) { <br>    System.out.println(Me.class.getName().replaceAll(<span class="literal">"."</span>, <span class="literal">"/"</span>) + <span class="literal">".class"</span>);<br>  } <br>} <br></code></pre>
+<footer><strong class="text-danger">『JAVA PUZZLERS』 P.43 パズル21</strong></footer>
+</blockquote>
 
 
 <p>どうでしょう？こういうプログラムは、例えばクラスのファイル名に対応するフォルダを検索したりするときに書いたりします。このプログラムの出力結果は、次のようなものです。</p>
@@ -211,7 +217,7 @@
 <pre class="console">///////////////////.class</pre>
 
 
-<p><code>String#replaceAll</code> メソッドは、第一引数には<strong>正規表現</strong>をとります。正規表現で &quot;.&quot; は任意の一文字にマッチする文字のため、クラスの完全修飾子すべての文字にマッチして全部が &quot;/&quot; になってしまったのです。</p>
+<p><code>String#replaceAll</code> メソッドは、第一引数には<strong class="text-danger">正規表現</strong>をとります。正規表現で &#8220;.&#8221; は任意の一文字にマッチする文字のため、クラスの完全修飾子すべての文字にマッチして全部が &#8220;/&#8221; になってしまったのです。</p>
 
 <p>期待通りに処理するようにするには度売れ場よいかは、本書を読んでもらうとして (えっ？ずるい？)、『JAVA PUZZLERS』には、こんな問題がたくさん載っているのです。</p>
 
@@ -223,35 +229,26 @@
 <ul>
 <li>良い Java のコーディングを身に着けるなら、これしかない！</li>
 </ul>
-
-
 <div class="rakuten">
-<table width="400" border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714361/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table>
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714361/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table>
 </div>
 
 
 <ul>
 <li>Java の格言。深いです。</li>
 </ul>
-
-
 <div class="rakuten">
-<table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894711877/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table>
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894711877/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table>
 </div>
 
 
 <ul>
 <li>Java の鉄則</li>
 </ul>
-
-
 <div class="rakuten">
-<table width="400"  border="0" cellpadding="5"><tr><td colspan="2" ><a href="http://www.amazon.co.jp/exec/obidos/ASIN/489471258X/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table>
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/489471258X/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table>
 </div>
-
-
-
-</div>
+</body></html></div>
 
 
   
@@ -427,6 +424,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -450,10 +451,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -461,7 +458,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

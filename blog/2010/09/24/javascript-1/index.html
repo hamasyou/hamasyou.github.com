@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="JavaScript で忘れがちな変数宣言に関してのメモ。 <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" &hellip;">
+  <meta name="description" content="JavaScript で忘れがちな変数宣言に関してのメモ。 <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796 &hellip;">
   <meta name="keywords" content="JavaScript, 変数, スコープ">
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/2010/09/24/javascript-1/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="JavaScript で忘れがちな変数宣言に関してのメモ。 <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" &hellip;" />
+<meta property="og:description" content="JavaScript で忘れがちな変数宣言に関してのメモ。 <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -148,7 +148,8 @@
 
 
 
-<div class="entry-content"><p>JavaScript で忘れがちな変数宣言に関してのメモ。</p>
+<div class="entry-content"><html><body>
+<p>JavaScript で忘れがちな変数宣言に関してのメモ。</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -171,7 +172,7 @@
 <h3>変数宣言は関数のどこでしても関数の先頭から有効</h3>
 
 
-<p>変数を宣言せずに使用すると &ldquo;変数&rdquo; is not defined と怒られます。</p>
+<p>変数を宣言せずに使用すると “変数” is not defined と怒られます。</p>
 
 <pre class="code">alert(hoge);
 <span class="rem">// =&gt; hoge is not defined</span></pre>
@@ -183,7 +184,7 @@
 
 <pre class="code">alert(hoge);
  
-<span class="keyword">var</span> hoge = <span class="str">&quot;Hello World&quot;</span>;
+<span class="keyword">var</span> hoge = <span class="str">"Hello World"</span>;
 <span class="rem">// =&gt; undefined</span></pre>
 
 
@@ -199,7 +200,7 @@
 <pre class="code">alert(hoge);
  
 if (0) {
-  <span class="keyword">var</span> hoge = <span class="str">&quot;Hello World&quot;</span>;
+  <span class="keyword">var</span> hoge = <span class="str">"Hello World"</span>;
 }
 <span class="rem">// =&gt; undefined</span></pre>
 
@@ -214,7 +215,7 @@ if (0) {
 <pre class="code">(<span class="keyword">function</span>() {
   alert(hoge);
   (<span class="keyword">function</span>() {
-    <span class="keyword">var</span> hoge = <span class="str">&quot;Hello World&quot;</span>;
+    <span class="keyword">var</span> hoge = <span class="str">"Hello World"</span>;
   })();
 })();
 <span class="rem">// =&gt; hoge is not defined</span></pre>
@@ -226,7 +227,7 @@ if (0) {
 
 
 <p>変数宣言は関数の最初にまとめて行うのがよさそうです。</p>
-</div>
+</body></html></div>
 
 
   
@@ -398,6 +399,10 @@ if (0) {
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -421,10 +426,6 @@ if (0) {
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -432,7 +433,7 @@ if (0) {
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

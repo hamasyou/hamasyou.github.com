@@ -14,7 +14,8 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="最近デザインパターンの使いどころについてのメモを取っている。デザインパターンは、どんなものがあるのかという知識とともに、実際に使いどころをかぎ分ける嗅覚が必要だと思っていいる。 本書は、デザインパターンをJavaで実装するときの実例と共に見やすい形でまとめている。 デザインパターンというのは、 &hellip;">
+  <meta name="description" content="デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、 &hellip;">
   
 
   
@@ -25,7 +26,8 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/25/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="最近デザインパターンの使いどころについてのメモを取っている。デザインパターンは、どんなものがあるのかという知識とともに、実際に使いどころをかぎ分ける嗅覚が必要だと思っていいる。 本書は、デザインパターンをJavaで実装するときの実例と共に見やすい形でまとめている。 デザインパターンというのは、 &hellip;" />
+<meta property="og:description" content="デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -94,16 +96,12 @@
 </div>
 </nav>
   <div role="main" class="container">
-    <div class="row">
+    <html><body><div class="row">
   <div class="col-sm-12 col-md-9">
     
     
     
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/06/03/4774115797/">Javaデザインパターン徹底攻略</a></h1>
+    <article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/06/03/decorator/">実践デザパタ-その6:Decoratorパターン</a></h1>
     
     
       <p class="meta">
@@ -120,8 +118,59 @@
 
 
 
-<time datetime="2004-06-03T00:43:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 3<span>rd</span>, 2004</time>
+<time datetime="2004-06-03T14:49:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 3<span>rd</span>, 2004</time><span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/dezainpatan/">デザインパターン</a>
+    
+  
+</span>
+
+        
         <span class="divider"></span>
+        <a href="/blog/2004/06/03/decorator/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header><div class="entry-content">
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
+
+<p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
+
+<p>6回目は、機能拡張を統一的な方法で、自由に行うことができる<b>Decorator</b>パターンです。</p>
+
+</div>
+  
+  
+    <footer><a rel="full-article" href="/blog/2004/06/03/decorator/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/06/03/4774115797/">Javaデザインパターン徹底攻略</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-06-03T00:43:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 3<span>rd</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -146,10 +195,8 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>最近デザインパターンの使いどころについてのメモを取っている。デザインパターンは、どんなものがあるのかという知識とともに、実際に使いどころをかぎ分ける嗅覚が必要だと思っていいる。</p>
+  </header><div class="entry-content">
+<p>最近デザインパターンの使いどころについてのメモを取っている。デザインパターンは、どんなものがあるのかという知識とともに、実際に使いどころをかぎ分ける嗅覚が必要だと思っていいる。</p>
 
 <p>本書は、デザインパターンをJavaで実装するときの実例と共に見やすい形でまとめている。</p>
 
@@ -158,20 +205,8 @@
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/06/03/4774115797/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/06/02/composite/">実践デザパタ-その5:Compositeパターン</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/06/03/4774115797/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/06/02/composite/">実践デザパタ-その5:Compositeパターン</a></h1>
     
     
       <p class="meta">
@@ -188,8 +223,7 @@
 
 
 
-<time datetime="2004-06-02T13:37:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 2<span>nd</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-06-02T13:37:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 2<span>nd</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -212,10 +246,8 @@
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+  </header><div class="entry-content">
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
 GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
 
 <p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
@@ -225,20 +257,8 @@ GoFの23のパターンが有名です。デザインパターンというのは
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/06/02/composite/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/06/01/template-method/">実践デザパタ-その4:Template Methodパターン</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/06/02/composite/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/06/01/template-method/">実践デザパタ-その4:Template Methodパターン</a></h1>
     
     
       <p class="meta">
@@ -255,8 +275,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 
 
-<time datetime="2004-06-01T17:10:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 1<span>st</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-06-01T17:10:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 1<span>st</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -279,10 +298,8 @@ GoFの23のパターンが有名です。デザインパターンというのは
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
+  </header><div class="entry-content">
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
 
 <p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
 
@@ -291,20 +308,8 @@ GoFの23のパターンが有名です。デザインパターンというのは
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/06/01/template-method/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/06/01/singleton/">実践デザパタ-その3:Singletonパターン</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/06/01/template-method/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/06/01/singleton/">実践デザパタ-その3:Singletonパターン</a></h1>
     
     
       <p class="meta">
@@ -321,8 +326,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 
 
-<time datetime="2004-06-01T01:59:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 1<span>st</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-06-01T01:59:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 1<span>st</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -345,10 +349,8 @@ GoFの23のパターンが有名です。デザインパターンというのは
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+  </header><div class="entry-content">
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
 GoFの23のパターンが有名です。
 デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
 
@@ -359,20 +361,8 @@ GoFの23のパターンが有名です。
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/06/01/singleton/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/31/factory-method/">実践デザパタ-その2:Factory Methodパターン</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/06/01/singleton/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/31/factory-method/">実践デザパタ-その2:Factory Methodパターン</a></h1>
     
     
       <p class="meta">
@@ -389,8 +379,7 @@ GoFの23のパターンが有名です。
 
 
 
-<time datetime="2004-05-31T13:11:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 31<span>st</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-05-31T13:11:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 31<span>st</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -413,34 +402,20 @@ GoFの23のパターンが有名です。
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。GoFの23のパターンが有名です。</p>
+  </header><div class="entry-content">
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。GoFの23のパターンが有名です。</p>
 
 <p>デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
 
 <p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
 
-<p>今回は、インスタンスを生成する責務を切り出した、<strong>Factory Method</strong>パターンです。</p>
+<p>今回は、インスタンスを生成する責務を切り出した、<strong class="text-danger">Factory Method</strong>パターンです。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/31/factory-method/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/31/adapter/">実践デザパタ-その1:Adapterパターン</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/05/31/factory-method/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/31/adapter/">実践デザパタ-その1:Adapterパターン</a></h1>
     
     
       <p class="meta">
@@ -457,8 +432,7 @@ GoFの23のパターンが有名です。
 
 
 
-<time datetime="2004-05-31T00:13:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 31<span>st</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-05-31T00:13:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 31<span>st</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -481,34 +455,20 @@ GoFの23のパターンが有名です。
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。GoFの23のパターンが有名です。</p>
+  </header><div class="entry-content">
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。GoFの23のパターンが有名です。</p>
 
 <p>デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
 
 <p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
 
-<p>最初は、仕様の違いを吸収する目的で使われる、<strong>Adapter</strong>パターンです。</p>
+<p>最初は、仕様の違いを吸収する目的で使われる、<strong class="text-danger">Adapter</strong>パターンです。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/31/adapter/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/30/4774116963/">ひとりでできるJava実践入門</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/05/31/adapter/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/30/4774116963/">ひとりでできるJava実践入門</a></h1>
     
     
       <p class="meta">
@@ -525,8 +485,7 @@ GoFの23のパターンが有名です。
 
 
 
-<time datetime="2004-05-30T15:11:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 30<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-05-30T15:11:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 30<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -549,10 +508,11 @@ GoFの23のパターンが有名です。
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><blockquote><p>本書が一般的なJavaプログラミングの入門書と違うのは、Javaのオブジェクトの取り扱いに主眼を置いていることである。Javaの基本事項の修得には、それほど多くの時間を費やさない。むしろ過半数の時間を、より実践的なJavaプログラミングに割り当てる。そして、その過程では、Javaを使って基本的なアルゴリズムの実践方法を学んでいく。この意味で、本書は、Javaの再入門により適しているといえる。</p><footer><strong>本書 『はじめに』より</strong></footer></blockquote>
+  </header><div class="entry-content">
+<blockquote>
+<p>本書が一般的なJavaプログラミングの入門書と違うのは、Javaのオブジェクトの取り扱いに主眼を置いていることである。Javaの基本事項の修得には、それほど多くの時間を費やさない。むしろ過半数の時間を、より実践的なJavaプログラミングに割り当てる。そして、その過程では、Javaを使って基本的なアルゴリズムの実践方法を学んでいく。この意味で、本書は、Javaの再入門により適しているといえる。</p>
+<footer><strong class="text-danger">本書 『はじめに』より</strong></footer>
+</blockquote>
 
 
 
@@ -560,20 +520,8 @@ GoFの23のパターンが有名です。
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/30/4774116963/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/29/jndi/">JNDIでオブジェクト管理</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/05/30/4774116963/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/29/jndi/">JNDIでオブジェクト管理</a></h1>
     
     
       <p class="meta">
@@ -590,8 +538,7 @@ GoFの23のパターンが有名です。
 
 
 
-<time datetime="2004-05-29T04:05:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 29<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-05-29T04:05:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 29<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -614,32 +561,18 @@ GoFの23のパターンが有名です。
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>JNDIは、オブジェクトに名前をつけて管理するネーミングサービスの共通インターフェースを提供します。JAVAアプリケーションはこのJNDIを使って統一された手法でネーミングサービスにアクセスすることができます。</p>
+  </header><div class="entry-content">
+<p>JNDIは、オブジェクトに名前をつけて管理するネーミングサービスの共通インターフェースを提供します。JAVAアプリケーションはこのJNDIを使って統一された手法でネーミングサービスにアクセスすることができます。</p>
 
 <p>JNDI(Java Naming and Directory Interface)とは、Javaでネーミングサービスを扱うためのAPIを定めたものです。JNDIが定められた目的はアプリケーションがさまざまなネーミング/ディレクトリサービスを統一的に利用することができるようにすることです。</p>
 
-<p>ネーミングサービスとは、名前とオブジェクトを関連付けて管理するサービスのことです。例えば 管理人 =&gt; 「ハマショウというオブジェクト」 というように、<strong>管理人</strong>という名前を<strong>ハマショウ</strong>というオブジェクトに結び付け、<b>管理人 = ハマショウ</b>という関連を作ることと説明できます。</p>
+<p>ネーミングサービスとは、名前とオブジェクトを関連付けて管理するサービスのことです。例えば 管理人 =&gt; 「ハマショウというオブジェクト」 というように、<strong class="text-danger">管理人</strong>という名前を<strong class="text-danger">ハマショウ</strong>というオブジェクトに結び付け、<b>管理人 = ハマショウ</b>という関連を作ることと説明できます。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/29/jndi/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/28/4798102121/">JavaとUMLで学ぶオブジェクト指向の考え方―オブジェクト指向分析・設計入門</a></h1>
+    <footer><a rel="full-article" href="/blog/2004/05/29/jndi/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/05/28/4798102121/">JavaとUMLで学ぶオブジェクト指向の考え方―オブジェクト指向分析・設計入門</a></h1>
     
     
       <p class="meta">
@@ -656,8 +589,7 @@ GoFの23のパターンが有名です。
 
 
 
-<time datetime="2004-05-28T14:35:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 28<span>th</span>, 2004</time>
-        <span class="divider"></span>
+<time datetime="2004-05-28T14:35:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 28<span>th</span>, 2004</time><span class="divider"></span>
         <span class="categories">
   
     
@@ -684,121 +616,45 @@ GoFの23のパターンが有名です。
         
       </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>オブジェクト指向でシステムの分析・設計を行う際にUMLを使う機会が増えてきました。こういった機会に出会うたびに、UMLとオブジェクト指向をどのように結びつけたらよいかと迷うときがあります。本書では、まずオブジェクト指向の考え方を学び、オブジェクト指向で設計・分析を行っていきます。</p>
+  </header><div class="entry-content">
+<p>オブジェクト指向でシステムの分析・設計を行う際にUMLを使う機会が増えてきました。こういった機会に出会うたびに、UMLとオブジェクト指向をどのように結びつけたらよいかと迷うときがあります。本書では、まずオブジェクト指向の考え方を学び、オブジェクト指向で設計・分析を行っていきます。</p>
 
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/28/4798102121/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/28/4893699598/">Developing Applications With JAVA and UML -プログラマーのための統一モデリング</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-28T03:52:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 28<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
-    
-      <a class="tag label label-info" href="/blog/tags/uml/">UML</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/28/4893699598/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>JAVAとUMLと方法論をまとめて解説してある。「JAVAだけ」とか「UMLだけ」とか「方法論だけ」といった書籍を読むよりも断然実践的に使える。方法論とUMLを使ってJAVAで実装するところまで解説している本は、希少価値が高いと思う。これらのことというのはやはり別々で学んでも、実際に開発現場ではどうすれば良いのかがどうしても不透明になる。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2004/05/28/4893699598/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
-    <ul class="pager">
-      
-      <li class="previous"><a href="/blog/page/26/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
+    <footer><a rel="full-article" href="/blog/2004/05/28/4798102121/">続きをよむ →</a>
+    </footer></article><ul class="pager">
+<li class="previous"><a href="/blog/page/26/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
       
       
       <li class="next"><a href="/blog/page/24/">Newer <i class="fa fa-arrow-circle-right"></i></a></li>
       
     </ul>
-  </div>
+</div>
   <div class="clearfix visible-sm"></div>
-  <aside class="sidebar-nav col-md-3">
-    
-    <section class="well">
-  <div class="row">
+  <aside class="sidebar-nav col-md-3"><section class="well"><div class="row">
     <div class="col-xs-4 col-sm-3 col-md-5">
-      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
-    </div>
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail">
+</div>
     <div class="col-xs-8 col-sm-9 col-md-7">
       <ul class="list-unstyled">
-        <li>濱田章吾</li>
+<li>濱田章吾</li>
         <li>hamasyou</li>
         <li><ul class="list-inline">
-          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
-          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
-          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
-          </ul>
-        </li>
+<li><a href="https://twitter.com/hamasyou" rel="external nofollow" title=""><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow" title=""><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow" title=""><i class="fa fa-github"></i></a></li>
+          <li><a href="mailto:hamasyou@gmail.com" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul></li>
       </ul>
-    </div>
+</div>
   </div>
-</section>
-<section class="well">
-  <ul id="recent_posts" class="nav nav-list">
-    <li class="nav-header">Recent Posts</li>
+</section><section class="well"><ul id="recent_posts" class="nav nav-list">
+<li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
@@ -824,25 +680,14 @@ GoFの23のパターンが有名です。
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
-  </ul>
-</section>
-<section class="panel panel-default">
-  <div class="panel-heading">
+  </ul></section><section class="panel panel-default"><div class="panel-heading">
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class="list-group-item" href="/blog/categories/architecture">Architecture <span class="badge">38</span></a><a class="list-group-item" href="/blog/categories/blog">Blog <span class="badge">96</span></a><a class="list-group-item" href="/blog/categories/database">Database <span class="badge">8</span></a><a class="list-group-item" href="/blog/categories/essay">Essay <span class="badge">13</span></a><a class="list-group-item" href="/blog/categories/lifehack">LifeHack <span class="badge">12</span></a><a class="list-group-item" href="/blog/categories/network">Network <span class="badge">7</span></a><a class="list-group-item" href="/blog/categories/programming">Programming <span class="badge">111</span></a><a class="list-group-item" href="/blog/categories/webdesign">WebDesign <span class="badge">4</span></a>
   </div>
-</section>
-
-    
-  </aside>
-</div>
-
+</section></aside>
+</div></body></html>
   </div>
   <footer role="contentinfo" class="page-footer"><hr>
 <p>

@@ -181,28 +181,29 @@
 
 
 
-<div class="entry-content"><p>本書は、「プログラマ」の、「プログラマ」による、「プログラマ」のための本です。</p>
+<div class="entry-content"><html><body>
+<p>本書は、「プログラマ」の、「プログラマ」による、「プログラマ」のための本です。</p>
 
-<ul><li>プログラマとして成功したい！</li>
+<ul>
+<li>プログラマとして成功したい！</li>
 <li>プログラミングの腕を上達させたい！</li>
 <li>ソースコードの質を向上させたい！</li>
-<li>メンバーと上手くやりたい！</li></ul>
-
-
+<li>メンバーと上手くやりたい！</li>
+</ul>
 <p>こういった願いを持つ人のために、世界中でよく知られた著者陣のエッセイがまとめられています。</p>
 
 <p>何か壁にぶち当たっている人、成功したプログラマはどんなことを考えていたのか知りたい人、どういうことを考えてプログラムを書けば質が上がるのか知りたい人。</p>
 
 <p>すべての「プログラマ」におすすめの一冊です。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4 class="note">参考</h4>
 
 
-<p><a href="http://ja.wikisource.org/wiki/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%81%8C%E7%9F%A5%E3%82%8B%E3%81%B9%E3%81%8D97%E3%81%AE%E3%81%93%E3%81%A8" rel="external nofollow">プログラマが知るべき97のこと - Wikisource</a></p>
+<p><a href="http://ja.wikisource.org/wiki/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%81%8C%E7%9F%A5%E3%82%8B%E3%81%B9%E3%81%8D97%E3%81%AE%E3%81%93%E3%81%A8" rel="external nofollow" title="プログラマが知るべき97のこと - Wikisource">プログラマが知るべき97のこと - Wikisource</a></p>
 
-<p></section></p>
+<p></p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -243,10 +244,6 @@
 <li>ツール、自動化、開発環境</li>
 <li>コードと顧客</li>
 </ul>
-
-
-
-
 <h2>おぼえがき</h2>
 
 
@@ -259,7 +256,10 @@
 
 <p>コードの再利用をするときは、<em>コンテキスト</em>が同じかどうかを確認すること。システム内に同じことをするコードが二つあったとしてもそれぞれが違う役割をしていたら、それはコンテキストが違うから再利用のメリットは少ない。</p>
 
-<blockquote><p>「再利用」は一般に良いこととされており、確かに基本的には良いことだからです。コンテキストさえ適切なら、間違いなく有効です。しかし、コンテキストが不適切だと、メリットよりもコストのほうが大きくなるのです。</p><footer><strong>本書-共有は慎重により</strong></footer></blockquote>
+<blockquote>
+<p>「再利用」は一般に良いこととされており、確かに基本的には良いことだからです。コンテキストさえ適切なら、間違いなく有効です。しかし、コンテキストが不適切だと、メリットよりもコストのほうが大きくなるのです。</p>
+<footer><strong class="text-danger">本書-共有は慎重により</strong></footer>
+</blockquote>
 
 
 
@@ -267,9 +267,9 @@
 <h3>DRY原則</h3>
 
 
-<p>「<strong>DRY（Don&rsquo;t Repeat Yourself:繰り返しを避ける）原則</strong>」とは「すべての<em>知識</em>はシステム内において、単一、かつ明確な、そして信頼できる表現になっていなければならない」という条件をみたすこと。</p>
+<p>「<strong class="text-danger">DRY（Don’t Repeat Yourself:繰り返しを避ける）原則</strong>」とは「すべての<em>知識</em>はシステム内において、単一、かつ明確な、そして信頼できる表現になっていなければならない」という条件をみたすこと。</p>
 
-<p>「知識」が唯一であるということがポイントで、その知識を取り出すコードの重複は DRY 原則違反ではない。その知識を取り出すコードの重複を一箇所にまとめることは、<strong>OAOO（Once and Only Once）</strong>と呼ぶ。</p>
+<p>「知識」が唯一であるということがポイントで、その知識を取り出すコードの重複は DRY 原則違反ではない。その知識を取り出すコードの重複を一箇所にまとめることは、<strong class="text-danger">OAOO（Once and Only Once）</strong>と呼ぶ。</p>
 
 <h3>技術的例外とビジネス例外を明確に区別する</h3>
 
@@ -279,13 +279,13 @@
 <h3>良いインターフェース仕様の条件は「正しい使い方を簡単に、誤った使い方を困難に」</h3>
 
 
-<p>良いインターフェースは、<em>正しく使用することが操作ミスをするよりも簡単</em>である。良い API を設計するときに考えることは「<strong>それが一番自然かどうか</strong>」</p>
+<p>良いインターフェースは、<em>正しく使用することが操作ミスをするよりも簡単</em>である。良い API を設計するときに考えることは「<strong class="text-danger">それが一番自然かどうか</strong>」</p>
 
 <h3>名前重要</h3>
 
 
 <p>「<em>すべての人物・事物には真の名前があり、その名前を知るものはそれを支配することができる</em>」本当にしっくりくる名前を選択することは、とても重要なことで、適切な名前を選択できたら8割は設計が完成したと考えても大げさではない。</p>
-</div>
+</body></html></div>
 
 
   
@@ -459,6 +459,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -482,10 +486,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -493,7 +493,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

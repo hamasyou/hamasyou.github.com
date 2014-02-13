@@ -175,7 +175,8 @@
 
 
 
-<div class="entry-content"><p>この記事を書いている今では、Javaはエンタープライズシステム構築の場面で、非常に大きな成功を収めていると思います。サーブレット/JSP、EJBといったサーバーサイド技術や、JDBC、JNIといったJ2EE技術、RMIによる分散オブジェクト技術。Javaで業務用アプリケーションを作った事のある人なら、一度は聞いたことのある名前だと思います。</p>
+<div class="entry-content"><html><body>
+<p>この記事を書いている今では、Javaはエンタープライズシステム構築の場面で、非常に大きな成功を収めていると思います。サーブレット/JSP、EJBといったサーバーサイド技術や、JDBC、JNIといったJ2EE技術、RMIによる分散オブジェクト技術。Javaで業務用アプリケーションを作った事のある人なら、一度は聞いたことのある名前だと思います。</p>
 
 <p>エンタープライズシステム構築技術の中には、忌み嫌われるものもいくつかあります。それでも僕は、その原理や実装、実情を踏まえた上で良し悪しを決めたい。そのための知識を得るために本書を読みました。</p>
 
@@ -201,11 +202,16 @@
 
 <p>本書の目次</p>
 
-<ul><li>エンタープライズJavaによるシステム開発の基礎</li><li>JDBCについて</li><li>Javaサーブレットの展開</li><li>JNIによるJavaと既存システムとの融合</li><li>オブジェクトの直列化</li><li>RMIについて</li><li>Java IDL-JavaとCORBAの接続</li><li>EJBについて</li></ul>
-
-
-
-
+<ul>
+<li>エンタープライズJavaによるシステム開発の基礎</li>
+<li>JDBCについて</li>
+<li>Javaサーブレットの展開</li>
+<li>JNIによるJavaと既存システムとの融合</li>
+<li>オブジェクトの直列化</li>
+<li>RMIについて</li>
+<li>Java IDL-JavaとCORBAの接続</li>
+<li>EJBについて</li>
+</ul>
 <h2>覚書き</h2>
 
 
@@ -217,7 +223,7 @@
 <p>URLとは、リソースが存在する実際の位置を表したものです。インターネットをやるときによく見る「アドレス」が主な例です。JDBCドライバを目的のデータベースと通信させるためにURLを指定します。このURLも、実は、インターネットのアドレスとまったく同じ表記になっています。</p>
 
 <pre>
-JDBC:<サブプロトコル>:<サブネーム>://<ホスト名>:<ポート番号>/<データベース名>
+JDBC::://:/
 </pre>
 
 
@@ -233,7 +239,7 @@ JDBC:<サブプロトコル>:<サブネーム>://<ホスト名>:<ポート番号
 <p>java.sql.Connectionクラスには、トランザクション隔離レベルが定義されています。</p>
 
 <dl>
-<dt>TRANSACTION_NONE</strong></dt>
+<dt>TRANSACTION_NONE</dt>
 <dd>トランザクションはサポートされない</dd>
 <dt>TRANSACTION_READ_COMMITTED</dt>
 <dd>不確定な読み込み(dirty read)を阻止。繰り返し不能な読み込み(nonrepeatable read)、架空読み込み(phantom read)は可能。</dd>
@@ -244,10 +250,6 @@ JDBC:<サブプロトコル>:<サブネーム>://<ホスト名>:<ポート番号
 <dt>TRANSACTION_SERIALIZABLE</dt>
 <dd>不確定な読み込み(dirty read)、繰り返し不能な読み込み(nonrepeatable read)、架空読み込み(phantom read)のどれも阻止。</dd>
 </dl>
-
-
-
-
 <dl>
 <dt>不確定な読み込み(Dirty read)</dt>
 <dd>読んだデータが後で無効にされる</dd>
@@ -256,8 +258,6 @@ JDBC:<サブプロトコル>:<サブネーム>://<ホスト名>:<ポート番号
 <dt>架空読み込み(Phantom read)</dt>
 <dd>存在しなかったはずのデータが後から現れる</dd>
 </dl>
-
-
 <p>トランザクションの隔離レベルを変更するのは、トランザクションを開始する前にするべきです。トランザクション実行中に隔離レベルを変更すると、その時点でトランザクションがコミットされてしまいます。</p>
 
 <h3>RMI</h3>
@@ -280,32 +280,26 @@ JDBC:<サブプロトコル>:<サブネーム>://<ホスト名>:<ポート番号
 <ul>
 <li>J2EEに関する技術の紹介は、こちらでもしています。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797322888/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>さらなる知識のたくわえに</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756144209/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756144209/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>読みやすいです。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798106437/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
-
-
-
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798106437/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -479,6 +473,10 @@ JDBC:<サブプロトコル>:<サブネーム>://<ホスト名>:<ポート番号
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -502,10 +500,6 @@ JDBC:<サブプロトコル>:<サブネーム>://<ホスト名>:<ポート番号
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -513,7 +507,7 @@ JDBC:<サブプロトコル>:<サブネーム>://<ホスト名>:<ポート番号
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

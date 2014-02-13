@@ -150,7 +150,8 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 
 
-<div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+<div class="entry-content"><html><body>
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
 GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
 
 <p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
@@ -179,7 +180,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 既存機能に、少しだけ修飾を加えたい場合に使われるパターンです。</p>
 
 
-<p><img src="/images/design_pattern/decorator.gif" alt="Decoratorのクラス図" /></p>
+<p><img src="/images/design_pattern/decorator.gif" alt="Decoratorのクラス図" class="img-thumbnail"></p>
 
 <p>Javaのクラスライブラリの例として、java.ioパッケージが最初に思い浮かびます。Javaには入出力(I/O)機能として、java.ioパッケージが用意されています。ファイルから一行ずつ読み取り、行番号をつけてファイルに書き込むという処理があるとします。</p>
 
@@ -216,7 +217,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <p>クラスの拡張には開いていて、クラスの修正には閉じている。<b>つまり機能追加を自由にできるが、既存のクラスには修正を必要としない</b>というのがこの原則の意味するところです。Decoratorパターンは、まさにこの原則に則っています。</p>
 
-<p><strong>既存のクラスに機能を拡張したい場合</strong>、<strong>オブジェクトに修飾する形で、機能を付け加えたい場合</strong>に使えるパターンです。</p>
+<p><strong class="text-danger">既存のクラスに機能を拡張したい場合</strong>、<strong class="text-danger">オブジェクトに修飾する形で、機能を付け加えたい場合</strong>に使えるパターンです。</p>
 
 <h2>実装サンプルと参考文献</h2>
 
@@ -225,57 +226,49 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <ul>
 <li><p>日立ソフト(Decoratorパターン)
-<a href="http://www.dmz.hitachi-sk.co.jp/Java/Tech/pattern/gof/decorator.html" rel="external nofollow">日立ソフト</a></p></li>
-<li><p>Skeleton of GOF&rsquo;s Design Pattern(JavaとC++のサンプルがあります)
-<a href="http://www002.upp.so-net.ne.jp/ys_oota/mdp/Decorator/index.htm" rel="external nofollow">DECORATORの骸骨</a></p></li>
+<a href="http://www.dmz.hitachi-sk.co.jp/Java/Tech/pattern/gof/decorator.html" rel="external nofollow" title="日立ソフト">日立ソフト</a></p></li>
+<li><p>Skeleton of GOF’s Design Pattern(JavaとC++のサンプルがあります)
+<a href="http://www002.upp.so-net.ne.jp/ys_oota/mdp/Decorator/index.htm" rel="external nofollow" title="DECORATORの骸骨">DECORATORの骸骨</a></p></li>
 <li><p>オブジェクト倶楽部(デザインパターン入門)
-<a href="http://www.objectclub.jp/technicaldoc/pattern/DPforJavaProgrammers" rel="external nofollow">オブジェクト倶楽部</a></p></li>
+<a href="http://www.objectclub.jp/technicaldoc/pattern/DPforJavaProgrammers" rel="external nofollow" title="オブジェクト倶楽部">オブジェクト倶楽部</a></p></li>
 <li><p>デザインパターンのお勧め書籍</p></li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>独習シリーズのデザインパターン編。デザインパターンを一人でも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>Sun Microsystemのお墨付き。GoF以外のパターンも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>UMLを使って、オブジェクト指向のいいとこ取りができます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>デザインパターンだけではなく、ソフトウェア設計の原則やプラクティスまで学びたい人におすすめ</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
-
-
-
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -447,6 +440,10 @@ GoFの23のパターンが有名です。デザインパターンというのは
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -470,10 +467,6 @@ GoFの23のパターンが有名です。デザインパターンというのは
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -481,7 +474,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

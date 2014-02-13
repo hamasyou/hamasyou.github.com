@@ -175,7 +175,8 @@
 
 
 
-<div class="entry-content"><p>テスト駆動開発(TDD)は、アジャイル開発に非常に良く適した開発技法である。プログラムを書く前にテストケースを書くという、今までの開発のやり方とはまったく逆の「目的から解法を求める」やり方です。このやり方だと何がいいのかというと、目的が見えているから(テストケースを満足させること)、解法が非常にシンプルになることです。つまり無駄がなくなる。トヨタのカンバン方式をご存知ならば、ほとんど一緒の考え方がこの<strong>テスト駆動開発</strong>になるのです。</p>
+<div class="entry-content"><html><body>
+<p>テスト駆動開発(TDD)は、アジャイル開発に非常に良く適した開発技法である。プログラムを書く前にテストケースを書くという、今までの開発のやり方とはまったく逆の「目的から解法を求める」やり方です。このやり方だと何がいいのかというと、目的が見えているから(テストケースを満足させること)、解法が非常にシンプルになることです。つまり無駄がなくなる。トヨタのカンバン方式をご存知ならば、ほとんど一緒の考え方がこの<strong class="text-danger">テスト駆動開発</strong>になるのです。</p>
 
 <p>本書は、今までの開発方法とは一風変わったテスト駆動開発を、日本人による解説と豊富なサンプルプログラムで分かりやすく理解できます。なぜテスト駆動がいいのかということを、余すことなくかかれています。</p>
 
@@ -213,11 +214,11 @@
 <h3>リズムが大切</h3>
 
 
-<p>テスト駆動開発で重要な要素の一つして「リズム」があります。一般的にテスト駆動で開発するときには<a href="http://d.hatena.ne.jp/keyword/xUnit?kid=23897" rel="external nofollow">JUnit</a>を使っています。</p>
+<p>テスト駆動開発で重要な要素の一つして「リズム」があります。一般的にテスト駆動で開発するときには<a href="http://d.hatena.ne.jp/keyword/xUnit?kid=23897" rel="external nofollow" title="JUnit">JUnit</a>を使っています。</p>
 
 <p>このJUnitは、テストに成功すると「グリーン｣、失敗すると「レッド」のバーが出力されます。</p>
 
-<p><strong>テスト駆動開発では、「レッド、グリーン、リファクタリング」というリズムを絶えず繰り返すことが、テスト駆動開発の極意</strong>となっています。最初にテストに失敗することからスタートします。ずっとグリーンだと、ほんとにプログラムがあっているのか不安になってきます。ですので、最初に「レッド」からスタートします。</p>
+<p><strong class="text-danger">テスト駆動開発では、「レッド、グリーン、リファクタリング」というリズムを絶えず繰り返すことが、テスト駆動開発の極意</strong>となっています。最初にテストに失敗することからスタートします。ずっとグリーンだと、ほんとにプログラムがあっているのか不安になってきます。ですので、最初に「レッド」からスタートします。</p>
 
 <p>グリーンにした後にリファクタリングを行うのがポイントで、最初のグリーンにする作業では、一番簡単なやり方(Fake It!)でテストをパスすることだけを考えます。次のリファクタリングフェーズで、重複をなくすようなコードに変更していきます。</p>
 
@@ -228,9 +229,11 @@
 
 
 
-<ul><li>テストコードにはコードの意図を伝えるコメントを入れる</li><li>テスト同士が関連するのは避ける</li><li>テストの名前には何のテストをしているかと分かる名前を付ける</li></ul>
-
-
+<ul>
+<li>テストコードにはコードの意図を伝えるコメントを入れる</li>
+<li>テスト同士が関連するのは避ける</li>
+<li>テストの名前には何のテストをしているかと分かる名前を付ける</li>
+</ul>
 <p>テストコードには、引数の意味や数字の意味などを書いておくべきです。テストコードにはリテラルがそのまま使われることが多々ありますので、後々見たときに数字の意味が分かるようにしておくようにします。</p>
 
 <p>プログラムに修正が入る場合、テストコードから最初に修正します。また、テストコードより先にテストコードに書いたコメントを最初に修正します。</p>
@@ -238,7 +241,7 @@
 <h3>テスト駆動とDependency Injection</h3>
 
 
-<p><a href="http://www.kakutani.com/trans/fowler/injection.html" rel="external nofollow">Dependency Injection(依存性注入)</a>というものがあります。これは簡単に言うと、クラスの関連を実装と切り離しておいて、第三者によって実装を設定させるというものです。(あんまり上手く説明できてないな・・・)
+<p><a href="http://www.kakutani.com/trans/fowler/injection.html" rel="external nofollow" title="Dependency Injection(依存性注入)">Dependency Injection(依存性注入)</a>というものがあります。これは簡単に言うと、クラスの関連を実装と切り離しておいて、第三者によって実装を設定させるというものです。(あんまり上手く説明できてないな・・・)
 　
 テスト駆動開発を行う上で、あるメソッドをテストするときにクラスの関連が多すぎてテストしにくい場合が出てきます。その場合、設計を見直して関連を減らすことが出来ればいいのですが、出来ない場合も出てきます。</p>
 
@@ -250,13 +253,9 @@
 
 
 <ul>
-<li><a href="http://blog.drecom.jp/object-garden/archive/28" rel="external nofollow">Object Garden</a></li>
-<li><a href="http://www.ingrid.org/jajakarta/cactus/doc/mockobjects.html" rel="external nofollow">モック・オブジェクト 対 コンテナ内テスト</a></li>
+<li><a href="http://blog.drecom.jp/object-garden/archive/28" rel="external nofollow" title="Object Garden">Object Garden</a></li>
+<li><a href="http://www.ingrid.org/jajakarta/cactus/doc/mockobjects.html" rel="external nofollow" title="モック・オブジェクト 対 コンテナ内テスト">モック・オブジェクト 対 コンテナ内テスト</a></li>
 </ul>
-
-
-
-
 <h3>「テスト可能」なアプリケーションにするための7つの原則</h3>
 
 
@@ -278,14 +277,10 @@
 <dt>7. 最初にテストから考える</dt>
 <dd>最初にテストから実装することで、実装段階で間違いを発見することが出来るようになります。</dd>
 </dl>
-
-
-
-
 <h4>参考</h4>
 
 
-<p><a href="http://www-6.ibm.com/jp/developerworks/java/020125/j_j-diag0911.html" rel="external nofollow">「テスト可能な」アプリケーションの設計 IBM</a></p>
+<p><a href="http://www-6.ibm.com/jp/developerworks/java/020125/j_j-diag0911.html" rel="external nofollow" title="「テスト可能な」アプリケーションの設計 IBM">「テスト可能な」アプリケーションの設計 IBM</a></p>
 
 <h2>参考</h2>
 
@@ -293,32 +288,26 @@
 <ul>
 <li>テスト駆動開発といったらケントベックは外せません。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894717115/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894717115/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>JUnitに関することならこれがおすすめ</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325143/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325143/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>テストファースト開発に関して分かりやすく解説しています。JUnitの使い方に関しても解説されています。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325720/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
-
-
-
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325720/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -484,6 +473,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -507,10 +500,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -518,7 +507,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

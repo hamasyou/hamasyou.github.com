@@ -150,22 +150,19 @@
 
 
 
-<div class="entry-content"><p>iPhone アプリの開発をしていて一番の難は <em>Objective-C を使わないといけない</em>ことだと思う。Objective-C が大好きな人もいるかもしれないけど、僕はあの言語の気持ち悪さ（構文的な意味で）が嫌いです。。</p>
+<div class="entry-content"><html><body>
+<p>iPhone アプリの開発をしていて一番の難は <em>Objective-C を使わないといけない</em>ことだと思う。Objective-C が大好きな人もいるかもしれないけど、僕はあの言語の気持ち悪さ（構文的な意味で）が嫌いです。。</p>
 
-<p>で、どうにかならんもんかと調べてみるとなんと、<strong>JavaScript</strong> を使って開発することが出来る開発プラットフォームがあるじゃないですか。</p>
+<p>で、どうにかならんもんかと調べてみるとなんと、<strong class="text-danger">JavaScript</strong> を使って開発することが出来る開発プラットフォームがあるじゃないですか。</p>
 
-<p>というこで早速使ってみましたよ、<strong>Titanium Mobile</strong>！読み方は、<em>タイタニウム</em> らしいですが、チタニウムのが言いやすいよね。。</p>
+<p>というこで早速使ってみましたよ、<strong class="text-danger">Titanium Mobile</strong>！読み方は、<em>タイタニウム</em> らしいですが、チタニウムのが言いやすいよね。。</p>
 
 <h4>参考</h4>
 
 
 
 
-<ul><li><a href="http://d.hatena.ne.jp/donayama/searchdiary?word=*[Titanium]" rel="external nofollow">JP::HSJ::Junknews::HatenaSide</a></li></ul>
-
-
-
-
+<ul><li><a href="http://d.hatena.ne.jp/donayama/searchdiary?word=*%5BTitanium%5D" rel="external nofollow" title="JP::HSJ::Junknews::HatenaSide">JP::HSJ::Junknews::HatenaSide</a></li></ul>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:inline-block;width:728px;height:90px"
@@ -174,11 +171,6 @@
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-
-
-
-
-
 <h2>まずはインストール</h2>
 
 
@@ -189,9 +181,9 @@
 
 <p>iPhone アプリを JavaScript で開発できるというこの Titanium は、正確には Titanium Desktop　と<em>Titanium Mobile</em> の二つがあるみたいです。</p>
 
-<p>Titanium Desktop の方には興味ないので、以下 Titanium と言ったら Titanium Mobile のことです。早速 <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow">Titanium Mobile - appcelerator</a> でダウンロードします。</p>
+<p>Titanium Desktop の方には興味ないので、以下 Titanium と言ったら Titanium Mobile のことです。早速 <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title="Titanium Mobile - appcelerator">Titanium Mobile - appcelerator</a> でダウンロードします。</p>
 
-<p><img alt="appcelerator_titanium.jpg" src="/images/appcelerator_titanium.jpg" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="appcelerator_titanium.jpg" src="/images/appcelerator_titanium.jpg" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <h3>iPhone アプリ開発には iPhone SDK が必要</h3>
 
@@ -205,42 +197,42 @@
 
 <p>実機で動かす手順とか、Apple Developer Program のアクティベーションの注意点（氏名とか住所とか英語じゃないとエラーになって先に進めなくなるとか。。）は、Google 先生にきいてください。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>Apple Developere Program のアクティベーション失敗あれこれ参考</h4>
 
 
-<p><a href="http://itfun.jp/2009/09/iphone-developer-program.html" rel="external nofollow">iPhone Developer Program のアクティベーションに失敗と対応 - itFun.jp</a></p>
+<p><a href="http://itfun.jp/2009/09/iphone-developer-program.html" rel="external nofollow" title="iPhone Developer Program のアクティベーションに失敗と対応 - itFun.jp">iPhone Developer Program のアクティベーションに失敗と対応 - itFun.jp</a></p>
 
-<p></section></p>
+<p></p>
 
 <h3>Titanium のドキュメントは Kitchen Sink</h3>
 
 
-<p>Titanium をインストールした後なにするかというと、<strong>Kitchen Sink</strong> というデモアプリをプロジェクトにインポートして動かしてみます。これで、Titanium の動作確認 + 困ったときのドキュメント（サンプル）の役割を果たします。</p>
+<p>Titanium をインストールした後なにするかというと、<strong class="text-danger">Kitchen Sink</strong> というデモアプリをプロジェクトにインポートして動かしてみます。これで、Titanium の動作確認 + 困ったときのドキュメント（サンプル）の役割を果たします。</p>
 
 <p>Titanium はまだまだ世に出て浅いためか、ドキュメントがほとんどありません。日本語ドキュメントなんてもってのほかです。でも、この
  Kitchen Sink サンプルが Titanium で出来るほぼすべての機能を網羅したサンプルになっているのです。しかもソースコード付き。API Doc を見るよりもサンプルコードを見た方がいいです。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>Kitchen Sink のインストール方法</h4>
 
 
-<p><a href="http://developer.appcelerator.com/doc/kitchensink" rel="external nofollow">Kitchen Sink Download Doc - Appcelerator</a></p>
+<p><a href="http://developer.appcelerator.com/doc/kitchensink" rel="external nofollow" title="Kitchen Sink Download Doc - Appcelerator">Kitchen Sink Download Doc - Appcelerator</a></p>
 
-<p></section></p>
+<p></p>
 
 <p>Kitchen Sink は Git を使ってダウンロードします。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>Git - 分散バージョン管理システム</h4>
 
 
-<p><a href="http://git-scm.com/" rel="external nofollow">Git - the fast version control system</a></p>
+<p><a href="http://git-scm.com/" rel="external nofollow" title="Git - the fast version control system">Git - the fast version control system</a></p>
 
-<p></section></p>
+<p></p>
 
 <p>手順通りに Kitchen Sink をプロジェクトにインポートしてもダメなときは、新規でプロジェクトを作って、ソースコードだけをコピーすると良いです。Titanium 環境でのソースコードは次のところにあります。</p>
 
@@ -249,7 +241,7 @@
 
 <p>Resources 以下のファイルを全部丸ごとコピーしちゃえばOKです。Titanium では Resources フォルダ以下にソースコードを起きます。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>プロジェクトのフォルダ構成</h4>
 
@@ -264,9 +256,7 @@
 <dt>/android</dt>
 <dd>Android 用のリソースファイルを置く。</dd>
 </dl>
-
-
-<p></section></p>
+<p></p>
 
 <p>Kitchen Sink が動けば、とりあえず Titanium の動作は完了です。残りは、別の機会に！</p>
 
@@ -279,7 +269,7 @@
 
 
 <p>自分で Titanium 環境を作ったところ、<em>プロジェクト名に Titanium が含まれる</em> とビルド時にエラーになるようです。気をつけてください。</p>
-</div>
+</body></html></div>
 
 
   
@@ -453,6 +443,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -476,10 +470,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -487,7 +477,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

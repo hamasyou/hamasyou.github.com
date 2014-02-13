@@ -173,7 +173,8 @@
 
 
 
-<div class="entry-content"><p>セキュリティーとか個人情報保護とか、ソフトウェア開発においても守るべきこと、気をつけるべきことがたくさんあります。特に、Webアプリケーションでは、不特定多数のクライアントから、ネットワークを通じてアプリケーションを動作させます。</p>
+<div class="entry-content"><html><body>
+<p>セキュリティーとか個人情報保護とか、ソフトウェア開発においても守るべきこと、気をつけるべきことがたくさんあります。特に、Webアプリケーションでは、不特定多数のクライアントから、ネットワークを通じてアプリケーションを動作させます。</p>
 
 <p>クライアント側で何を行われているか、サーバーサイドからでは分からない分、スタンドアローンのアプリケーションに比べて、注意する点が多くあります。入力値のチェックから、SQLインジェクション、セッション乗っ取りなど、さまざまなことに対処しなければなりません。</p>
 
@@ -203,30 +204,30 @@
 <p>とにかく、セキュアなシステムを作ろうと思ったら、「信用」しないことが大切。プログラム同士はもとより、クライアントから送られてきたデータは、絶対にそのまま信頼しない。セキュアなシステムを構築するには、以下の点に注意する。</p>
 
 <dl>
-<dt>フェイルセーフ</dt><dd>不測の事態、エラーが少しでも起こったら、直ちに安全な方向に処理を誘導する。</dd>
-<dt>明示的に許可されないもの以外はすべて禁止</dt><dd>許可できない文字を決めるのではなくて、許可できる文字を決めてそれ以外はすべて禁止するように処理を施す。</dd>
-<dt>相互不信</dt><dd>プログラム同士はお互いに信用しない。クライアントの入力を、チェックなしで許可するようには絶対にしない。</dd>
-<dt>最低限のユーザ権限</dt><dd>アプリケーションを実行するユーザの権限は、最低限のものにしておく。管理者権限で動かすようなことはしない。</dd>
+<dt>フェイルセーフ</dt>
+<dd>不測の事態、エラーが少しでも起こったら、直ちに安全な方向に処理を誘導する。</dd>
+<dt>明示的に許可されないもの以外はすべて禁止</dt>
+<dd>許可できない文字を決めるのではなくて、許可できる文字を決めてそれ以外はすべて禁止するように処理を施す。</dd>
+<dt>相互不信</dt>
+<dd>プログラム同士はお互いに信用しない。クライアントの入力を、チェックなしで許可するようには絶対にしない。</dd>
+<dt>最低限のユーザ権限</dt>
+<dd>アプリケーションを実行するユーザの権限は、最低限のものにしておく。管理者権限で動かすようなことはしない。</dd>
 </dl>
-
-
-
-
 <h3>Webアプリケーションの一般原則</h3>
 
 
 <p>Webアプリケーションは特にセキュリティを意識しなければならないシステムの一つです。</p>
 
 <dl>
-<dt>入力文字種チェック</dt><dd>アプリケーション仕様で許可された文字以外はすべて禁止するようにして、不正な文字列を入力されてもビクともしないようにする。</dd>
-<dt>エスケープ処理</dt><dd>入力文字に関して、エスケープ処理を施す。Webブラウザでの特殊文字「&quot;」「&amp;」「&lt;」「&gt;」や、SQL文で使われるクウォート、コメント文字などをエスケープして、不正な処理を行えないようにする。</dd>
-<dt>Webサーバの設定</dt><dd>Webサーバの設定で、公開を意図していないファイルに関して保護できるような設定を心がける。</dd>
-<dt>セッション管理</dt><dd>HIddenフィールドやCookieの使い方に気をつけ、セッション乗っ取りされないようにする。</dd>
+<dt>入力文字種チェック</dt>
+<dd>アプリケーション仕様で許可された文字以外はすべて禁止するようにして、不正な文字列を入力されてもビクともしないようにする。</dd>
+<dt>エスケープ処理</dt>
+<dd>入力文字に関して、エスケープ処理を施す。Webブラウザでの特殊文字「&#8221;」「&amp;」「&lt;」「&gt;」や、SQL文で使われるクウォート、コメント文字などをエスケープして、不正な処理を行えないようにする。</dd>
+<dt>Webサーバの設定</dt>
+<dd>Webサーバの設定で、公開を意図していないファイルに関して保護できるような設定を心がける。</dd>
+<dt>セッション管理</dt>
+<dd>HIddenフィールドやCookieの使い方に気をつけ、セッション乗っ取りされないようにする。</dd>
 </dl>
-
-
-
-
 <h3>ディレクトリ・リスティング</h3>
 
 
@@ -275,7 +276,7 @@
 <h4>その他</h4>
 
 
-<p>SQLインジェクションの例としては、「&#8217; (シングルクウォート)」を入力される場合に起こることが多い。また、「&ndash; (コメント)」 の入力を許可した場合にも起こる。</p>
+<p>SQLインジェクションの例としては、「&#8217; (シングルクウォート)」を入力される場合に起こることが多い。また、「– (コメント)」 の入力を許可した場合にも起こる。</p>
 
 <h3>クロスサイト・スクリプティング (XSS)</h3>
 
@@ -295,7 +296,7 @@
 <h4>対策</h4>
 
 
-<p>HTMLタグの適切なエスケープ。「&lt;」「&gt;」「&amp;」「&quot;」などを、それぞれ「&amp;lt;」「&amp;lt;」「&amp;amp;」「&amp;quot;」にエスケープする。</p>
+<p>HTMLタグの適切なエスケープ。「&lt;」「&gt;」「&amp;」「&#8221;」などを、それぞれ「&amp;lt;」「&amp;lt;」「&amp;amp;」「&amp;quot;」にエスケープする。</p>
 
 <h4>その他</h4>
 
@@ -309,9 +310,10 @@
 
 <p>本書に載っている点で、心にとまった点をリストアップしておきます。</p>
 
-<ol><li>ファイアーウォールは、セキュリティホールに関しては無力</li>
+<ol>
+<li>ファイアーウォールは、セキュリティホールに関しては無力</li>
 <li>画面遷移の正当性チェックを「Referrer」のみに依存させない。Referrer は容易に書き換えられる</li>
-<li>HTMLエンコードを怠ると、「<a href="http://e-words.jp/w/E382AFE383ADE382B9E382B5E382A4E38388E382B9E382AFE383AAE38397E38386E382A3E383B3E382B0.html" rel="external nofollow">クロスサイトスクリプティング</a>」の餌食にされる</li>
+<li>HTMLエンコードを怠ると、「<a href="http://e-words.jp/w/E382AFE383ADE382B9E382B5E382A4E38388E382B9E382AFE383AAE38397E38386E382A3E383B3E382B0.html" rel="external nofollow" title="クロスサイトスクリプティング">クロスサイトスクリプティング</a>」の餌食にされる</li>
 <li>フェイルセーフを心がける</li>
 <li>許可していないものはすべて禁止</li>
 <li>プログラム同士をお互いに信用しない</li>
@@ -326,7 +328,7 @@
 <li>重要なページが検索エンジンに登録されないようになっているか</li>
 <li>HTMLコメントに、設定情報などが書かれていないか</li>
 <li>認証は、安全な方法で行われるようになっているか</li>
-<li>データベースへパスワードを格納するとき、「<a href="http://e-words.jp/w/E383A1E38383E382BBE383BCE382B8E38380E382A4E382B8E382A7E382B9E38388.html" rel="external nofollow">メッセージダイジェスト</a>」になっているか</li>
+<li>データベースへパスワードを格納するとき、「<a href="http://e-words.jp/w/E383A1E38383E382BBE383BCE382B8E38380E382A4E382B8E382A7E382B9E38388.html" rel="external nofollow" title="メッセージダイジェスト">メッセージダイジェスト</a>」になっているか</li>
 <li>セッションIDに、連番などの類推しやすい値が使われていないか</li>
 <li>URLパラメータの変更で、重要なページが表示されてしまわないか</li>
 <li>一覧画面から詳細画面への遷移で、再度アクセス権限チェックをおこなっているか</li>
@@ -339,15 +341,12 @@
 <li>RDBMSの権限は、最小のものが付与されているか</li>
 <li>ファイル名のパスを入力される場合、「パスの乗り換え」が発生しないか</li>
 <li>OSコマンドを入力させる場合、安全な方法で実行できているか</li>
-<li>HTMLタグが反映されるようになっていないか</li></ol>
-
-
-
-
+<li>HTMLタグが反映されるようになっていないか</li>
+</ol>
 <h4>参考</h4>
 
 
-<p><a href="http://www.atmarkit.co.jp/fsecurity/rensai/webhole01/webhole01.html" rel="external nofollow">@IT 「Webアプリケーションに潜むセキュリティホール」</a></p>
+<p><a href="http://www.atmarkit.co.jp/fsecurity/rensai/webhole01/webhole01.html" rel="external nofollow" title="@IT 「Webアプリケーションに潜むセキュリティホール」">@IT 「Webアプリケーションに潜むセキュリティホール」</a></p>
 
 <h2>参考</h2>
 
@@ -355,48 +354,43 @@
 <ul>
 <li>@IT の記事で、Webアプリケーションのセキュリティ対策記事がありました。</li>
 </ul>
-
-
-<p><a href="http://www.atmarkit.co.jp/fsecurity/rensai/webhole01/webhole01.html" rel="external nofollow">@IT 「Webアプリケーションに含むセキュリティホール」</a></p>
+<p><a href="http://www.atmarkit.co.jp/fsecurity/rensai/webhole01/webhole01.html" rel="external nofollow" title="@IT 「Webアプリケーションに含むセキュリティホール」">@IT 「Webアプリケーションに含むセキュリティホール」</a></p>
 
 <ul>
 <li>「IPA ISEC セキュア・プログラミング講座」より</li>
 </ul>
-
-
-<p><a href="http://www.ipa.go.jp/security/awareness/vendor/programming/intro.html" rel="external nofollow">IPA ISEC セキュア・プログラミング講座</a></p>
+<p><a href="http://www.ipa.go.jp/security/awareness/vendor/programming/intro.html" rel="external nofollow" title="IPA ISEC セキュア・プログラミング講座">IPA ISEC セキュア・プログラミング講座</a></p>
 
 <ul>
 <li>「マイクロソフトでの必読書」といわれている、セキュリティ対策本です。</li>
 </ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4891004460/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4891004460/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
 
 
-
-
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4891004479/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4891004479/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>セキュアなコードを書くための本です。C/C++ プログラマ向けの濃い本です。</li>
 </ul>
-
-
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282104/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282104/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>オライリーから発売している、セキュアプログラミングの本です。</li>
 </ul>
-
-
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111757/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
-
-
-
-</div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111757/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -568,6 +562,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -591,10 +589,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -602,7 +596,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

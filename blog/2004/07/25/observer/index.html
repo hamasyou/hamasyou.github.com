@@ -150,7 +150,8 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 
 
-<div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+<div class="entry-content"><html><body>
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
 GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
 
 <p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
@@ -178,111 +179,103 @@ GoFの23のパターンが有名です。デザインパターンというのは
 <p class="option">Observerパターンは、観察対象(Subject)のオブジェクトの状態が変化したときに、共通の方法で観察者(Observer)に通知することを意図したものです。</p>
 
 
-<p><img src="http://hamasyou.com/images/design_pattern/observer.gif" alt="Observerのクラス図" /></p>
+<p><img src="http://hamasyou.com/images/design_pattern/observer.gif" alt="Observerのクラス図" class="img-thumbnail"></p>
 
 <p>このパターンは主に、GUIシステムで使われます。GUIシステムでは、データを持つBeanオブジェクトと、それを表示するビューオブジェクトがきれいに分かれているのが一般的です。このとき、オブジェクト指向の原則の一つである「<b>オープン・クローズドの原則(OCP)</b>」を意識して設計を進めると、次第にObserverパターンが有効に働いてくるのです。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
-<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow">アジャイルソフトウェア開発の奥義</a>』</p>
+<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow" title="アジャイルソフトウェア開発の奥義">アジャイルソフトウェア開発の奥義</a>』</p>
 
 <p>観察対象であるSubjectは、自分がどのObserverに観察されているかは知りません。ただ、観察されているという事実と、自分の状態に変化があった場合に、notifyメソッドを呼び出して、すべてのObserverのupdateを呼び出してやるだけです。</p>
 
-<p></section></p>
+<p></p>
 
 <p>Observerパターンには、2つの種類があります。updateを呼び出す時の振る舞いが2つあるのです。一つは、updateの引数に変更された状態を渡すことで、Observerに通知する「<b>push</b>」型。もう一つは、updateを呼び出されたタイミングでObserverがSubjectに状態を問い合わせる「<b>pull</b>」型です。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>push型の特徴</h4>
 
 
 <p>push型は、ObserverがSubjectのどの状態が変更されたのかを直接知ることができるのが特徴です。updateの引数で渡されてきたものが、変更された状態だからです。短所は、updateメソッドに引数をとる形でインターフェースを定義しなければならないので、一般化に向かない点です。</p>
 
-<p></section></p>
+<p></p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>pull型の特徴</h4>
 
 
 <p>pull型は、一般化した形でupdateメソッドを定義できます。しかし、Subjectのどの状態が変更されたのかをSubjectに問い合わせなければなりません。Subjectに状態が非常にたくさんある場合は、なんらかの方法を使わなければ、複雑になってしまいます。</p>
 
-<p></section></p>
+<p></p>
 
 <p>「push型」と「pull型」のどちらを使うかは、単純にSubjectの状態の複雑さで決めればいいと思います。Subjectの状態が単純でならばpush型。Subjectの状態が複雑で、多くのフィールドを持つような場合はpull型にするといいと思います。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
-<p><a href="http://www.objectclub.jp/technicaldoc/pattern/eDWP" rel="external nofollow">オブジェクト倶楽部</a></p>
+<p><a href="http://www.objectclub.jp/technicaldoc/pattern/eDWP" rel="external nofollow" title="オブジェクト倶楽部">オブジェクト倶楽部</a></p>
 
-<p></section></p>
+<p></p>
 
 <h2>パターンの適用タイミング</h2>
 
 
-<p>Observerパターンは、次のような場合に使えます。<strong>状態を持つオブジェクトが、状態変化を通知したいが、通知後の処理については知りたくない場合。(上位層が下位層に依存したくない場合)</strong></p>
+<p>Observerパターンは、次のような場合に使えます。<strong class="text-danger">状態を持つオブジェクトが、状態変化を通知したいが、通知後の処理については知りたくない場合。(上位層が下位層に依存したくない場合)</strong></p>
 
 <h2>実装サンプルと参考文献</h2>
 
 
 <ul>
 <li><p>日立ソフト(Observerパターン)
-<a href="http://www.dmz.hitachi-sk.co.jp/Java/Tech/pattern/gof/observer.html" rel="external nofollow">日立ソフト</a></p></li>
-<li><p>Skeleton of GOF&rsquo;s Design Pattern(JavaとC++のサンプルがあります)
-<a href="http://www002.upp.so-net.ne.jp/ys_oota/mdp/Observer/index.htm" rel="external nofollow">Observerの骸骨</a></p></li>
+<a href="http://www.dmz.hitachi-sk.co.jp/Java/Tech/pattern/gof/observer.html" rel="external nofollow" title="日立ソフト">日立ソフト</a></p></li>
+<li><p>Skeleton of GOF’s Design Pattern(JavaとC++のサンプルがあります)
+<a href="http://www002.upp.so-net.ne.jp/ys_oota/mdp/Observer/index.htm" rel="external nofollow" title="Observerの骸骨">Observerの骸骨</a></p></li>
 <li><p>デザインパターンのお勧め書籍</p></li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>独習シリーズのデザインパターン編。デザインパターンを一人でも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>Sun Microsystemのお墨付き。GoF以外のパターンも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>UMLを使って、オブジェクト指向のいいとこ取りができます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>デザインパターンだけではなく、ソフトウェア設計の原則やプラクティスまで学びたい人におすすめ</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
-
-
-
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -454,6 +447,10 @@ GoFの23のパターンが有名です。デザインパターンというのは
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -477,10 +474,6 @@ GoFの23のパターンが有名です。デザインパターンというのは
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -488,7 +481,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

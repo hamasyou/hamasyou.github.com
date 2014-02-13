@@ -177,7 +177,8 @@
 
 
 
-<div class="entry-content"><p>本書は、<strong>ドメイン駆動設計（DDD:Domain Driven Design）</strong>について書かれているで、<strong>ドメインモデル</strong>、エンタープライズアプリケーションアーキテクチャ、アーキテクチャパターン、テスト駆動開発を勉強する本です。</p>
+<div class="entry-content"><html><body>
+<p>本書は、<strong class="text-danger">ドメイン駆動設計（DDD:Domain Driven Design）</strong>について書かれているで、<strong class="text-danger">ドメインモデル</strong>、エンタープライズアプリケーションアーキテクチャ、アーキテクチャパターン、テスト駆動開発を勉強する本です。</p>
 
 <p>この本のお勧めの点の一つが、筆者の経験をもとにした生きたサンプルにあります。「システム開発は○○の理由でドメイン駆動設計を行ったほうがよい。こういう背景があって、こういうアーキテクチャパターンの適用を考えていく。」こういった生きた経験が本書にちりばめられています。</p>
 
@@ -201,7 +202,10 @@
 
 
 
-<blockquote><p>この本の最大のテーマは、ドメインモデルをクリーンに作りつつ、永続記憶とも仲良くする方法である。ドメインモデルのようなもののための永続記憶はどのように構成されるかを示し、ドメインモデルとデータベースの間に橋をかける。</p><footer><strong>本書:序章より</strong></footer></blockquote>
+<blockquote>
+<p>この本の最大のテーマは、ドメインモデルをクリーンに作りつつ、永続記憶とも仲良くする方法である。ドメインモデルのようなもののための永続記憶はどのように構成されるかを示し、ドメインモデルとデータベースの間に橋をかける。</p>
+<footer><strong class="text-danger">本書:序章より</strong></footer>
+</blockquote>
 
 
 
@@ -209,7 +213,7 @@
 <h3>ユースケースとトランザクションスクリプト</h3>
 
 
-<p>ユースケースとはシステムの一つの機能（振る舞い）をユーザの視点から記述するものです。著者の Jimmy Nilsson は、かつてはユースケース一つにつき一つのクラスを作って機能を設計していたそうです。おそらく、いわゆる「3階層アーキテクチャのビジネスロジック層における<strong>サービスクラス</strong>」のことだと思われます。</p>
+<p>ユースケースとはシステムの一つの機能（振る舞い）をユーザの視点から記述するものです。著者の Jimmy Nilsson は、かつてはユースケース一つにつき一つのクラスを作って機能を設計していたそうです。おそらく、いわゆる「3階層アーキテクチャのビジネスロジック層における<strong class="text-danger">サービスクラス</strong>」のことだと思われます。</p>
 
 <p>この方法で設計を行うと、機能を呼び出して結果を得るのに一つのサービスクラスの一つのメソッドを呼び出すだけという構造になります。これが手続き型のトランザクションスクリプトというアーキテクチャパターンです。ユースケースを一つにつきサービスクラスを一つ作ると、一つの機能がそのクラスにカプセル化され処理の見通しはよくなります。</p>
 
@@ -239,7 +243,11 @@
 
 <p>データベースは今でもリレーショナルデータベースが一般的に使われています。リレーショナルデータベースは集合を基礎としたものになっています。ドメインモデルも集合を基礎としているのは変わりません。しかしドメインモデル（オブジェクト指向）はオブジェクトのデータ構造を出来るだけカプセル化し、振る舞いをオブジェクトに持たせようとするためデータベースのモデルと集合の粒度が異なるのです。</p>
 
-<blockquote><p>設計ということでは、粒度が大きく異なる。例を使ってこの点を明らかにしよう。特定の人物について、家庭用電話番号ひとつと仕事用電話番号ひとつを管理したいとする。（中略）</p><p>ここで重要なのは、1:1でもすべてのカラムが通常一つのテーブルで定義されていることである。オブジェクト指向モデルでは、Person と PhoneNumber の2つのクラスを作るのが普通だろう。そして Person のインスタンスは 2つの PhoneNumber インスタンスを組み合わせたものになる。リレーショナルモデルでも同じようなことができなわけではないが、通常は無意味である。<b>リレーショナルモデルでは、テーブルの定義に動作を結び付けたりはしないので、定義を再利用しようなどとは考えない。これはオブジェクト指向モデルの逆である。</b></p><footer><strong>本書:第1章「尊重すべき価値」P.19より</strong></footer></blockquote>
+<blockquote>
+<p>設計ということでは、粒度が大きく異なる。例を使ってこの点を明らかにしよう。特定の人物について、家庭用電話番号ひとつと仕事用電話番号ひとつを管理したいとする。（中略）</p>
+<p>ここで重要なのは、1:1でもすべてのカラムが通常一つのテーブルで定義されていることである。オブジェクト指向モデルでは、Person と PhoneNumber の2つのクラスを作るのが普通だろう。そして Person のインスタンスは 2つの PhoneNumber インスタンスを組み合わせたものになる。リレーショナルモデルでも同じようなことができなわけではないが、通常は無意味である。<b>リレーショナルモデルでは、テーブルの定義に動作を結び付けたりはしないので、定義を再利用しようなどとは考えない。これはオブジェクト指向モデルの逆である。</b></p>
+<footer><strong class="text-danger">本書:第1章「尊重すべき価値」P.19より</strong></footer>
+</blockquote>
 
 
 <p>もう一つあるのは、データベースは継承をサポートしないことです。つまり、ポリモーフィズムが実現できないのです。オブジェクト指向では継承（ポリモーフィズム）は重要な概念です。</p>
@@ -247,7 +255,7 @@
 <h3>データマッパー（O/Rマッパー）</h3>
 
 
-<p>上で述べたようなデータベースモデルとオブジェクト指向モデルの乖離（かいり）のことを<strong>インピーダンスミスマッチ</strong>と呼びます。そして、このインピーダンスミスマッチを埋める目的で導入されるものに、データマッパー（O/Rマッパー）があります。Java では Hibernate が有名です。</p>
+<p>上で述べたようなデータベースモデルとオブジェクト指向モデルの乖離（かいり）のことを<strong class="text-danger">インピーダンスミスマッチ</strong>と呼びます。そして、このインピーダンスミスマッチを埋める目的で導入されるものに、データマッパー（O/Rマッパー）があります。Java では Hibernate が有名です。</p>
 
 <h2>本書に書いてあること</h2>
 
@@ -267,8 +275,6 @@
 <li>UIに関する設計</li>
 <li>ドメインモデルパターン再考</li>
 </ul>
-
-
 <p>ドメインモデルを現場にどうやって適用するか、なぜドメインモデルなのか、ドメインモデルを使った実際の設計例などが知りたい人は、ぜひ本書を読んでください。440ページ近くありますが、すんなり読めてしまうくらいどっぷりはまれます。</p>
 
 <h2>参考</h2>
@@ -277,26 +283,23 @@
 
 
 <div class="rakuten">
-<table width="400"  border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798105538/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table>
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798105538/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table>
 </div>
 
 
 
 
 <div class="rakuten">
-<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321125215/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table>
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321125215/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table>
 </div>
 
 
 
 
 <div class="rakuten">
-<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798109037/sorehabooks-22/ref=nosim/" rel="external nofollow">G-Tools</a></font></td></tr></table>
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798109037/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table>
 </div>
-
-
-
-</div>
+</body></html></div>
 
 
   
@@ -472,6 +475,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -495,10 +502,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -506,7 +509,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

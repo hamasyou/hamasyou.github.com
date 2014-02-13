@@ -14,8 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="Velocity を内部で使っていて、テンプレートモデルで、ページを作成します。 ここでは、Click の覚書きをしておきます。あくまで個人用なので、あてにしないようにお願いします。間違い等発見された方は、ご連絡いただけると助かります。 使用バージョン
-version Click 0.1.8 &hellip;">
+  <meta name="description" content="Velocity を内部で使っていて、テンプレートモデルで、ページを作成します。 ここでは、Click の覚書きをしておきます。あくまで個人用なので、あてにしないようにお願いします。間違い等発見された方は、ご連絡いただけると助かります。 使用バージョン version Click 0.1.8 &hellip;">
   <meta name="keywords" content="Click,click,J2EE,Web Application,Framework,フレームワーク,クリック">
 
   
@@ -26,8 +25,7 @@ version Click 0.1.8 &hellip;">
 
 <meta property="og:url" content="http://hamasyou.com/blog/2006/03/12/click/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Velocity を内部で使っていて、テンプレートモデルで、ページを作成します。 ここでは、Click の覚書きをしておきます。あくまで個人用なので、あてにしないようにお願いします。間違い等発見された方は、ご連絡いただけると助かります。 使用バージョン
-version Click 0.1.8 &hellip;" />
+<meta property="og:description" content="Velocity を内部で使っていて、テンプレートモデルで、ページを作成します。 ここでは、Click の覚書きをしておきます。あくまで個人用なので、あてにしないようにお願いします。間違い等発見された方は、ご連絡いただけると助かります。 使用バージョン version Click 0.1.8 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -152,31 +150,29 @@ version Click 0.1.8 &hellip;" />
 
 
 
-<div class="entry-content"><p><strong><a href="http://click.sourceforge.net/" rel="external nofollow">Velocity</a> を内部で使っていて、テンプレートモデルで、ページを作成します。</p>
+<div class="entry-content"><html><body>
+<p><strong class="text-danger"><a href="http://click.sourceforge.net/" rel="external nofollow" title="Velocity">Velocity</a> を内部で使っていて、テンプレートモデルで、ページを作成します。</strong></p>
 
 <p>ここでは、Click の覚書きをしておきます。あくまで個人用なので、あてにしないようにお願いします。間違い等発見された方は、ご連絡いただけると助かります。</p>
 
 <dl>
 <dt class="info">使用バージョン</dt>
-<dd><ul><li>version Click 0.1.8</li></ul>
-
-<p>Clickはドキュメントがしっかりできているので、ドキュメントを読むのが一番です</p></dd>
+<dd>
+<ul><li>version Click 0.1.8</li></ul>
+<p>Clickはドキュメントがしっかりできているので、ドキュメントを読むのが一番です</p>
+</dd>
 </dl>
-
-
-<p><section></p>
+<p><section></section></p>
 
 <h4>参考</h4>
 
 
 <ul>
-<li><a href="http://click.sourceforge.net/" rel="external nofollow">[SourceForge]Click Home</a></li>
-<li><a href="http://www3.vis.ne.jp/~asaki/p_diary/diary.cgi?Search=%5BClick%5D" rel="external nofollow">新・たけぞう瀕死の日記</a></li>
-<li><a href="http://d.hatena.ne.jp/tanigon/searchdiary?word=%2a%5bClick%5d" rel="external nofollow">Click 勉強記</a></li>
+<li><a href="http://click.sourceforge.net/" rel="external nofollow" title="[SourceForge]Click Home">[SourceForge]Click Home</a></li>
+<li><a href="http://www3.vis.ne.jp/~asaki/p_diary/diary.cgi?Search=%5BClick%5D" rel="external nofollow" title="新・たけぞう瀕死の日記">新・たけぞう瀕死の日記</a></li>
+<li><a href="http://d.hatena.ne.jp/tanigon/searchdiary?word=%2a%5bClick%5d" rel="external nofollow" title="Click 勉強記">Click 勉強記</a></li>
 </ul>
-
-
-<p></section></p>
+<p></p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -196,15 +192,13 @@ version Click 0.1.8 &hellip;" />
 
 
 
-<ul><li><a href="#Clickとは" rel="external nofollow">Clickとは</a></li>
+<ul>
+<li><a href="#Click%E3%81%A8%E3%81%AF" rel="external nofollow">Clickとは</a></li>
 <li><a href="#Page" rel="external nofollow">Page</a></li>
 <li><a href="#Control" rel="external nofollow">Control</a></li>
-<li><a href="#ページ遷移の仕組み" rel="external nofollow">ページ遷移の仕組み</a></li>
-<li><a href="#ClickをSpring Frameworkと一緒に使う" rel="external nofollow">ClickをSpring Frameworkと一緒に使う</a></li></ul>
-
-
-
-
+<li><a href="#%E3%83%9A%E3%83%BC%E3%82%B8%E9%81%B7%E7%A7%BB%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF" rel="external nofollow">ページ遷移の仕組み</a></li>
+<li><a href="#Click%E3%82%92Spring%20Framework%E3%81%A8%E4%B8%80%E7%B7%92%E3%81%AB%E4%BD%BF%E3%81%86" rel="external nofollow">ClickをSpring Frameworkと一緒に使う</a></li>
+</ul>
 <h2 id="Clickとは">Clickとは</h2>
 
 
@@ -240,51 +234,52 @@ version Click 0.1.8 &hellip;" />
 
 <p>ページには、次の2つの種類のメソッドを定義することができます。</p>
 
-<ol><li>ページのライフサイクルに関するイベントハンドリングメソッド</li><li>コントロールのイベントリスナメソッド</li></ol>
-
-
-
-
+<ol>
+<li>ページのライフサイクルに関するイベントハンドリングメソッド</li>
+<li>コントロールのイベントリスナメソッド</li>
+</ol>
 <h3>ページのライフサイクルに関するイベントハンドリングメソッド</h3>
 
 
 <p>ページは、あらかじめ決められたイベントハンドリングポイントが用意されています。以下のメソッドをオーバーライドすることで、イベントハンドリングを実装できます。</p>
 
 <dl>
-<dt>onInit()</dt><dd>サーブレットがリクエストを受けて、ページをロードしたときに呼び出されます</dd>
-<dt>onSecurityCheck()</dt><dd>onInit()の後に呼び出されます。アクセス制御等のセキュリティ確認を行える場所です</dd>
-<dt>onGet()</dt><dd>Getメソッドのリクエストの場合に呼び出されます。onSecurityCheck()の後に呼び出されます</dd>
-<dt>onPost()</dt><dd>Postメソッドのリクエストの場合に呼び出されます。onSecurityCheck()の後に呼び出されます</dd>
-<dt>onDestroy()</dt><dd>ページが廃棄されるときに呼び出されます</li></dd>
+<dt>onInit()</dt>
+<dd>サーブレットがリクエストを受けて、ページをロードしたときに呼び出されます</dd>
+<dt>onSecurityCheck()</dt>
+<dd>onInit()の後に呼び出されます。アクセス制御等のセキュリティ確認を行える場所です</dd>
+<dt>onGet()</dt>
+<dd>Getメソッドのリクエストの場合に呼び出されます。onSecurityCheck()の後に呼び出されます</dd>
+<dt>onPost()</dt>
+<dd>Postメソッドのリクエストの場合に呼び出されます。onSecurityCheck()の後に呼び出されます</dd>
+<dt>onDestroy()</dt>
+<dd>ページが廃棄されるときに呼び出されます</dd>
 </dl>
-
-
 <p>これらのメソッドは、ページのイベントシーケンスにしたがって呼び出されます。</p>
 
 <h4>参考</h4>
 
 
 <ul>
-<li><a href="http://click.sourceforge.net/docs/pages.html#page-execution" rel="external nofollow">Click#Page-Execution</a></li>
+<li><a href="http://click.sourceforge.net/docs/pages.html#page-execution" rel="external nofollow" title="Click#Page-Execution">Click#Page-Execution</a></li>
 </ul>
-
-
 <h3>コントロールのイベントリスナメソッド</h3>
 
 
 <p>リスナメソッドをコントロールに登録することで、コントロールに対するイベントが発生した場合にハンドリング処理ができるようになります。イベントリスナメソッドは、次の2つのルールを満たさなければなりません。</p>
 
-<ol><li>引数は無し</li><li>boolean もしくは java.lang.Boolean を戻り値で返す</li></ol>
-
-
+<ol>
+<li>引数は無し</li>
+<li>boolean もしくは java.lang.Boolean を戻り値で返す</li>
+</ol>
 <p>イベントリスナメソッドの戻り値は、次のような意味を持ちます。</p>
 
 <dl>
-<dt>true の場合</dt><dd><p>続けて他のコントロールの onProcess() メソッドが呼び出されます。その後、ページのonGet() メソッド または、 onPost() メソッドが呼び出されます。</p></dd>
-<dt>falseの場合</dt><dd><p>他のコントロールの処理は実行されません。また、ページの onGet()、onPost() メソッドも呼び出されません。そのままページの遷移処理、またはレンダリング処理に入ります。</p></dd>
+<dt>true の場合</dt>
+<dd><p>続けて他のコントロールの onProcess() メソッドが呼び出されます。その後、ページのonGet() メソッド または、 onPost() メソッドが呼び出されます。</p></dd>
+<dt>falseの場合</dt>
+<dd><p>他のコントロールの処理は実行されません。また、ページの onGet()、onPost() メソッドも呼び出されません。そのままページの遷移処理、またはレンダリング処理に入ります。</p></dd>
 </dl>
-
-
 <p>上記の動作から分かることは、イベントハンドリング処理で、ページの遷移等を行う場合は、戻り値を false にする必要があるということです。ページ遷移を伴わないイベントハンドリング処理の場合は、true を返すようにします。</p>
 
 <h3>サーブレットAPIを使うには</h3>
@@ -351,14 +346,13 @@ version Click 0.1.8 &hellip;" />
 <p>ページを構成するコンポーネント（例えば、フォームやリンク、ボタン、テキストボックスなど）です。コントロールには次のような大分類に分けられます。</p>
 
 <dl>
-<dt>ActionLink</dt><dd>リンクを表します。リスナを登録することで、コールバック（イベント）を受け取ることができます</dd>
-<dt>Field</dt><dd>フォームと一緒に使われる入力フィールドです。フィールドは、自分自身をバリデーションします</dd>
-<dt>Form</dt><dd>入力フォームです。自分自身とフィールドのバリデーション機能を持ちます。また、フォームは、独自のレイアウトを持ちます</dd>
+<dt>ActionLink</dt>
+<dd>リンクを表します。リスナを登録することで、コールバック（イベント）を受け取ることができます</dd>
+<dt>Field</dt>
+<dd>フォームと一緒に使われる入力フィールドです。フィールドは、自分自身をバリデーションします</dd>
+<dt>Form</dt>
+<dd>入力フォームです。自分自身とフィールドのバリデーション機能を持ちます。また、フォームは、独自のレイアウトを持ちます</dd>
 </dl>
-
-
-
-
 <h3>ActionLink</h3>
 
 
@@ -370,10 +364,8 @@ version Click 0.1.8 &hellip;" />
 
 
 <ul>
-<li><a href="http://click.sourceforge.net/docs/controls.html#control-callback" rel="external nofollow">Control#Callback</a></li>
+<li><a href="http://click.sourceforge.net/docs/controls.html#control-callback" rel="external nofollow" title="Control#Callback">Control#Callback</a></li>
 </ul>
-
-
 <h3>Field</h3>
 
 
@@ -383,10 +375,8 @@ version Click 0.1.8 &hellip;" />
 
 
 <ul>
-<li><a href="http://click.sourceforge.net/docs/click-api/net/sf/click/control/Field.html" rel="external nofollow">Control#Field</a></li>
+<li><a href="http://click.sourceforge.net/docs/click-api/net/sf/click/control/Field.html" rel="external nofollow" title="Control#Field">Control#Field</a></li>
 </ul>
-
-
 <h3>Form</h3>
 
 
@@ -396,20 +386,18 @@ version Click 0.1.8 &hellip;" />
 
 
 <ul>
-<li><a href="http://click.sourceforge.net/docs/click-api/net/sf/click/control/Form.html" rel="external nofollow">Control#Form</a></li>
+<li><a href="http://click.sourceforge.net/docs/click-api/net/sf/click/control/Form.html" rel="external nofollow" title="Control#Form">Control#Form</a></li>
 </ul>
-
-
 <h2 id="ページ遷移の仕組み">ページ遷移の仕組み</h2>
 
 
 <p>Click には3つのページ遷移の方法があります。</p>
 
-<ul><li>Forward</li><li>Redirect</li><li>テンプレート置き換え</li></ul>
-
-
-
-
+<ul>
+<li>Forward</li>
+<li>Redirect</li>
+<li>テンプレート置き換え</li>
+</ul>
 <h3>Forward</h3>
 
 
@@ -422,22 +410,20 @@ version Click 0.1.8 &hellip;" />
 </code></pre>
 
 
-<p>setForward() に与えるページパスは、パスの先頭に &ldquo;/&rdquo; 先頭にを含めません。フォワード先にパラメータを送りたい場合は、getContext().setRequestAttribute() を呼び出します。</p>
+<p>setForward() に与えるページパスは、パスの先頭に “/” 先頭にを含めません。フォワード先にパラメータを送りたい場合は、getContext().setRequestAttribute() を呼び出します。</p>
 
 <h4>参考</h4>
 
 
 <ul>
-<li><a href="http://click.sourceforge.net/docs/pages.html#page-navigation" rel="external nofollow">Page#Forward Parameter Passing</a></li>
+<li><a href="http://click.sourceforge.net/docs/pages.html#page-navigation" rel="external nofollow" title="Page#Forward Parameter Passing">Page#Forward Parameter Passing</a></li>
 </ul>
-
-
 <p>getContext().createPage() を呼び出して、遷移先のページを作成するというやり方もあります。この例も、上の「参考」に例があります。</p>
 
 <h3>Redirect</h3>
 
 
-<p>サーブレットの response.sendRedirect() を呼び出して、ページを遷移します。リダイレクトしたい場合は、Page#setRedirect() を呼び出して、リダイレクト先のパスを設定します。リダイレクト先のパスの先頭に &ldquo;/&rdquo; を付けると、コンテキストルートからのパスという意味になります。（つまり、パスの先頭にコンテキスト名が付与されます）</p>
+<p>サーブレットの response.sendRedirect() を呼び出して、ページを遷移します。リダイレクトしたい場合は、Page#setRedirect() を呼び出して、リダイレクト先のパスを設定します。リダイレクト先のパスの先頭に “/” を付けると、コンテキストルートからのパスという意味になります。（つまり、パスの先頭にコンテキスト名が付与されます）</p>
 
 <h3>テンプレート置き換え</h3>
 
@@ -447,7 +433,7 @@ version Click 0.1.8 &hellip;" />
 <h2 id="ClickをSpring Frameworkと一緒に使う">ClickをSpring Frameworkと一緒に使う</h2>
 
 
-<p>Clickを <a href="http://www.springframework.org/" rel="external nofollow">Spring Framework</a> と一緒に使う方法です。Clickをダウンロードするとついてくる click-extras.jar を使います。このライブラリに含まれている net.sf.click.extras.spring.SpringClickServlet を ClickServlet の代わりに使います。そして、Spring Framework のアプリケーションコンテキスト定義（applicationContext.xml）のパスを与えてやります。</p>
+<p>Clickを <a href="http://www.springframework.org/" rel="external nofollow" title="Spring Framework">Spring Framework</a> と一緒に使う方法です。Clickをダウンロードするとついてくる click-extras.jar を使います。このライブラリに含まれている net.sf.click.extras.spring.SpringClickServlet を ClickServlet の代わりに使います。そして、Spring Framework のアプリケーションコンテキスト定義（applicationContext.xml）のパスを与えてやります。</p>
 
 <pre class="code"><code><span class="tag">&lt;servlet&gt;</span>
    <span class="tag">&lt;servlet-name&gt;</span>click-servlet<span class="tag">&lt;/servlet-name&gt;</span>
@@ -459,10 +445,7 @@ version Click 0.1.8 &hellip;" />
    <span class="tag">&lt;load-on-startup&gt;</span>0<span class="tag">&lt;/load-on-startup&gt;</span>
 <span class="tag">&lt;/servlet&gt;</span>
 </code></pre>
-
-
-
-</div>
+</body></html></div>
 
 
   
@@ -636,6 +619,10 @@ version Click 0.1.8 &hellip;" />
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -659,10 +646,6 @@ version Click 0.1.8 &hellip;" />
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -670,7 +653,7 @@ version Click 0.1.8 &hellip;" />
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

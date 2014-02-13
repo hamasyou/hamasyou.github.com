@@ -150,7 +150,8 @@
 
 
 
-<div class="entry-content"><p><strong>Titanium Mobile</strong> は iPhone、Android アプリケーションを JavaScript でコーディングできるクロスプラットフォーム環境です。</p>
+<div class="entry-content"><html><body>
+<p><strong class="text-danger">Titanium Mobile</strong> は iPhone、Android アプリケーションを JavaScript でコーディングできるクロスプラットフォーム環境です。</p>
 
 <p>Titanium を使っていてハマった点をメモしておきます。</p>
 
@@ -159,11 +160,7 @@
 
 
 
-<ul><li><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow">Titanium Mobile - Appcelerator</a></li></ul>
-
-
-
-
+<ul><li><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title="Titanium Mobile - Appcelerator">Titanium Mobile - Appcelerator</a></li></ul>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:inline-block;width:728px;height:90px"
@@ -172,11 +169,6 @@
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-
-
-
-
-
 <h2>Titanium で Run Emulator - Launch しても反応が無い</h2>
 
 
@@ -194,7 +186,7 @@
 
 <p>iPhone 実機の iOS のバージョンと XCode に入っている SDK のバージョンが一致してないかも。一度 XCode を立ち上げて、ウィンドウ - オーガナイザ を開いてみて、動かす実機の iPhone の iOS のバージョンと XCode のサポートしているバージョンが違わないかを確認する。</p>
 
-<p><img alt="iPhone オーガナイザ.gif" src="/images/iPhone%20%E3%82%AA%E3%83%BC%E3%82%AC%E3%83%8A%E3%82%A4%E3%82%B6.gif" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="iPhone オーガナイザ.gif" src="/images/iPhone%20%E3%82%AA%E3%83%BC%E3%82%AC%E3%83%8A%E3%82%A4%E3%82%B6.gif" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <h2>プロジェクト名に Titanium という単語が入るとエラーになる</h2>
 
@@ -209,7 +201,7 @@
 <h3>Titanium.Contacts でグループをつくるときの注意</h3>
 
 
-<p>Titanium.Contacts.createGroup({ name: &ldquo;HOGE&rdquo; }) でグループつくると内部で setName が呼ばれないため、後で group.name で取得しようとしたときにアプリが落ちます。Titanium.Contacts.createGroup でグループを作ったあとに group.name = &ldquo;HOGE&rdquo; でグループ名設定する必要があるっぽい。</p>
+<p>Titanium.Contacts.createGroup({ name: “HOGE” }) でグループつくると内部で setName が呼ばれないため、後で group.name で取得しようとしたときにアプリが落ちます。Titanium.Contacts.createGroup でグループを作ったあとに group.name = “HOGE” でグループ名設定する必要があるっぽい。</p>
 
 <pre class="code"><code><span class="keyword">var</span> group = Titanium.Contacts.createGroup();
 group.name = <span class="literal">"HOGE"</span>;</code></pre>
@@ -220,27 +212,27 @@ group.name = <span class="literal">"HOGE"</span>;</code></pre>
 <h3><s>JavaScript で eval() は使えない</s></h3>
 
 
-<p><s>Titanium の JavaScript で <em>eval()</em> は使えません。試しに alert(eval(&quot;1+1&quot;)); と記述してみると、ブラウザでは2と表示されますが Titanium ではエラーになります。</s></p>
+<p><s>Titanium の JavaScript で <em>eval()</em> は使えません。試しに alert(eval(&#8220;1+1&#8221;)); と記述してみると、ブラウザでは2と表示されますが Titanium ではエラーになります。</s></p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>2010/09/15追記</h4>
 
 
-<p>eval() 使うことができます。KitchenSink のサンプルにもあります。僕が使えないと勘違いしていた理由は、alert(eval(&ldquo;1+1&rdquo;)); とするとシミュレータがエラーで落ちるからで、alert(eval(&ldquo;1+1;&rdquo;)); とすると動くことを確認しました。。</p>
+<p>eval() 使うことができます。KitchenSink のサンプルにもあります。僕が使えないと勘違いしていた理由は、alert(eval(“1+1”)); とするとシミュレータがエラーで落ちるからで、alert(eval(“1+1;”)); とすると動くことを確認しました。。</p>
 
-<p></section></p>
+<p></p>
 
 <p>Titanium は JavaScript で iPhone アプリケーションを開発できますが、JavaScript のすべてが使えるわけではないので注意！</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>JSON データのパースには JSON.parse() が使える</h4>
 
 
-<p>ちなみに、Titanium.Network.HTTPClient を使って取得したデータを JSON 形式に変換するのに、eval(&quot;(&quot; + this.responseText + &quot;)&quot;); とする場面では、JSON.parse(this.responseText) が使えます。</p>
+<p>ちなみに、Titanium.Network.HTTPClient を使って取得したデータを JSON 形式に変換するのに、eval(&#8220;(&#8221; + this.responseText + &#8220;)&#8221;); とする場面では、JSON.parse(this.responseText) が使えます。</p>
 
-<p></section></p>
+<p></p>
 
 <h3>日本語のファイル名を使っていると、build.py でエラーになる</h3>
 
@@ -254,10 +246,7 @@ Traceback (most recent call last):
   File "/Library/Application Support/Titanium/mobilesdk/osx/1.4.0/iphone/builder.py", line 157, in dump_resources_listing
     out.write("  %s %s\n" % (string.ljust(p,120),string.ljust(s,8)))
 UnicodeEncodeError: 'ascii' codec can't encode characters in position 25-30: ordinal not in range(128)</pre>
-
-
-
-</div>
+</body></html></div>
 
 
   
@@ -431,6 +420,10 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 25-30: ord
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -454,10 +447,6 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 25-30: ord
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -465,7 +454,7 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 25-30: ord
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

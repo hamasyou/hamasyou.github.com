@@ -175,7 +175,8 @@
 
 
 
-<div class="entry-content"><p><strong>Ruby</strong> が人気のあるプログラミング言語である理由のひとつに、強力なメタプログラミングがあると思います。Ruby の本当の力を知るのは、このメタプログラミングを理解したときだとも思います。</p>
+<div class="entry-content"><html><body>
+<p><strong class="text-danger">Ruby</strong> が人気のあるプログラミング言語である理由のひとつに、強力なメタプログラミングがあると思います。Ruby の本当の力を知るのは、このメタプログラミングを理解したときだとも思います。</p>
 
 <p>本書は、Ruby の内部動作をきちんと説明した上で、メタプログラミングの説明をしてくれます。とても丁寧な説明で、少しでもプログラミングの知識があれば理解できる文章になっています。</p>
 
@@ -283,7 +284,7 @@
 <h3>特異クラスのスコープに入るには class &lt;&lt; obj 構文を使う</h3>
 
 
-<p>特異クラスのスコープに入るには class &lt;&lt; obj 構文をつかいます。特異クラスはインスタンスをひとつしかもてません。そのため、<strong>シングルトン</strong>とも呼ばれます。</p>
+<p>特異クラスのスコープに入るには class &lt;&lt; obj 構文をつかいます。特異クラスはインスタンスをひとつしかもてません。そのため、<strong class="text-danger">シングルトン</strong>とも呼ばれます。</p>
 
 <h3>private メソッドのルール</h3>
 
@@ -295,14 +296,17 @@
 <h2>オープンクラス</h2>
 
 
-<p>Ruby は、既存のクラスを再オープンしていつでもクラスを修正することができる、<strong>オープンクラス</strong>という技術があります。このオープンクラスを使って、既存のクラスのバグを修正したり、既存のクラスにメソッドを追加したりすることを<strong>モンキーパッチ</strong>と呼びます。</p>
+<p>Ruby は、既存のクラスを再オープンしていつでもクラスを修正することができる、<strong class="text-danger">オープンクラス</strong>という技術があります。このオープンクラスを使って、既存のクラスのバグを修正したり、既存のクラスにメソッドを追加したりすることを<strong class="text-danger">モンキーパッチ</strong>と呼びます。</p>
 
 <h3>オープンクラスの使い方</h3>
 
 
 
 
-<blockquote><p>Ruby の <em>class</em> キーワードは、クラス宣言というよりもスコープ演算子のようなものである。もちろん、存在しないクラスは作成する。しかしそれは、副作用と言ってもいいかもしれない。<em>class</em> の主な仕事は、あなたをクラスのコンテキストにつれていくことである。そのコンテキストであなたがメソッドを定義する。</p><footer><strong>クラス定義の中身 - 本書P.41</strong></footer></blockquote>
+<blockquote>
+<p>Ruby の <em>class</em> キーワードは、クラス宣言というよりもスコープ演算子のようなものである。もちろん、存在しないクラスは作成する。しかしそれは、副作用と言ってもいいかもしれない。<em>class</em> の主な仕事は、あなたをクラスのコンテキストにつれていくことである。そのコンテキストであなたがメソッドを定義する。</p>
+<footer><strong class="text-danger">クラス定義の中身 - 本書P.41</strong></footer>
+</blockquote>
 
 
 <p>Ruby でクラスの再オープンをするには、次のように通常のクラス宣言のように書きます。</p>
@@ -336,9 +340,9 @@
 <h3>メソッド</h3>
 
 
-<p>メソッドには、インスタンスメソッドとクラスメソッドがあります。<strong>Ruby ではメソッドはクラスに所属します。</strong>そのため、クラスには <em>Object.instance_methods</em> と <em>Object.methods</em> という2つのメソッドが用意されています。</p>
+<p>メソッドには、インスタンスメソッドとクラスメソッドがあります。<strong class="text-danger">Ruby ではメソッドはクラスに所属します。</strong>そのため、クラスには <em>Object.instance_methods</em> と <em>Object.methods</em> という2つのメソッドが用意されています。</p>
 
-<pre class="code">String.instance_methods == <span class="str">&quot;hoge&quot;</span>.methods  <span class="rem"># true</span></pre>
+<pre class="code">String.instance_methods == <span class="str">"hoge"</span>.methods  <span class="rem"># true</span></pre>
 
 
 <p>メソッドはクラスに所属するのでインスタンス間で共有されますが、インスタンス変数はインスタンスごとに割り当てられるため値がごっちゃになることはありません。</p>
@@ -348,32 +352,40 @@
 
 
 
-<blockquote><p>クラスはオブジェクトである。だから、オブジェクトに当てはまるものはクラスにも当てはまる。オブジェクトと同じように、クラスにもクラスがある。クラスは Class クラスのインスタンスなのだ。</p><p><pre class="code"><code><span class="str">&quot;hello&quot;</span>.<span class="keyword">class</span>    <span class="rem"># String</span><br/>String.<span class="keyword">class</span>     <span class="rem"># Class</span></code></pre></p><footer><strong>クラス再訪 - 本書P.47</strong></footer></blockquote>
+<blockquote>
+<p>クラスはオブジェクトである。だから、オブジェクトに当てはまるものはクラスにも当てはまる。オブジェクトと同じように、クラスにもクラスがある。クラスは Class クラスのインスタンスなのだ。</p>
+<p></p>
+<pre class="code"><code><span class="str">"hello"</span>.<span class="keyword">class</span>    <span class="rem"># String</span><br>String.<span class="keyword">class</span>     <span class="rem"># Class</span></code></pre>
+<footer><strong class="text-danger">クラス再訪 - 本書P.47</strong></footer>
+</blockquote>
 
 
-<p>クラスはオブジェクトで、<strong>クラス名は定数</strong>です。</p>
+<p>クラスはオブジェクトで、<strong class="text-danger">クラス名は定数</strong>です。</p>
 
 <h3>定数</h3>
 
 
 
 
-<blockquote><p>Ruby では大文字で始まる参照は、クラス名やモジュール名も含めて、すべて<em>定数</em>である。定数のスコープには、変数のスコープとは異なるルールがある。</p><footer><strong>定数 - 本書P.49</strong></footer></blockquote>
+<blockquote>
+<p>Ruby では大文字で始まる参照は、クラス名やモジュール名も含めて、すべて<em>定数</em>である。定数のスコープには、変数のスコープとは異なるルールがある。</p>
+<footer><strong class="text-danger">定数 - 本書P.49</strong></footer>
+</blockquote>
 
 
-<p>定数はディレクトリのようにツリー上にならんでいて、モジュールを使うことで <em>MyModule::MyClass::MyConst</em> のように書くことができるようになります。このように使うモジュールのことを<strong>ネームスペース</strong>と呼んでいます。</p>
+<p>定数はディレクトリのようにツリー上にならんでいて、モジュールを使うことで <em>MyModule::MyClass::MyConst</em> のように書くことができるようになります。このように使うモジュールのことを<strong class="text-danger">ネームスペース</strong>と呼んでいます。</p>
 
 <p>既存のクラスやモジュール名と同名の参照を定義するとオープンクラスになってしまうので、ネームスペースを使って自分のクラスを判別できるようにすると行儀の良いプログラムになります。</p>
 
 <h3>メソッド探索</h3>
 
 
-<p>メソッドを呼び出すことは、<strong>レシーバに対してメッセージを送ること</strong>と言われます。レシーバとは、メソッドを呼び出したオブジェクトのことです。Ruby はメソッドを呼び出すと次の二つのことを行ないます。</p>
+<p>メソッドを呼び出すことは、<strong class="text-danger">レシーバに対してメッセージを送ること</strong>と言われます。レシーバとは、メソッドを呼び出したオブジェクトのことです。Ruby はメソッドを呼び出すと次の二つのことを行ないます。</p>
 
-<ol><li>呼び出すメソッドを探す。これを<strong>メソッド探索</strong>と呼びます。</li>
-<li>メソッドを呼び出す。これには <em>self</em> が必要になります。</li></ol>
-
-
+<ol>
+<li>呼び出すメソッドを探す。これを<strong class="text-danger">メソッド探索</strong>と呼びます。</li>
+<li>メソッドを呼び出す。これには <em>self</em> が必要になります。</li>
+</ol>
 <p>Ruby はメソッドを呼び出す際に、レシーバの継承チェーンをたどってメソッドを見つけ出します。継承チェーンをたどる、とはクラスの親クラスを上にたどっていくことです。</p>
 
 <h3>モジュールはクラスをラップする</h3>
@@ -381,7 +393,12 @@
 
 
 
-<blockquote><p>モジュールをクラスに（あるいは別のモジュールに）インクルードするとき、Ruby はちょっとしたトリックを使う。無名クラスを作ってモジュールをラップし、継承チェーンに挿入するのだ。それはインクルードするクラスの真上に入る。</p><p><pre class="code"><code><span class="keyword">module</span> M<br/>  <span class="keyword">def</span> my_method<br/>    <span class="str">&quot;M#my_method()&quot;</span><br/>  <span class="keyword">end</span><br/><span class="keyword">end</span><br/> <br/><span class="keyword">class</span> C<br/>  include M<br/><span class="keyword">end</span><br/> <br/><span class="keyword">class</span> D &lt; C; <span class="keyword">end</span><br/> <br/>D.ancestors <span class="rem"># =&gt; [D, C, M, Object, Kernel, BasicObject]</span></code></pre></p><footer><strong>モジュールとメソッド探索 - 本書P.60</strong></footer></blockquote>
+<blockquote>
+<p>モジュールをクラスに（あるいは別のモジュールに）インクルードするとき、Ruby はちょっとしたトリックを使う。無名クラスを作ってモジュールをラップし、継承チェーンに挿入するのだ。それはインクルードするクラスの真上に入る。</p>
+<p></p>
+<pre class="code"><code><span class="keyword">module</span> M<br><span class="keyword">def</span> my_method<br><span class="str">"M#my_method()"</span><br><span class="keyword">end</span><br><span class="keyword">end</span><br><br><span class="keyword">class</span> C<br>  include M<br><span class="keyword">end</span><br><br><span class="keyword">class</span> D &lt; C; <span class="keyword">end</span><br><br>D.ancestors <span class="rem"># =&gt; [D, C, M, Object, Kernel, BasicObject]</span></code></pre>
+<footer><strong class="text-danger">モジュールとメソッド探索 - 本書P.60</strong></footer>
+</blockquote>
 
 
 <p>Ruby には print() のようなどこからでも呼び出せるメソッドがあります。これは、<em>Kernel</em> モジュールのプライベートメソッドとして定義されているからです。</p>
@@ -395,7 +412,11 @@
 
 
 
-<blockquote><p>Ruby のコードはオブジェクト（カレントオブジェクト）の内部で実行される。カレントオブジェクトは <em>self</em> とも呼ばれる。<em>self</em> キーワードでアクセスできるからだ。</p><p><em>self</em> の役割を担うオブジェクトは同時には複数存在しない。長時間その役割を担うオブジェクトも存在しない。メソッドを呼び出すときは、レシーバが <em>self</em> になる。その時点で、すべてのインスタンス変数は <em>self</em> のインスタンス変数になる。レシーバを明示せずにメソッドを呼び出すと、すべて <em>self</em> に対するメソッド呼び出しになる。他のオブジェクトを明示してメソッドを呼び出すと、そのオブジェクトが <em>self</em> になる。</p><footer><strong>self の発見 - 本書P.63</strong></footer></blockquote>
+<blockquote>
+<p>Ruby のコードはオブジェクト（カレントオブジェクト）の内部で実行される。カレントオブジェクトは <em>self</em> とも呼ばれる。<em>self</em> キーワードでアクセスできるからだ。</p>
+<p><em>self</em> の役割を担うオブジェクトは同時には複数存在しない。長時間その役割を担うオブジェクトも存在しない。メソッドを呼び出すときは、レシーバが <em>self</em> になる。その時点で、すべてのインスタンス変数は <em>self</em> のインスタンス変数になる。レシーバを明示せずにメソッドを呼び出すと、すべて <em>self</em> に対するメソッド呼び出しになる。他のオブジェクトを明示してメソッドを呼び出すと、そのオブジェクトが <em>self</em> になる。</p>
+<footer><strong class="text-danger">self の発見 - 本書P.63</strong></footer>
+</blockquote>
 
 
 <p>メソッドを呼び出さない時の self 、つまりトップレベルコンテキスト（スクリプトが実行されたときの一番最初のスコープ）では、self は main という Ruby インタプリタが作成したオブジェクトの内部にいます。</p>
@@ -405,10 +426,10 @@
 
 <p>Ruby の private メソッドは他の言語と少しルールが違います。Ruby の private メソッドは次の二つのルールにしたがって実行されます。</p>
 
-<ol><li>Ruby は、自分以外のオブジェクトのメソッドを呼び出すには、レシーバを明示的に指定する必要がある。</li>
-<li>private のついたメソッドを呼び出すときは、レシーバを指定できない。</li></ol>
-
-
+<ol>
+<li>Ruby は、自分以外のオブジェクトのメソッドを呼び出すには、レシーバを明示的に指定する必要がある。</li>
+<li>private のついたメソッドを呼び出すときは、レシーバを指定できない。</li>
+</ol>
 <p>つまり、private メソッドを呼び出すには、自分自身（self）にしかできないことになります。</p>
 
 <p>厳密には、Ruby1.9 以前は send メソッド, Ruby1.9 からは instance_eval を使えば呼び出すことができます。</p>
@@ -416,7 +437,7 @@
 <pre class="code"><code><span class="keyword">class</span> MyClass
   private
   <span class="keyword">def</span> hoge
-    <span class="str">&quot;private called&quot;</span>
+    <span class="str">"private called"</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span>
  
@@ -430,9 +451,12 @@ obj.instance_eval {|o| hoge }   <span class="rem"># &lt;-- Ruby1.9</span></code>
 <h2>動的ディスパッチ</h2>
 
 
-<p>Ruby は、<em>send()</em> メソッドを使って呼び出したいメソッドをコードの実行時に決めることができます。これを <strong>動的ディスパッチ</strong>と呼びます。send() メソッドにはシンボルを渡すことが適当とされています。</p>
+<p>Ruby は、<em>send()</em> メソッドを使って呼び出したいメソッドをコードの実行時に決めることができます。これを <strong class="text-danger">動的ディスパッチ</strong>と呼びます。send() メソッドにはシンボルを渡すことが適当とされています。</p>
 
-<blockquote><p>シンボルと文字列の使い分けは、基本的には慣習なのである。多くの場合、シンボルは「物」の名前に使う。特にメタプログラミングに関するメソッドのような物である。</p><footer><strong>シンボル - 本書P.76</strong></footer></blockquote>
+<blockquote>
+<p>シンボルと文字列の使い分けは、基本的には慣習なのである。多くの場合、シンボルは「物」の名前に使う。特にメタプログラミングに関するメソッドのような物である。</p>
+<footer><strong class="text-danger">シンボル - 本書P.76</strong></footer>
+</blockquote>
 
 
 
@@ -451,7 +475,7 @@ obj.instance_eval {|o| hoge }   <span class="rem"># &lt;-- Ruby1.9</span></code>
 
 <p>define_method をつかった例を本書から抜粋し次に示します。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>メソッドを動的に生成する - 本書P.81</h4>
 
@@ -466,10 +490,10 @@ obj.instance_eval {|o| hoge }   <span class="rem"># &lt;-- Ruby1.9</span></code>
  
   <span class="keyword">def</span> <span class="keyword">self</span>.define_component(name)
     define_method(name) {
-      info = <span class="instance">@data_source</span>.send <span class="str">&quot;get_#{name}_info&quot;</span>, <span class="instance">@id</span>
-      price = <span class="instance">@data_source</span>.send <span class="str">&quot;get_#{name}_price&quot;</span>, <span class="instance">@id</span>
-      result = <span class="str">&quot;#{name.to_s.capitalize}: #{info} ($#{price})&quot;</span>
-      <span class="keyword">return</span> <span class="str">&quot;* #{result}&quot;</span> <span class="keyword">if</span> price &gt;= <span class="num">100</span>
+      info = <span class="instance">@data_source</span>.send <span class="str">"get_#{name}_info"</span>, <span class="instance">@id</span>
+      price = <span class="instance">@data_source</span>.send <span class="str">"get_#{name}_price"</span>, <span class="instance">@id</span>
+      result = <span class="str">"#{name.to_s.capitalize}: #{info} ($#{price})"</span>
+      <span class="keyword">return</span> <span class="str">"* #{result}"</span> <span class="keyword">if</span> price &gt;= <span class="num">100</span>
       result
     }
   <span class="keyword">end</span>
@@ -480,7 +504,7 @@ obj.instance_eval {|o| hoge }   <span class="rem"># &lt;-- Ruby1.9</span></code>
 <span class="keyword">end</span></code></pre>
 
 
-<p></section></p>
+<p></p>
 
 <h2>method_missing</h2>
 
@@ -492,11 +516,11 @@ obj.instance_eval {|o| hoge }   <span class="rem"># &lt;-- Ruby1.9</span></code>
 <h3>responde_to? のオーバーライド</h3>
 
 
-<p>method_missing の中で呼び出したメソッドは、<strong>ゴーストメソッド</strong> と呼ばれ、実際のメソッド定義はそこにはないものとして扱われます。しかし、これでは、Object#methods の一覧に含まれません。そこで、ゴーストメソッドがあたかもそこに本当にあるかのように振舞うように、<em>respond_to?</em> をオーバーライドするようにします。</p>
+<p>method_missing の中で呼び出したメソッドは、<strong class="text-danger">ゴーストメソッド</strong> と呼ばれ、実際のメソッド定義はそこにはないものとして扱われます。しかし、これでは、Object#methods の一覧に含まれません。そこで、ゴーストメソッドがあたかもそこに本当にあるかのように振舞うように、<em>respond_to?</em> をオーバーライドするようにします。</p>
 
 <pre class="code"><code><span class="keyword">class</span> Computer
   <span class="keyword">def</span> respond_to?(method)
-    <span class="instance">@data_source</span>.respond_to?(<span class="str">&quot;get_#{method}_info&quot;</span>) || <span class="keyword">super</span>
+    <span class="instance">@data_source</span>.respond_to?(<span class="str">"get_#{method}_info"</span>) || <span class="keyword">super</span>
   <span class="keyword">end</span>
   <span class="rem">#...</span>
 <span class="keyword">end</span></code></pre>
@@ -509,7 +533,7 @@ obj.instance_eval {|o| hoge }   <span class="rem"># &lt;-- Ruby1.9</span></code>
 
 <p>動的ディスパッチやゴーストメソッドであたかもそこにメソッドがあるかのように振舞うことができますが、同名のメソッドが既存のクラスに存在するような場合は、既存のクラスのメソッドが優先的に呼び出されてしまいます。せっかく動的ディスパッチやゴーストメソッドを意図していたのに、同名のメソッドがあることによりこの前提が崩れてしまうような場合、<em>Module#undef_method()</em> または、<em>Module#remove_method()</em> を使って既存のメソッドを削除することができます。</p>
 
-<p>必要なメソッド以外何も無いことを、<strong>ブランクスレート（blank slate）</strong>、白紙の状態といいます。Ruby1.9 では BasicObject を継承することでブランクスレートなクラスをつくることができます。</p>
+<p>必要なメソッド以外何も無いことを、<strong class="text-danger">ブランクスレート（blank slate）</strong>、白紙の状態といいます。Ruby1.9 では BasicObject を継承することでブランクスレートなクラスをつくることができます。</p>
 
 <h3>Module#undef_method と Module#remove_method</h3>
 
@@ -519,7 +543,7 @@ obj.instance_eval {|o| hoge }   <span class="rem"># &lt;-- Ruby1.9</span></code>
 <h4>__で始まるメソッドは削除してはいけない</h4>
 
 
-<p>Ruby には <em><strong></em> で始まるメソッドが用意されています。例えば、send() メソッドに対して <em></strong>send<strong>()</em> メソッド、id() メソッドに対して <em></strong>id<strong>()</em> メソッドです。この </strong> で始まるメソッドは Ruby 内部から使われるメソッドとして予約されているため、undef_method や remove_method で削除するべきではありません。</p>
+<p>Ruby には <em><strong class="text-danger"></strong></em> で始まるメソッドが用意されています。例えば、send() メソッドに対して <em>send<strong class="text-danger">()</strong></em> メソッド、id() メソッドに対して <em>id<strong class="text-danger">()</strong></em> メソッドです。この  で始まるメソッドは Ruby 内部から使われるメソッドとして予約されているため、undef_method や remove_method で削除するべきではありません。</p>
 
 <h2>スコープ</h2>
 
@@ -531,12 +555,15 @@ obj.instance_eval {|o| hoge }   <span class="rem"># &lt;-- Ruby1.9</span></code>
 
 
 
-<blockquote><p>ブロックは単体では実行できない。コードを実行するには、ローカル変数、インスタンス変数、<em>self</em> といった環境が必要になる。これらはオブジェクトにひもづけられた名前のことで、<em>束縛</em>とも呼ばれる。ブロックとは、これらをまとめて実行するためのものである。ブロックはコードと束縛の集まりで構成される。</p><footer><strong>クロージャ - 本書P.110</strong></footer></blockquote>
+<blockquote>
+<p>ブロックは単体では実行できない。コードを実行するには、ローカル変数、インスタンス変数、<em>self</em> といった環境が必要になる。これらはオブジェクトにひもづけられた名前のことで、<em>束縛</em>とも呼ばれる。ブロックとは、これらをまとめて実行するためのものである。ブロックはコードと束縛の集まりで構成される。</p>
+<footer><strong class="text-danger">クロージャ - 本書P.110</strong></footer>
+</blockquote>
 
 
 <p>ブロックを定義すると、そのとき、その場所にある束縛（<em>binding</em>）を取得できます。ブロックを実行する時、この束縛も一緒にメソッドに渡されます。これにより、メソッドを実行するスコープでブロックを呼び出す変数を宣言することや設定することができるようになります。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>ブロックの変数スコープの例</h4>
 
@@ -544,22 +571,22 @@ obj.instance_eval {|o| hoge }   <span class="rem"># &lt;-- Ruby1.9</span></code>
 <p>下の例では、メソッド定義の中で変数 msg を定義していますがメソッド定義の内部の msg は使われません。メソッドの呼び出し時にブロックを定義した際に束縛されたローカル変数 msg が使われます。</p>
 
 <pre class="code"><span class="keyword">def</span> greet
-  msg = <span class="str">&quot;Hi &quot;</span>
-  p <span class="keyword">yield</span>(<span class="str">&quot;hamasyou&quot;</span>)
+  msg = <span class="str">"Hi "</span>
+  p <span class="keyword">yield</span>(<span class="str">"hamasyou"</span>)
 <span class="keyword">end</span>
  
-msg = <span class="str">&quot;Hello&quot;</span>
-greet {|name| <span class="str">&quot;#{msg} #{name}&quot;</span> }</pre>
+msg = <span class="str">"Hello"</span>
+greet {|name| <span class="str">"#{msg} #{name}"</span> }</pre>
 
 
-<p></section></p>
+<p></p>
 
 <h3>ローカル変数のスコープ</h3>
 
 
 <p>Ruby には Java や C# のような内部のスコープから外部のスコープの変数を参照できる入れ子は存在しません。外部のスコープと内部のスコープは区別されています。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>変数の束縛が切り替わる例</h4>
 
@@ -588,7 +615,7 @@ local_variables  <span class="rem"># =&gt; [:obj, :v1, :_]</span></pre>
 
 <p>トップレベルコンテキストで定義した v1 変数が MyClass の中で見えなくなっています。また、MyClass のクラススコープで定義した v2 も、my_method の中で見えなくなっています。</p>
 
-<p></section></p>
+<p></p>
 
 <h3>スコープゲート</h3>
 
@@ -600,29 +627,27 @@ local_variables  <span class="rem"># =&gt; [:obj, :v1, :_]</span></pre>
 <li>モジュール定義（<em>module</em>）</li>
 <li>メソッド呼び出し（<em>def</em>）</li>
 </ul>
+<p>これらの<strong class="text-danger">スコープゲート</strong>を超えて束縛をわたすには、キーワードではなくメソッドを使います。</p>
 
-
-<p>これらの<strong>スコープゲート</strong>を超えて束縛をわたすには、キーワードではなくメソッドを使います。</p>
-
-<pre>class => Class.new
-module => Module.new
-def => Module#define_method()</pre>
+<pre>class =&gt; Class.new
+module =&gt; Module.new
+def =&gt; Module#define_method()</pre>
 
 
 
 
-<pre class="code">my_var = <span class="str">&quot;Hello&quot;</span>
+<pre class="code">my_var = <span class="str">"Hello"</span>
  
 MyClass = Class.new <span class="keyword">do</span>
-  p <span class="str">&quot;#{my_var}&quot;</span>
+  p <span class="str">"#{my_var}"</span>
  
   define_method :my_method do
-    p <span class="str">&quot;#{my_var}&quot;</span>
+    p <span class="str">"#{my_var}"</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span></pre>
 
 
-<p>レキシカルスコープを入れ子で参照できるようにすることを、<strong>フラットスコープ</strong>と呼びます。</p>
+<p>レキシカルスコープを入れ子で参照できるようにすることを、<strong class="text-danger">フラットスコープ</strong>と呼びます。</p>
 
 <h3>instance_eval()</h3>
 
@@ -645,7 +670,7 @@ obj.instance_eval { <span class="instance">@v</span> }
 <h3>メソッド定義の意味</h3>
 
 
-<p>Ruby のプログラムは常に<em>カレントオブジェクト</em> self と、<strong>カレントクラス</strong>を持っています。そして、<em>メソッドを定義すると、カレントクラスのインスタンスメソッドになります。</em></p>
+<p>Ruby のプログラムは常に<em>カレントオブジェクト</em> self と、<strong class="text-danger">カレントクラス</strong>を持っています。そして、<em>メソッドを定義すると、カレントクラスのインスタンスメソッドになります。</em></p>
 
 <p>プログラム中で、カレントオブジェクトを参照するには self を使いますが、カレントクラスを参照するキーワードはありません。</p>
 
@@ -664,7 +689,7 @@ obj.instance_eval { <span class="instance">@v</span> }
  
 <span class="keyword">def</span> add_hello_to(a_class)
   a_class.class_eval <span class="keyword">do</span>
-    <span class="keyword">def</span> hello; <span class="str">&quot;Hello&quot;</span> <span class="keyword">end</span>
+    <span class="keyword">def</span> hello; <span class="str">"Hello"</span> <span class="keyword">end</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span>
  
@@ -676,7 +701,11 @@ obj.hello
 
 <p>class_eval を使うと、<em>self</em> と<em>カレントクラス</em>に変更が加えられます。instance_eval は <em>self</em> のみに変更を加えます。</p>
 
-<blockquote><p><em>instance_eval()</em> と <em>class_eval()</em> はどちらを使う？</p><p>「このオブジェクトをオープンしたいが、クラスのことは気にしない」ならば、instance_eval() がいい。「ここで<em>オープンクラス</em>を使いたい」ならば、class_eval() がいい。</p><footer><strong>instance_eval() と class_eval() はどちらを使う？ - 本書P.143</strong></footer></blockquote>
+<blockquote>
+<p><em>instance_eval()</em> と <em>class_eval()</em> はどちらを使う？</p>
+<p>「このオブジェクトをオープンしたいが、クラスのことは気にしない」ならば、instance_eval() がいい。「ここで<em>オープンクラス</em>を使いたい」ならば、class_eval() がいい。</p>
+<footer><strong class="text-danger">instance_eval() と class_eval() はどちらを使う？ - 本書P.143</strong></footer>
+</blockquote>
 
 
 
@@ -684,7 +713,7 @@ obj.hello
 <h3>クラスインスタンス変数とクラス変数</h3>
 
 
-<p><strong>クラスインスタンス変数</strong>とは、クラスのインスタンス変数のことでクラスに属しています。</p>
+<p><strong class="text-danger">クラスインスタンス変数</strong>とは、クラスのインスタンス変数のことでクラスに属しています。</p>
 
 <pre class="code"><span class="keyword">class</span> MyClass
   <span class="instance">@my_var</span> = <span class="num">1</span>
@@ -709,7 +738,7 @@ obj.my_method    <span class="rem"># =&gt; 2</span>
 MyClass.my_method    <span class="rem"># =&gt; 1</span></pre>
 
 
-<p><strong>クラス変数</strong>とは、<em>@@</em>プレフィックスを付けた変数で、<em>クラスの階層に属しています。</em></p>
+<p><strong class="text-danger">クラス変数</strong>とは、<em>@@</em>プレフィックスを付けた変数で、<em>クラスの階層に属しています。</em></p>
 
 <pre class="code"><span class="keyword">class</span> C
   <span class="instance">@@v</span> = <span class="num">1</span>
@@ -729,9 +758,9 @@ D.new.my_method    <span class="rem"># =&gt; 1</span></pre>
 <h2>特異メソッド</h2>
 
 
-<p>Ruby では、特定のオブジェクトにのみメソッドを追加することができます。これを<strong>特異メソッド</strong>と呼びます。</p>
+<p>Ruby では、特定のオブジェクトにのみメソッドを追加することができます。これを<strong class="text-danger">特異メソッド</strong>と呼びます。</p>
 
-<pre class="code">msg = <span class="str">&quot;hello, my name is hamasyou&quot;</span>
+<pre class="code">msg = <span class="str">"hello, my name is hamasyou"</span>
  
 <span class="keyword">def</span> msg.hello
   <span class="keyword">self</span>.upcase
@@ -752,7 +781,7 @@ msg.hello    <span class="rem"># =&gt; "HELLO, MY NAME IS HAMASYOU"</span></pre>
 <span class="keyword">end</span></pre>
 
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>クラスメソッドの構文</h4>
 
@@ -772,7 +801,7 @@ msg.hello    <span class="rem"># =&gt; "HELLO, MY NAME IS HAMASYOU"</span></pre>
 <span class="keyword">end</span></pre>
 
 
-<p></section></p>
+<p></p>
 
 <h3>インスタンスに特異メソッドを動的に追加するには特異クラスにメソッドを定義する</h3>
 
@@ -788,9 +817,9 @@ msg.hello    <span class="rem"># =&gt; "HELLO, MY NAME IS HAMASYOU"</span></pre>
  
 obj = MyClass.new
  
-obj.instance_eval(<span class="str">&quot;def hello; 'Hello World'; end&quot;</span>)
+obj.instance_eval(<span class="str">"def hello; 'Hello World'; end"</span>)
 obj.hello
-<span class="rem"># =&gt; &quot;Hello World&quot;</span>
+<span class="rem"># =&gt; "Hello World"</span>
  
 obj2 = MyClass.new
 obj2.hello
@@ -804,10 +833,10 @@ obj2.hello
  
 obj = MyClass.new
 singleton = <span class="keyword">class</span> &lt;&lt; obj; <span class="keyword">self</span>; <span class="keyword">end</span>
-singleton.send(:define_method, :hello) { <span class="str">&quot;Hello World&quot;</span> }
+singleton.send(:define_method, :hello) { <span class="str">"Hello World"</span> }
  
 obj.hello
-<span class="rem"># =&gt; &quot;Hello World&quot;</span></pre>
+<span class="rem"># =&gt; "Hello World"</span></pre>
 
 
 
@@ -817,12 +846,15 @@ obj.hello
 
 
 
-<blockquote><p>「来る日も来る日も世界のどこかで、Rubyプログラマがモジュールをインクルードしてクラスメソッドを定義しょうとしている。私もかつてはそうだった。しかし、これではうまくいかない。」</p><footer><strong>モジュールの不具合 - 本書P.167</strong></footer></blockquote>
+<blockquote>
+<p>「来る日も来る日も世界のどこかで、Rubyプログラマがモジュールをインクルードしてクラスメソッドを定義しょうとしている。私もかつてはそうだった。しかし、これではうまくいかない。」</p>
+<footer><strong class="text-danger">モジュールの不具合 - 本書P.167</strong></footer>
+</blockquote>
 
 
 <p>モジュールの中にクラスメソッドを定義して、モジュールをインクルードしたクラスにだけクラスメソッドを定義したいという場合、下のようにしがちですがこれは間違った例です。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>モジュールをインクルードしてクラスメソッドを定義する間違った例</h4>
 
@@ -830,7 +862,7 @@ obj.hello
 
 
 <pre class="code"><span class="keyword">module</span> MyModule
-  <span class="keyword">def</span> <span class="keyword">self</span>.my_method; <span class="str">&quot;Hello&quot;</span>; <span class="keyword">end</span>
+  <span class="keyword">def</span> <span class="keyword">self</span>.my_method; <span class="str">"Hello"</span>; <span class="keyword">end</span>
 <span class="keyword">end</span>
  
 <span class="keyword">class</span> MyClass
@@ -841,12 +873,12 @@ MyClass.my_method
 <span class="rem"># =&gt; NoMethodError: undefined method `my_method' for MyClass:Class</span></pre>
 
 
-<p></section></p>
+<p></p>
 
 <p>モジュールをインクルードすると、<em>モジュールのインスタンスメソッドが手に入ります。クラスメソッドではありません。</em>すなわち、モジュールをインクルードしてクラスメソッドを手に入れるためには、モジュールにはインスタンスメソッドとして定義して、include する場所をクラスメソッドが定義される場所（つまり、<em>特異クラス</em>）で行うようにします。</p>
 
 <pre class="code"><span class="keyword">module</span> MyModule
-  <span class="keyword">def</span> my_method; <span class="str">&quot;Hello&quot;</span>; <span class="keyword">end</span>
+  <span class="keyword">def</span> my_method; <span class="str">"Hello"</span>; <span class="keyword">end</span>
 <span class="keyword">end</span>
  
 <span class="keyword">class</span> MyClass
@@ -870,7 +902,7 @@ MyClass.my_method    <span class="rem"># =&gt; "Hello"</span></pre>
 <p>モジュールを特異クラスのメソッドに追加する方法、モジュールをオブジェクトに追加して特異メソッドとする方法は、Ruby がそのためのメソッドを用意しています。それが <em>Object#extend()</em> です。</p>
 
 <pre class="code"><span class="keyword">module</span> MyModule
-  <span class="keyword">def</span> my_method; <span class="str">&quot;Hello&quot;</span>; <span class="keyword">end</span>
+  <span class="keyword">def</span> my_method; <span class="str">"Hello"</span>; <span class="keyword">end</span>
 <span class="keyword">end</span>
  
 obj = Object.new
@@ -900,12 +932,12 @@ MyClass.my_method    <span class="rem"># =&gt; "Hello"</span></pre>
   <span class="keyword">alias</span> :real_length :length
  
   <span class="keyword">def</span> length
-    real_length &gt; <span class="num">5</span> ? <span class="str">&quot;long&quot;</span> : <span class="str">&quot;short&quot;</span>
+    real_length &gt; <span class="num">5</span> ? <span class="str">"long"</span> : <span class="str">"short"</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span>
  
-<span class="str">&quot;War and Peace&quot;</span>.length    <span class="rem"># =&gt; "long"</span>
-<span class="str">&quot;War and Peace&quot;</span>.real_length    <span class="rem"># =&gt; 13</span></pre>
+<span class="str">"War and Peace"</span>.length    <span class="rem"># =&gt; "long"</span>
+<span class="str">"War and Peace"</span>.real_length    <span class="rem"># =&gt; 13</span></pre>
 
 
 <p>オープンクラスを使って、length() メソッドを再定義していますが、alias を使って real_length として再定義（コピー）しているので、real_length を呼び出すことで元の動作を呼び出すことができています。</p>
@@ -917,15 +949,15 @@ MyClass.my_method    <span class="rem"># =&gt; "Hello"</span></pre>
 
 <pre class="code">array = [<span class="num">10</span>, <span class="num">20</span>]
 element = <span class="num">30</span>
-eval(<span class="str">&quot;array &lt;&lt; element&quot;</span>)  <span class="rem"># =&gt; [10, 20, 30]</span></pre>
+eval(<span class="str">"array &lt;&lt; element"</span>)  <span class="rem"># =&gt; [10, 20, 30]</span></pre>
 
 
 <p>eval()、instance_eval()、class_eval() に渡すコード文字列の中は、ローカル変数にアクセスできます。</p>
 
-<pre class="code">array = [<span class="str">&quot;a&quot;</span>, <span class="str">&quot;b&quot;</span>, <span class="str">&quot;c&quot;</span>]
-x = <span class="str">&quot;x&quot;</span>
-array.instance_eval <span class="str">&quot;self[1] = x&quot;</span>
-array    <span class="rem"># =&gt; [&quot;a&quot;, &quot;x&quot;, &quot;c&quot;]</span></pre>
+<pre class="code">array = [<span class="str">"a"</span>, <span class="str">"b"</span>, <span class="str">"c"</span>]
+x = <span class="str">"x"</span>
+array.instance_eval <span class="str">"self[1] = x"</span>
+array    <span class="rem"># =&gt; ["a", "x", "c"]</span></pre>
 
 
 
@@ -933,7 +965,7 @@ array    <span class="rem"># =&gt; [&quot;a&quot;, &quot;x&quot;, &quot;c&quot;]
 <h3>Binding オブジェクト</h3>
 
 
-<p><strong>Binding</strong> はスコープをオブジェクトにまとめたものです。eval()、instance_eval()、class_eval() に Binding を渡すことでそのスコープでコードを実行できます。</p>
+<p><strong class="text-danger">Binding</strong> はスコープをオブジェクトにまとめたものです。eval()、instance_eval()、class_eval() に Binding を渡すことでそのスコープでコードを実行できます。</p>
 
 <pre class="code"><span class="keyword">class</span> MyClass
   <span class="keyword">def</span> my_method
@@ -943,7 +975,7 @@ array    <span class="rem"># =&gt; [&quot;a&quot;, &quot;x&quot;, &quot;c&quot;]
 <span class="keyword">end</span>
  
 b = MyClass.new.my_method
-eval <span class="str">&quot;@x&quot;</span>, b    <span class="rem"># =&gt; 1</span></pre>
+eval <span class="str">"@x"</span>, b    <span class="rem"># =&gt; 1</span></pre>
 
 
 
@@ -960,7 +992,7 @@ eval <span class="str">&quot;@x&quot;</span>, b    <span class="rem"># =&gt; 1</
  
   <span class="keyword">module</span> MyClassMethods
     <span class="keyword">def</span> hoge
-      <span class="str">&quot;hoge()&quot;</span>
+      <span class="str">"hoge()"</span>
     <span class="keyword">end</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span>
@@ -969,11 +1001,8 @@ eval <span class="str">&quot;@x&quot;</span>, b    <span class="rem"># =&gt; 1</
   include MyMixin
 <span class="keyword">end</span>
  
-MyClass.hoge    <span class="rem"># =&gt; &quot;hoge()&quot;</span></pre>
-
-
-
-</div>
+MyClass.hoge    <span class="rem"># =&gt; "hoge()"</span></pre>
+</body></html></div>
 
 
   
@@ -983,6 +1012,8 @@ MyClass.hoge    <span class="rem"># =&gt; &quot;hoge()&quot;</span></pre>
       <h1>関連記事</h1>
       <ul>
         
+        <li><a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a></li>
+        
         <li><a href="/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応</a></li>
         
         <li><a href="/blog/2011/06/14/kaminari-paginate-array/">kaminari の paginate_array が便利</a></li>
@@ -990,8 +1021,6 @@ MyClass.hoge    <span class="rem"># =&gt; &quot;hoge()&quot;</span></pre>
         <li><a href="/blog/2011/03/17/ruby-gmail/">Ruby から Gmail を受信する（マルチパート編）</a></li>
         
         <li><a href="/blog/2010/11/20/rails-activerecord/">[Rails] ActiveRecord でツリー関係の関連を定義する</a></li>
-        
-        <li><a href="/blog/2010/09/17/4873114454/">Rubyベストプラクティス -プロフェッショナルによるコードとテクニック</a></li>
         
       </ul>
     </div>
@@ -1147,6 +1176,10 @@ MyClass.hoge    <span class="rem"># =&gt; &quot;hoge()&quot;</span></pre>
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -1170,10 +1203,6 @@ MyClass.hoge    <span class="rem"># =&gt; &quot;hoge()&quot;</span></pre>
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1181,7 +1210,7 @@ MyClass.hoge    <span class="rem"># =&gt; &quot;hoge()&quot;</span></pre>
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

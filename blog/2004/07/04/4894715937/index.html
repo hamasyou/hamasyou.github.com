@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="開放・閉鎖原則(Open Closed Principle)、Liskovの置換原則(Liskov Substitution Principle)、依存関係反転法則(Dependency Inversion Principle)、インターフェース分離原則(Interface Segregation &hellip;">
+  <meta name="description" content="開放・閉鎖原則(Open Closed Principle)、Liskovの置換原則(Liskov Substitution Principle)、依存関係反転法則(Dependency Inversion Principle)、インターフェース分離原則(Interface &hellip;">
   <meta name="keywords" content="プログラマ,Java,設計,ベストプラクティス,原則">
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/2004/07/04/4894715937/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="開放・閉鎖原則(Open Closed Principle)、Liskovの置換原則(Liskov Substitution Principle)、依存関係反転法則(Dependency Inversion Principle)、インターフェース分離原則(Interface Segregation &hellip;" />
+<meta property="og:description" content="開放・閉鎖原則(Open Closed Principle)、Liskovの置換原則(Liskov Substitution Principle)、依存関係反転法則(Dependency Inversion Principle)、インターフェース分離原則(Interface &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -173,7 +173,8 @@
 
 
 
-<div class="entry-content"><p><strong>開放・閉鎖原則</strong>(Open Closed Principle)、<strong>Liskovの置換原則</strong>(Liskov Substitution Principle)、<strong>依存関係反転法則</strong>(Dependency Inversion Principle)、<strong>インターフェース分離原則</strong>(Interface Segregation Principle)、<strong>コンポジット再利用原則</strong>(Composite Reuse Principle)、<strong>最小知識原則</strong>(Principle of Least Knowledge)、以上が本書で説明されているオブジェクト指向設計におけるクラス原則です。</p>
+<div class="entry-content"><html><body>
+<p><strong class="text-danger">開放・閉鎖原則</strong>(Open Closed Principle)、<strong class="text-danger">Liskovの置換原則</strong>(Liskov Substitution Principle)、<strong class="text-danger">依存関係反転法則</strong>(Dependency Inversion Principle)、<strong class="text-danger">インターフェース分離原則</strong>(Interface Segregation Principle)、<strong class="text-danger">コンポジット再利用原則</strong>(Composite Reuse Principle)、<strong class="text-danger">最小知識原則</strong>(Principle of Least Knowledge)、以上が本書で説明されているオブジェクト指向設計におけるクラス原則です。</p>
 
 <p>優れたクラス設計を行うためには、上記のような頭の痛くなる言葉を覚える必要はありません。が、この言葉の意味と何が言いたいのかを理解することは大切です。</p>
 
@@ -197,9 +198,27 @@
 
 <p>まず、本書の目次を見てください。</p>
 
-<ul><li>オブジェクト指向の原則とパターン</li><li>クラス原則</li><li>パッケージ原則</li><li>パターン</li><li>UML入門</li><li>UMLの基礎</li><li>UMLとソフトウェア開発プロセス</li><li>モデリング戦略</li><li>要件モデリング</li><li>問題分析</li><li>アーキテクチャの確立</li><li>クラスの割り当て</li><li>振る舞いモデリング</li><li>構造モデリング</li><li>アーキテクチャモデリング</li><li>アーキテクチャメカニズム(レイヤ・Observer・MVC・パーティション)</li><li>サブシステムの設計</li><li>RUPとXP</li><li>J2EEとUML</li></ul>
-
-
+<ul>
+<li>オブジェクト指向の原則とパターン</li>
+<li>クラス原則</li>
+<li>パッケージ原則</li>
+<li>パターン</li>
+<li>UML入門</li>
+<li>UMLの基礎</li>
+<li>UMLとソフトウェア開発プロセス</li>
+<li>モデリング戦略</li>
+<li>要件モデリング</li>
+<li>問題分析</li>
+<li>アーキテクチャの確立</li>
+<li>クラスの割り当て</li>
+<li>振る舞いモデリング</li>
+<li>構造モデリング</li>
+<li>アーキテクチャモデリング</li>
+<li>アーキテクチャメカニズム(レイヤ・Observer・MVC・パーティション)</li>
+<li>サブシステムの設計</li>
+<li>RUPとXP</li>
+<li>J2EEとUML</li>
+</ul>
 <p>本書のすべてを読破する必要はないと思います。が、240ページと薄い部類に入る本なので、読み始めるのに気合とか勇気とかはいらないと思います。</p>
 
 <p>本書の中で特におすすめ＆読んで欲しい部分は、「オブジェクト指向の原則とパターン」です。本書のタイトルが「プログラマのためのJava設計ベストプラクティス」となっていますが、この「オブジェクト指向の原則とパターン」の部分を含め、本書のほとんどは、Javaに依存しません。</p>
@@ -216,9 +235,9 @@
 <h3>開放・閉鎖原則(Open Closed Principle: OCP)</h3>
 
 
-<p>既存のクラスを修正せずに、システムに新しい機能を追加できるように設計すること。「<strong>モジュールは拡張性について開いて（Open）おり，修正について閉じて（Closed）いなければならない。</strong>」</p>
+<p>既存のクラスを修正せずに、システムに新しい機能を追加できるように設計すること。「<strong class="text-danger">モジュールは拡張性について開いて（Open）おり，修正について閉じて（Closed）いなければならない。</strong>」</p>
 
-<p>詳しくは<a href="http://homepage3.nifty.com/masarl/article/dp-ocp.html" rel="external nofollow">デザインパターンとOpen-Closed Principle</a>を参考に。</p>
+<p>詳しくは<a href="http://homepage3.nifty.com/masarl/article/dp-ocp.html" rel="external nofollow" title="デザインパターンとOpen-Closed Principle">デザインパターンとOpen-Closed Principle</a>を参考に。</p>
 
 <h3>Liskovの置換原則(Liskov Substitution Principle: LSP)</h3>
 
@@ -238,9 +257,9 @@
 <p> という宣言は許されない。「throws Exception」は、親クラスの例外より高水準(強い)例外は定義できない。</p>
 
 <p>下位クラスのメソッドで保証する事後条件を、上位クラスの事後条件よりも弱くすることはできない。Javaの例で言うと、Objectクラスのcloneというメソッドは、protected宣言されている。サブクラスでは、cloneというメソッドをprotected以上のアクセス制限をかけなければいけない。protected Object clone() throws CloneNotSupportedException
-というメソッドがあります。サブクラスでは、<strong>private</strong> Object clone() throws CloneNotSupportedException という宣言は許されないということになります。</p>
+というメソッドがあります。サブクラスでは、<strong class="text-danger">private</strong> Object clone() throws CloneNotSupportedException という宣言は許されないということになります。</p>
 
-<p>参考文献は、<a href="http://www.ogis-ri.co.jp/otc/hiroba/technical/OO_Guide/pdf/OO_Guide.pdf" rel="external nofollow">オブジェクトの広場(PDF)</a>です。</p>
+<p>参考文献は、<a href="http://www.ogis-ri.co.jp/otc/hiroba/technical/OO_Guide/pdf/OO_Guide.pdf" rel="external nofollow" title="オブジェクトの広場(PDF)">オブジェクトの広場(PDF)</a>です。</p>
 
 <h3>依存関係反転原則(Dependency Inversion Principle: DIP)</h3>
 
@@ -252,7 +271,7 @@
 <h3>インターフェース分離原則(Interface Segregation Principle: ISP)</h3>
 
 
-<p>単独の汎用的なインターフェースよりも、多くの特化したインターフェースのほうが良い。つまり、インターフェースの凝集度を高めるべきであるということ。<strong>インターフェースは、オブジェクトが存在している瞬間に果たす役割に過ぎない</strong>ということから、インターフェースの操作は複数の役割に対応しないように定義すべきである。</p>
+<p>単独の汎用的なインターフェースよりも、多くの特化したインターフェースのほうが良い。つまり、インターフェースの凝集度を高めるべきであるということ。<strong class="text-danger">インターフェースは、オブジェクトが存在している瞬間に果たす役割に過ぎない</strong>ということから、インターフェースの操作は複数の役割に対応しないように定義すべきである。</p>
 
 <h3>コンポジット再利用原則(Composite Reuse Principle: CRP)</h3>
 
@@ -264,7 +283,7 @@
 
 <p>別名、デメテルの法則とよばれる。別のオブジェクトのメソッド呼び出しで取得できるオブジェクトのメソッドは呼び出さないというもの。この原則の例外は、インターフェース型で取得した場合である。インターフェース型で取得したオブジェクトに関しては、メソッド呼び出しを許可できる。</p>
 
-<p>詳しい解説は、<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712741/sorehabooks-22" rel="external nofollow">達人プログラマー</a>が参考になります。</p>
+<p>詳しい解説は、<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712741/sorehabooks-22" rel="external nofollow" title="達人プログラマー">達人プログラマー</a>が参考になります。</p>
 
 <h2>参考</h2>
 
@@ -272,48 +291,39 @@
 <ul>
 <li>オブジェクト指向の法則に関してよくまとめられています。</li>
 </ul>
-
-
-<p><a href="http://homepage3.nifty.com/masarl/article/oo-principles.html" rel="external nofollow">オブジェクト指向の法則集</a></p>
+<p><a href="http://homepage3.nifty.com/masarl/article/oo-principles.html" rel="external nofollow" title="オブジェクト指向の法則集">オブジェクト指向の法則集</a></p>
 
 <ul>
 <li>設計のさらに上級編(J2EE編)はこちら</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715821/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715821/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>法則や原則以外のプログラマーが知っておくとよいことが非常に丁寧にまとめられています。【超おすすめ】</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712741/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712741/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>本書より厚めですが、こちらもおすすめ。UMLに関して非常に丁寧に解説してくれます。本書のUMLの部分を補うだけでなく、こちらもオブジェクト指向の原則を解説してくれています。【超おすすめ】</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894713861/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894713861/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>現場で使える即知識。いかがですか？</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798106976/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
-
-
-
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798106976/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -485,6 +495,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -508,10 +522,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -519,7 +529,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

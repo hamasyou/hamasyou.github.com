@@ -150,8 +150,9 @@
 
 
 
-<div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/193239415X/sorehabooks-22" rel="external nofollow"></a>
+<div class="entry-content"><html><body>
+<p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/193239415X/sorehabooks-22" rel="external nofollow" title=""></a>
 </p>
 
 
@@ -159,20 +160,18 @@
 
 <p>Hibernate は独自のオブジェクトクエリ言語 HQL を使って、非常にハイパフォーマンスな検索を可能にしています。それだけでなく、高度なキャッシュ機構など、実行時のパフォーマンスを向上させる機能が盛りだくさんです。</p>
 
-<p>ドキュメントも豊富にそろっていて、<a href="http://www.hibernate.org/hib_docs/reference/ja/html/" rel="external nofollow">リファレンスマニュアル</a> (日本語翻訳済み) が非常に参考になります。マニュアルの中から、気になった部分や使えそうな部分だけを抜き出しておきます。</p>
+<p>ドキュメントも豊富にそろっていて、<a href="http://www.hibernate.org/hib_docs/reference/ja/html/" rel="external nofollow" title="リファレンスマニュアル">リファレンスマニュアル</a> (日本語翻訳済み) が非常に参考になります。マニュアルの中から、気になった部分や使えそうな部分だけを抜き出しておきます。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>[参考]</h4>
 
 
 <ul>
-<li><p><a href="http://www.hibernate.org/hib_docs/reference/ja/html/" rel="external nofollow">Hibernate リファレンスマニュアル</a></p></li>
-<li><p><a href="http://wiki.bmedianode.com/Hibernate/" rel="external nofollow">Hibernate Pad</a></p></li>
+<li><p><a href="http://www.hibernate.org/hib_docs/reference/ja/html/" rel="external nofollow" title="Hibernate リファレンスマニュアル">Hibernate リファレンスマニュアル</a></p></li>
+<li><p><a href="http://wiki.bmedianode.com/Hibernate/" rel="external nofollow" title="Hibernate Pad">Hibernate Pad</a></p></li>
 </ul>
-
-
-<p></section></p>
+<p></p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -193,15 +192,11 @@
 
 
 <ol>
-<li><a href="#Hibernate とは" rel="external nofollow">Hibernate とは</a></li>
-<li><a href="#Hibernate で使えるPOJOクラスの条件" rel="external nofollow">Hibernate で使えるPOJOクラスの条件</a></li>
-<li><a href="#とりあえず動かすのに必要なライブラリ" rel="external nofollow">とりあえず動かすのに必要なライブラリ</a></li>
-<li><a href="#Hibernate で使われる用語" rel="external nofollow">Hibernate で使われる用語</a></li>
+<li><a href="#Hibernate%20%E3%81%A8%E3%81%AF" rel="external nofollow">Hibernate とは</a></li>
+<li><a href="#Hibernate%20%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8BPOJO%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE%E6%9D%A1%E4%BB%B6" rel="external nofollow">Hibernate で使えるPOJOクラスの条件</a></li>
+<li><a href="#%E3%81%A8%E3%82%8A%E3%81%82%E3%81%88%E3%81%9A%E5%8B%95%E3%81%8B%E3%81%99%E3%81%AE%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA" rel="external nofollow">とりあえず動かすのに必要なライブラリ</a></li>
+<li><a href="#Hibernate%20%E3%81%A7%E4%BD%BF%E3%82%8F%E3%82%8C%E3%82%8B%E7%94%A8%E8%AA%9E" rel="external nofollow">Hibernate で使われる用語</a></li>
 </ol>
-
-
-
-
 <h2 id="Hibernate とは">Hibernate とは</h2>
 
 
@@ -211,31 +206,31 @@
 
 <p>Hibernate では、オブジェクト検索のために、<em>HQL (Hibernate Query Languate)</em> というクエリ言語を提供しています。SQLのようなものです。Hibernateでは、オブジェクト検索に3つの方法が使えます。</p>
 
-<ol><li>HQLを使った問い合わせ</li><li>Criteria というクエリオブジェクトを使った問い合わせ</li><li>SQL 文を直接発行</li></ol>
-
-
+<ol>
+<li>HQLを使った問い合わせ</li>
+<li>Criteria というクエリオブジェクトを使った問い合わせ</li>
+<li>SQL 文を直接発行</li>
+</ol>
 <p>静的な検索条件でオブジェクトを検索するときには HQL を使い、動的な検索条件がある場合には Criteria オブジェクト を使い、どうしても HQL でかけない複雑な検索文の場合には SQL 文を使います。</p>
 
 <p>Hibernate は O/Rマッピングツールです。リレーショナルデータベースとオブジェクトモデルのインピーダンスミスマッチと呼ばれる考え方の違いを吸収するためのものです。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>[参考]</h4>
 
 
 <ul>
-<li><a href="http://www.arclamp.jp/blog/archives/000021.html" rel="external nofollow">arclamp O/Rマッピングとは</a></li>
+<li><a href="http://www.arclamp.jp/blog/archives/000021.html" rel="external nofollow" title="arclamp O/Rマッピングとは">arclamp O/Rマッピングとは</a></li>
 </ul>
-
-
-<p></section></p>
+<p></p>
 
 <h2 id="Hibernate で使えるPOJOクラスの条件">Hibernate で使えるPOJOクラスの条件</h2>
 
 
 <p>Hibernate はPOJOを扱います。POJOといっても、どんなJavaクラスでもよいかというとそうではありません。4つだけ制約があります。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h3>1. 永続フィールドに対するアクセサを定義する</h3>
 
@@ -261,29 +256,35 @@
 
 <p>Hibernate のプロキシクラスは、final でない永続化クラスかインターフェースに依存します。これも必須ではありませんが、プロキシを使うとパフォーマンスチューニングのオプションが可能になるため、推奨されます。</p>
 
-<p></section></p>
+<p></p>
 
 <dl>
 <dt class="notice">equals と hashCode をオーバーライドする</dt>
-<dd><p>永続化対象のクラスは、識別子(主キー)を比較して等価なことを証明するべきです。つまり、識別子のみを使って equals() と hashCode() メソッドをオーバーライドするべきです。</p>
+<dd>
+<p>永続化対象のクラスは、識別子(主キー)を比較して等価なことを証明するべきです。つまり、識別子のみを使って equals() と hashCode() メソッドをオーバーライドするべきです。</p>
 
 <p>識別子には、ビジネスにおける等価キー(ドメイン内で同一オブジェクトとみなせるキー)を使うことが推奨されます。</p>
 </dd>
 </dl>
-
-
-
-
 <h2 id="とりあえず動かすのに必要なライブラリ">とりあえず動かすのに必要なライブラリ</h2>
 
 
 <p>Hibernate を動かすのに必要なクラスは、下記の通り(余分なのもあるかも)です。JTA ライブラリが必要とのこと（分散トランザクションをサポートする場合）。これらのファイルは全部、Hibernate をダウンロードすると lib フォルダの中にそろっています。</p>
 
-<ol><li>hibernate2.jar</li><li>cglib-full.jar</li><li>commons-collections.jar</li><li>commons-lang.jar</li><li>commons-beanutils.jar</li><li>commons-logging.jar</li><li>dom4j.jar</li><li>odmg.jar</li><li>xalan.jar</li><li>xerces.jar</li><li>xml-apis.jar</li><li>jta.jar</li></ol>
-
-
-
-
+<ol>
+<li>hibernate2.jar</li>
+<li>cglib-full.jar</li>
+<li>commons-collections.jar</li>
+<li>commons-lang.jar</li>
+<li>commons-beanutils.jar</li>
+<li>commons-logging.jar</li>
+<li>dom4j.jar</li>
+<li>odmg.jar</li>
+<li>xalan.jar</li>
+<li>xerces.jar</li>
+<li>xml-apis.jar</li>
+<li>jta.jar</li>
+</ol>
 <h2 id="Hibernate で使われる用語">Hibernate で使われる用語</h2>
 
 
@@ -299,48 +300,61 @@
 <dt>Transaction (net.sf.hibernate.Transaction)</dt>
 <dd><p>アプリケーションが使う作業の最小単位。</p></dd>
 <dt>@hibernate.class (XDoclet タグ)</dt>
-<dd><p>永続化エンティティだということを示すタグ。クラス宣言の JavaDoc コメントに書く。</p>
+<dd>
+<p>永続化エンティティだということを示すタグ。クラス宣言の JavaDoc コメントに書く。</p>
 
 <h4>[参考]</h4>
 
-<p><a href="http://xdoclet.sourceforge.net/xdoclet/tags/hibernate-tags.html#@hibernate_class__0__1_" rel="external nofollow">XDoclet - @hibernate.class (0..1)</a></p>
+<p><a href="http://xdoclet.sourceforge.net/xdoclet/tags/hibernate-tags.html#@hibernate_class__0__1_" rel="external nofollow" title="XDoclet - @hibernate.class (0..1)">XDoclet - @hibernate.class (0..1)</a></p>
 </dd>
 <dt>@hibernate.id (XDoclet タグ)</dt>
-<dd><p>そのプロパティが識別子だということを示すタグ。メソッド宣言の JavaDoc コメントに書く。</p>
+<dd>
+<p>そのプロパティが識別子だということを示すタグ。メソッド宣言の JavaDoc コメントに書く。</p>
 
 <h4>[参考]</h4>
 
-<p><a href="http://xdoclet.sourceforge.net/xdoclet/tags/hibernate-tags.html#@hibernate_id__0__1_" rel="external nofollow">XDoclet - @hibernate.id (0..1)</a></p></dd>
+<p><a href="http://xdoclet.sourceforge.net/xdoclet/tags/hibernate-tags.html#@hibernate_id__0__1_" rel="external nofollow" title="XDoclet - @hibernate.id (0..1)">XDoclet - @hibernate.id (0..1)</a></p>
+</dd>
 <dt>@hibernate.property (XDoclet タグ)</dt>
-<dd><p>そのプロパティをテーブルのカラムとマッピングするときに使用するタグ。メソッド宣言の JavaDoc コメントに書く。</p>
+<dd>
+<p>そのプロパティをテーブルのカラムとマッピングするときに使用するタグ。メソッド宣言の JavaDoc コメントに書く。</p>
 
 <h4>[参考]</h4>
 
-<p><a href="http://xdoclet.sourceforge.net/xdoclet/tags/hibernate-tags.html#@hibernate_property__0__1_" rel="external nofollow">XDoclet - @hibernate.property (0..1)</a></p></dd>
+<p><a href="http://xdoclet.sourceforge.net/xdoclet/tags/hibernate-tags.html#@hibernate_property__0__1_" rel="external nofollow" title="XDoclet - @hibernate.property (0..1)">XDoclet - @hibernate.property (0..1)</a></p>
+</dd>
 <dt>カスケード (cascade)</dt>
-<dd><p>操作を関連オブジェクトへ伝播させるかどうかを指定するもの。指定できる値は none, all, save-update, delete。none は伝播させない。save-update は更新系の操作 (insert, update) を伝播させる。delete は削除系の操作 (delete) を伝播させる。all は save-update と delete の両方を伝播させる。</p>
+<dd>
+<p>操作を関連オブジェクトへ伝播させるかどうかを指定するもの。指定できる値は none, all, save-update, delete。none は伝播させない。save-update は更新系の操作 (insert, update) を伝播させる。delete は削除系の操作 (delete) を伝播させる。all は save-update と delete の両方を伝播させる。</p>
 
 <h4>[参考]</h4>
 
-<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774119016/sorehabooks-22" rel="external nofollow">WEB-DB Press 18号</a>』</p></dd>
+<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774119016/sorehabooks-22" rel="external nofollow" title="WEB-DB Press 18号">WEB-DB Press 18号</a>』</p>
+</dd>
 <dt>遅延ロード</dt>
 <dd><p>関連オブジェクトをコレクションで保持する場合、最初にアクセスされるまでオブジェクトのロードを遅らせること。lazy 属性に true を指定することで可能になる。リソースの節約やパフォーマンスの向上に効果がある。</p></dd>
 <dt>Open Session in View</dt>
-<dd><p>遅延ロードは、ロードされる際に親オブジェクトに有効な Session が関連付けれらていなければならない。Webアプリケーションでは、JSP で最初にコレクションにアクセスすることが多いため、Session の開始と終了をビューで行わなければならない。これを行うための手段の一つ。</p>
+<dd>
+<p>遅延ロードは、ロードされる際に親オブジェクトに有効な Session が関連付けれらていなければならない。Webアプリケーションでは、JSP で最初にコレクションにアクセスすることが多いため、Session の開始と終了をビューで行わなければならない。これを行うための手段の一つ。</p>
 
 <h4>[参考]</h4>
 
-<p><a href="http://www.hibernate.org/Documentation/OpenSessionInView/" rel="external nofollow">Hibernate.org - Open Session in View</a></p></dd>
+<p><a href="http://www.hibernate.org/Documentation/OpenSessionInView/" rel="external nofollow" title="Hibernate.org - Open Session in View">Hibernate.org - Open Session in View</a></p>
+</dd>
 <dt>generator</dt>
-<dd><p>generator は主キーの生成方法を指定する id タグ (@hibernate.id) の要素です。increment, identity, sequence, hilo, seqhilo, uuid.hex, uuid.string, native, assigned, foreigh が使えます。</p>
+<dd>
+<p>generator は主キーの生成方法を指定する id タグ (@hibernate.id) の要素です。increment, identity, sequence, hilo, seqhilo, uuid.hex, uuid.string, native, assigned, foreigh が使えます。</p>
 
-<ul><li>increment は単純にIDを増加させるもの</li>
+<ul>
+<li>increment は単純にIDを増加させるもの</li>
 <li>identity, sequence はDBMS によってサポートされている同名の ID 生成機能を使う</li>
 <li>hilo, seqhilo はhi/lo アルゴリズムを使ってIDを生成する</li>
 <li>uuid.hex, uuid.string はUUID アルゴリズムを使ってIDを生成する</li>
 <li>native はDBMSの種類を判別して、identity, sequence, hilo を使い分けてとりあえず主キーを生成してくれる</li>
 <li>assigned はアプリケーション側でIDを設定することを示す</li>
-<li>foreign はone-to-one で関連付けられているオブジェクトのIDを使用する</li></ul></dd>
+<li>foreign はone-to-one で関連付けられているオブジェクトのIDを使用する</li>
+</ul>
+</dd>
 <dt>One-to-One 関係</dt>
 <dd><p>一対一の関係のこと。継承関係のテーブルがそれにあたる。同一の主キーを持つ関係。</p></dd>
 <dt>Many-to-One 関係</dt>
@@ -356,49 +370,42 @@
 <dt>LazyInitializationException(遅延初期化例外)</dt>
 <dd><p>Hibernateのセッションを閉じた後で初期化されていない遅延コレクションにアクセスしようとすると投げられる例外。Hibernateは遅延ロードという仕組みを使うことができる。これは、コレクションに最初にアクセスしたときにその内容を初期化するようにする仕組み。</p></dd>
 </dl>
-
-
-
-
 <h2>参考</h2>
 
 
 <ul>
 <li><p>Hibernate のリファレンスドキュメント (日本語)
-<a href="http://www.hibernate.org/hib_docs/reference/ja/html/index.html" rel="external nofollow">Hibernate Reference Document</a></p></li>
+<a href="http://www.hibernate.org/hib_docs/reference/ja/html/index.html" rel="external nofollow" title="Hibernate Reference Document">Hibernate Reference Document</a></p></li>
 <li><p>Hibernate だけでなく、データベース設計にまで触れられていておすすめ。</p></li>
 </ul>
-
-
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/193239415X/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/193239415X/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>薄いながらも十分な情報量。HibernateとSpringにも触れられています。</li>
 </ul>
-
-
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>Hibernate の基本的な使い方が載っています。</li>
 </ul>
-
-
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774119016/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774119016/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>開発者のための Hibernate の解説書が日本語で登場しました。</li>
 </ul>
-
-
-<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311215X/sorehabooks-22/" rel="external nofollow">G-Tools</a></font><br /></td></tr></table></div>
-
-
-
-</div>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311215X/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -572,6 +579,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -595,10 +606,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -606,7 +613,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

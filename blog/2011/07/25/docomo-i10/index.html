@@ -152,17 +152,16 @@ UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっている�
 
 
 
-<div class="entry-content"><p>docomo 携帯のユーザエージェントから、iモードブラウザ1.0かどうかを判断する方法</p>
+<div class="entry-content"><html><body>
+<p>docomo 携帯のユーザエージェントから、iモードブラウザ1.0かどうかを判断する方法</p>
 
 <ul>
 <li>UA が DoCoMo/1.0 で始まっている</li>
-<li>UA が DoCoMo/2.0 <機種名>(c100; で始まっている</li>
+<li>UA が DoCoMo/2.0 (c100; で始まっている</li>
 </ul>
-
-
 <p>DoCoMo/1.0 で始まっているのは、PDC 端末。DoCoMo/2.0 で始まっているのは FOMA 端末になります。</p>
 
-<p>FOMA 端末のうち、iモードブラウザ1.0 なのは、キャッシュサイズが 500KB ではないものになります。<a href="http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/" rel="external nofollow">ドコモのユーザエージェント一覧</a>を見る限り、キャッシュが 100KB のものは iモードブラウザ1.0 と判断できます。</p>
+<p>FOMA 端末のうち、iモードブラウザ1.0 なのは、キャッシュサイズが 500KB ではないものになります。<a href="http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/" rel="external nofollow" title="ドコモのユーザエージェント一覧">ドコモのユーザエージェント一覧</a>を見る限り、キャッシュが 100KB のものは iモードブラウザ1.0 と判断できます。</p>
 
 <p>Ruby の正規表現で書くとこんな感じ？</p>
 
@@ -170,8 +169,7 @@ UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっている�
   request.user_agent =~ /^DoCoMo\/1.0/ ||
   request.user_agent =~ /^DoCoMo\/2.0[^(]+\(c100;/
 <span class="keyword">end</span></pre>
-
-</div>
+</body></html></div>
 
 
   
@@ -326,6 +324,10 @@ UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっている�
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -349,10 +351,6 @@ UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっている�
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -360,7 +358,7 @@ UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっている�
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

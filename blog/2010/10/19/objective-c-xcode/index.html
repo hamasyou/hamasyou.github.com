@@ -152,7 +152,8 @@
 
 
 
-<div class="entry-content"><p>iPhone アプリで利用している Xcode 上に単体テスト環境を構築する手順のメモです。</p>
+<div class="entry-content"><html><body>
+<p>iPhone アプリで利用している Xcode 上に単体テスト環境を構築する手順のメモです。</p>
 
 <p>GUI の構築が多い iPhone アプリ開発ですが、一部ロジックもあります。ロジックのテストはあったほうがいいし、なきゃ不安。</p>
 
@@ -184,10 +185,6 @@
 <dt>iOS のバージョン</dt>
 <dd><p>4.1</p></dd>
 </dl>
-
-
-
-
 <h2>単体テスト環境の作り方 - 手順</h2>
 
 
@@ -200,11 +197,11 @@
 
 <p>まずは、iPhone アプリ開発用のプロジェクトを作成します。すでにプロジェクトがある場合にはそれを使います。</p>
 
-<p><img alt="スクリーンショット（2010-10-19 16.40.39）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.40.39%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-10-19 16.40.39）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.40.39%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <p>プロジェクト名は OCUnitDemo としました。</p>
 
-<p><img alt="スクリーンショット（2010-10-19 16.43.25）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.43.25%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-10-19 16.43.25）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.43.25%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <p>ここでビルドしてみて、エラーがでないことを確かめます。</p>
 
@@ -213,7 +210,7 @@
 
 <p>つぎに、テスト用のターゲットを作成します。「プロジェクト」→「新規ターゲット」をたどり <em>Unit Test Bundle</em> を選びます。</p>
 
-<p><img alt="スクリーンショット（2010-10-19 16.45.39）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.45.39%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-10-19 16.45.39）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2016.45.39%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <p>ターゲット名はなんでもよいのですが、ここでは UnitTest としました。</p>
 
@@ -224,7 +221,7 @@
 
 <p>Finder でプロジェクトのフォルダを開き TestCases というフォルダを作成します。</p>
 
-<p><img alt="スクリーンショット（2010-10-19 17.03.41）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.03.41%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-10-19 17.03.41）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.03.41%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <p>Xcode に戻って左のツリーの最初にあるプロジェクトアイコン（OCUnitDemo）を右クリックして「追加」→「既存のファイル」をクリックして今作った TestCases を選択します。</p>
 
@@ -232,7 +229,7 @@
 
 <p>また、<em>「ターゲットに追加」で UnitTest にのみチェックが入っている状態にします。</em></p>
 
-<p><img alt="スクリーンショット（2010-10-19 17.07.14）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.07.14%EF%BC%89.png" width="438" height="403" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-10-19 17.07.14）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.07.14%EF%BC%89.png" width="438" height="403" class="mt-image-none img-thumbnail" style=""></p>
 
 <h3>手順4 - テストクラスを作成する</h3>
 
@@ -241,13 +238,13 @@
 
 <p>ファイル名はなんでもよいです。ここでは FirstTest.m としました。保存場所が TestCases、ターゲットが UnitTest になっていることを確認して作成します。</p>
 
-<p><img alt="スクリーンショット（2010-10-19 17.09.03）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.09.03%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-10-19 17.09.03）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.09.03%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <p>ここまでできたら、一度ビルドしてみます。「ビルド」→「ビルド」をクリックしてみます。</p>
 
 <p>おそらくエラーが3件（もしくは2件）、警告が1件でるはずです。次はこれを直していきます。</p>
 
-<p><img alt="スクリーンショット（2010-10-19 17.14.21）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.14.21%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-10-19 17.14.21）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.14.21%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <p class="option">エラーのうち、1件はテストのエラー、2件（もしくは1件）は Xcode3.2.4 で iOS4.1 以上を使っている場合にでるエラーになります。警告はガーベージコレクションが無効になっていることを示すもののはずです。</p>
 
@@ -259,7 +256,7 @@
 
 <p>iPhone アプリ開発用のプロジェクトでテストクラスを作成すると、テストケースは次のようになっていると思います。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>FirstTest.m</h4>
 
@@ -271,7 +268,7 @@
 - (<span class="keyword">void</span>) testAppDelegate {
   
   <span class="keyword">id</span> yourApplicationDelegate = [[<span class="class">UIApplication</span> sharedApplication] delegate];
-  <span class="keyword">STAssertNotNil</span>(yourApplicationDelegate, <span class="literal">@&quot;UIApplication failed to find the AppDelegate&quot;</span>);
+  <span class="keyword">STAssertNotNil</span>(yourApplicationDelegate, <span class="literal">@"UIApplication failed to find the AppDelegate"</span>);
   
 }
  
@@ -279,13 +276,13 @@
 <span class="rem">//...</span></pre>
 
 
-<p></section></p>
+<p></p>
 
 <p>1行目の #if USE_APPLICATION_UNIT_TEST というところがエラーの一つめのテストが失敗した原因になります。iPhone アプリ開発のプロジェクトでプロジェクトを作成するとこのマクロが追加されるようです。</p>
 
 <p>今回はロジックの単体テストをおこなうつもりなので、この部分は削除してしまいます。削除したあとのコードは次のようになりました。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>FirstTest.h</h4>
 
@@ -293,7 +290,7 @@
 
 
 <pre class="code"><span class="keyword">#import</span> <span class="literal">&lt;SenTestingKit/SenTestingKit.h&gt;</span>
-<span class="rem">//#import &quot;application_headers&quot; as required</span>
+<span class="rem">//#import "application_headers" as required</span>
  
 <span class="keyword">@interface</span> FirstTest : <span class="class">SenTestCase</span> {
  
@@ -304,29 +301,29 @@
 <span class="keyword">@end</span></pre>
 
 
-<p></section></p>
+<p></p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>FirstTest.m</h4>
 
 
 
 
-<pre class="code"><span class="keyword">#import</span> <span class="literal">&quot;FirstTest.h&quot;</span>
+<pre class="code"><span class="keyword">#import</span> <span class="literal">"FirstTest.h"</span>
  
 <span class="keyword">@implementation</span> FirstTest
  
 - (<span class="keyword">void</span>) testMath {
   
-  <span class="keyword">STAssertTrue</span>((<span class="num">1</span>+<span class="num">1</span>)==<span class="num">2</span>, <span class="literal">@&quot;Compiler isn't feeling well today :-(&quot;</span> );
+  <span class="keyword">STAssertTrue</span>((<span class="num">1</span>+<span class="num">1</span>)==<span class="num">2</span>, <span class="literal">@"Compiler isn't feeling well today :-("</span> );
   
 }
  
 <span class="keyword">@end</span></pre>
 
 
-<p></section></p>
+<p></p>
 
 <p>UIKit に関する #import 文も削除しました。</p>
 
@@ -340,18 +337,18 @@
 
 <p>これは Xcode3.2.4 で iOS4.1 の SDK をいれるとでるエラーらしいです。対応として、次の github にあるソースコードをプロジェクトに追加します。</p>
 
-<p><section></p>
+<p><section></section></p>
 
 <h4>gist:58296</h4>
 
 
-<p><a href="http://gist.github.com/586296" rel="external nofollow">gist:586296 - GitHub</a></p>
+<p><a href="http://gist.github.com/586296" rel="external nofollow" title="gist:586296 - GitHub">gist:586296 - GitHub</a></p>
 
-<p></section></p>
+<p></p>
 
 <p>ファイルをダウンロードまたは、中身をコピーして、TestCases の下にソースコードとして追加します。追加後のツリーはこんな感じになります。</p>
 
-<p><img alt="スクリーンショット（2010-10-19 17.34.12）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.34.12%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-10-19 17.34.12）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.34.12%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <p>おそらく、Xcode のバージョンアップでそのうち直ると思いますが、それまではこの対応が必要になりそうです。</p>
 
@@ -363,27 +360,25 @@
 <ol>
 <li>左側に出ている「グループとファイル」のツリーから、[ターゲット]-[UnitTest] を開きます</li>
 <li>[スクリプトを実行] をダブルクリックして、情報ペインを表示します</li>
-<li>&quot;${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests&quot; の行の最後に 1&gt; /dev/null を追記します</li>
+<li>&#8221;${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests&#8221; の行の最後に 1&gt; /dev/null を追記します</li>
 </ol>
-
-
-<p><img alt="スクリーンショット（2010-11-06 12.15.47）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-06%2012.15.47%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-11-06 12.15.47）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-06%2012.15.47%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <h4>参考</h4>
 
 
-<p><a href="http://stackoverflow.com/questions/3516745/sentestcase-in-xcode-3-2-and-xcbuildlogcommandinvocationsection-errors" rel="external nofollow">SenTestCase in Xcode 3.2 and XCBuildLogCommandInvocationSection Errors - stackoverflow</a></p>
+<p><a href="http://stackoverflow.com/questions/3516745/sentestcase-in-xcode-3-2-and-xcbuildlogcommandinvocationsection-errors" rel="external nofollow" title="SenTestCase in Xcode 3.2 and XCBuildLogCommandInvocationSection Errors - stackoverflow">SenTestCase in Xcode 3.2 and XCBuildLogCommandInvocationSection Errors - stackoverflow</a></p>
 
 <h3>手順7 - ビルドしてみる</h3>
 
 
 <p>ここまでできたらビルドしてみます。エラーがなくなればテストが上手く通ったことになります。</p>
 
-<p><img alt="スクリーンショット（2010-10-19 17.35.58）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.35.58%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-10-19 17.35.58）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.35.58%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <p>FirstTest.m の testMath メソッドの中身を変えて、テストが失敗するようにしてビルドを行うと、エラーが発生することを確認します。エラーがきちんと発生していればテスト環境が整ったことになります。</p>
 
-<p><img alt="スクリーンショット（2010-10-19 17.36.27）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.36.27%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-10-19 17.36.27）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-10-19%2017.36.27%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <p>あとは、テスト対象のクラスをごにょごにょしたりして単体テストを満喫すれば良いと思います。</p>
 
@@ -396,7 +391,7 @@
 
 <p>UnitTest ターゲット側でテスト対象のクラスを見えるようにするには、テスト対象のクラスを UnitTest ターゲットの[ソースをコンパイル] のフェーズにドラッグ＆ドロップして追加する必要があります。</p>
 
-<p><img alt="スクリーンショット（2010-11-06 15.58.45）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-06%2015.58.45%EF%BC%89.png" width="693" class="mt-image-none" style="" /></p>
+<p><img alt="スクリーンショット（2010-11-06 15.58.45）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-06%2015.58.45%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style=""></p>
 
 <h3>（おまけ？）手順9 - UnitTest ターゲットの設定変更</h3>
 
@@ -409,15 +404,12 @@
 <p>参考にしたサイトです。</p>
 
 <ul>
-<li><a href="http://okajima.air-nifty.com/b/2008/07/iphone_577f.html" rel="external nofollow">iPhoneと単体テスト環境構築メモ - 人生を書き換える者すらいた。</a></li>
-<li><a href="http://sites.google.com/site/smgakusyuu/ocunit" rel="external nofollow">OCUnitの使い方（Cocoa Application編） - [SM gakusyuu];</a></li>
-<li><a href="http://d.hatena.ne.jp/rabbit2go/20100919/1284859385" rel="external nofollow">Xcode3.2.4のユニットテスト失敗に対処する - Basic</a></li>
-<li><a href="http://blazingcloud.net/2010/02/20/test-driven-development-for-iphone/" rel="external nofollow">Test Driven Development for iPhone - Blazing Cloud</a></li>
+<li><a href="http://okajima.air-nifty.com/b/2008/07/iphone_577f.html" rel="external nofollow" title="iPhoneと単体テスト環境構築メモ - 人生を書き換える者すらいた。">iPhoneと単体テスト環境構築メモ - 人生を書き換える者すらいた。</a></li>
+<li><a href="http://sites.google.com/site/smgakusyuu/ocunit" rel="external nofollow" title="OCUnitの使い方（Cocoa Application編） - [SM gakusyuu];">OCUnitの使い方（Cocoa Application編） - [SM gakusyuu];</a></li>
+<li><a href="http://d.hatena.ne.jp/rabbit2go/20100919/1284859385" rel="external nofollow" title="Xcode3.2.4のユニットテスト失敗に対処する - Basic">Xcode3.2.4のユニットテスト失敗に対処する - Basic</a></li>
+<li><a href="http://blazingcloud.net/2010/02/20/test-driven-development-for-iphone/" rel="external nofollow" title="Test Driven Development for iPhone - Blazing Cloud">Test Driven Development for iPhone - Blazing Cloud</a></li>
 </ul>
-
-
-
-</div>
+</body></html></div>
 
 
   
@@ -587,6 +579,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -610,10 +606,6 @@
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -621,7 +613,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 

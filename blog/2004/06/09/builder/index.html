@@ -150,7 +150,8 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 
 
-<div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+<div class="entry-content"><html><body>
+<p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
 GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
 
 <p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
@@ -180,18 +181,20 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <p>インスタンス生成手順が複雑な場合というのは、例えば次のような場合です。</p>
 
-<ul><li>インスタンスの生成が他のオブジェクトとの関連で成り立っている</li><li>外部リソースを読み取る処理によって作られるインスタンス</li><li>データベースからデータを読み取り、加工しながら作成されるインスタンス</li></ul>
-
-
-<p><a href="http://hamasyou.com/archives/000173" rel="external nofollow">Template Method</a>パターンで取り扱った、インスタンス生成手順を規則正しく決めたい場合なども、Builderパターンは応用できます。</p>
+<ul>
+<li>インスタンスの生成が他のオブジェクトとの関連で成り立っている</li>
+<li>外部リソースを読み取る処理によって作られるインスタンス</li>
+<li>データベースからデータを読み取り、加工しながら作成されるインスタンス</li>
+</ul>
+<p><a href="http://hamasyou.com/archives/000173" rel="external nofollow" title="Template Method">Template Method</a>パターンで取り扱った、インスタンス生成手順を規則正しく決めたい場合なども、Builderパターンは応用できます。</p>
 
 <p>手順に関して言うと、Template MethodパターンとBuilderパターンの違いは、<b>インスタンス生成の役割を誰が負うのか</b>というところです。Template Methodパターンは、インスタンス生成の手順をスーパークラス(親クラス)で決めます。一方Builderパターンは、生成の手順はDirectorクラス(他のクラス)が責任を負います。</p>
 
-<p>Builderパターンで一番のポイントは、<strong>誰がインスタンスの生成手順を知っているのか</strong>というところです。Directorクラスが知っているというのがその答えです。</p>
+<p>Builderパターンで一番のポイントは、<strong class="text-danger">誰がインスタンスの生成手順を知っているのか</strong>というところです。Directorクラスが知っているというのがその答えです。</p>
 
 <p>もうひとつのポイントは、<b>Directorを使うユーザは、Builderで作られたインスタンスが何かということを知っていなければならない</b>という点でしょう。どういうことかというと、まずクラス図を見てください。</p>
 
-<p><img src="http://hamasyou.com/images/builder/builder1.gif"/></p>
+<p><img src="http://hamasyou.com/images/builder/builder1.gif" class="img-thumbnail"></p>
 
 <p>「User」クラスが「Director」クラスを呼び出して作成した「Product」を使用する点に注目です。「User」クラスは「Director」がどんな「Product」を生成するのかを知っていなければ使いようがないという点を表しています。</p>
 
@@ -202,11 +205,11 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <p>Builderパターンの長所は、UserがProductの生成手順をすべてDirectorに任せているという部分です。これによって、<b>Productの生成手順が変わったり、どんなに複雑な処理をしていても、Userからしてみれば、変更する必要がない</b>のです。</p>
 
-<p>設計時の注意点ですが、<b>Builderが提供する生成手順は、増やしたり減らしたりするのが困難である</b>ということを覚えて置いてください。オブジェクト指向の原則である<b><a href="http://www.alles.or.jp/~torutk/oojava/oo/develop/011.html" rel="external nofollow">開放・閉鎖原則</a></b>では、拡張には開いていて(Open)、修正には閉じている(Closed)必要があります。ConcreteBuilderの拡張は、容易にできますが、親クラスのBuilderの機能を増やすことは、子クラス全体に修正が及ぶ可能性があります。</p>
+<p>設計時の注意点ですが、<b>Builderが提供する生成手順は、増やしたり減らしたりするのが困難である</b>ということを覚えて置いてください。オブジェクト指向の原則である<b><a href="http://www.alles.or.jp/~torutk/oojava/oo/develop/011.html" rel="external nofollow" title="開放・閉鎖原則">開放・閉鎖原則</a></b>では、拡張には開いていて(Open)、修正には閉じている(Closed)必要があります。ConcreteBuilderの拡張は、容易にできますが、親クラスのBuilderの機能を増やすことは、子クラス全体に修正が及ぶ可能性があります。</p>
 
 <p>これを回避するためには、<b>十分な設計と変更に強い構造をBuilderに持たせることです。</b></p>
 
-<p>Builderパターンのまとめです。<strong>インスタンス生成に手順がある場合</strong>、<strong>外部リソースを使ってインスタンスを作成しなければいけない場合</strong>、<strong>コンストラクタで引数の違うものがたくさんできてしまった場合</strong></p>
+<p>Builderパターンのまとめです。<strong class="text-danger">インスタンス生成に手順がある場合</strong>、<strong class="text-danger">外部リソースを使ってインスタンスを作成しなければいけない場合</strong>、<strong class="text-danger">コンストラクタで引数の違うものがたくさんできてしまった場合</strong></p>
 
 <h2>実装サンプルと参考文献</h2>
 
@@ -215,57 +218,49 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <ul>
 <li><p>日立ソフト(Builderパターン)
-<a href="http://www.dmz.hitachi-sk.co.jp/Java/Tech/pattern/gof/builder.html" rel="external nofollow">日立ソフト</a></p></li>
-<li><p>Skeleton of GOF&rsquo;s Design Pattern(JavaとC++のサンプルがあります)
-<a href="http://www002.upp.so-net.ne.jp/ys_oota/mdp/Builder/index.htm" rel="external nofollow">Builderの骸骨</a></p></li>
+<a href="http://www.dmz.hitachi-sk.co.jp/Java/Tech/pattern/gof/builder.html" rel="external nofollow" title="日立ソフト">日立ソフト</a></p></li>
+<li><p>Skeleton of GOF’s Design Pattern(JavaとC++のサンプルがあります)
+<a href="http://www002.upp.so-net.ne.jp/ys_oota/mdp/Builder/index.htm" rel="external nofollow" title="Builderの骸骨">Builderの骸骨</a></p></li>
 <li><p>TECHSCORE(生成に関するパターン)
-<a href="http://www.techscore.com/tech/DesignPattern/Builder.html" rel="external nofollow">TECHSCORE Builderパターン</a></p></li>
+<a href="http://www.techscore.com/tech/DesignPattern/Builder.html" rel="external nofollow" title="TECHSCORE Builderパターン">TECHSCORE Builderパターン</a></p></li>
 <li><p>デザインパターンのお勧め書籍</p></li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>独習シリーズのデザインパターン編。デザインパターンを一人でも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>Sun Microsystemのお墨付き。GoF以外のパターンも学べます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>UMLを使って、オブジェクト指向のいいとこ取りができます。</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
 
 
 <ul>
 <li>デザインパターンだけではなく、ソフトウェア設計の原則やプラクティスまで学びたい人におすすめ</li>
 </ul>
-
-
-<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow"></a><br /></td></tr></table>
-</div>
-
-
-
-</div>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+</body></html></div>
 
 
   
@@ -437,6 +432,10 @@ GoFの23のパターンが有名です。デザインパターンというのは
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
       </li>
     
@@ -460,10 +459,6 @@ GoFの23のパターンが有名です。デザインパターンというのは
         <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/04/qiita-sushi/">#qiita_sushi に参加した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -471,7 +466,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">95</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">111</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 
