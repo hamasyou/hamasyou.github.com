@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>緯度・経度から二点間の距離と方向を計算する - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="ジオ系を触っていて、緯度、経度から二点間の距離とその方向を計算するロジックは色々なところで必要になるので、メモ。 元記事は下で、JavaScript に書き直しただけです。 緯度、経度から距離と向きを算出 緯度、経度から距離と向きを算出 - 中年プログラマblog (adsbygoogle = &hellip;">
+  <meta name="keywords" content="ジオロケーション, 緯度・経度">
+
+  
+
+
+<meta property="og:title" content="緯度・経度から二点間の距離と方向を計算する - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2010/09/07/post-2/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="ジオ系を触っていて、緯度、経度から二点間の距離とその方向を計算するロジックは色々なところで必要になるので、メモ。 元記事は下で、JavaScript に書き直しただけです。 緯度、経度から距離と向きを算出 緯度、経度から距離と向きを算出 - 中年プログラマblog (adsbygoogle = &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2010/09/07/post-2">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">緯度・経度から二点間の距離と方向を計算する</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-09-07T13:39:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 7<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/geo/">geo</a>
+    
+      <a class="tag label label-info" href="/blog/tags/fang-xiang/">方向</a>
+    
+      <a class="tag label label-info" href="/blog/tags/jing-du/">経度</a>
+    
+      <a class="tag label label-info" href="/blog/tags/wei-du/">緯度</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ju-li/">距離</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>ジオ系を触っていて、緯度、経度から二点間の距離とその方向を計算するロジックは色々なところで必要になるので、メモ。</p>
+
+<p>元記事は下で、JavaScript に書き直しただけです。</p>
+
+<h4>緯度、経度から距離と向きを算出</h4>
+
+
+
+
+<ul><li><a href="http://prog47.blogdns.org/blog/index.php?e=283" rel="external nofollow" title="緯度、経度から距離と向きを算出 - 中年プログラマblog">緯度、経度から距離と向きを算出 - 中年プログラマblog</a></li></ul>
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<h2>緯度・経度から二点間の距離を計算する</h2>
+
+
+
+
+<pre class="code"><span class="rem">//</span>
+<span class="rem">// 測地線航海算法の公式</span>
+<span class="rem">//</span>
+<span class="keyword">function</span> geoDistance(lat1, lng1, lat2, lng2, precision) {
+  <span class="rem">// 引数　precision は小数点以下の桁数（距離の精度）</span>
+  <span class="keyword">var</span> distance = <span class="num">0</span>;
+  <span class="keyword">if</span> ((Math.abs(lat1 - lat2) &lt; <span class="num">0.00001</span>) &amp;&amp; (Math.abs(lng1 - lng2) &lt; <span class="num">0.00001</span>)) {
+    distance = <span class="num">0</span>;
+  } <span class="keyword">else</span> {
+    lat1 = lat1 * Math.PI / <span class="num">180</span>;
+    lng1 = lng1 * Math.PI / <span class="num">180</span>;
+    lat2 = lat2 * Math.PI / <span class="num">180</span>;
+    lng2 = lng2 * Math.PI / <span class="num">180</span>;
+ 
+    <span class="keyword">var</span> A = <span class="num">6378140</span>;
+    <span class="keyword">var</span> B = <span class="num">6356755</span>;
+    <span class="keyword">var</span> F = (A - B) / A;
+ 
+    <span class="keyword">var</span> P1 = Math.atan((B / A) * Math.tan(lat1));
+    <span class="keyword">var</span> P2 = Math.atan((B / A) * Math.tan(lat2));
+ 
+    <span class="keyword">var</span> X = Math.acos(Math.sin(P1) * Math.sin(P2) + Math.cos(P1) * Math.cos(P2) * Math.cos(lng1 - lng2));
+    <span class="keyword">var</span> L = (F / <span class="num">8</span>) * ((Math.sin(X) - X) * Math.pow((Math.sin(P1) + Math.sin(P2)), <span class="num">2</span>) / Math.pow(Math.cos(X / <span class="num">2</span>), <span class="num">2</span>) - (Math.sin(X) - X) * Math.pow(Math.sin(P1) - Math.sin(P2), <span class="num">2</span>) / Math.pow(Math.sin(X), <span class="num">2</span>));
+ 
+    distance = A * (X + L);
+    <span class="keyword">var</span> decimal_no = Math.pow(<span class="num">10</span>, precision);
+    distance = Math.round(decimal_no * distance / <span class="num">1</span>) / decimal_no;   <span class="rem">// kmに変換するときは(1000で割る)</span>
+  }
+  <span class="keyword">return</span> distance;
+}</pre>
+
+
+
+
+<h2>緯度・経度から方向（方角）を計算する</h2>
+
+
+
+
+<pre class="code"><span class="keyword">function</span> geoDirection(lat1, lng1, lat2, lng2) {
+  <span class="rem">// 緯度経度 lat1, lng1 の点を出発として、緯度経度 lat2, lng2 への方位</span>
+  <span class="rem">// 北を０度で右回りの角度０～３６０度</span>
+  <span class="keyword">var</span> Y = Math.cos(lng2 * Math.PI / <span class="num">180</span>) * Math.sin(lat2 * Math.PI / <span class="num">180</span> - lat1 * Math.PI / <span class="num">180</span>);
+  <span class="keyword">var</span> X = Math.cos(lng1 * Math.PI / <span class="num">180</span>) * Math.sin(lng2 * Math.PI / <span class="num">180</span>) - Math.sin(lng1 * Math.PI / <span class="num">180</span>) * Math.cos(lng2 * Math.PI / <span class="num">180</span>) * Math.cos(lat2 * Math.PI / <span class="num">180</span> - lat1 * Math.PI / <span class="num">180</span>);
+  <span class="keyword">var</span> dirE0 = <span class="num">180</span> * Math.atan2(Y, X) / Math.PI; <span class="rem">// 東向きが０度の方向</span>
+  <span class="keyword">if</span> (dirE0 &lt; <span class="num">0</span>) {
+    dirE0 = dirE0 + <span class="num">360</span>; <span class="rem">//0～360 にする。</span>
+  }
+  <span class="keyword">var</span> dirN0 = (dirE0 + <span class="num">90</span>) % <span class="num">360</span>; <span class="rem">//(dirE0+90)÷360の余りを出力 北向きが０度の方向</span>
+  <span class="keyword">return</span> dirN0;
+}</pre></div>
+
+
+  
+    
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-09-07T13:39:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 7<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/geo/">geo</a>
+    
+      <a class="tag label label-info" href="/blog/tags/fang-xiang/">方向</a>
+    
+      <a class="tag label label-info" href="/blog/tags/jing-du/">経度</a>
+    
+      <a class="tag label label-info" href="/blog/tags/wei-du/">緯度</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ju-li/">距離</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/09/07/post-2/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2010/09/07/post-2/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2010/09/07/post-2/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2010/09/07/post-2/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2010/09/07/post-2/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2010/09/07/post-2/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2010/09/06/4048687158/" title="Previous Post:
+      メタプログラミングRuby"><i class="fa fa-arrow-circle-left"></i> メタプログラミングRuby</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2010/09/07/javascript/"
+                            title="Next Post: [JavaScript] JavaScript のクラス定義のイディオム">[JavaScript] JavaScript... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2010/09/07/post-2/';
+  var disqus_url = 'http://hamasyou.com/blog/2010/09/07/post-2/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

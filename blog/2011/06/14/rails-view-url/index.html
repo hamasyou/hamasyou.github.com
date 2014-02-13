@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Rails のコントローラの中で View の画像URLを取得する方法 - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="コントローラの中で、ビューの image_tag 等で表示される画像の URL を取得したい時があります。 そんな時は view_context が使えます。 環境 Rails
+3.0.7
+Ruby
+1.9.2-p180
+Paperclip
+2.3.11 (adsbygoogle = window &hellip;">
+  <meta name="keywords" content="Rails, Ruby, view_context">
+
+  
+
+
+<meta property="og:title" content="Rails のコントローラの中で View の画像URLを取得する方法 - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2011/06/14/rails-view-url/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="コントローラの中で、ビューの image_tag 等で表示される画像の URL を取得したい時があります。 そんな時は view_context が使えます。 環境 Rails
+3.0.7
+Ruby
+1.9.2-p180
+Paperclip
+2.3.11 (adsbygoogle = window &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2011/06/14/rails-view-url">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">Rails のコントローラの中で View の画像URLを取得する方法</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-14T09:09:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/rails3/">Rails3</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby1-dot-9/">Ruby1.9</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>コントローラの中で、ビューの image_tag 等で表示される画像の URL を取得したい時があります。</p>
+
+<p>そんな時は <em>view_context</em> が使えます。</p>
+
+<p><section></section></p>
+
+<h4>環境</h4>
+
+
+
+
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+<dt>Ruby</dt>
+<dd>1.9.2-p180</dd>
+<dt>Paperclip</dt>
+<dd>2.3.11</dd>
+</dl>
+<p></p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+<p>コントローラの中でビューの image_tag に渡すパスを取得したい時があります。</p>
+
+<p>例えば、Paperclip を使って画像を管理しているときに、外部サービスに Paperclip の画像の URL を渡したい時などです。</p>
+
+<p>Paperclip を使って画像を管理していると、<code>url</code> メソッドで取得できる URL に、コントローラの中では ActionController の AssetHost の設定が付与されません。</p>
+
+<p>そんな時は、<strong class="text-danger">view_context</strong> を使うと、ビューのコンテキストで評価してくれるので、ActionController の AssetHost の設定もきくようになります。</p>
+
+<p><section></section></p>
+
+<h4>コントローラの例</h4>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="c1">#-*- encoding: utf-8 -*-</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">CallbackController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">send</span>
+</span><span class="line">    <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span>
+</span><span class="line">    <span class="n">user</span><span class="o">.</span><span class="n">avatar</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:user</span><span class="o">][</span><span class="ss">:avatar</span><span class="o">]</span>
+</span><span class="line">    <span class="n">user</span><span class="o">.</span><span class="n">avatar</span><span class="o">.</span><span class="n">url</span>
+</span><span class="line">      <span class="c1"># =&gt; "/users/avatars/4/original_me.jpg"</span>
+</span><span class="line">    <span class="n">view_context</span><span class="o">.</span><span class="n">image_path</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">avatar</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+</span><span class="line">      <span class="c1"># =&gt; "http://image.serverhost/users/avatars/4/original_me.jpg"</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p></p>
+
+<p><section></section></p>
+
+<h4>models/user.rb</h4>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class="line">  <span class="n">has_attached_file</span> <span class="ss">:avatar</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p></p>
+
+<p><section></section></p>
+
+<h4>application.rb</h4>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">'../boot'</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">'rails/all'</span>
+</span><span class="line"><span class="no">Bundler</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:default</span><span class="p">,</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="p">)</span> <span class="k">if</span> <span class="n">defined?</span><span class="p">(</span><span class="no">Bundler</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="k">module</span> <span class="nn">MyApp</span>
+</span><span class="line">  <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="ss">Rails</span><span class="p">:</span><span class="ss">:Application</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">action_controller</span><span class="o">.</span><span class="n">asset_host</span> <span class="o">=</span> <span class="s2">"http://image.serverhost"</span>
+</span><span class="line">    <span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="p">(</span><span class="err">略</span><span class="p">)</span><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2010/11/19/rspec/">[Rails] RSpec でコントローラのテストを記述する例</a></li>
+        
+        <li><a href="/blog/2010/06/02/heroku/">HerokuでRuby1.9とRails3を使う</a></li>
+        
+        <li><a href="/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/">[Rails] carrierwave と fog で Amazon S3 をストレージとして使う</a></li>
+        
+        <li><a href="/blog/2011/06/14/activerecordprevious-changes/">ActiveRecord#previous_changes で変更のあった属性を取り出す</a></li>
+        
+        <li><a href="/blog/2010/08/31/rails3/">[Rails3] Rails3 がリリースされたのでまとめ</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-14T09:09:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/rails3/">Rails3</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby1-dot-9/">Ruby1.9</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/14/rails-view-url/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2011/06/14/rails-view-url/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2011/06/14/rails-view-url/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2011/06/14/rails-view-url/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2011/06/14/rails-view-url/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2011/06/14/rails-view-url/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2011/06/06/4798029181/" title="Previous Post:
+      俺のコードのどこが悪い?―コードレビューを攻略する40のルール"><i class="fa fa-arrow-circle-left"></i> 俺のコードのどこが悪い?―コードレビューを攻略...</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2011/06/14/kaminari-paginate-array/"
+                            title="Next Post: kaminari の paginate_array が便利">kaminari の paginate_arr... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2011/06/14/rails-view-url/';
+  var disqus_url = 'http://hamasyou.com/blog/2011/06/14/rails-view-url/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,980 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Apache Pluto1.1 を触ってみる その2 - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="Apache Pluto の覚書きです。Apache Pluto は、Java Portlet 仕様 のリファレンス実装です。この覚書きを書いている段階では、Java Portlet Specification (JSR-168) が Java Portlet 仕様として、まとめられています。 &hellip;">
+  <meta name="keywords" content="Portlet, Java, Portal, JSR-168, Pluto, Apache Pluto, その2">
+
+  
+
+
+<meta property="og:title" content="Apache Pluto1.1 を触ってみる その2 - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2006/04/19/apache-pluto/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="Apache Pluto の覚書きです。Apache Pluto は、Java Portlet 仕様 のリファレンス実装です。この覚書きを書いている段階では、Java Portlet Specification (JSR-168) が Java Portlet 仕様として、まとめられています。 &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2006/04/19/apache-pluto">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">Apache Pluto1.1 を触ってみる その2</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2006-04-19T00:08:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Apr 19<span>th</span>, 2006</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/apache/">Apache</a>
+    
+      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>
+<a href="http://portals.apache.org/pluto/" rel="external nofollow" title=""></a>
+</p>
+
+
+<p>Apache Pluto の覚書きです。Apache Pluto は、Java Portlet 仕様 のリファレンス実装です。この覚書きを書いている段階では、Java Portlet Specification (JSR-168) が Java Portlet 仕様として、まとめられています。</p>
+
+<p>この覚書きで使っている環境は次の通りです。</p>
+
+<ul>
+<li>Eclipse 3.1.2</li>
+<li>Pluto 1.1 (alpha release 以前)</li>
+<li>Tomcat 5.5.9</li>
+<li>J2SE 5.0</li>
+</ul>
+<p>参考にしたリソースは次の通りです。</p>
+<ul><li><a href="http://jcp.org/aboutJava/communityprocess/final/jsr168/index.html" rel="external nofollow" title="Developing Portlets with Apache Pluto">Developing Portlets with Apache Pluto</a></li></ul>
+<p>Pluto の中を追っていったときの覚書です。ソースコードを手元に読んでいただければ、より理解できるのではないかと思います。</p>
+
+<p>間違い等に気づいた方は、ご連絡いただけると助かります。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>Apache Pluto1.1 覚書 目次</h2>
+
+
+
+
+<ul>
+<li>
+<a href="#chapter1" rel="external nofollow">環境構築</a>
+<ul>
+<li><a href="#section1" rel="external nofollow">ソースコードをダウンロードする</a></li>
+<li><a href="#section2" rel="external nofollow">インストールする</a></li>
+</ul>
+</li>
+<li>
+<a href="#chapter2" rel="external nofollow">Pluto のアーキテクチャ</a>
+<ul>
+<li><a href="#section3" rel="external nofollow">ポータルもWebアプリケーションだから、サーブレット が使われている</a></li>
+<li><a href="#section4" rel="external nofollow">Pluto で使われる主なクラス群</a></li>
+<li><a href="#section5" rel="external nofollow">ポートレットコンテナにポートレットを登録するにはどうすればいいのか？</a></li>
+<li><a href="#section6" rel="external nofollow">ポートレットを呼び出すぞ。（でも、URL がわからない・・・）</a></li>
+<li><a href="#section7" rel="external nofollow">Pluto の設定には、SpringFramework が使われている</a></li>
+</ul>
+</li>
+<li><a href="#chapter3" rel="external nofollow">まとめ</a></li>
+</ul>
+<h4>Pluto をもうちょっと詳しく見てみる 目次</h4>
+
+
+
+
+<ul>
+<li>
+<a href="#chapter4" rel="external nofollow">PortalStartupListener の動作</a>
+</li>
+<li>
+<a href="#chapter5" rel="external nofollow">PortletDriverServlet の動作</a>
+<ul>
+<li><a href="#section8" rel="external nofollow">リクエスト種類によって、呼び出しが変わる</a></li>
+</ul>
+</li>
+<li>
+<a href="#chapter6" rel="external nofollow">ポートレットコンテナの動作</a>
+<ul>
+<li><a href="#section9" rel="external nofollow">ポートレットコンテナの呼び出しを整理しておくと</a></li>
+<li><a href="#section10" rel="external nofollow">ポートレットの呼び出し方法</a></li>
+</ul>
+</li>
+<li>
+<a href="#chapter7" rel="external nofollow">エラーで困ったら</a>
+<ul>
+<li><a href="#section11" rel="external nofollow">error.config.context.null</a></li>
+</ul>
+</li>
+<li><a href="#chapter8" rel="external nofollow">検討事項</a></li>
+</ul>
+<h2 id="chapter1">環境構築</h2>
+
+
+<p>今回使うのは、Apache Pluto1.1 です。2006/4/20 現在では、 Pluto のバージョンは 1.0.1 と 1.1 の二つが用意されています。バイナリで配布されているのは 1.0.1 だけなので、今回はソースコードを手に入れるところからはじめます。</p>
+
+<p>Pluto 1.0.1 と Pluto 1.1 は、アーキテクチャが大きく変わったようです。1.1 のほうがよりシンプルに美しくなりました。それに伴って、設定の仕方なども色々と変わっています。 Pluto 1.0.1 を使う場合は、この覚書は参考にならないかもしれませんので注意してください。</p>
+
+<p>今回使うのは、Pluto1.1 です。</p>
+
+<h4>ライセンス</h4>
+
+
+<p>The Apache Software License, Version 2.0</p>
+
+<h3 id="section1">ソースコードをダウンロードする</h3>
+
+
+<p>Apache Pluto 1.1 のソースコードは、<a href="http://subversion.tigris.org/" rel="external nofollow" title="Subversion">Subversion</a> で管理されています。下記の URL からチェックアウトできます。</p>
+
+<pre><a href="http://svn.apache.org/repos/asf/portals/pluto/trunk/" rel="external nofollow" title=" http://svn.apache.org/repos/asf/portals/pluto/trunk/"> http://svn.apache.org/repos/asf/portals/pluto/trunk/</a></pre>
+
+
+<p>下のコマンドを実行することでも、ソースコードがダウンロードできます。</p>
+
+<pre class="console">&gt; <kbd>svn checkout http://svn.apache.org/repos/asf/portals/pluto/trunk/ pluto-site</kbd></pre>
+
+
+
+
+<h3 id="sectiono2">インストールする</h3>
+
+
+<p>ソースコードをダウンロードしたら、Apache Pluto のサイトにある <a href="http://portals.apache.org/pluto/getting-started.html" rel="external nofollow" title="Getting Started">Getting Started</a> を見ながら、インストールを行います。ソースコードをダウンロードしたパスに移動して</p>
+
+<pre class="console">&gt; <kbd>mvn install</kbd></pre>
+
+
+<p>を実行すると、ずらずらと、ライブラリができるので、Getting Started に書いてある Step にしたがって配置していきます。</p>
+
+<p>配置が終了したら、Tomcat を起動します。<a href="http://localhost:8080/pluto/portal" rel="external nofollow" title="http://localhost:8080/pluto/portal">http://localhost:8080/pluto/portal</a> にアクセスすると、Pluto のポータル画面が表示されます。</p>
+
+<h2 id="chapter2">Pluto のアーキテクチャ</h2>
+
+
+
+
+<h3 id="sectiono3">ポータルもWebアプリケーションだから、サーブレット が使われている</h3>
+
+
+<p>まず、最初に Pluto がどういう風に動作するのかを簡単にまとめて見ました。（画像をクリックすると大きな画像が表示されます。）</p>
+
+<p><a href="http://hamasyou.com/images/portal_pluto/pluto_class.gif" rel="external nofollow" title=""></a></p>
+
+<p>Pluto は、Web ブラウザからリクエストを受けると次のように動作します。</p>
+
+<pre>
+1. PortalDriverServlet がポータルに対するリクエストを受け取る
+        ↓
+2. サーブレットコンテキスト、サーブレットリクエスト、サーブレットレスポンスをそれぞれポートレット API でラップする
+        ↓
+3. ポートレットコンテナを呼び出す
+        ↓
+4. ポートレットコンテナは、リクエストパラメータを解析して、どのポートレットが呼び出されたのかを判断する
+        ↓
+5. 呼び出されたポートレットにリクエストをフォワードする
+        ↓
+6. ポートレットコンテナは、レンダリングリクエストを表示するページ内の全ポートレットに対して送信する
+        ↓
+7. ポートレットのレスポンスをマージして、画面をブラウザに返す
+</pre>
+
+
+<p>ポータルアプリケーションもひとつの Web アプリケーションなので、当然サーブレットを使っています。</p>
+
+<p>Tomcat を起動した際に webapp ディレクトリにできる pluto フォルダの下には、典型的な Web アプリケーションの構成ができています。</p>
+
+<p><img src="http://hamasyou.com/images/portal_pluto/pluto_dir.gif" alt="pluto   のディレクトリ構成" class="img-thumbnail"></p>
+
+<p>{TOMCAT_HOME}/webapps/pluto/WEB-INF/web.xml を開くと、こんな記述があると思います。</p>
+
+<p><section></section></p>
+
+<h4>web.xml 抜粋</h4>
+
+
+
+
+<pre class="code"><code><span class="tag">&lt;servlet&gt;</span>  
+  <span class="tag">&lt;servlet-name&gt;</span>plutoPortalDriver<span class="tag">&lt;/servlet-name&gt;</span>  
+  <span class="tag">&lt;display-name&gt;</span>Pluto Portal Driver<span class="tag">&lt;/display-name&gt;</span>  
+  <span class="tag">&lt;description&gt;</span>Pluto Portal Driver Controller<span class="tag">&lt;/description&gt;</span>  
+  <span class="tag">&lt;servlet-class&gt;</span>org.apache.pluto.driver.PortalDriverServlet<span class="tag">&lt;/servlet-class&gt;</span>  
+<span class="tag">&lt;/servlet&gt;</span>
+</code></pre>
+
+
+<p></p>
+
+<p>このクラスが、ポータルアプリケーションの窓口、ポータルアプリケーションのサーブレットです。ポータルにアクセスしたいときは、このサーブレットにアクセスすることになります。web.xml の下のほうにマッピングが書かれていますので、見てみます。</p>
+
+<p><section></section></p>
+
+<h4>web.xml 抜粋</h4>
+
+
+
+
+<pre class="code"><span class="tag">&lt;servlet-mapping&gt;</span>  
+  <span class="tag">&lt;servlet-name&gt;</span>plutoPortalDriver<span class="tag">&lt;/servlet-name&gt;</span>  
+  <span class="tag">&lt;url-pattern&gt;</span>/portal/*<span class="tag">&lt;/url-pattern&gt;</span>  
+<span class="tag">&lt;/servlet-mapping&gt;</span>
+</pre>
+
+
+<p></p>
+
+<p>つまり、http://localhost:8080/pluto/portal/ にアクセスすることで、このサーブレットが呼ばれ、ポートレットコンテナに格納されているポートレットが呼び出されるわけです。</p>
+
+<p>なお、ポートレットの初期化は、サーブレットリスナで行われており、<code>org.apache.pluto.driver.PortalStartupListener</code> が使われていました。これについては後の節で詳しく見ることにします。</p>
+
+<h3 id="sectiono4">Pluto で使われる主なクラス群</h3>
+
+
+<p>Pluto のアーキテクチャを調べた中で出てきた主なクラスは次の4つです。</p>
+
+<dl>
+<dt>org.apache.pluto.driver.PortletDriverServelt</dt>
+<dd><p>このクラスは、Pluto の本体ともいえるサーブレットの実装クラスです。Web ブラウザからのアクセスは、このサーブレットが受け取ります。このクラスは、Pluto 全体の初期化やポートレットコンテナの作成と初期化を行います。</p></dd>
+<dt>org.apache.pluto.PortletContainer</dt>
+<dd><p>ポートレットコンテナの実装クラスです。PortletDriverServlet から呼び出されます。内部にはポートレットを格納しています。リクエストを解釈し、適切なポートレットに割り振ることを行います。</p></dd>
+<dt>org.apache.pluto.core.PortletServlet</dt>
+<dd><p>ポートレットアプリケーション側に配備されるクラスです。ポートレットコンテナからの呼び出しを受け、ポートレットに処理を委譲します。</p></dd>
+<dt>org.apache.pluto.driver.tags.PortletRenderTag</dt>
+<dd><p>ポートレットのレンダリングを呼び出すためのタグクラスです。JSP に記述され、ポートレットのレンダリングリクエストを発行します。<code>&lt;pluto:render /&gt;</code> であらわされます。</p></dd>
+</dl>
+<dl>
+<dt class="notice">クロスコンテキストを有効にする必要がある</dt>
+<dd>ポータルは、複数のWeb アプリケーションをまたがるため、クロスコンテキスト(crossContext) が可能でなければなりません。{TOMCAT_HOME}/conf/Catalina/localhost にコピーした pluto.xml には、<code>crossContext="true"</code> が記述されています。</dd>
+</dl>
+<h3 id="sectiono5">ポートレットコンテナにポートレットを登録するにはどうすればいいのか？</h3>
+
+
+<p>{TOMCAT_HOME}/webapps/pluto/WEB-INF/web.xml を見ると、いくつかのサーブレットの設定に <code><strong>org.apache.pluto.core.PortletServlet</strong></code> というクラスが使われています。サーブレットの <code>init-param</code> 設定で、<code><strong>portlet-name</strong></code> というパラメータが設定されています。</p>
+
+<pre class="code"><code><span class="tag">&lt;servlet&gt;</span>  
+  <span class="tag">&lt;servlet-name&gt;</span>AdminPortlet<span class="tag">&lt;/servlet-name&gt;</span>  
+  <span class="tag">&lt;servlet-class&gt;</span>org.apache.pluto.core.PortletServlet<span class="tag">&lt;/servlet-class&gt;</span>  
+  <span class="tag">&lt;init-param&gt;</span>  
+    <span class="tag">&lt;param-name&gt;</span>portlet-name<span class="tag">&lt;/param-name&gt;</span>  
+    <span class="tag">&lt;param-value&gt;</span>AdminPortlet<span class="tag">&lt;/param-value&gt;</span>  
+  <span class="tag">&lt;/init-param&gt;</span>  
+  <span class="tag">&lt;load-on-startup&gt;</span>1<span class="tag">&lt;/load-on-startup&gt;</span>  
+<span class="tag">&lt;/servlet&gt;</span>
+</code></pre>
+
+
+<p>どうやら、Pluto1.1 では、ポートレットコンテナ がこの <code>PotletServlet</code> を呼び出して、さらに <code>PortletServlet</code> が ポータルコンテンツ を呼び出す仕組みになっているようです。呼び出される ポータルコンテンツは、<code>portlet-name</code> で指定しています。</p>
+
+<p><code>portlet-name</code> で指定されているのは、あくまでポートレット名です。では、ポートレットの本体はどこで定義するのかというと、JSR-168 で決められている通り、portlet.xml に定義します。あたりまえですね。</p>
+
+<p>web.xml をもう少し見ていくと、今度は、<code>servlet-mapping</code> が見つかります。</p>
+
+<pre class="code"><code><span class="tag">&lt;servlet-mapping&gt;</span>  
+  <span class="tag">&lt;servlet-name&gt;</span>AdminPortlet<span class="tag">&lt;/servlet-name&gt;</span>  
+  <span class="tag">&lt;url-pattern&gt;</span>/PlutoInvoker/AdminPortlet<span class="tag">&lt;/url-pattern&gt;</span>  
+<span class="tag">&lt;/servlet-mapping&gt;</span>
+</code></pre>
+
+
+<p><code>/PlutoInvoker/</code> という記述がなんとも不思議です。Pluto 1.1 は、<code>PortletServlet</code> が呼び出される URL にプレフィックスとして、この <code>/PlutoInvoker/</code> という名前を使います。</p>
+
+<p>Portlet 用のサーブレットは、マッピング URL に <code>/PlutoInvoker/</code> を記述するようにします。その後ろの名前は、ポートレット名をつけます。</p>
+
+<p>ちなみに、web.xml と portal.xml の設定は、ポートレットアプリケーション（自分が作るアプリケーション）側に記述します。</p>
+
+<h3 id="sectiono6">ポートレットを呼び出すぞ。（でも、URL がわからない・・・）</h3>
+
+
+<p>さて、これでポートレットの設定は完了したわけですが、これだけではポートレットは呼び出せません。JSR-168 には、</p>
+
+<blockquote>
+<p>Portlets are not directly bound to a URL</p>
+<footer><strong>JSR-168</strong></footer>
+</blockquote>
+
+
+<p>とあります。これはつまり、ブラウザのアドレスバーに URL を直接打ち込んでもポートレットを呼び出すことはできませんということを言っています。例えば、ブラウザのアドレスに http://localhost:8080/pluto/PortletInvoker/AdminPortal 入力してもエラーになります。</p>
+
+<p>では、どうすればよいかというと、ポートレットは、ポートレットコンテナから呼び出されることが決められているので、ポートレットコンテナに呼び出しをお願いします。Pluto1.1 の場合、このお願いは {TOMCAT_HOME}/webapps/pluto/WEB-INF/pluto-portal-driver-config.xml に記述することになります。</p>
+
+<p><section></section></p>
+
+<h4>(pluto-portal-driver-config.xml 抜粋)</h4>
+
+
+
+
+<pre class="code"><code><span class="tag">&lt;pluto-portal-driver </span>  
+  ...  
+  <span class="tag">&lt;portlet-app&gt;</span>  
+    <span class="tag">&lt;context-path&gt;</span>/pluto<span class="tag">&lt;/context-path&gt;</span>  
+    <span class="tag">&lt;portlets&gt;</span>  
+      <span class="tag">&lt;portlet <span class="attr">name=</span><span class="value">"AboutPortlet"</span> /&gt;</span>  
+      <span class="tag">&lt;portlet <span class="attr">name=</span><span class="value">"AdminPortlet"</span> /&gt;</span>  
+    <span class="tag">&lt;/portlets&gt;</span>  
+  <span class="tag">&lt;/portlet-app&gt;</span>  
+  ...  
+  <span class="tag">&lt;render-config <span class="attr">default=</span><span class="value">"Pluto Admin"</span>&gt;</span>  
+    <span class="tag">&lt;page <span class="attr">name=</span><span class="value">"Pluto Admin"</span> <span class="attr">uri=</span><span class="value">"/WEB-INF/themes/pluto-default-theme.jsp"</span>&gt;</span>  
+      <span class="tag">&lt;portlet <span class="attr">context=</span><span class="value">"/pluto"</span> <span class="attr">name=</span><span class="value">"AdminPortlet"</span>/&gt;</span>  
+    <span class="tag">&lt;/page&gt;</span>  
+  <span class="tag">&lt;/render-config&gt;</span>  
+<span class="tag">&lt;/pluto-portal-driver&gt;</span>
+</code></pre>
+
+
+<p></p>
+
+<p><section></section></p>
+
+<h4>portlet-app タグ</h4>
+
+
+<p>このタグでポートレットの定義を記述します。</p>
+
+<dl>
+<dt>context-path タグ</dt>
+<dd><p>ここに、ポートレットのコンテキストパスを記述します。ポートレットは別の Web アプリケーションとして作成できるので、コンテキストも Pluto とは別になります。コンテキスト名に使える文字は 「a-z, A-Z, 0-9, _, /」 です。&#8217;.&#8217; や &#8216;-&#8217; は使えないので注意です。</p></dd>
+<dt>portlets タグ</dt>
+<dd><p>このタグを使って、このコンテキストに含まれるポートレットの名前を定義します。ここに記述するのは、portlet.xml に定義したポートレットです。</p></dd>
+</dl>
+<p></p>
+
+<p><section></section></p>
+
+<h4>render-config タグ</h4>
+
+
+<p>このタグは、<code>PlutoPortletDriver</code> の設定を記述するところです。ここには、レンダリングに関する設定をおこないます。設定しているのは、ポータルページを呼び出すときのパス名（name 属性）と、ポータルページに使用するページ（uri 属性）、どのポートレットを使うか（portlet タグ）です。portlet タグに記述するのは、<code>portlet-app</code> で記述したコンテキストと、ポートレット名です。</p>
+
+<p>name に指定した値 (ページ名) をブラウザのアドレスバーに打ち込むことで、ポータルページを開くことができます。</p>
+
+<pre>http://localhost:8080/pluto/portal/Pluto%20Admin</pre>
+
+
+<p></p>
+
+<p>これで、Pluto を起動したときに、pluto-portal-driver-config.xml が読み込まれ、ポートレット URLを生成したページが表示できるようになります。Pluto は、この設定ファイルを解析して、URL と ポートレットアプリケーションのマッピングを行います。</p>
+
+<p>http://localhost:8080/pluto/portal にアクセスして、ログインした後のページの左上にある Navigation から ページを移動してみましょう。画面が表示されるはずです。</p>
+
+<dl>
+<dt class="notice">ポートレットID</dt>
+<dd>
+<p>すべてのポートレットには、一意の ID が振られます。Pluto の場合、次のようなルールによって ID が決められます。</p>
+
+<pre>[portlet-context-name].[portlet-name]</pre>
+
+<p><code>[portlet-context-name]</code> とは、ポートレットアプリケーションのコンテキスト名のことです。<code>[portlet-name]</code> は、文字通りポートレット名です。これらを &#8216;.&#8217; でつないだものが <strong class="text-danger">Portlet Definition ID</strong> と呼ばれるポートレットの一意な ID です。</p>
+</dd>
+</dl>
+<h3 id="sectiono7">Pluto の設定には、SpringFramework が使われている</h3>
+
+
+<p>{TOMCAT_HOME}/webapps/pluto/WEB-INF/ を見ると、pluto-portal-driver-service-config.xml というファイルがあるのがわかります。このファイル、中を見ると実は SpringFramework の Bean 設定ファイルだったりします。</p>
+
+<p>Pluto の設定が行われている部分を抜粋します。</p>
+
+<p><section></section></p>
+
+<h4>(pluto-portal-driver-service-config.xml 抜粋)</h4>
+
+
+
+
+<pre class="code"><code><span class="tag">&lt;bean <span class="attr">id=</span><span class="value">"DriverConfiguration"</span>  
+  <span class="attr">class=</span><span class="value">"org.apache.pluto.driver.config.impl.DriverConfigurationImpl"</span>&gt;</span>  
+  <span class="rem">&lt;!-- ===== Portal Services ===== --&gt;</span>  
+  <span class="tag">&lt;constructor-arg&gt;</span><span class="tag">&lt;ref <span class="attr">local=</span><span class="value">"PropertyConfigService"</span>/&gt;</span><span class="tag">&lt;/constructor-arg&gt;</span>  
+  <span class="tag">&lt;constructor-arg&gt;</span><span class="tag">&lt;ref <span class="attr">local=</span><span class="value">"PortletRegistryConfig"</span>/&gt;</span><span class="tag">&lt;/constructor-arg&gt;</span>  
+  <span class="tag">&lt;constructor-arg&gt;</span><span class="tag">&lt;ref <span class="attr">local=</span><span class="value">"RenderConfigService"</span>/&gt;</span><span class="tag">&lt;/constructor-arg&gt;</span>  
+ 
+  <span class="rem">&lt;!-- === Container Services === --&gt;</span>  
+  <span class="tag">&lt;constructor-arg&gt;</span><span class="tag">&lt;ref <span class="attr">local=</span><span class="value">"PortalCallbackService"</span>/&gt;</span><span class="tag">&lt;/constructor-arg&gt;</span>  
+ 
+  <span class="rem">&lt;!--  Optional Container Services --&gt;</span>  
+  <span class="rem">&lt;!--  
+  &lt;property name="portletPreferencesService" &gt; 
+    &lt;ref local="PortletPreferencesService" /&gt; 
+  &lt;/property&gt;  
+  &lt;property name ="userAttributeService" &gt; 
+    &lt;ref local="UserAttributeService" /&gt; 
+  &lt;/property&gt;  
+  --&gt;</span>  
+<span class="tag">&lt;/bean&gt;</span>
+</code></pre>
+
+
+<p></p>
+
+<p>4つのサービスクラスをインジェクションしています。Portal Services とコメントされているサービスクラスは、pluto-portal-driver-service-config.xml を読み込んで、それぞれの担当範囲の設定を返す役割を持っています。</p>
+
+<p>Container Services とコメントされているサービスクラスは、ポートレットコンテナから必要に応じて呼び出されるクラスです。例えば、ポータルのタイトルを設定するときに呼び出されたり、ポートレット URL を生成するクラスの取得に使われたりします。</p>
+
+<p>Pluto の実装を拡張したものに、<a href="http://portals.apache.org/jetspeed-2/" rel="external nofollow" title="uPortal">uPortal</a> があります。これらのサービスクラスを拡張して作られています。</p>
+
+<h2 id="chapter3">まとめ</h2>
+
+
+
+
+<ul>
+<li>ポータルはただのWeb アプリケーション</li>
+<li>ポートレットもただのWeb アプリケーション</li>
+<li>ポータルアプリケーションとポートレットアプリケーションは別々に開発できる</li>
+<li>ポータルアプリケーションの設定は{PORTLET_APP}/WEB-INF/portlet.xml を作成することで行う</li>
+<li>ポートレットコンテナに対するポートレットの追加・変更や削除は {PLUTO_HOME}/WEB-INF/pluto-portal-driver-config.xml に記述する</li>
+<li>画面デザインの変更は、{PLUTO_HOME}/WEB-INF/themes/pluto-default-theme.jsp、portlet-skin.jsp を変更することで行う</li>
+<li>ポートレットコンテナの初期化に関する設定は、{PLUTO_HOME}/WEB-INF/pluto-portal-driver-service-config.xml に記述する</li>
+</ul>
+<p>さらに、ポートレットアプリケーションの開発者がやらなければならないのは、次の点です。</p>
+
+<dl>
+<dt class="info">Portlet 開発者がやる作業</dt>
+<dd><ol>
+<li>javax.portlet.GenericPortlet を継承したポートレットを作成する</li>
+<li>/WEB-INF/portlet.xml を作成し、ポートレットの定義を行う</li>
+<li>web.xml に org.apache.pluto.core.PortletServlet を設定し、<code>portal-name</code> を記述する</li>
+<li>Pluto の pluto-portal-driver-config.xml に、ポートレットの設定を記述する</li>
+</ol></dd>
+</dl>
+<h2 id="chapter4">PortalStartupListener の動作</h2>
+
+
+<p>もうちょっと突っ込んで Pluto を見てみます。といっても、<code>PortalDriverServlet</code> と <code>PortletContainer</code> の動きを追っていくだけですが。</p>
+
+<p><code>PortalStartupListener</code> の中で、Pluto で使われるいろいろな初期設定が行われます。このクラスは、Pluto がアプリケーションサーバにロードされると起動します。デフォルトの実装では、次の3つが行われます。</p>
+
+<p><section></section></p>
+
+<h4>デフォルトの設定メソッド</h4>
+
+
+
+
+<ul>
+<li>initDriverConfiguration(servletContext);</li>
+<li>initAdminConfiguration(servletContext);</li>
+<li>initContainer(servletContext);</li>
+</ul>
+<p>順番に見ていきます。まずは、<code>initDriverConfiguration</code> です。</p>
+
+<p>このメソッドは、<code>DriverConfiguration</code> の生成と初期化を行います。</p>
+
+<p>最初に <code>DriverConfigrationFactory</code> クラスが呼び出されます。 Factory の中で、SpringFramework が呼び出され、 pluto-portal-driver-service-config.xml の内容を元に <code>DriverConfigration</code> が作成されます。</p>
+
+<p>あとは、<code>DriverConfiguration</code> に設定されたサービスクラスの <code>init</code> メソッドが呼び出され、pluto-portal-driver-config.xml のパースを行うという仕組みです。</p>
+
+<p>生成された <code>DriverConfiguration</code> は、<code>ServletContext</code> に <code>"driverConfig"</code>  という名前で格納されます。</p>
+
+<p>つぎに、<code>AdminConfiguration</code> の生成と初期化が行われます。</p>
+
+<p>ほとんどの処理が、<code>DriverConfiguration</code> の同じです。違うのは、<code>ServletContext</code> に格納するときのキーが違うくらいです。</p>
+
+<p>&#8220;driverAdminConfig&#8221; という値で格納されます。</p>
+
+<p><code>AdminConfiguration</code> は、ポートレットの追加や削除がシステム的に行えるものです。ポートレットを管理するツールを作るときに使えそうです。</p>
+
+<p>最後に ポートレットコンテナの生成と初期化です。</p>
+
+<p>ここも大したことをしていません。<code>DriverConfiguration</code> をもとに、コンテナの実装クラスを生成しているだけです。</p>
+
+<p>生成したコンテナは、<code>ServletContext</code> に <code>"portletContainer"</code> というキーで格納されます。</p>
+
+<p>これで Pluto の初期化が完了しました。あとは、<code>PortletDriverServlet</code> と <code>PortletContainer</code> の動作がわかれば、一通り Pluto の動作を追えるかなと思います。</p>
+
+<h2 id="chapter5">PortletDriverServlet の動作</h2>
+
+
+<p>このクラスは、何をやっているかというと、サーブレット API を ポートレット API にラップしてポートレットコンテナを呼び出すということを行っています。</p>
+
+<p>ポータルは、リクエストパラメータの値によって呼び出すポートレットを判断します。リクエストパラメータとポートレットのマッピングルールは、ポータル製品ごとに決められています。</p>
+
+<p>Pluto 1.1 は、<code>PortalURLParser</code> クラスの <code>parse</code> メソッドで変換ルールを規定しています。ここで、リクエスト URL をポータルで使える形に変換しています。</p>
+
+<h3 id="sectiono8">リクエスト種類によって、呼び出しが変わる</h3>
+
+
+<p>ポータルに対するリクエストには種類があります。一つはアクションリクエストで、ポートレットの <code>processAction</code> メソッドが呼び出されます。もう一つはレンダリングリクエストで、ポートレットの <code>render</code> メソッドが呼び出されます。</p>
+
+<p>アクションリクエストの場合、ポートレットコンテナの <code>doAction</code> が呼び出されます。これは、ポートレットの呼び出しを行うメソッドになっています。</p>
+
+<p>レンダリングリクエストの場合、画面の描画が行われます。このとき、{PLUTO_HOME}/WEB-INF/themes/pluto-default-theme.jsp の表示されます。</p>
+
+<h2 id="chapter6">ポートレットコンテナの動作</h2>
+
+
+
+
+<h3 id="sectiono9">ポートレットコンテナの呼び出しを整理しておくと</h3>
+
+
+<p>JSR-168 では、アクションURL がリクエストされたときには、対応するポートレットの <code>processAction</code> メソッドの呼び出しと、ポータルページに含まれるすべてのポートレットの <code>render</code> メソッドが呼び出されるとされています。</p>
+
+<blockquote>
+<p>If the client request is triggered by an action URL, the portal/portlet-container must first trigger the action request by invoking the <i>processAction</i> method of the targeted portlet. &lt;中略&gt; Then, the portal/portlet-container must trigger the render request by invoking the <i>render</i> method for all the portlets in the portal page with the possible exception of portlets for which their content is being cached.</p>
+<footer><strong>JSR-168</strong></footer>
+</blockquote>
+
+
+<p><code>PortletDriverServlet</code> から呼び出されるのは、ポートレットコンテナの <code>doAction</code> メソッドです。この <code>doAction</code> メソッドの中でリクエストを解析し、どのポートレットを呼び出すかを決めます。ポートレットの呼び出しには、サーブレットレスポンスの <code>sendRedirect</code> を使っています。</p>
+
+<p>Pluto は、Portlet のレンダリングトリガーを &lt;pluto:render/&gt; タグで行っています。</p>
+
+<h3 id="sectiono10">ポートレットの呼び出し方法</h3>
+
+
+<p>ポートレットコンテナが、どうやってポートレットを呼び出すかですが、上に書いたようにサーブレットレスポンスの <code>sendRedirect</code> を使っています。このリダイレクト URL のパラメータに、ポートレットコンテナが受け取ったリクエストパラメータ等の情報をエンコードして付与しています。</p>
+
+<p>そして、呼び出されたポートレットプリケーション側で、待ち構えていた <code>org.apache.pluto.core.PortletServlet</code> クラスがパラメータをデコードして、サーブレットリクエストを完成させます。</p>
+
+<p>これで、ポートレットの呼び出しは完了です。</p>
+
+<dl>
+<dt class="notice">クロスコンテキストを有効にする！</dt>
+<dd>ポートレットの呼び出しを行うには、クロスコンテキストを有効にしておかなければなりません。</dd>
+</dl>
+<p>ポータルは、異なるコンテキスト間のポートレットを呼び出します。そのため、コンテキストをまたいだ呼び出しが可能なように設定を行う必要があります。</p>
+
+<p>Tomcat の場合、これは、クロスコンテキスト（crossContext）というパラメータで行います。{TOMCAT_HOME}/conf/server.xml に記述するコンテキストの設定に <code>crossContext</code> を設定します。</p>
+
+<h2 id="chapter7">エラーで困ったら</h2>
+
+
+
+
+<h3 id="sectiono11">error.config.context.null</h3>
+
+
+
+
+<pre>org.apache.pluto.PortletContainerRuntimeException: error.config.context.null</pre>
+
+
+<p>こんなエラーで困ったら、<code>crossContext</code> を true に設定したかどうかを疑ってください。また、コンテキスト名が間違っていないか確認してください。</p>
+
+<h2 id="chapter8">検討事項</h2>
+
+
+<p>TBD</p></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2006/04/16/apache-pluto/">Apache Pluto1.1 を触ってみる その1</a></li>
+        
+        <li><a href="/blog/2007/04/28/477412950X/">ソースコードリーディングから学ぶ Javaの設計と実装</a></li>
+        
+        <li><a href="/blog/2006/04/29/4894716895/">Java Puzzlers 罠、落とし穴、コーナーケース</a></li>
+        
+        <li><a href="/blog/2005/08/27/4756146554/">開発のプロが教える標準FindBugs完全解説</a></li>
+        
+        <li><a href="/blog/2005/07/23/4873112141/">Java 5.0 Tiger 開発者ノートシリーズ</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2006-04-19T00:08:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Apr 19<span>th</span>, 2006</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/apache/">Apache</a>
+    
+      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/04/19/apache-pluto/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2006/04/19/apache-pluto/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2006/04/19/apache-pluto/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2006/04/19/apache-pluto/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2006/04/19/apache-pluto/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2006/04/19/apache-pluto/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2006/04/16/apache-pluto/" title="Previous Post:
+      Apache Pluto1.1 を触ってみる その1"><i class="fa fa-arrow-circle-left"></i> Apache Pluto1.1 を触ってみる その1</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2006/04/19/struts-bridge-portal-bridges/"
+                            title="Next Post: Struts Bridge - Portal Bridges">Struts Bridge - Portal ... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2006/04/19/apache-pluto/';
+  var disqus_url = 'http://hamasyou.com/blog/2006/04/19/apache-pluto/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

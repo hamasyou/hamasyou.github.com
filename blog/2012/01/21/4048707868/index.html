@@ -1,0 +1,681 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>テスト駆動JavaScript - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="JavaScript のテストに関して書かれた、体系的な本がやっと出た！という感じにまとめられています。 本書では、JavaScript にスポットを当て、テストしやすい JavaScript のコードとはどんなものか、実際にテスト駆動で JavaScript &hellip;">
+  <meta name="keywords" content="JavaScript,テスト駆動,TDD,自動テスト,Ajax,Comet,Node.js,良書">
+
+  
+
+
+<meta property="og:title" content="テスト駆動JavaScript - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2012/01/21/4048707868/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="JavaScript のテストに関して書かれた、体系的な本がやっと出た！という感じにまとめられています。 本書では、JavaScript にスポットを当て、テストしやすい JavaScript のコードとはどんなものか、実際にテスト駆動で JavaScript &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2012/01/21/4048707868">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">テスト駆動JavaScript</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-01-21T10:35:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 21<span>st</span>, 2012</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/javascript/">JavaScript</a>
+    
+      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/">これは読むべき</a>
+    
+      <a class="tag label label-info" href="/blog/tags/tesutoqu-dong/">テスト駆動</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4048707868?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048707868" title="テスト駆動JavaScript" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/51g1mDqlfJL._SL500_AA300_.jpg" class="asin-thumbnail" alt="テスト駆動JavaScript" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/gp/product/4048707868?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048707868" title="テスト駆動JavaScript" rel="external nofollow">テスト駆動JavaScript</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>Christian Johansen (著), 長尾高弘 (翻訳)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>アスキー・メディアワークス</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4048707868?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048707868" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+<div class="entry-content"><p>JavaScript のテストに関して書かれた、体系的な本がやっと出た！という感じにまとめられています。</p>
+
+<p>本書では、JavaScript にスポットを当て、テストしやすい JavaScript のコードとはどんなものか、実際にテスト駆動で JavaScript のコードを書くにはどういう手順で進めていけばよいかについて書かれています。</p>
+
+<p>本書は大まかに、次の4部に分けて解説されています。</p>
+
+<ul>
+<li>第1部: テスト駆動開発</li>
+<li>第2部: プログラマのためのJavaScript</li>
+<li>第3部: JavaScriptテスト駆動開発の実際</li>
+<li>第4部: テストのパターン</li>
+</ul>
+<p>第1部では、一般的な自動テストやテスト駆動開発（<strong class="text-danger">TDD</strong>）の概念を説明しながら、JavaScript 用の単体テストフレームワークを紹介しています。</p>
+
+<p>第2部では、JavaScript という言語をおさらいしながら、大きな特徴である<em>関数</em>、<em>クロージャ</em>、<em>プロトタイプ継承</em>、<em>ECMAScript 第五版</em>、<em>控えめなJavaScript</em>、<em>機能検出（クロスプラットフォーム）</em>について説明を掘り下げています。</p>
+
+<p>第3部では、実際に小さなプロジェクトを開発しながらテスト駆動による JavaScript の開発を体験できるようになっています。<em>Ajax</em>、<em>Comet</em> によるデータストリーミング、<em>Node.js</em> によるサーバサイド JavaScript、これらを使ったチャットプログラムの作成を体験できるようになっています。</p>
+
+<p>第4部では、<em>モック</em>や<em>スタブ</em>といったいわゆる単体テストのテクニックや、優れた単体テストを書くためのテスト名の付け方や、振る舞いのテストを書くときにはどう書いたらよいか、わかりやすい単体テストコードを書くためのテクニックが説明されています。</p>
+
+<p>『<strong class="text-danger">テスト駆動JavaScript</strong>』の名にふさわしい内容で、他の言語でも共通する単体テストのお作法も学べる本書は、TDD難民の人にオススメです。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+<p>おぼえがきです。</p>
+
+<h2>テスト駆動開発（Test-Driven Development）</h2>
+
+
+<p>単体テストの対象は、最も小さな単位である<em>関数</em>になる。テストのエントリポイントは<em>公開されている</em>メソッドからにする。</p>
+
+<h3>テスト駆動開発における設計</h3>
+
+
+
+
+<blockquote>
+<p><strong class="text-danger">テスト駆動開発では、「あらかじめ決められた大きな設計」はないが「最初の段階では設計はない」というわけではない。</strong></p>
+<p>TDD は、何も無いところから優れた設計を自動的に生み出すわけではなく、作業の進展とともに設計を進化させやすくするのである。TDD は、単体テストに強く依存しているため、他の部分から切り離して単独のコンポーネントに力を注ぐ開発スタイルになる。そのため、<em>コードの疎結合を保ち</em>、<em>単一責任の原則を守り</em>、不必要にコードが水ぶくれすることを防ぐために大きな力になる。TDD は設計プロセスをしっかりと制御するため、<em>設計に関する多くの決定をどうしてもそれが必要な時まで先送りする</em>ことができる。</p>
+<footer><strong>本書 P.48</strong></footer>
+</blockquote>
+
+
+<p>TDD で開発を始める最初は、大きな設計は不要であるが、ある程度最初に時間を割いて設計を行う。最初の設計の時に考えることは、「<em>特定の状況下でコードがどのように振舞わなければならないか</em>（<strong class="text-danger">単一責任の原則</strong>）」、「<em>コンポーネント間でどのように仕事を委譲しあうのか</em>（<strong class="text-danger">GRASPパターン</strong>）」である。</p>
+
+<h3>単一責任の原則を尊重する</h3>
+
+
+<p>TDD の単体テストでは、<em>依存コンポーネントのテストをしてはならない</em>ので、依存コンポーネントはフェイク（モックやスタブ）に置き換えなければならない。</p>
+
+<h3>テストフレームワーク</h3>
+
+
+
+
+<blockquote>
+<p>JavaScript のテストをするための事実上の標準はない。実際、JavaScript は汎用の標準ライブラリというものを持たないので、ブラウザのスクリプティングと直接関係のないプログラミングタスクはどれでも事実上の標準を持たないのである。この状況を改善するために、もともとはサーバーサイド JavaScript の標準化を目指していた CommonJS という活動がある。</p>
+<footer><strong>本書 P.64</strong></footer>
+</blockquote>
+
+
+<p>JavaScript のテストを行おうとすると、ブラウザ毎の挙動の違いや JavaScript の実装の違いにより動作が異なってきてしまう。そのような問題を解決しようと、Google 作った <strong class="text-danger">JsTestDriver</strong> が注目を集めている。</p>
+
+<p>JsTestDriver もいくつかの欠点はあるため、YUI Test との使い分けをしていくとよさそう。</p>
+
+<h2>プログラマのための JavaScript</h2>
+
+
+
+
+<h3>関数の引数</h3>
+
+
+<p>JavaScript は関数を呼び出すときに引数の個数をチェックしない。実引数が渡されなかった仮引数は undefined になる。</p>
+
+<h3>スコープと実行コンテキスト</h3>
+
+
+<p>JavaScript には、グローバルスコープと関数スコープの2種類のスコープしかない。関数スコープでは、変数を関数内のどこで宣言しても、関数のどこでも参照することができる。</p>
+
+<h3>this キーワード</h3>
+
+
+<p>多くのオブジェクト指向言語で、this はレシーバオブジェクトを指すが、JavaScript ではthis の値は呼び出し元によって決まる。</p>
+
+<blockquote>
+<p>this は、かっこを受かって関数を呼び出したときに暗黙のうちに設定される。<em>関数として呼び出すとグローバルオブジェクト、メソッドとして呼び出すとその呼出に使ったオブジェクトが this になる</em>。</p>
+<footer><strong>本書 P.104</strong></footer>
+</blockquote>
+
+
+
+
+<h3>名前空間</h3>
+
+
+<p>オブジェクトを名前空間として使うには、グローバルスコープでオブジェクトを定義し、関数やオブジェクトをそのオブジェクトのプロパティとして定義すれば良い。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">tddjs</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">lightbox</span><span class="o">:</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">},</span>
+</span><span class="line">  <span class="nx">anchorLightbox</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">anchor</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="cm">/* ... */</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">};</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>大きなライブラリを作るようなときは、名前空間を構造化したい場合がある。そんなときは、namespace 関数を使うと良い。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">tddjs</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">function</span> <span class="nx">namespace</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">levels</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">levels</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">object</span><span class="p">[</span><span class="nx">levels</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="o">==</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">object</span><span class="p">[</span><span class="nx">levels</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">      <span class="nx">object</span> <span class="o">=</span> <span class="nx">object</span><span class="p">[</span><span class="nx">levels</span><span class="p">[</span><span class="nx">i</span><span class="p">]];</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">object</span><span class="p">;</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">return</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">namespace</span><span class="o">:</span> <span class="nx">namespace</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">}());</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">custome</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">namespace</span><span class="o">:</span> <span class="nx">tddjs</span><span class="p">.</span><span class="nx">namespace</span> <span class="p">};</span>
+</span><span class="line"><span class="nx">custome</span><span class="p">.</span><span class="nx">namespace</span><span class="p">(</span><span class="s2">"dom.event"</span><span class="p">);</span>
+</span><span class="line"><span class="cm">/* custome.dom.event  namespace */</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h2>控えめなJavaScript</h2>
+
+
+
+
+<blockquote>
+<p>セマンティックマークアップは、文書の構造に関わるものであり、文書の構造だけを対象とする。セマンティックHTMLは、アクセシビリティ向上の可能性を広げるだけでなく、CSS と JavaScript とのフックを増やす。視覚的なスタイルやレイアウトは CSS の領域である。表示に関わる属性や要素は使わないようにすべきだ。動作は、JavaScript の領域であり、外部スクリプトを介して関わるようにすべきだ。</p>
+<footer><strong>本書 P.185</strong></footer>
+</blockquote>
+
+
+<p>控えめな JavaScript の7つのルールは次のようになる。</p>
+
+<ul>
+<li>思い込みをするな</li>
+<li>フック（接点）と関係を見つけよ</li>
+<li>反復処理を専用ルーチンに委ねよ</li>
+<li>ブラウザとユーザーを理解せよ</li>
+<li>イベントを理解せよ</li>
+<li>他者と上手く折り合いをつけよ</li>
+<li>次のデベロッパのために仕事をせよ</li>
+</ul>
+<p>HTML と JavaScript の結合度を下げるために、イベントハンドラを使うとよい。また、テクニックの一つとして、イベントデリゲーションが推奨されている。</p>
+
+<p><strong class="text-danger">イベントデリゲーション</strong>は、ほとんどのユーザイベントがターゲット要素だけでなく、DOM 階層の上位コンテナでも発生することである。</p>
+
+<p>ひとつ一つの要素にイベントハンドラを仕込むのではなく、その上位の要素でハンドリングし、子要素の状態によって処理を管理するようにするとすっきりとしたコードになることが多い。</p>
+
+<h2>優れた単体テストを書く</h2>
+
+
+<p>テスト名の付け方として、「いかに」ではなく「何を」と「なぜ」を中心につけるとよい</p></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2012/04/27/4048706705/">オブジェクト指向JavaScript</a></li>
+        
+        <li><a href="/blog/2012/09/23/487311554X/">ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理</a></li>
+        
+        <li><a href="/blog/2011/06/18/4798123986/">Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)</a></li>
+        
+        <li><a href="/blog/2010/09/24/javascript-1/">[JavaScript] JavaScript の変数宣言のスコープ</a></li>
+        
+        <li><a href="/blog/2010/09/07/javascript/">[JavaScript] JavaScript のクラス定義のイディオム</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-01-21T10:35:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 21<span>st</span>, 2012</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/javascript/">JavaScript</a>
+    
+      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/">これは読むべき</a>
+    
+      <a class="tag label label-info" href="/blog/tags/tesutoqu-dong/">テスト駆動</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2012/01/21/4048707868/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2012/01/21/4048707868/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2012/01/21/4048707868/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2012/01/21/4048707868/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2012/01/21/4048707868/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2012/01/21/4048707868/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2011/09/12/game/" title="Previous Post:
+      『のほほんビレッジ〜みんなのカフェ〜』の御礼"><i class="fa fa-arrow-circle-left"></i> 『のほほんビレッジ〜みんなのカフェ〜』の御礼</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"
+                            title="Next Post: [Rails] carrierwave と fog で Amazon S3 をストレージとして使う">[Rails] carrierwave と f... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2012/01/21/4048707868/';
+  var disqus_url = 'http://hamasyou.com/blog/2012/01/21/4048707868/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

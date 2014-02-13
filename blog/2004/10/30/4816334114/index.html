@@ -1,0 +1,567 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる! - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="「ユースケース図」から「パッケージ図」までの全10個のUML図をモデリング技能認定試験のL1,L2試験に合格できる程度で紹介されています。UMLは、世界標準のモデリング表記法です。モデリングの共通言語として使われています。 本書では、下記の10個のUML図について説明しています。 ユースケース図 &hellip;">
+  <meta name="keywords" content="はじめて学ぶ,UML,オブジェクト指向,基礎,利用法,赤本,オージス総研">
+
+  
+
+
+<meta property="og:title" content="はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる! - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2004/10/30/4816334114/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="「ユースケース図」から「パッケージ図」までの全10個のUML図をモデリング技能認定試験のL1,L2試験に合格できる程度で紹介されています。UMLは、世界標準のモデリング表記法です。モデリングの共通言語として使われています。 本書では、下記の10個のUML図について説明しています。 ユースケース図 &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2004/10/30/4816334114">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-10-30T12:17:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 30<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/uml/">UML</a>
+    
+      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/">オブジェクト指向</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4816334114/sorehabooks-22" title="はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!" rel="external nofollow">
+      <img src="http://ec3.images-amazon.com/images/I/51WB9PTJNTL._SL500_AA300_.jpg" class="asin-thumbnail" alt="はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4816334114/sorehabooks-22" title="はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!" rel="external nofollow">はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>竹政 昭利 (著)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>ナツメ社</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4816334114/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+<div class="entry-content"><p>「ユースケース図」から「パッケージ図」までの全10個のUML図を<a href="http://www.umtp-japan.org/examination/index.html" rel="external nofollow" title="モデリング技能認定試験">モデリング技能認定試験</a>のL1,L2試験に合格できる程度で紹介されています。UMLは、世界標準のモデリング表記法です。モデリングの共通言語として使われています。</p>
+
+<p>本書では、下記の10個のUML図について説明しています。</p>
+
+<ol>
+<li>ユースケース図</li>
+<li>クラス図</li>
+<li>シーケンス図</li>
+<li>コラボレーション図</li>
+<li>ステートチャート図</li>
+<li>コンポーネント図</li>
+<li>配置図</li>
+<li>オブジェクト図</li>
+<li>アクティビティ図</li>
+<li>パッケージ図</li>
+</ol>
+<p>UML図以外にも簡単なオブジェクト指向の基本概念やモデリングの必要性などにも触れられています。モデリング技能認定試験の勉強本としての活用が考慮されているのか、Keyword や Step Up といった本文中に出てきた用語の解説も豊富に載っています。</p>
+
+<p>本書で扱われているUMLのバージョンは1.xです。今後は、UMLの2.0が使われ始めると思います。UML2.0では、1.xよりもさらに表現力豊かになった図が使えたり、現在のUML図のいくつかが変更されていたりします。ですが、UML2.0対応の本で始めるよりも、本書のような<b>全体図を見渡せる</b>入門書で基礎から作っていくのが、UMLの理解のコツかと思います。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>解説</h2>
+
+
+
+
+<h3>ソフトウェア開発の現場では使えない</h3>
+
+
+<p>ソフトウェア開発の現場で、すべてのUMLを使う機会というのはほとんどないように思います。最低「ユースケース」、「アクティビティ図」、「クラス図」が分かっていれば、オブジェクト指向設計の話し合いにはついていけるでしょう。「シーケンス図」、「コラボレーション図」まで理解していれば、実装の段階でコーディングする前にロジックの検証が行えます。</p>
+
+<p>本書は<strong class="text-danger">ソフトウェア開発の現場では使えません</strong>。というのは、おそらく本書の目的は、UML図の読み方を学ぶことだからです。ソフトウェア開発の現場では、UMLはクラスの関係性のチェックや仕様の検証などに使われます。本書の内容だけでは、何が書いてあるのかは読み取れても、なぜこうなったのかということの理解までは至らないと思います。</p>
+
+<h3>基礎学力向上のための良書</h3>
+
+
+<p>ただ、本書が悪い本なのかというとそういうわけでは決してありません。UMLを使ったモデリングの Why の部分を理解する書籍はたくさんあります。そういった書籍を読み進めるための基礎知識を<b>分かりやすく</b>学べる本というのは、実際にはすくないように思います。本書はUMLの Why の部分を理解する書籍を読み進めるための基礎学力を育てる良い本です。</p>
+
+<p>幅広くUML図を説明しているので、あまり深くまで突っ込んだ説明というのはあまりありません。むしろ、図の読み方に専念していて、非常に一貫性のあるまとまった形になっていると思います。</p>
+
+<p><a href="http://www.umtp-japan.org/examination/index.html" rel="external nofollow" title="モデリング技能認定試験">モデリング技能認定試験</a>というものがあります。これは、上流工程や要求仕様とソフトウェア実装仕様との間を取り次ぐ『UML』をどれくらい使いこなせるかというのを計る試験です。本書はこの試験の L1, L2 合格程度の「UMLを読む技術」向上の試験本としても使えます。</p>
+
+<h2>覚書き</h2>
+
+
+
+
+<h3>クラス図の関連</h3>
+
+
+
+
+<dl>
+<dt>関連</dt>
+<dd>クラス間に<strong>構造的</strong>な関係がある場合に使用します。</dd>
+<dt>集約 (aggregation)</dt>
+<dd>クラス間に<strong>全体-部分</strong>の関係が成り立つときに使われます。</dd>
+<dt>依存</dt>
+<dd>利用関係を表すときに使います。引数で参照される場合、ローカル変数として参照する場合、グローバルに参照する場合</dd>
+<dt>汎化</dt>
+<dd>継承関係を表すときに使われます。</dd>
+<dt>コンポジション</dt>
+<dd>全体-部分のうち、ライフサイクルが同じ場合に使われます。</dd>
+</dl>
+<h2>参考</h2>
+
+
+<ul>
+<li>本書と同類の基礎学力向上書です。</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774117218/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>モデリングの Why を理解＆実践するための良書 (おすすめ)</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221180/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>UMLモデリングでさらに一歩進むために (おすすめ)</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4881358642/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2005/11/03/4822281957/">オブジェクト指向でなぜつくるのか―知っておきたいプログラミング、UML、設計の基礎知識―</a></li>
+        
+        <li><a href="/blog/2005/09/11/4886487440/">UMLによるオブジェクト指向モデリングセルフレビューノート</a></li>
+        
+        <li><a href="/blog/2005/09/03/4822282376/">オブジェクト開発の神髄〜UML 2.0を使ったアジャイルモデル駆動開発のすべて</a></li>
+        
+        <li><a href="/blog/2005/08/14/4844318691/">MDA(モデル駆動型アーキテクチャ)導入ガイド―UMLを基盤としたオブジェクト指向設計・開発手法</a></li>
+        
+        <li><a href="/blog/2005/05/09/4894712636/">オブジェクト指向とコンポーネントによるソフトウェア工学―UMLを使って</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-10-30T12:17:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 30<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/uml/">UML</a>
+    
+      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/">オブジェクト指向</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/30/4816334114/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2004/10/30/4816334114/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2004/10/30/4816334114/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2004/10/30/4816334114/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/10/30/4816334114/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/10/30/4816334114/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2004/10/29/refactoring-to-patterns/" title="Previous Post:
+      Refactoring to Patterns メモ"><i class="fa fa-arrow-circle-left"></i> Refactoring to Patterns メモ</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/"
+                            title="Next Post: Spring Framework 覚書き - IoC">Spring Framework 覚書き - IoC <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2004/10/30/4816334114/';
+  var disqus_url = 'http://hamasyou.com/blog/2004/10/30/4816334114/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

@@ -1,9 +1,24 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title></title>
-<link href="http://hamasyou.com/atom.xml" rel="self">
-<link href="http://hamasyou.com/">
-<updated>2014-02-13T17:23:08+09:00</updated><id>http://hamasyou.com/</id><author><name></name></author><generator uri="http://octopress.org/">Octopress</generator><entry><title type="html"></title>
-<link href="http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/">
-<updated>2014-02-13T16:19:09+09:00</updated><id>http://hamasyou.com/blog/2014/02/13/ruby-nokogiri</id><content type="html">Ruby の HTML パーサに <strong class="text-danger">Nokogiri</strong> があります。基本的な使い方は
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[それはBooks]]></title>
+  <link href="http://hamasyou.com/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-13T17:31:26+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby-Nokogiriで取り出した要素を置き換える]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/"/>
+    <updated>2014-02-13T16:19:09+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/13/ruby-nokogiri</id>
+    <content type="html"><![CDATA[<p>Ruby の HTML パーサに <strong class="text-danger">Nokogiri</strong> があります。基本的な使い方は</p>
 
 <ul>
 <li><a href="https://github.com/sparklemotion/nokogiri" rel="external nofollow" title="Nokogiri-GitHub">Nokogiri-GitHub</a></li>
@@ -67,4 +82,2285 @@
 </pre></td>
 <td class="code"><pre><code class="ruby"><span class="line"><span class="n">doc</span> <span class="o">=</span> <span class="ss">Nokogiri</span><span class="p">:</span><span class="ss">:HTML</span><span class="p">(</span><span class="n">html_text</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="s1">'utf-8'</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>]]&gt;</content></entry></feed>
+</tr></table></div></figure></notextile></div>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Movable TypeからGitHub+Octopressに乗り換える手順]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress/"/>
+    <updated>2014-02-13T10:53:07+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress</id>
+    <content type="html"><![CDATA[<p>今まではブログを <em>ロリポップ</em> + <em>Movable Type</em> でやっていましたが、ブログデザインを変更したくなり、ついでにブログ環境も変更しました。</p>
+
+<p>Movable Type から <em>WordPress</em> に乗り換えても良かったんですが、エンジニアっぽいブログ環境ってなんだろうと考えた末、<strong class="text-danger">GitHub Pages</strong> と <strong class="text-danger">Octopress</strong> を使ってブログ環境を作ることにしました。</p>
+
+<p><a href="http://octopress.org/" rel="external nofollow" title="Octopress">Octopress</a> は <a href="http://jekyllrb.com/" rel="external nofollow" title="Jekyll">Jekyll</a> を使ってブログ環境を作るためのフレームワークで、Jekyll はブログのような静的サイトを作るための Ruby のファイルジェネレータになります。</p>
+
+<p><a href="http://pages.github.com/" rel="external nofollow" title="GitHub Pages">GitHub Pages</a> と組み合わせると無料でブログを始めることができます。</p>
+
+<p>移行でおこなったことの手順です。</p>
+
+<!-- more -->
+
+
+<h2>手順</h2>
+
+<ol>
+<li>公開用のサーバ設定
+
+<ol>
+<li>GitHub にリポジトリを作成する</li>
+<li>Octopress をチェックアウトする</li>
+<li>deploy する</li>
+</ol>
+</li>
+<li>ローカルのブログ環境の設定
+
+<ol>
+<li>ブログの初期設定をおこなう</li>
+<li>テーマを変更する</li>
+<li>最初の記事を書いてみる</li>
+</ol>
+</li>
+<li>環境をバックアップする
+
+<ol>
+<li>BitBucket にリポジトリを作成する</li>
+<li>BitBucket にソースをプッシュする</li>
+</ol>
+</li>
+<li>プラグインをつかう
+
+<ol>
+<li>記事にタグをつける</li>
+</ol>
+</li>
+</ol>
+<h2>公開用のサーバ設定</h2>
+
+<h3>GitHub にリポジトリを作成する</h3>
+
+<p>まず最初に GitHub にサイト公開用のリポジトリを作成します。</p>
+
+<p><a href="https://github.com/" rel="external nofollow" title="GitHub">GitHub</a> にログインして、リポジトリを作成します。リポジトリ名は <strong class="text-danger">username.github.io</strong> とします。<code>username</code> の部分を自分のアカウント名に読みかえてください。僕の場合は hamasyou.github.io になります。</p>
+
+<p>このリポジトリが公開用のサイトになり、<a href="http://username.github.io/" rel="external nofollow" title="http://username.github.io/">http://username.github.io/</a> が URL になります。</p>
+
+<p><img src="http://hamasyou.com/images/2014-02-13-movable-type-to-octopress-01.png" alt="リポジトリ作成" class="img-thumbnail"></p>
+
+<h3>Octopress をチェックアウトする</h3>
+
+<p>つぎに、ブログ環境を作成するために <a href="http://pages.github.com/" rel="external nofollow" title="Octopress">Octopress</a> を github からチェックアウトします。<code>username</code> のところは自分のアカウント名です。</p>
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">git clone git@github.com:imathis/octopress.git username.github.io</span><span class="line output">Cloning into 'username.github.io'...
+</span><span class="line output">remote: Reusing existing pack: 10340, done.
+</span><span class="line output">remote: Counting objects: 20, done.
+</span><span class="line output">remote: Compressing objects: 100% (20/20), done.
+</span><span class="line output">remote: Total 10360 (delta 4), reused 3 (delta 0)
+</span><span class="line output">Receiving objects: 100% (10360/10360), 2.73 MiB | 785.00 KiB/s, done.
+</span><span class="line output">Resolving deltas: 100% (4949/4949), done.
+</span><span class="line output">Checking connectivity... done.
+</span><span class="line output">
+</span><span class="line command">cd username.github.io</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+<h3>deploy する</h3>
+
+<p>Octopress の初期設定を行い、deploy を行います。この時点でデプロイしたくない場合は最後のコマンド <code>bundle exec rake gen_deploy</code> を実行しないようにします。</p>
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">$</span>
+<span class="line-number">$</span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">bundle install --path vendor/bundle</span><span class="line command">bundle exec rake install</span><span class="line command">bundle exec rake setup_github_pages</span><span class="line output">Enter the read/write url for your repository
+</span><span class="line output">(For example, 'git@github.com:your_username/your_username.github.io.git)
+</span><span class="line output">           or 'https://github.com/your_username/your_username.github.io')
+</span><span class="line output">Repository url: <kbd>git@github.com:username/username.github.io.git<kbd>
+</kbd></kbd></span><span class="line command">bundle exec rake gen_deploy</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+<h2>ブログの初期設定を行う</h2>
+
+<p>Octopress のブログ設定値は <code>_config.yml</code> というファイルになります。<a href="http://octopress.org/docs/configuring/" rel="external nofollow" title="Configuring Octopress">Configuring Octopress</a> を参考に変更します。</p>
+
+<h3>テーマを変更する</h3>
+
+<p>デフォルトテーマでも十分カッコいいですが、テーマ変更もできます。Octopress のテーマは <a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes" rel="external nofollow" title="3rd Party Octopress Themes">3rd Party Octopress Themes</a> にまとまっているので、よさそうなテーマを選んでインストールします。</p>
+
+<p>テーマのインストールは、<code>.themes</code> ディレクトリにテーマのリポジトリをチェックアウトして <code>bundle exec rake install['theme-name']</code> でおこないます。</p>
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">git clone git@github.com:kAworu/octostrap3.git .themes/octostrap3</span><span class="line command">bundle exec rake install['octostrap3']</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+<p><a href="http://opthemes.com/" rel="external nofollow" title=""><img src="http://hamasyou.com/images/2014-02-13-movable-type-to-octopress-02.png" alt="Octopress-Themes" class="img-thumbnail"></a></p>
+
+<h3>あたらしい記事を作成する</h3>
+
+<p>新しい記事を書くには <code>bundle exec rake new_post['title']</code> とします。<code>title</code> 部分が記事のファイル名に使われるので、この時点では英語で入力するほうがよいです。</p>
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number"> </span>
+<span class="line-number"> </span></pre></td>
+<td class="code"><pre><code><span class="line command">bundle exec rake new_post['movable-type-to-octopress']</span><span class="line output">mkdir -p source/_posts
+</span><span class="line output">Creating new post: source/_posts/2014-02-13-movable-type-to-octopress.markdown</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+<pre><code>---
+layout: post
+title: "movable-type-to-octopress"
+date: 2014-02-13 13:18:04 +0900
+comments: true
+categories:
+---
+</code></pre>
+
+<p>記事のタイトルに日本語を使いたいときはファイル中の <code>title</code> 部分を書き換えます。また、カテゴリやタグ、ページのキーワードなどもここで変更できます。</p>
+
+<pre><code>---
+layout: post
+title: "Movable TypeからGitHub+Octopressに乗り換える手順"
+date: 2014-02-13 13:18:04 +0900
+comments: true
+categories: [Blog]
+keywords: "Movable Type,GitHub,Octopress,Blog,Liquid,Jekyll,Ruby"
+tags: [Movable Type,GitHub,Octopress,Liquid,Jekyll,Ruby]
+---
+</code></pre>
+
+<h2>BitBucket にソースをコミットする</h2>
+
+<p>GitHub もリポジトリサービスですが、現在は Public なリポジトリしか無料で作ることができません。そこで、<strong class="text-danger">BitBucket</strong> という別のリポジトリサービスを利用して環境をまるごとバックアップします。</p>
+
+<p><a href="https://bitbucket.org/" rel="external nofollow" title=""><img src="http://upload.wikimedia.org/wikipedia/en/f/fc/Bitbucket_Logo.png" alt="BitBucket" class="img-thumbnail"></a></p>
+
+<p>BitBucket は Private なリポジトリが作成できるので、ブログ環境は BitBucket で管理して、サイトデータだけを GitHub にデプロイするようにします。</p>
+
+<h3>リポジトリを作成する</h3>
+
+<p>BitBucket にリポジトリを作成する方法は、GitHub とほとんど変わりません。こちらもリポジトリ名を <code>username.github.io</code> にしておきます。</p>
+
+<p><img src="http://hamasyou.com/images/2014-02-13-movable-type-to-octopress-03.png" alt="BitBucket リポジトリ作成" class="img-thumbnail"></p>
+
+<p>リポジトリを作成したら、ソースコードをプッシュします。</p>
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">$</span>
+<span class="line-number">$</span>
+<span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">git remote add bitbucket git@bitbucket.org:username/username.github.io.git</span><span class="line command">git add .</span><span class="line command">git commit -m 'init'</span><span class="line command">git push bitbucket source</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+<h2>その他</h2>
+
+<h3>記事にタグをつけられるようにする</h3>
+
+<p>Octopress にはいろいろなプラグインがあります。自作することも簡単にできます。デフォルトではタグというものが Octopress にはありませんが、カテゴリ機能を参考にすると簡単にタグを管理できるようになります。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://rcmdnk.github.io/blog/2013/04/12/blog-octopress/" rel="external nofollow" title="Octopressでのタグ管理">Octopressでのタグ管理</a></p>
+
+<h3>独自ドメインで運用する</h3>
+
+<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" rel="external nofollow" title="Setting up a custom domain with Pages">Setting up a custom domain with Pages</a> の手順でできます。</p>
+
+<p>要約すると、<code>CNAME</code> というファイルを作成して、メインのサイトドメインを登録する。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>source/CNAME</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class=""><span class="line">hamasyou.com</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>独自ドメインを取ったら、DNS の設定で A レコードを <code>192.30.252.153</code> と <code>192.30.252.154</code> に向けます。いろいろなサイトで <code>204.232.175.78</code> のアドレスを設定するように書かれていますが、変わったっぽい？ですね。不安なら、A レコード3つ登録すればいいと思います。</p>
+
+<pre><code>hamasyou.com A 204.232.175.78
+hamasyou.com A 192.30.252.153
+hamasyou.com A 192.30.252.154
+</code></pre>
+
+<p>これで、時間がたてば独自ドメイン名で GitHub のページが表示されるようになります。</p>
+
+<h3>Markdown で <code>Definition LIST</code> を使えるようにする</h3>
+
+<p>Octopress の使っている Markdown パーサの rdiscount のバージョンを上げます。2.1.7 からデフォルトで <em>Definition LIST（dl, dt, dd）</em> の拡張記法が使えるようになっているのでアップデート推奨です。</p>
+
+<p><code>Gemfile</code> を開いて <code>gem 'rdiscount', '~&gt; 2.0.7'</code> を <code>gem 'rdiscount'</code> に書き換えます。</p>
+
+<pre><code>- gem 'rdiscount', '~&gt; 2.0.7'
++ gem 'rdiscount
+</code></pre>
+
+<p>bundle update します。</p>
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">bundle update rdiscount</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+<p>これで Markdown で Definition LIST がデフォルトで使えるようになります。</p>
+
+<pre><code>これがキーワード
+: キーワードの説明
+
+&lt;dl&gt;
+  &lt;dt&gt;これがキーワード&lt;/dt&gt;
+  &lt;dd&gt;キーワードの説明&lt;/dd&gt;
+&lt;/dl&gt;
+</code></pre>
+
+<h3>Movable Type の記事を Markdown に変換する</h3>
+
+<p>Movable Type の記事エクスポートを Markdown 形式に変換するコードを見つけたので、移行にはこれを使いました。ちょっと手はいれましたが。</p>
+
+<div>
+<script src="https://gist.github.com/2351046.js?file=mt_to_markdown.rb"></script><noscript><pre><code>#!/usr/bin/env ruby
+
+require 'date'
+require 'mustache'
+require 'stringex'
+require 'cgi'
+
+export     = File.open(ARGV[0])
+target_dir = ARGV[1]
+
+class Post &lt; Mustache
+  self.template = &lt;&lt;-MARKDOWN
+---
+layout: post
+title: "{{title}}"
+date: {{formatted_date}}
+comments: {{comments}}
+categories: {{category}}
+author: {{author}}
+---
+
+{{formatted_body}}
+MARKDOWN
+
+  attr_accessor :author, :title, :category, :comments, :status, :body
+
+  def initialize
+    @body = []
+  end
+
+  def date=(date)
+    case date
+    when String
+      @date = DateTime.strptime(date, "%m/%d/%Y %I:%M:%S %p")
+    else
+      @date = date
+    end
+  end
+
+  def date
+    @date
+  end
+
+  def formatted_date
+    @date.strftime("%Y-%m-%d %H:%M")
+  end
+
+  def comments=(comments)
+    @comments = comments == "1" ? true : false
+  end
+
+  def formatted_body
+    CGI.unescapeHTML(body.join).
+      gsub(/&lt;a href="(.*?)"&gt;*(.*?)&lt;\/a&gt;/i, '[\2](\1)').
+      gsub("&lt;!--more--&gt;", "\n\n&lt;!-- more --&gt;\n\n")
+  end
+
+  def file_name
+    "#{date.strftime("%Y-%m-%d")}-#{title.to_url}.markdown"
+  end
+end
+
+posts = [Post.new]
+
+KEYWORDS = /(AUTHOR|TITLE|STATUS|COMMENTS|CATEGORY|DATE): (.*)/
+
+def attr_and_value(line)
+  line =~ KEYWORDS
+  ["#{$1.downcase}=", $2]
+end
+
+puts " # Reading from data '#{ARGV[0]}' ..."
+
+puts " # Generating Markdown ..."
+
+comment_section = false
+
+export.each do |line|
+  if line.strip == "--------"
+    posts &lt;&lt; Post.new
+    print '.'
+    comment_section = false
+    next
+  end
+
+  next if comment_section
+
+  case line.strip
+  when KEYWORDS
+    posts.last.send(*attr_and_value(line))
+  when /BODY/
+    next
+  when "-----"
+    next
+  when /COMMENT:/
+    comment_section = true
+    next
+  else
+    posts.last.body &lt;&lt; line
+  end
+end
+
+puts
+puts " # Writing files to #{target_dir} ..."
+`mkdir -p #{target_dir}`
+`cd #{target_dir} &amp;&amp; rm -rf _posts &amp;&amp; mkdir _posts`
+
+ok, fails = 0, 0
+
+posts.each do |post|
+  begin
+    File.open(File.join(target_dir, "_posts", post.file_name), "w+") { |f| f.puts post.render }
+    puts " -&gt; #{post.file_name}"
+    ok += 1
+  rescue
+    puts " # Could not write file for '#{post.title}'"
+    fails += 1
+  end
+end
+
+puts
+puts " # All done! (#{ok}/#{fails})"
+</code></pre></noscript>
+</div>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GitHubとOctopressで始める無料ブログ]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/12/github-octopress/"/>
+    <updated>2014-02-12T19:33:48+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/12/github-octopress</id>
+    <content type="html"><![CDATA[<p>長いもので、hamasyou.com を初めてから9年経ちました。何年かに一回ブログのデザインを更新したくなるのって普通ですよね。</p>
+
+<p>今までずっと <em>MovableType</em> を使っていたんですが、markdown で書きたくなったのと、MovableType のデザインのいじり方を忘れてしまったため、ブログ環境を一新する決意をしました。</p>
+
+<p>今回作ったブログ環境は次のとおり。</p>
+
+<dl>
+<dt>公開用のサーバ</dt>
+<dd><a href="http://pages.github.com/" rel="external nofollow" title="GitHub Pages">GitHub Pages</a></dd>
+<dt>ブログ編集用のCMS</dt>
+<dd>ローカルマシン上に <a href="http://octopress.org/" rel="external nofollow" title="Octopress">Octopress</a> で構築</dd>
+</dl>
+<!-- more --><h2>GitHub Pages とは</h2>
+
+<p><a href="http://pages.github.com/" rel="external nofollow" title=""><img title="GitHub Pages" class="img-thumbnail" src="http://hamasyou.com/images/2014-02-12-github-octopress.png" alt="http://pages.github.com/" width="400" height="310"></a></p>
+
+<p>GitHub Pages とは簡単に言うと GitHub のリポジトリを Web サーバとして利用できるサービスです。リポジトリに HTML ファイルをプッシュすると公開される仕組みです。</p>
+
+<p>これがなかなかよく出来ていて、静的ページしか使えませんが、404ページの設定や DNS の CNAME の設定なんかもできます。</p>
+
+<p>リポジトリ名がサイトのホスト名になります（例: <code>http://hamasyou.github.io</code>）。ドメインを取得すれば当然、独自ドメインで運用するなんてことも可能です。</p>
+
+<h2>Octopress とは</h2>
+
+<p><a href="http://octopress.org/" rel="external nofollow" title=""><img title="Octopress" class="img-thumbnail" src="http://capture.heartrails.com/400x300?http://octopress.org/" alt="http://octopress.org/" width="400" height="300"></a></p>
+
+<p>Octopress は Ruby 用の GitHub Pages スターターキットです。内部で <code>Jekyll</code> や <code>rdiscount</code> を使っていて、簡単に GitHub Pages を利用する環境が構築できて、markdown ですぐに記事を書き始められます。</p>
+
+<p>Octopress の詳しい使い方は <a href="http://morizyun.github.io/blog/octopress-gitpage-minimum-install-guide/" rel="external nofollow" title="OctopressでGitHub無料ブログ構築。sourceをBitbucket管理。簡単ガイド！ - 酒と泪とRubyとRailsと">OctopressでGitHub無料ブログ構築。sourceをBitbucket管理。簡単ガイド！ - 酒と泪とRubyとRailsと</a> が参考になります。</p>
+
+<p>Octopress には様々なテーマが用意されていて、うちのサイトもテーマを使っています。</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Railsで手書きの図や絵をプログラムに取り込む方法]]></title>
+    <link href="http://hamasyou.com/blog/2013/12/03/rails/"/>
+    <updated>2013-12-03T19:05:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/12/03/rails</id>
+    <content type="html"><![CDATA[<p>スマホやタブレットが増えてきて、Railsアプリでも手書きで書いた絵や図を取り込みたいというような案件があるのではないでしょうか？手書き画像が保存する方法はいろいろありますが、そのひとつをちょっとメモのため残しておきます。特別なgemとかは必要ありません。使うのは HTML5 の canvas だけです。</p>
+
+<!-- more -->
+
+
+
+
+<h2>環境</h2>
+
+
+
+
+<ul>
+<li>Ruby 2.0.0p353</li>
+<li>Rails 4.0.1</li>
+<li>bundler</li>
+</ul>
+<h2>手順</h2>
+
+
+<p>まず、Rails 環境を作成して足場をつくります。</p>
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number">$</span>
+<span class="line-number">$</span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number">$</span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number">$</span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span></pre></td>
+<td class="code"><pre><code><span class="line command">rails new blog --skip-bundle</span><span class="line output">      create
+</span><span class="line output">      create  README.rdoc
+</span><span class="line output">      create  Rakefile
+</span><span class="line output">      create  config.ru
+</span><span class="line output">      create  .gitignore
+</span><span class="line output">      create  Gemfile
+</span><span class="line output">      create  app
+</span><span class="line output">      create  app/assets/javascripts/application.js
+</span><span class="line output">      create  app/assets/stylesheets/application.css
+</span><span class="line output">      create  app/controllers/application_controller.rb
+</span><span class="line output">      create  app/helpers/application_helper.rb
+</span><span class="line output">      create  app/views/layouts/application.html.erb
+</span><span class="line output">      create  app/assets/images/.keep
+</span><span class="line output">      create  app/mailers/.keep
+</span><span class="line output">      create  app/models/.keep
+</span><span class="line output">      create  app/controllers/concerns/.keep
+</span><span class="line output">      create  app/models/concerns/.keep
+</span><span class="line output">      create  bin
+</span><span class="line output">      create  bin/bundle
+</span><span class="line output">      create  bin/rails
+</span><span class="line output">      create  bin/rake
+</span><span class="line output">      create  config
+</span><span class="line output">      create  config/routes.rb
+</span><span class="line output">      create  config/application.rb
+</span><span class="line output">      create  config/environment.rb
+</span><span class="line output">      create  config/environments
+</span><span class="line output">      create  config/environments/development.rb
+</span><span class="line output">      create  config/environments/production.rb
+</span><span class="line output">      create  config/environments/test.rb
+</span><span class="line output">      create  config/initializers
+</span><span class="line output">      create  config/initializers/backtrace_silencers.rb
+</span><span class="line output">      create  config/initializers/filter_parameter_logging.rb
+</span><span class="line output">      create  config/initializers/inflections.rb
+</span><span class="line output">      create  config/initializers/mime_types.rb
+</span><span class="line output">      create  config/initializers/secret_token.rb
+</span><span class="line output">      create  config/initializers/session_store.rb
+</span><span class="line output">      create  config/initializers/wrap_parameters.rb
+</span><span class="line output">      create  config/locales
+</span><span class="line output">      create  config/locales/en.yml
+</span><span class="line output">      create  config/boot.rb
+</span><span class="line output">      create  config/database.yml
+</span><span class="line output">      create  db
+</span><span class="line output">      create  db/seeds.rb
+</span><span class="line output">      create  lib
+</span><span class="line output">      create  lib/tasks
+</span><span class="line output">      create  lib/tasks/.keep
+</span><span class="line output">      create  lib/assets
+</span><span class="line output">      create  lib/assets/.keep
+</span><span class="line output">      create  log
+</span><span class="line output">      create  log/.keep
+</span><span class="line output">      create  public
+</span><span class="line output">      create  public/404.html
+</span><span class="line output">      create  public/422.html
+</span><span class="line output">      create  public/500.html
+</span><span class="line output">      create  public/favicon.ico
+</span><span class="line output">      create  public/robots.txt
+</span><span class="line output">      create  test/fixtures
+</span><span class="line output">      create  test/fixtures/.keep
+</span><span class="line output">      create  test/controllers
+</span><span class="line output">      create  test/controllers/.keep
+</span><span class="line output">      create  test/mailers
+</span><span class="line output">      create  test/mailers/.keep
+</span><span class="line output">      create  test/models
+</span><span class="line output">      create  test/models/.keep
+</span><span class="line output">      create  test/helpers
+</span><span class="line output">      create  test/helpers/.keep
+</span><span class="line output">      create  test/integration
+</span><span class="line output">      create  test/integration/.keep
+</span><span class="line output">      create  test/test_helper.rb
+</span><span class="line output">      create  tmp/cache
+</span><span class="line output">      create  tmp/cache/assets
+</span><span class="line output">      create  vendor/assets/javascripts
+</span><span class="line output">      create  vendor/assets/javascripts/.keep
+</span><span class="line output">      create  vendor/assets/stylesheets
+</span><span class="line output">      create  vendor/assets/stylesheets/.keep
+</span><span class="line command">cd blog</span><span class="line command">bundle install --path vendor/bundle</span><span class="line output">Fetching gem metadata from https://rubygems.org/……….
+</span><span class="line output">Fetching gem metadata from https://rubygems.org/..
+</span><span class="line output">Resolving dependencies…
+</span><span class="line output">Installing rake (10.1.0)
+</span><span class="line output">Installing i18n (0.6.5)
+</span><span class="line output">Installing minitest (4.7.5)
+</span><span class="line output">Installing multi_json (1.8.2)
+</span><span class="line output">Installing atomic (1.1.14)
+</span><span class="line output">Installing thread_safe (0.1.3)
+</span><span class="line output">Installing tzinfo (0.3.38)
+</span><span class="line output">Installing activesupport (4.0.1)
+</span><span class="line output">Installing builder (3.1.4)
+</span><span class="line output">Installing erubis (2.7.0)
+</span><span class="line output">Installing rack (1.5.2)
+</span><span class="line output">Installing rack-test (0.6.2)
+</span><span class="line output">Installing actionpack (4.0.1)
+</span><span class="line output">Installing mime-types (1.25.1)
+</span><span class="line output">Installing polyglot (0.3.3)
+</span><span class="line output">Installing treetop (1.4.15)
+</span><span class="line output">Installing mail (2.5.4)
+</span><span class="line output">Installing actionmailer (4.0.1)
+</span><span class="line output">Installing activemodel (4.0.1)
+</span><span class="line output">Installing activerecord-deprecated_finders (1.0.3)
+</span><span class="line output">Installing arel (4.0.1)
+</span><span class="line output">Installing activerecord (4.0.1)
+</span><span class="line output">Using bundler (1.3.1)
+</span><span class="line output">Installing coffee-script-source (1.6.3)
+</span><span class="line output">Installing execjs (2.0.2)
+</span><span class="line output">Installing coffee-script (2.2.0)
+</span><span class="line output">Installing thor (0.18.1)
+</span><span class="line output">Installing railties (4.0.1)
+</span><span class="line output">Installing coffee-rails (4.0.1)
+</span><span class="line output">Installing hike (1.2.3)
+</span><span class="line output">Installing jbuilder (1.5.2)
+</span><span class="line output">Installing jquery-rails (3.0.4)
+</span><span class="line output">Installing json (1.8.1)
+</span><span class="line output">Installing tilt (1.4.1)
+</span><span class="line output">Installing sprockets (2.10.1)
+</span><span class="line output">Installing sprockets-rails (2.0.1)
+</span><span class="line output">Installing rails (4.0.1)
+</span><span class="line output">Installing rdoc (3.12.2)
+</span><span class="line output">Installing sass (3.2.12)
+</span><span class="line output">Installing sass-rails (4.0.1)
+</span><span class="line output">Installing sdoc (0.3.20)
+</span><span class="line output">Installing sqlite3 (1.3.8)
+</span><span class="line output">Installing turbolinks (1.3.1)
+</span><span class="line output">Installing uglifier (2.3.2)
+</span><span class="line command">bundle exec rails g scaffold post</span><span class="line output">      invoke  active_record
+</span><span class="line output">      create    db/migrate/20131203101546_create_posts.rb
+</span><span class="line output">      create    app/models/post.rb
+</span><span class="line output">      invoke    test_unit
+</span><span class="line output">      create      test/models/post_test.rb
+</span><span class="line output">      create      test/fixtures/posts.yml
+</span><span class="line output">      invoke  resource_route
+</span><span class="line output">       route    resources :posts
+</span><span class="line output">      invoke  scaffold_controller
+</span><span class="line output">      create    app/controllers/posts_controller.rb
+</span><span class="line output">      invoke    erb
+</span><span class="line output">      create      app/views/posts
+</span><span class="line output">      create      app/views/posts/index.html.erb
+</span><span class="line output">      create      app/views/posts/edit.html.erb
+</span><span class="line output">      create      app/views/posts/show.html.erb
+</span><span class="line output">      create      app/views/posts/new.html.erb
+</span><span class="line output">      create      app/views/posts/_form.html.erb
+</span><span class="line output">      invoke    test_unit
+</span><span class="line output">      create      test/controllers/posts_controller_test.rb
+</span><span class="line output">      invoke    helper
+</span><span class="line output">      create      app/helpers/posts_helper.rb
+</span><span class="line output">      invoke      test_unit
+</span><span class="line output">      create        test/helpers/posts_helper_test.rb
+</span><span class="line output">      invoke    jbuilder
+</span><span class="line output">      create      app/views/posts/index.json.jbuilder
+</span><span class="line output">      create      app/views/posts/show.json.jbuilder
+</span><span class="line output">      invoke  assets
+</span><span class="line output">      invoke    coffee
+</span><span class="line output">      create      app/assets/javascripts/posts.js.coffee
+</span><span class="line output">      invoke    scss
+</span><span class="line output">      create      app/assets/stylesheets/posts.css.scss
+</span><span class="line output">      invoke  scss
+</span><span class="line output">      create    app/assets/stylesheets/scaffolds.css.scss
+</span><span class="line command">bundle exec rake db:migrate</span><span class="line output">==  CreatePosts: migrating ====================================================
+</span><span class="line output">– create_table(:posts)
+</span><span class="line output">   -&gt; 0.0010s
+</span><span class="line output">==  CreatePosts: migrated (0.0011s) ===========================================</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+<p><code>app/views/posts/_form.html.erb</code> を開いて次のコードを追加します。このコードが手書き入力部分（canvas）になります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>app/views/posts/_form.html.erb</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="html+erb"><span class="line">  <span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">"paper"</span> <span class="na">class=</span><span class="s">"paper"</span> <span class="na">width=</span><span class="s">"400"</span> <span class="na">height=</span><span class="s">"400"</span> <span class="na">data-target=</span><span class="s">"#sign"</span><span class="nt">&gt;</span>
+</span><span class="line">    ご利用のブラウザではサインは表示できません。
+</span><span class="line">  <span class="nt">&lt;/canvas&gt;</span>
+</span><span class="line">  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">name=</span><span class="s">"clearCanvas"</span> <span class="na">class=</span><span class="s">"clear-canvas"</span><span class="nt">&gt;</span>クリア<span class="nt">&lt;/button&gt;</span>
+</span><span class="line">  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">id=</span><span class="s">"sign"</span> <span class="na">name=</span><span class="s">"sign"</span> <span class="na">value=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>app/assets/javascripts</code> に paint.js.coffee ファイルを作成し、次のコードをコピペします。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>app/assets/javascripts/paint.js.coffee</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+</pre></td>
+<td class="code"><pre><code class="coffeescript"><span class="line"><span class="nx">jQuery</span> <span class="nf">($) -&gt;</span>
+</span><span class="line">    <span class="nv">screen2client = </span><span class="nf">(e) -&gt;</span>
+</span><span class="line">        <span class="p">[</span><span class="nx">px</span><span class="p">,</span> <span class="nx">py</span><span class="p">]</span> <span class="o">=</span> <span class="k">if</span> <span class="nx">e</span><span class="p">.</span><span class="nx">type</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s">'touch'</span><span class="p">)</span> <span class="k">then</span> <span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">originalEvent</span><span class="p">.</span><span class="nx">touches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">clientX</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">originalEvent</span><span class="p">.</span><span class="nx">touches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">clientY</span><span class="p">]</span> <span class="k">else</span> <span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">clientX</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clientY</span><span class="p">]</span>
+</span><span class="line">        <span class="nv">rect = </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">getBoundingClientRect</span><span class="p">()</span>
+</span><span class="line">        <span class="p">{</span><span class="nv">x: </span><span class="nx">px</span> <span class="o">-</span> <span class="nx">rect</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nv">y: </span><span class="nx">py</span> <span class="o">-</span> <span class="nx">rect</span><span class="p">.</span><span class="nx">top</span><span class="p">}</span>
+</span><span class="line">    <span class="nv">drawFlag = </span><span class="kc">false</span>
+</span><span class="line">    <span class="nv">oldX = </span><span class="mi">0</span>
+</span><span class="line">    <span class="nv">oldY = </span><span class="mi">0</span>
+</span><span class="line">    <span class="nv">$canvas = </span><span class="nx">$</span><span class="p">(</span><span class="s">'#paper'</span><span class="p">)</span>
+</span><span class="line">    <span class="nx">$canvas</span><span class="p">.</span><span class="nx">on</span> <span class="s">'mousedown touchstart'</span><span class="p">,</span> <span class="nf">(e) -&gt;</span>
+</span><span class="line">        <span class="nv">drawFlag = </span><span class="kc">true</span>
+</span><span class="line">        <span class="p">{</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">}</span> <span class="o">=</span> <span class="nx">screen2client</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+</span><span class="line">        <span class="p">[</span><span class="nx">oldX</span><span class="p">,</span> <span class="nx">oldY</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">]</span>
+</span><span class="line">    <span class="nx">$canvas</span><span class="p">.</span><span class="nx">on</span> <span class="s">'mouseup mouseout touchend touchcancel'</span><span class="p">,</span> <span class="nf">-&gt;</span>
+</span><span class="line">        <span class="nv">drawFlag = </span><span class="kc">false</span>
+</span><span class="line">        <span class="nv">data = </span><span class="nx">$canvas</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">toDataURL</span><span class="p">()</span>
+</span><span class="line">        <span class="nx">$</span><span class="p">(</span><span class="nx">$canvas</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s">'target'</span><span class="p">)).</span><span class="nx">val</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+</span><span class="line">    <span class="nx">$canvas</span><span class="p">.</span><span class="nx">on</span> <span class="s">'mousemove touchmove'</span><span class="p">,</span> <span class="nf">(e) -&gt;</span>
+</span><span class="line">        <span class="k">return</span> <span class="k">unless</span> <span class="nx">drawFlag</span>
+</span><span class="line">        <span class="p">{</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">}</span> <span class="o">=</span> <span class="nx">screen2client</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+</span><span class="line">        <span class="nv">context = </span><span class="nx">$canvas</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getContext</span><span class="p">(</span><span class="s">'2d'</span><span class="p">)</span>
+</span><span class="line">        <span class="nv">context.strokeStyle = </span><span class="s">'#C71C22'</span>
+</span><span class="line">        <span class="nv">context.lineWidth = </span><span class="mi">1</span>
+</span><span class="line">        <span class="nx">context</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">()</span>
+</span><span class="line">        <span class="nx">context</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="nx">oldX</span><span class="p">,</span> <span class="nx">oldY</span><span class="p">)</span>
+</span><span class="line">        <span class="nx">context</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span>
+</span><span class="line">        <span class="nx">context</span><span class="p">.</span><span class="nx">stroke</span><span class="p">()</span>
+</span><span class="line">        <span class="nx">context</span><span class="p">.</span><span class="nx">closePath</span><span class="p">()</span>
+</span><span class="line">        <span class="nv">oldX = </span><span class="nx">x</span>
+</span><span class="line">        <span class="nv">oldY = </span><span class="nx">y</span>
+</span><span class="line">        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+</span><span class="line">        <span class="k">return</span>
+</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="s">'.clear-canvas'</span><span class="p">).</span><span class="nx">on</span> <span class="s">'click'</span><span class="p">,</span> <span class="nf">-&gt;</span>
+</span><span class="line">        <span class="nv">context = </span><span class="nx">$canvas</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getContext</span><span class="p">(</span><span class="s">'2d'</span><span class="p">)</span>
+</span><span class="line">        <span class="nx">context</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">$canvas</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">width</span><span class="p">,</span> <span class="nx">$canvas</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">height</span><span class="p">)</span>
+</span><span class="line">        <span class="nx">$</span><span class="p">(</span><span class="nx">$canvas</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s">'target'</span><span class="p">)).</span><span class="nx">val</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>app/assets/javascript/application.js</code> を開き、ファイルの最後に次のコードを追加します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>app/assets/javascript/application.js</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">startsWith</span> <span class="o">!=</span> <span class="s1">'function'</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">startsWith</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="o">===</span> <span class="nx">str</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>最後に、画像データを受け取って画像ファイルにする処理をコントローラに追加します。<code>app/controllers/posts_controller.rb</code> を開き、<code>def create</code> に次のコードを追加します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>app/controllers/posts_controller.rb</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="n">f</span> <span class="o">=</span> <span class="no">Tempfile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="s1">'sign'</span><span class="p">,</span> <span class="s1">'.png'</span><span class="o">]</span><span class="p">,</span> <span class="ss">encoding</span><span class="p">:</span> <span class="ss">Encoding</span><span class="p">:</span><span class="ss">:BINARY</span><span class="p">)</span>
+</span><span class="line"><span class="n">f</span><span class="o">.</span><span class="n">write</span> <span class="no">Base64</span><span class="o">.</span><span class="n">decode64</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:sign</span><span class="o">].</span><span class="n">sub</span><span class="p">(</span><span class="s1">'data:image/png;base64,'</span><span class="p">,</span> <span class="s1">''</span><span class="p">))</span>
+</span><span class="line"><span class="n">f</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>これで、一時ファイルにキャンバスデータを書き込んでファイル化できます。サーバを起動して <code>http://localhost:3000/posts/new</code> にアクセスして試してみてください。</p>
+
+<p><img src="http://hamasyou.com/images/2013-12-03-rails-ss.png" height="526" width="517" alt="スクリーンショット" class="img-thumbnail"></p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[バッドデータハンドブック ―データにまつわる問題への19の処方箋]]></title>
+    <link href="http://hamasyou.com/blog/2013/11/14/4873116406/"/>
+    <updated>2013-11-14T11:45:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/11/14/4873116406</id>
+    <content type="html"><![CDATA[<blockquote>
+<p>値の欠落、形式から外れたレコード、エンコーディング形式が不明な文字列。「バッドデータ」と聞いた時に思い浮べる典型例です。しかし、これら以外にも「そもそもデータにアクセスできない」「消えてしまった」「昨日と違っている」「データはあるが形式が処理に適していない」など、データを収集・分析するエンジニアは、これらの「バッドデータ」と正面から向きあわなければならないことが多々あります。本書では、これらの問題のあるデータのパターンを紹介し、その対処法を解説しています。<br>19人のデータ分析の専門家が、自らの経験を通して得た、さまざまな教訓、実践的な方法論等を詳述した本書は、ビッグデータ時代のエンジニアにとって必携の一冊となるでしょう。</p>
+<footer><strong>O&#8217;REILLY</strong></footer>
+</blockquote>
+
+
+<p>本書はプログラミングやデータ解析の時に扱うデータの内容やフォーマットについて書かれています。プログラミングの時に扱いやすいデータフォーマット、こういう点に気をつけてデータを扱え、こういうフォーマットが使いやすいなどについて書かれています。</p>
+
+<p>コンピュータで扱うデータは大きく分けて<strong class="text-danger">コンピュータのためにフォーマットするデータ</strong>と<strong class="text-danger">人間のためにフォーマットするデータ</strong>があります。これらをごっちゃにしてしまうと扱いづらいデータ（<strong class="text-danger">バッドデータ</strong>）になってしまいます。本書はバッドデータをよりよく扱う方法、バッドデータにしない方法について、いろいろな点で考えられるようにアイデアや体験談を与えてくれます。</p>
+
+<p>最近 API をよく作ってるんだけど通信データのフォーマットに困ってるというような Web プログラマにオススメです！</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? ]]></title>
+    <link href="http://hamasyou.com/blog/2013/06/24/4774156647/"/>
+    <updated>2013-06-24T22:34:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/06/24/4774156647</id>
+    <content type="html"><![CDATA[<p>コード。ラテン語で codex。codex とはもともとローマ法大全のことを指し示す言葉だそうです。コードは読みとくべきであり、書き下されるべきものである。そしてそれができたとき、喜びが生まれる。弾さんのまえがきにある言葉ですが、コーディング好きなプログラマのみなさんはこの言葉がよくわかると思います。</p>
+
+<p>本書は、プログラミングに関わるいろいろな事柄が短文のエッセイの形でまとめられています。もともと Software Design の連載だったものをまとめたもののようですが、まとめて読むことに価値があると思います。</p>
+
+<p>弾さんのコンピュータの捉え方、プログラミングの姿勢、豊富な知識や知見がまとめられています。スイスイと読んでいける日本版の『<a href="http://www.amazon.co.jp/gp/product/4274066304?ie=UTF8&amp;camp=247&amp;creativeASIN=4274066304&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title="Joel on Software">Joel on Software</a>』です。</p>
+
+<!-- more -->
+
+
+
+
+<h2>はじめに</h2>
+
+
+<p>コードな世界へ、ようこそ!</p>
+
+<p>コード?コードって何でしょう?</p>
+
+<p>元をたどると、この言葉はラテン語 codex に行き着きます。</p>
+
+<blockquote>
+<p>ORIGIN Middle English: via Old French from Latin codex, codic- (see codex). The term originally denoted a systematic collection of statutes made by one of the later Roman emperors, particularly that of Justinian&#8230;</p>
+<footer><strong>Oxford American Dictionary</strong></footer>
+</blockquote>
+
+
+<p>ここに出てくるJustinianとはユスティニアヌス1世のこと。「ローマ法大全」(Corpus Iuris Civilis)を編纂させた人。codexとは、元々はこのローマ法大全のことを指し示す言葉だったのです。固有名詞から生じた一般名詞。</p>
+
+<p>このことはBibleという言葉の対局にあります。こちらは元々は「本」という一般名詞でした。そのことは bibliomania (本の虫–どこの私だ?)、 bibliography (本の目録)といった英単語からも伺うことができます。Bibleとは&#8221;The Book&#8221;という意味だったのですね。一般名詞から生じた固有名詞。</p>
+
+<p>コードに話を戻しましょう。本来のコードであったローマ法に関して、塩野七生はこう述べています。</p>
+
+<blockquote>
+<p>人間の行動原則の正し手を、 宗教に求めたユダヤ人。 哲学に求めたギリシア人。 法律に求めたローマ人。</p>
+<footer><strong>ローマ人の物語</strong></footer>
+</blockquote>
+
+
+<p>この意味において、日本を含め、およそ法治国家を標榜する国々の市民はローマ人の末裔ということになります。</p>
+
+<p>ところが、このローマ人、法を作成し、改訂し、施行することには熱心でも、編纂することには少しも熱心ではなかったのです。前述のユスティニアヌス1世の527年から565年。ローマの全盛期はとっくに過ぎて、東西に分裂した後だったのです。</p>
+
+<p>おそらく、それに熱心に取り組んでいる人にとって、それはあまりに当然で必然なことで、わざわざ「外から」編纂するという気持ちにはなりにくかったのでしょう。</p>
+
+<p>ローマ人にとってそうであったように、コードという言葉は現代人にとってそういう存在になりつつあります。ただし現代人にあってローマ人になかったものが一つあります。</p>
+
+<p>それが、電脳(computer)。これはローマ人に奴隷がいて現代人にはいないこと(になっている)ことと対をなしています。ローマ法はあくまでローマ市民に適用されるものであって非市民たる奴隷や異邦人(barbarian)に適用されるものではなかったのですが、現代人は、その電脳で実行されるプログラムのことも、コードと呼んでいます。</p>
+
+<p>本書の「コード」は、その双方を指しています。電脳に適用するコードと、人脳に適用するコード、その双方を。いや、もしかしてもう一つあるかも知れません。この世界自体に適用されている、コード。</p>
+
+<p>最後のそれは、「法則」とも呼ばれます。残念ながらこれは我々が書き下したものではなく、この世界自身に書かれているものです。それを読み解く人が、科学者。そして人電両脳のコードを読み書きする人が、技術者。これは、科学者と技術者の違いでもあります。扱うコードがリードオンリなのかライタブルなのか。</p>
+
+<p>本書の想定読者は、一応後者たる技術者ということになっています。しかしこの両者が深く繋がっていることを、私は「<a href="http://www.amazon.co.jp/gp/product/4041103851?ie=UTF8&amp;camp=247&amp;creativeASIN=4041103851&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title="『中卒』でもわかる科学入門">『中卒』でもわかる科学入門</a>」に書いています。</p>
+
+<blockquote>
+<p>およそどんな人でも、幸せな瞬間というのは次の二つしかないのかも知れません。</p>
+<p>1. できなかったことができるようになった瞬間<br>2. わからなかったことがわかった瞬間</p>
+</blockquote>
+
+
+<p>コードは読み解くべきものでもあり、書き下されるべきものでもある。そしてそれが出来た時、よろこびが生まれる。</p>
+
+<p>それが私にとってのコードであり、本書で扱うコードの範囲(scope)です。</p>
+
+<p>では改めて。コードな世界へ、ようこそ!</p>
+
+<h2>もくじ</h2>
+
+
+
+
+<ul style="list-unstyled">
+<li>#0 堂々とevaろう。でもevaりすぎにご用心</li>
+<li>#1 Y談。</li>
+<li>#2 I/O止めないで</li>
+<li>#3 メモレカス、ナマケモノドモ</li>
+<li>#4 殺速と複殺</li>
+<li>#5 OS、SOS</li>
+<li>#6 自縄自縛のススメ</li>
+<li>#7 Body and Soul</li>
+<li>#8 Mathコミュニケーション</li>
+<li>#9 コードと法律の共通点</li>
+<li>#10 バカと電脳は使いよう</li>
+<li>#11 データは人のためならず</li>
+<li>#12 Connect</li>
+<li>#13 いまそこにある夢</li>
+<li>#14 最後のファイルシステム</li>
+<li>#15 ファイルシステムの終わり</li>
+<li>#16 From Jobs&#8217; Apple to Apple&#8217;s jobs </li>
+<li>#17 Too Beautiful to be Windows</li>
+<li>#18 点と線</li>
+<li>#19 1%のコードと99%のコンフィギュレーション</li>
+<li>#20 言語のチュウス[ウイ]</li>
+<li>#21 並べ方と並べ替え方</li>
+<li>#22 参照にしか値しない</li>
+<li>#23 働いたら負けなら、働いてもらえばいいじゃない</li>
+<li>#24 安物買いの安全失い</li>
+<li>#25 Not Even Odd</li>
+<li>#26 安増税の税失い</li>
+<li>#27 たまには( )つけてみよう</li>
+<li>#28 ニシキヘビに呑み込めないもの</li>
+<li>#29 三位
+</li>
+<li>#30 Where do(es) you(r heart) want to go today</li>
+<li>#31 The Round Lens Square Hole</li>
+<li>#32 Can we still stay hungry?</li>
+<li>#33 Where has all the foolish gone?</li>
+<li>Ex.0 美しいプログラムの美しくないソース</li>
+<li>Ex.1 アマグラマのすすめ美徳その1:怠慢</li>
+<li>Ex.2 アマグラマのすすめ美徳その2:短気</li>
+<li>Ex.3 アマグラマのすすめ美徳その3:傲慢</li>
+<li>Ex.4 プログラマでなくても名前ぐらい覚えておきたいアルゴリズム×11</li>
+<li>Ex.5 プログラミングいつまでに学ぶ? なぜ学ぶ?</li>
+</ul>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ディジタル作法 －カーニハン先生の「情報」教室－]]></title>
+    <link href="http://hamasyou.com/blog/2013/06/23/4274069095/"/>
+    <updated>2013-06-23T17:31:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/06/23/4274069095</id>
+    <content type="html"><![CDATA[<p>本書は、現在のコンピュータシステムや通信システムがどのように動作しているのかを、ハードウェアとソフトウェアの両方の視点から解説している一般の人向けの本です。コンピュータのことをもっとよく知りたい、コンピュータがどのように動作しているかをもっと知りたい、そういった人にオススメの一冊です。</p>
+
+<blockquote>
+<p>&#8220;D is for Digital&#8221; （ディジタル作法） は、コンピュータシステムや通信システムがどのように動作しているかを、簡潔に、それでいて細かいところまで丁寧に説明した本であり、自分たちが暮らしている世界のことをより良く分かっておきたいと考える一般読者（専門家ではない人）を対象にしています。本書では、今日の世界におけるコンピュータシステムや通信システムがどのように動作しているかということを、ハードウェアおよびソフトウェアからインターネット、Webに到るまで、ひととおり説明しています。</p>
+<footer><strong>『本書』日本語版の刊行に寄せてより</strong></footer>
+</blockquote>
+
+
+
+
+<!-- more -->
+
+
+<p>コンピュータの理論、コンピュータの仕組みというのは情報系の大学であれば授業で習うと思いますが、情報系の大学を出ていない人にはコンピュータが実際にどのように動作して、コンピュータがなぜインターネットに繋がって、コンピュータがなぜアプリケーションを実行できるのかをきちんと説明するのは難しいと思います。情報系の大学を出ていても説明できない人もいますしね。。</p>
+
+<p>本書は、大学で習うようなこれらの基礎的なことを一般の人にも分りやすい平易な説明や例を使って解説してくれている本になります。ハードウェアとしてのコンピュータ、ソフトウェアの集まりとしてのコンピュータ、PC以外のコンピュータ、コンピュータは色々な形をしています。1から説明をしたのではたった300ページで説明を終えることなど出来るはずはないと思います。</p>
+
+<p>でも、本書を読み終わると一通りコンピュータのことを理解できてしまった気になります。さすがはカーニハン先生が書いただけのことはあるなと。コンピュータがなぜ動いているのか理解した人にオススメです！</p>
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>CPU</h3>
+
+
+<p>CPU はコンピュータが計算するを行うための装置のことです。最近の CPU は「2.1 GHz Intel Core Duo」というような記述があります。Intel は CPU のメーカで、<strong class="text-danger">コア（Core）</strong>というのは CPU と同じ意味になります。CPU はクロックと呼ばれる信号を使用して動作します。1秒間に1刻みする信号を1Hzといい、2.1 GHz は1秒間に2,100,000,000回動作するというわけです。</p>
+
+<h3>ビット・バイト</h3>
+
+
+<p>コンピュータはディジタル処理装置である。コンピュータは情報をビットで表現する。ビット列に寄って大きな情報が表せる。数値、文字、音、画像、動画、プログラムなどはすべてビット列で表される。</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処]]></title>
+    <link href="http://hamasyou.com/blog/2013/03/05/titanium/"/>
+    <updated>2013-03-05T08:52:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/03/05/titanium</id>
+    <content type="html"><![CDATA[<p>モジュールを作成して、デモアプリ等で利用する際に実機転送時に</p>
+
+<pre><code>[ERROR] : ** BUILD FAILED **
+[ERROR] : The following build commands failed:
+[ERROR] :   Ld build/Debug-iphoneos/gpuimagedemo.app/gpuimagedemo normal armv7
+[ERROR] : (1 failure)
+</code></pre>
+
+<p>のようなエラーが発生する場合がある。
+これは、Titanium がビルド時に最適化で利用していない内部モジュールとのリンクを切ってしまうために起こる。</p>
+
+<p>build ディレクトリの下の Xcode のプロジェクトを開くと</p>
+
+<pre><code>Undefined symbols for architecture arvm7:
+    ...
+":_OBJC_CLASS_$_TiUIImageView":, referenced from:
+    ...
+</code></pre>
+
+<p>のようにビルドエラーが発生している。</p>
+
+<p>これを解決するには、モジュールで利用している内部クラスを、JavaScript 側のソースコードに現れるようにする。</p>
+
+<p>例えば、今回の場合だと、TiUIImageView の参照先が見つからないとなっているので JavaScript のコードの方に</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="k">if</span> <span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">createImageView</span><span class="p">({</span>
+</span><span class="line">        <span class="nx">image</span><span class="o">:</span> <span class="s1">'demo.jpg'</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>のようなコードを加えれば良い。バッドノウハウですね。。</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[#qiita_sushi に参加した]]></title>
+    <link href="http://hamasyou.com/blog/2013/03/04/qiita-sushi/"/>
+    <updated>2013-03-04T23:15:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/03/04/qiita-sushi</id>
+    <content type="html"><![CDATA[<p>Qiita を運営されている Increments さんが一周年ということで、白ワイン持参で参加させていただきました。</p>
+
+<p>寿司職人が目の前で握ってくれる本格派！</p>
+
+<p><img src="http://hamasyou.com/images/qiita_sushi.jpg" width="320" class="img-thumbnail"></p>
+
+<p>次の Qiita イベントにも是非参加します！今後とも、エンジニアのためのサービスをガンガンリリースしてもらいたいと思います。うちの会社もエンジニアの会社なので期待しています！</p>
+
+<p>一周年、おめでとうございます！</p>
+
+<p>ちなみに、Qiita イベントの出席者は、Perl 界隈の人と Ruby 界隈の人が半々くらいな感じ。</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[世界でもっとも強力な9のアルゴリズム]]></title>
+    <link href="http://hamasyou.com/blog/2013/02/05/482228493X/"/>
+    <updated>2013-02-05T22:17:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/02/05/482228493X</id>
+    <content type="html"><![CDATA[<blockquote>
+<p>この本で取り上げた偉大なアルゴリズムから導き出せる共通のテーマはあるだろうか。この本の著者として私がとても驚いたのは、これらの大きなアイデアは、どれもコンピュータプログラミングやコンピュータ科学の予備知識を一切必要とせずに説明できることだ。</p>
+<p></p>
+<p>この本のアルゴリズム全体に共通するもう1つの重要なテーマは、コンピュータ科学という学問分野がただのプログラミングよりもずっと大きな世界だということだ。</p>
+<p></p>
+<p>私が目指したのは、読者に偉大なアルゴリズムについての知識を仕入れてもらって、日常のコンピュータ操作の中でもこれはすごいと感じてもらえるようにすることだ。</p>
+<footer><strong>本書</strong></footer>
+</blockquote>
+
+
+<p>9つの偉大なアルゴリズム、<em>検索エンジンのインデクシング</em>、<em>ページランク</em>、<em>公開鍵暗号法</em>、<em>誤り訂正符号</em>、<em>パターン認識</em>、<em>データ圧縮</em>、<em>データベース</em>、<em>デジタル署名</em>、<em>決定不能性</em>を知ることで、僕達の周りでこれらのアルゴリズムがどうやって機能していて、何が担保されているのか理解できるようになります。</p>
+
+<p>これらのアルゴリズムを知ることで、コンピュータの世界はすごいことが起こっていると知ってもらい、新たに出てくる問題の解決の一つになるといいなと思います。</p>
+
+<p>読み物なので、どんな人にもおすすめです。</p>
+
+<!-- more -->
+
+
+
+
+<h3>検索エンジンのインデクシング</h3>
+
+
+<p>検索エンジンは「NEAR」（キーワードが近くにあることを条件にする検索）を使ってランキングの精度を上げている。</p>
+
+<p>また、メタワードトリック（タイトル、見出し、リンクなどのメタ情報のどこにキーワードが含まれているか）をつかって精度を上げている。</p>
+
+<h3>ページランク</h3>
+
+
+<p>ハイパーリンクトリック（リンクされているかどうか）、オーソリティトリック（有名なところからのリンクは高評価）、ランダムサーファートリック（ランダムにページを選択肢リンクをたどる）などのアルゴリズムが使われている。</p>
+
+<p>なお、Google のページランクはもっと複雑な条件で行われている。</p>
+
+<h3>公開鍵暗号法</h3>
+
+
+<p>「共有された秘密」をどのように作るかがポイント。</p>
+
+<h3>誤り訂正符号</h3>
+
+
+<p><q>人に誤っていると教えることと真実を与えることは別のことだ。</q></p>
+
+<p>チェックサムと呼ばれる冗長化符号を付与してデータ通信することで、途中でデータが変更されたかどうかを検知する。</p>
+
+<h3>パターン認識</h3>
+
+
+<p>パターン認識は、2段階で動作する。訓練データを処理してクラスの特徴を抽出する「学習（訓練）段階」。新しい分類ラベルの付いていないデータを分類する「分類段階」である。</p>
+
+<h3>データ圧縮</h3>
+
+
+<p>まとまったデータをより短いシンボルで表すロスなし圧縮と、データの一部を取り除いてしまうロス有り圧縮がある。</p>
+
+<h3>データベース</h3>
+
+
+<p>「to-doリスト」、「仮想テーブル」、「準備してからコミット」。</p>
+
+<h3>デジタル署名</h3>
+
+
+<p>デジタル署名はあなたが誰か他人に送るものに署名するのではなく、誰か他人があなたにモノを送る前にその送ろうとしているモノに署名をする。</p>
+
+<p>例えば、プログラムをダウンロード、実行しようとするたびに、ウェブブラウザはプログラムがデジタル署名を持っているかどうかをチェックし、その署名が有効かどうかをチェックする。</p>
+
+<p>デジタル署名が提供するのは、機密性ではなく文章の真正性である。</p>
+
+<h3>決定不能性</h3>
+
+
+<p>他のプログラムを分析し、そのなかに含まれていてプログラムをクラッシュさせる原因になるようなバグをすべて見つけ出すプログラムは書けない。</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text2 で Titanium Mobile のコード補完を効かせる方法]]></title>
+    <link href="http://hamasyou.com/blog/2013/01/29/sublime-text2-titanium-mobile/"/>
+    <updated>2013-01-29T13:23:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/01/29/sublime-text2-titanium-mobile</id>
+    <content type="html"><![CDATA[<p>Qiita にも書きました。 <a href="http://qiita.com/items/ef8c332710960e2730d6" rel="external nofollow" title="Qiita: http://qiita.com/items/ef8c332710960e2730d6">Qiita: http://qiita.com/items/ef8c332710960e2730d6</a></p>
+
+<h3>1. Package Manager で SublimeCodeIntel をインストールする</h3>
+
+
+<p>Sublime Text2 の PackageManager を使って SublimeCodeIntel をインストールします。</p>
+
+<p><i class="fa fa-search"></i> <a href="http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html" rel="external nofollow" title="http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html">http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html</a></p>
+
+<h3>2. jsca2.js を使って Titanium Mobile の API doc を JavaScript 化する。</h3>
+
+
+<p><i class="fa fa-search"></i> <a href="https://github.com/navinpeiris/jsca2js" rel="external nofollow" title="jsca2js: https://github.com/navinpeiris/jsca2js">jsca2js: https://github.com/navinpeiris/jsca2js</a></p>
+
+<p>git clone で落としてきて</p>
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">./titanium-mobile.py 3.0.0</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+<p>のように、生成した API のバージョンを指定すればOK。</p>
+
+<h4>Titanium 3.0.0 のコードをインストールする場合の注意</h4>
+
+
+<p>titanium-mobile.py の中でバージョン毎に参照先の URL を変えるようにしていますが、3.0.0 の API Doc 参照先が間違っています。</p>
+
+<p>なので、URL を修正してあげる必要があります。titanium-mobile.py を開き 23行目辺りにある URL を次のように書き換えます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>titanium-mobile.py</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="python"><span class="line"><span class="k">if</span> <span class="n">version</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'2.'</span><span class="p">):</span>
+</span><span class="line">  <span class="n">url</span> <span class="o">=</span> <span class="s">'http://docs.appcelerator.com/titanium/data/'</span> <span class="o">+</span> <span class="n">version</span> <span class="o">+</span> <span class="s">'/api.json'</span>
+</span><span class="line"><span class="k">else</span><span class="p">:</span>
+</span><span class="line">  <span class="c">#url = 'http://developer.appcelerator.com/apidoc/mobile/' + version + '/api.json'</span>
+</span><span class="line">  <span class="n">url</span> <span class="o">=</span> <span class="s">'http://docs.appcelerator.com/titanium/data/'</span> <span class="o">+</span> <span class="n">version</span> <span class="o">+</span> <span class="s">'/api.json'</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>3. 生成された titanium-mobile-3.0.0.js を ~/.codeintel/extra にコピーする</h3>
+
+
+<p>SublimeCodeIntel をインストールすると ~/.codeintel というフォルダが作られているはずです。</p>
+
+<p>追加の補完用コードをまとめるために、extra フォルダを作ってそこに生成された titanium-mobile-3.0.0.js をコピーします。</p>
+
+<h3>4. SublimeCodeIntel に extra フォルダのパスを通す</h3>
+
+
+<p>~/.codeintel/config を開いて次のコードを追記します。</p>
+
+<pre class="code"><code>{
+  "JavaScript": {
+    "javascriptExtraPaths": ["~/.codeintel/extra"]
+  }
+}</code></pre>
+
+
+<p>これで、 SublimeCodeIntel が JavaScript ファイルで Titanium Mobile のコード補完を行うようになります。</p>
+
+<h3>5. (オプション) CoffeeScript でもコード補完を効かせる</h3>
+
+
+<p>SublimeCodeIntel が CoffeeScript のコード補完に対応していないので CoffeeScript のシンタックスを JavaScript に設定してやります。</p>
+
+<p>Sublime Text2 の &gt; Preferences &gt; Package Settings &gt; SublimeCodeIntel &gt; Settings - User を開いて次の設定を追加します。</p>
+
+<pre class="code"><code>{
+  "codeintel_syntax_map":
+  {
+    "CoffeeScript": "JavaScript"
+  }
+}</code></pre>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Titanium Alloy でつくったアプリをリリースしました]]></title>
+    <link href="http://hamasyou.com/blog/2013/01/22/titanium-alloy/"/>
+    <updated>2013-01-22T11:22:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2013/01/22/titanium-alloy</id>
+    <content type="html"><![CDATA[<p>Titanium Mobile プラットフォームの開発元である Appcelerator が公開している公式のフレームワーク <strong class="text-danger">Alloy</strong> を使って作ったアプリを公開しました。</p>
+
+<p>アプリ紹介ページは下になります。
+<a href="http://mountposition.co.jp/obento/" rel="external nofollow" title="Thankお弁当: http://mountposition.co.jp/obento/">Thankお弁当: http://mountposition.co.jp/obento/</a></p>
+
+<p><img alt="phones.png" src="http://hamasyou.com/images/phones.png" width="324" height="367" class="mt-image-none img-thumbnail" style=""></p>
+
+<p>Titanium Mobile は JavaScript を使ってスマホアプリを開発できるプラットフォームです。iPhone や Android 向けのアプリを手軽に開発することが出来ます。</p>
+
+<p>Alloy はそんな Titanium Mobile での開発に規約と規律を導入した MVC フレームワークになります。Ruby On Rails に似てる感じです。</p>
+
+<p>Alloy を使うといろいろいいことがありますが、それはまた別の記事で紹介します。</p>
+
+<p>以上、アプリの宣伝でした！</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[モバイルデザインパターン― ユーザーインタフェースのためのパターン集]]></title>
+    <link href="http://hamasyou.com/blog/2012/09/27/487311568X/"/>
+    <updated>2012-09-27T11:27:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/09/27/487311568X</id>
+    <content type="html"><![CDATA[<blockquote>
+<p>モバイルアプリのUIパターンを手軽に参照できるリファレンス。主要なプラットフォームで動くモバイルアプリの画面例を400点以上使いながら、ユーザーインタフェースの定番パターンをグラフィカルに解説します。本書で紹介する68個の基本パターンと5個のアンチパターンが、使いやすいモバイルアプリをデザインするうえでクリアしなければならない設計上の課題を解決してくれます。</p>
+<p><em>掲載UIパターン</em>:ナビゲーション、フォーム、テーブルとリスト、検索、並び替え、フィルター、ツール、グラフ、誘導、フィードバック、アフォーダンス、ヘルプ、アンチパターン</p>
+<footer><strong>本書背表紙より</strong></footer>
+</blockquote>
+
+
+<p>本書は、モバイルアプリ（スマートフォン上で動くアプリ）の UI デザインの定石をパターンとして紹介しているものになります。いいアプリを作っても、UI や見た目が悪いとそれだけで価値が下がってしまいます。アプリにとって本当に良い UI デザインを導ける人は、まだまだ少数だと思います。</p>
+
+<p>本書は、そんな良いデザインというのはどういうものなのか、使いやすい UI というのはどういうものなのかを名前をつけてパターン化し紹介しています。内容はとてもグラフィカルなので、かるく読み流すことも出来ますし、中身を熟読してさらに自分流のパターンを産み出していくのも良いと思います。</p>
+
+<p>ますます熱くなってくるであろうモバイルアプリ開発の現場で、デザインができなくて泣いている人にオススメの一冊です。スマートフォンアプリの開発者は、手元に置いておくと便利です。</p>
+
+<!-- more -->
+
+
+
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>本書で紹介されているパターンの参考イメージ</h3>
+
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://www.mobiledesignpatterngallery.com/mobile-patterns.php" rel="external nofollow" title="Mobile Design Pattern Gallery:UI Patterns for iOS, Android and More">Mobile Design Pattern Gallery:UI Patterns for iOS, Android and More</a></p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://www.flickr.com/photos/mobiledesignpatterngallery/collections" rel="external nofollow" title="Mobile Design Pattern Gallery’s photostream - flickr">Mobile Design Pattern Gallery’s photostream - flickr</a></p>
+
+<h3>ナビゲーション</h3>
+
+
+
+
+<dl>
+<dt>Springboard（スプリングボード）</dt>
+<dd><p>起動直後に表示されるメニューが、アプリ利用のきっかけになる。パーソナライズによって表示項目を変えてもよい。各メニュー項目が同じ重要度の場合はグリッドレイアウトを、そうでない場合は変則的なレイアウトを検討する。</p></dd>
+<dt>List Menu（リストメニュー）</dt>
+<dd><p>起動直後にメニューが並ぶ点は、スプリングボードと同じだが、メニュー項目の名前が長い場合や、サブタイトル等が必要な場合に利用する。</p></dd>
+<dt>Tabs（タブ）</dt>
+<dd><p>タブは標準的な Web サイトでのナビゲーションパターンに基づいているため、ユーザにとって馴染みが深い。</p></dd>
+<dt>Gallery（ギャラリー）</dt>
+<dd><p>個々のコンテンツを通じてナビゲーションを行う。コンテンツが頻繁に変わるような場合に利用すると良い。</p></dd>
+<dt>Dashboard（ダッシュボード）</dt>
+<dd><p>それぞれのデータや指標の要約が一目でわかるため、財務管理、データ分析、マーケティングアプリなどで使える。コンテンツの詰め込みすぎに注意する。</p></dd>
+<dt>Metaphor（メタファー）</dt>
+<dd><p>最初に表示される画面が何かのメタファーになっているのが特徴で、ゲームなどで使える。また、ユーザのメモをカタログ化したようなアプリにも応用しやすい。分かりにくいメタファーを使ってしまうと使いにくい UI になってしまうため注意。</p></dd>
+</dl>
+<h4>補助的なナビゲーション</h4>
+
+
+<p>メニューとしては使いづらいが、一つのコンテンツの補助メニューとして利用しやすいパターン。</p>
+
+<dl>
+<dt>Carousel（カルーセル）</dt>
+<dd><p>コンテンツをよく見せたい場合に使える。コンテンツの数が多くなった場合（8個以上）は、リスト表示を検討する。</p></dd>
+<dt>Expanding List（伸縮リスト）, アコーディオンメニュー</dt>
+<dd><p>徐々に詳細なオプション項目を表示させたい場合に適している</p></dd>
+</dl>
+<h3>テーブルとリスト</h3>
+
+
+
+
+<dl>
+<dt>Basic Table（基本的なテーブル）</dt>
+<dd><p>行間に細い線を表示したりすると見やすさが向上する。縦の罫線や色の濃い罫線は使わない。文字列は左寄せ、数値は右寄せ。</p></dd>
+</dl>
+<h3>検索、並び替え、フィルター</h3>
+
+
+
+
+<dl>
+<dt>Explicit Search（明示的な検索）</dt>
+<dd><p>入力内容をクリアするためのボタンを入力フィールド内に用意する。検索をキャンセルできるボタンを用意する。検索中であることがわかるフィードバックを用意する。</p></dd>
+<dt>Dynamic Search（動的な検索）</dt>
+<dd><p>アドレス帳、ユーザのメディアライブラリなどの有限なデータ集合に対して、入力ごとに動的に検索を行うパターンは有効になる。</p></dd>
+<dt>Saved and Recent Searches（検索結果の履歴）</dt>
+<dd><p><em>成功を収めたモバイルインターフェースはいずれも「ユーザの活動を尊重する」というユーザビリティ原則</em>を守っている。</p></dd>
+</dl>
+<h3>ツール</h3>
+
+
+
+
+<dl>
+<dt>Call to Action Button（アクションボタン）</dt>
+<dd><p>画面内でユーザに行わせたいアクションが1種類だけの場合、目立つボタンを画面内に用意するとよい。</p></dd>
+<dt>Bulk Action（操作の一括実行）</dt>
+<dd><p>画面上のコンテンツを一括して実行できるモードを提供する場合、編集モードというのを用意するとよい。編集モードから復帰するための手段も明確に提供する。</p></dd>
+</dl>
+<h3>誘導</h3>
+
+
+
+
+<dl>
+<dt>Tip（ツールチップ）</dt>
+<dd><p>ツールチップは対象の機能に隣接して表示されるようにする。</p></dd>
+<dt>Tour（ツアー）</dt>
+<dd><p>アプリが持つ重要な機能をユーザに明らかにするために使う。ユーザにとってのゴールは何かという観点で設計する。</p></dd>
+<dt>Transparency（透過表示）</dt>
+<dd><p>画面上のコンテンツに重なった半透明のレイヤーで使用方法を表示する。ユーザが操作を始めたら、レイヤーを非表示にする。</p></dd>
+</dl>
+<h3>フィードバックとアフォーダンス</h3>
+
+
+
+
+<dl>
+<dt>Error Messages（エラーメッセージ）</dt>
+<dd><p>モーダルダイアログとして表示するよりも現在内の画面内にメッセージを配置する方が望ましい。</p></dd>
+<dt>Tap（タップ）</dt>
+<dd><p>立体表現や影をデザインとして取り入れることで、それがタップ可能であることを示せる。</p></dd>
+<dt>Flick（フリック）</dt>
+<dd><p>表示可能なコンテンツが他にもあるということを示す方法として、フリック可能なことを認識させるという方法もある。</p></dd>
+</dl>
+<h3>アンチパターン</h3>
+
+
+
+
+<dl>
+<dt>Idiot Box（作業を妨げる愚行）</dt>
+<dd><p>確認ダイアログを表示するのはもとに戻せない操作をする場合だけにする。</p></dd>
+</dl>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理]]></title>
+    <link href="http://hamasyou.com/blog/2012/09/23/487311554X/"/>
+    <updated>2012-09-23T22:05:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/09/23/487311554X</id>
+    <content type="html"><![CDATA[<p>本書は、クライアントサイド（ブラウザ）で JavaScript を使ってリッチなアプリを作る際のプラクティスを説明しています。</p>
+
+<p>前半では、JavaScript によるオブジェクト指向開発の方法や MVC 開発の方法を、後半では、JavaScript の MVC デザインパターンに則った、各種ライブラリの説明が行われています。</p>
+
+<p>最近では、ユーザビリティの良いアプリを開発するのに必須なクライアントサイドでの JavaScript の使い方が複雑になってきているように思います。ちょっと jQuery を使って DOM 操作していればよかった頃と比べて、最近では色々なライブラリを組み合わせる必要があったり、クライアントサイドでも MVC パターンが必要になったりと、大変です。</p>
+
+<p>本書は、そんな JavaScript でリッチアプリケーションを作成する際の取っ掛かりを学ぶのに良いと思います。オライリー本なので、読むのが簡単ということはなく、むしろ格式高い感じすらしますが、多少 JavaScript でオブジェクト指向の経験があれば、読み進めるのは難しく無いと思います。</p>
+
+<!-- more -->
+
+
+
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>インスタンスメソッド定義のイディオム</h3>
+
+
+<p>JavaScript ではクラスのプロトタイプに対して関数を追加することでインスタンスメソッドを定義できます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">breath</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">};</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+</span><span class="line"><span class="nx">person</span><span class="p">.</span><span class="nx">breath</span><span class="p">();</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>クラスのプロトタイプに <em>fn</em> というエイリアスを設定することが広く行われています。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">Person</span><span class="p">.</span><span class="nx">fn</span> <span class="o">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+</span><span class="line"><span class="nx">Person</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">run</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">};</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>関数呼び出しのコンテキスト</h3>
+
+
+<p>apply() と call() を使うと、関数の呼び出しコンテキストを変更できます。jQuery の API ではイベントハンドラや each() による繰り返しの中で、コンテキスト（this の値）が変更されています。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">'.btn'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>元のコンテキストにアクセスするには、良く self などの名前で this を保存しておき、後で参照する方法がとられます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">'.btn'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">self</span><span class="p">.</span><span class="nx">btnClicked</span><span class="p">();</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>apply() を使うと、self を使わなくても同じことができます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">'.btn'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="nx">proxy</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">btnClicked</span><span class="p">();</span>
+</span><span class="line"><span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>jQuery の proxy() メソッドがまさしく、これと同じことをしています。</p>
+
+<h3>イベントの発生順序</h3>
+
+
+<p>ある要素とその祖先の要素が同じ種類のイベントに対してイベントハンドラを登録している場合、先に呼び出されるのはブラウザによって違います。</p>
+
+<p>イベントが呼び出される順番は2種類あり、<strong class="text-danger">イベントキャプチャリング</strong> と<strong class="text-danger">イベントバブリング</strong>になります。</p>
+
+<h4>イベントキャプチャリング</h4>
+
+
+<p>最も上位（外側）の要素からイベントが発生した要素へとイベントリスナが呼び出されます。つまり、祖先の要素、内側の要素の順番でイベントリスナが呼び出されます。</p>
+
+<h4>イベントバブリング</h4>
+
+
+<p>イベントが発生した要素（内側）から祖先要素へとイベントリスナが呼び出されます。</p>
+
+<p>W3C の仕様では、addEventListener() の3つめの引数に true を指定するとイベントキャプチャリングで呼び出され、false か 指定しないとイベントバブリングで呼び出されます。</p>
+
+<p>バブリングが行われている際には、イベントオブジェクトの stopPropagation() を呼び出すことによって、バブリングを中止することができます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">link</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">e</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
+</span><span class="line">  <span class="cm">/* ... */</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>ブラウザによってそれぞれのイベントに対するデフォルトのアクションが定義されています。たとえば、リンクのクリックでは、src で指定された URL に遷移する動作や、チェックボックスのクリックで項目が選択状態になる動作などです。</p>
+
+<p>これらのデフォルトのアクションはイベントの伝播が完了した後で実行されます。このデフォルトのアクションを中止するには、 preventDefault() 関数を呼び出します。また、イベントハンドラの戻り値で false を返すことで、preventDefault() を呼び出したのと同じ動作になります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'submit'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="cm">/* e.preventDefault() */</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">confirm</span><span class="p">(</span><span class="s1">'本当に送信しますか？'</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>イベントの委譲</h3>
+
+
+<p>イベントバブリングの性質を考えると、複数ある子孫の要素それぞれにイベントリスナを設定するより、祖先の要素一つだけにイベントハンドラを設定する方が効率がよくなります。</p>
+
+<p>jQuery では、これを delgate() メソッドを使って実装できます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="cm">/* 望ましくないコード */</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">'ul li'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// こちらのほうが効率が良い</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">'ul'</span><span class="p">).</span><span class="nx">delegate</span><span class="p">(</span><span class="s1">'li'</span><span class="p">,</span> <span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">});</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>このように、イベント処理を委譲することによるメリットは、動的に追加された要素についても、自動でイベントリスナが適用されることです。</p>
+
+<h3>画面表示時の初期データの読み込み</h3>
+
+
+<p>ページ上のデータは、最初に読み込まれるページに含まれているか、Ajax や JSONP を使った HTTP リクエストによって事後的に読み込まれます。多くのデータを初期表示時に読み込むのには時間がかかりますが、Ajax や JSONP によるリクエストは、<em>並列処理が可能</em>であるので高速に処理できます。</p>
+
+<p>また、HTTP リクエストで取得したデータは、ローカルのストレージにキャッシュすることができます。ストレージには2種類あり、 <code>localStorage</code> と <code>sessionStorage</code> というオブジェクトでアクセスできます。</p>
+
+<h4>ローカルストレージ</h4>
+
+
+<p>ブラウザが終了した後も保持される。</p>
+
+<h4>セッションストレージ</h4>
+
+
+<p>ブラウザが開いている間のみ保持される。</p>
+
+<h3>コントローラと内部状態</h3>
+
+
+<p>まず言えるのは、<em>DOM 内にモデルの内部状態やその他の情報を保持するべきではありません</em>。頑強な MVC アーキテクチャの実現のためには、内部状態やその他の情報は、コントローラ内に保持させる方がよい。</p>
+
+<p>ビューごとにコントローラを1つずつ用意するというのがよく使われているパターンです。</p>
+
+<h3>リソースとURL</h3>
+
+
+<p>通常、Ajax などでリソースとなるデータをロードした場合、ブラウザの URL は変化しません。しかし、Web 上の個々のリソースには URL が割り当てられていると考えるのが一般的で、URL が変わらない状況というのは好ましくありません。</p>
+
+<p>そこで、この問題に対しては、内部状態が変化したら URL を変化させるようにします。このとき、よく使われるのが、URL のハッシュ（#以降の文字列）を変更するというものです。ハッシュの値はサーバに送信されないため、ページの再読込を発生させることなく変更できます。</p>
+
+<p>location.hash を使うと、ページのハッシュを取得できます。</p>
+
+<p>主要なブラウザでは、URL のハッシュが変更されたかどうかを調べるのに、hashchange イベントが使えます。</p>
+
+<p>JavaScript で作られたページは、クローラにとってはすべて同じ URL のように見えてしまいます。そこで、Google は、<a href="http://code.google.com/web/ajaxcrawling/index.html" rel="external nofollow" title="Ajax Crawling">Ajax Crawling</a> という仕様を提案しています。</p>
+
+<h3>Backbone.js ライブラリ</h3>
+
+
+<p><a href="http://backbonejs.org/" rel="external nofollow" title=""></a> は JavaScript アプリケーションの構築のための優れたライブラリです。Backbone.js も MVC 構造でアプリケーションを作成していきます。</p>
+
+<h2>参考</h2>
+
+
+
+
+<ul>
+<li><a href="http://fingaholic.github.com/posts/2012-06-27-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 1章 - jekylog">ステートフルJavaScript 1章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-02-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 2章 - jekylog">ステートフルJavaScript 2章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-17-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 3章 - jekylog">ステートフルJavaScript 3章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-20-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 4章 - jekylog">ステートフルJavaScript 4章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-23-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 5章 - jekylog">ステートフルJavaScript 5章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-07-25-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 6章 - jekylog">ステートフルJavaScript 6章 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-08-01-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 11章 その1 - jekylog">ステートフルJavaScript 11章 その1 - jekylog</a></li>
+<li><a href="http://fingaholic.github.com/posts/2012-08-07-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 11章 その2 - jekylog">ステートフルJavaScript 11章 その2 - jekylog</a></li>
+</ul>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Clean Coder プロフェッショナルプログラマへの道]]></title>
+    <link href="http://hamasyou.com/blog/2012/09/23/4048860690/"/>
+    <updated>2012-09-23T20:42:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/09/23/4048860690</id>
+    <content type="html"><![CDATA[<p>本書は、Clean Coder（プログラマのプロ）とはどんな人物で、どういうことに心がける必要があるのかを解説した本です。</p>
+
+<p><strong class="text-danger">プロ</strong>とは、自分の行いに責任を持つ人物。責任とは、清く正しく働くということ。コミュニケーションをうまくとること。見積りを確実にすること。時間をかんりすること。リスクと見返りの見極めが困難な状況に立ち向かうこと。</p>
+
+<p>本書はこういった、プロのプログラマを育てる本です。コーディングだけではなく、どういう仕事の仕方をする必要があるか、どういうことに気を付けないといけないのかを解説しています。新入社員や初めて先輩になる人におすすめの一冊です。</p>
+
+<!-- more -->
+
+
+
+
+<h2>目次</h2>
+
+
+
+
+<ol>
+<li>プロ意識</li>
+<li>「ノー」と言う</li>
+<li>「イエス」と言う</li>
+<li>コーディング</li>
+<li>テスト駆動開発</li>
+<li>練習</li>
+<li>受け入れテスト</li>
+<li>テスト戦略</li>
+<li>時間管理</li>
+<li>見積もり</li>
+<li>プレッシャー</li>
+<li>協力</li>
+<li>チームとプロジェクト</li>
+<li>指導・従弟制度・職人気質</li>
+</ol>
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>プロ意識</h3>
+
+
+<p>プロは自分で後始末をする。プロは責任をともなう。</p>
+
+<h4>コードを把握する</h4>
+
+
+<p>プロのプログラマは、自分のコードが動作することを把握している。どうやって把握するかといえば、それは<em>テスト</em>である。</p>
+
+<p>正常に動いていること、期待しているとおりに動くことは、テストでしか確認できない！</p>
+
+<h4>過去を知る</h4>
+
+
+<blockquote><p>「過去を記憶できない者は、それを繰り返す運命にある」</p></blockquote>
+
+<p>これまでの業界の進歩や先人の知恵、経験は、色々な本から吸収できる。ソフトウェアのプロとして最低限覚えておかなければならないものが以下になる。</p>
+
+<ul>
+<li>デザインパターン</li>
+<li>設計原則</li>
+<li>方法論</li>
+<li>規律・規範（ソフトウェア開発メソッド）</li>
+<li>成果物・表記法（UML・構造チャート・状態遷移図等）</li>
+</ul>
+<h3>「ノー」と言う</h3>
+
+
+<p>出来ないこと、ムリなこと、正しくないことには「ノー」という。誠実に！</p>
+
+<h3>「イエス」と言う</h3>
+
+
+<p>「イエス」と言う時には、確実に約束したと分かる言葉を使う。責任をもってやり遂げる！</p>
+
+<h3>コーディング</h3>
+
+
+<p>「完了」を定義する。何をしたら終わるか。それには、受け入れテストが必要だ。</p>
+
+<p>TDD（テスト駆動開発）は、実施するに値する価値がある。プロは自分のコードがどう動くかを把握する必要がある。それにはテストが必要だ。プロはコーディングの終わり時を知っている。それには、受け入れテストが必要だ。</p>
+
+<p>TDD は、テストでコーディングサイクルを回す。確実性、血管混入率の低下、勇気、ドキュメント、設計を促進する。</p>
+
+<h3>受け入れテスト</h3>
+
+
+<p>早過ぎる詳細化は癌である。<em>要求は変化するので詳細化は現実的ではない。</em>要求を詳細化すると、開発中のシステムとかけ離れていく。</p>
+
+<p>プロは、開発に入るまで要求を詳細化しない！</p>
+
+<p>いつ受け入れテストを書くか。最初のイテレーションが始まるまでに、最初の受け入れテストを準備しておかなければならない。</p>
+
+<h3>時間管理</h3>
+
+
+<p>無駄な会議には参加しない。ケント・ベックはこう言った。「5分で決着のつかない議論は、議論では決着がつかない」と。明確な裏付けのない根拠では議論は決着がつかない。</p>
+
+<h3>プレッシャー</h3>
+
+
+<p>プレッシャーから逃れるには、プレッシャーを生み出す状況から逃れること。ただし、最悪な逃げ方は<em>急いでやること</em>。この誘惑には何がなんでも抵抗しなければならない。</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Amazon Web Services クラウドデザインパターン 設計ガイド]]></title>
+    <link href="http://hamasyou.com/blog/2012/09/13/4822211967/"/>
+    <updated>2012-09-13T10:19:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/09/13/4822211967</id>
+    <content type="html"><![CDATA[<!-- more -->]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[実践プログラミングDSL ドメイン特化言語の設計と実装のノウハウ]]></title>
+    <link href="http://hamasyou.com/blog/2012/09/13/4798125393/"/>
+    <updated>2012-09-13T10:17:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/09/13/4798125393</id>
+    <content type="html"><![CDATA[<!-- more -->]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[NoSQLプログラミング実践活用技法]]></title>
+    <link href="http://hamasyou.com/blog/2012/09/13/4798126055/"/>
+    <updated>2012-09-13T10:10:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/09/13/4798126055</id>
+    <content type="html"><![CDATA[<!-- more -->]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[まつもとゆきひろ コードの未来]]></title>
+    <link href="http://hamasyou.com/blog/2012/05/26/4822234630/"/>
+    <updated>2012-05-26T08:52:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/05/26/4822234630</id>
+    <content type="html"><![CDATA[<p>本書は日経Linuxで2009年6月号から2012年6月号まで連載されていた「まつもとゆきひろ 技術を斬る」に加筆・修正を加えたものです。2009年からということで古い技術もあるのでは？と思われるかもしれませんが、さすがまつもとさん！きちんと未来を見据えたテーマでかかれていて、すごく参考になりました。</p>
+
+<p>本書は読み物の色がつよく、言語の過去・未来や新しい言語（<em>Go</em>、<em>Dart</em>、<em>CoffeeScript</em>、<em>Lua</em>）の言語作成者ならではの視点での解説、クラウド時代のC10K問題やスケーラビリティの話、ビッグデータ時代の NoSQL の扱い方などをまつもとさん視点で解説しています。</p>
+
+<p>実際にプログラミングをやっている人であれば、ニヤニヤしながら読めることまちがいなしです。最近の技術動向をさくっと知るというのにも良いと思います。僕もとても楽しく面白く読むことが出来ました。</p>
+
+<p>新人教育にいかがですか？</p>
+
+<!-- more -->
+
+
+
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>エクストリーム未来予測</h3>
+
+
+<p>未来を予測するときの簡単なテクニック。エクストリーム・プログラミング（XP）を考案した Kent Beck が著書の中で書いている言葉。</p>
+
+<h3>DSL デザインの構成要素</h3>
+
+
+
+
+<dl>
+<dt>コンテキスト</dt>
+<dd>DSL の記述がどのような意味を持つか規定する。</dd>
+<dt>センテンス</dt>
+<dd>コンテキストの内部の記述で、関数呼び出しやメソッド呼び出しで表現される個別の動作。</dd>
+<dt>ユニット</dt>
+<dd>単位。20.hours の hours など。</dd>
+<dt>ボキャブラリ</dt>
+<dd>目的分野にふさわしいメソッドをどれだけ用意できるか。</dd>
+<dt>ヒエラルキ</dt>
+<dd>ネストしたコンテキスト</dd>
+</dl>
+<h3>GC（ガベージコレクション）の3つの基本方式</h3>
+
+
+
+
+<h4>マークアンドスイープ方式</h4>
+
+
+<p>先頭から生きているオブジェクトに印をつけていき、最後まで印をつけたら印の付いていないオブジェクトを回収する方式。</p>
+
+<p>処理時間は、「生きているオブジェクト数」 + 「全オブジェクト数」の和（マークを付ける処理 + 回収する処理）。</p>
+
+<h4>コピーコレクション方式</h4>
+
+
+<p>マークアンドスイープ方式では、<em>大量のオブジェクトが割り当てられ、そのうちごく一部だけが生き残るような場合に必要以上に時間がかかってしまう</em>。</p>
+
+<p>コピーコレクションは、マークアンドスイープ方式でいうマークを付ける処理（マークフェーズ）で、生きているオブジェクトを新しい領域にコピーするようにし、すべてのコピー（マーク）が終わったら古い領域を回収することで行う。</p>
+
+<p>マークをつける処理よりもコピーする処理のほうがコストが高いため、生きているオブジェクトの数が多いと不利な方式になる。</p>
+
+<h4>リファレンスカウント方式</h4>
+
+
+<p>オブジェクト自身が、自分が参照されているカウント（リファレンスカウント）を知っていて、参照が増減する度にリファレンスカウントを書き換える方式。</p>
+
+<p>メリットは簡単に実装ができること。</p>
+
+<p>デメリットは、循環参照に対応できないこと。また、並列処理と相性がわるいこと。</p>
+
+<h4>応用方式</h4>
+
+
+<p>基本方式を組み合わせる形で、応用方式が多くの場合利用されている。</p>
+
+<p><em>世代別GC</em>、<em>インクリメンタルGC</em>、<em>並列GC</em>である。</p>
+
+<p>世代別GCは、「オブジェクトのほとんどは短時間でゴミになり、長い時間生き残ったオブジェクトはより長い寿命を持つ」という性質を利用して、オブジェクトに新しい、古いのタグをつけ、新しいものだけをGCするマイナーGCと古いものも対象にするメジャーGCの２つを使い分ける方式。</p>
+
+<p>インクリメンタルGCは、リアルタイム処理などで GC の中断時間を減らす目的で、GC を少しずつ処理していく方式。</p>
+
+<p>並列GCは、複数 CPU を利用して GC を行う方式。</p>
+
+<h3>例外処理</h3>
+
+
+<p>例外が発生したときの対応には大きく2つある。ひとつは、<em>実行を中止すること</em>。もうひとつは、<em>例外が発生した原因を取り除き再挑戦すること</em>。</p>
+
+<h3>クロージャ</h3>
+
+
+<p>「関数オブジェクトから外側の変数がアクセス（参照や更新）できる」というのがクロージャを構成する要件の一つ。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">func</span><span class="p">());</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">echo</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">i</span> <span class="o">*</span> <span class="nx">i</span><span class="p">;</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="o">&gt;</span> <span class="mi">0</span>
+</span><span class="line"><span class="o">&gt;</span> <span class="mi">1</span>
+</span><span class="line"><span class="o">&gt;</span> <span class="mi">4</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>外側のスコープに属する変数を参照している関数オブジェクトは、そのローカル変数を「閉じ込め」る。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">extent</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">n</span><span class="o">++</span><span class="p">;</span>
+</span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"n="</span> <span class="o">+</span> <span class="nx">n</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">extent</span><span class="p">();</span>
+</span><span class="line"><span class="nx">f</span><span class="p">();</span>
+</span><span class="line"><span class="o">&gt;</span> <span class="nx">n</span><span class="o">=</span><span class="mi">1</span>
+</span><span class="line"><span class="nx">f</span><span class="p">();</span>
+</span><span class="line"><span class="o">&gt;</span> <span class="nx">n</span><span class="o">=</span><span class="mi">2</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<p class="option">Ruby 1.9では、関数っぽいプログラミングを支援するために、lambda の代わりに「-&gt;」という式がつかえるようになり、また「call」メソッドを省略して「f.()」と呼び出せるようになっています。</p>
+
+
+
+
+<h3>Go</h3>
+
+
+<p>Google からリリースされた新言語「<em>Go</em>」は、システムプログラミング言語では初となる言語仕様のレベルで並列プログラミングを意識している。</p>
+
+<p>Go の関数やメソッドは複数の値を戻り値として返すことができる。</p>
+
+<p>Go には例外機構がないが、戻り値の多値をもちいて、本来の戻り値とエラーが発生したかどうかを区別できる「<strong class="text-danger">コンマOK</strong>」スタイルをとっている。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="go"><span class="line"><span class="nx">f</span><span class="p">,</span><span class="nx">ok</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="err">ファイル名</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">O_RDONLY</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class="line"><span class="k">if</span> <span class="nx">ok</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class="line">  <span class="c1">//... open に失敗したときの処理</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Go の goroutine は、メモリ空間の共有を行い、軽量であり、コンテキストスイッチが自動でマルチコアを活用できる。</p>
+
+<h3>ブルームフィルタ</h3>
+
+
+<p><em>ブルームフィルタ</em>は、あるデータが登録されているかどうかを判定できるデータ構造。</p>
+
+<ul>
+<li>判定時間がデータ件数に依存しない（O(1)）</li>
+<li>空間効率が非常に良い</li>
+<li>要素の削除ができない</li>
+<li><em>たまに間違える</em></li>
+</ul>
+<p>ブルームフィルタは、本当は要素に入っていないけれども入っているとみなされるという疑陽性（false positive）がある。</p>
+
+<h3>C10K問題</h3>
+
+
+<p>OS の select コールを使わないで、<em>epoll</em> や <em>kqueue</em> などの別のAPIを利用する。または、ノンブロッキングI/O を使う。Ruby のイベントループフレームワークには、EventMachine がある。</p>
+
+<h3>アプリサーバ</h3>
+
+
+<p>Unicone は一般的な Master プロセスからワーカープロセスにリクエストを転送するプッシュモデルではなく、<em>プルモデル</em>を採用しているため。プルモデルとは、ワーカー側が処理が Master に処理を受け取りに行く方式。</p>
+
+<h3>key-value ストア</h3>
+
+
+<p>ACID （Atomicity:原子性、Consistency:一貫性、Isolation:独立性、Durability:持続性）特性はデータベースの世界では一般的だが、近年大規模データを扱うために分散を考えるようになってくると ACID を満たすのが厳しくなってきている。</p>
+
+<p>CAP 定理というものがあり、大規模環境では、Consistency:一貫性、Availability:可用性、Partition Tolerance:分割体制 のうち同時に2つまでしか満たすことができないとされている。</p>
+
+<p>大規模分散環境では、多くは Consistency を捨てている。多くの key-value ストアはトランザクション処理を持たないのはそういうこと。</p>
+
+<h3>アムダールの法則</h3>
+
+
+<p>一般的にマルチコアコンピュータは、CPU を複数積んでいても、その他のデバイスは共有している事が多い。たとえば、メモリやディスク、ネットワークデバイスなど。もし、CPU 以外のところに処理のボトルネックがある場合は、マルチコアを投入しても性能は改善されない。</p>
+
+<h3>ノンブロッキングI/O</h3>
+
+
+<p>大量の接続をさばくサーバでは、スレッドを使うとメモリ負荷やスレッド切り替えのコストが大きくなりすぎる傾向がある。そのためイベントを待ち受けてそれに対応する処理を「シングルスレッド」で処理するやり方のほうが効率的になる。</p>
+
+<p>シングルスレッドで処理をするときに気を付けないといけないのは、そのスレッドが「<em>ブロック</em>」されると、プログラム全体が止まってしまうことである。</p>
+
+<p>ブロックは、<em>入出力待ち</em>の場合がほとんどなため、入出力待ちを以下にブロックしないかが重要になる。</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Webエンジニアのための データベース技術[実践]入門]]></title>
+    <link href="http://hamasyou.com/blog/2012/05/09/4774150207/"/>
+    <updated>2012-05-09T00:47:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2012/05/09/4774150207</id>
+    <content type="html"><![CDATA[<p>「データベース技術実践入門」とタイトルにはありますが、この本は入門ではなく「おぼえがき」のようなものだと読んで感じました。データベースの<em>設計</em>を行う際の注意点や、こういう点は押さえておくべきということを広く確認できる構成になっていたからです。</p>
+
+<p>例えば、インデックスの種類を挙げ、データ数が増えてきた際にどのようにインデックスが効いてくるか、逆に効かなくなってくるかをまとめてあったり、データベースが吐き出すログにはどのようなものがあり、障害時の復旧手順のなかでどのログがどのような役割をになっていたりするかをまとめてあったりします。</p>
+
+<p>また、最近のストレージ動向にも目を向け、データベースのパフォーマンスを上げるためにはどうすればよいかを解説していたりもします。</p>
+
+<p>本書はつまるところ、「<em>データベースを自分で構築し、（大規模なデータを扱う）サービスと絡めて運用する人向け</em>」の本だと思います。「Webエンジニアのための」と書いてありますが、全てのエンジニアではなく、昨今話題のスマートフォン向けソーシャルゲームや、大量ログを扱わなければならないようなサービスを運営する中小規模の開発会社の開発者向けです。</p>
+
+<p>DBの設計や、エンタープライズシステム向けのデータベースを扱う際に読むような本ではないですが、サラッと読んで知識を蓄える感じで読むのにステキなまとめられかたをしていると思います。</p>
+
+<p>ちなみに、本書で扱っているデータベースは <em>MySQL</em> になります。</p>
+
+<!-- more -->
+
+
+
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>片方向/非同期レプリケーション</h3>
+
+
+<p>片方向レプリケーションは、「マスタ」に更新した結果が「スレーブ」に「非同期」で伝搬するというタイプのレプリケーションである。マスタで実行した更新系 SQL 文が<em>バイナリログ</em>というログファイルに記録され、このログファイルの中身がスレーブ側で順次実行される。</p>
+
+<p>スレーブでは「<em>バイナリログの受信</em>」と「<em>バイナリログの実行</em>」の2段階で行われる。「バイナリログの受信」は I/O スレッド、「バイナリログの実行」は SQL スレッドが実行する。</p>
+
+<p>このレプリケーションでは、バイナリログの受信よりも、バイナリログの実行の部分で遅延が発生しやすくなる。これは、ネットワークよりもディスクがボトルネックになることが多いからである。</p>
+
+<h4>障害の状況パターン</h4>
+
+
+
+
+<ol>
+<li>マスタで生成したバイナリログがスレーブで最後まで受信出来ていない</li>
+<li>スレーブでバイナリログの実行が最後まで行われていない</li>
+</ol>
+<ol>
+<li><p>の場合はマスタを復旧させ、最新のバイナリログをスレーブに更新しなければ、最新のバイナリログ分のデータロスになる。</p></li>
+<li><p>の場合は、スレーブがマスタの代わりに処理を継続する（マスター昇格）することで障害対応が可能だが、<em>バイナリログを最後まで実行し終わったことを確認</em>してから処理しなければ、データ不整合が発生することになる。</p></li>
+</ol>
+<h3>片方向/準同期レプリケーション</h3>
+
+
+<p>「バイナリログの受信」を同期処理するようにしたもの。障害パターンの1. の状況が限りなく発生しなくなるメリットがある。デメリットとしては、マスタ→スレーブの通信を同期するため、スレーブからのレスポンス分スループットが悪くなる。</p>
+
+<h3>片方向/同期レプリケーション</h3>
+
+
+<p>「バイナリログの実行」までを同期処理するようにしたもの。MySQL では実装されていない。</p>
+
+<h3>双方向レプリケーション</h3>
+
+
+<p>双方向レプリケーションは、マスタを複数用意しそれぞれのマスタを更新できるようにするもの。マルチコア CPU や、SSD などのハードウェアの性能をより引き出すことができる。</p>
+
+<p>ただし、それぞれのマスタに対して同時に更新を行った際の分散排他制御の仕組みが不可欠で、DBMS によって実装方法はまちまち。</p>
+
+<h3>障害からの復旧方法</h3>
+
+
+<p>トランザクション対応のデータベースの多くは、REDO ログという更新対象列の変更情報を記録したファイルを使って一貫性を保っている。</p>
+
+<p>MySQL は更新されたデータをすぐにディスクに書き込むのではなく、キャッシュ領域に保持しており定期的にディスクに書き込むという処理を行なっている。そのため、データベースがクラッシュするとキャッシュ領域がクリアされ、ディスクに書かれたデータが古い状態ということが起きる。</p>
+
+<p>そこで、クラッシュから回復するときには、最初に REDO ログからディスクの状態を最新の状態に戻す（進める）必要がある。</p>
+
+<h3>MySQL のレプリケーションはシングルスレッド</h3>
+
+
+<p>MySQL のレプリケーションはシングルスレッドで行われる。そのため、マスタが並列で大量に処理をさばいたとしても、レプリケーション処理が詰まってしまうということが大規模サービスでは起きてしまう。</p>
+
+<p>遅延の主な要因はディスク I/O が低速なことであるため、スレーブには SATA SSD などの高速なディスクを使うことでこの問題を解決するのが現実的。</p>
+
+<p>最近では、PCI-Express インターフェースをもつ FusionIO社の ioDrive や Virident社のFlashmax などが使われている。</p>
+
+<h3>運用の勘所</h3>
+
+
+<p>CPU 使用率で監視すべき点が3つある。</p>
+
+<ul>
+<li>ディスクI/O（%iowait）</li>
+<li>システム空間での使用率（%system）</li>
+<li>ユーザ空間での使用率（%user）</li>
+</ul>
+<dl>
+<dt>ディスクI/O（%iowait）</dt>
+<dd><p><em>ディスクI/Oがボトルネック</em>になっている場合、この値が跳ね上がる。</p></dd>
+<dt>システム空間での使用率（%system）</dt>
+<dd><p>OS 内の処理で使用されている CPU 率。<em>スワップが発生したり、ネットワーク周りでトラブルがおきている場合</em>この値が跳ね上がることがある。</p></dd>
+<dt>ユーザ空間での使用率（%user）</dt>
+<dd><p>CPU を使うような処理が多いことを表す。DB サーバではあまり大きな値になることはないが、大きくなった場合はテーブルスキャンを連発しているなどの問題があることが多い。</p></dd>
+</dl>
+<h3>リストアとリカバリ</h3>
+
+
+<p><strong class="text-danger">リストア（バックアップの結果を戻す）</strong>だけでは、障害直前の状態に復旧することはできない。バックアップ以降にも処理が行われており、その更新結果は<strong class="text-danger">バイナリログ</strong>に記録されている。</p>
+
+<p>リストアしたあとに、バイナリログの中身を順番に当てていくことで、障害直前の状態に戻すことができる。</p>
+
+<h3>NoSQL</h3>
+
+
+<p>「SQL文のような複雑な言語を使わずにプログラミング言語のライブラリ関数を使って直接データアクセスするほうが高速になるのではないか？」このような背景から生まれたのが <strong class="text-danger">NoSQL</strong>。</p>
+
+<p>NoSQL では、テーブル/ファイルを開っぱなしにして処理性能を高めるようにしている。</p>
+
+<p>一般的な NoSQL では、<em>トランザクションをサポートしていない</em>。また、<em>スキーマレス</em>なため主に XML や JSON を格納して扱う。<em>インデックスは主キー</em>以外使えないと思ったほうがよい。</p>]]></content>
+  </entry>
+  
+</feed>

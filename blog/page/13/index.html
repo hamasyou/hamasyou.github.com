@@ -1,0 +1,984 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="「ビジネスマンだからこそモデリングを覚えるべきだ！」本書はこう主張しています。その根拠は、システムはビジネスでやりたいこと（What）を具現化したものだから、ビジネスマンがモデリングを覚えてシステムのモデルを整理できることが一番正確で一番早いから、です。 しかし現実はそうかんたんには行きません。 &hellip;">
+  
+
+  
+
+
+<meta property="og:title" content="それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/page/13/index.html" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="「ビジネスマンだからこそモデリングを覚えるべきだ！」本書はこう主張しています。その根拠は、システムはビジネスでやりたいこと（What）を具現化したものだから、ビジネスマンがモデリングを覚えてシステムのモデルを整理できることが一番正確で一番早いから、です。 しかし現実はそうかんたんには行きません。 &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/page/13">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  <div class="col-sm-12 col-md-9">
+    
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/11/12/4774124346/">できる人のモデル思考力 -データモデルはこう使え!!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-11-12T10:44:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 12<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/database/">Database</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/moderingu/">モデリング</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/11/12/4774124346/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>「<strong class="text-danger">ビジネスマンだからこそモデリングを覚えるべきだ！</strong>」本書はこう主張しています。その根拠は、システムはビジネスでやりたいこと（What）を具現化したものだから、ビジネスマンがモデリングを覚えてシステムのモデルを整理できることが一番正確で一番早いから、です。</p>
+
+<p>しかし現実はそうかんたんには行きません。ビジネスマンにはモデリングを覚えることよりももっと他に優先度の高いことがあります。だからこそ、RFP（提案依頼書）作成の代行サービスが流行っているのです。</p>
+
+<p>本書は、そんな<strong class="text-danger">時間の無いビジネスマンに、モデリングという作業を分かりやすく短時間で身に着けてもらうための本</strong>になっています。SI業務でデータベース設計をやったことがある人や、要件定義やシステム分析をバリバリにやっているコンサルタントやSEには少し物足りない内容になっています。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/11/12/4774124346/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/11/03/4822281957/">オブジェクト指向でなぜつくるのか―知っておきたいプログラミング、UML、設計の基礎知識―</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-11-03T20:04:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 3<span>rd</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/uml/">UML</a>
+    
+      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/">これは読むべき</a>
+    
+      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/">オブジェクト指向</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/11/03/4822281957/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>『なぜシリーズ』の第5弾となるオブジェクト指向に関する書籍です。「<strong class="text-danger">オブジェクト指向</strong>」というキーワードは一時期Buzzwordでした。それは、オブジェクト指向を<strong class="text-danger">プログラミングの道具</strong>として説明したり、<strong class="text-danger">概念</strong>だけを説明したり、<strong class="text-danger">UMLを使った設計技法</strong>のことを指して説明していたりと、知らない人が聞いたら混乱してしまうような説明しかされていなかったためです。</p>
+
+<blockquote>
+<p>実際には「オブジェクト指向が現実世界をそのままソフトウエアに表現する技術である」という説明は間違いです。</p>
+<footer><strong>本書</strong></footer>
+</blockquote>
+
+
+<p>この説明が示すように、オブジェクト指向を本当に理解し、使いこなすには、オブジェクト指向に関する誤解を解く必要があると思います。本書はその手助けをしてくれる、正真正銘、本物のオブジェクト指向入門書です。</p>
+
+<p>オブジェクト指向のキーワードに惑わされて疲れてしまった人、オブジェクト指向って難しそうだから敬遠していた人、オブジェクト指向を理解してみたい人、おすすめの一冊です。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/11/03/4822281957/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/10/22/jsf/">JSF-カスタムコンポーネント覚書き</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-10-22T13:44:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 22<span>nd</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/jsf/">JSF</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/10/22/jsf/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/249-1404088-2131559?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title=""></a>
+</p>
+
+
+<p>JSFでカスタムコンポーネントを作るときの覚書きです。参考にした『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/249-1404088-2131559?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title="JavaServer Faces完全ガイド">JavaServer Faces完全ガイド</a>』は、ツリーコンポーネントをカスタムコンポーネントとして作る手順が載っていました。</p>
+
+<p>ここでは、カスタムコンポーネントを作るときに必要となるパーツと、注意点などをまとめておこうと思います。カスタムコンポーネントは大きく、入力用のコンポーネントと出力用のコンポーネントの2つに分けれます。入力用のコンポーネントはリクエスト間で値の保存・読み込みやデコードレンダリングなどを行わなければなりません。出力用のコンポーネントの場合は、値を保持し、エンコードレンダリングを行うことで機能を表現します。</p>
+
+<p>ここでは、出力用のコンポーネントの話をしています。説明が断片的なので、上記の本を読んだほうが手っ取り早いかも・・・ ^^;</p>
+
+<p><section></section></p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.wakhok.ac.jp/~tomoharu/jsf2004/text/index_c11.html" rel="external nofollow" title="JSFによるWebアプリケーション開発/カスタム・コンポーネント">JSFによるWebアプリケーション開発/カスタム・コンポーネント</a></li>
+</ul>
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/10/22/jsf/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/10/09/4839915946/">プログラミングの心理学―または、ハイテクノロジーの人間学</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-10-09T16:20:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 9<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/ren-jian-xue/">人間学</a>
+    
+      <a class="tag label label-info" href="/blog/tags/xin-li-xue/">心理学</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/10/09/4839915946/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本書は、哲学や心理学といった学問の切り口からプログラミングという作業について書かれたものです。</p>
+
+<ul>
+<li>
+<strong>プログラミング</strong>とは何か？</li>
+<li>
+<strong>プロフェッショナルとアマチュアの違い</strong>は何か？</li>
+<li>
+<strong>プログラミングの学習方法</strong>について</li>
+<li>
+<strong>プログラミング言語による設計</strong>について</li>
+</ul>
+<p>といったことについて書かれています。</p>
+
+<p>実際にプログラミングをしている人も、プログラミングという作業がどういうものかということを考えるきっかけを与えてくれる本です。仕事で仕方なくプログラミングをしている人も、学校の宿題だからプログラミングしなければならない人も、趣味で好きでやっている人も、読む価値のある本田と思います。</p>
+
+<p>読んですぐに実践で使える本ではありませんが、本書を読むことでプログラミングという作業への思いが変わると思います。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/10/09/4839915946/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/10/04/linux/">Linuxコマンド 覚書</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-10-04T10:31:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 4<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/linux/">Linux</a>
+    
+      <a class="tag label label-info" href="/blog/tags/unix/">Unix</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/10/04/linux/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311151X/sorehabooks-22/250-7698465-6388212?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title=""></a>
+</p>
+
+
+<p>Unix,Linuxで使えるコマンドラインの覚書です。使えそうなコマンドがあれば、随時更新していこうと思います。もし、間違いなどありましたら、連絡いただけると助かります。</p>
+
+<p>申し訳ないですが、コマンドを実行した結果は保証しません。ご自分の責任でお願いします。 &lt;<em>(</em> <em>)</em>&gt;</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/10/04/linux/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/10/04/4837956602/">夢を実現する戦略ノート―世界一のメンターが教える</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-10-04T07:41:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 4<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/lifehack/">LifeHack</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/bizinesu/">ビジネス</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/10/04/4837956602/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本書は、「<strong class="text-danger">成功者が心得ていた戦略</strong>」について書かれた本です。戦略というと、とっつきにくいイメージがあるかもしれませんが、言ってしまえば「<strong class="text-danger">成功者の金言集</strong>」です。短い言葉でずっしりと心にとどまる言葉が、成功者の背景と結果とを元に書かれています。</p>
+
+<p>「<strong class="text-danger">人生は旅である</strong>」。目的を知り、自分自身が成長し、他人の利益のために自分を犠牲にすることが成功する旅の3大原則と書かれています。</p>
+
+<p>本書に書かれている言葉はすべてとてもいい言葉、人生を成功させるために必要な言葉ですが、こうも多くの言葉が詰め込まれていると、ちょっと安っぽく聞こえてしまう感じがしました。ただ、本書で言いたいことは首尾一貫していますので、読みやすいことは確かです。</p>
+
+<p>成功とはなにか？そんな疑問を解決してくれる一冊になると思います。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/10/04/4837956602/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/09/23/4894713772/">ユースケース入門―ユーザマニュアルからプログラムを作る</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-09-23T10:59:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 23<span>rd</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/yusukesu/">ユースケース</a>
+    
+      <a class="tag label label-info" href="/blog/tags/uml/">UML</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/09/23/4894713772/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本書は、<strong class="text-danger">ICONIX</strong>アプローチに焦点を当て、その中で<strong class="text-danger">ロバストネス分析</strong>の方法について解説している数少ない書籍です。</p>
+
+<p><strong class="text-danger">ICONIXアプローチ</strong>とは、ユースケースからオブジェクトモデルを導き出すアプローチのことです。ユースケースは、ユーザの視点で書かれたシステムが提供するサービスを表すものです。ユースケースを中心にモデルをおこすことで（<strong class="text-danger">ユースケース駆動</strong>）、要求が変化した場合にどこのモデルを変更すればよいか分かりやすくなります。</p>
+
+<p><strong class="text-danger">ロバストネス分析</strong>とは、ICONIXアプローチにおいて、ユーザの要求（What）をモデルの実装（How）に結びつける役割を持ちます。これにより、要求から実装、実装から要求のトレーサビリティが向上します。</p>
+
+<p>本書は、あまり語られることの多くないICONIXアプローチとロバストネス分析を説明するものです。非常に本質を突いた説明がされていて、ユースケースの実用的な使い方についても学べます。</p>
+
+<p>薄い本ながら（140ページ弱）、その内容の濃さは読んでみればわかるでしょう。非常にためになる良い本です。対象読者は、ユースケースについては知っているが使い方がいまいちよく分からない人、ロバストネス分析に興味がある人です。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/09/23/4894713772/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/09/11/4886487440/">UMLによるオブジェクト指向モデリングセルフレビューノート</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-09-11T17:35:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 11<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/uml/">UML</a>
+    
+      <a class="tag label label-info" href="/blog/tags/moderingu/">モデリング</a>
+    
+      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/">オブジェクト指向</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/09/11/4886487440/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本書は、モデルを検証する視点を学ぶ本です。UMLで書かれたモデルの<strong class="text-danger">適切さ</strong>、<strong class="text-danger">正しさ</strong>をどのような観点で評価すればよいか学べます。</p>
+
+<p>クラス図を描いたけど、本当にコレでよいのか。シーケンス図上ではこうなっているけど、コレで上手くいくのか。こんな疑問に答えてくれるのが本書です。主に<strong class="text-danger">クラス図</strong>、<strong class="text-danger">シーケンス図</strong>、<strong class="text-danger">ユースケース図</strong>について書かれています。</p>
+
+<p>対象読者は、初心者モデラー、設計を行うSEです。プログラマーにはあまり関係ない内容だと思います。</p>
+
+<p>「<strong class="text-danger">設計に正解はない</strong>」と言われますが、十分に適切であるかの評価は出来ます。それは本書を読めば分かるでしょう。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/09/11/4886487440/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/09/03/4822282376/">オブジェクト開発の神髄〜UML 2.0を使ったアジャイルモデル駆動開発のすべて</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-09-03T09:14:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 3<span>rd</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/">これは読むべき</a>
+    
+      <a class="tag label label-info" href="/blog/tags/aziyairu/">アジャイル</a>
+    
+      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/">オブジェクト指向</a>
+    
+      <a class="tag label label-info" href="/blog/tags/uml/">UML</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/09/03/4822282376/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本書は、ソフトウェア開発における<strong class="text-danger">上流工程から設計</strong>までをカバーした本です。アジャイルにソフトウェア開発を行う方法について書かれています。要求をユースケースにまとめ、概念モデルを書き、ビジネスプロセスをモデル化して、設計を行う。一連のソフトウェア開発の流れに沿って、アジャイルに進めるにはどうしたらよいのか、どうUMLを活用したらよいのかについて説明されている本です。</p>
+
+<p>筆者の経験則が随所にちりばめられており、経験の少ない人でも理解しやすくなっています。UMLを使ったモデリングの方法について書かれている本ですが、図の書き方については書かれていません。本書は<strong class="text-danger">使い方の本</strong>です。</p>
+
+<p>非常に読みやすい内容で、納得できる部分も多いです。重要事項についてだけ書かれている、そんな感じのする書籍になっています。このボリュームで4,200円は安いと思います。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/09/03/4822282376/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/08/27/4756146554/">開発のプロが教える標準FindBugs完全解説</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-08-27T09:09:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Aug 27<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
+    
+      <a class="tag label label-info" href="/blog/tags/findbugs/">FindBugs</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/08/27/4756146554/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong class="text-danger">FindBugs</strong>はJavaのコードインスペクションツールです。コードインスペクションとは、コードが正しく書けているかをチェックすることです。コンパイルは通るけど、明らかにバグが埋め込まれているというコードを検査するのに使われます。</p>
+
+<p>FindBugsは、Javaのバグパターンをチェックしてくれる優れたツールです。Eclipseのプラグインとしても提供されていて、Javaプログラマには必須のツールだと言えます。
+<a href="http://findbugs.sourceforge.net/index.html" rel="external nofollow" title="FindBugs (Eclipse Plugin)">FindBugs (Eclipse Plugin)</a></p>
+
+<p>本書は、FindBugsで検知されるバグパターンが起こる原因とその対処法を記したものになっています。FindBugsのバグパターンは結構な数があり、明らかにバグだと分かるものから一見すると正しいコードに見えるが実はバグといったものまで検知してくれます。</p>
+
+<p>内容的には『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714361/sorehabooks-22/249-1540022-3818763?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title="Effective Java プログラミング言語ガイド">Effective Java プログラミング言語ガイド</a>』に似たものになっています。ただし、本書の方はバグパターンについて本なので、プログラミング経験者なら「覚えがある」問題が多いと思います。</p>
+
+<p>プログラミング初心者から、経験者まで幅広くおすすめできる一冊です。堅牢（ロバストネス）なコードで品質のよいプログラムを作りたい人は本書を一読すべきでしょう。『Effective Java』以来の、かなりおすすめな一冊です。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/08/27/4756146554/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    <ul class="pager">
+      
+      <li class="previous"><a href="/blog/page/14/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
+      
+      
+      <li class="next"><a href="/blog/page/12/">Newer <i class="fa fa-arrow-circle-right"></i></a></li>
+      
+    </ul>
+  </div>
+  <div class="clearfix visible-sm"></div>
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_script = 'count.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

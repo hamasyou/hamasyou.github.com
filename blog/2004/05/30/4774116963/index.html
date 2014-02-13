@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ひとりでできるJava実践入門 - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="本書が一般的なJavaプログラミングの入門書と違うのは、Javaのオブジェクトの取り扱いに主眼を置いていることである。Javaの基本事項の修得には、それほど多くの時間を費やさない。むしろ過半数の時間を、より実践的なJavaプログラミングに割り当てる。そして、その過程では、 &hellip;">
+  <meta name="keywords" content="Java,ひとりでできる,実践入門,プログラマー">
+
+  
+
+
+<meta property="og:title" content="ひとりでできるJava実践入門 - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2004/05/30/4774116963/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="本書が一般的なJavaプログラミングの入門書と違うのは、Javaのオブジェクトの取り扱いに主眼を置いていることである。Javaの基本事項の修得には、それほど多くの時間を費やさない。むしろ過半数の時間を、より実践的なJavaプログラミングに割り当てる。そして、その過程では、 &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2004/05/30/4774116963">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">ひとりでできるJava実践入門</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-05-30T15:11:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 30<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116963/sorehabooks-22" title="ひとりでできるJava実践入門" rel="external nofollow">
+      <img src="http://ec3.images-amazon.com/images/I/51Z9BKSWFML._SL500_AA300_.jpg" class="asin-thumbnail" alt="ひとりでできるJava実践入門" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116963/sorehabooks-22" title="ひとりでできるJava実践入門" rel="external nofollow">ひとりでできるJava実践入門</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>柏原 正三</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>技術評論社</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116963/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+<div class="entry-content"><blockquote>
+<p>本書が一般的なJavaプログラミングの入門書と違うのは、Javaのオブジェクトの取り扱いに主眼を置いていることである。Javaの基本事項の修得には、それほど多くの時間を費やさない。むしろ過半数の時間を、より実践的なJavaプログラミングに割り当てる。そして、その過程では、Javaを使って基本的なアルゴリズムの実践方法を学んでいく。この意味で、本書は、Javaの再入門により適しているといえる。</p>
+<footer><strong>本書 『はじめに』より</strong></footer>
+</blockquote>
+
+
+
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>本書の特徴</h2>
+
+
+<p>本書はより実践的な内容に重点的に解説しています。実践的というのは、例えば java.util パッケージのリストや、ハッシュマップ、ツリー、セットなどの使い方を学べる点です。</p>
+
+<p>他には、文字列の正規表現であったり、アルゴリズム(挿入ソート、バブルソート、クイックソート、シェルソート)や、java.io パッケージの使い方であったりします。。</p>
+
+<p>実際のプロジェクトなどで非常に基本的な部分を学べる感じになっているので、初心者が読むというよりは、「Javaの基本文法はマスターした」というレベルの人におすすめです。</p>
+
+<h2>おすすめな点</h2>
+
+
+<p>それぞれの章にたいしていくつかサブトピックスがあるという構成ですが、サブトピックスを学ぶための実際のソースコードが非常に多いのが特徴です。</p>
+
+<p>何かを説明するときには例を出すとわかりやすいと思いますが、本書ではその例が実際のソースコードになっています。</p>
+
+<p>説明が非常に丁寧で、重要なキーワードは太文字になってたりして、何が重要なのかということが視覚的にわかっていいと思います。</p>
+
+<h3>ここがちょっとね・・・</h3>
+
+
+<p>まず、本書は図が非常に少ないです。文章で説明していることは二度三度と解説していますが、図による視覚的情報が少なすぎるかなと思いました。プログラマーならば、図よりも実際のソースコードの方が役に立つ場合もあると思いますが、やはり図を使ったほうが、説明がすっきりする部分も多々あるように思いました。</p>
+
+<p>本書は他の入門書と比べると厚さがあります。この厚さは、ところどころにある Java のメソッドの説明が原因のように思います。Java には、JavaDocというJavaのクラスを詳しく説明したドキュメントがあります。これを読めばわかるようなことまでわざわざ説明してるので、その部分はカットしても良かったかと思います。</p>
+
+<h2>まとめ</h2>
+
+
+<p>図が非常に少ないという短所がありますが、文章による説明が非常に詳しくてわかりやすいです。実際のプログラミングの基礎となる部分の解説が主となっているので、「はじめに」でもあるように Java の再入門に最適だと思います。。</p>
+
+<p>「Javaって何なんだろう?」、「Javaがわからなくなってきた」という人に是非本書をおすすめしたいです。</p>
+
+<table border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AEJava%E5%AE%8C%E5%85%A8%E5%85%A5%E9%96%80-%E6%A8%99%E6%BA%96%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%83%BC%E3%82%BA%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-%E6%9F%8F%E5%8E%9F-%E6%AD%A3%E4%B8%89/dp/4774114626%3FSubscriptionId%3D15SMZCTB9V8NGR2TW082%26tag%3Dsorehabooks-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D4774114626" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2007/04/28/477412950X/">ソースコードリーディングから学ぶ Javaの設計と実装</a></li>
+        
+        <li><a href="/blog/2006/04/29/4894716895/">Java Puzzlers 罠、落とし穴、コーナーケース</a></li>
+        
+        <li><a href="/blog/2006/04/19/apache-pluto/">Apache Pluto1.1 を触ってみる その2</a></li>
+        
+        <li><a href="/blog/2006/04/16/apache-pluto/">Apache Pluto1.1 を触ってみる その1</a></li>
+        
+        <li><a href="/blog/2005/08/27/4756146554/">開発のプロが教える標準FindBugs完全解説</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-05-30T15:11:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 30<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/30/4774116963/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2004/05/30/4774116963/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2004/05/30/4774116963/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2004/05/30/4774116963/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/05/30/4774116963/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/05/30/4774116963/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2004/05/29/jndi/" title="Previous Post:
+      JNDIでオブジェクト管理"><i class="fa fa-arrow-circle-left"></i> JNDIでオブジェクト管理</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2004/05/31/adapter/"
+                            title="Next Post: 実践デザパタ-その1:Adapterパターン">実践デザパタ-その1:Adapterパターン <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2004/05/30/4774116963/';
+  var disqus_url = 'http://hamasyou.com/blog/2004/05/30/4774116963/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

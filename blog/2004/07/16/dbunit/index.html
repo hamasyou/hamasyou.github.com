@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>DBUnitでデータベーステスト - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="業務でアプリケーションプログラミングを行っている人で、データベースを使わない案件はまれでしょう。ほとんどがデータベースに顧客データを格納したり、マスターデータを引っ張ってきたりするはずです。 そんなデータベースとのやり取りで、SQL文を書いたが、それがほんとうに合っているのか?、 &hellip;">
+  <meta name="keywords" content="DBUnit,データベース,テスト,DBEdit,XMLBuddy">
+
+  
+
+
+<meta property="og:title" content="DBUnitでデータベーステスト - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2004/07/16/dbunit/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="業務でアプリケーションプログラミングを行っている人で、データベースを使わない案件はまれでしょう。ほとんどがデータベースに顧客データを格納したり、マスターデータを引っ張ってきたりするはずです。 そんなデータベースとのやり取りで、SQL文を書いたが、それがほんとうに合っているのか?、 &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2004/07/16/dbunit">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">DBUnitでデータベーステスト</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-07-16T12:11:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jul 16<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/dbunit/">DBUnit</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325143/sorehabooks-22" rel="external nofollow" title=""></a>
+</p>
+
+
+<p>業務でアプリケーションプログラミングを行っている人で、データベースを使わない案件はまれでしょう。ほとんどがデータベースに顧客データを格納したり、マスターデータを引っ張ってきたりするはずです。</p>
+
+<p>そんなデータベースとのやり取りで、SQL文を書いたが、それがほんとうに合っているのか?、単体テスト時にテストデータを毎回手動でデータベースに入れては、プログラムで引っ張ってきた値と等しいかをチェックするのはばかばかしい、データを更新してはみたが、ほんとうに更新されているのかを確認しないといけない、なんて作業はとてもめんどくさくて憂鬱な作業ですよね。</p>
+
+<p>そんな時に威力を発揮するのが、DBUnitという、データベースに関係する単体テストを自動で行ってくれるツールです。
+もちろん、どんなテストケースがあるのかは自分で書かなければいけませんが、意図しているデータや、更新されたはずのデータはすべて外部のXMLファイルに書くため、プログラマとテスト実施者が別々に作業することも可能です。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+<p>DBUnitは開発環境に依存しませんので、EclipseなどのIDEを使っているかテキストエディタを使っているかは問題にしません。</p>
+
+<h2>特徴</h2>
+
+
+<p>DBUnitの特徴は以下のようなものです。</p>
+
+<ul>
+<li>テスト用のテーブルの自動生成と自動削除機能</li>
+<li>テストデータの自動insertと自動delete機能</li>
+<li>データベース内を直接見なくても、データの比較を行ってくれる</li>
+<li>テストデータとテストコードの分離(テストデータはXMLファイルとして記述できる)</li>
+<li>
+<a href="#dtd_code" rel="external nofollow">DTDをエクスポートできる</a>(多少のプログラミングが必要[5処理くらい])</li>
+</ul>
+<ul>
+<li>DBUnitはこちらからダウンロードできます。
+<a href="http://www.dbunit.org/" rel="external nofollow" title="SouceForgeでDBUnitをダウンロード">SouceForgeでDBUnitをダウンロード</a>
+</li>
+</ul>
+<p>DBUnitはテストデータを外部のXMLファイルに記述することができます。もちろん、プログラム中に埋め込むこともできますが、テストコードとテストデータを分離して開発すれば、プログラマーとテスト担当者に作業を分割することもできます。</p>
+
+<h3>XMLBuddy</h3>
+
+
+<p>テストデータを記述するこの作業はルーチンワークになりますので、テストエディタで処理するのは次第に苦痛になってくるでしょう。そんな時におすすめなのが、EclipseのプラグインであるXMLBuddyです。XMLBuddy はXMLエディタとしてEclipseプラグインで提供されています。記述の補佐や要素をツリー形式で表示してくれたりします。</p>
+
+<ul>
+<li>XMLBuddyはこちらからダウンロードできます。
+<a href="http://www.xmlbuddy.com/" rel="external nofollow" title="XMLBuddyのダウンロード">XMLBuddyのダウンロード</a>
+</li>
+</ul>
+<h3>DBEdit</h3>
+
+
+<p>これらをEclipseで使用する場合はついでにDBEditもインストールすると良いでしょう。DBEditはEclipseプラグインでデータベースの中身をEclipseから見ることができるツールです。テーブルの関連などもボタン一発で参照できますし、データの追加・変更・削除もEclipse上からできるようになります。</p>
+
+<ul>
+<li>DBEditはこちらからダウンロードできます。
+<a href="http://sourceforge.net/projects/dbedit" rel="external nofollow" title="DBEditのダウンロード">DBEditのダウンロード</a>
+</li>
+</ul>
+<h2>まとめ</h2>
+
+
+<p>DBUnitを使ったテストは最初はデータベースの設定やDTDの読み込みなどの手間が発生します。これはこれからくる簡単な単体テストの甘い蜜の下準備としてがんばって設定してください。この設定が終われば後は、XMLファイルにテストデータを記述してDBUnitを実行するだけです。テーブルを自動で作成してくれて、XMLファイルに書かれたテストデータを自動でinsertしてくれ、自分の書いたselect文と比較して間違っていいないか確認してくれます。</p>
+
+<p>このツールの恩恵は、単体テストではもちろん、納品後の保守段階でバグが出た場合にも受けることができます。納品後というのは、実際にシステムが稼動していることがしばしばあります。そんな時に、実データに手を入れてテストを行うのは至難の業です。DBUnit を使うと、多少テストが簡単になるかもしれません。</p>
+
+<dl>
+<dt class="info">Tips</dt>
+<dd>DBUnitを使うことでテストデータを自動でinsertしてくれ、insertしたデータは単体テスト終了後に自動的に削除するという設定もできます。</dd>
+</dl>
+<p>今まで複雑で、めんどくさかったデータベースの単体テストがこのDBUnitを使って簡単になるといいなと思います。</p>
+
+<h3>DBUnit で使う表定義の DTD ファイルを自動生成する</h3>
+
+
+<p>DBUnitには表定義を DTD ファイルとして作成する機能があります。少しソースコードを書かないといけないので、サンプルコードを載せておきます。間違ってたらもうしわけないです。</p>
+
+<p><section></section></p>
+
+<h4>DTDExporter.java</h4>
+
+
+
+
+<pre class="code"><code><span class="keyword">import</span> java.io.*;
+<span class="keyword">import</span> java.sql.*;
+<span class="keyword">import</span> org.dbunit.database.DatabaseConnection;
+<span class="keyword">import</span> org.dbunit.database.IDatabaseConnection;
+<span class="keyword">import</span> org.dbunit.dataset.xml.FlatDtdDataSet;
+ 
+<span class="comment" dtd hamasyou>
+<span class="keyword">public</span> <span class="keyword">class</span> DTDExporter {
+  <span class="comment">/** エクスポートするファイル名 */</span>
+  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXPORT_FILENAME = <span class="literal">"tables.dtd"</span>;
+  <span class="comment">/** スキーマ名 */</span>
+  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SCHEMA = <span class="literal">"schema"</span>;
+  <span class="comment">/** 接続するデータベースへの情報(PostgreSQL用)情報適宜変更すること */</span>
+  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String JDBC_DRIVER = <span class="literal">"org.postgresql.Driver"</span>;
+  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String JDBC_URL = "jdbc:postgresql:<span class="comment">//YOUR_HOST/DATABASE_NAME";</span>
+  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String JDBC_USER = <span class="literal">"postgres"</span>;
+  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String JDBC_PASS = <span class="literal">"*******"</span>;
+  <span class="comment">/** 接続するデータベースへの情報(MySQL用) */</span>
+<span class="comment">//  private static final String JDBC_DRIVER = "org.gjt.mm.mysql.Driver";</span>
+<span class="comment">//  private static final String JDBC_URL = "jdbc:mysql://YOUR_HOST/DATABASE_NAME";</span>
+<span class="comment">//  private static final String JDBC_USER = "mysql";</span>
+<span class="comment">//  private static final String JDBC_PASS = "*******";</span>
+ 
+  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) <span class="keyword">throws</span> Exception {
+    <span class="keyword">if</span> (args.length "使い方: java DTDExporter TABLE_NAME [TABLE_NAMES]"</span>);
+      System.exit(-1);
+    }
+    Class.forName(JDBC_DRIVER);
+    IDatabaseConnection con = 
+      <span class="keyword">new</span> DatabaseConnection(DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS), SCHEMA); 
+    FlatDtdDataSet.write(con.createDataSet(args), <span class="keyword">new</span> FileOutputStream(EXPORT_FILENAME)); 
+  }
+}
+</code></pre>
+
+
+<p></p>
+
+<p>これを実行してできたDTDファイルを、XMLBuddy で利用することで、テストデータを XMLBuddy で作成するときに補完機能が効くようになります。XMBuddy で作成したテストデータ記述用ファイルの先頭に次の記述を行います。</p>
+
+<pre class="code"><code><span class="tag">&lt;?xml version="1.0"?&gt;</span> 
+<span class="tag">&lt;!DOCTYPE dataset SYSTEM "tables.dtd"&gt;</span>
+</code></pre>
+
+
+<p>これでこれでいくらかテストデータを作成する効率が上がると思います。</p>
+
+<dl>
+<dt class="info">Tips</dt>
+<dd>XMLBuddyで補完を使う場合、「.xml」ファイルのエディターを「XMLBuddy」にしておく必要があります。Eclipse メニューの 「ウィンドウ」→「設定」→「ワークベンチ」→「ファイルの関連付け」 で .xml のデフォルトエディターを XMLBuddy に設定しておくと便利です。</dd>
+</dl>
+<h2>ハマりそうなポイント</h2>
+
+
+
+
+<h3>例外に対応する</h3>
+
+
+
+
+<h4>XML ファイルの読み込み例外が発生した場合</h4>
+
+
+<p>XMLファイルの読み込み時に以下のような例外が発生した場合の対応方法です。</p>
+
+<pre>org.dbunit.dataset.DataSetException: Line 2: 基本 URI を使用せずに、相対 URI "tables.dtd" を解決することはできません。</pre>
+
+
+<p>XML ファイルの DTD 読み込み部分を書き換えてみてください。</p>
+
+<pre class="code"><code><span class="tag">&lt;?xml version="1.0"?&gt;</span>
+<span class="tag">&lt;!DOCTYPE dataset SYSTEM "file:///C:/Documents and Settings/hamasyou/test/tables.dtd"&gt;</span>
+</code></pre>
+
+
+<p>上のように URI の部分を絶対パスで書いてみてください。環境に依存しますが、テストコード用ですので OK としましょう。</p>
+
+<h4>データベースコネクションが取得できない場合</h4>
+
+
+<p>データベースコネクションを取得できない場合や、DTD を吐き出せない場合に下記の例外が出たら、コネクション取得時にスキーマ名を指定してみてください。</p>
+
+<pre>org.dbunit.database.AmbiguousTableNameException</pre>
+
+
+
+
+<h3>Operationの種類</h3>
+
+
+<p>DBUnitの実行時に呼び出される getDataSet() メソッドの挙動を変更できる Operationの種類です。</p>
+
+<table>
+<caption>Operation の種類</caption>
+<tr>
+<th>Operation</th>
+<th>動作</th>
+</tr>
+<tr>
+<td>INSERT</td>
+<td>
+<b>指定したデータセットをテーブルに挿入します。</b>テーブル内で同じ主キーとなるデータがすでに存在する場合は、エラーになります。外部キーなどの参照整合性を保つようにデータセットの順序を指定する必要があります。</td>
+</tr>
+<tr>
+<td>UPDATE</td>
+<td>
+<b>指定したデータセットの同じ主キーとなるデータを上書きします。</b>上書きするデータが存在しない場合エラーになります。テストデータ以外が存在する場合、データの上書きに注意してください。</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>
+<b>指定したデータセットとマッチするものだけを削除します。</b>データセットに含まれていないデータは、削除されません。</td>
+</tr>
+<tr>
+<td>DELETE_ALL</td>
+<td>
+<b>指定したデータセットに存在するテーブルのレコードすべてを削除します。</b>テーブル自体は削除されません。データセットの逆順にデータが削除されていきます。</td>
+</tr>
+<tr>
+<td>CLEAN_INSERT</td>
+<td>指定したデータセットに存在するテーブルに対して、DELETE_ALLを行った後、INSERTを行います。データセットに含まれるデータのみでテストしたい場合に使います。<b>既存のデータはすべて削除されてしまいます。</b>
+</td>
+</tr>
+<tr>
+<td>REFRESH</td>
+<td>
+<b>指定したデータセットの主キーにマッチするデータを更新します。更新するデータがない場合は、挿入されます。</b>ほとんどのデータベーステスト時に使用できますが、既存データの更新にだけは注意する必要があります。</td>
+</tr>
+<tr>
+<td>TRANCATE_TABLE</td>
+<td>
+<b>指定したデータセットに含まれるテーブルが削除されます。</b>テーブルに格納されているデータもすべて削除されるので、注意してください。</td>
+</tr>
+<tr>
+<td>NONE</td>
+<td>何も行わない処理です。</td>
+</tr>
+</table>
+<h4>動作に関しての注意点</h4>
+
+
+
+
+<dl>
+<dt class="warn">データの削除に注意！</dt>
+<dd>保守段階で、DBUnitを使う場合、既存のデータの更新や削除に注意してください。間違ってもテーブルの削除(TRANCATE_TABLE)などしないように！</dd>
+</dl>
+<dl>
+<dt class="notice">わかってないこと</dt>
+<dd><ul>
+<li>データセットで、DEFAULT 値の設定してある列に DEFAULT 値を入れる方法がみつかりません・・・</li>
+<li>シーケンス値が主キーになるようなデータの挿入の方法がわかりません・・・</li>
+<li>テーブルの列が Number などの数値型の場合、比較時に文字として認識されてしまう</li>
+<li>Timestamp 型は、正確に同じデータを入れておかないと、比較に失敗する</li>
+</ul></dd>
+</dl>
+<h3>特殊な値をテストデータとして入力するには？</h3>
+
+
+
+
+<h4>現在時刻をテストデータとして入力する方法</h4>
+
+
+<p>テストデータをXMLに書く場合、Timestamp型の列には現在日時を入れたいときがある。そんな場合は、ReplacementDataSet を使用する。データセットに例えば次のように書いておく。</p>
+
+<pre class="code"><code><span class="tag">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+<span class="tag">&lt;!DOCTYPE dataset SYSTEM "tables.dtd"&gt;</span>
+<span class="tag">&lt;dataset&gt;</span>
+  <span class="tag">&lt;TABLENAME <span class="attr">TODAY=</span><span class="value">"[SYSDATE]"</span> <span class="attr">ID=</span><span class="value">"1"</span>/&gt;</span>
+  <span class="tag">&lt;TABLENAME <span class="attr">TODAY=</span><span class="value">"2004-06-10"</span> <span class="attr">ID=</span><span class="value">"2"</span>/&gt;</span>
+<span class="tag">&lt;/dataset&gt;</span>
+</code></pre>
+
+
+<p>[SYSDATE] の部分を <code>ReplacementDataSet#addReplacementObject()</code> を使って置き換えることで、任意の値でテストすることができます。</p>
+
+<h4>テストクラス</h4>
+
+
+
+
+<pre class="code"><code><span class="keyword">protected</span> IDataSet getDataSet() <span class="keyword">throws</span> Exception { 
+  ReplacementDataSet dataSet = 
+    <span class="keyword">new</span> ReplacementDataSet(<span class="keyword">new</span> FlatXmlDataSet(<span class="keyword">new</span> FileInputStream(<span class="literal">"dataset.xml"</span>))); 
+  dataSet.addReplacementObject(<span class="literal">"[SYSDATE]"</span>, 
+    <span class="keyword">new</span> Timestamp(System.currentTimeMillis())); 
+  <span class="keyword">return</span> dataSet; 
+} 
+</code></pre>
+
+
+
+
+<h4>テストデータに null を入れる方法</h4>
+
+
+<p>上記「現在日時をテストデータに使用する」と同様の方法が使える。</p>
+
+<pre class="code"><code><span class="tag">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+<span class="tag">&lt;!DOCTYPE dataset SYSTEM "tables.dtd"&gt;</span>
+<span class="tag">&lt;dataset&gt;</span>
+  <span class="tag">&lt;TABLENAME <span class="attr">TODAY=</span><span class="value">"[NULL]"</span> <span class="attr">ID=</span><span class="value">"1"</span>/&gt;</span>
+  <span class="tag">&lt;TABLENAME <span class="attr">TODAY=</span><span class="value">"2004-06-10"</span> <span class="attr">ID=</span><span class="value">"2"</span>/&gt;</span>
+<span class="tag">&lt;/dataset&gt;</span>
+</code></pre>
+
+
+<p>[NULL]の部分を<code>ReplacementDataSet#addReplacementObject()</code> を使って置き換えることで、任意の値でテストすることができます。</p>
+
+<h4>テストクラス</h4>
+
+
+
+
+<pre class="code"><code><span class="keyword">protected</span> IDataSet getDataSet() <span class="keyword">throws</span> Exception { 
+  ReplacementDataSet dataSet = <span class="keyword">new</span> ReplacementDataSet(<span class="keyword">new</span> FlatXmlDataSet(<span class="keyword">new</span> FileInputStream(<span class="literal">"dataset.xml"</span>)));
+  dataSet.addReplacementObject(<span class="literal">"[NULL]"</span>, null); 
+  <span class="keyword">return</span> dataSet; 
+} 
+</code></pre>
+
+
+
+
+<h4>テストデータに ランダムな値を入れる方法</h4>
+
+
+<p>上記「現在日時をテストデータに使用する」の応用でいけると思います。</p>
+
+<pre class="code"><code><span class="tag">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+<span class="tag">&lt;!DOCTYPE dataset SYSTEM "tables.dtd"&gt;</span>
+<span class="tag">&lt;dataset&gt;</span>
+  <span class="tag">&lt;TABLENAME <span class="attr">TODAY=</span><span class="value">"[RANDOM]"</span> <span class="attr">ID=</span><span class="value">"1"</span>/&gt;</span>
+  <span class="tag">&lt;TABLENAME <span class="attr">TODAY=</span><span class="value">"2004-06-10"</span> <span class="attr">ID=</span><span class="value">"2"</span>/&gt;</span>
+<span class="tag">&lt;/dataset&gt;</span>
+</code></pre>
+
+
+<p>[RANDOM] の部分を <code>ReplacementDataSet#addReplacementObject()</code> を使って置き換えることで、任意の値でテストすることができます。</p>
+
+<h4>テストクラス</h4>
+
+
+
+
+<pre class="code"><code><span class="keyword">protected</span> IDataSet getDataSet() <span class="keyword">throws</span> Exception { 
+  ReplacementDataSet dataSet = <span class="keyword">new</span> ReplacementDataSet(<span class="keyword">new</span> FlatXmlDataSet(<span class="keyword">new</span> FileInputStream(<span class="literal">"dataset.xml"</span>)));
+  dataSet.addReplacementObject(<span class="literal">"[RANDOM]"</span>, <span class="literal">""</span> + <span class="keyword">new</span> Random().nextInt()); 
+  <span class="keyword">return</span> dataSet; 
+} 
+</code></pre>
+
+
+
+
+<p></p>
+<h3>テストコードサンプル
+
+</h3>
+<p>DBUnitのサンプルコードです。感じだけでも大体つかめてもらえたらと思います。</p>
+
+<p></p>
+<h4>テストコードサンプル</h4>
+
+<p></p>
+<pre class="code"><code><span class="keyword">package</span> com.hamasyou.domain.test;
+
+<p><span class="keyword">import</span> java.io.<em>;
+<span class="keyword">import</span> junit.framework.</em>;
+<span class="keyword">import</span> org.dbunit.<em>;
+<span class="keyword">import</span> org.dbunit.database.</em>;
+<span class="keyword">import</span> org.dbunit.operation.<em>;
+<span class="keyword">import</span> org.dbunit.dataset.</em>;
+<span class="keyword">import</span> org.dbunit.dataset.xml.*;
+<span class="keyword">import</span> com.hamasyou.domain.Form;</p>
+
+<p><span class="comment">/<em>* テストクラス </em>/</span>
+<span class="keyword">public</span> <span class="keyword">class</span> FormTest <span class="keyword">extends</span> DatabaseTestCase {
+  <span class="keyword">private</span> IDatabaseConnection connection;
+  <span class="keyword">protected</span> <span class="keyword">void</span> setUp() <span class="keyword">throws</span> Exception {
+    <span class="keyword">super</span>.setUp();
+    connection = getConnection();
+  }</p>
+
+<p>  <span class="keyword">protected</span> <span class="keyword">void</span> tearDown() <span class="keyword">throws</span> Exception {
+    connection.close();
+    <span class="keyword">super</span>.tearDown();
+  }</p>
+
+<p>  <span class="keyword">protected</span> IDatabaseConnection getConnection() <span class="keyword">throws</span> Exception {
+    <span class="keyword">return</span> <span class="keyword">new</span> DatabaseConnection(getJDBCConnection(), <span class="literal">“SCHEMA”</span>);
+  }</p>
+
+<p>  <span class="keyword">protected</span> IDataSet getDataSet() <span class="keyword">throws</span> Exception {
+    ReplacementDataSet dataSet = <span class="keyword">new</span> ReplacementDataSet(<span class="keyword">new</span> FlatXmlDataSet(<span class="keyword">new</span> FileInputStream(<span class="literal">“dataset.xml”</span>)));
+    dataSet.addReplacementObject(<span class="literal">“[SYSDATE]”</span>, <span class="keyword">new</span> Timestamp(System.currentTimeMillis()));
+    <span class="keyword">return</span> dataSet;
+  }</p>
+
+<p>  <span class="keyword">protected</span> DatabaseOperation getSetUpOperation() <span class="keyword">throws</span> Exception {
+    <span class="keyword">return</span> DatabaseOperation.REFRESH;
+  }</p>
+
+<p>  <span class="keyword">protected</span> DatabaseOperation getTearDownOperation() <span class="keyword">throws</span> Exception {
+    <span class="keyword">return</span> DatabaseOperation.DELETE;
+  }</p>
+
+<p>  <span class="comment">/<em>*
+   * データベースコネクションを返します。
+   * @param autoCommit    自動コミット(true/自動コミットOn, false/自動コミットOff)
+   </em>/</span>
+  <span class="keyword">private</span> Connection getJDBCConnection(boolean autoCommit) <span class="keyword">throws</span> Exception {
+    Class.forName(System.getProperty(<span class="literal">“test.jdbc.driver”</span>));
+    String url = System.getProperty(<span class="literal">“test.jdbc.url”</span>);
+    String user = System.getProperty(<span class="literal">“test.jdbc.user”</span>);
+    String pass = System.getProperty(<span class="literal">“test.jdbc.pass”</span>);
+    Connection con = DriverManager.getConnection(url, user, pass);
+    con.setAutoCommit(autoCommit);
+    <span class="keyword">return</span> con;
+  }</p>
+
+<p>  <span class="comment">/<em>=====================================</em>/</span>
+  <span class="comment">/<em> テストケース </em>/</span>
+  <span class="comment">/<em>=====================================</em>/</span></p>
+
+<p>  <span class="comment">/<em>*
+   * フォームを期待通りに取得できるかどうかのテスト
+   </em>/</span>
+  <span class="keyword">public</span> <span class="keyword">void</span> testGetData() <span class="keyword">throws</span> Exception {
+    Form form = Form.getData();
+    <span class="comment">// 期待するデータを読み込む</span>
+    IDataSet expectedDataSet = <span class="keyword">new</span> FlatXmlDataSet(<span class="keyword">new</span> FileInputStream(<span class="literal">“expect-data.xml”</span>));
+    ITable expectedTable = expectedDataSet.getTable(<span class="literal">“FORM”</span>);
+    <span class="comment">// アプリケーションID、フォームID、フォーム名が一致した場合同じ物とみなす</span>
+    assertEquals(<span class="literal">“アプリID”</span>, expectedTable.getValue(0, <span class="literal">“APP_ID”</span>), form.getAppId());
+    assertEquals(<span class="literal">“フォームID”</span>, expectedTable.getValue(0, <span class="literal">“FORM_ID”</span>), form.getFormId());
+    assertEquals(<span class="literal">“フォーム名”</span>, expectedTable.getValue(0, <span class="literal">“FORM_NAME”</span>), form.getFormName());
+  }
+}
+</p></code></pre>
+
+<p></p>
+<h3>テストデータを Excel で作る</h3>
+
+<p>テストデータを Excel で作ることができます。Excelで作ったデータを読み込むには、XlsDataSet というクラスを使います。このクラスは、内部で Jakarta POI を使っています。</p>
+
+<p></p>
+<dl>
+<dd class="info">Jakarta POIプロジェクト</dd>
+<dd>
+<p>POI とは、Javaから Microsoft Word や Microsoft Excel を扱うためのライブラリです。Jakarata POIプロジェクトでは、Microsoft OLE 2複合ドキュメント形式に基づいた様々なファイル形式を Pure Java で取り扱うためのAPI群から成り立つプロジェクトです。</p>
+
+<p></p>
+<p><i class="fa fa-hand-o-right"></i> <a href="http://jakarta.terra-intl.com/poi/" rel="external nofollow" title="Jakarta POI のダウンロードはこちら">Jakarta POI のダウンロードはこちら</a></p>
+</dd>
+</dl>
+<p>Excelでどのようにテストデータを作るかというと、シートごとにテーブルに挿入するデータを作成します。シート名には、挿入するテーブル名をそれぞれ書きます。シートの最初の行に、テーブルのカラム名(列名)を並べて書きます。2行目から挿入するデータを書き並べます。下はサンプル画像です。</p>
+
+<p><img src="http://hamasyou.com/images/dbunit/excel-data.gif" alt="Excelサンプル" class="img-thumbnail"></p>
+
+<p>Excel のセルの書式設定によって、XlsDataSet での値の取り扱い方が違います。数値は BigDecimal 型、日付は Date 型、文字列は String 型で扱われます。</p>
+
+<p></p>
+<dl>
+<dt class="info">数字を文字として扱いたい場合</dt>
+<dd>数字を文字列として扱いたい場合は、セルの書式設定を「文字列」に設定します。文字列として扱われていれば、Excel2003 であればセルの左上に緑の三角が現れます。</dd>
+</dl>
+<p>現時点では、POI が未熟なせいか、まだまだ不安定な部分もあります。(特定の列名の後に空白が入ってしまうなど)それでも、Excelを使ってテストデータを作れるのは、非常に強いと思います。</p>
+
+<p></p>
+<h3>データセットをSQLを使って取得する</h3>
+
+<p>QueryDataSet クラスの addTable メソッドを使うと、SQL 文を使ってデータセットを作り出すことができます。</p>
+
+<p></p>
+<pre class="code"><code>QueryDataSet dataSet = <span class="keyword">new</span> QueryDataSet(getConnection());
+dataSet.add(<span class="literal">“TABLE_NAME”</span>, <span class="literal">“select * from TABLE_NAME where ID = ‘1’”</span>);
+</code></pre>
+
+<p>データベース接続からデータセットを取得する方法もあります。</p>
+
+<p></p>
+<div class="code">getConnection().createDataSet()</div>
+
+<p></p>
+<h3>Oracle の Timestamp 型が Insert できない</h3>
+
+<p></p>
+<pre>WARNING - CREATE_DATE data type (1111, ‘TIMESTAMP(6)’) not recognized and will be ignored. See FAQ for more information. </pre>
+
+<p>こんな警告が表示されるのは、データ型にデフォルトのJDBC 型が使われているのが原因です。例えば Oracle を使っている場合は、次のようにしてデータ型を Oracle のものに指定してやることで回避できます。</p>
+
+<p></p>
+<pre class="code"><code>IDatabaseConnection con =
+  <span class="keyword">new</span> DatabaseConnection(DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS), SCHEMA);
+DatabaseConfig config = con.getConfig();
+config.setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY, <span class="keyword">new</span> OracleDataTypeFactory());
+</code></pre>
+
+<p>このように設定を指定することで、データベース独自の型を使えるようになります。</p>
+
+<p></p>
+<h3>効率の良いテストにするには</h3>
+
+<p>DBUnitを使って効率のよいテストを行うには、下の3点に気をつけることで効率があがると思います。</p>
+
+<p></p>
+<ul>
+<li>自分専用のデータベースを利用する</li>
+<li>テスト終了後にデータを削除しない</li>
+<li>接続処理などを一元管理する</li>
+</ul>
+<p></p>
+<h4>自分専用のデータベースを持つ</h4>
+
+<p>DBUnitのひとつの弱点に、データベースの状態にテストが依存してしまう&gt;いう点があげられます。これは、複数の開発者が同じデータベースを使ってテストを行っていると顕著になってきます。</p>
+
+<p>そこで、データベースの状態にできるだけ依存しないテストを行うために、自分専用のデータベースを利用する方法があります。最近では、<a href="http://hsqldb.sourceforge.net/index.html" rel="external nofollow" title="Mckoi">Mckoi</a> といった、ポータブルデータベースがありますので、簡単に自分専用のデータベースを作ることができると思います。</p>
+
+<p>この場合の注意点は、最新の DDL を使って自分のデータベースを作らないと、本番データベースとバージョンが違うものができてしまうということです。</p>
+
+<p></p>
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://www.sssg.org/wiki/index.jsp?pid=HSQLDB" rel="external nofollow" title="HSQLDB - *HSQLD">HSQLDB - *HSQLD</a></li>
+<li><a href="http://home.att.ne.jp/apple/wizard/java/mckoi/" rel="external nofollow" title="Mckoi によるポータブルデータベース生活">Mckoi によるポータブルデータベース生活</a></li>
+</ul>
+<p></p>
+<h4>テスト終了時にデータを削除しない</h4>
+
+<p>自分専用のデータベースを使えば心配はないのですが、開発者共通のデータベースを使ってテストしていた場合、間違ってすべてのデータを消してしまうということがあります。DBUnitの場合、コマンドをひとつまちがえるだけで簡単にデータがすべて消えてしまいます。</p>
+
+<p>こういった間違いを起こさないために、テスト終了時のデータは残しておくのがいいと思います。デバッグ時に実際のデータを確認するときにもつかえることですし。</p>
+
+<p></p>
+<dl>
+<dt class="warn">TRANCATE_TABLE に注意</dt>
+<dd>TRANCATE_TABLE を行うと、テストに使ったテーブルが削除されてしまいます。本番で使っているデータベースでは、必ず確認して、実行しないようにしましょう。</dd>
+</dl>
+<p></p>
+<h4>接続処理を一元管理する</h4>
+
+<p>DBUnitを使ってテストケースを書く場合、DatabaseTestCase クラスを継承して作り始めます。このクラスでは、データベースコネクションを取得するメソッドとデータセットを取得するメソッドをオーバーライドしなければなりません。また、テスト開始時のオペレーションやテスト終了時のオペレーションも、適宜オーバーロードしなければ、デフォルトでは「何もしない」設定になっています。</p>
+
+<p>毎回これらの処理を書くのは、非常にめんどくさいです。そこで、DatabaseTestCase を継承し、デフォルトの実装を行って独自テストケースクラスを作成し、そのクラスを個々のテストケースに継承させます。</p>
+
+<p></p>
+<h2>参考文献：</h2>
+
+<ul>
+<li><p>DBUnit、DBEdit、XMLBuddyをつかったデータベースプログラミングはこちらが参考になります。
+<img src="http://hamasyou.com/images/img-link.gif" align="middle" class="img-thumbnail"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774119334/sorehabooks-22" rel="external nofollow" title="JavaPRESS34(技術評論社)">JavaPRESS34(技術評論社)</a></p></li>
+<li><p>DBUnitの本家Webサイトです。膨大な情報があります。
+<img src="http://hamasyou.com/images/img-link.gif" align="middle" class="img-thumbnail"><a href="http://dbunit.sourceforge.net/howto.html" rel="external nofollow" title="DBUnit">DBUnit</a></p></li>
+<li>
+<p>テスティングモジュールのJUnitも参考になります。
+</p>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325143/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+</li>
+<li><p>DbUnitに関して、分かりやすく解説されています。
+<img src="http://hamasyou.com/images/img-link.gif" align="middle" class="img-thumbnail"><a href="http://www.stackasterisk.jp/tech/java/dbunit01_01.jsp" rel="external nofollow" title="DbUnit (Stack*)">DbUnit (Stack*)</a></p></li>
+</ul></div>
+
+
+  
+    
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-07-16T12:11:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jul 16<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/dbunit/">DBUnit</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/07/16/dbunit/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2004/07/16/dbunit/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2004/07/16/dbunit/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2004/07/16/dbunit/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/07/16/dbunit/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/07/16/dbunit/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2004/07/14/4797323361/" title="Previous Post:
+      テストはソフトウェア設計である"><i class="fa fa-arrow-circle-left"></i> テストはソフトウェア設計である</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2004/07/18/lifehack/"
+                            title="Next Post: すべては自分の内側から！">すべては自分の内側から！ <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2004/07/16/dbunit/';
+  var disqus_url = 'http://hamasyou.com/blog/2004/07/16/dbunit/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

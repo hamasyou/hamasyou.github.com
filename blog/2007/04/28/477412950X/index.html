@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ソースコードリーディングから学ぶ Javaの設計と実装 - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="本書の対象読者は、アーキテクトを目指す人、技術者としてさらに設計技術を高めたい人、フレームワークの設計に興味がある人です。かなり幅広い設計技法について紹介しているので、内容自体はそこまで濃いものではありませんが勉強になります。 おすすめです。 (adsbygoogle = window. &hellip;">
+  <meta name="keywords" content="ソースコード,リーディング,Java,設計,実装,オープンデザイン,オープンソース,4-7741-2950-X">
+
+  
+
+
+<meta property="og:title" content="ソースコードリーディングから学ぶ Javaの設計と実装 - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2007/04/28/477412950X/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="本書の対象読者は、アーキテクトを目指す人、技術者としてさらに設計技術を高めたい人、フレームワークの設計に興味がある人です。かなり幅広い設計技法について紹介しているので、内容自体はそこまで濃いものではありませんが勉強になります。 おすすめです。 (adsbygoogle = window. &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2007/04/28/477412950X">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">ソースコードリーディングから学ぶ Javaの設計と実装</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2007-04-28T12:15:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Apr 28<span>th</span>, 2007</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/">これは読むべき</a>
+    
+      <a class="tag label label-info" href="/blog/tags/kodorideingu/">コードリーディング</a>
+    
+      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
+    
+      <a class="tag label label-info" href="/blog/tags/she-ji/">設計</a>
+    
+      <a class="tag label label-info" href="/blog/tags/opunsosu/">オープンソース</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/477412950X/250-0450217-6192202?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=477412950X" title="ソースコードリーディングから学ぶ Javaの設計と実装" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/4169CSHV2AL._SL500_AA300_.jpg" class="asin-thumbnail" alt="ソースコードリーディングから学ぶ Javaの設計と実装" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/gp/product/477412950X/250-0450217-6192202?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=477412950X" title="ソースコードリーディングから学ぶ Javaの設計と実装" rel="external nofollow">ソースコードリーディングから学ぶ Javaの設計と実装</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>WINGSプロジェクト 佐藤 匡剛 (著), 山田 祥寛 (監修)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>技術評論社</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/477412950X/250-0450217-6192202?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=477412950X" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+<div class="entry-content"><p>本書の対象読者は、アーキテクトを目指す人、技術者としてさらに設計技術を高めたい人、フレームワークの設計に興味がある人です。かなり幅広い設計技法について紹介しているので、内容自体はそこまで濃いものではありませんが勉強になります。</p>
+
+<p>おすすめです。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>感想</h2>
+
+
+<p>久々に満足した一冊です。対象がオープンソースプロダクトなので、時間があれば実際にソースコードを読みながら設計を理解していくということもできますが、一冊の本にまとめてくれて入り口まで案内してくれるということが、とてもよいことだと思いました。</p>
+
+<p>少し技術に興味があるプログラマやアーキテクト見習いの人に、おすすめしたい一冊です。</p>
+
+<h2>参考</h2>
+
+
+
+
+<div class="rakuten">
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table>
+</div>
+
+
+
+
+<div class="rakuten">
+<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/ref=nosim/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table>
+</div></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2005/03/20/4839912653/">Code Reading―オープンソースから学ぶプログラミングテクニック</a></li>
+        
+        <li><a href="/blog/2006/04/29/4894716895/">Java Puzzlers 罠、落とし穴、コーナーケース</a></li>
+        
+        <li><a href="/blog/2012/05/26/4822234630/">まつもとゆきひろ コードの未来</a></li>
+        
+        <li><a href="/blog/2012/04/27/4048706705/">オブジェクト指向JavaScript</a></li>
+        
+        <li><a href="/blog/2012/01/21/4048707868/">テスト駆動JavaScript</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2007-04-28T12:15:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Apr 28<span>th</span>, 2007</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/">これは読むべき</a>
+    
+      <a class="tag label label-info" href="/blog/tags/kodorideingu/">コードリーディング</a>
+    
+      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
+    
+      <a class="tag label label-info" href="/blog/tags/she-ji/">設計</a>
+    
+      <a class="tag label label-info" href="/blog/tags/opunsosu/">オープンソース</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2007/04/28/477412950X/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2007/04/28/477412950X/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2007/04/28/477412950X/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2007/04/28/477412950X/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2007/04/28/477412950X/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2007/04/28/477412950X/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2007/04/20/memo/" title="Previous Post:
+      技術者の宝石箱"><i class="fa fa-arrow-circle-left"></i> 技術者の宝石箱</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2007/07/16/4798111112/"
+                            title="Next Post: オブジェクト指向入門 第2版 原則・コンセプト">オブジェクト指向入門 第2版 原則・コンセプト <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2007/04/28/477412950X/';
+  var disqus_url = 'http://hamasyou.com/blog/2007/04/28/477412950X/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

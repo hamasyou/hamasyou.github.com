@@ -1,0 +1,550 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>cocos2dで作る iPhone＆iPadゲームプログラミング - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="待望の、cocos2d 詳細解説本がでました！ 本書を読めば、cocos2d のすべてが分かると言ってもいいんじゃないかというぐらい幅広く詳しく cocos2d のことが書いてあります。 本書は、cocos2d を使ってゲームアプリをつくりながら、cocos2d の機能や cocos2d &hellip;">
+  <meta name="keywords" content="cocos2d,ゲーム,iPhone,Objective-C,良書">
+
+  
+
+
+<meta property="og:title" content="cocos2dで作る iPhone＆iPadゲームプログラミング - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2011/08/17/4844330411/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="待望の、cocos2d 詳細解説本がでました！ 本書を読めば、cocos2d のすべてが分かると言ってもいいんじゃないかというぐらい幅広く詳しく cocos2d のことが書いてあります。 本書は、cocos2d を使ってゲームアプリをつくりながら、cocos2d の機能や cocos2d &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2011/08/17/4844330411">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">Cocos2dで作る iPhone＆iPadゲームプログラミング</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-08-17T10:16:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Aug 17<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/cocos2d/">cocos2d</a>
+    
+      <a class="tag label label-info" href="/blog/tags/iphone/">iPhone</a>
+    
+      <a class="tag label label-info" href="/blog/tags/objective-c/">Objective-C</a>
+    
+      <a class="tag label label-info" href="/blog/tags/gemu/">ゲーム</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4844330411?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4844330411" title="cocos2dで作る iPhone＆iPadゲームプログラミング" rel="external nofollow">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/51gwqeWV-FL._SL500_AA300.jpg" class="asin-thumbnail" alt="cocos2dで作る iPhone＆iPadゲームプログラミング" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/gp/product/4844330411?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4844330411" title="cocos2dで作る iPhone＆iPadゲームプログラミング" rel="external nofollow">cocos2dで作る iPhone＆iPadゲームプログラミング</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>Steffen Itterheim (著), 畑 圭輔 (監修), 坂本 一樹 (監修), 加藤 寛人 (監修), 高丘 知央 (監修), 株式会社 クイープ (翻訳)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>インプレスジャパン</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4844330411?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4844330411" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+<div class="entry-content"><p>待望の、<strong class="text-danger">cocos2d</strong> 詳細解説本がでました！ 本書を読めば、cocos2d のすべてが分かると言ってもいいんじゃないかというぐらい幅広く詳しく cocos2d のことが書いてあります。</p>
+
+<p>本書は、cocos2d を使ってゲームアプリをつくりながら、cocos2d の機能や cocos2d を使ってゲームアプリを開発する際の手順、こういうふうに設計したら cocos2d ではうまくいくというような事を解説しています。</p>
+
+<p>cocos2d は Objective-C で書かれていて、ゲームアプリも Objective-C を使って作ります。cocos2d が内部に OpenGL-ES を隠してくれているので、すごく簡単に 2D ゲームを作ることができるようになります。</p>
+
+<p>iPhone 用のゲームアプリを作ってみたいがどうやって作ればいいのかわからない人、どのフレームワークを使えばいいか迷っている人に、特におすすめです。</p>
+
+<p>僕の持っている版は cocos2d のバージョン 0.99.5 が解説されています。</p>
+
+<p><section></section></p>
+
+<p><i class="fa fa-search"></i> <a href="http://www.cocos2d-iphone.org/" rel="external nofollow" title="cocos2d for iPhone">cocos2d for iPhone</a></p>
+
+<p></p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>各章の紹介</h2>
+
+
+<p>本書第1章の概要から、各章の紹介の抜粋です。（一部、誤訳や説明の抜けがあったので補足しています）</p>
+
+<dl>
+<dt>第２章　プログラミングを始めるための準備</dt>
+<dd><p>cocos2d を使って開発を行うための準備、プロジェクトテンプレートのインストール、最初の「Hello World」プロジェクトの作成について説明します。ここでは、<em>シーンやノードといった cocos2d の基礎</em>を学びます。</p></dd>
+<dt>第３章　基礎</dt>
+<dd><p><em>Sprite、Transition、Action など、最もよく使われる cocos2d の基本クラス</em>と、そしてもちろん、それらの使用法について説明します。</p></dd>
+<dt>第４章　初めてのゲーム</dt>
+<dd><p>これは、あなたが初めて作るゲームとなります。ゲーム内容は、画面上から降ってくる敵をデバイスを傾けてかわします。<em>傾きを加速度センサーから取得する方法</em>についても学びます。</p></dd>
+<dt>第５章　ゲームの構成要素</dt>
+<dd><p>ゲームの規模が大きくなればなるほど、よりしっかりとしたコード構成が必要になります。心の準備はできているでしょうか。ここでは、<em>シーンとノードが階層化される仕組み</em>と、<em>ゲームオブジェクトの間で情報を交換するためのさまざまな方法</em>を取り上げます。</p></dd>
+<dt>第６章　スプライトの詳細</dt>
+<dd><p><em>テクスチャアトラスとは何</em>か、それを次のゲームに使うのはなぜかについて説明し、Zwoptex ツールを使ってテクスチャアトラスを作成する方法を紹介します。</p></dd>
+<dt>第７章　スクロールを使った処理</dt>
+<dd><p>テクスチャアトラスの準備ができたところで、<em>タッチ入力によって制御されるパララックススクロール対応</em>のシューティングゲームの実装方法を紹介します。</p></dd>
+<dt>第８章　アクションとアニメーションの処理</dt>
+<dd><p>シューティングゲームを作る際には、敵がいないとゲームとして成立しません。この章では、<em>敵の大軍を生成するコードとともに、移動、攻撃、アニメーションの作成を行うためのゲームプレイコードを追加する方法</em>を紹介します。</p></dd>
+<dt>第９章　パーティクル効果</dt>
+<dd><p>ParticleDesigner ツールを使って、横にスクロールするゲームに<em>パーティクル効果を追加</em>します。</p></dd>
+<dt>第１０章　タイルマップの処理</dt>
+<dd><p>ここで一気に弾みをつけましょう。横にスクロールするゲームから学んだことを<em>横向きモードに応用</em>し、これも人気の高い iOS ゲームジャンルのゲームを作成します。</p></dd>
+<dt>第１１章　等角タイルマップ</dt>
+<dd><p><em>cocos2d は TMX ファイルフォーマットをサポートしている</em>ため、ここでは Tiled エディタを使ってタイルベースのゲームを作成する方法について見ていきます。</p></dd>
+<dt>第１２章　物理エンジン</dt>
+<dd><p>指先の動きで目的の場所を指し示す &#8212; ここでは、この機能がどのようにして実現されるのかを示します。<em>Chipmunk と Box2D の2つの物理エンジンを紹介</em>し、それらを驚きの手法で実装します。</p></dd>
+<dt>第１３章　ピンボールゲーム</dt>
+<dd><p>重力のない宇宙空間で惑星が跳ね返るボールシューティングに実際の物理学を応用します。ゲームの内容は非現実的ですが、この章で扱う物理計算は、公式そのものです。難しい箇所がありますが、面白いので是非読んでください。</p></dd>
+<dt>第１４章　Game Center</dt>
+<dd><p><em>Game Center と Game Kit API を利用してプレイヤーの認証、スコアの記録、Leaderboard の表示を行う方法</em>について見ていきます。</p></dd>
+<dt>第１５章　非凡であれ</dt>
+<dd>
+<p>以上が本書の内容ですが、ご心配なく。あなたの旅はここで終わりません。ここからどこへ進めばよいかのヒントがここにあります。</p>
+<dd>
+</dd>
+</dd>
+</dl>
+<h2>本書の感想</h2>
+
+
+<p>僕は、Objective-C を使ってゲームを作りたいと思っていたときに cocos2d に出会いました。当時は cocos2d の公式HPくらいしか cocos2d に関する情報が載っておらず、プログラミングをしていて cocos2d の使い方はこれでいいのかな？というようなところが結構ありました。</p>
+
+<p>当時、試行錯誤してたどり着いたコードが、今手元の本のサンプルに書いてあり、どうしてこういうコードを書くのかという説明がされています。あの時、この本が欲しかった！！ほんとにそう思える、cocos2d の詳細解説本になっています。</p>
+
+<p>cocos2d に興味がある人、ちょっと触ってみてみようかなという人は、是非本書を呼んでみてください。</p></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/">[cocos2d] CCSpriteSheet や CCAnimation を使った時の CCSprite の後始末のしかた</a></li>
+        
+        <li><a href="/blog/2010/10/19/objective-c-xcode/">[Objective-C] Xcode の単体テスト環境</a></li>
+        
+        <li><a href="/blog/2010/10/12/objective-c-retain-release/">[Objective-C] retain と release の関係について</a></li>
+        
+        <li><a href="/blog/2013/01/22/titanium-alloy/">Titanium Alloy でつくったアプリをリリースしました</a></li>
+        
+        <li><a href="/blog/2011/08/04/iosgame-center/">[iOS] Game Center を使った対戦プログラミングの手順メモ</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-08-17T10:16:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Aug 17<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/cocos2d/">cocos2d</a>
+    
+      <a class="tag label label-info" href="/blog/tags/iphone/">iPhone</a>
+    
+      <a class="tag label label-info" href="/blog/tags/objective-c/">Objective-C</a>
+    
+      <a class="tag label label-info" href="/blog/tags/gemu/">ゲーム</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/08/17/4844330411/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2011/08/17/4844330411/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2011/08/17/4844330411/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2011/08/17/4844330411/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2011/08/17/4844330411/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2011/08/17/4844330411/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2011/08/16/4873114799/" title="Previous Post:
+      プログラマが知るべき97のこと"><i class="fa fa-arrow-circle-left"></i> プログラマが知るべき97のこと</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2011/08/24/4048679880/"
+                            title="Next Post: The Art of Multiprocessor Programming 並行プログラミングの原理から実践まで">The Art of Multiprocess... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2011/08/17/4844330411/';
+  var disqus_url = 'http://hamasyou.com/blog/2011/08/17/4844330411/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

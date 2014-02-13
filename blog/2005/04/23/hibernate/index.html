@@ -1,0 +1,638 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Hibernate のトランザクション制御 - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="Hibernate は O/R マッピングツールと呼ばれる、リレーショナルデータベースとオブジェクトモデルとの間を埋めるフレームワークです。 O/Rマッピングを行うとトランザクション制御をあまり考えなくてもいいような気になってしまう感があります。でも、トランザクション制御って非常に大切な要素です &hellip;">
+  <meta name="keywords" content="Hibernate,O/Rマッピング,フレームワーク,データベース,トランザクション,Transaction">
+
+  
+
+
+<meta property="og:title" content="Hibernate のトランザクション制御 - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2005/04/23/hibernate/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="Hibernate は O/R マッピングツールと呼ばれる、リレーショナルデータベースとオブジェクトモデルとの間を埋めるフレームワークです。 O/Rマッピングを行うとトランザクション制御をあまり考えなくてもいいような気になってしまう感があります。でも、トランザクション制御って非常に大切な要素です &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2005/04/23/hibernate">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">Hibernate のトランザクション制御</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-04-23T08:24:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Apr 23<span>rd</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/hibernate/">Hibernate</a>
+    
+      <a class="tag label label-info" href="/blog/tags/o-slash-rmatupingu/">O/Rマッピング</a>
+    
+      <a class="tag label label-info" href="/blog/tags/toranzakusiyon/">トランザクション</a>
+    
+      <a class="tag label label-info" href="/blog/tags/huremuwaku/">フレームワーク</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/193239415X/sorehabooks-22" rel="external nofollow" title=""></a>
+</p>
+
+
+<p>Hibernate は O/R マッピングツールと呼ばれる、リレーショナルデータベースとオブジェクトモデルとの間を埋めるフレームワークです。</p>
+
+<p>O/Rマッピングを行うとトランザクション制御をあまり考えなくてもいいような気になってしまう感があります。でも、トランザクション制御って非常に大切な要素です。しかも、O/Rマッピングを行っていようと、トランザクションのことを何も考えていなければ、データの不整合が起きる可能性もあればデッドロックが起きる可能性もあります。</p>
+
+<p>JDBCを直接扱う場合は、まだトランザクションを気にしながらコーディングする方なのでいいのですが、O/Rマッピングを使う場合に忘れがちなトランザクションのことを、ちょっとでも頭にとどめておくためにメモ程度に記録しておきます。(間違いを見つけたらコメントください)
++ <a href="http://www.hibernate.org/hib_docs/v3/reference/en/html/" rel="external nofollow" title="Hibernate Reference 3.0">Hibernate Reference 3.0</a></p>
+
+<p><section></section></p>
+
+<h4>[参考]</h4>
+
+
+<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822281027/sorehabooks-22" rel="external nofollow" title="トランザクション処理〈上〉-概念と技法">トランザクション処理〈上〉-概念と技法</a>』</p>
+
+<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822281035/sorehabooks-22" rel="external nofollow" title="トランザクション処理〈下〉-概念と技法">トランザクション処理〈下〉-概念と技法</a>』</p>
+
+<p></p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>Hibernateのトランザクション制御方法</h2>
+
+
+
+
+<h3>SessionFactory と Session</h3>
+
+
+<p>SessionFactory クラスと Session クラスが、Hibernate の肝となる部分です。<strong class="text-danger">SessionFactoryはスレッドセーフ</strong>で、アプリケーションで一つのインスタンスのみを生成すればいいです。ただし、データベースとSessionFactoryが1対1で対応するので、アプリケーションで複数のデータベースにアクセスする場合(グローバルトランザクション)はその分だけ SessionFactory を生成します。</p>
+
+<p><strong class="text-danger">SessionFactory は データベースの数だけ生成する</strong></p>
+
+<p>次に、Sessionです。Sessionは、スレッドセーフではありません。マルチスレッド環境下でSessionオブジェクトを使用する場合は気をつける必要があります。Webアプリケーションは基本的にマルチスレッド環境です。したがって、<strong class="text-danger">Sessionは使い捨て</strong>で使用するべきです。</p>
+
+<p>Hibernateはトランザクション管理はベースとなるデータコネクションに任せています。データコネクションがJTAに管理されていれば、Sessionが実行する処理はトランザクションの一部となります。</p>
+
+<h3>Sessionのフラッシュ</h3>
+
+
+<p>基本的にSessionはコネクションと思えばいいようです。Sessionの処理手順としては基本的に下のような感じになります。</p>
+
+<pre>
+1. セッションのオープン
+例）　sessionFactory.openSession()
+↓
+2. トランザクション開始
+例）　transaction = session.beginTransaction
+↓
+3. トランザクション
+例）　session.save()
+session.update()
+session.delete()
+session.saveOrUpdate()
+↓
+4. データベースと同期
+例）　session.flush()
+↓
+5. トランザクションコミット or ロールバック
+例）　transaction.commit()
+transaction.rollback()
+↓
+6. セッションのクローズ
+例）　session.close()
+</pre>
+
+
+<p>Sessionの <strong class="text-danger">flush</strong> は大事な概念のようです。Hibernateは永続化データをキャッシュします。実際には、データベースにはリアルタイムに処理が施されているわけで、いざ save するときにはデータベースのデータと同期が取れていない可能性があります。</p>
+
+<p>これを防止するのが flush の役割です。Hibernateはいろいろな処理を行う際に flush を自動で呼び出してくれます。例えば transaction.commit() の直前などです。しかし、<strong class="text-danger">明示的に session.flush() を呼び出すことはよい手法</strong>となっています。</p>
+
+<h3>HibernateExceptionは致命的な例外</h3>
+
+
+<p>HibernateでスローされるHibernateExceptionはすべて致命的な例外ととらえます。これは、現在のSessionが整合性の取れないものになっている可能性があることを示しています。つまり、<strong class="text-danger">HibernateExceptionがスローされたら、トランザクションをロールバックして、session.close() を即座に呼び出す必要がある</strong>ということです。</p>
+
+<pre class="code"><code>Session session = factory.openSession(); 
+Transaction tx = <span class="keyword">null</span>; 
+ 
+<span class="keyword">try</span> { 
+   tx = session.beginTransaction(); 
+   <span class="comment">// 何らかの処理 </span>
+    tx.commit(); 
+} 
+<span class="keyword">catch</span> (Exception e) { 
+    <span class="keyword">if</span> (tx != <span class="keyword">null</span>) { 
+        tx.rollback(); 
+    } 
+    <span class="keyword">throw</span> e; 
+} 
+<span class="keyword">finally</span> { 
+    session.close(); 
+} 
+</code></pre>
+
+
+
+
+<h3>楽観的同時平行性制御 (Optimisticトランザクション)</h3>
+
+
+<p>通常、データベーストランザクションがユーザとの対話に関与することは許されません。ユーザとの対話に関与(つまり、Webアプリケーションで画面をまたいでトランザクションをかけ続けること)はロングトランザクションとなり、他のデータベーストランザクションがリソースにアクセスすることができなくなります。</p>
+
+<p><em>ユーザとの対話をはさんだビジネスプロセスにおいて、データベーストランザクションを維持するのはアプリケーション層の役割になります</em>。よく使われる方法は、バージョン番号を使って、更新を管理する方法です。Hibernateは3つの方法で、Optimisticなトランザクション制御を行えます。</p>
+
+<ul>
+<li><b>自動バージョン付けのロングトランザクション</b></li>
+<li><b>自動バージョン付けのManyトランザクション</b></li>
+<li><b>アプリケーションによるバージョンチェック</b></li>
+</ul>
+<p>どのチェックの仕方にも共通するのが、バージョン番号を使って処理するということです。Hibernateが永続化処理する場合、バージョン番号も自動的に変更されます。</p>
+
+<h3>ロック制御</h3>
+
+
+<p>Hibernateは、排他ロックをサポートしています。通常、SELECT文というのは、共有ロックがかけれられます。共有ロックは、別のトランザクションから読み取りが許可されるロックです。</p>
+
+<p>一連のトランザクションで見たときに、SELECTした値を変更する場合、排他ロックをかける必要があります。Hibernateではロック機構を<strong class="text-danger">LockMode</strong>クラスで表現しています。</p>
+
+<dl>
+<dt>LockMode.WRITE</dt>
+<dd>行の挿入・更新時に自動的に取得されるロック</dd>
+<dt>LockMode.UPGRADE</dt>
+<dd>排他ロックを取得します。SELECT &#8230; FOR UPDATE 文が実行されます。</dd>
+<dt>LockMode.UPGRADE_NOWAIT</dt>
+<dd>SELECT &#8230; FOR UPDATE NO WAIT を実行します。(Oracleのみ)</dd>
+<dt>LockMode.READ</dt>
+<dd>分離レベルが Repeatable Read か Serializable の場合の読み込みのときに取得されます。</dd>
+<dt>LockMode.NONE</dt>
+<dd>ロックされていないことを表します。</dd>
+</dl>
+<p>O/Rマッピングを行う場合でも、トランザクションのことは忘れてはいけないのです。すべてをHibernateに任せることは間違っていて、トランザクションの分離レベルとロックトランザクション・Optimisticトランザクションの区別は、アプリケーション側で適切に考える必要があります。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>JSF / Spring / Hibernate を使ったアプリケーション開発</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4839917779/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>開発者ノート「Hibernate」</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311215X/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>トランザクション処理のバイブル</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822281027/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>トランザクション処理のバイブル</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822281035/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>トランザクション処理について、最初に学び始めるのにちょうど良いくらい</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822280268/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2005/12/31/hibernate/">HIBERNATE覚書き</a></li>
+        
+        <li><a href="/blog/2004/11/18/hibernate2/">Hibernate で O/Rマッピング してみる ： 関係編</a></li>
+        
+        <li><a href="/blog/2004/11/18/hibernate1/">Hibernate で O/Rマッピング してみる ： 基本編</a></li>
+        
+        <li><a href="/blog/2004/11/18/hibernate0/">Hibernate で O/Rマッピング してみる ： 概要編</a></li>
+        
+        <li><a href="/blog/2005/06/14/1590594614/">Pro Spring</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-04-23T08:24:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Apr 23<span>rd</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/hibernate/">Hibernate</a>
+    
+      <a class="tag label label-info" href="/blog/tags/o-slash-rmatupingu/">O/Rマッピング</a>
+    
+      <a class="tag label label-info" href="/blog/tags/toranzakusiyon/">トランザクション</a>
+    
+      <a class="tag label label-info" href="/blog/tags/huremuwaku/">フレームワーク</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2005/04/23/hibernate/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2005/04/23/hibernate/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2005/04/23/hibernate/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2005/04/23/hibernate/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2005/04/23/hibernate/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2005/04/23/hibernate/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2005/04/16/4797325208/" title="Previous Post:
+      攻略Jakarta Commons"><i class="fa fa-arrow-circle-left"></i> 攻略Jakarta Commons</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2005/05/03/4822221180/"
+                            title="Next Post: UMLモデリングの本質">UMLモデリングの本質 <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2005/04/23/hibernate/';
+  var disqus_url = 'http://hamasyou.com/blog/2005/04/23/hibernate/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

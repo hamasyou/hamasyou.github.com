@@ -1,0 +1,948 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="GitHub で複数アカウントを使った場合に、SSH の鍵管理周りではまったので解決方法のメモです。 Special Thanks @bongole ">
+  
+
+  
+
+
+<meta property="og:title" content="それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/page/6/index.html" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="GitHub で複数アカウントを使った場合に、SSH の鍵管理周りではまったので解決方法のメモです。 Special Thanks @bongole " />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/page/6">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  <div class="col-sm-12 col-md-9">
+    
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2010/10/28/github/">GitHub で複数アカウントを使う</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-10-28T14:37:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 28<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/github/">GitHub</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ssh/">SSH</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2010/10/28/github/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>GitHub で複数アカウントを使った場合に、SSH の鍵管理周りではまったので解決方法のメモです。</p>
+
+<p>Special Thanks <a href="http://twitter.com/bongole" rel="external nofollow" title="@bongole">@bongole</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2010/10/28/github/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/">[Cocos2d] CCSpriteSheet や CCAnimation を使った時の CCSprite の後始末のしかた</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-10-27T22:58:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 27<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/cocos2d/">cocos2d</a>
+    
+      <a class="tag label label-info" href="/blog/tags/memoriguan-li/">メモリ管理</a>
+    
+      <a class="tag label label-info" href="/blog/tags/iphone/">iPhone</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>cocos2d を使ったときの CCSprite の後始末のしかたのメモです。</p>
+
+<p>CCSpriteSheet から CCSprite を作ったときの破棄と CCAnimation が終わったタイミングでの CCSprite の破棄の方法をメモしています。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2010/10/25/air/">Air号外をリリースしました。</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-10-25T20:56:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 25<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/puresuririsu/">プレスリリース</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2010/10/25/air/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>（株）マウントポジションがアプリケーションの開発を担当した
+iPhone用アプリケーション「<strong class="text-danger">Air号外</strong>」が本日リリースされました。</p>
+
+<p><img alt="ss2-208x300.jpg" src="/images/ss2-208x300.jpg" width="208" height="300" class="mt-image-none img-thumbnail" style=""></p>
+
+<p>Air号外は、街中で配布される「号外」を仮想空間で配布するサービスです。
+地図を見ながら近くで配布されている号外を検索し、
+ARカメラを使って、空間に配置されている号外を取得し、閲覧することができます。</p>
+
+<p>開発運営
+- 株式会社博報堂DYスポーツマーケティング
+- 株式会社キュードーガ
+- 株式会社マウントポジション</p>
+
+<p>首都圏にいてもなかなか手にする機会が少ない「号外」を
+このアプリケーショを使って手に入れてみてはいかがでしょうか。</p>
+
+<p><section></section></p>
+
+<h4>iTunes へのリンク</h4>
+
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://itunes.apple.com/jp/app/id397089560" rel="external nofollow" title="Air号外">Air号外</a></p>
+
+<p></p>
+
+<p>なお、このアプリケーションは <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title=""></a> を使ってつくりました。</p>
+
+<p>開発期間がぐっと短縮できたし、Titanium だと分業がしやすい（Window 単位で画面をわけることができるため）ので、サクサク開発ができました。</p></div>
+  
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2010/10/19/objective-c-xcode/">[Objective-C] Xcode の単体テスト環境</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-10-19T17:46:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 19<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/objective-c/">Objective-C</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ocunit/">OCUnit</a>
+    
+      <a class="tag label label-info" href="/blog/tags/dan-ti-tesuto/">単体テスト</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2010/10/19/objective-c-xcode/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>iPhone アプリで利用している Xcode 上に単体テスト環境を構築する手順のメモです。</p>
+
+<p>GUI の構築が多い iPhone アプリ開発ですが、一部ロジックもあります。ロジックのテストはあったほうがいいし、なきゃ不安。</p>
+
+<p>ということで単体テスト環境の構築方法をいろいろしらべてやってみた手順のまとめです。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2010/10/19/objective-c-xcode/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2010/10/18/objective-c-viewdidunload-dealloc/">[iPhone] UIViewController の Dealloc と viewDidUnload</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-10-18T17:52:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 18<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/iphone/">iPhone</a>
+    
+      <a class="tag label label-info" href="/blog/tags/uikit/">UIKit</a>
+    
+      <a class="tag label label-info" href="/blog/tags/memoriguan-li/">メモリ管理</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2010/10/18/objective-c-viewdidunload-dealloc/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>UIViewController でメモリの確保と破棄を行う際に viewDidUnload と dealloc をどのように使い分けたらよいか間違って覚えている人が多いように思います。</p>
+
+<p>Web上にあるサンプルや書籍でさえも間違っているものが多くあります。</p>
+
+<p>本記事では、UIViewController の viewDidUnload と dealloc の使い分けを整理していこうと思います。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2010/10/18/objective-c-viewdidunload-dealloc/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2010/10/12/objective-c-retain-release/">[Objective-C] Retain と Release の関係について</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-10-12T08:13:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 12<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/objective-c/">Objective-C</a>
+    
+      <a class="tag label label-info" href="/blog/tags/memoriguan-li/">メモリ管理</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2010/10/12/objective-c-retain-release/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Objective-C ではガーベージコレクション機能が用意されていますが、iPhone アプリ開発などではメモリ管理をガーベージコレクションに任せずに自分で管理する必要があったりします。</p>
+
+<p>メモリ管理のルールとして、自分でメモリを割り当てたものは自分で開放する、自分で retain をしたものは 自分で release するなど、いくつかルールがあるのでそのメモです。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2010/10/12/objective-c-retain-release/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/25/dropbox-app/">[Dropbox] .app ファイルを共有すると動かなくなる</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-09-25T13:14:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 25<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/dropbox/">Dropbox</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2010/09/25/dropbox-app/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong class="text-danger">Dropbox</strong> で .app ファイルを共有すると、転送先で動かなくなるという現象が発生したので、解決方法のメモです。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2010/09/25/dropbox-app/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/24/javascript-1/">[JavaScript] JavaScript の変数宣言のスコープ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-09-24T10:57:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 24<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/javascript/">JavaScript</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2010/09/24/javascript-1/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>JavaScript で忘れがちな変数宣言に関してのメモ。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2010/09/24/javascript-1/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/23/textmate/">[TextMate] よく使うショートカット</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-09-23T14:46:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 23<span>rd</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/textmate/">TextMate</a>
+    
+      <a class="tag label label-info" href="/blog/tags/siyotokatuto/">ショートカット</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2010/09/23/textmate/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>TextMate でよく使うショートカットのメモです。自分用。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2010/09/23/textmate/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/20/mac-os-x-windows-winebottler/">Mac OS X で Windows アプリケーションを動かす WineBottler</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-09-20T00:07:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 20<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/macosx/">MacOSX;</a>
+    
+      <a class="tag label label-info" href="/blog/tags/vmware/">VMWare</a>
+    
+      <a class="tag label label-info" href="/blog/tags/windows/">Windows</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2010/09/20/mac-os-x-windows-winebottler/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Mac OS X 上で Windows アプリケーションを動かす <em><a href="http://winebottler.kronenberg.org/" rel="external nofollow" title="WineBottler">WineBottler</a></em> なるものを発見しました。</p>
+
+<p>このアプリケーションを使うと、Windows OS を持っていなくても、VMWare や Boot Camp をもっていなくても、Windows アプリケーションを Mac OS X 上で動かすことができるようです。</p>
+
+<p>Web サイトを Mac で Windows の IE の表示確認をするために使ったので、そのメモです。WineBottler をもっと使いこなすには他のサイトを確認してみてください。</p>
+
+<p><section></section></p>
+
+<h4>WineBottler を使いこなすための参考サイト</h4>
+
+
+
+
+<ul>
+<li><a href="http://www.lifehacker.jp/2010/01/100110_winebottlerwindowsos_x.html" rel="external nofollow" title="『WineBottler』でWindowsのプログラムをスタンドアローン化し、OS Xアプリに - lifehacker">『WineBottler』でWindowsのプログラムをスタンドアローン化し、OS Xアプリに - lifehacker</a></li>
+<li><a href="http://www.moongift.jp/2010/01/winebottler/" rel="external nofollow" title="Windows用ソフトウェアをあたかもMac OSXソフトウェアのように変換する - MOONGIFT">Windows用ソフトウェアをあたかもMac OSXソフトウェアのように変換する - MOONGIFT</a></li>
+</ul>
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2010/09/20/mac-os-x-windows-winebottler/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+    
+    <ul class="pager">
+      
+      <li class="previous"><a href="/blog/page/7/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
+      
+      
+      <li class="next"><a href="/blog/page/5/">Newer <i class="fa fa-arrow-circle-right"></i></a></li>
+      
+    </ul>
+  </div>
+  <div class="clearfix visible-sm"></div>
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_script = 'count.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

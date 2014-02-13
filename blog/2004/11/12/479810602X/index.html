@@ -1,0 +1,594 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Executable UML MDAモデル駆動型アーキテクチャの基礎 - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="「Executable UML」とは、実行可能なモデルという意味です。Executable UML の目的は 「ソフトウェア実装上の構成を決定せずに、問題領域の解決に向けての分かりやすいモデルを提供すること」です。ソフトウェア実装とは例えば、プログラミング言語やプラットフォームといったいわゆる、 &hellip;">
+  <meta name="keywords" content="Executable,UML,実行可能なUML,MDA,モデル駆動アーキテクチャ">
+
+  
+
+
+<meta property="og:title" content="Executable UML MDAモデル駆動型アーキテクチャの基礎 - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2004/11/12/479810602X/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="「Executable UML」とは、実行可能なモデルという意味です。Executable UML の目的は 「ソフトウェア実装上の構成を決定せずに、問題領域の解決に向けての分かりやすいモデルを提供すること」です。ソフトウェア実装とは例えば、プログラミング言語やプラットフォームといったいわゆる、 &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2004/11/12/479810602X">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">Executable UML MDAモデル駆動型アーキテクチャの基礎</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-11-12T10:52:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 12<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/mda/">MDA</a>
+    
+      <a class="tag label label-info" href="/blog/tags/uml/">UML</a>
+    
+      <a class="tag label label-info" href="/blog/tags/moderuqu-dong/">モデル駆動</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810602X/sorehabooks-22" title="Executable UML MDAモデル駆動型アーキテクチャの基礎" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/41W4TWPMZBL._SL500_AA300_.jpg" class="asin-thumbnail" alt="Executable UML MDAモデル駆動型アーキテクチャの基礎" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810602X/sorehabooks-22" title="Executable UML MDAモデル駆動型アーキテクチャの基礎" rel="external nofollow">Executable UML MDAモデル駆動型アーキテクチャの基礎</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>スティーブ J.メラー (著), マーク J.バルサー (著), 株式会社テクノロジックアート (編集), 二上 貴夫 (翻訳), 長瀬 嘉秀 (翻訳), Executable UML研究会 (翻訳)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>翔泳社</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810602X/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+<div class="entry-content"><p>「Executable UML」とは、<b>実行可能なモデル</b>という意味です。Executable UML の目的は 「<strong class="text-danger">ソフトウェア実装上の構成を決定せずに、問題領域の解決に向けての分かりやすいモデルを提供すること</strong>」です。ソフトウェア実装とは例えば、プログラミング言語やプラットフォームといったいわゆる、問題領域の解決につかう道具のことです。逆に問題領域の解決とは、ビジネスモデルやビジネスルールと言われる、ソフトウェアの目的の部分です。</p>
+
+<p>Executable UML は、UML のアクションセマンティックス(動作意味論) を提供します。これにより、ソフトウェア実装を決定せずともソフトウェアの動作を表すことができます。しかも、厳密に定義することで、ツールによる解釈・実行が可能になります。<a href="http://www.atmarkit.co.jp/aig/04biz/mda.html" rel="external nofollow" title=" (モデル駆動アーキテクチャ)"> (モデル駆動アーキテクチャ)</a>は、こうしたExecutable UML によって書かれたモデルを解釈し、コードを自動生成しようとしています。モデルの解釈を行うためには、厳密なセマンティックスが必要とされます。</p>
+
+<p>本書は、Executable UML を理解するためのよい書籍だと思います。Executable UML 自体は、新しいモデリング言語と言うわけではありません。<strong class="text-danger">UML の一つの拡張(プロファイル)であり、実行可能なモデルを生み出すためのただの表記法</strong>です。</p>
+
+<p>最近は、「モデリング」という言葉をいろんなところで聞けるようになりました。書籍もたくさん出ています。今後は、プログラムだけではなくモデリングも出来なくてはならない時代が来るかもしれません。そうすると、自然とモデルからコードを生成するという発想が生まれてきます。今後は MDA のようなモデルからコードを生成する手法が一般的になってくるかもしれません。Executable UML は次世代のための必須知識と言えるのではないでしょうか。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>特徴</h2>
+
+
+<p>Executable UML は、UML に<b>厳密なアクションセマンティックス</b>を拡張したものです。プログラミングコードによる実装なくして、モデルの解釈・動作を行うことが出来るようになります。本書は、Executable UML の表記法や仕様を理解するのにとても分かりやすいと思います。現時点で、Executable UML に関する和書が少ないということも事実ですが、とりあえず本書を理解できれば Executable UML の基本は完璧だと思います。</p>
+
+<h3>目次</h3>
+
+
+<p>目次を見ると分かりますが、UML の解説書と見間違うほどです。UML を読めるだけの基本知識があるほうが読み進めやすいと思います。</p>
+
+<ol>
+<li>序論</li>
+<li>Executable UMLの利用</li>
+<li>ドメインとブリッジ</li>
+<li>ユースケース</li>
+<li>クラスと属性</li>
+<li>関係と関連</li>
+<li>クラスのアクション</li>
+<li>制約</li>
+<li>ライフサイクル</li>
+<li>オブジェクト間の通信</li>
+<li>オブジェクト間の同期</li>
+<li>ライフサイクルの利用法</li>
+<li>関係の動的変化</li>
+<li>ドメインの動的振る舞い</li>
+<li>ドメインの検証</li>
+<li>モデルの管理</li>
+<li>複数ドメインの結合</li>
+<li>モデルコンパイラ</li>
+</ol>
+<h3>Executable UML の利用</h3>
+
+
+<p>Executable UML の目的は 「完全な製品を組み立てずに、問題解決を試作する方法を提供すること」です。これは、モデルを書くことで動作検証を行えるということを意味しています。つまり、実際にプロトタイプや擬似コードを書くことなく、モデルのみでソフトウェアのテストが可能になると言うことです。</p>
+
+<p>考え方自体は、とてもすばらしいものだと思います。プログラミング言語に依存せずにソフトウェアがテストできると言うことは、どんなプラットフォーム上でも同じソフトウェアが作成可能になります。しかも、テスト済みのモデルであれば、モデルから自動生成したコードをそのままソフトウェア成果物として納品することも可能になるはずです。</p>
+
+<p>モデルの検証は2種類の方法があります。静的検証と動的検証です。</p>
+
+<dl>
+<dt>静的検証</dt>
+<dd>静的検証はモデルコンパイラが行う構文検査のようなものです。モデルが解釈可能かどうかを検証します。</dd>
+<dt>動的検証</dt>
+<dd>動的検証は、実際の値を使用してモデルを検証するものです。検証するためには「実際のオブジェクト」と「シナリオ」が必要になります。テストシナリオは、モデルごとに作成する方が向いているが、ユースケースには一致している必要があります。</dd>
+</dl>
+<p>作成したモデルは、モデルコンパイラを使って実装に変換します。モデルコンパイラの種類によって実装コードが変わるため、パフォーマンスのよいものを選択する。よいパフォーマンスが得られない場合は、その部分だけ手でコードを書き、コンパイラによって吐き出されたコードとリンクする措置をとる。</p>
+
+<h3>本書の総括</h3>
+
+
+<p>全体的に、UML の解説書のような印象を受けました。実行可能なUMLと言っても、結局 UML (モデリング言語) ですから自然なことかもしれませんが。アジャイルプロセスを好む人は、モデリングはコミュニケーションの手段だと考えていると思います。そういう意味では、Executable UML はとっつきにくい分野かもしれないし、なにより胡散臭い感じがしていました。</p>
+
+<p>本書を読んだ後、モデル駆動の開発は近い将来ありえるかもと言う気持ちになりました。確かに、ツール依存という点は否定できませんが、大きな期待はもてるかと思います。</p>
+
+<p>Executable UML は厳密なセマンティックスを要求するので、通常の UML よりも制限や制約が多いです。それでも、UML を書く上で参考になる部分が結構あるので、読んで損はないはずです。</p>
+
+<p>今後、「モデリング」の重要性がさらに高まると、MDA (モデル駆動アーキテクチャ) のようなモデル主体の開発が多くなってくるかもしれません。それには、Executable UML のような厳密な表記法が欠かせません。将来を見越して早くからこういった知識を蓄えておくことは、よいことではないでしょうか。本書は、Executable UML を理解するには、とても参考になり、とりあえず持っていれば何かあったときにも怖くないです (何かってなんだ・・・ (^^; )</p>
+
+<h2>覚書き</h2>
+
+
+
+
+<h3>ドメイン</h3>
+
+
+
+
+<dl>
+<dt class="info">ドメインとは</dt>
+<dd>ドメインとは、特徴的な規則と方針に従って振る舞う概念的エンティティによって形成される、自立した、現実的、仮想的、抽象的な世界である。</dd>
+</dl>
+<p>システムに対して最初に行う作業は、システム全体を構成するいくつかのドメインを識別することです。概念的エンティティはたった一つのドメインの中に定義される。例えば、注文、発注、顧客、会社といった概念エンティティは物流ドメインの一部である。</p>
+
+<p>異なるドメインにおけるエンティティは、たとえ同じ名前だとしても別の概念を意味していなければならない。また、ドメイン内の概念エンティティは同じドメイン内の別の概念エンティティの存在が必要になる。例えば、注文は、顧客がいなければほとんど意味を成さない。ドメイン内の概念エンティティは、別ドメインの概念エンティティの存在を必要としない。</p>
+
+<p><strong class="text-danger">ドメインをモデル化するときは、そのドメインについての用語だけを使う</strong>。ドメインのモデルは、Executable UML において重要な意味をもつ。ドメインの振る舞いが Executable UML におけるモデル群になるからである。Executable UML モデルを構築するには、要件を理解して収集することが必要。そのために、ユースケースをつかう。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>Executable UML の実践的な使い方を解説した本です。</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4789837149/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>モデル駆動アーキテクチャ (MDA) に関しての導入ガイドです。概念がよく分かります。</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4844318691/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>モデル駆動アーキテクチャ (MDA) の技術的側面を解説しています。結構難しいです。</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4434038133/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2005/08/14/4844318691/">MDA(モデル駆動型アーキテクチャ)導入ガイド―UMLを基盤としたオブジェクト指向設計・開発手法</a></li>
+        
+        <li><a href="/blog/2005/11/03/4822281957/">オブジェクト指向でなぜつくるのか―知っておきたいプログラミング、UML、設計の基礎知識―</a></li>
+        
+        <li><a href="/blog/2005/09/23/4894713772/">ユースケース入門―ユーザマニュアルからプログラムを作る</a></li>
+        
+        <li><a href="/blog/2005/09/11/4886487440/">UMLによるオブジェクト指向モデリングセルフレビューノート</a></li>
+        
+        <li><a href="/blog/2005/09/03/4822282376/">オブジェクト開発の神髄〜UML 2.0を使ったアジャイルモデル駆動開発のすべて</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-11-12T10:52:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 12<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/mda/">MDA</a>
+    
+      <a class="tag label label-info" href="/blog/tags/uml/">UML</a>
+    
+      <a class="tag label label-info" href="/blog/tags/moderuqu-dong/">モデル駆動</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/11/12/479810602X/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2004/11/12/479810602X/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2004/11/12/479810602X/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2004/11/12/479810602X/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/11/12/479810602X/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/11/12/479810602X/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2004/11/09/spring-framework-jue-shu-ki-aop/" title="Previous Post:
+      Spring Framework 覚書き - AOP"><i class="fa fa-arrow-circle-left"></i> Spring Framework 覚書き - AOP</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2004/11/13/di/"
+                            title="Next Post: Dependency Injection (DI) の乱用！？">Dependency Injection (D... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2004/11/12/479810602X/';
+  var disqus_url = 'http://hamasyou.com/blog/2004/11/12/479810602X/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

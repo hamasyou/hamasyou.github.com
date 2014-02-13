@@ -1,0 +1,589 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発 - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="テスト駆動開発(TDD)は、アジャイル開発に非常に良く適した開発技法である。プログラムを書く前にテストケースを書くという、今までの開発のやり方とはまったく逆の「目的から解法を求める」やり方です。このやり方だと何がいいのかというと、目的が見えているから(テストケースを満足させること)、 &hellip;">
+  <meta name="keywords" content="テスト駆動開発,TDD,Test-Driven-Developement,バグ,Java,Eclipse">
+
+  
+
+
+<meta property="og:title" content="バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発 - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2004/09/30/479810714X/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="テスト駆動開発(TDD)は、アジャイル開発に非常に良く適した開発技法である。プログラムを書く前にテストケースを書くという、今までの開発のやり方とはまったく逆の「目的から解法を求める」やり方です。このやり方だと何がいいのかというと、目的が見えているから(テストケースを満足させること)、 &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2004/09/30/479810714X">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-09-30T23:59:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 30<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/tdd/">TDD</a>
+    
+      <a class="tag label label-info" href="/blog/tags/tesutohuasuto/">テストファースト</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810714X/sorehabooks-22" title="バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/51XPEMTPVTL._SL500_AA300_.jpg" class="asin-thumbnail" alt="バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810714X/sorehabooks-22" title="バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発" rel="external nofollow">バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>川端 光義 (著), 倉貫 義人 (著), 兒玉 督司 (著)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>翔泳社</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810714X/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+<div class="entry-content"><p>テスト駆動開発(TDD)は、アジャイル開発に非常に良く適した開発技法である。プログラムを書く前にテストケースを書くという、今までの開発のやり方とはまったく逆の「目的から解法を求める」やり方です。このやり方だと何がいいのかというと、目的が見えているから(テストケースを満足させること)、解法が非常にシンプルになることです。つまり無駄がなくなる。トヨタのカンバン方式をご存知ならば、ほとんど一緒の考え方がこの<strong class="text-danger">テスト駆動開発</strong>になるのです。</p>
+
+<p>本書は、今までの開発方法とは一風変わったテスト駆動開発を、日本人による解説と豊富なサンプルプログラムで分かりやすく理解できます。なぜテスト駆動がいいのかということを、余すことなくかかれています。</p>
+
+<p>開発者だけでなく管理者の方も、本書を読むことで品質の良いプログラムを作るためのきっかけが得られるのではないかと思います。とても良い本だと思うので、少しでもテスト駆動開発に興味のある方は読んでみてください。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>解説</h2>
+
+
+<p>本書のタイトルに『バグがないプログラムの作り方』とあるので、プログラミング技法の本かと思いますが実は違います。</p>
+
+<p>本書は、テスト駆動開発という開発手法の本となります。今までの開発は、「十分な設計 ⇒ 実装 ⇒ テスト」の順で行われているのが主だったと思います。が、テスト駆動開発だと、開発の流れが「必要最低限の設計 ⇒ テスト ⇒ 実装」の順になります。</p>
+
+<p>実装の前にテストを行うのが、テスト駆動開発の特徴です。実装前にテストを行うことに意味があるのかというと、ここに非常に意味があります。品質のよいプログラムを書くためにはテストを最初に行う必要があります。</p>
+
+<p>テスト駆動で開発すると良い事が、本書の中で非常に丁寧に分かりやすく、納得しやすく書いてあるので興味がわいてきたら読んでみてください。すらすら読めてしまうので、3時間もあればほとんど読めてしまうと思います。非常に良いことがかいてあります。</p>
+
+<h2>覚書き</h2>
+
+
+
+
+<h3>リズムが大切</h3>
+
+
+<p>テスト駆動開発で重要な要素の一つして「リズム」があります。一般的にテスト駆動で開発するときには<a href="http://d.hatena.ne.jp/keyword/xUnit?kid=23897" rel="external nofollow" title="JUnit">JUnit</a>を使っています。</p>
+
+<p>このJUnitは、テストに成功すると「グリーン｣、失敗すると「レッド」のバーが出力されます。</p>
+
+<p><strong class="text-danger">テスト駆動開発では、「レッド、グリーン、リファクタリング」というリズムを絶えず繰り返すことが、テスト駆動開発の極意</strong>となっています。最初にテストに失敗することからスタートします。ずっとグリーンだと、ほんとにプログラムがあっているのか不安になってきます。ですので、最初に「レッド」からスタートします。</p>
+
+<p>グリーンにした後にリファクタリングを行うのがポイントで、最初のグリーンにする作業では、一番簡単なやり方(Fake It!)でテストをパスすることだけを考えます。次のリファクタリングフェーズで、重複をなくすようなコードに変更していきます。</p>
+
+<p>テスト駆動で開発するときに、最初のレッドにする作業とグリーンにする作業が非常にかったるくなってくることがあります。でも、ここが我慢のしどころで、「レッド、グリーン、リファクタリング」のリズムを守ることを重視してください。折れそうになったら、「ペアプログラミング」をして、パートナーに何とか抑制してもらいましょう。</p>
+
+<h3>テストコードを書くときのポイント</h3>
+
+
+
+
+<ul>
+<li>テストコードにはコードの意図を伝えるコメントを入れる</li>
+<li>テスト同士が関連するのは避ける</li>
+<li>テストの名前には何のテストをしているかと分かる名前を付ける</li>
+</ul>
+<p>テストコードには、引数の意味や数字の意味などを書いておくべきです。テストコードにはリテラルがそのまま使われることが多々ありますので、後々見たときに数字の意味が分かるようにしておくようにします。</p>
+
+<p>プログラムに修正が入る場合、テストコードから最初に修正します。また、テストコードより先にテストコードに書いたコメントを最初に修正します。</p>
+
+<h3>テスト駆動とDependency Injection</h3>
+
+
+<p><a href="http://www.kakutani.com/trans/fowler/injection.html" rel="external nofollow" title="Dependency Injection(依存性注入)">Dependency Injection(依存性注入)</a>というものがあります。これは簡単に言うと、クラスの関連を実装と切り離しておいて、第三者によって実装を設定させるというものです。(あんまり上手く説明できてないな・・・)
+　
+テスト駆動開発を行う上で、あるメソッドをテストするときにクラスの関連が多すぎてテストしにくい場合が出てきます。その場合、設計を見直して関連を減らすことが出来ればいいのですが、出来ない場合も出てきます。</p>
+
+<p>そんな時、MockオブジェクトのほかにもDIを使うことでテストしやすくできます。</p>
+
+<h4>参考</h4>
+
+
+
+
+<ul>
+<li><a href="http://blog.drecom.jp/object-garden/archive/28" rel="external nofollow" title="Object Garden">Object Garden</a></li>
+<li><a href="http://www.ingrid.org/jajakarta/cactus/doc/mockobjects.html" rel="external nofollow" title="モック・オブジェクト 対 コンテナ内テスト">モック・オブジェクト 対 コンテナ内テスト</a></li>
+</ul>
+<h3>「テスト可能」なアプリケーションにするための7つの原則</h3>
+
+
+
+
+<dl>
+<dt>1. GUIビューの外側に</dt>
+<dd>GUIのビューからコードを切り離すことが出来れば、単純なメソッド呼び出しとしてコードをテスト出来るようになる。</dd>
+<dt>2. 型によるエラー検査</dt>
+<dd>型の検査はシステムが自動的に行ってくれます。高い抽象度で型を切り出すことは、ほとんどの場合よいことです。</dd>
+<dt>3. 「断層線」を避けるために仲介機能(mediator)を利用する</dt>
+<dd>独立したコンポーネント同士のインターフェースに仲介役を用意すると、公開メソッドの呼び出しのみを使ってコンポーネントをテストすることが簡単になります。</dd>
+<dt>4. メソッド、小さなシグニチャーおよびデフォルトの引数</dt>
+<dd>小さな引数や、シグネチャを持つメソッドが複数(オーバーライド)あるほうが、テスト時に簡単に呼び出せます。</dd>
+<dt>5. アクセサーは、メモリー状態を修正してはいけない</dt>
+<dd>テストでオブジェクトの状態を検査するときには、オブジェクトの状態を変更しない用にするべきです。さもなければ、内部状態を検査しにくくなってしまいます。</dd>
+<dt>6. インターフェースを使ってプログラム外のコンポーネントを明示する</dt>
+<dd>プログラム外のコンポーネント接続にはインターフェースを使うことで、すべてのコードがそろわなくてもテストすることが出来るようになります。</dd>
+<dt>7. 最初にテストから考える</dt>
+<dd>最初にテストから実装することで、実装段階で間違いを発見することが出来るようになります。</dd>
+</dl>
+<h4>参考</h4>
+
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://www-6.ibm.com/jp/developerworks/java/020125/j_j-diag0911.html" rel="external nofollow" title="「テスト可能な」アプリケーションの設計 IBM">「テスト可能な」アプリケーションの設計 IBM</a></p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>テスト駆動開発といったらケントベックは外せません。</li>
+</ul>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894717115/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>JUnitに関することならこれがおすすめ</li>
+</ul>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325143/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>テストファースト開発に関して分かりやすく解説しています。JUnitの使い方に関しても解説されています。</li>
+</ul>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325720/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2004/12/12/4797325720/">JUnitによるテストファースト開発入門</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-09-30T23:59:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 30<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/tdd/">TDD</a>
+    
+      <a class="tag label label-info" href="/blog/tags/tesutohuasuto/">テストファースト</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/09/30/479810714X/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2004/09/30/479810714X/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2004/09/30/479810714X/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2004/09/30/479810714X/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/09/30/479810714X/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/09/30/479810714X/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2004/09/27/4899770510/" title="Previous Post:
+      文字コード超研究"><i class="fa fa-arrow-circle-left"></i> 文字コード超研究</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2004/10/06/jsf/"
+                            title="Next Post: JSFフレームワーク覚書き">JSFフレームワーク覚書き <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2004/09/30/479810714X/';
+  var disqus_url = 'http://hamasyou.com/blog/2004/09/30/479810714X/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

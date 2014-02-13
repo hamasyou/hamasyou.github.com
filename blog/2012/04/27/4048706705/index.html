@@ -1,0 +1,967 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>オブジェクト指向JavaScript - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="本書は、JavaScript を理解するためのものです。JavaScript はプロトタイプベースの言語で、クラスがなかったり、プロパティのアクセス修飾子がなかったり、継承の仕方が特別だったりします。 JavaScript を理解するには、JavaScript &hellip;">
+  <meta name="keywords" content="JavaScript,オブジェクト指向,プロトタイプ指向">
+
+  
+
+
+<meta property="og:title" content="オブジェクト指向JavaScript - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2012/04/27/4048706705/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="本書は、JavaScript を理解するためのものです。JavaScript はプロトタイプベースの言語で、クラスがなかったり、プロパティのアクセス修飾子がなかったり、継承の仕方が特別だったりします。 JavaScript を理解するには、JavaScript &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2012/04/27/4048706705">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">オブジェクト指向JavaScript</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-04-27T12:54:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Apr 27<span>th</span>, 2012</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/javascript/">JavaScript</a>
+    
+      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/">これは読むべき</a>
+    
+      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/">オブジェクト指向</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4048706705?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048706705" title="オブジェクト指向JavaScript" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/51ttiBI82cL._SL500_AA300_.jpg" class="asin-thumbnail" alt="オブジェクト指向JavaScript" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/gp/product/4048706705?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048706705" title="オブジェクト指向JavaScript" rel="external nofollow">オブジェクト指向JavaScript</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>Stoyan Stefanov (著), 水野貴明 (翻訳), 渋川よしき (翻訳)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>アスキー・メディアワークス</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4048706705?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048706705" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+<div class="entry-content"><p>本書は、JavaScript を理解するためのものです。JavaScript はプロトタイプベースの言語で、クラスがなかったり、プロパティのアクセス修飾子がなかったり、継承の仕方が特別だったりします。</p>
+
+<p>JavaScript を理解するには、JavaScript は全てがオブジェクトであることを覚えておく必要があります。本書は、こう言った、JavaScript が他のオブジェクト指向言語と違う点を整理し、JavaScript ではこう書くというのを丁寧に解説してくれています。</p>
+
+<p>「JavaScript はブラウザ上で動く小さな言語」という認識だった昔とは、昨今では JavaScript の扱いは変わりました。サーバサイドでも JavaScript を動かしたり、スマートフォンの開発に JavaScript を使ったりと、JavaScript が使える舞台は広がっています。</p>
+
+<p>JavaScript をもう一度ちゃんと理解したいという人に、本書はおすすめです。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>プリミティブデータ型</h3>
+
+
+
+
+<dl>
+<dt>Number</dt>
+<dd>1, 100, 3.14 などの数値。浮動小数点を含む。</dd>
+<dt>String</dt>
+<dd>&#8216;hoge&#8217;, &#8220;foo bar&#8221;, などで表現される文字列。</dd>
+<dt>Boolean</dt>
+<dd>true と false。</dd>
+<dt>undefined</dt>
+<dd>まだ存在していない変数にアクセスすると得られる値。</dd>
+<dt>null</dt>
+<dd>値がないことを表す値。</dd>
+</dl>
+<h3>変数の型をしる <code>typeof</code> 演算子</h3>
+
+
+<p>変数や値の型を調べるときに使える <strong class="text-danger">typeof演算子</strong>は、<em>&#8220;number&#8221;</em>、<em>&#8220;string&#8221;</em>、<em>&#8220;boolean&#8221;</em>、<em>&#8220;undefined&#8221;</em>、<em>&#8220;object&#8221;</em>、<em>&#8220;function&#8221;</em> のいずれかの値（文字列）を返す。</p>
+
+<h3>Infinity（無限）</h3>
+
+
+<p><strong class="text-danger">Infinity</strong> は JavaScript で扱えない大きな数値を表すのにつかう値。JavaScript で扱える最大の数値は 1.7976931348623157e+308、最小は 5e-324である。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kc">Infinity</span>
+</span><span class="line"><span class="kc">Infinity</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="k">typeof</span> <span class="kc">Infinity</span>
+</span><span class="line"><span class="s2">"number"</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="mi">1</span><span class="nx">e309</span>
+</span><span class="line"><span class="kc">Infinity</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>Boolean に変換されると false になる値</h3>
+
+
+
+
+<ul>
+<li>空文字列&#8221;&#8221;</li>
+<li>null</li>
+<li>undefined</li>
+<li>数値の 0</li>
+<li>数値の NaN</li>
+<li>Boolean型の false</li>
+</ul>
+<h3>型変換の Tips</h3>
+
+
+<p>数字のような文字列を数値に変換する方法は parseInt() 関数を使う方法の他に、1 を掛けるという方法もある。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">"100"</span><span class="p">;</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">s</span> <span class="o">*</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="k">typeof</span> <span class="nx">s</span><span class="p">;</span>
+</span><span class="line"><span class="s2">"number"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>文字列に変換する場合、空文字と結合する方法がある。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">n</span> <span class="o">=</span> <span class="s2">""</span> <span class="o">+</span> <span class="nx">n</span><span class="p">;</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="k">typeof</span> <span class="nx">n</span><span class="p">;</span>
+</span><span class="line"><span class="s2">"string"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>配列の要素の削除</h3>
+
+
+<p>配列の要素の削除には delete 演算子を使うが、この演算子は配列の要素を減らすわけではなく、undefined を設定する。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="k">delete</span> <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class="line"><span class="kc">true</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+</span><span class="line"><span class="mi">3</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">a</span><span class="p">;</span>
+</span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>変数が定義されていて、値が割り当てられているかどうかを確認する方法</h3>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">something</span> <span class="o">!==</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="c1">// 何かの処理</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>自分自身を書き換える関数</h3>
+
+
+<p>自分自身を書き換える関数の仕組みは、初期化などの一度だけ行ないたい処理がある場合に使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">function</span> <span class="nx">someSetup</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">setup</span> <span class="o">=</span> <span class="s1">'done'</span><span class="p">;</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">  <span class="kd">function</span> <span class="nx">actualWork</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">alert</span><span class="p">(</span><span class="s1">'Worky-worky'</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">  <span class="nx">someSetup</span><span class="p">();</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">actualWork</span><span class="p">;</span>
+</span><span class="line"><span class="p">}();</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h2>オブジェクト</h2>
+
+
+
+
+<h3>オブジェクトリテラル表記</h3>
+
+
+<p>{} を使ってオブジェクトを定義することをオブジェクトリテラル表記を呼ぶ。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">hero</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">breed</span><span class="o">:</span> <span class="s1">'Turtle'</span><span class="p">,</span>
+</span><span class="line">  <span class="nx">occupation</span><span class="o">:</span> <span class="s1">'Ninja'</span>
+</span><span class="line"><span class="p">};</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>オブジェクトのプロパティ名はクウォートしないのが推奨されている。ちなみに、連想配列（ハッシュ）のキーは文字列である。</p>
+
+<h3>コンストラクタ関数</h3>
+
+
+<p>関数を new してオブジェクトを作ることで、関数をコンストラクタとして利用することができる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">Hero</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">h1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Hero</span><span class="p">(</span><span class="s1">'hamasyou'</span><span class="p">);</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">h1</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+</span><span class="line"><span class="s2">"hamasyou"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>グローバル変数</h3>
+
+
+<p>JavaScript のプログラムは様々なホスト環境（たとえばブラウザ環境）で動作する。JavaScript のホスト環境はグローバルオブジェクトを提供していて、グローバル変数はグローバルオブジェクトのプロパティになる。</p>
+
+<p>たとえば、ブラウザ環境では <em>window</em> というグローバルオブジェクトが提供されており、グローバル変数はすべて、window のプロパティになる。</p>
+
+<p class="option">コンストラクタ関数を定義したにもかかわらず、new でオブジェクトをつくらなかった場合、this はグローバルオブジェクトを指すことになる。</p>
+
+
+
+
+<h3>constructor プロパティ</h3>
+
+
+<p>オブジェクトが作成されると、<em>constructor</em> プロパティと呼ばれる特別なプロパティに、オブジェクトを作成したときに使われたコンストラクタ関数がセットされる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">h1</span><span class="p">.</span><span class="nx">constructor</span><span class="p">;</span>
+</span><span class="line"><span class="nx">Hero</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>instanceof 演算子</h3>
+
+
+<p><em>instanceof 演算子</em>を使うと constructor プロパティが指定した関数かどうかを調べることができる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">h1</span> <span class="k">instanceof</span> <span class="nx">Hero</span><span class="p">;</span>
+</span><span class="line"><span class="kc">true</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>オブジェクトの比較</h3>
+
+
+<p>オブジェクト同士を比較すると、両方の変数が同じオブジェクトの参照の場合のみ true を返す。</p>
+
+<h2>プロトタイプ</h2>
+
+
+
+
+<blockquote><p>- このプロパティは関数がコンストラクタのときのみ使われる<br>- この関数を使って作られたオブジェクトも、prototype プロパティを持ち、関数の prototype と同じオブジェクトを参照する。このオブジェクトのプロパティは自分のプロパティと同じように使える</p></blockquote>
+
+
+
+
+<h3>prototype プロパティ</h3>
+
+
+<p>関数は、<em>prototype</em> と呼ばれるプロパティを保持している。初期値は空のオブジェクトになっている。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">multiply</span><span class="p">.</span><span class="nx">constructor</span><span class="p">;</span>
+</span><span class="line"><span class="nb">Function</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="k">typeof</span> <span class="nx">multiply</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+</span><span class="line"><span class="s2">"object"</span>
+</span><span class="line">
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">multiply</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+</span><span class="line"><span class="nx">multiply</span> <span class="p">{}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>prototype プロパティに設定されているオブジェクトには、プロパティとメソッドを追加していくことができる。このオブジェクトは、multiply 関数自身にはなんの影響も与えない。追加したプロパティとメソッドは、multiply をコンストラクタとして利用した場合にのみ使われる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">multiply</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'hamasyou'</span><span class="p">;</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">multiply</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+</span><span class="line"><span class="s2">"multiply"</span>
+</span><span class="line">
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">hoge</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">multiply</span><span class="p">();</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">hoge</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+</span><span class="line"><span class="s2">"hamasyou"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>prototype プロパティをいつ変更しても、すべてのオブジェクトが影響を受ける点は注意が必要。</p>
+
+<h3>prototype オブジェクトのプロパティを上書きする</h3>
+
+
+<p>オブジェクト自身のプロパティの方が、prototype オブジェクトのプロパティよりも優先して解決される。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">Salary</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">salary</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
+</span><span class="line">  <span class="nx">salary</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">base</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">salary</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">total</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">base</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">;</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">salary</span><span class="p">;</span>
+</span><span class="line"><span class="p">})();</span>
+</span><span class="line">
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">hoge_salary</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Salary</span><span class="p">();</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">hoge_salary</span><span class="p">.</span><span class="nx">base</span> <span class="o">=</span> <span class="mi">20000</span><span class="p">;</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">hoge_salary</span><span class="p">.</span><span class="nx">total</span><span class="p">();</span>
+</span><span class="line"><span class="mi">21000</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">hama_salary</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Salary</span><span class="p">();</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">hama_salary</span><span class="p">.</span><span class="nx">total</span><span class="p">();</span>
+</span><span class="line"><span class="mi">52500</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h2>継承</h2>
+
+
+
+
+<h3>プロトタイプチェーンで継承を実現する</h3>
+
+
+<p>JavaScript の prototype プロパティはオブジェクトであるので、自身の prototype も持っている。このように prototype をチェーンして辿っていくことで、継承を実現することができる。</p>
+
+<p>次の例は、本書 P.183 のプロトタイプチェーンの例である。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">Shape</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'shape'</span><span class="p">;</span>
+</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">TwoDShape</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'2D shape'</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">Triangle</span><span class="p">(</span><span class="nx">side</span><span class="p">,</span> <span class="nx">height</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Triangle'</span><span class="p">;</span>
+</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">side</span> <span class="o">=</span> <span class="nx">side</span><span class="p">;</span>
+</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">height</span><span class="p">;</span>
+</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">getArea</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">side</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">TwoDShape</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shape</span><span class="p">();</span>
+</span><span class="line"><span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TwoDShape</span><span class="p">();</span>
+</span><span class="line"><span class="nx">TwoDShape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">TwoDShape</span><span class="p">;</span>
+</span><span class="line"><span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">Triangle</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">my</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Triangle</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">my</span><span class="p">.</span><span class="nx">getArea</span><span class="p">();</span>
+</span><span class="line"><span class="mi">25</span>
+</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">my</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+</span><span class="line"><span class="s2">"Triangle"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Triangle クラスには toString メソッドは定義されていないが、Shape 関数で定義されていることで、プロトタイプチェーンをたどって呼び出すことができる。</p>
+
+<p class="option">継承を行った後は、constructor を再設定しておくとよい。</p></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2012/01/21/4048707868/">テスト駆動JavaScript</a></li>
+        
+        <li><a href="/blog/2012/09/23/487311554X/">ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理</a></li>
+        
+        <li><a href="/blog/2011/06/18/4798123986/">Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)</a></li>
+        
+        <li><a href="/blog/2010/09/24/javascript-1/">[JavaScript] JavaScript の変数宣言のスコープ</a></li>
+        
+        <li><a href="/blog/2010/09/07/javascript/">[JavaScript] JavaScript のクラス定義のイディオム</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-04-27T12:54:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Apr 27<span>th</span>, 2012</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/javascript/">JavaScript</a>
+    
+      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/">これは読むべき</a>
+    
+      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/">オブジェクト指向</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2012/04/27/4048706705/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2012/04/27/4048706705/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2012/04/27/4048706705/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2012/04/27/4048706705/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2012/04/27/4048706705/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2012/04/27/4048706705/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/" title="Previous Post:
+      [Rails] carrierwave と fog で Amazon S3 をストレージとして使う"><i class="fa fa-arrow-circle-left"></i> [Rails] carrierwave と f...</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2012/05/09/4774150207/"
+                            title="Next Post: Webエンジニアのための データベース技術[実践]入門">Webエンジニアのための データベース技術[実... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2012/04/27/4048706705/';
+  var disqus_url = 'http://hamasyou.com/blog/2012/04/27/4048706705/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

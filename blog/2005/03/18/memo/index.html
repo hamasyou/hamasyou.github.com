@@ -1,0 +1,688 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>プログラミング覚書き - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="設計やプログラミングを行う上で、覚えておいたほうがいいことなどをメモしておこうと思います。意見などありましたら、コメント等でご連絡ください。随時、更新予定です。 適用、引用による効能は自己責任でお願いします。 (adsbygoogle = window.adsbygoogle || []). &hellip;">
+  <meta name="keywords" content="プログラミング覚書き,プログラミング,覚書き,プログラマー,構文,設計">
+
+  
+
+
+<meta property="og:title" content="プログラミング覚書き - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2005/03/18/memo/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="設計やプログラミングを行う上で、覚えておいたほうがいいことなどをメモしておこうと思います。意見などありましたら、コメント等でご連絡ください。随時、更新予定です。 適用、引用による効能は自己責任でお願いします。 (adsbygoogle = window.adsbygoogle || []). &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2005/03/18/memo">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">プログラミング覚書き</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-03-18T13:24:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Mar 18<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/puroguramingu/">プログラミング</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>設計やプログラミングを行う上で、覚えておいたほうがいいことなどをメモしておこうと思います。意見などありましたら、コメント等でご連絡ください。随時、更新予定です。</p>
+
+<p>適用、引用による効能は自己責任でお願いします。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>インデックス</h2>
+
+
+
+
+<ul>
+<li><a href="#if%E6%96%87%E3%81%AE%E6%A7%8B%E9%80%A0%E3%82%92%E8%80%83%E3%81%88%E3%82%8B" rel="external nofollow">if文の構造を考える</a></li>
+<li><a href="#%E5%AE%9F%E8%A3%85%E3%81%AE%E7%B6%99%E6%89%BF%E3%81%A8%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B9%E3%81%AE%E7%B6%99%E6%89%BF" rel="external nofollow">実装の継承とインターフェイスの継承</a></li>
+<li><a href="#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AB%E3%81%AF%E5%AF%BE%E5%87%A6%E6%B3%95%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B" rel="external nofollow">エラーメッセージには対処法を表示する</a></li>
+<li><a href="#%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9" rel="external nofollow">デザインパターンの考え方</a></li>
+<li><a href="#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E3%81%AE%E8%A8%AD%E8%A8%88%E6%96%B9%E6%B3%95" rel="external nofollow">アプリケーションサービスレイヤーの設計方法</a></li>
+<li><a href="#%E3%82%B5%E3%83%BC%E3%83%96%E3%83%AC%E3%83%83%E3%83%88%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E5%90%8D%E3%81%AF%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8B%E3%82%89%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B%E3%81%B9%E3%81%97" rel="external nofollow">サーブレットコンテキスト名はプログラムから取得するべし</a></li>
+<li><a href="#JBuilder%E3%81%A7%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0server.xml%E3%82%92%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95" rel="external nofollow">JBuilderでカスタムserver.xmlを使う方法</a></li>
+<li><a href="#%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AF%E9%81%93%E8%B7%AF%E6%A8%99%E8%AD%98%E3%81%AE%E8%AD%A6%E5%91%8A%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E4%BD%BF%E3%81%86" rel="external nofollow">コメントは道路標識の警告のように使う</a></li>
+<li><a href="#add,%20set%20%E7%B3%BB%E3%81%AE%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AE%E6%88%BB%E3%82%8A%E5%80%A4%E3%81%AFvoid%20%E3%82%88%E3%82%8A%E3%82%82%20%E5%8F%97%E3%81%91%E5%8F%96%E3%81%A3%E3%81%9F%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88" rel="external nofollow">add, set 系のメソッドの戻り値はvoid よりも 受け取ったオブジェクト</a></li>
+<li><a href="#Web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%86%85%E3%81%A7%E4%BD%BF%E3%82%8F%E3%82%8C%E3%82%8B%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E3%83%AD%E3%82%B8%E3%83%83%E3%82%AF%E3%81%AF%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E3%82%BB%E3%83%BC%E3%83%95%E3%81%AB%E3%81%99%E3%82%8B%E5%BF%85%E8%A6%81%E3%81%8C%E3%81%82%E3%82%8B" rel="external nofollow">Webアプリケーション内で使われるビジネスロジックはスレッドセーフにする必要がある</a></li>
+<li><a href="#%5BJSF%5D&lt;h:commandLink&gt;%E3%81%AF%20&lt;h:form&gt;%E3%82%BF%E3%82%B0%E3%81%AE%E4%B8%AD%E3%81%AB%E6%9B%B8%E3%81%8F" rel="external nofollow">[JSF]&lt;h:commandLink&gt;は &lt;h:form&gt;タグの中に書く</a></li>
+<li><a href="#%5BJSF%5D%20actionListener%E3%81%A8action%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91" rel="external nofollow">[JSF] actionListenerとactionの使い分け</a></li>
+<li><a href="#%E7%92%B0%E5%A2%83%E3%81%AB%E4%BE%9D%E5%AD%98%E3%81%99%E3%82%8B%E3%82%82%E3%81%AE%E3%81%AF%E3%80%81%E5%BC%95%E6%95%B0%E3%81%A7%E5%8F%97%E3%81%91%E5%8F%96%E3%82%8B" rel="external nofollow">環境に依存するものは、引数で受け取る</a></li>
+</ul>
+<h2>ノウハウ一覧</h2>
+
+
+
+
+<h3 id="if文の構造を考える">if文の構造を考える</h3>
+
+
+<p>if - then - else の構造は、<em>同等の重要さを持つ条件</em>を並べるべき。特殊な条件の場合は<strong class="text-danger">ガード節</strong>を用いて、特殊な条件であることが分かるようにする。つまり<em>条件の重み付け</em>を行うこと。</p>
+
+<pre class="code"><code><span class="keyword">if</span> (特殊な条件) {    <span class="comment">/* ガード節 */</span>
+    <span class="comment">// 処理内容 </span>
+    <span class="keyword">return</span> 
+} 
+ 
+<span class="keyword">if</span> (普通の条件1) { 
+    <span class="comment">// 処理1 </span>
+} 
+<span class="keyword">else</span> <span class="keyword">if</span> (普通の条件2) { 
+    <span class="comment">// 処理2 </span>
+} 
+<span class="keyword">else</span> {  
+    <span class="comment">// その他の処理 </span>
+}
+</code></pre>
+
+
+
+
+<h3 id="実装の継承とインターフェイスの継承">実装の継承とインターフェイスの継承</h3>
+
+
+<p>継承には、実装の継承とインターフェイスの継承とがある。実装の継承とは、Javaでいう extends を使う方法である。インターフェイスの継承とはJavaでいう implements を使う方法である。</p>
+
+<p>使い分けるルールとしては</p>
+
+<ol>
+<li>クラスが「もの」や「こと」の種類を表している場合は実装の継承</li>
+<li>サービス、機能を継承する場合はインターフェイスの継承</li>
+</ol>
+<h4>[参考]</h4>
+
+
+<ul>
+<li>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22" rel="external nofollow" title="軽快なJava">軽快なJava</a>』 オライリージャパン</li>
+</ul>
+<h3 id="エラーメッセージには対処法を表示する">エラーメッセージには対処法を表示する</h3>
+
+
+<p>エラーメッセージの表示には <strong class="text-danger">対処法</strong> を書くようにする。例えば、「意図しない入力です。」よりも「生年月日には数値を入力してください。」のようにしたり、「現在、要求を受理できませんでした。」よりも可能であれば「3時間以内に復帰する予定です。」のようにしたほうがよい。</p>
+
+<h3 id="デザインパターンの考え方">デザインパターンの考え方</h3>
+
+
+<p><em>デザインパターンは、ロール(役割)の相互作用</em>を表している。相互作用におけるロール(役割)は、抽象クラスで定義します。</p>
+
+<blockquote>
+<p>ロールの考え方を突き詰めていくと、「役割場(やくわりば)とその重ね合わせによるシステムの合成」という考え方に行き着きます。</p>
+<p class="source"></p>
+<footer><strong>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822206653/sorehabooks-22" rel="external nofollow" title="ソフトウェアの匠">ソフトウェアの匠</a>』</strong></footer>
+</blockquote>
+
+
+
+
+<h3 id="アプリケーションサービスレイヤーの設計方法">アプリケーションサービスレイヤーの設計方法</h3>
+
+
+<p>ソフトウェアアーキテクチャを設計する場合、サービスレイヤーのコンポーネントを、「<strong class="text-danger">チャネルサービス</strong>」、「<strong class="text-danger">ユースケースサービス</strong>」、「<strong class="text-danger">汎用サービス</strong>」の3段階に分けると良い。</p>
+
+<p>チャネルサービスは、コンポーネントのクライアントに対して開かれるインターフェースを定義する段階です。HTTPクライアントやSOAPクライアントに対するインターフェース等を定義します。</p>
+
+<p>ユースケースサービスは、ユースケース特有のロジックを定義する段階です。</p>
+
+<p>汎用サービスは、共通のロジック例えばログの出力や帳票出力などを定義する段階です。</p>
+
+<p>チャネルサービス、ユースケースサービス、汎用サービスはそれぞれ下に依存します。</p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774122645/sorehabooks-22" rel="external nofollow" title="WEB+DB Press 26">WEB+DB Press 26</a>』</li>
+</ul>
+<h3 id="サーブレットコンテキスト名はプログラムから取得するべし">サーブレットコンテキスト名はプログラムから取得するべし</h3>
+
+
+<p>JSPでリンクでサーブレットに飛ばす場合に、サーブレットコンテキスト名を付けなければならない場合がある。このとき、コンテキスト名をべた書きしてしまうと、コンテキスト名が変更になった場合にすべてのJSPを変更しなければならない。</p>
+
+<p><em>&lt;%= request.getContextPath() %&gt;</em> と書くことで、コンテキスト名が取得できるので、JSPではできるだけこの方法でコンテキスト名を取得するようにする。</p>
+
+<h3 id="JBuilderでカスタムserver.xmlを使う方法">JBuilderでカスタムserver.xmlを使う方法</h3>
+
+
+<p>JBuilderでTomcatを使う場合、server.xmlが自動で生成され、サーバーをシャットダウンすると削除されてしまいます。カスタムserver.xmlを作るには、この自動で生成されたserver.xmlの2行目にあるコメント</p>
+
+<pre>&lt;!--This comment marks this file as generated, so it may be deleted and regenerated at any time. To preserve manual changes to this file, delete this comment.--&gt;</pre>
+
+
+<p>を削除すればよいとのこと。</p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li>『<a href="ftp://ftpc.borland.com/pub/jbuilder/techpubs/jbuilderx/j2eeapps.pdf" rel="external nofollow">Developing Applications for J2EE™ Servers (英語)</a>』</li>
+</ul>
+<h3 id="コメントは道路標識の警告のように使う">コメントは道路標識の警告のように使う</h3>
+
+
+<p>プログラムに記述するコメントは、道路標識の警告(例：この先急カーブ)のように使う。コメントが多いプログラムは、そこらじゅうに注意書きがある本のように読みにくいもの。</p>
+
+<p>できるだけわかりやすく書き、コメントは道路で突然の急カーブを警告するためだけに用いられる矢印標識のように使う。</p>
+
+<blockquote>
+<p>プログラムは、人々がそれを読むために書かれるべきである。たまたま、それが計算機(コンパイラ)で実行できるにすぎない。</p>
+<footer><strong>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4274065979/sorehabooks-22" rel="external nofollow" title="ハッカーと画家">ハッカーと画家</a>』</strong></footer>
+</blockquote>
+
+
+
+
+<h3 id="add, set 系のメソッドの戻り値はvoid よりも 受け取ったオブジェクト">add, set 系のメソッドの戻り値はvoid よりも 受け取ったオブジェクト</h3>
+
+
+<p>add, set 系のメソッドの戻り値は void よりも、受け取ったオブジェクト(this) を返すようにすると、メソッドチェーンが行いやすい。特に<strong class="text-danger">Builder</strong>クラスはこの恩恵が受けやすい。</p>
+
+<pre class="code"><code>Processor proc = <span class="keyword">new</span> ProcessorBuilder()
+                     .addOption(<span class="literal">"hoge"</span>)
+                     .addOption(<span class="literal">"bar"</span>)
+                     .setChild(ChildClass.class)
+</code></pre>
+
+
+
+
+<h3 id="Webアプリケーション内で使われるビジネスロジックはスレッドセーフにする必要がある">Webアプリケーション内で使われるビジネスロジックはスレッドセーフにする必要がある</h3>
+
+
+<p>Webアプリケーションはリクエストをスレッドで処理するようになっています。そのため、マルチスレッドを意識してプログラミングを行わなければなりません。</p>
+
+<p>ビジネスロジック層のクラスにおいても、実装はマルチスレッドを意識しなければなりません。<em>特に、アプリケーションレベルで共有されるオブジェクトや、セッションに格納されるオブジェクトは特に意識しなければなりません</em>。</p>
+
+<p>セッションに格納されるオブジェクトをなぜスレッドセーフにしなければならないのか？それは、同じユーザセッションを持つスレッドが複数存在する可能性があるからです。Submitボタンを二度押された場合、リクエストが二度発行されることになります。このとき、同一セッションIDを持つスレッドが複数存在することになります。</p>
+
+<dl>
+<dt class="info">Webアプリケーションはスレッドを意識するする必要がある</dt>
+<dd>
+<p>Webアプリケーションと言うのは、いろんなところに注意しなければなりません。マルチスレッドもしかり、セキュリティもしかりです。マルチスレッドプログラミングをちゃんと勉強しておく必要がありそうです。</p>
+
+<ul>
+<li>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/477411491X/sorehabooks-22" rel="external nofollow" title="Javaスレッド完全制覇標準プログラマーライブラリ">Javaスレッド完全制覇標準プログラマーライブラリ</a>』</li>
+<li>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756117848/sorehabooks-22" rel="external nofollow" title="実践マルチスレッドプログラミングサンソフトプレスシリーズ">実践マルチスレッドプログラミングサンソフトプレスシリーズ</a>』</li>
+<li>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714361/sorehabooks-22" rel="external nofollow" title="Effective Java プログラミング言語ガイド">Effective Java プログラミング言語ガイド</a>』</li>
+</ul>
+</dd>
+</dl>
+<h3 id="[JSF]&lt;h:commandLink&gt;は &lt;h:form&gt;タグの中に書く">[JSF]&lt;h:commandLink&gt;は &lt;h:form&gt;タグの中に書く</h3>
+
+
+<p>JSFでリンクを表現する場合、 &lt;h:outputLink&gt; と &lt;h:commandLink&gt; で表現できます。この二つの違いは前者は単純なリンクを表現するのに対して、後者はコマンドを発行するために JavaScript を使うものです。</p>
+
+<p><strong class="text-danger">&lt;h:commandLink&gt;を使う場合は &lt;h:form&gt;タグに囲まれるように書く</strong>必要があります。</p>
+
+<p>outputLink と commandLink の使い分けは、JSF以外のページに遷移する場合は outputLink。同じアプリケーション内のJSFに遷移するときは commandLink を使うようです。</p>
+
+<h3 id="[JSF] actionListenerとactionの使い分け">[JSF] actionListenerとactionの使い分け</h3>
+
+
+<p>アクションリスナーはUIComponent に対して処理を行うのに都合がよい。逆に、アクションは、戻り値でページ遷移を制御できるので、ページ処理が発生するビジネスロジックを記述するのに都合がよい。</p>
+
+<h3 id="環境に依存するものは、引数で受け取る">環境に依存するものは、引数で受け取る</h3>
+
+
+<p>リソースや、ファイルオブジェクト、入出力ストリームなどの環境に依存するオブジェクトは、メソッドの引数で受け取るようにする。</p>
+
+<pre class="code"><code><span class="keyword">private</span> String[] parseFile(File file) <span class="keyword">throws</span> Exception;
+<span class="keyword">private</span> String[] parseXML(InputStream is) <span class="keyword">throws</span> Exception; 
+</code></pre>
+
+
+
+
+<h2>参考</h2>
+
+
+<ul>
+<li>良いプログラミングを行うためのバイブル(超おすすめ)</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756102107/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756103642/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>リファクタリング関係の情報はここから</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712288/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+
+
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797329769/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a></li>
+        
+        <li><a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a></li>
+        
+        <li><a href="/blog/2013/02/05/482228493X/">世界でもっとも強力な9のアルゴリズム</a></li>
+        
+        <li><a href="/blog/2011/08/16/4873114799/">プログラマが知るべき97のこと</a></li>
+        
+        <li><a href="/blog/2004/06/30/4756136494/">プログラミング作法</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-03-18T13:24:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Mar 18<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/puroguramingu/">プログラミング</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2005/03/18/memo/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2005/03/18/memo/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2005/03/18/memo/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2005/03/18/memo/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2005/03/18/memo/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2005/03/18/memo/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2005/03/13/4894714086/" title="Previous Post:
+      省メモリプログラミング―メモリ制限のあるシステムのためのソフトウェアパターン集"><i class="fa fa-arrow-circle-left"></i> 省メモリプログラミング―メモリ制限のあるシステ...</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2005/03/20/4839912653/"
+                            title="Next Post: Code Reading―オープンソースから学ぶプログラミングテクニック">Code Reading―オープンソースから学... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2005/03/18/memo/';
+  var disqus_url = 'http://hamasyou.com/blog/2005/03/18/memo/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,594 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>楽々ERDレッスン - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="本書は、著者である羽生 章洋さんのご自分の経験を元に、データベース設計を行う底力を教えてくれる教科書です。テーブル設計のやり方や、コード体系の考え方、経営資産としてのデータベース、RDBMSを資産活用するためのSQLの書き方など、筆者の経験を惜しみなく公開されているという感じです。 &hellip;">
+  <meta name="keywords" content="楽々ERD,ERD,CodeZine,RDBMS,モデリング,4798110663">
+
+  
+
+
+<meta property="og:title" content="楽々ERDレッスン - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2006/07/17/4798110663/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="本書は、著者である羽生 章洋さんのご自分の経験を元に、データベース設計を行う底力を教えてくれる教科書です。テーブル設計のやり方や、コード体系の考え方、経営資産としてのデータベース、RDBMSを資産活用するためのSQLの書き方など、筆者の経験を惜しみなく公開されているという感じです。 &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2006/07/17/4798110663">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">楽々ERDレッスン</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2006-07-17T08:36:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jul 17<span>th</span>, 2006</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/database/">Database</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/detabesushe-ji/">データベース設計</a>
+    
+      <a class="tag label label-info" href="/blog/tags/moderingu/">モデリング</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798110663/sorehabooks-22/249-7560247-3533949?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="楽々ERDレッスン" rel="external nofollow">
+      <img src="http://ec3.images-amazon.com/images/I/513Y4RJ7R8L._SL500_AA300_.jpg" class="asin-thumbnail" alt="楽々ERDレッスン" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798110663/sorehabooks-22/249-7560247-3533949?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="楽々ERDレッスン" rel="external nofollow">楽々ERDレッスン</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>(株)スターロジック 羽生 章洋 (著)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>翔泳社</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798110663/sorehabooks-22/249-7560247-3533949?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+<div class="entry-content"><p>本書は、著者である羽生 章洋さんのご自分の経験を元に、データベース設計を行う底力を教えてくれる教科書です。テーブル設計のやり方や、コード体系の考え方、経営資産としてのデータベース、RDBMSを資産活用するためのSQLの書き方など、筆者の経験を惜しみなく公開されているという感じです。</p>
+
+<p>最近はデータモデリングという言葉がもてはやされています。データモデリングにも色々な流派があり、コード体系、識別子、主キーの扱い、関係の扱いなど考え方がさまざまです。僕が読んできたデータモデリングの本で、これまでで一番共感が持てる考えが本書の考え方でした。もちろん、これまで読んできた本に書かれていることも多く、同じ考えをしているところも多々あります。ただ、本書はそういった部分を筆者の経験を元に解説しているので、非常にわかりやすいのです。</p>
+
+<p>本書はデータモデリングとは何か、RDBの設計の練習がしたい人、ER設計に興味がある人が読者対象です。プログラマからSE、コンサルタントまで読んでおくと必ず為になる一冊だと思います。おすすめです。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>覚書</h2>
+
+
+
+
+<h3>エンティティの候補</h3>
+
+
+<p>データベースを設計する上で、もっとも重要なことは 「<strong class="text-danger">何を記録するか</strong>」 です。記録しないもの、記録したくないものはデータベース設計は行いません。この、記録したいものを2つの種類に分類すると次のようになります。</p>
+
+<blockquote>
+<p>「モノ」 に関する記録のことを 「リソース（資源）系エンティティ」、「出来事」 についての記録のことを 「イベント系エンティティ」 と読んだりします。</p>
+<footer><strong>本書 p.25 「エンティティ名の決め方」 より抜粋</strong></footer>
+</blockquote>
+
+
+<p>出てきたエンティティは、業務上のモデルと <strong class="text-danger">6W3H</strong> で照らし合わせて確認することができます。</p>
+
+<blockquote>
+<p>「リソース系」</p>
+<p></p>
+<ul>
+<li>誰に （Whom）</li>
+<br><li>誰が （Who）</li>
+<br><li>何を （What）</li>
+<br><li>どこへ （Where）</li>
+</ul>
+<p>「イベント系」</p>
+<p></p>
+<ul><li>どのように （How）</li></ul>
+<p>「属性の候補」</p>
+<p></p>
+<ul>
+<li>いつ （When）</li>
+<br><li>どれくらい （How many）</li>
+<br><li>いくら （How much）</li>
+</ul>
+<p>「ビジネス上の正規化の対象となってくるもの」</p>
+<p></p>
+<ul><li>なぜ （Why）</li></ul>
+<footer><strong>本書 P.25 「エンティティ名の決め方」 より抜粋</strong></footer>
+</blockquote>
+
+
+
+
+<h3>コードとキーの違い</h3>
+
+
+
+
+<h4>キーの種類</h4>
+
+
+<p>データベース上で扱われるキーには大きく3つに分けられます。</p>
+
+<ol>
+<li>主キー</li>
+<li>外部キー</li>
+<li>ユニークキー</li>
+</ol>
+<p>主キーは、「候補キー」 の中から選ばれ、レコードを一意に識別することができるキーのことです。外部キーは、他のレコードを参照する際のキーのことです。ユニークキーは、他のレコードと重複が無い一意な値をもつキーのことです。</p>
+
+<p>「候補キー」 は、レコードを一意に識別することができるキーの集まりのことです。例えば、シーケンシャル番号や社会保障番号、名前と生年月日の組み合わせも候補キーとして使えるかもしれません（業務による）。業務で使っている 「<strong class="text-danger">コード</strong>」 も候補キーの一つといえます。</p>
+
+<h4>コードとキーの違い</h4>
+
+
+
+
+<blockquote>
+<p></p>
+<ul style="margin-top:0px; margin-bottom: 0px">
+<li>コード体系は、ユーザがレコードに容易に到達するためのユーザインターフェースである</li>
+<br><li>コード体系は、システムの都合ではなくビジネスの都合によって決定されるものである</li>
+</ul>
+<footer><strong>本書 P.30</strong></footer>
+</blockquote>
+
+
+<p>つまり、コードはユニークキー、さらに言えば候補キーになるということです。しかし、コードはビジネスの都合によって変えられることがあるので、主キーとしてはふさわしくありません。主キーを考えることは、レコードのID （アイデンティファイア） を考えることと同じことなのです。</p>
+
+<blockquote>
+<p>アイデンティファイアは、インスタンスのライフサイクル （一般にデータライフサイクル：DLCとも呼ばれます。） を表現していると考えればいいでしょう。その集合中に属してから消滅するまでの間、特定のインスタンスであることを示す座標として機能しているわけです。</p>
+<footer><strong>本書 P.33</strong></footer>
+</blockquote>
+
+
+<p>コードは、ビジネスに合わせて柔軟に変更できるべきであるが、アイデンティファイア はそのレコードが存在する間は変更されてはいけないのです。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>データモデリングの一つの流派。リソースとイベントとというエンティティの分け方についてよくわかります。</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4883732169/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
+
+
+<ul>
+<li>データモデリングを学ぶならはずせない一冊</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4534032501/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
+
+
+<ul>
+<li>業務知識と共にDB設計を</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798109274/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2005/11/12/4774124346/">できる人のモデル思考力 -データモデルはこう使え!!</a></li>
+        
+        <li><a href="/blog/2005/09/11/4886487440/">UMLによるオブジェクト指向モデリングセルフレビューノート</a></li>
+        
+        <li><a href="/blog/2005/07/16/4797320192/">ワークブック形式で学ぶUMLオブジェクトモデリング―「ユースケース駆動」でソフトウェアを開発する</a></li>
+        
+        <li><a href="/blog/2005/07/03/4798106453/">業務モデルとデータモデルの考え方</a></li>
+        
+        <li><a href="/blog/2005/05/22/model/">「関連」のモデリングの違いを整理する</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2006-07-17T08:36:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jul 17<span>th</span>, 2006</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/database/">Database</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/detabesushe-ji/">データベース設計</a>
+    
+      <a class="tag label label-info" href="/blog/tags/moderingu/">モデリング</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/07/17/4798110663/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2006/07/17/4798110663/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2006/07/17/4798110663/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2006/07/17/4798110663/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2006/07/17/4798110663/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2006/07/17/4798110663/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2006/07/02/4774127027/" title="Previous Post:
+      Webアプリセキュリティ対策入門"><i class="fa fa-arrow-circle-left"></i> Webアプリセキュリティ対策入門</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2006/08/19/4873112729/"
+                            title="Next Post: プレファクタリング―リファクタリング軽減のための新設計">プレファクタリング―リファクタリング軽減のため... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2006/07/17/4798110663/';
+  var disqus_url = 'http://hamasyou.com/blog/2006/07/17/4798110663/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

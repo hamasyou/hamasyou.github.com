@@ -1,0 +1,703 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>リファクタリング覚書き - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="リファクタリングとは「ソフトウェアの外部的振る舞いを保ったままで、内部の構造を改善していく作業」をいいます。と、こんな説明は世の中腐るほど出ています。僕のおすすめの「リファクタリング プログラミングの体質改善テクニック」という本もあります。 ここでは、プロジェクト中のちょっとしたときに、 &hellip;">
+  <meta name="keywords" content="リファクタリング,Refactoring,プログラミング,体質,改善,テクニック">
+
+  
+
+
+<meta property="og:title" content="リファクタリング覚書き - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2004/06/29/post-8/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="リファクタリングとは「ソフトウェアの外部的振る舞いを保ったままで、内部の構造を改善していく作業」をいいます。と、こんな説明は世の中腐るほど出ています。僕のおすすめの「リファクタリング プログラミングの体質改善テクニック」という本もあります。 ここでは、プロジェクト中のちょっとしたときに、 &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2004/06/29/post-8">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">リファクタリング覚書き</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-06-29T03:06:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 29<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/rihuakutaringu/">リファクタリング</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>リファクタリングとは「ソフトウェアの外部的振る舞いを保ったままで、内部の構造を改善していく作業」をいいます。と、こんな説明は世の中腐るほど出ています。僕のおすすめの「<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712288/sorehabooks-22" rel="external nofollow" title="リファクタリング プログラミングの体質改善テクニック">リファクタリング プログラミングの体質改善テクニック</a>」という本もあります。</p>
+
+<p>ここでは、プロジェクト中のちょっとしたときに、リファクタリングを行えるような覚書きをまとめておこうかと思います。すべてのリファクタリングに先立って<strong class="text-danger">自動テストを行うことがリファクタリングの最低条件</strong>である。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>コードの嫌な匂い</h2>
+
+
+
+
+<ul>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#1" rel="external nofollow" title="重複したコード">重複したコード</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#2" rel="external nofollow" title="長すぎるメソッド">長すぎるメソッド</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#3" rel="external nofollow" title="大きすぎるクラス">大きすぎるクラス</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#4" rel="external nofollow" title="多すぎる引数">多すぎる引数</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#5" rel="external nofollow" title="変更クラスが複数">変更クラスが複数</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#6" rel="external nofollow" title="変更箇所が多い">変更箇所が多い</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#7" rel="external nofollow" title="他クラスの属性ばかり使っている">他クラスの属性ばかり使っている</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#8" rel="external nofollow" title="まとまったデータ">まとまったデータ</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#9" rel="external nofollow" title="基本データ型よりオブジェクト">基本データ型よりオブジェクト</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#10" rel="external nofollow" title="スイッチ文">スイッチ文</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#11" rel="external nofollow" title="継承する毎に変更が入る">継承する毎に変更が入る</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#12" rel="external nofollow" title="無駄なクラス">無駄なクラス</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#13" rel="external nofollow" title="不要な一般化">不要な一般化</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#14" rel="external nofollow" title="一時属性の多用">一時属性の多用</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#15" rel="external nofollow" title="過剰なメッセージチェーン">過剰なメッセージチェーン</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#16" rel="external nofollow" title="過剰な委譲">過剰な委譲</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#17" rel="external nofollow" title="相互リンク">相互リンク</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#18" rel="external nofollow" title="処理は同じで名前が違う">処理は同じで名前が違う</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#19" rel="external nofollow" title="未熟なクラスライブラリ">未熟なクラスライブラリ</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#20" rel="external nofollow" title="データクラス">データクラス</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#21" rel="external nofollow" title="親クラスがほとんど不要">親クラスがほとんど不要</a></li>
+<li><a href="http://www.objectclub.jp/technicaldoc/refactoring/refact-smell#22" rel="external nofollow" title="コメント">コメント</a></li>
+</ul>
+<h2>リファクタリングカタログ</h2>
+
+
+
+
+<ul>
+<li><a href="#%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AE%E6%8A%BD%E5%87%BA" rel="external nofollow">メソッドの抽出</a></li>
+<li><a href="#%E4%B8%80%E6%99%82%E5%A4%89%E6%95%B0%E3%81%AE%E7%BD%AE%E3%81%8D%E6%8F%9B%E3%81%88" rel="external nofollow">一時変数の置き換え</a></li>
+<li><a href="#%E8%AA%AC%E6%98%8E%E7%94%A8%E5%A4%89%E6%95%B0%E3%81%AE%E5%B0%8E%E5%85%A5" rel="external nofollow">説明用変数の導入</a></li>
+<li><a href="#%E8%A4%87%E6%95%B0%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E6%8C%81%E3%81%A4%E5%A4%89%E6%95%B0%E3%81%AF%E9%81%BF%E3%81%91%E3%82%8B" rel="external nofollow">複数の意味を持つ変数は避ける</a></li>
+<li><a href="#%E5%BC%95%E6%95%B0%E3%81%A7%E3%82%8F%E3%81%9F%E3%81%95%E3%82%8C%E3%81%9F%E5%A4%89%E6%95%B0%E3%81%B8%E3%81%AE%E4%BB%A3%E5%85%A5%E3%82%92%E9%81%BF%E3%81%91%E3%82%8B" rel="external nofollow">引数でわたされた変数への代入を避ける</a></li>
+<li><a href="#%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AE%E7%A7%BB%E5%8B%95" rel="external nofollow">メソッドの移動</a></li>
+<li><a href="#%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE%E5%88%86%E5%89%B2" rel="external nofollow">クラスの分割</a></li>
+<li><a href="#%E3%83%87%E3%83%A1%E3%83%86%E3%83%AB%E3%81%AE%E6%B3%95%E5%89%87" rel="external nofollow">デメテルの法則</a></li>
+<li><a href="#%E8%87%AA%E5%B7%B1%E3%82%AB%E3%83%97%E3%82%BB%E3%83%AB%E5%8C%96" rel="external nofollow">自己カプセル化</a></li>
+<li><a href="#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AB%E3%82%88%E3%82%8B%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E7%BD%AE%E3%81%8D%E6%8F%9B%E3%81%88" rel="external nofollow">オブジェクトによるデータの置き換え</a></li>
+<li><a href="#%E3%82%B3%E3%83%AC%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%82%AB%E3%83%97%E3%82%BB%E3%83%AB%E5%8C%96" rel="external nofollow">コレクションのカプセル化</a></li>
+<li><a href="#%E6%9D%A1%E4%BB%B6%E8%A8%98%E8%BF%B0%E3%81%AE%E5%88%86%E8%A7%A3" rel="external nofollow">条件記述の分解</a></li>
+<li><a href="#%E3%82%AC%E3%83%BC%E3%83%89%E7%AF%80%E3%81%AB%E3%82%88%E3%82%8B%E6%9D%A1%E4%BB%B6%E8%A8%98%E8%BF%B0%E3%81%AE%E7%BD%AE%E3%81%8D%E6%8F%9B%E3%81%88" rel="external nofollow">ガード節による条件記述の置き換え</a></li>
+<li><a href="#%E3%83%9D%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%95%E3%82%A3%E3%82%BA%E3%83%A0%E3%81%AB%E3%82%88%E3%82%8B%E6%9D%A1%E4%BB%B6%E8%A8%98%E8%BF%B0%E3%81%AE%E7%BD%AE%E3%81%8D%E6%8F%9B%E3%81%88" rel="external nofollow">ポリモーフィズムによる条件記述の置き換え</a></li>
+<li><a href="#%E3%83%8C%E3%83%AB%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%B0%8E%E5%85%A5" rel="external nofollow">ヌルオブジェクトの導入</a></li>
+<li><a href="#%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6" rel="external nofollow">メソッドに関して</a></li>
+<li><a href="#%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AE%E5%90%8D%E5%89%8D%E5%A4%89%E6%9B%B4" rel="external nofollow">メソッドの名前変更</a></li>
+<li><a href="#%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E3%81%A8%E6%9B%B4%E6%96%B0%E3%81%AE%E5%88%86%E9%9B%A2" rel="external nofollow">問い合わせと更新の分離</a></li>
+<li><a href="#%E5%BC%95%E6%95%B0%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%B0%8E%E5%85%A5" rel="external nofollow">引数オブジェクトの導入</a></li>
+<li><a href="#set%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AE%E5%89%8A%E9%99%A4" rel="external nofollow">setメソッドの削除</a></li>
+<li><a href="#Factory%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AB%E3%82%88%E3%82%8B%E3%82%B3%E3%83%B3%E3%82%B9%E3%83%88%E3%83%A9%E3%82%AF%E3%82%BF%E3%81%AE%E7%BD%AE%E3%81%8D%E6%8F%9B%E3%81%88" rel="external nofollow">Factoryメソッドによるコンストラクタの置き換え</a></li>
+<li><a href="#%E3%83%80%E3%82%A6%E3%83%B3%E3%82%AD%E3%83%A3%E3%82%B9%E3%83%88%E3%81%AE%E9%9A%A0%E8%94%BD" rel="external nofollow">ダウンキャストの隠蔽</a></li>
+<li><a href="#%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AE%E5%BC%95%E3%81%8D%E4%B8%8A%E3%81%92" rel="external nofollow">メソッドの引き上げ</a></li>
+<li><a href="#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%AE%E6%8A%BD%E5%87%BA" rel="external nofollow">インターフェースの抽出</a></li>
+<li><a href="#%E5%A7%94%E8%AD%B2%E3%81%AB%E3%82%88%E3%82%8B%E7%B6%99%E6%89%BF%E3%81%AE%E7%BD%AE%E3%81%8D%E6%8F%9B%E3%81%88" rel="external nofollow">委譲による継承の置き換え</a></li>
+</ul>
+<h3 id="メソッドの抽出">メソッドの抽出</h3>
+
+
+
+
+<ul>
+<li>長すぎるメソッド</li>
+<li>コメントがないと処理が理解できない部分</li>
+</ul>
+<p>メソッド抽出できる合図です。ただし、<strong class="text-danger">メソッドに良い名前が付けられる場合だけ</strong>抽出します。メソッドには、どんな処理をするかではなく、<b>何をするか</b>によって命名する。<b>メソッド名と本体との意味的な距離が重要であって、メソッド名の長さは関係ない。</b>明快さが向上するなら、メソッド名がコードよりも長くても抽出すべきである。</p>
+
+<h3 id="一時変数の置き換え">一時変数の置き換え</h3>
+
+
+<p>一度だけ代入される一時変数がある。そんな時、メソッドの問い合わせによる置き換えを検討する。ただ、パフォーマンスなど考慮する場合もあるので、ほとんどの場合無視できる。他のリファクタリングの邪魔になったときだけ実行する。</p>
+
+<h3 id="説明用変数の導入">説明用変数の導入</h3>
+
+
+<p>長くて、よく考えないとわからないような評価式があった場合、一時変数を使って意味のわかるようにする。条件ロジックにおいて、各条件記述の意味を適切な名前の一時変数を使って説明するのは有効です。ただし、メソッドの抽出を行える場合は、そちらを優先する。メソッドにすることで他の場所でも使える可能性ができる。</p>
+
+<h3 id="複数の意味を持つ変数は避ける">複数の意味を持つ変数は避ける</h3>
+
+
+<p>ループ変数や、値を集める変数でもなく、複数回代入されるようなものは、意味ごとに変数を分けるべき。その際、<b>適切な名前を付ける</b>こと。</p>
+
+<h3 id="引数でわたされた変数への代入を避ける">引数でわたされた変数への代入を避ける</h3>
+
+
+<p>メソッドの引数に渡された変数に、値を代入することはさける。「値渡し」と「参照渡し」の混乱をさけるために、代入はしない。結果用の別の変数を用意して、そっちをつかう。</p>
+
+<h3 id="メソッドの移動">メソッドの移動</h3>
+
+
+<p>メソッドの定義されたクラスの属性よりも、他のクラスの属性のほうをよく使っている場合、属性を良く使うクラスの方にメソッドを移動させたほうがよい。<b>クラス間の結合度を下げるために。</b>逆に、属性を移動させる方法もある。どちらにするかは、やってみてぴったりくる方にする。</p>
+
+<h3 id="クラスの分割">クラスの分割</h3>
+
+
+<p>ひとつのクラスに、メソッドが多くなりすぎた場合や、責務が複数ある場合は、別々のクラスに分割する。責務で分割する粒度を決める。</p>
+
+<h3 id="デメテルの法則">デメテルの法則</h3>
+
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://homepage3.nifty.com/masarl/article/oo-principles.html" rel="external nofollow" title="オブジェクト指向の法則集">オブジェクト指向の法則集</a></p>
+
+<p>あるオブジェクトから取得したオブジェクトには、直接アクセスしてはいけない。デメテルの法則について、詳しくは<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712741/sorehabooks-22" rel="external nofollow" title="達人プログラマー">達人プログラマー</a>をご覧あれ。</p>
+
+<h3 id="自己カプセル化">自己カプセル化</h3>
+
+
+<p>自分のクラスの属性であっても、アクセサメソッドを使ってアクセスする。サブクラスが情報の取り出し方をメソッドによってオーバーライドできること、遅延初期化のようにデータ管理面で、
+柔軟性を持たせられることがその理由。逆に、変数に直接アクセスすると、コードが読みやすくなる利点がある。</p>
+
+<h3 id="オブジェクトによるデータの置き換え">オブジェクトによるデータの置き換え</h3>
+
+
+<p>引数で渡されたデータだけを使って処理をしたり、他のクラスの属性を使って処理をしたりしている場合、それらのデータをクラスとして切り出し、振る舞いを持たせることができる。</p>
+
+<p><b>配列の各要素がそれぞれ別々の意味を持つようなデータ構造を考えた場合も、オブジェクトとして切り出したほうがすっきりする。</b>配列や、リストなどのコレクションを使う場合は、同じ種類のオブジェクトを保持するときだけにする。</p>
+
+<h3 id="コレクションのカプセル化">コレクションのカプセル化</h3>
+
+
+<p>getアクセサメソッドで、直接コレクションオブジェクトを返すのはやめにしましょう。コレクションの中身を直接書き換えられてしまう可能性があります。コレクションを隠蔽し、getメソッドでは、読み取り専用のオブジェクトを、コレクションに値を加えたい場合は、クラスにaddメソッドを用意しましょう。コレクションにsetメソッドは必要ありません。自らが仲介役を果たしましょう。</p>
+
+<h3 id="条件記述の分解">条件記述の分解</h3>
+
+
+<p>複雑な条件記述がある場合、その条件部をメソッドとして切り出します。抽出するメソッドは小さくても、メソッドのほうが条件式よりもコメントのように楽に読めます。</p>
+
+<p><b>条件記述の抽出は、何を行っているかの記述をなぜ行っているかの文で置き換えることになる</b>ため、非常に読みやすくなります。</p>
+
+<h3 id="ガード節による条件記述の置き換え">ガード節による条件記述の置き換え</h3>
+
+
+<p><b>if-then-else構造が使われるときには、if部にもelse部にも同じウェイトが置かれています。</b></p>
+
+<p>これは、読み手に、両方とも等しく起こる、等しく重要であるということを伝えます。ガード節は「めったに起きないが、起きたときは何もしないで出て行く」ということを伝えます。ガード節はreturnするか例外を投げるかのどちらかです。</p>
+
+<p>ガード節による入れ子条件の置き換えを行う場合のヒントは、条件記述を逆にすることでしばしば行える。</p>
+
+<h3 id="ポリモーフィズムによる条件記述の置き換え">ポリモーフィズムによる条件記述の置き換え</h3>
+
+
+<p>オブジェクトのタイプや状態でのswitch文が存在する場合、その部分をオブジェクトのポリモーフィズムに置き換えることができます。ポリモーフィズムの真髄は、オブジェクトの振る舞いが型によって変わるとき、明示的な条件記述を書かなくてもすむようにすることです。</p>
+
+<p>このリファクタリングを行う前に、適切かつ必要な継承関係を持っていることが必要です。</p>
+
+<h3 id="ヌルオブジェクトの導入">ヌルオブジェクトの導入</h3>
+
+
+<p>null のチェックが繰り返し行われる場合、ポリモーフィズムを利用した、nullオブジェクトを導入するとよい。<a href="http://www.hyuki.com/dp/dpinfo.html#NullObject" rel="external nofollow" title="Null Objectパターン">Null Objectパターン</a></p>
+
+<h3 id="メソッドに関して">メソッドに関して</h3>
+
+
+<p>優れたオブジェクト指向のソフトウェアを開発するには、理解が容易で使いやすいインターフェースを提供することが秘訣となります。状態を更新するメソッドと、状態を問い合わせるメソッドを明確に分離することは非常に良いことである。よいインターフェースは、何をすべきかだけを示し、それ以上は何も語らない。クラスのユーザにダウンキャストを強要するのはできるだけさける。</p>
+
+<h3 id="メソッドの名前変更">メソッドの名前変更</h3>
+
+
+<p>メソッドの名前は、そのメソッドの処理にコメントを付けるとどうなるかを考え、それをそのまま名前にしてしまうとよい。名前だけでなく、シグネチャの部分(引数)の順序を変更することで、メソッドの意図が明確になるなら、変更するべきです。</p>
+
+<h3 id="問い合わせと更新の分離">問い合わせと更新の分離</h3>
+
+
+<p>値を返す関数は、クラスの状態を変更するなどの副作用がないのが好ましい。<strong class="text-danger">副作用のあるメソッドと、ないメソッドを明確に分離するのは、非常によいこと</strong>です。問い合わせと更新は、明確に分離するべきです。</p>
+
+<blockquote>
+<p>ファンクション(関数)とプロシージャ(手続き)を明確に区別したほうがプログラムは分かりやすくなります。ファンクションとは、戻り値を記述して値の取得を意図するもの。プロシージャは、オブジェクトに対して何かしらの処理を行うもの。</p>
+<p><b>ファンクション名には、戻り値を記述するものをつけると良い。</b>例えば、cos()、sin()、currentPenColor()などは良い例です。<b>プロシージャ名には、動詞 + 目的語を記述する良い。</b>例えば、calcMoney()、printReport()、formatDocument()などは良い例です。</p>
+<footer><strong>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756102107/sorehabooks-22" rel="external nofollow" title="コードコンプリート―完全なプログラミングを目指して">コードコンプリート―完全なプログラミングを目指して</a>』 アスキー</strong></footer>
+</blockquote>
+
+
+
+
+<h3 id="引数オブジェクトの導入">引数オブジェクトの導入</h3>
+
+
+<p>本来一緒に扱うべきデータを引数としてたくさん渡している場合、引数オブジェクトの導入を検討する。長い引数リストは理解しづらいものです。引数オブジェクトを導入することで、振る舞いもそのクラスに移動できる場合があります。<b>クラスの責務を単純明快にするのは、オブジェクト指向の原則です。</b></p>
+
+<h3 id="setメソッドの削除">setメソッドの削除</h3>
+
+
+<p>setメソッドを提供するというのは、フィールドが変更される可能性があるということを示しています。オブジェクトを生成した後、フィールドを変更したくないのであれば、setメソッドを削除し、フィールドをfinalに設定するべきです。</p>
+
+<h3 id="Factoryメソッドによるコンストラクタの置き換え">Factoryメソッドによるコンストラクタの置き換え</h3>
+
+
+<p>このリファクタリングは、主にサブクラス化することによって、タイプコードを置き換えたい場合に利用されます。また、単に引数の数値や型の違いではすまない生成時におけるさまざまな振る舞いを実現できます。</p>
+
+<h3 id="ダウンキャストの隠蔽">ダウンキャストの隠蔽</h3>
+
+
+<p>クラスのユーザにダウンキャストを強要するのはなるべくさけたほうがよい。それは、変更が分散してしまうからです。メソッドが返すオブジェクトは、メソッド内でキャストしてやり、できるだけ特化された戻り値を使用するほうが好ましいです。ただし、インターフェースで返す場合は別の話です。そもそも、インターフェースを使う場合はダウンキャストを使う必要はほとんどありません。</p>
+
+<h3 id="メソッドの引き上げ">メソッドの引き上げ</h3>
+
+
+<p>まったく同じ処理を行っている2つのクラスがあった場合、共通のクラスを作り、そこにメソッドを移動してやる。オブジェクト指向では、重複するコードは書かないという原則がある。</p>
+
+<p>2つのメソッドが非常によく似ているが、まったく同じではない場合は、<a href="http://www.hellohiro.com/pattern/templatemethod.htm" rel="external nofollow" title="Template Method パターン">Template Method パターン</a>が利用できるかもしれない。</p>
+
+<h3 id="インターフェースの抽出">インターフェースの抽出</h3>
+
+
+<p>ひととまとまりのクライアントが、あるクラスの責任のうち一部だけを利用することがあります。その場合、責任をインターフェースとして抽出することで、責務を明確にすることができます。</p>
+
+<p>インターフェースが機能を追加するように働く場合は、名前に able と付けるとわかりやすい。</p>
+
+<h3 id="委譲による継承の置き換え">委譲による継承の置き換え</h3>
+
+
+<p>継承を行ったはいいが、スーパークラスの多くの操作がサブクラスではふさわしくないことに気づくことがあります。この場合、多くは正しくインターフェースが切り出せていないのが原因です。これらの状況をすっきりさせるには、継承ではなく、メッセージの委譲を行うことで、必要な機能だけを利用している状況をはっきりさせることができます。</p>
+
+<p>逆に、すべてのインターフェースに対して委譲を行っているような場合は、委譲をクラスの継承で置き換えるべきです。</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li><p>C言語によるリファクタリングの例です。
+<a href="http://www.s34.co.jp/cpptechdoc/article/c_refactoring/" rel="external nofollow" title="Refactoring C-code">Refactoring C-code</a></p></li>
+<li><p>リファクタリングのWebページ版
+<a href="http://www.alles.or.jp/~torutk/oojava/maneuver/2000/6-2.html" rel="external nofollow" title="リファクタリング勉強ノート">リファクタリング勉強ノート</a></p></li>
+<li><p>コードの嫌な匂いのリファクタリング例が載ってます。(PDF)
+<a href="http://www.metabolics.co.jp/OOTechnology/Object2001/Refactoring.pdf" rel="external nofollow" title="リファクタリング">リファクタリング</a></p></li>
+<li><p>J2EEのリファクタリング例が載ってます。Tokenの導入などあります。(PDF)
+<a href="http://www-6.ibm.com/jp/software/websphere/developer/j2ee/pdf/4_2.pdf" rel="external nofollow" title="J2EE リファクタリング">J2EE リファクタリング</a></p></li>
+<li><p>すばらしき良書。この本に出会って、変わった気がする。</p></li>
+</ul>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712288/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>「リファクタリング」をワークブック形式で学べます。</li>
+</ul>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756145027/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>洋書ですが、リファクタリングをデザインパターンで行うといった趣旨の本です。</li>
+</ul>
+<div class="rakuten"><table border="0" cellpadding="5" width="400"><tr><td valign="top">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321213351/sorehabooks-22/" rel="external nofollow" title=""></a><br>
+</td></tr></table></div></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2006/08/19/4873112729/">プレファクタリング―リファクタリング軽減のための新設計</a></li>
+        
+        <li><a href="/blog/2005/06/04/4756145027/">リファクタリングワークブック</a></li>
+        
+        <li><a href="/blog/2004/10/29/refactoring-to-patterns/">Refactoring to Patterns メモ</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-06-29T03:06:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 29<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/rihuakutaringu/">リファクタリング</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/06/29/post-8/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2004/06/29/post-8/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2004/06/29/post-8/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2004/06/29/post-8/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/06/29/post-8/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2004/06/29/post-8/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2004/06/27/4774116327/" title="Previous Post:
+      Javaアルゴリズム+データ構造完全制覇"><i class="fa fa-arrow-circle-left"></i> Javaアルゴリズム+データ構造完全制覇</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2004/06/30/4756136494/"
+                            title="Next Post: プログラミング作法">プログラミング作法 <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2004/06/29/post-8/';
+  var disqus_url = 'http://hamasyou.com/blog/2004/06/29/post-8/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

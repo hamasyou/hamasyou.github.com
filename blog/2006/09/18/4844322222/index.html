@@ -1,0 +1,638 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Ajaxイン・アクション - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="本書は、Ajax（エイジャックス : Asynchronous JavaScript + XML）の実践本です。Ajax とは何か？Ajax を使って何ができるのか？Ajax と呼べるアプリケーションを構築したい！Ajax ブームに乗っかりたい！という人のための本になっています。 本書は Ajax &hellip;">
+  <meta name="keywords" content="Ajax,インアクション,IN Action,はてな,Web2.0,4844322222">
+
+  
+
+
+<meta property="og:title" content="Ajaxイン・アクション - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2006/09/18/4844322222/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="本書は、Ajax（エイジャックス : Asynchronous JavaScript + XML）の実践本です。Ajax とは何か？Ajax を使って何ができるのか？Ajax と呼べるアプリケーションを構築したい！Ajax ブームに乗っかりたい！という人のための本になっています。 本書は Ajax &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2006/09/18/4844322222">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">Ajaxイン・アクション</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2006-09-18T02:00:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 18<span>th</span>, 2006</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/ajax/">Ajax</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4844322222/250-4907152-7500259?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4844322222" title="Ajaxイン・アクション" rel="external nofollow">
+      <img src="http://ecx.images-amazon.com/images/I/51XH9AM41XL._SL500_AA300_.jpg" class="asin-thumbnail" alt="Ajaxイン・アクション" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/gp/product/4844322222/250-4907152-7500259?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4844322222" title="Ajaxイン・アクション" rel="external nofollow">Ajaxイン・アクション</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>Dave Crane (著), Eric Pascarello (著), Darren James (著), 柏原 正三 (著), 株式会社はてな (著), 網代 淳 (著), 星 睦 (著)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>インプレス</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4844322222/250-4907152-7500259?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4844322222" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+<div class="entry-content"><p>本書は、Ajax（エイジャックス : Asynchronous JavaScript + XML）の実践本です。Ajax とは何か？Ajax を使って何ができるのか？Ajax と呼べるアプリケーションを構築したい！Ajax ブームに乗っかりたい！という人のための本になっています。</p>
+
+<p>本書は Ajax に関する4つの話題について書かれています。</p>
+
+<ul>
+<li>Ajax とは何か？Ajax を使う理由</li>
+<li>Ajax アプリケーションを取り巻くコア技術</li>
+<li>Ajax アプリケーションを実際に使えるようにするには、どういう点に気をつけるべきか</li>
+<li>Ajax アプリケーションを実際に作りながら、実践的なアプローチの仕方を学ぶ</li>
+</ul>
+<blockquote>
+<p>Ajax では、よく知られているいくつかのウェブ技術を組み合わせ、それらを新しい興味深い方法で使用します。&lt;中略&gt; Ajax 技術そのものはすべてクライアントサイドの話であるものの、その特徴はサーバーサイドにも及びます。</p>
+<footer><strong>本書 序章 「本書の内容」 より抜粋</strong></footer>
+</blockquote>
+
+
+<p>本書の対象読者は、Ajax に興味のある人ですが、それなりにヘビーな内容になっています。本書を隅々まで読むには、Web の仕組み（HTTP 通信）を理解してることと、JavaScript が読める必要があります。Ajax とは何か？だけが知りたい人は別の書籍を当たったほうがよいと思います。本書は、Ajax 開発者向けの本になっています。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>Ajax とは</h2>
+
+
+
+
+<h3>Asynchronous JavaScript + XML</h3>
+
+
+<p>Ajax（エイジャックス）とは、Asynchronous JavaScript + XML のことで、古くからの Web 技術を組み合わせたものをあらわします。Ajax という技術があるわけではなく、Ajax は<strong class="text-danger">方法論</strong>のことです。Ajax は次のような技術がの集まりです。</p>
+
+<ul>
+<li>JavaScript</li>
+<li>XHTML</li>
+<li>XML</li>
+<li>XSLT</li>
+<li>Document Object Model（DOM）</li>
+<li>XMLHttpRequestオブジェクト</li>
+</ul>
+<h3>Ajax の目的</h3>
+
+
+<p>Ajax を使う目的は、Web 用のリッチユーザインターフェースを構築することにあります。「リッチ」 とは、色とりどりな装飾がされたという意味ではありません。Ajax におけるリッチとは、クライアントとの快適な対話モデルを指します。それは、入力手段に対する直感的な操作と反応があるというものです。クライアントが何かを入力したら、それに対する反応が即座に起こる。スタンドアローンのアプリケーションと変わらないユーザインターフェースを Web アプリケーションでも提供しようというのが Ajax の目的となります。</p>
+
+<h3>Ajax アプリケーションの例</h3>
+
+
+
+
+<ul>
+<li><a href="http://labs.cybozu.co.jp/blog/akky/archives/2005/09/ajax_10.html" rel="external nofollow" title="Ajax アプリケーショントップ10">Ajax アプリケーショントップ10</a></li>
+<li><a href="http://maps.google.co.jp/" rel="external nofollow" title="Google マップ">Google マップ</a></li>
+</ul>
+<h2>Ajax の特徴</h2>
+
+
+
+
+<h3>ブラウザが扱うのはコンテンツではなくアプリケーションである</h3>
+
+
+
+
+<blockquote>
+<p>従来型のページベースのアプリケーションでは、ブラウザは事実上、ダム端末です。<strong class="text-danger">ブラウザは、ユーザーが現在ワークフローのどの位置にいるのかについて何も知りません。</strong>通常は、その情報はすべて、ウェブサーバー上のユーザーセッションに保持されています。</p>
+<footer><strong>本書 P.17 「Ajaxの特徴となる4つの原則」より</strong></footer>
+</blockquote>
+
+
+<p>つまり、従来型のアプリケーションでは、ブラウザはサーバが送ってくるコンテンツをただ表示するだけに過ぎなかったというわけです。サーバサイドでページ遷移の情報を管理し、データの管理を行っていました。Ajax を使うとこのモデルが次のようになります。</p>
+
+<blockquote>
+<p><strong class="text-danger">Ajax アプリケーションでは、アプリケーションロジックの一部をブラウザに移します</strong>。ユーザがログインすると、非常に複雑なドキュメントがブラウザに送られます。その大部分は JavaScript コードです。このドキュメントはセッション中ずっとユーザー側にとどまりますが、ユーザーがそのドキュメントと対話している間にその見た目を変化させることになります。</p>
+<p>また、このドキュメントはユーザー入力に対する応答の方法を知っており、ユーザー入力自身で処理するか、ウェブサーバー（システムデータベースなどのリソースへのアクセスが可能）にリクエストとして渡すか、その両方を組み合わせるかを判断することができます。</p>
+<footer><strong>本書 P.18 「Ajaxの特徴となる4つの原則」より</strong></footer>
+</blockquote>
+
+
+<p>Ajax アプリケーションでは、サーバサイドでしか管理していなかったビジネスロジックやワークフロー情報の一部を、クライアントサイドに移すことを考えます。こうすることで、ユーザとのリッチな対話モデルを実装しやすくなります。</p>
+
+<dl>
+<dt class="info">Information</dt>
+<dd>サーバサイドからクライアントサイドへ、ビジネスロジックやワークフローの一部を移動する。</dd>
+</dl>
+<h3>サーバが配信するのはコンテンツではなくデータである</h3>
+
+
+<p>従来型の Web アプリケーションは、一度のリクエスト/レスポンスでやり取りされる情報に、コンテンツとデータの両方が含まれていました（コンテンツとは画像や広告やページレイアウトなど、データはショッピングカートの中身など）。</p>
+
+<p>Ajax アプリケーションでは、コンテンツ部分のやり取りは最初の一度のみで、後は必要なデータのやり取りだけを行うという形をとります。これにより通信データ量を抑えることができ、パフォーマンスがよくなります。</p>
+
+<blockquote>
+<p>Ajax アプリケーションでは、ユーザのログ印字に大規模で複雑なクライアントが一度に配信されるので、トラフィックは最初の負荷が大きくなります。しかし、その後のサーバーとの通信ははるかに効率がよくなります。短期滞在的アプリケーションの場合、累積トラフィックは従来のウェブページアプリケーションの方が少ないものの、対話時間が長くなるにつれて、Ajax アプリケーションの大域幅コストは従来のアプリケーションよりも少なくなります。</p>
+<footer><strong>本書 P.20  「Ajaxの特徴となる4つの原則」より</strong></footer>
+</blockquote>
+
+
+
+
+<dl>
+<dt class="info">Information</dt>
+<dd>ページ全体をやり取りするのではなく、データだけをやり取りする。</dd>
+</dl>
+<h3>ユーザーとの対話は滑らかで継続的である</h3>
+
+
+<p>Ajax の A（Asynchronous） と DHTML によって、ページ全体をリフレッシュすることなく滑らかな反応を行うことができます。また、ユーザのブラウザに対するさまざまなイベントにフックできるため、洗練されたユーザインターフェース（ドラッグアンドドロップなど）を実現することができます。</p>
+
+<blockquote>
+<p>ただし、ユーザビリティの観点からすると、このような自由度の高さはそれほど重要ではありません。私たちの想像力を活かせるという利点はありますが、その一方で、ユーザーとの対話とサーバーサイドリクエストを一緒くたにすることにもなるからです。</p>
+<footer><strong>本書 P.22  「Ajaxの特徴となる4つの原則」より</strong></footer>
+</blockquote>
+
+
+
+
+<dl>
+<dt class="info">Information</dt>
+<dd>ユーザをイライラさせない。</dd>
+</dl>
+<h3>真のコーディングには規律が必要である</h3>
+
+
+<p>Ajax アプリケーションで使われる JavaScript は、従来型のアプリケーションで使われる JavaScript とは少し違ったものになります。従来型のアプリケーションでは、単に入力確認やページに少し装飾を行う程度の使い方でした。</p>
+
+<p>Ajax アプリケーションにおける JavaScript は、ビジネスロジックの一部であったり、ワークフローの一部を担う複雑なものになります。そのため、アプリケーションを閉じるまでの間動作し続けるものでなければなりません。メモリリークや低速化が行われないように注意してコーディングを行う必要があります。</p>
+
+<dl>
+<dt class="info">Information</dt>
+<dd>やっつけ言語としての JavaScript ではなく、通常のコーディングと同じように規律を守ったコーディングを行う。</dd>
+</dl>
+<h2>CSS セレクタ</h2>
+
+
+
+
+<h3>スタイルクラスの定義</h3>
+
+
+<p>HTML タグの種類と関係ないスタイリングのためのクラスを定義するには、「.（ドット）」をつけて定義する。</p>
+
+<pre class="code"><code>.info { border: solid blue 1px; backgournd-color: cyan }</code></pre>
+
+
+<p>クラスをネストすることもできる。</p>
+
+<pre class="code"><code>.info .help { font-size: small }
+span.highlight { background-color: red }
+</code></pre>
+
+
+<p>HTML 内で id 属性によって指定されたものだけに適用されるようなスタイルクラスを定義するには、「#」を使う。</p>
+
+<pre class="code"><code>#close { color: red }</code></pre>
+
+
+<p>擬似セレクタに基づいてスタイルを定義することもできる。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://msugai.fc2web.com/web/CSS/pseudo.html" rel="external nofollow" title="CSS概説 | 5. 擬似クラスと擬似要素">CSS概説 | 5. 擬似クラスと擬似要素</a></p>
+
+<p>次は、任意の要素の一文字目を 500% の文字サイズで表示する。</p>
+
+<pre class="code"><code>*:first-letter { font-size: 500% }</code></pre>
+
+
+
+
+<h3>JSON</h3>
+
+
+<p>書けたら書く・・・</p>
+
+<h2>参考</h2>
+
+
+<ul>
+<li>Ajax アプリケーションを書けるようになる本</li>
+</ul>
+<div class="rakuten"><table size="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774127728/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div>
+
+
+<ul>
+<li>Ajax の基礎に適しています</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774125792/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a></td></tr></table></div></div>
+
+
+  
+    
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2006-09-18T02:00:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 18<span>th</span>, 2006</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/ajax/">Ajax</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/09/18/4844322222/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2006/09/18/4844322222/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2006/09/18/4844322222/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2006/09/18/4844322222/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2006/09/18/4844322222/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2006/09/18/4844322222/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2006/08/19/4873112729/" title="Previous Post:
+      プレファクタリング―リファクタリング軽減のための新設計"><i class="fa fa-arrow-circle-left"></i> プレファクタリング―リファクタリング軽減のため...</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2006/09/18/ejb/"
+                            title="Next Post: EJB3.0 プログラミング 覚書">EJB3.0 プログラミング 覚書 <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2006/09/18/4844322222/';
+  var disqus_url = 'http://hamasyou.com/blog/2006/09/18/4844322222/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

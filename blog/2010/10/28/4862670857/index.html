@@ -1,0 +1,666 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>iPhoneのオモチャ箱 iPhone SDKプログラミング - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="本書は、iPhone アプリを実際に作っている著者の方が、実体験やノウハウをもとに執筆されたものが集まっています。 iPhone とはなんなのか、iPhone アプリはどういうもので、どうあると面白いのか、自分たちはどう考えるのか、こういう機能をもったアプリを作るときはこうやって自分たちは作った。 &hellip;">
+  <meta name="keywords" content="978-4862670854,4862670857,iPhone,チュートリアル,iPhone SDK,MapKit,OpenCV,cocos2d,Core Animation,">
+
+  
+
+
+<meta property="og:title" content="iPhoneのオモチャ箱 iPhone SDKプログラミング - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2010/10/28/4862670857/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="本書は、iPhone アプリを実際に作っている著者の方が、実体験やノウハウをもとに執筆されたものが集まっています。 iPhone とはなんなのか、iPhone アプリはどういうもので、どうあると面白いのか、自分たちはどう考えるのか、こういう機能をもったアプリを作るときはこうやって自分たちは作った。 &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2010/10/28/4862670857">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">iPhoneのオモチャ箱 iPhone SDKプログラミング</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-10-28T23:06:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 28<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/iphone/">iPhone</a>
+    
+      <a class="tag label label-info" href="/blog/tags/kutukubutuku/">クックブック</a>
+    
+      <a class="tag label label-info" href="/blog/tags/sumatohuon/">スマートフォン</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4862670857?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4862670857" title="iPhoneのオモチャ箱 iPhone SDKプログラミング" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/617nfdGrMrL._SL500_AA300_.jpg" class="asin-thumbnail" alt="iPhoneのオモチャ箱 iPhone SDKプログラミング" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/gp/product/4862670857?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4862670857" title="iPhoneのオモチャ箱 iPhone SDKプログラミング" rel="external nofollow">iPhoneのオモチャ箱 iPhone SDKプログラミング</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>徳井 直生 (著), 岡村 浩志 (著), 笠谷 真也 (著), 深津 貴之 (著), 青木 太臣 (著), 大宮 聡之 (著), 瀬尾 浩二郎 (著), バスケ (著), 宮川 義之 (著)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>ワークスコーポレーション</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4862670857?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4862670857" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+<div class="entry-content"><p>本書は、iPhone アプリを実際に作っている著者の方が、実体験やノウハウをもとに執筆されたものが集まっています。</p>
+
+<p>iPhone とはなんなのか、iPhone アプリはどういうもので、どうあると面白いのか、自分たちはどう考えるのか、こういう機能をもったアプリを作るときはこうやって自分たちは作った。そういう話がたくさん載っています。</p>
+
+<p>実際に iPhone アプリを始めて見たい人は、本書の姉妹本である『<a href="http://www.amazon.co.jp/gp/product/486267058X?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=486267058X" rel="external nofollow" title="ユメみるiPhone ―クリエイターのためのiPhone SDKプログラミング">ユメみるiPhone ―クリエイターのためのiPhone SDKプログラミング</a>』から読み始めると良いと思います。それから実際に自分で手を動かしてみて、「アレ？こういう機能ってどうやって実装したらいいのかな？」という疑問が湧いてきたら本書を読むと良いと思います。</p>
+
+<p>章ごとに筆者が違うし、紹介している技術やライブラリも違うので、iPhone アプリ開発を体系的に学ぶのには適していませんが、こういうことがしたい！という目的がある人は、本書に解決の糸口を見出しすことができるかもしれません。</p>
+
+<p>読みやすいですし、チュートリアル的に書かれているところもあり理解しやすいです。なかなかオススメの一冊です。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>もくじ</h2>
+
+
+
+
+<ol>
+<li>INTRODUCTION
+  <ol>
+<li>Why iPhone?</li>
+  <li>Designing iPhone Apps</li>
+  <li>Making of TiltShift Generator</li>
+  </ol>
+</li>
+<li>Sample
+  <ol>
+<li>Web APIの使い方とMapKitを用いた地図の表示</li>
+  <li>Nビル.app-OpenCVを使ったリアルタイムの画像処理とAR</li>
+  <li>HTML+CSS+JavaScriptで作るWebアプリ</li>
+  <li>cocos2dでゲームを作ろう[基礎編]</li>
+  <li>cocos2dでゲームを作ろう[Box2D編]</li>
+  <li>カメラとCore Animationを使用した画像の描画とアニメーション</li>
+  <li>目的に特化したテーブルビューの使い方</li>
+  <li>カメラを使った音のエフェクターの開発</li>
+  <li>ピアツーピア接続を使ったアプリケーションの開発</li>
+  <li>AudioVisual Mixer for INTO INFINITYのダウンロードのしくみ</li>
+  </ol>
+</li>
+<li>RECIPE
+  <ol>
+<li>AudioIOクラス</li>
+  <li>MPMoviePlayerControllerを自由に扱う</li>
+  <li>CustomFontLabelクラス</li>
+  <li>テーブルビューレシピ1-もう1つの追加ボタンUI</li>
+  <li>テーブルビューレシピ2-データの保存</li>
+  <li>テーブルビューレシピ3-WebKitを使う</li>
+  <li>テーブルビューレシピ4-セルの再利用</li>
+  <li>テーブルビューレシピ5-グループテーブルビュー</li>
+  <li>テーブルビューレシピ6-セルのカスタマイズとパフォーマンス</li>
+  </ol>
+</li>
+<li>APPENDIX
+  <ol>
+<li>iPhoneアプリを実機で動かす</li>
+  <li>iPad用に変換する</li>
+  </ol>
+</li>
+</ol>
+<h2>おぼえがき</h2>
+
+
+
+
+<h3>iPhone の特徴</h3>
+
+
+<p>おもしろい iPhone アプリを開発するためには、きちんと iPhone の特徴をつかんでおくことが大事です。</p>
+
+<table>
+<tr>
+<th>特徴</th>
+<th>説明</th>
+  </tr>
+<tr>
+<td class="nowrap">3G回線による常時接続</td>
+<td>第三世代通信方式（3G）による高速通信がいつでもどこでも行えます。ネットワークを意識した設計、ネットワークにつながらないときにどう振舞うかを考える必要があります。</td>
+  </tr>
+<tr>
+<td class="nowrap">加速度センサー</td>
+<td>iPhone が今どのくらい傾けられているか、どれくらい振られたか、そういった情報を入力にすることができます。</td>
+  </tr>
+<tr>
+<td class="nowrap">電子コンパス</td>
+<td>iPhone が今どの向きを向いているか、向きを入力にすることができます。</td>
+  </tr>
+<tr>
+<td class="nowrap">GPS</td>
+<td>ユーザの現在位置を取得することができます。位置に合わせた情報やどこからどこに移動したか、どういう経路をたどったかなどの情報を利用した設計ができます。</td>
+  </tr>
+<tr>
+<td class="nowrap">オーディオ</td>
+<td>スピーカーとマイクを利用することができます。音や声による入力出力を組み合わせてアプリを設計できます。</td>
+  </tr>
+<tr>
+<td class="nowrap">タッチスクリーン</td>
+<td>マルチタッチ可能なタッチスクリーンは、iPhone への入力の大きなものです。この入力方式をどのように利用出来るか、利用の仕方次第でおもしろいことができそうです。</td>
+  </tr>
+<tr>
+<td class="nowrap">カメラ</td>
+<td>オートフォーカス可能なカメラは、写真を取ってその場で加工したり、物を写すことでその対象を別の入力にしたり、現実と仮想を組み合わせたり（AR）、色々とおもしろい使い方ができます。</td>
+  </tr>
+</table>
+<p>おもしろい iPhone アプリをつくるコツは</p>
+
+<ul>
+<li>機能のかけ算</li>
+<li>ユーザの好奇心、想像力、創造力をつっつく</li>
+<li>アプリケーションを立ち上げるたびに新しいことが起こる/なにが起こるかわからないを提供する</li>
+<li>こだわりを持つ</li>
+</ul>
+<p>このあたりに尽きると思います。</p>
+
+<h3>カメラ画像の取得</h3>
+
+
+<p>現実環境（カメラで写した世界）に情報や映像を付加提示する技術のことを拡張現実（Augmented Reality:AR）といいます。iPhone ではこの AR を簡単に実現できます。</p>
+
+<p>カメラ画像をリアルタイムに解析する方法のひとつに、<em>UIGetScreenImage()</em> メソッドがあります。このメソッドは SDK のドキュメントに載っていないため Apple からいつ使用が制限されるかわかりませんが、カメラで表示している画面を画像として取得して処理することができるメソッドになっています。</p>
+
+<p>ここで取得した画像を利用してリアルタイム処理を行うことが出来ます。</p>
+
+<p>オープンソースの画像解析用のライブラリに <a href="http://opencv.jp/" rel="external nofollow" title="OpenCV">OpenCV</a> があり、このライブラリを使った画像処理のチュートリアルが、本書には載っています。</p>
+
+<h3>cocos2d</h3>
+
+
+<p>cocos2d は OpenGL を手軽に扱えるように設計されたライブラリで、画像の読み込み、描画、アニメーションなどを手軽に実装することができるようになります。</p>
+
+<p>OpenGL を使うため、処理速度が必要なゲームなどで使用すると良いと思います。本当に簡単につかえるライブラリなので、iPhone でゲームを作りたいと考えている人は利用していると良いと思います。</p>
+
+<p>また、Box2D という物理演算エンジンと cocos2d を使ったゲームを作るチュートリアルも本書に載っているので、このあたりの日本語の情報が欲しい人は参考になるかと思います。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://www.cocos2d-iphone.org/" rel="external nofollow" title="cocos2d for iPhone">cocos2d for iPhone</a></p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://www.box2d.org/" rel="external nofollow" title="Box2D">Box2D</a></p>
+
+<h3>テーブルビュー</h3>
+
+
+<p>ユーティリティアプリをつくろうと考えている人は、テーブルビューを使う機会が出てくると思います。本書では、テーブルビューを使った様々な機能の実現方法をサンプルを交えて解説しています。</p>
+
+<ul>
+<li>行の追加・編集・削除</li>
+<li>大量のデータを効率よく表示する方法</li>
+<li>グルーピングの方法</li>
+<li>行の表示をカスタマイズする方法</li>
+</ul>
+<h3>オーディオ処理</h3>
+
+
+<p>本書ではリアルタイムに音を処理するサンプルが載っています。iPhone にはオーディオをあつかう API がいくつかありますが、本書では Audio Unit を使用したサンプルが載っています。</p>
+
+<p>iPhone で利用できるオーディオ API の一覧を本書から引用です。</p>
+
+<table class="table table-border">
+<tr>
+<th>API（およびそれを含むフレームワーク）</th>
+<th>概要</th>
+  </tr>
+<tr>
+<td>AVAudioPlayer, AVAudioRecorder (AV Foundation Framework)</td>
+<td>音のファイルを再生・録音できる</td>
+  </tr>
+<tr>
+<td>System Sound Services (Audio Toolbox Framework)</td>
+<td>短い音のファイルを再生できる</td>
+  </tr>
+<tr>
+<td>Audio Queue Services (Audio Toolbox Framework)</td>
+<td>音をリアルタイムに再生・録音できる</td>
+  </tr>
+<tr>
+<td>Audio Unit Framework</td>
+<td>Remote IO Audio Unitを使って音をリアルタイムに再生・録音できる</td>
+  </tr>
+<tr>
+<td>OpenAL</td>
+<td>3Dの空間の中で音を再生できる</td>
+  </tr>
+</table>
+<h3>Bluetooth を使った P2P の実現</h3>
+
+
+<p>本書では、Bluetooth を使った Peer to Peer アプリのサンプルが載っています。Game Kit フレームワークの GKPeerPickerController を使って基本的な通信を行うところから、Picker を使わずにピアツーピアを実現するところまで載っています。</p></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2011/06/18/4798123986/">Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)</a></li>
+        
+        <li><a href="/blog/2013/01/22/titanium-alloy/">Titanium Alloy でつくったアプリをリリースしました</a></li>
+        
+        <li><a href="/blog/2011/08/17/4844330411/">cocos2dで作る iPhone＆iPadゲームプログラミング</a></li>
+        
+        <li><a href="/blog/2011/08/04/iosgame-center/">[iOS] Game Center を使った対戦プログラミングの手順メモ</a></li>
+        
+        <li><a href="/blog/2011/02/16/4774145440/">WEB+DB PRESS Vol.61</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-10-28T23:06:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 28<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/iphone/">iPhone</a>
+    
+      <a class="tag label label-info" href="/blog/tags/kutukubutuku/">クックブック</a>
+    
+      <a class="tag label label-info" href="/blog/tags/sumatohuon/">スマートフォン</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/10/28/4862670857/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2010/10/28/4862670857/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2010/10/28/4862670857/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2010/10/28/4862670857/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2010/10/28/4862670857/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2010/10/28/4862670857/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2010/10/28/github/" title="Previous Post:
+      GitHub で複数アカウントを使う"><i class="fa fa-arrow-circle-left"></i> GitHub で複数アカウントを使う</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2010/11/08/test/"
+                            title="Next Post: システム開発とテスト">システム開発とテスト <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2010/10/28/4862670857/';
+  var disqus_url = 'http://hamasyou.com/blog/2010/10/28/4862670857/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

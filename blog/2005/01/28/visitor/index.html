@@ -1,0 +1,562 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>実践デザパタ-その15:Visitorパターン - それはBooks</title>
+  <meta name="author" content="hamasyou" />
+
+  
+  <meta name="description" content="デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、 &hellip;">
+  <meta name="keywords" content="デザインパターン,Visitor,ビジター,GoF,Java,データ構造,振る舞い,分離,拡張,追加">
+
+  
+
+
+<meta property="og:title" content="実践デザパタ-その15:Visitorパターン - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2005/01/28/visitor/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、 &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2005/01/28/visitor">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">それはBooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/atom.xml" rel="alternate" title="subscribe via RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+
+    
+    <form class="pull-right navbar-form navbar-search" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:hamasyou.com" />
+        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
+      </fieldset>
+    </form>
+    
+
+  </div>
+  <!-- /.nav-collapse -->
+</div>
+</nav>
+  <div role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">実践デザパタ-その15:Visitorパターン</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-01-28T15:58:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 28<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/dezainpatan/">デザインパターン</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
+
+<p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
+
+<p>15番目のパターンはデータ構造と振る舞いを分離して、振る舞いを実行するクラスの変更や拡張を可能にする<strong class="text-danger">Visitor</strong>パターンのメモです。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>Visitorパターン</h2>
+
+
+
+
+<p class="option">Visitor パターンは、データ構造と振る舞いを別々のクラスに扱わせて、振る舞いの変更や追加、拡張を可能にするパターンです。</p>
+
+
+<p><img src="http://hamasyou.com/images/design_pattern/visitor.gif" alt="Visitorのクラス図" class="img-thumbnail"></p>
+
+<p>Visitorパターンは、<em>データ構造(データの階層構造)が変化しない場合に限り有効なパターンになります</em>。Visitorパターンを使う目的は一つで、<em>データ構造に対して、振る舞いが変化する可能性がある場合に対応しやすくする事です</em>。</p>
+
+<p>クラス図を見ると、インターフェースVisitor には visit というメソッドが2つあります。これはデータ構造が2種類あることを示しています。振る舞いを追加する場合、インターフェースVisitorを実装したクラスを作ることで対応します。</p>
+
+<p>このパターンは<strong class="text-danger">ダブルディスパッチ</strong>とも呼ばれます。データ構造側のポリモーフィズムを使ったディスパッチと、振る舞い側のポリモーフィズムを使ったディスパッチの2回を使っています。</p>
+
+<p><section></section></p>
+
+<h4>mainメソッド</h4>
+
+
+
+
+<pre class="code"><code>Visitor visitor = <span class="keyword">new</span> ConcreteVisitorA(); 
+DataElement elementA = <span class="keyword">new</span> ConcreteDataElementA(); 
+ 
+elementA.accept(visitor); 
+</code></pre>
+
+
+<p><section></section></p>
+
+<h4>データ構造クラス</h4>
+
+
+
+
+<pre class="code"><code><span class="keyword">public</span> <span class="keyword">void</span> accept(Visitor visitor) { 
+    visitor.visit(this); 
+} 
+</code></pre>
+
+
+<p>Visitorパターンの注目する点は、<em>インターフェースVisitのメソッド引数に実装クラス名が指定されていること</em>です。これによって、データ構造ごとにメソッドを実装することができ、メソッドの中身がきれいになります。ここで抽象クラス名を使ってしまうと、メソッドの内部でクラスの種類によって条件分岐の処理をしなければいけなくなります。つまり、Visitorはデータ構造に依存していると言うことです。<em>データ構造が変更になると、Visitor自体も変更する必要があることに注意です</em>。</p>
+
+<h3>Visitor の使いどころ</h3>
+
+
+
+
+<blockquote>
+<p>Visitorパターンがよく使われるのは、「<em>大きなデータ構造を渡り歩き、レポートを出力するような場合</em>」である。そうすれば、データ構造体オブジェクト自体がレポート生成用のコードを持たなくていい。また、データ構造体のコードを変更しなくても、新しいレポート機能を追加したいときには、新しいVisitorを追加することで実現できる。このことは、レポート機能を別コンポーネントとして分離し、顧客にとって必要な機能だけを個別に配布できることを意味している。</p>
+<footer><strong>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22" rel="external nofollow" title="アジャイルソフトウェア開発の奥義">アジャイルソフトウェア開発の奥義</a>』</strong></footer>
+</blockquote>
+
+
+<p>また、Visitor パターンを使う場合として、「<em>Validation処理(妥当性チェック)</em>」が挙げれると思います。処理するデータ構造を決めてしまって、ValidationクラスをVisitor として実装すれば、必要なチェックを実行時に追加、削除できるようになると思います。</p>
+
+<h2>実装サンプルと参考文献</h2>
+
+
+<ul>
+<li><p>日立ソフト(Visitorパターン)
+<a href="http://www.dmz.hitachi-sk.co.jp/Java/Tech/pattern/gof/visitor.html" rel="external nofollow" title="日立ソフト">日立ソフト</a></p></li>
+<li><p>Skeleton of GOF’s Design Pattern(JavaとC++のサンプルがあります)
+<a href="http://www002.upp.so-net.ne.jp/ys_oota/mdp/Visitor/index.htm" rel="external nofollow" title="Visitorの骸骨">Visitorの骸骨</a></p></li>
+<li><p>デザインパターンのお勧め書籍</p></li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797327030/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>独習シリーズのデザインパターン編。デザインパターンを一人でも学べます。</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104450/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>Sun Microsystemのお墨付き。GoF以外のパターンも学べます。</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756141552/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>UMLを使って、オブジェクト指向のいいとこ取りができます。</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116882/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div>
+
+
+<ul>
+<li>デザインパターンだけではなく、ソフトウェア設計の原則やプラクティスまで学びたい人におすすめ</li>
+</ul>
+<div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22/" rel="external nofollow" title="G-Tools">G-Tools</a><br>
+</td></tr></table></div></div>
+
+
+  
+    
+  <section>
+    <div class="related_posts">
+      <h1>関連記事</h1>
+      <ul>
+        
+        <li><a href="/blog/2012/09/27/487311568X/">モバイルデザインパターン― ユーザーインタフェースのためのパターン集</a></li>
+        
+        <li><a href="/blog/2008/06/29/4798116173/">ドメイン駆動</a></li>
+        
+        <li><a href="/blog/2006/02/05/4798105538/">エンタープライズ アプリケーションアーキテクチャパターン</a></li>
+        
+        <li><a href="/blog/2005/12/05/4883732150/">ソフトウェアパターン入門―基礎から応用へ</a></li>
+        
+        <li><a href="/blog/2005/07/31/4873111781/">J2EEデザインパターン</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-01-28T15:58:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 28<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/dezainpatan/">デザインパターン</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<div class="sharing well">
+  <ul>
+    
+    <li class="hatena">
+      <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2005/01/28/visitor/"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+          ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+                alt="Add to Hatena Bookmark" /></a>
+    </li>
+    
+    
+    <li class="twitter">
+      <a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="http://hamasyou.com/blog/2005/01/28/visitor/"
+         data-via="hamasyou"
+         data-counturl="http://hamasyou.com/blog/2005/01/28/visitor/">Tweet</a>
+    </li>
+    
+    
+    <li class="googleplus">
+      <div class="g-plusone"
+           data-size="medium"
+           data-href="http://hamasyou.com/blog/2005/01/28/visitor/"></div>
+    </li>
+    
+    
+    <div id="fb-root"></div>
+    <li class="facebook">
+      <div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2005/01/28/visitor/"></div>
+    </li>
+    
+    
+    <li class="facebook_share">
+      <div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="http://hamasyou.com/blog/2005/01/28/visitor/"></div>
+    </li>
+    
+    
+    
+    
+  </ul>
+</div>
+
+      
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2005/01/27/j2se/" title="Previous Post:
+      J2SE5.0 覚書き"><i class="fa fa-arrow-circle-left"></i> J2SE5.0 覚書き</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2005/01/31/4798103470/"
+                            title="Next Post: 一番やさしいJSP&amp;サーブレット入門塾">一番やさしいJSP&amp;サーブレット入門塾 <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li>濱田章吾</li>
+        <li>hamasyou</li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/12/github-octopress/">GitHubとOctopressで始める無料ブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/rails/">Railsで手書きの図や絵をプログラムに取り込む方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/14/4873116406/">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by <a href="http://octopress.org" rel="external nofollow">Octopress</a></span>
+  <a id="scroll-to-top" href="javascript:void(0)" title="Scroll to Top" class="pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18255094-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2005/01/28/visitor/';
+  var disqus_url = 'http://hamasyou.com/blog/2005/01/28/visitor/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>
