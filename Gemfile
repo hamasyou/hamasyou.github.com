@@ -18,6 +18,7 @@ group :development do
   gem 'mustache'
   gem 'nokogiri'
   gem 'puma'
+  gem 'activesupport'
 end
 
 gem 'sinatra', '~> 1.4.2'

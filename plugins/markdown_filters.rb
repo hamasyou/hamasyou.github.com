@@ -1,5 +1,6 @@
 require 'nokogiri'
 require './plugins/post_filters'
+require "active_support/core_ext/object/try"
 
 module Jekyll
   class MarkdownFilters < PostFilter
@@ -7,7 +8,7 @@ module Jekyll
     end
 
     def post_render(post)
-      if post.ext.match('html|textile|markdown|md|haml|slim|xml')
+      if post.is_post?
         post.content.gsub!(/<p>(<a.*?>[^<].*?<\/a>)<\/p>/, '<p><i class="fa fa-hand-o-right"></i> \1</p>')
 
         doc = Nokogiri::HTML(post.content)
@@ -33,7 +34,7 @@ module Jekyll
           end
         end
 
-        post.content = doc.inner_html
+        post.content = doc.css('body')[0].try(:inner_html) || doc.inner_html
       end
     end
   end
