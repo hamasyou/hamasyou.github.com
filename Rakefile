@@ -123,6 +123,7 @@ task :new_post, :title do |t, args|
     post.puts "amazon_author: \"\""
     post.puts "amazon_image: \"\""
     post.puts "amazon_publisher: \"\""
+    post.puts "og_image: \"\""
     post.puts ""
     post.puts "---"
     post.puts ""
