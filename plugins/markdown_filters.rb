@@ -8,7 +8,7 @@ module Jekyll
 
     def post_render(post)
       if post.ext.match('html|textile|markdown|md|haml|slim|xml')
-        post.content.gsub!(/<p>(<a.*?>[^<].*?<\/a>)<\/p>/, '<i class="fa fa-hand-o-right"></i> \1')
+        post.content.gsub!(/<p>(<a.*?>[^<].*?<\/a>)<\/p>/, '<p><i class="fa fa-hand-o-right"></i> \1</p>')
 
         doc = Nokogiri::HTML(post.content)
 

@@ -14,9 +14,14 @@ span.divider:before {
 
 .entry-content {
   h1, .h1,
-  h2, .h2,
+  h2, .h2 {
+    margin-top: $line-height-computed * 1.6;
+  }
   h3, .h3 {
-    margin-top: $line-height-computed * 1.8;
+    margin-top: $line-height-computed * 1.4;
+  }
+  h4, .h4 {
+    margin-top: $line-height-computed * 1.2;
   }
 
   h2, .h2 {

@@ -48,6 +48,14 @@ html .gist .gist-file {
   position: relative;
   border: none;
   padding-top: image-height("code_bg.png") !important;
+
+  @if $solarized == dark {
+    background: $base02 $noise-bg !important;
+    border-right: 1px solid darken($base03, 2) !important;
+    @include box-shadow(lighten($base02, 2) -1px 0 inset);
+    text-shadow: darken($base02, 10) 0 -1px;
+  }
+
   .highlight {
     margin-bottom: 0;
   }
@@ -63,10 +71,10 @@ html .gist .gist-file {
     }
   }
   .gist-meta {
-   padding: .6em 0.8em;
+   padding: .8em 1em;
    border: 1px solid lighten($base02, 2) !important;
    color: $base01;
-   font-size: .7em !important;
+   font-size: 13px !important;
    @if $solarized == light {
      background: lighten($base03, 2) $noise-bg;
      border: 1px solid $pre-border !important;
@@ -103,7 +111,7 @@ html .gist .gist-file {
         &:hover { color: $base1 !important; }
       }
       a[href*='#file'] {
-        position: absolute; top: 0; left:0; right:-10px;
+        position: absolute; top: 0; left:0; right:0;
         color: #474747 !important;
         @extend .code-title;
         &:hover { color: $link-color !important; }
