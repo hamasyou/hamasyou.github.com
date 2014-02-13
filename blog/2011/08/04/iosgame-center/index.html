@@ -171,7 +171,7 @@
 <br><li>
 <em>ボイス</em> - 対戦に接続されたプレーヤー間で音声通信を行うことができます。</li>
 </ul>
-<footer><strong class="text-danger">『Game Kit プログラミングガイド』より</strong></footer>
+<footer><strong>『Game Kit プログラミングガイド』より</strong></footer>
 </blockquote>
 
 
@@ -248,12 +248,12 @@
 <li>Game Center が利用可能かどうかを確認する。一度確認すればよい。[<a href="#title4" rel="external nofollow">コード</a>]</li>
 <li>アプリケーション起動時に、できるだけはやく Game Center への認証を済ませる。これは、その後のゲーム招待を処理するために必要。[<a href="#title5" rel="external nofollow">コード</a>]</li>
 <li>認証が済んだら、ゲーム招待を処理するハンドラを登録する。<em>ゲーム招待を受理してアプリが起動された場合はアプリのトップ画面が表示されるので、アプリのトップで Game Center の認証を行い、続けてゲーム招待を処理するハンドラを登録するべき。</em>そうしないと、せっかくの招待が無駄になる。[<a href="#title6" rel="external nofollow">コード</a>]</li>
-<li>自分で対戦要求を作成する場合は、<strong class="text-danger">GKMatchRequest</strong> を作成してマッチメイク画面を開く。招待された側は、ゲーム招待処理ハンドラが呼び出されて、ゲーム招待（<strong class="text-danger">GKInvite</strong>）を利用してマッチメイク画面を開く。[<a href="#title7" rel="external nofollow">コード</a>]</li>
+<li>自分で対戦要求を作成する場合は、<strong>GKMatchRequest</strong> を作成してマッチメイク画面を開く。招待された側は、ゲーム招待処理ハンドラが呼び出されて、ゲーム招待（<strong>GKInvite</strong>）を利用してマッチメイク画面を開く。[<a href="#title7" rel="external nofollow">コード</a>]</li>
 <li>自分で対戦相手を探す場合は、対戦要求を作成する。[<a href="#title8" rel="external nofollow">コード</a>]</li>
 <li>対戦相手が決まったら、コールバックメソッドを実装して対戦を開始する。[<a href="#title9" rel="external nofollow">コード</a>]</li>
-<li>対戦相手を自動で決める場合は <strong class="text-danger">GKMatchmaker</strong> の findMatchForRequest メソッドを利用する。（後で書く）</li>
-<li>対戦が開始されたら、<strong class="text-danger">GKMatch</strong> に対してデータを送ることで通信ができる。[<a href="#title10" rel="external nofollow">コード</a>]</li>
-<li>通信を受け取るには、<strong class="text-danger">GKMatchDelegate</strong> プロトコルを実装し、GKMatch の delegate に設定する。[<a href="#title11" rel="external nofollow">コード</a>]</li>
+<li>対戦相手を自動で決める場合は <strong>GKMatchmaker</strong> の findMatchForRequest メソッドを利用する。（後で書く）</li>
+<li>対戦が開始されたら、<strong>GKMatch</strong> に対してデータを送ることで通信ができる。[<a href="#title10" rel="external nofollow">コード</a>]</li>
+<li>通信を受け取るには、<strong>GKMatchDelegate</strong> プロトコルを実装し、GKMatch の delegate に設定する。[<a href="#title11" rel="external nofollow">コード</a>]</li>
 </ol>
 <h2>プログラミングコードの断片</h2>
 
@@ -360,7 +360,7 @@
 <br><li>playersToInviteパラメータは、対戦をホストするGame Centerアプリケーションから直接ゲームが起動されるとnil以外の値になります。このパラメータは、ゲームが対戦に招待すべきプレーヤーを示したプレーヤー識別子の配列を保持します。ゲームは新しい対戦要求を作成し、 通常通りにパラメータを割り当ててから、対戦要求のplayersToInviteプロパティをplayersToInviteパラメータで渡された値に設定する必要があります。マッチメーク画面が表示されると、すでに対戦に参加しているプレーヤーのリストがあらかじめ読み込まれます。</li>
 <br>
 </ul>
-<footer><strong class="text-danger">『Game Kit プログラミングガイド』より</strong></footer>
+<footer><strong>『Game Kit プログラミングガイド』より</strong></footer>
 </blockquote>
 
 

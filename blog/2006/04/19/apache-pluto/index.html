@@ -382,7 +382,7 @@
 <h3 id="sectiono5">ポートレットコンテナにポートレットを登録するにはどうすればいいのか？</h3>
 
 
-<p>{TOMCAT_HOME}/webapps/pluto/WEB-INF/web.xml を見ると、いくつかのサーブレットの設定に <code><strong class="text-danger">org.apache.pluto.core.PortletServlet</strong></code> というクラスが使われています。サーブレットの <code>init-param</code> 設定で、<code><strong class="text-danger">portlet-name</strong></code> というパラメータが設定されています。</p>
+<p>{TOMCAT_HOME}/webapps/pluto/WEB-INF/web.xml を見ると、いくつかのサーブレットの設定に <code><strong>org.apache.pluto.core.PortletServlet</strong></code> というクラスが使われています。サーブレットの <code>init-param</code> 設定で、<code><strong>portlet-name</strong></code> というパラメータが設定されています。</p>
 
 <pre class="code"><code><span class="tag">&lt;servlet&gt;</span>  
   <span class="tag">&lt;servlet-name&gt;</span>AdminPortlet<span class="tag">&lt;/servlet-name&gt;</span>  
@@ -422,7 +422,7 @@
 
 <blockquote>
 <p>Portlets are not directly bound to a URL</p>
-<footer><strong class="text-danger">JSR-168</strong></footer>
+<footer><strong>JSR-168</strong></footer>
 </blockquote>
 
 
@@ -646,7 +646,7 @@
 
 <blockquote>
 <p>If the client request is triggered by an action URL, the portal/portlet-container must first trigger the action request by invoking the <i>processAction</i> method of the targeted portlet. &lt;中略&gt; Then, the portal/portlet-container must trigger the render request by invoking the <i>render</i> method for all the portlets in the portal page with the possible exception of portlets for which their content is being cached.</p>
-<footer><strong class="text-danger">JSR-168</strong></footer>
+<footer><strong>JSR-168</strong></footer>
 </blockquote>
 
 

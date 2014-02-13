@@ -349,11 +349,11 @@
 
 <p><a href="http://hamasyou.com/images/Struts2/action_sequence.gif" rel="external nofollow" title=""></a></p>
 
-<p>Struts2 では、すべてのリクエストが <code><strong class="text-danger">org.apache.struts2.dispatcher.FilterDispatcher</strong></code> を通して処理されます。</p>
+<p>Struts2 では、すべてのリクエストが <code><strong>org.apache.struts2.dispatcher.FilterDispatcher</strong></code> を通して処理されます。</p>
 
-<p><code>FilterDispatcher</code> はリクエストパスからどのアクションを呼び出すかを解決し、<code><strong class="text-danger">org.apache.struts2.dispatcher.Dispatcher</strong></code> の <code>serviceAction</code> を呼び出します。</p>
+<p><code>FilterDispatcher</code> はリクエストパスからどのアクションを呼び出すかを解決し、<code><strong>org.apache.struts2.dispatcher.Dispatcher</strong></code> の <code>serviceAction</code> を呼び出します。</p>
 
-<p><code>Dispatcher</code> は <code>serviceAction</code> の中で、<code>ActionProxyFactory</code> を使って <code><strong class="text-danger">ActionProxy</strong></code> を作成して</p>
+<p><code>Dispatcher</code> は <code>serviceAction</code> の中で、<code>ActionProxyFactory</code> を使って <code><strong>ActionProxy</strong></code> を作成して</p>
 
 <p>実際にアクションを実行するのは、<code>ActionInvocation</code> の役割になります。</p>
 

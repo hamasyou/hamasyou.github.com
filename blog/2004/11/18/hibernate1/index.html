@@ -385,7 +385,7 @@ q.setInteger(<span class="literal">"age"</span>, <span class="keyword">new</span
 <blockquote>
 <p>なんですが，単純に ID プロパティの同値性を判断してもいけないみたい．というのもですね，永続クラスの新しいインスタンスが生成された時点では，ID プロパティの値は設定されないらしいんですね．あう，だから ID プロパティは null にできる型を推奨なのでしょうか？ そんな気がする．</p>
 <p>そんなわけで，結局のところは 「ビジネスキー」 の同値性を使って判定しろとのことです．．． つまり Hibernate を使う際には，主キーは Hibernate 用に INTEGER とかで無意味な ID にしておいて，業務的なキーは主キーにするなってことですか？ まぁ，主キーは候補キーの一つに過ぎないというのも事実な訳ですが．．． DB屋さんに反発食らわないかなぁ？(^^;</p>
-<footer><strong class="text-danger"><a href="http://d.hatena.ne.jp/koichik/20040521#1085133463" rel="external nofollow" title="Hibernate 入門記 - 永続クラス">Hibernate 入門記 - 永続クラス</a></strong></footer>
+<footer><strong><a href="http://d.hatena.ne.jp/koichik/20040521#1085133463" rel="external nofollow" title="Hibernate 入門記 - 永続クラス">Hibernate 入門記 - 永続クラス</a></strong></footer>
 </blockquote>
 
 

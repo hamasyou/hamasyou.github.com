@@ -184,31 +184,31 @@
 
 <ul>
 <li>
-<strong class="text-danger">単一責任の原則</strong> (The Single Responsibility Principle: SRP)</li>
+<strong>単一責任の原則</strong> (The Single Responsibility Principle: SRP)</li>
 <li>
-<strong class="text-danger">オープン・クローズドの原則</strong> (The Open-ClosedPrinciple: OCP)</li>
+<strong>オープン・クローズドの原則</strong> (The Open-ClosedPrinciple: OCP)</li>
 <li>
-<strong class="text-danger">Liskovの置換原則</strong> (The Liskov Substitution Principle: LSP)</li>
+<strong>Liskovの置換原則</strong> (The Liskov Substitution Principle: LSP)</li>
 <li>
-<strong class="text-danger">依存関係逆転の原則</strong> (The Dependency Inversion Principle: DIP)</li>
+<strong>依存関係逆転の原則</strong> (The Dependency Inversion Principle: DIP)</li>
 <li>
-<strong class="text-danger">インターフェース分離の原則</strong> (The Interface Segregation Principle: ISP)</li>
+<strong>インターフェース分離の原則</strong> (The Interface Segregation Principle: ISP)</li>
 </ul>
 <p>パッケージ設計の原則として次6つの原則が載っています。</p>
 
 <ul>
 <li>
-<strong class="text-danger">再利用・リリース等価の原則</strong> (Resuse-Release Equivalency Principle: REP)</li>
+<strong>再利用・リリース等価の原則</strong> (Resuse-Release Equivalency Principle: REP)</li>
 <li>
-<strong class="text-danger">全再利用の原則</strong> (Common Resue Principle: CRP)</li>
+<strong>全再利用の原則</strong> (Common Resue Principle: CRP)</li>
 <li>
-<strong class="text-danger">閉鎖性共通の原則</strong> (Common Closure Principle: CCP)</li>
+<strong>閉鎖性共通の原則</strong> (Common Closure Principle: CCP)</li>
 <li>
-<strong class="text-danger">非循環依存関係の原則</strong> (Acyclic Dependencies Principle: ADP)</li>
+<strong>非循環依存関係の原則</strong> (Acyclic Dependencies Principle: ADP)</li>
 <li>
-<strong class="text-danger">安定依存の原則</strong> (Stable Dependencies Principle: SDP)</li>
+<strong>安定依存の原則</strong> (Stable Dependencies Principle: SDP)</li>
 <li>
-<strong class="text-danger">安定度・抽象度等価の原則</strong>(Stable Abstractions Principle: SAP)</li>
+<strong>安定度・抽象度等価の原則</strong>(Stable Abstractions Principle: SAP)</li>
 </ul>
 <p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715937/sorehabooks-22" rel="external nofollow" title="プログラマのためのJava設計ベストプラクティス">プログラマのためのJava設計ベストプラクティス</a>』という本にも、オブジェクト指向設計の原則に関しての解説があります。</p>
 
@@ -269,7 +269,7 @@
 
 <blockquote>
 <p>クラスを変更する理由は一つ以上存在してはならない</p>
-<footer><strong class="text-danger">本書</strong></footer>
+<footer><strong>本書</strong></footer>
 </blockquote>
 
 
@@ -297,8 +297,8 @@
 <p>GRASP には基本パターンが5つと、追加パターンが4つ(以上)あります。GRASP というのは、クラスの責務割り当てにおける一般原則のパターンのことです。ここでいう「責務」とは、次の2つのことを言います。</p>
 
 <ol>
-<li><strong class="text-danger">情報把握 (knowing)</strong></li>
-<li><strong class="text-danger">実行 (doing)</strong></li>
+<li><strong>情報把握 (knowing)</strong></li>
+<li><strong>実行 (doing)</strong></li>
 </ol>
 <p>情報把握責任の例には、カプセル化しているデータを把握していることや関係しているオブジェクトを把握しているといったものがあります。また、実行責任の例には、自分自身で何かを行うことや関連するオブジェクトのアクションを起動させることなどがあります。</p>
 
@@ -330,7 +330,7 @@
 
 <blockquote>
 <p>ソフトウェアの構成要素(クラス・モジュール・関数など)は拡張に対して開いて(オープン: Open)いて修正に対して閉じて(クローズド: Closed)いなければならない。</p>
-<footer><strong class="text-danger">本書</strong></footer>
+<footer><strong>本書</strong></footer>
 </blockquote>
 
 
@@ -378,7 +378,7 @@
 
 <blockquote>
 <p>派生型はその基本型と置換可能でなければならない</p>
-<footer><strong class="text-danger">本書</strong></footer>
+<footer><strong>本書</strong></footer>
 </blockquote>
 
 
@@ -417,7 +417,7 @@
 <li>上位のモジュールは下位のモジュールに依存してはならない。どちらのモジュールも「抽象」に依存すべきである</li>
 <br><li>「抽象」は実装の詳細に依存してはならない。実装の詳細が「抽象」に依存すべきである</li>
 </ol>
-<footer><strong class="text-danger">本書</strong></footer>
+<footer><strong>本書</strong></footer>
 </blockquote>
 
 
@@ -452,7 +452,7 @@
 
 <blockquote>
 <p>すべてのインターフェースを一つのクラスに押し込めてしまうのではなく、関連性を持ったインターフェースはグループ化し、抽象基本クラスとして分けて利用すべき</p>
-<footer><strong class="text-danger">本書</strong></footer>
+<footer><strong>本書</strong></footer>
 </blockquote>
 
 
@@ -478,7 +478,7 @@
 
 <blockquote>
 <p>クラスの場合それをグループにまとめるための何らかの方針がなければ、グループ化は意味のない単なるまとまりになってしまいます。私が最も効果的だと感じ、UMLにおいても最も強調しているのは、<strong class="text-danger">依存関係に基づくグループ化</strong>です。</p>
-<footer><strong class="text-danger">本書</strong></footer>
+<footer><strong>本書</strong></footer>
 </blockquote>
 
 
@@ -497,7 +497,7 @@
 
 <blockquote>
 <p>再利用の単位とリリースの単位は等価になる</p>
-<footer><strong class="text-danger">本書</strong></footer>
+<footer><strong>本書</strong></footer>
 </blockquote>
 
 
@@ -508,7 +508,7 @@
 
 <blockquote>
 <p>パッケージに含まれるクラスは、すべてが再利用されるか、すべてが再利用できないかのどちらかにすべきだ。</p>
-<footer><strong class="text-danger">本書</strong></footer>
+<footer><strong>本書</strong></footer>
 </blockquote>
 
 
@@ -521,7 +521,7 @@
 
 <blockquote>
 <p>パッケージに含まれるクラスは、すべて一緒に再利用される。つまり、パッケージに含まれるいずれかのクラスを再利用するということは、その他のクラスのすべてを再利用するすることを意味する。</p>
-<footer><strong class="text-danger">本書</strong></footer>
+<footer><strong>本書</strong></footer>
 </blockquote>
 
 
@@ -538,7 +538,7 @@
 
 <blockquote>
 <p>パッケージに含まれるクラスは、みな同じ種類の変更に対して閉じているべきである。パッケージに影響する変更はパッケージ内のすべてのクラスに影響を及ぼすが、他のパッケージには影響しない</p>
-<footer><strong class="text-danger">本書</strong></footer>
+<footer><strong>本書</strong></footer>
 </blockquote>
 
 
@@ -551,7 +551,7 @@
 
 <blockquote>
 <p>パッケージ依存グラフに循環を持ち込んではならない。</p>
-<footer><strong class="text-danger">本書</strong></footer>
+<footer><strong>本書</strong></footer>
 </blockquote>
 
 
@@ -573,7 +573,7 @@
 
 <blockquote>
 <p>安定する方向に依存せよ。</p>
-<footer><strong class="text-danger">本書</strong></footer>
+<footer><strong>本書</strong></footer>
 </blockquote>
 
 
@@ -592,7 +592,7 @@
 
 <blockquote>
 <p>パッケージの抽象度と安定度は同程度でなければならない。</p>
-<footer><strong class="text-danger">本書</strong></footer>
+<footer><strong>本書</strong></footer>
 </blockquote>
 
 
