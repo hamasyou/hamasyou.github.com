@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="アメリカではほとんどデフェクトスタンダードとなっている「」の覚書きです。Spring は簡単に言うと、IoC (制御の反転)、またの名を DI (依存性注入) という仕組みを取り入れた軽量コンテナです。 AOP(アスペクト指向プログラミング) はクラスの直接的な責務ではない、 &hellip;">
+  <meta name="description" content="「Executable UML」とは、実行可能なモデルという意味です。Executable UML の目的は 「ソフトウェア実装上の構成を決定せずに、問題領域の解決に向けての分かりやすいモデルを提供すること」です。ソフトウェア実装とは例えば、プログラミング言語やプラットフォームといったいわゆる、 &hellip;">
   
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/19/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="アメリカではほとんどデフェクトスタンダードとなっている「」の覚書きです。Spring は簡単に言うと、IoC (制御の反転)、またの名を DI (依存性注入) という仕組みを取り入れた軽量コンテナです。 AOP(アスペクト指向プログラミング) はクラスの直接的な責務ではない、 &hellip;" />
+<meta property="og:description" content="「Executable UML」とは、実行可能なモデルという意味です。Executable UML の目的は 「ソフトウェア実装上の構成を決定せずに、問題領域の解決に向けての分かりやすいモデルを提供すること」です。ソフトウェア実装とは例えば、プログラミング言語やプラットフォームといったいわゆる、 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -99,7 +99,64 @@
     
     
     
-    <article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/11/09/spring-framework-jue-shu-ki-aop/">Spring Framework 覚書き - AOP</a></h1>
+    <article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/11/12/479810602X/">Executable UML MDAモデル駆動型アーキテクチャの基礎</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-11-12T10:52:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 12<span>th</span>, 2004</time><span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/mda/">MDA</a>
+    
+      <a class="tag label label-info" href="/blog/tags/uml/">UML</a>
+    
+      <a class="tag label label-info" href="/blog/tags/moderuqu-dong/">モデル駆動</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2004/11/12/479810602X/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header><div class="entry-content">
+<p>「Executable UML」とは、<b>実行可能なモデル</b>という意味です。Executable UML の目的は 「<strong class="text-danger">ソフトウェア実装上の構成を決定せずに、問題領域の解決に向けての分かりやすいモデルを提供すること</strong>」です。ソフトウェア実装とは例えば、プログラミング言語やプラットフォームといったいわゆる、問題領域の解決につかう道具のことです。逆に問題領域の解決とは、ビジネスモデルやビジネスルールと言われる、ソフトウェアの目的の部分です。</p>
+
+<p>Executable UML は、UML のアクションセマンティックス(動作意味論) を提供します。これにより、ソフトウェア実装を決定せずともソフトウェアの動作を表すことができます。しかも、厳密に定義することで、ツールによる解釈・実行が可能になります。<a href="http://www.atmarkit.co.jp/aig/04biz/mda.html" rel="external nofollow" title=" (モデル駆動アーキテクチャ)"> (モデル駆動アーキテクチャ)</a>は、こうしたExecutable UML によって書かれたモデルを解釈し、コードを自動生成しようとしています。モデルの解釈を行うためには、厳密なセマンティックスが必要とされます。</p>
+
+<p>本書は、Executable UML を理解するためのよい書籍だと思います。Executable UML 自体は、新しいモデリング言語と言うわけではありません。<strong class="text-danger">UML の一つの拡張(プロファイル)であり、実行可能なモデルを生み出すためのただの表記法</strong>です。</p>
+
+<p>最近は、「モデリング」という言葉をいろんなところで聞けるようになりました。書籍もたくさん出ています。今後は、プログラムだけではなくモデリングも出来なくてはならない時代が来るかもしれません。そうすると、自然とモデルからコードを生成するという発想が生まれてきます。今後は MDA のようなモデルからコードを生成する手法が一般的になってくるかもしれません。Executable UML は次世代のための必須知識と言えるのではないでしょうか。</p>
+
+</div>
+  
+  
+    <footer><a rel="full-article" href="/blog/2004/11/12/479810602X/">続きをよむ →</a>
+    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/11/09/spring-framework-jue-shu-ki-aop/">Spring Framework 覚書き - AOP</a></h1>
     
     
       <p class="meta">
@@ -705,59 +762,6 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
   
   
     <footer><a rel="full-article" href="/blog/2004/10/24/djunit-virtual-mock-objects/">続きをよむ →</a>
-    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2004/10/23/4891003383/">CODE コードから見たコンピュータのからくり</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-10-23T23:09:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 23<span>rd</span>, 2004</time><span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/code/">CODE</a>
-    
-      <a class="tag label label-info" href="/blog/tags/bainari/">バイナリ</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/10/23/4891003383/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header><div class="entry-content">
-<p>「コンピュータの仕組みを知りたいとは思わないかい？」一般にコンピュータを使っている人ならこの質問には「NO」と答えるだろう。電子工学を勉強している学生の中には、少なからず「YES」と答える人もいるかもしれない。本書はモールス信号からコンピュータの仕組みを理解するところまで持っていってしまうところがすごい。つまりコンピュータのことを知らなくても（モールス信号さえ知っていれば）誰でもコンピュータの仕組みまで理解できてしまうのである。ただし、順を追って読み進めていけばの話ではあるが・・・。</p>
-
-<p>コンピュータの動作原理は「0」と「1」との組み合わせがすべてである。コンピュータを知っている人なら誰でもこう答えるだろう。しかし、最近のコンピュータは音楽を聴いたり、ゲームをしたり、写真を取り込んだりできるのにほんとうに「0」と「1」とでしか出来ていないのかと思う人もいると思う。</p>
-
-<p>500ページという本のなかに、著者のコンピュータを知ってもらいたいという熱い想いを感じ取って欲しいと思います。基本情報技術者試験の試験勉強でコンピュータの仕組みを勉強するよりも、はっきり言って本書で仕組みを理解したほうが深く身につきます。<strong class="text-danger">決して簡単には読み進められないかもしれません。</strong>しかし確実に感動を覚えることはできると思います。少し時間をとって頭の体操にどうぞ！</p>
-
-</div>
-  
-  
-    <footer><a rel="full-article" href="/blog/2004/10/23/4891003383/">続きをよむ →</a>
     </footer></article><ul class="pager">
 <li class="previous"><a href="/blog/page/20/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
       
@@ -788,6 +792,10 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
 <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
       </li>
     
@@ -811,15 +819,11 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
         <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
-      </li>
-    
   </ul></section><section class="panel panel-default"><div class="panel-heading">
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class="list-group-item" href="/blog/categories/architecture">Architecture <span class="badge">38</span></a><a class="list-group-item" href="/blog/categories/blog">Blog <span class="badge">96</span></a><a class="list-group-item" href="/blog/categories/database">Database <span class="badge">8</span></a><a class="list-group-item" href="/blog/categories/essay">Essay <span class="badge">13</span></a><a class="list-group-item" href="/blog/categories/lifehack">LifeHack <span class="badge">12</span></a><a class="list-group-item" href="/blog/categories/network">Network <span class="badge">7</span></a><a class="list-group-item" href="/blog/categories/programming">Programming <span class="badge">111</span></a><a class="list-group-item" href="/blog/categories/webdesign">WebDesign <span class="badge">4</span></a>
+    <a class="list-group-item" href="/blog/categories/architecture">Architecture <span class="badge">38</span></a><a class="list-group-item" href="/blog/categories/blog">Blog <span class="badge">96</span></a><a class="list-group-item" href="/blog/categories/database">Database <span class="badge">8</span></a><a class="list-group-item" href="/blog/categories/essay">Essay <span class="badge">13</span></a><a class="list-group-item" href="/blog/categories/lifehack">LifeHack <span class="badge">12</span></a><a class="list-group-item" href="/blog/categories/network">Network <span class="badge">7</span></a><a class="list-group-item" href="/blog/categories/programming">Programming <span class="badge">112</span></a><a class="list-group-item" href="/blog/categories/webdesign">WebDesign <span class="badge">4</span></a>
   </div>
 </section></aside>
 </div></body></html>

@@ -1,9 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?><html><body><feed xmlns="http://www.w3.org/2005/Atom"><title></title>
 <link href="http://hamasyou.com/atom.xml" rel="self">
 <link href="http://hamasyou.com/">
-<updated>2014-02-13T16:02:14+09:00</updated><id>http://hamasyou.com/</id><author><name></name></author><generator uri="http://octopress.org/">Octopress</generator><entry><title type="html"></title>
+<updated>2014-02-13T16:38:31+09:00</updated><id>http://hamasyou.com/</id><author><name></name></author><generator uri="http://octopress.org/">Octopress</generator><entry><title type="html"></title>
+<link href="http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/">
+<updated>2014-02-13T16:19:09+09:00</updated><id>http://hamasyou.com/blog/2014/02/13/ruby-nokogiri</id><content type="html"><p>Ruby の HTML パーサに <strong class="text-danger">Nokogiri</strong> があります。基本的な使い方は</p>
+
+<ul>
+<li><a href="https://github.com/sparklemotion/nokogiri" rel="external nofollow" title="Nokogiri-GitHub">Nokogiri-GitHub</a></li>
+<li><a href="http://www.absolute-keitarou.net/blog/?p=634" rel="external nofollow" title="RubyのNokogiriでギコギコスクレイピングだ">RubyのNokogiriでギコギコスクレイピングだ</a></li>
+<li><a href="http://qiita.com/w650/items/e663fa2430145c456c4d" rel="external nofollow" title="Nokogiriでスクレイピング">Nokogiriでスクレイピング</a></li>
+</ul>
+<p>とかを参考にしてもらえばいいんですが、パースした要素の特定の属性を置き換えたいとか追加で属性を追加したい時のメモです。</p>
+
+<!-- more -->
+
+
+<p>使い方は</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class=""><span class="line">gem install 'nokogiri'</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">'nokogiri'</span>
+</span><span class="line">
+</span><span class="line"><span class="n">doc</span> <span class="o">=</span> <span class="ss">Nokogiri</span><span class="p">:</span><span class="ss">:HTML</span><span class="p">(</span><span class="n">html_text</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># 外部リンクに rel="external nofollow" と title 属性を付ける</span>
+</span><span class="line"><span class="n">doc</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">'a[href^="http://"]'</span><span class="p">,</span> <span class="s1">'a[href^="https://"]'</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">link</span><span class="o">|</span>
+</span><span class="line">  <span class="n">link</span><span class="o">[</span><span class="s1">'rel'</span><span class="o">]</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">link</span><span class="o">[</span><span class="s1">'rel'</span><span class="o">]</span><span class="si">}</span><span class="s2"> external nofollow"</span><span class="o">.</span><span class="n">strip</span>
+</span><span class="line">  <span class="n">link</span><span class="o">[</span><span class="s1">'title'</span><span class="o">]</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">text</span> <span class="k">unless</span> <span class="n">link</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s1">'title'</span><span class="p">)</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line"><span class="n">html_text</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">inner_html</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Nokogiri に渡す HTML 文字列は <code>&lt;html&gt;</code> から始まる必要はなく、部分的な HTML 文字列でも OK です。</p>
+
+<p>置き換えた文字列を取り出すには、<code>doc.inner_html</code> になります。<code>doc.html</code> だと <code>&lt;html&gt;</code> から始まる文字列になってしまうので注意。</p>
+
+<h3>文字コードを指定する</h3>
+
+<p>Nokogiri は日本語に対応していますが、デフォルトで <em>UTF-8</em> の文字エンコーディングになっているようです。なので Shift_JIS や EUC-JP の HTML を与えるとうまくパースできません。</p>
+
+<p>そんな時は、次のようなコードで UTF-8 に変換してやれば OK です。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="n">doc</span> <span class="o">=</span> <span class="ss">Nokogiri</span><span class="p">:</span><span class="ss">:HTML</span><span class="p">(</span><span class="n">html_text</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="s1">'utf-8'</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+</content></entry></feed></body></html><html><p>]]&gt;
+  
+  
+  <entry><title type="html"></title>
 <link href="http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress/">
-<updated>2014-02-13T10:53:07+09:00</updated><id>http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress</id><content type="html"><p>今まではブログを <em>ロリポップ</em> + <em>Movable Type</em> でやっていましたが、ブログデザインを変更したくなり、ついでにブログ環境も変更しました。</p>
+<updated>2014-02-13T10:53:07+09:00</updated><id>http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress</id><content type="html"><body>
+<p>今まではブログを <em>ロリポップ</em> + <em>Movable Type</em> でやっていましたが、ブログデザインを変更したくなり、ついでにブログ環境も変更しました。</p>
 
 <p>Movable Type から <em>WordPress</em> に乗り換えても良かったんですが、エンジニアっぽいブログ環境ってなんだろうと考えた末、<strong class="text-danger">GitHub Pages</strong> と <strong class="text-danger">Octopress</strong> を使ってブログ環境を作ることにしました。</p>
 
@@ -414,7 +485,7 @@ puts
 puts " # All done! (#{ok}/#{fails})"
 </code></pre></noscript>
 </div>
-</content></entry></feed></body></html><html><p>]]&gt;
+</body></content></entry></p></html><html><p>]]&gt;
   
   
   <entry><title type="html"></title>
@@ -2241,501 +2312,6 @@ puts " # All done! (#{ok}/#{fails})"
 <p>NoSQL では、テーブル/ファイルを開っぱなしにして処理性能を高めるようにしている。</p>
 
 <p>一般的な NoSQL では、<em>トランザクションをサポートしていない</em>。また、<em>スキーマレス</em>なため主に XML や JSON を格納して扱う。<em>インデックスは主キー</em>以外使えないと思ったほうがよい。</p>
-</body></content></entry></p></html><html><p>]]&gt;
-  
-  
-  <entry><title type="html"></title>
-<link href="http://hamasyou.com/blog/2012/04/27/4048706705/">
-<updated>2012-04-27T12:54:00+09:00</updated><id>http://hamasyou.com/blog/2012/04/27/4048706705</id><content type="html"><body>
-<p>本書は、JavaScript を理解するためのものです。JavaScript はプロトタイプベースの言語で、クラスがなかったり、プロパティのアクセス修飾子がなかったり、継承の仕方が特別だったりします。</p>
-
-<p>JavaScript を理解するには、JavaScript は全てがオブジェクトであることを覚えておく必要があります。本書は、こう言った、JavaScript が他のオブジェクト指向言語と違う点を整理し、JavaScript ではこう書くというのを丁寧に解説してくれています。</p>
-
-<p>「JavaScript はブラウザ上で動く小さな言語」という認識だった昔とは、昨今では JavaScript の扱いは変わりました。サーバサイドでも JavaScript を動かしたり、スマートフォンの開発に JavaScript を使ったりと、JavaScript が使える舞台は広がっています。</p>
-
-<p>JavaScript をもう一度ちゃんと理解したいという人に、本書はおすすめです。</p>
-
-<!-- more -->
-
-
-
-
-<h2>おぼえがき</h2>
-
-
-
-
-<h3>プリミティブデータ型</h3>
-
-
-
-
-<dl>
-<dt>Number</dt>
-<dd>1, 100, 3.14 などの数値。浮動小数点を含む。</dd>
-<dt>String</dt>
-<dd>‘hoge’, “foo bar”, などで表現される文字列。</dd>
-<dt>Boolean</dt>
-<dd>true と false。</dd>
-<dt>undefined</dt>
-<dd>まだ存在していない変数にアクセスすると得られる値。</dd>
-<dt>null</dt>
-<dd>値がないことを表す値。</dd>
-</dl>
-<h3>変数の型をしる <code>typeof</code> 演算子</h3>
-
-
-<p>変数や値の型を調べるときに使える <strong class="text-danger">typeof演算子</strong>は、<em>“number”</em>、<em>“string”</em>、<em>“boolean”</em>、<em>“undefined”</em>、<em>“object”</em>、<em>“function”</em> のいずれかの値（文字列）を返す。</p>
-
-<h3>Infinity（無限）</h3>
-
-
-<p><strong class="text-danger">Infinity</strong> は JavaScript で扱えない大きな数値を表すのにつかう値。JavaScript で扱える最大の数値は 1.7976931348623157e+308、最小は 5e-324である。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kc">Infinity</span>
-</span><span class="line"><span class="kc">Infinity</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="k">typeof</span> <span class="kc">Infinity</span>
-</span><span class="line"><span class="s2">"number"</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="mi">1</span><span class="nx">e309</span>
-</span><span class="line"><span class="kc">Infinity</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<h3>Boolean に変換されると false になる値</h3>
-
-
-
-
-<ul>
-<li>空文字列””</li>
-<li>null</li>
-<li>undefined</li>
-<li>数値の 0</li>
-<li>数値の NaN</li>
-<li>Boolean型の false</li>
-</ul>
-<h3>型変換の Tips</h3>
-
-
-<p>数字のような文字列を数値に変換する方法は parseInt() 関数を使う方法の他に、1 を掛けるという方法もある。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">"100"</span><span class="p">;</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">s</span> <span class="o">*</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="k">typeof</span> <span class="nx">s</span><span class="p">;</span>
-</span><span class="line"><span class="s2">"number"</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>文字列に変換する場合、空文字と結合する方法がある。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">n</span> <span class="o">=</span> <span class="s2">""</span> <span class="o">+</span> <span class="nx">n</span><span class="p">;</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="k">typeof</span> <span class="nx">n</span><span class="p">;</span>
-</span><span class="line"><span class="s2">"string"</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<h3>配列の要素の削除</h3>
-
-
-<p>配列の要素の削除には delete 演算子を使うが、この演算子は配列の要素を減らすわけではなく、undefined を設定する。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="k">delete</span> <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-</span><span class="line"><span class="kc">true</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
-</span><span class="line"><span class="mi">3</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">a</span><span class="p">;</span>
-</span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<h3>変数が定義されていて、値が割り当てられているかどうかを確認する方法</h3>
-
-
-
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">something</span> <span class="o">!==</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="c1">// 何かの処理</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<h3>自分自身を書き換える関数</h3>
-
-
-<p>自分自身を書き換える関数の仕組みは、初期化などの一度だけ行ないたい処理がある場合に使う。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">function</span> <span class="nx">someSetup</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">setup</span> <span class="o">=</span> <span class="s1">'done'</span><span class="p">;</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line">  <span class="kd">function</span> <span class="nx">actualWork</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">alert</span><span class="p">(</span><span class="s1">'Worky-worky'</span><span class="p">);</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line">  <span class="nx">someSetup</span><span class="p">();</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">actualWork</span><span class="p">;</span>
-</span><span class="line"><span class="p">}();</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<h2>オブジェクト</h2>
-
-
-
-
-<h3>オブジェクトリテラル表記</h3>
-
-
-<p>{} を使ってオブジェクトを定義することをオブジェクトリテラル表記を呼ぶ。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">hero</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">breed</span><span class="o">:</span> <span class="s1">'Turtle'</span><span class="p">,</span>
-</span><span class="line">  <span class="nx">occupation</span><span class="o">:</span> <span class="s1">'Ninja'</span>
-</span><span class="line"><span class="p">};</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>オブジェクトのプロパティ名はクウォートしないのが推奨されている。ちなみに、連想配列（ハッシュ）のキーは文字列である。</p>
-
-<h3>コンストラクタ関数</h3>
-
-
-<p>関数を new してオブジェクトを作ることで、関数をコンストラクタとして利用することができる。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">Hero</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">h1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Hero</span><span class="p">(</span><span class="s1">'hamasyou'</span><span class="p">);</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">h1</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-</span><span class="line"><span class="s2">"hamasyou"</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<h3>グローバル変数</h3>
-
-
-<p>JavaScript のプログラムは様々なホスト環境（たとえばブラウザ環境）で動作する。JavaScript のホスト環境はグローバルオブジェクトを提供していて、グローバル変数はグローバルオブジェクトのプロパティになる。</p>
-
-<p>たとえば、ブラウザ環境では <em>window</em> というグローバルオブジェクトが提供されており、グローバル変数はすべて、window のプロパティになる。</p>
-
-<p class="option">コンストラクタ関数を定義したにもかかわらず、new でオブジェクトをつくらなかった場合、this はグローバルオブジェクトを指すことになる。</p>
-
-
-
-
-<h3>constructor プロパティ</h3>
-
-
-<p>オブジェクトが作成されると、<em>constructor</em> プロパティと呼ばれる特別なプロパティに、オブジェクトを作成したときに使われたコンストラクタ関数がセットされる。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">h1</span><span class="p">.</span><span class="nx">constructor</span><span class="p">;</span>
-</span><span class="line"><span class="nx">Hero</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<h3>instanceof 演算子</h3>
-
-
-<p><em>instanceof 演算子</em>を使うと constructor プロパティが指定した関数かどうかを調べることができる。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">h1</span> <span class="k">instanceof</span> <span class="nx">Hero</span><span class="p">;</span>
-</span><span class="line"><span class="kc">true</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<h3>オブジェクトの比較</h3>
-
-
-<p>オブジェクト同士を比較すると、両方の変数が同じオブジェクトの参照の場合のみ true を返す。</p>
-
-<h2>プロトタイプ</h2>
-
-
-
-
-<blockquote><p>- このプロパティは関数がコンストラクタのときのみ使われる<br>- この関数を使って作られたオブジェクトも、prototype プロパティを持ち、関数の prototype と同じオブジェクトを参照する。このオブジェクトのプロパティは自分のプロパティと同じように使える</p></blockquote>
-
-
-
-
-<h3>prototype プロパティ</h3>
-
-
-<p>関数は、<em>prototype</em> と呼ばれるプロパティを保持している。初期値は空のオブジェクトになっている。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">;</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">multiply</span><span class="p">.</span><span class="nx">constructor</span><span class="p">;</span>
-</span><span class="line"><span class="nb">Function</span><span class="p">()</span>
-</span><span class="line">
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="k">typeof</span> <span class="nx">multiply</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
-</span><span class="line"><span class="s2">"object"</span>
-</span><span class="line">
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">multiply</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
-</span><span class="line"><span class="nx">multiply</span> <span class="p">{}</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>prototype プロパティに設定されているオブジェクトには、プロパティとメソッドを追加していくことができる。このオブジェクトは、multiply 関数自身にはなんの影響も与えない。追加したプロパティとメソッドは、multiply をコンストラクタとして利用した場合にのみ使われる。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">multiply</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'hamasyou'</span><span class="p">;</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">multiply</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-</span><span class="line"><span class="s2">"multiply"</span>
-</span><span class="line">
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">hoge</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">multiply</span><span class="p">();</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">hoge</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-</span><span class="line"><span class="s2">"hamasyou"</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>prototype プロパティをいつ変更しても、すべてのオブジェクトが影響を受ける点は注意が必要。</p>
-
-<h3>prototype オブジェクトのプロパティを上書きする</h3>
-
-
-<p>オブジェクト自身のプロパティの方が、prototype オブジェクトのプロパティよりも優先して解決される。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">Salary</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">var</span> <span class="nx">salary</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
-</span><span class="line">  <span class="nx">salary</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">base</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">;</span>
-</span><span class="line">  <span class="nx">salary</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">total</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">base</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">;</span>
-</span><span class="line">  <span class="p">};</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">salary</span><span class="p">;</span>
-</span><span class="line"><span class="p">})();</span>
-</span><span class="line">
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">hoge_salary</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Salary</span><span class="p">();</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">hoge_salary</span><span class="p">.</span><span class="nx">base</span> <span class="o">=</span> <span class="mi">20000</span><span class="p">;</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">hoge_salary</span><span class="p">.</span><span class="nx">total</span><span class="p">();</span>
-</span><span class="line"><span class="mi">21000</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">hama_salary</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Salary</span><span class="p">();</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">hama_salary</span><span class="p">.</span><span class="nx">total</span><span class="p">();</span>
-</span><span class="line"><span class="mi">52500</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<h2>継承</h2>
-
-
-
-
-<h3>プロトタイプチェーンで継承を実現する</h3>
-
-
-<p>JavaScript の prototype プロパティはオブジェクトであるので、自身の prototype も持っている。このように prototype をチェーンして辿っていくことで、継承を実現することができる。</p>
-
-<p>次の例は、本書 P.183 のプロトタイプチェーンの例である。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">Shape</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'shape'</span><span class="p">;</span>
-</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span> <span class="p">}</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">function</span> <span class="nx">TwoDShape</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'2D shape'</span><span class="p">;</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">function</span> <span class="nx">Triangle</span><span class="p">(</span><span class="nx">side</span><span class="p">,</span> <span class="nx">height</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Triangle'</span><span class="p">;</span>
-</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">side</span> <span class="o">=</span> <span class="nx">side</span><span class="p">;</span>
-</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">height</span><span class="p">;</span>
-</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">getArea</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">side</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-</span><span class="line">  <span class="p">};</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">TwoDShape</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shape</span><span class="p">();</span>
-</span><span class="line"><span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TwoDShape</span><span class="p">();</span>
-</span><span class="line"><span class="nx">TwoDShape</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">TwoDShape</span><span class="p">;</span>
-</span><span class="line"><span class="nx">Triangle</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">Triangle</span><span class="p">;</span>
-</span><span class="line">
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="kd">var</span> <span class="nx">my</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Triangle</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">my</span><span class="p">.</span><span class="nx">getArea</span><span class="p">();</span>
-</span><span class="line"><span class="mi">25</span>
-</span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">my</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
-</span><span class="line"><span class="s2">"Triangle"</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>Triangle クラスには toString メソッドは定義されていないが、Shape 関数で定義されていることで、プロトタイプチェーンをたどって呼び出すことができる。</p>
-
-<p class="option">継承を行った後は、constructor を再設定しておくとよい。</p>
 </body></content></entry></p></html><html><p>]]&gt;
   
   

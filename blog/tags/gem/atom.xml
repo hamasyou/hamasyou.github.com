@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: gem | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/gem/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-13T16:38:31+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby-Nokogiriで取り出した要素を置き換える]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/"/>
+    <updated>2014-02-13T16:19:09+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/13/ruby-nokogiri</id>
+    <content type="html"><![CDATA[<p>Ruby の HTML パーサに <strong>Nokogiri</strong> があります。基本的な使い方は</p>
+
+<ul>
+<li><a href="https://github.com/sparklemotion/nokogiri">Nokogiri-GitHub</a></li>
+<li><a href="http://www.absolute-keitarou.net/blog/?p=634">RubyのNokogiriでギコギコスクレイピングだ</a></li>
+<li><a href="http://qiita.com/w650/items/e663fa2430145c456c4d">Nokogiriでスクレイピング</a></li>
+</ul>
+
+
+<p>とかを参考にしてもらえばいいんですが、パースした要素の特定の属性を置き換えたいとか追加で属性を追加したい時のメモです。</p>
+
+<!-- more -->
+
+
+<p>使い方は</p>
+
+<pre><code class="plain">gem install 'nokogiri'
+</code></pre>
+
+<pre><code class="ruby">require 'nokogiri'
+
+doc = Nokogiri::HTML(html_text)
+
+# 外部リンクに rel="external nofollow" と title 属性を付ける
+doc.search('a[href^="http://"]', 'a[href^="https://"]').each do |link|
+  link['rel'] = "#{link['rel']} external nofollow".strip
+  link['title'] = link.text unless link.attr('title')
+end
+html_text = doc.inner_html
+</code></pre>
+
+<p>Nokogiri に渡す HTML 文字列は <code>&lt;html&gt;</code> から始まる必要はなく、部分的な HTML 文字列でも OK です。</p>
+
+<p>置き換えた文字列を取り出すには、<code>doc.inner_html</code> になります。<code>doc.html</code> だと <code>&lt;html&gt;</code> から始まる文字列になってしまうので注意。</p>
+
+<h3>文字コードを指定する</h3>
+
+<p>Nokogiri は日本語に対応していますが、デフォルトで <em>UTF-8</em> の文字エンコーディングになっているようです。なので Shift_JIS や EUC-JP の HTML を与えるとうまくパースできません。</p>
+
+<p>そんな時は、次のようなコードで UTF-8 に変換してやれば OK です。</p>
+
+<pre><code class="ruby">doc = Nokogiri::HTML(html_text, nil, 'utf-8')
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

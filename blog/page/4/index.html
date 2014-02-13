@@ -14,7 +14,8 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="本書は、スマートフォンアプリ開発に使う開発ツールを探している人、Titanium Mobile という名前を聞いたことがあるけど実際にどういうものかを知りたい人、Titanium Mobile を使って開発を始めたけどこういう書き方で合っているのか不安な人向けの、 &hellip;">
+  <meta name="description" content="docomo 携帯のユーザエージェントから、iモードブラウザ1.0かどうかを判断する方法 UA が DoCoMo/1.0 で始まっている
+UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっているのは、PDC 端末。DoCoMo/2.0 で始まっているのは &hellip;">
   
 
   
@@ -25,7 +26,8 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/4/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="本書は、スマートフォンアプリ開発に使う開発ツールを探している人、Titanium Mobile という名前を聞いたことがあるけど実際にどういうものかを知りたい人、Titanium Mobile を使って開発を始めたけどこういう書き方で合っているのか不安な人向けの、 &hellip;" />
+<meta property="og:description" content="docomo 携帯のユーザエージェントから、iモードブラウザ1.0かどうかを判断する方法 UA が DoCoMo/1.0 で始まっている
+UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっているのは、PDC 端末。DoCoMo/2.0 で始まっているのは &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -99,7 +101,71 @@
     
     
     
-    <article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/06/18/4798123986/">Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)</a></h1>
+    <article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/07/25/docomo-i10/">Docomo のユーザエージェントからiモードブラウザ1.0かどうかを判断する方法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-07-25T19:24:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jul 25<span>th</span>, 2011</time><span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/xi-dai/">携帯</a>
+    
+      <a class="tag label label-info" href="/blog/tags/imodo/">iモード</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2011/07/25/docomo-i10/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header><div class="entry-content">
+<p>docomo 携帯のユーザエージェントから、iモードブラウザ1.0かどうかを判断する方法</p>
+
+<ul>
+<li>UA が DoCoMo/1.0 で始まっている</li>
+<li>UA が DoCoMo/2.0 (c100; で始まっている</li>
+</ul>
+<p>DoCoMo/1.0 で始まっているのは、PDC 端末。DoCoMo/2.0 で始まっているのは FOMA 端末になります。</p>
+
+<p>FOMA 端末のうち、iモードブラウザ1.0 なのは、キャッシュサイズが 500KB ではないものになります。<a href="http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/" rel="external nofollow" title="ドコモのユーザエージェント一覧">ドコモのユーザエージェント一覧</a>を見る限り、キャッシュが 100KB のものは iモードブラウザ1.0 と判断できます。</p>
+
+<p>Ruby の正規表現で書くとこんな感じ？</p>
+
+<pre class="code"><span class="keyword">def</span> imode1_0?
+  request.user_agent =~ /^DoCoMo\/1.0/ ||
+  request.user_agent =~ /^DoCoMo\/2.0[^(]+\(c100;/
+<span class="keyword">end</span></pre>
+</div>
+  
+  
+
+
+    </article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/06/18/4798123986/">Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)</a></h1>
     
     
       <p class="meta">
@@ -688,150 +754,7 @@
   
   
     <footer><a rel="full-article" href="/blog/2011/02/16/4774145440/">続きをよむ →</a>
-    </footer></article><article><header class="page-header"><h1 class="entry-title"><a href="/blog/2011/02/04/titanium-jsdeferred/">[Titanium] JSDeferred を使って現在位置の取得を順次処理する</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-02-04T20:32:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Feb 4<span>th</span>, 2011</time><span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/jsdeferred/">JSDeferred</a>
-    
-      <a class="tag label label-info" href="/blog/tags/titanium/">Titanium</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2011/02/04/titanium-jsdeferred/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header><div class="entry-content">
-<p>Titanium で、JSDeferred を使って順次処理するサンプルです。</p>
-
-<blockquote><p><site><a href="http://gihyo.jp/dev/feature/01/jsdeferred/0001" rel="external nofollow" title="JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp">JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp</a></site></p></blockquote>
-
-
-<p><section></section></p>
-
-<p><section></section></p>
-
-<h4>バージョン – 追記（2011/03/23）</h4>
-
-
-
-
-<dl>
-<dt>Titanium</dt>
-<dd>1.5.1</dd>
-<dt>JSDeferred</dt>
-<dd>0.4.0</dd>
-</dl>
-<p>Titanium 1.6.1 で動かない問題は、<a href="http://twitter.com/Seasons" rel="external nofollow" title="@Seasons">@Seasons</a> さんがパッチを書いてくださいました。感謝！！ パッチが公開されたらリンクします！</p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://d.hatena.ne.jp/Seasons/" rel="external nofollow" title="Seasons.NET">Seasons.NET</a></p>
-
-<p></p>
-
-<h3>サンプルコード</h3>
-
-
-
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">Titanium</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">Titanium</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">appURLToPath</span><span class="p">(</span><span class="s2">"app://lib/jsdeferred.js"</span><span class="p">));</span>
-</span><span class="line"><span class="nx">Deferred</span><span class="p">.</span><span class="nx">define</span><span class="p">();</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">currentLocation</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Deferred</span><span class="p">();</span>
-</span><span class="line">  <span class="nx">Titanium</span><span class="p">.</span><span class="nx">Geolocation</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"location"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">currentLocation</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">coords</span><span class="p">;</span>
-</span><span class="line">    <span class="nx">deferred</span><span class="p">.</span><span class="nx">call</span><span class="p">();</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">deferred</span><span class="p">;</span>
-</span><span class="line"><span class="p">})().</span>
-</span><span class="line"><span class="nx">next</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">alert</span><span class="p">(</span><span class="nx">currentLocation</span><span class="p">);</span>
-</span><span class="line"><span class="p">});</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">alert</span><span class="p">(</span><span class="s2">"ここは必ずしも、alert(currentLocation)の後に呼び出されるとはかぎらない!"</span><span class="p">);</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>alert(currentLocation) としているところに現在位置を取得した後のコードを記述することで、現在位置を取得して何か処理をするというのを順序を保証して処理することができるようになります。</p>
-
-<p>ただし、next の外側の処理は非同期で進んでしまうため、必ずしも、alert(currentLocation) との順序は保たれません。</p>
-
-<p></p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title="Titanium Mobile - appcelerator">Titanium Mobile - appcelerator</a></p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://cho45.stfuawsc.com/jsdeferred/" rel="external nofollow" title="JSDeferred">JSDeferred</a></p>
-
-<h3>Titanium で include でファイルを読むときのテクニック</h3>
-
-
-
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">Titanium</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">Titanium</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">appURLToPath</span><span class="p">(</span><span class="s2">"app://lib/jsdeferred.js"</span><span class="p">));</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>上記の様に、 app: プロトコルを使用して、appURLToPath メソッドでファイルを読み込むことで、Titanium のResources フォルダからの相対パスで書けるようになります。</p>
-</div>
-  
-  
-
-
-    </article><ul class="pager">
+    </footer></article><ul class="pager">
 <li class="previous"><a href="/blog/page/5/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
       
       
@@ -861,6 +784,10 @@
 <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/13/movable-type-to-octopress/">Movable TypeからGitHub+Octopressに乗り換える手順</a>
       </li>
     
@@ -884,15 +811,11 @@
         <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/03/05/titanium/">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a>
-      </li>
-    
   </ul></section><section class="panel panel-default"><div class="panel-heading">
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class="list-group-item" href="/blog/categories/architecture">Architecture <span class="badge">38</span></a><a class="list-group-item" href="/blog/categories/blog">Blog <span class="badge">96</span></a><a class="list-group-item" href="/blog/categories/database">Database <span class="badge">8</span></a><a class="list-group-item" href="/blog/categories/essay">Essay <span class="badge">13</span></a><a class="list-group-item" href="/blog/categories/lifehack">LifeHack <span class="badge">12</span></a><a class="list-group-item" href="/blog/categories/network">Network <span class="badge">7</span></a><a class="list-group-item" href="/blog/categories/programming">Programming <span class="badge">111</span></a><a class="list-group-item" href="/blog/categories/webdesign">WebDesign <span class="badge">4</span></a>
+    <a class="list-group-item" href="/blog/categories/architecture">Architecture <span class="badge">38</span></a><a class="list-group-item" href="/blog/categories/blog">Blog <span class="badge">96</span></a><a class="list-group-item" href="/blog/categories/database">Database <span class="badge">8</span></a><a class="list-group-item" href="/blog/categories/essay">Essay <span class="badge">13</span></a><a class="list-group-item" href="/blog/categories/lifehack">LifeHack <span class="badge">12</span></a><a class="list-group-item" href="/blog/categories/network">Network <span class="badge">7</span></a><a class="list-group-item" href="/blog/categories/programming">Programming <span class="badge">112</span></a><a class="list-group-item" href="/blog/categories/webdesign">WebDesign <span class="badge">4</span></a>
   </div>
 </section></aside>
 </div></body></html>
