@@ -8,6 +8,8 @@ module Jekyll
 
     def post_render(post)
       if post.ext.match('html|textile|markdown|md|haml|slim|xml')
+        post.content.gsub!(/<p>(<a.*?>[^<].*?<\/a>)<\/p>/, '<i class="fa fa-hand-o-right"></i> \1')
+
         doc = Nokogiri::HTML(post.content)
 
         # link に external nofollow と title を付ける
@@ -20,7 +22,7 @@ module Jekyll
           end
         end
 
-        doc.search('strong').each do |em|
+        doc.search('p > strong').each do |em|
           em['class'] = 'text-danger'
         end
 
