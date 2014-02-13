@@ -118,7 +118,7 @@ task :new_post, :title do |t, args|
     post.puts "keywords: \"\""
     post.puts "tags: []"
     post.puts "sharing: true"
-    post.puts "published: false"
+    post.puts "published: true"
     post.puts "amazon_url: \"\""
     post.puts "amazon_author: \"\""
     post.puts "amazon_image: \"\""

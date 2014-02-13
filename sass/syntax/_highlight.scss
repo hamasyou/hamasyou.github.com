@@ -43,6 +43,7 @@ figure.code, .gist-file, pre {
   @include selection(adjust-color($base01, $lightness: 23%, $saturation: -65%), $text-shadow: $base03 0 1px);
 }
 html .gist .gist-file {
+  font-size: 14px;
   margin-bottom: 1.8em;
   position: relative;
   border: none;
