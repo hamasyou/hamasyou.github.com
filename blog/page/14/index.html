@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="MDA（モデル駆動型アーキテクチャ）とは、UMLなどの標準モデリング技術を使ってモデルを作り、モデルをベースにソフトウェア開発を行っていくというものです。プラットフォームに依存しないモデル（PIM）からプラットフォームに依存するモデル（PSM）へ自動的に変換してくれるツールを用いて開発を行います &hellip;">
+  <meta name="description" content="FindBugsはJavaのコードインスペクションツールです。コードインスペクションとは、コードが正しく書けているかをチェックすることです。コンパイルは通るけど、明らかにバグが埋め込まれているというコードを検査するのに使われます。 FindBugsは、 &hellip;">
   
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/14/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="MDA（モデル駆動型アーキテクチャ）とは、UMLなどの標準モデリング技術を使ってモデルを作り、モデルをベースにソフトウェア開発を行っていくというものです。プラットフォームに依存しないモデル（PIM）からプラットフォームに依存するモデル（PSM）へ自動的に変換してくれるツールを用いて開発を行います &hellip;" />
+<meta property="og:description" content="FindBugsはJavaのコードインスペクションツールです。コードインスペクションとは、コードが正しく書けているかをチェックすることです。コンパイルは通るけど、明らかにバグが埋め込まれているというコードを検査するのに使われます。 FindBugsは、 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -98,6 +98,79 @@
     <div class="row">
   <div class="col-sm-12 col-md-9">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/08/27/4756146554/">開発のプロが教える標準FindBugs完全解説</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-08-27T09:09:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Aug 27<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
+    
+      <a class="tag label label-info" href="/blog/tags/findbugs/">FindBugs</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/08/27/4756146554/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong class="text-danger">FindBugs</strong>はJavaのコードインスペクションツールです。コードインスペクションとは、コードが正しく書けているかをチェックすることです。コンパイルは通るけど、明らかにバグが埋め込まれているというコードを検査するのに使われます。</p>
+
+<p>FindBugsは、Javaのバグパターンをチェックしてくれる優れたツールです。Eclipseのプラグインとしても提供されていて、Javaプログラマには必須のツールだと言えます。
+<a href="http://findbugs.sourceforge.net/index.html" rel="external nofollow" title="FindBugs (Eclipse Plugin)">FindBugs (Eclipse Plugin)</a></p>
+
+<p>本書は、FindBugsで検知されるバグパターンが起こる原因とその対処法を記したものになっています。FindBugsのバグパターンは結構な数があり、明らかにバグだと分かるものから一見すると正しいコードに見えるが実はバグといったものまで検知してくれます。</p>
+
+<p>内容的には『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894714361/sorehabooks-22/249-1540022-3818763?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title="Effective Java プログラミング言語ガイド">Effective Java プログラミング言語ガイド</a>』に似たものになっています。ただし、本書の方はバグパターンについて本なので、プログラミング経験者なら「覚えがある」問題が多いと思います。</p>
+
+<p>プログラミング初心者から、経験者まで幅広くおすすめできる一冊です。堅牢（ロバストネス）なコードで品質のよいプログラムを作りたい人は本書を一読すべきでしょう。『Effective Java』以来の、かなりおすすめな一冊です。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/08/27/4756146554/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -755,72 +828,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/05/21/4798103543/">ソフトウェアエンジニアリング</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2005-05-21T14:36:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> May 21<span>st</span>, 2005</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/sohutoueaenziniaringu/">ソフトウェアエンジニアリング</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2005/05/21/4798103543/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>「<strong class="text-danger">ソフトウェアエンジニアリング</strong>」を一言で言えと言われたら、ソフトウェア開発を定量的に見積り、計画によって管理していく学問だと答えるでしょう。ソフトウェアエンジニアリングは学問に近いところにあると私は考えています。</p>
-
-<p>本書は、ソフトウェアエンジニアリング(つまり、ソフトウェア工学)をオブジェクト指向の視点で整理して解説した本です。オブジェクト指向というと、プログラミング、分析・設計、UMLが現在の代名詞となっています。本書はもっと大きな視点で、オブジェクト指向開発と言うものをとらえた本になっています。</p>
-
-<p>分厚くて、教科書的で、理論と実践が織り交ざっています。教科書として使える本なので、学問的ですが、実践で使える手法や手段も載っています。技術者として経験を積んできたころに読むと一層効果的だと思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2005/05/21/4798103543/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/15/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -858,6 +865,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/14/octopress-summary/">Octopress参考リンクまとめ</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
       </li>
     
@@ -881,10 +892,6 @@
         <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -892,10 +899,10 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">97</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
-<section class="panel panel-default taglist">
+<section class="panel panel-default taglist hidden-xs">
   <div class="panel-heading">
       <h3 class="panel-title">Tags</h3>
     </div>

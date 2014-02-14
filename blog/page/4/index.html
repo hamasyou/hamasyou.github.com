@@ -14,8 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="docomo 携帯のユーザエージェントから、iモードブラウザ1.0かどうかを判断する方法 UA が DoCoMo/1.0 で始まっている
-UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっているのは、PDC 端末。DoCoMo/2.0 で始まっているのは &hellip;">
+  <meta name="description" content="iOS 4.1 から、正式に Game Center が使えるようになりました。Game Center を使うと、ゲームに簡単に対戦やスコア、達成目標などの機能を追加できます。 Game Centerは、プレー中のゲームについての情報をプレーヤー同士で共有したり、ほかのプレー &hellip;">
   
 
   
@@ -26,8 +25,7 @@ UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっている�
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/4/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="docomo 携帯のユーザエージェントから、iモードブラウザ1.0かどうかを判断する方法 UA が DoCoMo/1.0 で始まっている
-UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっているのは、PDC 端末。DoCoMo/2.0 で始まっているのは &hellip;" />
+<meta property="og:description" content="iOS 4.1 から、正式に Game Center が使えるようになりました。Game Center を使うと、ゲームに簡単に対戦やスコア、達成目標などの機能を追加できます。 Game Centerは、プレー中のゲームについての情報をプレーヤー同士で共有したり、ほかのプレー &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -100,6 +98,111 @@ UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっている�
     <div class="row">
   <div class="col-sm-12 col-md-9">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2011/08/04/iosgame-center/">[iOS] Game Center を使った対戦プログラミングの手順メモ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-08-04T11:38:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Aug 4<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/ios/">iOS</a>
+    
+      <a class="tag label label-info" href="/blog/tags/iphone/">iPhone</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2011/08/04/iosgame-center/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>iOS 4.1 から、正式に <em>Game Center</em> が使えるようになりました。Game Center を使うと、ゲームに簡単に対戦やスコア、達成目標などの機能を追加できます。</p>
+
+<blockquote>
+<p>Game Centerは、プレー中のゲームについての情報をプレーヤー同士で共有したり、ほかのプレー ヤーと一緒にマルチプレーヤー対戦に参加できるソーシャルゲーミングサービスです。Game Center は、ワイヤレスネットワークと携帯電話ネットワークのどちらからでもサービスを提供できます。 Game Centerの主な機能は、次の通りです。</p>
+<p></p>
+<ul>
+<li>
+<em>認証</em> - プレーヤーはGame Centerでセキュアなアカウントを作成し、iOSベースのデバイスでGame Centerにアクセスできます。</li>
+<br><li>
+<em>友だち</em> - プレーヤーはGame Centerのほかのプレーヤーを友だちとして登録できます。友だちは、最近遊んだゲームなどプレーヤーの詳細情報を確認できます。</li>
+<br><li>
+<em>Leaderboard</em> - プレーヤーのスコアをGame Centerに記録したりGame Centerから取得したりできます。<br>
+</li>
+<li>
+<em>アチーブメント(Achievement、成績)</em> - そのゲームでのプレーヤーのアチーブメントを管理します。アチーブメントは、Game Centerサービスに記録され、Game Centerアプリケーションとゲームの中で閲覧できます。</li>
+<br><li>
+<em>オートマッチ</em> - Game Centerを介して複数のプレーヤーとつながるネットワークゲームを作成できます。プレーヤーは友だちを招待したり、まだ会ったことのないプレーヤーと接続して対戦できます。プレーヤーは、ゲームを実行していないときでも対戦への招待を受信できます。その場合、ゲームが自動的に起動し、招待が処理されます。</li>
+<br><li>
+<em>ボイス</em> - 対戦に接続されたプレーヤー間で音声通信を行うことができます。</li>
+</ul>
+<footer><strong>『Game Kit プログラミングガイド』より</strong></footer>
+</blockquote>
+
+
+<p>Game Center を使うためのプログラミングは形式的ながら、視点が二つ（自分と対戦相手）あるため、どの機能が何に当たるのかを理解していないと混乱しがちです。</p>
+
+<p>本記事は、自分で Game Center を使ったアプリを作ったときの、メモをまとめたものです。</p>
+
+<p><section></section></p>
+
+<h4>開発時の環境</h4>
+
+
+
+
+<dl>
+<dt>iOS SDK バージョン</dt>
+<dd>4.3</dd>
+<dt>クライアント iOS バージョン</dt>
+<dd>自分: iOS 4.3.2   対戦相手: iOS 4.3.5</dd>
+</dl>
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2011/08/04/iosgame-center/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -822,76 +925,6 @@ UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっている�
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/16/4774145440/">WEB+DB PRESS Vol.61</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-02-16T21:49:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Feb 16<span>th</span>, 2011</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/android/">Android</a>
-    
-      <a class="tag label label-info" href="/blog/tags/iphone/">iPhone</a>
-    
-      <a class="tag label label-info" href="/blog/tags/titanium/">Titanium</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2011/02/16/4774145440/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title=""></a> Titanium で始める、iPhone / Android アプリ開発！</p>
-
-<p><a href="http://d.hatena.ne.jp/r_kurain/" rel="external nofollow" title="マウントポジション">マウントポジション</a>とで特集『<em>実践！Titanium JavaScriptでiPhone/Android本格アプリ開発</em>』を書かせていただきました。Titanium の特集です。</p>
-
-<p>iPhone / Android でアプリを作りたいけど二の足を踏んでいた方、最近 <strong class="text-danger">Titanium</strong> という言葉をよく聞くけど何なんだろう？と思っていた方、おすすめです！</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2011/02/16/4774145440/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/5/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -929,6 +962,10 @@ UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっている�
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/14/octopress-summary/">Octopress参考リンクまとめ</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
       </li>
     
@@ -952,10 +989,6 @@ UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっている�
         <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -963,10 +996,10 @@ UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっている�
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">97</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
-<section class="panel panel-default taglist">
+<section class="panel panel-default taglist hidden-xs">
   <div class="panel-heading">
       <h3 class="panel-title">Tags</h3>
     </div>

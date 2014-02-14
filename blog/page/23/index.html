@@ -14,7 +14,7 @@
   <meta name="author" content="hamasyou" />
 
   
-  <meta name="description" content="UML、Java、CORBA、COMなど、オブジェクト指向はソフトウェア開発にとってもはや当たり前の技術になっているが、実践に基づいた具体的なノウハウはいまだに少ない。本書の目的は、オブジェクト指向開発プロジェクト全体に標準的な体系を与え、 &hellip;">
+  <meta name="description" content="本書は、2つの方法で読者にアルゴリズムとデータ構造を学ばせようとしている。1つは、良くあるアルゴリズムとデータ構造のみの解説 2つめは、Java言語による実装を基準としたデータ構造とアルゴリズムの解説 文書による解説である程度理解できたところで、実装の面から更なる知識をインプットする。 &hellip;">
   
 
   
@@ -25,7 +25,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/23/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="UML、Java、CORBA、COMなど、オブジェクト指向はソフトウェア開発にとってもはや当たり前の技術になっているが、実践に基づいた具体的なノウハウはいまだに少ない。本書の目的は、オブジェクト指向開発プロジェクト全体に標準的な体系を与え、 &hellip;" />
+<meta property="og:description" content="本書は、2つの方法で読者にアルゴリズムとデータ構造を学ばせようとしている。1つは、良くあるアルゴリズムとデータ構造のみの解説 2つめは、Java言語による実装を基準としたデータ構造とアルゴリズムの解説 文書による解説である程度理解できたところで、実装の面から更なる知識をインプットする。 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -98,6 +98,74 @@
     <div class="row">
   <div class="col-sm-12 col-md-9">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2004/06/27/4774116327/">Javaアルゴリズム+データ構造完全制覇</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-06-27T01:55:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 27<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/java/">Java</a>
+    
+      <a class="tag label label-info" href="/blog/tags/arugorizumu/">アルゴリズム</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2004/06/27/4774116327/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本書は、2つの方法で読者にアルゴリズムとデータ構造を学ばせようとしている。1つは、良くあるアルゴリズムとデータ構造のみの解説</p>
+
+<p>2つめは、Java言語による実装を基準としたデータ構造とアルゴリズムの解説</p>
+
+<p>文書による解説である程度理解できたところで、実装の面から更なる知識をインプットする。これが本書の特徴です。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2004/06/27/4774116327/">続きをよむ &rarr;</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -689,73 +757,6 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/06/13/prototype/">実践デザパタ-その11:Prototypeパターン</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-06-13T13:33:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jun 13<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/dezainpatan/">デザインパターン</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/06/13/prototype/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
-GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
-
-<p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
-
-<p>11個目はインスタンスを新しく作るときに、既存のインスタンスのコピーを作成する<b>Prototype</b>パターンのメモです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/06/13/prototype/">続きをよむ &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/24/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -793,6 +794,10 @@ GoFの23のパターンが有名です。デザインパターンというのは
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/14/octopress-summary/">Octopress参考リンクまとめ</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/13/ruby-nokogiri/">Ruby-Nokogiriで取り出した要素を置き換える</a>
       </li>
     
@@ -816,10 +821,6 @@ GoFの23のパターンが有名です。デザインパターンというのは
         <a href="/blog/2013/06/24/4774156647/">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/06/23/4274069095/">ディジタル作法 －カーニハン先生の「情報」教室－</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -827,10 +828,10 @@ GoFの23のパターンが有名です。デザインパターンというのは
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">96</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog'>Blog <span class="badge">97</span></a><a class='list-group-item' href='/blog/categories/database'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay'>Essay <span class="badge">13</span></a><a class='list-group-item' href='/blog/categories/lifehack'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming'>Programming <span class="badge">112</span></a><a class='list-group-item' href='/blog/categories/webdesign'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
-<section class="panel panel-default taglist">
+<section class="panel panel-default taglist hidden-xs">
   <div class="panel-heading">
       <h3 class="panel-title">Tags</h3>
     </div>

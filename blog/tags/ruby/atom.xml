@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Ruby | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/ruby/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-14T11:36:20+09:00</updated>
+  <updated>2014-02-14T13:07:21+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,88 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress参考リンクまとめ]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/14/octopress-summary/"/>
+    <updated>2014-02-14T12:18:53+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/14/octopress-summary</id>
+    <content type="html"><![CDATA[<p><strong>Octopress</strong> の設定や運用で参考にしたサイトのまとめです。</p>
+
+<!-- more -->
+
+
+<h3>インストール、初期設定</h3>
+
+<p>インストールや初期設定周りでお世話になったサイトです。</p>
+
+<ul>
+<li><a href="http://morizyun.github.io/blog/octopress-gitpage-minimum-install-guide/">OctopressでGitHub無料ブログ構築。sourceをBitbucket管理。簡単ガイド！</a></li>
+<li><a href="http://www.miukoba.net/blog/2013/01/05/start-octopress/">Octopressはじめました | mimemo</a></li>
+<li><a href="http://tantant.jp/blog/Octopress/installing-octopress/">Markdownで書いてGitで管理するブログ「Octopress」の始め方</a></li>
+<li><a href="http://rcmdnk.github.io/blog/tags/octopress/">Tag: Octopress - rcmdnk&rsquo;s blog</a></li>
+</ul>
+
+
+<p>独自ドメインで運用するときにお世話になりました。</p>
+
+<ul>
+<li><a href="http://bekkou68.hatenablog.com/entry/2013/01/05/210902">GitHub Pages に独自のトップレベルドメイン（TLD）を割り当てる</a></li>
+</ul>
+
+
+<p>404 Not Found ページの作り方。</p>
+
+<ul>
+<li><a href="http://rcmdnk.github.io/blog/2013/03/23/octopress/#not-found">404 not found - Octopress Tips</a></li>
+</ul>
+
+
+<h3>カテゴリリストとタグリストのプラグイン</h3>
+
+<ul>
+<li><a href="http://alotofwe.github.io/blog/2013/08/05/octopressdekategoririsutowotukuru/">Octopressでカテゴリリストをつくる</a></li>
+<li><a href="http://rcmdnk.github.io/blog/2013/04/12/blog-octopress/">Octopressでのタグの運用</a></li>
+</ul>
+
+
+<p>カテゴリリスト、タグリストの plugin ソースの中で URL を組み立てる部分があります。その部分下のように変更しておいたほうが無難です。</p>
+
+<p>カテゴリやタグなどに <code>/</code> が入るような単語（例えば O/Rマッピング）の場合に URL が一致しなくなってしまうので。</p>
+
+<pre><code class="ruby">- category_url = File.join(category_dir, category.gsub(/_|\P{Word}/, '­').gsub(/­{2,}/, '­').downcase)
++ category_url = category_dir + category.to_url
+</code></pre>
+
+<h3>関連ページ、ソーシャル系のボタンを表示する</h3>
+
+<p>関連ページの表示やソーシャル系ボタン（いいね、シェア、はてブ等）を表示するための設定系サイトです。</p>
+
+<ul>
+<li><a href="http://blog.glidenote.com/blog/2012/01/04/octopress-related-posts/">OctopressでRelated Posts(関連エントリー)を表示させるようにした</a></li>
+<li><a href="http://www.mk-mode.com/octopress/2012/12/26/octopress-add-related-post/">Octopress - 関連記事の表示！</a></li>
+<li><a href="http://morizyun.github.io/blog/octopress-hatena-disqus-new-tab/">5分でできる簡単 Octopress セッティング</a></li>
+<li><a href="http://rcmdnk.github.io/blog/2013/11/26/blog-octopress/">シェアボタンを非同期読み込みでまとめて設定</a></li>
+</ul>
+
+
+<h3>Octopress で記事を書くときの高速化</h3>
+
+<p><code>isolate</code> コマンドを使うと単体記事になるので高速化できますよという内容。</p>
+
+<ul>
+<li><a href="http://gam0022.net/blog/2013/09/28/speed-up-octopress-site-generation/">Octopressのpreviewを高速化する</a></li>
+</ul>
+
+
+<h3>まとめのまとめ</h3>
+
+<ul>
+<li><a href="http://rcmdnk.github.io/blog/2014/02/02/blog-octopress/">Octorpessについてのここまでのまとめ</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby-Nokogiriで取り出した要素を置き換える]]></title>
@@ -556,98 +638,6 @@ puts &quot; # All done! (#{ok}/#{fails})&quot;
 <p><a href="http://memo.yomukaku.net/entries/238" rel="external nofollow">Kaminariの使い方 Rails3時代のpaginationの標準候補 - YomuKaku Memo</a></p>
 
 <p></section></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby から Gmail を受信する（マルチパート編）]]></title>
-    <link href="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"/>
-    <updated>2011-03-17T22:24:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2011/03/17/ruby-gmail</id>
-    <content type="html"><![CDATA[<p>Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。</p>
-
-<p>かなり力技的なところがあるので、もっといいプログラムになると思いいますが、メモということで。</p>
-
-<p><section></p>
-
-<h4>バージョン</h4>
-
-
-
-
-<dl><dt>Ruby</dt><dd>1.9.2</dd>
-<dt>Rails</dt><dd>3.0.4</dd>
-<dt>mail</dt><dd>2.2</dd>
-</dl>
-
-
-<p></section></p>
-
-<!-- more -->
-
-
-
-
-<h2>必要なライブラリ</h2>
-
-
-
-
-<h3>mikel / mail</h3>
-
-
-
-
-<pre><a href="https://github.com/mikel/mail" rel="external nofollow">mail</a></pre>
-
-
-<p>Ruby1.8 までは、TMail というライブラリを使うとメール処理を簡易に書けるようですが、Ruby1.9から文字エンコーディング周りの問題でこのライブラリを使うと良いことを知りました。</p>
-
-<pre class="console">gem install mail</pre>
-
-
-<p>Rails で使う場合は次のようにします。</p>
-
-<pre class="console">rails plugin install https://github.com/mikel/mail</pre>
-
-
-
-
-<h2>サンプルソースコード</h2>
-
-
-<pre><code class="ruby">require "mail"
-
-Mail.defaults do
-  retriever_method :imap, {:address =&gt; "imap.gmail.com",
-                           :port =&gt; 993,
-                           :user_name =&gt; "&lt;mailaddress@domain.com&gt;",
-                           :password =&gt; "&lt;password&gt;",
-                           :enable_ssl =&gt; true}
-end
-
-Mail.all(:delete_after_find =&gt; true).each do |email|
-  begin
-    if !email.attachments.blank?
-      subject = email.subject   # =&gt; 件名（日本語可OK） UTF-8 で取得できる
-      body = email.parts[0].body.to_s.encode("UTF-8", "ISO-2022-JP")    # =&gt; 本文は UTF-8 に変換する必要がある
-      from = email[:from]       # =&gt; "\"濱田 章吾\" hamasyou@gmail.com"
-      sent_at = email.date
-      email.attachments.each do |attachment|
-        tmp = File.new("tmp/photos/#{attachment.filename}", "wb")
-        tmp &lt;&lt; attachment.read.force_encoding("UTF-8")
-        tmp.close
-      end
-    end
-  rescue =&gt; ignore
-    p "[error]:" + ignore.to_s
-  end
-end
-</code></pre>
-
-<p>ここでは、マルチパートの場合メールのパートの最初に本文があることを決め打ちしています。また、メールのエンコーディングが ISO-2022-JP であることも決め打ちしています。</p>
-
-<p>メール本文のエンコーディングを調べて、それを UTF-8 にするようにしたほうが良いです。</p>
 ]]></content>
   </entry>
   
