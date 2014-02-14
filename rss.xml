@@ -2,12 +2,180 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Fri, 14 Feb 2014 21:06:28 +0900</pubDate>
+  <pubDate>Fri, 14 Feb 2014 23:51:51 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
   <atom:link href="http://hamasyou.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+  
+  <item>
+    <title><![CDATA[ビューティフルコード]]></title>
+    <link>http://hamasyou.com/blog/2014/02/14/4873113636/</link>
+    <guid>http://hamasyou.com/blog/2014/02/14/4873113636</guid>
+    <description>
+      <![CDATA[<p>本書は、ブライアン・カーニハンをはじめ一流のプログラマが各々の考える「<em>美しいコード</em>」を紹介するエッセイです。</p>
+
+<p>世界屈指の一流ハッカーがこれぞ！と思うコードを読むことができる貴重な一冊です。</p>
+
+<p>名前付け、アルゴリズム、アーキテクチャ、ショートコードなどなど美しいコードとして紹介されているものは様々です。また、言語も様々なため、知らない言語のコードは美しさがよくわからないところもあるかもしれません。</p>
+
+<p>それでも、30人を越える偉人が紹介する <strong class="text-danger">ビューティフルコード</strong> は、プログラミング好きにはたまらないと思います。</p>
+
+<!-- more -->
+
+
+<h2>おぼえがき</h2>
+
+<h3>美しいコードの第一歩</h3>
+
+<p>美しいプログラムを書く第一歩は、 <em>だいたい正しく動くコードを書くところ</em> から始まります。エラー処理や例外処理を除いたほとんどの場合に正しく動く。そこから美しいコードは生み出されます。</p>
+
+<p>美しいプログラムは、やさしい条件を先に扱って、難しい条件を後に書きます。</p>
+
+<blockquote><p>デザイナーが自分は完璧に達成したんだと分かるのは、付け加えるべきものが何もない時ではなく、取り去るべきものが何もない時である。</p></blockquote>
+
+
+<p>Jon Bentley が自分が書いた一番美しいコードとして紹介しているクイックソートのコードです。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>quicksort.c</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="c"><span class="line"><span class="kt">void</span> <span class="nf">quicksort</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">u</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;=</span> <span class="n">u</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span><span class="line">    <span class="n">swap</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">randint</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">u</span><span class="p">));</span>
+</span><span class="line">    <span class="n">m</span> <span class="o">=</span> <span class="n">l</span><span class="p">;</span>
+</span><span class="line">    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">u</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span class="line">        <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">[</span><span class="n">l</span><span class="p">])</span>
+</span><span class="line">            <span class="n">swap</span><span class="p">(</span><span class="o">++</span><span class="n">m</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+</span><span class="line">    <span class="n">swap</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+</span><span class="line">    <span class="n">quicksort</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span class="line">    <span class="n">quicksort</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">u</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<blockquote><p>プログラミングは実用的なスキルだと信じており、「実用的なスキルは、真似をすることと練習することで獲得する」</p></blockquote>
+
+
+<h3>プログラムの速度</h3>
+
+<p>正しく、美しく、速く。プログラムはこの順番であるべきです。クヌース先生は言いました。「<em>未熟な段階での最適化は、プログラミングに置ける諸悪の根源</em>」であると。</p>
+
+<p>正しく動くコードを書いて、O(N<sup>2</sup>) の場合には O(logN) に落とす。できれば O(N) にしたいところですが。正しいコードを美しくすることで、速度が改善されることが往々にしてあります。</p>
+
+<h3>フレームワーク設計</h3>
+
+<p>フレームワークの設計で一番の難題は、API をいったん公開したら、公開 API の仕様を変更したり、インターフェースを変えたりすることが難しくなることです。</p>
+
+<p>この問題に対応するための伝統的な方法が次のものになります。</p>
+
+<ol>
+<li>public とするものは公開範囲を小さく保つ</li>
+<li>インターフェースを使い、できるだけ実装だけでは公開しない</li>
+<li>拡張を意図する場所は「フック」を良く考えて用意しておく</li>
+<li>拡張が起こってほしくない場所は拡張できないようにする</li>
+</ol>
+<p>JavaMail の例です。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="java"><span class="line"><span class="kn">package</span> <span class="n">javax</span><span class="o">.</span><span class="na">mail</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Session</span> <span class="o">{</span>
+</span><span class="line">    <span class="o">...</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Session</span> <span class="nf">getDefaultInstance</span><span class="o">(</span><span class="n">Properties</span> <span class="n">props</span><span class="o">);</span>
+</span><span class="line">    <span class="o">...</span>
+</span><span class="line">    <span class="kd">public</span> <span class="n">Store</span> <span class="nf">getStore</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">NoSuchProviderException</span><span class="o">;</span>
+</span><span class="line">    <span class="o">...</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Store</span> <span class="kd">extends</span> <span class="n">javax</span><span class="o">.</span><span class="na">mail</span><span class="o">.</span><span class="na">Service</span> <span class="o">{</span>
+</span><span class="line">    <span class="o">...</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addStoreListener</span><span class="o">(</span><span class="n">StoreListener</span> <span class="n">listener</span><span class="o">);</span>
+</span><span class="line">    <span class="o">...</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>ビューティフル・テスト</h3>
+
+<p>テストを美しくする3つの手法。</p>
+
+<dl>
+<dt>簡潔さゆえに美しいと言えるテスト</dt>
+<dd>数行のテストコードで対象コードの基本的な動作を文章化したり検証できる。短いコードで端的に動作を説明できているので美しい。</dd>
+<dt>コードの優雅さ、保守性、テストしやすさを増す方法が分かるために美しいと言えるテスト</dt>
+<dd>コードをもっと美しくするのを助けてくれるようなテストのこと。プログラムの論理的な問題点、構造の問題、設計上の問題に気付く助けになるようなテストは美しい。</dd>
+<dt>幅と深さゆえに美しいと言えるテスト</dt>
+<dd>基本的なケースや厳選したケースだけでなく、すべてのケースにおいてコードが期待通りに動くという自信を持たせてくれるようなテストコードは美しい。</dd>
+</dl>
+<h3>大きなビットマップ画像を扱う処理</h3>
+
+<p>縦px×横px×深さの3重ループで処理するのは論外。フィルタロジックをハードコード刷るよりも良い方法は、ビットマップの大きさ、ピクセルの深さ、フィルタの大きさと要素の値に応じて、その場でカスタムコードを生成すること。</p>
+
+<p>（<span class="text-warning">うーむ、ちょっとここはいまいち理解が出来ませんでした。。本書を読んで自分で理解してください。。</span>）</p>
+
+<h3>ネットワーク</h3>
+
+<blockquote><p>インターネットを使えば通信線でつながったハッカー達は世界中どこからでも仕事ができる。なんて言われているけど、そんなことを吹聴している奴らはカリフォルニアのごく狭い場所に集まっている。</p></blockquote>
+
+
+<p>エンドユーザ向けのアプリケーションでは、使いやすさが極めて重要です。また、スタートダッシュの為には、まず <em>動くプロトタイプで本質部分を作って</em> そこから製品レベルに持っていくのは常によいアイデア。</p>
+
+<p>システムをできる限りシンプルに保つことは常に偉大なアイデアです。ソフトウェアは <em>なまもの</em> なので、常に注意し、更新し、機能追加し、修正し、調整し、サポートする必要があります。</p>
+
+<h2>感想</h2>
+
+<p>美しいコードの基準は人それぞれですが、共通してい言えることは <strong class="text-danger">正しく動く</strong>、<strong class="text-danger">ムダな部分がない</strong>、<strong class="text-danger">高速に動作する</strong> ものだと思いました。</p>
+
+<p>プログラミングのエッセイだと、やっぱりアルゴリズム系の話題が多いので、ソースコードの見た目が美しいとかいうのはあまりなく、設計思想や短いコードにいろいろな意味が込められているようなものを美しいと感じる偉人が多いようでした。</p>
+
+<p>簡単な問題から解く。正しさが疑いようのないくらいシンプルにコードを保つ。そういうのが大事だと改めて感じました。</p>
+
+<p>ある程度広くコンピュータの知識がある人は、本書を読むと「なるほど」となる場面が多いと思います。</p>]]>
+    </description>
+    <pubDate>Fri, 14 Feb 2014 21:19:05 +0900</pubDate>
+  </item>
   
   <item>
     <title><![CDATA[RubyからMicrosoft Translator APIを呼び出す]]></title>
@@ -2220,16 +2388,6 @@ puts " # All done! (#{ok}/#{fails})"
       <![CDATA[<!-- more -->]]>
     </description>
     <pubDate>Thu, 13 Sep 2012 10:17:00 +0900</pubDate>
-  </item>
-  
-  <item>
-    <title><![CDATA[NoSQLプログラミング実践活用技法]]></title>
-    <link>http://hamasyou.com/blog/2012/09/13/4798126055/</link>
-    <guid>http://hamasyou.com/blog/2012/09/13/4798126055</guid>
-    <description>
-      <![CDATA[<!-- more -->]]>
-    </description>
-    <pubDate>Thu, 13 Sep 2012 10:10:00 +0900</pubDate>
   </item>
   
 </channel>
