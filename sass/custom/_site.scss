@@ -10,6 +10,11 @@ span.divider:before {
   color: lighten(#000, 80%);
 }
 
+.list-inline > li {
+  padding-right: 10px;
+  padding-left: 0px;
+}
+
 // Containers =================================================================
 
 .entry-content {
@@ -104,6 +109,11 @@ span.divider:before {
     border-radius: 10px;
   }
 }
+
+.taglist .label-default {
+  background-color: $text-muted;
+}
+
 
 @media (max-width: $screen-xs-max) {
   h1, .h1 {

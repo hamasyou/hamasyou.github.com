@@ -129,8 +129,6 @@ task :new_post, :title do |t, args|
     post.puts ""
     post.puts "<!-- more -->"
     post.puts ""
-    post.puts "<h2>Contents</h2>"
-    post.puts "{:TOC}"
   end
 end
 

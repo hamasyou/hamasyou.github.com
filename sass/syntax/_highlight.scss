@@ -12,7 +12,7 @@
 }
 .highlight, html .gist .gist-file .gist-syntax .gist-highlight {
   table td.code { width: 100%; }
-  border: 1px solid $pre-border !important;
+  border: 0px solid $pre-border !important;
 }
 .highlight .line-numbers, html .gist .gist-file .gist-syntax .highlight .line_numbers {
   text-align: right;
@@ -46,7 +46,7 @@ html .gist .gist-file {
   font-size: 14px;
   margin-bottom: 1.8em;
   position: relative;
-  border: none;
+  border: 1px solid $pre-border !important;
   padding-top: image-height("code_bg.png") !important;
 
   @if $solarized == dark {

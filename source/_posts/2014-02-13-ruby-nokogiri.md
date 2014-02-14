@@ -27,7 +27,7 @@ Ruby の HTML パーサに **Nokogiri** があります。基本的な使い方�
 
 使い方は
 
-```plain
+```console
 gem install 'nokogiri'
 ```
 
