@@ -27,6 +27,9 @@ layout: default
       {% unless page.sharing == false %}
         {% include post/sharing.html %}
       {% endunless %}
+
+      <div class="text-right"><a href="javascript:void(0)" title="Scroll to Top" class="scroll-to-top"><i class="fa fa-arrow-up"> Back to Top</i></a></div>
+
       {% if site.disqus_short_name and page.comments == true %}
       <section>
         <h1>Comments</h1>

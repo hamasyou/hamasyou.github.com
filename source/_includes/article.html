@@ -19,6 +19,7 @@
     {% endunless %}
   </header>
 {% endunless %}
+{% include custom/post/amazon.html %}
 {% if index %}
   <div class="entry-content">{{ content | excerpt }}</div>
   {% capture excerpted %}{{ content | has_excerpt }}{% endcapture %}
@@ -28,6 +29,5 @@
     </footer>
   {% endif %}
 {% else %}
-{% include custom/post/amazon.html %}
 <div class="entry-content">{{ content | inject_adsense }}</div>
 {% endif %}

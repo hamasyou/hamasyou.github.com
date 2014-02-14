@@ -1,26 +1,32 @@
-{% if page.amazon_url != '' %}
+{% capture title %}{{ page.title }}{{ post.title }}{% endcapture %}
+{% capture amazon_url %}{{ page.amazon_url }}{{ post.amazon_url }}{% endcapture %}
+{% capture amazon_image %}{{ page.amazon_image }}{{ post.amazon_image }}{% endcapture %}
+{% capture amazon_author %}{{ page.amazon_author }}{{ post.amazon_author }}{% endcapture %}
+{% capture amazon_publisher %}{{ page.amazon_publisher }}{{ post.amazon_publisher }}{% endcapture %}
+
+{% if amazon_url != '' %}
 <div class="row asin-detail">
   <div class="col-sm-4">
-    <a href="{{ page.amazon_url | escape }}" title="{{ page.title }}" rel="external nofollow">
-      <img src="{{ page.amazon_image }}" class="asin-thumbnail" alt="{{ page.title }}" />
+    <a href="{{ amazon_url | escape }}" title="{{ title }}" rel="external nofollow">
+      <img src="{{ amazon_image }}" class="asin-thumbnail" alt="{{ title }}" />
     </a>
   </div>
   <div class="col-sm-8 asin-meta">
     <dl>
-      {% if page.title %}
+      {% if title %}
       <dt>タイトル</dt>
-      <dd><p><a href="{{ page.amazon_url | escape }}" title="{{ page.title }}" rel="external nofollow">{{ page.title }}</a></p></dd>
+      <dd><p><a href="{{ amazon_url | escape }}" title="{{ title }}" rel="external nofollow">{{ title }}</a></p></dd>
       {% endif %}
-      {% if page.amazon_author %}
+      {% if amazon_author %}
       <dt>著者</dt>
-      <dd><p>{{ page.amazon_author }}</p></dd>
+      <dd><p>{{ amazon_author }}</p></dd>
       {% endif %}
-      {% if page.amazon_publisher %}
+      {% if amazon_publisher %}
       <dt>出版社</dt>
-      <dd><p>{{ page.amazon_publisher }}</p></dd>
+      <dd><p>{{ amazon_publisher }}</p></dd>
       {% endif %}
     </dl>
-    <a href="{{ page.amazon_url | escape }}" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+    <a href="{{ amazon_url | escape }}" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
   </div>
 </div>
 {% endif %}
