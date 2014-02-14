@@ -12,7 +12,7 @@ module Jekyll
  
       %{<div class="terminal-window">
           <nav class="terminal-control-window">
-            <a href="#finder" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-close" data-rel="close">close</a>
             <a href="#" class="terminal-minimize">minimize</a>
             <a href="#" class="terminal-deactivate">deactivate</a>
           </nav>

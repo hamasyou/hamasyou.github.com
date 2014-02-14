@@ -1,0 +1,26 @@
+---
+layout: nil
+---
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<channel>
+  <title><![CDATA[{{ site.title }}]]></title>
+  <link>{{ site.url }}</link>
+  <pubDate>{{ site.time | rfc822 }}</pubDate>
+  <description>
+  {{ site.description }}
+  </description>
+  <atom:link href="{{ site.url }}/rss.xml" rel="self" type="application/rss+xml"/>
+
+  {% for post in site.posts limit: 20 %}
+  <item>
+    <title><![CDATA[{{ post.title | cdata_escape }}]]></title>
+    <link>{{ site.url }}{{ post.url }}</link>
+    <guid>{{ site.url }}{{ post.id }}</guid>
+    <description>
+      <![CDATA[{{ post.content | expand_urls: site.url | cdata_escape }}]]>
+    </description>
+    <pubDate>{{ post.date | rfc822 }}</pubDate>
+  </item>
+  {% endfor %}
+</channel>
+</rss>
