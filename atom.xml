@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-14T15:21:14+09:00</updated>
+  <updated>2014-02-14T16:49:38+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,124 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RubyからMicrosoft Translator APIを呼び出す]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/14/microsoft-translator-api/"/>
+    <updated>2014-02-14T15:40:59+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/14/microsoft-translator-api</id>
+    <content type="html"><![CDATA[<p>Google の翻訳 API が有料化されたことで、無料で使える翻訳 API が実質 <strong class="text-danger">Microsoft Translator API</strong> 一択になってしまいました。</p>
+
+<p>実際に使ってみようと思ったときに、いろいろなサイトをぐるぐる回ったり、API の呼び出し方が変わっていたりしてとまどったので、手順のおさらいをしておきます。</p>
+
+<!-- more -->
+
+
+<h2>Microsoft Translator API</h2>
+
+<p>Microsoft Translator API は Microsfot が提供する翻訳サービスで REST インターフェースを備えています。</p>
+
+<p>利用するには Microsoft Azure Marketplace で Microsoft Translator の利用登録が必要です。</p>
+
+<h3>Microsoft Translator 登録を行う</h3>
+
+<p>翻訳 API を使うには Azure Marketplace で利用登録が必要になります。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="https://datamarket.azure.com/dataset/1899a118-d202-492c-aa16-ba21c33c06cb" rel="external nofollow" title="Microsoft Azure Marketplace">Microsoft Azure Marketplace</a></p>
+
+<p>アカウントを持っていない人はアカウントを作成して、月額0円のプランを購入します。</p>
+
+<p><img src="http://hamasyou.com/images/2014-02-14-microsoft-translator-api-01.png" alt="Microsoft Translator の購入" class="img-thumbnail"></p>
+
+<h3>アプリケーション登録を行う</h3>
+
+<p>次に、Azure Marketplace でアプリケーションの登録を行います。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="https://datamarket.azure.com/developer/applications" rel="external nofollow" title="開発者 アプリケーション登録 - Microsoft Azure Marketplace">開発者 アプリケーション登録 - Microsoft Azure Marketplace</a></p>
+
+<p><img src="http://hamasyou.com/images/2014-02-14-microsoft-translator-api-02.png" alt="アプリケーション登録" class="img-thumbnail"></p>
+
+<p>翻訳 API だけを利用する場合には <em>リダイレクトURI</em> は利用しませんが、必須入力なので <code>http://localhost/</code> と入力しておきます。<code>https</code> で登録しろと怒られますが無視して登録できます。</p>
+
+<p>ここで登録した <em>クライアントID</em> 、<em>顧客の秘密</em> が API 呼び出しの時に使う <strong class="text-danger">client_id</strong> 、 <strong class="text-danger">client_secret</strong> になります。</p>
+
+<h3>Ruby から呼び出してみる。</h3>
+
+<p>翻訳 API を呼び出すには、呼び出しの前に OAuth を通さなければなりません。OAuth を通すと得られる <em>access_token</em> を使って翻訳 API を呼び出します。</p>
+
+<p>OAuth を通すには POST リクエストが必要なので、サンプルでは Ruby の <code>open-uri</code> を post 対応したものを使っています。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://d.hatena.ne.jp/urekat/20070201/1170349097" rel="external nofollow" title="[ruby]open-uriをPOST対応させる">[ruby]open-uriをPOST対応させる</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">'cgi'</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">'open-uri-post'</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">'rexml/document'</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">'json'</span>
+</span><span class="line">
+</span><span class="line"><span class="no">CLIENT_ID</span>       <span class="o">=</span> <span class="s1">'&lt;クライアントID&gt;'</span>
+</span><span class="line"><span class="no">CLIENT_SECRET</span>   <span class="o">=</span> <span class="s1">'&lt;顧客の秘密&gt;'</span>
+</span><span class="line"><span class="no">AUTHORIZE_URL</span>   <span class="o">=</span> <span class="s1">'https://datamarket.accesscontrol.windows.net/v2/OAuth2-13'</span>
+</span><span class="line"><span class="no">TRANSLATION_URL</span> <span class="o">=</span> <span class="s1">'http://api.microsofttranslator.com/V2/Http.svc/Translate'</span>
+</span><span class="line"><span class="no">SCOPE</span>           <span class="o">=</span> <span class="s1">'http://api.microsofttranslator.com'</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">get_access_token</span>
+</span><span class="line">  <span class="n">access_token</span> <span class="o">=</span> <span class="kp">nil</span>
+</span><span class="line">  <span class="nb">open</span><span class="p">(</span><span class="no">AUTHORIZE_URL</span><span class="p">,</span>
+</span><span class="line">       <span class="s1">'postdata'</span> <span class="o">=&gt;</span> <span class="s2">"grant_type=client_credentials&amp;client_id=</span><span class="si">#{</span><span class="no">CGI</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="no">CLIENT_ID</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;client_secret=</span><span class="si">#{</span><span class="no">CGI</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="no">CLIENT_SECRET</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;scope=</span><span class="si">#{</span><span class="no">CGI</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="no">SCOPE</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
+</span><span class="line">    <span class="n">json</span>           <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">)</span>
+</span><span class="line">    <span class="n">access_token</span>   <span class="o">=</span> <span class="n">json</span><span class="o">[</span><span class="s1">'access_token'</span><span class="o">]</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">  <span class="n">access_token</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">translate_text</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</span><span class="line">  <span class="n">access_token</span> <span class="o">=</span> <span class="n">get_access_token</span>
+</span><span class="line">  <span class="n">res</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="no">TRANSLATION_URL</span><span class="si">}</span><span class="s2">?from=en&amp;to=ja&amp;text=</span><span class="si">#{</span><span class="no">URI</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+</span><span class="line">             <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s2">"Bearer </span><span class="si">#{</span><span class="n">access_token</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span>
+</span><span class="line">  <span class="n">xml</span> <span class="o">=</span> <span class="ss">REXML</span><span class="p">:</span><span class="ss">:Document</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</span><span class="line">  <span class="n">xml</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">text</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">puts</span> <span class="n">translate_text</span><span class="p">(</span><span class="s1">'Hello World'</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; "ハローワールド"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress参考リンクまとめ]]></title>
@@ -2076,247 +2194,6 @@ puts " # All done! (#{ok}/#{fails})"
     <updated>2012-09-13T10:10:00+09:00</updated>
     <id>http://hamasyou.com/blog/2012/09/13/4798126055</id>
     <content type="html"><![CDATA[<!-- more -->]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[まつもとゆきひろ コードの未来]]></title>
-    <link href="http://hamasyou.com/blog/2012/05/26/4822234630/"/>
-    <updated>2012-05-26T08:52:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2012/05/26/4822234630</id>
-    <content type="html"><![CDATA[<p>本書は日経Linuxで2009年6月号から2012年6月号まで連載されていた「まつもとゆきひろ 技術を斬る」に加筆・修正を加えたものです。2009年からということで古い技術もあるのでは？と思われるかもしれませんが、さすがまつもとさん！きちんと未来を見据えたテーマでかかれていて、すごく参考になりました。</p>
-
-<p>本書は読み物の色がつよく、言語の過去・未来や新しい言語（<em>Go</em>、<em>Dart</em>、<em>CoffeeScript</em>、<em>Lua</em>）の言語作成者ならではの視点での解説、クラウド時代のC10K問題やスケーラビリティの話、ビッグデータ時代の NoSQL の扱い方などをまつもとさん視点で解説しています。</p>
-
-<p>実際にプログラミングをやっている人であれば、ニヤニヤしながら読めることまちがいなしです。最近の技術動向をさくっと知るというのにも良いと思います。僕もとても楽しく面白く読むことが出来ました。</p>
-
-<p>新人教育にいかがですか？</p>
-
-<!-- more -->
-
-
-
-
-<h2>おぼえがき</h2>
-
-
-
-
-<h3>エクストリーム未来予測</h3>
-
-
-<p>未来を予測するときの簡単なテクニック。エクストリーム・プログラミング（XP）を考案した Kent Beck が著書の中で書いている言葉。</p>
-
-<h3>DSL デザインの構成要素</h3>
-
-
-
-
-<dl>
-<dt>コンテキスト</dt>
-<dd>DSL の記述がどのような意味を持つか規定する。</dd>
-<dt>センテンス</dt>
-<dd>コンテキストの内部の記述で、関数呼び出しやメソッド呼び出しで表現される個別の動作。</dd>
-<dt>ユニット</dt>
-<dd>単位。20.hours の hours など。</dd>
-<dt>ボキャブラリ</dt>
-<dd>目的分野にふさわしいメソッドをどれだけ用意できるか。</dd>
-<dt>ヒエラルキ</dt>
-<dd>ネストしたコンテキスト</dd>
-</dl>
-<h3>GC（ガベージコレクション）の3つの基本方式</h3>
-
-
-
-
-<h4>マークアンドスイープ方式</h4>
-
-
-<p>先頭から生きているオブジェクトに印をつけていき、最後まで印をつけたら印の付いていないオブジェクトを回収する方式。</p>
-
-<p>処理時間は、「生きているオブジェクト数」 + 「全オブジェクト数」の和（マークを付ける処理 + 回収する処理）。</p>
-
-<h4>コピーコレクション方式</h4>
-
-
-<p>マークアンドスイープ方式では、<em>大量のオブジェクトが割り当てられ、そのうちごく一部だけが生き残るような場合に必要以上に時間がかかってしまう</em>。</p>
-
-<p>コピーコレクションは、マークアンドスイープ方式でいうマークを付ける処理（マークフェーズ）で、生きているオブジェクトを新しい領域にコピーするようにし、すべてのコピー（マーク）が終わったら古い領域を回収することで行う。</p>
-
-<p>マークをつける処理よりもコピーする処理のほうがコストが高いため、生きているオブジェクトの数が多いと不利な方式になる。</p>
-
-<h4>リファレンスカウント方式</h4>
-
-
-<p>オブジェクト自身が、自分が参照されているカウント（リファレンスカウント）を知っていて、参照が増減する度にリファレンスカウントを書き換える方式。</p>
-
-<p>メリットは簡単に実装ができること。</p>
-
-<p>デメリットは、循環参照に対応できないこと。また、並列処理と相性がわるいこと。</p>
-
-<h4>応用方式</h4>
-
-
-<p>基本方式を組み合わせる形で、応用方式が多くの場合利用されている。</p>
-
-<p><em>世代別GC</em>、<em>インクリメンタルGC</em>、<em>並列GC</em>である。</p>
-
-<p>世代別GCは、「オブジェクトのほとんどは短時間でゴミになり、長い時間生き残ったオブジェクトはより長い寿命を持つ」という性質を利用して、オブジェクトに新しい、古いのタグをつけ、新しいものだけをGCするマイナーGCと古いものも対象にするメジャーGCの２つを使い分ける方式。</p>
-
-<p>インクリメンタルGCは、リアルタイム処理などで GC の中断時間を減らす目的で、GC を少しずつ処理していく方式。</p>
-
-<p>並列GCは、複数 CPU を利用して GC を行う方式。</p>
-
-<h3>例外処理</h3>
-
-
-<p>例外が発生したときの対応には大きく2つある。ひとつは、<em>実行を中止すること</em>。もうひとつは、<em>例外が発生した原因を取り除き再挑戦すること</em>。</p>
-
-<h3>クロージャ</h3>
-
-
-<p>「関数オブジェクトから外側の変数がアクセス（参照や更新）できる」というのがクロージャを構成する要件の一つ。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">func</span><span class="p">());</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">echo</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="nx">i</span> <span class="o">*</span> <span class="nx">i</span><span class="p">;</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line"><span class="o">&gt;</span> <span class="mi">0</span>
-</span><span class="line"><span class="o">&gt;</span> <span class="mi">1</span>
-</span><span class="line"><span class="o">&gt;</span> <span class="mi">4</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>外側のスコープに属する変数を参照している関数オブジェクトは、そのローカル変数を「閉じ込め」る。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">extent</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">n</span><span class="o">++</span><span class="p">;</span>
-</span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"n="</span> <span class="o">+</span> <span class="nx">n</span><span class="p">);</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">extent</span><span class="p">();</span>
-</span><span class="line"><span class="nx">f</span><span class="p">();</span>
-</span><span class="line"><span class="o">&gt;</span> <span class="nx">n</span><span class="o">=</span><span class="mi">1</span>
-</span><span class="line"><span class="nx">f</span><span class="p">();</span>
-</span><span class="line"><span class="o">&gt;</span> <span class="nx">n</span><span class="o">=</span><span class="mi">2</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<p class="option">Ruby 1.9では、関数っぽいプログラミングを支援するために、lambda の代わりに「-&gt;」という式がつかえるようになり、また「call」メソッドを省略して「f.()」と呼び出せるようになっています。</p>
-
-
-
-
-<h3>Go</h3>
-
-
-<p>Google からリリースされた新言語「<em>Go</em>」は、システムプログラミング言語では初となる言語仕様のレベルで並列プログラミングを意識している。</p>
-
-<p>Go の関数やメソッドは複数の値を戻り値として返すことができる。</p>
-
-<p>Go には例外機構がないが、戻り値の多値をもちいて、本来の戻り値とエラーが発生したかどうかを区別できる「<strong class="text-danger">コンマOK</strong>」スタイルをとっている。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td>
-<td class="code"><pre><code class="go"><span class="line"><span class="nx">f</span><span class="p">,</span><span class="nx">ok</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="err">ファイル名</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">O_RDONLY</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span><span class="line"><span class="k">if</span> <span class="nx">ok</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class="line">  <span class="c1">//... open に失敗したときの処理</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>Go の goroutine は、メモリ空間の共有を行い、軽量であり、コンテキストスイッチが自動でマルチコアを活用できる。</p>
-
-<h3>ブルームフィルタ</h3>
-
-
-<p><em>ブルームフィルタ</em>は、あるデータが登録されているかどうかを判定できるデータ構造。</p>
-
-<ul>
-<li>判定時間がデータ件数に依存しない（O(1)）</li>
-<li>空間効率が非常に良い</li>
-<li>要素の削除ができない</li>
-<li><em>たまに間違える</em></li>
-</ul>
-<p>ブルームフィルタは、本当は要素に入っていないけれども入っているとみなされるという疑陽性（false positive）がある。</p>
-
-<h3>C10K問題</h3>
-
-
-<p>OS の select コールを使わないで、<em>epoll</em> や <em>kqueue</em> などの別のAPIを利用する。または、ノンブロッキングI/O を使う。Ruby のイベントループフレームワークには、EventMachine がある。</p>
-
-<h3>アプリサーバ</h3>
-
-
-<p>Unicone は一般的な Master プロセスからワーカープロセスにリクエストを転送するプッシュモデルではなく、<em>プルモデル</em>を採用しているため。プルモデルとは、ワーカー側が処理が Master に処理を受け取りに行く方式。</p>
-
-<h3>key-value ストア</h3>
-
-
-<p>ACID （Atomicity:原子性、Consistency:一貫性、Isolation:独立性、Durability:持続性）特性はデータベースの世界では一般的だが、近年大規模データを扱うために分散を考えるようになってくると ACID を満たすのが厳しくなってきている。</p>
-
-<p>CAP 定理というものがあり、大規模環境では、Consistency:一貫性、Availability:可用性、Partition Tolerance:分割体制 のうち同時に2つまでしか満たすことができないとされている。</p>
-
-<p>大規模分散環境では、多くは Consistency を捨てている。多くの key-value ストアはトランザクション処理を持たないのはそういうこと。</p>
-
-<h3>アムダールの法則</h3>
-
-
-<p>一般的にマルチコアコンピュータは、CPU を複数積んでいても、その他のデバイスは共有している事が多い。たとえば、メモリやディスク、ネットワークデバイスなど。もし、CPU 以外のところに処理のボトルネックがある場合は、マルチコアを投入しても性能は改善されない。</p>
-
-<h3>ノンブロッキングI/O</h3>
-
-
-<p>大量の接続をさばくサーバでは、スレッドを使うとメモリ負荷やスレッド切り替えのコストが大きくなりすぎる傾向がある。そのためイベントを待ち受けてそれに対応する処理を「シングルスレッド」で処理するやり方のほうが効率的になる。</p>
-
-<p>シングルスレッドで処理をするときに気を付けないといけないのは、そのスレッドが「<em>ブロック</em>」されると、プログラム全体が止まってしまうことである。</p>
-
-<p>ブロックは、<em>入出力待ち</em>の場合がほとんどなため、入出力待ちを以下にブロックしないかが重要になる。</p>]]></content>
   </entry>
   
 </feed>
