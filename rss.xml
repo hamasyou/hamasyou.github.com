@@ -1,24 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<channel>
   <title><![CDATA[それはBooks]]></title>
-  <link href="http://hamasyou.com/atom.xml" rel="self"/>
-  <link href="http://hamasyou.com/"/>
-  <updated>2014-02-14T19:05:32+09:00</updated>
-  <id>http://hamasyou.com/</id>
-  <author>
-    <name><![CDATA[hamasyou]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+  <link>http://hamasyou.com</link>
+  <pubDate>2014-02-14T19:05:32+09:00</pubDate>
+  <description>
+  コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
+  </description>
+  <atom:link href="http://hamasyou.com/rss.xml" rel="self" type="application/rss+xml"/>
 
   
-  <entry>
-    <title type="html"><![CDATA[RubyからMicrosoft Translator APIを呼び出す]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/14/microsoft-translator-api/"/>
-    <updated>2014-02-14T15:40:59+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/14/microsoft-translator-api</id>
-    <content type="html"><![CDATA[<p>Google の翻訳 API が有料化されたことで、無料で使える翻訳 API が実質 <strong class="text-danger">Microsoft Translator API</strong> 一択になってしまいました。</p>
+  <item>
+    <title><![CDATA[RubyからMicrosoft Translator APIを呼び出す]]></title>
+    <link>http://hamasyou.com/blog/2014/02/14/microsoft-translator-api/</link>
+    <guid>http://hamasyou.com/blog/2014/02/14/microsoft-translator-api</guid>
+    <description>
+      <![CDATA[<p>Google の翻訳 API が有料化されたことで、無料で使える翻訳 API が実質 <strong class="text-danger">Microsoft Translator API</strong> 一択になってしまいました。</p>
 
 <p>実際に使ってみようと思ったときに、いろいろなサイトをぐるぐる回ったり、API の呼び出し方が変わっていたりしてとまどったので、手順のおさらいをしておきます。</p>
 
@@ -128,15 +124,17 @@
 </span><span class="line"><span class="nb">puts</span> <span class="n">translate_text</span><span class="p">(</span><span class="s1">'Hello World'</span><span class="p">)</span>
 </span><span class="line"><span class="c1"># =&gt; "ハローワールド"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>]]></content>
-  </entry>
+</tr></table></div></figure></notextile></div>]]>
+    </description>
+    <pubDate>2014-02-14T15:40:59+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[Octopress参考リンクまとめ]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/14/octopress-summary/"/>
-    <updated>2014-02-14T12:18:53+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/14/octopress-summary</id>
-    <content type="html"><![CDATA[<p><strong class="text-danger">Octopress</strong> の設定や運用で参考にしたサイトのまとめです。</p>
+  <item>
+    <title><![CDATA[Octopress参考リンクまとめ]]></title>
+    <link>http://hamasyou.com/blog/2014/02/14/octopress-summary/</link>
+    <guid>http://hamasyou.com/blog/2014/02/14/octopress-summary</guid>
+    <description>
+      <![CDATA[<p><strong class="text-danger">Octopress</strong> の設定や運用で参考にしたサイトのまとめです。</p>
 
 <!-- more -->
 
@@ -202,15 +200,17 @@
 
 <ul>
 <li><a href="http://rcmdnk.github.io/blog/2014/02/02/blog-octopress/" rel="external nofollow" title="Octorpessについてのここまでのまとめ">Octorpessについてのここまでのまとめ</a></li>
-</ul>]]></content>
-  </entry>
+</ul>]]>
+    </description>
+    <pubDate>2014-02-14T12:18:53+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[Ruby-Nokogiriで取り出した要素を置き換える]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/"/>
-    <updated>2014-02-13T16:19:09+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/13/ruby-nokogiri</id>
-    <content type="html"><![CDATA[<p>Ruby の HTML パーサに <strong class="text-danger">Nokogiri</strong> があります。基本的な使い方は</p>
+  <item>
+    <title><![CDATA[Ruby-Nokogiriで取り出した要素を置き換える]]></title>
+    <link>http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/</link>
+    <guid>http://hamasyou.com/blog/2014/02/13/ruby-nokogiri</guid>
+    <description>
+      <![CDATA[<p>Ruby の HTML パーサに <strong class="text-danger">Nokogiri</strong> があります。基本的な使い方は</p>
 
 <ul>
 <li><a href="https://github.com/sparklemotion/nokogiri" rel="external nofollow" title="Nokogiri-GitHub">Nokogiri-GitHub</a></li>
@@ -275,15 +275,17 @@
 </pre></td>
 <td class="code"><pre><code class="ruby"><span class="line"><span class="n">doc</span> <span class="o">=</span> <span class="ss">Nokogiri</span><span class="p">:</span><span class="ss">:HTML</span><span class="p">(</span><span class="n">html_text</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="s1">'utf-8'</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>]]></content>
-  </entry>
+</tr></table></div></figure></notextile></div>]]>
+    </description>
+    <pubDate>2014-02-13T16:19:09+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[Movable TypeからGitHub+Octopressに乗り換える手順]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress/"/>
-    <updated>2014-02-13T10:53:07+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress</id>
-    <content type="html"><![CDATA[<p>今まではブログを <em>ロリポップ</em> + <em>Movable Type</em> でやっていましたが、ブログデザインを変更したくなり、ついでにブログ環境も変更しました。</p>
+  <item>
+    <title><![CDATA[Movable TypeからGitHub+Octopressに乗り換える手順]]></title>
+    <link>http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress/</link>
+    <guid>http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress</guid>
+    <description>
+      <![CDATA[<p>今まではブログを <em>ロリポップ</em> + <em>Movable Type</em> でやっていましたが、ブログデザインを変更したくなり、ついでにブログ環境も変更しました。</p>
 
 <p>Movable Type から <em>WordPress</em> に乗り換えても良かったんですが、エンジニアっぽいブログ環境ってなんだろうと考えた末、<strong class="text-danger">GitHub Pages</strong> と <strong class="text-danger">Octopress</strong> を使ってブログ環境を作ることにしました。</p>
 
@@ -693,15 +695,17 @@ end
 puts
 puts " # All done! (#{ok}/#{fails})"
 </code></pre></noscript>
-</div>]]></content>
-  </entry>
+</div>]]>
+    </description>
+    <pubDate>2014-02-13T10:53:07+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[GitHubとOctopressで始める無料ブログ]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/12/github-octopress/"/>
-    <updated>2014-02-12T19:33:48+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/12/github-octopress</id>
-    <content type="html"><![CDATA[<p>長いもので、hamasyou.com を初めてから9年経ちました。何年かに一回ブログのデザインを更新したくなるのって普通ですよね。</p>
+  <item>
+    <title><![CDATA[GitHubとOctopressで始める無料ブログ]]></title>
+    <link>http://hamasyou.com/blog/2014/02/12/github-octopress/</link>
+    <guid>http://hamasyou.com/blog/2014/02/12/github-octopress</guid>
+    <description>
+      <![CDATA[<p>長いもので、hamasyou.com を初めてから9年経ちました。何年かに一回ブログのデザインを更新したくなるのって普通ですよね。</p>
 
 <p>今までずっと <em>MovableType</em> を使っていたんですが、markdown で書きたくなったのと、MovableType のデザインのいじり方を忘れてしまったため、ブログ環境を一新する決意をしました。</p>
 
@@ -731,15 +735,17 @@ puts " # All done! (#{ok}/#{fails})"
 
 <p>Octopress の詳しい使い方は <a href="http://morizyun.github.io/blog/octopress-gitpage-minimum-install-guide/" rel="external nofollow" title="OctopressでGitHub無料ブログ構築。sourceをBitbucket管理。簡単ガイド！ - 酒と泪とRubyとRailsと">OctopressでGitHub無料ブログ構築。sourceをBitbucket管理。簡単ガイド！ - 酒と泪とRubyとRailsと</a> が参考になります。</p>
 
-<p>Octopress には様々なテーマが用意されていて、うちのサイトもテーマを使っています。</p>]]></content>
-  </entry>
+<p>Octopress には様々なテーマが用意されていて、うちのサイトもテーマを使っています。</p>]]>
+    </description>
+    <pubDate>2014-02-12T19:33:48+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[Railsで手書きの図や絵をプログラムに取り込む方法]]></title>
-    <link href="http://hamasyou.com/blog/2013/12/03/rails/"/>
-    <updated>2013-12-03T19:05:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2013/12/03/rails</id>
-    <content type="html"><![CDATA[<p>スマホやタブレットが増えてきて、Railsアプリでも手書きで書いた絵や図を取り込みたいというような案件があるのではないでしょうか？手書き画像が保存する方法はいろいろありますが、そのひとつをちょっとメモのため残しておきます。特別なgemとかは必要ありません。使うのは HTML5 の canvas だけです。</p>
+  <item>
+    <title><![CDATA[Railsで手書きの図や絵をプログラムに取り込む方法]]></title>
+    <link>http://hamasyou.com/blog/2013/12/03/rails/</link>
+    <guid>http://hamasyou.com/blog/2013/12/03/rails</guid>
+    <description>
+      <![CDATA[<p>スマホやタブレットが増えてきて、Railsアプリでも手書きで書いた絵や図を取り込みたいというような案件があるのではないでしょうか？手書き画像が保存する方法はいろいろありますが、そのひとつをちょっとメモのため残しておきます。特別なgemとかは必要ありません。使うのは HTML5 の canvas だけです。</p>
 
 <!-- more -->
 
@@ -1226,15 +1232,17 @@ puts " # All done! (#{ok}/#{fails})"
 
 <p>これで、一時ファイルにキャンバスデータを書き込んでファイル化できます。サーバを起動して <code>http://localhost:3000/posts/new</code> にアクセスして試してみてください。</p>
 
-<p><img src="http://hamasyou.com/images/2013-12-03-rails-ss.png" height="526" width="517" alt="スクリーンショット" class="img-thumbnail"></p>]]></content>
-  </entry>
+<p><img src="http://hamasyou.com/images/2013-12-03-rails-ss.png" height="526" width="517" alt="スクリーンショット" class="img-thumbnail"></p>]]>
+    </description>
+    <pubDate>2013-12-03T19:05:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[バッドデータハンドブック ―データにまつわる問題への19の処方箋]]></title>
-    <link href="http://hamasyou.com/blog/2013/11/14/4873116406/"/>
-    <updated>2013-11-14T11:45:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2013/11/14/4873116406</id>
-    <content type="html"><![CDATA[<blockquote>
+  <item>
+    <title><![CDATA[バッドデータハンドブック ―データにまつわる問題への19の処方箋]]></title>
+    <link>http://hamasyou.com/blog/2013/11/14/4873116406/</link>
+    <guid>http://hamasyou.com/blog/2013/11/14/4873116406</guid>
+    <description>
+      <![CDATA[<blockquote>
 <p>値の欠落、形式から外れたレコード、エンコーディング形式が不明な文字列。「バッドデータ」と聞いた時に思い浮べる典型例です。しかし、これら以外にも「そもそもデータにアクセスできない」「消えてしまった」「昨日と違っている」「データはあるが形式が処理に適していない」など、データを収集・分析するエンジニアは、これらの「バッドデータ」と正面から向きあわなければならないことが多々あります。本書では、これらの問題のあるデータのパターンを紹介し、その対処法を解説しています。<br>19人のデータ分析の専門家が、自らの経験を通して得た、さまざまな教訓、実践的な方法論等を詳述した本書は、ビッグデータ時代のエンジニアにとって必携の一冊となるでしょう。</p>
 <footer><strong>O&#8217;REILLY</strong></footer>
 </blockquote>
@@ -1244,15 +1252,17 @@ puts " # All done! (#{ok}/#{fails})"
 
 <p>コンピュータで扱うデータは大きく分けて<strong class="text-danger">コンピュータのためにフォーマットするデータ</strong>と<strong class="text-danger">人間のためにフォーマットするデータ</strong>があります。これらをごっちゃにしてしまうと扱いづらいデータ（<strong class="text-danger">バッドデータ</strong>）になってしまいます。本書はバッドデータをよりよく扱う方法、バッドデータにしない方法について、いろいろな点で考えられるようにアイデアや体験談を与えてくれます。</p>
 
-<p>最近 API をよく作ってるんだけど通信データのフォーマットに困ってるというような Web プログラマにオススメです！</p>]]></content>
-  </entry>
+<p>最近 API をよく作ってるんだけど通信データのフォーマットに困ってるというような Web プログラマにオススメです！</p>]]>
+    </description>
+    <pubDate>2013-11-14T11:45:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? ]]></title>
-    <link href="http://hamasyou.com/blog/2013/06/24/4774156647/"/>
-    <updated>2013-06-24T22:34:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2013/06/24/4774156647</id>
-    <content type="html"><![CDATA[<p>コード。ラテン語で codex。codex とはもともとローマ法大全のことを指し示す言葉だそうです。コードは読みとくべきであり、書き下されるべきものである。そしてそれができたとき、喜びが生まれる。弾さんのまえがきにある言葉ですが、コーディング好きなプログラマのみなさんはこの言葉がよくわかると思います。</p>
+  <item>
+    <title><![CDATA[小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? ]]></title>
+    <link>http://hamasyou.com/blog/2013/06/24/4774156647/</link>
+    <guid>http://hamasyou.com/blog/2013/06/24/4774156647</guid>
+    <description>
+      <![CDATA[<p>コード。ラテン語で codex。codex とはもともとローマ法大全のことを指し示す言葉だそうです。コードは読みとくべきであり、書き下されるべきものである。そしてそれができたとき、喜びが生まれる。弾さんのまえがきにある言葉ですが、コーディング好きなプログラマのみなさんはこの言葉がよくわかると思います。</p>
 
 <p>本書は、プログラミングに関わるいろいろな事柄が短文のエッセイの形でまとめられています。もともと Software Design の連載だったものをまとめたもののようですが、まとめて読むことに価値があると思います。</p>
 
@@ -1365,15 +1375,17 @@ puts " # All done! (#{ok}/#{fails})"
 <li>Ex.3 アマグラマのすすめ美徳その3:傲慢</li>
 <li>Ex.4 プログラマでなくても名前ぐらい覚えておきたいアルゴリズム×11</li>
 <li>Ex.5 プログラミングいつまでに学ぶ? なぜ学ぶ?</li>
-</ul>]]></content>
-  </entry>
+</ul>]]>
+    </description>
+    <pubDate>2013-06-24T22:34:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[ディジタル作法 －カーニハン先生の「情報」教室－]]></title>
-    <link href="http://hamasyou.com/blog/2013/06/23/4274069095/"/>
-    <updated>2013-06-23T17:31:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2013/06/23/4274069095</id>
-    <content type="html"><![CDATA[<p>本書は、現在のコンピュータシステムや通信システムがどのように動作しているのかを、ハードウェアとソフトウェアの両方の視点から解説している一般の人向けの本です。コンピュータのことをもっとよく知りたい、コンピュータがどのように動作しているかをもっと知りたい、そういった人にオススメの一冊です。</p>
+  <item>
+    <title><![CDATA[ディジタル作法 －カーニハン先生の「情報」教室－]]></title>
+    <link>http://hamasyou.com/blog/2013/06/23/4274069095/</link>
+    <guid>http://hamasyou.com/blog/2013/06/23/4274069095</guid>
+    <description>
+      <![CDATA[<p>本書は、現在のコンピュータシステムや通信システムがどのように動作しているのかを、ハードウェアとソフトウェアの両方の視点から解説している一般の人向けの本です。コンピュータのことをもっとよく知りたい、コンピュータがどのように動作しているかをもっと知りたい、そういった人にオススメの一冊です。</p>
 
 <blockquote>
 <p>&#8220;D is for Digital&#8221; （ディジタル作法） は、コンピュータシステムや通信システムがどのように動作しているかを、簡潔に、それでいて細かいところまで丁寧に説明した本であり、自分たちが暮らしている世界のことをより良く分かっておきたいと考える一般読者（専門家ではない人）を対象にしています。本書では、今日の世界におけるコンピュータシステムや通信システムがどのように動作しているかということを、ハードウェアおよびソフトウェアからインターネット、Webに到るまで、ひととおり説明しています。</p>
@@ -1405,15 +1417,17 @@ puts " # All done! (#{ok}/#{fails})"
 <h3>ビット・バイト</h3>
 
 
-<p>コンピュータはディジタル処理装置である。コンピュータは情報をビットで表現する。ビット列に寄って大きな情報が表せる。数値、文字、音、画像、動画、プログラムなどはすべてビット列で表される。</p>]]></content>
-  </entry>
+<p>コンピュータはディジタル処理装置である。コンピュータは情報をビットで表現する。ビット列に寄って大きな情報が表せる。数値、文字、音、画像、動画、プログラムなどはすべてビット列で表される。</p>]]>
+    </description>
+    <pubDate>2013-06-23T17:31:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処]]></title>
-    <link href="http://hamasyou.com/blog/2013/03/05/titanium/"/>
-    <updated>2013-03-05T08:52:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2013/03/05/titanium</id>
-    <content type="html"><![CDATA[<p>モジュールを作成して、デモアプリ等で利用する際に実機転送時に</p>
+  <item>
+    <title><![CDATA[[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処]]></title>
+    <link>http://hamasyou.com/blog/2013/03/05/titanium/</link>
+    <guid>http://hamasyou.com/blog/2013/03/05/titanium</guid>
+    <description>
+      <![CDATA[<p>モジュールを作成して、デモアプリ等で利用する際に実機転送時に</p>
 
 <pre><code>[ERROR] : ** BUILD FAILED **
 [ERROR] : The following build commands failed:
@@ -1454,15 +1468,17 @@ puts " # All done! (#{ok}/#{fails})"
 </tr></table></div></figure></notextile></div>
 
 
-<p>のようなコードを加えれば良い。バッドノウハウですね。。</p>]]></content>
-  </entry>
+<p>のようなコードを加えれば良い。バッドノウハウですね。。</p>]]>
+    </description>
+    <pubDate>2013-03-05T08:52:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[#qiita_sushi に参加した]]></title>
-    <link href="http://hamasyou.com/blog/2013/03/04/qiita-sushi/"/>
-    <updated>2013-03-04T23:15:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2013/03/04/qiita-sushi</id>
-    <content type="html"><![CDATA[<p>Qiita を運営されている Increments さんが一周年ということで、白ワイン持参で参加させていただきました。</p>
+  <item>
+    <title><![CDATA[#qiita_sushi に参加した]]></title>
+    <link>http://hamasyou.com/blog/2013/03/04/qiita-sushi/</link>
+    <guid>http://hamasyou.com/blog/2013/03/04/qiita-sushi</guid>
+    <description>
+      <![CDATA[<p>Qiita を運営されている Increments さんが一周年ということで、白ワイン持参で参加させていただきました。</p>
 
 <p>寿司職人が目の前で握ってくれる本格派！</p>
 
@@ -1472,15 +1488,17 @@ puts " # All done! (#{ok}/#{fails})"
 
 <p>一周年、おめでとうございます！</p>
 
-<p>ちなみに、Qiita イベントの出席者は、Perl 界隈の人と Ruby 界隈の人が半々くらいな感じ。</p>]]></content>
-  </entry>
+<p>ちなみに、Qiita イベントの出席者は、Perl 界隈の人と Ruby 界隈の人が半々くらいな感じ。</p>]]>
+    </description>
+    <pubDate>2013-03-04T23:15:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[世界でもっとも強力な9のアルゴリズム]]></title>
-    <link href="http://hamasyou.com/blog/2013/02/05/482228493X/"/>
-    <updated>2013-02-05T22:17:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2013/02/05/482228493X</id>
-    <content type="html"><![CDATA[<blockquote>
+  <item>
+    <title><![CDATA[世界でもっとも強力な9のアルゴリズム]]></title>
+    <link>http://hamasyou.com/blog/2013/02/05/482228493X/</link>
+    <guid>http://hamasyou.com/blog/2013/02/05/482228493X</guid>
+    <description>
+      <![CDATA[<blockquote>
 <p>この本で取り上げた偉大なアルゴリズムから導き出せる共通のテーマはあるだろうか。この本の著者として私がとても驚いたのは、これらの大きなアイデアは、どれもコンピュータプログラミングやコンピュータ科学の予備知識を一切必要とせずに説明できることだ。</p>
 <p></p>
 <p>この本のアルゴリズム全体に共通するもう1つの重要なテーマは、コンピュータ科学という学問分野がただのプログラミングよりもずっと大きな世界だということだ。</p>
@@ -1554,15 +1572,17 @@ puts " # All done! (#{ok}/#{fails})"
 <h3>決定不能性</h3>
 
 
-<p>他のプログラムを分析し、そのなかに含まれていてプログラムをクラッシュさせる原因になるようなバグをすべて見つけ出すプログラムは書けない。</p>]]></content>
-  </entry>
+<p>他のプログラムを分析し、そのなかに含まれていてプログラムをクラッシュさせる原因になるようなバグをすべて見つけ出すプログラムは書けない。</p>]]>
+    </description>
+    <pubDate>2013-02-05T22:17:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[Sublime Text2 で Titanium Mobile のコード補完を効かせる方法]]></title>
-    <link href="http://hamasyou.com/blog/2013/01/29/sublime-text2-titanium-mobile/"/>
-    <updated>2013-01-29T13:23:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2013/01/29/sublime-text2-titanium-mobile</id>
-    <content type="html"><![CDATA[<p>Qiita にも書きました。 <a href="http://qiita.com/items/ef8c332710960e2730d6" rel="external nofollow" title="Qiita: http://qiita.com/items/ef8c332710960e2730d6">Qiita: http://qiita.com/items/ef8c332710960e2730d6</a></p>
+  <item>
+    <title><![CDATA[Sublime Text2 で Titanium Mobile のコード補完を効かせる方法]]></title>
+    <link>http://hamasyou.com/blog/2013/01/29/sublime-text2-titanium-mobile/</link>
+    <guid>http://hamasyou.com/blog/2013/01/29/sublime-text2-titanium-mobile</guid>
+    <description>
+      <![CDATA[<p>Qiita にも書きました。 <a href="http://qiita.com/items/ef8c332710960e2730d6" rel="external nofollow" title="Qiita: http://qiita.com/items/ef8c332710960e2730d6">Qiita: http://qiita.com/items/ef8c332710960e2730d6</a></p>
 
 <h3>1. Package Manager で SublimeCodeIntel をインストールする</h3>
 
@@ -1650,15 +1670,17 @@ puts " # All done! (#{ok}/#{fails})"
   {
     "CoffeeScript": "JavaScript"
   }
-}</code></pre>]]></content>
-  </entry>
+}</code></pre>]]>
+    </description>
+    <pubDate>2013-01-29T13:23:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[Titanium Alloy でつくったアプリをリリースしました]]></title>
-    <link href="http://hamasyou.com/blog/2013/01/22/titanium-alloy/"/>
-    <updated>2013-01-22T11:22:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2013/01/22/titanium-alloy</id>
-    <content type="html"><![CDATA[<p>Titanium Mobile プラットフォームの開発元である Appcelerator が公開している公式のフレームワーク <strong class="text-danger">Alloy</strong> を使って作ったアプリを公開しました。</p>
+  <item>
+    <title><![CDATA[Titanium Alloy でつくったアプリをリリースしました]]></title>
+    <link>http://hamasyou.com/blog/2013/01/22/titanium-alloy/</link>
+    <guid>http://hamasyou.com/blog/2013/01/22/titanium-alloy</guid>
+    <description>
+      <![CDATA[<p>Titanium Mobile プラットフォームの開発元である Appcelerator が公開している公式のフレームワーク <strong class="text-danger">Alloy</strong> を使って作ったアプリを公開しました。</p>
 
 <p>アプリ紹介ページは下になります。
 <a href="http://mountposition.co.jp/obento/" rel="external nofollow" title="Thankお弁当: http://mountposition.co.jp/obento/">Thankお弁当: http://mountposition.co.jp/obento/</a></p>
@@ -1671,15 +1693,17 @@ puts " # All done! (#{ok}/#{fails})"
 
 <p>Alloy を使うといろいろいいことがありますが、それはまた別の記事で紹介します。</p>
 
-<p>以上、アプリの宣伝でした！</p>]]></content>
-  </entry>
+<p>以上、アプリの宣伝でした！</p>]]>
+    </description>
+    <pubDate>2013-01-22T11:22:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[モバイルデザインパターン― ユーザーインタフェースのためのパターン集]]></title>
-    <link href="http://hamasyou.com/blog/2012/09/27/487311568X/"/>
-    <updated>2012-09-27T11:27:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2012/09/27/487311568X</id>
-    <content type="html"><![CDATA[<blockquote>
+  <item>
+    <title><![CDATA[モバイルデザインパターン― ユーザーインタフェースのためのパターン集]]></title>
+    <link>http://hamasyou.com/blog/2012/09/27/487311568X/</link>
+    <guid>http://hamasyou.com/blog/2012/09/27/487311568X</guid>
+    <description>
+      <![CDATA[<blockquote>
 <p>モバイルアプリのUIパターンを手軽に参照できるリファレンス。主要なプラットフォームで動くモバイルアプリの画面例を400点以上使いながら、ユーザーインタフェースの定番パターンをグラフィカルに解説します。本書で紹介する68個の基本パターンと5個のアンチパターンが、使いやすいモバイルアプリをデザインするうえでクリアしなければならない設計上の課題を解決してくれます。</p>
 <p><em>掲載UIパターン</em>:ナビゲーション、フォーム、テーブルとリスト、検索、並び替え、フィルター、ツール、グラフ、誘導、フィードバック、アフォーダンス、ヘルプ、アンチパターン</p>
 <footer><strong>本書背表紙より</strong></footer>
@@ -1806,15 +1830,17 @@ puts " # All done! (#{ok}/#{fails})"
 <dl>
 <dt>Idiot Box（作業を妨げる愚行）</dt>
 <dd><p>確認ダイアログを表示するのはもとに戻せない操作をする場合だけにする。</p></dd>
-</dl>]]></content>
-  </entry>
+</dl>]]>
+    </description>
+    <pubDate>2012-09-27T11:27:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理]]></title>
-    <link href="http://hamasyou.com/blog/2012/09/23/487311554X/"/>
-    <updated>2012-09-23T22:05:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2012/09/23/487311554X</id>
-    <content type="html"><![CDATA[<p>本書は、クライアントサイド（ブラウザ）で JavaScript を使ってリッチなアプリを作る際のプラクティスを説明しています。</p>
+  <item>
+    <title><![CDATA[ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理]]></title>
+    <link>http://hamasyou.com/blog/2012/09/23/487311554X/</link>
+    <guid>http://hamasyou.com/blog/2012/09/23/487311554X</guid>
+    <description>
+      <![CDATA[<p>本書は、クライアントサイド（ブラウザ）で JavaScript を使ってリッチなアプリを作る際のプラクティスを説明しています。</p>
 
 <p>前半では、JavaScript によるオブジェクト指向開発の方法や MVC 開発の方法を、後半では、JavaScript の MVC デザインパターンに則った、各種ライブラリの説明が行われています。</p>
 
@@ -2062,15 +2088,17 @@ puts " # All done! (#{ok}/#{fails})"
 <li><a href="http://fingaholic.github.com/posts/2012-07-25-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 6章 - jekylog">ステートフルJavaScript 6章 - jekylog</a></li>
 <li><a href="http://fingaholic.github.com/posts/2012-08-01-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 11章 その1 - jekylog">ステートフルJavaScript 11章 その1 - jekylog</a></li>
 <li><a href="http://fingaholic.github.com/posts/2012-08-07-stateful-javascript.html" rel="external nofollow" title="ステートフルJavaScript 11章 その2 - jekylog">ステートフルJavaScript 11章 その2 - jekylog</a></li>
-</ul>]]></content>
-  </entry>
+</ul>]]>
+    </description>
+    <pubDate>2012-09-23T22:05:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[Clean Coder プロフェッショナルプログラマへの道]]></title>
-    <link href="http://hamasyou.com/blog/2012/09/23/4048860690/"/>
-    <updated>2012-09-23T20:42:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2012/09/23/4048860690</id>
-    <content type="html"><![CDATA[<p>本書は、Clean Coder（プログラマのプロ）とはどんな人物で、どういうことに心がける必要があるのかを解説した本です。</p>
+  <item>
+    <title><![CDATA[Clean Coder プロフェッショナルプログラマへの道]]></title>
+    <link>http://hamasyou.com/blog/2012/09/23/4048860690/</link>
+    <guid>http://hamasyou.com/blog/2012/09/23/4048860690</guid>
+    <description>
+      <![CDATA[<p>本書は、Clean Coder（プログラマのプロ）とはどんな人物で、どういうことに心がける必要があるのかを解説した本です。</p>
 
 <p><strong class="text-danger">プロ</strong>とは、自分の行いに責任を持つ人物。責任とは、清く正しく働くということ。コミュニケーションをうまくとること。見積りを確実にすること。時間をかんりすること。リスクと見返りの見極めが困難な状況に立ち向かうこと。</p>
 
@@ -2169,31 +2197,40 @@ puts " # All done! (#{ok}/#{fails})"
 <h3>プレッシャー</h3>
 
 
-<p>プレッシャーから逃れるには、プレッシャーを生み出す状況から逃れること。ただし、最悪な逃げ方は<em>急いでやること</em>。この誘惑には何がなんでも抵抗しなければならない。</p>]]></content>
-  </entry>
+<p>プレッシャーから逃れるには、プレッシャーを生み出す状況から逃れること。ただし、最悪な逃げ方は<em>急いでやること</em>。この誘惑には何がなんでも抵抗しなければならない。</p>]]>
+    </description>
+    <pubDate>2012-09-23T20:42:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[Amazon Web Services クラウドデザインパターン 設計ガイド]]></title>
-    <link href="http://hamasyou.com/blog/2012/09/13/4822211967/"/>
-    <updated>2012-09-13T10:19:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2012/09/13/4822211967</id>
-    <content type="html"><![CDATA[<!-- more -->]]></content>
-  </entry>
+  <item>
+    <title><![CDATA[Amazon Web Services クラウドデザインパターン 設計ガイド]]></title>
+    <link>http://hamasyou.com/blog/2012/09/13/4822211967/</link>
+    <guid>http://hamasyou.com/blog/2012/09/13/4822211967</guid>
+    <description>
+      <![CDATA[<!-- more -->]]>
+    </description>
+    <pubDate>2012-09-13T10:19:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[実践プログラミングDSL ドメイン特化言語の設計と実装のノウハウ]]></title>
-    <link href="http://hamasyou.com/blog/2012/09/13/4798125393/"/>
-    <updated>2012-09-13T10:17:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2012/09/13/4798125393</id>
-    <content type="html"><![CDATA[<!-- more -->]]></content>
-  </entry>
+  <item>
+    <title><![CDATA[実践プログラミングDSL ドメイン特化言語の設計と実装のノウハウ]]></title>
+    <link>http://hamasyou.com/blog/2012/09/13/4798125393/</link>
+    <guid>http://hamasyou.com/blog/2012/09/13/4798125393</guid>
+    <description>
+      <![CDATA[<!-- more -->]]>
+    </description>
+    <pubDate>2012-09-13T10:17:00+09:00</pubDate>
+  </item>
   
-  <entry>
-    <title type="html"><![CDATA[NoSQLプログラミング実践活用技法]]></title>
-    <link href="http://hamasyou.com/blog/2012/09/13/4798126055/"/>
-    <updated>2012-09-13T10:10:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2012/09/13/4798126055</id>
-    <content type="html"><![CDATA[<!-- more -->]]></content>
-  </entry>
+  <item>
+    <title><![CDATA[NoSQLプログラミング実践活用技法]]></title>
+    <link>http://hamasyou.com/blog/2012/09/13/4798126055/</link>
+    <guid>http://hamasyou.com/blog/2012/09/13/4798126055</guid>
+    <description>
+      <![CDATA[<!-- more -->]]>
+    </description>
+    <pubDate>2012-09-13T10:10:00+09:00</pubDate>
+  </item>
   
-</feed>
+</channel>
+</rss>
