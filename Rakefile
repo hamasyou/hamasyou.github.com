@@ -1,6 +1,7 @@
 require "rubygems"
 require "bundler/setup"
 require "stringex"
+require 'sitemap_generator'
 
 ## -- Rsync Deploy config -- ##
 # Be sure your public key is listed in your server's ~/.ssh/authorized_keys file
@@ -241,7 +242,7 @@ task :deploy do
 end
 
 desc "Generate website and deploy"
-task :gen_deploy => [:integrate, :generate, :deploy] do
+task :gen_deploy => [:integrate, :generate, :deploy, :ping_sitemap] do
 end
 
 desc "copy dot files for deployment"
@@ -282,6 +283,15 @@ multitask :push do
     puts "\n## Github Pages deploy complete"
   end
 end
+
+
+desc "Generate sitemaps and ping search engines."
+task :ping_sitemap do
+  jekyll_config = IO.read('_config.yml')
+  yaml = YAML.load(jekyll_config)
+  SitemapGenerator::Sitemap.ping_search_engines("#{yaml['url']}/sitemap.xml")
+end
+
 
 desc "Update configurations to support publishing to root or sub directory"
 task :set_root_dir, :dir do |t, args|

@@ -19,6 +19,7 @@ group :development do
   gem 'nokogiri'
   gem 'puma'
   gem 'activesupport'
+  gem 'sitemap_generator'
 end
 
 gem 'sinatra', '~> 1.4.2'
