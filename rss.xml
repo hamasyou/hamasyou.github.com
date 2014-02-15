@@ -2,12 +2,69 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Sat, 15 Feb 2014 14:01:53 +0900</pubDate>
+  <pubDate>Sat, 15 Feb 2014 14:41:29 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
   <atom:link href="http://hamasyou.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+  
+  <item>
+    <title><![CDATA[Octopress の rel="canonical" の設定がおかしい件]]></title>
+    <link>http://hamasyou.com/blog/2014/02/15/octopress-canonical/</link>
+    <guid>http://hamasyou.com/blog/2014/02/15/octopress-canonical</guid>
+    <description>
+      <![CDATA[<p>Octopress の初期の <strong class="text-danger">rel=“canonical”</strong> の値がおかしいので直しました。</p>
+
+<!-- more -->
+
+
+<p>初期値では <code>_includes/head.html</code> の中に</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>_includes/head.html</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"{{ canonical }}"</span><span class="nt">&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>となっていますが、これだと吐き出される個別ページの HTML は</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>view-source</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;head&gt;</span>
+</span><span class="line">...
+</span><span class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"http://hamasyou.com/blog/2014/02/15/octopress-canonical"</span><span class="nt">&gt;</span>
+</span><span class="line">...
+</span><span class="line"><span class="nt">&lt;/head&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>のように、<code>href</code> の末尾が <code>/</code> で終わっていません。Octopress (Jekyll) は <code>title名</code> ディレクトリの下に index.html を生成するという形式になっているので、 <code>http://hamasyou.com/blog/2014/02/15/octopress-canonical/</code> が canonical として正しいはずです。</p>
+
+<p>なので、<code>canonical</code> は</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>_includes/head.html</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"{{ canonical }}/"</span><span class="nt">&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>のように、末尾に <code>/</code> を入れてやる必要があります。</p>
+
+<p><a href="https://developers.facebook.com/tools/debug" rel="external nofollow" title="Facebook URL Linter">Facebook URL Linter</a> を使ったときに警告が出たので気づきました。</p>]]>
+    </description>
+    <pubDate>Sat, 15 Feb 2014 14:21:58 +0900</pubDate>
+  </item>
   
   <item>
     <title><![CDATA[ビューティフルコード]]></title>
@@ -2378,16 +2435,6 @@ puts " # All done! (#{ok}/#{fails})"
       <![CDATA[<!-- more -->]]>
     </description>
     <pubDate>Thu, 13 Sep 2012 10:19:00 +0900</pubDate>
-  </item>
-  
-  <item>
-    <title><![CDATA[実践プログラミングDSL ドメイン特化言語の設計と実装のノウハウ]]></title>
-    <link>http://hamasyou.com/blog/2012/09/13/4798125393/</link>
-    <guid>http://hamasyou.com/blog/2012/09/13/4798125393</guid>
-    <description>
-      <![CDATA[<!-- more -->]]>
-    </description>
-    <pubDate>Thu, 13 Sep 2012 10:17:00 +0900</pubDate>
   </item>
   
 </channel>

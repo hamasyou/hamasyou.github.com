@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-15T14:01:53+09:00</updated>
+  <updated>2014-02-15T14:41:29+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,61 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress の rel="canonical" の設定がおかしい件]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/15/octopress-canonical/"/>
+    <updated>2014-02-15T14:21:58+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/15/octopress-canonical</id>
+    <content type="html"><![CDATA[<p>Octopress の初期の <strong class="text-danger">rel=“canonical”</strong> の値がおかしいので直しました。</p>
+
+<!-- more -->
+
+
+<p>初期値では <code>_includes/head.html</code> の中に</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>_includes/head.html</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"{{ canonical }}"</span><span class="nt">&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>となっていますが、これだと吐き出される個別ページの HTML は</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>view-source</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;head&gt;</span>
+</span><span class="line">...
+</span><span class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"http://hamasyou.com/blog/2014/02/15/octopress-canonical"</span><span class="nt">&gt;</span>
+</span><span class="line">...
+</span><span class="line"><span class="nt">&lt;/head&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>のように、<code>href</code> の末尾が <code>/</code> で終わっていません。Octopress (Jekyll) は <code>title名</code> ディレクトリの下に index.html を生成するという形式になっているので、 <code>http://hamasyou.com/blog/2014/02/15/octopress-canonical/</code> が canonical として正しいはずです。</p>
+
+<p>なので、<code>canonical</code> は</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>_includes/head.html</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"{{ canonical }}/"</span><span class="nt">&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>のように、末尾に <code>/</code> を入れてやる必要があります。</p>
+
+<p><a href="https://developers.facebook.com/tools/debug" rel="external nofollow" title="Facebook URL Linter">Facebook URL Linter</a> を使ったときに警告が出たので気づきました。</p>]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ビューティフルコード]]></title>
@@ -2343,14 +2398,6 @@ puts " # All done! (#{ok}/#{fails})"
     <link href="http://hamasyou.com/blog/2012/09/13/4822211967/"/>
     <updated>2012-09-13T10:19:00+09:00</updated>
     <id>http://hamasyou.com/blog/2012/09/13/4822211967</id>
-    <content type="html"><![CDATA[<!-- more -->]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[実践プログラミングDSL ドメイン特化言語の設計と実装のノウハウ]]></title>
-    <link href="http://hamasyou.com/blog/2012/09/13/4798125393/"/>
-    <updated>2012-09-13T10:17:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2012/09/13/4798125393</id>
     <content type="html"><![CDATA[<!-- more -->]]></content>
   </entry>
   

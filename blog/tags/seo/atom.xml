@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: SEO | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/seo/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-15T14:41:29+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress の rel="canonical" の設定がおかしい件]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/15/octopress-canonical/"/>
+    <updated>2014-02-15T14:21:58+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/15/octopress-canonical</id>
+    <content type="html"><![CDATA[<p>Octopress の初期の <strong>rel=&ldquo;canonical&rdquo;</strong> の値がおかしいので直しました。</p>
+
+<!-- more -->
+
+
+<p>初期値では <code>_includes/head.html</code> の中に</p>
+
+<p>
+<code>html _includes/head.html
+&lt;link rel="canonical" href="{{ canonical }}"&gt;
+</code>
+</p>
+
+<p>となっていますが、これだと吐き出される個別ページの HTML は</p>
+
+<pre><code class="html view-source">&lt;head&gt;
+...
+&lt;link rel="canonical" href="http://hamasyou.com/blog/2014/02/15/octopress-canonical"&gt;
+...
+&lt;/head&gt;
+</code></pre>
+
+<p>のように、<code>href</code> の末尾が <code>/</code> で終わっていません。Octopress (Jekyll) は <code>title名</code> ディレクトリの下に index.html を生成するという形式になっているので、 <code>http://hamasyou.com/blog/2014/02/15/octopress-canonical/</code> が canonical として正しいはずです。</p>
+
+<p>なので、<code>canonical</code> は</p>
+
+<p>
+<code>html _includes/head.html
+&lt;link rel="canonical" href="{{ canonical }}/"&gt;
+</code>
+</p>
+
+<p>のように、末尾に <code>/</code> を入れてやる必要があります。</p>
+
+<p><a href="https://developers.facebook.com/tools/debug">Facebook URL Linter</a> を使ったときに警告が出たので気づきました。</p>
+]]></content>
+  </entry>
+  
+</feed>

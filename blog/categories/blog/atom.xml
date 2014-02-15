@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Blog | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/blog/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-15T14:01:53+09:00</updated>
+  <updated>2014-02-15T14:41:29+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress の rel="canonical" の設定がおかしい件]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/15/octopress-canonical/"/>
+    <updated>2014-02-15T14:21:58+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/15/octopress-canonical</id>
+    <content type="html"><![CDATA[<p>Octopress の初期の <strong>rel=&ldquo;canonical&rdquo;</strong> の値がおかしいので直しました。</p>
+
+<!-- more -->
+
+
+<p>初期値では <code>_includes/head.html</code> の中に</p>
+
+<p>
+<code>html _includes/head.html
+&lt;link rel="canonical" href="{{ canonical }}"&gt;
+</code>
+</p>
+
+<p>となっていますが、これだと吐き出される個別ページの HTML は</p>
+
+<pre><code class="html view-source">&lt;head&gt;
+...
+&lt;link rel="canonical" href="http://hamasyou.com/blog/2014/02/15/octopress-canonical"&gt;
+...
+&lt;/head&gt;
+</code></pre>
+
+<p>のように、<code>href</code> の末尾が <code>/</code> で終わっていません。Octopress (Jekyll) は <code>title名</code> ディレクトリの下に index.html を生成するという形式になっているので、 <code>http://hamasyou.com/blog/2014/02/15/octopress-canonical/</code> が canonical として正しいはずです。</p>
+
+<p>なので、<code>canonical</code> は</p>
+
+<p>
+<code>html _includes/head.html
+&lt;link rel="canonical" href="{{ canonical }}/"&gt;
+</code>
+</p>
+
+<p>のように、末尾に <code>/</code> を入れてやる必要があります。</p>
+
+<p><a href="https://developers.facebook.com/tools/debug">Facebook URL Linter</a> を使ったときに警告が出たので気づきました。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress参考リンクまとめ]]></title>
@@ -559,91 +602,6 @@ puts &quot; # All done! (#{ok}/#{fails})&quot;
 <p>一周年、おめでとうございます！</p>
 
 <p>ちなみに、Qiita イベントの出席者は、Perl 界隈の人と Ruby 界隈の人が半々くらいな感じ。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sublime Text2 で Titanium Mobile のコード補完を効かせる方法]]></title>
-    <link href="http://hamasyou.com/blog/2013/01/29/sublime-text2-titanium-mobile/"/>
-    <updated>2013-01-29T13:23:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2013/01/29/sublime-text2-titanium-mobile</id>
-    <content type="html"><![CDATA[<p>Qiita にも書きました。 <a href="http://qiita.com/items/ef8c332710960e2730d6" rel="external nofollow">Qiita: http://qiita.com/items/ef8c332710960e2730d6</a></p>
-
-<h3>1. Package Manager で SublimeCodeIntel をインストールする</h3>
-
-
-<p>Sublime Text2 の PackageManager を使って SublimeCodeIntel をインストールします。</p>
-
-<p><i class="fa fa-search"></i> <a href="http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html" rel="external nofollow">http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html</a></p>
-
-<h3>2. jsca2.js を使って Titanium Mobile の API doc を JavaScript 化する。</h3>
-
-
-<p><i class="fa fa-search"></i> <a href="https://github.com/navinpeiris/jsca2js" rel="external nofollow">jsca2js: https://github.com/navinpeiris/jsca2js</a></p>
-
-<p>git clone で落としてきて</p>
-
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>./titanium-mobile.py 3.0.0</span></code></pre></td></tr></table></div></div>
-        </div></p>
-
-<p>のように、生成した API のバージョンを指定すればOK。</p>
-
-<h4>Titanium 3.0.0 のコードをインストールする場合の注意</h4>
-
-
-<p>titanium-mobile.py の中でバージョン毎に参照先の URL を変えるようにしていますが、3.0.0 の API Doc 参照先が間違っています。</p>
-
-<p>なので、URL を修正してあげる必要があります。titanium-mobile.py を開き 23行目辺りにある URL を次のように書き換えます。</p>
-
-<pre><code class="python titanium-mobile.py">if version.startswith('2.'):
-  url = 'http://docs.appcelerator.com/titanium/data/' + version + '/api.json'
-else:
-  #url = 'http://developer.appcelerator.com/apidoc/mobile/' + version + '/api.json'
-  url = 'http://docs.appcelerator.com/titanium/data/' + version + '/api.json'
-</code></pre>
-
-<h3>3. 生成された titanium-mobile-3.0.0.js を ~/.codeintel/extra にコピーする</h3>
-
-
-<p>SublimeCodeIntel をインストールすると ~/.codeintel というフォルダが作られているはずです。</p>
-
-<p>追加の補完用コードをまとめるために、extra フォルダを作ってそこに生成された titanium-mobile-3.0.0.js をコピーします。</p>
-
-<h3>4. SublimeCodeIntel に extra フォルダのパスを通す</h3>
-
-
-<p>~/.codeintel/config を開いて次のコードを追記します。</p>
-
-<pre class="code"><code>{
-  "JavaScript": {
-    "javascriptExtraPaths": ["~/.codeintel/extra"]
-  }
-}</code></pre>
-
-
-<p>これで、 SublimeCodeIntel が JavaScript ファイルで Titanium Mobile のコード補完を行うようになります。</p>
-
-<h3>5. (オプション) CoffeeScript でもコード補完を効かせる</h3>
-
-
-<p>SublimeCodeIntel が CoffeeScript のコード補完に対応していないので CoffeeScript のシンタックスを JavaScript に設定してやります。</p>
-
-<p>Sublime Text2 の > Preferences > Package Settings > SublimeCodeIntel > Settings - User を開いて次の設定を追加します。</p>
-
-<pre class="code"><code>{
-  "codeintel_syntax_map":
-  {
-    "CoffeeScript": "JavaScript"
-  }
-}</code></pre>
-
 ]]></content>
   </entry>
   
