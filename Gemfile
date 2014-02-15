@@ -20,6 +20,7 @@ group :development do
   gem 'puma'
   gem 'activesupport'
   gem 'sitemap_generator'
+  gem 'rest-client'
 end
 
 gem 'sinatra', '~> 1.4.2'
