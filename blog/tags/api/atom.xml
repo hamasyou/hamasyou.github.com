@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: API | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/api/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-15T19:42:01+09:00</updated>
+  <updated>2014-02-15T20:41:24+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,103 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ブラウザ操作で簡単にスクレイピングAPIが作れる「kimono」]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/15/kimono-api/"/>
+    <updated>2014-02-15T19:57:19+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/15/kimono-api</id>
+    <content type="html"><![CDATA[<p>「<strong>kimono</strong>」はウェブサイトをブラウザ操作で簡単にスクレイピングして API 化してくれるサービスです。</p>
+
+<p><a href="http://www.kimonolabs.com/">kimono - Turn websites into structured APIs from your browser in seconds</a></p>
+
+<p><img src="/images/2014-02-15-kimono-api-01.png" alt="kimono" /></p>
+
+<!-- more -->
+
+
+<p>スクレイピングしたいサイトの URL を入力すると抜き出す要素を選択する画面になります。</p>
+
+<p>最近ページングにも対応したので、ページングのあるサイトも簡単に取得できるようになります。</p>
+
+<p><img src="/images/2014-02-15-kimono-api-02.png" alt="要素の選択" /></p>
+
+<p><img src="/images/2014-02-15-kimono-api-03.png" alt="プレビュー画面" /></p>
+
+<p>スクレイピングの頻度もリアルタイムや何時間毎のような設定ができます。</p>
+
+<p>できた API は言語ごとに呼び出し例が用意されているので便利です。こういう所気が効いていますね。</p>
+
+<p><img src="/images/2014-02-15-kimono-api-04.png" alt="API 詳細" /></p>
+
+<p>実際に呼び出してみるとちゃんと結果が取得できます。</p>
+
+<pre><code class="ruby misc/kimono.rb">require 'rest_client'
+require 'json'
+require 'pp'
+
+response = RestClient.get 'http://www.kimonolabs.com/api/4b5q146s?apikey=81c2b7add1263b7e459f5ed58b5f6504'
+json = JSON.parse(response.to_str)
+pp json
+</code></pre>
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>gem install rest_client</span><span class='line command'>bundle exec ruby misc/kimono.rb</span><span class='line output'>{&ldquo;name&rdquo;=>&ldquo;archives&rdquo;,
+</span><span class='line output'> &ldquo;lastrunstatus&rdquo;=>&ldquo;success&rdquo;,
+</span><span class='line output'> &ldquo;lastsuccess&rdquo;=>&ldquo;Sat Feb 15 2014 11:27:17 GMT+0000 (UTC)&rdquo;,
+</span><span class='line output'> &ldquo;nextrun&rdquo;=>&ldquo;Sat Feb 15 2014 11:57:15 GMT+0000 (UTC)&rdquo;,
+</span><span class='line output'> &ldquo;frequency&rdquo;=>&ldquo;halfhourly&rdquo;,
+</span><span class='line output'> &ldquo;newdata&rdquo;=>false,
+</span><span class='line output'> &ldquo;results&rdquo;=>
+</span><span class='line output'>  {&ldquo;collection1&rdquo;=>
+</span><span class='line output'>    [{&ldquo;title&rdquo;=>
+</span><span class='line output'>       {&ldquo;text&rdquo;=>&ldquo;ガンダムUCのシナンジュが好き&rdquo;,
+</span><span class='line output'>        &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/2014/02/15/gundam-unicorn/&rdquo;},
+</span><span class='line output'>      &ldquo;category&rdquo;=>
+</span><span class='line output'>       {&ldquo;text&rdquo;=>&ldquo;Blog&rdquo;, &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/categories/blog/&rdquo;}},
+</span><span class='line output'>     {&ldquo;title&rdquo;=>
+</span><span class='line output'>       {&ldquo;text&rdquo;=>&ldquo;Octopress の rel=”canonical” の設定がおかしい件&rdquo;,
+</span><span class='line output'>        &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/2014/02/15/octopress-canonical/&rdquo;},
+</span><span class='line output'>      &ldquo;category&rdquo;=>
+</span><span class='line output'>       {&ldquo;text&rdquo;=>&ldquo;Blog&rdquo;, &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/categories/blog/&rdquo;}},
+</span><span class='line output'>     {&ldquo;title&rdquo;=>
+</span><span class='line output'>       {&ldquo;text&rdquo;=>&ldquo;ビューティフルコード&rdquo;,
+</span><span class='line output'>        &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/2014/02/14/4873113636/&rdquo;},
+</span><span class='line output'>&hellip;</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<p><a href="http://pipes.yahoo.com/pipes/">Yahoo Pipes</a> のような有名なサービスもありますが、簡単にウェブサイトをスクレイピングしたい用途であれば <em>kimono</em> はオススメのサービスです。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Facebook Platform API（Graph API、FQL）]]></title>
