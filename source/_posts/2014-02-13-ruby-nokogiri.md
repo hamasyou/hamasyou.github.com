@@ -18,6 +18,7 @@ og_image: ""
 Ruby の HTML パーサに **Nokogiri** があります。基本的な使い方は
 
 - [Nokogiri-GitHub](https://github.com/sparklemotion/nokogiri)
+- [Nokogiri を使った Rubyスクレイピング [初心者向けチュートリアル]](http://morizyun.github.io/blog/ruby-nokogiri-scraping-tutorial/)
 - [RubyのNokogiriでギコギコスクレイピングだ](http://www.absolute-keitarou.net/blog/?p=634)
 - [Nokogiriでスクレイピング](http://qiita.com/w650/items/e663fa2430145c456c4d)
 
