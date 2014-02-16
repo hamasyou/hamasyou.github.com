@@ -30,6 +30,7 @@ og_image: ""
 
 独自ドメインで運用するときにお世話になりました。
 
+- [あなたのgithub pagesを無料で高速化する方法](http://mojavy.com/blog/2014/02/13/faster-github-pages/)
 - [GitHub Pages に独自のトップレベルドメイン（TLD）を割り当てる](http://bekkou68.hatenablog.com/entry/2013/01/05/210902)
 
 404 Not Found ページの作り方。
