@@ -4,8 +4,8 @@ title: "ガンダムUCのシナンジュが好き"
 date: 2014-02-15 16:25:45 +0900
 comments: true
 categories: [Blog]
-keywords: "ガンダムUC,ガンダムユニコーン,シナンジュ,ガンプラ"
-tags: [ガンダムUC,シナンジュ,ガンプラ]
+keywords: "ガンダムUC,ガンダムユニコーン,シナンジュ,ガンプラ,ガンダム"
+tags: [ガンダム,シナンジュ,ガンプラ]
 sharing: true
 published: true
 amazon_url: ""
