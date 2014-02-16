@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: GitHub | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/github/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-16T22:21:22+09:00</updated>
+  <updated>2014-02-17T08:52:38+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -244,10 +244,11 @@ tags: [Movable Type,GitHub,Octopress,Liquid,Jekyll,Ruby]
 <pre><code class="plain source/CNAME">hamasyou.com
 </code></pre>
 
-<p>独自ドメインを取ったら、DNS の設定で A レコードを <code>192.30.252.153</code> と <code>192.30.252.154</code> に向けます。いろいろなサイトで <code>204.232.175.78</code> のアドレスを設定するように書かれていますが、変わったっぽい？ですね。不安なら、A レコード3つ登録すればいいと思います。</p>
+<p>独自ドメインを取ったら、DNS の設定で <code>ALIAS</code> レコード を <code>username.github.io</code> に向ければ CDN で配信が行われるそうです。ALIAS レコードに対応していない DNS プロバイダの場合は、IP アドレスをハードコードしないといけないので CDN の恩恵を受けられないよということだそうです。。</p>
 
-<pre><code>hamasyou.com A 204.232.175.78
-hamasyou.com A 192.30.252.153
+<p>うちはムームードメインなので、ALIAS レコードに対応していないので、A レコードをハードコードしました。。DNS プロバイダ引越そうかな。。</p>
+
+<pre><code>hamasyou.com A 192.30.252.153
 hamasyou.com A 192.30.252.154
 </code></pre>
 
