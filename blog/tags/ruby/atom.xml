@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: Ruby | それはBooks]]></title>
+  <title><![CDATA[Tag: ruby | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/ruby/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-16T19:54:32+09:00</updated>
+  <updated>2014-02-16T22:21:22+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -14,665 +14,117 @@
 
   
   <entry>
-    <title type="html"><![CDATA[RubyからMicrosoft Translator APIを呼び出す]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/14/microsoft-translator-api/"/>
-    <updated>2014-02-14T15:40:59+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/14/microsoft-translator-api</id>
-    <content type="html"><![CDATA[<p>Google の翻訳 API が有料化されたことで、無料で使える翻訳 API が実質 <strong>Microsoft Translator API</strong> 一択になってしまいました。</p>
-
-<p>実際に使ってみようと思ったときに、いろいろなサイトをぐるぐる回ったり、API の呼び出し方が変わっていたりしてとまどったので、手順のおさらいをしておきます。</p>
+    <title type="html"><![CDATA[open-uri-postを使うとrest-clientが変な動きするをする]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"/>
+    <updated>2014-02-16T21:45:53+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client</id>
+    <content type="html"><![CDATA[<p>ruby の <code>open-uri</code> を POST に対応させる <code>open-uri-post</code> というライブラリがありますが、これを使うと <code>rest-client</code> の gem が変な動きをするようです。</p>
 
 <!-- more -->
 
 
-<h2>Microsoft Translator API</h2>
-
-<p>Microsoft Translator API は Microsfot が提供する翻訳サービスで REST インターフェースを備えています。</p>
-
-<p>利用するには Microsoft Azure Marketplace で Microsoft Translator の利用登録が必要です。</p>
-
-<h3>Microsoft Translator 登録を行う</h3>
-
-<p>翻訳 API を使うには Azure Marketplace で利用登録が必要になります。</p>
-
-<p><a href="https://datamarket.azure.com/dataset/1899a118-d202-492c-aa16-ba21c33c06cb">Microsoft Azure Marketplace</a></p>
-
-<p>アカウントを持っていない人はアカウントを作成して、月額0円のプランを購入します。</p>
-
-<p><img src="/images/2014-02-14-microsoft-translator-api-01.png" alt="Microsoft Translator の購入" /></p>
-
-<h3>アプリケーション登録を行う</h3>
-
-<p>次に、Azure Marketplace でアプリケーションの登録を行います。</p>
-
-<p><a href="https://datamarket.azure.com/developer/applications">開発者 アプリケーション登録 - Microsoft Azure Marketplace</a></p>
-
-<p><img src="/images/2014-02-14-microsoft-translator-api-02.png" alt="アプリケーション登録" /></p>
-
-<p>翻訳 API だけを利用する場合には <em>リダイレクトURI</em> は利用しませんが、必須入力なので <code>http://localhost/</code> と入力しておきます。<code>https</code> で登録しろと怒られますが無視して登録できます。</p>
-
-<p>ここで登録した <em>クライアントID</em> 、<em>顧客の秘密</em> が API 呼び出しの時に使う <strong>client_id</strong> 、 <strong>client_secret</strong> になります。</p>
-
-<h3>Ruby から呼び出してみる</h3>
-
-<p>翻訳 API を呼び出すには、呼び出しの前に OAuth を通さなければなりません。OAuth を通すと得られる <em>access_token</em> を使って翻訳 API を呼び出します。</p>
-
-<p>OAuth を通すには POST リクエストが必要なので、サンプルでは Ruby の <code>open-uri</code> を post 対応したものを使っています。</p>
+<p><code>open-uri-post</code> を <code>require</code> すると <code>RestClient.post</code> が GET のリクエストになってうまくリクエストできなくなってしまいました。。</p>
 
 <p><a href="http://d.hatena.ne.jp/urekat/20070201/1170349097">[ruby]open-uriをPOST対応させる</a></p>
 
-<pre><code class="ruby">require 'cgi'
-require 'open-uri-post'
-require 'rexml/document'
-require 'json'
+<p><a href="https://github.com/rest-client/rest-client">rest-client/rest-client</a></p>
 
-CLIENT_ID       = '&lt;クライアントID&gt;'
-CLIENT_SECRET   = '&lt;顧客の秘密&gt;'
-AUTHORIZE_URL   = 'https://datamarket.accesscontrol.windows.net/v2/OAuth2-13'
-TRANSLATION_URL = 'http://api.microsofttranslator.com/V2/Http.svc/Translate'
-SCOPE           = 'http://api.microsofttranslator.com'
+<p>下のサンプルでは、そもそもリクエストが送れなかったりもします。。</p>
 
-def get_access_token
-  access_token = nil
-  open(AUTHORIZE_URL,
-       'postdata' =&gt; "grant_type=client_credentials&amp;client_id=#{CGI.escape(CLIENT_ID)}&amp;client_secret=#{CGI.escape(CLIENT_SECRET)}&amp;scope=#{CGI.escape(SCOPE)}") do |f|
-    json           = JSON.parse(f.read)
-    access_token   = json['access_token']
-  end
-  access_token
-end
+<h3>open-uri-post だけの場合</h3>
 
-
-def translate_text(text)
-  access_token = get_access_token
-  res = open("#{TRANSLATION_URL}?from=en&amp;to=ja&amp;text=#{URI.escape(text)}",
-             'Authorization' =&gt; "Bearer #{access_token}").read
-  xml = REXML::Document.new(res)
-  xml.root.text
-end
-
-puts translate_text('Hello World')
-# =&gt; "ハローワールド"
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Octopress参考リンクまとめ]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/14/octopress-summary/"/>
-    <updated>2014-02-14T12:18:53+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/14/octopress-summary</id>
-    <content type="html"><![CDATA[<p><strong>Octopress</strong> の設定や運用で参考にしたサイトのまとめです。</p>
-
-<!-- more -->
-
-
-<h3>インストール、初期設定</h3>
-
-<p>インストールや初期設定周りでお世話になったサイトです。</p>
-
-<ul>
-<li><a href="http://morizyun.github.io/blog/octopress-gitpage-minimum-install-guide/">OctopressでGitHub無料ブログ構築。sourceをBitbucket管理。簡単ガイド！</a></li>
-<li><a href="http://www.miukoba.net/blog/2013/01/05/start-octopress/">Octopressはじめました | mimemo</a></li>
-<li><a href="http://tantant.jp/blog/Octopress/installing-octopress/">Markdownで書いてGitで管理するブログ「Octopress」の始め方</a></li>
-<li><a href="http://rcmdnk.github.io/blog/tags/octopress/">Tag: Octopress - rcmdnk&rsquo;s blog</a></li>
-</ul>
-
-
-<p>独自ドメインで運用するときにお世話になりました。</p>
-
-<ul>
-<li><a href="http://bekkou68.hatenablog.com/entry/2013/01/05/210902">GitHub Pages に独自のトップレベルドメイン（TLD）を割り当てる</a></li>
-</ul>
-
-
-<p>404 Not Found ページの作り方。</p>
-
-<ul>
-<li><a href="http://rcmdnk.github.io/blog/2013/03/23/octopress/#not-found">404 not found - Octopress Tips</a></li>
-</ul>
-
-
-<h3>カテゴリリストとタグリストのプラグイン</h3>
-
-<ul>
-<li><a href="http://alotofwe.github.io/blog/2013/08/05/octopressdekategoririsutowotukuru/">Octopressでカテゴリリストをつくる</a></li>
-<li><a href="http://rcmdnk.github.io/blog/2013/04/12/blog-octopress/">Octopressでのタグの運用</a></li>
-</ul>
-
-
-<p>カテゴリリスト、タグリストの plugin ソースの中で URL を組み立てる部分があります。その部分下のように変更しておいたほうが無難です。</p>
-
-<p>カテゴリやタグなどに <code>/</code> が入るような単語（例えば O/Rマッピング）の場合に URL が一致しなくなってしまうので。</p>
-
-<pre><code class="ruby">- category_url = File.join(category_dir, category.gsub(/_|\P{Word}/, '­').gsub(/­{2,}/, '­').downcase)
-+ category_url = category_dir + category.to_url
+<pre><code class="ruby">require './open-uri-post.rb'
+open('http://localhost:9292', {'postdata' =&gt; 'name=hamasyou'}).read
 </code></pre>
 
-<h3>関連ページ、ソーシャル系のボタンを表示する</h3>
-
-<p>関連ページの表示やソーシャル系ボタン（いいね、シェア、はてブ等）を表示するための設定系サイトです。</p>
-
-<ul>
-<li><a href="http://blog.glidenote.com/blog/2012/01/04/octopress-related-posts/">OctopressでRelated Posts(関連エントリー)を表示させるようにした</a></li>
-<li><a href="http://www.mk-mode.com/octopress/2012/12/26/octopress-add-related-post/">Octopress - 関連記事の表示！</a></li>
-<li><a href="http://morizyun.github.io/blog/octopress-hatena-disqus-new-tab/">5分でできる簡単 Octopress セッティング</a></li>
-<li><a href="http://rcmdnk.github.io/blog/2013/11/26/blog-octopress/">シェアボタンを非同期読み込みでまとめて設定</a></li>
-</ul>
-
-
-<h3>Octopress で記事を書くときの高速化</h3>
-
-<p><code>isolate</code> コマンドを使うと単体記事になるので高速化できますよという内容。</p>
-
-<ul>
-<li><a href="http://gam0022.net/blog/2013/09/28/speed-up-octopress-site-generation/">Octopressのpreviewを高速化する</a></li>
-</ul>
-
-
-<h3>まとめのまとめ</h3>
-
-<ul>
-<li><a href="http://rcmdnk.github.io/blog/2014/02/02/blog-octopress/">Octorpessについてのここまでのまとめ</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby-Nokogiriで取り出した要素を置き換える]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/"/>
-    <updated>2014-02-13T16:19:09+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/13/ruby-nokogiri</id>
-    <content type="html"><![CDATA[<p>Ruby の HTML パーサに <strong>Nokogiri</strong> があります。基本的な使い方は</p>
-
-<ul>
-<li><a href="https://github.com/sparklemotion/nokogiri">Nokogiri-GitHub</a></li>
-<li><a href="http://morizyun.github.io/blog/ruby-nokogiri-scraping-tutorial/">Nokogiri を使った Rubyスクレイピング [初心者向けチュートリアル]</a></li>
-<li><a href="http://www.absolute-keitarou.net/blog/?p=634">RubyのNokogiriでギコギコスクレイピングだ</a></li>
-<li><a href="http://qiita.com/w650/items/e663fa2430145c456c4d">Nokogiriでスクレイピング</a></li>
-</ul>
-
-
-<p>とかを参考にしてもらえばいいんですが、パースした要素の特定の属性を置き換えたいとか追加で属性を追加したい時のメモです。</p>
-
-<!-- more -->
-
-
-<p>使い方は</p>
-
-<pre><code class="console">gem install 'nokogiri'
+<pre><code class="console">"CONTENT_LENGTH : 13"
+"CONTENT_TYPE : application/x-www-form-urlencoded"
+"GATEWAY_INTERFACE : CGI/1.1"
+"PATH_INFO : /"
+"QUERY_STRING : "
+"REMOTE_ADDR : 127.0.0.1"
+"REMOTE_HOST : localhost"
+"REQUEST_METHOD : POST"
+"REQUEST_URI : http://localhost:9292/"
+"SCRIPT_NAME : "
+"SERVER_NAME : localhost"
+"SERVER_PORT : 9292"
+"SERVER_PROTOCOL : HTTP/1.1"
+"SERVER_SOFTWARE : WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)"
+"HTTP_ACCEPT_ENCODING : gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+"HTTP_ACCEPT : */*"
+"HTTP_USER_AGENT : Ruby"
+"HTTP_HOST : localhost:9292"
+"rack.version : [1, 2]"
+"rack.input : #&lt;Rack::Lint::InputWrapper:0x000001029c65f0&gt;"
+"rack.errors : #&lt;Rack::Lint::ErrorWrapper:0x000001029c6578&gt;"
+"rack.multithread : true"
+"rack.multiprocess : false"
+"rack.run_once : false"
+"rack.url_scheme : http"
+"HTTP_VERSION : HTTP/1.1"
+"REQUEST_PATH : /"
+{"name"=&gt;"hamasyou"}
+127.0.0.1 - - [16/Feb/2014 22:02:26] "POST / HTTP/1.1" 200 - 0.0005
 </code></pre>
 
-<pre><code class="ruby">require 'nokogiri'
+<p><code>CONTENT_LENGTH: 13</code> になっていて、パラメータもきちんと送れています。</p>
 
-doc = Nokogiri::HTML(html_text)
+<h3>rest-client だけの場合</h3>
 
-# 外部リンクに rel="external nofollow" と title 属性を付ける
-doc.search('a[href^="http://"]', 'a[href^="https://"]').each do |link|
-  link['rel'] = "#{link['rel']} external nofollow".strip
-  link['title'] = link.text unless link.attr('title')
-end
-html_text = doc.css('body')[0].inner_html
+<pre><code class="ruby">require 'rest_client'
+RestClient.post('http://localhost:9292', name: 'hamasyou')
 </code></pre>
 
-<p>Nokogiri に渡す HTML 文字列は <code>&lt;html&gt;</code> から始まる必要はなく、部分的な HTML 文字列でも OK です。</p>
-
-<p>部分 HTML を置き換えた場合は、取り出しは <code>doc.css('body')[0].inner_html</code> になります。<code>doc.to_html</code> だと <code>&lt;!DOCTYPE html&gt;&lt;html&gt;</code> から始まる文字列になってしまうので注意。</p>
-
-<h3>文字コードを指定する</h3>
-
-<p>Nokogiri は日本語に対応していますが、デフォルトで <em>UTF-8</em> の文字エンコーディングになっているようです。なので Shift_JIS や EUC-JP の HTML を与えるとうまくパースできません。</p>
-
-<p>そんな時は、次のようなコードで UTF-8 に変換してやれば OK です。</p>
-
-<pre><code class="ruby">doc = Nokogiri::HTML(html_text, nil, 'utf-8')
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Movable TypeからGitHub+Octopressに乗り換える手順]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress/"/>
-    <updated>2014-02-13T10:53:07+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress</id>
-    <content type="html"><![CDATA[<p>今まではブログを <em>ロリポップ</em> + <em>Movable Type</em> でやっていましたが、ブログデザインを変更したくなり、ついでにブログ環境も変更しました。</p>
-
-<p>Movable Type から <em>WordPress</em> に乗り換えても良かったんですが、エンジニアっぽいブログ環境ってなんだろうと考えた末、<strong>GitHub Pages</strong> と <strong>Octopress</strong> を使ってブログ環境を作ることにしました。</p>
-
-<p><a href="http://octopress.org/">Octopress</a> は <a href="http://jekyllrb.com/">Jekyll</a> を使ってブログ環境を作るためのフレームワークで、Jekyll はブログのような静的サイトを作るための Ruby のファイルジェネレータになります。</p>
-
-<p><a href="http://pages.github.com/">GitHub Pages</a> と組み合わせると無料でブログを始めることができます。</p>
-
-<p>移行でおこなったことの手順です。</p>
-
-<!-- more -->
-
-
-<h2>手順</h2>
-
-<ol>
-<li>公開用のサーバ設定
-
-<ol>
-<li>GitHub にリポジトリを作成する</li>
-<li>Octopress をチェックアウトする</li>
-<li>deploy する</li>
-</ol>
-</li>
-<li>ローカルのブログ環境の設定
-
-<ol>
-<li>ブログの初期設定をおこなう</li>
-<li>テーマを変更する</li>
-<li>最初の記事を書いてみる</li>
-</ol>
-</li>
-<li>環境をバックアップする
-
-<ol>
-<li>BitBucket にリポジトリを作成する</li>
-<li>BitBucket にソースをプッシュする</li>
-</ol>
-</li>
-<li>プラグインをつかう
-
-<ol>
-<li>記事にタグをつける</li>
-</ol>
-</li>
-</ol>
-
-
-<h2>公開用のサーバ設定</h2>
-
-<h3>GitHub にリポジトリを作成する</h3>
-
-<p>まず最初に GitHub にサイト公開用のリポジトリを作成します。</p>
-
-<p><a href="https://github.com/">GitHub</a> にログインして、リポジトリを作成します。リポジトリ名は <strong>username.github.io</strong> とします。<code>username</code> の部分を自分のアカウント名に読みかえてください。僕の場合は hamasyou.github.io になります。</p>
-
-<p>このリポジトリが公開用のサイトになり、<a href="http://username.github.io/">http://username.github.io/</a> が URL になります。</p>
-
-<p><img src="/images/2014-02-13-movable-type-to-octopress-01.png" alt="リポジトリ作成" /></p>
-
-<h3>Octopress をチェックアウトする</h3>
-
-<p>つぎに、ブログ環境を作成するために <a href="http://pages.github.com/">Octopress</a> を github からチェックアウトします。<code>username</code> のところは自分のアカウント名です。</p>
-
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>git clone git@github.com:imathis/octopress.git username.github.io</span><span class='line output'>Cloning into &lsquo;username.github.io&rsquo;&hellip;
-</span><span class='line output'>remote: Reusing existing pack: 10340, done.
-</span><span class='line output'>remote: Counting objects: 20, done.
-</span><span class='line output'>remote: Compressing objects: 100% (20/20), done.
-</span><span class='line output'>remote: Total 10360 (delta 4), reused 3 (delta 0)
-</span><span class='line output'>Receiving objects: 100% (10360/10360), 2.73 MiB | 785.00 KiB/s, done.
-</span><span class='line output'>Resolving deltas: 100% (4949/4949), done.
-</span><span class='line output'>Checking connectivity&hellip; done.</p>
-</span><span class='line output'>
-</span><span class='line output'><p>$ cd username.github.io</span></code></pre></td></tr></table></div></div>
-        </div></p>
-
-<h3>deploy する</h3>
-
-<p>Octopress の初期設定を行い、deploy を行います。この時点でデプロイしたくない場合は最後のコマンド <code>bundle exec rake gen_deploy</code> を実行しないようにします。</p>
-
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
-<span class='line-number'>$</span>
-<span class='line-number'>$</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>bundle install &ndash;path vendor/bundle</span><span class='line command'>bundle exec rake install</span><span class='line command'>bundle exec rake setup_github_pages</span><span class='line output'>Enter the read/write url for your repository
-</span><span class='line output'>(For example, &lsquo;git@github.com:your_username/your_username.github.io.git)
-</span><span class='line output'>           or 'https://github.com/your_username/your_username.github.io&rsquo;)
-</span><span class='line output'>Repository url: <kbd>git@github.com:username/username.github.io.git<kbd>
-</span><span class='line command'>bundle exec rake gen_deploy</span></code></pre></td></tr></table></div></div>
-        </div></p>
-
-<h2>ブログの初期設定を行う</h2>
-
-<p>Octopress のブログ設定値は <code>_config.yml</code> というファイルになります。<a href="http://octopress.org/docs/configuring/">Configuring Octopress</a> を参考に変更します。</p>
-
-<h3>テーマを変更する</h3>
-
-<p>デフォルトテーマでも十分カッコいいですが、テーマ変更もできます。Octopress のテーマは <a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a> にまとまっているので、よさそうなテーマを選んでインストールします。</p>
-
-<p>テーマのインストールは、<code>.themes</code> ディレクトリにテーマのリポジトリをチェックアウトして <code>bundle exec rake install['theme-name']</code> でおこないます。</p>
-
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
-<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>git clone git@github.com:kAworu/octostrap3.git .themes/octostrap3</span><span class='line command'>bundle exec rake install[&lsquo;octostrap3&rsquo;]</span></code></pre></td></tr></table></div></div>
-        </div></p>
-
-<p><a href="http://opthemes.com/"><img src="/images/2014-02-13-movable-type-to-octopress-02.png" alt="Octopress-Themes" /></a></p>
-
-<h3>あたらしい記事を作成する</h3>
-
-<p>新しい記事を書くには <code>bundle exec rake new_post['title']</code> とします。<code>title</code> 部分が記事のファイル名に使われるので、この時点では英語で入力するほうがよいです。</p>
-
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>bundle exec rake new_post[&lsquo;movable-type-to-octopress&rsquo;]</span><span class='line output'>mkdir -p source/<em>posts
-</span><span class='line output'>Creating new post: source/</em>posts/2014-02-13-movable-type-to-octopress.markdown</span></code></pre></td></tr></table></div></div>
-        </div></p>
-
-<pre><code>---
-layout: post
-title: "movable-type-to-octopress"
-date: 2014-02-13 13:18:04 +0900
-comments: true
-categories:
----
+<pre><code class="console">"CONTENT_LENGTH : 13"
+"CONTENT_TYPE : application/x-www-form-urlencoded"
+"GATEWAY_INTERFACE : CGI/1.1"
+"PATH_INFO : /"
+"QUERY_STRING : "
+"REMOTE_ADDR : 127.0.0.1"
+"REMOTE_HOST : localhost"
+"REQUEST_METHOD : POST"
+"REQUEST_URI : http://localhost:9292/"
+"SCRIPT_NAME : "
+"SERVER_NAME : localhost"
+"SERVER_PORT : 9292"
+"SERVER_PROTOCOL : HTTP/1.1"
+"SERVER_SOFTWARE : WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)"
+"HTTP_ACCEPT : */*; q=0.5, application/xml"
+"HTTP_ACCEPT_ENCODING : gzip, deflate"
+"HTTP_USER_AGENT : Ruby"
+"HTTP_HOST : localhost:9292"
+"rack.version : [1, 2]"
+"rack.input : #&lt;Rack::Lint::InputWrapper:0x0000010299d380&gt;"
+"rack.errors : #&lt;Rack::Lint::ErrorWrapper:0x0000010299d290&gt;"
+"rack.multithread : true"
+"rack.multiprocess : false"
+"rack.run_once : false"
+"rack.url_scheme : http"
+"HTTP_VERSION : HTTP/1.1"
+"REQUEST_PATH : /"
+{"name"=&gt;"hamasyou"}
+127.0.0.1 - - [16/Feb/2014 22:03:29] "POST / HTTP/1.1" 200 - 0.0005
 </code></pre>
 
-<p>記事のタイトルに日本語を使いたいときはファイル中の <code>title</code> 部分を書き換えます。また、カテゴリやタグ、ページのキーワードなどもここで変更できます。</p>
+<p>こっちも、きちんとリクエストできています。</p>
 
-<pre><code>---
-layout: post
-title: "Movable TypeからGitHub+Octopressに乗り換える手順"
-date: 2014-02-13 13:18:04 +0900
-comments: true
-categories: [Blog]
-keywords: "Movable Type,GitHub,Octopress,Blog,Liquid,Jekyll,Ruby"
-tags: [Movable Type,GitHub,Octopress,Liquid,Jekyll,Ruby]
----
+<h3>open-uri-post と rest-client を同時に使うと</h3>
+
+<pre><code class="ruby">require './open-uri-post.rb'
+require 'rest_client'
+
+# open('http://localhost:9292', {'postdata' =&gt; 'name=hamasyou'}).read
+RestClient.post('http://localhost:9292', name: 'hamasyou')
+RestClient.get('http://localhost:9292', params: {name: 'hamasyou'})
 </code></pre>
 
-<h2>BitBucket にソースをコミットする</h2>
+<p><code>open-uri-post</code> の方の <code>open</code> メソッドはうまく動きますが、RestClient が動かなくなります。</p>
 
-<p>GitHub もリポジトリサービスですが、現在は Public なリポジトリしか無料で作ることができません。そこで、<strong>BitBucket</strong> という別のリポジトリサービスを利用して環境をまるごとバックアップします。</p>
-
-<p><a href="https://bitbucket.org/"><img src="http://upload.wikimedia.org/wikipedia/en/f/fc/Bitbucket_Logo.png" alt="BitBucket" /></a></p>
-
-<p>BitBucket は Private なリポジトリが作成できるので、ブログ環境は BitBucket で管理して、サイトデータだけを GitHub にデプロイするようにします。</p>
-
-<h3>リポジトリを作成する</h3>
-
-<p>BitBucket にリポジトリを作成する方法は、GitHub とほとんど変わりません。こちらもリポジトリ名を <code>username.github.io</code> にしておきます。</p>
-
-<p><img src="/images/2014-02-13-movable-type-to-octopress-03.png" alt="BitBucket リポジトリ作成" /></p>
-
-<p>リポジトリを作成したら、ソースコードをプッシュします。</p>
-
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
-<span class='line-number'>$</span>
-<span class='line-number'>$</span>
-<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>git remote add bitbucket git@bitbucket.org:username/username.github.io.git</span><span class='line command'>git add .</span><span class='line command'>git commit -m &lsquo;init&rsquo;</span><span class='line command'>git push bitbucket source</span></code></pre></td></tr></table></div></div>
-        </div></p>
-
-<h2>その他</h2>
-
-<h3>記事にタグをつけられるようにする</h3>
-
-<p>Octopress にはいろいろなプラグインがあります。自作することも簡単にできます。デフォルトではタグというものが Octopress にはありませんが、カテゴリ機能を参考にすると簡単にタグを管理できるようになります。</p>
-
-<p><a href="http://rcmdnk.github.io/blog/2013/04/12/blog-octopress/">Octopressでのタグ管理</a></p>
-
-<h3>独自ドメインで運用する</h3>
-
-<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages</a> の手順でできます。</p>
-
-<p>要約すると、<code>CNAME</code> というファイルを作成して、メインのサイトドメインを登録する。</p>
-
-<pre><code class="plain source/CNAME">hamasyou.com
+<pre><code class="console">/vendor/bundle/ruby/2.1.0/gems/rest-client-1.6.7/lib/restclient/abstract_response.rb:48:in `return!': 408 Request Timeout (RestClient::RequestTimeout)
 </code></pre>
 
-<p>独自ドメインを取ったら、DNS の設定で A レコードを <code>192.30.252.153</code> と <code>192.30.252.154</code> に向けます。いろいろなサイトで <code>204.232.175.78</code> のアドレスを設定するように書かれていますが、変わったっぽい？ですね。不安なら、A レコード3つ登録すればいいと思います。</p>
-
-<pre><code>hamasyou.com A 204.232.175.78
-hamasyou.com A 192.30.252.153
-hamasyou.com A 192.30.252.154
-</code></pre>
-
-<p>これで、時間がたてば独自ドメイン名で GitHub のページが表示されるようになります。</p>
-
-<h3>Markdown で <code>Definition LIST</code> を使えるようにする</h3>
-
-<p>Octopress の使っている Markdown パーサの rdiscount のバージョンを上げます。2.1.7 からデフォルトで <em>Definition LIST（dl, dt, dd）</em> の拡張記法が使えるようになっているのでアップデート推奨です。</p>
-
-<p><code>Gemfile</code> を開いて <code>gem 'rdiscount', '~&gt; 2.0.7'</code> を <code>gem 'rdiscount'</code> に書き換えます。</p>
-
-<pre><code>- gem 'rdiscount', '~&gt; 2.0.7'
-+ gem 'rdiscount
-</code></pre>
-
-<p>bundle update します。</p>
-
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>bundle update rdiscount</span></code></pre></td></tr></table></div></div>
-        </div></p>
-
-<p>これで Markdown で Definition LIST がデフォルトで使えるようになります。</p>
-
-<pre><code>これがキーワード
-: キーワードの説明
-
-&lt;dl&gt;
-  &lt;dt&gt;これがキーワード&lt;/dt&gt;
-  &lt;dd&gt;キーワードの説明&lt;/dd&gt;
-&lt;/dl&gt;
-</code></pre>
-
-<h3>Movable Type の記事を Markdown に変換する</h3>
-
-<p>Movable Type の記事エクスポートを Markdown 形式に変換するコードを見つけたので、移行にはこれを使いました。ちょっと手はいれましたが。</p>
-
-<p><div><script src='https://gist.github.com/2351046.js?file=mt_to_markdown.rb'></script>
-<noscript><pre><code>#!/usr/bin/env ruby
-
-require &#39;date&#39;
-require &#39;mustache&#39;
-require &#39;stringex&#39;
-require &#39;cgi&#39;
-
-export     = File.open(ARGV[0])
-target_dir = ARGV[1]
-
-class Post &lt; Mustache
-  self.template = &lt;&lt;-MARKDOWN
----
-layout: post
-title: &quot;{{title}}&quot;
-date: {{formatted_date}}
-comments: {{comments}}
-categories: {{category}}
-author: {{author}}
----
-
-{{formatted_body}}
-MARKDOWN
-
-  attr_accessor :author, :title, :category, :comments, :status, :body
-
-  def initialize
-    @body = []
-  end
-
-  def date=(date)
-    case date
-    when String
-      @date = DateTime.strptime(date, &quot;%m/%d/%Y %I:%M:%S %p&quot;)
-    else
-      @date = date
-    end
-  end
-
-  def date
-    @date
-  end
-
-  def formatted_date
-    @date.strftime(&quot;%Y-%m-%d %H:%M&quot;)
-  end
-
-  def comments=(comments)
-    @comments = comments == &quot;1&quot; ? true : false
-  end
-
-  def formatted_body
-    CGI.unescapeHTML(body.join).
-      gsub(/&lt;a href=&quot;(.*?)&quot;&gt;*(.*?)&lt;\/a&gt;/i, &#39;[\2](\1)&#39;).
-      gsub(&quot;&lt;!--more--&gt;&quot;, &quot;\n\n&lt;!-- more --&gt;\n\n&quot;)
-  end
-
-  def file_name
-    &quot;#{date.strftime(&quot;%Y-%m-%d&quot;)}-#{title.to_url}.markdown&quot;
-  end
-end
-
-posts = [Post.new]
-
-KEYWORDS = /(AUTHOR|TITLE|STATUS|COMMENTS|CATEGORY|DATE): (.*)/
-
-def attr_and_value(line)
-  line =~ KEYWORDS
-  [&quot;#{$1.downcase}=&quot;, $2]
-end
-
-puts &quot; # Reading from data &#39;#{ARGV[0]}&#39; ...&quot;
-
-puts &quot; # Generating Markdown ...&quot;
-
-comment_section = false
-
-export.each do |line|
-  if line.strip == &quot;--------&quot;
-    posts &lt;&lt; Post.new
-    print &#39;.&#39;
-    comment_section = false
-    next
-  end
-
-  next if comment_section
-
-  case line.strip
-  when KEYWORDS
-    posts.last.send(*attr_and_value(line))
-  when /BODY/
-    next
-  when &quot;-----&quot;
-    next
-  when /COMMENT:/
-    comment_section = true
-    next
-  else
-    posts.last.body &lt;&lt; line
-  end
-end
-
-puts
-puts &quot; # Writing files to #{target_dir} ...&quot;
-`mkdir -p #{target_dir}`
-`cd #{target_dir} &amp;&amp; rm -rf _posts &amp;&amp; mkdir _posts`
-
-ok, fails = 0, 0
-
-posts.each do |post|
-  begin
-    File.open(File.join(target_dir, &quot;_posts&quot;, post.file_name), &quot;w+&quot;) { |f| f.puts post.render }
-    puts &quot; -&gt; #{post.file_name}&quot;
-    ok += 1
-  rescue
-    puts &quot; # Could not write file for &#39;#{post.title}&#39;&quot;
-    fails += 1
-  end
-end
-
-puts
-puts &quot; # All done! (#{ok}/#{fails})&quot;
-</code></pre></noscript></div>
-</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応]]></title>
-    <link href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"/>
-    <updated>2011-06-14T11:29:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis</id>
-    <content type="html"><![CDATA[<p>jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。</p>
-
-<p><section></p>
-
-<h4>環境</h4>
-
-
-
-
-<dl><dt>Rails</dt><dd>3.0.7</dd><dt>jpmobile</dt><dd>0.1.6</dd><dt>kaminari</dt><dd>0.12.4</dd></dl>
-
-
-<p></section></p>
-
-<!-- more -->
-
-
-<p>jpmobile の mobile_filter を通して kaminari でページングを行うときに、invalid byte sequence in Shift_JIS エラーが出る場合があります。</p>
-
-<p>これは、kaminari で生成するページングリンク内に、UTF-8 の文字エンコーディングの日本語文字が入っているのが原因です。</p>
-
-<p>kaminari がページリンクを作成するときに、日本語文字をパーセントエンコード（URLエンコード）していて、jpmobile の mobile_filter がエンコードされている文字を UTF-8 だと認識出来ずに表示してしまうのが原因になっています。</p>
-
-<p>この組み合わせで kaminari のページリンク内に日本語パラメータがはいってしまうのは、おそらくフォームのサブミットボタンの value が原因だと思います。</p>
-
-<p>ほとんどの場合、サブミットボタンの value は必要ないと思うので、submit_tag の :name オプションに nil を設定してサブミットボタンの value を送らないようにするといいかと思います。</p>
-
-<pre><code class="html+erb">&lt;%= form_tag user_path do %&gt;
-  &lt;%= select_tag "category", options_from_collection_for_select(Category.all, :id, :label, params[:category]) %&gt;
-  &lt;%= submit_tag "表示", :name =&gt; nil %&gt;
-&lt;% end %&gt;
-</code></pre>
+<p>RequestTimeout が出てしまいました。。ちなみに、<code>GET</code> リクエストの方はうまく動きます。<code>open-uri-post</code> と <code>rest-client</code> は一緒に使わないほうがいいですね。</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: gem | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/gem/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-16T19:54:32+09:00</updated>
+  <updated>2014-02-16T22:21:22+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,121 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[open-uri-postを使うとrest-clientが変な動きするをする]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"/>
+    <updated>2014-02-16T21:45:53+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client</id>
+    <content type="html"><![CDATA[<p>ruby の <code>open-uri</code> を POST に対応させる <code>open-uri-post</code> というライブラリがありますが、これを使うと <code>rest-client</code> の gem が変な動きをするようです。</p>
+
+<!-- more -->
+
+
+<p><code>open-uri-post</code> を <code>require</code> すると <code>RestClient.post</code> が GET のリクエストになってうまくリクエストできなくなってしまいました。。</p>
+
+<p><a href="http://d.hatena.ne.jp/urekat/20070201/1170349097">[ruby]open-uriをPOST対応させる</a></p>
+
+<p><a href="https://github.com/rest-client/rest-client">rest-client/rest-client</a></p>
+
+<p>下のサンプルでは、そもそもリクエストが送れなかったりもします。。</p>
+
+<h3>open-uri-post だけの場合</h3>
+
+<pre><code class="ruby">require './open-uri-post.rb'
+open('http://localhost:9292', {'postdata' =&gt; 'name=hamasyou'}).read
+</code></pre>
+
+<pre><code class="console">"CONTENT_LENGTH : 13"
+"CONTENT_TYPE : application/x-www-form-urlencoded"
+"GATEWAY_INTERFACE : CGI/1.1"
+"PATH_INFO : /"
+"QUERY_STRING : "
+"REMOTE_ADDR : 127.0.0.1"
+"REMOTE_HOST : localhost"
+"REQUEST_METHOD : POST"
+"REQUEST_URI : http://localhost:9292/"
+"SCRIPT_NAME : "
+"SERVER_NAME : localhost"
+"SERVER_PORT : 9292"
+"SERVER_PROTOCOL : HTTP/1.1"
+"SERVER_SOFTWARE : WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)"
+"HTTP_ACCEPT_ENCODING : gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+"HTTP_ACCEPT : */*"
+"HTTP_USER_AGENT : Ruby"
+"HTTP_HOST : localhost:9292"
+"rack.version : [1, 2]"
+"rack.input : #&lt;Rack::Lint::InputWrapper:0x000001029c65f0&gt;"
+"rack.errors : #&lt;Rack::Lint::ErrorWrapper:0x000001029c6578&gt;"
+"rack.multithread : true"
+"rack.multiprocess : false"
+"rack.run_once : false"
+"rack.url_scheme : http"
+"HTTP_VERSION : HTTP/1.1"
+"REQUEST_PATH : /"
+{"name"=&gt;"hamasyou"}
+127.0.0.1 - - [16/Feb/2014 22:02:26] "POST / HTTP/1.1" 200 - 0.0005
+</code></pre>
+
+<p><code>CONTENT_LENGTH: 13</code> になっていて、パラメータもきちんと送れています。</p>
+
+<h3>rest-client だけの場合</h3>
+
+<pre><code class="ruby">require 'rest_client'
+RestClient.post('http://localhost:9292', name: 'hamasyou')
+</code></pre>
+
+<pre><code class="console">"CONTENT_LENGTH : 13"
+"CONTENT_TYPE : application/x-www-form-urlencoded"
+"GATEWAY_INTERFACE : CGI/1.1"
+"PATH_INFO : /"
+"QUERY_STRING : "
+"REMOTE_ADDR : 127.0.0.1"
+"REMOTE_HOST : localhost"
+"REQUEST_METHOD : POST"
+"REQUEST_URI : http://localhost:9292/"
+"SCRIPT_NAME : "
+"SERVER_NAME : localhost"
+"SERVER_PORT : 9292"
+"SERVER_PROTOCOL : HTTP/1.1"
+"SERVER_SOFTWARE : WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)"
+"HTTP_ACCEPT : */*; q=0.5, application/xml"
+"HTTP_ACCEPT_ENCODING : gzip, deflate"
+"HTTP_USER_AGENT : Ruby"
+"HTTP_HOST : localhost:9292"
+"rack.version : [1, 2]"
+"rack.input : #&lt;Rack::Lint::InputWrapper:0x0000010299d380&gt;"
+"rack.errors : #&lt;Rack::Lint::ErrorWrapper:0x0000010299d290&gt;"
+"rack.multithread : true"
+"rack.multiprocess : false"
+"rack.run_once : false"
+"rack.url_scheme : http"
+"HTTP_VERSION : HTTP/1.1"
+"REQUEST_PATH : /"
+{"name"=&gt;"hamasyou"}
+127.0.0.1 - - [16/Feb/2014 22:03:29] "POST / HTTP/1.1" 200 - 0.0005
+</code></pre>
+
+<p>こっちも、きちんとリクエストできています。</p>
+
+<h3>open-uri-post と rest-client を同時に使うと</h3>
+
+<pre><code class="ruby">require './open-uri-post.rb'
+require 'rest_client'
+
+# open('http://localhost:9292', {'postdata' =&gt; 'name=hamasyou'}).read
+RestClient.post('http://localhost:9292', name: 'hamasyou')
+RestClient.get('http://localhost:9292', params: {name: 'hamasyou'})
+</code></pre>
+
+<p><code>open-uri-post</code> の方の <code>open</code> メソッドはうまく動きますが、RestClient が動かなくなります。</p>
+
+<pre><code class="console">/vendor/bundle/ruby/2.1.0/gems/rest-client-1.6.7/lib/restclient/abstract_response.rb:48:in `return!': 408 Request Timeout (RestClient::RequestTimeout)
+</code></pre>
+
+<p>RequestTimeout が出てしまいました。。ちなみに、<code>GET</code> リクエストの方はうまく動きます。<code>open-uri-post</code> と <code>rest-client</code> は一緒に使わないほうがいいですね。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby-Nokogiriで取り出した要素を置き換える]]></title>
