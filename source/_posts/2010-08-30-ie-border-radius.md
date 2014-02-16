@@ -91,6 +91,7 @@ $(<span class="str">&quot;.hoge&quot;</span>).corner(<span class="str">&quot;5px
 
 <h4>テスト要素</h4>
 
+<script src="http://malsup.github.io/jquery.corner.js"></script>
 <script type="text/javascript">
 jQuery(function($) {
   var $wrapper = $("<div/>");
