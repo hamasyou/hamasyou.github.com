@@ -50,7 +50,7 @@ pp json
 ```
 
 {% terminal %}
-$ gem install rest_client
+$ gem install rest-client
 $ bundle exec ruby misc/kimono.rb
 {"name"=>"archives",
  "lastrunstatus"=>"success",
