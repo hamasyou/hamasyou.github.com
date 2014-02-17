@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-17T11:49:18+09:00</updated>
+  <updated>2014-02-17T15:20:13+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,294 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RailsでつくるRESTful APIのrequest specを書く]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"/>
+    <updated>2014-02-17T14:09:38+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/17/rails-request-rspec</id>
+    <content type="html"><![CDATA[<p>Rails 環境で RESTful API を提供する場面があると思います。API もコントローラで提供するので、コントローラのテストで記述してもいいのですが、RESTful API であれば、<strong class="text-danger">request spec</strong> を使うほうがよさそうなので request spec を書くメモです。</p>
+
+<ul>
+<li>Rails 4.0.2</li>
+<li>rspec 2.14.1</li>
+</ul>
+<!-- more --><h2>テスト用のプロジェクトを整える</h2>
+
+<p>まずは、チュートリアル用のプロジェクトを作成します。</p>
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">rails new specbox --skip-bundle</span><span class="line command">cd specbox</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+<p><code>Gemfile</code> を開いて次の gem を追記します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="n">group</span> <span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span> <span class="k">do</span>
+</span><span class="line">  <span class="n">gem</span> <span class="s1">'rspec-rails'</span>
+</span><span class="line">  <span class="n">gem</span> <span class="s1">'guard-rspec'</span>
+</span><span class="line">  <span class="n">gem</span> <span class="s1">'factory_girl_rails'</span>
+</span><span class="line">  <span class="n">gem</span> <span class="s1">'spring'</span>
+</span><span class="line">  <span class="n">gem</span> <span class="s1">'spring-commands-rspec'</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>rspec と scaffold の設定を行います。</p>
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">$</span>
+<span class="line-number">$</span>
+<span class="line-number">$</span>
+<span class="line-number">$</span>
+<span class="line-number">$</span>
+<span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">bundle install --path vendor/bundle</span><span class="line command">bundle exec rails g rspec:install</span><span class="line command">bundle exec guard init rspec</span><span class="line command">bundle exec rails g model Book title:string author:string price:integer</span><span class="line command">bundle exec rails g scaffold_controller Books</span><span class="line command">bundle exec rake db:migrate</span><span class="line command">bundle exec rake db:test:prepare</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+<p><code>config/routes.rb</code> にルーティングを追加します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>config/routes.rb</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="ss">Specbox</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line">  <span class="n">resources</span> <span class="ss">:books</span>
+</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>テストを実行します。</p>
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span></pre></td>
+<td class="code"><pre><code><span class="line command">bundle exec guard</span><span class="line output">15:12:01 - INFO - Run all
+</span><span class="line output">15:12:01 - INFO - Running all specs
+</span><span class="line output">..**..........................
+</span><span class="line output">
+</span><span class="line output">Pending:
+</span><span class="line output">  Book add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/models/book_spec.rb
+</span><span class="line output">    # No reason given
+</span><span class="line output">    # ./spec/models/book_spec.rb:4
+</span><span class="line output">  BooksHelper add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/helpers/books_helper_spec.rb
+</span><span class="line output">    # No reason given
+</span><span class="line output">    # ./spec/helpers/books_helper_spec.rb:14
+</span><span class="line output">
+</span><span class="line output">Finished in 0.18066 seconds
+</span><span class="line output">30 examples, 0 failures, 2 pending
+</span><span class="line output">
+</span><span class="line output">Randomized with seed 14063</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+<p>これで rspec の設定ができました。それでは <em>request spec</em> を書いていきます。</p>
+
+<h2>request spec を書く</h2>
+
+<p><em>request spec</em> は他の rspec のテストとほとんど変わりありません。テストは <code>spec/requests</code> フォルダの下に作成していきます。</p>
+
+<p><code>scaffold_controller</code> でコントローラを作成したので、すでに <code>spec/requests/books_spec.rb</code> があるはずです。テストコードを見てみます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>spec/requests/books_spec.rb</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">'spec_helper'</span>
+</span><span class="line">
+</span><span class="line"><span class="n">describe</span> <span class="s2">"Books"</span> <span class="k">do</span>
+</span><span class="line">  <span class="n">describe</span> <span class="s2">"GET /books"</span> <span class="k">do</span>
+</span><span class="line">    <span class="n">it</span> <span class="s2">"works! (now write some real specs)"</span> <span class="k">do</span>
+</span><span class="line">      <span class="c1"># Run the generator again with the --webrat flag if you want to use webrat methods/matchers</span>
+</span><span class="line">      <span class="n">get</span> <span class="n">books_path</span>
+</span><span class="line">      <span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">should</span> <span class="n">be</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>request spec もコントローラのテストと同じように、<code>get</code>、<code>post</code>、といったメソッドを使ってテストを行います。<code>books_spec.rb</code> を次のように書き換えてみます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>spec/requests/books_spec.rb</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">'spec_helper'</span>
+</span><span class="line">
+</span><span class="line"><span class="n">describe</span> <span class="s1">'Books'</span> <span class="k">do</span>
+</span><span class="line">  <span class="n">describe</span> <span class="s1">'GET /books'</span> <span class="k">do</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">it</span> <span class="s1">'登録されている本が返されること'</span> <span class="k">do</span>
+</span><span class="line">      <span class="n">book</span> <span class="o">=</span> <span class="no">FactoryGirl</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:book</span><span class="p">)</span>
+</span><span class="line">      <span class="n">get</span> <span class="s1">'/books'</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="s1">'json'</span>
+</span><span class="line">      <span class="n">expect</span><span class="p">(</span><span class="n">response</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">be_success</span>
+</span><span class="line">      <span class="n">expect</span><span class="p">(</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">be_a_kind_of</span><span class="p">(</span><span class="nb">Array</span><span class="p">)</span>
+</span><span class="line">      <span class="n">expect</span><span class="p">(</span><span class="n">json</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="s1">'id'</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">eq</span> <span class="n">book</span><span class="o">.</span><span class="n">id</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>request spec はこういう感じで、<strong class="text-danger">実際に呼び出す URL を記述する</strong> のと、<strong class="text-danger">json の中身をチェックする</strong> のが大事だと思っています。</p>
+
+<p>コントローラのテストではビューの中身までチェックしませんし、ビューのテストとコントローラのテストを2つ書くのはテストを把握しづらいので、request spec のテストのように一箇所で同時にテストするのが効果的だと思います。</p>
+
+<p>API はインターフェース（<em>入力パラメータ</em> と <em>出力形式</em> ）が大事なのでここをきっちり押さえておくテストを書く必要があります。</p>
+
+<p>で、テストケースを変えると当然テストが失敗するので、テストが通るようにヘルパを書き換えます。</p>
+
+<h3>request_helpers.rb を作成する</h3>
+
+<p>request spec を書くときに便利なメソッドをいくつか用意しておきます。</p>
+
+<p>RESTful API は出力を json で返すものが多いと思うので、json を扱いやすくするヘルパーを用意します。</p>
+
+<p>また、 <code>AuthenticationHelper</code> は認証が必要な API を呼び出すときの便利メソッドとして記述してありますが、不要であれば削除、仕様が違うようであれば書きなおしてつかいます。</p>
+
+<p>次のファイルを <code>spec/support/request_helpers.rb</code> として作成します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>spec/support/request_helpers.rb</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">Requests</span>
+</span><span class="line">  <span class="k">module</span> <span class="nn">JsonHelpers</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">json</span>
+</span><span class="line">      <span class="vi">@json</span> <span class="o">||=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">module</span> <span class="nn">AuthenticationHelper</span>
+</span><span class="line">    <span class="sx">%w(get post put delete)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">method_name</span><span class="o">|</span>
+</span><span class="line">      <span class="n">define_method</span><span class="p">(</span><span class="s2">"auth_</span><span class="si">#{</span><span class="n">method_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">uri</span><span class="p">,</span> <span class="n">auth_user</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">env</span> <span class="o">=</span> <span class="p">{},</span> <span class="o">&amp;</span><span class="n">block</span><span class="o">|</span>
+</span><span class="line">        <span class="nb">__send__</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">reverse_merge</span><span class="p">(</span><span class="no">HTTP_AUTHORIZATION</span><span class="p">:</span> <span class="s2">"token </span><span class="si">#{</span><span class="n">auth_user</span><span class="o">.</span><span class="n">access_token</span><span class="si">}</span><span class="s2">"</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">      <span class="k">end</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>このヘルパを <code>spec/spec_helper.rb</code> に追加します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>spec/spec_helper.rb</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="no">RSpec</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line">  <span class="n">config</span><span class="o">.</span><span class="n">include</span> <span class="ss">Requests</span><span class="p">:</span><span class="ss">:JsonHelpers</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="ss">:request</span>
+</span><span class="line">  <span class="n">config</span><span class="o">.</span><span class="n">include</span> <span class="ss">Requests</span><span class="p">:</span><span class="ss">:AuthenticationHelper</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="ss">:request</span>
+</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>これでテストが通るようになりました。</p>
+
+<h2>まとめ</h2>
+
+<p>Rails で RESTful な API を作ることはよくあると思いますが、今までは API のテストもコントローラのテストで行っていました。</p>
+
+<p>でも、request spec を使ったほうが <strong class="text-danger">呼び出しのURL</strong>、<strong class="text-danger">必要なパラメータ</strong>、<strong class="text-danger">出力形式</strong> を素直にテストとして書けるので、API のテストは request spec を使うようにするといいかなと思います。</p>]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[TitaniumのHTTPClientでRESTfulリクエストを送る]]></title>
@@ -2439,102 +2727,6 @@ puts " # All done! (#{ok}/#{fails})"
 
 
 <p>他のプログラムを分析し、そのなかに含まれていてプログラムをクラッシュさせる原因になるようなバグをすべて見つけ出すプログラムは書けない。</p>]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sublime Text2 で Titanium Mobile のコード補完を効かせる方法]]></title>
-    <link href="http://hamasyou.com/blog/2013/01/29/sublime-text2-titanium-mobile/"/>
-    <updated>2013-01-29T13:23:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2013/01/29/sublime-text2-titanium-mobile</id>
-    <content type="html"><![CDATA[<p>Qiita にも書きました。 <a href="http://qiita.com/items/ef8c332710960e2730d6" rel="external nofollow" title="Qiita: http://qiita.com/items/ef8c332710960e2730d6">Qiita: http://qiita.com/items/ef8c332710960e2730d6</a></p>
-
-<h3>1. Package Manager で SublimeCodeIntel をインストールする</h3>
-
-
-<p>Sublime Text2 の PackageManager を使って SublimeCodeIntel をインストールします。</p>
-
-<p><i class="fa fa-search"></i> <a href="http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html" rel="external nofollow" title="http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html">http://ready-study-go.blogspot.jp/2011/09/sublime-text-2.html</a></p>
-
-<h3>2. jsca2.js を使って Titanium Mobile の API doc を JavaScript 化する。</h3>
-
-
-<p><i class="fa fa-search"></i> <a href="https://github.com/navinpeiris/jsca2js" rel="external nofollow" title="jsca2js: https://github.com/navinpeiris/jsca2js">jsca2js: https://github.com/navinpeiris/jsca2js</a></p>
-
-<p>git clone で落としてきて</p>
-
-<div class="terminal-window">
-          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav><h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td>
-<td class="code"><pre><code><span class="line command">./titanium-mobile.py 3.0.0</span></code></pre></td>
-</tr></table></div></div>
-        </div>
-
-
-<p>のように、生成した API のバージョンを指定すればOK。</p>
-
-<h4>Titanium 3.0.0 のコードをインストールする場合の注意</h4>
-
-
-<p>titanium-mobile.py の中でバージョン毎に参照先の URL を変えるようにしていますが、3.0.0 の API Doc 参照先が間違っています。</p>
-
-<p>なので、URL を修正してあげる必要があります。titanium-mobile.py を開き 23行目辺りにある URL を次のように書き換えます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>titanium-mobile.py</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td>
-<td class="code"><pre><code class="python"><span class="line"><span class="k">if</span> <span class="n">version</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'2.'</span><span class="p">):</span>
-</span><span class="line">  <span class="n">url</span> <span class="o">=</span> <span class="s">'http://docs.appcelerator.com/titanium/data/'</span> <span class="o">+</span> <span class="n">version</span> <span class="o">+</span> <span class="s">'/api.json'</span>
-</span><span class="line"><span class="k">else</span><span class="p">:</span>
-</span><span class="line">  <span class="c">#url = 'http://developer.appcelerator.com/apidoc/mobile/' + version + '/api.json'</span>
-</span><span class="line">  <span class="n">url</span> <span class="o">=</span> <span class="s">'http://docs.appcelerator.com/titanium/data/'</span> <span class="o">+</span> <span class="n">version</span> <span class="o">+</span> <span class="s">'/api.json'</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<h3>3. 生成された titanium-mobile-3.0.0.js を ~/.codeintel/extra にコピーする</h3>
-
-
-<p>SublimeCodeIntel をインストールすると ~/.codeintel というフォルダが作られているはずです。</p>
-
-<p>追加の補完用コードをまとめるために、extra フォルダを作ってそこに生成された titanium-mobile-3.0.0.js をコピーします。</p>
-
-<h3>4. SublimeCodeIntel に extra フォルダのパスを通す</h3>
-
-
-<p>~/.codeintel/config を開いて次のコードを追記します。</p>
-
-<pre class="code"><code>{
-  "JavaScript": {
-    "javascriptExtraPaths": ["~/.codeintel/extra"]
-  }
-}</code></pre>
-
-
-<p>これで、 SublimeCodeIntel が JavaScript ファイルで Titanium Mobile のコード補完を行うようになります。</p>
-
-<h3>5. (オプション) CoffeeScript でもコード補完を効かせる</h3>
-
-
-<p>SublimeCodeIntel が CoffeeScript のコード補完に対応していないので CoffeeScript のシンタックスを JavaScript に設定してやります。</p>
-
-<p>Sublime Text2 の &gt; Preferences &gt; Package Settings &gt; SublimeCodeIntel &gt; Settings - User を開いて次の設定を追加します。</p>
-
-<pre class="code"><code>{
-  "codeintel_syntax_map":
-  {
-    "CoffeeScript": "JavaScript"
-  }
-}</code></pre>]]></content>
   </entry>
   
 </feed>

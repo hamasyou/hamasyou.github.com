@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-17T11:49:18+09:00</updated>
+  <updated>2014-02-17T15:20:13+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,212 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RailsでつくるRESTful APIのrequest specを書く]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"/>
+    <updated>2014-02-17T14:09:38+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/17/rails-request-rspec</id>
+    <content type="html"><![CDATA[<p>Rails 環境で RESTful API を提供する場面があると思います。API もコントローラで提供するので、コントローラのテストで記述してもいいのですが、RESTful API であれば、<strong>request spec</strong> を使うほうがよさそうなので request spec を書くメモです。</p>
+
+<ul>
+<li>Rails 4.0.2</li>
+<li>rspec 2.14.1</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>テスト用のプロジェクトを整える</h2>
+
+<p>まずは、チュートリアル用のプロジェクトを作成します。</p>
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>rails new specbox &ndash;skip-bundle</span><span class='line command'>cd specbox</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<p><code>Gemfile</code> を開いて次の gem を追記します。</p>
+
+<pre><code class="ruby Gemfile">group :development, :test do
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'factory_girl_rails'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+end
+</code></pre>
+
+<p>rspec と scaffold の設定を行います。</p>
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>bundle install &ndash;path vendor/bundle</span><span class='line command'>bundle exec rails g rspec:install</span><span class='line command'>bundle exec guard init rspec</span><span class='line command'>bundle exec rails g model Book title:string author:string price:integer</span><span class='line command'>bundle exec rails g scaffold_controller Books</span><span class='line command'>bundle exec rake db:migrate</span><span class='line command'>bundle exec rake db:test:prepare</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<p><code>config/routes.rb</code> にルーティングを追加します。</p>
+
+<pre><code class="ruby config/routes.rb">Specbox::Application.routes.draw do
+  ...
+  resources :books
+  ...
+end
+</code></pre>
+
+<p>テストを実行します。</p>
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>bundle exec guard</span><span class='line output'>15:12:01 - INFO - Run all
+</span><span class='line output'>15:12:01 - INFO - Running all specs
+</span><span class='line output'>..**&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</p>
+</span><span class='line output'>
+</span><span class='line output'><p>Pending:
+</span><span class='line output'>  Book add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/models/book_spec.rb
+</span><span class='line output'>    # No reason given
+</span><span class='line output'>    # ./spec/models/book_spec.rb:4
+</span><span class='line output'>  BooksHelper add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/helpers/books_helper_spec.rb
+</span><span class='line output'>    # No reason given
+</span><span class='line output'>    # ./spec/helpers/books_helper_spec.rb:14</p>
+</span><span class='line output'>
+</span><span class='line output'><p>Finished in 0.18066 seconds
+</span><span class='line output'>30 examples, 0 failures, 2 pending</p>
+</span><span class='line output'>
+</span><span class='line output'><p>Randomized with seed 14063</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<p>これで rspec の設定ができました。それでは <em>request spec</em> を書いていきます。</p>
+
+<h2>request spec を書く</h2>
+
+<p><em>request spec</em> は他の rspec のテストとほとんど変わりありません。テストは <code>spec/requests</code> フォルダの下に作成していきます。</p>
+
+<p><code>scaffold_controller</code> でコントローラを作成したので、すでに <code>spec/requests/books_spec.rb</code> があるはずです。テストコードを見てみます。</p>
+
+<pre><code class="ruby spec/requests/books_spec.rb">require 'spec_helper'
+
+describe "Books" do
+  describe "GET /books" do
+    it "works! (now write some real specs)" do
+      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
+      get books_path
+      response.status.should be(200)
+    end
+  end
+end
+</code></pre>
+
+<p>request spec もコントローラのテストと同じように、<code>get</code>、<code>post</code>、といったメソッドを使ってテストを行います。<code>books_spec.rb</code> を次のように書き換えてみます。</p>
+
+<pre><code class="ruby spec/requests/books_spec.rb">require 'spec_helper'
+
+describe 'Books' do
+  describe 'GET /books' do
+
+    it '登録されている本が返されること' do
+      book = FactoryGirl.create(:book)
+      get '/books', format: 'json'
+      expect(response).to be_success
+      expect(json).to be_a_kind_of(Array)
+      expect(json[0]['id']).to eq book.id
+    end
+  end
+end
+</code></pre>
+
+<p>request spec はこういう感じで、<strong>実際に呼び出す URL を記述する</strong> のと、<strong>json の中身をチェックする</strong> のが大事だと思っています。</p>
+
+<p>コントローラのテストではビューの中身までチェックしませんし、ビューのテストとコントローラのテストを2つ書くのはテストを把握しづらいので、request spec のテストのように一箇所で同時にテストするのが効果的だと思います。</p>
+
+<p>API はインターフェース（<em>入力パラメータ</em> と <em>出力形式</em> ）が大事なのでここをきっちり押さえておくテストを書く必要があります。</p>
+
+<p>で、テストケースを変えると当然テストが失敗するので、テストが通るようにヘルパを書き換えます。</p>
+
+<h3>request_helpers.rb を作成する</h3>
+
+<p>request spec を書くときに便利なメソッドをいくつか用意しておきます。</p>
+
+<p>RESTful API は出力を json で返すものが多いと思うので、json を扱いやすくするヘルパーを用意します。</p>
+
+<p>また、 <code>AuthenticationHelper</code> は認証が必要な API を呼び出すときの便利メソッドとして記述してありますが、不要であれば削除、仕様が違うようであれば書きなおしてつかいます。</p>
+
+<p>次のファイルを <code>spec/support/request_helpers.rb</code> として作成します。</p>
+
+<pre><code class="ruby spec/support/request_helpers.rb">module Requests
+  module JsonHelpers
+    def json
+      @json ||= JSON.parse(response.body)
+    end
+  end
+
+  module AuthenticationHelper
+    %w(get post put delete).each do |method_name|
+      define_method("auth_#{method_name}") do |uri, auth_user, params = {}, env = {}, &amp;block|
+        __send__(method_name, uri, params, env.reverse_merge(HTTP_AUTHORIZATION: "token #{auth_user.access_token}"), &amp;block)
+      end
+    end
+  end
+end
+</code></pre>
+
+<p>このヘルパを <code>spec/spec_helper.rb</code> に追加します。</p>
+
+<pre><code class="ruby spec/spec_helper.rb">RSpec.configure do |config|
+  ...
+  config.include Requests::JsonHelpers, type: :request
+  config.include Requests::AuthenticationHelper, type: :request
+  ...
+end
+</code></pre>
+
+<p>これでテストが通るようになりました。</p>
+
+<h2>まとめ</h2>
+
+<p>Rails で RESTful な API を作ることはよくあると思いますが、今までは API のテストもコントローラのテストで行っていました。</p>
+
+<p>でも、request spec を使ったほうが <strong>呼び出しのURL</strong>、<strong>必要なパラメータ</strong>、<strong>出力形式</strong> を素直にテストとして書けるので、API のテストは request spec を使うようにするといいかなと思います。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[open-uri-postを使うとrest-clientが変な動きするをする]]></title>
@@ -651,194 +857,6 @@ f
 </code></pre>
 
 <p>のようなコードを加えれば良い。バッドノウハウですね。。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理]]></title>
-    <link href="http://hamasyou.com/blog/2012/09/23/487311554X/"/>
-    <updated>2012-09-23T22:05:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2012/09/23/487311554X</id>
-    <content type="html"><![CDATA[<p>本書は、クライアントサイド（ブラウザ）で JavaScript を使ってリッチなアプリを作る際のプラクティスを説明しています。</p>
-
-<p>前半では、JavaScript によるオブジェクト指向開発の方法や MVC 開発の方法を、後半では、JavaScript の MVC デザインパターンに則った、各種ライブラリの説明が行われています。</p>
-
-<p>最近では、ユーザビリティの良いアプリを開発するのに必須なクライアントサイドでの JavaScript の使い方が複雑になってきているように思います。ちょっと jQuery を使って DOM 操作していればよかった頃と比べて、最近では色々なライブラリを組み合わせる必要があったり、クライアントサイドでも MVC パターンが必要になったりと、大変です。</p>
-
-<p>本書は、そんな JavaScript でリッチアプリケーションを作成する際の取っ掛かりを学ぶのに良いと思います。オライリー本なので、読むのが簡単ということはなく、むしろ格式高い感じすらしますが、多少 JavaScript でオブジェクト指向の経験があれば、読み進めるのは難しく無いと思います。</p>
-
-<!-- more -->
-
-
-
-
-<h2>おぼえがき</h2>
-
-
-
-
-<h3>インスタンスメソッド定義のイディオム</h3>
-
-
-<p>JavaScript ではクラスのプロトタイプに対して関数を追加することでインスタンスメソッドを定義できます。</p>
-
-<pre><code class="javascript">Person.prototype.breath = function() { /* ... */ };
-var person = new Person();
-person.breath();
-</code></pre>
-
-<p>クラスのプロトタイプに <em>fn</em> というエイリアスを設定することが広く行われています。</p>
-
-<pre><code class="javascript">Person.fn = Person.prototype;
-Person.fn.run = function() { /* ... */ };
-</code></pre>
-
-<h3>関数呼び出しのコンテキスト</h3>
-
-
-<p>apply() と call() を使うと、関数の呼び出しコンテキストを変更できます。jQuery の API ではイベントハンドラや each() による繰り返しの中で、コンテキスト（this の値）が変更されています。</p>
-
-<pre><code class="javascript">$('.btn').click(function() {
-  $(this).hide();
-});
-</code></pre>
-
-<p>元のコンテキストにアクセスするには、良く self などの名前で this を保存しておき、後で参照する方法がとられます。</p>
-
-<pre><code class="javascript">var self = this;
-
-$('.btn').click(function() {
-  self.btnClicked();
-});
-</code></pre>
-
-<p>apply() を使うと、self を使わなくても同じことができます。</p>
-
-<pre><code class="javascript">var proxy = function(func, context) {
-  return (function() {
-    return func.apply(context, arguments);
-  });
-};
-
-$('.btn').click(proxy(function() {
-  this.btnClicked();
-}, this);
-</code></pre>
-
-<p>jQuery の proxy() メソッドがまさしく、これと同じことをしています。</p>
-
-<h3>イベントの発生順序</h3>
-
-
-<p>ある要素とその祖先の要素が同じ種類のイベントに対してイベントハンドラを登録している場合、先に呼び出されるのはブラウザによって違います。</p>
-
-<p>イベントが呼び出される順番は2種類あり、<strong>イベントキャプチャリング</strong> と<strong>イベントバブリング</strong>になります。</p>
-
-<h4>イベントキャプチャリング</h4>
-
-
-<p>最も上位（外側）の要素からイベントが発生した要素へとイベントリスナが呼び出されます。つまり、祖先の要素、内側の要素の順番でイベントリスナが呼び出されます。</p>
-
-<h4>イベントバブリング</h4>
-
-
-<p>イベントが発生した要素（内側）から祖先要素へとイベントリスナが呼び出されます。</p>
-
-<p>W3C の仕様では、addEventListener() の3つめの引数に true を指定するとイベントキャプチャリングで呼び出され、false か 指定しないとイベントバブリングで呼び出されます。</p>
-
-<p>バブリングが行われている際には、イベントオブジェクトの stopPropagation() を呼び出すことによって、バブリングを中止することができます。</p>
-
-<pre><code class="javascript">link.addEventListener('click', function(e) {
-  e.stopPropagation();
-  /* ... */
-});
-</code></pre>
-
-<p>ブラウザによってそれぞれのイベントに対するデフォルトのアクションが定義されています。たとえば、リンクのクリックでは、src で指定された URL に遷移する動作や、チェックボックスのクリックで項目が選択状態になる動作などです。</p>
-
-<p>これらのデフォルトのアクションはイベントの伝播が完了した後で実行されます。このデフォルトのアクションを中止するには、 preventDefault() 関数を呼び出します。また、イベントハンドラの戻り値で false を返すことで、preventDefault() を呼び出したのと同じ動作になります。</p>
-
-<pre><code class="javascript">form.addEventListener('submit', function(e) {
-  /* e.preventDefault() */
-  return confirm('本当に送信しますか？');
-});
-</code></pre>
-
-<h3>イベントの委譲</h3>
-
-
-<p>イベントバブリングの性質を考えると、複数ある子孫の要素それぞれにイベントリスナを設定するより、祖先の要素一つだけにイベントハンドラを設定する方が効率がよくなります。</p>
-
-<p>jQuery では、これを delgate() メソッドを使って実装できます。</p>
-
-<pre><code class="javascript">/* 望ましくないコード */
-$('ul li').click(function() { /* ... */ });
-
-// こちらのほうが効率が良い
-$('ul').delegate('li', 'click', function() { /* ... */ });
-</code></pre>
-
-<p>このように、イベント処理を委譲することによるメリットは、動的に追加された要素についても、自動でイベントリスナが適用されることです。</p>
-
-<h3>画面表示時の初期データの読み込み</h3>
-
-
-<p>ページ上のデータは、最初に読み込まれるページに含まれているか、Ajax や JSONP を使った HTTP リクエストによって事後的に読み込まれます。多くのデータを初期表示時に読み込むのには時間がかかりますが、Ajax や JSONP によるリクエストは、<em>並列処理が可能</em>であるので高速に処理できます。</p>
-
-<p>また、HTTP リクエストで取得したデータは、ローカルのストレージにキャッシュすることができます。ストレージには2種類あり、 <code>localStorage</code> と <code>sessionStorage</code> というオブジェクトでアクセスできます。</p>
-
-<h4>ローカルストレージ</h4>
-
-
-<p>ブラウザが終了した後も保持される。</p>
-
-<h4>セッションストレージ</h4>
-
-
-<p>ブラウザが開いている間のみ保持される。</p>
-
-<h3>コントローラと内部状態</h3>
-
-
-<p>まず言えるのは、<em>DOM 内にモデルの内部状態やその他の情報を保持するべきではありません</em>。頑強な MVC アーキテクチャの実現のためには、内部状態やその他の情報は、コントローラ内に保持させる方がよい。</p>
-
-<p>ビューごとにコントローラを1つずつ用意するというのがよく使われているパターンです。</p>
-
-<h3>リソースとURL</h3>
-
-
-<p>通常、Ajax などでリソースとなるデータをロードした場合、ブラウザの URL は変化しません。しかし、Web 上の個々のリソースには URL が割り当てられていると考えるのが一般的で、URL が変わらない状況というのは好ましくありません。</p>
-
-<p>そこで、この問題に対しては、内部状態が変化したら URL を変化させるようにします。このとき、よく使われるのが、URL のハッシュ（#以降の文字列）を変更するというものです。ハッシュの値はサーバに送信されないため、ページの再読込を発生させることなく変更できます。</p>
-
-<p>location.hash を使うと、ページのハッシュを取得できます。</p>
-
-<p>主要なブラウザでは、URL のハッシュが変更されたかどうかを調べるのに、hashchange イベントが使えます。</p>
-
-<p>JavaScript で作られたページは、クローラにとってはすべて同じ URL のように見えてしまいます。そこで、Google は、<a href="http://code.google.com/web/ajaxcrawling/index.html" rel="external nofollow">Ajax Crawling</a> という仕様を提案しています。</p>
-
-<h3>Backbone.js ライブラリ</h3>
-
-
-<p><a href="http://backbonejs.org/" rel="external nofollow"></a> は JavaScript アプリケーションの構築のための優れたライブラリです。Backbone.js も MVC 構造でアプリケーションを作成していきます。</p>
-
-<h2>参考</h2>
-
-
-
-
-<ul><li><a href="http://fingaholic.github.com/posts/2012-06-27-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 1章 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-07-02-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 2章 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-07-17-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 3章 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-07-20-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 4章 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-07-23-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 5章 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-07-25-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 6章 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-08-01-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 11章 その1 - jekylog</a></li>
-<li><a href="http://fingaholic.github.com/posts/2012-08-07-stateful-javascript.html" rel="external nofollow">ステートフルJavaScript 11章 その2 - jekylog</a></li>
-</ul>
-
-
-
 ]]></content>
   </entry>
   
