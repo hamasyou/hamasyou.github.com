@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Antはビルドツールです。OSや環境に依存しないビルドツールということで幅広く使われています。 個人的にAntを使う理由というのは、ビルド以外のいろんな設定が簡単に出来ることです。例えば、環境ごとに異なった設定ファイルを作りたいときに、ベースとなるファイルを一つ用意するだけで、 &hellip;">
+  <meta name="description" content="「ビジネスサービスを動的に発見・接続できるようにする」という、Webサービスの目的。そこで使われる技術というのは、実際にはそれほど新しいものではありません。Webサービスは、既存の技術(例えばXMLやSOAP)の組み合わせによる新しい発想と壮大な思想から生まれたある技術仕様です。 本書は、「 &hellip;">
   
 
   
@@ -23,7 +23,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/21/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Antはビルドツールです。OSや環境に依存しないビルドツールということで幅広く使われています。 個人的にAntを使う理由というのは、ビルド以外のいろんな設定が簡単に出来ることです。例えば、環境ごとに異なった設定ファイルを作りたいときに、ベースとなるファイルを一つ用意するだけで、 &hellip;" />
+<meta property="og:description" content="「ビジネスサービスを動的に発見・接続できるようにする」という、Webサービスの目的。そこで使われる技術というのは、実際にはそれほど新しいものではありません。Webサービスは、既存の技術(例えばXMLやSOAP)の組み合わせによる新しい発想と壮大な思想から生まれたある技術仕様です。 本書は、「 &hellip;" />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -99,6 +99,106 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2004/10/18/4774116165/">SOAP/UDDI/WSDL Webサービス技術基礎と実践 徹底解説</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-10-18T09:59:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 18<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/architecture/" rel="nofollow">Architecture</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/websabisu/" rel="nofollow">Webサービス</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2004/10/18/4774116165/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116165/sorehabooks-22" title="SOAP/UDDI/WSDL Webサービス技術基礎と実践 徹底解説" rel="external nofollow">
+      <img src="http://ecx.images-amazon.com/images/I/51H3TJCW59L._BO2,204,203,200_PIsitb-sticker-arrow-click,-76_AA300_SH20_OU09_.jpg" class="asin-thumbnail" alt="SOAP/UDDI/WSDL Webサービス技術基礎と実践 徹底解説" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116165/sorehabooks-22" title="SOAP/UDDI/WSDL Webサービス技術基礎と実践 徹底解説" rel="external nofollow">SOAP/UDDI/WSDL Webサービス技術基礎と実践 徹底解説</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>日本ユニテックDigital Xpress編集部 (著)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>技術評論社</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116165/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><p>「ビジネスサービスを動的に発見・接続できるようにする」という、Webサービスの目的。そこで使われる技術というのは、実際にはそれほど新しいものではありません。Webサービスは、既存の技術(例えばXMLやSOAP)の組み合わせによる新しい発想と壮大な思想から生まれたある技術仕様です。</p>
+
+<p>本書は、「サービスの動的発見・接続」を可能にする『SOAP』、『WSDL』、『UDDI』という基本仕様についての解説書になっています。Webサービスは発展途上の技術であるため、さまざまな仕様が検討されています。トランザクションに関するものから、セキュリティに関するものまでいくつかあります、が本書では扱っていません。</p>
+
+<p>『SOAP』、『WSDL』、『UDDI』の基本仕様とXMLの概要説明、Webサービスを .Net と Java で構築するというのが本書のテーマです。手っ取り早くWebサービスを構築したいという人には本書は向かないかもしれません。本書のターゲットは、Webサービスの基本技術をしっかりと学びたいという人向けです。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2004/10/18/4774116165/"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1003,108 +1103,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/08/10/4881356194/">憂鬱なプログラマのためのオブジェクト指向開発講座</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-08-10T01:36:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Aug 10<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/" rel="nofollow">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/c-plus-plus/" rel="nofollow">C++</a>
-    
-      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/08/10/4881356194/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4881356194/sorehabooks-22" title="憂鬱なプログラマのためのオブジェクト指向開発講座" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/613VSGX380L._BO2,204,203,200_PIsitb-sticker-arrow-click,-76_AA300_SH20_OU09_.jpg" class="asin-thumbnail" alt="憂鬱なプログラマのためのオブジェクト指向開発講座" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4881356194/sorehabooks-22" title="憂鬱なプログラマのためのオブジェクト指向開発講座" rel="external nofollow">憂鬱なプログラマのためのオブジェクト指向開発講座</a></p></dd>
-      
-      
-      <dt>著者</dt>
-      <dd><p>Tucker (著)</p></dd>
-      
-      
-      <dt>出版社</dt>
-      <dd><p>翔泳社</p></dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4881356194/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>これから<strong class="text-danger">オブジェクト指向</strong>をはじめる人に、超おすすめの一冊です。本書のサンプルはC++言語で書かれていますが、Javaで開発を行っている人も敬遠しないでください。ところどころに実装依存の話も出てきますが、全体的に抽象度が高いです。にもかかわらず読みやすく理解しやすく、楽しいのはなぜなんでしょう？</p>
-
-<p>オブジェクト指向とはなんだというところから、どんな考え方が本当のオブジェクト指向なのかを気づかせてくれる、非常に秀逸な本です。繰り返し繰り返し要点を述べてくれるので、頭に残りやすいです。また、最後まで読みきれば、C++言語に関する一通りの文法も学べてしまう一石二鳥の内容となっています。</p>
-
-<p>是非、オブジェクト指向をこれから始めるという方に、オブジェクト指向をもう一度勉強したいという人に読んでいただきたい良書です。自身を持っておすすめします。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/08/10/4881356194/"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/22/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1143,6 +1141,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/17/titanium-http-client-restful/">TitaniumのHTTPClientでRESTfulリクエストを送る</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/16/ruby-open-uri-post-rest-client/">open-uri-postを使うとrest-clientが変な動きするをする</a>
       </li>
     
@@ -1166,10 +1168,6 @@
         <a href="/blog/2014/02/14/4873113636/">ビューティフルコード</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/14/microsoft-translator-api/">RubyからMicrosoft Translator APIを呼び出す</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1177,7 +1175,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture' rel='nofollow'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog' rel='nofollow'>Blog <span class="badge">100</span></a><a class='list-group-item' href='/blog/categories/database' rel='nofollow'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay' rel='nofollow'>Essay <span class="badge">14</span></a><a class='list-group-item' href='/blog/categories/lifehack' rel='nofollow'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network' rel='nofollow'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming' rel='nofollow'>Programming <span class="badge">113</span></a><a class='list-group-item' href='/blog/categories/tech' rel='nofollow'>Tech <span class="badge">2</span></a><a class='list-group-item' href='/blog/categories/webdesign' rel='nofollow'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture' rel='nofollow'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog' rel='nofollow'>Blog <span class="badge">100</span></a><a class='list-group-item' href='/blog/categories/database' rel='nofollow'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay' rel='nofollow'>Essay <span class="badge">14</span></a><a class='list-group-item' href='/blog/categories/lifehack' rel='nofollow'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network' rel='nofollow'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming' rel='nofollow'>Programming <span class="badge">113</span></a><a class='list-group-item' href='/blog/categories/tech' rel='nofollow'>Tech <span class="badge">3</span></a><a class='list-group-item' href='/blog/categories/webdesign' rel='nofollow'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

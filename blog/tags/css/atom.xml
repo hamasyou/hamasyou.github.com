@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: CSS | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/css/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-17T08:58:52+09:00</updated>
+  <updated>2014-02-17T11:41:11+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -118,6 +118,21 @@
 <h3>ソースコードのように見せるには</h3>
 
 <pre><code class="java">/**
+ * This is a style test code.
+ *
+ * @author hamasyou
+ */
+public class HogeClass implements FooClass {
+
+  public String getMessage(BarClass fooBar) {
+    return "テストメッセージ";
+  }
+}
+</code></pre>
+
+<p>ソースコードの言語に <code>-raw</code> を含めると、行番号なしの生の pre 表示になります。</p>
+
+<pre><code class="java-raw">/**
  * This is a style test code.
  *
  * @author hamasyou

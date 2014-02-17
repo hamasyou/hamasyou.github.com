@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="「アーキテクト」という役職は、プログラマに近い場所から、ビジネスマンに歩み寄る綱渡しを行う職業です。ただ技術を極めれば良いと言うわけではなく、ビジネスだけを知っているのでもない。両方のいいところをあわせもった職業と言えます。 本書は、アーキテクトという役職を、時には美しく、 &hellip;">
+  <meta name="description" content="「実装を行った後のテスト」と「実装を行う前のテスト」の違いを明確にしてくれる解説が多く、非常にためになりました。本書の中で「テストファースト」とは、「実装を行う前にテスト設計を立てること」だという、非常にシンプルな定義がされていて、テストファーストをはじめて聞く人にはわかりやすいのかなと思いました &hellip;">
   
 
   
@@ -23,7 +23,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/19/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="「アーキテクト」という役職は、プログラマに近い場所から、ビジネスマンに歩み寄る綱渡しを行う職業です。ただ技術を極めれば良いと言うわけではなく、ビジネスだけを知っているのでもない。両方のいいところをあわせもった職業と言えます。 本書は、アーキテクトという役職を、時には美しく、 &hellip;" />
+<meta property="og:description" content="「実装を行った後のテスト」と「実装を行う前のテスト」の違いを明確にしてくれる解説が多く、非常にためになりました。本書の中で「テストファースト」とは、「実装を行う前にテスト設計を立てること」だという、非常にシンプルな定義がされていて、テストファーストをはじめて聞く人にはわかりやすいのかなと思いました &hellip;" />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -99,6 +99,112 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2004/12/12/4797325720/">JUnitによるテストファースト開発入門</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-12-12T20:27:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Dec 12<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/" rel="nofollow">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/junit/" rel="nofollow">JUnit</a>
+    
+      <a class="tag label label-info" href="/blog/tags/tdd/" rel="nofollow">TDD</a>
+    
+      <a class="tag label label-info" href="/blog/tags/tesutohuasuto/" rel="nofollow">テストファースト</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2004/12/12/4797325720/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325720/sorehabooks-22" title="JUnitによるテストファースト開発入門" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/51MS81BY1SL._SL500_AA300_.jpg" class="asin-thumbnail" alt="JUnitによるテストファースト開発入門" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325720/sorehabooks-22" title="JUnitによるテストファースト開発入門" rel="external nofollow">JUnitによるテストファースト開発入門</a></p></dd>
+      
+      
+      <dt>著者</dt>
+      <dd><p>サイバービーンズ (著), 今野 睦 (監修)</p></dd>
+      
+      
+      <dt>出版社</dt>
+      <dd><p>ソフトバンクパブリッシング</p></dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325720/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><p>「実装を行った後のテスト」と「実装を行う前のテスト」の違いを明確にしてくれる解説が多く、非常にためになりました。本書の中で「<strong class="text-danger">テストファースト</strong>」とは、「実装を行う前にテスト設計を立てること」だという、非常にシンプルな定義がされていて、テストファーストをはじめて聞く人にはわかりやすいのかなと思いました。</p>
+
+<p>テスト段階で考えるべきことを重点的に解説してあり、プロジェクト中のテスト管理についてまで書かれていて、現場の開発者向けのテスト実践書という感じがしました。</p>
+
+<p>テスト担当者や、これからプロジェクトに参加する開発者の人向けの本です。テストツールとして、「<a href="http://www.junit.org/" rel="external nofollow" title="DBUnit">DBUnit</a>」などのツールにも触れられていて、本書一冊で、現場のテスト実践のベースができてしまう気がしました。</p>
+
+<p>とても参考になる事が載っているので、初学者の方におすすめです。自分なりの「テストファースト論」ができている人には、知っていることばかりかもしれません。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2004/12/12/4797325720/"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1004,98 +1110,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/11/09/spring-framework-jue-shu-ki-aop/">Spring Framework 覚書き - AOP</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-11-09T10:14:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Nov 9<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/" rel="nofollow">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/spring/" rel="nofollow">Spring</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/11/09/spring-framework-jue-shu-ki-aop/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow" title=""></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
-
-<p><abbr title="Aspect Oriented Programming">AOP</abbr>(アスペクト指向プログラミング) はクラスの直接的な責務ではない、各モジュールから共通で使われる処理を、独立して切り出す手法です。「クラスの直接的な責務でない」とは、例えば「ログ」や「トランザクション」、「認証」などです。多くのクラスに重複コードが生まれてしまうような処理は、<b>アスペクト(横断的関心事)</b> として別のモジュールにしてしまうという手法をとることが出来ます。Spring AOP は、このアスペクトを扱うものです。
-参考：<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797326387/sorehabooks-22" rel="external nofollow" title="『AspectJによるアスペクト指向プログラミング入門』 ソフトバンクパブリッシング">『AspectJによるアスペクト指向プログラミング入門』 ソフトバンクパブリッシング</a>
-　
-Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow" title="Springフレームワークの紹介">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
-
-<p><section></section></p>
-
-<h4>参考</h4>
-
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow" title="Spring Pad - Wiki">Spring Pad - Wiki</a></p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://direct.idg.co.jp/detail_1.msp?id=1066&amp;class=10005&amp;n=2" rel="external nofollow" title="JavaWorld 7月号 2004年">JavaWorld 7月号 2004年</a></p>
-
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/11/09/spring-framework-jue-shu-ki-aop/"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/20/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1134,6 +1148,10 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/17/titanium-http-client-restful/">TitaniumのHTTPClientでRESTfulリクエストを送る</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/16/ruby-open-uri-post-rest-client/">open-uri-postを使うとrest-clientが変な動きするをする</a>
       </li>
     
@@ -1157,10 +1175,6 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
         <a href="/blog/2014/02/14/4873113636/">ビューティフルコード</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/14/microsoft-translator-api/">RubyからMicrosoft Translator APIを呼び出す</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1168,7 +1182,7 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture' rel='nofollow'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog' rel='nofollow'>Blog <span class="badge">100</span></a><a class='list-group-item' href='/blog/categories/database' rel='nofollow'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay' rel='nofollow'>Essay <span class="badge">14</span></a><a class='list-group-item' href='/blog/categories/lifehack' rel='nofollow'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network' rel='nofollow'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming' rel='nofollow'>Programming <span class="badge">113</span></a><a class='list-group-item' href='/blog/categories/tech' rel='nofollow'>Tech <span class="badge">2</span></a><a class='list-group-item' href='/blog/categories/webdesign' rel='nofollow'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture' rel='nofollow'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog' rel='nofollow'>Blog <span class="badge">100</span></a><a class='list-group-item' href='/blog/categories/database' rel='nofollow'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay' rel='nofollow'>Essay <span class="badge">14</span></a><a class='list-group-item' href='/blog/categories/lifehack' rel='nofollow'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network' rel='nofollow'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming' rel='nofollow'>Programming <span class="badge">113</span></a><a class='list-group-item' href='/blog/categories/tech' rel='nofollow'>Tech <span class="badge">3</span></a><a class='list-group-item' href='/blog/categories/webdesign' rel='nofollow'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

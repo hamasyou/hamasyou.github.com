@@ -12,7 +12,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Javaの新バージョン「J2SE5.0 Tiger」の新機能のメモ。詳しい使い方などは、参考文献や他のサイトをご覧ください。 J2SE5.0 Tiger では、言語構文が大幅に追加されています。Generics や オートボクシング、Enum(列挙型)、可変長引数、アノテーション、拡張for &hellip;">
+  <meta name="description" content="デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、 &hellip;">
   
 
   
@@ -23,7 +24,8 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/18/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Javaの新バージョン「J2SE5.0 Tiger」の新機能のメモ。詳しい使い方などは、参考文献や他のサイトをご覧ください。 J2SE5.0 Tiger では、言語構文が大幅に追加されています。Generics や オートボクシング、Enum(列挙型)、可変長引数、アノテーション、拡張for &hellip;" />
+<meta property="og:description" content="デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、 &hellip;" />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -99,6 +101,82 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/01/28/visitor/">実践デザパタ-その15:Visitorパターン</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-01-28T15:58:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Jan 28<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/" rel="nofollow">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/01/28/visitor/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
+GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
+
+<p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
+
+<p>15番目のパターンはデータ構造と振る舞いを分離して、振る舞いを実行するクラスの変更や拡張を可能にする<strong class="text-danger">Visitor</strong>パターンのメモです。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/01/28/visitor/"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1014,112 +1092,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/12/12/4797325720/">JUnitによるテストファースト開発入門</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-12-12T20:27:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Dec 12<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/" rel="nofollow">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/junit/" rel="nofollow">JUnit</a>
-    
-      <a class="tag label label-info" href="/blog/tags/tdd/" rel="nofollow">TDD</a>
-    
-      <a class="tag label label-info" href="/blog/tags/tesutohuasuto/" rel="nofollow">テストファースト</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/12/12/4797325720/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325720/sorehabooks-22" title="JUnitによるテストファースト開発入門" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51MS81BY1SL._SL500_AA300_.jpg" class="asin-thumbnail" alt="JUnitによるテストファースト開発入門" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325720/sorehabooks-22" title="JUnitによるテストファースト開発入門" rel="external nofollow">JUnitによるテストファースト開発入門</a></p></dd>
-      
-      
-      <dt>著者</dt>
-      <dd><p>サイバービーンズ (著), 今野 睦 (監修)</p></dd>
-      
-      
-      <dt>出版社</dt>
-      <dd><p>ソフトバンクパブリッシング</p></dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797325720/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>「実装を行った後のテスト」と「実装を行う前のテスト」の違いを明確にしてくれる解説が多く、非常にためになりました。本書の中で「<strong class="text-danger">テストファースト</strong>」とは、「実装を行う前にテスト設計を立てること」だという、非常にシンプルな定義がされていて、テストファーストをはじめて聞く人にはわかりやすいのかなと思いました。</p>
-
-<p>テスト段階で考えるべきことを重点的に解説してあり、プロジェクト中のテスト管理についてまで書かれていて、現場の開発者向けのテスト実践書という感じがしました。</p>
-
-<p>テスト担当者や、これからプロジェクトに参加する開発者の人向けの本です。テストツールとして、「<a href="http://www.junit.org/" rel="external nofollow" title="DBUnit">DBUnit</a>」などのツールにも触れられていて、本書一冊で、現場のテスト実践のベースができてしまう気がしました。</p>
-
-<p>とても参考になる事が載っているので、初学者の方におすすめです。自分なりの「テストファースト論」ができている人には、知っていることばかりかもしれません。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/12/12/4797325720/"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/19/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1158,6 +1130,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/17/titanium-http-client-restful/">TitaniumのHTTPClientでRESTfulリクエストを送る</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/16/ruby-open-uri-post-rest-client/">open-uri-postを使うとrest-clientが変な動きするをする</a>
       </li>
     
@@ -1181,10 +1157,6 @@
         <a href="/blog/2014/02/14/4873113636/">ビューティフルコード</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/14/microsoft-translator-api/">RubyからMicrosoft Translator APIを呼び出す</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1192,7 +1164,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture' rel='nofollow'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog' rel='nofollow'>Blog <span class="badge">100</span></a><a class='list-group-item' href='/blog/categories/database' rel='nofollow'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay' rel='nofollow'>Essay <span class="badge">14</span></a><a class='list-group-item' href='/blog/categories/lifehack' rel='nofollow'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network' rel='nofollow'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming' rel='nofollow'>Programming <span class="badge">113</span></a><a class='list-group-item' href='/blog/categories/tech' rel='nofollow'>Tech <span class="badge">2</span></a><a class='list-group-item' href='/blog/categories/webdesign' rel='nofollow'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture' rel='nofollow'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog' rel='nofollow'>Blog <span class="badge">100</span></a><a class='list-group-item' href='/blog/categories/database' rel='nofollow'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay' rel='nofollow'>Essay <span class="badge">14</span></a><a class='list-group-item' href='/blog/categories/lifehack' rel='nofollow'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network' rel='nofollow'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming' rel='nofollow'>Programming <span class="badge">113</span></a><a class='list-group-item' href='/blog/categories/tech' rel='nofollow'>Tech <span class="badge">3</span></a><a class='list-group-item' href='/blog/categories/webdesign' rel='nofollow'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

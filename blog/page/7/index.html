@@ -12,10 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="（株）マウントポジションがアプリケーションの開発を担当した
-iPhone用アプリケーション「Air号外」が本日リリースされました。 Air号外は、街中で配布される「号外」を仮想空間で配布するサービスです。
-地図を見ながら近くで配布されている号外を検索し、
-ARカメラを使って、 &hellip;">
+  <meta name="description" content="cocos2d を使ったときの CCSprite の後始末のしかたのメモです。 CCSpriteSheet から CCSprite を作ったときの破棄と CCAnimation が終わったタイミングでの CCSprite の破棄の方法をメモしています。 ">
   
 
   
@@ -26,10 +23,7 @@ ARカメラを使って、 &hellip;">
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/7/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="（株）マウントポジションがアプリケーションの開発を担当した
-iPhone用アプリケーション「Air号外」が本日リリースされました。 Air号外は、街中で配布される「号外」を仮想空間で配布するサービスです。
-地図を見ながら近くで配布されている号外を検索し、
-ARカメラを使って、 &hellip;" />
+<meta property="og:description" content="cocos2d を使ったときの CCSprite の後始末のしかたのメモです。 CCSpriteSheet から CCSprite を作ったときの破棄と CCAnimation が終わったタイミングでの CCSprite の破棄の方法をメモしています。 " />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -105,6 +99,83 @@ ARカメラを使って、 &hellip;" />
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/">[cocos2d] CCSpriteSheet や CCAnimation を使った時の CCSprite の後始末のしかた</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-10-27T22:58:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Oct 27<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/" rel="nofollow">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/cocos2d/" rel="nofollow">cocos2d</a>
+    
+      <a class="tag label label-info" href="/blog/tags/memoriguan-li/" rel="nofollow">メモリ管理</a>
+    
+      <a class="tag label label-info" href="/blog/tags/iphone/" rel="nofollow">iPhone</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>cocos2d を使ったときの CCSprite の後始末のしかたのメモです。</p>
+
+<p>CCSpriteSheet から CCSprite を作ったときの破棄と CCAnimation が終わったタイミングでの CCSprite の破棄の方法をメモしています。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -847,108 +918,6 @@ ARカメラを使って、空間に配置されている号外を取得し、閲
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/15/titanium-xml2json-xml-json/">[Titanium] Titanium 版 XML2JSON - XML を JSON に変換する</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-09-15T01:39:00+09:00" class="text-muted" data-updated="true"><i class="fa fa-clock-o"></i> Sep 15<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/" rel="nofollow">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/iphone/" rel="nofollow">iPhone</a>
-    
-      <a class="tag label label-info" href="/blog/tags/titanium/" rel="nofollow">Titanium</a>
-    
-      <a class="tag label label-info" href="/blog/tags/xml/" rel="nofollow">XML</a>
-    
-      <a class="tag label label-info" href="/blog/tags/json/" rel="nofollow">JSON</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/09/15/titanium-xml2json-xml-json/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p><s>Titanium は、JavaScript でコードがかけると言っても色々と制約があり、<em>eval()</em> を使うようなライブラリは使用できません。</s></p>
-
-<p><section></section></p>
-
-<h4>2013/02/28追記</h4>
-
-
-<p>dom2json に渡すオブジェクトを dom.documentElement に変更しました。dom を直接渡すと、Android でエラーが発生することがあります。</p>
-
-<h4>2011/01/18追記</h4>
-
-
-<p>Titanium.include(“TiDOMParser.js”) だと実機のほうでエラーが発生するという報告を頂いたので、TiDomParser に変更しました。合わせて、プログラム中の TiDOMParser を TiDomParser に変更しました。ご報告ありがとうございました。</p>
-
-<h4>2010/09/15追記</h4>
-
-
-<p><em>eval()</em> が使えないと書きましたが、使えることが判明しました。。。KitchenSink のサンプルにもありました。。 僕の環境で動かないと思っていたのは、eval(“1+1”); と試していたからで、eval() の中はコードになるので正確にはセミコロンが必要で、eval(“1+1;”); としないとダメでした。。訂正です。。</p>
-
-<p></p>
-
-<p>XML を JSON にするライブラリに、<a href="http://www.thomasfrank.se/xml_to_json.html" rel="external nofollow" title="XML to JSON">XML to JSON</a> というライブラリがありますが、<s>内部で eval を使っているため動きません。</s>（中身を書き換えれば動きそうですね。。）</p>
-
-<p>そこで、DOM から JSON に変換する <a href="http://www.kawa.net/works/js/xml/objtree.html" rel="external nofollow" title="XML.ObjTree">XML.ObjTree</a> というライブラリを元に、Titanium 上で XML を JSON に変換するライブラリを作ってみました。</p>
-
-<p>ライセンスとか気にしたつもりですが、ObjTree のライセンスに引っかかるとかあればご連絡ください。すぐに対応します。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/09/15/titanium-xml2json-xml-json/"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/8/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -987,6 +956,10 @@ ARカメラを使って、空間に配置されている号外を取得し、閲
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/17/titanium-http-client-restful/">TitaniumのHTTPClientでRESTfulリクエストを送る</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/16/ruby-open-uri-post-rest-client/">open-uri-postを使うとrest-clientが変な動きするをする</a>
       </li>
     
@@ -1010,10 +983,6 @@ ARカメラを使って、空間に配置されている号外を取得し、閲
         <a href="/blog/2014/02/14/4873113636/">ビューティフルコード</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/14/microsoft-translator-api/">RubyからMicrosoft Translator APIを呼び出す</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1021,7 +990,7 @@ ARカメラを使って、空間に配置されている号外を取得し、閲
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture' rel='nofollow'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog' rel='nofollow'>Blog <span class="badge">100</span></a><a class='list-group-item' href='/blog/categories/database' rel='nofollow'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay' rel='nofollow'>Essay <span class="badge">14</span></a><a class='list-group-item' href='/blog/categories/lifehack' rel='nofollow'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network' rel='nofollow'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming' rel='nofollow'>Programming <span class="badge">113</span></a><a class='list-group-item' href='/blog/categories/tech' rel='nofollow'>Tech <span class="badge">2</span></a><a class='list-group-item' href='/blog/categories/webdesign' rel='nofollow'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture' rel='nofollow'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog' rel='nofollow'>Blog <span class="badge">100</span></a><a class='list-group-item' href='/blog/categories/database' rel='nofollow'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay' rel='nofollow'>Essay <span class="badge">14</span></a><a class='list-group-item' href='/blog/categories/lifehack' rel='nofollow'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network' rel='nofollow'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming' rel='nofollow'>Programming <span class="badge">113</span></a><a class='list-group-item' href='/blog/categories/tech' rel='nofollow'>Tech <span class="badge">3</span></a><a class='list-group-item' href='/blog/categories/webdesign' rel='nofollow'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">
