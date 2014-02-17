@@ -2,7 +2,7 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Mon, 17 Feb 2014 11:41:11 +0900</pubDate>
+  <pubDate>Mon, 17 Feb 2014 11:49:18 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
@@ -16,12 +16,14 @@
     <description>
       <![CDATA[<p><a href="http://www.appcelerator.com/titanium/" rel="external nofollow" title="Titanium Mobile">Titanium Mobile</a> の <code>Titanium.Network.HTTPClient</code> を使って RESTful リクエストを送る場合の注意点です。</p>
 
+<p>Titanium の <code>HTTPClient</code> で <code>DELETE</code> のときに <code>send</code> でパラメータを送ると <code>POST</code> リクエストになってしまいます。</p>
+
 <p><i class="fa fa-hand-o-right"></i> <a href="http://www.appcelerator.com/titanium/" rel="external nofollow" title="Titanium Mobile Development Environment">Titanium Mobile Development Environment</a></p>
 
-<!-- more -->
-
-
-<p>Titanium の <code>HTTPClient</code> は <code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>DELETE</code> などのメソッドに対応していて、標準で RESTful リクエストを送れるようになっています。</p>
+<ul>
+<li>Titanium 3.2.1.GA</li>
+</ul>
+<!-- more --><p>Titanium の <code>HTTPClient</code> は <code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>DELETE</code> などのメソッドに対応していて、標準で RESTful リクエストを送れるようになっています。</p>
 
 <h3>GET の例</h3>
 
@@ -1423,6 +1425,7 @@ tags: [Movable Type,GitHub,Octopress,Liquid,Jekyll,Ruby]
 
 <pre><code>hamasyou.com A 192.30.252.153
 hamasyou.com A 192.30.252.154
+www.hamasyou.com CNAME hamasyou.github.io
 </code></pre>
 
 <p>これで、時間がたてば独自ドメイン名で GitHub のページが表示されるようになります。</p>

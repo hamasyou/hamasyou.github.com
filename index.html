@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Titanium Mobile の Titanium.Network.HTTPClient を使って RESTful リクエストを送る場合の注意点です。 Titanium Mobile Development Environment ">
+  <meta name="description" content="Titanium Mobile の Titanium.Network.HTTPClient を使って RESTful リクエストを送る場合の注意点です。 Titanium の HTTPClient で DELETE のときに send でパラメータを送ると POST リクエストになってしまいます &hellip;">
   
 
   
@@ -23,7 +23,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Titanium Mobile の Titanium.Network.HTTPClient を使って RESTful リクエストを送る場合の注意点です。 Titanium Mobile Development Environment " />
+<meta property="og:description" content="Titanium Mobile の Titanium.Network.HTTPClient を使って RESTful リクエストを送る場合の注意点です。 Titanium の HTTPClient で DELETE のときに send でパラメータを送ると POST リクエストになってしまいます &hellip;" />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -164,8 +164,13 @@
 
   <div class="entry-content"><p><a href="http://www.appcelerator.com/titanium/" rel="external nofollow" title="Titanium Mobile">Titanium Mobile</a> の <code>Titanium.Network.HTTPClient</code> を使って RESTful リクエストを送る場合の注意点です。</p>
 
+<p>Titanium の <code>HTTPClient</code> で <code>DELETE</code> のときに <code>send</code> でパラメータを送ると <code>POST</code> リクエストになってしまいます。</p>
+
 <p><i class="fa fa-hand-o-right"></i> <a href="http://www.appcelerator.com/titanium/" rel="external nofollow" title="Titanium Mobile Development Environment">Titanium Mobile Development Environment</a></p>
 
+<ul>
+<li>Titanium 3.2.1.GA</li>
+</ul>
 </div>
   
   
