@@ -18,7 +18,7 @@ module Jekyll
       html << '<ul class="list-inline list-group-item">'
       tags.keys.sort_by { |str| str.downcase }.each do |tag|
         url = tag_dir + tag.to_url
-        html << "<li><a class=\"label label-default\" href=\"#{url}\" rel=\"nofollow\">#{tag}</a></li>"
+        html << "<li><a class=\"label label-default\" href=\"#{url}/\" rel=\"nofollow\">#{tag}</a></li>"
       end
       html << '</ul>'
       html
