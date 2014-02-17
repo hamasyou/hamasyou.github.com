@@ -5,7 +5,7 @@ date: 2014-02-16 21:45:53 +0900
 comments: true
 categories: [Programming]
 keywords: "open-uri-post,rest-client,ruby,gem"
-tags: [ruby,gem]
+tags: [Ruby,gem]
 sharing: true
 published: true
 amazon_url: ""

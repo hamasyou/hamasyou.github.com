@@ -5,7 +5,7 @@ date: 2010-09-20 00:07
 comments: true
 categories: [Blog]
 keywords: "Mac OS X,WineBottler, Windowsアプリを動かす"
-tags: [MacOSX;,VMWare,Windows]
+tags: [MacOSX,VMWare,Windows]
 author: hamasyou
 amazon_url: ""
 amazon_author: ""
