@@ -185,6 +185,7 @@ hamasyou.com
 
     hamasyou.com A 192.30.252.153
     hamasyou.com A 192.30.252.154
+    www.hamasyou.com CNAME hamasyou.github.io
 
 これで、時間がたてば独自ドメイン名で GitHub のページが表示されるようになります。
 
