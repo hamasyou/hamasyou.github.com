@@ -5,7 +5,7 @@ date: 2014-02-14 15:40:59 +0900
 comments: true
 categories: [Tech]
 keywords: "Ruby,Microsoft Translator API,Restful"
-tags: [Ruby,Microsoft Translator API,Restful]
+tags: [Ruby,Microsoft Translator API,RESTful]
 sharing: true
 published: true
 amazon_url: ""
