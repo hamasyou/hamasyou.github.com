@@ -17,7 +17,11 @@ og_image: ""
 
 [Titanium Mobile](http://www.appcelerator.com/titanium/) の `Titanium.Network.HTTPClient` を使って RESTful リクエストを送る場合の注意点です。
 
+Titanium の `HTTPClient` で `DELETE` のときに `send` でパラメータを送ると `POST` リクエストになってしまいます。
+
 [Titanium Mobile Development Environment](http://www.appcelerator.com/titanium/)
+
+- Titanium 3.2.1.GA
 
 <!-- more -->
 
