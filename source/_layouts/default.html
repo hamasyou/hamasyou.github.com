@@ -2,7 +2,7 @@
 {% include head.html %}
 <body {% if page.body_id %} id="{{ page.body_id }}" {% endif %} {% if page.sidebar == false %} class="no-sidebar" {% endif %} {% if page.sidebar == 'collapse' or site.sidebar == 'collapse' %} class="collapse-sidebar sidebar-footer" {% endif %}>
   <nav role="navigation">{% include navigation.html %}</nav>
-  <div role="main" class="container">
+  <div id="container" role="main" class="container">
     {{ content | expand_urls: root_url }}
   </div>
   <footer role="contentinfo" class="page-footer">{% include footer.html %}</footer>
