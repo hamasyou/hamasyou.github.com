@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-19T13:52:00+09:00</updated>
+  <updated>2014-02-19T22:36:59+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RailsのI18n.localizeでnilもゆるすようにすると捗る]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"/>
+    <updated>2014-02-19T22:30:13+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/19/rails-i18n-localize</id>
+    <content type="html"><![CDATA[<p>Rails の <code>I18n.localize</code> は <code>nil</code> を渡すと例外が発生します。でも、コレだといろいろ使いづらいのでいつも</p>
+
+<pre><code class="ruby config/initializers/relaxed_i18n.rb">module I18n
+  class &lt;&lt; self
+    alias_method :original_localize, :localize
+    def localize(object, options = {})
+      object.present? ? original_localize(object, options) : ''
+    end
+  end
+end
+</code></pre>
+
+<p>こんな感じのコードを <code>config/initializers</code> の下において使っています。<code>nil</code> を渡すと空文字を返します。</p>
+
+<p>今のところコレで問題は起きていないのでオススメしてもいいかなと。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[TitaniumのHTTPClientでRESTfulリクエストを送る]]></title>

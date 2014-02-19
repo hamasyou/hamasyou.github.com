@@ -2,12 +2,48 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Wed, 19 Feb 2014 13:52:00 +0900</pubDate>
+  <pubDate>Wed, 19 Feb 2014 22:36:59 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
   <atom:link href="http://hamasyou.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+  
+  <item>
+    <title><![CDATA[RailsのI18n.localizeでnilもゆるすようにすると捗る]]></title>
+    <link>http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/</link>
+    <guid>http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/</guid>
+    <description>
+      <![CDATA[<p>Rails の <code>I18n.localize</code> は <code>nil</code> を渡すと例外が発生します。でも、コレだといろいろ使いづらいのでいつも</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>config/initializers/relaxed_i18n.rb</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">I18n</span>
+</span><span class="line">  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+</span><span class="line">    <span class="n">alias_method</span> <span class="ss">:original_localize</span><span class="p">,</span> <span class="ss">:localize</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">localize</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+</span><span class="line">      <span class="n">object</span><span class="o">.</span><span class="n">present?</span> <span class="p">?</span> <span class="n">original_localize</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">:</span> <span class="s1">''</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>こんな感じのコードを <code>config/initializers</code> の下において使っています。<code>nil</code> を渡すと空文字を返します。</p>
+
+<p>今のところコレで問題は起きていないのでオススメしてもいいかなと。</p>]]>
+    </description>
+    <pubDate>Wed, 19 Feb 2014 22:30:13 +0900</pubDate>
+  </item>
   
   <item>
     <title><![CDATA[MacのApp Storeで「ほかのアカウントで使用可能なアップデートがあります」が出てアップデート出来ないときの対応]]></title>
@@ -2701,26 +2737,6 @@ puts " # All done! (#{ok}/#{fails})"
 <p>のようなコードを加えれば良い。バッドノウハウですね。。</p>]]>
     </description>
     <pubDate>Tue, 05 Mar 2013 08:52:00 +0900</pubDate>
-  </item>
-  
-  <item>
-    <title><![CDATA[#qiita_sushi に参加した]]></title>
-    <link>http://hamasyou.com/blog/2013/03/04/qiita-sushi/</link>
-    <guid>http://hamasyou.com/blog/2013/03/04/qiita-sushi/</guid>
-    <description>
-      <![CDATA[<p>Qiita を運営されている Increments さんが一周年ということで、白ワイン持参で参加させていただきました。</p>
-
-<p>寿司職人が目の前で握ってくれる本格派！</p>
-
-<p><img src="http://hamasyou.com/images/qiita_sushi.jpg" width="320" class="img-thumbnail"></p>
-
-<p>次の Qiita イベントにも是非参加します！今後とも、エンジニアのためのサービスをガンガンリリースしてもらいたいと思います。うちの会社もエンジニアの会社なので期待しています！</p>
-
-<p>一周年、おめでとうございます！</p>
-
-<p>ちなみに、Qiita イベントの出席者は、Perl 界隈の人と Ruby 界隈の人が半々くらいな感じ。</p>]]>
-    </description>
-    <pubDate>Mon, 04 Mar 2013 23:15:00 +0900</pubDate>
   </item>
   
 </channel>
