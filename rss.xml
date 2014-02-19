@@ -2,12 +2,54 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Tue, 18 Feb 2014 15:09:19 +0900</pubDate>
+  <pubDate>Wed, 19 Feb 2014 12:06:12 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
   <atom:link href="http://hamasyou.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+  
+  <item>
+    <title><![CDATA[MacのApp Storeで「ほかのアカウントで使用可能なアップデートがあります」が出てアップデート出来ないときの対応]]></title>
+    <link>http://hamasyou.com/blog/2014/02/19/mac-app-store-account/</link>
+    <guid>http://hamasyou.com/blog/2014/02/19/mac-app-store-account</guid>
+    <description>
+      <![CDATA[<p>先日、古い MacBook Pro の Xcode のアップデートを行おうとしたときに、「<strong class="text-danger">ほかのアカウントで使用可能なアップデートがあります。このアプリケーションをアップデートするには、購入時に使用したアカウントでサインインしてください。</strong>」ってでてアップデートできなかったときにやった対応メモです。</p>
+
+<!-- more -->
+
+
+<p>アップデートできなかった原因は、<em>Spotlight</em> のインデックス更新を止めていたからでした。なので、Spotlight のインデックスを再構築すればアップデートできるようになりました。</p>
+
+<p>Spotlight インデックスを再構築する以外にも、<strong class="text-danger">一回アプリをゴミ箱に入れてアップデート</strong> すれば直るというのも Google 先生に聞いたら教えてくれました。</p>
+
+<h2>Spotlight インデックスの再構築手順</h2>
+
+<p>まず、Spotlight のインデクサが起動していないと再構築できないので、先に起動させてから再構築します。</p>
+
+<p>ターミナルを開いて次のコマンドを入力します。</p>
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
+<span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist</span><span class="line command">sudo mdutil -E /</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+<p>再構築が開始されると、画面の右上の Spotlight マークが点滅します。</p>
+
+<p><img src="http://hamasyou.com/images/2014-02-19-mac-app-store-account-01.png" alt="Spotlight 索引再構築" class="img-thumbnail"></p>
+
+<p>再構築は結構時間がかかりますが、全部終わるのをまたなくても、僕の場合はアップデートができるようになりました。</p>]]>
+    </description>
+    <pubDate>Wed, 19 Feb 2014 11:46:56 +0900</pubDate>
+  </item>
   
   <item>
     <title><![CDATA[RailsでつくるRESTful APIのrequest specを書く]]></title>
@@ -2679,90 +2721,6 @@ puts " # All done! (#{ok}/#{fails})"
 <p>ちなみに、Qiita イベントの出席者は、Perl 界隈の人と Ruby 界隈の人が半々くらいな感じ。</p>]]>
     </description>
     <pubDate>Mon, 04 Mar 2013 23:15:00 +0900</pubDate>
-  </item>
-  
-  <item>
-    <title><![CDATA[世界でもっとも強力な9のアルゴリズム]]></title>
-    <link>http://hamasyou.com/blog/2013/02/05/482228493X/</link>
-    <guid>http://hamasyou.com/blog/2013/02/05/482228493X</guid>
-    <description>
-      <![CDATA[<blockquote>
-<p>この本で取り上げた偉大なアルゴリズムから導き出せる共通のテーマはあるだろうか。この本の著者として私がとても驚いたのは、これらの大きなアイデアは、どれもコンピュータプログラミングやコンピュータ科学の予備知識を一切必要とせずに説明できることだ。</p>
-<p></p>
-<p>この本のアルゴリズム全体に共通するもう1つの重要なテーマは、コンピュータ科学という学問分野がただのプログラミングよりもずっと大きな世界だということだ。</p>
-<p></p>
-<p>私が目指したのは、読者に偉大なアルゴリズムについての知識を仕入れてもらって、日常のコンピュータ操作の中でもこれはすごいと感じてもらえるようにすることだ。</p>
-<footer><strong>本書</strong></footer>
-</blockquote>
-
-
-<p>9つの偉大なアルゴリズム、<em>検索エンジンのインデクシング</em>、<em>ページランク</em>、<em>公開鍵暗号法</em>、<em>誤り訂正符号</em>、<em>パターン認識</em>、<em>データ圧縮</em>、<em>データベース</em>、<em>デジタル署名</em>、<em>決定不能性</em>を知ることで、僕達の周りでこれらのアルゴリズムがどうやって機能していて、何が担保されているのか理解できるようになります。</p>
-
-<p>これらのアルゴリズムを知ることで、コンピュータの世界はすごいことが起こっていると知ってもらい、新たに出てくる問題の解決の一つになるといいなと思います。</p>
-
-<p>読み物なので、どんな人にもおすすめです。</p>
-
-<!-- more -->
-
-
-
-
-<h3>検索エンジンのインデクシング</h3>
-
-
-<p>検索エンジンは「NEAR」（キーワードが近くにあることを条件にする検索）を使ってランキングの精度を上げている。</p>
-
-<p>また、メタワードトリック（タイトル、見出し、リンクなどのメタ情報のどこにキーワードが含まれているか）をつかって精度を上げている。</p>
-
-<h3>ページランク</h3>
-
-
-<p>ハイパーリンクトリック（リンクされているかどうか）、オーソリティトリック（有名なところからのリンクは高評価）、ランダムサーファートリック（ランダムにページを選択肢リンクをたどる）などのアルゴリズムが使われている。</p>
-
-<p>なお、Google のページランクはもっと複雑な条件で行われている。</p>
-
-<h3>公開鍵暗号法</h3>
-
-
-<p>「共有された秘密」をどのように作るかがポイント。</p>
-
-<h3>誤り訂正符号</h3>
-
-
-<p><q>人に誤っていると教えることと真実を与えることは別のことだ。</q></p>
-
-<p>チェックサムと呼ばれる冗長化符号を付与してデータ通信することで、途中でデータが変更されたかどうかを検知する。</p>
-
-<h3>パターン認識</h3>
-
-
-<p>パターン認識は、2段階で動作する。訓練データを処理してクラスの特徴を抽出する「学習（訓練）段階」。新しい分類ラベルの付いていないデータを分類する「分類段階」である。</p>
-
-<h3>データ圧縮</h3>
-
-
-<p>まとまったデータをより短いシンボルで表すロスなし圧縮と、データの一部を取り除いてしまうロス有り圧縮がある。</p>
-
-<h3>データベース</h3>
-
-
-<p>「to-doリスト」、「仮想テーブル」、「準備してからコミット」。</p>
-
-<h3>デジタル署名</h3>
-
-
-<p>デジタル署名はあなたが誰か他人に送るものに署名するのではなく、誰か他人があなたにモノを送る前にその送ろうとしているモノに署名をする。</p>
-
-<p>例えば、プログラムをダウンロード、実行しようとするたびに、ウェブブラウザはプログラムがデジタル署名を持っているかどうかをチェックし、その署名が有効かどうかをチェックする。</p>
-
-<p>デジタル署名が提供するのは、機密性ではなく文章の真正性である。</p>
-
-<h3>決定不能性</h3>
-
-
-<p>他のプログラムを分析し、そのなかに含まれていてプログラムをクラッシュさせる原因になるようなバグをすべて見つけ出すプログラムは書けない。</p>]]>
-    </description>
-    <pubDate>Tue, 05 Feb 2013 22:17:00 +0900</pubDate>
   </item>
   
 </channel>

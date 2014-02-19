@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: App Store | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/app-store/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-19T12:06:12+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[MacのApp Storeで「ほかのアカウントで使用可能なアップデートがあります」が出てアップデート出来ないときの対応]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"/>
+    <updated>2014-02-19T11:46:56+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/19/mac-app-store-account</id>
+    <content type="html"><![CDATA[<p>先日、古い MacBook Pro の Xcode のアップデートを行おうとしたときに、「<strong>ほかのアカウントで使用可能なアップデートがあります。このアプリケーションをアップデートするには、購入時に使用したアカウントでサインインしてください。</strong>」ってでてアップデートできなかったときにやった対応メモです。</p>
+
+<!-- more -->
+
+
+<p>アップデートできなかった原因は、<em>Spotlight</em> のインデックス更新を止めていたからでした。なので、Spotlight のインデックスを再構築すればアップデートできるようになりました。</p>
+
+<p>Spotlight インデックスを再構築する以外にも、<strong>一回アプリをゴミ箱に入れてアップデート</strong> すれば直るというのも Google 先生に聞いたら教えてくれました。</p>
+
+<h2>Spotlight インデックスの再構築手順</h2>
+
+<p>まず、Spotlight のインデクサが起動していないと再構築できないので、先に起動させてから再構築します。</p>
+
+<p>ターミナルを開いて次のコマンドを入力します。</p>
+
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist</span><span class='line command'>sudo mdutil -E /</span></code></pre></td></tr></table></div></div>
+        </div></p>
+
+<p>再構築が開始されると、画面の右上の Spotlight マークが点滅します。</p>
+
+<p><img src="/images/2014-02-19-mac-app-store-account-01.png" alt="Spotlight 索引再構築" /></p>
+
+<p>再構築は結構時間がかかりますが、全部終わるのをまたなくても、僕の場合はアップデートができるようになりました。</p>
+]]></content>
+  </entry>
+  
+</feed>
