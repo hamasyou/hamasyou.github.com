@@ -242,7 +242,7 @@ task :deploy do
 end
 
 desc "Generate website and deploy"
-task :gen_deploy => [:integrate, :generate, :deploy, :ping_sitemap] do
+task :gen_deploy => [:integrate, :generate, :deploy, :ping_sitemap, :update_tweet] do
 end
 
 desc "copy dot files for deployment"
@@ -290,6 +290,21 @@ task :ping_sitemap do
   jekyll_config = IO.read('_config.yml')
   yaml = YAML.load(jekyll_config)
   SitemapGenerator::Sitemap.ping_search_engines("#{yaml['url']}/sitemap.xml")
+end
+
+
+desc "tweet new post."
+task :update_tweet do
+  require 'date'
+  require 'feed-normalizer'
+  require './misc/twitter_bot.rb'
+
+  rss = FeedNormalizer::FeedNormalizer.parse(open("#{public_dir}/atom.xml"))
+  rss.entries.each do |item|
+     if item.last_updated.to_date == Date.today
+       TwitterBot.update(item)
+     end
+  end
 end
 
 

@@ -21,6 +21,8 @@ group :development do
   gem 'activesupport'
   gem 'sitemap_generator'
   gem 'rest-client'
+  gem 'twitter'
+  gem 'feed-normalizer'
 end
 
 gem 'sinatra', '~> 1.4.2'

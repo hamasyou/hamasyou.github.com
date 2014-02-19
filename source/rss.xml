@@ -15,7 +15,7 @@ layout: nil
   <item>
     <title><![CDATA[{{ post.title | cdata_escape }}]]></title>
     <link>{{ site.url }}{{ post.url }}</link>
-    <guid>{{ site.url }}{{ post.id }}</guid>
+    <guid>{{ site.url }}{{ post.url }}</guid>
     <description>
       <![CDATA[{{ post.content | expand_urls: site.url | cdata_escape }}]]>
     </description>
