@@ -18,7 +18,7 @@ class TwitterBot
       end
 
       begin
-        twitter_client.update("記事かきました / #{title} - #{yaml['title']} #{url}")
+        twitter_client.update("#{title} - #{yaml['title']} #{url}")
       rescue => e
         p e
       end
