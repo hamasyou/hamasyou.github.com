@@ -60,7 +60,6 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       execute :touch, release_path.join('tmp/restart.txt')
-      execute :rake, 'tmp:cache:clear'
     end
   end
 
@@ -71,6 +70,7 @@ namespace :deploy do
       # Here we can do anything such as:
       within release_path do
         with rails_env: fetch(:rails_env) do
+          execute :rake, 'tmp:cache:clear'
           execute :rake, 'sitemap:refresh'
         end
       end
