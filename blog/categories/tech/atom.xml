@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-19T22:36:59+09:00</updated>
+  <updated>2014-02-20T11:50:27+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,82 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Capistrano3をRailsで使ってみた感想]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/20/capistrano3/"/>
+    <updated>2014-02-20T11:25:05+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/20/capistrano3</id>
+    <content type="html"><![CDATA[<p><strong>Capistrano3</strong> がかなりシンプルになって使いやすくなったのでプロジェクトで使ってみました。うん。なかなかよさげです。</p>
+
+<p>Capistrano2 にあった <em>copy_via</em> がなくなっていたので、デプロイ先のサーバから Git リポジトリにアクセスできるようにしないといけなかったりとちょっと面倒なこともありましたが概ね良好です。</p>
+
+<!-- more -->
+
+
+<p><a href="https://github.com/capistrano/capistrano">capistrano / capistrano</a></p>
+
+<p>Capistrano3 の導入はこの記事がオススメです。</p>
+
+<p><a href="http://threetreeslight.com/post/68344998681/capistrano-3-x-rails">capistrano 3.x系を使ってrailsをデプロイ</a></p>
+
+<p>Capistrano3 になって、独自DSLから Rake に変わりました。なので、コマンドも結構すっきりして書きやすくなりました。</p>
+
+<p>サンプルプロジェクトで使った <code>config/deploy.rb</code> の例です。</p>
+
+<pre><code class="ruby config/deploy.rb"># config valid only for Capistrano 3.1
+lock '3.1.0'
+
+set :application, 'capbox'
+set :repo_url, 'git@github.com:hamasyou/git_demo.git'
+set :deploy_to, '/var/webapp/capbox'
+
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system solr}
+
+namespace :deploy do
+
+  before :restart, :start_solr do
+    on roles(:app), in: :groups do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'sunspot:solr:stop'
+          execute :rake, 'sunspot:solr:start'
+        end
+      end
+    end
+  end
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :touch, release_path.join('tmp/restart.txt')
+      execute :rake, 'tmp:cache:clear'
+    end
+  end
+
+  after :publishing, :restart
+
+  after :restart, :sitemap do
+    on roles(:app), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'sitemap:refresh'
+        end
+      end
+    end
+  end
+end
+</code></pre>
+
+<p>タスクの実行時に指定できる <code>sequence</code>、<code>groups</code>、<code>parallel</code> の説明はこちら。</p>
+
+<p><blockquote><p>Other modes for parallelism include:</p></p><p><pre><code class="ruby">    # Capistrano 3.0.x<br/>    on :all, in: :groups, max: 3, wait: 5 do<br/>      # Take all servers, in groups of three which execute in parallel<br/>      # wait five seconds between groups of servers.<br/>      # This is perfect for rolling restarts<br/>    end</p><p>    on :all, in: :sequence, wait: 15 do<br/>      # This takes all servers, in sequence and waits 15 seconds between<br/>      # each server, this might be perfect if you are afraid about<br/>      # overloading a shared resource, or want to defer the asset compilation<br/>      # over your cluster owing to worries about load<br/>    end</p><p>    on :all, in: :parallel do<br/>      # This will simply try and execute the commands contained within<br/>      # the block in parallel on all servers. This might be perfect for kicking<br/>      # off something like a Git checkout or similar.<br/>    end<br/></code></pre></p><p><p></p><footer><strong>Capistrano Version 3 Release Announcement</strong> <cite><a href='http://capistranorb.com/2013/06/01/release-announcement.html'>capistranorb.com/2013/06/01/&hellip;</a></cite></footer></blockquote></p>
+
+<p>Capistrano2 と互換性がないですが、新規プロジェクトには使えるんじゃないかと。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RailsのI18n.localizeでnilもゆるすようにすると捗る]]></title>

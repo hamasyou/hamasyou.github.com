@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Rails | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/rails/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-19T22:36:59+09:00</updated>
+  <updated>2014-02-20T11:50:27+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,82 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Capistrano3をRailsで使ってみた感想]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/20/capistrano3/"/>
+    <updated>2014-02-20T11:25:05+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/20/capistrano3</id>
+    <content type="html"><![CDATA[<p><strong>Capistrano3</strong> がかなりシンプルになって使いやすくなったのでプロジェクトで使ってみました。うん。なかなかよさげです。</p>
+
+<p>Capistrano2 にあった <em>copy_via</em> がなくなっていたので、デプロイ先のサーバから Git リポジトリにアクセスできるようにしないといけなかったりとちょっと面倒なこともありましたが概ね良好です。</p>
+
+<!-- more -->
+
+
+<p><a href="https://github.com/capistrano/capistrano">capistrano / capistrano</a></p>
+
+<p>Capistrano3 の導入はこの記事がオススメです。</p>
+
+<p><a href="http://threetreeslight.com/post/68344998681/capistrano-3-x-rails">capistrano 3.x系を使ってrailsをデプロイ</a></p>
+
+<p>Capistrano3 になって、独自DSLから Rake に変わりました。なので、コマンドも結構すっきりして書きやすくなりました。</p>
+
+<p>サンプルプロジェクトで使った <code>config/deploy.rb</code> の例です。</p>
+
+<pre><code class="ruby config/deploy.rb"># config valid only for Capistrano 3.1
+lock '3.1.0'
+
+set :application, 'capbox'
+set :repo_url, 'git@github.com:hamasyou/git_demo.git'
+set :deploy_to, '/var/webapp/capbox'
+
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system solr}
+
+namespace :deploy do
+
+  before :restart, :start_solr do
+    on roles(:app), in: :groups do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'sunspot:solr:stop'
+          execute :rake, 'sunspot:solr:start'
+        end
+      end
+    end
+  end
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :touch, release_path.join('tmp/restart.txt')
+      execute :rake, 'tmp:cache:clear'
+    end
+  end
+
+  after :publishing, :restart
+
+  after :restart, :sitemap do
+    on roles(:app), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'sitemap:refresh'
+        end
+      end
+    end
+  end
+end
+</code></pre>
+
+<p>タスクの実行時に指定できる <code>sequence</code>、<code>groups</code>、<code>parallel</code> の説明はこちら。</p>
+
+<p><blockquote><p>Other modes for parallelism include:</p></p><p><pre><code class="ruby">    # Capistrano 3.0.x<br/>    on :all, in: :groups, max: 3, wait: 5 do<br/>      # Take all servers, in groups of three which execute in parallel<br/>      # wait five seconds between groups of servers.<br/>      # This is perfect for rolling restarts<br/>    end</p><p>    on :all, in: :sequence, wait: 15 do<br/>      # This takes all servers, in sequence and waits 15 seconds between<br/>      # each server, this might be perfect if you are afraid about<br/>      # overloading a shared resource, or want to defer the asset compilation<br/>      # over your cluster owing to worries about load<br/>    end</p><p>    on :all, in: :parallel do<br/>      # This will simply try and execute the commands contained within<br/>      # the block in parallel on all servers. This might be perfect for kicking<br/>      # off something like a Git checkout or similar.<br/>    end<br/></code></pre></p><p><p></p><footer><strong>Capistrano Version 3 Release Announcement</strong> <cite><a href='http://capistranorb.com/2013/06/01/release-announcement.html'>capistranorb.com/2013/06/01/&hellip;</a></cite></footer></blockquote></p>
+
+<p>Capistrano2 と互換性がないですが、新規プロジェクトには使えるんじゃないかと。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RailsのI18n.localizeでnilもゆるすようにすると捗る]]></title>
@@ -712,56 +788,6 @@ f
   &lt;%= submit_tag "表示", :name =&gt; nil %&gt;
 &lt;% end %&gt;
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[kaminari の paginate_array が便利]]></title>
-    <link href="http://hamasyou.com/blog/2011/06/14/kaminari-paginate-array/"/>
-    <updated>2011-06-14T09:31:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2011/06/14/kaminari-paginate-array</id>
-    <content type="html"><![CDATA[<p>will_paginate に代わるページングのライブラリ、kaminari ですが、ページングが scope 扱いで配列に対して使えなかったのでちょっと不便なときがあったのですが、なんと paginate_array なるものを発見しました。</p>
-
-<p><section></p>
-
-<h4>環境</h4>
-
-
-
-
-<dl><dt>kaminari</dt><dd>0.12.4</dd></dl>
-
-
-<p></section></p>
-
-<!-- more -->
-
-
-<p><a href="http://rubygems.org/gems/kaminari" rel="external nofollow">kaminari</a> の <strong>Kaminari.paginate_array</strong> が激しく便利！</p>
-
-<p>もともと、kaminari が扱う page は scope だったかと思います。なので、配列（Array）に対しては使えませんでした。</p>
-
-<p>で、ちょっとソースを見ていたらびっくりするものを発見！</p>
-
-<p><strong>Kaminari.paginate_array</strong></p>
-
-<p>なんと、配列をページングできるようになっていました。これで、Entity.all したものもページングできるようになりますね。</p>
-
-<p>使い方は、scope の方の page と同じ。</p>
-
-<pre><code class="ruby">Kaminari.paginate_array(array_obj).page(params[:page])
-</code></pre>
-
-<p>激しくべんり！</p>
-
-<p><section></p>
-
-<h4>kaminari の解説で参考になるサイト</h4>
-
-
-<p><a href="http://memo.yomukaku.net/entries/238" rel="external nofollow">Kaminariの使い方 Rails3時代のpaginationの標準候補 - YomuKaku Memo</a></p>
-
-<p></section></p>
 ]]></content>
   </entry>
   
