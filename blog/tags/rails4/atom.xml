@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Rails4 | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/rails4/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-02-20T21:50:06+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails4でtransactionの分離レベルを設定する]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/20/rails4-transaction/"/>
+    <updated>2014-02-20T21:42:41+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/20/rails4-transaction</id>
+    <content type="html"><![CDATA[<p>Rails4 から <code>ActiveRecord::Base.transaction</code> に分離レベルを手軽に設定できるようになったみたいです。</p>
+
+<pre><code class="ruby">ActiveRecord::Base.transaction(isolation: :serializable) do
+  params[:ids].each do |id|
+    book = Book.find_by(id: id)
+    book.update_attributes(title: params[id][:title]
+  end
+end
+</code></pre>
+
+<p>分離レベルには次の4つを設定できます。</p>
+
+<ul>
+<li><code>:read_uncommitted</code></li>
+<li><code>:read_committed</code></li>
+<li><code>:repeatable_read</code></li>
+<li><code>:serializable</code></li>
+</ul>
+
+
+<p>ActiveRecord で テーブルロックを掛けたかったときに見つけたのでメモしておきます。</p>
+]]></content>
+  </entry>
+  
+</feed>

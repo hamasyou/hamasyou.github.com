@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-20T11:55:54+09:00</updated>
+  <updated>2014-02-20T21:50:06+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rails4でtransactionの分離レベルを設定する]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/20/rails4-transaction/"/>
+    <updated>2014-02-20T21:42:41+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/20/rails4-transaction</id>
+    <content type="html"><![CDATA[<p>Rails4 から <code>ActiveRecord::Base.transaction</code> に分離レベルを手軽に設定できるようになったみたいです。</p>
+
+<pre><code class="ruby">ActiveRecord::Base.transaction(isolation: :serializable) do
+  params[:ids].each do |id|
+    book = Book.find_by(id: id)
+    book.update_attributes(title: params[id][:title]
+  end
+end
+</code></pre>
+
+<p>分離レベルには次の4つを設定できます。</p>
+
+<ul>
+<li><code>:read_uncommitted</code></li>
+<li><code>:read_committed</code></li>
+<li><code>:repeatable_read</code></li>
+<li><code>:serializable</code></li>
+</ul>
+
+
+<p>ActiveRecord で テーブルロックを掛けたかったときに見つけたのでメモしておきます。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Capistrano3をRailsで使ってみた感想]]></title>
@@ -438,90 +467,6 @@ pp json
         </div></p>
 
 <p><a href="http://pipes.yahoo.com/pipes/">Yahoo Pipes</a> のような有名なサービスもありますが、簡単にウェブサイトをスクレイピングしたい用途であれば <em>kimono</em> はオススメのサービスです。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RubyからMicrosoft Translator APIを呼び出す]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/14/microsoft-translator-api/"/>
-    <updated>2014-02-14T15:40:59+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/14/microsoft-translator-api</id>
-    <content type="html"><![CDATA[<p>Google の翻訳 API が有料化されたことで、無料で使える翻訳 API が実質 <strong>Microsoft Translator API</strong> 一択になってしまいました。</p>
-
-<p>実際に使ってみようと思ったときに、いろいろなサイトをぐるぐる回ったり、API の呼び出し方が変わっていたりしてとまどったので、手順のおさらいをしておきます。</p>
-
-<!-- more -->
-
-
-<h2>Microsoft Translator API</h2>
-
-<p>Microsoft Translator API は Microsfot が提供する翻訳サービスで REST インターフェースを備えています。</p>
-
-<p>利用するには Microsoft Azure Marketplace で Microsoft Translator の利用登録が必要です。</p>
-
-<h3>Microsoft Translator 登録を行う</h3>
-
-<p>翻訳 API を使うには Azure Marketplace で利用登録が必要になります。</p>
-
-<p><a href="https://datamarket.azure.com/dataset/1899a118-d202-492c-aa16-ba21c33c06cb">Microsoft Azure Marketplace</a></p>
-
-<p>アカウントを持っていない人はアカウントを作成して、月額0円のプランを購入します。</p>
-
-<p><img src="/images/2014-02-14-microsoft-translator-api-01.png" alt="Microsoft Translator の購入" /></p>
-
-<h3>アプリケーション登録を行う</h3>
-
-<p>次に、Azure Marketplace でアプリケーションの登録を行います。</p>
-
-<p><a href="https://datamarket.azure.com/developer/applications">開発者 アプリケーション登録 - Microsoft Azure Marketplace</a></p>
-
-<p><img src="/images/2014-02-14-microsoft-translator-api-02.png" alt="アプリケーション登録" /></p>
-
-<p>翻訳 API だけを利用する場合には <em>リダイレクトURI</em> は利用しませんが、必須入力なので <code>http://localhost/</code> と入力しておきます。<code>https</code> で登録しろと怒られますが無視して登録できます。</p>
-
-<p>ここで登録した <em>クライアントID</em> 、<em>顧客の秘密</em> が API 呼び出しの時に使う <strong>client_id</strong> 、 <strong>client_secret</strong> になります。</p>
-
-<h3>Ruby から呼び出してみる</h3>
-
-<p>翻訳 API を呼び出すには、呼び出しの前に OAuth を通さなければなりません。OAuth を通すと得られる <em>access_token</em> を使って翻訳 API を呼び出します。</p>
-
-<p>OAuth を通すには POST リクエストが必要なので、サンプルでは Ruby の <code>open-uri</code> を post 対応したものを使っています。</p>
-
-<p><a href="http://d.hatena.ne.jp/urekat/20070201/1170349097">[ruby]open-uriをPOST対応させる</a></p>
-
-<pre><code class="ruby">require 'cgi'
-require 'open-uri-post'
-require 'rexml/document'
-require 'json'
-
-CLIENT_ID       = '&lt;クライアントID&gt;'
-CLIENT_SECRET   = '&lt;顧客の秘密&gt;'
-AUTHORIZE_URL   = 'https://datamarket.accesscontrol.windows.net/v2/OAuth2-13'
-TRANSLATION_URL = 'http://api.microsofttranslator.com/V2/Http.svc/Translate'
-SCOPE           = 'http://api.microsofttranslator.com'
-
-def get_access_token
-  access_token = nil
-  open(AUTHORIZE_URL,
-       'postdata' =&gt; "grant_type=client_credentials&amp;client_id=#{CGI.escape(CLIENT_ID)}&amp;client_secret=#{CGI.escape(CLIENT_SECRET)}&amp;scope=#{CGI.escape(SCOPE)}") do |f|
-    json           = JSON.parse(f.read)
-    access_token   = json['access_token']
-  end
-  access_token
-end
-
-
-def translate_text(text)
-  access_token = get_access_token
-  res = open("#{TRANSLATION_URL}?from=en&amp;to=ja&amp;text=#{URI.escape(text)}",
-             'Authorization' =&gt; "Bearer #{access_token}").read
-  xml = REXML::Document.new(res)
-  xml.root.text
-end
-
-puts translate_text('Hello World')
-# =&gt; "ハローワールド"
-</code></pre>
 ]]></content>
   </entry>
   
