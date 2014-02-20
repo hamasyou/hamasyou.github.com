@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-20T11:50:27+09:00</updated>
+  <updated>2014-02-20T11:55:54+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -108,7 +108,6 @@
 </span><span class="line">  <span class="n">task</span> <span class="ss">:restart</span> <span class="k">do</span>
 </span><span class="line">    <span class="n">on</span> <span class="n">roles</span><span class="p">(</span><span class="ss">:app</span><span class="p">),</span> <span class="k">in</span><span class="p">:</span> <span class="ss">:sequence</span><span class="p">,</span> <span class="ss">wait</span><span class="p">:</span> <span class="mi">5</span> <span class="k">do</span>
 </span><span class="line">      <span class="n">execute</span> <span class="ss">:touch</span><span class="p">,</span> <span class="n">release_path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">'tmp/restart.txt'</span><span class="p">)</span>
-</span><span class="line">      <span class="n">execute</span> <span class="ss">:rake</span><span class="p">,</span> <span class="s1">'tmp:cache:clear'</span>
 </span><span class="line">    <span class="k">end</span>
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line">
@@ -119,6 +118,7 @@
 </span><span class="line">      <span class="c1"># Here we can do anything such as:</span>
 </span><span class="line">      <span class="n">within</span> <span class="n">release_path</span> <span class="k">do</span>
 </span><span class="line">        <span class="n">with</span> <span class="n">rails_env</span><span class="p">:</span> <span class="n">fetch</span><span class="p">(</span><span class="ss">:rails_env</span><span class="p">)</span> <span class="k">do</span>
+</span><span class="line">          <span class="n">execute</span> <span class="ss">:rake</span><span class="p">,</span> <span class="s1">'tmp:cache:clear'</span>
 </span><span class="line">          <span class="n">execute</span> <span class="ss">:rake</span><span class="p">,</span> <span class="s1">'sitemap:refresh'</span>
 </span><span class="line">        <span class="k">end</span>
 </span><span class="line">      <span class="k">end</span>

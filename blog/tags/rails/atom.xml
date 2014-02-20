@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Rails | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/rails/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-20T11:50:27+09:00</updated>
+  <updated>2014-02-20T11:55:54+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -62,7 +62,6 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       execute :touch, release_path.join('tmp/restart.txt')
-      execute :rake, 'tmp:cache:clear'
     end
   end
 
@@ -73,6 +72,7 @@ namespace :deploy do
       # Here we can do anything such as:
       within release_path do
         with rails_env: fetch(:rails_env) do
+          execute :rake, 'tmp:cache:clear'
           execute :rake, 'sitemap:refresh'
         end
       end
