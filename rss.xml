@@ -2,12 +2,381 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Fri, 21 Feb 2014 15:55:06 +0900</pubDate>
+  <pubDate>Fri, 21 Feb 2014 23:42:34 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
   <atom:link href="http://hamasyou.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+  
+  <item>
+    <title><![CDATA[JavaScriptで学ぶ関数型プログラミング]]></title>
+    <link>http://hamasyou.com/blog/2014/02/21/functional-javascript/</link>
+    <guid>http://hamasyou.com/blog/2014/02/21/functional-javascript/</guid>
+    <description>
+      <![CDATA[<blockquote>
+<p>本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。JavaScriptビルトインのデータ型を上手に利用するための基本知識やJavaScriptにおける関数の持つ特性など、関数型プログラミングの技術とその考え方について解説します。また実際のJavaScriptコーディングに関数型プログラミングのエッセンスを加えるポイントをサンプルを使って丁寧に説明します。関数型プログラミングに精通した著者が書き下ろした本書は、テクニックを増やし、コーディングのイマジネーションを広げたいエンジニア必携の一冊です。</p>
+<footer><strong>内容紹介</strong></footer>
+</blockquote>
+
+
+<p>JavaScript は純粋な関数型プログラミング言語ではありません。が、<strong class="text-danger">関数型言語として JavaScript を理解し使用することでコードがより洗練され、読みやすいものになる</strong> はずという筆者の考えがこの本には現れています。</p>
+
+<p>関数型プログラミングは JavaScript においては一つのスタイルにしかすぎず、必要な場面で適切に使うというアプローチをとることで、よりよく JavaScript を使えるようになります。</p>
+
+<!-- more -->
+
+
+<h2>おぼえがき</h2>
+
+<h3>関数型プログラミングとは</h3>
+
+<blockquote><p>関数型プログラミングとは、値を抽象の単位に変換する関数を使用して行うプログラミングであり、それらを使ってソフトウェアシステムを構築することである。</p></blockquote>
+
+
+<p>オブジェクト指向では、問題領域をオブジェクトという単位に分解して対処していきますが、関数型プログラミングでは、問題を <strong class="text-danger">関数</strong> のパーツに分解します。</p>
+
+<p>オブジェクト指向のアプローチは問題を「<strong class="text-danger">名詞</strong>」に分解して行う傾向があるのに対して、関数型プログラミングでは、問題を「<strong class="text-danger">動詞</strong>」に分解する傾向があります。</p>
+
+<p>関数を通して、与えられた値を「<strong class="text-danger">変換</strong>」することができます。</p>
+
+<pre><code class="plain">markdown → toHTML → postProcess → modifyDOM
+         │        │             │
+      テキスト   HTML       編集されたHTML
+</code></pre>
+
+<h3>高階関数</h3>
+
+<p><strong class="text-danger">高階関数</strong> とは、関数を引数にとり新しい関数を生成して返す関数のことです。</p>
+
+<p>例えば、JavaScript の Array には <code>sort</code> 関数があります。<code>sort</code> は引数に <code>compareFunction</code> を取ります。値の大小を比較する関数を <code>lessOrEqual</code>、この関数を <code>compareFunction</code> の仕様に変換する関数を <code>compare</code> とします。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">lessOrEqual</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">x</span> <span class="o">&lt;=</span> <span class="nx">y</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">compare</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">))</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">))</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="nx">sort</span><span class="p">(</span><span class="nx">compare</span><span class="p">(</span><span class="nx">lessOrEqual</span><span class="p">));</span>
+</span><span class="line"><span class="c1">// =&gt; [-2, -1, -1, 0, 1, 10, 100]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>compare</code> 関数は大小比較を行う関数を引数にとり、<code>compareFunction</code> の仕様に則った関数を生成して返す高階関数になります。</p>
+
+<h3>JavaScript における関数型プログラミング</h3>
+
+<ul>
+<li>関数による抽象の定義（<code>existy</code> や <code>truthy</code>）</li>
+<li>関数を他の関数の引数に渡すことによる新たな動作の実現</li>
+</ul>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">x</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="kd">function</span> <span class="nx">truthy</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="nx">x</span> <span class="o">!==</span> <span class="kc">false</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">false</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">existy</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; [false, false, true, true, true]</span>
+</span><span class="line"><span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">false</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">truthy</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; [false, false, true, true, false]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>これこそが、<strong class="text-danger">関数型プログラミング</strong> です。関数型プログラミングは強力な <em>データ抽象</em> とともに実装されて役に立つものです。</p>
+
+<h3>命令型プログラミングと関数型プログラミングの違いの例</h3>
+
+<p><em>99本のビール</em> の歌の歌詞を構築するプログラムを命令型プログラミングと関数型プログラミングで書いてみた例です。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>命令型プログラミング</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">lyrics</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class="line">
+</span><span class="line"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">bottles</span> <span class="o">=</span> <span class="mi">99</span><span class="p">;</span> <span class="nx">bottles</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">bottles</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">bottles</span> <span class="o">+</span> <span class="s1">'本のビールが残ってる'</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">bottles</span> <span class="o">+</span> <span class="s1">'本のビール'</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'ひとつ取って、隣に回せ'</span><span class="p">);</span>
+</span><span class="line">  <span class="k">if</span> <span class="p">(</span><span class="nx">bottles</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'もうビールは残ってない'</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>関数型プログラミングのアプローチで書くとこうなります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>関数型プログラミング</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="c1">// var _ = require('underscore');</span>
+</span><span class="line"><span class="kd">function</span> <span class="nx">lyricsSegment</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">chain</span><span class="p">([])</span>
+</span><span class="line">    <span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">n</span> <span class="o">+</span> <span class="s1">'本のビールが残ってる'</span><span class="p">)</span>
+</span><span class="line">    <span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">n</span> <span class="o">+</span> <span class="s1">'本のビール'</span><span class="p">)</span>
+</span><span class="line">    <span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'ひとつ取って、隣に回せ'</span><span class="p">)</span>
+</span><span class="line">    <span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">lyrics</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">          <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'もうビールは残ってない'</span><span class="p">);</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">})</span>
+</span><span class="line">    <span class="p">.</span><span class="nx">value</span><span class="p">();</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">song</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">,</span> <span class="nx">lyricGen</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+</span><span class="line">    <span class="kd">function</span><span class="p">(</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="nx">acc</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">lyricGen</span><span class="p">(</span><span class="nx">n</span><span class="p">));</span>
+</span><span class="line">    <span class="p">},</span> <span class="p">[]);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">song</span><span class="p">(</span><span class="mi">99</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">lyricSegment</span><span class="p">);</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><em>命令型プログラミングは一度きりの実装となり、再利用が難しいものになります。</em></p>
+
+<h3>コレクション中心プログラミング</h3>
+
+<p>関数型プログラミングは、コレクションに入った多数のアイテムに同じ操作を適用するようなタスクを行う際にとても便利です。</p>
+
+<p>一般的な関数型プログラミングによって主張されるコレクション中心の考え方のポイントは、その処理を行うために一貫性のある語彙を確立し、包括的に揃えた関数を再利用出来るようにすることです。</p>
+
+<blockquote>
+<p>10種類のデータ構造上で10の関数を動かすよりも、ひとつのデータ構造上で100の関数を動かすほうがよい。</p>
+<footer><strong>Alan Perlis</strong></footer>
+</blockquote>
+
+
+<p>関数型プログラミングでは、<em>それぞれの関数がすこしずつデータを変換し、最後の解に至る</em> ようにします。</p>
+
+<h3>値ではなく、関数を使え</h3>
+
+<p>ある値を何度か繰り返す関数はよい関数ですが、ある計算を何度か繰り返す関数のほうがよりよい関数です。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>よい関数</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">repeat</span><span class="p">(</span><span class="nx">times</span><span class="p">,</span> <span class="nx">VALUE</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="nx">times</span><span class="p">),</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">VALUE</span><span class="p">;</span> <span class="p">});</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">'Major'</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; ["Major", "Major", "Major", "Major"]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>よりよい関数</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">repeatedly</span><span class="p">(</span><span class="nx">times</span><span class="p">,</span> <span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="nx">times</span><span class="p">),</span> <span class="nx">func</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">repeatedly</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'Major'</span><span class="p">;</span> <span class="p">});</span>
+</span><span class="line"><span class="c1">// =&gt; ["Major", "Major", "Major", "Major"]</span>
+</span><span class="line"><span class="nx">repeatedly</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="p">});</span>
+</span><span class="line"><span class="c1">// =&gt; [1, 3, 8]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>関数型スタイルのプログラミングでは、<em>実行の主体となるオブジェクトを引数に取る関数が好まれます</em>。</p>
+
+<h2>メモ</h2>
+
+<p>本書の中に出てきた、関数とかのメモ。</p>
+
+<h3>predicate</h3>
+
+<p>常に真偽値（<code>true</code> or <code>false</code>）を返す関数を <strong class="text-danger">predicate</strong> と呼びます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">lessOrEqual</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">x</span> <span class="o">&lt;=</span> <span class="nx">y</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>existy と truthy</h3>
+
+<p><code>existy</code> は与えられた値が存在するかどうかを返す関数です。<code>truthy</code> は与えられた値が <code>true</code> とみなされるかどうかを返す関数です。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">x</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">truthy</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="p">(</span><span class="nx">x</span> <span class="o">!==</span> <span class="kc">false</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>truthy</code> は0を <code>true</code> と判定します。これは JavaScript の標準の動作とは違いますが、0を <code>false</code> と同一とみなすのは C 言語の遺物であると筆者は考えているようです。</p>
+
+<h3>JavaScript 関数の設計指針</h3>
+
+<p>JavaScript ではある条件が <code>true</code> の場合のみ処理を行い、それ以外の場合には <code>undefined</code> か <code>null</code> を返す動作が使いやすい場合が多い。</p>
+
+<h3>メタプログラミングとは</h3>
+
+<blockquote><p>プログラミングは何かを行うためにコードを書くものであるが、メタプログラミングは何かを解釈する方法を変更するためにコードを書くものである。</p></blockquote>
+
+
+<h3>第一級関数</h3>
+
+<p>第一級関数は他のデータ型と同じように、扱うことができる関数のことです。</p>
+
+<ul>
+<li>変数に格納できる</li>
+<li>必要に応じて生成できる</li>
+<li>他の関数の引数として渡すことができる</li>
+<li>関数の戻り値として返すことができる</li>
+</ul>
+<h3>コレクション中の <code>null</code> に対する防御用の関数 <code>fnull</code>
+</h3>
+
+<p><code>fnull</code> は関数と可変長引数をとる関数です。与えられた関数の実行を行う際に <code>undefined</code> か <code>null</code> の値の場合にはデフォルト値を使うようにして関数を呼び出します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>fnull</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">fnull</span><span class="p">(</span><span class="nx">func</span> <span class="cm">/* , 可変長のデフォルト引数 */</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">rest</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span> <span class="cm">/* args */</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">?</span> <span class="nx">e</span> <span class="o">:</span> <span class="nx">defaults</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span> <span class="p">});</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">safeMulti</span> <span class="o">=</span> <span class="nx">fnull</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">total</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">total</span> <span class="o">*</span> <span class="nx">n</span><span class="p">;</span> <span class="p">},</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class="line"><span class="nx">_</span><span class="p">.</span><span class="nx">reduce</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nx">safeMulti</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; 30</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>感想</h2>
+
+<p>JavaScript の関数の基本的なところから説明をはじめて、<strong class="text-danger">関数型プログラミング</strong>、<strong class="text-danger">クロージャ</strong>、<strong class="text-danger">高階関数</strong>、<strong class="text-danger">カリー化</strong>、<strong class="text-danger">再帰</strong>、<strong class="text-danger">フィルタ</strong>、<strong class="text-danger">パイプライン</strong>等の関数の設計方法がふんだんに解説されています。</p>
+
+<p>説明がとても丁寧で分かりやすく、関数型プログラミングのことを知らない人でも理解しやすいと思います。</p>
+
+<p>JavaScript は Java に次いで最も多く利用されている言語ですので、JavaScript をよりよく使うために本書を活用してみてはいかがでしょうか。おすすめです。</p>]]>
+    </description>
+    <pubDate>Fri, 21 Feb 2014 19:39:56 +0900</pubDate>
+  </item>
   
   <item>
     <title><![CDATA[静的サイトを素早く構築するためにGoLangで作られたジェネレータHugo]]></title>
@@ -2688,26 +3057,6 @@ puts " # All done! (#{ok}/#{fails})"
 <p><img src="http://hamasyou.com/images/2013-12-03-rails-ss.png" height="526" width="517" alt="スクリーンショット" class="img-thumbnail"></p>]]>
     </description>
     <pubDate>Tue, 03 Dec 2013 19:05:00 +0900</pubDate>
-  </item>
-  
-  <item>
-    <title><![CDATA[バッドデータハンドブック ―データにまつわる問題への19の処方箋]]></title>
-    <link>http://hamasyou.com/blog/2013/11/14/4873116406/</link>
-    <guid>http://hamasyou.com/blog/2013/11/14/4873116406/</guid>
-    <description>
-      <![CDATA[<blockquote>
-<p>値の欠落、形式から外れたレコード、エンコーディング形式が不明な文字列。「バッドデータ」と聞いた時に思い浮べる典型例です。しかし、これら以外にも「そもそもデータにアクセスできない」「消えてしまった」「昨日と違っている」「データはあるが形式が処理に適していない」など、データを収集・分析するエンジニアは、これらの「バッドデータ」と正面から向きあわなければならないことが多々あります。本書では、これらの問題のあるデータのパターンを紹介し、その対処法を解説しています。<br>19人のデータ分析の専門家が、自らの経験を通して得た、さまざまな教訓、実践的な方法論等を詳述した本書は、ビッグデータ時代のエンジニアにとって必携の一冊となるでしょう。</p>
-<footer><strong>O&#8217;REILLY</strong></footer>
-</blockquote>
-
-
-<p>本書はプログラミングやデータ解析の時に扱うデータの内容やフォーマットについて書かれています。プログラミングの時に扱いやすいデータフォーマット、こういう点に気をつけてデータを扱え、こういうフォーマットが使いやすいなどについて書かれています。</p>
-
-<p>コンピュータで扱うデータは大きく分けて<strong class="text-danger">コンピュータのためにフォーマットするデータ</strong>と<strong class="text-danger">人間のためにフォーマットするデータ</strong>があります。これらをごっちゃにしてしまうと扱いづらいデータ（<strong class="text-danger">バッドデータ</strong>）になってしまいます。本書はバッドデータをよりよく扱う方法、バッドデータにしない方法について、いろいろな点で考えられるようにアイデアや体験談を与えてくれます。</p>
-
-<p>最近 API をよく作ってるんだけど通信データのフォーマットに困ってるというような Web プログラマにオススメです！</p>]]>
-    </description>
-    <pubDate>Thu, 14 Nov 2013 11:45:00 +0900</pubDate>
   </item>
   
 </channel>
