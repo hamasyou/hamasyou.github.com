@@ -19,10 +19,7 @@ Rails4 から `ActiveRecord::Base.transaction` に分離レベルを手軽に設
 
 ```ruby
 ActiveRecord::Base.transaction(isolation: :serializable) do
-  params[:ids].each do |id|
-    book = Book.find_by(id: id)
-    book.update_attributes(title: params[id][:title]
-  end
+  ...
 end
 ```
 
@@ -32,5 +29,3 @@ end
 - `:read_committed`
 - `:repeatable_read`
 - `:serializable`
-
-ActiveRecord で テーブルロックを掛けたかったときに見つけたのでメモしておきます。
