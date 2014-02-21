@@ -37,6 +37,9 @@ span.divider:before {
     padding-top: $line-height-computed * 1.2;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') top left repeat-x;
   }
+  h2+h3 {
+    background: none;
+  }
   h4, .h4 {
     margin-top: $line-height-computed * 1.2;
   }
