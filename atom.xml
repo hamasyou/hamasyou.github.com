@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-21T11:06:51+09:00</updated>
+  <updated>2014-02-21T15:55:06+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[静的サイトを素早く構築するためにGoLangで作られたジェネレータHugo]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/21/hugo/"/>
+    <updated>2014-02-21T15:43:47+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/21/hugo/</id>
+    <content type="html"><![CDATA[<p>最近は静的サイトブームが再到来なんですかね？<strong class="text-danger">GoLang</strong> で作られた静的サイトジェネレータの <strong class="text-danger">Hugo</strong> なんていうものがありました。</p>
+
+<p>うちのサイトも最近 Ruby の <em>Octopress</em> でサイトをリニューアルしましたが、Go にもあるんですね。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/spf13/hugo" rel="external nofollow" title="spf13 / hugo">spf13 / hugo</a></p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://hugo.spf13.com/" rel="external nofollow" title="The Fast and Flexible Static Site Generator - Hugo">The Fast and Flexible Static Site Generator - Hugo</a></p>
+
+<p>Go でビルドするので速いとのこと。また、Windows、Mac、Linux と環境を選ばないのがいいですね。</p>
+
+<p>記事は <strong class="text-danger">Markdown</strong> で記述します。カテゴリやタグなどの情報は <strong class="text-danger">YAML</strong> 形式でいけます。<a href="http://octopress.org/" rel="external nofollow" title="Octopress">Octopress</a> や <a href="http://jekyllrb.com/" rel="external nofollow" title="Jekyll">Jekyll</a> と似ています。</p>
+
+<p>最近 Go が人気急上昇なので、Go の環境が手元にある人は Hugo を使ってサイトを運営してみるのもありかもです。</p>]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rails4でtransactionの分離レベルを設定する]]></title>
@@ -2652,127 +2672,6 @@ puts " # All done! (#{ok}/#{fails})"
 <p>コンピュータで扱うデータは大きく分けて<strong class="text-danger">コンピュータのためにフォーマットするデータ</strong>と<strong class="text-danger">人間のためにフォーマットするデータ</strong>があります。これらをごっちゃにしてしまうと扱いづらいデータ（<strong class="text-danger">バッドデータ</strong>）になってしまいます。本書はバッドデータをよりよく扱う方法、バッドデータにしない方法について、いろいろな点で考えられるようにアイデアや体験談を与えてくれます。</p>
 
 <p>最近 API をよく作ってるんだけど通信データのフォーマットに困ってるというような Web プログラマにオススメです！</p>]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? ]]></title>
-    <link href="http://hamasyou.com/blog/2013/06/24/4774156647/"/>
-    <updated>2013-06-24T22:34:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2013/06/24/4774156647/</id>
-    <content type="html"><![CDATA[<p>コード。ラテン語で codex。codex とはもともとローマ法大全のことを指し示す言葉だそうです。コードは読みとくべきであり、書き下されるべきものである。そしてそれができたとき、喜びが生まれる。弾さんのまえがきにある言葉ですが、コーディング好きなプログラマのみなさんはこの言葉がよくわかると思います。</p>
-
-<p>本書は、プログラミングに関わるいろいろな事柄が短文のエッセイの形でまとめられています。もともと Software Design の連載だったものをまとめたもののようですが、まとめて読むことに価値があると思います。</p>
-
-<p>弾さんのコンピュータの捉え方、プログラミングの姿勢、豊富な知識や知見がまとめられています。スイスイと読んでいける日本版の『<a href="http://www.amazon.co.jp/gp/product/4274066304?ie=UTF8&amp;camp=247&amp;creativeASIN=4274066304&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title="Joel on Software">Joel on Software</a>』です。</p>
-
-<!-- more -->
-
-
-
-
-<h2>はじめに</h2>
-
-
-<p>コードな世界へ、ようこそ!</p>
-
-<p>コード?コードって何でしょう?</p>
-
-<p>元をたどると、この言葉はラテン語 codex に行き着きます。</p>
-
-<blockquote>
-<p>ORIGIN Middle English: via Old French from Latin codex, codic- (see codex). The term originally denoted a systematic collection of statutes made by one of the later Roman emperors, particularly that of Justinian&#8230;</p>
-<footer><strong>Oxford American Dictionary</strong></footer>
-</blockquote>
-
-
-<p>ここに出てくるJustinianとはユスティニアヌス1世のこと。「ローマ法大全」(Corpus Iuris Civilis)を編纂させた人。codexとは、元々はこのローマ法大全のことを指し示す言葉だったのです。固有名詞から生じた一般名詞。</p>
-
-<p>このことはBibleという言葉の対局にあります。こちらは元々は「本」という一般名詞でした。そのことは bibliomania (本の虫–どこの私だ?)、 bibliography (本の目録)といった英単語からも伺うことができます。Bibleとは&#8221;The Book&#8221;という意味だったのですね。一般名詞から生じた固有名詞。</p>
-
-<p>コードに話を戻しましょう。本来のコードであったローマ法に関して、塩野七生はこう述べています。</p>
-
-<blockquote>
-<p>人間の行動原則の正し手を、 宗教に求めたユダヤ人。 哲学に求めたギリシア人。 法律に求めたローマ人。</p>
-<footer><strong>ローマ人の物語</strong></footer>
-</blockquote>
-
-
-<p>この意味において、日本を含め、およそ法治国家を標榜する国々の市民はローマ人の末裔ということになります。</p>
-
-<p>ところが、このローマ人、法を作成し、改訂し、施行することには熱心でも、編纂することには少しも熱心ではなかったのです。前述のユスティニアヌス1世の527年から565年。ローマの全盛期はとっくに過ぎて、東西に分裂した後だったのです。</p>
-
-<p>おそらく、それに熱心に取り組んでいる人にとって、それはあまりに当然で必然なことで、わざわざ「外から」編纂するという気持ちにはなりにくかったのでしょう。</p>
-
-<p>ローマ人にとってそうであったように、コードという言葉は現代人にとってそういう存在になりつつあります。ただし現代人にあってローマ人になかったものが一つあります。</p>
-
-<p>それが、電脳(computer)。これはローマ人に奴隷がいて現代人にはいないこと(になっている)ことと対をなしています。ローマ法はあくまでローマ市民に適用されるものであって非市民たる奴隷や異邦人(barbarian)に適用されるものではなかったのですが、現代人は、その電脳で実行されるプログラムのことも、コードと呼んでいます。</p>
-
-<p>本書の「コード」は、その双方を指しています。電脳に適用するコードと、人脳に適用するコード、その双方を。いや、もしかしてもう一つあるかも知れません。この世界自体に適用されている、コード。</p>
-
-<p>最後のそれは、「法則」とも呼ばれます。残念ながらこれは我々が書き下したものではなく、この世界自身に書かれているものです。それを読み解く人が、科学者。そして人電両脳のコードを読み書きする人が、技術者。これは、科学者と技術者の違いでもあります。扱うコードがリードオンリなのかライタブルなのか。</p>
-
-<p>本書の想定読者は、一応後者たる技術者ということになっています。しかしこの両者が深く繋がっていることを、私は「<a href="http://www.amazon.co.jp/gp/product/4041103851?ie=UTF8&amp;camp=247&amp;creativeASIN=4041103851&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title="『中卒』でもわかる科学入門">『中卒』でもわかる科学入門</a>」に書いています。</p>
-
-<blockquote>
-<p>およそどんな人でも、幸せな瞬間というのは次の二つしかないのかも知れません。</p>
-<p>1. できなかったことができるようになった瞬間<br>2. わからなかったことがわかった瞬間</p>
-</blockquote>
-
-
-<p>コードは読み解くべきものでもあり、書き下されるべきものでもある。そしてそれが出来た時、よろこびが生まれる。</p>
-
-<p>それが私にとってのコードであり、本書で扱うコードの範囲(scope)です。</p>
-
-<p>では改めて。コードな世界へ、ようこそ!</p>
-
-<h2>もくじ</h2>
-
-
-
-
-<ul class="list-unstyled">
-<li>#0 堂々とevaろう。でもevaりすぎにご用心</li>
-<li>#1 Y談。</li>
-<li>#2 I/O止めないで</li>
-<li>#3 メモレカス、ナマケモノドモ</li>
-<li>#4 殺速と複殺</li>
-<li>#5 OS、SOS</li>
-<li>#6 自縄自縛のススメ</li>
-<li>#7 Body and Soul</li>
-<li>#8 Mathコミュニケーション</li>
-<li>#9 コードと法律の共通点</li>
-<li>#10 バカと電脳は使いよう</li>
-<li>#11 データは人のためならず</li>
-<li>#12 Connect</li>
-<li>#13 いまそこにある夢</li>
-<li>#14 最後のファイルシステム</li>
-<li>#15 ファイルシステムの終わり</li>
-<li>#16 From Jobs&#8217; Apple to Apple&#8217;s jobs </li>
-<li>#17 Too Beautiful to be Windows</li>
-<li>#18 点と線</li>
-<li>#19 1%のコードと99%のコンフィギュレーション</li>
-<li>#20 言語のチュウス[ウイ]</li>
-<li>#21 並べ方と並べ替え方</li>
-<li>#22 参照にしか値しない</li>
-<li>#23 働いたら負けなら、働いてもらえばいいじゃない</li>
-<li>#24 安物買いの安全失い</li>
-<li>#25 Not Even Odd</li>
-<li>#26 安増税の税失い</li>
-<li>#27 たまには( )つけてみよう</li>
-<li>#28 ニシキヘビに呑み込めないもの</li>
-<li>#29 三位
-</li>
-<li>#30 Where do(es) you(r heart) want to go today</li>
-<li>#31 The Round Lens Square Hole</li>
-<li>#32 Can we still stay hungry?</li>
-<li>#33 Where has all the foolish gone?</li>
-<li>Ex.0 美しいプログラムの美しくないソース</li>
-<li>Ex.1 アマグラマのすすめ美徳その1:怠慢</li>
-<li>Ex.2 アマグラマのすすめ美徳その2:短気</li>
-<li>Ex.3 アマグラマのすすめ美徳その3:傲慢</li>
-<li>Ex.4 プログラマでなくても名前ぐらい覚えておきたいアルゴリズム×11</li>
-<li>Ex.5 プログラミングいつまでに学ぶ? なぜ学ぶ?</li>
-</ul>]]></content>
   </entry>
   
 </feed>
