@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-20T21:50:06+09:00</updated>
+  <updated>2014-02-21T11:06:51+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -21,10 +21,7 @@
     <content type="html"><![CDATA[<p>Rails4 から <code>ActiveRecord::Base.transaction</code> に分離レベルを手軽に設定できるようになったみたいです。</p>
 
 <pre><code class="ruby">ActiveRecord::Base.transaction(isolation: :serializable) do
-  params[:ids].each do |id|
-    book = Book.find_by(id: id)
-    book.update_attributes(title: params[id][:title]
-  end
+  ...
 end
 </code></pre>
 
@@ -37,8 +34,6 @@ end
 <li><code>:serializable</code></li>
 </ul>
 
-
-<p>ActiveRecord で テーブルロックを掛けたかったときに見つけたのでメモしておきます。</p>
 ]]></content>
   </entry>
   

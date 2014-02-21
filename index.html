@@ -14,10 +14,8 @@
   
   <meta name="description" content="Rails4 から ActiveRecord::Base.transaction に分離レベルを手軽に設定できるようになったみたいです。 1
 2
-3
-4
-5
-6 ActiveRecord::Base.transaction(isolation: :serializable) do params[: &hellip;">
+3 ActiveRecord::Base.transaction(isolation: :serializable) do ...
+end ">
   
 
   
@@ -30,10 +28,8 @@
 <meta property="og:site_name" content="それはBooks" />
 <meta property="og:description" content="Rails4 から ActiveRecord::Base.transaction に分離レベルを手軽に設定できるようになったみたいです。 1
 2
-3
-4
-5
-6 ActiveRecord::Base.transaction(isolation: :serializable) do params[: &hellip;" />
+3 ActiveRecord::Base.transaction(isolation: :serializable) do ...
+end " />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -176,15 +172,9 @@
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
 </pre></td>
 <td class="code"><pre><code class="ruby"><span class="line"><span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">transaction</span><span class="p">(</span><span class="ss">isolation</span><span class="p">:</span> <span class="ss">:serializable</span><span class="p">)</span> <span class="k">do</span>
-</span><span class="line">  <span class="n">params</span><span class="o">[</span><span class="ss">:ids</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">id</span><span class="o">|</span>
-</span><span class="line">    <span class="n">book</span> <span class="o">=</span> <span class="no">Book</span><span class="o">.</span><span class="n">find_by</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="nb">id</span><span class="p">)</span>
-</span><span class="line">    <span class="n">book</span><span class="o">.</span><span class="n">update_attributes</span><span class="p">(</span><span class="ss">title</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="nb">id</span><span class="o">][</span><span class="ss">:title</span><span class="o">]</span>
-</span><span class="line">  <span class="k">end</span>
+</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
 </tr></table></div></figure></notextile></div>
@@ -197,8 +187,7 @@
 <li><code>:read_committed</code></li>
 <li><code>:repeatable_read</code></li>
 <li><code>:serializable</code></li>
-</ul>
-<p>ActiveRecord で テーブルロックを掛けたかったときに見つけたのでメモしておきます。</p></div>
+</ul></div>
   
   
 
