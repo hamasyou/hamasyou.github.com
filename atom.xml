@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-21T23:42:34+09:00</updated>
+  <updated>2014-02-22T14:42:22+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -26,12 +26,14 @@
 
 <p>JavaScript は純粋な関数型プログラミング言語ではありません。が、<strong class="text-danger">関数型言語として JavaScript を理解し使用することでコードがより洗練され、読みやすいものになる</strong> はずという筆者の考えがこの本には現れています。</p>
 
-<p>関数型プログラミングは JavaScript においては一つのスタイルにしかすぎず、必要な場面で適切に使うというアプローチをとることで、よりよく JavaScript を使えるようになります。</p>
+<p>JavaScript では関数型プログラミングは一つのスタイルにしかすぎず、必要な場面で適切に使うというアプローチをとることでよりよいコードや使いやすい関数になります。</p>
 
 <!-- more -->
 
 
-<h2>おぼえがき</h2>
+<h2>関数型プログラミング</h2>
+
+<p>本書のおぼえがきです。本書の中から気になった箇所だけ抜き出しているので、意味が通じないかもしれません。。気になったら買って読んでみてください。</p>
 
 <h3>関数型プログラミングとは</h3>
 
@@ -125,11 +127,11 @@
 </tr></table></div></figure></notextile></div>
 
 
-<p>これこそが、<strong class="text-danger">関数型プログラミング</strong> です。関数型プログラミングは強力な <em>データ抽象</em> とともに実装されて役に立つものです。</p>
+<p>これこそが、<strong class="text-danger">関数型プログラミング</strong> です。関数型プログラミングは強力な <strong class="text-danger">データ抽象</strong> とともに実装されて役に立つものです。</p>
 
 <h3>命令型プログラミングと関数型プログラミングの違いの例</h3>
 
-<p><em>99本のビール</em> の歌の歌詞を構築するプログラムを命令型プログラミングと関数型プログラミングで書いてみた例です。</p>
+<p>「99本のビール」の歌の歌詞を構築するプログラムを命令型プログラミングと関数型プログラミングで書いてみた例です。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>命令型プログラミング</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -209,11 +211,11 @@
 </tr></table></div></figure></notextile></div>
 
 
-<p><em>命令型プログラミングは一度きりの実装となり、再利用が難しいものになります。</em></p>
+<p><strong class="text-danger">命令型プログラミングは一度きりの実装となりがちで、再利用が難しいものになります</strong>。</p>
 
 <h3>コレクション中心プログラミング</h3>
 
-<p>関数型プログラミングは、コレクションに入った多数のアイテムに同じ操作を適用するようなタスクを行う際にとても便利です。</p>
+<p>関数型プログラミングは、<em>コレクションに入った多数のアイテムに同じ操作を適用するようなタスク</em> を行う際にとても便利です。</p>
 
 <p>一般的な関数型プログラミングによって主張されるコレクション中心の考え方のポイントは、その処理を行うために一貫性のある語彙を確立し、包括的に揃えた関数を再利用出来るようにすることです。</p>
 
@@ -223,11 +225,11 @@
 </blockquote>
 
 
-<p>関数型プログラミングでは、<em>それぞれの関数がすこしずつデータを変換し、最後の解に至る</em> ようにします。</p>
+<p>関数型プログラミングでは、<strong class="text-danger">それぞれの関数がすこしずつデータを変換し、最後の解に至る</strong> ようにします。</p>
 
 <h3>値ではなく、関数を使え</h3>
 
-<p>ある値を何度か繰り返す関数はよい関数ですが、ある計算を何度か繰り返す関数のほうがよりよい関数です。</p>
+<p>ある値を何度か繰り返す関数はよい関数ですが、<strong class="text-danger">ある計算を何度か繰り返す関数のほうがよりよい</strong> 関数です。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>よい関数</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -271,7 +273,127 @@
 </tr></table></div></figure></notextile></div>
 
 
-<p>関数型スタイルのプログラミングでは、<em>実行の主体となるオブジェクトを引数に取る関数が好まれます</em>。</p>
+<h2>関数を作る関数を作る意義</h2>
+
+<h3>カリー化</h3>
+
+<p>カリー化された関数というのは、<em>引数を一つ受け取るたびに新しい関数を返す関数</em> のことです。<code>invoker</code> 関数はカリー化された関数といえます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>カリー化された関数</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">invoker</span><span class="p">(</span><span class="s1">'reverse'</span><span class="p">,</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">reverse</span><span class="p">)([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]);</span>
+</span><span class="line"><span class="c1">// =&gt; [3,2,1]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>JavaScript は変数の値の変更に対しておおらかな言語です。オブジェクト指向のカプセル化のような事をする場合、クロージャを使うと便利です。</p>
+
+<p>クロージャを使うと、生成時のコンテキストにもとづいて特定の動作を行うように「<em>設定された</em>」関数を返すことができます。この設定された関数は外部からカプセル化されており、関数の抽象を高めます。</p>
+
+<p>カリー化された関数も同じ考え方になります。</p>
+
+<h3>JavaScript でカリー化を行う意味</h3>
+
+<p>まず、シンプルな高階関数をつくります。関数を引数に取り、引数をひとつだけ取るように限定された関数を返す関数です。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>curry</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">curry</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">func</span><span class="p">(</span><span class="nx">arg</span><span class="p">);</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>JavaScript の関数は <strong class="text-danger">引数をいくら渡してもエラーになりません</strong>。そこで、いくつかの「<em>専門化を行う</em>」引数をオプションで取る場合がよくあります。</p>
+
+<p>例えば <code>parseInt</code> という関数は、第2引数に n 進数の n をオプションで受け取ります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>parseInt</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nb">parseInt</span><span class="p">(</span><span class="s1">'11'</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; 11</span>
+</span><span class="line"><span class="nb">parseInt</span><span class="p">(</span><span class="s1">'11'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; 3</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>parseInt</code> を第一級関数として使うと第2引数が原因で混乱するケースがあります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="p">[</span><span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; [11, NaN, 3, 4]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>JavaScript の <code>map</code> は与えられた関数の第1引数に <em>要素</em>、第2引数に <em>インデックス</em>、第3引数に <em>元の配列</em> を渡します。そのため、こんな結果になってしまいます。</p>
+
+<p>ここで、先ほど定義した <code>curry</code> 関数を利用します。与えられた関数に一つだけ引数を渡すように強制してみます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="p">[</span><span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">curry</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">));</span>
+</span><span class="line"><span class="c1">// =&gt; [11, 11, 11, 11]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>引数を2つ取るようにする <code>curry2</code> は次のようになります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>curry2</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">curry2</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">secondArg</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstArg</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="nx">func</span><span class="p">(</span><span class="nx">firstArg</span><span class="p">,</span> <span class="nx">secondArg</span><span class="p">);</span>
+</span><span class="line">    <span class="p">};</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">parseIntByBinary</span> <span class="o">=</span> <span class="nx">curry2</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">)(</span><span class="mi">2</span><span class="p">);</span>
+</span><span class="line"><span class="nx">parseIntByBinary</span><span class="p">(</span><span class="s1">'111'</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; 7</span>
+</span><span class="line"><span class="nx">parseIntByBinary</span><span class="p">(</span><span class="s1">'10'</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; 2</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>このように、<strong class="text-danger">カリー化は JavaScript の関数の動作を「専門化」させるための有効なテクニック</strong> になります。</p>
 
 <h2>メモ</h2>
 
@@ -370,6 +492,48 @@
 </span></code></pre></td>
 </tr></table></div></figure></notextile></div>
 
+
+<h3>invoker</h3>
+
+<p><code>invoker</code> は関数を返す関数です。引数にメソッド名を取り、メソッドの実行主体のオブジェクトを渡すとそのオブジェクトでメソッドを実行する関数を返します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>invoker</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">invoker</span><span class="p">(</span><span class="nx">NAME</span><span class="p">,</span> <span class="nx">METHOD</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">target</span> <span class="cm">/* , 任意の引数 */</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">existy</span><span class="p">(</span><span class="nx">target</span><span class="p">))</span> <span class="nx">fail</span><span class="p">(</span><span class="s1">'Must provide a target'</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">var</span> <span class="nx">targetMethod</span> <span class="o">=</span> <span class="nx">target</span><span class="p">[</span><span class="nx">NAME</span><span class="p">];</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">args</span>         <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">rest</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">doWhen</span><span class="p">((</span><span class="nx">existy</span><span class="p">(</span><span class="nx">targetMethod</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">METHOD</span> <span class="o">==</span> <span class="nx">targetMethod</span><span class="p">),</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="nx">targetMethod</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">rev</span> <span class="o">=</span> <span class="nx">invoker</span><span class="p">(</span><span class="s1">'reverse'</span><span class="p">,</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">reverse</span><span class="p">);</span>
+</span><span class="line"><span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="nx">rev</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; [[3, 2, 1]]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>関数型のスタイルでは、<em>関数の実行主体となるオブジェクトを引数にとる関数の形が好まれます</em>。</p>
 
 <h2>感想</h2>
 
