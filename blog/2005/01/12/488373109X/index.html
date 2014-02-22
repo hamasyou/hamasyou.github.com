@@ -311,17 +311,17 @@
 </ul>
 <p>サブセット間に交わり(排他でない)が起こるとすると、それはサブセットではないことになる。例えば、ある取引先が、出荷先でも請求先でもあるような場合、出荷先と請求先で取引先区分コードが同じになる。</p>
 
-<p><img src="http://hamasyou.com/images/ttypedatabase/subset_intersect.gif" alt="サブセットの交わり" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/ttypedatabase/subset_intersect.gif" alt="サブセットの交わり" class="img-thumbnail" title="サブセットの交わり"></p>
 
 <p>オブジェクト図で表すと以下のような感じ。同一の取引先インスタンス(取引先A)を共有している点がいけない。</p>
 
-<p><img src="http://hamasyou.com/images/ttypedatabase/subset_object.gif" alt="サブセットの交わり(オブジェクト図)" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/ttypedatabase/subset_object.gif" alt="サブセットの交わり(オブジェクト図)" class="img-thumbnail" title="サブセットの交わり(オブジェクト図)"></p>
 
 <p>サブセット間に交わりが起こった場合は、サブセットとして扱うのは適切ではないので何か処理を施す必要がある。今回は、「取引先区分コード」は「<b>分類 (Resource)</b>」として機能しているので、別のエンティティとして切り出す。</p>
 
-<p><img src="http://hamasyou.com/images/ttypedatabase/subset_resource.gif" alt="別のエンティティとしてあつかう" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/ttypedatabase/subset_resource.gif" alt="別のエンティティとしてあつかう" class="img-thumbnail" title="別のエンティティとしてあつかう"></p>
 
-<p><img src="http://hamasyou.com/images/ttypedatabase/subset_object2.gif" alt="別のエンティティとしてあつかう(オブジェクト図)" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/ttypedatabase/subset_object2.gif" alt="別のエンティティとしてあつかう(オブジェクト図)" class="img-thumbnail" title="別のエンティティとしてあつかう(オブジェクト図)"></p>
 
 <p><i>※ <b>ここでは、UMLを使ってオブジェクト設計の図になっているが、実際はデータベース設計の話をしている</b>。オブジェクト指向であれば、取引先Aのインスタンスは同一のモノと判断すると思われる。が、ここではデータベースのエンティティレベルの話をしているので、別のインスタンスとして表してある。</i></p>
 
@@ -332,7 +332,7 @@
 
 <ul>
 <li><p>著者のWebサイト。本書を保管する内容も多数。
-<img src="http://hamasyou.com/images/img-link.gif" align="middle" class="img-thumbnail"><a href="http://www.sdi-net.co.jp/logico-index.htm" rel="external nofollow" title="SDI">SDI</a></p></li>
+<img src="http://hamasyou.com/images/img-link.gif" align="middle" class="img-thumbnail" title=""><a href="http://www.sdi-net.co.jp/logico-index.htm" rel="external nofollow" title="SDI">SDI</a></p></li>
 <li><p>テーブル設計の基礎力がつく本です。</p></li>
 </ul>
 <div class="rakuten"><table width="400" border="0" cellpadding="5"><tr><td colspan="2">

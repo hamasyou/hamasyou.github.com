@@ -188,7 +188,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <p>例えば、OSに依存するシステムを作るとします。現在は、WindowsとMacのみに対応するシステムだとします。このシステムで提供する機能として、「プリント」機能と「インターネット」機能があるとします。</p>
 
-<p><img src="/images/bridge/bridge1.gif" style="margin:10px" alt="クラス図1" class="img-thumbnail"></p>
+<p><img src="/images/bridge/bridge1.gif" style="margin:10px" alt="クラス図1" class="img-thumbnail" title="クラス図1"></p>
 
 <p>通常は、このようなクラス関係で作成すると思います。「オペレーティングシステム」インターフェースが、機能のインターフェースです。「Windowsクラス」「Macintoshクラス」が実装のクラスになります。</p>
 
@@ -196,13 +196,13 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <p>ここでは、「テレビを見る」機能が追加されました。</p>
 
-<p><img src="/images/bridge/bridge2.gif" style="margin:10px" alt="クラス図2" class="img-thumbnail"></p>
+<p><img src="/images/bridge/bridge2.gif" style="margin:10px" alt="クラス図2" class="img-thumbnail" title="クラス図2"></p>
 
 <p>このような変更を行っていくと、機能や実装が増えた場合に、クラスの数が膨大な数になってしまいます。</p>
 
 <p>そこでこのBridgeパターンの出番というわけです。機能のクラスと実装のクラスをそれぞれ別々に管理して、クラスの増殖を防止します。</p>
 
-<p><img src="/images/bridge/bridge3.gif" style="margin:10px" alt="クラス図3" class="img-thumbnail"></p>
+<p><img src="/images/bridge/bridge3.gif" style="margin:10px" alt="クラス図3" class="img-thumbnail" title="クラス図3"></p>
 
 <p>機能のクラスと実装のクラスとで用意する操作が変わったことに注目してください。</p>
 

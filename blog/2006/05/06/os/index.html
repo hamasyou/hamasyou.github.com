@@ -260,7 +260,7 @@
 </ol>
 <p>一つのセグメントに関する情報は、この 8byte の情報によって構成されています。これらセグメント情報を管理するのが <strong class="text-danger">GDT (Global Descriptor Table)</strong> と呼ばれるテーブルです。そして、GDT がメモリのどのアドレスに用意されているかを知らせるためのレジスタが、<strong class="text-danger">GDTR</strong> になります。</p>
 
-<p><img src="/images/30os/GDT.gif" alt="GDT" class="img-thumbnail"></p>
+<p><img src="/images/30os/GDT.gif" alt="GDT" class="img-thumbnail" title="GDT"></p>
 
 <p>セグメントセレクタは 13bit になっています。セグメントレジスタは 16bit ですが、下位 3bit が使えません。なので、セグメントセレクタであらわせる ID の数は 2 ^ 13 = 8,192 個です。ただし、セグメント ID が 0 、つまり最初のセグメント情報はヌルセレクタと呼ばれ、使うことができません。実際はセグメント情報は全部で 8,191 個 です。</p>
 
@@ -324,7 +324,7 @@
 
 <p>CPU は、IDT （Interrupt Descriptor Table） を見て割り込み信号に対応する関数の呼び出しを行います。これが割り込み処理です。IDT は、割り込み信号と割り込み処理関数を対応付けたテーブルです。</p>
 
-<p><img src="/images/30os/pic.gif" alt="PICの割り込み処理" class="img-thumbnail"></p>
+<p><img src="/images/30os/pic.gif" alt="PICの割り込み処理" class="img-thumbnail" title="PICの割り込み処理"></p>
 
 <h2 id="chapter3">PIT (Programmable Interval Timer) とは</h2>
 

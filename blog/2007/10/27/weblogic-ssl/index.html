@@ -321,7 +321,7 @@ myKeystore.jks
 
 <p>「姓名」で設定した値と、ホスト名が違うと、ブラウザには次のような警告が表示されます。</p>
 
-<img src="http://hamasyou.com/images/WebLogicSSL/warn_ssl_hostname.gif" alt="SSL 証明書のホスト名が違う" class="img-thumbnail"><p>ホスト名ごとにサーバ証明書は作る必要があるので注意が必要です。</p>
+<img src="http://hamasyou.com/images/WebLogicSSL/warn_ssl_hostname.gif" alt="SSL 証明書のホスト名が違う" class="img-thumbnail" title="SSL 証明書のホスト名が違う"><p>ホスト名ごとにサーバ証明書は作る必要があるので注意が必要です。</p>
 </dd>
 </dl>
 <dl>
@@ -619,14 +619,14 @@ keytool エラー: java.lang.Exception: 応答から連鎖を確立できませ�
 </pre>
 
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/certchain.gif" alt="証明連鎖" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/certchain.gif" alt="証明連鎖" class="img-thumbnail" title="証明連鎖"></p>
 
 <dl>
 <dt class="notice">証明書のエイリアスに注意</dt>
 <dd>
 <p>最初に keytool -genkey で作成したときのエイリアスと別のエイリアスでサーバ証明書を保存した場合、CA 局による署名が使われず自己署名が使われます。</p>
 
-<img src="http://hamasyou.com/images/WebLogicSSL/oreorecert.gif" alt="自己署名" class="img-thumbnail">
+<img src="http://hamasyou.com/images/WebLogicSSL/oreorecert.gif" alt="自己署名" class="img-thumbnail" title="自己署名">
 </dd>
 </dl>
 <h2>WebLogic でカスタムキーストアを設定する</h2>
@@ -669,7 +669,7 @@ keytool エラー: java.lang.Exception: 応答から連鎖を確立できませ�
 
 <p>「このセキュリティ証明書は、信頼する会社から発行されていません。証明書を表示して、この証明機関を信頼するかどうかを決定してください。」</p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/warn_cert.gif" alt="セキュリティ証明書エラー" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/warn_cert.gif" alt="セキュリティ証明書エラー" class="img-thumbnail" title="セキュリティ証明書エラー"></p>
 
 <p>今回、オレオレ CA 局を作りましたが、この CA 局の CA 証明書はクライアント（ブラウザ）に信頼されていません。</p>
 
@@ -691,29 +691,29 @@ keytool エラー: java.lang.Exception: 応答から連鎖を確立できませ�
 
 <p>ブラウザの [ツール]-[インターネット オプション] の [コンテンツ] タブにある [証明書…] を開きます。</p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/ie_option.gif" alt="インターネット オプション" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/ie_option.gif" alt="インターネット オプション" class="img-thumbnail" title="インターネット オプション"></p>
 
 <p>[信頼されたルート証明機関] タブを開き、[インポート(I)…] を開きます。</p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/cert_import.gif" alt="証明書のインポート" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/cert_import.gif" alt="証明書のインポート" class="img-thumbnail" title="証明書のインポート"></p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/import1.gif" alt="証明書インポート 手順1" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/import1.gif" alt="証明書インポート 手順1" class="img-thumbnail" title="証明書インポート 手順1"></p>
 
 <p>[参照…] を選択して [ファイルの種類] を「すべて」にし、CA 局のサーバ証明書を選択します。</p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/import2.gif" alt="証明書インポート 手順2" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/import2.gif" alt="証明書インポート 手順2" class="img-thumbnail" title="証明書インポート 手順2"></p>
 
 <p>証明書のストア場所を、「信頼されたルート証明機関」を選択します。</p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/import3.gif" alt="証明書インポート 手順3" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/import3.gif" alt="証明書インポート 手順3" class="img-thumbnail" title="証明書インポート 手順3"></p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/import4.gif" alt="証明書インポート 手順4" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/import4.gif" alt="証明書インポート 手順4" class="img-thumbnail" title="証明書インポート 手順4"></p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/import5.gif" alt="証明書インポート 手順5" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/import5.gif" alt="証明書インポート 手順5" class="img-thumbnail" title="証明書インポート 手順5"></p>
 
 <p>「はい」を選択すると、CA 局の証明書が「ルート証明機関」として認識されるようになります。</p>
 
-<p><img src="http://hamasyou.com/images/WebLogicSSL/import6.gif" alt="証明書インポート 手順6" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/WebLogicSSL/import6.gif" alt="証明書インポート 手順6" class="img-thumbnail" title="証明書インポート 手順6"></p>
 
 <p>CA 局のサーバ証明書は安全な方法（改ざんされない方法）で取得する必要があります。また、本当に信頼する CA 局のサーバ証明書のみをクライアントにはインストールするようにします。</p>
 

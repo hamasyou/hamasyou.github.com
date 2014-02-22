@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-22T14:42:22+09:00</updated>
+  <updated>2014-02-22T17:15:34+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -28,6 +28,8 @@
 
 
 <h2>関数型プログラミング</h2>
+
+<p><img src="/images/2014-02-21-functional-javascript-02.jpg" alt="関数型プログラミング" /></p>
 
 <p>本書のおぼえがきです。本書の中から気になった箇所だけ抜き出しているので、意味が通じないかもしれません。。気になったら買って読んでみてください。</p>
 
@@ -173,6 +175,8 @@ repeatedly(3, function() { return Math.floor((Math.random() * 10) + 1); });
 
 <h3>カリー化</h3>
 
+<p><img src="/images/2014-02-21-functional-javascript-01.jpg" alt="カリー化" /></p>
+
 <p>カリー化された関数というのは、<em>引数を一つ受け取るたびに新しい関数を返す関数</em> のことです。<code>invoker</code> 関数はカリー化された関数といえます。</p>
 
 <pre><code class="javascript カリー化された関数">invoker('reverse', Array.prototype.reverse)([1,2,3]);
@@ -239,7 +243,98 @@ parseIntByBinary('10');
 
 <p>このように、<strong>カリー化は JavaScript の関数の動作を「専門化」させるための有効なテクニック</strong> になります。</p>
 
+<h2>再帰</h2>
+
+<p><img src="/images/2014-02-21-functional-javascript-03.jpg" alt="再帰" /></p>
+
+<p>再帰が関数型プログラミングに重要である3つの理由。</p>
+
+<ul>
+<li>共通の問題のサブセットに単一の抽象を使用する</li>
+<li>可変の状態を隠蔽することができる</li>
+<li>遅延評価や無限データ構造の処理を行う手段のひとつ</li>
+</ul>
+
+
+<p>配列の長さを調べる関数を再帰の考え方で解くと。</p>
+
+<ol>
+<li>もし配列が空であれば長さは0</li>
+<li>配列の最初の要素を取り出し、残りを自身の関数に渡した実行結果に1を加える</li>
+</ol>
+
+
+<pre><code class="javascript length">function length(array) {
+  if (_.isEmpty(array)) {
+    return 0;
+  } else {
+    return 1 + length(_.rest(array));
+  }
+}
+</code></pre>
+
+<p>再帰をうまく実装するヒントは、「<strong>値は大きな問題に内包された小さな問題によって組み立てられるものである</strong>」と認識することです。</p>
+
+<p><em>基本的な場合を考える</em> ことで、分解の最初の一歩を踏み出しやすくなります。</p>
+
+<h2>純粋関数と冪等とデータの不変性</h2>
+
+<p><img src="/images/2014-02-21-functional-javascript-05.jpg" alt="データの普遍性" /></p>
+
+<h3>純粋関数</h3>
+
+<p><strong>純粋関数</strong> とは、その関数が外部に一切の影響を与えないことが静的に保証されている関数です。純粋性のルールはつぎのようになります。</p>
+
+<ul>
+<li>結果は引数として与えられた値からのみ計算される</li>
+<li>関数の外部で変更される可能性のあるデータに一切依存しない</li>
+<li>関数実行部の外側に存在する何かの状態を一切変更しない</li>
+</ul>
+
+
+<p><a href="https://github.com/k3kaimu/d-manual/blob/master/function.md#%E7%B4%94%E7%B2%8B%E9%96%A2%E6%95%B0pure">純粋関数</a></p>
+
+<h3>冪等（べきとう）</h3>
+
+<p>RESTful なアーキテクチャが一般化するにつれて <strong>冪等（べきとう）</strong> の考え方も一般に浸透してきました。冪等とは、<em>あるアクションを何度行っても一度行った場合とまったくおなじ効果をもたらす</em> というものです。冪等である関数は次の条件を満たします。</p>
+
+<pre><code class="javascript 冪等な関数">someFunc(arg) == _.compose(someFunc, someFunc)(arg);
+</code></pre>
+
+<p>ある引数を与えて実行するということは、その関数を2回連続で呼び出しても同じ結果を返します。</p>
+
+<h3>不変性</h3>
+
+<p>JavaScript はダイナミックな言語です。<em>純粋関数のポリシーに縛られるがゆえに、関数のダイナミックさを犠牲にする必要はありません</em>。</p>
+
+<p>しかし、変数は変更するたびにその変数を参照するタイミングによって異なる値が返ってきます。<em>プログラムのすべての状態変更を除去することは不可能ですが、可能なかぎり減らすほうがよい</em> です。</p>
+
+<p>そして、<em>関数型プログラミングの理想な状況とは、可変なものが全く存在しない</em> という状況です。</p>
+
+<p>関数を <strong>抽象の基本的な単位</strong> としてみる利点は、関数の実装内容が外部に「<em>漏れる</em>」ことがなければ、関数の利用側は関数の実装に無関係であることです。</p>
+
+<p>つまり、関数型プログラミングにおける関数でも、内部で命令的なプログラミングをしていたり、変数の状態を変更していたとしても、外部にもれなければ問題にはならないということです。</p>
+
+<p>JavaScript は <strong>関数が変数の境界をつくる</strong> ので、ローカル変数の状態変更は関数が外部に漏れるのを防いでくれます。</p>
+
+<p><blockquote><p>誰もいない森で木が倒れたら、音がするでしょうか？<br/>不変性を持った戻り値を生成するために、純粋関数がローカルデータを変異させたとしたら、それは良いことなのでしょうか？</p><footer><strong>Rich Hickey</strong> <cite><a href='http://clojure.org/transients'>clojure.org/transients/&hellip;</a></cite></footer></blockquote></p>
+
+<p>結局のところ、答えは <strong>Yes</strong> です。</p>
+
+<h3>不変性を保つためにとりうる手段</h3>
+
+<p>JavaScript のオブジェクトフィールドは常に参照可能なので、オブジェクトは不変ではありません。不変性を保つために関数の実装側がとりえる手段は実質つぎの3つのどれかになります。</p>
+
+<ul>
+<li>浅いコピーで十分な場合は <code>_.clone</code> を使ってコピーする</li>
+<li>深いコピーが必要な場合は <code>deepClone</code> を使う</li>
+<li>純粋関数を使ってコードを記述する</li>
+</ul>
+
+
 <h2>メモ</h2>
+
+<p><img src="/images/2014-02-21-functional-javascript-04.jpg" alt="メモ" /></p>
 
 <p>本書の中に出てきた、関数とかのメモ。</p>
 
@@ -327,13 +422,32 @@ _.map([[1, 2, 3]), rev);
 
 <p>関数型のスタイルでは、<em>関数の実行主体となるオブジェクトを引数にとる関数の形が好まれます</em>。</p>
 
+<h3>メソッドチェーン</h3>
+
+<p>メソッドチェーンは「<em>流暢な</em>」API を構築するために有用なパターンです。流暢な API とは例えば次のようなものです。</p>
+
+<pre><code class="javascript 流暢な API の例">createPerson()
+  .setFirstName('Mike')
+  .setLastName('Fogus')
+  .setAge(108)
+  .toString();
+</code></pre>
+
+<p>メソッドチェーンを実現する「<em>魔法</em>」は <em>チェーン内のそれぞれのメソッドが同じホストのオブジェクトの参照を返す</em> ことです。</p>
+
+<p>上の方のメモで、関数が前提条件に合わない引数を受け取った場合は <code>undefined</code> か <code>null</code> を返すのがよいとありました。メソッドチェーンで使うことを考えている関数の場合は <code>undefined</code>、<code>null</code>、<code>同じホストのオブジェクト</code> のどれを返せばいいんでしょうかね。。。</p>
+
 <h2>感想</h2>
 
 <p>JavaScript の関数の基本的なところから説明をはじめて、<strong>関数型プログラミング</strong>、<strong>クロージャ</strong>、<strong>高階関数</strong>、<strong>カリー化</strong>、<strong>再帰</strong>、<strong>フィルタ</strong>、<strong>パイプライン</strong>等の関数の設計方法がふんだんに解説されています。</p>
 
 <p>説明がとても丁寧で分かりやすく、関数型プログラミングのことを知らない人でも理解しやすいと思います。</p>
 
-<p>JavaScript は Java に次いで最も多く利用されている言語ですので、JavaScript をよりよく使うために本書を活用してみてはいかがでしょうか。おすすめです。</p>
+<p>関数型プログラミングを学ぶと、<strong>純粋関数</strong>、<strong>データの不変性</strong> というテーマに当たります。JavaScript にはないですが、Ruby ではメソッドに <code>!</code> が付いた自分自身を変更する破壊的なメソッドがあります。関数型プログラミングとオブジェクト指向プログラミングをうまい具合に取り入れている言語だと再認識しました。</p>
+
+<p>JavaScript で関数型プログラミングを学ぶというテーマですが、<em>関数型プログラミングを学ぶことで他の言語の面白い点も見えてくる</em> というのが読了しての感想です。</p>
+
+<p>JavaScript は Java に次いで最も多く利用されている言語ですので、<strong>JavaScript をよりよく使うため、他の関数型言語をより楽しむため</strong> に本書を活用してみてはいかがでしょうか。おすすめです。</p>
 ]]></content>
   </entry>
   

@@ -2,7 +2,7 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Sat, 22 Feb 2014 14:42:22 +0900</pubDate>
+  <pubDate>Sat, 22 Feb 2014 17:15:34 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
@@ -28,6 +28,8 @@
 
 
 <h2>関数型プログラミング</h2>
+
+<p><img src="http://hamasyou.com/images/2014-02-21-functional-javascript-02.jpg" alt="関数型プログラミング" class="img-thumbnail" title="関数型プログラミング"></p>
 
 <p>本書のおぼえがきです。本書の中から気になった箇所だけ抜き出しているので、意味が通じないかもしれません。。気になったら買って読んでみてください。</p>
 
@@ -273,6 +275,8 @@
 
 <h3>カリー化</h3>
 
+<p><img src="http://hamasyou.com/images/2014-02-21-functional-javascript-01.jpg" alt="カリー化" class="img-thumbnail" title="カリー化"></p>
+
 <p>カリー化された関数というのは、<em>引数を一つ受け取るたびに新しい関数を返す関数</em> のことです。<code>invoker</code> 関数はカリー化された関数といえます。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>カリー化された関数</span></figcaption><div class="highlight"><table><tr>
@@ -391,7 +395,110 @@
 
 <p>このように、<strong class="text-danger">カリー化は JavaScript の関数の動作を「専門化」させるための有効なテクニック</strong> になります。</p>
 
+<h2>再帰</h2>
+
+<p><img src="http://hamasyou.com/images/2014-02-21-functional-javascript-03.jpg" alt="再帰" class="img-thumbnail" title="再帰"></p>
+
+<p>再帰が関数型プログラミングに重要である3つの理由。</p>
+
+<ul>
+<li>共通の問題のサブセットに単一の抽象を使用する</li>
+<li>可変の状態を隠蔽することができる</li>
+<li>遅延評価や無限データ構造の処理を行う手段のひとつ</li>
+</ul>
+<p>配列の長さを調べる関数を再帰の考え方で解くと。</p>
+
+<ol>
+<li>もし配列が空であれば長さは0</li>
+<li>配列の最初の要素を取り出し、残りを自身の関数に渡した実行結果に1を加える</li>
+</ol>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>length</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">length</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">if</span> <span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">(</span><span class="nx">array</span><span class="p">))</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">length</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">rest</span><span class="p">(</span><span class="nx">array</span><span class="p">));</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>再帰をうまく実装するヒントは、「<strong class="text-danger">値は大きな問題に内包された小さな問題によって組み立てられるものである</strong>」と認識することです。</p>
+
+<p><em>基本的な場合を考える</em> ことで、分解の最初の一歩を踏み出しやすくなります。</p>
+
+<h2>純粋関数と冪等とデータの不変性</h2>
+
+<p><img src="http://hamasyou.com/images/2014-02-21-functional-javascript-05.jpg" alt="データの普遍性" class="img-thumbnail" title="データの普遍性"></p>
+
+<h3>純粋関数</h3>
+
+<p><strong class="text-danger">純粋関数</strong> とは、その関数が外部に一切の影響を与えないことが静的に保証されている関数です。純粋性のルールはつぎのようになります。</p>
+
+<ul>
+<li>結果は引数として与えられた値からのみ計算される</li>
+<li>関数の外部で変更される可能性のあるデータに一切依存しない</li>
+<li>関数実行部の外側に存在する何かの状態を一切変更しない</li>
+</ul>
+<p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/k3kaimu/d-manual/blob/master/function.md#%E7%B4%94%E7%B2%8B%E9%96%A2%E6%95%B0pure" rel="external nofollow" title="純粋関数">純粋関数</a></p>
+
+<h3>冪等（べきとう）</h3>
+
+<p>RESTful なアーキテクチャが一般化するにつれて <strong class="text-danger">冪等（べきとう）</strong> の考え方も一般に浸透してきました。冪等とは、<em>あるアクションを何度行っても一度行った場合とまったくおなじ効果をもたらす</em> というものです。冪等である関数は次の条件を満たします。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>冪等な関数</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">someFunc</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="o">==</span> <span class="nx">_</span><span class="p">.</span><span class="nx">compose</span><span class="p">(</span><span class="nx">someFunc</span><span class="p">,</span> <span class="nx">someFunc</span><span class="p">)(</span><span class="nx">arg</span><span class="p">);</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>ある引数を与えて実行するということは、その関数を2回連続で呼び出しても同じ結果を返します。</p>
+
+<h3>不変性</h3>
+
+<p>JavaScript はダイナミックな言語です。<em>純粋関数のポリシーに縛られるがゆえに、関数のダイナミックさを犠牲にする必要はありません</em>。</p>
+
+<p>しかし、変数は変更するたびにその変数を参照するタイミングによって異なる値が返ってきます。<em>プログラムのすべての状態変更を除去することは不可能ですが、可能なかぎり減らすほうがよい</em> です。</p>
+
+<p>そして、<em>関数型プログラミングの理想な状況とは、可変なものが全く存在しない</em> という状況です。</p>
+
+<p>関数を <strong class="text-danger">抽象の基本的な単位</strong> としてみる利点は、関数の実装内容が外部に「<em>漏れる</em>」ことがなければ、関数の利用側は関数の実装に無関係であることです。</p>
+
+<p>つまり、関数型プログラミングにおける関数でも、内部で命令的なプログラミングをしていたり、変数の状態を変更していたとしても、外部にもれなければ問題にはならないということです。</p>
+
+<p>JavaScript は <strong class="text-danger">関数が変数の境界をつくる</strong> ので、ローカル変数の状態変更は関数が外部に漏れるのを防いでくれます。</p>
+
+<blockquote>
+<p>誰もいない森で木が倒れたら、音がするでしょうか？<br>不変性を持った戻り値を生成するために、純粋関数がローカルデータを変異させたとしたら、それは良いことなのでしょうか？</p>
+<footer><strong>Rich Hickey</strong> <cite><a href="http://clojure.org/transients" rel="external nofollow" title="clojure.org/transients/…">clojure.org/transients/…</a></cite></footer>
+</blockquote>
+
+
+<p>結局のところ、答えは <strong class="text-danger">Yes</strong> です。</p>
+
+<h3>不変性を保つためにとりうる手段</h3>
+
+<p>JavaScript のオブジェクトフィールドは常に参照可能なので、オブジェクトは不変ではありません。不変性を保つために関数の実装側がとりえる手段は実質つぎの3つのどれかになります。</p>
+
+<ul>
+<li>浅いコピーで十分な場合は <code>_.clone</code> を使ってコピーする</li>
+<li>深いコピーが必要な場合は <code>deepClone</code> を使う</li>
+<li>純粋関数を使ってコードを記述する</li>
+</ul>
 <h2>メモ</h2>
+
+<p><img src="http://hamasyou.com/images/2014-02-21-functional-javascript-04.jpg" alt="メモ" class="img-thumbnail" title="メモ"></p>
 
 <p>本書の中に出てきた、関数とかのメモ。</p>
 
@@ -531,13 +638,41 @@
 
 <p>関数型のスタイルでは、<em>関数の実行主体となるオブジェクトを引数にとる関数の形が好まれます</em>。</p>
 
+<h3>メソッドチェーン</h3>
+
+<p>メソッドチェーンは「<em>流暢な</em>」API を構築するために有用なパターンです。流暢な API とは例えば次のようなものです。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>流暢な API の例</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">createPerson</span><span class="p">()</span>
+</span><span class="line">  <span class="p">.</span><span class="nx">setFirstName</span><span class="p">(</span><span class="s1">'Mike'</span><span class="p">)</span>
+</span><span class="line">  <span class="p">.</span><span class="nx">setLastName</span><span class="p">(</span><span class="s1">'Fogus'</span><span class="p">)</span>
+</span><span class="line">  <span class="p">.</span><span class="nx">setAge</span><span class="p">(</span><span class="mi">108</span><span class="p">)</span>
+</span><span class="line">  <span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>メソッドチェーンを実現する「<em>魔法</em>」は <em>チェーン内のそれぞれのメソッドが同じホストのオブジェクトの参照を返す</em> ことです。</p>
+
+<p>上の方のメモで、関数が前提条件に合わない引数を受け取った場合は <code>undefined</code> か <code>null</code> を返すのがよいとありました。メソッドチェーンで使うことを考えている関数の場合は <code>undefined</code>、<code>null</code>、<code>同じホストのオブジェクト</code> のどれを返せばいいんでしょうかね。。。</p>
+
 <h2>感想</h2>
 
 <p>JavaScript の関数の基本的なところから説明をはじめて、<strong class="text-danger">関数型プログラミング</strong>、<strong class="text-danger">クロージャ</strong>、<strong class="text-danger">高階関数</strong>、<strong class="text-danger">カリー化</strong>、<strong class="text-danger">再帰</strong>、<strong class="text-danger">フィルタ</strong>、<strong class="text-danger">パイプライン</strong>等の関数の設計方法がふんだんに解説されています。</p>
 
 <p>説明がとても丁寧で分かりやすく、関数型プログラミングのことを知らない人でも理解しやすいと思います。</p>
 
-<p>JavaScript は Java に次いで最も多く利用されている言語ですので、JavaScript をよりよく使うために本書を活用してみてはいかがでしょうか。おすすめです。</p>]]>
+<p>関数型プログラミングを学ぶと、<strong class="text-danger">純粋関数</strong>、<strong class="text-danger">データの不変性</strong> というテーマに当たります。JavaScript にはないですが、Ruby ではメソッドに <code>!</code> が付いた自分自身を変更する破壊的なメソッドがあります。関数型プログラミングとオブジェクト指向プログラミングをうまい具合に取り入れている言語だと再認識しました。</p>
+
+<p>JavaScript で関数型プログラミングを学ぶというテーマですが、<em>関数型プログラミングを学ぶことで他の言語の面白い点も見えてくる</em> というのが読了しての感想です。</p>
+
+<p>JavaScript は Java に次いで最も多く利用されている言語ですので、<strong class="text-danger">JavaScript をよりよく使うため、他の関数型言語をより楽しむため</strong> に本書を活用してみてはいかがでしょうか。おすすめです。</p>]]>
     </description>
     <pubDate>Fri, 21 Feb 2014 19:39:56 +0900</pubDate>
   </item>
@@ -800,7 +935,7 @@
 
 <p>再構築が開始されると、画面の右上の Spotlight マークが点滅します。</p>
 
-<p><img src="http://hamasyou.com/images/2014-02-19-mac-app-store-account-01.png" alt="Spotlight 索引再構築" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/2014-02-19-mac-app-store-account-01.png" alt="Spotlight 索引再構築" class="img-thumbnail" title="Spotlight 索引再構築"></p>
 
 <p>再構築は結構時間がかかりますが、全部終わるのをまたなくても、僕の場合はアップデートができるようになりました。</p>]]>
     </description>
@@ -1634,7 +1769,7 @@
 
 <p><i class="fa fa-hand-o-right"></i> <a href="http://www.kimonolabs.com/" rel="external nofollow" title="kimono - Turn websites into structured APIs from your browser in seconds">kimono - Turn websites into structured APIs from your browser in seconds</a></p>
 
-<p><img src="http://hamasyou.com/images/2014-02-15-kimono-api-01.png" alt="kimono" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/2014-02-15-kimono-api-01.png" alt="kimono" class="img-thumbnail" title="kimono"></p>
 
 <!-- more -->
 
@@ -1643,15 +1778,15 @@
 
 <p>最近ページングにも対応したので、ページングのあるサイトも簡単に取得できるようになります。</p>
 
-<p><img src="http://hamasyou.com/images/2014-02-15-kimono-api-02.png" alt="要素の選択" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/2014-02-15-kimono-api-02.png" alt="要素の選択" class="img-thumbnail" title="要素の選択"></p>
 
-<p><img src="http://hamasyou.com/images/2014-02-15-kimono-api-03.png" alt="プレビュー画面" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/2014-02-15-kimono-api-03.png" alt="プレビュー画面" class="img-thumbnail" title="プレビュー画面"></p>
 
 <p>スクレイピングの頻度もリアルタイムや何時間毎のような設定ができます。</p>
 
 <p>できた API は言語ごとに呼び出し例が用意されているので便利です。こういう所気が効いていますね。</p>
 
-<p><img src="http://hamasyou.com/images/2014-02-15-kimono-api-04.png" alt="API 詳細" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/2014-02-15-kimono-api-04.png" alt="API 詳細" class="img-thumbnail" title="API 詳細"></p>
 
 <p>実際に呼び出してみるとちゃんと結果が取得できます。</p>
 
@@ -1747,7 +1882,7 @@
 
 <p>シナンジュのガンプラも作ったので、次はニューガンダムに挑戦したいなと。RX-0 ユニコーンガンダム3号機 フェネクスのガンプラも発売になりましたね。</p>
 
-<p><a href="http://www.amazon.co.jp/gp/product/B0032ZD5OI?ie=UTF8&amp;camp=247&amp;creativeASIN=B0032ZD5OI&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://www.1999.co.jp/itbig10/10106668.jpg" height="289" width="232" alt="MG 1/100 MSN-06S シナンジュ Ver.Ka チタニウムフィニッシュ (機動戦士ガンダムUC)" class="img-thumbnail"></a><a href="http://www.amazon.co.jp/gp/product/B00FKL68XM?ie=UTF8&amp;camp=247&amp;creativeASIN=B00FKL68XM&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/81QDARb2zTL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-93 vガンダムVer.Ka チタニウムフィニッシュ (機動戦士ガンダム 逆襲のシャア)" class="img-thumbnail"></a><a href="http://www.amazon.co.jp/gp/product/B00HCV6T6E?ie=UTF8&amp;camp=247&amp;creativeASIN=B00HCV6T6E&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/91HCl2myAGL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-0 ユニコーンガンダム3号機 フェネクス (機動戦士ガンダムUC)" class="img-thumbnail"></a></p>
+<p><a href="http://www.amazon.co.jp/gp/product/B0032ZD5OI?ie=UTF8&amp;camp=247&amp;creativeASIN=B0032ZD5OI&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://www.1999.co.jp/itbig10/10106668.jpg" height="289" width="232" alt="MG 1/100 MSN-06S シナンジュ Ver.Ka チタニウムフィニッシュ (機動戦士ガンダムUC)" class="img-thumbnail" title="MG 1/100 MSN-06S シナンジュ Ver.Ka チタニウムフィニッシュ (機動戦士ガンダムUC)"></a><a href="http://www.amazon.co.jp/gp/product/B00FKL68XM?ie=UTF8&amp;camp=247&amp;creativeASIN=B00FKL68XM&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/81QDARb2zTL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-93 vガンダムVer.Ka チタニウムフィニッシュ (機動戦士ガンダム 逆襲のシャア)" class="img-thumbnail" title="MG 1/100 RX-93 vガンダムVer.Ka チタニウムフィニッシュ (機動戦士ガンダム 逆襲のシャア)"></a><a href="http://www.amazon.co.jp/gp/product/B00HCV6T6E?ie=UTF8&amp;camp=247&amp;creativeASIN=B00HCV6T6E&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/91HCl2myAGL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-0 ユニコーンガンダム3号機 フェネクス (機動戦士ガンダムUC)" class="img-thumbnail" title="MG 1/100 RX-0 ユニコーンガンダム3号機 フェネクス (機動戦士ガンダムUC)"></a></p>
 
 <!-- more -->
 
@@ -1761,7 +1896,7 @@
 
 <p>使用可能機体は90体以上あるので、ガンダム好きな人はぜひやってみてください。ネット対戦が熱いです！</p>
 
-<p><a href="http://www.amazon.co.jp/gp/product/B00G4R5J04?ie=UTF8&amp;camp=247&amp;creativeASIN=B00G4R5J04&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/617A4%2BjXtSL._SS240_.jpg" height="232" width="232" alt="機動戦士ガンダム EXTREME VS. FULL BOOST プレミアムGサウンドエディション" class="img-thumbnail"></a><a href="http://www.amazon.co.jp/gp/product/B002YT9PSI?ie=UTF8&amp;camp=247&amp;creativeASIN=B002YT9PSI&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/41aXwx47pJL._SS240_.jpg" height="232" width="232" alt="リアルアーケードPro.V3 SA(PS3用)" class="img-thumbnail"></a><a href="http://www.amazon.co.jp/gp/product/B004KJ41ES?ie=UTF8&amp;camp=247&amp;creativeASIN=B004KJ41ES&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/81qz1Wro-bL._SS240_.jpg" height="232" width="232" alt="" class="img-thumbnail"></a></p>]]>
+<p><a href="http://www.amazon.co.jp/gp/product/B00G4R5J04?ie=UTF8&amp;camp=247&amp;creativeASIN=B00G4R5J04&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/617A4%2BjXtSL._SS240_.jpg" height="232" width="232" alt="機動戦士ガンダム EXTREME VS. FULL BOOST プレミアムGサウンドエディション" class="img-thumbnail" title="機動戦士ガンダム EXTREME VS. FULL BOOST プレミアムGサウンドエディション"></a><a href="http://www.amazon.co.jp/gp/product/B002YT9PSI?ie=UTF8&amp;camp=247&amp;creativeASIN=B002YT9PSI&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/41aXwx47pJL._SS240_.jpg" height="232" width="232" alt="リアルアーケードPro.V3 SA(PS3用)" class="img-thumbnail" title="リアルアーケードPro.V3 SA(PS3用)"></a><a href="http://www.amazon.co.jp/gp/product/B004KJ41ES?ie=UTF8&amp;camp=247&amp;creativeASIN=B004KJ41ES&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/81qz1Wro-bL._SS240_.jpg" height="232" width="232" alt="" class="img-thumbnail" title=""></a></p>]]>
     </description>
     <pubDate>Sat, 15 Feb 2014 16:25:45 +0900</pubDate>
   </item>
@@ -2017,7 +2152,7 @@
 
 <p>アカウントを持っていない人はアカウントを作成して、月額0円のプランを購入します。</p>
 
-<p><img src="http://hamasyou.com/images/2014-02-14-microsoft-translator-api-01.png" alt="Microsoft Translator の購入" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/2014-02-14-microsoft-translator-api-01.png" alt="Microsoft Translator の購入" class="img-thumbnail" title="Microsoft Translator の購入"></p>
 
 <h3>アプリケーション登録を行う</h3>
 
@@ -2025,7 +2160,7 @@
 
 <p><i class="fa fa-hand-o-right"></i> <a href="https://datamarket.azure.com/developer/applications" rel="external nofollow" title="開発者 アプリケーション登録 - Microsoft Azure Marketplace">開発者 アプリケーション登録 - Microsoft Azure Marketplace</a></p>
 
-<p><img src="http://hamasyou.com/images/2014-02-14-microsoft-translator-api-02.png" alt="アプリケーション登録" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/2014-02-14-microsoft-translator-api-02.png" alt="アプリケーション登録" class="img-thumbnail" title="アプリケーション登録"></p>
 
 <p>翻訳 API だけを利用する場合には <em>リダイレクトURI</em> は利用しませんが、必須入力なので <code>http://localhost/</code> と入力しておきます。<code>https</code> で登録しろと怒られますが無視して登録できます。</p>
 
@@ -2325,7 +2460,7 @@
 
 <p>このリポジトリが公開用のサイトになり、<a href="http://username.github.io/" rel="external nofollow" title="http://username.github.io/">http://username.github.io/</a> が URL になります。</p>
 
-<p><img src="http://hamasyou.com/images/2014-02-13-movable-type-to-octopress-01.png" alt="リポジトリ作成" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/2014-02-13-movable-type-to-octopress-01.png" alt="リポジトリ作成" class="img-thumbnail" title="リポジトリ作成"></p>
 
 <h3>Octopress をチェックアウトする</h3>
 
@@ -2412,7 +2547,7 @@
         </div>
 
 
-<p><a href="http://opthemes.com/" rel="external nofollow" title=""><img src="http://hamasyou.com/images/2014-02-13-movable-type-to-octopress-02.png" alt="Octopress-Themes" class="img-thumbnail"></a></p>
+<p><a href="http://opthemes.com/" rel="external nofollow" title=""><img src="http://hamasyou.com/images/2014-02-13-movable-type-to-octopress-02.png" alt="Octopress-Themes" class="img-thumbnail" title="Octopress-Themes"></a></p>
 
 <h3>あたらしい記事を作成する</h3>
 
@@ -2459,7 +2594,7 @@ tags: [Movable Type,GitHub,Octopress,Liquid,Jekyll,Ruby]
 
 <p>GitHub もリポジトリサービスですが、現在は Public なリポジトリしか無料で作ることができません。そこで、<strong class="text-danger">BitBucket</strong> という別のリポジトリサービスを利用して環境をまるごとバックアップします。</p>
 
-<p><a href="https://bitbucket.org/" rel="external nofollow" title=""><img src="http://upload.wikimedia.org/wikipedia/en/f/fc/Bitbucket_Logo.png" alt="BitBucket" class="img-thumbnail"></a></p>
+<p><a href="https://bitbucket.org/" rel="external nofollow" title=""><img src="http://upload.wikimedia.org/wikipedia/en/f/fc/Bitbucket_Logo.png" alt="BitBucket" class="img-thumbnail" title="BitBucket"></a></p>
 
 <p>BitBucket は Private なリポジトリが作成できるので、ブログ環境は BitBucket で管理して、サイトデータだけを GitHub にデプロイするようにします。</p>
 
@@ -2467,7 +2602,7 @@ tags: [Movable Type,GitHub,Octopress,Liquid,Jekyll,Ruby]
 
 <p>BitBucket にリポジトリを作成する方法は、GitHub とほとんど変わりません。こちらもリポジトリ名を <code>username.github.io</code> にしておきます。</p>
 
-<p><img src="http://hamasyou.com/images/2014-02-13-movable-type-to-octopress-03.png" alt="BitBucket リポジトリ作成" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/2014-02-13-movable-type-to-octopress-03.png" alt="BitBucket リポジトリ作成" class="img-thumbnail" title="BitBucket リポジトリ作成"></p>
 
 <p>リポジトリを作成したら、ソースコードをプッシュします。</p>
 
@@ -3218,7 +3353,7 @@ puts " # All done! (#{ok}/#{fails})"
 
 <p>これで、一時ファイルにキャンバスデータを書き込んでファイル化できます。サーバを起動して <code>http://localhost:3000/posts/new</code> にアクセスして試してみてください。</p>
 
-<p><img src="http://hamasyou.com/images/2013-12-03-rails-ss.png" height="526" width="517" alt="スクリーンショット" class="img-thumbnail"></p>]]>
+<p><img src="http://hamasyou.com/images/2013-12-03-rails-ss.png" height="526" width="517" alt="スクリーンショット" class="img-thumbnail" title="スクリーンショット"></p>]]>
     </description>
     <pubDate>Tue, 03 Dec 2013 19:05:00 +0900</pubDate>
   </item>

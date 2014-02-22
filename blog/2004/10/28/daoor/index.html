@@ -193,7 +193,7 @@
 
 <p>保守がしにくいとは、テストがしにくいと言い換えてもいいと思います。永続化機構に依存したコードは、テスト環境が用意しにくく、環境に依存してしまうことが多いので、非常にテストがしづらくなります。単体レベルでテストが行えないクラスは、安心して使えません。</p>
 
-<p><img src="http://hamasyou.com/images/engineer_soul/dao_interface.gif" alt="データアクセスのイメージ" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/engineer_soul/dao_interface.gif" alt="データアクセスのイメージ" class="img-thumbnail" title="データアクセスのイメージ"></p>
 
 <p>業務アプリケーションで永続化機構(特にデータベース)を使わないことはほぼありえないので、<b class="red">データアクセス部分は、一つ層を増やしたほうがベター</b>です。データアクセスパターンには主に「DAO (Data Access Object)パターン」と「O/Rマッピング」という方法がとられます。</p>
 
@@ -262,7 +262,7 @@
 
 <p>O/Rマッピングが必要となるのは、オブジェクト指向とリレーショナルデータベースの考え方が違っているというのが大きな理由です。オブジェクト指向は、オブジェクト同士の関連を大切にする考え方です。例えば、領収書と明細という関係を考えた場合</p>
 
-<p><img src="http://hamasyou.com/images/engineer_soul/meisai.gif" alt="ヘッダー明細の例" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/engineer_soul/meisai.gif" alt="ヘッダー明細の例" class="img-thumbnail" title="ヘッダー明細の例"></p>
 
 <p>オブジェクト指向では、明細データの集合を取得するときに、親となる「領収書ヘッダー」に問い合わせをして、「明細」を取得します。つまり、クライアントは最初から「明細」に直接問い合わせをする事はありません。　逆にリレーショナルデータベースでは、明細データを取得する場合に、直接「明細」テーブルにアクセスします。データベースは「明細」テーブルのヘッダーIDを元にデータを取ってくるのです。</p>
 

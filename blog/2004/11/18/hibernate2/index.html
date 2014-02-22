@@ -217,7 +217,7 @@
 
 <p>One-to-One は<strong class="text-danger">同一の主キー</strong>を持つテーブルの関係を表します。派生関係とも言います。同一の主キーを持つテーブル同士の関係をマッピングできます。関連元の主キーと関連先の主キーが同じものを関連にします。</p>
 
-<p><img src="http://hamasyou.com/images/hibernate/onetoone.gif" alt="One-to-Oneの関係" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/hibernate/onetoone.gif" alt="One-to-Oneの関係" class="img-thumbnail" title="One-to-Oneの関係"></p>
 
 <p>マッピングは次のように行います。</p>
 
@@ -327,7 +327,7 @@
 
 <p>Many-to-One は<strong class="text-danger">参照関係</strong>を持つテーブルの関係を表します。外部キーを使って参照するときに使います。<strong class="text-danger">外部キーを持つ側から見た場合の関係</strong>です。</p>
 
-<p><img src="http://hamasyou.com/images/hibernate/manytoone.gif" alt="Many-to-Oneの関係" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/hibernate/manytoone.gif" alt="Many-to-Oneの関係" class="img-thumbnail" title="Many-to-Oneの関係"></p>
 
 <p>マッピングは次のように行います。</p>
 
@@ -415,7 +415,7 @@
 
 <p>One-to-Many は<strong class="text-danger">親子関係</strong>を持つテーブルを表します。オブジェクトから返されるものがコレクション型になります。遅延ロードを行うことができます。コレクション型は、基本的には <strong class="text-danger">Set</strong> を使うのが推奨されます。Set は一意なインスタンスの集合を表すからです。</p>
 
-<p><img src="http://hamasyou.com/images/hibernate/onetomany.gif" alt="One-to-Manyの関係" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/hibernate/onetomany.gif" alt="One-to-Manyの関係" class="img-thumbnail" title="One-to-Manyの関係"></p>
 
 <p>マッピングは次のように行います。</p>
 
@@ -565,7 +565,7 @@
 
 <p>Many-to-Many (多対多)関係 は<strong class="text-danger">関係テーブル</strong>を表します。多重度が互いに 0以上 の場合、導出されるテーブルだと言えます。ログテーブルなんかも、Many-to-Many の関係になると思います。</p>
 
-<p><img src="http://hamasyou.com/images/hibernate/manytomany.gif" alt="Many-to-Manyの関係" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/hibernate/manytomany.gif" alt="Many-to-Manyの関係" class="img-thumbnail" title="Many-to-Manyの関係"></p>
 
 <p>マッピングは次のように行います。</p>
 
@@ -719,7 +719,7 @@
 
 <p>Collection 単一列値 関係 は、親子関係または参照関係にあるテーブルの特定のカラムだけを保持するコレクションを扱う関係です。</p>
 
-<p><img src="http://hamasyou.com/images/hibernate/collectionrawdata.gif" alt="Collection   単一列値の関係" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/hibernate/collectionrawdata.gif" alt="Collection   単一列値の関係" class="img-thumbnail" title="Collection   単一列値の関係"></p>
 
 <p>マッピングは次のように行います。</p>
 
@@ -798,7 +798,7 @@
 
 <p>継承 マッピングは、テーブル内のカラム値によってサブクラスを変えるような関係です。継承関係のクラスを単一のテーブルにマッピングします。そのため、サブクラスを判断するカラムが必要になります。</p>
 
-<p><img src="http://hamasyou.com/images/hibernate/inheritance.gif" alt="継承   マッピング" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/hibernate/inheritance.gif" alt="継承   マッピング" class="img-thumbnail" title="継承   マッピング"></p>
 
 <p>マッピングは次のように行います。</p>
 
@@ -917,7 +917,7 @@
 
 <p>Composite マッピングは、コンポジションモデルを一つのテーブルにマッピングする方法です。今回の例では、住所オブジェクトは、会社オブジェクトにコンポジションされています。が、住所オブジェクト用の独立したテーブルは存在せず、会社テーブルの一部となっています。</p>
 
-<p><img src="http://hamasyou.com/images/hibernate/composite.gif" alt="Composite   マッピング" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/hibernate/composite.gif" alt="Composite   マッピング" class="img-thumbnail" title="Composite   マッピング"></p>
 
 <p>マッピングは次のように行います。</p>
 
@@ -997,7 +997,7 @@
 
 <p>再帰的な関連とは自分自身への関連を持っているような場合です。ツリー型を構成するようなオブジェクトの関係がそうです。</p>
 
-<p><img src="http://hamasyou.com/images/hibernate/recursion.gif" alt="再帰的な関連" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/hibernate/recursion.gif" alt="再帰的な関連" class="img-thumbnail" title="再帰的な関連"></p>
 
 <p>この関係を表すには、子要素のオブジェクトからの視点を持ってマッピングファイルを作ることで可能になります。つまり、親となるレコードのIDを持つようにすればいいのです。マッピングファイルでは <strong class="text-danger">many-to-one</strong> の関係になります。</p>
 

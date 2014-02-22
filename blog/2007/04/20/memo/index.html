@@ -872,11 +872,11 @@ Class#getResourceAsStream();</pre>
 </blockquote>
 
 
-<p><img src="http://hamasyou.com/images/engineer_soul/layer.gif" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/engineer_soul/layer.gif" class="img-thumbnail" title=""></p>
 
 <p>上記の図は、上位モジュールであるPolicy層が下位モジュールのService層やUtility層に依存してしまっている。この依存関係を反転させたのが下記の図である。</p>
 
-<p><img src="http://hamasyou.com/images/engineer_soul/new_layer.gif" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/engineer_soul/new_layer.gif" class="img-thumbnail" title=""></p>
 
 <p>上位のモジュールは、下位のモジュールに依存しなくなっている。注目なのは、下位のモジュールが、上位モジュールと同レベルの「抽象」に依存した点である。このように、<em>上位のモジュールがインターフェースを宣言し、下位のレベルのモジュールはそれに従った実装を請け負うのが、真のオブジェクト指向である。</em></p>
 
@@ -1027,7 +1027,7 @@ Class#getResourceAsStream();</pre>
 
 <p>業務ロジックで、「DBに登録してあるIDをインクリメントして使う」という処理があるとします。例えば、下記のようなテーブル構成があるとします(テーブルの中身についてはつっこみはなしでお願いします・・・)</p>
 
-<p><img src="http://hamasyou.com/images/engineer_soul/emp_table_rel.gif" alt="従業員テーブルとIDとの関連" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/engineer_soul/emp_table_rel.gif" alt="従業員テーブルとIDとの関連" class="img-thumbnail" title="従業員テーブルとIDとの関連"></p>
 
 <p>このテーブルでは、「従業員テーブルのEMP_ID」と「従業員IDテーブルのEMP_ID」が参照関係にあります。ここでは、下記のルールを元に考えます。</p>
 
@@ -1293,12 +1293,12 @@ java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span>
 <h4>図1. 2,3番を実行した結果</h4>
 
 
-<p><img src="http://hamasyou.com/images/engineer_soul/regedit1.gif" alt="2,3番を実行した結果" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/engineer_soul/regedit1.gif" alt="2,3番を実行した結果" class="img-thumbnail" title="2,3番を実行した結果"></p>
 
 <h4>図2. 4,5番を実行した結果</h4>
 
 
-<p><img src="http://hamasyou.com/images/engineer_soul/regedit2.gif" alt="4,5番を実行した結果" class="img-thumbnail"></p>
+<p><img src="http://hamasyou.com/images/engineer_soul/regedit2.gif" alt="4,5番を実行した結果" class="img-thumbnail" title="4,5番を実行した結果"></p>
 
 <h4>[参考]</h4>
 
