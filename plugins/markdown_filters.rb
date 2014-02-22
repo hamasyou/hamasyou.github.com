@@ -27,10 +27,13 @@ module Jekyll
           em['class'] = 'text-danger'
         end
 
-        # img に img-thumbnail を付ける
+        # img タグの設定
         doc.search('img').each do |img|
           unless img.attr('class') =~ /img-thumbnail/
             img['class'] = "#{img['class']} img-thumbnail".strip
+          end
+          unless img.attr('title')
+            img['title'] = img['alt']
           end
         end
 
