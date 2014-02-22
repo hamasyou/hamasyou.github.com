@@ -226,7 +226,7 @@ blockquote {
   margin: 0 0 $line-height-computed;
   font-size: ($font-size-base * 1.1);
   border-left: 5px solid $blockquote-border-color;
-  line-height: $line-height-computed;
+  line-height: floor(($font-size-base * 1.1) * $line-height-base);
 
   p,
   ul,
