@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: JavaScript | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/javascript/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-23T18:50:58+09:00</updated>
+  <updated>2014-02-23T19:08:20+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,591 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[サードパーティJavaScript]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"/>
+    <updated>2014-02-23T17:47:39+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/23/third-party-javascript</id>
+    <content type="html"><![CDATA[<p>サードパーティ JavaScript とは <em>異なる Web アドレスから配信される、独立したクライアントコード</em> のことを意味します。
+例えばソーシャルウィジェットやアナリティクス用のトラッカーがそうです。
+本書はこのサードパーティ JavaScript をどのように開発するとよいかについて書かれています。</p>
+
+<p>サードパーティ JavaScript には様々な難しいポイントがあります。</p>
+
+<ul>
+<li>動的なスクリプト読み込み</li>
+<li>サードパーティ Cookie の保存と読み込み</li>
+<li>HTTP / HTTPS を使ったサーバとの通信</li>
+</ul>
+
+
+<p>多くの人に使われる JavaScript を開発するには、<strong>数多くの落とし穴や難関を乗り越えなければなりません</strong>。
+本書はこういった落とし穴や難関に対する解決策を手順を追って説明してくれます。</p>
+
+<p>本書の著者の一人は <a href="http://disqus.com/">Disqus</a> という Web サイトに即席のコメントシステムを導入することができる JavaScript アプリケーションを開発しています。
+実際に世界中で使われているアプリケーションの経験を元に書かれているので説得力がありますし、「こんな事にも注意しないといけなかったのか！」といった目からウロコな内容も盛りだくさんでおすすめです。</p>
+
+<p>本書を読み終わると「<span class="lead"><strong>IE 無くなったらいいのに！</strong></span>」って絶対に思います。そして「<span class="lead"><strong>iframe すげーな。使えるやつだ</strong></span>」って思います（笑</p>
+
+<!-- more -->
+
+
+<p>以下、おぼえがきとメモです。</p>
+
+<p><nav id="toc" role="navigation"></nav></p>
+
+<h2>サードパーティ JavaScript 入門</h2>
+
+<p>サードパーティ JavaScript の例には次のようなものがあります。</p>
+
+<ul>
+<li>埋め込みウィジェット</li>
+<li>分析と計測</li>
+<li>Web サービス API のラッパー</li>
+</ul>
+
+
+<h3>サードパーティ JavaScript 開発が難しい理由</h3>
+
+<h4>未知のコンテキスト</h4>
+
+<p>JavaScript が読み込まれたときに、読み込まれた先（パブリッシャ）のページの環境がどのようになっているかがわかりません。
+JavaScript の読み込まれる位置が <code>&lt;head&gt;</code> タグだったり、<code>&lt;body&gt;</code> タグの一番最後かもしれません。<code>&lt;head&gt;</code> タグがない可能性もあります。
+<strong>ブラウザに依存するような状況に依存したコードは書くべきではありません</strong>。</p>
+
+<p>ウィジェットを開発しているのであれば、正しく表示されるかも問題になります。
+表示されるページの CSS に干渉してしまうようなスタイルの定義も問題になります。</p>
+
+<p>共通して言えることは、サードパーティ JavaScript は外部の環境に依存するべきではないし、<strong>外部の環境を壊すようなことはあってはならない</strong> ということです。</p>
+
+<h4>共有されている JavaScript 環境</h4>
+
+<p>Web 環境では、JavaScript が実行される環境はグローバルな環境が一つしかありません。グローバル環境を汚さないようにしなければいけませんし、他の JavaScript に壊されることがないように防衛する必要もあります。</p>
+
+<h4>ブラウザによるクロスドメイン制限</h4>
+
+<p>ブラウザの同一生成元ポリシーによって、<code>XmlHttpRequest</code> は表示しているページと異なるドメインへアクセスするのを妨げられてしまいます。また、サードパーティ Cookie の保存や読み込みも制限していることが普通です。</p>
+
+<h2>開発の足場</h2>
+
+<h3>複数のドメインをシミュレートする開発環境</h3>
+
+<p>クロスドメインの問題はかなり厄介な問題ですので、開発時点から複数ドメインをシミュレートするのは役にたちます。
+OS の <code>hosts</code> ファイルを編集して、localhost の エイリアスを二つ用意するだけでこの環境が手に入ります。</p>
+
+<pre><code class="plain-raw hosts">127.0.0.1 publisher.dev
+127.0.0.1 widget.dev
+</code></pre>
+
+<p><em>「.dev」のような存在しないトップレベルドメインを使う方が、実際に存在する Web サイトのアドレスを差してしまう問題がないので便利</em> です。</p>
+
+<h3>スクリプトを読み込むスニペット</h3>
+
+<p>パブリッシャのページに最初のスクリプトを読み込むスニペットを用意します。スニペットを提供する方法は2つあります。</p>
+
+<ul>
+<li>「ブロッキング」を行うタイプの <code>script</code> タグによる読み込み</li>
+<li>非同期でスクリプトを読み込むタイプ</li>
+</ul>
+
+
+<h4>ブロッキング読み込み</h4>
+
+<p>```html</p>
+
+<script src="http://camerastock.com/widget.js?product=1234"></script>
+
+
+<pre><code>
+#### ノンブロッキング読み込み
+
+上のようなタグは、そのスクリプトが読み込まれるまでブラウザの処理をとめてしまいます。そのため、このようなスクリプトは `&lt;body&gt;` タグの最後におくことや、`defer` 属性、`async` 属性を使うことで回避できます。
+`defer` 属性、`async` 属性をスクリプトタグに指定することで、そのスクリプトが文書のコンテンツを生成しない（`document.write` を使わない）のでページブロッキングをしなくても完全にダウンロードが可能であるとブラウザに伝えることができます。
+</code></pre>
+
+<script defer src="http://camerastock.com/widget.js?product=1234"></script>
+
+
+<script async src="http://camerastock.com/widget.js?product=1234"></script>
+
+
+<pre><code>
+defer 属性
+: `defer` 属性が指定されたスクリプトは、**ページが完全に解析された後** に実行が開始されます。
+async 属性
+: `async` 属性が指定されたスクリプトは、**ダウンロードが完了したすぐ直後** から実行が開始されます。
+
+JavaScript を使って DOM 上に `script` 要素を動的に生成することでも、`async` 属性と同じ挙動でスクリプトを読み込ませることができます。
+</code></pre>
+
+<script>
+(function() {
+  var node     = document.getElementsByTagName('script')[0],
+      script   = document.createElement('script');
+
+  script.src   = 'http://camerastock.com/widget.js?product=1234';
+  script.async = true;
+  node.parentNode.insertBefore(script, node);
+})();
+</script>
+
+
+<pre><code>
+### 最初のスクリプトファイル
+
+最初の JavaScript ファイルの中身はこんな感じになります。
+</code></pre>
+
+<p>var Stork = (function(window, undefined) {
+  var Stork = {};</p>
+
+<p>  return Stork;
+})(window);
+```</p>
+
+<p>一番外側の <code>Stork</code> はアプリケーションをカプセル化するための名前空間オブジェクトです。<code>window</code> と <code>undefined</code> を引数に取っています。これは、<em>よく使う変数をローカル変数として定義することで、JavaScript のミニファイアが働くようになり変数名を短くすることができる</em> からです。
+また、<code>undefined</code> はオリジナルの <code>undefined</code> が他の環境によって書き換えられていても問題ないようにするためのテクニックになります。この二つは、<em>JavaScript ライブラリの作者が非常によく使うテクニック</em> になります。</p>
+
+<h3>loadScript 関数</h3>
+
+<p>外部の JavaScript ライブラリを使いたい場合は、パブリッシャにそのスクリプトを読み込んでもらうようにするのはナンセンスです。
+パブリッシャに依存ライブラリを追加してもらうのでは、依存ライブラリに変更が入った際にパブリッシャに変更を依頼しなければならなくなります。</p>
+
+<p><em>サードパーティ JavaScript の開発者は依存ライブラリは外部に依存しない形で利用するようにするのが求められます</em>。次のコードは非同期の JavaScript ローダ関数です。必要なスクリプトの読み込みが完了したら、引数の <code>callback</code> 関数を呼び出します。</p>
+
+<pre><code class="javascript">function loadScript(url, callback) {
+  var node   = document.getElementsByTagName('script')[0],
+      script = document.createElement('script');
+
+  script.src   = url;
+  script.async = true;
+  node.parentNode.insertBefore(script, node);
+
+  script.onload = script.onreadystatechange = function() {
+    var readyState = script.readyState;
+
+    if (!readyState || /complete|loaded/.test(script.readyState)) {
+      callback();
+      script.onload = script.onreadystatechange = null;
+    }
+  };
+}
+</code></pre>
+
+<p>このように、必要なライブラリは、アプリケーションが実行する前に読み込んでおくようにします。</p>
+
+<h4>ライブラリの衝突に注意</h4>
+
+<p>jQuery のようなよく使われるライブラリをこの方法で読み込む際には、すでに存在するオブジェクトと衝突しないように注意しなければなりません。
+衝突を防ぐには <strong>名前空間</strong> を使います。jQuery の場合には衝突を避ける <code>noConflict</code> が用意されているので、これを使います。</p>
+
+<pre><code class="javascript">var Stork = Stork || {};
+Stork.$ = Stork.jQuery = jQuery.noConflict(true);
+</code></pre>
+
+<p>外部ライブラリを使う場合には、既に読み込まれていても衝突しないように注意する必要があります。</p>
+
+<h2>HTML と CSS のレンダリング</h2>
+
+<h3>スタイルを調整する方法</h3>
+
+<p>HTML にスタイルを追加で当てる方法には3つの基本的な方法が考えられます。</p>
+
+<ol>
+<li>HTML にインラインでスタイルを当てる</li>
+<li>関連する CSS ファイルを別途動的に読み込む</li>
+<li>JavaScript にスタイルシートのルールを埋め込む</li>
+</ol>
+
+
+<h4>1. インラインスタイル</h4>
+
+<p>インラインスタイルは他の要素のスタイルと干渉する心配がありません。デメリットは一般の Web サイトでインラインスタイルを使うべきでない理由と同じになります。</p>
+
+<h4>2. CSS ファイルをロードする</h4>
+
+<p>CSS ファイルを動的にロードする方法は、JavaScript を動的にロードする方法とほとんど同じになります。</p>
+
+<pre><code class="javascript">function loadStylesheet(url) {
+  var node = document.getElementsByTagName('script')[0],
+      link = document.createElement('link');
+  link.rel  = 'stylesheet';
+  link.type = 'text/css';
+  link.href = url;
+
+  node.parentNode.insertBefore(link, node);
+}
+</code></pre>
+
+<p><code>link</code> タグは <code>rel</code> 属性と <code>type</code> 属性はどちらも必須の属性になります。
+CSS が読み込まれたタイミングを知りたい場合には、少し変わった方法が必要になります。ブラウザによっては、<code>link</code> タグは <code>script</code> タグのように読み込みが終わったタイミングで <code>load</code> イベントを発生させない場合があるからです。
+CSS が読み込まれたかどうかをチェックするには、要素にスタイルが当たったかどうかを定期的にチェックする必要があります。</p>
+
+<p><blockquote><p>JavaScript やその他のデータを読み込むためのライブラリである Yepnope.js では、document.styleSheets を使って新しく挿入されたスタイルシートをスキャンする方法をとっている。</p></blockquote></p>
+
+<h5>JavaScript で要素の色を調べるときは注意！</h5>
+
+<p><strong>JavaScript で要素の色を調べるときは注意が必要です</strong>。<em>廃止予定のマイクロソフトのアクセサはオリジナルの16進数の値を返します</em>。<em>W3C のアクセサは16進数の値を RGB 表現に変換して返します</em>。</p>
+
+<h4>3. CSS を JavaScript 中に埋め込む</h4>
+
+<p>JavaScript の文字列に CSS を含めてしまう方法です。</p>
+
+<h3>防衛的な HTML と CSS</h3>
+
+<p>サードパーティ CSS においては、名前空間 (prefix) をつけるようにするとよいです。</p>
+
+<pre><code class="css">.stork-container { width: 200px; height: 200px; }
+</code></pre>
+
+<h4>CSS 優先順位</h4>
+
+<p>CSS が優先的に当たるルールは次のとおりです。</p>
+
+<ol>
+<li>インラインのスタイル(style=&ldquo;&hellip;&rdquo;)</li>
+<li>ID</li>
+<li>クラス、属性および擬似クラス(:forcus, :hover)</li>
+<li>要素(div, span など)、擬似要素(:before, :after)</li>
+</ol>
+
+
+<p>ただし、<code>!important</code> というキーワードでタグ付けされたプロパティは優先順位が最も高くなります。</p>
+
+<pre><code class="css !important の例">.stork-price {
+  font-size:       11px  !important;
+  color:           #888  !important;
+  text-decoration: none  !important;
+  display:         block !important;
+}
+</code></pre>
+
+<p>ブラウザはスコアシステムを使ってどのルールが優先されるかを計算しています。</p>
+
+<table>
+<thead>
+<tr>
+<th> セレクタ / ルールタイプ  </th>
+<th> スコア (a, b, c, d) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> インラインの style 属性  </td>
+<td> 1, 0, 0, 0 </td>
+</tr>
+<tr>
+<td> ID                       </td>
+<td> 0, 1, 0, 0 </td>
+</tr>
+<tr>
+<td> クラス、擬似クラス、属性 </td>
+<td> 0, 0, 1, 0 </td>
+</tr>
+<tr>
+<td> 要素、擬似要素           </td>
+<td> 0, 0, 0, 1 </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>スコアは <code>a &gt; b</code>、<code>b &gt; c</code>、<code>c &gt; d</code> のように価値が高くなります。(1, 0, 0, 0) は (0, 100, 0, 0) よりも優先されるということです。</p>
+
+<ul>
+<li><code>.stork-container</code> (0,0,1,0 - クラスセレクタ1つ)</li>
+<li><code>.stork-container span</code> (0,0,1,1 - クラスセレクタ1つ、要素セレクタ1つ)</li>
+<li><code>.stork-container .strok-msg</code> (0, 0, 2, 0 - クラスセレクタ2つ)</li>
+</ul>
+
+
+<h4>CSS を過剰に指定すれば優先度は高くなる</h4>
+
+<p>パブリッシャのスタイルよりも優先的にスタイルを当てるための簡単な方法は、過剰にルールを指定することです。</p>
+
+<p>```html</p>
+
+<div id="stork-main">
+  <div id="stork-container">
+    <h3 class="stork-product">Mikon E90 Digital SLR</h3>
+    <img src="http://camerastork.com/img/products/1337-small.png" />
+    <p class="stork-price">$599</p>
+    <p class="stork-rating">4.3/5.0 &bull; 176 Reviews</p>
+  </div>
+</div>
+
+
+<pre><code></code></pre>
+
+<h1>stork-main #stork-container { &hellip; }</h1>
+
+<h1>stork-main #stork-container .stork-product { &hellip; }</h1>
+
+<h1>stork-main #stork-container .stork-price { &hellip; }</h1>
+
+<pre><code>
+
+### コンテンツを iframe に埋め込む
+
+*パブリッシャのスタイルルールによる影響を受けずにスタイルを設定する方法は、`iframe` を使うこと* です。
+
+#### src なし iframe
+
+`src` 属性を指定しない `iframe` を作る場合、独立したウィンドウと DOM 環境を有しているという点で強力な効果があります。そして、**親ページで実行されているスクリプトは直接それらのオブジェクトにアクセスが可能** です。
+`iframe` はブラウザによって非同期的に処理されるため、`document.write` のようなブロッキングが発生する処理を `iframe` の中で行ってもブラウザが親ページを処理するのを妨げることはありません。
+ただし1つ注意点は、*親ページの `onload` イベントはブロッキングしてしまう* 点です。これは、`iframe` のレンダリングが完了したあとで、`document.close()` を呼び出すことで `onload` を強制的に発生させることで回避できます。
+
+#### 外部 iframe
+
+`iframe` のコンテンツが外部から提供されている場合には *ブラウザは親ページでホストされているスクリプトがそのコンテンツにアクセスすることを許可しません*。
+
+
+## サーバとの通信
+
+サードパーティアプリケーションでは、**クロスドメイン** の問題を扱わなければなりません。クロスドメイン対応には基本的なテクニックがあります。
+
+- JSONP
+- サブドメインプロキシ
+- クロスオリジンリソース共有 (CORS)
+
+### AJAX とブラウザの同一生成元ポリシー (SOP)
+
+ブラウザは異なる生成元から配信されたドキュメントがそれぞれお互いに分離されることを保証するという、**同一生成元ポリシー (SOP) ** を備えています。
+これによって、ドキュメント上のスクリプトが他のドキュメントにアクセスできるのは *同じドメイン*、*同じポート*、*同じプロトコル* である場合に限ることになります。
+
+すべてのブラウザが、`XMLHttpRequest`、`iframe`、それ以外のドキュメント間のメッセージのやり取りの方法についてこの同一生成元ポリシーを適用しています。
+
+重要な点が1つあります。**HTML の script 要素は SOP の適用を受けません**。つまり、外部の JavaScript ファイルの読み込みは可能になっています。
+ただし、*読み込まれた JavaScript はパブリッシャのコンテキストで実行されるということは注意が必要* です。
+例えば、camerastork.com の widget.js を publisher.dev の index.html で読み込まれたとしても、widget.js は camerastork.com への `XmlHttpRequest` を開始できません。
+
+
+### JSONP
+
+SOP は「HTML の script 要素はチェックの対象外」という重要な例外をもっています。この例外を使って、例えば次のような JSON データを返す URL を script 要素を使って読み込んでみます。
+</code></pre>
+
+<p>{
+  &ldquo;title&rdquo;: &ldquo;Third-party JavaScript&rdquo;,
+  &ldquo;authors&rdquo;: [&ldquo;Anton&rdquo;, &ldquo;Ben&rdquo;],
+  &ldquo;publisher&rdquo;: &ldquo;Manning&rdquo;
+}
+```</p>
+
+<p>```html</p>
+
+<script src="http://thirdpartyjs.com/info.json"></script>
+
+
+<pre><code>
+この読み込みはうまくいきます。ただし、問題は、info.json は JavaScript として実行されるということです。
+info.json は JavaScript としては正しい構文ではありませんし、もし正しく JavaScript オブジェクトとして評価されたとしても、どこからも使われずに終わってしまいます。
+
+そこで、info.json を次のように変更します。
+</code></pre>
+
+<p>var jsonResponse = {
+  &ldquo;title&rdquo;: &ldquo;Third-party JavaScript&rdquo;,
+  &ldquo;authors&rdquo;: [&ldquo;Anton&rdquo;, &ldquo;Ben&rdquo;],
+  &ldquo;publisher&rdquo;: &ldquo;Manning&rdquo;
+};
+```</p>
+
+<p>こうすると、JavaScript として正しい評価がされ、スクリプトの実行が終わると、グローバルの <code>jsonResponse</code> 変数にオブジェクトが設定され使えるようになります。
+変数ではなく、関数を呼び出すこともできます。そして、<strong>JSONP</strong> というのは、この <em>script を読み込む際に URL のクエリパラメータを使って呼び出し元がコールバック関数を指定できる仕組み</em> のことになります。</p>
+
+<pre><code class="javascript">
+function jsonpCallback(json) {
+  console.log(json);
+}
+
+var script = document.createElement('script');
+script.async = true;
+script.src   = 'http://thirdpartyjs.com/info.js?callback=jsonpCallback';
+document.body.appendChild(script);
+</code></pre>
+
+<h4>JSONP の制限</h4>
+
+<p>JSONP は <strong>GET リクエストでのみ利用可能</strong> です。RESTful API を提供しているような場合、JSONP に合わせて GET のエンドポイントを用意していあげる必要が出てくるかもしれません。</p>
+
+<p><em>JSONP リクエストは必ず非同期で処理されます</em>。ほとんどないとは思いますが、もしブロッキングが必要になった場合は、JSONP では不可能です。</p>
+
+<h3>サブドメインプロキシ</h3>
+
+<p>SOP は生成元のホスト部分を厳密に区別しています。<code>sub.example.com</code> と <code>example.com</code> は上位レベルのドメインは同じ (example.com) ですが、ブラウザは無関係なドメインとみなします。</p>
+
+<p>デフォルトの動作はこうなりますが、ブラウザは <strong>Web サイトが生成元のホスト名をその上位ドメインに設定することを許可しています</strong>。
+そのため、sub.example.com と alt.example.com のような共通の上位ドメインをもつサイト同士であれば両方の生成元を example.com に設定することでお互いに通信することができるようになります。</p>
+
+<p>もし、企業向けの限られた環境だけで使うような JavaScript を作るのであれば、サブドメインの CNAME を割り当ててもらい、同一生成元を上位ドメインに設定することで通信可能にできるかもしれません。</p>
+
+<h4>document.domain を利用してドキュメントの生成元を変更する</h4>
+
+<p>ドキュメントの生成元を変えるには次のようなスクリプトを実行します。</p>
+
+<pre><code class="javascript">document.domain = 'example.com';
+</code></pre>
+
+<p>生成元変更にはいくつか注意点があります。</p>
+
+<ul>
+<li>生成元を変更するスクリプトは <code>example.com</code> と <code>sub.example.com</code> の <strong>両方</strong> で行う必要がある</li>
+<li><code>document.domain</code> を変更できるのは <strong>ページあたり1回だけ</strong></li>
+<li><code>document.domain</code> を変更することで、<strong>生成元のポートは80にリセット</strong> される</li>
+</ul>
+
+
+<h4>AJAX から呼び出すためのサブドメイントンネルファイル</h4>
+
+<p><code>document.domain</code> を変更することでドキュメントの生成元を変更することができるようになりましたが、まだこれだけでは AJAX を使ってサブドメインのドキュメントを読み込むことはできません。
+<em>AJAX においては、まずリクエストを送ってみない限り取得するドキュメントが同じドメインに参加しようとしているかを知ることができない</em> からです。
+CORS の仕様では特別なヘッダを使ってプリフライトリクエストを行うことでこの問題を解決していますが、ここではトンネルファイルを使った方法を見ていきます。</p>
+
+<h5>非表示の iframe を使う</h5>
+
+<p>AJAX リクエストを呼び出すページが呼び出し先のドメインと同じであればリクエストを送ることができますので、予め呼び出し先のドキュメントを同一生成元を変更して読み込めていれば、そのドキュメントを使って AJAX リクエストを送ることができます。</p>
+
+<p>それが、<em>非表示の iframe を使う方法</em> です。非表示の iframe で生成元を変更するスクリプトが書かれたページを読み込み、そのページから AJAX リクエストを送るようにするのです。
+そうすれば、サブドメインプロキシを通じて、トンネルファイルの iframe 上の非表示ドキュメントから AJAX リクエストを呼び出すことができ、iframe 上のドキュメントと親ページは同じ同一の生成元にいるのでデータの受け渡しも可能になるという仕組みができます。</p>
+
+<p><img src="/images/2014-02-23-third-party-javascript-01.png" alt="サブドメイントンネルファイル" /></p>
+
+<h5>JSONP と動的フォームを使う</h5>
+
+<p>AJAX リクエストを送るためには非表示の iframe をもちいた中間ファイルが必要になります。中間ファイルを用いない方法として、動的にフォームを作成して、フォームをリクエストするという方法があります。</p>
+
+<p><code>form</code> タグには <code>target</code> 属性が用意されているので、動的にフォームを作る際に結果を受け取るための <code>iframe</code> を作成して、その iframe をターゲットにフォームをポストするといいです。</p>
+
+<h4>Google のブラウザセキュリティハンドブック</h4>
+
+<p>同一生成元ポリシーやそれに伴うセキュリティ上のリスクをもっとよく知りたい場合は、Google の「ブラウザセキュリティハンドブック」のパート2を読むとよいです。</p>
+
+<p><a href="https://code.google.com/p/browsersec/wiki/Part2">ブラウザセキュリティハンドブック Part2</a></p>
+
+<h3>クロスオリジンリソース共有 (CORS)</h3>
+
+<p><strong>クロスオリジンリソース共有 (CORS)</strong> は W3C のワーキングドラフトになっている、きちんと管理された形でドメインをまたがってサーバと通信を行う方法を定めたものです。</p>
+
+<p>CORS では一連の特別な HTTP ヘッダを使ってブラウザとサーバがやり取りを行えるかどうかを決定するようになっています。</p>
+
+<h4>Origin リクエスト</h4>
+
+<p>クロスオリジンの HTTP リクエストを開始する際には、CORS に対応したブラウザは <code>Origin</code> と呼ばれる特殊なヘッダを含むリクエストを使って生成元を示すことになっています。</p>
+
+<pre><code class="plain-raw">Origin: http://www.example.com/
+</code></pre>
+
+<p>サーバ側はこのヘッダをチェックして、そのリクエストが許可されるかどうかを決定します。応答するには、サーバは <code>Access-Control-Allow-Origin</code> というレスポンスヘッダにクライアントが送ったのと同じ生成元を入れて返さなければなりません。</p>
+
+<pre><code class="plain-raw">Access-Control-Allow-Origin: http://www.example.com/
+</code></pre>
+
+<p>あらゆるところからリクエストを許可するにはワイルドカードを使うこともできます。</p>
+
+<pre><code class="plain-raw">Access-Control-Allow-Origin: *
+</code></pre>
+
+<p>リクエストを許可しない場合は、サーバ側は CORS ヘッダを返さないようにします。また、リクエストに <code>Origin</code> ヘッダが存在していない場合は、サーバも CORS ヘッダを送り返すべきではないとされています。</p>
+
+<h4>CORS で Cookie や認証ヘッダを送信する</h4>
+
+<p>デフォルトでは、ブラウザは CORS を行う際には Cookie や HTTP 認証ヘッダを送らないようになっています。
+こうした識別情報を送信するべきであると明示する場合には、<code>XmlHttpRequest</code> オブジェクトに <code>withCredentials</code> プロパティを設定します。</p>
+
+<pre><code class="javascript">var xhr = new XmlHttpRequest();
+xhr.withCredentials = true;
+</code></pre>
+
+<p>サーバ側は、識別情報を必要としている場合には <code>Access-Control-Allow-Origin</code> ヘッダに加えて、<code>Access-Control-Allow-Credentials</code> というヘッダもレスポンスに含める必要があります。
+このヘッダがないと、ブラウザはレスポンスを拒否していしまいます。</p>
+
+<pre><code class="plain-raw">Access-Control-Allow-Credentials: true
+</code></pre>
+
+<h2>クロスドメインでの iframe 間通信</h2>
+
+<p>パブリッシャのページ上で実行されるアプリケーションコードと iframe 内のサードパーティのドメインで配信されているページとの間でドキュメントをやり取りする方法です。</p>
+
+<h3>HTML5 window.postMessage API</h3>
+
+<p><code>window.postMessage</code> はイベントを利用した安全なクロスドメイン通信 API です。
+メッセージを送りたいウィンドウオブジェクトを取得して、<code>postMessage</code> を送るだけです。
+送られる側はウィンドウの <code>message</code> イベントで受け取ります。</p>
+
+<p>```html http://publisher.dev/index.html
+&lt;!DOCTYPE html>
+<html>
+<body></p>
+
+<h1>Publisher</h1>
+
+
+
+
+<iframe id="thirdparty" src="http://thirdparty.dev/index.html">
+</iframe>
+
+
+
+
+<script>
+var frame = document.getElementById('thirdparty');
+frame.addEventListener('load', function(e) {
+    var win = frame.contentWindow;
+    win.postMessage('Hello World!', 'http://thirdparty.dev/');
+});
+</script>
+
+
+<p></body>
+</html>
+```</p>
+
+<p>```html http://thirdparty.dev/index.html
+&lt;!DOCTYPE html>
+<html>
+<body></p>
+
+<h1>thirdparty</h1>
+
+
+<script>
+function receiver(e) {
+    console.log(e.data);
+    console.log(e.origin);
+    console.log(e.source);
+}
+window.addEventListener('message', receiver, false);
+</script>
+
+
+<p></body>
+</html>
+```</p>
+
+<h3>easyXDM を利用したクロスドメインメッセージング</h3>
+
+<p><a href="http://easyxdm.net/wp/">easyXDM</a></p>
+
+<p>クロスドメイン間でメッセージをやり取りするためのライブラリに <strong>easyXDM</strong> があります。
+このライブラリは複数の異なるクロスドメインメッセージングのテクニックを組み合わせて、そのなかかkらそれぞれのブラウザに適したものを選択してくれます。</p>
+
+<h2>メモ</h2>
+
+<h3>ポップアップブロック機能を回避する方法</h3>
+
+<p><blockquote><p>これを避けるには、新しいウィンドウを常に<strong>ユーザーのアクションの直接の結果</strong>として開くようにすることだ。ユーザーのアクションからウィンドウを開くまでの間に遅延が存在すると、多くのブラウザはそれを悪意ある動作とみなして処理を阻止してしまう。</p></blockquote></p>
+
+<h2>感想</h2>
+
+<p>読んでみて、<strong>本書はサードパーティ JavaScript を書かなくても、サーバ側の API を実装するだけの人も読むべき</strong> だと思いました。
+クロスオリジン問題やセキュリティに関する話題も豊富に書かれていて、全てが有用な情報です。</p>
+
+<p>ブラウザとサーバがどんなことをやっているのかをきちんと理解したい人は、是非よんでみてください。絶対に為になります。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaScriptで学ぶ関数型プログラミング]]></title>
@@ -1103,436 +1688,6 @@ custome.namespace("dom.event");
 
 
 <p>テスト名の付け方として、「いかに」ではなく「何を」と「なぜ」を中心につけるとよい</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)]]></title>
-    <link href="http://hamasyou.com/blog/2011/06/18/4798123986/"/>
-    <updated>2011-06-18T10:01:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2011/06/18/4798123986</id>
-    <content type="html"><![CDATA[<p>本書は、スマートフォンアプリ開発に使う開発ツールを探している人、<strong>Titanium Mobile</strong> という名前を聞いたことがあるけど実際にどういうものかを知りたい人、Titanium Mobile を使って開発を始めたけどこういう書き方で合っているのか不安な人向けの、概要書兼リファレンスブック的な位置づけにあたります。</p>
-
-<p><section></p>
-
-<h4>Titanium Mobile</h4>
-
-
-<p><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow">Titanium Mobile - Appcelerator</a></p>
-
-<p></section></p>
-
-<p>Titanium Mobile を開発、提供している Appcelerator が用意してくれている Web 上のドキュメントは、Titanium Mobile を始めたばかりの人には分かりづらく、「こういうことがしたいんだけどどう書けばいいの？」という時には使いづらいのです。</p>
-
-<p>本書は、そんな Titanium Mobile のドキュメントの弱さを補い、Titanium Mobile とはどういうふうに動作しているのか、こういうことをするときはどう書けばいいのかを学ぶのに最適な本です。</p>
-
-<p>iPhone、Android 向けスマートフォンアプリとはいえ、プラットフォーム SDK が備える機能はとても豊富です。これらの SDK を JavaScript から扱えてしまう Titanium Mobile をよくここまでまとめたなぁという印象の良書です。</p>
-
-<div class="option"><p>スマートフォン開発は、Windows や Mac などの GUI アプリケーションと同様、イベントドリブンモデルの開発になります。そのため、GUI アプリ開発の経験がない人には Titanium Mobile を使って JavaScript で開発を行うと、どうしても戸惑うことが出てくると思います。</p>
-
-<p>本書をとりあえず読んでみて、<em>Titanium Mobile 上で JavaScript で GUI 開発（スマートフォンアプリ開発）ってこういうふうにするんだ</em>というのを体感してもらい、リファレンスとしてのお供にされるといいと思います。</p></div>
-
-
-<p>本書の対象者は、<em>Titanium Mobile を使って開発を始めたい人、実際に開発を始めたがまとまった情報がほしい人</em>です。Titanium Mobile を使ってとにかく何か作ってみたいひとは、本書内のサンプルを写経してみるといいと思います。</p>
-
-<p>Titanium Mobile を使って開発をしてみたものの、不安が残っている人に最適な一冊です。</p>
-
-<!-- more -->
-
-
-
-
-<h2>本書の目次</h2>
-
-
-
-
-<ol>
-<li>Appcelerator Titanium Mobile について
-  <ol>
-  <li>Appcelerator 社と Titanium シリーズ</li>
-  <li>Titanium Mobile について
-    <ol class="fontSmall">
-    <li>Titanium Mobile が提供する機能</li>
-    <li>Titanium Mobile の動作原理</li>
-    <li>オープンソース開発されている Titanium Mobile </li>
-    <li>日本で注目を集める Titanium Mobile</li>
-    <li>今後のロードマップ</li>
-    </ol>
-  </li>
-  <li>価格体系／ライセンス</li>
-  <li>Titanium Mobile を利用するのに必要な環境
-    <ol class="fontSmall">
-      <li>iOS には Mac OS X 環境が必要</li>
-      <li>Android 開発について</li>
-    </ol>      
-   </li>
-   <li>ネイティブアプリケーション開発で代替手段を選択するリスク</li>
-   </ol>
-</li>
-<li>開発環境導入とアプリケーションの第一歩
-  <ol>
-  <li>iOS 用開発環境の構築
-    <ol class="fontSmall">
-      <li>iOS SDK と Xcode</li>
-      <li>IOS Developer Program の登録</li>
-    </ol>
-  </li>
-  <li>Android 用開発環境の構築
-    <ol class="fontSmall">
-      <li>JDK の確認と Android SDK の入手</li>
-      <li>Mac OS への導入</li>
-      <li>Windows7 へのインストール</li>
-    </ol>
-  </li>
-  <li>Titanium Developer のインストール
-    <ol class="fontSmall">
-      <li>Mac OS X の場合</li>
-      <li>Windows7 の場合</li>
-      <li>Titanium Developer の起動とサインアップ</li>
-    </ol>
-  </li>
-  <li>Titanium Developer の画面解説
-    <ol class="fontSmall">
-      <li>パースペクティブ</li>
-      <li>最新版 SDK のアップデート</li>
-    </ol>
-  </li>
-  <li>Hello World プロジェクトの作成
-    <ol class="fontSmall">
-      <li>プロジェクトの新規作成</li>
-      <li>iPhone(iPod touch)の場合</li>
-      <li>Andorid の場合</li>
-      <li>iPad の場合</li>
-    </ol>
-  </li>
-  <li>Hello World プロジェクトを実機で動かす
-    <ol class="fontSmall">
-      <li>iOS(iPhone/iPad/iPod touch)の場合</li>
-      <li>Android の場合</li>
-    </ol>
-  </li>
-  <li>プロジェクトの中を探索する
-    <ol class="fontSmall">
-      <li>プロジェクトのフォルダ構成</li>
-      <li>app.js の解説</li>
-      <li>プラットフォームによる UI の違い</li>
-    </ol>
-  </li>
-  <li>ネイティブ UI の部品紹介と KitchenSink
-    <ol class="fontSmall">
-      <li>ネイティブ UI の部品カタログ</li>
-      <li>KitchenSink とは何か？</li>
-    </ol>
-  </li>
-  <li>Hello World の中身をいじってみる
-    <ol class="fontSmall">
-      <li>win1 に機能を追加する</li>
-      <li>win2 に機能を追加する</li>
-      <li>Tab を使わない画面デザイン</li>
-      <li>WebView を用いた HTML5 アプリケーション</li>
-    </ol>
-  </li>
-  <li>アプリケーションアイコン／スプラッシュスクリーンを変更
-    <ol class="fontSmall">
-      <li>アプリケーションアイコン</li>
-      <li>スプラッシュスクリーン（起動時画像）</li>
-    </ol>
-  </li>
-  <li>アプリケーションの設定と拡張
-    <ol class="fontSmall">
-      <li>tiapp.xml</li>
-      <li>iOS プラットフォームに依存したビルド</li>
-      <li>Android プラットフォームに依存したビルド</li>
-    </ol>
-  </li>
-  </ol>
-</li>
-<li>実践！ Twitter クライアントアプリ開発
-  <ol>
-  <li>TiTweets の目標</li>
-  <li>プロジェクト作成</li>
-  <li>タイムラインの表示
-    <ol class="fontSmall">
-      <li>HTTP クライアントとネットワークの状態の取得</li>
-      <li>ログ出力メソッド</li>
-      <li>TableView への表示</li>
-      <li>TableViewRow の使用</li>
-    </ol>
-  </li>
-  <li>app.js からスクリプトファイルの分割
-    <ol class="fontSmall">
-      <li>Titanium.include によるファイル分割</li>
-      <li>Titanium.UI.createWindow の url 指定での分割</li>
-      <li>ファイル分割と実行コンテキスト</li>
-      <li>コンテキスト間の値の受け渡し</li>
-      <li>アプリケーションプロパティを用いて実行コンテキストの違いを回避する</li>
-    </ol>
-  </li>
-  <li>プラットフォームごとの再読込 UI の実装
-    <ol class="fontSmall">
-      <li>iPhoen の場合：ナビゲーションボタンを利用する</li>
-      <li>Android の場合：メニューを利用する</li>
-      <li>プラットフォームの違いを吸収する</li>
-      <li>再読込処理を実装する</li>
-    </ol>
-  </li>
-  <li>検索結果の表示を行う
-    <ol class="fontSmall">
-      <li>固定したハッシュタグの検索</li>
-      <li>任意の検索文字列に基づく検索</li>
-      <li>前回検索値の保存</li>
-    </ol>
-  </li>
-  <li>共通ソースのオブジェクト化
-    <ol class="fontSmall">
-      <li>オブジェクトのひな形</li>
-      <li>titwitter.js を実装する</li>
-      <li>アプリケーション連携（OpenURL とインテント）</li>
-    </ol>
-  </li>
-  <li>国際化対応（i18N）
-    <ol class="fontSmall">
-      <li>メッセージ定義ファイルの準備</li>
-      <li>メッセージ定義ファイルの使用</li>
-      <li>メッセージ中の文字列置き換え</li>
-    </ol>
-  </li>
-  <li>もうすこし機能拡張
-    <ol class="fontSmall">
-      <li>タブの整理</li>
-      <li>Tweet の単独表示</li>
-      <li>Read it Later 連携</li>
-    </ol>
-  </li>
-  <li>AppStore / Android Market への公開
-    <ol class="fontSmall">
-      <li>iOS の場合（Ad Hoc 配布／App Store 公開）</li>
-      <li>Android Market への公開</li>
-    </ol>
-  </li>
-  </ol>
-</li>
-<li>ライブラリやデバイスの活用 <span class="fontSmall">〜続・Twitter クライアントアプリ開発〜</span>
-  <ol>
-  <li>TinyTweet の目標</li>
-  <li>OAuth 認証の設定をする
-    <ol class="fontSmall">
-      <li>アプリケーションを登録する</li>
-      <li>OAuth 認証の動作検証を行う</li>
-      <li>ホームタイムラインを取得する</li>
-    </ol>
-  </li>
-  <li>Tweet を Post する
-    <ol class="fontSmall">
-      <li>TextArea を配置する</li>
-      <li>キーボードツールバー（iOS のみ）</li>
-      <li>返信機能などに対応する</li>
-    </ol>
-  </li>
-  <li>カメラ撮影／フォトギャラリーの活用
-    <ol class="fontSmall">
-      <li>カメラ撮影の呼び出し</li>
-      <li>撮影済みの写真データの取得</li>
-      <li>TwitPic へのアップロード</li>
-      <li>画像ファイルのリサイズ（iOS のみ）</li>
-      <li>Andriod の場所のキーボードツールバー実現方法</li>
-    </ol>
-  </li>
-  <li>アプリケーションの完成
-    <ol class="fontSmall">
-      <li>カメラ処理部分をソース分割する（require の活用）</li>
-      <li>設定画面を作成する</li>
-    </ol>
-  </li>
-  </ol>
-</li>
-<li>GPS 活用アプリケーション「食べナビ」
-  <ol>
-  <li>「食べナビ」における目標</li>
-  <li>食べログ API に基づきデータを表示する
-    <ol class="fontSmall">
-      <li>API の動作検証</li>
-      <li>テスト用モックデータ取得処理</li>
-      <li>「もっと読む」機能</li>
-      <li>店舗情報の出力</li>
-    </ol>
-  </li>
-  <li>位置情報に基づいて地図を表示する
-    <ol class="fontSmall">
-      <li>地図表示部品 MapView の利用</li>
-      <li>tiapps.xml への設定（Android のみ）</li>
-      <li>latitudeDelta と longitudeDelta</li>
-      <li>Annotation（マーカー／ピンの表示）</li>
-    </ol>
-  </li>
-  <li>GPS で現在地の位置情報を取得する
-    <ol class="fontSmall">
-      <li>位置情報を取得する GPS 関連 API の利用</li>
-      <li>軽遺族的な位置情報の取得</li>
-    </ol>
-  </li>
-  <li>カバーフローによる写真一覧表示（iOSのみ）
-    <ol class="fontSmall">
-      <li>CoverFlowView</li>
-      <li>問い合せ結果との組み合わせ</li>
-    </ol>
-  </li>
-  <li>取得したデータをデータベースに保存する
-    <ol class="fontSmall">
-      <li>テーブルレイアウトと検証</li>
-      <li>データの追加と更新</li>
-      <li>お気に入りの表示</li>
-      <li>データの削除</li>
-    </ol>
-  </li>
-  </ol>
-</li>
-<li>Titanium Mobile API 簡易リファレンス
-  <ol>
-  <li>簡易リファレンスの読み方</li>
-  <li>Window と View</li>
-  <li>コントロール</li>
-  <li>デバイス</li>
-  <li>プラットフォーム</li>
-  <li>通信</li>
-  <li>その他</li>
-  </ol>
-</li>
-<li>Appendix
-  <ol style="list-style-type: none;margin-left: 0">
-  <li>付録1  モダンな JavaScript コーディングの第一歩</li>
-  <li>付録2  自動レイアウトと JSS 機能</li>
-  <li>付録3  2DMatrix アニメーション</li>
-  <li>付録4  Xib2js による UI 作成</li>
-  <li>付録5  開発版ビルド（Continuous Build）を活用する</li>
-  <li>付録6  モジュールを使う</li>
-  <li>付録7  Titanium Studio</li>
-  <li>付録8  Titanium Mobile 困ったときの情報源</li>
-  </ol>
-</li>
-</ol>
-
-
-
-
-<h2>覚書</h2>
-
-
-
-
-<h3>Titanium Mobile の動作原理</h3>
-
-
-<p>Titanium Mobile は JavaScript でソースコードを記述しますが、動作時には<em>Titanium Mobile の JS インタプリタ上で解釈されて動作します。</em></p>
-
-<p>よく、JavaScript のコードがコンパイルされてネイティブコードに変換されているという誤解をしそうになりますが、そうではありません。</p>
-
-<p>なので、ゲームなどのアニメーションをゴリゴリするようなアプリには、Titanium Mobile の利用は考えたほうが良いです。</p>
-
-<p>Titanium Mobile が向いている分野としては</p>
-
-<ul><li>Web上のサービスをクライアントから利用するアプリ</li>
-<li>ちょっとしたユーティリティアプリ</li></ul>
-
-
-<p>だと思います。（<a href="http://mogsnap.jp/" rel="external nofollow">MogSnap</a> のようなここまで Titanium で出来るのか！？っていうものもありますが）</p>
-
-<h3>Appcelerator 社提供のアイコンリソース</h3>
-
-
-<p>自分でアプリをつくろうと思ったときに「アイコン画像とか、俺つくれねーーー！！」ってなることがあります。。そんなときに利用出来るのがこれ！</p>
-
-<p>Appcelerator から提供されているアイコンのリソースです。是非ご利用ください。</p>
-
-<p><a href="http://developer.appcelerator.com/blog/2010/12/festivus-celebration-day-two-airing-of-grievances.html" rel="external nofollow">Festivus Celebration Day Two - Airing of Grievances - Appcelerator Developer Blog</a></p>
-
-<h3>実行コンテキスト</h3>
-
-
-<p>Titanium Mobilde で開発する際、Window ごとの処理を別々のソースコードに切り出すことができます。</p>
-
-<p>このとき、実行コンテキストが分かれます。簡単に言うと、変数のスコープが分かれるというものです。</p>
-
-<p><a href="http://developer.appcelerator.com/blog/2010/08/execution-contexts.html" rel="external nofollow">Understanding Execution Contexts - Appcelerator Developer Blog</a></p>
-
-<h2>本書に書いていないこと</h2>
-
-
-
-
-<h3>モジュールの開発</h3>
-
-
-<p>Titanium Mobile は、プラットフォーム SDK のネイティブ機能へのラッパーを数多く提供してくれているので、ほとんどのことが Titanium Mobile のコンポーネントの組み合わせだけで行えます。</p>
-
-<p>ただ、たまに、もうちょっとこの部分がこうなっていればいいのに！という、コンポーネントを拡張したい場合があります。</p>
-
-<p>Titanium Mobile にはモジュールという形で、SDK を使って直接ネイティブコードを書いて、それを JavaScript から呼び出すということができます。</p>
-
-<p>モジュールのインターフェースは、Titanium Mobile 上の呼び出し規約に沿った形で作成する必要があります。</p>
-
-<p>モジュールの詳しい作り方は、公式のドキュメントを読むのが手っ取り早いと思います。そんなに難しい英語ではないのですんなり理解できるかと思います。</p>
-
-<p><a href="http://developer.appcelerator.com/doc/mobile/guides" rel="external nofollow">Titanium Mobile Programming Guides - Appcelerator</a></p>
-
-<h3>テスト</h3>
-
-
-<p>Titanium Mobile での開発は JavaScript で記述したアプリケーションコードが Titanium のインタプリタ上で動くというアーキテクチャになっているため、GUI の実際の動作を確認するのは実機かエミュレータ（シミュレータ）を使う必要があります。</p>
-
-<p>ただ、毎回実行してコードが意図したとおりに動いているかを確認するのは時間がかかります。</p>
-
-<p>そういうことで、実装時には GUI の動作とロジックの部分をできるだけ分けて実装しておいて、下に挙げるようなテストフレームワークを使うよいと思います。</p>
-
-<h4>テストフレームワーク</h4>
-
-
-
-
-<dl><dt>drillbit</dt>
-<dd><a href="http://d.hatena.ne.jp/Ehren/20110329/1301417692" rel="external nofollow">Titanium mobile で drillbit動いた - Ehrenの日記</a></dd>
-<dt>QUnit</dt>
-<dd><a href="http://higelog.brassworks.jp/?p=692" rel="external nofollow">Titaniumでユニットテスト - ひげろぐ</a></dd></dl>
-
-
-
-
-<h3>同期処理のための Deferred</h3>
-
-
-<p>JavaScript はシングルスレッドアーキテクチャなので、割り込みをコールバックという形で実装しています。</p>
-
-<p>スマートフォンアプリのようなイベントドリブンモデルのプラットフォームでは、ユーザの反応をイベントとして発火し、リスナがそのイベントを処理するというモデルで実装していきます。</p>
-
-<p>つまり、JavaScript で実装すると、イベントリスナをコールバック関数として実装して、イベントハンドラ（GUIコンポーネント）に登録しておくという書き方になります。</p>
-
-<pre><code class="javascript">var button = Titanium.UI.createButton({...});
-button.addEventListener(function(e) {
-  // 処理
-});
-</code></pre>
-
-<p>Titanium Mobile で開発をしているとコールバックを多用するため、処理が非同期に進んでしまって、何かのイベントの結果で処理を分岐するという事をしたいときに悩むことがあります。</p>
-
-<p>そんなときは、Deferred を使って非同期処理の待ち合わせを行うとよいです。</p>
-
-<p><a href="http://hamasyou.com/blog/archives/000398" rel="external nofollow">[Titanium] JSDeferred を使って現在位置の取得を順次処理する - それはBlog</a></p>
-
-<h2>追記</h2>
-
-
-
-
-<h3>Titanium Mobile 1.7ならびにTitanium Studio 1.0対応について</h3>
-
-
-<p>Titanium Mobile1.7、Titanium Studio1.0 がリリースされたことで、本書の2章の内容が現実と合わなくなっています。</p>
-
-<p>著者の方がフォローしてくれていますので、活用してみてください。</p>
-
-<p><a href="http://code.google.com/p/titanium-mobile-doc-ja/downloads/detail?name=TMINTRO_ch02Plus.pdf" target="_blank" class="extlink">Titanium Mobileで開発するiPhone/Androidアプリ 第二章 補完稿 -  <br/>
-titanium-mobile-doc-ja</a></p>
 ]]></content>
   </entry>
   
