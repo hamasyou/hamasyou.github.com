@@ -27,6 +27,8 @@ og_image: ""
 
 {% youtube xuhy3ZgIico %}
 
+{% youtube OUwrM1F7ttU %}
+
 最近は [exvsfb](http://exvsfb.ggame.jp/) ばかりやってて、当然持ちキャラはシナンジュです。
 
 使用可能機体は90体以上あるので、ガンダム好きな人はぜひやってみてください。ネット対戦が熱いです！
