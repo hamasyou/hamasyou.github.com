@@ -7,7 +7,7 @@ categories: [Programming]
 keywords: "サードパーティJavaScript,JavaScript,9784048916585"
 tags: [JavaScript,読むべき]
 sharing: true
-published: false
+published: true
 amazon_url: "http://www.amazon.co.jp/gp/product/4048916580?ie=UTF8&camp=247&creativeASIN=4048916580&linkCode=xm2&tag=sorehabooks-22"
 amazon_author: "Ben Vinegar (著), Anton Kovalyov (著), 水野貴明 (翻訳)"
 amazon_image: "http://ecx.images-amazon.com/images/I/51ptmwaAD1L._AA300_.jpg"
