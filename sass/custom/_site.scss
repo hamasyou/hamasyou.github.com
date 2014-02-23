@@ -39,6 +39,7 @@ span.divider:before {
   }
   h2+h3 {
     background: none;
+    padding-top: $line-height-computed / 2;
   }
   h4, .h4 {
     margin-top: $line-height-computed * 1.2;
@@ -48,6 +49,16 @@ span.divider:before {
     padding: 5px 0 5px 5px;
     border-left: 5px solid $brand-success;
     border-bottom: 1px dotted $gray-light;
+  }
+
+  h2, .h2,
+  h3, .h3,
+  h4, .h4 {
+    margin-bottom: $line-height-computed / 1.8;
+  }
+
+  p {
+    line-height: $line-height-computed * 1.1;
   }
 
   dl {
@@ -69,6 +80,22 @@ span.divider:before {
     margin: 0.5em 0 1em;
   }
 
+  blockquote {
+    footer strong {
+      font-weight: normal;
+
+      font-size: 80%; // back to default font-size
+      line-height: $line-height-base;
+      color: $blockquote-small-color;
+    }
+  }
+
+  .table-of-contents {
+    li.toc3 {
+      margin-left: $font-size-base;
+      list-style-type: circle;
+    }
+  }
 }
 
 .panel-primary {
