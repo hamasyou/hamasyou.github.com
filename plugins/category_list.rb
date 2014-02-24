@@ -98,7 +98,7 @@ module Jekyll
       categories = context.registers[:site].categories
       categories.keys.sort_by{ |str| str.downcase }.each do |category|
         url = category_dir + category.to_url
-        html << "<a class='list-group-item' href='#{url}/' rel='nofollow'>#{category}"
+        html << "<a class='list-group-item' href='#{url}/'>#{category}"
         if @opts['counter']
           html << " <span class=\"badge\">#{categories[category].count}</span>"
         end
