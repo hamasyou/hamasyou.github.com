@@ -37,7 +37,7 @@ span.divider:before {
     padding-top: $line-height-computed * 1.2;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') top left repeat-x;
   }
-  h2+h3 {
+  h2 + h3 {
     background: none;
     padding-top: $line-height-computed / 2;
   }
@@ -98,6 +98,33 @@ span.divider:before {
   }
 }
 
+#back-to-top {
+  position: fixed;
+  z-index: 1000;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+
+#back-to-top a {
+  display: block !important;
+  width: 40px;
+  height: 40px;
+  background: $gray-lighter url(/images/backtotop.png) no-repeat center center;
+  text-indent: -9999px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: 0.4s all ease;
+  -moz-transition: 0.4s all ease;
+  -o-transition: 0.4s all ease;
+  transition: 0.4s all ease;
+}
+
+#back-to-top a:hover {
+  background-color: $brand-info;
+}
+
 .panel-primary {
   .panel-title {
     color: #fff;
@@ -155,7 +182,6 @@ span.divider:before {
   color: $gray-light;
   background-color: $gray-lighter;
 }
-
 
 @media (max-width: $screen-xs-max) {
   h1, .h1 {

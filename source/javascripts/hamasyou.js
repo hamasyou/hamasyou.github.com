@@ -8,14 +8,18 @@ jQuery(function($) {
         }, 400);
         return false;
     });
-//
-//    $('a[href="#disqus_thread"]').on('click', function() {
-//        var p = $('#disqus_thread').offset().top;
-//        $('body,html').animate({
-//            scrollTop: p
-//        }, 400);
-//        return false;
-//    });
+
+    var entryHeight = $('.entry-content').height();
+    $(window).scroll(function() {
+        var top = $(window).scrollTop();
+        if (top < 200) {
+            $("#back-to-top").fadeOut(200);
+        } else if (top > entryHeight) {
+            $("#back-to-top").fadeOut(200);
+        } else {
+            $("#back-to-top").fadeIn(200);
+        }
+    });
 
     // toc
     if ($('#toc')[0]) {
