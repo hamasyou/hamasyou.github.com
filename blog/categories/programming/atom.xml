@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-24T18:23:19+09:00</updated>
+  <updated>2014-02-25T17:46:37+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Pythonメモ]]></title>
+    <link href="http://hamasyou.com/blog/2014/02/25/python/"/>
+    <updated>2014-02-25T15:43:02+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/02/25/python</id>
+    <content type="html"><![CDATA[<p>プログラミング言語「<strong>Python</strong>」のメモです。v.2.5 のメモのなので最新だと違うかも。。</p>
+
+<!-- more -->
+
+
+<h3>シーケンス</h3>
+
+<p>シーケンスとは、オブジェクトを一定の順序に並べたものです。シーケンスでは要素となるオブジェクトの順序は常に変わりません。シーケンスには、<em>文字列</em>、<em>リスト</em>、<em>タプル</em> などがあります。</p>
+
+<p>シーケンスに対して行える操作があります。要素の位置を指定して取り出す <strong>インデクシング</strong>、要素を範囲で取得する <strong>スライシング</strong> があります。</p>
+
+<pre><code class="python">str = 'Spam'
+str[0]   # S
+str[-1]  # m
+str[1:3] # pa
+str[1:]  # pam
+str[:3]  # Spa
+str[:-1] # Spa
+str[:]   # Spam
+
+str = 'abcdefghij'
+str[1:9:2]  # bdfh
+str[5:1:-1] # fedc
+str[::-1]   # jihgfedcba
+</code></pre>
+
+<h3>リスト内包表記</h3>
+
+<p>リスト内包表記はシーケンスに属する要素のそれぞれに同じ演算を行うことができる表記法です。リスト内包表記は最終的にリストを作成します。</p>
+
+<pre><code class="python">matrix = [[1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9]]
+col2 = [row[1] for row in matrix]
+col2
+# [2, 5, 8]
+</code></pre>
+
+<h3>タプル</h3>
+
+<p><strong>タプル</strong> はリストと似ていますが、要素を変更することができません。タプルはカッコで作成します。<em>要素が一つの場合は、要素の後にカンマをつけなければいけません</em>。</p>
+
+<pre><code class="python">tuple = (1, 2, 3, 4)
+tuple[1] = 5
+# TypeError: 'tuple' object does not support item assignment
+tuple = (1,)
+</code></pre>
+
+<h3>ヘルプを調べる</h3>
+
+<p>組み込み関数の <code>dir</code> を使うと、オブジェクトの全属性のリストが手に入ります。また、<code>help</code> 関数を使うとメソッドのヘルプ情報を出力可能です。</p>
+
+<pre><code class="python">dir('string')
+# ['__add__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__getslice__', '__gt__', '__hash__', '__init__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '_formatter_field_name_split', '_formatter_parser', 'capitalize', 'center', 'count', 'decode', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'index', 'isalnum', 'isalpha', 'isdigit', 'islower', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+help('string'.index)
+# Help on built-in function index:
+#
+# index(...)
+#     S.index(sub [,start [,end]]) -&gt; int
+#
+#     Like S.find() but raise ValueError when the substring is not found.
+</code></pre>
+
+<h3>文字列</h3>
+
+<p><em>Python ではシングルクォートとダブルクォートは同じ意味を持ちます</em>。なので、他の言語のように、ダブルクォートの場合だけエスケープシーケンスが効くということはありません。</p>
+
+<pre><code class="python">print 'a\nb\tc'
+# a
+# b c
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[サードパーティJavaScript]]></title>
@@ -1354,58 +1433,6 @@ RestClient.get('http://localhost:9292', params: {name: 'hamasyou'})
 </code></pre>
 
 <p>RequestTimeout が出てしまいました。。ちなみに、<code>GET</code> リクエストの方はうまく動きます。<code>open-uri-post</code> と <code>rest-client</code> は一緒に使わないほうがいいですね。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby-Nokogiriで取り出した要素を置き換える]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/"/>
-    <updated>2014-02-13T16:19:09+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/13/ruby-nokogiri</id>
-    <content type="html"><![CDATA[<p>Ruby の HTML パーサに <strong>Nokogiri</strong> があります。基本的な使い方は</p>
-
-<ul>
-<li><a href="https://github.com/sparklemotion/nokogiri">Nokogiri-GitHub</a></li>
-<li><a href="http://morizyun.github.io/blog/ruby-nokogiri-scraping-tutorial/">Nokogiri を使った Rubyスクレイピング [初心者向けチュートリアル]</a></li>
-<li><a href="http://www.absolute-keitarou.net/blog/?p=634">RubyのNokogiriでギコギコスクレイピングだ</a></li>
-<li><a href="http://qiita.com/w650/items/e663fa2430145c456c4d">Nokogiriでスクレイピング</a></li>
-</ul>
-
-
-<p>とかを参考にしてもらえばいいんですが、パースした要素の特定の属性を置き換えたいとか追加で属性を追加したい時のメモです。</p>
-
-<!-- more -->
-
-
-<p>使い方は</p>
-
-<pre><code class="console">gem install 'nokogiri'
-</code></pre>
-
-<pre><code class="ruby">require 'nokogiri'
-
-doc = Nokogiri::HTML(html_text)
-
-# 外部リンクに rel="external nofollow" と title 属性を付ける
-doc.search('a[href^="http://"]', 'a[href^="https://"]').each do |link|
-  link['rel'] = "#{link['rel']} external nofollow".strip
-  link['title'] = link.text unless link.attr('title')
-end
-html_text = doc.css('body')[0].inner_html
-</code></pre>
-
-<p>Nokogiri に渡す HTML 文字列は <code>&lt;html&gt;</code> から始まる必要はなく、部分的な HTML 文字列でも OK です。</p>
-
-<p>部分 HTML を置き換えた場合は、取り出しは <code>doc.css('body')[0].inner_html</code> になります。<code>doc.to_html</code> だと <code>&lt;!DOCTYPE html&gt;&lt;html&gt;</code> から始まる文字列になってしまうので注意。</p>
-
-<h3>文字コードを指定する</h3>
-
-<p>Nokogiri は日本語に対応していますが、デフォルトで <em>UTF-8</em> の文字エンコーディングになっているようです。なので Shift_JIS や EUC-JP の HTML を与えるとうまくパースできません。</p>
-
-<p>そんな時は、次のようなコードで UTF-8 に変換してやれば OK です。</p>
-
-<pre><code class="ruby">doc = Nokogiri::HTML(html_text, nil, 'utf-8')
-</code></pre>
 ]]></content>
   </entry>
   
