@@ -53,7 +53,7 @@ Microsoft Translator API は Microsfot が提供する翻訳サービスで REST
 
 翻訳 API を呼び出すには、呼び出しの前に OAuth を通さなければなりません。OAuth を通すと得られる *access_token* を使って翻訳 API を呼び出します。
 
-OAuth を通すには POST リクエストが必要なので、サンプルでは Ruby の `open-uri` を post 対応したものを使っています。
+OAuth を通すには POST リクエストが必要なので、サンプルでは Ruby の `open-uri` を post 対応したものを使っています。[Rest Client gem](https://github.com/rest-client/rest-client) もオススメです。
 
 [[ruby]open-uriをPOST対応させる](http://d.hatena.ne.jp/urekat/20070201/1170349097)
 
