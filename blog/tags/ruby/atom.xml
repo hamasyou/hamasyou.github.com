@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Ruby | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/ruby/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-02-25T17:46:37+09:00</updated>
+  <updated>2014-02-26T09:58:09+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -172,7 +172,7 @@ RestClient.get('http://localhost:9292', params: {name: 'hamasyou'})
 
 <p>翻訳 API を呼び出すには、呼び出しの前に OAuth を通さなければなりません。OAuth を通すと得られる <em>access_token</em> を使って翻訳 API を呼び出します。</p>
 
-<p>OAuth を通すには POST リクエストが必要なので、サンプルでは Ruby の <code>open-uri</code> を post 対応したものを使っています。</p>
+<p>OAuth を通すには POST リクエストが必要なので、サンプルでは Ruby の <code>open-uri</code> を post 対応したものを使っています。<a href="https://github.com/rest-client/rest-client">Rest Client gem</a> もオススメです。</p>
 
 <p><a href="http://d.hatena.ne.jp/urekat/20070201/1170349097">[ruby]open-uriをPOST対応させる</a></p>
 
