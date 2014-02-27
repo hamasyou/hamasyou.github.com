@@ -7,9 +7,9 @@
 {% capture was_updated %}{{ updated | size }}{% endcapture %}
 
 {% if has_date != '0' %}
-  {% capture time %}<time datetime="{{ date | datetime | date_to_xmlschema }}" class="text-muted"{% if updated %} data-updated="true"{% endif %}><i class="fa fa-clock-o"></i> {{ date_formatted }}</time>{% endcapture %}
+  {% capture time %}<time datetime="{{ date | datetime | date_to_xmlschema }}" class="text-muted date updated"{% if updated %} data-updated="true"{% endif %}><i class="fa fa-clock-o"></i> {{ date_formatted }}</time>{% endcapture %}
 {% endif %}
 
 {% if was_updated != '0' %}
-  {% capture updated %}<time datetime="{{ updated | datetime | date_to_xmlschema }}" class="updated text-muted"><i class="fa fa-clock-o"></i> Updated {{ updated_formatted }}</time>{% endcapture %}
+  {% capture updated %}<time datetime="{{ updated | datetime | date_to_xmlschema }}" class="text-muted date updated"><i class="fa fa-clock-o"></i> Updated {{ updated_formatted }}</time>{% endcapture %}
 {% else %}{% assign updated = false %}{% endif %}
