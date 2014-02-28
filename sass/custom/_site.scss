@@ -54,7 +54,7 @@ span.divider:before {
   h2, .h2,
   h3, .h3,
   h4, .h4 {
-    margin-bottom: $line-height-computed / 1.8;
+    margin-bottom: $line-height-computed / 1.5;
   }
 
   p {
@@ -141,6 +141,12 @@ span.divider:before {
   @include border-bottom-radius(4px);
   @include border-left-radius(4px);
   @include border-right-radius(4px);
+}
+
+.asin-meta {
+  dt ~ dd {
+    margin-bottom: $line-height-computed / 2;
+  }
 }
 
 .btn-asin {

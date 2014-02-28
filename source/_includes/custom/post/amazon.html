@@ -15,15 +15,15 @@
     <dl>
       {% if title %}
       <dt>タイトル</dt>
-      <dd><p><a href="{{ amazon_url | escape }}" title="{{ title }}" rel="external nofollow">{{ title }}</a></p></dd>
+      <dd><a href="{{ amazon_url | escape }}" title="{{ title }}" rel="external nofollow">{{ title }}</a></dd>
       {% endif %}
       {% if amazon_author %}
       <dt>著者</dt>
-      <dd><p>{{ amazon_author }}</p></dd>
+      <dd>{{ amazon_author }}</dd>
       {% endif %}
       {% if amazon_publisher %}
       <dt>出版社</dt>
-      <dd><p>{{ amazon_publisher }}</p></dd>
+      <dd>{{ amazon_publisher }}</dd>
       {% endif %}
     </dl>
     <a href="{{ amazon_url | escape }}" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
