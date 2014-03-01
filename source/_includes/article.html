@@ -30,4 +30,6 @@
   {% endif %}
 {% else %}
 <div class="entry-content">{{ content | inject_adsense }}</div>
+
+{% include post/author.html %}
 {% endif %}
