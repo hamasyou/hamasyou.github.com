@@ -173,7 +173,7 @@ ERR
     #
     def tag_link(tag)
       dir = @context.registers[:site].config['tag_dir']
-      "<a class=\"tag label label-info\" href=\"/#{dir}/#{tag.to_url}/\" rel=\"nofollow\">#{tag}</a>"
+      "<a class=\"tag label label-info\" href=\"/#{dir}/#{tag.to_url}/\">#{tag}</a>"
     end
 
     # Outputs the post.date as formatted html, with hooks for CSS styling.
