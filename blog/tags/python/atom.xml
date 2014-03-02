@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/python/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-01T11:38:58+09:00</updated>
+  <updated>2014-03-02T15:10:16+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -19,6 +19,11 @@
     <updated>2014-02-25T15:43:02+09:00</updated>
     <id>http://hamasyou.com/blog/2014/02/25/python</id>
     <content type="html"><![CDATA[<p>プログラミング言語「<strong>Python</strong>」のメモです。v.2.5 のメモのなので最新だと違うかも。。</p>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=FAFAFA&IS2=1&bg1=FAFAFA&fc1=666666&lc1=3399F3&t=sorehabooks-22&o=9&p=8&l=as1&m=amazon&f=ifr&ref=tf_til&asins=4873113938" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+
 
 <!-- more -->
 
@@ -42,6 +47,9 @@ str = 'abcdefghij'
 str[1:9:2]  # bdfh
 str[5:1:-1] # fedc
 str[::-1]   # jihgfedcba
+
+len('abc')      # 3
+len([1,2,3,4])  # 4
 </code></pre>
 
 <h3>リスト内包表記</h3>
@@ -58,7 +66,8 @@ col2
 
 <h3>タプル</h3>
 
-<p><strong>タプル</strong> はリストと似ていますが、要素を変更することができません。タプルはカッコで作成します。<em>要素が一つの場合は、要素の後にカンマをつけなければいけません</em>。</p>
+<p><strong>タプル</strong> はリストと似ていますが、要素を変更することができません。タプルはカッコで作成します。<em>要素が一つの場合は、要素の後にカンマをつけなければいけません</em>。
+タプルは <em>オブジェクトの集合</em>、リストは <em>データ構造</em> と使い分けをするらしいです。</p>
 
 <pre><code class="python">tuple = (1, 2, 3, 4)
 tuple[1] = 5
@@ -89,6 +98,45 @@ help('string'.index)
 # a
 # b c
 </code></pre>
+
+<h3>リスト操作</h3>
+
+<p>Python のリストは <code>[]</code> を使って作ります。他の言語の配列操作と同じ処理は基本的にできます。Python 特有の操作だなと思ったものだけメモ。</p>
+
+<pre><code class="python">a = [1, 2, 3, 4, 5]
+
+# 特定の要素が含まれているかどうかの確認
+3 in a  # =&gt; True
+6 in a  # =&gt; False
+
+# リスト内包表記
+[x**2 for x in a] # =&gt; [1, 4, 9, 16, 25]
+</code></pre>
+
+<h3>ステートメント、構文に関する注意点</h3>
+
+<h4>コロンを忘れない</h4>
+
+<p>複合ステートメント（if、while、for などの最初の行）の末尾にはかならず <code>:</code> をつけます。</p>
+
+<h4>トップレベルのコードはインデントしない</h4>
+
+<p>トップレベルコードはかならず左端から書き始めます。</p>
+
+<h4><code>while</code> や <code>range</code> よりも、単純な <code>for</code> を使う</h4>
+
+<p>シーケンスを扱う場合は、できるだけ単純な <code>for</code> （<code>for x in seq:</code>）を使うようにします。</p>
+
+<h4>オブジェクトの上書きを行う関数は値を返さない</h4>
+
+<p><code>list.append</code> や <code>list.sort</code> などのオブジェクトを上書きするような関数は値を戻しません。<code>None</code> を返すようにします。</p>
+
+<h3>変数のスコープ</h3>
+
+<p>Python の変数のスコープは、「ローカルスコープ」「グローバルスコープ」「ビルトインスコープ」があります。
+関数内で定義された変数は「ローカルスコープ」に所属します。</p>
+
+<p>関数の引数で渡された変数は参照渡しになります。変数の代入では元のオブジェクトは変更されませんが、オブジェクトの上書きは影響を及ぼします。</p>
 ]]></content>
   </entry>
   

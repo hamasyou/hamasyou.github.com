@@ -2,7 +2,7 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Sat, 01 Mar 2014 11:38:58 +0900</pubDate>
+  <pubDate>Sun, 02 Mar 2014 15:10:16 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
@@ -127,6 +127,11 @@
     <description>
       <![CDATA[<p>プログラミング言語「<strong class="text-danger">Python</strong>」のメモです。v.2.5 のメモのなので最新だと違うかも。。</p>
 
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&amp;bc1=FAFAFA&amp;IS2=1&amp;bg1=FAFAFA&amp;fc1=666666&amp;lc1=3399F3&amp;t=sorehabooks-22&amp;o=9&amp;p=8&amp;l=as1&amp;m=amazon&amp;f=ifr&amp;ref=tf_til&amp;asins=4873113938" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+
+
 <!-- more -->
 
 
@@ -150,6 +155,9 @@
 <span class="line-number">11</span>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
 </pre></td>
 <td class="code"><pre><code class="python"><span class="line"><span class="nb">str</span> <span class="o">=</span> <span class="s">'Spam'</span>
 </span><span class="line"><span class="nb">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c"># S</span>
@@ -164,6 +172,9 @@
 </span><span class="line"><span class="nb">str</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c"># bdfh</span>
 </span><span class="line"><span class="nb">str</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c"># fedc</span>
 </span><span class="line"><span class="nb">str</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="c"># jihgfedcba</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">len</span><span class="p">(</span><span class="s">'abc'</span><span class="p">)</span>      <span class="c"># 3</span>
+</span><span class="line"><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>  <span class="c"># 4</span>
 </span></code></pre></td>
 </tr></table></div></figure></notextile></div>
 
@@ -192,7 +203,8 @@
 
 <h3>タプル</h3>
 
-<p><strong class="text-danger">タプル</strong> はリストと似ていますが、要素を変更することができません。タプルはカッコで作成します。<em>要素が一つの場合は、要素の後にカンマをつけなければいけません</em>。</p>
+<p><strong class="text-danger">タプル</strong> はリストと似ていますが、要素を変更することができません。タプルはカッコで作成します。<em>要素が一つの場合は、要素の後にカンマをつけなければいけません</em>。
+タプルは <em>オブジェクトの集合</em>、リストは <em>データ構造</em> と使い分けをするらしいです。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -249,7 +261,60 @@
 </span><span class="line"><span class="c"># a</span>
 </span><span class="line"><span class="c"># b   c</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>]]>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>リスト操作</h3>
+
+<p>Python のリストは <code>[]</code> を使って作ります。他の言語の配列操作と同じ処理は基本的にできます。Python 特有の操作だなと思ったものだけメモ。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="python"><span class="line"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</span><span class="line">
+</span><span class="line"><span class="c"># 特定の要素が含まれているかどうかの確認</span>
+</span><span class="line"><span class="mi">3</span> <span class="ow">in</span> <span class="n">a</span>  <span class="c"># =&gt; True</span>
+</span><span class="line"><span class="mi">6</span> <span class="ow">in</span> <span class="n">a</span>  <span class="c"># =&gt; False</span>
+</span><span class="line">
+</span><span class="line"><span class="c"># リスト内包表記</span>
+</span><span class="line"><span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span> <span class="c"># =&gt; [1, 4, 9, 16, 25]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>ステートメント、構文に関する注意点</h3>
+
+<h4>コロンを忘れない</h4>
+
+<p>複合ステートメント（if、while、for などの最初の行）の末尾にはかならず <code>:</code> をつけます。</p>
+
+<h4>トップレベルのコードはインデントしない</h4>
+
+<p>トップレベルコードはかならず左端から書き始めます。</p>
+
+<h4>
+<code>while</code> や <code>range</code> よりも、単純な <code>for</code> を使う</h4>
+
+<p>シーケンスを扱う場合は、できるだけ単純な <code>for</code> （<code>for x in seq:</code>）を使うようにします。</p>
+
+<h4>オブジェクトの上書きを行う関数は値を返さない</h4>
+
+<p><code>list.append</code> や <code>list.sort</code> などのオブジェクトを上書きするような関数は値を戻しません。<code>None</code> を返すようにします。</p>
+
+<h3>変数のスコープ</h3>
+
+<p>Python の変数のスコープは、「ローカルスコープ」「グローバルスコープ」「ビルトインスコープ」があります。
+関数内で定義された変数は「ローカルスコープ」に所属します。</p>
+
+<p>関数の引数で渡された変数は参照渡しになります。変数の代入では元のオブジェクトは変更されませんが、オブジェクトの上書きは影響を及ぼします。</p>]]>
     </description>
     <pubDate>Tue, 25 Feb 2014 15:43:02 +0900</pubDate>
   </item>
@@ -2923,7 +2988,9 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 
 <p>シナンジュのガンプラも作ったので、次はニューガンダムに挑戦したいなと。RX-0 ユニコーンガンダム3号機 フェネクスのガンプラも発売になりましたね。</p>
 
-<p><a href="http://www.amazon.co.jp/gp/product/B0032ZD5OI?ie=UTF8&amp;camp=247&amp;creativeASIN=B0032ZD5OI&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://www.1999.co.jp/itbig10/10106668.jpg" height="289" width="232" alt="MG 1/100 MSN-06S シナンジュ Ver.Ka チタニウムフィニッシュ (機動戦士ガンダムUC)" class="img-thumbnail" title="MG 1/100 MSN-06S シナンジュ Ver.Ka チタニウムフィニッシュ (機動戦士ガンダムUC)"></a><a href="http://www.amazon.co.jp/gp/product/B00FKL68XM?ie=UTF8&amp;camp=247&amp;creativeASIN=B00FKL68XM&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/81QDARb2zTL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-93 vガンダムVer.Ka チタニウムフィニッシュ (機動戦士ガンダム 逆襲のシャア)" class="img-thumbnail" title="MG 1/100 RX-93 vガンダムVer.Ka チタニウムフィニッシュ (機動戦士ガンダム 逆襲のシャア)"></a><a href="http://www.amazon.co.jp/gp/product/B00HCV6T6E?ie=UTF8&amp;camp=247&amp;creativeASIN=B00HCV6T6E&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/91HCl2myAGL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-0 ユニコーンガンダム3号機 フェネクス (機動戦士ガンダムUC)" class="img-thumbnail" title="MG 1/100 RX-0 ユニコーンガンダム3号機 フェネクス (機動戦士ガンダムUC)"></a></p>
+<p><a href="http://www.amazon.co.jp/gp/product/B0032ZD5OI?ie=UTF8&amp;camp=247&amp;creativeASIN=B0032ZD5OI&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://www.1999.co.jp/itbig10/10106668.jpg" height="289" width="232" alt="MG 1/100 MSN-06S シナンジュ Ver.Ka チタニウムフィニッシュ (機動戦士ガンダムUC)" class="img-thumbnail" title="MG 1/100 MSN-06S シナンジュ Ver.Ka チタニウムフィニッシュ (機動戦士ガンダムUC)"></a>
+<a href="http://www.amazon.co.jp/gp/product/B00FKL68XM?ie=UTF8&amp;camp=247&amp;creativeASIN=B00FKL68XM&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/81QDARb2zTL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-93 vガンダムVer.Ka チタニウムフィニッシュ (機動戦士ガンダム 逆襲のシャア)" class="img-thumbnail" title="MG 1/100 RX-93 vガンダムVer.Ka チタニウムフィニッシュ (機動戦士ガンダム 逆襲のシャア)"></a>
+<a href="http://www.amazon.co.jp/gp/product/B00HCV6T6E?ie=UTF8&amp;camp=247&amp;creativeASIN=B00HCV6T6E&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/91HCl2myAGL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-0 ユニコーンガンダム3号機 フェネクス (機動戦士ガンダムUC)" class="img-thumbnail" title="MG 1/100 RX-0 ユニコーンガンダム3号機 フェネクス (機動戦士ガンダムUC)"></a></p>
 
 <!-- more -->
 
@@ -2942,7 +3009,9 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 
 <p>使用可能機体は90体以上あるので、ガンダム好きな人はぜひやってみてください。ネット対戦が熱いです！</p>
 
-<p><a href="http://www.amazon.co.jp/gp/product/B00G4R5J04?ie=UTF8&amp;camp=247&amp;creativeASIN=B00G4R5J04&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/617A4%2BjXtSL._SS240_.jpg" height="232" width="232" alt="機動戦士ガンダム EXTREME VS. FULL BOOST プレミアムGサウンドエディション" class="img-thumbnail" title="機動戦士ガンダム EXTREME VS. FULL BOOST プレミアムGサウンドエディション"></a><a href="http://www.amazon.co.jp/gp/product/B002YT9PSI?ie=UTF8&amp;camp=247&amp;creativeASIN=B002YT9PSI&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/41aXwx47pJL._SS240_.jpg" height="232" width="232" alt="リアルアーケードPro.V3 SA(PS3用)" class="img-thumbnail" title="リアルアーケードPro.V3 SA(PS3用)"></a><a href="http://www.amazon.co.jp/gp/product/B004KJ41ES?ie=UTF8&amp;camp=247&amp;creativeASIN=B004KJ41ES&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/81qz1Wro-bL._SS240_.jpg" height="232" width="232" alt="" class="img-thumbnail" title=""></a></p>]]>
+<p><a href="http://www.amazon.co.jp/gp/product/B00G4R5J04?ie=UTF8&amp;camp=247&amp;creativeASIN=B00G4R5J04&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/617A4%2BjXtSL._SS240_.jpg" height="232" width="232" alt="機動戦士ガンダム EXTREME VS. FULL BOOST プレミアムGサウンドエディション" class="img-thumbnail" title="機動戦士ガンダム EXTREME VS. FULL BOOST プレミアムGサウンドエディション"></a>
+<a href="http://www.amazon.co.jp/gp/product/B002YT9PSI?ie=UTF8&amp;camp=247&amp;creativeASIN=B002YT9PSI&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/41aXwx47pJL._SS240_.jpg" height="232" width="232" alt="リアルアーケードPro.V3 SA(PS3用)" class="img-thumbnail" title="リアルアーケードPro.V3 SA(PS3用)"></a>
+<a href="http://www.amazon.co.jp/gp/product/B004KJ41ES?ie=UTF8&amp;camp=247&amp;creativeASIN=B004KJ41ES&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/81qz1Wro-bL._SS240_.jpg" height="232" width="232" alt="HGUC 1/144 RX-0 ユニコーンガンダム デストロイモード チタニウムフィニッシュ" class="img-thumbnail" title="HGUC 1/144 RX-0 ユニコーンガンダム デストロイモード チタニウムフィニッシュ"></a></p>]]>
     </description>
     <pubDate>Sat, 15 Feb 2014 16:25:45 +0900</pubDate>
   </item>
