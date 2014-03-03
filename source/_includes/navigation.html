@@ -1,32 +1,34 @@
 <div class="navbar navbar-inverse">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="{{ root_url }}/">{{ site.title }}</a>
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ root_url }}/" title="{{ site.subtitle }}">{{ site.title }}</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+      {% include custom/navigation.html %}
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="{{ site.subscribe_atom }}" rel="alternate" title="subscribe via Atom">
+            <img src="/images/feed-icon-28x28.png" />
+          </a>
+        </li>
+      </ul>
+
+      {% if site.simple_search %}
+      <form class="navbar-form navbar-search navbar-right" action="{{ site.simple_search }}" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="q" value="site:{{ site.url | shorthand_url }}" />
+          <input class="search-query form-control col-lg-8" type="text" name="q" data-results="0" placeholder="Search" />
+        </fieldset>
+      </form>
+      {% endif %}
+
+    </div>
+    <!-- /.nav-collapse -->
   </div>
-  <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
-    {% include custom/navigation.html %}
-
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-        <a href="{{ site.subscribe_atom }}" rel="alternate" title="subscribe via Atom">
-          <i class="fa fa-rss"></i>
-        </a>
-      </li>
-    </ul>
-
-    {% if site.simple_search %}
-    <form class="pull-right navbar-form navbar-search" action="{{ site.simple_search }}" method="get">
-      <fieldset role="search">
-        <input type="hidden" name="q" value="site:{{ site.url | shorthand_url }}" />
-        <input class="search-query form-control col-lg-8 input-sm" type="text" name="q" data-results="0" placeholder="Search" />
-      </fieldset>
-    </form>
-    {% endif %}
-
-  </div>
-  <!-- /.nav-collapse -->
 </div>

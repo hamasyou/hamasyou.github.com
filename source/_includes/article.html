@@ -15,6 +15,9 @@
         <span class="divider"></span>
         <a href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#disqus_thread">Comments</a>
         {% endif %}
+        {% unless page.sharing == false %}
+        {% include post/sharing.html %}
+        {% endunless %}
       </p>
     {% endunless %}
   </header>

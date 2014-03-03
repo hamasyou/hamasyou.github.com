@@ -1,32 +1,38 @@
 .sharing {
-  margin-bottom:20px;
-  ul li {
-    display: block;
-    float: left;
-    margin-right: 5px;
+  @extend .list-inline;
+  li {
+    height: 23px;
+    vertical-align: bottom;
   }
 }
 li.hatena {
-  width: 118px;
+//  width: 118px;
 }
 li.twitter {
-  width: 106px;
+  width: 100px;
 }
 li.googleplus {
-  width: 73px;
+  width: 68px;
 }
 li.facebook {
-  width: 116px;
-  margin-top: -6px;
+//  width: 116px;
+//  margin-top: -6px;
 }
+
+.fb_iframe_widget > span {
+  vertical-align: baseline !important;
+}
+
 li.facebook_share {
-  width: 108px;
-  margin-top: -5px;
+//  width: 108px;
+//  margin-top: -5px;
 }
 #fb-root { display: none; }
 li.pocket {
-  width: 90px;
+//  width: 90px;
 }
+
+
 li.bookmark {
   width: 100px;
   margin-top: -4px;
