@@ -422,6 +422,1251 @@
 
     </article>
     
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/23/third-party-javascript/" class="excerpt-link">サードパーティJavaScript</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-02-23T17:47:39+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 23<span>rd</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
+    
+      <a class="tag label label-info" href="/blog/tags/du-mubeki/" rel="nofollow">読むべき</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/02/23/third-party-javascript/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/23/third-party-javascript/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/02/23/third-party-javascript/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4048916580?ie=UTF8&amp;camp=247&amp;creativeASIN=4048916580&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="サードパーティJavaScript" rel="external nofollow">
+      <img src="http://ecx.images-amazon.com/images/I/51ptmwaAD1L._AA300_.jpg" class="asin-thumbnail" alt="サードパーティJavaScript" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4048916580?ie=UTF8&amp;camp=247&amp;creativeASIN=4048916580&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="サードパーティJavaScript" rel="external nofollow">サードパーティJavaScript</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>Ben Vinegar (著), Anton Kovalyov (著), 水野貴明 (翻訳)</dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>KADOKAWA/アスキー・メディアワークス</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4048916580?ie=UTF8&amp;camp=247&amp;creativeASIN=4048916580&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><p>サードパーティ JavaScript とは <em>異なる Web アドレスから配信される、独立したクライアントコード</em> のことを意味します。
+例えばソーシャルウィジェットやアナリティクス用のトラッカーがそうです。
+本書はこのサードパーティ JavaScript をどのように開発するとよいかについて書かれています。</p>
+
+<p>サードパーティ JavaScript には様々な難しいポイントがあります。</p>
+
+<ul>
+<li>動的なスクリプト読み込み</li>
+<li>サードパーティ Cookie の保存と読み込み</li>
+<li>HTTP / HTTPS を使ったサーバとの通信</li>
+</ul>
+<p>多くの人に使われる JavaScript を開発するには、<strong class="text-danger">数多くの落とし穴や難関を乗り越えなければなりません</strong>。
+本書はこういった落とし穴や難関に対する解決策を手順を追って説明してくれます。</p>
+
+<p>本書の著者の一人は <a href="http://disqus.com/" rel="external nofollow" title="Disqus">Disqus</a> という Web サイトに即席のコメントシステムを導入することができる JavaScript アプリケーションを開発しています。
+実際に世界中で使われているアプリケーションの経験を元に書かれているので説得力がありますし、「こんな事にも注意しないといけなかったのか！」といった目からウロコな内容も盛りだくさんでおすすめです。</p>
+
+<p>本書を読み終わると「<span class="lead"><strong>IE 無くなったらいいのに！</strong></span>」って絶対に思います。そして「<span class="lead"><strong>iframe すげーな。使えるやつだ</strong></span>」って思います（笑</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2014/02/23/third-party-javascript/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/22/readable-blog-unreadable-blog/" class="excerpt-link">読みやすいブログ、読みにくいブログ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-02-22T23:07:05+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 22<span>nd</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/du-miyasui/" rel="nofollow">読みやすい</a>
+    
+      <a class="tag label label-info" href="/blog/tags/du-minikui/" rel="nofollow">読みにくい</a>
+    
+      <a class="tag label label-info" href="/blog/tags/blog/" rel="nofollow">Blog</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/02/22/readable-blog-unreadable-blog/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>読みやすいブログってどうしてあんなに読みやすいんでしょうかね？僕もかれこれサイトだけは9年ほどやってます。
+毎日ブログを綴っているわけではないのでアレですが、ブログ歴は3〜5年くらいにはなるんじゃないかなと思います。</p>
+
+<p>これまで3回くらいブログのデザインを変えました。デザインの賞味期限って、たぶん3年くらいなんじゃないかと思います。
+Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code> タグなんかをつかって派手なアクションをするサイトが流行りました。
+その後、Web デザイナさんが頑張って作るクール系のサイトが流行り、今やレスポンシブサイトですよ。</p>
+
+<p><span class="lead">（Google で「<em>blink html</em>」を検索すると検索結果が面白いことになってますねw）</span></p>
+
+<p>うちのサイトも一応それなりに時代の流れに合わせてデザインは変えてきたつもりですが、いつまで経っても読みやすいブログにならないのはなぜなんでしょうかね。。
+文字の大きさや背景色と文字色の調和、フォントや <code>line-height</code> なんかにも気を付けているつもりなんですが、そういう小手先のテクニックに惑わされているうちは、
+読みやすいブログにはならないってことですね、きっと。。。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2014/02/22/readable-blog-unreadable-blog/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/21/functional-javascript/" class="excerpt-link">JavaScriptで学ぶ関数型プログラミング</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-02-21T19:39:56+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 21<span>st</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
+    
+      <a class="tag label label-info" href="/blog/tags/guan-shu-xing/" rel="nofollow">関数型</a>
+    
+      <a class="tag label label-info" href="/blog/tags/orairi/" rel="nofollow">オライリー</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/02/21/functional-javascript/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/21/functional-javascript/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/02/21/functional-javascript/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/02/21/functional-javascript/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/02/21/functional-javascript/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4873116600?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116600&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="JavaScriptで学ぶ関数型プログラミング" rel="external nofollow">
+      <img src="http://ecx.images-amazon.com/images/I/414qGlNpcHL.AA300_.jpg" class="asin-thumbnail" alt="JavaScriptで学ぶ関数型プログラミング" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4873116600?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116600&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="JavaScriptで学ぶ関数型プログラミング" rel="external nofollow">JavaScriptで学ぶ関数型プログラミング</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>Michael Fogus (著), 和田 祐一郎 (翻訳)</dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>オライリージャパン</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4873116600?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116600&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><blockquote>
+<p>本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。JavaScriptビルトインのデータ型を上手に利用するための基本知識やJavaScriptにおける関数の持つ特性など、関数型プログラミングの技術とその考え方について解説します。また実際のJavaScriptコーディングに関数型プログラミングのエッセンスを加えるポイントをサンプルを使って丁寧に説明します。関数型プログラミングに精通した著者が書き下ろした本書は、テクニックを増やし、コーディングのイマジネーションを広げたいエンジニア必携の一冊です。</p>
+<footer><strong>内容紹介</strong></footer>
+</blockquote>
+
+
+<p>JavaScript は純粋な関数型プログラミング言語ではありません。が、<strong class="text-danger">関数型言語として JavaScript を理解し使用することでコードがより洗練され、読みやすいものになる</strong> はずという筆者の考えがこの本には現れています。</p>
+
+<p>JavaScript では関数型プログラミングは一つのスタイルにしかすぎず、必要な場面で適切に使うというアプローチをとることでよりよいコードや使いやすい関数になります。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2014/02/21/functional-javascript/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/21/hugo/" class="excerpt-link">静的サイトを素早く構築するためにGoLangで作られたジェネレータHugo</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-02-21T15:43:47+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 21<span>st</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/jing-de-saito/" rel="nofollow">静的サイト</a>
+    
+      <a class="tag label label-info" href="/blog/tags/go/" rel="nofollow">Go</a>
+    
+      <a class="tag label label-info" href="/blog/tags/golang/" rel="nofollow">GoLang</a>
+    
+      <a class="tag label label-info" href="/blog/tags/hugo/" rel="nofollow">Hugo</a>
+    
+      <a class="tag label label-info" href="/blog/tags/blog/" rel="nofollow">Blog</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/02/21/hugo/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/21/hugo/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/21/hugo/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/21/hugo/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/02/21/hugo/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/02/21/hugo/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/02/21/hugo/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/02/21/hugo/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>最近は静的サイトブームが再到来なんですかね？<strong class="text-danger">GoLang</strong> で作られた静的サイトジェネレータの <strong class="text-danger">Hugo</strong> なんていうものがありました。</p>
+
+<p>うちのサイトも最近 Ruby の <em>Octopress</em> でサイトをリニューアルしましたが、Go にもあるんですね。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/spf13/hugo" rel="external nofollow" title="spf13 / hugo">spf13 / hugo</a></p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://hugo.spf13.com/" rel="external nofollow" title="The Fast and Flexible Static Site Generator - Hugo">The Fast and Flexible Static Site Generator - Hugo</a></p>
+
+<p>Go でビルドするので速いとのこと。また、Windows、Mac、Linux と環境を選ばないのがいいですね。</p>
+
+<p>記事は <strong class="text-danger">Markdown</strong> で記述します。カテゴリやタグなどの情報は <strong class="text-danger">YAML</strong> 形式でいけます。<a href="http://octopress.org/" rel="external nofollow" title="Octopress">Octopress</a> や <a href="http://jekyllrb.com/" rel="external nofollow" title="Jekyll">Jekyll</a> と似ています。</p>
+
+<p>最近 Go が人気急上昇なので、Go の環境が手元にある人は Hugo を使ってサイトを運営してみるのもありかもです。</p></div>
+  
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/20/rails4-transaction/" class="excerpt-link">Rails4でtransactionの分離レベルを設定する</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-02-20T21:42:41+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 20<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/rails4/" rel="nofollow">Rails4</a>
+    
+      <a class="tag label label-info" href="/blog/tags/toranzakusiyon/" rel="nofollow">トランザクション</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/02/20/rails4-transaction/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/20/rails4-transaction/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/20/rails4-transaction/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/20/rails4-transaction/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/02/20/rails4-transaction/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/02/20/rails4-transaction/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/02/20/rails4-transaction/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/02/20/rails4-transaction/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>Rails4 から <code>ActiveRecord::Base.transaction</code> に分離レベルを手軽に設定できるようになったみたいです。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">transaction</span><span class="p">(</span><span class="ss">isolation</span><span class="p">:</span> <span class="ss">:serializable</span><span class="p">)</span> <span class="k">do</span>
+</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>分離レベルには次の4つを設定できます。</p>
+
+<ul>
+<li><code>:read_uncommitted</code></li>
+<li><code>:read_committed</code></li>
+<li><code>:repeatable_read</code></li>
+<li><code>:serializable</code></li>
+</ul></div>
+  
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/20/capistrano3/" class="excerpt-link">Capistrano3をRailsで使ってみた感想</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-02-20T11:25:05+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 20<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
+    
+      <a class="tag label label-info" href="/blog/tags/capistrano3/" rel="nofollow">Capistrano3</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/02/20/capistrano3/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/20/capistrano3/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/20/capistrano3/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/20/capistrano3/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/02/20/capistrano3/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/02/20/capistrano3/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/02/20/capistrano3/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/02/20/capistrano3/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p><strong class="text-danger">Capistrano3</strong> がかなりシンプルになって使いやすくなったのでプロジェクトで使ってみました。うん。なかなかよさげです。</p>
+
+<p>Capistrano2 にあった <em>copy_via</em> がなくなっていたので、デプロイ先のサーバから Git リポジトリにアクセスできるようにしないといけなかったりとちょっと面倒なこともありましたが概ね良好です。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2014/02/20/capistrano3/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/19/rails-i18n-localize/" class="excerpt-link">RailsのI18n.localizeでnilもゆるすようにすると捗る</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-02-19T22:30:13+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 19<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
+    
+      <a class="tag label label-info" href="/blog/tags/i18n/" rel="nofollow">I18n</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/02/19/rails-i18n-localize/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>Rails の <code>I18n.localize</code> は <code>nil</code> を渡すと例外が発生します。でも、コレだといろいろ使いづらいのでいつも</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>config/initializers/relaxed_i18n.rb</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">I18n</span>
+</span><span class="line">  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+</span><span class="line">    <span class="n">alias_method</span> <span class="ss">:original_localize</span><span class="p">,</span> <span class="ss">:localize</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">localize</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+</span><span class="line">      <span class="n">object</span><span class="o">.</span><span class="n">present?</span> <span class="p">?</span> <span class="n">original_localize</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">:</span> <span class="s1">''</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>こんな感じのコードを <code>config/initializers</code> の下において使っています。<code>nil</code> を渡すと空文字を返します。</p>
+
+<p>今のところコレで問題は起きていないのでオススメしてもいいかなと。</p></div>
+  
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/19/mac-app-store-account/" class="excerpt-link">MacのApp Storeで「ほかのアカウントで使用可能なアップデートがあります」が出てアップデート出来ないときの対応</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-02-19T11:46:56+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 19<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/mac/" rel="nofollow">Mac</a>
+    
+      <a class="tag label label-info" href="/blog/tags/app-store/" rel="nofollow">App Store</a>
+    
+      <a class="tag label label-info" href="/blog/tags/atupudeto/" rel="nofollow">アップデート</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/02/19/mac-app-store-account/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>先日、古い MacBook Pro の Xcode のアップデートを行おうとしたときに、「<strong class="text-danger">ほかのアカウントで使用可能なアップデートがあります。このアプリケーションをアップデートするには、購入時に使用したアカウントでサインインしてください。</strong>」ってでてアップデートできなかったときにやった対応メモです。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2014/02/19/mac-app-store-account/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/2/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>

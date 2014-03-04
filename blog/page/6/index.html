@@ -13,7 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Rails 環境で RESTful API を提供する場面があると思います。API もコントローラで提供するので、コントローラのテストで記述してもいいのですが、RESTful API であれば、request spec を使うほうがよさそうなので request spec を書くメモです。 &hellip;">
+  <meta name="description" content="docomo 携帯のユーザエージェントから、iモードブラウザ1.0かどうかを判断する方法 UA が DoCoMo/1.0 で始まっている
+UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっているのは、PDC 端末。DoCoMo/2.0 で始まっているのは &hellip;">
   
 
   
@@ -24,7 +25,8 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/6/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Rails 環境で RESTful API を提供する場面があると思います。API もコントローラで提供するので、コントローラのテストで記述してもいいのですが、RESTful API であれば、request spec を使うほうがよさそうなので request spec を書くメモです。 &hellip;" />
+<meta property="og:description" content="docomo 携帯のユーザエージェントから、iモードブラウザ1.0かどうかを判断する方法 UA が DoCoMo/1.0 で始まっている
+UA が DoCoMo/2.0 (c100; で始まっている DoCoMo/1.0 で始まっているのは、PDC 端末。DoCoMo/2.0 で始まっているのは &hellip;" />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -113,7 +115,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2014/02/17/rails-request-rspec/" class="excerpt-link">RailsでつくるRESTful APIのrequest specを書く</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/07/25/docomo-i10/" class="excerpt-link">docomo のユーザエージェントからiモードブラウザ1.0かどうかを判断する方法</a></h1>
     
     
       <p class="meta">
@@ -130,7 +132,154 @@
 
 
 
-<time datetime="2014-02-17T14:09:38+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 17<span>th</span>, 2014</time>
+<time datetime="2011-07-25T19:24:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jul 25<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/xi-dai/" rel="nofollow">携帯</a>
+    
+      <a class="tag label label-info" href="/blog/tags/imodo/" rel="nofollow">iモード</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2011/07/25/docomo-i10/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/07/25/docomo-i10/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/07/25/docomo-i10/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/07/25/docomo-i10/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2011/07/25/docomo-i10/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2011/07/25/docomo-i10/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2011/07/25/docomo-i10/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2011/07/25/docomo-i10/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>docomo 携帯のユーザエージェントから、iモードブラウザ1.0かどうかを判断する方法</p>
+
+<ul>
+<li>UA が DoCoMo/1.0 で始まっている</li>
+<li>UA が DoCoMo/2.0 (c100; で始まっている</li>
+</ul>
+<p>DoCoMo/1.0 で始まっているのは、PDC 端末。DoCoMo/2.0 で始まっているのは FOMA 端末になります。</p>
+
+<p>FOMA 端末のうち、iモードブラウザ1.0 なのは、キャッシュサイズが 500KB ではないものになります。<a href="http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/" rel="external nofollow" title="ドコモのユーザエージェント一覧">ドコモのユーザエージェント一覧</a>を見る限り、キャッシュが 100KB のものは iモードブラウザ1.0 と判断できます。</p>
+
+<p>Ruby の正規表現で書くとこんな感じ？</p>
+
+<pre class="code"><span class="keyword">def</span> imode1_0?
+  request.user_agent =~ /^DoCoMo\/1.0/ ||
+  request.user_agent =~ /^DoCoMo\/2.0[^(]+\(c100;/
+<span class="keyword">end</span></pre></div>
+  
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/18/4798123986/" class="excerpt-link">Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-18T10:01:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 18<span>th</span>, 2011</time>
         <span class="divider"></span>
         <span class="categories">
   
@@ -143,18 +292,22 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
+      <a class="tag label label-info" href="/blog/tags/android/" rel="nofollow">Android</a>
     
-      <a class="tag label label-info" href="/blog/tags/restful/" rel="nofollow">RESTful</a>
+      <a class="tag label label-info" href="/blog/tags/iphone/" rel="nofollow">iPhone</a>
     
-      <a class="tag label label-info" href="/blog/tags/spec/" rel="nofollow">spec</a>
+      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
+    
+      <a class="tag label label-info" href="/blog/tags/titanium/" rel="nofollow">Titanium</a>
+    
+      <a class="tag label label-info" href="/blog/tags/sumatohuon/" rel="nofollow">スマートフォン</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2014/02/17/rails-request-rspec/#disqus_thread">Comments</a>
+        <a href="/blog/2011/06/18/4798123986/#disqus_thread">Comments</a>
         
         
         
@@ -163,7 +316,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/18/4798123986/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -179,7 +332,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/18/4798123986/"></div>
   </li>
   
   
@@ -187,7 +340,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/18/4798123986/"></div>
   </li>
   
   
@@ -195,23 +348,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"
+       data-url="http://hamasyou.com/blog/2011/06/18/4798123986/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2011/06/18/4798123986/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/18/4798123986/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"
+       data-save-url="http://hamasyou.com/blog/2011/06/18/4798123986/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -232,20 +385,67 @@
 
 
 
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4798123986?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4798123986" title="Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/51VpBVSMufL._SL500_AA300_.jpg" class="asin-thumbnail" alt="Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4798123986?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4798123986" title="Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)" rel="external nofollow">Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>北尾 雅人</dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>翔泳社</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4798123986?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4798123986" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
 
 
 
-  <div class="entry-content"><p>Rails 環境で RESTful API を提供する場面があると思います。API もコントローラで提供するので、コントローラのテストで記述してもいいのですが、RESTful API であれば、<strong class="text-danger">request spec</strong> を使うほうがよさそうなので request spec を書くメモです。</p>
 
-<ul>
-<li>Rails 4.0.2</li>
-<li>rspec 2.14.1</li>
-</ul>
+  <div class="entry-content"><p>本書は、スマートフォンアプリ開発に使う開発ツールを探している人、<strong class="text-danger">Titanium Mobile</strong> という名前を聞いたことがあるけど実際にどういうものかを知りたい人、Titanium Mobile を使って開発を始めたけどこういう書き方で合っているのか不安な人向けの、概要書兼リファレンスブック的な位置づけにあたります。</p>
+
+<p><section></section></p>
+
+<h4>Titanium Mobile</h4>
+
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title="Titanium Mobile - Appcelerator">Titanium Mobile - Appcelerator</a></p>
+
+<p></p>
+
+<p>Titanium Mobile を開発、提供している Appcelerator が用意してくれている Web 上のドキュメントは、Titanium Mobile を始めたばかりの人には分かりづらく、「こういうことがしたいんだけどどう書けばいいの？」という時には使いづらいのです。</p>
+
+<p>本書は、そんな Titanium Mobile のドキュメントの弱さを補い、Titanium Mobile とはどういうふうに動作しているのか、こういうことをするときはどう書けばいいのかを学ぶのに最適な本です。</p>
+
+<p>iPhone、Android 向けスマートフォンアプリとはいえ、プラットフォーム SDK が備える機能はとても豊富です。これらの SDK を JavaScript から扱えてしまう Titanium Mobile をよくここまでまとめたなぁという印象の良書です。</p>
+
+<div class="option">
+<p>スマートフォン開発は、Windows や Mac などの GUI アプリケーションと同様、イベントドリブンモデルの開発になります。そのため、GUI アプリ開発の経験がない人には Titanium Mobile を使って JavaScript で開発を行うと、どうしても戸惑うことが出てくると思います。</p>
+
+<p>本書をとりあえず読んでみて、<em>Titanium Mobile 上で JavaScript で GUI 開発（スマートフォンアプリ開発）ってこういうふうにするんだ</em>というのを体感してもらい、リファレンスとしてのお供にされるといいと思います。</p>
+</div>
+
+
+<p>本書の対象者は、<em>Titanium Mobile を使って開発を始めたい人、実際に開発を始めたがまとまった情報がほしい人</em>です。Titanium Mobile を使ってとにかく何か作ってみたいひとは、本書内のサンプルを写経してみるといいと思います。</p>
+
+<p>Titanium Mobile を使って開発をしてみたものの、不安が残っている人に最適な一冊です。</p>
+
 </div>
   
   
     <footer>
-      <a href="/blog/2014/02/17/rails-request-rspec/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2011/06/18/4798123986/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 
@@ -257,7 +457,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2014/02/17/titanium-http-client-restful/" class="excerpt-link">TitaniumのHTTPClientでRESTfulリクエストを送る</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/" class="excerpt-link">jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応</a></h1>
     
     
       <p class="meta">
@@ -274,12 +474,12 @@
 
 
 
-<time datetime="2014-02-17T10:24:58+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 17<span>th</span>, 2014</time>
+<time datetime="2011-06-14T11:29:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
         <span class="divider"></span>
         <span class="categories">
   
     
-      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
     
   
 </span>
@@ -287,18 +487,20 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/titanium/" rel="nofollow">Titanium</a>
+      <a class="tag label label-info" href="/blog/tags/jpmobile/" rel="nofollow">jpmobile</a>
     
-      <a class="tag label label-info" href="/blog/tags/restful/" rel="nofollow">RESTful</a>
+      <a class="tag label label-info" href="/blog/tags/kaminari/" rel="nofollow">kaminari</a>
     
-      <a class="tag label label-info" href="/blog/tags/api/" rel="nofollow">API</a>
+      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2014/02/17/titanium-http-client-restful/#disqus_thread">Comments</a>
+        <a href="/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/#disqus_thread">Comments</a>
         
         
         
@@ -307,7 +509,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -323,7 +525,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
   </li>
   
   
@@ -331,7 +533,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
   </li>
   
   
@@ -339,23 +541,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/"
+       data-url="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/"
+       data-save-url="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -379,20 +581,1135 @@
 
 
 
-  <div class="entry-content"><p><a href="http://www.appcelerator.com/titanium/" rel="external nofollow" title="Titanium Mobile">Titanium Mobile</a> の <code>Titanium.Network.HTTPClient</code> を使って RESTful リクエストを送る場合の注意点です。</p>
+  <div class="entry-content"><p>jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。</p>
 
-<p>Titanium の <code>HTTPClient</code> で <code>DELETE</code> のときに <code>send</code> でパラメータを送ると <code>POST</code> リクエストになってしまいます。</p>
+<p><section></section></p>
 
-<p><i class="fa fa-hand-o-right"></i> <a href="http://www.appcelerator.com/titanium/" rel="external nofollow" title="Titanium Mobile Development Environment">Titanium Mobile Development Environment</a></p>
+<h4>環境</h4>
 
-<ul>
-<li>Titanium 3.2.1.GA</li>
-</ul>
+
+
+
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+<dt>jpmobile</dt>
+<dd>0.1.6</dd>
+<dt>kaminari</dt>
+<dd>0.12.4</dd>
+</dl>
+<p></p>
+
 </div>
   
   
     <footer>
-      <a href="/blog/2014/02/17/titanium-http-client-restful/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/14/activerecordprevious-changes/" class="excerpt-link">ActiveRecord#previous_changes で変更のあった属性を取り出す</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-14T09:43:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/activerecord/" rel="nofollow">ActiveRecord</a>
+    
+      <a class="tag label label-info" href="/blog/tags/rails3/" rel="nofollow">Rails3</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2011/06/14/activerecordprevious-changes/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。</p>
+
+<p><section></section></p>
+
+<h4>環境</h4>
+
+
+
+
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+</dl>
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2011/06/14/activerecordprevious-changes/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/14/kaminari-paginate-array/" class="excerpt-link">kaminari の paginate_array が便利</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-14T09:31:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/plugin/" rel="nofollow">plugin</a>
+    
+      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2011/06/14/kaminari-paginate-array/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/14/kaminari-paginate-array/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/06/14/kaminari-paginate-array/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/06/14/kaminari-paginate-array/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2011/06/14/kaminari-paginate-array/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2011/06/14/kaminari-paginate-array/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2011/06/14/kaminari-paginate-array/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2011/06/14/kaminari-paginate-array/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>will_paginate に代わるページングのライブラリ、kaminari ですが、ページングが scope 扱いで配列に対して使えなかったのでちょっと不便なときがあったのですが、なんと paginate_array なるものを発見しました。</p>
+
+<p><section></section></p>
+
+<h4>環境</h4>
+
+
+
+
+<dl>
+<dt>kaminari</dt>
+<dd>0.12.4</dd>
+</dl>
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2011/06/14/kaminari-paginate-array/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/14/rails-view-url/" class="excerpt-link">Rails のコントローラの中で View の画像URLを取得する方法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-14T09:09:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/rails3/" rel="nofollow">Rails3</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby1-dot-9/" rel="nofollow">Ruby1.9</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2011/06/14/rails-view-url/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/14/rails-view-url/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/06/14/rails-view-url/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/06/14/rails-view-url/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2011/06/14/rails-view-url/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2011/06/14/rails-view-url/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2011/06/14/rails-view-url/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2011/06/14/rails-view-url/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>コントローラの中で、ビューの image_tag 等で表示される画像の URL を取得したい時があります。</p>
+
+<p>そんな時は <em>view_context</em> が使えます。</p>
+
+<p><section></section></p>
+
+<h4>環境</h4>
+
+
+
+
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+<dt>Ruby</dt>
+<dd>1.9.2-p180</dd>
+<dt>Paperclip</dt>
+<dd>2.3.11</dd>
+</dl>
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2011/06/14/rails-view-url/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/06/4798029181/" class="excerpt-link">俺のコードのどこが悪い?―コードレビューを攻略する40のルール</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-06T00:01:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 6<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/kodorebiyu/" rel="nofollow">コードレビュー</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2011/06/06/4798029181/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/06/4798029181/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/06/06/4798029181/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/06/06/4798029181/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2011/06/06/4798029181/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2011/06/06/4798029181/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2011/06/06/4798029181/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2011/06/06/4798029181/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4798029181?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4798029181" title="俺のコードのどこが悪い?―コードレビューを攻略する40のルール" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/31vNF0LY76L._SL500_AA300_.jpg" class="asin-thumbnail" alt="俺のコードのどこが悪い?―コードレビューを攻略する40のルール" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4798029181?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4798029181" title="俺のコードのどこが悪い?―コードレビューを攻略する40のルール" rel="external nofollow">俺のコードのどこが悪い?―コードレビューを攻略する40のルール</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>藤原 克則</dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>秀和システム</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4798029181?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4798029181" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><p>本書は、プログラミング後のコードレビューを行う視点で、どういった点を確認すれば良いのかを教えてくれるものです。</p>
+
+<p>ソースコードレビューの目的については本書では触れられていませんが、僕が考えるソースコードレビューの目的は、<strong class="text-danger">コードの品質を高める</strong>ためです。</p>
+
+<p>テストではソースコードの品質は高められません。単体テストはあくまでも、コードが意図したどおりに書かれているかを確認するものになります。<b>品質は、ソースコードを書くこと（書き直すこと）でしか高められません。</b></p>
+
+<dl>
+<dt>他人の目から見ることで複雑なところがわかる</dt>
+<dd><p>自分でコーディングしているときは気づきにくい、処理の複雑な部分が他人の目によって明らかになる</p></dd>
+<dt>他人の経験を生かせる</dt>
+<dd><p>リファクタリングが必要な部分や、もっとシンプルで効率のよいコードに直せるところを指摘してもらえる</p></dd>
+</dl>
+<p>本書では、こういった他人の目から見たコードの注意点を勉強できるものになっています。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2011/06/06/4798029181/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/17/ruby-gmail/" class="excerpt-link">Ruby から Gmail を受信する（マルチパート編）</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-03-17T22:24:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Mar 17<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/gmail/" rel="nofollow">Gmail</a>
+    
+      <a class="tag label label-info" href="/blog/tags/imap/" rel="nofollow">imap</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2011/03/17/ruby-gmail/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/03/17/ruby-gmail/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2011/03/17/ruby-gmail/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。</p>
+
+<p>かなり力技的なところがあるので、もっといいプログラムになると思いいますが、メモということで。</p>
+
+<p><section></section></p>
+
+<h4>バージョン</h4>
+
+
+
+
+<dl>
+<dt>Ruby</dt>
+<dd>1.9.2</dd>
+<dt>Rails</dt>
+<dd>3.0.4</dd>
+<dt>mail</dt>
+<dd>2.2</dd>
+</dl>
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2011/03/17/ruby-gmail/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/10/titanium/" class="excerpt-link">Titanium 非公式 BBS がオープンしました。</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-03-10T11:04:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Mar 10<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/bbs/" rel="nofollow">BBS</a>
+    
+      <a class="tag label label-info" href="/blog/tags/titanium/" rel="nofollow">Titanium</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2011/03/10/titanium/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/03/10/titanium/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/03/10/titanium/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/03/10/titanium/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2011/03/10/titanium/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2011/03/10/titanium/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2011/03/10/titanium/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2011/03/10/titanium/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>公式の <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title="Titainum">Titainum</a> 掲示板の公開が遅いので、@masuidrive さんが非公式ながら BBS をオープンしてくださいました。</p>
+
+<p>日本の Titanium Developer のみなさん、Titanium の質問はこっちにすると親切丁寧な回答を期待できるかも！</p>
+
+<p><section></section></p>
+
+<h4>非公式 Titanium BBS</h4>
+
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://ti.masuidrive.jp/" rel="external nofollow" title="Titanium BBS(JP unofficial)">Titanium BBS(JP unofficial)</a></p>
+
+<p></p></div>
+  
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2011/02/16/4774145440/" class="excerpt-link">WEB+DB PRESS Vol.61</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-02-16T21:49:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 16<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/android/" rel="nofollow">Android</a>
+    
+      <a class="tag label label-info" href="/blog/tags/iphone/" rel="nofollow">iPhone</a>
+    
+      <a class="tag label label-info" href="/blog/tags/titanium/" rel="nofollow">Titanium</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2011/02/16/4774145440/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/02/16/4774145440/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/02/16/4774145440/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/02/16/4774145440/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2011/02/16/4774145440/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2011/02/16/4774145440/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2011/02/16/4774145440/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2011/02/16/4774145440/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4774145440?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774145440" title="WEB+DB PRESS Vol.61" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/61UC3cgqGyL._SL500_AA300_.jpg" class="asin-thumbnail" alt="WEB+DB PRESS Vol.61" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4774145440?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774145440" title="WEB+DB PRESS Vol.61" rel="external nofollow">WEB+DB PRESS Vol.61</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>WEB+DB PRESS編集部</dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>技術評論社</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4774145440?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774145440" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><p><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title=""></a> Titanium で始める、iPhone / Android アプリ開発！</p>
+
+<p><a href="http://d.hatena.ne.jp/r_kurain/" rel="external nofollow" title="マウントポジション">マウントポジション</a>とで特集『<em>実践！Titanium JavaScriptでiPhone/Android本格アプリ開発</em>』を書かせていただきました。Titanium の特集です。</p>
+
+<p>iPhone / Android でアプリを作りたいけど二の足を踏んでいた方、最近 <strong class="text-danger">Titanium</strong> という言葉をよく聞くけど何なんだろう？と思っていた方、おすすめです！</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2011/02/16/4774145440/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 
