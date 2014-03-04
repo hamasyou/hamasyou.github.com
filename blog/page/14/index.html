@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="JTA(Java Transaction API) 　JTA の UserTransactionは通常JNDIから取得する必要がある。これは、JTAを使うのに、JNDIとJTAの両方を一緒に使う必要がある、ということだ。JTAが通常はアプリケーションサーバ環境でしか使えないので、 &hellip;">
+  <meta name="description" content="Velocity を内部で使っていて、テンプレートモデルで、ページを作成します。 ここでは、Click の覚書きをしておきます。あくまで個人用なので、あてにしないようにお願いします。間違い等発見された方は、ご連絡いただけると助かります。 使用バージョン version Click 0.1.8 &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/14/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="JTA(Java Transaction API) 　JTA の UserTransactionは通常JNDIから取得する必要がある。これは、JTAを使うのに、JNDIとJTAの両方を一緒に使う必要がある、ということだ。JTAが通常はアプリケーションサーバ環境でしか使えないので、 &hellip;" />
+<meta property="og:description" content="Velocity を内部で使っていて、テンプレートモデルで、ページを作成します。 ここでは、Click の覚書きをしておきます。あくまで個人用なので、あてにしないようにお願いします。間違い等発見された方は、ご連絡いただけると助かります。 使用バージョン version Click 0.1.8 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +106,165 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2006/03/12/click/" class="excerpt-link">Click@J2EE Web Application Framework</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2006-03-12T17:00:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Mar 12<span>th</span>, 2006</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/click/" rel="nofollow">Click</a>
+    
+      <a class="tag label label-info" href="/blog/tags/j2ee/" rel="nofollow">J2EE</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2006/03/12/click/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/03/12/click/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2006/03/12/click/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2006/03/12/click/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2006/03/12/click/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2006/03/12/click/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2006/03/12/click/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2006/03/12/click/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p><strong class="text-danger"><a href="http://click.sourceforge.net/" rel="external nofollow" title="Velocity">Velocity</a> を内部で使っていて、テンプレートモデルで、ページを作成します。</strong></p>
+
+<p>ここでは、Click の覚書きをしておきます。あくまで個人用なので、あてにしないようにお願いします。間違い等発見された方は、ご連絡いただけると助かります。</p>
+
+<dl>
+<dt class="info">使用バージョン</dt>
+<dd>
+<ul><li>version Click 0.1.8</li></ul>
+<p>Clickはドキュメントがしっかりできているので、ドキュメントを読むのが一番です</p>
+</dd>
+</dl>
+<p><section></section></p>
+
+<h4>参考</h4>
+
+
+<ul>
+<li><a href="http://click.sourceforge.net/" rel="external nofollow" title="[SourceForge]Click Home">[SourceForge]Click Home</a></li>
+<li><a href="http://www3.vis.ne.jp/~asaki/p_diary/diary.cgi?Search=%5BClick%5D" rel="external nofollow" title="新・たけぞう瀕死の日記">新・たけぞう瀕死の日記</a></li>
+<li><a href="http://d.hatena.ne.jp/tanigon/searchdiary?word=%2a%5bClick%5d" rel="external nofollow" title="Click 勉強記">Click 勉強記</a></li>
+</ul>
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2006/03/12/click/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1614,173 +1773,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/11/20/479810146X/" class="excerpt-link">独習C#</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2005-11-20T08:52:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 20<span>th</span>, 2005</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/c-number/" rel="nofollow">C#</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2005/11/20/479810146X/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2005/11/20/479810146X/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2005/11/20/479810146X/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2005/11/20/479810146X/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2005/11/20/479810146X/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2005/11/20/479810146X/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2005/11/20/479810146X/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2005/11/20/479810146X/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810146X/sorehabooks-22/249-9385891-4151556?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="独習C#" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/514VQ892R8L._SL500_AA300_.jpg" class="asin-thumbnail" alt="独習C#" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810146X/sorehabooks-22/249-9385891-4151556?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="独習C#" rel="external nofollow">独習C#</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>ハーバート シルト (著), 矢嶋 聡 (監修), Herbert Schildt (原著), スリーエーシステムズ (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>翔泳社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810146X/sorehabooks-22/249-9385891-4151556?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>「独習」シリーズのC#版です。独習シリーズを読んだことのある人なら、大体想像はつくのではないでしょうか。本書は、<strong class="text-danger">プログラミング言語C#の文法書</strong>です。</p>
-
-<p>基本となる文法から入って、最後はライブラリの説明で締めくくるような感じです。他の言語を知らない人でも本書一冊でC#の文法は理解できるでしょう。JavaやC++の言語を知っている人からすると、差分だけ知りたいと思うでしょうが、本書は他の言語との対比等は一切書かれていません。</p>
-
-<p>Amazonの書評でも書かれているように、プログラミング初心者はまず、C#で何が出来るのか、何をしたら良いのかを学べる書籍から入るほうが無難だと思います。プログラミングの経験はあるが、一から（文法から）C#を学びたいと言う人におすすめの本です。</p>
-
-<p>中身は、非常に分かりやすく解説されています。日本語がおかしくて読み進められないということは無いはずです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2005/11/20/479810146X/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/15/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1824,6 +1816,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/03/04/canonical-url/">canonicalなURLってなにがいいんだろう？</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/01/4274065979/">ハッカーと画家 コンピュータ時代の創造者たち</a>
       </li>
     
@@ -1859,10 +1855,6 @@
         <a href="/blog/2014/02/19/rails-i18n-localize/">RailsのI18n.localizeでnilもゆるすようにすると捗る</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/19/mac-app-store-account/">MacのApp Storeで「ほかのアカウントで使用可能なアップデートがあります」が出てアップデート出来ないときの対応</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1870,7 +1862,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">102</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">117</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">103</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">117</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

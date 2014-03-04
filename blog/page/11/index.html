@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="本書は、ドメイン駆動設計（DDD:Domain Driven Design）について書かれているで、ドメインモデル、エンタープライズアプリケーションアーキテクチャ、アーキテクチャパターン、テスト駆動開発を勉強する本です。 この本のお勧めの点の一つが、筆者の経験をもとにした生きたサンプルにあります &hellip;">
+  <meta name="description" content="本書は、プログラムにおけるインターフェース設計へアドバイスを与えるものです。GUIやデザインの話ではありません。高凝集度で疎結合な設計を行うためにインタフェース設計をどのように進めたらよいか、どのように考えてインターフェースを作れば良いかなどを説明しています。 システム開発というのは複雑な作業です &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/11/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="本書は、ドメイン駆動設計（DDD:Domain Driven Design）について書かれているで、ドメインモデル、エンタープライズアプリケーションアーキテクチャ、アーキテクチャパターン、テスト駆動開発を勉強する本です。 この本のお勧めの点の一つが、筆者の経験をもとにした生きたサンプルにあります &hellip;" />
+<meta property="og:description" content="本書は、プログラムにおけるインターフェース設計へアドバイスを与えるものです。GUIやデザインの話ではありません。高凝集度で疎結合な設計を行うためにインタフェース設計をどのように進めたらよいか、どのように考えてインターフェースを作れば良いかなどを説明しています。 システム開発というのは複雑な作業です &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +106,183 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2008/07/05/4873113660/" class="excerpt-link">インターフェイス指向設計 アジャイル手法によるオブジェクト指向設計の実践</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2008-07-05T10:40:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jul 5<span>th</span>, 2008</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a>
+    
+      <a class="tag label label-info" href="/blog/tags/intahuesu/" rel="nofollow">インターフェース</a>
+    
+      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a>
+    
+      <a class="tag label label-info" href="/blog/tags/orairi/" rel="nofollow">オライリー</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2008/07/05/4873113660/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2008/07/05/4873113660/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2008/07/05/4873113660/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2008/07/05/4873113660/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2008/07/05/4873113660/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2008/07/05/4873113660/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2008/07/05/4873113660/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2008/07/05/4873113660/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4873113660/250-9582265-5494630?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873113660" title="インターフェイス指向設計 アジャイル手法によるオブジェクト指向設計の実践" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/51b8oJcFWdL._BO2,204,203,200_PIsitb-sticker-arrow-click,-76_AA300_SH20_OU09_.jpg" class="asin-thumbnail" alt="インターフェイス指向設計 アジャイル手法によるオブジェクト指向設計の実践" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4873113660/250-9582265-5494630?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873113660" title="インターフェイス指向設計 アジャイル手法によるオブジェクト指向設計の実践" rel="external nofollow">インターフェイス指向設計 アジャイル手法によるオブジェクト指向設計の実践</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>Ken Pugh (著), 角谷 信太郎(監訳) (翻訳), 児島 修 (翻訳)</dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>オライリージャパン</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4873113660/250-9582265-5494630?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873113660" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><p>本書は、プログラムにおけるインターフェース設計へアドバイスを与えるものです。GUIやデザインの話ではありません。高凝集度で疎結合な設計を行うためにインタフェース設計をどのように進めたらよいか、どのように考えてインターフェースを作れば良いかなどを説明しています。</p>
+
+<p>システム開発というのは複雑な作業です。その複雑さを少しでも解消するために<strong class="text-danger">分割して統治せよ（Divide and Conquer）</strong>という理論を用いることが良いことだとされています。このときに大切になってくるのが「<strong class="text-danger">凝集度</strong>」と「<strong class="text-danger">結合度</strong>」になります。</p>
+
+<p>凝集度は高いほど良い、つまり責任範囲が明確でが軸ぶれないほどよいです。結合度は低いほど、つまりそっちはそっちで勝手にやっててねとできるほどよいです。高凝集で低結合（英語で言うと「High Cohesion and Low Coupling!」）なプログラム部品にするために必要なのが「<strong class="text-danger">良いインターフェース</strong>」なのです。本書は、この良いインターフェースとは何か？どうやって良いインターフェースを設計するか？を解説するものです。</p>
+
+<p>本書の対象読者は、プログラム経験があり設計に興味がある人、DI（Dependency Injection）って流行ってたけど未だに何が良いのかわからない人、テスト容易性が大事って聞くけどどうやって設計したらいいかわからない人です。</p>
+
+<p>200ページくらいしかなく、かなり薄い本になっていますのでサクサク読めると思いますが、実はあまり詳しい説明というのが載っていません。内容が薄いのではなく、説明が薄いのです。「こんな場合こういう考えでインターフェースを切ると良いよ。作り方は二種類ある。長所はこれで、短所はこれ」みたいな説明が多いように思えました。</p>
+
+<p>それでもかなりの良書の部類に入ると思います。さらっと読んで、良く理解できなかった部分は先輩に聞いたり、Webで質問したりして、自分なりに噛み砕いていく。そういう読み方をする本かなと思います。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2008/07/05/4873113660/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1580,192 +1757,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2007/01/27/4873113075/" class="excerpt-link">エンジニアのための時間管理術</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2007-01-27T13:01:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jan 27<span>th</span>, 2007</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/lifehack/">LifeHack</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/lifehack/" rel="nofollow">LifeHack</a>
-    
-      <a class="tag label label-info" href="/blog/tags/shi-jian-guan-li/" rel="nofollow">時間管理</a>
-    
-      <a class="tag label label-info" href="/blog/tags/orairi/" rel="nofollow">オライリー</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2007/01/27/4873113075/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2007/01/27/4873113075/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2007/01/27/4873113075/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2007/01/27/4873113075/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2007/01/27/4873113075/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2007/01/27/4873113075/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2007/01/27/4873113075/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2007/01/27/4873113075/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4873113075/249-1493364-6977169?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873113075" title="エンジニアのための時間管理術" rel="external nofollow">
-      <img src="http://ec3.images-amazon.com/images/I/51jWtxU0sAL._BO2,204,203,200_PIsitb-sticker-arrow-click,-76_AA300_SH20_OU09_.jpg" class="asin-thumbnail" alt="エンジニアのための時間管理術" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4873113075/249-1493364-6977169?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873113075" title="エンジニアのための時間管理術" rel="external nofollow">エンジニアのための時間管理術</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>Thomas A. Limoncelli (著), 株式会社クイープ (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>オライリー・ジャパン</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4873113075/249-1493364-6977169?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873113075" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>本書は【システム管理者】向けの時間・タスク・スケジュール管理のテクニックを説明した書籍です。タイトルにはエンジニアと書いてあるのに本文ではシステム管理者と説明されていて、ちょっと混乱するかもしれません。</p>
-
-<p>今までタイムマネージメント本と違うところは、システム管理者のためだけに書かれているという点です。本書の各章でシステム管理者特有の問題がまとめられていて、システム管理者のライフサイクルをどのように変化させればよいかという点について書かれています。</p>
-
-<p>以下が本書の目次です。</p>
-
-<ul>
-<li>タイムマネージメントの原則</li>
-<li>集中と割り込み</li>
-<li>ルーチン</li>
-<li>サイクルシステム</li>
-<li>サイクルシステム：作業リストとスケジュール</li>
-<li>サイクルシステム：カレンダーの管理</li>
-<li>サイクルシステム：人生の目標</li>
-<li>優先順位</li>
-<li>ストレスの管理</li>
-<li>電子メールの管理</li>
-<li>時間の浪費</li>
-<li>文章化</li>
-<li>自動化</li>
-</ul>
-<p>本書の対象読者は、いつも時間に追われているシステム管理者、タスクリスト（TODOリスト）をうまく使いたいエンジニアです。テクニック本なので気軽に読み進めて、簡単なものから真似していくのがよいと思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2007/01/27/4873113075/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/12/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1809,6 +1800,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/03/04/canonical-url/">canonicalなURLってなにがいいんだろう？</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/01/4274065979/">ハッカーと画家 コンピュータ時代の創造者たち</a>
       </li>
     
@@ -1844,10 +1839,6 @@
         <a href="/blog/2014/02/19/rails-i18n-localize/">RailsのI18n.localizeでnilもゆるすようにすると捗る</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/19/mac-app-store-account/">MacのApp Storeで「ほかのアカウントで使用可能なアップデートがあります」が出てアップデート出来ないときの対応</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1855,7 +1846,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">102</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">117</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">103</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">117</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

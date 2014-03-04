@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="「Executable UML」とは、実行可能なモデルという意味です。Executable UML の目的は 「ソフトウェア実装上の構成を決定せずに、問題領域の解決に向けての分かりやすいモデルを提供すること」です。ソフトウェア実装とは例えば、プログラミング言語やプラットフォームといったいわゆる、 &hellip;">
+  <meta name="description" content="Dependency Injection (DI) は、「依存性の注入」という言葉で最近話題になっています。「EJB は重過ぎて使えない」とか「軽量コンテナは疎結合だからすばらしい」といった声をよく聞くようになりました。 Dependency Injection (DI) &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/21/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="「Executable UML」とは、実行可能なモデルという意味です。Executable UML の目的は 「ソフトウェア実装上の構成を決定せずに、問題領域の解決に向けての分かりやすいモデルを提供すること」です。ソフトウェア実装とは例えば、プログラミング言語やプラットフォームといったいわゆる、 &hellip;" />
+<meta property="og:description" content="Dependency Injection (DI) は、「依存性の注入」という言葉で最近話題になっています。「EJB は重過ぎて使えない」とか「軽量コンテナは疎結合だからすばらしい」といった声をよく聞くようになりました。 Dependency Injection (DI) &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +106,160 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2004/11/13/di/" class="excerpt-link">Dependency Injection (DI) の乱用！？</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-11-13T02:10:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 13<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/di/" rel="nofollow">DI</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2004/11/13/di/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/11/13/di/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/11/13/di/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/11/13/di/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2004/11/13/di/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2004/11/13/di/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2004/11/13/di/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2004/11/13/di/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/487311201X/sorehabooks-22" rel="external nofollow" title=""></a>
+</p>
+
+
+<p><a href="http://www.kakutani.com/trans/fowler/injection.html" rel="external nofollow" title="Dependency Injection (DI) ">Dependency Injection (DI) </a>は、「依存性の注入」という言葉で最近話題になっています。「EJB は重過ぎて使えない」とか「軽量コンテナは疎結合だからすばらしい」といった声をよく聞くようになりました。</p>
+
+<p>Dependency Injection (DI) はサービスコンポーネント間の関係を疎に保ったままアプリケーションを構築するというものです。「<b>設定を利用から分離する</b>」という原則が、DIの本質です。</p>
+
+<p>いろんな書籍が出始めてきた中で、依存性注入の何がステキなのか、疎結合だと幸せだよねといったことは非常に良く分かるようになりました。それでも、自分の中で何かしらの引っ掛かりがあります。それをつらつら書き連ねてしまおうかと思っています。</p>
+
+<p><section></section></p>
+
+<h4>参考</h4>
+
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://www.kakutani.com/trans/fowler/injection.html" rel="external nofollow" title="Inversion of Control コンテナと Dependency Injection パターン">Inversion of Control コンテナと Dependency Injection パターン</a></p>
+
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2004/11/13/di/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1552,164 +1706,6 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/24/djunit-virtual-mock-objects/" class="excerpt-link">djUnitで Virtual Mock Objects ユニットテスト</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-10-24T18:38:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 24<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/djunit/" rel="nofollow">djUnit</a>
-    
-      <a class="tag label label-info" href="/blog/tags/yunitutotesuto/" rel="nofollow">ユニットテスト</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/10/24/djunit-virtual-mock-objects/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798101281/sorehabooks-22" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>「JUnitでユニットテストをするときに、クラス間の関係が問題でテストできない。」なんて事ありませんか？ <abbr title="Test Driven Developement">TDD</abbr>(テスト駆動開発)で行っている場合は、クラスの関係をそのつど考えながら進めていくので、こういった問題はあまり起きません。しかし、TDDはまだまだ敷居が高いと思う開発者が多いように思います。</p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://www.h6.dion.ne.jp/~junpei/tdd.html" rel="external nofollow" title="テスト駆動開発考察">テスト駆動開発考察</a></p>
-
-<p>djUnit を使うと、<a href="http://www.xprogramming.com/xpmag/virtualMockObjects.htm" rel="external nofollow" title="JCoverage">JCoverage</a>』というツールを使ったカバレッジテストの結果をエディタ上で見ることが出来るようになります。</p>
-
-<p>djUnitは JUnti の機能と Aspect の機能を併せ持ったユニットテストツールとなっています。</p>
-
-<p><section></section></p>
-
-<h4>参考</h4>
-
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://works.dgic.co.jp/djwiki/Viewpage.do?pid=@646A556E6974" rel="external nofollow" title="djUnit Wiki">djUnit Wiki</a></p>
-
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/10/24/djunit-virtual-mock-objects/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/22/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1753,6 +1749,10 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/03/04/canonical-url/">canonicalなURLってなにがいいんだろう？</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/01/4274065979/">ハッカーと画家 コンピュータ時代の創造者たち</a>
       </li>
     
@@ -1788,10 +1788,6 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
         <a href="/blog/2014/02/19/rails-i18n-localize/">RailsのI18n.localizeでnilもゆるすようにすると捗る</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/19/mac-app-store-account/">MacのApp Storeで「ほかのアカウントで使用可能なアップデートがあります」が出てアップデート出来ないときの対応</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1799,7 +1795,7 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">102</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">117</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">103</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">117</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

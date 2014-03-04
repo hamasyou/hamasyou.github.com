@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Rails | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/rails/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-04T12:16:28+09:00</updated>
+  <updated>2014-03-04T12:50:27+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[canonicalなURLってなにがいいんだろう？]]></title>
+    <link href="http://hamasyou.com/blog/2014/03/04/canonical-url/"/>
+    <updated>2014-03-04T12:27:08+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/03/04/canonical-url</id>
+    <content type="html"><![CDATA[<p>ちょっと疑問に思ったこと。Web の SEO をやっていると <strong>canonical</strong> ページっていうのを聞いたことがあるとおもいます。
+canonical ページとは、Google 先生曰く「<em>複数の類似した内容のページの中で優先されるページです。</em>」だそうです。
+僕は <strong>URL の正規化</strong> に使うものだという認識ですが、間違ってませんよね？？</p>
+
+<p>で、この canonical URL ってどう付けたらいいんだろう？っていう疑問です。</p>
+
+<!-- more -->
+
+
+<h2>canonical URL ってどっち？</h2>
+
+<h3>RESTful リソースの URL</h3>
+
+<p>Web サービスやっていると、<strong>RESTful</strong> な URL 設計大事！ってなりますよね。
+Rails なんかをやっていると、ルーティングが自動的に RESTful になってて便利です。こんな感じ。</p>
+
+<pre><code class="console-raw">
+       hypermedia GET    /hypermedia(.:format)            hypermedia#index
+                  POST   /hypermedia(.:format)            hypermedia#create
+  new_hypermedium GET    /hypermedia/new(.:format)        hypermedia#new
+ edit_hypermedium GET    /hypermedia/:id/edit(.:format)   hypermedia#edit
+      hypermedium GET    /hypermedia/:id(.:format)        hypermedia#show
+                  PATCH  /hypermedia/:id(.:format)        hypermedia#update
+                  PUT    /hypermedia/:id(.:format)        hypermedia#update
+                  DELETE /hypermedia/:id(.:format)        hypermedia#destroy
+
+</code></pre>
+
+<p>こういうルーティングだと、<code>http://example.com/hypermedia/1</code> みたいな感じでリソースにアクセスできます。
+で、例えば、作ってる Web サービスで、<code>hypermedia/1</code> リソースの別名で、hypermedia の URL を使ってもアクセスできるようにしたい。こんな感じで。</p>
+
+<pre><code class="console-raw">http://example.com/hamasyou.com
+</code></pre>
+
+<p>ルーティングに</p>
+
+<pre><code class="ruby">get '*url', to: 'hypermedia#show', format: false
+</code></pre>
+
+<p>を追加しておくと <code>hypermedia#show</code> の中で <code>params[:url]</code> から <code>hamasyou.com</code> っていう値をとれるようになります。
+なので、こういう URL に別名付けてちょっとクールな感じの Web サービスを気取ってみたくなりました。</p>
+
+<h3>どっちがいいの？</h3>
+
+<p>で、本題ですが、こういうリソースの別名扱いの URL があるとき、canonical URL として指定するのは</p>
+
+<ol>
+<li><code>/hypermedia/:id</code></li>
+<li><code>*url</code></li>
+</ol>
+
+
+<p>のどっちがいいんだろう？という疑問です。HTML 的に書くとこんな感じ。</p>
+
+<pre><code class="html">&lt;link rel="canonical" href="http://example.com/hypermedia/1"&gt;
+&lt;link rel="canonical" href="http://example.com/hamasyou.com"&gt;
+</code></pre>
+
+<p>どっちでもいい。好みの問題って感じもしなくもないですが、皆さんどっちを選ぶのが多いんでしょう？</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Capistrano3をRailsで使ってみた感想]]></title>
@@ -748,46 +815,6 @@ f
 <p>これで、一時ファイルにキャンバスデータを書き込んでファイル化できます。サーバを起動して <code>http://localhost:3000/posts/new</code> にアクセスして試してみてください。</p>
 
 <p><img src="/images/2013-12-03-rails-ss.png" height="526" width="517" alt="スクリーンショット" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応]]></title>
-    <link href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"/>
-    <updated>2011-06-14T11:29:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis</id>
-    <content type="html"><![CDATA[<p>jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。</p>
-
-<p><section></p>
-
-<h4>環境</h4>
-
-
-
-
-<dl><dt>Rails</dt><dd>3.0.7</dd><dt>jpmobile</dt><dd>0.1.6</dd><dt>kaminari</dt><dd>0.12.4</dd></dl>
-
-
-<p></section></p>
-
-<!-- more -->
-
-
-<p>jpmobile の mobile_filter を通して kaminari でページングを行うときに、invalid byte sequence in Shift_JIS エラーが出る場合があります。</p>
-
-<p>これは、kaminari で生成するページングリンク内に、UTF-8 の文字エンコーディングの日本語文字が入っているのが原因です。</p>
-
-<p>kaminari がページリンクを作成するときに、日本語文字をパーセントエンコード（URLエンコード）していて、jpmobile の mobile_filter がエンコードされている文字を UTF-8 だと認識出来ずに表示してしまうのが原因になっています。</p>
-
-<p>この組み合わせで kaminari のページリンク内に日本語パラメータがはいってしまうのは、おそらくフォームのサブミットボタンの value が原因だと思います。</p>
-
-<p>ほとんどの場合、サブミットボタンの value は必要ないと思うので、submit_tag の :name オプションに nil を設定してサブミットボタンの value を送らないようにするといいかと思います。</p>
-
-<pre><code class="html+erb">&lt;%= form_tag user_path do %&gt;
-  &lt;%= select_tag "category", options_from_collection_for_select(Category.all, :id, :label, params[:category]) %&gt;
-  &lt;%= submit_tag "表示", :name =&gt; nil %&gt;
-&lt;% end %&gt;
-</code></pre>
 ]]></content>
   </entry>
   

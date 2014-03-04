@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: RESTful | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/restful/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-04T12:16:28+09:00</updated>
+  <updated>2014-03-04T12:50:27+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[canonicalなURLってなにがいいんだろう？]]></title>
+    <link href="http://hamasyou.com/blog/2014/03/04/canonical-url/"/>
+    <updated>2014-03-04T12:27:08+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/03/04/canonical-url</id>
+    <content type="html"><![CDATA[<p>ちょっと疑問に思ったこと。Web の SEO をやっていると <strong>canonical</strong> ページっていうのを聞いたことがあるとおもいます。
+canonical ページとは、Google 先生曰く「<em>複数の類似した内容のページの中で優先されるページです。</em>」だそうです。
+僕は <strong>URL の正規化</strong> に使うものだという認識ですが、間違ってませんよね？？</p>
+
+<p>で、この canonical URL ってどう付けたらいいんだろう？っていう疑問です。</p>
+
+<!-- more -->
+
+
+<h2>canonical URL ってどっち？</h2>
+
+<h3>RESTful リソースの URL</h3>
+
+<p>Web サービスやっていると、<strong>RESTful</strong> な URL 設計大事！ってなりますよね。
+Rails なんかをやっていると、ルーティングが自動的に RESTful になってて便利です。こんな感じ。</p>
+
+<pre><code class="console-raw">
+       hypermedia GET    /hypermedia(.:format)            hypermedia#index
+                  POST   /hypermedia(.:format)            hypermedia#create
+  new_hypermedium GET    /hypermedia/new(.:format)        hypermedia#new
+ edit_hypermedium GET    /hypermedia/:id/edit(.:format)   hypermedia#edit
+      hypermedium GET    /hypermedia/:id(.:format)        hypermedia#show
+                  PATCH  /hypermedia/:id(.:format)        hypermedia#update
+                  PUT    /hypermedia/:id(.:format)        hypermedia#update
+                  DELETE /hypermedia/:id(.:format)        hypermedia#destroy
+
+</code></pre>
+
+<p>こういうルーティングだと、<code>http://example.com/hypermedia/1</code> みたいな感じでリソースにアクセスできます。
+で、例えば、作ってる Web サービスで、<code>hypermedia/1</code> リソースの別名で、hypermedia の URL を使ってもアクセスできるようにしたい。こんな感じで。</p>
+
+<pre><code class="console-raw">http://example.com/hamasyou.com
+</code></pre>
+
+<p>ルーティングに</p>
+
+<pre><code class="ruby">get '*url', to: 'hypermedia#show', format: false
+</code></pre>
+
+<p>を追加しておくと <code>hypermedia#show</code> の中で <code>params[:url]</code> から <code>hamasyou.com</code> っていう値をとれるようになります。
+なので、こういう URL に別名付けてちょっとクールな感じの Web サービスを気取ってみたくなりました。</p>
+
+<h3>どっちがいいの？</h3>
+
+<p>で、本題ですが、こういうリソースの別名扱いの URL があるとき、canonical URL として指定するのは</p>
+
+<ol>
+<li><code>/hypermedia/:id</code></li>
+<li><code>*url</code></li>
+</ol>
+
+
+<p>のどっちがいいんだろう？という疑問です。HTML 的に書くとこんな感じ。</p>
+
+<pre><code class="html">&lt;link rel="canonical" href="http://example.com/hypermedia/1"&gt;
+&lt;link rel="canonical" href="http://example.com/hamasyou.com"&gt;
+</code></pre>
+
+<p>どっちでもいい。好みの問題って感じもしなくもないですが、皆さんどっちを選ぶのが多いんでしょう？</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RailsでつくるRESTful APIのrequest specを書く]]></title>
@@ -726,277 +793,6 @@ DELETE  /articles/<i>:id</i></pre>
 <p>こんなふうに考えると、認証が必要なリソースも上手く扱えるんじゃないかと思います。</p>
 
 <p>他に、上手くやる方法を知っている方がいれば、是非教えていただけると助かります。いつも認証周りの設計で苦労するので。。。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Webを支える技術 -HTTP、URI、HTML、そしてREST]]></title>
-    <link href="http://hamasyou.com/blog/2010/05/31/4774142042/"/>
-    <updated>2010-05-31T18:31:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2010/05/31/4774142042</id>
-    <content type="html"><![CDATA[<p>Webで成功するサービスを作る究極の指針は「シンプルであること」だと思います。これは別にWebに限らずそうだと思います。例えば、AppleやSONYやDELLなどの起業が成功したのは、シンプルな製品、サービスを作り出したからではないかと思います。Googleの検索窓なんかは、究極のシンプルだと思います（だんだんといろんなものがつき始めましたが。。。）</p>
-
-<p>業務で使用するWebサービス、コンシューマ向けのWebアプリケーションAPIなどもこの設計指針が当てはまると思いますし、本書はこのことだけが追求されて書かれている良書です。</p>
-
-<p>Webの成り立ち、ここまで成長してきたのは何故か、Webをより良く使うための設計方針が本書には詰まっています。Web開発の初心者にはもちろん、Web開発をバンバンにやってきた人にも、一度は目を通して欲しい本です。かなりオススメですし、読めば必ず目から鱗間違いなしです。</p>
-
-<!-- more -->
-
-
-<p>RESTについては、<a href="http://hamasyou.com/archives/000343" rel="external nofollow">RESTful Webサービス</a>の記事も参考にしてください。</p>
-
-<h2>Webを支える技術</h2>
-
-
-
-
-<dl>
-  <dt>HTTP、URI、HTML</dt>
-  <dd><p>HTTPというシンプルなプロトコルの上で、リソースを一意に特定するURIを用いて、HTMLで記述されたメディアを読む。Webはそんなシンプルな技術によって成り立っています。</p></dd>
-  <dt>ハイパーメディア</dt>
-  <dd><p>テキスト、画像、音声、動画などをハイパーリンクで結びつけたシステムをハイパーメディアと呼びます。Webで最も重要なのはこのハイパーリンクによってメディアがリンクしているということです。</p></dd>  
-  <dt>分散システム</dt>
-  <dd><p>Webはひとつのシステムで成り立っているわけではなく、大量のコンピュータが組み合わさっています。ネットワーク上に散らばったこれらのコンピュータが相互動作するのは、シンプルなプロトコルだからこそと言えるでしょう。</p></dd>
-</dl>
-
-
-
-
-<h2>REST-Webのアーキテクチャスタイル</h2>
-
-
-<p>RESTとはアーキテクチャスタイルでRESTアーキテクチャスタイルなアーキテクチャのことをRESTfulアーキテクチャと呼びます。</p>
-
-<p><blockquote><p>RESTはWeb全体のアーキテクチャスタイルでもあり、個別のWebサービスやWeb APIのアーキテクチャスタイルでもあります。一人一人が作る個別のWebサービスやWeb APIでも、RESTの約束を守ることが重要です。個別のWebサービスが全体の調和を乱しては、全体が統一したアーキテクチャスタイルを守れないからです。</p></p><p><p></p><footer><strong>本書 P.27</strong></footer></blockquote></p>
-
-<h3>リソース</h3>
-
-
-<p>RESTの重要な概念の一つにリソースがあります。<strong>リソースとはWeb上に存在する名前を持った情報</strong>の事をいいます。WebではこれをURIで表します。</p>
-
-<p>RESTfulアーキテクチャではこのリソースを「アドレス可能な状態」にしておくことで、システムとして綺麗な形（シンプルなプログラムが可能）になります。</p>
-
-<p><blockquote><p>URIが備える、リソースを簡単に指し示せる性質のことを「アドレス可能性」（Addressability）と呼びます。リソースをアドレス可能な状態、すなわちきちんと名前が付いており適切な手段でアクセスできる状態にすると、プログラムをとても作りやすくなります。</p></p><p><p></p><footer><strong>本書 P.29</strong></footer></blockquote></p>
-
-<p>リソースは複数のURIを持つことができます。例えば、</p>
-
-<pre>
-http://www.hamasyou.com/reports/newest
-</pre>
-
-
-
-
-<pre>
-http://www.hamasyou.com/reports/system/2010-05-31/1
-</pre>
-
-
-<p>は同じリソースを指すことができます。ただし、一つ目のURIは時間の経過とともに指し示すリソースが変わってしまうことがあります。常に同じリソースを表したい場合には、パーマネントリンクなどを参考にすると良いでしょう。</p>
-
-<h3>クールなURIは変わらない</h3>
-
-
-<p>良いURIやきれいなURIの事を「<strong>クールURI</strong>」と呼ぶそうです。「URIが変わらないべきである。変わらないURIこそが最上のURIである。」</p>
-
-<p>クールURIにするためには、次のことに気をつければ良さそうです。</p>
-
-<ul>
-  <li>プログラミング言語に依存した拡張子やパスを含めない</li>
-  <li>メソッド名やセッションIDを含めない</li>
-  <li>URIはリソースを表現する名詞にする</li>
-</ul>
-
-
-
-
-<h4>プログラミング言語に依存した拡張子やパスを含めない</h4>
-
-
-<p>例えば、JavaのStrutsを使うと、スタンダードなURIは「.do」という拡張子がつけることが多くあります。また、CGIなどの場合には、スクリプト言語の拡張子（.pl、.rb、.cgi など）をそのまま使うことがあります。</p>
-
-<p>また、CGIなどの場合、「cgi-bin」などのディレクトリ名をパスに含めることがあります。これもプログラミング言語に依存したパスを含めていることになります。</p>
-
-<p>こういった、プログラミング言語のデファクト、パス情報、ファイル拡張子などをURIに含めないようにすると、URIが変わりにくくなります。</p>
-
-<h4>メソッド名やセッションIDを含めない</h4>
-
-
-<p>リソースに対する処理メソッド名をURIに含めると、使っているフレームワークや仕様変更によりURIが変わりやすくなってしまいます。また、セッションIDなどをURIに含めるとアクセスする度にURIが変わってしまいかねないという状況になってしまいます。</p>
-
-<pre>
-http://www.hamasyou.com/sample/execute?cmdName=showPage&page=3;jssessionid=1234567890
-</pre>
-
-
-<p>URIにはメソッド名やセッションIDを含めないようにすると良いです。RESTfulアーキテクチャでは、統一インターフェースとしてHTTPのメソッド（GET, POST, PUT, DELETE）を使用すると良いでしょう。</p>
-
-<h4>URIはリソースを表現する名詞にする</h4>
-
-
-<p>URIにはメソッド名を含めずに、HTTPメソッドを使用して処理を分けると良いです。</p>
-
-<pre>
-悪い（×）： http://www.hamasyou.com/show/articles?id=10 （POSTでアクセスする）
-</pre>
-
-
-
-
-<pre>
-良い（◯）： http://www.hamasyou.com/articles/10  (GETでアクセスする）
-</pre>
-
-
-
-
-<h2>URI設計のテクニック</h2>
-
-
-
-
-<h3>拡張子で表現を指定する</h3>
-
-
-<p><blockquote><p>ここまで、拡張子はURIの設計にとって悪であると述べてきました。しかし、悪いのは「.cgi」や「.pl」など実装に依存した拡張子です。実装に依存していない拡張子は良い側面を持つ場合もあります。</p></p><p><p></p><footer><strong>本書 P.60</strong></footer></blockquote></p>
-
-<dl>
-  <dt>言語を指定する拡張子</dt>
-  <dd>言語を指定する拡張子「.ja」「.en」をリソースに含める。</dd>
-  <dt>フォーマットを指定する拡張子</dt>
-  <dd>「.html」「.atom」「.xml」「.json」などの表現フォーマットを指定する拡張子をリソースに含める。</dd>
-</dl>
-
-
-
-
-<h2>その他</h2>
-
-
-
-
-<h3>統一インターフェース</h3>
-
-
-
-
-<dl>
-  <dt>GET</dt>
-  <dd>リソースを取得する場合に使う。冪等（べきとう）。</dd>
-  <dt>POST</dt>
-  <dd>リソースを作成するときに使う。レスポンスとしてリソースのURIを返してくれることを希望する（新規作成の場合など）。新しいリソースのURIはLocationヘッダで返される（POST後はリダイレクトされる）。冪等ではない。</dd>
-  <dt>PUT</dt>
-  <dd>リソースを更新するときに使う。リソースのURIは変わらない。冪等だがリソースの状態は変わる。</dd>
-  <dt>DELETE</dt>
-  <dd>リソースを削除する時に使う。リソースのURIがわかっている場合に使い、なんど呼び出しても結果は変わらないべき。つまり、存在しないリソースに対してのDELETEは何もいわずに成功するし、DELETEによって他のリソースのURI表現が変わることはないようにする。冪等。</dd>
-</dl>
-
-
-
-
-<h3>検索結果にリソース表現</h3>
-
-
-
-
-<pre>
-http://www.hamasyou.com/articles/search?q={query}
-</pre>
-
-
-<p>searchというメソッド名をURIを含めているじゃないかと思うが、そうではなく、これは検索結果というリソースを表している（searchは名詞の方の検索）。</p>
-
-<h3>オブジェクトモデルにおける関連のリソース表現</h3>
-
-
-<p>関連のどちらがトップレベルリソース（上にくるリソース）かを考え、URIの階層構造でURIを表す。</p>
-
-<p>記事群-設計カテゴリ-最新記事の場合。</p>
-
-<pre>
-http://www.hamasyou.com/articles/system/newest
-</pre>
-
-
-<p>設計カテゴリ-記事群-最新記事の場合。</p>
-
-<pre>
-http://www.hamasyou.com/system/articles/newest
-</pre>
-
-
-
-
-<h3>ロック機構をリソースで表す</h3>
-
-
-<p>Web APIによってはロック機構を組み込みたい場合があります。この場合は、ロックを表す子リソースを作ることで対応できます。</p>
-
-<p>リソースに対して、ロックリソースを作成し、そのロックリソースをDELETEすることでロック解除を表す。</p>
-
-<p>本書 P.289より抜粋。</p>
-
-<pre>
-POST /1120034 HTTP/1.1
-Host: zip.ricollab.jp
-Content-Type: application/x-www-form-urlencoded
-Authorization: Basic ...
- 
-scope=exclusive&timeout=300
-</pre>
-
-
-<p>ロック用のパラメータをリソースに対して送信し、ロックリソースを作成する。</p>
-
-<pre>
-HTTP/1.1 201 Created
-Location: http://zip.ricollab.jp/1120034/lock
-Content-Type: application/json
- 
-{
- "locktype": "exclusive",
- "timeout": "2010-09-07T10:00:30Z",
- "owner": "yohei"
-}
-</pre>
-
-
-<p>ロック解除は、POSTで作成された子リソース（lock）を削除することで行う。</p>
-
-<pre>
-DELETE /1120034/lock HTTP/1.1
-Host: zip.ricollab.jp
-Authorization: Basic ... 
-</pre>
-
-
-
-
-<pre>
-HTTP/1.1 200 OK
-</pre>
-
-
-
-
-<h2>参考</h2>
-
-
-
-
-<div class="rakuten">
-<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/RESTful-Web%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9-Leonard-Richardson/dp/4873113539%3FSubscriptionId%3D15SMZCTB9V8NGR2TW082%26tag%3Dsorehabooks-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D4873113539" rel="external nofollow">G-Tools</a></font></td></tr></table>
-</div>
-
-
-
-
-<div class="rakuten">
-<table width="400" border="0" cellpadding="5"><tr><td colspan="2"><a href="http://www.amazon.co.jp/Web%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3-Sanjiva-Weerawarana/dp/4434073435%3FSubscriptionId%3D15SMZCTB9V8NGR2TW082%26tag%3Dsorehabooks-22%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D4434073435" rel="external nofollow">G-Tools</a></font></td></tr></table>
-</div>
-
-
-
 ]]></content>
   </entry>
   
