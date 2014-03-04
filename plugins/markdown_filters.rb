@@ -19,7 +19,7 @@ module Jekyll
             link['rel'] = "#{link['rel']} external nofollow".strip
           end
           unless link.attr('title')
-            link['title'] = link.text
+            link['title'] = link.text.to_s.gsub(/(\r\n|\r|\n)/, '')
           end
         end
 
@@ -33,7 +33,7 @@ module Jekyll
             img['class'] = "#{img['class']} img-thumbnail".strip
           end
           unless img.attr('title')
-            img['title'] = img['alt']
+            img['title'] = img['alt'].to_s.gsub(/(\r\n|\r|\n)/, '')
           end
         end
 
