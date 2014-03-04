@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Blog | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/blog/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-04T12:50:27+09:00</updated>
+  <updated>2014-03-04T15:24:11+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -34,7 +34,7 @@ canonical ページとは、Google 先生曰く「<em>複数の類似した内�
 <p>Web サービスやっていると、<strong>RESTful</strong> な URL 設計大事！ってなりますよね。
 Rails なんかをやっていると、ルーティングが自動的に RESTful になってて便利です。こんな感じ。</p>
 
-<pre><code class="console-raw">
+<pre><code class="console-raw">{% raw %}
        hypermedia GET    /hypermedia(.:format)            hypermedia#index
                   POST   /hypermedia(.:format)            hypermedia#create
   new_hypermedium GET    /hypermedia/new(.:format)        hypermedia#new
@@ -43,7 +43,7 @@ Rails なんかをやっていると、ルーティングが自動的に RESTful
                   PATCH  /hypermedia/:id(.:format)        hypermedia#update
                   PUT    /hypermedia/:id(.:format)        hypermedia#update
                   DELETE /hypermedia/:id(.:format)        hypermedia#destroy
-
+{% endraw %}
 </code></pre>
 
 <p>こういうルーティングだと、<code>http://example.com/hypermedia/1</code> みたいな感じでリソースにアクセスできます。
@@ -157,16 +157,10 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 
 <p>ターミナルを開いて次のコマンドを入力します。</p>
 
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
-<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist</span><span class='line command'>sudo mdutil -E /</span></code></pre></td></tr></table></div></div>
-        </div></p>
+<p>{% terminal %}
+$ sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+$ sudo mdutil -E /
+{% endterminal %}</p>
 
 <p>再構築が開始されると、画面の右上の Spotlight マークが点滅します。</p>
 
@@ -218,9 +212,9 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 
 <p>ガンダムUC 7話の PV も公開されてて待ち遠しいです。</p>
 
-<p><div class="embed-video-container"><iframe src="http://www.youtube.com/embed/xuhy3ZgIico"></iframe></div></p>
+<p>{% youtube xuhy3ZgIico %}</p>
 
-<p><div class="embed-video-container"><iframe src="http://www.youtube.com/embed/OUwrM1F7ttU"></iframe></div></p>
+<p>{% youtube OUwrM1F7ttU %}</p>
 
 <p>最近は <a href="http://exvsfb.ggame.jp/">exvsfb</a> ばかりやってて、当然持ちキャラはシナンジュです。</p>
 

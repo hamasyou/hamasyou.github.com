@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-04T12:50:27+09:00</updated>
+  <updated>2014-03-04T15:24:11+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -360,7 +360,9 @@ Stork.$ = Stork.jQuery = jQuery.noConflict(true);
 CSS が読み込まれたタイミングを知りたい場合には、少し変わった方法が必要になります。ブラウザによっては、<code>link</code> タグは <code>script</code> タグのように読み込みが終わったタイミングで <code>load</code> イベントを発生させない場合があるからです。
 CSS が読み込まれたかどうかをチェックするには、要素にスタイルが当たったかどうかを定期的にチェックする必要があります。</p>
 
-<p><blockquote><p>JavaScript やその他のデータを読み込むためのライブラリである Yepnope.js では、document.styleSheets を使って新しく挿入されたスタイルシートをスキャンする方法をとっている。</p></blockquote></p>
+<p>{% blockquote %}
+JavaScript やその他のデータを読み込むためのライブラリである Yepnope.js では、document.styleSheets を使って新しく挿入されたスタイルシートをスキャンする方法をとっている。
+{% endblockquote %}</p>
 
 <h5>JavaScript で要素の色を調べるときは注意！</h5>
 
@@ -714,7 +716,9 @@ window.addEventListener('message', receiver, false);
 
 <h3>ポップアップブロック機能を回避する方法</h3>
 
-<p><blockquote><p>これを避けるには、新しいウィンドウを常に<strong>ユーザーのアクションの直接の結果</strong>として開くようにすることだ。ユーザーのアクションからウィンドウを開くまでの間に遅延が存在すると、多くのブラウザはそれを悪意ある動作とみなして処理を阻止してしまう。</p></blockquote></p>
+<p>{% blockquote %}
+これを避けるには、新しいウィンドウを常に<strong>ユーザーのアクションの直接の結果</strong>として開くようにすることだ。ユーザーのアクションからウィンドウを開くまでの間に遅延が存在すると、多くのブラウザはそれを悪意ある動作とみなして処理を阻止してしまう。
+{% endblockquote %}</p>
 
 <h2>感想</h2>
 
@@ -730,7 +734,9 @@ window.addEventListener('message', receiver, false);
     <link href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"/>
     <updated>2014-02-21T19:39:56+09:00</updated>
     <id>http://hamasyou.com/blog/2014/02/21/functional-javascript</id>
-    <content type="html"><![CDATA[<p><blockquote><p>本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。JavaScriptビルトインのデータ型を上手に利用するための基本知識やJavaScriptにおける関数の持つ特性など、関数型プログラミングの技術とその考え方について解説します。また実際のJavaScriptコーディングに関数型プログラミングのエッセンスを加えるポイントをサンプルを使って丁寧に説明します。関数型プログラミングに精通した著者が書き下ろした本書は、テクニックを増やし、コーディングのイマジネーションを広げたいエンジニア必携の一冊です。</p><footer><strong>内容紹介</strong></footer></blockquote></p>
+    <content type="html"><![CDATA[<p>{% blockquote 内容紹介 %}
+本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。JavaScriptビルトインのデータ型を上手に利用するための基本知識やJavaScriptにおける関数の持つ特性など、関数型プログラミングの技術とその考え方について解説します。また実際のJavaScriptコーディングに関数型プログラミングのエッセンスを加えるポイントをサンプルを使って丁寧に説明します。関数型プログラミングに精通した著者が書き下ろした本書は、テクニックを増やし、コーディングのイマジネーションを広げたいエンジニア必携の一冊です。
+{% endblockquote %}</p>
 
 <p>JavaScript は純粋な関数型プログラミング言語ではありません。が、<strong>関数型言語として JavaScript を理解し使用することでコードがより洗練され、読みやすいものになる</strong> はずという筆者の考えがこの本には現れています。</p>
 
@@ -747,7 +753,9 @@ window.addEventListener('message', receiver, false);
 
 <h3>関数型プログラミングとは</h3>
 
-<p><blockquote><p>関数型プログラミングとは、値を抽象の単位に変換する関数を使用して行うプログラミングであり、それらを使ってソフトウェアシステムを構築することである。</p></blockquote></p>
+<p>{% blockquote %}
+関数型プログラミングとは、値を抽象の単位に変換する関数を使用して行うプログラミングであり、それらを使ってソフトウェアシステムを構築することである。
+{% endblockquote %}</p>
 
 <p>オブジェクト指向では、問題領域をオブジェクトという単位に分解して対処していきますが、関数型プログラミングでは、問題を <strong>関数</strong> のパーツに分解します。</p>
 
@@ -857,7 +865,9 @@ song(99, 0, lyricSegment);
 
 <p>一般的な関数型プログラミングによって主張されるコレクション中心の考え方のポイントは、その処理を行うために一貫性のある語彙を確立し、包括的に揃えた関数を再利用出来るようにすることです。</p>
 
-<p><blockquote><p>10種類のデータ構造上で10の関数を動かすよりも、ひとつのデータ構造上で100の関数を動かすほうがよい。</p><footer><strong>Alan Perlis</strong></footer></blockquote></p>
+<p>{% blockquote Alan Perlis %}
+10種類のデータ構造上で10の関数を動かすよりも、ひとつのデータ構造上で100の関数を動かすほうがよい。
+{% endblockquote %}</p>
 
 <p>関数型プログラミングでは、<strong>それぞれの関数がすこしずつデータを変換し、最後の解に至る</strong> ようにします。</p>
 
@@ -1029,7 +1039,10 @@ parseIntByBinary('10');
 
 <p>JavaScript は <strong>関数が変数の境界をつくる</strong> ので、ローカル変数の状態変更は関数が外部に漏れるのを防いでくれます。</p>
 
-<p><blockquote><p>誰もいない森で木が倒れたら、音がするでしょうか？<br/>不変性を持った戻り値を生成するために、純粋関数がローカルデータを変異させたとしたら、それは良いことなのでしょうか？</p><footer><strong>Rich Hickey</strong> <cite><a href='http://clojure.org/transients'>clojure.org/transients/&hellip;</a></cite></footer></blockquote></p>
+<p>{% blockquote Rich Hickey http://clojure.org/transients %}
+誰もいない森で木が倒れたら、音がするでしょうか？
+不変性を持った戻り値を生成するために、純粋関数がローカルデータを変異させたとしたら、それは良いことなのでしょうか？
+{% endblockquote %}</p>
 
 <p>結局のところ、答えは <strong>Yes</strong> です。</p>
 
@@ -1080,7 +1093,9 @@ function truthy(x) {
 
 <h3>メタプログラミングとは</h3>
 
-<p><blockquote><p>プログラミングは何かを行うためにコードを書くものであるが、メタプログラミングは何かを解釈する方法を変更するためにコードを書くものである。</p></blockquote></p>
+<p>{% blockquote %}
+プログラミングは何かを行うためにコードを書くものであるが、メタプログラミングは何かを解釈する方法を変更するためにコードを書くものである。
+{% endblockquote %}</p>
 
 <h3>第一級関数</h3>
 
@@ -1183,16 +1198,10 @@ _.map([[1, 2, 3]), rev);
 
 <p>まずは、チュートリアル用のプロジェクトを作成します。</p>
 
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
-<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>rails new specbox &ndash;skip-bundle</span><span class='line command'>cd specbox</span></code></pre></td></tr></table></div></div>
-        </div></p>
+<p>{% terminal %}
+$ rails new specbox &ndash;skip-bundle
+$ cd specbox
+{% endterminal %}</p>
 
 <p><code>Gemfile</code> を開いて次の gem を追記します。</p>
 
@@ -1207,21 +1216,15 @@ end
 
 <p>rspec と scaffold の設定を行います。</p>
 
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
-<span class='line-number'>$</span>
-<span class='line-number'>$</span>
-<span class='line-number'>$</span>
-<span class='line-number'>$</span>
-<span class='line-number'>$</span>
-<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>bundle install &ndash;path vendor/bundle</span><span class='line command'>bundle exec rails g rspec:install</span><span class='line command'>bundle exec guard init rspec</span><span class='line command'>bundle exec rails g model Book title:string author:string price:integer</span><span class='line command'>bundle exec rails g scaffold_controller Books</span><span class='line command'>bundle exec rake db:migrate</span><span class='line command'>bundle exec rake db:test:prepare</span></code></pre></td></tr></table></div></div>
-        </div></p>
+<p>{% terminal %}
+$ bundle install &ndash;path vendor/bundle
+$ bundle exec rails g rspec:install
+$ bundle exec guard init rspec
+$ bundle exec rails g model Book title:string author:string price:integer
+$ bundle exec rails g scaffold_controller Books
+$ bundle exec rake db:migrate
+$ bundle exec rake db:test:prepare
+{% endterminal %}</p>
 
 <p><code>config/routes.rb</code> にルーティングを追加します。</p>
 
@@ -1234,46 +1237,25 @@ end
 
 <p>テストを実行します。</p>
 
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>bundle exec guard</span><span class='line output'>15:12:01 - INFO - Run all
-</span><span class='line output'>15:12:01 - INFO - Running all specs
-</span><span class='line output'>..**&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</p>
-</span><span class='line output'>
-</span><span class='line output'><p>Pending:
-</span><span class='line output'>  Book add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/models/book_spec.rb
-</span><span class='line output'>    # No reason given
-</span><span class='line output'>    # ./spec/models/book_spec.rb:4
-</span><span class='line output'>  BooksHelper add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/helpers/books_helper_spec.rb
-</span><span class='line output'>    # No reason given
-</span><span class='line output'>    # ./spec/helpers/books_helper_spec.rb:14</p>
-</span><span class='line output'>
-</span><span class='line output'><p>Finished in 0.18066 seconds
-</span><span class='line output'>30 examples, 0 failures, 2 pending</p>
-</span><span class='line output'>
-</span><span class='line output'><p>Randomized with seed 14063</span></code></pre></td></tr></table></div></div>
-        </div></p>
+<p>{% terminal %}
+$ bundle exec guard
+15:12:01 - INFO - Run all
+15:12:01 - INFO - Running all specs
+..**&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</p>
+
+<p>Pending:
+  Book add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/models/book_spec.rb
+    # No reason given
+    # ./spec/models/book_spec.rb:4
+  BooksHelper add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/helpers/books_helper_spec.rb
+    # No reason given
+    # ./spec/helpers/books_helper_spec.rb:14</p>
+
+<p>Finished in 0.18066 seconds
+30 examples, 0 failures, 2 pending</p>
+
+<p>Randomized with seed 14063
+{% endterminal %}</p>
 
 <p>これで rspec の設定ができました。それでは <em>request spec</em> を書いていきます。</p>
 

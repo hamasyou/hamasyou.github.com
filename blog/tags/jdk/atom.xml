@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: JDK | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/jdk/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-04T12:50:27+09:00</updated>
+  <updated>2014-03-04T15:24:11+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -22,7 +22,10 @@
 
 <p>内容はさすがオライリーと言う感じです。深く説明されているし、注意する点も抜け目なく解説しています。例えばこんなものがあります。</p>
 
-<p><blockquote><p>Enum を実装する場合、toString()の振る舞いを変更したらvalueOf()の振る舞いも変更する必要がある。この２つのメソッドは常にペアの鏡像になる。</p></p><p><p></p><footer><strong>本書</strong></footer></blockquote></p>
+<p>{% blockquote 本書 %}
+Enum を実装する場合、toString()の振る舞いを変更したらvalueOf()の振る舞いも変更する必要がある。この２つのメソッドは常にペアの鏡像になる。</p>
+
+<p>{% endblockquote %}</p>
 
 <p>この記事を書いている現在(2005/07/23)、本書が一番薄くて一番内容が濃いように思いました。本書の後半にあるスレッド処理の章を読んで、「なんか深いな」と感じました。</p>
 

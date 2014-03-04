@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: プログラミング言語 | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/puroguraminguyan-yu/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-04T12:50:27+09:00</updated>
+  <updated>2014-03-04T15:24:11+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -33,9 +33,15 @@
 
 <p>本書を読むことで、各言語の長所、短所、原理、思想を知ることができます。プログラマとして一皮向けたい人に、おすすめです。</p>
 
-<p><blockquote><p>禅の指導者は、数学ができるようになりたければラテン語を勉強せよと言うだろう。プログラミングでも同じだ。オブジェクト指向プログラミングの本質を深く理解するには、論理プログラミングや関数型プログラミング（FP）を勉強する必要がある。関数型プログラミングに上達したければ、アセンブラを勉強する必要がある。</p></p><p><p></p><footer><strong>本書序文より</strong></footer></blockquote></p>
+<p>{% blockquote 本書序文より %}
+禅の指導者は、数学ができるようになりたければラテン語を勉強せよと言うだろう。プログラミングでも同じだ。オブジェクト指向プログラミングの本質を深く理解するには、論理プログラミングや関数型プログラミング（FP）を勉強する必要がある。関数型プログラミングに上達したければ、アセンブラを勉強する必要がある。</p>
 
-<p><blockquote><p>プログラミングとは結局、理解することであり、理解できるかどうかはどれだけアイデアの引き出しがあるかにかかっている。したがって、新しい言語を直接体験することは、プログラミングが何たるかをより深く理解するために欠かせない。</p></p><p><p></p><footer><strong>本書序文より</strong></footer></blockquote></p>
+<p>{% endblockquote %}</p>
+
+<p>{% blockquote 本書序文より %}
+プログラミングとは結局、理解することであり、理解できるかどうかはどれだけアイデアの引き出しがあるかにかかっている。したがって、新しい言語を直接体験することは、プログラミングが何たるかをより深く理解するために欠かせない。</p>
+
+<p>{% endblockquote %}</p>
 
 <!-- more -->
 
@@ -63,7 +69,10 @@
 
 <p></section></p>
 
-<p><blockquote><p>スプーン一杯の砂糖があるだけで、苦い薬も飲めるのよ。</p></p><p><p></p><footer><strong>メリー・ポピンズ</strong></footer></blockquote></p>
+<p>{% blockquote メリー・ポピンズ %}
+スプーン一杯の砂糖があるだけで、苦い薬も飲めるのよ。</p>
+
+<p>{% endblockquote %}</p>
 
 <h2>Io</h2>
 
@@ -124,7 +133,16 @@ hamasyou := Person clone
 <h3>プロトタイプ・プログラミングのパラダイム</h3>
 
 
-<p><blockquote><p>- すべてのモノはオブジェクトである。<br/>- オブジェクトとのすべてのやり取りはメッセージを介して行う。<br/>- クラスをインスタンス化するのではなく、他のオブジェクト（プロトタイプという）を複製する（クローンを作成する）。<br/>- オブジェクトは自身のプロトタイプを記憶している。<br/>- オブジェクトにはスロットがある。<br/>- スロットにはオブジェクト（メソッドオブジェクトを含む）が格納される。<br/>- メッセージはスロットが保持している値を返したり、スロットに格納されているメソッドを呼び出したりする。<br/>- オブジェクトは、自分が応答できないメッセージを自分のプロトタイプに送信する。</p><footer><strong>本書P.48より</strong></footer></blockquote></p>
+<p>{% blockquote 本書P.48より %}
+- すべてのモノはオブジェクトである。
+- オブジェクトとのすべてのやり取りはメッセージを介して行う。
+- クラスをインスタンス化するのではなく、他のオブジェクト（プロトタイプという）を複製する（クローンを作成する）。
+- オブジェクトは自身のプロトタイプを記憶している。
+- オブジェクトにはスロットがある。
+- スロットにはオブジェクト（メソッドオブジェクトを含む）が格納される。
+- メッセージはスロットが保持している値を返したり、スロットに格納されているメソッドを呼び出したりする。
+- オブジェクトは、自分が応答できないメッセージを自分のプロトタイプに送信する。
+{% endblockquote %}</p>
 
 <p></section></p>
 
@@ -261,7 +279,10 @@ coloring(Alabama, Mississippi, Georgia, Tennessee, Florida) :-
 <h3>Prolog の得意とする問題</h3>
 
 
-<p><blockquote><p>Prolog では問題の解法を記述する必要はない。問題を記述するだけでよい。そして、問題を記述するための言語は純粋な論理だけだ。事実と推論から始めれば、あとは Prolog がやってくれる。Prolog のプログラムは高レベルの抽象化を実現する。この事例のスケジュール作成と行動パターンは、Prolog が得意とする問題だ。</p></p><p><p></p><footer><strong>本書P.84</strong></footer></blockquote></p>
+<p>{% blockquote 本書P.84 %}
+Prolog では問題の解法を記述する必要はない。問題を記述するだけでよい。そして、問題を記述するための言語は純粋な論理だけだ。事実と推論から始めれば、あとは Prolog がやってくれる。Prolog のプログラムは高レベルの抽象化を実現する。この事例のスケジュール作成と行動パターンは、Prolog が得意とする問題だ。</p>
+
+<p>{% endblockquote %}</p>
 
 <h3>再帰処理のメモリ不足</h3>
 
@@ -714,15 +735,9 @@ Pid = spawn(fun mymodule:loop/0).
 
 <p>Erlang を公式サイトからダウンロードしてきて make を行うと下のようなエラーがでた。</p>
 
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line output'>make[3]: *** No rule to make target <code>erl_alloc_types.h', needed by</code>obj/i386-apple-darwin10.8.0/opt/plain/atom.o'.  Stop.</span></code></pre></td></tr></table></div></div>
-        </div></p>
+<p>{% terminal %}
+make[3]: *** No rule to make target <code>erl_alloc_types.h', needed by</code>obj/i386-apple-darwin10.8.0/opt/plain/atom.o'.  Stop.
+{% endterminal %}</p>
 
 <p>Makefile.in に erl_alloc_types のコンパイル方法が書かれていないせいらしい。github にパッチが上がっていたので、Makefile.in を書き換えると上手くコンパイルができた。</p>
 
