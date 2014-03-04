@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: ベストプラクティス | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/besutopurakuteisu/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-04T15:27:56+09:00</updated>
+  <updated>2014-03-04T15:30:03+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -178,19 +178,13 @@ MyClass.new.my_method
 
 <p><em>method!</em> のようにメソッド名の末尾に感嘆符（!）をつける目的は、<strong>このメソッドは特別だ、「注意しろ！」</strong>になります。</p>
 
-<p>{% blockquote method?とmethod!が何を意味しているか理解しよう - 本書 P.57 %}
-よくある誤解は、受け取ったオブジェクトを変更することを知らせたいときに感嘆符を使う、というものだ。たいていの場合、感嘆符は私たちに何か警告をするものだからだろう。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>よくある誤解は、受け取ったオブジェクトを変更することを知らせたいときに感嘆符を使う、というものだ。たいていの場合、感嘆符は私たちに何か警告をするものだからだろう。</p></p><p><p></p><footer><strong>method?とmethod!が何を意味しているか理解しよう - 本書 P.57</strong></footer></blockquote></p>
 
 <p>Ruby の組み込みクラスのメソッドには破壊的メソッドでも感嘆符がついているのとついていないものがあります。</p>
 
 <p>これはすなわち、メソッドに感嘆符をつける目的はこのメソッドが特別であることを知らせるのであって、破壊的であるとか危険であることを知らせるのではないということです。</p>
 
-<p>{% blockquote 本書 P.59 %}
-したがって、同じようなことをする　foo() メソッドがないのに foo!() メソッドだけがあるのは、あまり意味のないことだ。（中略）感嘆符は必ずしもそのメソッドが<em>破壊的な操作</em>をすることを意味するわけではないと考えると、&hellip;</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>したがって、同じようなことをする　foo() メソッドがないのに foo!() メソッドだけがあるのは、あまり意味のないことだ。（中略）感嘆符は必ずしもそのメソッドが<em>破壊的な操作</em>をすることを意味するわけではないと考えると、&hellip;</p></p><p><p></p><footer><strong>本書 P.59</strong></footer></blockquote></p>
 
 <p></section></p>
 
@@ -446,9 +440,15 @@ y data
 
 <p>テスト用のデータ生成に、Faker というライブラリが使えます。gem install faker でインストールできます。</p>
 
-<p>{% terminal %}
-$ sudo gem install faker
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>sudo gem install faker</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p>次のように使います。</p>
 

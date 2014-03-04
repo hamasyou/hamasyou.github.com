@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Liquid | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/liquid/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-04T15:27:56+09:00</updated>
+  <updated>2014-03-04T15:30:03+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -82,34 +82,59 @@
 
 <p>つぎに、ブログ環境を作成するために <a href="http://pages.github.com/">Octopress</a> を github からチェックアウトします。<code>username</code> のところは自分のアカウント名です。</p>
 
-<p>{% terminal %}
-$ git clone git@github.com:imathis/octopress.git username.github.io
-Cloning into &lsquo;username.github.io&rsquo;&hellip;
-remote: Reusing existing pack: 10340, done.
-remote: Counting objects: 20, done.
-remote: Compressing objects: 100% (20/20), done.
-remote: Total 10360 (delta 4), reused 3 (delta 0)
-Receiving objects: 100% (10360/10360), 2.73 MiB | 785.00 KiB/s, done.
-Resolving deltas: 100% (4949/4949), done.
-Checking connectivity&hellip; done.</p>
-
-<p>$ cd username.github.io
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>git clone git@github.com:imathis/octopress.git username.github.io</span><span class='line output'>Cloning into &lsquo;username.github.io&rsquo;&hellip;
+</span><span class='line output'>remote: Reusing existing pack: 10340, done.
+</span><span class='line output'>remote: Counting objects: 20, done.
+</span><span class='line output'>remote: Compressing objects: 100% (20/20), done.
+</span><span class='line output'>remote: Total 10360 (delta 4), reused 3 (delta 0)
+</span><span class='line output'>Receiving objects: 100% (10360/10360), 2.73 MiB | 785.00 KiB/s, done.
+</span><span class='line output'>Resolving deltas: 100% (4949/4949), done.
+</span><span class='line output'>Checking connectivity&hellip; done.</p>
+</span><span class='line output'>
+</span><span class='line output'><p>$ cd username.github.io</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <h3>deploy する</h3>
 
 <p>Octopress の初期設定を行い、deploy を行います。この時点でデプロイしたくない場合は最後のコマンド <code>bundle exec rake gen_deploy</code> を実行しないようにします。</p>
 
-<p>{% terminal %}
-$ bundle install &ndash;path vendor/bundle
-$ bundle exec rake install
-$ bundle exec rake setup_github_pages
-Enter the read/write url for your repository
-(For example, &lsquo;git@github.com:your_username/your_username.github.io.git)
-           or 'https://github.com/your_username/your_username.github.io&rsquo;)
-Repository url: <kbd>git@github.com:username/username.github.io.git<kbd>
-$ bundle exec rake gen_deploy
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>bundle install &ndash;path vendor/bundle</span><span class='line command'>bundle exec rake install</span><span class='line command'>bundle exec rake setup_github_pages</span><span class='line output'>Enter the read/write url for your repository
+</span><span class='line output'>(For example, &lsquo;git@github.com:your_username/your_username.github.io.git)
+</span><span class='line output'>           or 'https://github.com/your_username/your_username.github.io&rsquo;)
+</span><span class='line output'>Repository url: <kbd>git@github.com:username/username.github.io.git<kbd>
+</span><span class='line command'>bundle exec rake gen_deploy</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <h2>ブログの初期設定を行う</h2>
 
@@ -121,10 +146,16 @@ $ bundle exec rake gen_deploy
 
 <p>テーマのインストールは、<code>.themes</code> ディレクトリにテーマのリポジトリをチェックアウトして <code>bundle exec rake install['theme-name']</code> でおこないます。</p>
 
-<p>{% terminal %}
-$ git clone git@github.com:kAworu/octostrap3.git .themes/octostrap3
-$ bundle exec rake install[&lsquo;octostrap3&rsquo;]
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>git clone git@github.com:kAworu/octostrap3.git .themes/octostrap3</span><span class='line command'>bundle exec rake install[&lsquo;octostrap3&rsquo;]</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p><a href="http://opthemes.com/"><img src="/images/2014-02-13-movable-type-to-octopress-02.png" alt="Octopress-Themes" /></a></p>
 
@@ -132,11 +163,18 @@ $ bundle exec rake install[&lsquo;octostrap3&rsquo;]
 
 <p>新しい記事を書くには <code>bundle exec rake new_post['title']</code> とします。<code>title</code> 部分が記事のファイル名に使われるので、この時点では英語で入力するほうがよいです。</p>
 
-<p>{% terminal %}
-$ bundle exec rake new_post[&lsquo;movable-type-to-octopress&rsquo;]
-mkdir -p source/<em>posts
-Creating new post: source/</em>posts/2014-02-13-movable-type-to-octopress.markdown
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>bundle exec rake new_post[&lsquo;movable-type-to-octopress&rsquo;]</span><span class='line output'>mkdir -p source/<em>posts
+</span><span class='line output'>Creating new post: source/</em>posts/2014-02-13-movable-type-to-octopress.markdown</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <pre><code>---
 layout: post
@@ -176,12 +214,18 @@ tags: [Movable Type,GitHub,Octopress,Liquid,Jekyll,Ruby]
 
 <p>リポジトリを作成したら、ソースコードをプッシュします。</p>
 
-<p>{% terminal %}
-$ git remote add bitbucket git@bitbucket.org:username/username.github.io.git
-$ git add .
-$ git commit -m &lsquo;init&rsquo;
-$ git push bitbucket source
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>git remote add bitbucket git@bitbucket.org:username/username.github.io.git</span><span class='line command'>git add .</span><span class='line command'>git commit -m &lsquo;init&rsquo;</span><span class='line command'>git push bitbucket source</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <h2>その他</h2>
 
@@ -223,9 +267,15 @@ www.hamasyou.com CNAME hamasyou.github.io
 
 <p>bundle update します。</p>
 
-<p>{% terminal %}
-$ bundle update rdiscount
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>bundle update rdiscount</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p>これで Markdown で Definition LIST がデフォルトで使えるようになります。</p>
 
@@ -242,7 +292,131 @@ $ bundle update rdiscount
 
 <p>Movable Type の記事エクスポートを Markdown 形式に変換するコードを見つけたので、移行にはこれを使いました。ちょっと手はいれましたが。</p>
 
-<p>{% gist 2351046 mt_to_markdown.rb %}</p>
+<p><div><script src='https://gist.github.com/2351046.js?file=mt_to_markdown.rb'></script>
+<noscript><pre><code>#!/usr/bin/env ruby
+
+require &#39;date&#39;
+require &#39;mustache&#39;
+require &#39;stringex&#39;
+require &#39;cgi&#39;
+
+export     = File.open(ARGV[0])
+target_dir = ARGV[1]
+
+class Post &lt; Mustache
+  self.template = &lt;&lt;-MARKDOWN
+---
+layout: post
+title: &quot;{{title}}&quot;
+date: {{formatted_date}}
+comments: {{comments}}
+categories: {{category}}
+author: {{author}}
+---
+
+{{formatted_body}}
+MARKDOWN
+
+  attr_accessor :author, :title, :category, :comments, :status, :body
+
+  def initialize
+    @body = []
+  end
+
+  def date=(date)
+    case date
+    when String
+      @date = DateTime.strptime(date, &quot;%m/%d/%Y %I:%M:%S %p&quot;)
+    else
+      @date = date
+    end
+  end
+
+  def date
+    @date
+  end
+
+  def formatted_date
+    @date.strftime(&quot;%Y-%m-%d %H:%M&quot;)
+  end
+
+  def comments=(comments)
+    @comments = comments == &quot;1&quot; ? true : false
+  end
+
+  def formatted_body
+    CGI.unescapeHTML(body.join).
+      gsub(/&lt;a href=&quot;(.*?)&quot;&gt;*(.*?)&lt;\/a&gt;/i, &#39;[\2](\1)&#39;).
+      gsub(&quot;&lt;!--more--&gt;&quot;, &quot;\n\n&lt;!-- more --&gt;\n\n&quot;)
+  end
+
+  def file_name
+    &quot;#{date.strftime(&quot;%Y-%m-%d&quot;)}-#{title.to_url}.markdown&quot;
+  end
+end
+
+posts = [Post.new]
+
+KEYWORDS = /(AUTHOR|TITLE|STATUS|COMMENTS|CATEGORY|DATE): (.*)/
+
+def attr_and_value(line)
+  line =~ KEYWORDS
+  [&quot;#{$1.downcase}=&quot;, $2]
+end
+
+puts &quot; # Reading from data &#39;#{ARGV[0]}&#39; ...&quot;
+
+puts &quot; # Generating Markdown ...&quot;
+
+comment_section = false
+
+export.each do |line|
+  if line.strip == &quot;--------&quot;
+    posts &lt;&lt; Post.new
+    print &#39;.&#39;
+    comment_section = false
+    next
+  end
+
+  next if comment_section
+
+  case line.strip
+  when KEYWORDS
+    posts.last.send(*attr_and_value(line))
+  when /BODY/
+    next
+  when &quot;-----&quot;
+    next
+  when /COMMENT:/
+    comment_section = true
+    next
+  else
+    posts.last.body &lt;&lt; line
+  end
+end
+
+puts
+puts &quot; # Writing files to #{target_dir} ...&quot;
+`mkdir -p #{target_dir}`
+`cd #{target_dir} &amp;&amp; rm -rf _posts &amp;&amp; mkdir _posts`
+
+ok, fails = 0, 0
+
+posts.each do |post|
+  begin
+    File.open(File.join(target_dir, &quot;_posts&quot;, post.file_name), &quot;w+&quot;) { |f| f.puts post.render }
+    puts &quot; -&gt; #{post.file_name}&quot;
+    ok += 1
+  rescue
+    puts &quot; # Could not write file for &#39;#{post.title}&#39;&quot;
+    fails += 1
+  end
+end
+
+puts
+puts &quot; # All done! (#{ok}/#{fails})&quot;
+</code></pre></noscript></div>
+</p>
 ]]></content>
   </entry>
   

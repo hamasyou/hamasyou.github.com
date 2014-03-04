@@ -1,0 +1,1538 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta name="google-site-verification" content="0KEsMQaWAcvp2KBqvHmWsJ9rrIAXrxZCpFz-UBS9w9c" />
+  <meta charset="utf-8" />
+  <title>Rubyベストプラクティス -プロフェッショナルによるコードとテクニック - それはBooks</title>
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+  <meta name="description" content="本書は、Ruby プログラミングの中級者向け指南書のようなものです。様々なコーディングテクニック（例えば、順序付き引数の使いどころ、ブロックの使い方、メソッド名のつけ方、メタプログラミング、関数型プログラミングテクニック、プロジェクトでRubyを使う際の慣習などなど）が満載です。 &hellip;">
+  <meta name="keywords" content="978-4873114453,4873114454,Ruby,ベストプラクティス,コーディングテクニック,良書">
+
+  
+
+
+<meta property="og:title" content="Rubyベストプラクティス -プロフェッショナルによるコードとテクニック - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2010/09/17/4873114454/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="本書は、Ruby プログラミングの中級者向け指南書のようなものです。様々なコーディングテクニック（例えば、順序付き引数の使いどころ、ブロックの使い方、メソッド名のつけ方、メタプログラミング、関数型プログラミングテクニック、プロジェクトでRubyを使う際の慣習などなど）が満載です。 &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2010/09/17/4873114454/">
+  
+  
+
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  <link href="/rss.xml" rel="alternate" title="それはBooks" type="application/rss+xml">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/" title="コンピュータ・IT関係の書評やIT技術のぶろぐ">それはBooks</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+      <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives/">Archives</a></li>
+</ul>
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/atom.xml" rel="alternate" title="subscribe via Atom">
+            <img src="/images/feed-icon-28x28.png" />
+          </a>
+        </li>
+      </ul>
+
+      
+      <form class="navbar-form navbar-search navbar-right" action="http://google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="q" value="site:hamasyou.com" />
+          <input class="search-query form-control col-lg-8" type="text" name="q" data-results="0" placeholder="Search" />
+        </fieldset>
+      </form>
+      
+
+    </div>
+    <!-- /.nav-collapse -->
+  </div>
+</div>
+</nav>
+  <div id="container" role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9 col-lg-offset-1 col-lg-8" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">Rubyベストプラクティス -プロフェッショナルによるコードとテクニック</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-09-17T22:12:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 17<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
+    
+      <a class="tag label label-info" href="/blog/tags/kodeingu/" rel="nofollow">コーディング</a>
+    
+      <a class="tag label label-info" href="/blog/tags/besutopurakuteisu/" rel="nofollow">ベストプラクティス</a>
+    
+      <a class="tag label label-info" href="/blog/tags/orairi/" rel="nofollow">オライリー</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/09/17/4873114454/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2010/09/17/4873114454/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2010/09/17/4873114454/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2010/09/17/4873114454/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2010/09/17/4873114454/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2010/09/17/4873114454/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2010/09/17/4873114454/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4873114454?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114454" title="Rubyベストプラクティス -プロフェッショナルによるコードとテクニック" rel="external nofollow">
+      <img src="http://ec3.images-amazon.com/images/I/51IV0ZuH%2BhL._SL500_AA300_.jpg" class="asin-thumbnail" alt="Rubyベストプラクティス -プロフェッショナルによるコードとテクニック" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4873114454?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114454" title="Rubyベストプラクティス -プロフェッショナルによるコードとテクニック" rel="external nofollow">Rubyベストプラクティス -プロフェッショナルによるコードとテクニック</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>Gregory Brown (著), 高橋 征義 (監訳), 笹井 崇司 (翻訳)</dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>オライリージャパン</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4873114454?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114454" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+<div class="entry-content"><p>本書は、Ruby プログラミングの中級者向け指南書のようなものです。様々なコーディングテクニック（例えば、順序付き引数の使いどころ、ブロックの使い方、メソッド名のつけ方、メタプログラミング、関数型プログラミングテクニック、プロジェクトでRubyを使う際の慣習などなど）が満載です。</p>
+
+<p>さすがオライリーといえる深い内容になっていて、Ruby を始めたばかりの人よりは、<em>一通り Ruby でプログラミングをしたことがある人、Ruby を使いこなせているのか不安な人が読むと良い</em>と思います。</p>
+
+<p>今すぐ使えるテクニック！とはちょっと違うかもしれませんが、Ruby の動的な振る舞いや柔軟な拡張性を理解してさらに Ruby を使いこなすための一冊になると思います。</p>
+
+<p>なお、<strong class="text-danger">Ruby1.9に対応</strong>していますので、サンプルコードは Ruby1.9で動きますし、最新 Ruby ではどうするの？を一発で解決できるようになっています。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<h2>目次</h2>
+
+
+
+
+<ul class="none">
+<li>１章 テストでコードを駆動する</li>
+<li>２章 美しい API を設計する</li>
+<li>３章 動的な機能を使いこなす</li>
+<li>４章 テキスト処理とファイル管理</li>
+<li>５章 関数型プログラミングのテクニック</li>
+<li>６章 うまういかないとき</li>
+<li>７章 文化の壁を取り払う</li>
+<li>８章 上手なプロジェクトメンテナンス</li>
+<li>付録Ａ 後方互換性のあるコードを書く</li>
+<li>付録Ｂ Ruby の標準ライブラリを活用する</li>
+<li>付録Ｃ Ruby ワーストプラクティス</li>
+</ul>
+<h2>２章 美しい API を設計する - 覚書</h2>
+
+
+
+
+<h3>メソッドの引数にデフォルト値を持つパラメータが複数ある場合は擬似キーワード引数を使う</h3>
+
+
+<p>デフォルト値をもつパラメータが複数ある場合は、Ruby の「メソッドの引数の末尾に要素がひとつ以上のハッシュを渡す際は中括弧（{,}）を省略できる」という仕様を利用して、<strong class="text-danger">擬似キーワード引数</strong>が使えます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+</span><span class="line">  <span class="n">options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">nickname</span><span class="p">:</span> <span class="s2">"hamasyou"</span><span class="p">,</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">28</span> <span class="p">}</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+</span><span class="line">  <span class="nb">p</span> <span class="s2">"Hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">! "</span> <span class="o">+</span> <span class="n">options</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">hello</span><span class="p">(</span><span class="s2">"Syougo"</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; "Hello Syougo! {:nickname=&gt;"hamasyou", :age=&gt;28}"</span>
+</span><span class="line"><span class="n">hello</span><span class="p">(</span><span class="s2">"Syougo"</span><span class="p">,</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">27</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; "Hello Syougo! {:nickname=&gt;"hamasyou", :age=&gt;27}"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>インターフェースをシンプルにするためのブロック</h3>
+
+
+<p>Rails の Configuration に使われているオブジェクトショートカットのことです。次のようなコードを</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="n">server</span> <span class="o">=</span> <span class="no">Server</span><span class="o">.</span><span class="n">new</span>
+</span><span class="line">
+</span><span class="line"><span class="n">server</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="sr">/hello/i</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"Hello from server at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+</span><span class="line"><span class="n">server</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="sr">/goodby/i</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"Goodby from server at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+</span><span class="line"><span class="n">server</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="sr">/name is (\w+)/</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="s2">"Nice to meet you </span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">!"</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="n">server</span><span class="o">.</span><span class="n">run</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>次のように書けるようにします。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="no">Server</span><span class="o">.</span><span class="n">run</span> <span class="k">do</span>
+</span><span class="line">  <span class="n">handle</span><span class="p">(</span><span class="sr">/hello/i</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"Hello from server at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+</span><span class="line">  <span class="n">handle</span><span class="p">(</span><span class="sr">/goodby/i</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"Goodby from server at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+</span><span class="line">  <span class="n">handle</span><span class="p">(</span><span class="sr">/name is (\w+)/</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="s2">"Nice to meet you </span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">!"</span> <span class="p">}</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>これを実現するには、次のようなコードになります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Server</span>
+</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">run</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">    <span class="n">server</span> <span class="o">=</span> <span class="no">Server</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+</span><span class="line">    <span class="n">server</span><span class="o">.</span><span class="n">instance_eval</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">    <span class="n">server</span><span class="o">.</span><span class="n">run</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>インスタンス化したオブジェクトの <em>instance_eval()</em> メソッドにブロックを渡すことで、ブロックをそのインスタンスのコンテキストで実行しています。</p>
+
+<p>この方法を使うと、ブロックはインスタンス化したオブジェクトのコンテキストで実行されるため、ブロックのスコープ内で定義されたローカル変数にしかアクセスできません。つまり、次のコードは<em>動きません</em>。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">MyClass</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">nickname</span>
+</span><span class="line">    <span class="s2">"hamasyou"</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">my_method</span>
+</span><span class="line">    <span class="no">Server</span><span class="o">.</span><span class="n">run</span> <span class="k">do</span>
+</span><span class="line">      <span class="nb">p</span> <span class="s2">"Hello </span><span class="si">#{</span><span class="n">nickname</span><span class="si">}</span><span class="s2">"</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">my_method</span>
+</span><span class="line"><span class="c1"># =&gt; NameError: undefined local variable or method `nickname' for #&lt;Server:0x000001020478a8&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>この問題を解決するには、ブロックをインスタンスのコンテキストで評価するのではなく、クロージャとして実行すればよいです。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">Server</span>
+</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">run</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">    <span class="n">server</span> <span class="o">=</span> <span class="no">Server</span><span class="o">.</span><span class="n">new</span>
+</span><span class="line">    <span class="n">block</span><span class="o">.</span><span class="n">arity</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">?</span> <span class="n">server</span><span class="o">.</span><span class="n">instance_eval</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span> <span class="p">:</span> <span class="n">block</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">server</span><span class="p">)</span>
+</span><span class="line">    <span class="n">server</span><span class="o">.</span><span class="n">run</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">MyClass</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">nickname</span>
+</span><span class="line">    <span class="s2">"hamasyou"</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">my_method</span>
+</span><span class="line">    <span class="no">Server</span><span class="o">.</span><span class="n">run</span> <span class="k">do</span> <span class="o">|</span><span class="n">server</span><span class="o">|</span>
+</span><span class="line">      <span class="nb">p</span> <span class="s2">"Hello </span><span class="si">#{</span><span class="n">nickname</span><span class="si">}</span><span class="s2">"</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">my_method</span>
+</span><span class="line"><span class="c1"># =&gt; "Hello hamasyou"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>block.arity を使ってコードブロックに引数がいくつあるかを調べて、引数がひとつ以上あればブロックをクロージャとして呼び出すようにしています。　</p>
+
+<h3>method? と method! の意味</h3>
+
+
+<p><section></section></p>
+
+<h4>method? 疑問符</h4>
+
+
+<p><em>method?</em> のようにメソッド名の末尾に疑問符（?）をつけるのは目的は、<strong class="text-danger">オブジェクトに何かを問い合わせる</strong>ことになります。条件分岐などにメソッドを利用する際に使えます。</p>
+
+<p>疑問符をつけたメソッドの戻り値は、<em>true</em> か <em>false or nil</em> を返すようにします。</p>
+
+<p></p>
+
+<p><section></section></p>
+
+<h4>method! 感嘆符</h4>
+
+
+<p><em>method!</em> のようにメソッド名の末尾に感嘆符（!）をつける目的は、<strong class="text-danger">このメソッドは特別だ、「注意しろ！」</strong>になります。</p>
+
+<blockquote>
+<p>よくある誤解は、受け取ったオブジェクトを変更することを知らせたいときに感嘆符を使う、というものだ。たいていの場合、感嘆符は私たちに何か警告をするものだからだろう。</p>
+<footer><strong>method?とmethod!が何を意味しているか理解しよう - 本書 P.57</strong></footer>
+</blockquote>
+
+
+<p>Ruby の組み込みクラスのメソッドには破壊的メソッドでも感嘆符がついているのとついていないものがあります。</p>
+
+<p>これはすなわち、メソッドに感嘆符をつける目的はこのメソッドが特別であることを知らせるのであって、破壊的であるとか危険であることを知らせるのではないということです。</p>
+
+<blockquote>
+<p>したがって、同じようなことをする　foo() メソッドがないのに foo!() メソッドだけがあるのは、あまり意味のないことだ。（中略）感嘆符は必ずしもそのメソッドが<em>破壊的な操作</em>をすることを意味するわけではないと考えると、&#8230;</p>
+<footer><strong>本書 P.59</strong></footer>
+</blockquote>
+
+
+<p></p>
+
+<h3>２章のポイント</h3>
+
+
+
+
+<h4>引数</h4>
+
+
+
+
+<ul>
+<li>options ハッシュによる擬似キーワード引数が使えないか検討する</li>
+<li>順序付き引数と options ハッシュを組み合わせて使うときは、配列 splat 演算子（*）は使わない</li>
+<li>必須パラメータは、options ハッシュには入れないこと。必須パラメータは順序付き引数として扱う</li>
+</ul>
+<h4>ブロック</h4>
+
+
+
+
+<ul>
+<li>前処理後処理の間に、ブロックを yield するようなヘルパメソッドを検討する</li>
+<li>&amp;block と instance_eval() を組み合わせると任意のオブジェクトのコンテキストでブロックを実行できる</li>
+<li>yield と block.call の戻り値は、与えられた戻り値と同じにする</li>
+</ul>
+<h2>３章 動的な機能を使いこなす - 覚書</h2>
+
+
+
+
+<h3>define_method() を使って動的にインスタンスメソッドを定義する</h3>
+
+
+<p>メソッドを定義するというのは、クラスのインスタンスメソッドを定義するということなので、動的にインスタンスメソッドを定義するにはクラスのスコープで define_method() を呼び出します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">MyClass</span>
+</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">define</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">    <span class="n">define_method</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">obj</span> <span class="o">=</span> <span class="no">MyClass</span><span class="o">.</span><span class="n">new</span>
+</span><span class="line"><span class="n">obj</span><span class="o">.</span><span class="n">hello</span>
+</span><span class="line"><span class="c1"># =&gt; NoMethodError: undefined method `hello'</span>
+</span><span class="line">
+</span><span class="line"><span class="no">MyClass</span><span class="o">.</span><span class="n">define</span><span class="p">(</span><span class="ss">:hello</span><span class="p">)</span> <span class="k">do</span>
+</span><span class="line">  <span class="s2">"Hello World"</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">obj</span><span class="o">.</span><span class="n">hello</span>
+</span><span class="line"><span class="c1"># =&gt; "Hello World"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>define_method() を使って動的にクラスメソッドを定義する</h3>
+
+
+<p>クラスメソッドを定義するには、クラスの特異クラスにメソッドを定義する必要があります。特異クラスをオープンするには、class &lt;&lt; obj 構文を使います。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">MyClass</span>
+</span><span class="line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">define</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">    <span class="n">obj</span> <span class="o">=</span> <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span><span class="p">;</span> <span class="nb">self</span><span class="p">;</span> <span class="k">end</span>
+</span><span class="line">    <span class="n">obj</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:define_method</span><span class="p">,</span> <span class="n">method_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">MyClass</span><span class="o">.</span><span class="n">define</span><span class="p">(</span><span class="ss">:hello</span><span class="p">)</span> <span class="k">do</span>
+</span><span class="line">  <span class="s2">"Hello World"</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">MyClass</span><span class="o">.</span><span class="n">hello</span>
+</span><span class="line"><span class="c1"># =&gt; "Hello World"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><section></section></p>
+
+<h4>define_method() は private メソッド</h4>
+
+
+<p>define_method() は特異クラス上でプライベートになっているため、レシーバを指定して呼び出すには send() メソッドを使う必要があります。</p>
+
+<p></p>
+
+<h3>モジュールのメソッドをモジュールのクラスメソッドにする</h3>
+
+
+
+
+<pre>extend self</pre>
+
+
+<p>extend self を使うと、自信のインスタンスメソッドを特異クラスに定義することになりクラスメソッド化することができます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">MyModule</span>
+</span><span class="line">  <span class="kp">extend</span> <span class="nb">self</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">hello</span>
+</span><span class="line">    <span class="s2">"Hello World"</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">MyModule</span><span class="o">.</span><span class="n">hello</span>
+</span><span class="line"><span class="c1"># =&gt; "Hello World"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>３章のポイント</h3>
+
+
+
+
+<ul>
+<li>Ruby ではすべてのクラスがオープン。振る舞いを実行時に変更することができる</li>
+<li>オブジェクト毎の振る舞いは、class &lt;&lt; obj 構文を使ってオブジェクトの特異クラスにアクセスすることで実装できる</li>
+<li>拡張するときはできるだけオブジェクトごとの振る舞いを拡張するほうがよい。obj.extend() を使うようにする</li>
+<li>クラスもモジュールも動的につくることができる。メソッドを定義するためのブロックを受け付けるようにする</li>
+<li>モジュールをクラスに混ぜるとき、include を使うとインスタンスレベルで利用可能になり、extend を使うとクラスレベルで利用可能になる</li>
+<li>フックは特定のクラスやモジュールに実装することができ、それより下位のすべてを捕捉する</li>
+</ul>
+<h3>３章のまとめ</h3>
+
+
+<p>３章で学習したことが詰まったコードの読み解きです。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">NativeCampingRoutes</span>
+</span><span class="line">
+</span><span class="line">  <span class="kp">extend</span> <span class="nb">self</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">R</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span><span class="line">    <span class="n">route_lookup</span> <span class="o">=</span> <span class="n">routes</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">klass</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span>
+</span><span class="line">    <span class="n">meta</span> <span class="o">=</span> <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">klass</span><span class="p">;</span> <span class="nb">self</span><span class="p">;</span> <span class="k">end</span>
+</span><span class="line">    <span class="n">meta</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:define_method</span><span class="p">,</span> <span class="ss">:inherited</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">base</span><span class="o">|</span>
+</span><span class="line">      <span class="k">raise</span> <span class="s2">"Already defined"</span> <span class="k">if</span> <span class="n">route_lookup</span><span class="o">[</span><span class="n">url</span><span class="o">]</span>
+</span><span class="line">      <span class="n">route_lookup</span><span class="o">[</span><span class="n">url</span><span class="o">]</span> <span class="o">=</span> <span class="n">base</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">    <span class="n">klass</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">routes</span>
+</span><span class="line">    <span class="vi">@routes</span> <span class="o">||=</span> <span class="p">{}</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{})</span>
+</span><span class="line">    <span class="n">routes</span><span class="o">[</span><span class="n">url</span><span class="o">].</span><span class="n">new</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">module</span> <span class="nn">NativeCampingRoutes</span>
+</span><span class="line">  <span class="k">class</span> <span class="nc">Hello</span> <span class="o">&lt;</span> <span class="n">R</span> <span class="s1">'/hello'</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span class="line">      <span class="nb">puts</span> <span class="s2">"hello </span><span class="si">#{</span><span class="n">params</span><span class="o">[</span><span class="ss">:name</span><span class="o">]</span><span class="si">}</span><span class="s2">"</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">class</span> <span class="nc">Goodbye</span> <span class="o">&lt;</span> <span class="n">R</span> <span class="s1">'/goodbye'</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span class="line">      <span class="nb">puts</span> <span class="s2">"goodbye </span><span class="si">#{</span><span class="n">params</span><span class="o">[</span><span class="ss">:name</span><span class="o">]</span><span class="si">}</span><span class="s2">"</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="no">NativeCampingRoutes</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="s1">'/hello'</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"greg"</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; hello greg</span>
+</span><span class="line"><span class="no">NativeCampingRoutes</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="s1">'/goodbye'</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"joe"</span><span class="p">)</span>
+</span><span class="line"><span class="c1"># =&gt; goodbye joe</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h4>3行目 extend self</h4>
+
+
+<p>Object#extend は引数で渡されたモジュールのインスタンスメソッドを特異クラスのメソッド（つまり、クラスメソッド）として追加します。</p>
+
+<p>すなわち、この後に続く def で定義されたモジュールのインスタンスメソッドを自身のクラスメソッドに再定義しています。</p>
+
+<h4>6行目 route_lookup = routes</h4>
+
+
+<p>10行目で呼び出している define_method() メソッドに渡すブロックはクロージャなので、ローカル変数にアクセスできます。define_method() メソッド内で @routes にアクセスしたいので、ローカル変数に格納しています。</p>
+
+<h4>9行目 meta = class &lt;&lt; klass; self; end</h4>
+
+
+<p>10行目で定義する Class#inherited メソッドは、継承されるクラス（klass）のクラスメソッドとして定義します。クラスメソッドは特異クラスのメソッドとして定義する必要があるので、特異クラスを取り出しています。</p>
+
+<h4>10行目 meta.send(:define_method, :inherited) do |base|</h4>
+
+
+<p>define_method() メソッドは private メソッドなので、meta.define_method() という呼出はできません。</p>
+
+<p>そこで、send() メソッドを使って private メソッドを呼び出しています。特異クラスである meta に対して inherited メソッド（クラスが継承された際に呼び出されるフックメソッド）を定義しています。</p>
+
+<p>inherited メソッドは、呼び出される際に引数として継承先の子クラス（NativeCampingRoutes::Hello、NativeCampingRoutes::Goodbye）が渡されるので、ブロック引数の base として受け取っています。</p>
+
+<h4>14行目 klass</h4>
+
+
+<p>R() メソッドは継承元として使うことを想定しているので、クラスを返しています。</p>
+
+<h4>22行目 routes[url].new.get(params)</h4>
+
+
+<p>routes メソッドで返される @routes ハッシュに対して url をキーにアクセスします。</p>
+
+<p>R() メソッドで @routes[url] に継承先クラスが格納されているので、Class#new を使ってインスタンス化し、get() メソッドを呼び出しています。</p>
+
+<h4>27, 28行目 class Hello &lt; R &#8216;/hello&#8217;</h4>
+
+
+<p>定義した NativeCamppingRoutes モジュールのサブクラスとして Hello を定義し、R() メソッドで返される無名クラスを継承しています。</p>
+
+<p>クラスに get() メソッドを定義して、21行目の process メソッドでインスタンス化したオブジェクトから呼び出せるようにしています。</p>
+
+<h2>６章 うまくいかないとき - 覚書</h2>
+
+
+
+
+<h3>データ構造を確認するのに YAML がつかえる</h3>
+
+
+<p>YAML というデータシリアライゼーションのための標準ライブラリを使うと、データ構造をプリントしてくれる y() メソッドが使えるようになる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s2">"yaml"</span>
+</span><span class="line">
+</span><span class="line"><span class="n">data</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"hamasyou"</span><span class="p">,</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="ss">address</span><span class="p">:</span> <span class="p">{</span> <span class="ss">zip</span><span class="p">:</span> <span class="s2">"272-0000"</span><span class="p">,</span> <span class="ss">pref</span><span class="p">:</span> <span class="s2">"Chiba"</span><span class="p">,</span> <span class="ss">city</span><span class="p">:</span> <span class="s2">"Ichikawa"</span> <span class="p">}</span> <span class="p">}</span>
+</span><span class="line"><span class="n">y</span> <span class="n">data</span>
+</span><span class="line"><span class="c1">#---</span>
+</span><span class="line"><span class="c1">#:name: hamasyou</span>
+</span><span class="line"><span class="c1">#:age: 28</span>
+</span><span class="line"><span class="c1">#:address:</span>
+</span><span class="line"><span class="c1">#  :zip: 272-0000</span>
+</span><span class="line"><span class="c1">#  :pref: Chiba</span>
+</span><span class="line"><span class="c1">#  :city: Ichikawa</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h3>テストデータ生成用ライブラリ faker</h3>
+
+
+<p>テスト用のデータ生成に、Faker というライブラリが使えます。gem install faker でインストールできます。</p>
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">sudo gem install faker</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+<p>次のように使います。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s2">"faker"</span>
+</span><span class="line"><span class="nb">require</span> <span class="s2">"pp"</span>
+</span><span class="line">
+</span><span class="line"><span class="n">data</span> <span class="o">=</span> <span class="mi">5</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span>
+</span><span class="line">  <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="ss">Faker</span><span class="p">:</span><span class="ss">:Name</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="ss">phone</span><span class="p">:</span> <span class="ss">Faker</span><span class="p">:</span><span class="ss">:PhoneNumber</span><span class="o">.</span><span class="n">phone_number</span> <span class="p">}</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">pp</span> <span class="n">data</span>
+</span><span class="line"><span class="c1">#[{:name=&gt;"Johnathan Lowe III", :phone=&gt;"(859)707-2471 x1926"},</span>
+</span><span class="line"><span class="c1"># {:name=&gt;"Lucius Murray", :phone=&gt;"(760)338-6980"},</span>
+</span><span class="line"><span class="c1"># {:name=&gt;"Queen Beahan II", :phone=&gt;"1-085-613-9274 x52563"},</span>
+</span><span class="line"><span class="c1"># {:name=&gt;"Daniela Boyle", :phone=&gt;"956.964.3848"},</span>
+</span><span class="line"><span class="c1"># {:name=&gt;"Mrs. Jarret Wisozk", :phone=&gt;"(760)687-0168 x68429"}]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Faker で作れるダミーデータには次のようなものがあります。</p>
+
+<table class="table table-bordered">
+<tr>
+<th>クラス</th>
+<th>作れるデータ</th>
+<th>サンプル</th>
+</tr>
+<tr>
+<td>Faker::Address</td>
+<td>住所データ</td>
+<td><ul class="none">
+<li>zip_code<br>&#8220;15832-6995&#8221;</li>
+<li>city<br>&#8220;South Verlie&#8221;</li>
+</ul></td>
+</tr>
+<tr>
+<td>Faker::Company</td>
+<td>会社データ</td>
+<td><ul class="none">
+<li>name<br>&#8220;Carroll, Kuhlman and Glover&#8221;</li>
+<li>bs<br>&#8220;orchestrate vertical action-items&#8221;</li>
+</ul></td>
+</tr>
+<tr>
+<td>Faker::Internet</td>
+<td>ネットワークデータ</td>
+<td><ul class="none">
+<li>email<br>&#8220;wiley@andersoncrist.us&#8221;</li>
+<li>free_email<br>&#8220;aubree.waters@gmail.com&#8221;</li>
+<li>domain_name<br>&#8220;littel.com&#8221;</li>
+</ul></td>
+</tr>
+<tr>
+<td>Faker::Lorem</td>
+<td>文章データ</td>
+<td><ul class="none">
+<li>words<br>[&#8220;quaerat&#8221;, &#8220;blanditiis&#8221;, &#8220;qui&#8221;]</li>
+<li>sentences<br>[&#8220;Maiores dicta sed voluptas corrupti repudiandae eos aliquam eligendi.&#8221;, &#8220;Dolorem eius ut nam esse nihil illum.&#8221;, &#8220;Non sapiente accusamus maiores neque eum est ea.&#8221;]</li>
+</ul></td>
+</tr>
+<tr>
+<td>Faker::Name</td>
+<td>名前データ</td>
+<td><ul class="none">
+<li>name<br>&#8220;Nicklaus Swift&#8221;</li>
+<li>first_name<br>&#8220;Angus&#8221;</li>
+<li>last_name<br>&#8220;Morissette&#8221;</li>
+</ul></td>
+</tr>
+<tr>
+<td>Faker::PhoneNumber</td>
+<td>電話番号</td>
+<td><ul class="none"><li>phone_number<br>&#8220;024-597-6027 x86091&#8221;</li></ul></td>
+</tr>
+</table>
+<p>Faker::PhoneNumber::Formats に phone_number() メソッドで返される電話番号のフォーマットの一覧が入っています。テスト時にフォーマットをいじることで、phone_number() メソッドの戻り値の形式を変更できます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="ss">Faker</span><span class="p">:</span><span class="ss">:PhoneNumber</span><span class="o">::</span><span class="no">Formats</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"(###)##-####"</span><span class="p">,</span> <span class="s2">"###-####-####"</span><span class="o">]</span>
+</span><span class="line"><span class="ss">Faker</span><span class="p">:</span><span class="ss">:PhoneNumber</span><span class="o">::</span><span class="n">phone_number</span>
+</span><span class="line"><span class="c1"># =&gt; "(109)29-6592"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<h2>７章 文化の壁を取り払う - 覚書</h2>
+
+
+
+
+<h3>ソースコードのエンコーディングを明示する</h3>
+
+
+<p>Ruby1.9 から多言語対応に注意を払わなければいけなくなりました。<em>M17N（MultilingualizatioN）</em> です。</p>
+
+<p>M17N 可能なプロジェクトで作成するソースコードには、ソースコード中に<strong class="text-danger">マジックコメント</strong>を埋め込む必要があります。</p>
+
+<p>Ruby ソースコード中に #! がない限り、マジックコメントはファイルの一行目に書きます。#! がある場合は2行目に書きます。</p>
+
+<p>マジックコメントのフォーマットは次のとおりです。</p>
+
+<pre># coding: UTF-8</pre>
+
+
+
+
+<pre># -*- coding: utf-8 -*-</pre>
+
+
+
+
+<h3>ファイルを扱う場合</h3>
+
+
+<p>例えば、EUC-JP で書かれたファイルを UTF-8 で書かれた Ruby のソースコード上で処理したい場合、次のようにします。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"euc.txt"</span><span class="p">,</span> <span class="ss">encoding</span><span class="p">:</span> <span class="s2">"EUC-JP:UTF-8"</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span>
+</span><span class="line">  <span class="nb">p</span> <span class="n">line</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><em>encoding:</em> パラメータを指定してファイルを開きます。encoding パラメータは &#8220;&lt;ファイルのエンコード&gt;:&lt;処理するソースコードのエンコード&gt;&#8221; のように書きます。</p>
+
+<p>例の場合、EUC-JP で書かれた euc.txt ファイルを UTF-8 のソースコードで処理するので、encoding:&#8221;EUC-JP:UTF-8&#8221; としています。</p>
+
+<p>なお、ファイルのエンコーディングがソースコードのエンコーディングと同じ場合は、encoding: &#8220;UTF-8&#8221; と書くことができます。</p>
+
+<p class="option">encodingオプションを指定しない場合、Ruby は Encoding#default_external で指定されているエンコーディングでファイルを解釈しようとします。</p>
+
+
+
+
+<h3>バイナリファイルを扱う場合</h3>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="n">img</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"hoge.png"</span><span class="p">);</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>上記のようにバイナリデータを読み込んでいる場合は注意が必要です。Ruby1.9 からは encoding が指定されない場合、<em>Encoding#default_external</em> の値がエンコーディングとして使われます。</p>
+
+<p>そのため、read() メソッドで encoding を指定しないと、中身がバイナリデータであっても default_external のエンコーディングだと解釈されてしまいます。</p>
+
+<p>バイナリデータを読み込む際は、<em>File#binread()</em> メソッドを使うようにします。</p>
+
+<h3>閑話休題</h3>
+
+
+<p>７章の P.223 に L10N の話題が載っています。そこで見つけたソースコード。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="n">data</span> <span class="o">=</span> <span class="p">{</span> <span class="n">given_name</span><span class="p">:</span> <span class="s2">"姉ヶ崎"</span><span class="p">,</span> <span class="ss">surname</span><span class="p">:</span> <span class="s2">"寧々"</span> <span class="p">}</span>
+</span><span class="line"><span class="ss">Gibberish</span><span class="p">:</span><span class="ss">:Simple</span><span class="o">.</span><span class="n">use_language</span><span class="p">(</span><span class="ss">:ja</span><span class="p">)</span> <span class="k">do</span>
+</span><span class="line">  <span class="nb">p</span> <span class="n">T</span><span class="p">(</span><span class="s2">"{given_name}{surname}"</span><span class="p">,</span> <span class="o">[</span><span class="ss">:name</span><span class="p">,</span> <span class="n">data</span><span class="o">]</span><span class="p">)</span> <span class="c1">#=&gt; "姉ヶ崎寧々"</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>ね、寧々さん！！？</p>
+
+<h2>８章 プロジェクトメンテナンス - 覚書</h2>
+
+
+
+
+<h3>README ファイルに書くとよいこと</h3>
+
+
+
+
+<dl>
+<dt>Description（説明）</dt>
+<dd>なんのためのプロジェクトなのか、何を解決するものなのか、1〜2段落程度で説明する。</dd>
+<dt>Documentation（ドキュメント）</dt>
+<dd>プロジェクトの公開 API となっている主要なクラスを2〜3個紹介するとよい。</dd>
+<dt>Examples（サンプル）</dt>
+<dd>基本的な使い方、何が出来るのか？どうやってクラスを使うのか？の概要を説明するとよい</dd>
+<dt>Install（インストール方法）</dt>
+<dd>インストール手順が簡単であれば、README にインストール手順を書いておくとよい。</dd>
+<dt>Q&amp;A（質問の宛先）</dt>
+<dd>自分たちへの質問の方法を記述する。Eメール、電話、会社の住所などなど。</dd>
+</dl>
+<h3>ライブラリのレイアウト</h3>
+
+
+
+
+<h4>ライブラリディレクトリ</h4>
+
+
+<p>lib フォルダを作り、ひとつのファイルとひとつのサブディレクトリを用意します。</p>
+
+<p>ひとつのファイルとは、プロジェクト名と同じファイルになっており、依存関係のあるライブラリなどをロードするための出発点としての役割を果たすものになります。</p>
+
+<p>ひとつのサブディレクトリには、プロジェクト名と同じディレクトリ名にしておき、必要なライブラリやソースコードをすべてこの中に閉じ込める。</p>
+
+<pre>
+- lib
+  - csvparser/
+    - ...ライブラリ群...
+  - csvparser.rb
+</pre>
+
+
+<p>クラス名とファイル名の対応等は、<a href="http://shugo.net/ruby-codeconv/codeconv.html" rel="external nofollow" title="Ruby コーディング規約 - Shugo.net">Ruby コーディング規約 - Shugo.net</a> 等を参考にする。</p>
+
+<h4>実行ファイル</h4>
+
+
+<p>実行ファイルは bin ディレクトリに置く。</p>
+
+<h4>テストコード</h4>
+
+
+<p>テストコードは、test ディレクトリに置く。</p>
+
+<h4>サンプルコード</h4>
+
+
+<p>サンプルコードがあれば、examples ディレクトリに置く。</p>
+
+<h4>ここまでをまとめると</h4>
+
+
+<p>次のようなディレクトリ構成になる。</p>
+
+<pre>-Projectルート/
+  - README
+  - bin/
+  - examples/
+  - lib/
+    - csvparser/
+      - ...ソースコード...
+    - csvparser.rb
+  - test</pre></div>
+
+
+  
+
+<span class="byline author vcard hidden">Posted by <span class="fn">hamasyou</span></span>
+
+
+
+  <p>
+  <script type="text/javascript"><!--
+  amazon_ad_tag = "sorehabooks-22";
+  amazon_ad_width = "728";
+  amazon_ad_height = "90";
+  amazon_ad_logo = "hide";
+  amazon_ad_link_target = "new";
+  amazon_ad_discount = "remove";
+  amazon_color_border = "FAFAFA";
+  amazon_color_background = "FAFAFA";
+  amazon_color_text = "666666";
+  amazon_color_link = "3399F3";
+  amazon_color_price = "CD0200";
+  amazon_color_logo = "FF9900";//--></script>
+  <script type="text/javascript" src="http://ir-jp.amazon-adsystem.com/s/ads.js"></script>
+</p>
+
+  
+    
+  <hr />
+
+  <section>
+    <div class="related_posts">
+      <h3 class="h1">関連記事</h3>
+      <ul>
+        
+        <li><a href="/blog/2012/09/23/4048860690/">Clean Coder プロフェッショナルプログラマへの道</a></li>
+        
+        <li><a href="/blog/2012/05/26/4822234630/">まつもとゆきひろ コードの未来</a></li>
+        
+        <li><a href="/blog/2014/02/21/functional-javascript/">JavaScriptで学ぶ関数型プログラミング</a></li>
+        
+        <li><a href="/blog/2014/02/14/4873113636/">ビューティフルコード</a></li>
+        
+        <li><a href="/blog/2012/09/27/487311568X/">モバイルデザインパターン― ユーザーインタフェースのためのパターン集</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-09-17T22:12:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 17<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
+    
+      <a class="tag label label-info" href="/blog/tags/kodeingu/" rel="nofollow">コーディング</a>
+    
+      <a class="tag label label-info" href="/blog/tags/besutopurakuteisu/" rel="nofollow">ベストプラクティス</a>
+    
+      <a class="tag label label-info" href="/blog/tags/orairi/" rel="nofollow">オライリー</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/09/17/4873114454/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2010/09/17/4873114454/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2010/09/17/4873114454/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2010/09/17/4873114454/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2010/09/17/4873114454/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2010/09/17/4873114454/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2010/09/17/4873114454/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+      
+
+      <div class="text-right"><a href="javascript:void(0)" title="Scroll to Top" class="scroll-to-top"><i class="fa fa-arrow-up"> Back to Top</i></a></div>
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2010/09/15/titanium-xml2json-xml-json/" title="Previous Post:
+      [Titanium] Titanium 版 XML2JSON - XML を JSON に変換する"><i class="fa fa-arrow-circle-left"></i> [Titanium] Titanium 版 ...</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2010/09/20/mac-os-x-windows-winebottler/"
+                            title="Next Post: Mac OS X で Windows アプリケーションを動かす WineBottler">Mac OS X で Windows アプリ... <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+    <div class="visible-md visible-lg"><div id="back-to-top" class="scroll-to-top" style="display: block;"><a href="#">Back to Top</a></div></div>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well aboutme vcard">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail photo" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li><span class="fn">濱田章吾</span></li>
+        <li><span class="nickname">hamasyou</span></li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow" title="Facebook"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow" title="GitHub"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow" title="E-mail"><i class="fa fa-envelope-o"></i></a></li>
+          <li><a href="http://mountposition.co.jp/" rel="external nofollow" title="MountPosition Inc."><i class="fa fa-building-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <span class="small">Ruby、JavaScript、Objective-C、PHP、Javaなど一通りできます。Web系の方が強いですがスマホアプリもできます。開発案件あればお声がけください。</span>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/04/canonical-url/">canonicalなURLってなにがいいんだろう？</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/01/4274065979/">ハッカーと画家 コンピュータ時代の創造者たち</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/25/python/">Pythonメモ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/23/third-party-javascript/">サードパーティJavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/22/readable-blog-unreadable-blog/">読みやすいブログ、読みにくいブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/21/functional-javascript/">JavaScriptで学ぶ関数型プログラミング</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/21/hugo/">静的サイトを素早く構築するためにGoLangで作られたジェネレータHugo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/20/rails4-transaction/">Rails4でtransactionの分離レベルを設定する</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/20/capistrano3/">Capistrano3をRailsで使ってみた感想</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/19/rails-i18n-localize/">RailsのI18n.localizeでnilもゆるすようにすると捗る</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">103</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">117</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+<section class="panel panel-default taglist hidden-xs">
+  <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+  <div class="list-group">
+    <ul class="list-inline list-group-item"><li><a class="label label-default" href="/blog/tags/activerecord/" rel="nofollow">ActiveRecord</a></li><li><a class="label label-default" href="/blog/tags/ajax/" rel="nofollow">Ajax</a></li><li><a class="label label-default" href="/blog/tags/alloy/" rel="nofollow">Alloy</a></li><li><a class="label label-default" href="/blog/tags/amazon/" rel="nofollow">Amazon</a></li><li><a class="label label-default" href="/blog/tags/android/" rel="nofollow">Android</a></li><li><a class="label label-default" href="/blog/tags/ant/" rel="nofollow">Ant</a></li><li><a class="label label-default" href="/blog/tags/aop/" rel="nofollow">AOP</a></li><li><a class="label label-default" href="/blog/tags/apache/" rel="nofollow">Apache</a></li><li><a class="label label-default" href="/blog/tags/api/" rel="nofollow">API</a></li><li><a class="label label-default" href="/blog/tags/app-store/" rel="nofollow">App Store</a></li><li><a class="label label-default" href="/blog/tags/aspectj/" rel="nofollow">AspectJ</a></li><li><a class="label label-default" href="/blog/tags/atl/" rel="nofollow">ATL</a></li><li><a class="label label-default" href="/blog/tags/aws/" rel="nofollow">AWS</a></li><li><a class="label label-default" href="/blog/tags/bbs/" rel="nofollow">BBS</a></li><li><a class="label label-default" href="/blog/tags/blog/" rel="nofollow">Blog</a></li><li><a class="label label-default" href="/blog/tags/c/" rel="nofollow">C</a></li><li><a class="label label-default" href="/blog/tags/c-number/" rel="nofollow">C#</a></li><li><a class="label label-default" href="/blog/tags/c-plus-plus/" rel="nofollow">C++</a></li><li><a class="label label-default" href="/blog/tags/canvas/" rel="nofollow">canvas</a></li><li><a class="label label-default" href="/blog/tags/capistrano3/" rel="nofollow">Capistrano3</a></li><li><a class="label label-default" href="/blog/tags/cgi/" rel="nofollow">CGI</a></li><li><a class="label label-default" href="/blog/tags/click/" rel="nofollow">Click</a></li><li><a class="label label-default" href="/blog/tags/cocos2d/" rel="nofollow">cocos2d</a></li><li><a class="label label-default" href="/blog/tags/code/" rel="nofollow">CODE</a></li><li><a class="label label-default" href="/blog/tags/com/" rel="nofollow">COM</a></li><li><a class="label label-default" href="/blog/tags/commons/" rel="nofollow">Commons</a></li><li><a class="label label-default" href="/blog/tags/css/" rel="nofollow">CSS</a></li><li><a class="label label-default" href="/blog/tags/css3/" rel="nofollow">CSS3</a></li><li><a class="label label-default" href="/blog/tags/cygwin/" rel="nofollow">Cygwin</a></li><li><a class="label label-default" href="/blog/tags/dao/" rel="nofollow">DAO</a></li><li><a class="label label-default" href="/blog/tags/dbunit/" rel="nofollow">DBUnit</a></li><li><a class="label label-default" href="/blog/tags/di/" rel="nofollow">DI</a></li><li><a class="label label-default" href="/blog/tags/direct3d/" rel="nofollow">Direct3D</a></li><li><a class="label label-default" href="/blog/tags/djunit/" rel="nofollow">djUnit</a></li><li><a class="label label-default" href="/blog/tags/doa/" rel="nofollow">DOA</a></li><li><a class="label label-default" href="/blog/tags/dom/" rel="nofollow">DOM</a></li><li><a class="label label-default" href="/blog/tags/dreamweaver4/" rel="nofollow">Dreamweaver4</a></li><li><a class="label label-default" href="/blog/tags/dropbox/" rel="nofollow">Dropbox</a></li><li><a class="label label-default" href="/blog/tags/dsl/" rel="nofollow">DSL</a></li><li><a class="label label-default" href="/blog/tags/eclipse/" rel="nofollow">Eclipse</a></li><li><a class="label label-default" href="/blog/tags/ejb/" rel="nofollow">EJB</a></li><li><a class="label label-default" href="/blog/tags/facebook/" rel="nofollow">facebook</a></li><li><a class="label label-default" href="/blog/tags/ffftp/" rel="nofollow">FFFTP</a></li><li><a class="label label-default" href="/blog/tags/findbugs/" rel="nofollow">FindBugs</a></li><li><a class="label label-default" href="/blog/tags/fireworks4/" rel="nofollow">Fireworks4</a></li><li><a class="label label-default" href="/blog/tags/flash4/" rel="nofollow">FLASH4</a></li><li><a class="label label-default" href="/blog/tags/fql/" rel="nofollow">FQL</a></li><li><a class="label label-default" href="/blog/tags/gem/" rel="nofollow">gem</a></li><li><a class="label label-default" href="/blog/tags/geo/" rel="nofollow">geo</a></li><li><a class="label label-default" href="/blog/tags/git/" rel="nofollow">git</a></li><li><a class="label label-default" href="/blog/tags/github/" rel="nofollow">GitHub</a></li><li><a class="label label-default" href="/blog/tags/glade/" rel="nofollow">Glade</a></li><li><a class="label label-default" href="/blog/tags/gmail/" rel="nofollow">Gmail</a></li><li><a class="label label-default" href="/blog/tags/gmail/" rel="nofollow">GMail</a></li><li><a class="label label-default" href="/blog/tags/go/" rel="nofollow">Go</a></li><li><a class="label label-default" href="/blog/tags/golang/" rel="nofollow">GoLang</a></li><li><a class="label label-default" href="/blog/tags/google/" rel="nofollow">Google</a></li><li><a class="label label-default" href="/blog/tags/graph/" rel="nofollow">Graph</a></li><li><a class="label label-default" href="/blog/tags/gree/" rel="nofollow">GREE</a></li><li><a class="label label-default" href="/blog/tags/gtk/" rel="nofollow">GTK</a></li><li><a class="label label-default" href="/blog/tags/hibernate/" rel="nofollow">Hibernate</a></li><li><a class="label label-default" href="/blog/tags/html/" rel="nofollow">HTML</a></li><li><a class="label label-default" href="/blog/tags/html5/" rel="nofollow">HTML5</a></li><li><a class="label label-default" href="/blog/tags/hugo/" rel="nofollow">Hugo</a></li><li><a class="label label-default" href="/blog/tags/i18n/" rel="nofollow">I18n</a></li><li><a class="label label-default" href="/blog/tags/iconix/" rel="nofollow">ICONIX</a></li><li><a class="label label-default" href="/blog/tags/ie/" rel="nofollow">IE</a></li><li><a class="label label-default" href="/blog/tags/imap/" rel="nofollow">imap</a></li><li><a class="label label-default" href="/blog/tags/ios/" rel="nofollow">iOS</a></li><li><a class="label label-default" href="/blog/tags/iphone/" rel="nofollow">iPhone</a></li><li><a class="label label-default" href="/blog/tags/imodo/" rel="nofollow">iモード</a></li><li><a class="label label-default" href="/blog/tags/j2ee/" rel="nofollow">J2EE</a></li><li><a class="label label-default" href="/blog/tags/j2se/" rel="nofollow">J2SE</a></li><li><a class="label label-default" href="/blog/tags/java/" rel="nofollow">Java</a></li><li><a class="label label-default" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a></li><li><a class="label label-default" href="/blog/tags/jdk/" rel="nofollow">JDK</a></li><li><a class="label label-default" href="/blog/tags/jekyll/" rel="nofollow">Jekyll</a></li><li><a class="label label-default" href="/blog/tags/jndi/" rel="nofollow">JNDI</a></li><li><a class="label label-default" href="/blog/tags/jpmobile/" rel="nofollow">jpmobile</a></li><li><a class="label label-default" href="/blog/tags/jsdeferred/" rel="nofollow">JSDeferred</a></li><li><a class="label label-default" href="/blog/tags/jsf/" rel="nofollow">JSF</a></li><li><a class="label label-default" href="/blog/tags/json/" rel="nofollow">JSON</a></li><li><a class="label label-default" href="/blog/tags/jta/" rel="nofollow">JTA</a></li><li><a class="label label-default" href="/blog/tags/junit/" rel="nofollow">JUnit</a></li><li><a class="label label-default" href="/blog/tags/kaminari/" rel="nofollow">kaminari</a></li><li><a class="label label-default" href="/blog/tags/kimono/" rel="nofollow">kimono</a></li><li><a class="label label-default" href="/blog/tags/lifehack/" rel="nofollow">LifeHack</a></li><li><a class="label label-default" href="/blog/tags/linux/" rel="nofollow">Linux</a></li><li><a class="label label-default" href="/blog/tags/liquid/" rel="nofollow">Liquid</a></li><li><a class="label label-default" href="/blog/tags/mac/" rel="nofollow">Mac</a></li><li><a class="label label-default" href="/blog/tags/macosx/" rel="nofollow">MacOSX</a></li><li><a class="label label-default" href="/blog/tags/mda/" rel="nofollow">MDA</a></li><li><a class="label label-default" href="/blog/tags/mfc/" rel="nofollow">MFC</a></li><li><a class="label label-default" href="/blog/tags/microsoft-translator-api/" rel="nofollow">Microsoft Translator API</a></li><li><a class="label label-default" href="/blog/tags/mixi/" rel="nofollow">mixi</a></li><li><a class="label label-default" href="/blog/tags/movable-type/" rel="nofollow">Movable Type</a></li><li><a class="label label-default" href="/blog/tags/mvc/" rel="nofollow">MVC</a></li><li><a class="label label-default" href="/blog/tags/nokogiri/" rel="nofollow">Nokogiri</a></li><li><a class="label label-default" href="/blog/tags/nosql/" rel="nofollow">NoSQL</a></li><li><a class="label label-default" href="/blog/tags/o-slash-rmatupingu/" rel="nofollow">O/Rマッピング</a></li><li><a class="label label-default" href="/blog/tags/objective-c/" rel="nofollow">Objective-C</a></li><li><a class="label label-default" href="/blog/tags/octopress/" rel="nofollow">Octopress</a></li><li><a class="label label-default" href="/blog/tags/ocunit/" rel="nofollow">OCUnit</a></li><li><a class="label label-default" href="/blog/tags/opensocial/" rel="nofollow">OpenSocial</a></li><li><a class="label label-default" href="/blog/tags/os/" rel="nofollow">OS</a></li><li><a class="label label-default" href="/blog/tags/perl/" rel="nofollow">Perl</a></li><li><a class="label label-default" href="/blog/tags/php/" rel="nofollow">PHP</a></li><li><a class="label label-default" href="/blog/tags/plugin/" rel="nofollow">plugin</a></li><li><a class="label label-default" href="/blog/tags/pm/" rel="nofollow">PM</a></li><li><a class="label label-default" href="/blog/tags/postfix/" rel="nofollow">Postfix</a></li><li><a class="label label-default" href="/blog/tags/python/" rel="nofollow">python</a></li><li><a class="label label-default" href="/blog/tags/qiita/" rel="nofollow">qiita</a></li><li><a class="label label-default" href="/blog/tags/rails/" rel="nofollow">Rails</a></li><li><a class="label label-default" href="/blog/tags/rails3/" rel="nofollow">Rails3</a></li><li><a class="label label-default" href="/blog/tags/rails4/" rel="nofollow">Rails4</a></li><li><a class="label label-default" href="/blog/tags/rdbms/" rel="nofollow">RDBMS</a></li><li><a class="label label-default" href="/blog/tags/restful/" rel="nofollow">RESTful</a></li><li><a class="label label-default" href="/blog/tags/roa/" rel="nofollow">ROA</a></li><li><a class="label label-default" href="/blog/tags/rspec/" rel="nofollow">RSpec</a></li><li><a class="label label-default" href="/blog/tags/ruby/" rel="nofollow">Ruby</a></li><li><a class="label label-default" href="/blog/tags/ruby1-dot-9/" rel="nofollow">Ruby1.9</a></li><li><a class="label label-default" href="/blog/tags/s3/" rel="nofollow">S3</a></li><li><a class="label label-default" href="/blog/tags/se/" rel="nofollow">SE</a></li><li><a class="label label-default" href="/blog/tags/selinux/" rel="nofollow">SELinux</a></li><li><a class="label label-default" href="/blog/tags/seo/" rel="nofollow">SEO</a></li><li><a class="label label-default" href="/blog/tags/spec/" rel="nofollow">spec</a></li><li><a class="label label-default" href="/blog/tags/spring/" rel="nofollow">Spring</a></li><li><a class="label label-default" href="/blog/tags/sql/" rel="nofollow">SQL</a></li><li><a class="label label-default" href="/blog/tags/ssh/" rel="nofollow">SSH</a></li><li><a class="label label-default" href="/blog/tags/ssl/" rel="nofollow">SSL</a></li><li><a class="label label-default" href="/blog/tags/struts/" rel="nofollow">Struts</a></li><li><a class="label label-default" href="/blog/tags/struts2/" rel="nofollow">Struts2</a></li><li><a class="label label-default" href="/blog/tags/sublimetext2/" rel="nofollow">SublimeText2</a></li><li><a class="label label-default" href="/blog/tags/tcp-slash-ip/" rel="nofollow">TCP/IP</a></li><li><a class="label label-default" href="/blog/tags/tdd/" rel="nofollow">TDD</a></li><li><a class="label label-default" href="/blog/tags/textmate/" rel="nofollow">TextMate</a></li><li><a class="label label-default" href="/blog/tags/titanium/" rel="nofollow">Titanium</a></li><li><a class="label label-default" href="/blog/tags/uikit/" rel="nofollow">UIKit</a></li><li><a class="label label-default" href="/blog/tags/uml/" rel="nofollow">UML</a></li><li><a class="label label-default" href="/blog/tags/unix/" rel="nofollow">Unix</a></li><li><a class="label label-default" href="/blog/tags/uportal/" rel="nofollow">uPortal</a></li><li><a class="label label-default" href="/blog/tags/vmware/" rel="nofollow">VMWare</a></li><li><a class="label label-default" href="/blog/tags/web2-dot-0/" rel="nofollow">Web2.0</a></li><li><a class="label label-default" href="/blog/tags/weblogic/" rel="nofollow">WebLogic</a></li><li><a class="label label-default" href="/blog/tags/websaito/" rel="nofollow">Webサイト</a></li><li><a class="label label-default" href="/blog/tags/websabisu/" rel="nofollow">Webサービス</a></li><li><a class="label label-default" href="/blog/tags/windows/" rel="nofollow">Windows</a></li><li><a class="label label-default" href="/blog/tags/windows2000/" rel="nofollow">Windows2000</a></li><li><a class="label label-default" href="/blog/tags/windows98/" rel="nofollow">Windows98</a></li><li><a class="label label-default" href="/blog/tags/xml/" rel="nofollow">XML</a></li><li><a class="label label-default" href="/blog/tags/xp/" rel="nofollow">XP</a></li><li><a class="label label-default" href="/blog/tags/xsl/" rel="nofollow">XSL</a></li><li><a class="label label-default" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a></li><li><a class="label label-default" href="/blog/tags/falsehohonbiretuzi/" rel="nofollow">のほほんビレッジ</a></li><li><a class="label label-default" href="/blog/tags/aziyairu/" rel="nofollow">アジャイル</a></li><li><a class="label label-default" href="/blog/tags/atupudeto/" rel="nofollow">アップデート</a></li><li><a class="label label-default" href="/blog/tags/apuri/" rel="nofollow">アプリ</a></li><li><a class="label label-default" href="/blog/tags/arugorizumu/" rel="nofollow">アルゴリズム</a></li><li><a class="label label-default" href="/blog/tags/antipatan/" rel="nofollow">アンチパターン</a></li><li><a class="label label-default" href="/blog/tags/akitekutiya/" rel="nofollow">アーキテクチャ</a></li><li><a class="label label-default" href="/blog/tags/akitekuto/" rel="nofollow">アーキテクト</a></li><li><a class="label label-default" href="/blog/tags/ideiomu/" rel="nofollow">イディオム</a></li><li><a class="label label-default" href="/blog/tags/intahuesu/" rel="nofollow">インターフェース</a></li><li><a class="label label-default" href="/blog/tags/inhura/" rel="nofollow">インフラ</a></li><li><a class="label label-default" href="/blog/tags/uebudezain/" rel="nofollow">ウェブデザイン</a></li><li><a class="label label-default" href="/blog/tags/uebuyuzabiritei/" rel="nofollow">ウェブユーザビリティ</a></li><li><a class="label label-default" href="/blog/tags/enkodeingu/" rel="nofollow">エンコーディング</a></li><li><a class="label label-default" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a></li><li><a class="label label-default" href="/blog/tags/orairi/" rel="nofollow">オライリー</a></li><li><a class="label label-default" href="/blog/tags/opunsosu/" rel="nofollow">オープンソース</a></li><li><a class="label label-default" href="/blog/tags/gandamu/" rel="nofollow">ガンダム</a></li><li><a class="label label-default" href="/blog/tags/ganpura/" rel="nofollow">ガンプラ</a></li><li><a class="label label-default" href="/blog/tags/kibodosiyotokatuto/" rel="nofollow">キーボードショートカット</a></li><li><a class="label label-default" href="/blog/tags/giku/" rel="nofollow">ギーク</a></li><li><a class="label label-default" href="/blog/tags/kutukubutuku/" rel="nofollow">クックブック</a></li><li><a class="label label-default" href="/blog/tags/kuraudo/" rel="nofollow">クラウド</a></li><li><a class="label label-default" href="/blog/tags/kurasushe-ji/" rel="nofollow">クラス設計</a></li><li><a class="label label-default" href="/blog/tags/gemu/" rel="nofollow">ゲーム</a></li><li><a class="label label-default" href="/blog/tags/gemupuroguramingu/" rel="nofollow">ゲームプログラミング</a></li><li><a class="label label-default" href="/blog/tags/konpiyutaji-chu/" rel="nofollow">コンピュータ基礎</a></li><li><a class="label label-default" href="/blog/tags/kodeingu/" rel="nofollow">コーディング</a></li><li><a class="label label-default" href="/blog/tags/kodeingusutairu/" rel="nofollow">コーディングスタイル</a></li><li><a class="label label-default" href="/blog/tags/kodeingugui-yue/" rel="nofollow">コーディング規約</a></li><li><a class="label label-default" href="/blog/tags/kodorideingu/" rel="nofollow">コードリーディング</a></li><li><a class="label label-default" href="/blog/tags/kodorebiyu/" rel="nofollow">コードレビュー</a></li><li><a class="label label-default" href="/blog/tags/sanpuru/" rel="nofollow">サンプル</a></li><li><a class="label label-default" href="/blog/tags/saburetuto/" rel="nofollow">サーブレット</a></li><li><a class="label label-default" href="/blog/tags/sisutemushe-ji/" rel="nofollow">システム設計</a></li><li><a class="label label-default" href="/blog/tags/sisutemukai-fa/" rel="nofollow">システム開発</a></li><li><a class="label label-default" href="/blog/tags/sinanziyu/" rel="nofollow">シナンジュ</a></li><li><a class="label label-default" href="/blog/tags/siyotokatuto/" rel="nofollow">ショートカット</a></li><li><a class="label label-default" href="/blog/tags/sukureipingu/" rel="nofollow">スクレイピング</a></li><li><a class="label label-default" href="/blog/tags/sutairu/" rel="nofollow">スタイル</a></li><li><a class="label label-default" href="/blog/tags/sumatohuon/" rel="nofollow">スマートフォン</a></li><li><a class="label label-default" href="/blog/tags/sekiyuritei/" rel="nofollow">セキュリティ</a></li><li><a class="label label-default" href="/blog/tags/sohutouea/" rel="nofollow">ソフトウェア</a></li><li><a class="label label-default" href="/blog/tags/sohutoueaenziniaringu/" rel="nofollow">ソフトウェアエンジニアリング</a></li><li><a class="label label-default" href="/blog/tags/sosiyaruapuri/" rel="nofollow">ソーシャルアプリ</a></li><li><a class="label label-default" href="/blog/tags/sosiyarugemu/" rel="nofollow">ソーシャルゲーム</a></li><li><a class="label label-default" href="/blog/tags/turu/" rel="nofollow">ツール</a></li><li><a class="label label-default" href="/blog/tags/tesuto/" rel="nofollow">テスト</a></li><li><a class="label label-default" href="/blog/tags/tesutokodo/" rel="nofollow">テストコード</a></li><li><a class="label label-default" href="/blog/tags/tesutohuasuto/" rel="nofollow">テストファースト</a></li><li><a class="label label-default" href="/blog/tags/tesutoji-fa/" rel="nofollow">テスト技法</a></li><li><a class="label label-default" href="/blog/tags/tesutoqu-dong/" rel="nofollow">テスト駆動</a></li><li><a class="label label-default" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a></li><li><a class="label label-default" href="/blog/tags/detahuomatuto/" rel="nofollow">データフォーマット</a></li><li><a class="label label-default" href="/blog/tags/detabesu/" rel="nofollow">データベース</a></li><li><a class="label label-default" href="/blog/tags/detabesushe-ji/" rel="nofollow">データベース設計</a></li><li><a class="label label-default" href="/blog/tags/detamoderingu/" rel="nofollow">データモデリング</a></li><li><a class="label label-default" href="/blog/tags/detamoderu/" rel="nofollow">データモデル</a></li><li><a class="label label-default" href="/blog/tags/toranzakusiyon/" rel="nofollow">トランザクション</a></li><li><a class="label label-default" href="/blog/tags/domeinqu-dong/" rel="nofollow">ドメイン駆動</a></li><li><a class="label label-default" href="/blog/tags/doratuka/" rel="nofollow">ドラッカー</a></li><li><a class="label label-default" href="/blog/tags/netutowaku/" rel="nofollow">ネットワーク</a></li><li><a class="label label-default" href="/blog/tags/falseuhau/" rel="nofollow">ノウハウ</a></li><li><a class="label label-default" href="/blog/tags/hatuka/" rel="nofollow">ハッカー</a></li><li><a class="label label-default" href="/blog/tags/hadouea/" rel="nofollow">ハードウェア</a></li><li><a class="label label-default" href="/blog/tags/bainari/" rel="nofollow">バイナリ</a></li><li><a class="label label-default" href="/blog/tags/bizinesu/" rel="nofollow">ビジネス</a></li><li><a class="label label-default" href="/blog/tags/bizinesururu/" rel="nofollow">ビジネスルール</a></li><li><a class="label label-default" href="/blog/tags/bitugudeta/" rel="nofollow">ビッグデータ</a></li><li><a class="label label-default" href="/blog/tags/huonto/" rel="nofollow">フォント</a></li><li><a class="label label-default" href="/blog/tags/huremuwaku/" rel="nofollow">フレームワーク</a></li><li><a class="label label-default" href="/blog/tags/burogu/" rel="nofollow">ブログ</a></li><li><a class="label label-default" href="/blog/tags/puresuririsu/" rel="nofollow">プレスリリース</a></li><li><a class="label label-default" href="/blog/tags/purogurama/" rel="nofollow">プログラマ</a></li><li><a class="label label-default" href="/blog/tags/puroguramingu/" rel="nofollow">プログラミング</a></li><li><a class="label label-default" href="/blog/tags/puroguraminguyan-yu/" rel="nofollow">プログラミング言語</a></li><li><a class="label label-default" href="/blog/tags/besutopurakuteisu/" rel="nofollow">ベストプラクティス</a></li><li><a class="label label-default" href="/blog/tags/peapuro/" rel="nofollow">ペアプロ</a></li><li><a class="label label-default" href="/blog/tags/porugureamu/" rel="nofollow">ポールグレアム</a></li><li><a class="label label-default" href="/blog/tags/maindomatupu/" rel="nofollow">マインドマップ</a></li><li><a class="label label-default" href="/blog/tags/matusiyuatupu/" rel="nofollow">マッシュアップ</a></li><li><a class="label label-default" href="/blog/tags/manezimento/" rel="nofollow">マネジメント</a></li><li><a class="label label-default" href="/blog/tags/maketeingu/" rel="nofollow">マーケティング</a></li><li><a class="label label-default" href="/blog/tags/metapuroguramingu/" rel="nofollow">メタプログラミング</a></li><li><a class="label label-default" href="/blog/tags/memori/" rel="nofollow">メモリ</a></li><li><a class="label label-default" href="/blog/tags/memoriguan-li/" rel="nofollow">メモリ管理</a></li><li><a class="label label-default" href="/blog/tags/moziyuru/" rel="nofollow">モジュール</a></li><li><a class="label label-default" href="/blog/tags/moderingu/" rel="nofollow">モデリング</a></li><li><a class="label label-default" href="/blog/tags/moderuqu-dong/" rel="nofollow">モデル駆動</a></li><li><a class="label label-default" href="/blog/tags/mobairu/" rel="nofollow">モバイル</a></li><li><a class="label label-default" href="/blog/tags/yunitutotesuto/" rel="nofollow">ユニットテスト</a></li><li><a class="label label-default" href="/blog/tags/yuzaintahuesu/" rel="nofollow">ユーザインターフェース</a></li><li><a class="label label-default" href="/blog/tags/yusukesu/" rel="nofollow">ユースケース</a></li><li><a class="label label-default" href="/blog/tags/raihuhatuku/" rel="nofollow">ライフハック</a></li><li><a class="label label-default" href="/blog/tags/riachong/" rel="nofollow">リア充</a></li><li><a class="label label-default" href="/blog/tags/rihuakutaringu/" rel="nofollow">リファクタリング</a></li><li><a class="label label-default" href="/blog/tags/rezisutori/" rel="nofollow">レジストリ</a></li><li><a class="label label-default" href="/blog/tags/bing-xing-puroguramingu/" rel="nofollow">並行プログラミング</a></li><li><a class="label label-default" href="/blog/tags/ren-jian-xue/" rel="nofollow">人間学</a></li><li><a class="label label-default" href="/blog/tags/dan-ti-tesuto/" rel="nofollow">単体テスト</a></li><li><a class="label label-default" href="/blog/tags/wen-ti-jie-jue/" rel="nofollow">問題解決</a></li><li><a class="label label-default" href="/blog/tags/shi-bai-xue/" rel="nofollow">失敗学</a></li><li><a class="label label-default" href="/blog/tags/xin-li-xue/" rel="nofollow">心理学</a></li><li><a class="label label-default" href="/blog/tags/xi-dai/" rel="nofollow">携帯</a></li><li><a class="label label-default" href="/blog/tags/gai-shan/" rel="nofollow">改善</a></li><li><a class="label label-default" href="/blog/tags/wen-zi-kodo/" rel="nofollow">文字コード</a></li><li><a class="label label-default" href="/blog/tags/fang-xiang/" rel="nofollow">方向</a></li><li><a class="label label-default" href="/blog/tags/shi-jian-guan-li/" rel="nofollow">時間管理</a></li><li><a class="label label-default" href="/blog/tags/an-hao-hua/" rel="nofollow">暗号化</a></li><li><a class="label label-default" href="/blog/tags/jing-du/" rel="nofollow">経度</a></li><li><a class="label label-default" href="/blog/tags/wei-du/" rel="nofollow">緯度</a></li><li><a class="label label-default" href="/blog/tags/zi-zuo/" rel="nofollow">自作</a></li><li><a class="label label-default" href="/blog/tags/zhu-zuo-quan/" rel="nofollow">著作権</a></li><li><a class="label label-default" href="/blog/tags/jiao-wan/" rel="nofollow">角丸</a></li><li><a class="label label-default" href="/blog/tags/she-ji/" rel="nofollow">設計</a></li><li><a class="label label-default" href="/blog/tags/du-minikui/" rel="nofollow">読みにくい</a></li><li><a class="label label-default" href="/blog/tags/du-miyasui/" rel="nofollow">読みやすい</a></li><li><a class="label label-default" href="/blog/tags/du-mubeki/" rel="nofollow">読むべき</a></li><li><a class="label label-default" href="/blog/tags/ju-li/" rel="nofollow">距離</a></li><li><a class="label label-default" href="/blog/tags/da-ren-purogurama/" rel="nofollow">達人プログラマ</a></li><li><a class="label label-default" href="/blog/tags/kai-fa-fang-fa-lun/" rel="nofollow">開発方法論</a></li><li><a class="label label-default" href="/blog/tags/guan-shu-xing/" rel="nofollow">関数型</a></li><li><a class="label label-default" href="/blog/tags/jing-de-saito/" rel="nofollow">静的サイト</a></li></ul>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by Octopress</span>
+  <a href="javascript:void(0)" title="Scroll to Top" class="scroll-to-top pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-18255094-1', 'hamasyou.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  a('//widgets.getpocket.com/v1/j/btn.js?v=1','pocket-btn-js');
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2010/09/17/4873114454/';
+  var disqus_url = 'http://hamasyou.com/blog/2010/09/17/4873114454/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

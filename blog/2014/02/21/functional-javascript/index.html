@@ -1,0 +1,1276 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta name="google-site-verification" content="0KEsMQaWAcvp2KBqvHmWsJ9rrIAXrxZCpFz-UBS9w9c" />
+  <meta charset="utf-8" />
+  <title>JavaScriptで学ぶ関数型プログラミング - それはBooks</title>
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+  <meta name="description" content="本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。 &hellip;">
+  <meta name="keywords" content="JavaScript,関数型,プログラミング,9784873116600">
+
+  
+
+
+<meta property="og:title" content="JavaScriptで学ぶ関数型プログラミング - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2014/02/21/functional-javascript/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。 &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2014/02/21/functional-javascript/">
+  
+  
+
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  <link href="/rss.xml" rel="alternate" title="それはBooks" type="application/rss+xml">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/" title="コンピュータ・IT関係の書評やIT技術のぶろぐ">それはBooks</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+      <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives/">Archives</a></li>
+</ul>
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/atom.xml" rel="alternate" title="subscribe via Atom">
+            <img src="/images/feed-icon-28x28.png" />
+          </a>
+        </li>
+      </ul>
+
+      
+      <form class="navbar-form navbar-search navbar-right" action="http://google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="q" value="site:hamasyou.com" />
+          <input class="search-query form-control col-lg-8" type="text" name="q" data-results="0" placeholder="Search" />
+        </fieldset>
+      </form>
+      
+
+    </div>
+    <!-- /.nav-collapse -->
+  </div>
+</div>
+</nav>
+  <div id="container" role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9 col-lg-offset-1 col-lg-8" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">JavaScriptで学ぶ関数型プログラミング</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-02-21T19:39:56+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 21<span>st</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
+    
+      <a class="tag label label-info" href="/blog/tags/guan-shu-xing/" rel="nofollow">関数型</a>
+    
+      <a class="tag label label-info" href="/blog/tags/orairi/" rel="nofollow">オライリー</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/21/functional-javascript/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/02/21/functional-javascript/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/02/21/functional-javascript/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/02/21/functional-javascript/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4873116600?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116600&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="JavaScriptで学ぶ関数型プログラミング" rel="external nofollow">
+      <img src="http://ecx.images-amazon.com/images/I/414qGlNpcHL.AA300_.jpg" class="asin-thumbnail" alt="JavaScriptで学ぶ関数型プログラミング" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4873116600?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116600&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="JavaScriptで学ぶ関数型プログラミング" rel="external nofollow">JavaScriptで学ぶ関数型プログラミング</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>Michael Fogus (著), 和田 祐一郎 (翻訳)</dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>オライリージャパン</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4873116600?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116600&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+<div class="entry-content"><blockquote>
+<p>本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。JavaScriptビルトインのデータ型を上手に利用するための基本知識やJavaScriptにおける関数の持つ特性など、関数型プログラミングの技術とその考え方について解説します。また実際のJavaScriptコーディングに関数型プログラミングのエッセンスを加えるポイントをサンプルを使って丁寧に説明します。関数型プログラミングに精通した著者が書き下ろした本書は、テクニックを増やし、コーディングのイマジネーションを広げたいエンジニア必携の一冊です。</p>
+<footer><strong>内容紹介</strong></footer>
+</blockquote>
+
+
+<p>JavaScript は純粋な関数型プログラミング言語ではありません。が、<strong class="text-danger">関数型言語として JavaScript を理解し使用することでコードがより洗練され、読みやすいものになる</strong> はずという筆者の考えがこの本には現れています。</p>
+
+<p>JavaScript では関数型プログラミングは一つのスタイルにしかすぎず、必要な場面で適切に使うというアプローチをとることでよりよいコードや使いやすい関数になります。</p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+<h2>関数型プログラミング</h2>
+
+<p><img src="/images/2014-02-21-functional-javascript-02.jpg" alt="関数型プログラミング" class="img-thumbnail" title="関数型プログラミング"></p>
+
+<p>本書のおぼえがきです。本書の中から気になった箇所だけ抜き出しているので、意味が通じないかもしれません。。気になったら買って読んでみてください。</p>
+
+<h3>関数型プログラミングとは</h3>
+
+<blockquote><p>関数型プログラミングとは、値を抽象の単位に変換する関数を使用して行うプログラミングであり、それらを使ってソフトウェアシステムを構築することである。</p></blockquote>
+
+
+<p>オブジェクト指向では、問題領域をオブジェクトという単位に分解して対処していきますが、関数型プログラミングでは、問題を <strong class="text-danger">関数</strong> のパーツに分解します。</p>
+
+<p>オブジェクト指向のアプローチは問題を「<strong class="text-danger">名詞</strong>」に分解して行う傾向があるのに対して、関数型プログラミングでは、問題を「<strong class="text-danger">動詞</strong>」に分解する傾向があります。</p>
+
+<p>関数を通して、与えられた値を「<strong class="text-danger">変換</strong>」することができます。</p>
+
+<pre><code class="plain">markdown → toHTML → postProcess → modifyDOM
+         │        │             │
+      テキスト   HTML       編集されたHTML
+</code></pre>
+
+<h3>高階関数</h3>
+
+<p><strong class="text-danger">高階関数</strong> とは、関数を引数にとり新しい関数を生成して返す関数のことです。</p>
+
+<p>例えば、JavaScript の Array には <code>sort</code> 関数があります。<code>sort</code> は引数に <code>compareFunction</code> を取ります。値の大小を比較する関数を <code>lessOrEqual</code>、この関数を <code>compareFunction</code> の仕様に変換する関数を <code>compare</code> とします。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">lessOrEqual</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">x</span> <span class="o">&lt;=</span> <span class="nx">y</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">compare</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">))</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">))</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="nx">sort</span><span class="p">(</span><span class="nx">compare</span><span class="p">(</span><span class="nx">lessOrEqual</span><span class="p">));</span>
+</span><span class="line"><span class="c1">// =&gt; [-2, -1, -1, 0, 1, 10, 100]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>compare</code> 関数は大小比較を行う関数を引数にとり、<code>compareFunction</code> の仕様に則った関数を生成して返す高階関数になります。</p>
+
+<h3>JavaScript における関数型プログラミング</h3>
+
+<ul>
+<li>関数による抽象の定義（<code>existy</code> や <code>truthy</code>）</li>
+<li>関数を他の関数の引数に渡すことによる新たな動作の実現</li>
+</ul>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">x</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="kd">function</span> <span class="nx">truthy</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="nx">x</span> <span class="o">!==</span> <span class="kc">false</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">false</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">existy</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; [false, false, true, true, true]</span>
+</span><span class="line"><span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">false</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">truthy</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; [false, false, true, true, false]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>これこそが、<strong class="text-danger">関数型プログラミング</strong> です。関数型プログラミングは強力な <strong class="text-danger">データ抽象</strong> とともに実装されて役に立つものです。</p>
+
+<h3>命令型プログラミングと関数型プログラミングの違いの例</h3>
+
+<p>「99本のビール」の歌の歌詞を構築するプログラムを命令型プログラミングと関数型プログラミングで書いてみた例です。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>命令型プログラミング</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">lyrics</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class="line">
+</span><span class="line"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">bottles</span> <span class="o">=</span> <span class="mi">99</span><span class="p">;</span> <span class="nx">bottles</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">bottles</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">bottles</span> <span class="o">+</span> <span class="s1">'本のビールが残ってる'</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">bottles</span> <span class="o">+</span> <span class="s1">'本のビール'</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'ひとつ取って、隣に回せ'</span><span class="p">);</span>
+</span><span class="line">  <span class="k">if</span> <span class="p">(</span><span class="nx">bottles</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'もうビールは残ってない'</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>関数型プログラミングのアプローチで書くとこうなります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>関数型プログラミング</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="c1">// var _ = require('underscore');</span>
+</span><span class="line"><span class="kd">function</span> <span class="nx">lyricsSegment</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">chain</span><span class="p">([])</span>
+</span><span class="line">    <span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">n</span> <span class="o">+</span> <span class="s1">'本のビールが残ってる'</span><span class="p">)</span>
+</span><span class="line">    <span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">n</span> <span class="o">+</span> <span class="s1">'本のビール'</span><span class="p">)</span>
+</span><span class="line">    <span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'ひとつ取って、隣に回せ'</span><span class="p">)</span>
+</span><span class="line">    <span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">lyrics</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">          <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'もうビールは残ってない'</span><span class="p">);</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">})</span>
+</span><span class="line">    <span class="p">.</span><span class="nx">value</span><span class="p">();</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">song</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">,</span> <span class="nx">lyricGen</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+</span><span class="line">    <span class="kd">function</span><span class="p">(</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="nx">acc</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">lyricGen</span><span class="p">(</span><span class="nx">n</span><span class="p">));</span>
+</span><span class="line">    <span class="p">},</span> <span class="p">[]);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">song</span><span class="p">(</span><span class="mi">99</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">lyricSegment</span><span class="p">);</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><strong class="text-danger">命令型プログラミングは一度きりの実装となりがちで、再利用が難しいものになります</strong>。</p>
+
+<h3>コレクション中心プログラミング</h3>
+
+<p>関数型プログラミングは、<em>コレクションに入った多数のアイテムに同じ操作を適用するようなタスク</em> を行う際にとても便利です。</p>
+
+<p>一般的な関数型プログラミングによって主張されるコレクション中心の考え方のポイントは、その処理を行うために一貫性のある語彙を確立し、包括的に揃えた関数を再利用出来るようにすることです。</p>
+
+<blockquote>
+<p>10種類のデータ構造上で10の関数を動かすよりも、ひとつのデータ構造上で100の関数を動かすほうがよい。</p>
+<footer><strong>Alan Perlis</strong></footer>
+</blockquote>
+
+
+<p>関数型プログラミングでは、<strong class="text-danger">それぞれの関数がすこしずつデータを変換し、最後の解に至る</strong> ようにします。</p>
+
+<h3>値ではなく、関数を使え</h3>
+
+<p>ある値を何度か繰り返す関数はよい関数ですが、<strong class="text-danger">ある計算を何度か繰り返す関数のほうがよりよい</strong> 関数です。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>よい関数</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">repeat</span><span class="p">(</span><span class="nx">times</span><span class="p">,</span> <span class="nx">VALUE</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="nx">times</span><span class="p">),</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">VALUE</span><span class="p">;</span> <span class="p">});</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">'Major'</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; ["Major", "Major", "Major", "Major"]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>よりよい関数</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">repeatedly</span><span class="p">(</span><span class="nx">times</span><span class="p">,</span> <span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="nx">times</span><span class="p">),</span> <span class="nx">func</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">repeatedly</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'Major'</span><span class="p">;</span> <span class="p">});</span>
+</span><span class="line"><span class="c1">// =&gt; ["Major", "Major", "Major", "Major"]</span>
+</span><span class="line"><span class="nx">repeatedly</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="p">});</span>
+</span><span class="line"><span class="c1">// =&gt; [1, 3, 8]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>関数を作る関数を作る意義</h2>
+
+<h3>カリー化</h3>
+
+<p><img src="/images/2014-02-21-functional-javascript-01.jpg" alt="カリー化" class="img-thumbnail" title="カリー化"></p>
+
+<p>カリー化された関数というのは、<em>引数を一つ受け取るたびに新しい関数を返す関数</em> のことです。<code>invoker</code> 関数はカリー化された関数といえます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>カリー化された関数</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">invoker</span><span class="p">(</span><span class="s1">'reverse'</span><span class="p">,</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">reverse</span><span class="p">)([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]);</span>
+</span><span class="line"><span class="c1">// =&gt; [3,2,1]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>JavaScript は変数の値の変更に対しておおらかな言語です。オブジェクト指向のカプセル化のような事をする場合、クロージャを使うと便利です。</p>
+
+<p>クロージャを使うと、生成時のコンテキストにもとづいて特定の動作を行うように「<em>設定された</em>」関数を返すことができます。この設定された関数は外部からカプセル化されており、関数の抽象を高めます。</p>
+
+<p>カリー化された関数も同じ考え方になります。</p>
+
+<h3>JavaScript でカリー化を行う意味</h3>
+
+<p>まず、シンプルな高階関数をつくります。関数を引数に取り、引数をひとつだけ取るように限定された関数を返す関数です。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>curry</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">curry</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">func</span><span class="p">(</span><span class="nx">arg</span><span class="p">);</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>JavaScript の関数は <strong class="text-danger">引数をいくら渡してもエラーになりません</strong>。そこで、いくつかの「<em>専門化を行う</em>」引数をオプションで取る場合がよくあります。</p>
+
+<p>例えば <code>parseInt</code> という関数は、第2引数に n 進数の n をオプションで受け取ります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>parseInt</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nb">parseInt</span><span class="p">(</span><span class="s1">'11'</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; 11</span>
+</span><span class="line"><span class="nb">parseInt</span><span class="p">(</span><span class="s1">'11'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; 3</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>parseInt</code> を第一級関数として使うと第2引数が原因で混乱するケースがあります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="p">[</span><span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; [11, NaN, 3, 4]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>JavaScript の <code>map</code> は与えられた関数の第1引数に <em>要素</em>、第2引数に <em>インデックス</em>、第3引数に <em>元の配列</em> を渡します。そのため、こんな結果になってしまいます。</p>
+
+<p>ここで、先ほど定義した <code>curry</code> 関数を利用します。与えられた関数に一つだけ引数を渡すように強制してみます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="p">[</span><span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">curry</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">));</span>
+</span><span class="line"><span class="c1">// =&gt; [11, 11, 11, 11]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>引数を2つ取るようにする <code>curry2</code> は次のようになります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>curry2</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">curry2</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">secondArg</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstArg</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="nx">func</span><span class="p">(</span><span class="nx">firstArg</span><span class="p">,</span> <span class="nx">secondArg</span><span class="p">);</span>
+</span><span class="line">    <span class="p">};</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">parseIntByBinary</span> <span class="o">=</span> <span class="nx">curry2</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">)(</span><span class="mi">2</span><span class="p">);</span>
+</span><span class="line"><span class="nx">parseIntByBinary</span><span class="p">(</span><span class="s1">'111'</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; 7</span>
+</span><span class="line"><span class="nx">parseIntByBinary</span><span class="p">(</span><span class="s1">'10'</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; 2</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>このように、<strong class="text-danger">カリー化は JavaScript の関数の動作を「専門化」させるための有効なテクニック</strong> になります。</p>
+
+<h2>再帰</h2>
+
+<p><img src="/images/2014-02-21-functional-javascript-03.jpg" alt="再帰" class="img-thumbnail" title="再帰"></p>
+
+<p>再帰が関数型プログラミングに重要である3つの理由。</p>
+
+<ul>
+<li>共通の問題のサブセットに単一の抽象を使用する</li>
+<li>可変の状態を隠蔽することができる</li>
+<li>遅延評価や無限データ構造の処理を行う手段のひとつ</li>
+</ul>
+<p>配列の長さを調べる関数を再帰の考え方で解くと。</p>
+
+<ol>
+<li>もし配列が空であれば長さは0</li>
+<li>配列の最初の要素を取り出し、残りを自身の関数に渡した実行結果に1を加える</li>
+</ol>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>length</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">length</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">if</span> <span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">(</span><span class="nx">array</span><span class="p">))</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">length</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">rest</span><span class="p">(</span><span class="nx">array</span><span class="p">));</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>再帰をうまく実装するヒントは、「<strong class="text-danger">値は大きな問題に内包された小さな問題によって組み立てられるものである</strong>」と認識することです。</p>
+
+<p><em>基本的な場合を考える</em> ことで、分解の最初の一歩を踏み出しやすくなります。</p>
+
+<h2>純粋関数と冪等とデータの不変性</h2>
+
+<p><img src="/images/2014-02-21-functional-javascript-05.jpg" alt="データの普遍性" class="img-thumbnail" title="データの普遍性"></p>
+
+<h3>純粋関数</h3>
+
+<p><strong class="text-danger">純粋関数</strong> とは、その関数が外部に一切の影響を与えないことが静的に保証されている関数です。純粋性のルールはつぎのようになります。</p>
+
+<ul>
+<li>結果は引数として与えられた値からのみ計算される</li>
+<li>関数の外部で変更される可能性のあるデータに一切依存しない</li>
+<li>関数実行部の外側に存在する何かの状態を一切変更しない</li>
+</ul>
+<p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/k3kaimu/d-manual/blob/master/function.md#%E7%B4%94%E7%B2%8B%E9%96%A2%E6%95%B0pure" rel="external nofollow" title="純粋関数">純粋関数</a></p>
+
+<h3>冪等（べきとう）</h3>
+
+<p>RESTful なアーキテクチャが一般化するにつれて <strong class="text-danger">冪等（べきとう）</strong> の考え方も一般に浸透してきました。冪等とは、<em>あるアクションを何度行っても一度行った場合とまったくおなじ効果をもたらす</em> というものです。冪等である関数は次の条件を満たします。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>冪等な関数</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">someFunc</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="o">==</span> <span class="nx">_</span><span class="p">.</span><span class="nx">compose</span><span class="p">(</span><span class="nx">someFunc</span><span class="p">,</span> <span class="nx">someFunc</span><span class="p">)(</span><span class="nx">arg</span><span class="p">);</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>ある引数を与えて実行するということは、その関数を2回連続で呼び出しても同じ結果を返します。</p>
+
+<h3>不変性</h3>
+
+<p>JavaScript はダイナミックな言語です。<em>純粋関数のポリシーに縛られるがゆえに、関数のダイナミックさを犠牲にする必要はありません</em>。</p>
+
+<p>しかし、変数は変更するたびにその変数を参照するタイミングによって異なる値が返ってきます。<em>プログラムのすべての状態変更を除去することは不可能ですが、可能なかぎり減らすほうがよい</em> です。</p>
+
+<p>そして、<em>関数型プログラミングの理想な状況とは、可変なものが全く存在しない</em> という状況です。</p>
+
+<p>関数を <strong class="text-danger">抽象の基本的な単位</strong> としてみる利点は、関数の実装内容が外部に「<em>漏れる</em>」ことがなければ、関数の利用側は関数の実装に無関係であることです。</p>
+
+<p>つまり、関数型プログラミングにおける関数でも、内部で命令的なプログラミングをしていたり、変数の状態を変更していたとしても、外部にもれなければ問題にはならないということです。</p>
+
+<p>JavaScript は <strong class="text-danger">関数が変数の境界をつくる</strong> ので、ローカル変数の状態変更は関数が外部に漏れるのを防いでくれます。</p>
+
+<blockquote>
+<p>誰もいない森で木が倒れたら、音がするでしょうか？<br>不変性を持った戻り値を生成するために、純粋関数がローカルデータを変異させたとしたら、それは良いことなのでしょうか？</p>
+<footer><strong>Rich Hickey</strong> <cite><a href="http://clojure.org/transients" rel="external nofollow" title="clojure.org/transients/…">clojure.org/transients/…</a></cite></footer>
+</blockquote>
+
+
+<p>結局のところ、答えは <strong class="text-danger">Yes</strong> です。</p>
+
+<h3>不変性を保つためにとりうる手段</h3>
+
+<p>JavaScript のオブジェクトフィールドは常に参照可能なので、オブジェクトは不変ではありません。不変性を保つために関数の実装側がとりえる手段は実質つぎの3つのどれかになります。</p>
+
+<ul>
+<li>浅いコピーで十分な場合は <code>_.clone</code> を使ってコピーする</li>
+<li>深いコピーが必要な場合は <code>deepClone</code> を使う</li>
+<li>純粋関数を使ってコードを記述する</li>
+</ul>
+<h2>メモ</h2>
+
+<p><img src="/images/2014-02-21-functional-javascript-04.jpg" alt="メモ" class="img-thumbnail" title="メモ"></p>
+
+<p>本書の中に出てきた、関数とかのメモ。</p>
+
+<h3>predicate</h3>
+
+<p>常に真偽値（<code>true</code> or <code>false</code>）を返す関数を <strong class="text-danger">predicate</strong> と呼びます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">lessOrEqual</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">x</span> <span class="o">&lt;=</span> <span class="nx">y</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>existy と truthy</h3>
+
+<p><code>existy</code> は与えられた値が存在するかどうかを返す関数です。<code>truthy</code> は与えられた値が <code>true</code> とみなされるかどうかを返す関数です。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">x</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">truthy</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="p">(</span><span class="nx">x</span> <span class="o">!==</span> <span class="kc">false</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>truthy</code> は0を <code>true</code> と判定します。これは JavaScript の標準の動作とは違いますが、0を <code>false</code> と同一とみなすのは C 言語の遺物であると筆者は考えているようです。</p>
+
+<h3>JavaScript 関数の設計指針</h3>
+
+<p>JavaScript ではある条件が <code>true</code> の場合のみ処理を行い、それ以外の場合には <code>undefined</code> か <code>null</code> を返す動作が使いやすい場合が多い。</p>
+
+<h3>メタプログラミングとは</h3>
+
+<blockquote><p>プログラミングは何かを行うためにコードを書くものであるが、メタプログラミングは何かを解釈する方法を変更するためにコードを書くものである。</p></blockquote>
+
+
+<h3>第一級関数</h3>
+
+<p>第一級関数は他のデータ型と同じように、扱うことができる関数のことです。</p>
+
+<ul>
+<li>変数に格納できる</li>
+<li>必要に応じて生成できる</li>
+<li>他の関数の引数として渡すことができる</li>
+<li>関数の戻り値として返すことができる</li>
+</ul>
+<h3>コレクション中の <code>null</code> に対する防御用の関数 <code>fnull</code>
+</h3>
+
+<p><code>fnull</code> は関数と可変長引数をとる関数です。与えられた関数の実行を行う際に <code>undefined</code> か <code>null</code> の値の場合にはデフォルト値を使うようにして関数を呼び出します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>fnull</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">fnull</span><span class="p">(</span><span class="nx">func</span> <span class="cm">/* , 可変長のデフォルト引数 */</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">rest</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span> <span class="cm">/* args */</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">?</span> <span class="nx">e</span> <span class="o">:</span> <span class="nx">defaults</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span> <span class="p">});</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">safeMulti</span> <span class="o">=</span> <span class="nx">fnull</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">total</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">total</span> <span class="o">*</span> <span class="nx">n</span><span class="p">;</span> <span class="p">},</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class="line"><span class="nx">_</span><span class="p">.</span><span class="nx">reduce</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nx">safeMulti</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; 30</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>invoker</h3>
+
+<p><code>invoker</code> は関数を返す関数です。引数にメソッド名を取り、メソッドの実行主体のオブジェクトを渡すとそのオブジェクトでメソッドを実行する関数を返します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>invoker</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">invoker</span><span class="p">(</span><span class="nx">NAME</span><span class="p">,</span> <span class="nx">METHOD</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">target</span> <span class="cm">/* , 任意の引数 */</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">existy</span><span class="p">(</span><span class="nx">target</span><span class="p">))</span> <span class="nx">fail</span><span class="p">(</span><span class="s1">'Must provide a target'</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">var</span> <span class="nx">targetMethod</span> <span class="o">=</span> <span class="nx">target</span><span class="p">[</span><span class="nx">NAME</span><span class="p">];</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">args</span>         <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">rest</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">doWhen</span><span class="p">((</span><span class="nx">existy</span><span class="p">(</span><span class="nx">targetMethod</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">METHOD</span> <span class="o">==</span> <span class="nx">targetMethod</span><span class="p">),</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="nx">targetMethod</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">rev</span> <span class="o">=</span> <span class="nx">invoker</span><span class="p">(</span><span class="s1">'reverse'</span><span class="p">,</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">reverse</span><span class="p">);</span>
+</span><span class="line"><span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="nx">rev</span><span class="p">);</span>
+</span><span class="line"><span class="c1">// =&gt; [[3, 2, 1]]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>関数型のスタイルでは、<em>関数の実行主体となるオブジェクトを引数にとる関数の形が好まれます</em>。</p>
+
+<h3>メソッドチェーン</h3>
+
+<p>メソッドチェーンは「<em>流暢な</em>」API を構築するために有用なパターンです。流暢な API とは例えば次のようなものです。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>流暢な API の例</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">createPerson</span><span class="p">()</span>
+</span><span class="line">  <span class="p">.</span><span class="nx">setFirstName</span><span class="p">(</span><span class="s1">'Mike'</span><span class="p">)</span>
+</span><span class="line">  <span class="p">.</span><span class="nx">setLastName</span><span class="p">(</span><span class="s1">'Fogus'</span><span class="p">)</span>
+</span><span class="line">  <span class="p">.</span><span class="nx">setAge</span><span class="p">(</span><span class="mi">108</span><span class="p">)</span>
+</span><span class="line">  <span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>メソッドチェーンを実現する「<em>魔法</em>」は <em>チェーン内のそれぞれのメソッドが同じホストのオブジェクトの参照を返す</em> ことです。</p>
+
+<p>上の方のメモで、関数が前提条件に合わない引数を受け取った場合は <code>undefined</code> か <code>null</code> を返すのがよいとありました。メソッドチェーンで使うことを考えている関数の場合は <code>undefined</code>、<code>null</code>、<code>同じホストのオブジェクト</code> のどれを返せばいいんでしょうかね。。。</p>
+
+<h2>感想</h2>
+
+<p>JavaScript の関数の基本的なところから説明をはじめて、<strong class="text-danger">関数型プログラミング</strong>、<strong class="text-danger">クロージャ</strong>、<strong class="text-danger">高階関数</strong>、<strong class="text-danger">カリー化</strong>、<strong class="text-danger">再帰</strong>、<strong class="text-danger">フィルタ</strong>、<strong class="text-danger">パイプライン</strong>等の関数の設計方法がふんだんに解説されています。</p>
+
+<p>説明がとても丁寧で分かりやすく、関数型プログラミングのことを知らない人でも理解しやすいと思います。</p>
+
+<p>関数型プログラミングを学ぶと、<strong class="text-danger">純粋関数</strong>、<strong class="text-danger">データの不変性</strong> というテーマに当たります。JavaScript にはないですが、Ruby ではメソッドに <code>!</code> が付いた自分自身を変更する破壊的なメソッドがあります。関数型プログラミングとオブジェクト指向プログラミングをうまい具合に取り入れている言語だと再認識しました。</p>
+
+<p>JavaScript で関数型プログラミングを学ぶというテーマですが、<em>関数型プログラミングを学ぶことで他の言語の面白い点も見えてくる</em> というのが読了しての感想です。</p>
+
+<p>JavaScript は Java に次いで最も多く利用されている言語ですので、<strong class="text-danger">JavaScript をよりよく使うため、他の関数型言語をより楽しむため</strong> に本書を活用してみてはいかがでしょうか。おすすめです。</p></div>
+
+
+  
+
+<span class="byline author vcard hidden">Posted by <span class="fn">hamasyou</span></span>
+
+
+
+  <p>
+  <script type="text/javascript"><!--
+  amazon_ad_tag = "sorehabooks-22";
+  amazon_ad_width = "728";
+  amazon_ad_height = "90";
+  amazon_ad_logo = "hide";
+  amazon_ad_link_target = "new";
+  amazon_ad_discount = "remove";
+  amazon_color_border = "FAFAFA";
+  amazon_color_background = "FAFAFA";
+  amazon_color_text = "666666";
+  amazon_color_link = "3399F3";
+  amazon_color_price = "CD0200";
+  amazon_color_logo = "FF9900";//--></script>
+  <script type="text/javascript" src="http://ir-jp.amazon-adsystem.com/s/ads.js"></script>
+</p>
+
+  
+    
+  <hr />
+
+  <section>
+    <div class="related_posts">
+      <h3 class="h1">関連記事</h3>
+      <ul>
+        
+        <li><a href="/blog/2012/09/23/487311554X/">ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理</a></li>
+        
+        <li><a href="/blog/2014/02/23/third-party-javascript/">サードパーティJavaScript</a></li>
+        
+        <li><a href="/blog/2012/04/27/4048706705/">オブジェクト指向JavaScript</a></li>
+        
+        <li><a href="/blog/2012/01/21/4048707868/">テスト駆動JavaScript</a></li>
+        
+        <li><a href="/blog/2011/06/18/4798123986/">Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-02-21T19:39:56+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 21<span>st</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
+    
+      <a class="tag label label-info" href="/blog/tags/guan-shu-xing/" rel="nofollow">関数型</a>
+    
+      <a class="tag label label-info" href="/blog/tags/orairi/" rel="nofollow">オライリー</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/21/functional-javascript/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/02/21/functional-javascript/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/02/21/functional-javascript/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/02/21/functional-javascript/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+      
+
+      <div class="text-right"><a href="javascript:void(0)" title="Scroll to Top" class="scroll-to-top"><i class="fa fa-arrow-up"> Back to Top</i></a></div>
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2014/02/21/hugo/" title="Previous Post:
+      静的サイトを素早く構築するためにGoLangで作られたジェネレータHugo"><i class="fa fa-arrow-circle-left"></i> 静的サイトを素早く構築するためにGoLang...</a></li>
+        
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2014/02/22/readable-blog-unreadable-blog/"
+                            title="Next Post: 読みやすいブログ、読みにくいブログ">読みやすいブログ、読みにくいブログ <i class="fa fa-arrow-circle-right"></i></a></li>
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+    <div class="visible-md visible-lg"><div id="back-to-top" class="scroll-to-top" style="display: block;"><a href="#">Back to Top</a></div></div>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well aboutme vcard">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail photo" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li><span class="fn">濱田章吾</span></li>
+        <li><span class="nickname">hamasyou</span></li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow" title="Facebook"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow" title="GitHub"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow" title="E-mail"><i class="fa fa-envelope-o"></i></a></li>
+          <li><a href="http://mountposition.co.jp/" rel="external nofollow" title="MountPosition Inc."><i class="fa fa-building-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <span class="small">Ruby、JavaScript、Objective-C、PHP、Javaなど一通りできます。Web系の方が強いですがスマホアプリもできます。開発案件あればお声がけください。</span>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/04/canonical-url/">canonicalなURLってなにがいいんだろう？</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/01/4274065979/">ハッカーと画家 コンピュータ時代の創造者たち</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/25/python/">Pythonメモ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/23/third-party-javascript/">サードパーティJavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/22/readable-blog-unreadable-blog/">読みやすいブログ、読みにくいブログ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/21/functional-javascript/">JavaScriptで学ぶ関数型プログラミング</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/21/hugo/">静的サイトを素早く構築するためにGoLangで作られたジェネレータHugo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/20/rails4-transaction/">Rails4でtransactionの分離レベルを設定する</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/20/capistrano3/">Capistrano3をRailsで使ってみた感想</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/19/rails-i18n-localize/">RailsのI18n.localizeでnilもゆるすようにすると捗る</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">103</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">117</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+<section class="panel panel-default taglist hidden-xs">
+  <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+  <div class="list-group">
+    <ul class="list-inline list-group-item"><li><a class="label label-default" href="/blog/tags/activerecord/" rel="nofollow">ActiveRecord</a></li><li><a class="label label-default" href="/blog/tags/ajax/" rel="nofollow">Ajax</a></li><li><a class="label label-default" href="/blog/tags/alloy/" rel="nofollow">Alloy</a></li><li><a class="label label-default" href="/blog/tags/amazon/" rel="nofollow">Amazon</a></li><li><a class="label label-default" href="/blog/tags/android/" rel="nofollow">Android</a></li><li><a class="label label-default" href="/blog/tags/ant/" rel="nofollow">Ant</a></li><li><a class="label label-default" href="/blog/tags/aop/" rel="nofollow">AOP</a></li><li><a class="label label-default" href="/blog/tags/apache/" rel="nofollow">Apache</a></li><li><a class="label label-default" href="/blog/tags/api/" rel="nofollow">API</a></li><li><a class="label label-default" href="/blog/tags/app-store/" rel="nofollow">App Store</a></li><li><a class="label label-default" href="/blog/tags/aspectj/" rel="nofollow">AspectJ</a></li><li><a class="label label-default" href="/blog/tags/atl/" rel="nofollow">ATL</a></li><li><a class="label label-default" href="/blog/tags/aws/" rel="nofollow">AWS</a></li><li><a class="label label-default" href="/blog/tags/bbs/" rel="nofollow">BBS</a></li><li><a class="label label-default" href="/blog/tags/blog/" rel="nofollow">Blog</a></li><li><a class="label label-default" href="/blog/tags/c/" rel="nofollow">C</a></li><li><a class="label label-default" href="/blog/tags/c-number/" rel="nofollow">C#</a></li><li><a class="label label-default" href="/blog/tags/c-plus-plus/" rel="nofollow">C++</a></li><li><a class="label label-default" href="/blog/tags/canvas/" rel="nofollow">canvas</a></li><li><a class="label label-default" href="/blog/tags/capistrano3/" rel="nofollow">Capistrano3</a></li><li><a class="label label-default" href="/blog/tags/cgi/" rel="nofollow">CGI</a></li><li><a class="label label-default" href="/blog/tags/click/" rel="nofollow">Click</a></li><li><a class="label label-default" href="/blog/tags/cocos2d/" rel="nofollow">cocos2d</a></li><li><a class="label label-default" href="/blog/tags/code/" rel="nofollow">CODE</a></li><li><a class="label label-default" href="/blog/tags/com/" rel="nofollow">COM</a></li><li><a class="label label-default" href="/blog/tags/commons/" rel="nofollow">Commons</a></li><li><a class="label label-default" href="/blog/tags/css/" rel="nofollow">CSS</a></li><li><a class="label label-default" href="/blog/tags/css3/" rel="nofollow">CSS3</a></li><li><a class="label label-default" href="/blog/tags/cygwin/" rel="nofollow">Cygwin</a></li><li><a class="label label-default" href="/blog/tags/dao/" rel="nofollow">DAO</a></li><li><a class="label label-default" href="/blog/tags/dbunit/" rel="nofollow">DBUnit</a></li><li><a class="label label-default" href="/blog/tags/di/" rel="nofollow">DI</a></li><li><a class="label label-default" href="/blog/tags/direct3d/" rel="nofollow">Direct3D</a></li><li><a class="label label-default" href="/blog/tags/djunit/" rel="nofollow">djUnit</a></li><li><a class="label label-default" href="/blog/tags/doa/" rel="nofollow">DOA</a></li><li><a class="label label-default" href="/blog/tags/dom/" rel="nofollow">DOM</a></li><li><a class="label label-default" href="/blog/tags/dreamweaver4/" rel="nofollow">Dreamweaver4</a></li><li><a class="label label-default" href="/blog/tags/dropbox/" rel="nofollow">Dropbox</a></li><li><a class="label label-default" href="/blog/tags/dsl/" rel="nofollow">DSL</a></li><li><a class="label label-default" href="/blog/tags/eclipse/" rel="nofollow">Eclipse</a></li><li><a class="label label-default" href="/blog/tags/ejb/" rel="nofollow">EJB</a></li><li><a class="label label-default" href="/blog/tags/facebook/" rel="nofollow">facebook</a></li><li><a class="label label-default" href="/blog/tags/ffftp/" rel="nofollow">FFFTP</a></li><li><a class="label label-default" href="/blog/tags/findbugs/" rel="nofollow">FindBugs</a></li><li><a class="label label-default" href="/blog/tags/fireworks4/" rel="nofollow">Fireworks4</a></li><li><a class="label label-default" href="/blog/tags/flash4/" rel="nofollow">FLASH4</a></li><li><a class="label label-default" href="/blog/tags/fql/" rel="nofollow">FQL</a></li><li><a class="label label-default" href="/blog/tags/gem/" rel="nofollow">gem</a></li><li><a class="label label-default" href="/blog/tags/geo/" rel="nofollow">geo</a></li><li><a class="label label-default" href="/blog/tags/git/" rel="nofollow">git</a></li><li><a class="label label-default" href="/blog/tags/github/" rel="nofollow">GitHub</a></li><li><a class="label label-default" href="/blog/tags/glade/" rel="nofollow">Glade</a></li><li><a class="label label-default" href="/blog/tags/gmail/" rel="nofollow">Gmail</a></li><li><a class="label label-default" href="/blog/tags/gmail/" rel="nofollow">GMail</a></li><li><a class="label label-default" href="/blog/tags/go/" rel="nofollow">Go</a></li><li><a class="label label-default" href="/blog/tags/golang/" rel="nofollow">GoLang</a></li><li><a class="label label-default" href="/blog/tags/google/" rel="nofollow">Google</a></li><li><a class="label label-default" href="/blog/tags/graph/" rel="nofollow">Graph</a></li><li><a class="label label-default" href="/blog/tags/gree/" rel="nofollow">GREE</a></li><li><a class="label label-default" href="/blog/tags/gtk/" rel="nofollow">GTK</a></li><li><a class="label label-default" href="/blog/tags/hibernate/" rel="nofollow">Hibernate</a></li><li><a class="label label-default" href="/blog/tags/html/" rel="nofollow">HTML</a></li><li><a class="label label-default" href="/blog/tags/html5/" rel="nofollow">HTML5</a></li><li><a class="label label-default" href="/blog/tags/hugo/" rel="nofollow">Hugo</a></li><li><a class="label label-default" href="/blog/tags/i18n/" rel="nofollow">I18n</a></li><li><a class="label label-default" href="/blog/tags/iconix/" rel="nofollow">ICONIX</a></li><li><a class="label label-default" href="/blog/tags/ie/" rel="nofollow">IE</a></li><li><a class="label label-default" href="/blog/tags/imap/" rel="nofollow">imap</a></li><li><a class="label label-default" href="/blog/tags/ios/" rel="nofollow">iOS</a></li><li><a class="label label-default" href="/blog/tags/iphone/" rel="nofollow">iPhone</a></li><li><a class="label label-default" href="/blog/tags/imodo/" rel="nofollow">iモード</a></li><li><a class="label label-default" href="/blog/tags/j2ee/" rel="nofollow">J2EE</a></li><li><a class="label label-default" href="/blog/tags/j2se/" rel="nofollow">J2SE</a></li><li><a class="label label-default" href="/blog/tags/java/" rel="nofollow">Java</a></li><li><a class="label label-default" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a></li><li><a class="label label-default" href="/blog/tags/jdk/" rel="nofollow">JDK</a></li><li><a class="label label-default" href="/blog/tags/jekyll/" rel="nofollow">Jekyll</a></li><li><a class="label label-default" href="/blog/tags/jndi/" rel="nofollow">JNDI</a></li><li><a class="label label-default" href="/blog/tags/jpmobile/" rel="nofollow">jpmobile</a></li><li><a class="label label-default" href="/blog/tags/jsdeferred/" rel="nofollow">JSDeferred</a></li><li><a class="label label-default" href="/blog/tags/jsf/" rel="nofollow">JSF</a></li><li><a class="label label-default" href="/blog/tags/json/" rel="nofollow">JSON</a></li><li><a class="label label-default" href="/blog/tags/jta/" rel="nofollow">JTA</a></li><li><a class="label label-default" href="/blog/tags/junit/" rel="nofollow">JUnit</a></li><li><a class="label label-default" href="/blog/tags/kaminari/" rel="nofollow">kaminari</a></li><li><a class="label label-default" href="/blog/tags/kimono/" rel="nofollow">kimono</a></li><li><a class="label label-default" href="/blog/tags/lifehack/" rel="nofollow">LifeHack</a></li><li><a class="label label-default" href="/blog/tags/linux/" rel="nofollow">Linux</a></li><li><a class="label label-default" href="/blog/tags/liquid/" rel="nofollow">Liquid</a></li><li><a class="label label-default" href="/blog/tags/mac/" rel="nofollow">Mac</a></li><li><a class="label label-default" href="/blog/tags/macosx/" rel="nofollow">MacOSX</a></li><li><a class="label label-default" href="/blog/tags/mda/" rel="nofollow">MDA</a></li><li><a class="label label-default" href="/blog/tags/mfc/" rel="nofollow">MFC</a></li><li><a class="label label-default" href="/blog/tags/microsoft-translator-api/" rel="nofollow">Microsoft Translator API</a></li><li><a class="label label-default" href="/blog/tags/mixi/" rel="nofollow">mixi</a></li><li><a class="label label-default" href="/blog/tags/movable-type/" rel="nofollow">Movable Type</a></li><li><a class="label label-default" href="/blog/tags/mvc/" rel="nofollow">MVC</a></li><li><a class="label label-default" href="/blog/tags/nokogiri/" rel="nofollow">Nokogiri</a></li><li><a class="label label-default" href="/blog/tags/nosql/" rel="nofollow">NoSQL</a></li><li><a class="label label-default" href="/blog/tags/o-slash-rmatupingu/" rel="nofollow">O/Rマッピング</a></li><li><a class="label label-default" href="/blog/tags/objective-c/" rel="nofollow">Objective-C</a></li><li><a class="label label-default" href="/blog/tags/octopress/" rel="nofollow">Octopress</a></li><li><a class="label label-default" href="/blog/tags/ocunit/" rel="nofollow">OCUnit</a></li><li><a class="label label-default" href="/blog/tags/opensocial/" rel="nofollow">OpenSocial</a></li><li><a class="label label-default" href="/blog/tags/os/" rel="nofollow">OS</a></li><li><a class="label label-default" href="/blog/tags/perl/" rel="nofollow">Perl</a></li><li><a class="label label-default" href="/blog/tags/php/" rel="nofollow">PHP</a></li><li><a class="label label-default" href="/blog/tags/plugin/" rel="nofollow">plugin</a></li><li><a class="label label-default" href="/blog/tags/pm/" rel="nofollow">PM</a></li><li><a class="label label-default" href="/blog/tags/postfix/" rel="nofollow">Postfix</a></li><li><a class="label label-default" href="/blog/tags/python/" rel="nofollow">python</a></li><li><a class="label label-default" href="/blog/tags/qiita/" rel="nofollow">qiita</a></li><li><a class="label label-default" href="/blog/tags/rails/" rel="nofollow">Rails</a></li><li><a class="label label-default" href="/blog/tags/rails3/" rel="nofollow">Rails3</a></li><li><a class="label label-default" href="/blog/tags/rails4/" rel="nofollow">Rails4</a></li><li><a class="label label-default" href="/blog/tags/rdbms/" rel="nofollow">RDBMS</a></li><li><a class="label label-default" href="/blog/tags/restful/" rel="nofollow">RESTful</a></li><li><a class="label label-default" href="/blog/tags/roa/" rel="nofollow">ROA</a></li><li><a class="label label-default" href="/blog/tags/rspec/" rel="nofollow">RSpec</a></li><li><a class="label label-default" href="/blog/tags/ruby/" rel="nofollow">Ruby</a></li><li><a class="label label-default" href="/blog/tags/ruby1-dot-9/" rel="nofollow">Ruby1.9</a></li><li><a class="label label-default" href="/blog/tags/s3/" rel="nofollow">S3</a></li><li><a class="label label-default" href="/blog/tags/se/" rel="nofollow">SE</a></li><li><a class="label label-default" href="/blog/tags/selinux/" rel="nofollow">SELinux</a></li><li><a class="label label-default" href="/blog/tags/seo/" rel="nofollow">SEO</a></li><li><a class="label label-default" href="/blog/tags/spec/" rel="nofollow">spec</a></li><li><a class="label label-default" href="/blog/tags/spring/" rel="nofollow">Spring</a></li><li><a class="label label-default" href="/blog/tags/sql/" rel="nofollow">SQL</a></li><li><a class="label label-default" href="/blog/tags/ssh/" rel="nofollow">SSH</a></li><li><a class="label label-default" href="/blog/tags/ssl/" rel="nofollow">SSL</a></li><li><a class="label label-default" href="/blog/tags/struts/" rel="nofollow">Struts</a></li><li><a class="label label-default" href="/blog/tags/struts2/" rel="nofollow">Struts2</a></li><li><a class="label label-default" href="/blog/tags/sublimetext2/" rel="nofollow">SublimeText2</a></li><li><a class="label label-default" href="/blog/tags/tcp-slash-ip/" rel="nofollow">TCP/IP</a></li><li><a class="label label-default" href="/blog/tags/tdd/" rel="nofollow">TDD</a></li><li><a class="label label-default" href="/blog/tags/textmate/" rel="nofollow">TextMate</a></li><li><a class="label label-default" href="/blog/tags/titanium/" rel="nofollow">Titanium</a></li><li><a class="label label-default" href="/blog/tags/uikit/" rel="nofollow">UIKit</a></li><li><a class="label label-default" href="/blog/tags/uml/" rel="nofollow">UML</a></li><li><a class="label label-default" href="/blog/tags/unix/" rel="nofollow">Unix</a></li><li><a class="label label-default" href="/blog/tags/uportal/" rel="nofollow">uPortal</a></li><li><a class="label label-default" href="/blog/tags/vmware/" rel="nofollow">VMWare</a></li><li><a class="label label-default" href="/blog/tags/web2-dot-0/" rel="nofollow">Web2.0</a></li><li><a class="label label-default" href="/blog/tags/weblogic/" rel="nofollow">WebLogic</a></li><li><a class="label label-default" href="/blog/tags/websaito/" rel="nofollow">Webサイト</a></li><li><a class="label label-default" href="/blog/tags/websabisu/" rel="nofollow">Webサービス</a></li><li><a class="label label-default" href="/blog/tags/windows/" rel="nofollow">Windows</a></li><li><a class="label label-default" href="/blog/tags/windows2000/" rel="nofollow">Windows2000</a></li><li><a class="label label-default" href="/blog/tags/windows98/" rel="nofollow">Windows98</a></li><li><a class="label label-default" href="/blog/tags/xml/" rel="nofollow">XML</a></li><li><a class="label label-default" href="/blog/tags/xp/" rel="nofollow">XP</a></li><li><a class="label label-default" href="/blog/tags/xsl/" rel="nofollow">XSL</a></li><li><a class="label label-default" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a></li><li><a class="label label-default" href="/blog/tags/falsehohonbiretuzi/" rel="nofollow">のほほんビレッジ</a></li><li><a class="label label-default" href="/blog/tags/aziyairu/" rel="nofollow">アジャイル</a></li><li><a class="label label-default" href="/blog/tags/atupudeto/" rel="nofollow">アップデート</a></li><li><a class="label label-default" href="/blog/tags/apuri/" rel="nofollow">アプリ</a></li><li><a class="label label-default" href="/blog/tags/arugorizumu/" rel="nofollow">アルゴリズム</a></li><li><a class="label label-default" href="/blog/tags/antipatan/" rel="nofollow">アンチパターン</a></li><li><a class="label label-default" href="/blog/tags/akitekutiya/" rel="nofollow">アーキテクチャ</a></li><li><a class="label label-default" href="/blog/tags/akitekuto/" rel="nofollow">アーキテクト</a></li><li><a class="label label-default" href="/blog/tags/ideiomu/" rel="nofollow">イディオム</a></li><li><a class="label label-default" href="/blog/tags/intahuesu/" rel="nofollow">インターフェース</a></li><li><a class="label label-default" href="/blog/tags/inhura/" rel="nofollow">インフラ</a></li><li><a class="label label-default" href="/blog/tags/uebudezain/" rel="nofollow">ウェブデザイン</a></li><li><a class="label label-default" href="/blog/tags/uebuyuzabiritei/" rel="nofollow">ウェブユーザビリティ</a></li><li><a class="label label-default" href="/blog/tags/enkodeingu/" rel="nofollow">エンコーディング</a></li><li><a class="label label-default" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a></li><li><a class="label label-default" href="/blog/tags/orairi/" rel="nofollow">オライリー</a></li><li><a class="label label-default" href="/blog/tags/opunsosu/" rel="nofollow">オープンソース</a></li><li><a class="label label-default" href="/blog/tags/gandamu/" rel="nofollow">ガンダム</a></li><li><a class="label label-default" href="/blog/tags/ganpura/" rel="nofollow">ガンプラ</a></li><li><a class="label label-default" href="/blog/tags/kibodosiyotokatuto/" rel="nofollow">キーボードショートカット</a></li><li><a class="label label-default" href="/blog/tags/giku/" rel="nofollow">ギーク</a></li><li><a class="label label-default" href="/blog/tags/kutukubutuku/" rel="nofollow">クックブック</a></li><li><a class="label label-default" href="/blog/tags/kuraudo/" rel="nofollow">クラウド</a></li><li><a class="label label-default" href="/blog/tags/kurasushe-ji/" rel="nofollow">クラス設計</a></li><li><a class="label label-default" href="/blog/tags/gemu/" rel="nofollow">ゲーム</a></li><li><a class="label label-default" href="/blog/tags/gemupuroguramingu/" rel="nofollow">ゲームプログラミング</a></li><li><a class="label label-default" href="/blog/tags/konpiyutaji-chu/" rel="nofollow">コンピュータ基礎</a></li><li><a class="label label-default" href="/blog/tags/kodeingu/" rel="nofollow">コーディング</a></li><li><a class="label label-default" href="/blog/tags/kodeingusutairu/" rel="nofollow">コーディングスタイル</a></li><li><a class="label label-default" href="/blog/tags/kodeingugui-yue/" rel="nofollow">コーディング規約</a></li><li><a class="label label-default" href="/blog/tags/kodorideingu/" rel="nofollow">コードリーディング</a></li><li><a class="label label-default" href="/blog/tags/kodorebiyu/" rel="nofollow">コードレビュー</a></li><li><a class="label label-default" href="/blog/tags/sanpuru/" rel="nofollow">サンプル</a></li><li><a class="label label-default" href="/blog/tags/saburetuto/" rel="nofollow">サーブレット</a></li><li><a class="label label-default" href="/blog/tags/sisutemushe-ji/" rel="nofollow">システム設計</a></li><li><a class="label label-default" href="/blog/tags/sisutemukai-fa/" rel="nofollow">システム開発</a></li><li><a class="label label-default" href="/blog/tags/sinanziyu/" rel="nofollow">シナンジュ</a></li><li><a class="label label-default" href="/blog/tags/siyotokatuto/" rel="nofollow">ショートカット</a></li><li><a class="label label-default" href="/blog/tags/sukureipingu/" rel="nofollow">スクレイピング</a></li><li><a class="label label-default" href="/blog/tags/sutairu/" rel="nofollow">スタイル</a></li><li><a class="label label-default" href="/blog/tags/sumatohuon/" rel="nofollow">スマートフォン</a></li><li><a class="label label-default" href="/blog/tags/sekiyuritei/" rel="nofollow">セキュリティ</a></li><li><a class="label label-default" href="/blog/tags/sohutouea/" rel="nofollow">ソフトウェア</a></li><li><a class="label label-default" href="/blog/tags/sohutoueaenziniaringu/" rel="nofollow">ソフトウェアエンジニアリング</a></li><li><a class="label label-default" href="/blog/tags/sosiyaruapuri/" rel="nofollow">ソーシャルアプリ</a></li><li><a class="label label-default" href="/blog/tags/sosiyarugemu/" rel="nofollow">ソーシャルゲーム</a></li><li><a class="label label-default" href="/blog/tags/turu/" rel="nofollow">ツール</a></li><li><a class="label label-default" href="/blog/tags/tesuto/" rel="nofollow">テスト</a></li><li><a class="label label-default" href="/blog/tags/tesutokodo/" rel="nofollow">テストコード</a></li><li><a class="label label-default" href="/blog/tags/tesutohuasuto/" rel="nofollow">テストファースト</a></li><li><a class="label label-default" href="/blog/tags/tesutoji-fa/" rel="nofollow">テスト技法</a></li><li><a class="label label-default" href="/blog/tags/tesutoqu-dong/" rel="nofollow">テスト駆動</a></li><li><a class="label label-default" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a></li><li><a class="label label-default" href="/blog/tags/detahuomatuto/" rel="nofollow">データフォーマット</a></li><li><a class="label label-default" href="/blog/tags/detabesu/" rel="nofollow">データベース</a></li><li><a class="label label-default" href="/blog/tags/detabesushe-ji/" rel="nofollow">データベース設計</a></li><li><a class="label label-default" href="/blog/tags/detamoderingu/" rel="nofollow">データモデリング</a></li><li><a class="label label-default" href="/blog/tags/detamoderu/" rel="nofollow">データモデル</a></li><li><a class="label label-default" href="/blog/tags/toranzakusiyon/" rel="nofollow">トランザクション</a></li><li><a class="label label-default" href="/blog/tags/domeinqu-dong/" rel="nofollow">ドメイン駆動</a></li><li><a class="label label-default" href="/blog/tags/doratuka/" rel="nofollow">ドラッカー</a></li><li><a class="label label-default" href="/blog/tags/netutowaku/" rel="nofollow">ネットワーク</a></li><li><a class="label label-default" href="/blog/tags/falseuhau/" rel="nofollow">ノウハウ</a></li><li><a class="label label-default" href="/blog/tags/hatuka/" rel="nofollow">ハッカー</a></li><li><a class="label label-default" href="/blog/tags/hadouea/" rel="nofollow">ハードウェア</a></li><li><a class="label label-default" href="/blog/tags/bainari/" rel="nofollow">バイナリ</a></li><li><a class="label label-default" href="/blog/tags/bizinesu/" rel="nofollow">ビジネス</a></li><li><a class="label label-default" href="/blog/tags/bizinesururu/" rel="nofollow">ビジネスルール</a></li><li><a class="label label-default" href="/blog/tags/bitugudeta/" rel="nofollow">ビッグデータ</a></li><li><a class="label label-default" href="/blog/tags/huonto/" rel="nofollow">フォント</a></li><li><a class="label label-default" href="/blog/tags/huremuwaku/" rel="nofollow">フレームワーク</a></li><li><a class="label label-default" href="/blog/tags/burogu/" rel="nofollow">ブログ</a></li><li><a class="label label-default" href="/blog/tags/puresuririsu/" rel="nofollow">プレスリリース</a></li><li><a class="label label-default" href="/blog/tags/purogurama/" rel="nofollow">プログラマ</a></li><li><a class="label label-default" href="/blog/tags/puroguramingu/" rel="nofollow">プログラミング</a></li><li><a class="label label-default" href="/blog/tags/puroguraminguyan-yu/" rel="nofollow">プログラミング言語</a></li><li><a class="label label-default" href="/blog/tags/besutopurakuteisu/" rel="nofollow">ベストプラクティス</a></li><li><a class="label label-default" href="/blog/tags/peapuro/" rel="nofollow">ペアプロ</a></li><li><a class="label label-default" href="/blog/tags/porugureamu/" rel="nofollow">ポールグレアム</a></li><li><a class="label label-default" href="/blog/tags/maindomatupu/" rel="nofollow">マインドマップ</a></li><li><a class="label label-default" href="/blog/tags/matusiyuatupu/" rel="nofollow">マッシュアップ</a></li><li><a class="label label-default" href="/blog/tags/manezimento/" rel="nofollow">マネジメント</a></li><li><a class="label label-default" href="/blog/tags/maketeingu/" rel="nofollow">マーケティング</a></li><li><a class="label label-default" href="/blog/tags/metapuroguramingu/" rel="nofollow">メタプログラミング</a></li><li><a class="label label-default" href="/blog/tags/memori/" rel="nofollow">メモリ</a></li><li><a class="label label-default" href="/blog/tags/memoriguan-li/" rel="nofollow">メモリ管理</a></li><li><a class="label label-default" href="/blog/tags/moziyuru/" rel="nofollow">モジュール</a></li><li><a class="label label-default" href="/blog/tags/moderingu/" rel="nofollow">モデリング</a></li><li><a class="label label-default" href="/blog/tags/moderuqu-dong/" rel="nofollow">モデル駆動</a></li><li><a class="label label-default" href="/blog/tags/mobairu/" rel="nofollow">モバイル</a></li><li><a class="label label-default" href="/blog/tags/yunitutotesuto/" rel="nofollow">ユニットテスト</a></li><li><a class="label label-default" href="/blog/tags/yuzaintahuesu/" rel="nofollow">ユーザインターフェース</a></li><li><a class="label label-default" href="/blog/tags/yusukesu/" rel="nofollow">ユースケース</a></li><li><a class="label label-default" href="/blog/tags/raihuhatuku/" rel="nofollow">ライフハック</a></li><li><a class="label label-default" href="/blog/tags/riachong/" rel="nofollow">リア充</a></li><li><a class="label label-default" href="/blog/tags/rihuakutaringu/" rel="nofollow">リファクタリング</a></li><li><a class="label label-default" href="/blog/tags/rezisutori/" rel="nofollow">レジストリ</a></li><li><a class="label label-default" href="/blog/tags/bing-xing-puroguramingu/" rel="nofollow">並行プログラミング</a></li><li><a class="label label-default" href="/blog/tags/ren-jian-xue/" rel="nofollow">人間学</a></li><li><a class="label label-default" href="/blog/tags/dan-ti-tesuto/" rel="nofollow">単体テスト</a></li><li><a class="label label-default" href="/blog/tags/wen-ti-jie-jue/" rel="nofollow">問題解決</a></li><li><a class="label label-default" href="/blog/tags/shi-bai-xue/" rel="nofollow">失敗学</a></li><li><a class="label label-default" href="/blog/tags/xin-li-xue/" rel="nofollow">心理学</a></li><li><a class="label label-default" href="/blog/tags/xi-dai/" rel="nofollow">携帯</a></li><li><a class="label label-default" href="/blog/tags/gai-shan/" rel="nofollow">改善</a></li><li><a class="label label-default" href="/blog/tags/wen-zi-kodo/" rel="nofollow">文字コード</a></li><li><a class="label label-default" href="/blog/tags/fang-xiang/" rel="nofollow">方向</a></li><li><a class="label label-default" href="/blog/tags/shi-jian-guan-li/" rel="nofollow">時間管理</a></li><li><a class="label label-default" href="/blog/tags/an-hao-hua/" rel="nofollow">暗号化</a></li><li><a class="label label-default" href="/blog/tags/jing-du/" rel="nofollow">経度</a></li><li><a class="label label-default" href="/blog/tags/wei-du/" rel="nofollow">緯度</a></li><li><a class="label label-default" href="/blog/tags/zi-zuo/" rel="nofollow">自作</a></li><li><a class="label label-default" href="/blog/tags/zhu-zuo-quan/" rel="nofollow">著作権</a></li><li><a class="label label-default" href="/blog/tags/jiao-wan/" rel="nofollow">角丸</a></li><li><a class="label label-default" href="/blog/tags/she-ji/" rel="nofollow">設計</a></li><li><a class="label label-default" href="/blog/tags/du-minikui/" rel="nofollow">読みにくい</a></li><li><a class="label label-default" href="/blog/tags/du-miyasui/" rel="nofollow">読みやすい</a></li><li><a class="label label-default" href="/blog/tags/du-mubeki/" rel="nofollow">読むべき</a></li><li><a class="label label-default" href="/blog/tags/ju-li/" rel="nofollow">距離</a></li><li><a class="label label-default" href="/blog/tags/da-ren-purogurama/" rel="nofollow">達人プログラマ</a></li><li><a class="label label-default" href="/blog/tags/kai-fa-fang-fa-lun/" rel="nofollow">開発方法論</a></li><li><a class="label label-default" href="/blog/tags/guan-shu-xing/" rel="nofollow">関数型</a></li><li><a class="label label-default" href="/blog/tags/jing-de-saito/" rel="nofollow">静的サイト</a></li></ul>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by Octopress</span>
+  <a href="javascript:void(0)" title="Scroll to Top" class="scroll-to-top pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-18255094-1', 'hamasyou.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  a('//widgets.getpocket.com/v1/j/btn.js?v=1','pocket-btn-js');
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2014/02/21/functional-javascript/';
+  var disqus_url = 'http://hamasyou.com/blog/2014/02/21/functional-javascript/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>

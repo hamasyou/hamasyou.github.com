@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: JavaScript | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/javascript/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-04T15:27:56+09:00</updated>
+  <updated>2014-03-04T15:30:03+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -233,9 +233,7 @@ Stork.$ = Stork.jQuery = jQuery.noConflict(true);
 CSS が読み込まれたタイミングを知りたい場合には、少し変わった方法が必要になります。ブラウザによっては、<code>link</code> タグは <code>script</code> タグのように読み込みが終わったタイミングで <code>load</code> イベントを発生させない場合があるからです。
 CSS が読み込まれたかどうかをチェックするには、要素にスタイルが当たったかどうかを定期的にチェックする必要があります。</p>
 
-<p>{% blockquote %}
-JavaScript やその他のデータを読み込むためのライブラリである Yepnope.js では、document.styleSheets を使って新しく挿入されたスタイルシートをスキャンする方法をとっている。
-{% endblockquote %}</p>
+<p><blockquote><p>JavaScript やその他のデータを読み込むためのライブラリである Yepnope.js では、document.styleSheets を使って新しく挿入されたスタイルシートをスキャンする方法をとっている。</p></blockquote></p>
 
 <h5>JavaScript で要素の色を調べるときは注意！</h5>
 
@@ -589,9 +587,7 @@ window.addEventListener('message', receiver, false);
 
 <h3>ポップアップブロック機能を回避する方法</h3>
 
-<p>{% blockquote %}
-これを避けるには、新しいウィンドウを常に<strong>ユーザーのアクションの直接の結果</strong>として開くようにすることだ。ユーザーのアクションからウィンドウを開くまでの間に遅延が存在すると、多くのブラウザはそれを悪意ある動作とみなして処理を阻止してしまう。
-{% endblockquote %}</p>
+<p><blockquote><p>これを避けるには、新しいウィンドウを常に<strong>ユーザーのアクションの直接の結果</strong>として開くようにすることだ。ユーザーのアクションからウィンドウを開くまでの間に遅延が存在すると、多くのブラウザはそれを悪意ある動作とみなして処理を阻止してしまう。</p></blockquote></p>
 
 <h2>感想</h2>
 
@@ -607,9 +603,7 @@ window.addEventListener('message', receiver, false);
     <link href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"/>
     <updated>2014-02-21T19:39:56+09:00</updated>
     <id>http://hamasyou.com/blog/2014/02/21/functional-javascript</id>
-    <content type="html"><![CDATA[<p>{% blockquote 内容紹介 %}
-本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。JavaScriptビルトインのデータ型を上手に利用するための基本知識やJavaScriptにおける関数の持つ特性など、関数型プログラミングの技術とその考え方について解説します。また実際のJavaScriptコーディングに関数型プログラミングのエッセンスを加えるポイントをサンプルを使って丁寧に説明します。関数型プログラミングに精通した著者が書き下ろした本書は、テクニックを増やし、コーディングのイマジネーションを広げたいエンジニア必携の一冊です。
-{% endblockquote %}</p>
+    <content type="html"><![CDATA[<p><blockquote><p>本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。JavaScriptビルトインのデータ型を上手に利用するための基本知識やJavaScriptにおける関数の持つ特性など、関数型プログラミングの技術とその考え方について解説します。また実際のJavaScriptコーディングに関数型プログラミングのエッセンスを加えるポイントをサンプルを使って丁寧に説明します。関数型プログラミングに精通した著者が書き下ろした本書は、テクニックを増やし、コーディングのイマジネーションを広げたいエンジニア必携の一冊です。</p><footer><strong>内容紹介</strong></footer></blockquote></p>
 
 <p>JavaScript は純粋な関数型プログラミング言語ではありません。が、<strong>関数型言語として JavaScript を理解し使用することでコードがより洗練され、読みやすいものになる</strong> はずという筆者の考えがこの本には現れています。</p>
 
@@ -626,9 +620,7 @@ window.addEventListener('message', receiver, false);
 
 <h3>関数型プログラミングとは</h3>
 
-<p>{% blockquote %}
-関数型プログラミングとは、値を抽象の単位に変換する関数を使用して行うプログラミングであり、それらを使ってソフトウェアシステムを構築することである。
-{% endblockquote %}</p>
+<p><blockquote><p>関数型プログラミングとは、値を抽象の単位に変換する関数を使用して行うプログラミングであり、それらを使ってソフトウェアシステムを構築することである。</p></blockquote></p>
 
 <p>オブジェクト指向では、問題領域をオブジェクトという単位に分解して対処していきますが、関数型プログラミングでは、問題を <strong>関数</strong> のパーツに分解します。</p>
 
@@ -738,9 +730,7 @@ song(99, 0, lyricSegment);
 
 <p>一般的な関数型プログラミングによって主張されるコレクション中心の考え方のポイントは、その処理を行うために一貫性のある語彙を確立し、包括的に揃えた関数を再利用出来るようにすることです。</p>
 
-<p>{% blockquote Alan Perlis %}
-10種類のデータ構造上で10の関数を動かすよりも、ひとつのデータ構造上で100の関数を動かすほうがよい。
-{% endblockquote %}</p>
+<p><blockquote><p>10種類のデータ構造上で10の関数を動かすよりも、ひとつのデータ構造上で100の関数を動かすほうがよい。</p><footer><strong>Alan Perlis</strong></footer></blockquote></p>
 
 <p>関数型プログラミングでは、<strong>それぞれの関数がすこしずつデータを変換し、最後の解に至る</strong> ようにします。</p>
 
@@ -912,10 +902,7 @@ parseIntByBinary('10');
 
 <p>JavaScript は <strong>関数が変数の境界をつくる</strong> ので、ローカル変数の状態変更は関数が外部に漏れるのを防いでくれます。</p>
 
-<p>{% blockquote Rich Hickey http://clojure.org/transients %}
-誰もいない森で木が倒れたら、音がするでしょうか？
-不変性を持った戻り値を生成するために、純粋関数がローカルデータを変異させたとしたら、それは良いことなのでしょうか？
-{% endblockquote %}</p>
+<p><blockquote><p>誰もいない森で木が倒れたら、音がするでしょうか？<br/>不変性を持った戻り値を生成するために、純粋関数がローカルデータを変異させたとしたら、それは良いことなのでしょうか？</p><footer><strong>Rich Hickey</strong> <cite><a href='http://clojure.org/transients'>clojure.org/transients/&hellip;</a></cite></footer></blockquote></p>
 
 <p>結局のところ、答えは <strong>Yes</strong> です。</p>
 
@@ -966,9 +953,7 @@ function truthy(x) {
 
 <h3>メタプログラミングとは</h3>
 
-<p>{% blockquote %}
-プログラミングは何かを行うためにコードを書くものであるが、メタプログラミングは何かを解釈する方法を変更するためにコードを書くものである。
-{% endblockquote %}</p>
+<p><blockquote><p>プログラミングは何かを行うためにコードを書くものであるが、メタプログラミングは何かを解釈する方法を変更するためにコードを書くものである。</p></blockquote></p>
 
 <h3>第一級関数</h3>
 
@@ -1446,15 +1431,7 @@ true
 <h2>プロトタイプ</h2>
 
 
-<p>{% blockquote  %}</p>
-
-<ul>
-<li>このプロパティは関数がコンストラクタのときのみ使われる</li>
-<li>この関数を使って作られたオブジェクトも、prototype プロパティを持ち、関数の prototype と同じオブジェクトを参照する。このオブジェクトのプロパティは自分のプロパティと同じように使える</li>
-</ul>
-
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p></p></p><p><ul><br/><li>このプロパティは関数がコンストラクタのときのみ使われる</li><br/><li>この関数を使って作られたオブジェクトも、prototype プロパティを持ち、関数の prototype と同じオブジェクトを参照する。このオブジェクトのプロパティは自分のプロパティと同じように使える</li><br/></ul></p><p><br/><p></p></blockquote></p>
 
 <h3>prototype プロパティ</h3>
 
@@ -1604,12 +1581,7 @@ Triangle.prototype.constructor = Triangle;
 <h3>テスト駆動開発における設計</h3>
 
 
-<p>{% blockquote 本書 P.48 %}
-<strong>テスト駆動開発では、「あらかじめ決められた大きな設計」はないが「最初の段階では設計はない」というわけではない。</strong></p>
-
-<p>TDD は、何も無いところから優れた設計を自動的に生み出すわけではなく、作業の進展とともに設計を進化させやすくするのである。TDD は、単体テストに強く依存しているため、他の部分から切り離して単独のコンポーネントに力を注ぐ開発スタイルになる。そのため、<em>コードの疎結合を保ち</em>、<em>単一責任の原則を守り</em>、不必要にコードが水ぶくれすることを防ぐために大きな力になる。TDD は設計プロセスをしっかりと制御するため、<em>設計に関する多くの決定をどうしてもそれが必要な時まで先送りする</em>ことができる。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p><strong>テスト駆動開発では、「あらかじめ決められた大きな設計」はないが「最初の段階では設計はない」というわけではない。</strong></p></p><p><p>TDD は、何も無いところから優れた設計を自動的に生み出すわけではなく、作業の進展とともに設計を進化させやすくするのである。TDD は、単体テストに強く依存しているため、他の部分から切り離して単独のコンポーネントに力を注ぐ開発スタイルになる。そのため、<em>コードの疎結合を保ち</em>、<em>単一責任の原則を守り</em>、不必要にコードが水ぶくれすることを防ぐために大きな力になる。TDD は設計プロセスをしっかりと制御するため、<em>設計に関する多くの決定をどうしてもそれが必要な時まで先送りする</em>ことができる。</p></p><p><p></p><footer><strong>本書 P.48</strong></footer></blockquote></p>
 
 <p>TDD で開発を始める最初は、大きな設計は不要であるが、ある程度最初に時間を割いて設計を行う。最初の設計の時に考えることは、「<em>特定の状況下でコードがどのように振舞わなければならないか</em>（<strong>単一責任の原則</strong>）」、「<em>コンポーネント間でどのように仕事を委譲しあうのか</em>（<strong>GRASPパターン</strong>）」である。</p>
 
@@ -1621,10 +1593,7 @@ Triangle.prototype.constructor = Triangle;
 <h3>テストフレームワーク</h3>
 
 
-<p>{% blockquote 本書 P.64 %}
-JavaScript のテストをするための事実上の標準はない。実際、JavaScript は汎用の標準ライブラリというものを持たないので、ブラウザのスクリプティングと直接関係のないプログラミングタスクはどれでも事実上の標準を持たないのである。この状況を改善するために、もともとはサーバーサイド JavaScript の標準化を目指していた CommonJS という活動がある。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>JavaScript のテストをするための事実上の標準はない。実際、JavaScript は汎用の標準ライブラリというものを持たないので、ブラウザのスクリプティングと直接関係のないプログラミングタスクはどれでも事実上の標準を持たないのである。この状況を改善するために、もともとはサーバーサイド JavaScript の標準化を目指していた CommonJS という活動がある。</p></p><p><p></p><footer><strong>本書 P.64</strong></footer></blockquote></p>
 
 <p>JavaScript のテストを行おうとすると、ブラウザ毎の挙動の違いや JavaScript の実装の違いにより動作が異なってきてしまう。そのような問題を解決しようと、Google 作った <strong>JsTestDriver</strong> が注目を集めている。</p>
 
@@ -1650,10 +1619,7 @@ JavaScript のテストをするための事実上の標準はない。実際、
 
 <p>多くのオブジェクト指向言語で、this はレシーバオブジェクトを指すが、JavaScript ではthis の値は呼び出し元によって決まる。</p>
 
-<p>{% blockquote 本書 P.104 %}
-this は、かっこを受かって関数を呼び出したときに暗黙のうちに設定される。<em>関数として呼び出すとグローバルオブジェクト、メソッドとして呼び出すとその呼出に使ったオブジェクトが this になる</em>。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>this は、かっこを受かって関数を呼び出したときに暗黙のうちに設定される。<em>関数として呼び出すとグローバルオブジェクト、メソッドとして呼び出すとその呼出に使ったオブジェクトが this になる</em>。</p></p><p><p></p><footer><strong>本書 P.104</strong></footer></blockquote></p>
 
 <h3>名前空間</h3>
 
@@ -1697,10 +1663,7 @@ custome.namespace("dom.event");
 <h2>控えめなJavaScript</h2>
 
 
-<p>{% blockquote 本書 P.185 %}
-セマンティックマークアップは、文書の構造に関わるものであり、文書の構造だけを対象とする。セマンティックHTMLは、アクセシビリティ向上の可能性を広げるだけでなく、CSS と JavaScript とのフックを増やす。視覚的なスタイルやレイアウトは CSS の領域である。表示に関わる属性や要素は使わないようにすべきだ。動作は、JavaScript の領域であり、外部スクリプトを介して関わるようにすべきだ。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>セマンティックマークアップは、文書の構造に関わるものであり、文書の構造だけを対象とする。セマンティックHTMLは、アクセシビリティ向上の可能性を広げるだけでなく、CSS と JavaScript とのフックを増やす。視覚的なスタイルやレイアウトは CSS の領域である。表示に関わる属性や要素は使わないようにすべきだ。動作は、JavaScript の領域であり、外部スクリプトを介して関わるようにすべきだ。</p></p><p><p></p><footer><strong>本書 P.185</strong></footer></blockquote></p>
 
 <p>控えめな JavaScript の7つのルールは次のようになる。</p>
 

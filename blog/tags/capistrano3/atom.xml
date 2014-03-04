@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Capistrano3 | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/capistrano3/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-04T15:27:56+09:00</updated>
+  <updated>2014-03-04T15:30:03+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -83,31 +83,7 @@ end
 
 <p>タスクの実行時に指定できる <code>sequence</code>、<code>groups</code>、<code>parallel</code> の説明はこちら。</p>
 
-<p>{% blockquote Capistrano Version 3 Release Announcement http://capistranorb.com/2013/06/01/release-announcement.html %}
-Other modes for parallelism include:</p>
-
-<pre><code class="ruby">    # Capistrano 3.0.x
-    on :all, in: :groups, max: 3, wait: 5 do
-      # Take all servers, in groups of three which execute in parallel
-      # wait five seconds between groups of servers.
-      # This is perfect for rolling restarts
-    end
-
-    on :all, in: :sequence, wait: 15 do
-      # This takes all servers, in sequence and waits 15 seconds between
-      # each server, this might be perfect if you are afraid about
-      # overloading a shared resource, or want to defer the asset compilation
-      # over your cluster owing to worries about load
-    end
-
-    on :all, in: :parallel do
-      # This will simply try and execute the commands contained within
-      # the block in parallel on all servers. This might be perfect for kicking
-      # off something like a Git checkout or similar.
-    end
-</code></pre>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>Other modes for parallelism include:</p></p><p><pre><code class="ruby">    # Capistrano 3.0.x<br/>    on :all, in: :groups, max: 3, wait: 5 do<br/>      # Take all servers, in groups of three which execute in parallel<br/>      # wait five seconds between groups of servers.<br/>      # This is perfect for rolling restarts<br/>    end</p><p>    on :all, in: :sequence, wait: 15 do<br/>      # This takes all servers, in sequence and waits 15 seconds between<br/>      # each server, this might be perfect if you are afraid about<br/>      # overloading a shared resource, or want to defer the asset compilation<br/>      # over your cluster owing to worries about load<br/>    end</p><p>    on :all, in: :parallel do<br/>      # This will simply try and execute the commands contained within<br/>      # the block in parallel on all servers. This might be perfect for kicking<br/>      # off something like a Git checkout or similar.<br/>    end<br/></code></pre></p><p><p></p><footer><strong>Capistrano Version 3 Release Announcement</strong> <cite><a href='http://capistranorb.com/2013/06/01/release-announcement.html'>capistranorb.com/2013/06/01/&hellip;</a></cite></footer></blockquote></p>
 
 <p>Capistrano2 と互換性がないですが、新規プロジェクトには使えるんじゃないかと。</p>
 ]]></content>

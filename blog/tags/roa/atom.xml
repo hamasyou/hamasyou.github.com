@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: ROA | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/roa/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-04T15:27:56+09:00</updated>
+  <updated>2014-03-04T15:30:03+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -50,10 +50,7 @@
 
 <p>REST とは、リソースの状態を表した「何か」を転送するということを表した、Web アーキテクチャスタイルです。REST は Representational State Transfer の略で「表現可能な状態」を「転送する」という意味を表しています。</p>
 
-<p>{% blockquote 『<a href="http://www.amazon.co.jp/gp/product/4774133310?ie=UTF8&tag=sorehabooks-22&linkCode=xm2&camp=247&creativeASIN=4774133310" rel="external nofollow">WEB+DB PRESS vol.42 RESTとはなにか</a>』 %}
-たとえば、商品在庫一覧.htmlというファイルがあるとします。これは商品という「リソース」が在庫であるという「状態」を、HTML形式で「表現」していると見なせます。このHTMLファイルをサーバからブラウザに「転送」するから、「表現可能な状態」を「転送」している、つまり Representational State Transfer なのです。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>たとえば、商品在庫一覧.htmlというファイルがあるとします。これは商品という「リソース」が在庫であるという「状態」を、HTML形式で「表現」していると見なせます。このHTMLファイルをサーバからブラウザに「転送」するから、「表現可能な状態」を「転送」している、つまり Representational State Transfer なのです。</p></p><p><p></p><footer><strong>『<a href="http://www.amazon.co.jp/gp/product/4774133310?ie=UTF8&tag=sorehabooks-22&linkCode=xm2&camp=247&creativeASIN=4774133310" rel="external nofollow">WEB+DB PRESS vol.42 RESTとはなにか</a>』</strong></footer></blockquote></p>
 
 <p>REST はアーキテクチャのスタイルであり、REST というアーキテクチャがあるわけではありません。REST スタイルのアーキテクチャの一つに、ROA（Resource Oriented Architecture:リソース指向アーキテクチャ）というものがあります。</p>
 
@@ -67,10 +64,7 @@
 
 <p>ROA におけるリソースとは、参照（認識）するに値する重要性を持つものとして定義されています。</p>
 
-<p>{% blockquote 『本書 P.85 リソースとは何か』 %}
-「それに対してハイパーテキストリンクを作成する、それに対して意見または反論する、その表現を取得またはキャッシュする、あるいはその他の操作を実行する」ことがある場合は、それをリソースにすべきである。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>「それに対してハイパーテキストリンクを作成する、それに対して意見または反論する、その表現を取得またはキャッシュする、あるいはその他の操作を実行する」ことがある場合は、それをリソースにすべきである。</p></p><p><p></p><footer><strong>『本書 P.85 リソースとは何か』</strong></footer></blockquote></p>
 
 <h4>URI</h4>
 
@@ -83,10 +77,7 @@
 </dl>
 
 
-<p>{% blockquote 『本書 P.87 URI は記述的であるべき』 %}
-URI は構造的でなければならない。それらの構造は予測可能な方法で区別されなければならない。&lt;中略&gt; これは REST な絶対的なルールではない。厳密には、URI が構造的である、あるいは予測可能である必要はないが、筆者はそうあるべきだと思っている。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>URI は構造的でなければならない。それらの構造は予測可能な方法で区別されなければならない。&lt;中略&gt; これは REST な絶対的なルールではない。厳密には、URI が構造的である、あるいは予測可能である必要はないが、筆者はそうあるべきだと思っている。</p></p><p><p></p><footer><strong>『本書 P.87 URI は記述的であるべき』</strong></footer></blockquote></p>
 
 <h3>ROA の特徴</h3>
 
@@ -110,20 +101,14 @@ URI は構造的でなければならない。それらの構造は予測可能�
 
 <p>たとえば Ajax アプリケーションやGmailなどは、同一の URL （ブラウザのアドレス）から変化せずにアプリケーションの各機能を実行することが出来ます。これらは、アドレス可能ではない例になります。</p>
 
-<p>{% blockquote 『本書 P.89 アドレス可能性』 %}
-HTTPがアドレス可能ではなかったら、あるいはGoogle検索がアドレス可能なWebアプリケーションではなかったら、そのURIを本に掲載することは出来ない。「google.com への Web 接続を開き、検索ボックスに「jellyfish」と入力し、[Google 検索]ボタンをクリックする」と指示しなければならないだろう。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>HTTPがアドレス可能ではなかったら、あるいはGoogle検索がアドレス可能なWebアプリケーションではなかったら、そのURIを本に掲載することは出来ない。「google.com への Web 接続を開き、検索ボックスに「jellyfish」と入力し、[Google 検索]ボタンをクリックする」と指示しなければならないだろう。</p></p><p><p></p><footer><strong>『本書 P.89 アドレス可能性』</strong></footer></blockquote></p>
 
 <h4><a id="ステートレス性" name="ステートレス性">ステートレス性</a></h4>
 
 
 <p>すべての HTTP リクエストが完全に分離していることです。サーバの処理が以前の HTTP リクエストに依存せずに実行できるような場合、ステートレス性が保たれているといえます。</p>
 
-<p>{% blockquote 『本書 P.91 ステートレス性』 %}
-ステートレス性は、サーバーが<strong>取り得る状態</strong>もリソースであり、独自のURIが割り当てられるべきであることを意味する。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>ステートレス性は、サーバーが<strong>取り得る状態</strong>もリソースであり、独自のURIが割り当てられるべきであることを意味する。</p></p><p><p></p><footer><strong>『本書 P.91 ステートレス性』</strong></footer></blockquote></p>
 
 <p>これはつまり、URI によってサーバの状態が判断できるようにするべきだということです。特定のリクエストを送るために、あらかじめ別のリクエストを送って、サーバ側の状態を変更しておく必要がないような設計でなければならないということになります。</p>
 
@@ -137,10 +122,7 @@ HTTPがアドレス可能ではなかったら、あるいはGoogle検索がア�
 
 <p>繰り返しますが、アプリケーションに関する状態情報はクライアント側で保持し、サーバにはリソースの情報しか保持しないというのがステートレス性の特徴になります。</p>
 
-<p>{% blockquote 『本書 P.100 リンクと接続性』 %}
-HTTPセッションの現在の状態はリソース状態としてサーバーに格納されないが、アプリケーション状態としてクライアントによって追跡され、クライアントがWebでたどるパスから作成される。サーバーは、ハイパーメディア（ハイパーテキスト表現内のリンクとフォーム）を提供することにより、クライアントのパスを導く。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>HTTPセッションの現在の状態はリソース状態としてサーバーに格納されないが、アプリケーション状態としてクライアントによって追跡され、クライアントがWebでたどるパスから作成される。サーバーは、ハイパーメディア（ハイパーテキスト表現内のリンクとフォーム）を提供することにより、クライアントのパスを導く。</p></p><p><p></p><footer><strong>『本書 P.100 リンクと接続性』</strong></footer></blockquote></p>
 
 <h4><a id="接続性" name="接続性">接続性</a></h4>
 
@@ -149,12 +131,7 @@ HTTPセッションの現在の状態はリソース状態としてサーバー�
 
 <p>ユーザがすべての URI を知っている必要はなく、この接続性（ハイパーリンク）によって、次のリソースや次のサーバ状態に移行できることが重要です。</p>
 
-<p>{% blockquote 『<a href="http://www.amazon.co.jp/gp/product/4774133310?ie=UTF8&tag=sorehabooks-22&linkCode=xm2&camp=247&creativeASIN=4774133310" rel="external nofollow">WEB+DB PRESS vol.42 RESTfulなサービスとアプリケーション作成の心得</a>』 %}
-そう、次はこっちの状態かこっちの常態化どちらかがありますよというサーバの提案がアプリケーションを構成しているので、リンクっていうのはすごい重要なんです。</p>
-
-<p>ただ、現状の Web API とか Web サービスではなかなかリンクは出てこないですね。XML を返してくれても、その XML の中に URL が入っていないので、接続されているとは言いがたいサービスが多いんですが、本当は HTML でみんながすでにやっていること、Web UI でやっていることなので、それをそのまま API でもやると、実はさらに良いシステムを作っていけるんじゃないのかなと思います。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>そう、次はこっちの状態かこっちの常態化どちらかがありますよというサーバの提案がアプリケーションを構成しているので、リンクっていうのはすごい重要なんです。</p></p><p><p>ただ、現状の Web API とか Web サービスではなかなかリンクは出てこないですね。XML を返してくれても、その XML の中に URL が入っていないので、接続されているとは言いがたいサービスが多いんですが、本当は HTML でみんながすでにやっていること、Web UI でやっていることなので、それをそのまま API でもやると、実はさらに良いシステムを作っていけるんじゃないのかなと思います。</p></p><p><p></p><footer><strong>『<a href="http://www.amazon.co.jp/gp/product/4774133310?ie=UTF8&tag=sorehabooks-22&linkCode=xm2&camp=247&creativeASIN=4774133310" rel="external nofollow">WEB+DB PRESS vol.42 RESTfulなサービスとアプリケーション作成の心得</a>』</strong></footer></blockquote></p>
 
 <h4><a id="統一インターフェース" name="統一インターフェース">統一インターフェース</a></h4>
 
