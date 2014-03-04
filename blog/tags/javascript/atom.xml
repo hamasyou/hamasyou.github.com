@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: JavaScript | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/javascript/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-04T15:39:18+09:00</updated>
+  <updated>2014-03-05T01:04:35+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,343 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[サーバサイドJavaScript Node.js入門]]></title>
+    <link href="http://hamasyou.com/blog/2014/03/04/4048703676/"/>
+    <updated>2014-03-04T23:24:06+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/03/04/4048703676</id>
+    <content type="html"><![CDATA[<p>本書は、「<strong>Node</strong> って何？」という人から「Node の中身はどうなっているの？」を知りたい人のために幅広く網羅的に書かれています。</p>
+
+<ol>
+<li>Node の基本から順番に理解していきたい</li>
+<li>Node を使ってすぐに Web アプリケーションを作ってみたい</li>
+<li>Node の内部構造を理解したい</li>
+</ol>
+
+
+<p>これらのモデルケースに合う人にオススメの書籍です。</p>
+
+<!-- more -->
+
+
+<h1>おぼえがき</h1>
+
+<h2>Node とはなにか？</h2>
+
+<p><em>Node はプログラミング言語ではありません</em>。言語としては <strong>JavaScript</strong> を使います。
+<em>Node は JavaScript ライブラリではありませんし、アプリケーションフレームワークでもありません</em>。</p>
+
+<p>Node はスケーラビリティに優れた、Web アプリケーションを実行するためのサーバサイドのプラットフォームです。
+特徴は、I/O 処理が非同期で行われプラットフォーム自体がサーバ機能を提供する方式であることです。</p>
+
+<p>JavaScript で実現されたイベントループと非同期処理の仕組み、<strong>WebSocket</strong> との相性の良さ、V8 エンジン搭載などの技術的に優れた部分を持ち合わせています。
+<em>Node は、従来の同期処理から決別し、ライブラリを含めてスレッドをブロックすることのない世界を作り上げました</em>。</p>
+
+<h3>JavaScript である理由</h3>
+
+<p>JavaScript ではスレッドライブラリが定義されておらず、多くの実装はシングルスレッドで動作します。また、イベントの仕組みをうまくつかって非同期処理を行います。
+Node の世界にマッチさせるライブラリは非同期で動作しなければなりませんが、サーバサイドで JavaScript は今までほとんど使われてこなかったため、
+サーバサイドのライブラリはゼロから作り上げる必要がありました。つまり、<em>過去の資産を気にすることなく非同期かつスレッドをブロックしない I/O を利用させることが可能でした</em>。</p>
+
+<p>近年爆発的にユーザ数が増えると、<strong>C10K</strong> という問題が起こることがクローズアップされ始めました。
+従来のアーキテクチャは、クライアントのアクセスに対して一つのスレッドを割り当てるマルチスレッドモデルで同時アクセスをさばいていました。
+しかし、これではユーザ数が増えた際にスレッドを大量に生成しなければならず、この部分がボトルネックになるようになりました。</p>
+
+<p>そこで、マルチスレッドモデルに対して、<strong>シングルスレッド+イベントループ</strong> により複数のクライアントをさばくというモデルがではじめました。
+JavaScript はシングルスレッドモデルですし、イベントループの仕組みを使って非同期処理を行うようになっています。この C10K 問題に対する解として JavaScript はうってつけだったのです。</p>
+
+<h3>Node とリアルタイムアプリケーション</h3>
+
+<p>HTML5 が世に広まり始めると、その仕様の一部として策定されていた <strong>WebSocket</strong> プロトコルが注目されるようになってきました。（現在では HTML5 とは独立した仕様になっています。）</p>
+
+<p>WebSocket は HTTP 通信とは異なり、接続を維持したまま通信することが前提のプロトコルです。接続確立時には HTTP をつかいますが、その後の通信では独自のプロトコルを使います。
+そのため、WebSocket でリアルタイム通信を行おうとするとサーバ側も対応しなければならず、大掛かりになりがちでした。</p>
+
+<p>Node はプログラム内にサーバ機能を実装可能であるという特徴から、WebSocket 用のモジュールが用意されました。
+これらのモジュールを使うことで簡単に WebSocket を利用したアプリケーションが構築できるようになりました。</p>
+
+<p>こうして、リアルタイム通信を行うなら Node という方程式が出来上がったのです。</p>
+
+<h3>Node のプログラム</h3>
+
+<p>Node はイベントループが回ることですべての処理をさばきます。Node のプログラムは <strong>必要なイベントハンドラを登録し、適切なタイミングでイベントを発生させる</strong> ことで成立しています。
+これは、ブラウザ上の JavaScript とほとんど同じプログラムコードになります。</p>
+
+<h2>モジュール</h2>
+
+<p>Node のモジュールは JavaScript で記述されたファイルか、アドオンと呼ばれる C/C++ で記述されコンパイルされたファイルで構成されます。</p>
+
+<p>Node では <strong>1つのファイルは必ず1つのモジュールに対応します</strong>。
+あるファイルをモジュールとして利用可能にするには <code>module</code> オブジェクトか <code>exports</code> オブジェクトを使って必要な関数、オブジェクトを公開します。</p>
+
+<pre><code class="javascript">module.exports = {
+  funcA: function() {
+  }
+};
+
+function funcB() {
+}
+module.exports.funcB = funcB;
+
+// exports を外部公開オブジェクトとして定義する場合は慣例として次のように書く
+module.exports = exports = {
+  foo: 'bar',
+  funcA: function() {
+  }
+};
+</code></pre>
+
+<h2>感想</h2>
+
+<p>Node とはなにか？Node の仕組みを知りたい、Node を始めたいという人向けのタイトル通りの「入門」書だと思いました。
+実際に使われているモジュールやフレームワークの説明なども入っているので、コレ一冊でとりあえず Node を始められるようになっています。
+ここから始めて見て、壁にあたったら次の参考書を読んでみるという感じがいいんじゃないかと思います。</p>
+
+<p>内容としては、プログラミング知識がある人（とくに JavaScript）なら、優しすぎず難しすぎずという感じです。</p>
+
+<h2>目次</h2>
+
+<ol>
+<li>Node とは何か
+
+<ol>
+<li>非同期プログラミング</li>
+<li>なぜ従来から非同期プログラミングが行われてこなかったのか</li>
+<li>Node の誕生と既存の言語</li>
+<li>JavaScript である理由</li>
+<li>シングルスレッドの強み</li>
+<li>Node とリアルタイムアプリケーション</li>
+</ol>
+</li>
+<li>インストール
+
+<ol>
+<li>OS ごとのインストール方法</li>
+<li>環境構築ツールを使う</li>
+<li>npm を使ったパッケージのインストール</li>
+</ol>
+</li>
+<li>開発環境
+
+<ol>
+<li>エディタ</li>
+<li>IDE</li>
+</ol>
+</li>
+<li>Node入門
+
+<ol>
+<li>Node コマンド</li>
+<li>イベントループ</li>
+<li>HTTP サーバ</li>
+<li>イベントループの落とし穴</li>
+<li>まとめ</li>
+</ol>
+</li>
+<li>モジュール
+
+<ol>
+<li>モジュールの作り方</li>
+<li>モジュールの使い方</li>
+<li>モジュール活用</li>
+</ol>
+</li>
+<li>イベント
+
+<ol>
+<li>Node とイベント駆動プログラミング</li>
+<li>イベントの作成と利用</li>
+<li>リスナ配列</li>
+<li>特殊なイベント</li>
+<li>シグナルとイベント</li>
+<li>まとめ</li>
+</ol>
+</li>
+<li>イベントループとprocess.nextTick()
+
+<ol>
+<li>Node のイベントループの仕組み</li>
+<li>非同期イベントの生成</li>
+<li>非同期コールバックの呼び出し</li>
+</ol>
+</li>
+<li>ストリーム、バッファ、ファイルシステム
+
+<ol>
+<li>ストリーム</li>
+<li>Buffer</li>
+<li>ファイルシステム</li>
+</ol>
+</li>
+<li>ソケット（TCP/UDP）
+
+<ol>
+<li>net モジュール</li>
+<li>TCP サーバの概要</li>
+<li>TCP クライアントの概要</li>
+<li>TCP エコーサーバ・クライアントの実装</li>
+<li>TCP と同期プロトコル</li>
+<li>drain イベントを利用したデータ送信制御</li>
+<li>TLS 通信の利用</li>
+<li>OS のTCP 機能と直接関わるAPI</li>
+<li>dgram モジュール</li>
+</ol>
+</li>
+<li>HTTP/HTTPS
+
+<ol>
+<li>http モジュール</li>
+<li>http.Server のエコーサーバの実装</li>
+<li>HTTP RESTful サーバの実装</li>
+<li>HTTP クライアントの概要</li>
+<li>https モジュール</li>
+<li>url モジュール</li>
+<li>querystring モジュール</li>
+</ol>
+</li>
+<li>Domain
+
+<ol>
+<li>domain モジュールの概要</li>
+<li>domain モジュールのクラス</li>
+<li>ドメインへのオブジェクトと関数の結びつけ</li>
+<li>Implicit Binding</li>
+<li>Explicit Binding</li>
+<li>ドメインを利用したエラーページの表示</li>
+</ol>
+</li>
+<li>ユニットテスト
+
+<ol>
+<li>はじめに</li>
+<li>assert</li>
+<li>should</li>
+<li>chai</li>
+<li>mocha</li>
+<li>vows</li>
+</ol>
+</li>
+<li>デバッグ
+
+<ol>
+<li>デバッガの基本機能</li>
+<li>組み込みデバッガを利用したCUI でのデバッグ</li>
+<li>Node Inspector を利用したGUI でのデバッグ</li>
+<li>組み込みデバッガとNode Inspector の使い分け</li>
+<li>IDE でのデバッグ</li>
+<li>その他のサードパーティのデバッグモジュール</li>
+</ol>
+</li>
+<li>実践編導入
+
+<ol>
+<li>実践編で扱う技術について</li>
+<li>共通して扱うモジュール</li>
+</ol>
+</li>
+<li>Express入門
+
+<ol>
+<li>はじめに</li>
+<li>Express の導入</li>
+<li>Connect のアーキテクチャ</li>
+<li>Express のアーキテクチャ</li>
+</ol>
+</li>
+<li>Express を用いたフォーラムアプリケーションの作成
+
+<ol>
+<li>はじめに</li>
+<li>ルーティング</li>
+<li>データの永続化</li>
+<li>その他のリクエストメソッド</li>
+<li>ビューの改善</li>
+<li>エラー処理</li>
+<li>ミドルウェア</li>
+<li>ユーザー登録とログインの実装</li>
+<li>セッション</li>
+<li>ルートミドルウェア</li>
+<li>remember me の実装</li>
+<li>Tips</li>
+<li>終わりに</li>
+</ol>
+</li>
+<li>Socket.IO を使ったファイル共有アプリケーションの作成
+
+<ol>
+<li>はじめに</li>
+<li>準備</li>
+<li>ユーザー名の指定</li>
+<li>チャンネルの実装</li>
+<li>ファイルの送信</li>
+<li>ファイルの受信</li>
+<li>ファイルの永続化</li>
+<li>ファイルの配信</li>
+<li>終わりに</li>
+</ol>
+</li>
+<li>外部API との連携
+
+<ol>
+<li>ハッシュタグストリーミング</li>
+<li>今一緒にいる人を一括フォロー</li>
+<li>終わりに</li>
+</ol>
+</li>
+<li>Node はどう作られているか
+
+<ol>
+<li>JavaScript とNode</li>
+<li>C10K とNode</li>
+<li>Web アプリケーションアーキテクチャとしてのNode</li>
+</ol>
+</li>
+<li>非同期プログラミングの改善
+
+<ol>
+<li>はじめに</li>
+<li>コールバック関数の問題</li>
+<li>コールバック関数の改善</li>
+<li>まとめ</li>
+</ol>
+</li>
+<li>アドオンの作成
+
+<ol>
+<li>概要</li>
+<li>シンプルなHelloWorld のサンプル（オブジェクトの作成）</li>
+<li>メソッドを持つアドオンのサンプル</li>
+</ol>
+</li>
+<li>npm パッケージ
+
+<ol>
+<li>チュートリアル</li>
+<li>パッケージの公開</li>
+<li>パッケージの詳細</li>
+<li>まとめ</li>
+</ol>
+</li>
+<li>スケーラビリティ
+
+<ol>
+<li>複数プロセスの起動</li>
+<li>複数サーバでのスケールアウト</li>
+<li>終わりに</li>
+</ol>
+</li>
+<li>運用
+
+<ol>
+<li>Apache やNginx との連携</li>
+<li>環境</li>
+</ol>
+</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[サードパーティJavaScript]]></title>
@@ -1536,158 +1873,6 @@ Triangle.prototype.constructor = Triangle;
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[テスト駆動JavaScript]]></title>
-    <link href="http://hamasyou.com/blog/2012/01/21/4048707868/"/>
-    <updated>2012-01-21T10:35:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2012/01/21/4048707868</id>
-    <content type="html"><![CDATA[<p>JavaScript のテストに関して書かれた、体系的な本がやっと出た！という感じにまとめられています。</p>
-
-<p>本書では、JavaScript にスポットを当て、テストしやすい JavaScript のコードとはどんなものか、実際にテスト駆動で JavaScript のコードを書くにはどういう手順で進めていけばよいかについて書かれています。</p>
-
-<p>本書は大まかに、次の4部に分けて解説されています。</p>
-
-<ul>
-<li>第1部: テスト駆動開発</li>
-<li>第2部: プログラマのためのJavaScript</li>
-<li>第3部: JavaScriptテスト駆動開発の実際</li>
-<li>第4部: テストのパターン</li>
-</ul>
-
-
-<p>第1部では、一般的な自動テストやテスト駆動開発（<strong>TDD</strong>）の概念を説明しながら、JavaScript 用の単体テストフレームワークを紹介しています。</p>
-
-<p>第2部では、JavaScript という言語をおさらいしながら、大きな特徴である<em>関数</em>、<em>クロージャ</em>、<em>プロトタイプ継承</em>、<em>ECMAScript 第五版</em>、<em>控えめなJavaScript</em>、<em>機能検出（クロスプラットフォーム）</em>について説明を掘り下げています。</p>
-
-<p>第3部では、実際に小さなプロジェクトを開発しながらテスト駆動による JavaScript の開発を体験できるようになっています。<em>Ajax</em>、<em>Comet</em> によるデータストリーミング、<em>Node.js</em> によるサーバサイド JavaScript、これらを使ったチャットプログラムの作成を体験できるようになっています。</p>
-
-<p>第4部では、<em>モック</em>や<em>スタブ</em>といったいわゆる単体テストのテクニックや、優れた単体テストを書くためのテスト名の付け方や、振る舞いのテストを書くときにはどう書いたらよいか、わかりやすい単体テストコードを書くためのテクニックが説明されています。</p>
-
-<p>『<strong>テスト駆動JavaScript</strong>』の名にふさわしい内容で、他の言語でも共通する単体テストのお作法も学べる本書は、TDD難民の人にオススメです。</p>
-
-<!-- more -->
-
-
-<p>おぼえがきです。</p>
-
-<h2>テスト駆動開発（Test-Driven Development）</h2>
-
-
-<p>単体テストの対象は、最も小さな単位である<em>関数</em>になる。テストのエントリポイントは<em>公開されている</em>メソッドからにする。</p>
-
-<h3>テスト駆動開発における設計</h3>
-
-
-<p><blockquote><p><strong>テスト駆動開発では、「あらかじめ決められた大きな設計」はないが「最初の段階では設計はない」というわけではない。</strong></p></p><p><p>TDD は、何も無いところから優れた設計を自動的に生み出すわけではなく、作業の進展とともに設計を進化させやすくするのである。TDD は、単体テストに強く依存しているため、他の部分から切り離して単独のコンポーネントに力を注ぐ開発スタイルになる。そのため、<em>コードの疎結合を保ち</em>、<em>単一責任の原則を守り</em>、不必要にコードが水ぶくれすることを防ぐために大きな力になる。TDD は設計プロセスをしっかりと制御するため、<em>設計に関する多くの決定をどうしてもそれが必要な時まで先送りする</em>ことができる。</p></p><p><p></p><footer><strong>本書 P.48</strong></footer></blockquote></p>
-
-<p>TDD で開発を始める最初は、大きな設計は不要であるが、ある程度最初に時間を割いて設計を行う。最初の設計の時に考えることは、「<em>特定の状況下でコードがどのように振舞わなければならないか</em>（<strong>単一責任の原則</strong>）」、「<em>コンポーネント間でどのように仕事を委譲しあうのか</em>（<strong>GRASPパターン</strong>）」である。</p>
-
-<h3>単一責任の原則を尊重する</h3>
-
-
-<p>TDD の単体テストでは、<em>依存コンポーネントのテストをしてはならない</em>ので、依存コンポーネントはフェイク（モックやスタブ）に置き換えなければならない。</p>
-
-<h3>テストフレームワーク</h3>
-
-
-<p><blockquote><p>JavaScript のテストをするための事実上の標準はない。実際、JavaScript は汎用の標準ライブラリというものを持たないので、ブラウザのスクリプティングと直接関係のないプログラミングタスクはどれでも事実上の標準を持たないのである。この状況を改善するために、もともとはサーバーサイド JavaScript の標準化を目指していた CommonJS という活動がある。</p></p><p><p></p><footer><strong>本書 P.64</strong></footer></blockquote></p>
-
-<p>JavaScript のテストを行おうとすると、ブラウザ毎の挙動の違いや JavaScript の実装の違いにより動作が異なってきてしまう。そのような問題を解決しようと、Google 作った <strong>JsTestDriver</strong> が注目を集めている。</p>
-
-<p>JsTestDriver もいくつかの欠点はあるため、YUI Test との使い分けをしていくとよさそう。</p>
-
-<h2>プログラマのための JavaScript</h2>
-
-
-
-
-<h3>関数の引数</h3>
-
-
-<p>JavaScript は関数を呼び出すときに引数の個数をチェックしない。実引数が渡されなかった仮引数は undefined になる。</p>
-
-<h3>スコープと実行コンテキスト</h3>
-
-
-<p>JavaScript には、グローバルスコープと関数スコープの2種類のスコープしかない。関数スコープでは、変数を関数内のどこで宣言しても、関数のどこでも参照することができる。</p>
-
-<h3>this キーワード</h3>
-
-
-<p>多くのオブジェクト指向言語で、this はレシーバオブジェクトを指すが、JavaScript ではthis の値は呼び出し元によって決まる。</p>
-
-<p><blockquote><p>this は、かっこを受かって関数を呼び出したときに暗黙のうちに設定される。<em>関数として呼び出すとグローバルオブジェクト、メソッドとして呼び出すとその呼出に使ったオブジェクトが this になる</em>。</p></p><p><p></p><footer><strong>本書 P.104</strong></footer></blockquote></p>
-
-<h3>名前空間</h3>
-
-
-<p>オブジェクトを名前空間として使うには、グローバルスコープでオブジェクトを定義し、関数やオブジェクトをそのオブジェクトのプロパティとして定義すれば良い。</p>
-
-<pre><code class="javascript">var tddjs = {
-  lightbox: { /* ... */ },
-  anchorLightbox: function(anchor, options) {
-    /* ... */
-  }
-};
-</code></pre>
-
-<p>大きなライブラリを作るようなときは、名前空間を構造化したい場合がある。そんなときは、namespace 関数を使うと良い。</p>
-
-<pre><code class="javascript">var tddjs = (function() {
-  function namespace(str) {
-    var object = this;
-    var levels = str.split(".");
-
-    for (var i = 0, len = levels.length; i &lt; len; i++) {
-      if (typeof object[levels[i]] == "undefined") {
-        object[levels[i]] = {};
-      }
-      object = object[levels[i]];
-    }
-    return object;
-  }
-
-  return {
-    namespace: namespace
-  };
-}());
-
-var custome = { namespace: tddjs.namespace };
-custome.namespace("dom.event");
-/* custome.dom.event  namespace */
-</code></pre>
-
-<h2>控えめなJavaScript</h2>
-
-
-<p><blockquote><p>セマンティックマークアップは、文書の構造に関わるものであり、文書の構造だけを対象とする。セマンティックHTMLは、アクセシビリティ向上の可能性を広げるだけでなく、CSS と JavaScript とのフックを増やす。視覚的なスタイルやレイアウトは CSS の領域である。表示に関わる属性や要素は使わないようにすべきだ。動作は、JavaScript の領域であり、外部スクリプトを介して関わるようにすべきだ。</p></p><p><p></p><footer><strong>本書 P.185</strong></footer></blockquote></p>
-
-<p>控えめな JavaScript の7つのルールは次のようになる。</p>
-
-<ul>
-<li>思い込みをするな</li>
-<li>フック（接点）と関係を見つけよ</li>
-<li>反復処理を専用ルーチンに委ねよ</li>
-<li>ブラウザとユーザーを理解せよ</li>
-<li>イベントを理解せよ</li>
-<li>他者と上手く折り合いをつけよ</li>
-<li>次のデベロッパのために仕事をせよ</li>
-</ul>
-
-
-<p>HTML と JavaScript の結合度を下げるために、イベントハンドラを使うとよい。また、テクニックの一つとして、イベントデリゲーションが推奨されている。</p>
-
-<p><strong>イベントデリゲーション</strong>は、ほとんどのユーザイベントがターゲット要素だけでなく、DOM 階層の上位コンテナでも発生することである。</p>
-
-<p>ひとつ一つの要素にイベントハンドラを仕込むのではなく、その上位の要素でハンドリングし、子要素の状態によって処理を管理するようにするとすっきりとしたコードになることが多い。</p>
-
-<h2>優れた単体テストを書く</h2>
-
-
-<p>テスト名の付け方として、「いかに」ではなく「何を」と「なぜ」を中心につけるとよい</p>
 ]]></content>
   </entry>
   
