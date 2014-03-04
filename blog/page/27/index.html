@@ -13,8 +13,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
-GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、 &hellip;">
+  <meta name="description" content="jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。 環境 Rails
+3.0.7
+jpmobile
+0.1.6
+kaminari
+0.12.4 ">
   
 
   
@@ -25,8 +29,12 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/27/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
-GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、 &hellip;" />
+<meta property="og:description" content="jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。 環境 Rails
+3.0.7
+jpmobile
+0.1.6
+kaminari
+0.12.4 " />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -34,6 +42,11 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
   
   <link rel="canonical" href="http://hamasyou.com/blog/page/27/">
+  
+  
+  <link rel="next" href="http://hamasyou.com/blog/page/28/">
+  
+
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <style type="text/css">
@@ -110,7 +123,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2004/06/04/iterator/" class="excerpt-link">実践デザパタ-その7:Iteratorパターン</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/" class="excerpt-link">jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応</a></h1>
     
     
       <p class="meta">
@@ -127,7 +140,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 
 
-<time datetime="2004-06-04T01:40:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 4<span>th</span>, 2004</time>
+<time datetime="2011-06-14T11:29:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
         <span class="divider"></span>
         <span class="categories">
   
@@ -140,14 +153,20 @@ GoFの23のパターンが有名です。デザインパターンというのは
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a>
+      <a class="tag label label-info" href="/blog/tags/jpmobile/" rel="nofollow">jpmobile</a>
+    
+      <a class="tag label label-info" href="/blog/tags/kaminari/" rel="nofollow">kaminari</a>
+    
+      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2004/06/04/iterator/#disqus_thread">Comments</a>
+        <a href="/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/#disqus_thread">Comments</a>
         
         
         
@@ -156,7 +175,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/06/04/iterator/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -172,7 +191,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/04/iterator/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
   </li>
   
   
@@ -180,7 +199,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/04/iterator/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
   </li>
   
   
@@ -188,23 +207,23 @@ GoFの23のパターンが有名です。デザインパターンというのは
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/06/04/iterator/"
+       data-url="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/06/04/iterator/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/06/04/iterator/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/06/04/iterator/"
+       data-save-url="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -228,18 +247,30 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 
 
-  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
-GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
+  <div class="entry-content"><p>jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。</p>
 
-<p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
+<p><section></section></p>
 
-<p>7回目、統一された方法で、集合オブジェクトに順番にアクセスする<b>Iterator</b>パターンのメモです。</p>
+<h4>環境</h4>
+
+
+
+
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+<dt>jpmobile</dt>
+<dd>0.1.6</dd>
+<dt>kaminari</dt>
+<dd>0.12.4</dd>
+</dl>
+<p></p>
 
 </div>
   
   
     <footer>
-      <a href="/blog/2004/06/04/iterator/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 
@@ -251,7 +282,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2004/06/03/decorator/" class="excerpt-link">実践デザパタ-その6:Decoratorパターン</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/06/14/activerecordprevious-changes/" class="excerpt-link">ActiveRecord#previous_changes で変更のあった属性を取り出す</a></h1>
     
     
       <p class="meta">
@@ -268,7 +299,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 
 
-<time datetime="2004-06-03T14:49:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 3<span>rd</span>, 2004</time>
+<time datetime="2011-06-14T09:43:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
         <span class="divider"></span>
         <span class="categories">
   
@@ -281,14 +312,16 @@ GoFの23のパターンが有名です。デザインパターンというのは
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a>
+      <a class="tag label label-info" href="/blog/tags/activerecord/" rel="nofollow">ActiveRecord</a>
+    
+      <a class="tag label label-info" href="/blog/tags/rails3/" rel="nofollow">Rails3</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2004/06/03/decorator/#disqus_thread">Comments</a>
+        <a href="/blog/2011/06/14/activerecordprevious-changes/#disqus_thread">Comments</a>
         
         
         
@@ -297,7 +330,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/06/03/decorator/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -313,7 +346,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/03/decorator/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"></div>
   </li>
   
   
@@ -321,7 +354,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/03/decorator/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"></div>
   </li>
   
   
@@ -329,23 +362,23 @@ GoFの23のパターンが有名です。デザインパターンというのは
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/06/03/decorator/"
+       data-url="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/06/03/decorator/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/06/03/decorator/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/06/03/decorator/"
+       data-save-url="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -369,1199 +402,26 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
 
 
-  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
-GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
+  <div class="entry-content"><p>ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。</p>
 
-<p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
+<p><section></section></p>
 
-<p>6回目は、機能拡張を統一的な方法で、自由に行うことができる<b>Decorator</b>パターンです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/06/03/decorator/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/06/03/4774115797/" class="excerpt-link">Javaデザインパターン徹底攻略</a></h1>
-    
-    
-      <p class="meta">
-        
+<h4>環境</h4>
 
 
 
 
-
-
-
-
-  
-
-
-
-<time datetime="2004-06-03T00:43:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 3<span>rd</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/java/" rel="nofollow">Java</a>
-    
-      <a class="tag label label-info" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/06/03/4774115797/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/06/03/4774115797/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/03/4774115797/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/03/4774115797/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/06/03/4774115797/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/06/03/4774115797/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/06/03/4774115797/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/06/03/4774115797/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774115797/sorehabooks-22" title="Javaデザインパターン徹底攻略" rel="external nofollow">
-      <img src="http://ecx.images-amazon.com/images/I/51SB77S4WAL._SL500_AA300_.jpg" class="asin-thumbnail" alt="Javaデザインパターン徹底攻略" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774115797/sorehabooks-22" title="Javaデザインパターン徹底攻略" rel="external nofollow">Javaデザインパターン徹底攻略</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>日立ソフトウェアエンジニアリングインターネットビジネス部 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774115797/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>最近デザインパターンの使いどころについてのメモを取っている。デザインパターンは、どんなものがあるのかという知識とともに、実際に使いどころをかぎ分ける嗅覚が必要だと思っていいる。</p>
-
-<p>本書は、デザインパターンをJavaで実装するときの実例と共に見やすい形でまとめている。</p>
-
-<p>デザインパターンというのは、アプリケーション設計の一種の定石というか、先人の知恵をカタログ化したものです。</p>
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+</dl>
+<p></p>
 
 </div>
   
   
     <footer>
-      <a href="/blog/2004/06/03/4774115797/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/06/02/composite/" class="excerpt-link">実践デザパタ-その5:Compositeパターン</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-06-02T13:37:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 2<span>nd</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/06/02/composite/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/06/02/composite/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/02/composite/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/02/composite/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/06/02/composite/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/06/02/composite/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/06/02/composite/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/06/02/composite/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
-GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
-
-<p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
-
-<p>5回目は、再帰的な概念を表すことに使える<b>Composite</b>パターンです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/06/02/composite/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/06/01/template-method/" class="excerpt-link">実践デザパタ-その4:Template Methodパターン</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-06-01T17:10:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 1<span>st</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/06/01/template-method/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/06/01/template-method/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/01/template-method/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/01/template-method/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/06/01/template-method/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/06/01/template-method/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/06/01/template-method/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/06/01/template-method/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。GoFの23のパターンが有名です。デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
-
-<p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
-
-<p>今回は、処理の順番を規制するためにつかう、<b>Template Method</b>パターンです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/06/01/template-method/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/06/01/singleton/" class="excerpt-link">実践デザパタ-その3:Singletonパターン</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-06-01T01:59:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 1<span>st</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/06/01/singleton/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/06/01/singleton/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/01/singleton/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/01/singleton/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/06/01/singleton/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/06/01/singleton/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/06/01/singleton/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/06/01/singleton/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。
-GoFの23のパターンが有名です。
-デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
-
-<p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
-
-<p>今回は、インスタンスを一つしか作らせたくない、<b>Singleton</b>パターンです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/06/01/singleton/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/31/factory-method/" class="excerpt-link">実践デザパタ-その2:Factory Methodパターン</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-31T13:11:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 31<span>st</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/31/factory-method/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/31/factory-method/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/31/factory-method/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/31/factory-method/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/31/factory-method/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/31/factory-method/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/31/factory-method/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/31/factory-method/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。GoFの23のパターンが有名です。</p>
-
-<p>デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
-
-<p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
-
-<p>今回は、インスタンスを生成する責務を切り出した、<strong class="text-danger">Factory Method</strong>パターンです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/05/31/factory-method/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/31/adapter/" class="excerpt-link">実践デザパタ-その1:Adapterパターン</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-31T00:13:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 31<span>st</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/31/adapter/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/31/adapter/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/31/adapter/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/31/adapter/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/31/adapter/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/31/adapter/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/31/adapter/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/31/adapter/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>デザインパターンとは、システム設計におけるクラスやインターフェースの関係に名前をつけたものです。GoFの23のパターンが有名です。</p>
-
-<p>デザインパターンというのは、どんなパターンなのか、パターンの目的は何かということを覚えることが非常に重要なのですが、これを実際に適用しようとした場合に、いつ適用していいかが見えてこないとお話になりません。</p>
-
-<p>そこで、自分の勉強も兼ねつつ、パターンの実践時における使用場所や、パターンを適用するきっかけを見つけられるようにメモしておきます。</p>
-
-<p>最初は、仕様の違いを吸収する目的で使われる、<strong class="text-danger">Adapter</strong>パターンです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/05/31/adapter/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/30/4774116963/" class="excerpt-link">ひとりでできるJava実践入門</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-30T15:11:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 30<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/java/" rel="nofollow">Java</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/30/4774116963/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/30/4774116963/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/30/4774116963/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/30/4774116963/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/30/4774116963/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/30/4774116963/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/30/4774116963/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/30/4774116963/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116963/sorehabooks-22" title="ひとりでできるJava実践入門" rel="external nofollow">
-      <img src="http://ec3.images-amazon.com/images/I/51Z9BKSWFML._SL500_AA300_.jpg" class="asin-thumbnail" alt="ひとりでできるJava実践入門" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116963/sorehabooks-22" title="ひとりでできるJava実践入門" rel="external nofollow">ひとりでできるJava実践入門</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>柏原 正三</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116963/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><blockquote>
-<p>本書が一般的なJavaプログラミングの入門書と違うのは、Javaのオブジェクトの取り扱いに主眼を置いていることである。Javaの基本事項の修得には、それほど多くの時間を費やさない。むしろ過半数の時間を、より実践的なJavaプログラミングに割り当てる。そして、その過程では、Javaを使って基本的なアルゴリズムの実践方法を学んでいく。この意味で、本書は、Javaの再入門により適しているといえる。</p>
-<footer><strong>本書 『はじめに』より</strong></footer>
-</blockquote>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/05/30/4774116963/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/29/jndi/" class="excerpt-link">JNDIでオブジェクト管理</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-29T04:05:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 29<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/jndi/" rel="nofollow">JNDI</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/29/jndi/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/29/jndi/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/29/jndi/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/29/jndi/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/29/jndi/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/29/jndi/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/29/jndi/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/29/jndi/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>JNDIは、オブジェクトに名前をつけて管理するネーミングサービスの共通インターフェースを提供します。JAVAアプリケーションはこのJNDIを使って統一された手法でネーミングサービスにアクセスすることができます。</p>
-
-<p>JNDI(Java Naming and Directory Interface)とは、Javaでネーミングサービスを扱うためのAPIを定めたものです。JNDIが定められた目的はアプリケーションがさまざまなネーミング/ディレクトリサービスを統一的に利用することができるようにすることです。</p>
-
-<p>ネーミングサービスとは、名前とオブジェクトを関連付けて管理するサービスのことです。例えば 管理人 =&gt; 「ハマショウというオブジェクト」 というように、<strong class="text-danger">管理人</strong>という名前を<strong class="text-danger">ハマショウ</strong>というオブジェクトに結び付け、<b>管理人 = ハマショウ</b>という関連を作ることと説明できます。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/05/29/jndi/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2011/06/14/activerecordprevious-changes/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 

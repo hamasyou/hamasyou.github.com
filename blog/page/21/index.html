@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="「Executable UML」とは、実行可能なモデルという意味です。Executable UML の目的は 「ソフトウェア実装上の構成を決定せずに、問題領域の解決に向けての分かりやすいモデルを提供すること」です。ソフトウェア実装とは例えば、プログラミング言語やプラットフォームといったいわゆる、 &hellip;">
+  <meta name="description" content="本書は、JavaScript を理解するためのものです。JavaScript はプロトタイプベースの言語で、クラスがなかったり、プロパティのアクセス修飾子がなかったり、継承の仕方が特別だったりします。 JavaScript を理解するには、JavaScript &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/21/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="「Executable UML」とは、実行可能なモデルという意味です。Executable UML の目的は 「ソフトウェア実装上の構成を決定せずに、問題領域の解決に向けての分かりやすいモデルを提供すること」です。ソフトウェア実装とは例えば、プログラミング言語やプラットフォームといったいわゆる、 &hellip;" />
+<meta property="og:description" content="本書は、JavaScript を理解するためのものです。JavaScript はプロトタイプベースの言語で、クラスがなかったり、プロパティのアクセス修飾子がなかったり、継承の仕方が特別だったりします。 JavaScript を理解するには、JavaScript &hellip;" />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -32,6 +32,11 @@
 
   
   <link rel="canonical" href="http://hamasyou.com/blog/page/21/">
+  
+  
+  <link rel="next" href="http://hamasyou.com/blog/page/22/">
+  
+
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <style type="text/css">
@@ -108,7 +113,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2004/11/12/479810602X/" class="excerpt-link">Executable UML MDAモデル駆動型アーキテクチャの基礎</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/04/27/4048706705/" class="excerpt-link">オブジェクト指向JavaScript</a></h1>
     
     
       <p class="meta">
@@ -125,1452 +130,7 @@
 
 
 
-<time datetime="2004-11-12T10:52:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 12<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/mda/" rel="nofollow">MDA</a>
-    
-      <a class="tag label label-info" href="/blog/tags/uml/" rel="nofollow">UML</a>
-    
-      <a class="tag label label-info" href="/blog/tags/moderuqu-dong/" rel="nofollow">モデル駆動</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/11/12/479810602X/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/11/12/479810602X/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/11/12/479810602X/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/11/12/479810602X/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/11/12/479810602X/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/11/12/479810602X/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/11/12/479810602X/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/11/12/479810602X/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810602X/sorehabooks-22" title="Executable UML MDAモデル駆動型アーキテクチャの基礎" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/41W4TWPMZBL._SL500_AA300_.jpg" class="asin-thumbnail" alt="Executable UML MDAモデル駆動型アーキテクチャの基礎" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810602X/sorehabooks-22" title="Executable UML MDAモデル駆動型アーキテクチャの基礎" rel="external nofollow">Executable UML MDAモデル駆動型アーキテクチャの基礎</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>スティーブ J.メラー (著), マーク J.バルサー (著), 株式会社テクノロジックアート (編集), 二上 貴夫 (翻訳), 長瀬 嘉秀 (翻訳), Executable UML研究会 (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>翔泳社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810602X/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>「Executable UML」とは、<b>実行可能なモデル</b>という意味です。Executable UML の目的は 「<strong class="text-danger">ソフトウェア実装上の構成を決定せずに、問題領域の解決に向けての分かりやすいモデルを提供すること</strong>」です。ソフトウェア実装とは例えば、プログラミング言語やプラットフォームといったいわゆる、問題領域の解決につかう道具のことです。逆に問題領域の解決とは、ビジネスモデルやビジネスルールと言われる、ソフトウェアの目的の部分です。</p>
-
-<p>Executable UML は、UML のアクションセマンティックス(動作意味論) を提供します。これにより、ソフトウェア実装を決定せずともソフトウェアの動作を表すことができます。しかも、厳密に定義することで、ツールによる解釈・実行が可能になります。<a href="http://www.atmarkit.co.jp/aig/04biz/mda.html" rel="external nofollow" title=" (モデル駆動アーキテクチャ)"> (モデル駆動アーキテクチャ)</a>は、こうしたExecutable UML によって書かれたモデルを解釈し、コードを自動生成しようとしています。モデルの解釈を行うためには、厳密なセマンティックスが必要とされます。</p>
-
-<p>本書は、Executable UML を理解するためのよい書籍だと思います。Executable UML 自体は、新しいモデリング言語と言うわけではありません。<strong class="text-danger">UML の一つの拡張(プロファイル)であり、実行可能なモデルを生み出すためのただの表記法</strong>です。</p>
-
-<p>最近は、「モデリング」という言葉をいろんなところで聞けるようになりました。書籍もたくさん出ています。今後は、プログラムだけではなくモデリングも出来なくてはならない時代が来るかもしれません。そうすると、自然とモデルからコードを生成するという発想が生まれてきます。今後は MDA のようなモデルからコードを生成する手法が一般的になってくるかもしれません。Executable UML は次世代のための必須知識と言えるのではないでしょうか。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/11/12/479810602X/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/11/09/spring-framework-jue-shu-ki-aop/" class="excerpt-link">Spring Framework 覚書き - AOP</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-11-09T10:14:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 9<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/spring/" rel="nofollow">Spring</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/11/09/spring-framework-jue-shu-ki-aop/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/11/09/spring-framework-jue-shu-ki-aop/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/11/09/spring-framework-jue-shu-ki-aop/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/11/09/spring-framework-jue-shu-ki-aop/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/11/09/spring-framework-jue-shu-ki-aop/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/11/09/spring-framework-jue-shu-ki-aop/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/11/09/spring-framework-jue-shu-ki-aop/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/11/09/spring-framework-jue-shu-ki-aop/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow" title=""></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
-
-<p><abbr title="Aspect Oriented Programming">AOP</abbr>(アスペクト指向プログラミング) はクラスの直接的な責務ではない、各モジュールから共通で使われる処理を、独立して切り出す手法です。「クラスの直接的な責務でない」とは、例えば「ログ」や「トランザクション」、「認証」などです。多くのクラスに重複コードが生まれてしまうような処理は、<b>アスペクト(横断的関心事)</b> として別のモジュールにしてしまうという手法をとることが出来ます。Spring AOP は、このアスペクトを扱うものです。
-参考：<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797326387/sorehabooks-22" rel="external nofollow" title="『AspectJによるアスペクト指向プログラミング入門』 ソフトバンクパブリッシング">『AspectJによるアスペクト指向プログラミング入門』 ソフトバンクパブリッシング</a>
-　
-Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow" title="Springフレームワークの紹介">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
-
-<p><section></section></p>
-
-<h4>参考</h4>
-
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow" title="Spring Pad - Wiki">Spring Pad - Wiki</a></p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://direct.idg.co.jp/detail_1.msp?id=1066&amp;class=10005&amp;n=2" rel="external nofollow" title="JavaWorld 7月号 2004年">JavaWorld 7月号 2004年</a></p>
-
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/11/09/spring-framework-jue-shu-ki-aop/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/11/06/spring-framework-mvc/" class="excerpt-link">Spring Framework 覚書き - MVCフレームワーク</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-11-06T14:00:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 6<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/spring/" rel="nofollow">Spring</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/11/06/spring-framework-mvc/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/11/06/spring-framework-mvc/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/11/06/spring-framework-mvc/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/11/06/spring-framework-mvc/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/11/06/spring-framework-mvc/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/11/06/spring-framework-mvc/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/11/06/spring-framework-mvc/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/11/06/spring-framework-mvc/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow" title=""></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
-
-<p>Springは MVCフレームワークを提供しています。Springのフレームワークは、すべてインターフェースベースになっているので、単一継承の JAVA にとっては非常にありがたいものです。Spring MVC の View には、JSP の他、Velocity、XSLT、JSFなどといったさまざまな技術が使えます。</p>
-
-<p>Validation 機能は、Web システムにとって非常に重要なものとなっています。Springでは、 Validation は Web パッケージと切り離されているので、単体テストも簡単に出来るようになっています。</p>
-
-<p>Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow" title="Springフレームワークの紹介">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
-
-<p><section></section></p>
-
-<h4>参考</h4>
-
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow" title="Spring Pad - Wiki">Spring Pad - Wiki</a></p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://direct.idg.co.jp/detail_1.msp?id=1066&amp;class=10005&amp;n=2" rel="external nofollow" title="JavaWorld 7月号 2004年">JavaWorld 7月号 2004年</a></p>
-
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/11/06/spring-framework-mvc/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/11/04/spring-framework/" class="excerpt-link">Spring Framework 覚書き - トランザクション管理</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-11-04T13:38:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 4<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/spring/" rel="nofollow">Spring</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/11/04/spring-framework/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/11/04/spring-framework/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/11/04/spring-framework/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/11/04/spring-framework/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/11/04/spring-framework/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/11/04/spring-framework/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/11/04/spring-framework/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/11/04/spring-framework/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow" title=""></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
-
-<p>Springはとても抽象化した方法で、トランザクション管理を行います。抽象化というのは実装に依存していないという意味です。アプリケーションサーバが持つトランザクション機能や、 JDBCのようなリソースを使った DataSource に関しても、共通の方法でトランザクション管理を提供しています。</p>
-
-<p>Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow" title="Springフレームワークの紹介">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
-
-<p><section></section></p>
-
-<h4>参考</h4>
-
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow" title="Spring Pad - Wiki">Spring Pad - Wiki</a></p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://direct.idg.co.jp/detail_1.msp?id=1066&amp;class=10005&amp;n=2" rel="external nofollow" title="JavaWorld 7月号 2004年">JavaWorld 7月号 2004年</a></p>
-
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/11/04/spring-framework/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/" class="excerpt-link">Spring Framework 覚書き - JDBC抽象化</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-11-04T13:35:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 4<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/spring/" rel="nofollow">Spring</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow" title=""></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
-
-<p>Springは JDBCを抽象化した層を持っています。JDBCを使ったプログラミングで、共通化できる部分や、煩雑な部分をすっきりとした統一的な方法でアクセスできる手段を提供してくれます。</p>
-
-<p>Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow" title="Springフレームワークの紹介">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
-
-<p><section></section></p>
-
-<h4>参考</h4>
-
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow" title="Spring Pad - Wiki">Spring Pad - Wiki</a></p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://direct.idg.co.jp/detail_1.msp?id=1066&amp;class=10005&amp;n=2" rel="external nofollow" title="JavaWorld 7月号 2004年">JavaWorld 7月号 2004年</a></p>
-
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/11/04/spring-framework-jue-shu-ki-jdbcchou-xiang-hua/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/" class="excerpt-link">Spring Framework 覚書き - IoC</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-11-04T01:14:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 4<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/spring/" rel="nofollow">Spring</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0764558315/sorehabooks-22" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>アメリカではほとんどデフェクトスタンダードとなっている「<a href="http://www.springframework.org/" rel="external nofollow" title=""></a>」の覚書きです。Spring は簡単に言うと、<abbr title="Inversion of Control">IoC (制御の反転)</abbr>、またの名を <abbr title="Dependency Injection">DI (依存性注入)</abbr> という仕組みを取り入れた軽量コンテナです。</p>
-
-<p>Springが他のIoCコンテナと差別化を計っている点として、「<b>ビジネスオブジェクトを管理する方法にフォーカスを当てている</b>」という点があります。また、「レイヤー化されたアーキテクチャであるため、局所的にSpringアーキテクチャを利用できる」、「テストドリブンプロジェクトに理想的なフレームワークになるように設計されている」という利点があります。</p>
-
-<p>Springの詳細については、ほかにもっとよいサイト(<a href="http://www.andore.com/money/trans/spring_ref_ja.html" rel="external nofollow" title="Springフレームワークの紹介">Springフレームワークの紹介</a>)があるので、そちらを参考にしてください。ここでは、Springを使っていて、ハマった点や気になった点などをメモしていこうと思います。随時更新していくつもりです。間違っている可能性が高いので、気になる点があればコメントをお願いします。</p>
-
-<p><section></section></p>
-
-<h4>参考</h4>
-
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://wiki.bmedianode.com/Spring/?FrontPage" rel="external nofollow" title="Spring Pad - Wiki">Spring Pad - Wiki</a></p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://direct.idg.co.jp/detail_1.msp?id=1066&amp;class=10005&amp;n=2" rel="external nofollow" title="JavaWorld 7月号 2004年">JavaWorld 7月号 2004年</a></p>
-
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/11/04/spring-framework-jue-shu-ki-ioc/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/30/4816334114/" class="excerpt-link">はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-10-30T12:17:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 30<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/uml/" rel="nofollow">UML</a>
-    
-      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/10/30/4816334114/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/30/4816334114/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/30/4816334114/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/30/4816334114/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/10/30/4816334114/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/10/30/4816334114/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/10/30/4816334114/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/10/30/4816334114/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4816334114/sorehabooks-22" title="はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!" rel="external nofollow">
-      <img src="http://ec3.images-amazon.com/images/I/51WB9PTJNTL._SL500_AA300_.jpg" class="asin-thumbnail" alt="はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4816334114/sorehabooks-22" title="はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!" rel="external nofollow">はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>竹政 昭利 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>ナツメ社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4816334114/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>「ユースケース図」から「パッケージ図」までの全10個のUML図を<a href="http://www.umtp-japan.org/examination/index.html" rel="external nofollow" title="モデリング技能認定試験">モデリング技能認定試験</a>のL1,L2試験に合格できる程度で紹介されています。UMLは、世界標準のモデリング表記法です。モデリングの共通言語として使われています。</p>
-
-<p>本書では、下記の10個のUML図について説明しています。</p>
-
-<ol>
-<li>ユースケース図</li>
-<li>クラス図</li>
-<li>シーケンス図</li>
-<li>コラボレーション図</li>
-<li>ステートチャート図</li>
-<li>コンポーネント図</li>
-<li>配置図</li>
-<li>オブジェクト図</li>
-<li>アクティビティ図</li>
-<li>パッケージ図</li>
-</ol>
-<p>UML図以外にも簡単なオブジェクト指向の基本概念やモデリングの必要性などにも触れられています。モデリング技能認定試験の勉強本としての活用が考慮されているのか、Keyword や Step Up といった本文中に出てきた用語の解説も豊富に載っています。</p>
-
-<p>本書で扱われているUMLのバージョンは1.xです。今後は、UMLの2.0が使われ始めると思います。UML2.0では、1.xよりもさらに表現力豊かになった図が使えたり、現在のUML図のいくつかが変更されていたりします。ですが、UML2.0対応の本で始めるよりも、本書のような<b>全体図を見渡せる</b>入門書で基礎から作っていくのが、UMLの理解のコツかと思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/10/30/4816334114/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/29/refactoring-to-patterns/" class="excerpt-link">Refactoring to Patterns メモ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-10-29T11:15:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 29<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/rihuakutaringu/" rel="nofollow">リファクタリング</a>
-    
-      <a class="tag label label-info" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/10/29/refactoring-to-patterns/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321213351/sorehabooks-22" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321213351/sorehabooks-22" rel="external nofollow" title="『リファクタリング―プログラムの体質改善テクニック』">『リファクタリング―プログラムの体質改善テクニック』</a>の続編になっています。</p>
-
-<p>例のごとく、自分で読み直したときにどんな場合にどのリファクタリングが使えるかのメモにしようと思ってます。2005年中くらいには、本書の和訳が出版される予定です。</p>
-
-<p>現在、洋書読破中。記事もそのつど更新していくつもりです。(最終更新日：2004/10/29)</p>
-
-<p>本家サイトはこちらになります。カタログ一覧あります。</p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://www.industriallogic.com/xp/refactoring/" rel="external nofollow" title="Refactoring To Patterns">Refactoring To Patterns</a></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/10/29/refactoring-to-patterns/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/28/daoor/" class="excerpt-link">DAOとO/Rマッピングとビジネスロジックと</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-10-28T15:44:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 28<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/dao/" rel="nofollow">DAO</a>
-    
-      <a class="tag label label-info" href="/blog/tags/o-slash-rmatupingu/" rel="nofollow">O/Rマッピング</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/10/28/daoor/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/28/daoor/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/28/daoor/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/28/daoor/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/10/28/daoor/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/10/28/daoor/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/10/28/daoor/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/10/28/daoor/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4764902834/sorehabooks-22" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>最近、<a href="#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0" rel="external nofollow">ビジネスロジック</a>がふんだんに盛り込まれた業務システムというのはあまりありません。</p>
-
-<p>「<strong class="text-danger">データの出し入れ</strong>」が基本ということは、データの格納庫が必要になってくるわけで、それがデータベースになります。最近ではオブジェクト指向データベースも使われ始めましたが、まだまだリレーショナルデータベースの方がよく使われています。</p>
-
-<p>オブジェクト指向で開発していると、ほとんど必ず問題となるのが、<b>リレーショナルデータベースとオブジェクト指向のインピーダンスミスマッチ</b>です。データベースは「データ」を扱い、オブジェクト指向は「振る舞い」を扱います。つまり、「振る舞い」をいかにして「データ」に落とすかというのが、問題となるわけです。</p>
-
-<p>最近では、「DAO(Data Access Object」パターンや「O/Rマッピング」というものを使い、オブジェクト指向とリレーショナルデータベースの差を埋める努力がされています。DAOとO/Rマッピングをまとめつつ、業務アプリケーション開発で思ったことを書いていこうと思います。かなり主観的な意見になります。</p>
-
-<dl>
-<dt id="ドメインモデリング">ドメインモデリング</dt>
-<dd>
-<p>簡単に言うと、システム要件から問題領域(医療システムであれば医学、とか)の用語を抜きだすこと。さらには、抜き出した用語の必要性や重要性、独立性などを考慮してオブジェクト間の関連をモデル化すること。</p>
-</dd>
-<dt id="ビジネスロジック">ビジネスロジック</dt>
-<dd>
-<p>ワークフローやUMLのアクティビティー図で分岐処理を行うこと。</p>
-</dd>
-</dl>
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/10/28/daoor/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/24/djunit-virtual-mock-objects/" class="excerpt-link">djUnitで Virtual Mock Objects ユニットテスト</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-10-24T18:38:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 24<span>th</span>, 2004</time>
+<time datetime="2012-04-27T12:54:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 27<span>th</span>, 2012</time>
         <span class="divider"></span>
         <span class="categories">
   
@@ -1583,16 +143,18 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/djunit/" rel="nofollow">djUnit</a>
+      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
     
-      <a class="tag label label-info" href="/blog/tags/yunitutotesuto/" rel="nofollow">ユニットテスト</a>
+      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a>
+    
+      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2004/10/24/djunit-virtual-mock-objects/#disqus_thread">Comments</a>
+        <a href="/blog/2012/04/27/4048706705/#disqus_thread">Comments</a>
         
         
         
@@ -1601,7 +163,7 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2012/04/27/4048706705/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -1617,7 +179,7 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/"></div>
+         data-href="http://hamasyou.com/blog/2012/04/27/4048706705/"></div>
   </li>
   
   
@@ -1625,7 +187,7 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/"></div>
+         data-href="http://hamasyou.com/blog/2012/04/27/4048706705/"></div>
   </li>
   
   
@@ -1633,23 +195,194 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/"
+       data-url="http://hamasyou.com/blog/2012/04/27/4048706705/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2012/04/27/4048706705/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/"></div>
+         data-href="http://hamasyou.com/blog/2012/04/27/4048706705/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/10/24/djunit-virtual-mock-objects/"
+       data-save-url="http://hamasyou.com/blog/2012/04/27/4048706705/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4048706705?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048706705" title="オブジェクト指向JavaScript" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/51ttiBI82cL._SL500_AA300_.jpg" class="asin-thumbnail" alt="オブジェクト指向JavaScript" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4048706705?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048706705" title="オブジェクト指向JavaScript" rel="external nofollow">オブジェクト指向JavaScript</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>Stoyan Stefanov (著), 水野貴明 (翻訳), 渋川よしき (翻訳)</dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>アスキー・メディアワークス</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4048706705?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048706705" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><p>本書は、JavaScript を理解するためのものです。JavaScript はプロトタイプベースの言語で、クラスがなかったり、プロパティのアクセス修飾子がなかったり、継承の仕方が特別だったりします。</p>
+
+<p>JavaScript を理解するには、JavaScript は全てがオブジェクトであることを覚えておく必要があります。本書は、こう言った、JavaScript が他のオブジェクト指向言語と違う点を整理し、JavaScript ではこう書くというのを丁寧に解説してくれています。</p>
+
+<p>「JavaScript はブラウザ上で動く小さな言語」という認識だった昔とは、昨今では JavaScript の扱いは変わりました。サーバサイドでも JavaScript を動かしたり、スマートフォンの開発に JavaScript を使ったりと、JavaScript が使える舞台は広がっています。</p>
+
+<p>JavaScript をもう一度ちゃんと理解したいという人に、本書はおすすめです。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2012/04/27/4048706705/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/" class="excerpt-link">[Rails] carrierwave と fog で Amazon S3 をストレージとして使う</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-02-21T21:54:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 21<span>st</span>, 2012</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/amazon/" rel="nofollow">Amazon</a>
+    
+      <a class="tag label label-info" href="/blog/tags/s3/" rel="nofollow">S3</a>
+    
+      <a class="tag label label-info" href="/blog/tags/rails3/" rel="nofollow">Rails3</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -1673,34 +406,94 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
 
 
 
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798101281/sorehabooks-22" rel="external nofollow" title=""></a>
-</p>
+  <div class="entry-content"><p>Rails のプラグイン <a href="https://github.com/jnicklas/carrierwave" rel="external nofollow" title="carrierwave">carrierwave</a> と fog を使って、<em>Amazon S3</em> をストレージとして使う方法のメモです。</p>
+
+<h3>使用環境</h3>
 
 
-<p>「JUnitでユニットテストをするときに、クラス間の関係が問題でテストできない。」なんて事ありませんか？ <abbr title="Test Driven Developement">TDD</abbr>(テスト駆動開発)で行っている場合は、クラスの関係をそのつど考えながら進めていくので、こういった問題はあまり起きません。しかし、TDDはまだまだ敷居が高いと思う開発者が多いように思います。</p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://www.h6.dion.ne.jp/~junpei/tdd.html" rel="external nofollow" title="テスト駆動開発考察">テスト駆動開発考察</a></p>
-
-<p>djUnit を使うと、<a href="http://www.xprogramming.com/xpmag/virtualMockObjects.htm" rel="external nofollow" title="JCoverage">JCoverage</a>』というツールを使ったカバレッジテストの結果をエディタ上で見ることが出来るようになります。</p>
-
-<p>djUnitは JUnti の機能と Aspect の機能を併せ持ったユニットテストツールとなっています。</p>
-
-<p><section></section></p>
-
-<h4>参考</h4>
 
 
-<p><i class="fa fa-hand-o-right"></i> <a href="http://works.dgic.co.jp/djwiki/Viewpage.do?pid=@646A556E6974" rel="external nofollow" title="djUnit Wiki">djUnit Wiki</a></p>
+<ul>
+<li>Rails 3.2.1</li>
+<li>carrierwave 0.6.0.beta</li>
+<li>fog 1.1.2</li>
+</ul>
+<h3>carrierwave のインストール</h3>
 
-<p></p>
 
-</div>
+
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td>
+<td class="code"><pre><code><span class="line command">gem install carrierwave</span></code></pre></td>
+</tr></table></div></div>
+        </div>
+
+
+
+
+<h3>config の書き方</h3>
+
+
+<p>initializers に carrierwave.rb というファイルを作成し、以下のような設定を書きます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>initializers/carrierwave.rb</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="c1">#-*- encoding: utf-8 -*-</span>
+</span><span class="line">
+</span><span class="line"><span class="k">unless</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">test?</span>
+</span><span class="line">  <span class="no">CarrierWave</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">cache_dir</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="si">}</span><span class="s2">/tmp/uploads"</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">storage</span>                          <span class="o">=</span> <span class="ss">:fog</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">fog_credentials</span>                  <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">        <span class="ss">:provider</span>              <span class="o">=&gt;</span> <span class="s1">'AWS'</span><span class="p">,</span>
+</span><span class="line">        <span class="ss">:aws_access_key_id</span>     <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">"AWS_S3_KEY_ID"</span><span class="o">]</span><span class="p">,</span>
+</span><span class="line">        <span class="ss">:aws_secret_access_key</span> <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">"AWS_S3_SECRET_KEY"</span><span class="o">]</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">fog_directory</span>                    <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">"AWS_S3_BUCKET"</span><span class="o">]</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">fog_public</span>                       <span class="o">=</span> <span class="kp">false</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">fog_authenticated_url_expiration</span> <span class="o">=</span> <span class="mi">60</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">else</span>
+</span><span class="line">  <span class="no">CarrierWave</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="ss">:file</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>ENV[“AWS_S3_KEY_ID”] にはユーザアクセスID、ENV[“AWS_S3_SECRET_KEY”] にはシークレットアクセスキー、ENV[“AWS_S3_BUCKET”] にはバケット名をそれぞれ設定する。</p>
+
+<p>各値は、Amazon S3 の設定画面で確認できる。</p>
+
+<p>この設定を行い、carrierwave で Uploader を作成して、ファイルをアップロードすると、S3 にファイルを置くことができる。また、S3 上のファイルの URL には、60秒のタイムアウト設定を掛けており、アプリからのアクセスでのみ参照可能なURLが表示されるようになる。（config.fog_public = false、config.fog_authenticated_url_expiration = 60 の設定）</p></div>
   
-  
-    <footer>
-      <a href="/blog/2004/10/24/djunit-virtual-mock-objects/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
   
 
 

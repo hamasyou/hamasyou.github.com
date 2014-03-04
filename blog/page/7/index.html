@@ -13,10 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Titanium で、JSDeferred を使って順次処理するサンプルです。 JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp バージョン &#8211; 追記（2011/03/23） Titanium
-1.5.1
-JSDeferred
-0.4.0 Titanium 1. &hellip;">
+  <meta name="description" content="ruby の open-uri を POST に対応させる open-uri-post というライブラリがありますが、これを使うと rest-client の gem が変な動きをするようです。 ">
   
 
   
@@ -27,10 +24,7 @@ JSDeferred
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/7/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Titanium で、JSDeferred を使って順次処理するサンプルです。 JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp バージョン &#8211; 追記（2011/03/23） Titanium
-1.5.1
-JSDeferred
-0.4.0 Titanium 1. &hellip;" />
+<meta property="og:description" content="ruby の open-uri を POST に対応させる open-uri-post というライブラリがありますが、これを使うと rest-client の gem が変な動きをするようです。 " />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -38,6 +32,11 @@ JSDeferred
 
   
   <link rel="canonical" href="http://hamasyou.com/blog/page/7/">
+  
+  
+  <link rel="next" href="http://hamasyou.com/blog/page/8/">
+  
+
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <style type="text/css">
@@ -114,7 +113,7 @@ JSDeferred
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2011/02/04/titanium-jsdeferred/" class="excerpt-link">[Titanium] JSDeferred を使って現在位置の取得を順次処理する</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/02/16/ruby-open-uri-post-rest-client/" class="excerpt-link">open-uri-postを使うとrest-clientが変な動きするをする</a></h1>
     
     
       <p class="meta">
@@ -131,1400 +130,7 @@ JSDeferred
 
 
 
-<time datetime="2011-02-04T20:32:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 4<span>th</span>, 2011</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/jsdeferred/" rel="nofollow">JSDeferred</a>
-    
-      <a class="tag label label-info" href="/blog/tags/titanium/" rel="nofollow">Titanium</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2011/02/04/titanium-jsdeferred/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/02/04/titanium-jsdeferred/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/02/04/titanium-jsdeferred/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/02/04/titanium-jsdeferred/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2011/02/04/titanium-jsdeferred/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2011/02/04/titanium-jsdeferred/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2011/02/04/titanium-jsdeferred/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2011/02/04/titanium-jsdeferred/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Titanium で、JSDeferred を使って順次処理するサンプルです。</p>
-
-<blockquote><p><site><a href="http://gihyo.jp/dev/feature/01/jsdeferred/0001" rel="external nofollow" title="JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp">JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp</a></site></p></blockquote>
-
-
-<p><section></section></p>
-
-<p><section></section></p>
-
-<h4>バージョン &#8211; 追記（2011/03/23）</h4>
-
-
-
-
-<dl>
-<dt>Titanium</dt>
-<dd>1.5.1</dd>
-<dt>JSDeferred</dt>
-<dd>0.4.0</dd>
-</dl>
-<p>Titanium 1.6.1 で動かない問題は、<a href="http://twitter.com/Seasons" rel="external nofollow" title="@Seasons">@Seasons</a> さんがパッチを書いてくださいました。感謝！！ パッチが公開されたらリンクします！</p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://d.hatena.ne.jp/Seasons/" rel="external nofollow" title="Seasons.NET">Seasons.NET</a></p>
-
-<p></p>
-
-<h3>サンプルコード</h3>
-
-
-
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">Titanium</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">Titanium</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">appURLToPath</span><span class="p">(</span><span class="s2">"app://lib/jsdeferred.js"</span><span class="p">));</span>
-</span><span class="line"><span class="nx">Deferred</span><span class="p">.</span><span class="nx">define</span><span class="p">();</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">currentLocation</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Deferred</span><span class="p">();</span>
-</span><span class="line">  <span class="nx">Titanium</span><span class="p">.</span><span class="nx">Geolocation</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"location"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">currentLocation</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">coords</span><span class="p">;</span>
-</span><span class="line">    <span class="nx">deferred</span><span class="p">.</span><span class="nx">call</span><span class="p">();</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">deferred</span><span class="p">;</span>
-</span><span class="line"><span class="p">})().</span>
-</span><span class="line"><span class="nx">next</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">alert</span><span class="p">(</span><span class="nx">currentLocation</span><span class="p">);</span>
-</span><span class="line"><span class="p">});</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">alert</span><span class="p">(</span><span class="s2">"ここは必ずしも、alert(currentLocation)の後に呼び出されるとはかぎらない!"</span><span class="p">);</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>alert(currentLocation) としているところに現在位置を取得した後のコードを記述することで、現在位置を取得して何か処理をするというのを順序を保証して処理することができるようになります。</p>
-
-<p>ただし、next の外側の処理は非同期で進んでしまうため、必ずしも、alert(currentLocation) との順序は保たれません。</p>
-
-<p></p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title="Titanium Mobile - appcelerator">Titanium Mobile - appcelerator</a></p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://cho45.stfuawsc.com/jsdeferred/" rel="external nofollow" title="JSDeferred">JSDeferred</a></p>
-
-<h3>Titanium で include でファイルを読むときのテクニック</h3>
-
-
-
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">Titanium</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">Titanium</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">appURLToPath</span><span class="p">(</span><span class="s2">"app://lib/jsdeferred.js"</span><span class="p">));</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>上記の様に、 app: プロトコルを使用して、appURLToPath メソッドでファイルを読み込むことで、Titanium のResources フォルダからの相対パスで書けるようになります。</p></div>
-  
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/02/facebook-platform-apigraph-apifql/" class="excerpt-link">Facebook Platform API（Graph API、FQL）</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-02-02T19:55:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 2<span>nd</span>, 2011</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/api/" rel="nofollow">API</a>
-    
-      <a class="tag label label-info" href="/blog/tags/facebook/" rel="nofollow">facebook</a>
-    
-      <a class="tag label label-info" href="/blog/tags/fql/" rel="nofollow">FQL</a>
-    
-      <a class="tag label label-info" href="/blog/tags/graph/" rel="nofollow">Graph</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2011/02/02/facebook-platform-apigraph-apifql/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/02/02/facebook-platform-apigraph-apifql/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/02/02/facebook-platform-apigraph-apifql/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/02/02/facebook-platform-apigraph-apifql/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2011/02/02/facebook-platform-apigraph-apifql/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2011/02/02/facebook-platform-apigraph-apifql/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2011/02/02/facebook-platform-apigraph-apifql/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2011/02/02/facebook-platform-apigraph-apifql/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Facebook Platform の API についてのメモ。間違っているところがあるかも。。。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2011/02/02/facebook-platform-apigraph-apifql/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/21/internet-explorer-web/" class="excerpt-link">Internet Explorer の Web サイト表示フォントを変える方法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-11-21T12:24:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 21<span>st</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/windows/" rel="nofollow">Windows</a>
-    
-      <a class="tag label label-info" href="/blog/tags/huonto/" rel="nofollow">フォント</a>
-    
-      <a class="tag label label-info" href="/blog/tags/ie/" rel="nofollow">IE</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/11/21/internet-explorer-web/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/11/21/internet-explorer-web/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/21/internet-explorer-web/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/21/internet-explorer-web/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/11/21/internet-explorer-web/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/11/21/internet-explorer-web/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/11/21/internet-explorer-web/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/11/21/internet-explorer-web/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Windows の IE を使っていると、他のブラウザに比べてフォントが汚いと思うことがないですか？</p>
-
-<p>Firefox や Chrome をインストール出来ればそれを使えばいいんですが、会社によっては他のブラウザをインストール出来ないということもあります。</p>
-
-<p>そこで、IE で Web ページのフォントを変更する方法ですが、単に「ツール」-「インターネット オプション」の「フォント(N)」で変更するだけです。</p>
-
-<p><img alt="スクリーンショット（2010-11-21 12.19.36）.png" src="/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%EF%BC%882010-11-21%2012.19.36%EF%BC%89.png" width="693" class="mt-image-none img-thumbnail" style="" title="スクリーンショット（2010-11-21 12.19.36）.png"></p>
-
-<p>左側の「Web ページフォント」を変更することで Web ページ上の表示フォントを変えることができます。僕のおすすめは <em>Meiryo UI</em> です。</p>
-
-<p>IE は Web サイトの CSS でフォント指定していても上手く指定が効かなかったりして気分が悪いんですが、ほんと爆発すればいいのにと思う今日この頃です。</p></div>
-  
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/20/4774143073/" class="excerpt-link">[Web開発者のための]大規模サービス技術入門 ―データ構造、メモリ、OS、DB、サーバ/インフラ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-11-20T19:32:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 20<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a>
-    
-      <a class="tag label label-info" href="/blog/tags/arugorizumu/" rel="nofollow">アルゴリズム</a>
-    
-      <a class="tag label label-info" href="/blog/tags/inhura/" rel="nofollow">インフラ</a>
-    
-      <a class="tag label label-info" href="/blog/tags/sisutemushe-ji/" rel="nofollow">システム設計</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/11/20/4774143073/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/11/20/4774143073/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/20/4774143073/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/20/4774143073/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/11/20/4774143073/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/11/20/4774143073/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/11/20/4774143073/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/11/20/4774143073/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4774143073?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774143073" title="[Web開発者のための]大規模サービス技術入門 ―データ構造、メモリ、OS、DB、サーバ/インフラ" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51GW5jxmdvL._SL500_AA300_.jpg" class="asin-thumbnail" alt="[Web開発者のための]大規模サービス技術入門 ―データ構造、メモリ、OS、DB、サーバ/インフラ" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4774143073?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774143073" title="[Web開発者のための]大規模サービス技術入門 ―データ構造、メモリ、OS、DB、サーバ/インフラ" rel="external nofollow">[Web開発者のための]大規模サービス技術入門 ―データ構造、メモリ、OS、DB、サーバ/インフラ</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>伊藤 直也 (著), 田中 慎司 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4774143073?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774143073" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>大規模サービスの運営、大変だということは分かっていても、じゃあ実際にどういうふうに大変なのか。実際に体験してみないとこの大変さはわからないと思います。</p>
-
-<p>でも、実際に大規模サービスの開発・運営に携わることになったら！？</p>
-
-<p>本書は、はてなで実際に運用されているサービスを元に、大規模サービス技術のノウハウを解説しています。実際にはてなのインターンシップで講義資料として使われているものがベースになっているので、分かりやすくかつ、実用的です。</p>
-
-<p>Web サービスはいつユーザ数が爆発するかわからないという面白さがある一方、きちんとサービスのノウハウがないとシステムダウンにすぐに繋がってしまうという怖さがあります。</p>
-
-<p>すべてのWeb サービス開発エンジニアにおすすめです。本書で本質的な知識を得て、準備万端にしておくと良いと思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/11/20/4774143073/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/20/rails-activerecord/" class="excerpt-link">[Rails] ActiveRecord でツリー関係の関連を定義する</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-11-20T01:54:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 20<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/activerecord/" rel="nofollow">ActiveRecord</a>
-    
-      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
-    
-      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/11/20/rails-activerecord/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/11/20/rails-activerecord/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/20/rails-activerecord/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/20/rails-activerecord/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/11/20/rails-activerecord/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/11/20/rails-activerecord/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/11/20/rails-activerecord/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/11/20/rails-activerecord/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Ruby on Rails で、ActiveRecord を使ってツリー関係の関連を定義する方法のメモです。</p>
-
-<p>ツリー関係を表す関連にはひとつのテーブルで表す方法と関連テーブルを使って表す方法とがありますが、今回は関連テーブルを使ってツリー関係を表す方法のメモです。</p>
-
-<p>環境は Rails3.0.1、ActiveRecord3.0.1 で確認しています。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/11/20/rails-activerecord/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/19/rspec/" class="excerpt-link">[Rails] RSpec でコントローラのテストを記述する例</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-11-19T01:44:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 19<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/rails3/" rel="nofollow">Rails3</a>
-    
-      <a class="tag label label-info" href="/blog/tags/rspec/" rel="nofollow">RSpec</a>
-    
-      <a class="tag label label-info" href="/blog/tags/ruby1-dot-9/" rel="nofollow">Ruby1.9</a>
-    
-      <a class="tag label label-info" href="/blog/tags/sanpuru/" rel="nofollow">サンプル</a>
-    
-      <a class="tag label label-info" href="/blog/tags/tesutokodo/" rel="nofollow">テストコード</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/11/19/rspec/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/11/19/rspec/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/19/rspec/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/19/rspec/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/11/19/rspec/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/11/19/rspec/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/11/19/rspec/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/11/19/rspec/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Ruby on Railsで、RSpec を使ってコントローラのテストをしたテストコードの例を載せておきます。</p>
-
-<p>環境は、Ruby on Rails3、Ruby1.9.2 を使っています。RSpec の使い方の参考になれば幸いです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/11/19/rspec/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/18/api-rest/" class="excerpt-link">[REST] 認証が必要な API を REST っぽく作るときのメモ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-11-18T22:23:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 18<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/restful/" rel="nofollow">RESTful</a>
-    
-      <a class="tag label label-info" href="/blog/tags/websabisu/" rel="nofollow">Webサービス</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/11/18/api-rest/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/11/18/api-rest/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/18/api-rest/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/18/api-rest/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/11/18/api-rest/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/11/18/api-rest/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/11/18/api-rest/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/11/18/api-rest/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>REST で Web サービスを構築する場合に、いつも認証が必要なリソースの URI の設計で悩むので、今までの経験上こうしたら上手くいったというのをメモしておきます。</p>
-
-<p>RESTful でもなければ、こんなの世に広めるなよ、害悪だ。っていう批判もあるかもしれませんが、Web の世界でセキュリティと上手く付き合っていくために、セッションを使って認証管理をすると何かといいことが多いので。</p>
-
-<p>あとは、認証が必要な Web API に無理に REST を適用しなくてもいいんじゃないか？ みたいな所もあるかと思いますが。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/11/18/api-rest/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/11/git/" class="excerpt-link">[Git] Git コマンドメモ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-11-11T23:34:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 11<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/git/" rel="nofollow">git</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/11/11/git/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/11/11/git/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/11/git/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/11/git/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/11/11/git/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/11/11/git/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/11/11/git/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/11/11/git/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Git のコマンドメモ。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/11/11/git/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/08/test/" class="excerpt-link">システム開発とテスト</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-11-08T21:23:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 8<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/sisutemukai-fa/" rel="nofollow">システム開発</a>
-    
-      <a class="tag label label-info" href="/blog/tags/tesuto/" rel="nofollow">テスト</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/11/08/test/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/11/08/test/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/08/test/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/08/test/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/11/08/test/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/11/08/test/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/11/08/test/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/11/08/test/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>なんか最近、テストっていう言葉をよく聞くので、僕なりのテストへのこだわりとかをひとつ記事にしてみます。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/11/08/test/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/10/28/4862670857/" class="excerpt-link">iPhoneのオモチャ箱 iPhone SDKプログラミング</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-10-28T23:06:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 28<span>th</span>, 2010</time>
+<time datetime="2014-02-16T21:45:53+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 16<span>th</span>, 2014</time>
         <span class="divider"></span>
         <span class="categories">
   
@@ -1537,18 +143,16 @@ JSDeferred
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/iphone/" rel="nofollow">iPhone</a>
+      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
     
-      <a class="tag label label-info" href="/blog/tags/kutukubutuku/" rel="nofollow">クックブック</a>
-    
-      <a class="tag label label-info" href="/blog/tags/sumatohuon/" rel="nofollow">スマートフォン</a>
+      <a class="tag label label-info" href="/blog/tags/gem/" rel="nofollow">gem</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2010/10/28/4862670857/#disqus_thread">Comments</a>
+        <a href="/blog/2014/02/16/ruby-open-uri-post-rest-client/#disqus_thread">Comments</a>
         
         
         
@@ -1557,7 +161,7 @@ JSDeferred
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/10/28/4862670857/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -1573,7 +177,7 @@ JSDeferred
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/28/4862670857/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"></div>
   </li>
   
   
@@ -1581,7 +185,7 @@ JSDeferred
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/28/4862670857/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"></div>
   </li>
   
   
@@ -1589,23 +193,23 @@ JSDeferred
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/10/28/4862670857/"
+       data-url="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/10/28/4862670857/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/10/28/4862670857/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/10/28/4862670857/"
+       data-save-url="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -1626,49 +230,154 @@ JSDeferred
 
 
 
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4862670857?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4862670857" title="iPhoneのオモチャ箱 iPhone SDKプログラミング" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/617nfdGrMrL._SL500_AA300_.jpg" class="asin-thumbnail" alt="iPhoneのオモチャ箱 iPhone SDKプログラミング" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4862670857?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4862670857" title="iPhoneのオモチャ箱 iPhone SDKプログラミング" rel="external nofollow">iPhoneのオモチャ箱 iPhone SDKプログラミング</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>徳井 直生 (著), 岡村 浩志 (著), 笠谷 真也 (著), 深津 貴之 (著), 青木 太臣 (著), 大宮 聡之 (著), 瀬尾 浩二郎 (著), バスケ (著), 宮川 義之 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>ワークスコーポレーション</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4862670857?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4862670857" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
 
 
 
-
-  <div class="entry-content"><p>本書は、iPhone アプリを実際に作っている著者の方が、実体験やノウハウをもとに執筆されたものが集まっています。</p>
-
-<p>iPhone とはなんなのか、iPhone アプリはどういうもので、どうあると面白いのか、自分たちはどう考えるのか、こういう機能をもったアプリを作るときはこうやって自分たちは作った。そういう話がたくさん載っています。</p>
-
-<p>実際に iPhone アプリを始めて見たい人は、本書の姉妹本である『<a href="http://www.amazon.co.jp/gp/product/486267058X?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=486267058X" rel="external nofollow" title="ユメみるiPhone ―クリエイターのためのiPhone SDKプログラミング">ユメみるiPhone ―クリエイターのためのiPhone SDKプログラミング</a>』から読み始めると良いと思います。それから実際に自分で手を動かしてみて、「アレ？こういう機能ってどうやって実装したらいいのかな？」という疑問が湧いてきたら本書を読むと良いと思います。</p>
-
-<p>章ごとに筆者が違うし、紹介している技術やライブラリも違うので、iPhone アプリ開発を体系的に学ぶのには適していませんが、こういうことがしたい！という目的がある人は、本書に解決の糸口を見出しすことができるかもしれません。</p>
-
-<p>読みやすいですし、チュートリアル的に書かれているところもあり理解しやすいです。なかなかオススメの一冊です。</p>
+  <div class="entry-content"><p>ruby の <code>open-uri</code> を POST に対応させる <code>open-uri-post</code> というライブラリがありますが、これを使うと <code>rest-client</code> の gem が変な動きをするようです。</p>
 
 </div>
   
   
     <footer>
-      <a href="/blog/2010/10/28/4862670857/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2014/02/16/ruby-open-uri-post-rest-client/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/16/sm20183528/" class="excerpt-link">リア充爆発しろで本当に爆発したシーン</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-02-16T01:52:46+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 16<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/riachong/" rel="nofollow">リア充</a>
+    
+      <a class="tag label label-info" href="/blog/tags/gandamu/" rel="nofollow">ガンダム</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/02/16/sm20183528/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/16/sm20183528/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/16/sm20183528/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/16/sm20183528/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/02/16/sm20183528/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/02/16/sm20183528/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/02/16/sm20183528/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/02/16/sm20183528/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p><strong class="text-danger">リア充爆発しろ</strong> で、爆発した瞬間を初めて見た。。泣いた。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2014/02/16/sm20183528/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 

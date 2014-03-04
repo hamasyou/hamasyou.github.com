@@ -13,7 +13,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="本書は、JavaScript を理解するためのものです。JavaScript はプロトタイプベースの言語で、クラスがなかったり、プロパティのアクセス修飾子がなかったり、継承の仕方が特別だったりします。 JavaScript を理解するには、JavaScript &hellip;">
+  <meta name="description" content="Rails の I18n.localize は nil を渡すと例外が発生します。でも、コレだといろいろ使いづらいのでいつも config/initializers/relaxed_i18n.rb
+1
+2
+3
+4
+5
+6
+7
+8 module I18n class &lt;&lt; self &hellip;">
   
 
   
@@ -24,7 +32,15 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/5/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="本書は、JavaScript を理解するためのものです。JavaScript はプロトタイプベースの言語で、クラスがなかったり、プロパティのアクセス修飾子がなかったり、継承の仕方が特別だったりします。 JavaScript を理解するには、JavaScript &hellip;" />
+<meta property="og:description" content="Rails の I18n.localize は nil を渡すと例外が発生します。でも、コレだといろいろ使いづらいのでいつも config/initializers/relaxed_i18n.rb
+1
+2
+3
+4
+5
+6
+7
+8 module I18n class &lt;&lt; self &hellip;" />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -32,6 +48,11 @@
 
   
   <link rel="canonical" href="http://hamasyou.com/blog/page/5/">
+  
+  
+  <link rel="next" href="http://hamasyou.com/blog/page/6/">
+  
+
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <style type="text/css">
@@ -108,7 +129,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2012/04/27/4048706705/" class="excerpt-link">オブジェクト指向JavaScript</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/02/19/rails-i18n-localize/" class="excerpt-link">RailsのI18n.localizeでnilもゆるすようにすると捗る</a></h1>
     
     
       <p class="meta">
@@ -125,12 +146,12 @@
 
 
 
-<time datetime="2012-04-27T12:54:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 27<span>th</span>, 2012</time>
+<time datetime="2014-02-19T22:30:13+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 19<span>th</span>, 2014</time>
         <span class="divider"></span>
         <span class="categories">
   
     
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
     
   
 </span>
@@ -138,18 +159,16 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
+      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
     
-      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a>
-    
-      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a>
+      <a class="tag label label-info" href="/blog/tags/i18n/" rel="nofollow">I18n</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2012/04/27/4048706705/#disqus_thread">Comments</a>
+        <a href="/blog/2014/02/19/rails-i18n-localize/#disqus_thread">Comments</a>
         
         
         
@@ -158,7 +177,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2012/04/27/4048706705/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -174,7 +193,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2012/04/27/4048706705/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"></div>
   </li>
   
   
@@ -182,7 +201,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2012/04/27/4048706705/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"></div>
   </li>
   
   
@@ -190,194 +209,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2012/04/27/4048706705/"
+       data-url="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2012/04/27/4048706705/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2012/04/27/4048706705/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2012/04/27/4048706705/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4048706705?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048706705" title="オブジェクト指向JavaScript" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51ttiBI82cL._SL500_AA300_.jpg" class="asin-thumbnail" alt="オブジェクト指向JavaScript" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4048706705?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048706705" title="オブジェクト指向JavaScript" rel="external nofollow">オブジェクト指向JavaScript</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>Stoyan Stefanov (著), 水野貴明 (翻訳), 渋川よしき (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>アスキー・メディアワークス</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4048706705?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048706705" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>本書は、JavaScript を理解するためのものです。JavaScript はプロトタイプベースの言語で、クラスがなかったり、プロパティのアクセス修飾子がなかったり、継承の仕方が特別だったりします。</p>
-
-<p>JavaScript を理解するには、JavaScript は全てがオブジェクトであることを覚えておく必要があります。本書は、こう言った、JavaScript が他のオブジェクト指向言語と違う点を整理し、JavaScript ではこう書くというのを丁寧に解説してくれています。</p>
-
-<p>「JavaScript はブラウザ上で動く小さな言語」という認識だった昔とは、昨今では JavaScript の扱いは変わりました。サーバサイドでも JavaScript を動かしたり、スマートフォンの開発に JavaScript を使ったりと、JavaScript が使える舞台は広がっています。</p>
-
-<p>JavaScript をもう一度ちゃんと理解したいという人に、本書はおすすめです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2012/04/27/4048706705/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/" class="excerpt-link">[Rails] carrierwave と fog で Amazon S3 をストレージとして使う</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2012-02-21T21:54:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 21<span>st</span>, 2012</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/amazon/" rel="nofollow">Amazon</a>
-    
-      <a class="tag label label-info" href="/blog/tags/s3/" rel="nofollow">S3</a>
-    
-      <a class="tag label label-info" href="/blog/tags/rails3/" rel="nofollow">Rails3</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2012/02/21/rails-carrierwave-fog-amazon-s3/"
+       data-save-url="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -401,43 +249,9 @@
 
 
 
-  <div class="entry-content"><p>Rails のプラグイン <a href="https://github.com/jnicklas/carrierwave" rel="external nofollow" title="carrierwave">carrierwave</a> と fog を使って、<em>Amazon S3</em> をストレージとして使う方法のメモです。</p>
+  <div class="entry-content"><p>Rails の <code>I18n.localize</code> は <code>nil</code> を渡すと例外が発生します。でも、コレだといろいろ使いづらいのでいつも</p>
 
-<h3>使用環境</h3>
-
-
-
-
-<ul>
-<li>Rails 3.2.1</li>
-<li>carrierwave 0.6.0.beta</li>
-<li>fog 1.1.2</li>
-</ul>
-<h3>carrierwave のインストール</h3>
-
-
-
-
-<div class="terminal-window">
-          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav><h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span></pre></td>
-<td class="code"><pre><code><span class="line command">gem install carrierwave</span></code></pre></td>
-</tr></table></div></div>
-        </div>
-
-
-
-
-<h3>config の書き方</h3>
-
-
-<p>initializers に carrierwave.rb というファイルを作成し、以下のような設定を書きます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>initializers/carrierwave.rb</span></figcaption><div class="highlight"><table><tr>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>config/initializers/relaxed_i18n.rb</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -446,48 +260,22 @@
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
 </pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="c1">#-*- encoding: utf-8 -*-</span>
-</span><span class="line">
-</span><span class="line"><span class="k">unless</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">test?</span>
-</span><span class="line">  <span class="no">CarrierWave</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">cache_dir</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="si">}</span><span class="s2">/tmp/uploads"</span>
-</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">storage</span>                          <span class="o">=</span> <span class="ss">:fog</span>
-</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">fog_credentials</span>                  <span class="o">=</span> <span class="p">{</span>
-</span><span class="line">        <span class="ss">:provider</span>              <span class="o">=&gt;</span> <span class="s1">'AWS'</span><span class="p">,</span>
-</span><span class="line">        <span class="ss">:aws_access_key_id</span>     <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">"AWS_S3_KEY_ID"</span><span class="o">]</span><span class="p">,</span>
-</span><span class="line">        <span class="ss">:aws_secret_access_key</span> <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">"AWS_S3_SECRET_KEY"</span><span class="o">]</span>
-</span><span class="line">    <span class="p">}</span>
-</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">fog_directory</span>                    <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">"AWS_S3_BUCKET"</span><span class="o">]</span>
-</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">fog_public</span>                       <span class="o">=</span> <span class="kp">false</span>
-</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">fog_authenticated_url_expiration</span> <span class="o">=</span> <span class="mi">60</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">else</span>
-</span><span class="line">  <span class="no">CarrierWave</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class="line">    <span class="n">config</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="ss">:file</span>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">I18n</span>
+</span><span class="line">  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+</span><span class="line">    <span class="n">alias_method</span> <span class="ss">:original_localize</span><span class="p">,</span> <span class="ss">:localize</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">localize</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+</span><span class="line">      <span class="n">object</span><span class="o">.</span><span class="n">present?</span> <span class="p">?</span> <span class="n">original_localize</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">:</span> <span class="s1">''</span>
+</span><span class="line">    <span class="k">end</span>
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
 </tr></table></div></figure></notextile></div>
 
 
-<p>ENV[“AWS_S3_KEY_ID”] にはユーザアクセスID、ENV[“AWS_S3_SECRET_KEY”] にはシークレットアクセスキー、ENV[“AWS_S3_BUCKET”] にはバケット名をそれぞれ設定する。</p>
+<p>こんな感じのコードを <code>config/initializers</code> の下において使っています。<code>nil</code> を渡すと空文字を返します。</p>
 
-<p>各値は、Amazon S3 の設定画面で確認できる。</p>
-
-<p>この設定を行い、carrierwave で Uploader を作成して、ファイルをアップロードすると、S3 にファイルを置くことができる。また、S3 上のファイルの URL には、60秒のタイムアウト設定を掛けており、アプリからのアクセスでのみ参照可能なURLが表示されるようになる。（config.fog_public = false、config.fog_authenticated_url_expiration = 60 の設定）</p></div>
+<p>今のところコレで問題は起きていないのでオススメしてもいいかなと。</p></div>
   
   
 
@@ -499,7 +287,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2012/01/21/4048707868/" class="excerpt-link">テスト駆動JavaScript</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/02/19/mac-app-store-account/" class="excerpt-link">MacのApp Storeで「ほかのアカウントで使用可能なアップデートがあります」が出てアップデート出来ないときの対応</a></h1>
     
     
       <p class="meta">
@@ -516,192 +304,7 @@
 
 
 
-<time datetime="2012-01-21T10:35:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jan 21<span>st</span>, 2012</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
-    
-      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a>
-    
-      <a class="tag label label-info" href="/blog/tags/tesutoqu-dong/" rel="nofollow">テスト駆動</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2012/01/21/4048707868/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2012/01/21/4048707868/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2012/01/21/4048707868/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2012/01/21/4048707868/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2012/01/21/4048707868/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2012/01/21/4048707868/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2012/01/21/4048707868/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2012/01/21/4048707868/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4048707868?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048707868" title="テスト駆動JavaScript" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51g1mDqlfJL._SL500_AA300_.jpg" class="asin-thumbnail" alt="テスト駆動JavaScript" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4048707868?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048707868" title="テスト駆動JavaScript" rel="external nofollow">テスト駆動JavaScript</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>Christian Johansen (著), 長尾高弘 (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>アスキー・メディアワークス</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4048707868?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048707868" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>JavaScript のテストに関して書かれた、体系的な本がやっと出た！という感じにまとめられています。</p>
-
-<p>本書では、JavaScript にスポットを当て、テストしやすい JavaScript のコードとはどんなものか、実際にテスト駆動で JavaScript のコードを書くにはどういう手順で進めていけばよいかについて書かれています。</p>
-
-<p>本書は大まかに、次の4部に分けて解説されています。</p>
-
-<ul>
-<li>第1部: テスト駆動開発</li>
-<li>第2部: プログラマのためのJavaScript</li>
-<li>第3部: JavaScriptテスト駆動開発の実際</li>
-<li>第4部: テストのパターン</li>
-</ul>
-<p>第1部では、一般的な自動テストやテスト駆動開発（<strong class="text-danger">TDD</strong>）の概念を説明しながら、JavaScript 用の単体テストフレームワークを紹介しています。</p>
-
-<p>第2部では、JavaScript という言語をおさらいしながら、大きな特徴である<em>関数</em>、<em>クロージャ</em>、<em>プロトタイプ継承</em>、<em>ECMAScript 第五版</em>、<em>控えめなJavaScript</em>、<em>機能検出（クロスプラットフォーム）</em>について説明を掘り下げています。</p>
-
-<p>第3部では、実際に小さなプロジェクトを開発しながらテスト駆動による JavaScript の開発を体験できるようになっています。<em>Ajax</em>、<em>Comet</em> によるデータストリーミング、<em>Node.js</em> によるサーバサイド JavaScript、これらを使ったチャットプログラムの作成を体験できるようになっています。</p>
-
-<p>第4部では、<em>モック</em>や<em>スタブ</em>といったいわゆる単体テストのテクニックや、優れた単体テストを書くためのテスト名の付け方や、振る舞いのテストを書くときにはどう書いたらよいか、わかりやすい単体テストコードを書くためのテクニックが説明されています。</p>
-
-<p>『<strong class="text-danger">テスト駆動JavaScript</strong>』の名にふさわしい内容で、他の言語でも共通する単体テストのお作法も学べる本書は、TDD難民の人にオススメです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2012/01/21/4048707868/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/12/game/" class="excerpt-link">『のほほんビレッジ〜みんなのカフェ〜』の御礼</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-09-12T20:16:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 12<span>th</span>, 2011</time>
+<time datetime="2014-02-19T11:46:56+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 19<span>th</span>, 2014</time>
         <span class="divider"></span>
         <span class="categories">
   
@@ -714,14 +317,18 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/sosiyarugemu/" rel="nofollow">ソーシャルゲーム</a>
+      <a class="tag label label-info" href="/blog/tags/mac/" rel="nofollow">Mac</a>
+    
+      <a class="tag label label-info" href="/blog/tags/app-store/" rel="nofollow">App Store</a>
+    
+      <a class="tag label label-info" href="/blog/tags/atupudeto/" rel="nofollow">アップデート</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2011/09/12/game/#disqus_thread">Comments</a>
+        <a href="/blog/2014/02/19/mac-app-store-account/#disqus_thread">Comments</a>
         
         
         
@@ -730,7 +337,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/09/12/game/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -746,7 +353,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/09/12/game/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"></div>
   </li>
   
   
@@ -754,7 +361,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/09/12/game/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"></div>
   </li>
   
   
@@ -762,23 +369,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2011/09/12/game/"
+       data-url="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2011/09/12/game/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2011/09/12/game/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2011/09/12/game/"
+       data-save-url="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -802,1069 +409,13 @@
 
 
 
-  <div class="entry-content"><p>携帯向けの GREE ソーシャルアプリ『<strong class="text-danger">のほほんビレッジ〜みんなのカフェ〜</strong>』を遊んでくださっている皆様、本当にありがとうございます。</p>
-
-<p>のほほんビレッジは、<a href="http://www.ediva.jp/" rel="external nofollow" title="株式会社Ediva">株式会社Ediva</a>さんと共同で製作したゲームです。</p>
-
-<p><a href="http://hamasyou.com/blog/archives/images/%E7%B4%B9%E4%BB%8B%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%86%E3%82%B9%E3%83%8805.jpg" rel="external nofollow" title=""></a></p>
-
-<p><a href="http://gree.jp/community/3035925" rel="external nofollow" title="公式コミュニティ">公式コミュニティ</a>の方にもあげられていますが、<em>皆様からの要望</em>はすべて目を通しています。</p>
-
-<p>要望の中から少しずつですがプログラムを実装して、今後も皆様にお届けしていきたいと思います。</p>
-
-<p>致命的なバグに関しては出来る限り早く、要望の実装は定期メンテナンスで導入という感じで運営していますので、末永くお付き合い下さい。</p>
-
-<p>今回の定期メンテナンスで導入されなかった機能も、次回のメンテナンスには導入されるかも！？というような楽しみ方もしていただけると。。。</p>
-
-<p><a href="http://mpf.gree.jp/2733" rel="external nofollow" title="のほほんビレッジ〜みんなのカフェ〜">のほほんビレッジ〜みんなのカフェ〜</a>（携帯用アプリトップ）</p></div>
-  
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/02/game/" class="excerpt-link">携帯向けソーシャルアプリ『のほほんビレッジ〜みんなのカフェ〜』をリリースしました。</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-09-02T21:17:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 2<span>nd</span>, 2011</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/gree/" rel="nofollow">GREE</a>
-    
-      <a class="tag label label-info" href="/blog/tags/falsehohonbiretuzi/" rel="nofollow">のほほんビレッジ</a>
-    
-      <a class="tag label label-info" href="/blog/tags/sosiyarugemu/" rel="nofollow">ソーシャルゲーム</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2011/09/02/game/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/09/02/game/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/09/02/game/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/09/02/game/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2011/09/02/game/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2011/09/02/game/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2011/09/02/game/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2011/09/02/game/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p><a href="http://hamasyou.com/blog/archives/images/%E7%B4%B9%E4%BB%8B%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%86%E3%82%B9%E3%83%8805.jpg" rel="external nofollow" title=""></a></p>
-
-<p>携帯向けの GREE ソーシャルアプリ『<strong class="text-danger">のほほんビレッジ〜みんなのカフェ〜</strong>』をリリースしました。</p>
-
-<p>このゲームは、のほほん王国を舞台に、自分のカフェを作って仲間を作って生産して調理してデコってクエストしてっていう、
-とにかくやれることを盛り込みすぎてしまった、そんなゲームです。</p>
-
-<p>のほほんビレッジは、<a href="http://www.ediva.jp/" rel="external nofollow" title="株式会社Ediva">株式会社Ediva</a>さんと共同で製作したゲームです。</p>
-
-<p>ゲームの内容は遊んでみてほしいのですが、ゲームの裏側の宣伝を一つ。</p>
-
-<p>このゲームは、よくある Flash ゲームではなく Web のまんまつくっています（Rails を使ってつくりました）。</p>
-
-<p>他のゲームとの差別化として、<em>クエスト</em>の概念を強力に取り入れているのと、memcached をキャッシュとメッセージング（全体メッセージの配信）に使っているところをちょっと強調したいところです。</p>
-
-<p>まぁ、初めてソーシャルゲームを作りましたが、まだまだ納得していないところもあり、いろいろな経験をさせてもらったアプリになっているので、興味があれば遊んでみてください。</p>
-
-<p><a href="http://mpf.gree.jp/2733" rel="external nofollow" title="のほほんビレッジ〜みんなのカフェ〜">のほほんビレッジ〜みんなのカフェ〜</a>（携帯用アプリトップ）</p></div>
-  
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/08/27/4274068579/" class="excerpt-link">７つの言語 ７つの世界</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-27T22:11:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Aug 27<span>th</span>, 2011</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a>
-    
-      <a class="tag label label-info" href="/blog/tags/puroguraminguyan-yu/" rel="nofollow">プログラミング言語</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2011/08/27/4274068579/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/08/27/4274068579/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/08/27/4274068579/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/08/27/4274068579/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2011/08/27/4274068579/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2011/08/27/4274068579/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2011/08/27/4274068579/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2011/08/27/4274068579/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4274068579?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4274068579" title="７つの言語 ７つの世界" rel="external nofollow">
-      <img src="http://ecx.images-amazon.com/images/I/51RCHbILAFL._SL500_AA300_.jpg" class="asin-thumbnail" alt="７つの言語 ７つの世界" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4274068579?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4274068579" title="７つの言語 ７つの世界" rel="external nofollow">７つの言語 ７つの世界</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>Bruce A. Tate (著), まつもとゆきひろ (監訳), 田和 勝 (翻訳) </dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>オーム社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4274068579?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4274068579" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>本書は、はじめてプログラミングを知ったときに楽しさを思い出させてくれるものです。紹介されているプログラミング言語は7つ。</p>
-
-<ul>
-<li>Ruby</li>
-<li>Io</li>
-<li>Prolog</li>
-<li>Scala</li>
-<li>Erlang</li>
-<li>Clojure</li>
-<li>Haskell</li>
-</ul>
-<p>単なる言語紹介の本ではなく、<strong class="text-danger">言語を知る</strong>本です。</p>
-
-<p>本書を読むことで、各言語の長所、短所、原理、思想を知ることができます。プログラマとして一皮向けたい人に、おすすめです。</p>
-
-<blockquote>
-<p>禅の指導者は、数学ができるようになりたければラテン語を勉強せよと言うだろう。プログラミングでも同じだ。オブジェクト指向プログラミングの本質を深く理解するには、論理プログラミングや関数型プログラミング（FP）を勉強する必要がある。関数型プログラミングに上達したければ、アセンブラを勉強する必要がある。</p>
-<footer><strong>本書序文より</strong></footer>
-</blockquote>
-
-
-
-
-<blockquote>
-<p>プログラミングとは結局、理解することであり、理解できるかどうかはどれだけアイデアの引き出しがあるかにかかっている。したがって、新しい言語を直接体験することは、プログラミングが何たるかをより深く理解するために欠かせない。</p>
-<footer><strong>本書序文より</strong></footer>
-</blockquote>
-
-
-
+  <div class="entry-content"><p>先日、古い MacBook Pro の Xcode のアップデートを行おうとしたときに、「<strong class="text-danger">ほかのアカウントで使用可能なアップデートがあります。このアプリケーションをアップデートするには、購入時に使用したアカウントでサインインしてください。</strong>」ってでてアップデートできなかったときにやった対応メモです。</p>
 
 </div>
   
   
     <footer>
-      <a href="/blog/2011/08/27/4274068579/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/08/24/4048679880/" class="excerpt-link">The Art of Multiprocessor Programming 並行プログラミングの原理から実践まで</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-24T12:13:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Aug 24<span>th</span>, 2011</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a>
-    
-      <a class="tag label label-info" href="/blog/tags/bing-xing-puroguramingu/" rel="nofollow">並行プログラミング</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2011/08/24/4048679880/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/08/24/4048679880/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/08/24/4048679880/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/08/24/4048679880/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2011/08/24/4048679880/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2011/08/24/4048679880/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2011/08/24/4048679880/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2011/08/24/4048679880/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4048679880?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048679880" title="The Art of Multiprocessor Programming 並行プログラミングの原理から実践まで" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51I1tXDVosL._SL500_AA300_.jpg" class="asin-thumbnail" alt="The Art of Multiprocessor Programming 並行プログラミングの原理から実践まで" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4048679880?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048679880" title="The Art of Multiprocessor Programming 並行プログラミングの原理から実践まで" rel="external nofollow">The Art of Multiprocessor Programming 並行プログラミングの原理から実践まで</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>Maurice Herlihy (著), Nir Shavit (著), 株式会社クイープ (翻訳) </dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>アスキー・メディアワークス</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4048679880?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048679880" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"></div>
-  
-  
-    <footer>
-      <a href="/blog/2011/08/24/4048679880/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/08/17/4844330411/" class="excerpt-link">cocos2dで作る iPhone＆iPadゲームプログラミング</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-17T10:16:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Aug 17<span>th</span>, 2011</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/cocos2d/" rel="nofollow">cocos2d</a>
-    
-      <a class="tag label label-info" href="/blog/tags/iphone/" rel="nofollow">iPhone</a>
-    
-      <a class="tag label label-info" href="/blog/tags/objective-c/" rel="nofollow">Objective-C</a>
-    
-      <a class="tag label label-info" href="/blog/tags/gemu/" rel="nofollow">ゲーム</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2011/08/17/4844330411/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/08/17/4844330411/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/08/17/4844330411/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/08/17/4844330411/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2011/08/17/4844330411/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2011/08/17/4844330411/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2011/08/17/4844330411/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2011/08/17/4844330411/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4844330411?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4844330411" title="cocos2dで作る iPhone＆iPadゲームプログラミング" rel="external nofollow">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/51gwqeWV-FL._SL500_AA300.jpg" class="asin-thumbnail" alt="cocos2dで作る iPhone＆iPadゲームプログラミング" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4844330411?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4844330411" title="cocos2dで作る iPhone＆iPadゲームプログラミング" rel="external nofollow">cocos2dで作る iPhone＆iPadゲームプログラミング</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>Steffen Itterheim (著), 畑 圭輔 (監修), 坂本 一樹 (監修), 加藤 寛人 (監修), 高丘 知央 (監修), 株式会社 クイープ (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>インプレスジャパン</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4844330411?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4844330411" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>待望の、<strong class="text-danger">cocos2d</strong> 詳細解説本がでました！ 本書を読めば、cocos2d のすべてが分かると言ってもいいんじゃないかというぐらい幅広く詳しく cocos2d のことが書いてあります。</p>
-
-<p>本書は、cocos2d を使ってゲームアプリをつくりながら、cocos2d の機能や cocos2d を使ってゲームアプリを開発する際の手順、こういうふうに設計したら cocos2d ではうまくいくというような事を解説しています。</p>
-
-<p>cocos2d は Objective-C で書かれていて、ゲームアプリも Objective-C を使って作ります。cocos2d が内部に OpenGL-ES を隠してくれているので、すごく簡単に 2D ゲームを作ることができるようになります。</p>
-
-<p>iPhone 用のゲームアプリを作ってみたいがどうやって作ればいいのかわからない人、どのフレームワークを使えばいいか迷っている人に、特におすすめです。</p>
-
-<p>僕の持っている版は cocos2d のバージョン 0.99.5 が解説されています。</p>
-
-<p><section></section></p>
-
-<p><i class="fa fa-search"></i> <a href="http://www.cocos2d-iphone.org/" rel="external nofollow" title="cocos2d for iPhone">cocos2d for iPhone</a></p>
-
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2011/08/17/4844330411/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/08/16/4873114799/" class="excerpt-link">プログラマが知るべき97のこと</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-16T09:45:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Aug 16<span>th</span>, 2011</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a>
-    
-      <a class="tag label label-info" href="/blog/tags/puroguramingu/" rel="nofollow">プログラミング</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2011/08/16/4873114799/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/08/16/4873114799/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/08/16/4873114799/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/08/16/4873114799/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2011/08/16/4873114799/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2011/08/16/4873114799/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2011/08/16/4873114799/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2011/08/16/4873114799/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4873114799?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114799" title="プログラマが知るべき97のこと" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/511RPej0BNL.-76_SL500_AA300_.jpg" class="asin-thumbnail" alt="プログラマが知るべき97のこと" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4873114799?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114799" title="プログラマが知るべき97のこと" rel="external nofollow">プログラマが知るべき97のこと</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>和田 卓人 (監修), Kevlin Henney (編集), 夏目 大 (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>オライリージャパン</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4873114799?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4873114799" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>本書は、「プログラマ」の、「プログラマ」による、「プログラマ」のための本です。</p>
-
-<ul>
-<li>プログラマとして成功したい！</li>
-<li>プログラミングの腕を上達させたい！</li>
-<li>ソースコードの質を向上させたい！</li>
-<li>メンバーと上手くやりたい！</li>
-</ul>
-<p>こういった願いを持つ人のために、世界中でよく知られた著者陣のエッセイがまとめられています。</p>
-
-<p>何か壁にぶち当たっている人、成功したプログラマはどんなことを考えていたのか知りたい人、どういうことを考えてプログラムを書けば質が上がるのか知りたい人。</p>
-
-<p>すべての「プログラマ」におすすめの一冊です。</p>
-
-<p><section></section></p>
-
-<h4 class="note">参考</h4>
-
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://ja.wikisource.org/wiki/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%81%8C%E7%9F%A5%E3%82%8B%E3%81%B9%E3%81%8D97%E3%81%AE%E3%81%93%E3%81%A8" rel="external nofollow" title="プログラマが知るべき97のこと - Wikisource">プログラマが知るべき97のこと - Wikisource</a></p>
-
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2011/08/16/4873114799/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/08/04/iosgame-center/" class="excerpt-link">[iOS] Game Center を使った対戦プログラミングの手順メモ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-04T11:38:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Aug 4<span>th</span>, 2011</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/ios/" rel="nofollow">iOS</a>
-    
-      <a class="tag label label-info" href="/blog/tags/iphone/" rel="nofollow">iPhone</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2011/08/04/iosgame-center/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/08/04/iosgame-center/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/08/04/iosgame-center/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/08/04/iosgame-center/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2011/08/04/iosgame-center/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2011/08/04/iosgame-center/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2011/08/04/iosgame-center/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2011/08/04/iosgame-center/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>iOS 4.1 から、正式に <em>Game Center</em> が使えるようになりました。Game Center を使うと、ゲームに簡単に対戦やスコア、達成目標などの機能を追加できます。</p>
-
-<blockquote>
-<p>Game Centerは、プレー中のゲームについての情報をプレーヤー同士で共有したり、ほかのプレー ヤーと一緒にマルチプレーヤー対戦に参加できるソーシャルゲーミングサービスです。Game Center は、ワイヤレスネットワークと携帯電話ネットワークのどちらからでもサービスを提供できます。 Game Centerの主な機能は、次の通りです。</p>
-<p></p>
-<ul>
-<li>
-<em>認証</em> - プレーヤーはGame Centerでセキュアなアカウントを作成し、iOSベースのデバイスでGame Centerにアクセスできます。</li>
-<br><li>
-<em>友だち</em> - プレーヤーはGame Centerのほかのプレーヤーを友だちとして登録できます。友だちは、最近遊んだゲームなどプレーヤーの詳細情報を確認できます。</li>
-<br><li>
-<em>Leaderboard</em> - プレーヤーのスコアをGame Centerに記録したりGame Centerから取得したりできます。<br>
-</li>
-<li>
-<em>アチーブメント(Achievement、成績)</em> - そのゲームでのプレーヤーのアチーブメントを管理します。アチーブメントは、Game Centerサービスに記録され、Game Centerアプリケーションとゲームの中で閲覧できます。</li>
-<br><li>
-<em>オートマッチ</em> - Game Centerを介して複数のプレーヤーとつながるネットワークゲームを作成できます。プレーヤーは友だちを招待したり、まだ会ったことのないプレーヤーと接続して対戦できます。プレーヤーは、ゲームを実行していないときでも対戦への招待を受信できます。その場合、ゲームが自動的に起動し、招待が処理されます。</li>
-<br><li>
-<em>ボイス</em> - 対戦に接続されたプレーヤー間で音声通信を行うことができます。</li>
-</ul>
-<footer><strong>『Game Kit プログラミングガイド』より</strong></footer>
-</blockquote>
-
-
-<p>Game Center を使うためのプログラミングは形式的ながら、視点が二つ（自分と対戦相手）あるため、どの機能が何に当たるのかを理解していないと混乱しがちです。</p>
-
-<p>本記事は、自分で Game Center を使ったアプリを作ったときの、メモをまとめたものです。</p>
-
-<p><section></section></p>
-
-<h4>開発時の環境</h4>
-
-
-
-
-<dl>
-<dt>iOS SDK バージョン</dt>
-<dd>4.3</dd>
-<dt>クライアント iOS バージョン</dt>
-<dd>自分: iOS 4.3.2   対戦相手: iOS 4.3.5</dd>
-</dl>
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2011/08/04/iosgame-center/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2014/02/19/mac-app-store-account/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 

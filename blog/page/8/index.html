@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="GitHub で複数アカウントを使った場合に、SSH の鍵管理周りではまったので解決方法のメモです。 Special Thanks @bongole ">
+  <meta name="description" content="「kimono」はウェブサイトをブラウザ操作で簡単にスクレイピングして API 化してくれるサービスです。 kimono - Turn websites into structured APIs from your browser in seconds ">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/8/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="GitHub で複数アカウントを使った場合に、SSH の鍵管理周りではまったので解決方法のメモです。 Special Thanks @bongole " />
+<meta property="og:description" content="「kimono」はウェブサイトをブラウザ操作で簡単にスクレイピングして API 化してくれるサービスです。 kimono - Turn websites into structured APIs from your browser in seconds " />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -32,6 +32,11 @@
 
   
   <link rel="canonical" href="http://hamasyou.com/blog/page/8/">
+  
+  
+  <link rel="next" href="http://hamasyou.com/blog/page/9/">
+  
+
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <style type="text/css">
@@ -108,7 +113,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2010/10/28/github/" class="excerpt-link">GitHub で複数アカウントを使う</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/02/15/kimono-api/" class="excerpt-link">ブラウザ操作で簡単にスクレイピングAPIが作れる「kimono」</a></h1>
     
     
       <p class="meta">
@@ -125,7 +130,151 @@
 
 
 
-<time datetime="2010-10-28T14:37:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 28<span>th</span>, 2010</time>
+<time datetime="2014-02-15T19:57:19+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 15<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/kimono/" rel="nofollow">kimono</a>
+    
+      <a class="tag label label-info" href="/blog/tags/sukureipingu/" rel="nofollow">スクレイピング</a>
+    
+      <a class="tag label label-info" href="/blog/tags/api/" rel="nofollow">API</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/02/15/kimono-api/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/15/kimono-api/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/15/kimono-api/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/15/kimono-api/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/02/15/kimono-api/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/02/15/kimono-api/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/02/15/kimono-api/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/02/15/kimono-api/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>「<strong class="text-danger">kimono</strong>」はウェブサイトをブラウザ操作で簡単にスクレイピングして API 化してくれるサービスです。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://www.kimonolabs.com/" rel="external nofollow" title="kimono - Turn websites into structured APIs from your browser in seconds">kimono - Turn websites into structured APIs from your browser in seconds</a></p>
+
+<p><img src="/images/2014-02-15-kimono-api-01.png" alt="kimono" class="img-thumbnail" title="kimono"></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2014/02/15/kimono-api/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/15/gundam-unicorn/" class="excerpt-link">ガンダムUCのシナンジュが好き</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-02-15T16:25:45+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 15<span>th</span>, 2014</time>
         <span class="divider"></span>
         <span class="categories">
   
@@ -138,16 +287,18 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/github/" rel="nofollow">GitHub</a>
+      <a class="tag label label-info" href="/blog/tags/gandamu/" rel="nofollow">ガンダム</a>
     
-      <a class="tag label label-info" href="/blog/tags/ssh/" rel="nofollow">SSH</a>
+      <a class="tag label label-info" href="/blog/tags/sinanziyu/" rel="nofollow">シナンジュ</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ganpura/" rel="nofollow">ガンプラ</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2010/10/28/github/#disqus_thread">Comments</a>
+        <a href="/blog/2014/02/15/gundam-unicorn/#disqus_thread">Comments</a>
         
         
         
@@ -156,7 +307,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/10/28/github/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -172,7 +323,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/28/github/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"></div>
   </li>
   
   
@@ -180,7 +331,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/28/github/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"></div>
   </li>
   
   
@@ -188,23 +339,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/10/28/github/"
+       data-url="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/10/28/github/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/10/28/github/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/10/28/github/"
+       data-save-url="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -228,1310 +379,19 @@
 
 
 
-  <div class="entry-content"><p>GitHub で複数アカウントを使った場合に、SSH の鍵管理周りではまったので解決方法のメモです。</p>
+  <div class="entry-content"><p><a href="http://www.gundam-unicorn.net/" rel="external nofollow" title="ガンダムUC">ガンダムUC</a> にはまってます。2014年5月17日に final episode 7「虹の彼方に」も予定されてるので DVD とか見直しました。</p>
 
-<p>Special Thanks <a href="http://twitter.com/bongole" rel="external nofollow" title="@bongole">@bongole</a></p>
+<p>シナンジュのガンプラも作ったので、次はニューガンダムに挑戦したいなと。RX-0 ユニコーンガンダム3号機 フェネクスのガンプラも発売になりましたね。</p>
+
+<p><a href="http://www.amazon.co.jp/gp/product/B0032ZD5OI?ie=UTF8&amp;camp=247&amp;creativeASIN=B0032ZD5OI&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://www.1999.co.jp/itbig10/10106668.jpg" height="289" width="232" alt="MG 1/100 MSN-06S シナンジュ Ver.Ka チタニウムフィニッシュ (機動戦士ガンダムUC)" class="img-thumbnail" title="MG 1/100 MSN-06S シナンジュ Ver.Ka チタニウムフィニッシュ (機動戦士ガンダムUC)"></a>
+<a href="http://www.amazon.co.jp/gp/product/B00FKL68XM?ie=UTF8&amp;camp=247&amp;creativeASIN=B00FKL68XM&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/81QDARb2zTL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-93 vガンダムVer.Ka チタニウムフィニッシュ (機動戦士ガンダム 逆襲のシャア)" class="img-thumbnail" title="MG 1/100 RX-93 vガンダムVer.Ka チタニウムフィニッシュ (機動戦士ガンダム 逆襲のシャア)"></a>
+<a href="http://www.amazon.co.jp/gp/product/B00HCV6T6E?ie=UTF8&amp;camp=247&amp;creativeASIN=B00HCV6T6E&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/91HCl2myAGL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-0 ユニコーンガンダム3号機 フェネクス (機動戦士ガンダムUC)" class="img-thumbnail" title="MG 1/100 RX-0 ユニコーンガンダム3号機 フェネクス (機動戦士ガンダムUC)"></a></p>
 
 </div>
   
   
     <footer>
-      <a href="/blog/2010/10/28/github/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/" class="excerpt-link">[cocos2d] CCSpriteSheet や CCAnimation を使った時の CCSprite の後始末のしかた</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-10-27T22:58:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 27<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/cocos2d/" rel="nofollow">cocos2d</a>
-    
-      <a class="tag label label-info" href="/blog/tags/memoriguan-li/" rel="nofollow">メモリ管理</a>
-    
-      <a class="tag label label-info" href="/blog/tags/iphone/" rel="nofollow">iPhone</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>cocos2d を使ったときの CCSprite の後始末のしかたのメモです。</p>
-
-<p>CCSpriteSheet から CCSprite を作ったときの破棄と CCAnimation が終わったタイミングでの CCSprite の破棄の方法をメモしています。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/10/27/cocos2d-ccspritesheet-ccanimation-ccsprite/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/10/25/air/" class="excerpt-link">Air号外をリリースしました。</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-10-25T20:56:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 25<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/puresuririsu/" rel="nofollow">プレスリリース</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/10/25/air/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/10/25/air/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/25/air/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/25/air/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/10/25/air/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/10/25/air/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/10/25/air/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/10/25/air/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>（株）マウントポジションがアプリケーションの開発を担当した
-iPhone用アプリケーション「<strong class="text-danger">Air号外</strong>」が本日リリースされました。</p>
-
-<p><img alt="ss2-208x300.jpg" src="/images/ss2-208x300.jpg" width="208" height="300" class="mt-image-none img-thumbnail" style="" title="ss2-208x300.jpg"></p>
-
-<p>Air号外は、街中で配布される「号外」を仮想空間で配布するサービスです。
-地図を見ながら近くで配布されている号外を検索し、
-ARカメラを使って、空間に配置されている号外を取得し、閲覧することができます。</p>
-
-<p>開発運営
-- 株式会社博報堂DYスポーツマーケティング
-- 株式会社キュードーガ
-- 株式会社マウントポジション</p>
-
-<p>首都圏にいてもなかなか手にする機会が少ない「号外」を
-このアプリケーショを使って手に入れてみてはいかがでしょうか。</p>
-
-<p><section></section></p>
-
-<h4>iTunes へのリンク</h4>
-
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://itunes.apple.com/jp/app/id397089560" rel="external nofollow" title="Air号外">Air号外</a></p>
-
-<p></p>
-
-<p>なお、このアプリケーションは <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" rel="external nofollow" title=""></a> を使ってつくりました。</p>
-
-<p>開発期間がぐっと短縮できたし、Titanium だと分業がしやすい（Window 単位で画面をわけることができるため）ので、サクサク開発ができました。</p></div>
-  
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/10/19/objective-c-xcode/" class="excerpt-link">[Objective-C] Xcode の単体テスト環境</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-10-19T17:46:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 19<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/objective-c/" rel="nofollow">Objective-C</a>
-    
-      <a class="tag label label-info" href="/blog/tags/ocunit/" rel="nofollow">OCUnit</a>
-    
-      <a class="tag label label-info" href="/blog/tags/dan-ti-tesuto/" rel="nofollow">単体テスト</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/10/19/objective-c-xcode/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/10/19/objective-c-xcode/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/19/objective-c-xcode/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/19/objective-c-xcode/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/10/19/objective-c-xcode/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/10/19/objective-c-xcode/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/10/19/objective-c-xcode/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/10/19/objective-c-xcode/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>iPhone アプリで利用している Xcode 上に単体テスト環境を構築する手順のメモです。</p>
-
-<p>GUI の構築が多い iPhone アプリ開発ですが、一部ロジックもあります。ロジックのテストはあったほうがいいし、なきゃ不安。</p>
-
-<p>ということで単体テスト環境の構築方法をいろいろしらべてやってみた手順のまとめです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/10/19/objective-c-xcode/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/10/18/objective-c-viewdidunload-dealloc/" class="excerpt-link">[iPhone] UIViewController の dealloc と viewDidUnload</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-10-18T17:52:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 18<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/iphone/" rel="nofollow">iPhone</a>
-    
-      <a class="tag label label-info" href="/blog/tags/uikit/" rel="nofollow">UIKit</a>
-    
-      <a class="tag label label-info" href="/blog/tags/memoriguan-li/" rel="nofollow">メモリ管理</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/10/18/objective-c-viewdidunload-dealloc/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/10/18/objective-c-viewdidunload-dealloc/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/18/objective-c-viewdidunload-dealloc/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/18/objective-c-viewdidunload-dealloc/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/10/18/objective-c-viewdidunload-dealloc/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/10/18/objective-c-viewdidunload-dealloc/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/10/18/objective-c-viewdidunload-dealloc/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/10/18/objective-c-viewdidunload-dealloc/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>UIViewController でメモリの確保と破棄を行う際に viewDidUnload と dealloc をどのように使い分けたらよいか間違って覚えている人が多いように思います。</p>
-
-<p>Web上にあるサンプルや書籍でさえも間違っているものが多くあります。</p>
-
-<p>本記事では、UIViewController の viewDidUnload と dealloc の使い分けを整理していこうと思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/10/18/objective-c-viewdidunload-dealloc/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/10/12/objective-c-retain-release/" class="excerpt-link">[Objective-C] retain と release の関係について</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-10-12T08:13:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 12<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/objective-c/" rel="nofollow">Objective-C</a>
-    
-      <a class="tag label label-info" href="/blog/tags/memoriguan-li/" rel="nofollow">メモリ管理</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/10/12/objective-c-retain-release/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/10/12/objective-c-retain-release/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/12/objective-c-retain-release/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/10/12/objective-c-retain-release/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/10/12/objective-c-retain-release/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/10/12/objective-c-retain-release/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/10/12/objective-c-retain-release/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/10/12/objective-c-retain-release/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Objective-C ではガーベージコレクション機能が用意されていますが、iPhone アプリ開発などではメモリ管理をガーベージコレクションに任せずに自分で管理する必要があったりします。</p>
-
-<p>メモリ管理のルールとして、自分でメモリを割り当てたものは自分で開放する、自分で retain をしたものは 自分で release するなど、いくつかルールがあるのでそのメモです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/10/12/objective-c-retain-release/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/25/dropbox-app/" class="excerpt-link">[Dropbox] .app ファイルを共有すると動かなくなる</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-09-25T13:14:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 25<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/dropbox/" rel="nofollow">Dropbox</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/09/25/dropbox-app/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/09/25/dropbox-app/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/09/25/dropbox-app/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/09/25/dropbox-app/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/09/25/dropbox-app/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/09/25/dropbox-app/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/09/25/dropbox-app/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/09/25/dropbox-app/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p><strong class="text-danger">Dropbox</strong> で .app ファイルを共有すると、転送先で動かなくなるという現象が発生したので、解決方法のメモです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/09/25/dropbox-app/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/24/javascript-1/" class="excerpt-link">[JavaScript] JavaScript の変数宣言のスコープ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-09-24T10:57:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 24<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/09/24/javascript-1/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/09/24/javascript-1/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/09/24/javascript-1/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/09/24/javascript-1/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/09/24/javascript-1/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/09/24/javascript-1/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/09/24/javascript-1/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/09/24/javascript-1/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>JavaScript で忘れがちな変数宣言に関してのメモ。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/09/24/javascript-1/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/23/textmate/" class="excerpt-link">[TextMate] よく使うショートカット</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-09-23T14:46:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 23<span>rd</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/textmate/" rel="nofollow">TextMate</a>
-    
-      <a class="tag label label-info" href="/blog/tags/siyotokatuto/" rel="nofollow">ショートカット</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/09/23/textmate/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/09/23/textmate/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/09/23/textmate/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/09/23/textmate/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/09/23/textmate/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/09/23/textmate/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/09/23/textmate/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/09/23/textmate/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>TextMate でよく使うショートカットのメモです。自分用。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/09/23/textmate/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/20/mac-os-x-windows-winebottler/" class="excerpt-link">Mac OS X で Windows アプリケーションを動かす WineBottler</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-09-20T00:07:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 20<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/macosx/" rel="nofollow">MacOSX</a>
-    
-      <a class="tag label label-info" href="/blog/tags/vmware/" rel="nofollow">VMWare</a>
-    
-      <a class="tag label label-info" href="/blog/tags/windows/" rel="nofollow">Windows</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/09/20/mac-os-x-windows-winebottler/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Mac OS X 上で Windows アプリケーションを動かす <em><a href="http://winebottler.kronenberg.org/" rel="external nofollow" title="WineBottler">WineBottler</a></em> なるものを発見しました。</p>
-
-<p>このアプリケーションを使うと、Windows OS を持っていなくても、VMWare や Boot Camp をもっていなくても、Windows アプリケーションを Mac OS X 上で動かすことができるようです。</p>
-
-<p>Web サイトを Mac で Windows の IE の表示確認をするために使ったので、そのメモです。WineBottler をもっと使いこなすには他のサイトを確認してみてください。</p>
-
-<p><section></section></p>
-
-<h4>WineBottler を使いこなすための参考サイト</h4>
-
-
-
-
-<ul>
-<li><a href="http://www.lifehacker.jp/2010/01/100110_winebottlerwindowsos_x.html" rel="external nofollow" title="『WineBottler』でWindowsのプログラムをスタンドアローン化し、OS Xアプリに - lifehacker">『WineBottler』でWindowsのプログラムをスタンドアローン化し、OS Xアプリに - lifehacker</a></li>
-<li><a href="http://www.moongift.jp/2010/01/winebottler/" rel="external nofollow" title="Windows用ソフトウェアをあたかもMac OSXソフトウェアのように変換する - MOONGIFT">Windows用ソフトウェアをあたかもMac OSXソフトウェアのように変換する - MOONGIFT</a></li>
-</ul>
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/09/20/mac-os-x-windows-winebottler/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2014/02/15/gundam-unicorn/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 

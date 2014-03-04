@@ -13,10 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Ruby の HTML パーサに Nokogiri があります。基本的な使い方は Nokogiri-GitHub
-Nokogiri を使った Rubyスクレイピング [初心者向けチュートリアル]
-RubyのNokogiriでギコギコスクレイピングだ
-Nokogiriでスクレイピング &hellip;">
+  <meta name="description" content="本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。 &hellip;">
   
 
   
@@ -27,10 +24,7 @@ Nokogiriでスクレイピング &hellip;">
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/3/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Ruby の HTML パーサに Nokogiri があります。基本的な使い方は Nokogiri-GitHub
-Nokogiri を使った Rubyスクレイピング [初心者向けチュートリアル]
-RubyのNokogiriでギコギコスクレイピングだ
-Nokogiriでスクレイピング &hellip;" />
+<meta property="og:description" content="本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。 &hellip;" />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -38,6 +32,11 @@ Nokogiriでスクレイピング &hellip;" />
 
   
   <link rel="canonical" href="http://hamasyou.com/blog/page/3/">
+  
+  
+  <link rel="next" href="http://hamasyou.com/blog/page/4/">
+  
+
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <style type="text/css">
@@ -114,7 +113,7 @@ Nokogiriでスクレイピング &hellip;" />
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2014/02/13/ruby-nokogiri/" class="excerpt-link">Ruby-Nokogiriで取り出した要素を置き換える</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/02/21/functional-javascript/" class="excerpt-link">JavaScriptで学ぶ関数型プログラミング</a></h1>
     
     
       <p class="meta">
@@ -131,7 +130,7 @@ Nokogiriでスクレイピング &hellip;" />
 
 
 
-<time datetime="2014-02-13T16:19:09+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 13<span>th</span>, 2014</time>
+<time datetime="2014-02-21T19:39:56+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 21<span>st</span>, 2014</time>
         <span class="divider"></span>
         <span class="categories">
   
@@ -144,18 +143,18 @@ Nokogiriでスクレイピング &hellip;" />
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
+      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
     
-      <a class="tag label label-info" href="/blog/tags/nokogiri/" rel="nofollow">Nokogiri</a>
+      <a class="tag label label-info" href="/blog/tags/guan-shu-xing/" rel="nofollow">関数型</a>
     
-      <a class="tag label label-info" href="/blog/tags/gem/" rel="nofollow">gem</a>
+      <a class="tag label label-info" href="/blog/tags/orairi/" rel="nofollow">オライリー</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2014/02/13/ruby-nokogiri/#disqus_thread">Comments</a>
+        <a href="/blog/2014/02/21/functional-javascript/#disqus_thread">Comments</a>
         
         
         
@@ -164,7 +163,7 @@ Nokogiriでスクレイピング &hellip;" />
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/21/functional-javascript/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -180,7 +179,7 @@ Nokogiriでスクレイピング &hellip;" />
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"></div>
   </li>
   
   
@@ -188,7 +187,7 @@ Nokogiriでスクレイピング &hellip;" />
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"></div>
   </li>
   
   
@@ -196,615 +195,23 @@ Nokogiriでスクレイピング &hellip;" />
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/"
+       data-url="http://hamasyou.com/blog/2014/02/21/functional-javascript/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2014/02/21/functional-javascript/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/13/ruby-nokogiri/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Ruby の HTML パーサに <strong class="text-danger">Nokogiri</strong> があります。基本的な使い方は</p>
-
-<ul>
-<li><a href="https://github.com/sparklemotion/nokogiri" rel="external nofollow" title="Nokogiri-GitHub">Nokogiri-GitHub</a></li>
-<li><a href="http://morizyun.github.io/blog/ruby-nokogiri-scraping-tutorial/" rel="external nofollow" title="Nokogiri を使った Rubyスクレイピング [初心者向けチュートリアル]">Nokogiri を使った Rubyスクレイピング [初心者向けチュートリアル]</a></li>
-<li><a href="http://www.absolute-keitarou.net/blog/?p=634" rel="external nofollow" title="RubyのNokogiriでギコギコスクレイピングだ">RubyのNokogiriでギコギコスクレイピングだ</a></li>
-<li><a href="http://qiita.com/w650/items/e663fa2430145c456c4d" rel="external nofollow" title="Nokogiriでスクレイピング">Nokogiriでスクレイピング</a></li>
-</ul>
-<p>とかを参考にしてもらえばいいんですが、パースした要素の特定の属性を置き換えたいとか追加で属性を追加したい時のメモです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/13/ruby-nokogiri/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/13/movable-type-to-octopress/" class="excerpt-link">Movable TypeからGitHub+Octopressに乗り換える手順</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-13T10:53:07+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 13<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/movable-type/" rel="nofollow">Movable Type</a>
-    
-      <a class="tag label label-info" href="/blog/tags/github/" rel="nofollow">GitHub</a>
-    
-      <a class="tag label label-info" href="/blog/tags/octopress/" rel="nofollow">Octopress</a>
-    
-      <a class="tag label label-info" href="/blog/tags/liquid/" rel="nofollow">Liquid</a>
-    
-      <a class="tag label label-info" href="/blog/tags/jekyll/" rel="nofollow">Jekyll</a>
-    
-      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/13/movable-type-to-octopress/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/13/movable-type-to-octopress/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>今まではブログを <em>ロリポップ</em> + <em>Movable Type</em> でやっていましたが、ブログデザインを変更したくなり、ついでにブログ環境も変更しました。</p>
-
-<p>Movable Type から <em>WordPress</em> に乗り換えても良かったんですが、エンジニアっぽいブログ環境ってなんだろうと考えた末、<strong class="text-danger">GitHub Pages</strong> と <strong class="text-danger">Octopress</strong> を使ってブログ環境を作ることにしました。</p>
-
-<p><a href="http://octopress.org/" rel="external nofollow" title="Octopress">Octopress</a> は <a href="http://jekyllrb.com/" rel="external nofollow" title="Jekyll">Jekyll</a> を使ってブログ環境を作るためのフレームワークで、Jekyll はブログのような静的サイトを作るための Ruby のファイルジェネレータになります。</p>
-
-<p><a href="http://pages.github.com/" rel="external nofollow" title="GitHub Pages">GitHub Pages</a> と組み合わせると無料でブログを始めることができます。</p>
-
-<p>移行でおこなったことの手順です。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/13/movable-type-to-octopress/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/12/github-octopress/" class="excerpt-link">GitHubとOctopressで始める無料ブログ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-12T19:33:48+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 12<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/github/" rel="nofollow">GitHub</a>
-    
-      <a class="tag label label-info" href="/blog/tags/octopress/" rel="nofollow">Octopress</a>
-    
-      <a class="tag label label-info" href="/blog/tags/burogu/" rel="nofollow">ブログ</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/12/github-octopress/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/12/github-octopress/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/12/github-octopress/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/12/github-octopress/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/12/github-octopress/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/12/github-octopress/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/12/github-octopress/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/12/github-octopress/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>長いもので、hamasyou.com を初めてから9年経ちました。何年かに一回ブログのデザインを更新したくなるのって普通ですよね。</p>
-
-<p>今までずっと <em>MovableType</em> を使っていたんですが、markdown で書きたくなったのと、MovableType のデザインのいじり方を忘れてしまったため、ブログ環境を一新する決意をしました。</p>
-
-<p>今回作ったブログ環境は次のとおり。</p>
-
-<dl>
-<dt>公開用のサーバ</dt>
-<dd><a href="http://pages.github.com/" rel="external nofollow" title="GitHub Pages">GitHub Pages</a></dd>
-<dt>ブログ編集用のCMS</dt>
-<dd>ローカルマシン上に <a href="http://octopress.org/" rel="external nofollow" title="Octopress">Octopress</a> で構築</dd>
-</dl>
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/12/github-octopress/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/03/rails/" class="excerpt-link">Railsで手書きの図や絵をプログラムに取り込む方法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2013-12-03T19:05:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Dec 3<span>rd</span>, 2013</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/canvas/" rel="nofollow">canvas</a>
-    
-      <a class="tag label label-info" href="/blog/tags/html5/" rel="nofollow">HTML5</a>
-    
-      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2013/12/03/rails/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2013/12/03/rails/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/12/03/rails/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/12/03/rails/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2013/12/03/rails/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2013/12/03/rails/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2013/12/03/rails/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2013/12/03/rails/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>スマホやタブレットが増えてきて、Railsアプリでも手書きで書いた絵や図を取り込みたいというような案件があるのではないでしょうか？手書き画像が保存する方法はいろいろありますが、そのひとつをちょっとメモのため残しておきます。特別なgemとかは必要ありません。使うのは HTML5 の canvas だけです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2013/12/03/rails/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/14/4873116406/" class="excerpt-link">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2013-11-14T11:45:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 14<span>th</span>, 2013</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/bitugudeta/" rel="nofollow">ビッグデータ</a>
-    
-      <a class="tag label label-info" href="/blog/tags/enkodeingu/" rel="nofollow">エンコーディング</a>
-    
-      <a class="tag label label-info" href="/blog/tags/detahuomatuto/" rel="nofollow">データフォーマット</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2013/11/14/4873116406/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2013/11/14/4873116406/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/11/14/4873116406/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/11/14/4873116406/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2013/11/14/4873116406/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2013/11/14/4873116406/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2013/11/14/4873116406/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2013/11/14/4873116406/"
+       data-save-url="http://hamasyou.com/blog/2014/02/21/functional-javascript/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -827,26 +234,26 @@ Nokogiriでスクレイピング &hellip;" />
 
 <div class="row asin-detail">
   <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4873116406?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116406&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="バッドデータハンドブック ―データにまつわる問題への19の処方箋" rel="external nofollow">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/51WREvWeqbL._SL500_AA300_.jpg" class="asin-thumbnail" alt="バッドデータハンドブック ―データにまつわる問題への19の処方箋" />
+    <a href="http://www.amazon.co.jp/gp/product/4873116600?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116600&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="JavaScriptで学ぶ関数型プログラミング" rel="external nofollow">
+      <img src="http://ecx.images-amazon.com/images/I/414qGlNpcHL.AA300_.jpg" class="asin-thumbnail" alt="JavaScriptで学ぶ関数型プログラミング" />
     </a>
   </div>
   <div class="col-sm-8 asin-meta">
     <dl>
       
       <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4873116406?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116406&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="バッドデータハンドブック ―データにまつわる問題への19の処方箋" rel="external nofollow">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a></dd>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4873116600?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116600&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="JavaScriptで学ぶ関数型プログラミング" rel="external nofollow">JavaScriptで学ぶ関数型プログラミング</a></dd>
       
       
       <dt>著者</dt>
-      <dd>Q. Ethan McCallum (著), 磯 蘭水 (監訳) (翻訳), 笹井 崇司 (翻訳) </dd>
+      <dd>Michael Fogus (著), 和田 祐一郎 (翻訳)</dd>
       
       
       <dt>出版社</dt>
       <dd>オライリージャパン</dd>
       
     </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4873116406?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116406&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+    <a href="http://www.amazon.co.jp/gp/product/4873116600?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116600&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
   </div>
 </div>
 
@@ -854,185 +261,20 @@ Nokogiriでスクレイピング &hellip;" />
 
 
   <div class="entry-content"><blockquote>
-<p>値の欠落、形式から外れたレコード、エンコーディング形式が不明な文字列。「バッドデータ」と聞いた時に思い浮べる典型例です。しかし、これら以外にも「そもそもデータにアクセスできない」「消えてしまった」「昨日と違っている」「データはあるが形式が処理に適していない」など、データを収集・分析するエンジニアは、これらの「バッドデータ」と正面から向きあわなければならないことが多々あります。本書では、これらの問題のあるデータのパターンを紹介し、その対処法を解説しています。<br>19人のデータ分析の専門家が、自らの経験を通して得た、さまざまな教訓、実践的な方法論等を詳述した本書は、ビッグデータ時代のエンジニアにとって必携の一冊となるでしょう。</p>
-<footer><strong>O&#8217;REILLY</strong></footer>
+<p>本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。JavaScriptビルトインのデータ型を上手に利用するための基本知識やJavaScriptにおける関数の持つ特性など、関数型プログラミングの技術とその考え方について解説します。また実際のJavaScriptコーディングに関数型プログラミングのエッセンスを加えるポイントをサンプルを使って丁寧に説明します。関数型プログラミングに精通した著者が書き下ろした本書は、テクニックを増やし、コーディングのイマジネーションを広げたいエンジニア必携の一冊です。</p>
+<footer><strong>内容紹介</strong></footer>
 </blockquote>
 
 
-<p>本書はプログラミングやデータ解析の時に扱うデータの内容やフォーマットについて書かれています。プログラミングの時に扱いやすいデータフォーマット、こういう点に気をつけてデータを扱え、こういうフォーマットが使いやすいなどについて書かれています。</p>
+<p>JavaScript は純粋な関数型プログラミング言語ではありません。が、<strong class="text-danger">関数型言語として JavaScript を理解し使用することでコードがより洗練され、読みやすいものになる</strong> はずという筆者の考えがこの本には現れています。</p>
 
-<p>コンピュータで扱うデータは大きく分けて<strong class="text-danger">コンピュータのためにフォーマットするデータ</strong>と<strong class="text-danger">人間のためにフォーマットするデータ</strong>があります。これらをごっちゃにしてしまうと扱いづらいデータ（<strong class="text-danger">バッドデータ</strong>）になってしまいます。本書はバッドデータをよりよく扱う方法、バッドデータにしない方法について、いろいろな点で考えられるようにアイデアや体験談を与えてくれます。</p>
-
-<p>最近 API をよく作ってるんだけど通信データのフォーマットに困ってるというような Web プログラマにオススメです！</p></div>
-  
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/24/4774156647/" class="excerpt-link">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2013-06-24T22:34:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 24<span>th</span>, 2013</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/arugorizumu/" rel="nofollow">アルゴリズム</a>
-    
-      <a class="tag label label-info" href="/blog/tags/puroguramingu/" rel="nofollow">プログラミング</a>
-    
-      <a class="tag label label-info" href="/blog/tags/giku/" rel="nofollow">ギーク</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2013/06/24/4774156647/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2013/06/24/4774156647/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/06/24/4774156647/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/06/24/4774156647/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2013/06/24/4774156647/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2013/06/24/4774156647/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2013/06/24/4774156647/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2013/06/24/4774156647/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4774156647?ie=UTF8&amp;camp=247&amp;creativeASIN=4774156647&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? " rel="external nofollow">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/519VcJWD13L._SL500_.jpg" class="asin-thumbnail" alt="小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? " />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4774156647?ie=UTF8&amp;camp=247&amp;creativeASIN=4774156647&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? " rel="external nofollow">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>小飼 弾 (著) </dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4774156647?ie=UTF8&amp;camp=247&amp;creativeASIN=4774156647&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>コード。ラテン語で codex。codex とはもともとローマ法大全のことを指し示す言葉だそうです。コードは読みとくべきであり、書き下されるべきものである。そしてそれができたとき、喜びが生まれる。弾さんのまえがきにある言葉ですが、コーディング好きなプログラマのみなさんはこの言葉がよくわかると思います。</p>
-
-<p>本書は、プログラミングに関わるいろいろな事柄が短文のエッセイの形でまとめられています。もともと Software Design の連載だったものをまとめたもののようですが、まとめて読むことに価値があると思います。</p>
-
-<p>弾さんのコンピュータの捉え方、プログラミングの姿勢、豊富な知識や知見がまとめられています。スイスイと読んでいける日本版の『<a href="http://www.amazon.co.jp/gp/product/4274066304?ie=UTF8&amp;camp=247&amp;creativeASIN=4274066304&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title="Joel on Software">Joel on Software</a>』です。</p>
+<p>JavaScript では関数型プログラミングは一つのスタイルにしかすぎず、必要な場面で適切に使うというアプローチをとることでよりよいコードや使いやすい関数になります。</p>
 
 </div>
   
   
     <footer>
-      <a href="/blog/2013/06/24/4774156647/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2014/02/21/functional-javascript/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 
@@ -1044,7 +286,7 @@ Nokogiriでスクレイピング &hellip;" />
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2013/06/23/4274069095/" class="excerpt-link">ディジタル作法 －カーニハン先生の「情報」教室－</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/02/21/hugo/" class="excerpt-link">静的サイトを素早く構築するためにGoLangで作られたジェネレータHugo</a></h1>
     
     
       <p class="meta">
@@ -1061,12 +303,12 @@ Nokogiriでスクレイピング &hellip;" />
 
 
 
-<time datetime="2013-06-23T17:31:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 23<span>rd</span>, 2013</time>
+<time datetime="2014-02-21T15:43:47+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 21<span>st</span>, 2014</time>
         <span class="divider"></span>
         <span class="categories">
   
     
-      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
+      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
     
   
 </span>
@@ -1074,16 +316,22 @@ Nokogiriでスクレイピング &hellip;" />
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/konpiyutaji-chu/" rel="nofollow">コンピュータ基礎</a>
+      <a class="tag label label-info" href="/blog/tags/jing-de-saito/" rel="nofollow">静的サイト</a>
     
-      <a class="tag label label-info" href="/blog/tags/puroguramingu/" rel="nofollow">プログラミング</a>
+      <a class="tag label label-info" href="/blog/tags/go/" rel="nofollow">Go</a>
+    
+      <a class="tag label label-info" href="/blog/tags/golang/" rel="nofollow">GoLang</a>
+    
+      <a class="tag label label-info" href="/blog/tags/hugo/" rel="nofollow">Hugo</a>
+    
+      <a class="tag label label-info" href="/blog/tags/blog/" rel="nofollow">Blog</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2013/06/23/4274069095/#disqus_thread">Comments</a>
+        <a href="/blog/2014/02/21/hugo/#disqus_thread">Comments</a>
         
         
         
@@ -1092,7 +340,7 @@ Nokogiriでスクレイピング &hellip;" />
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2013/06/23/4274069095/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/21/hugo/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -1108,7 +356,7 @@ Nokogiriでスクレイピング &hellip;" />
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/06/23/4274069095/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/21/hugo/"></div>
   </li>
   
   
@@ -1116,7 +364,7 @@ Nokogiriでスクレイピング &hellip;" />
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/06/23/4274069095/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/21/hugo/"></div>
   </li>
   
   
@@ -1124,194 +372,23 @@ Nokogiriでスクレイピング &hellip;" />
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2013/06/23/4274069095/"
+       data-url="http://hamasyou.com/blog/2014/02/21/hugo/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2013/06/23/4274069095/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2014/02/21/hugo/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2013/06/23/4274069095/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/21/hugo/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2013/06/23/4274069095/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4274069095?ie=UTF8&amp;camp=247&amp;creativeASIN=4274069095&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="ディジタル作法 －カーニハン先生の「情報」教室－" rel="external nofollow">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/41HASMlgLnL._SL500_.jpg" class="asin-thumbnail" alt="ディジタル作法 －カーニハン先生の「情報」教室－" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4274069095?ie=UTF8&amp;camp=247&amp;creativeASIN=4274069095&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="ディジタル作法 －カーニハン先生の「情報」教室－" rel="external nofollow">ディジタル作法 －カーニハン先生の「情報」教室－</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>Brian W. Kernighan (著), 久野 靖 (翻訳) </dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>オーム社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4274069095?ie=UTF8&amp;camp=247&amp;creativeASIN=4274069095&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>本書は、現在のコンピュータシステムや通信システムがどのように動作しているのかを、ハードウェアとソフトウェアの両方の視点から解説している一般の人向けの本です。コンピュータのことをもっとよく知りたい、コンピュータがどのように動作しているかをもっと知りたい、そういった人にオススメの一冊です。</p>
-
-<blockquote>
-<p>&#8220;D is for Digital&#8221; （ディジタル作法） は、コンピュータシステムや通信システムがどのように動作しているかを、簡潔に、それでいて細かいところまで丁寧に説明した本であり、自分たちが暮らしている世界のことをより良く分かっておきたいと考える一般読者（専門家ではない人）を対象にしています。本書では、今日の世界におけるコンピュータシステムや通信システムがどのように動作しているかということを、ハードウェアおよびソフトウェアからインターネット、Webに到るまで、ひととおり説明しています。</p>
-<footer><strong>『本書』日本語版の刊行に寄せてより</strong></footer>
-</blockquote>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2013/06/23/4274069095/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/05/titanium/" class="excerpt-link">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2013-03-05T08:52:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Mar 5<span>th</span>, 2013</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/titanium/" rel="nofollow">Titanium</a>
-    
-      <a class="tag label label-info" href="/blog/tags/moziyuru/" rel="nofollow">モジュール</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2013/03/05/titanium/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2013/03/05/titanium/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/03/05/titanium/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/03/05/titanium/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2013/03/05/titanium/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2013/03/05/titanium/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2013/03/05/titanium/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2013/03/05/titanium/"
+       data-save-url="http://hamasyou.com/blog/2014/02/21/hugo/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -1335,366 +412,20 @@ Nokogiriでスクレイピング &hellip;" />
 
 
 
-  <div class="entry-content"><p>モジュールを作成して、デモアプリ等で利用する際に実機転送時に</p>
+  <div class="entry-content"><p>最近は静的サイトブームが再到来なんですかね？<strong class="text-danger">GoLang</strong> で作られた静的サイトジェネレータの <strong class="text-danger">Hugo</strong> なんていうものがありました。</p>
 
-<pre><code>[ERROR] : ** BUILD FAILED **
-[ERROR] : The following build commands failed:
-[ERROR] :   Ld build/Debug-iphoneos/gpuimagedemo.app/gpuimagedemo normal armv7
-[ERROR] : (1 failure)
-</code></pre>
+<p>うちのサイトも最近 Ruby の <em>Octopress</em> でサイトをリニューアルしましたが、Go にもあるんですね。</p>
 
-<p>のようなエラーが発生する場合がある。
-これは、Titanium がビルド時に最適化で利用していない内部モジュールとのリンクを切ってしまうために起こる。</p>
+<p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/spf13/hugo" rel="external nofollow" title="spf13 / hugo">spf13 / hugo</a></p>
 
-<p>build ディレクトリの下の Xcode のプロジェクトを開くと</p>
+<p><i class="fa fa-hand-o-right"></i> <a href="http://hugo.spf13.com/" rel="external nofollow" title="The Fast and Flexible Static Site Generator - Hugo">The Fast and Flexible Static Site Generator - Hugo</a></p>
 
-<pre><code>Undefined symbols for architecture arvm7:
-    ...
-":_OBJC_CLASS_$_TiUIImageView":, referenced from:
-    ...
-</code></pre>
+<p>Go でビルドするので速いとのこと。また、Windows、Mac、Linux と環境を選ばないのがいいですね。</p>
 
-<p>のようにビルドエラーが発生している。</p>
+<p>記事は <strong class="text-danger">Markdown</strong> で記述します。カテゴリやタグなどの情報は <strong class="text-danger">YAML</strong> 形式でいけます。<a href="http://octopress.org/" rel="external nofollow" title="Octopress">Octopress</a> や <a href="http://jekyllrb.com/" rel="external nofollow" title="Jekyll">Jekyll</a> と似ています。</p>
 
-<p>これを解決するには、モジュールで利用している内部クラスを、JavaScript 側のソースコードに現れるようにする。</p>
-
-<p>例えば、今回の場合だと、TiUIImageView の参照先が見つからないとなっているので JavaScript のコードの方に</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="k">if</span> <span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">createImageView</span><span class="p">({</span>
-</span><span class="line">        <span class="nx">image</span><span class="o">:</span> <span class="s1">'demo.jpg'</span>
-</span><span class="line">    <span class="p">});</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>のようなコードを加えれば良い。バッドノウハウですね。。</p></div>
+<p>最近 Go が人気急上昇なので、Go の環境が手元にある人は Hugo を使ってサイトを運営してみるのもありかもです。</p></div>
   
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/04/qiita-sushi/" class="excerpt-link">#qiita_sushi に参加した</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2013-03-04T23:15:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Mar 4<span>th</span>, 2013</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/qiita/" rel="nofollow">qiita</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2013/03/04/qiita-sushi/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2013/03/04/qiita-sushi/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/03/04/qiita-sushi/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/03/04/qiita-sushi/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2013/03/04/qiita-sushi/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2013/03/04/qiita-sushi/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2013/03/04/qiita-sushi/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2013/03/04/qiita-sushi/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Qiita を運営されている Increments さんが一周年ということで、白ワイン持参で参加させていただきました。</p>
-
-<p>寿司職人が目の前で握ってくれる本格派！</p>
-
-<p><img src="/images/qiita_sushi.jpg" width="320" class="img-thumbnail" title=""></p>
-
-<p>次の Qiita イベントにも是非参加します！今後とも、エンジニアのためのサービスをガンガンリリースしてもらいたいと思います。うちの会社もエンジニアの会社なので期待しています！</p>
-
-<p>一周年、おめでとうございます！</p>
-
-<p>ちなみに、Qiita イベントの出席者は、Perl 界隈の人と Ruby 界隈の人が半々くらいな感じ。</p></div>
-  
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/02/05/482228493X/" class="excerpt-link">世界でもっとも強力な9のアルゴリズム</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2013-02-05T22:17:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 5<span>th</span>, 2013</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/arugorizumu/" rel="nofollow">アルゴリズム</a>
-    
-      <a class="tag label label-info" href="/blog/tags/puroguramingu/" rel="nofollow">プログラミング</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2013/02/05/482228493X/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2013/02/05/482228493X/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/02/05/482228493X/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2013/02/05/482228493X/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2013/02/05/482228493X/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2013/02/05/482228493X/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2013/02/05/482228493X/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2013/02/05/482228493X/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/482228493X?ie=UTF8&amp;camp=247&amp;creativeASIN=482228493X&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="世界でもっとも強力な9のアルゴリズム" rel="external nofollow">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/51sBzhR064L._SL500_.jpg" class="asin-thumbnail" alt="世界でもっとも強力な9のアルゴリズム" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/482228493X?ie=UTF8&amp;camp=247&amp;creativeASIN=482228493X&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="世界でもっとも強力な9のアルゴリズム" rel="external nofollow">世界でもっとも強力な9のアルゴリズム</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>ジョン・マコーミック (著), 長尾高弘 (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>日経BP社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/482228493X?ie=UTF8&amp;camp=247&amp;creativeASIN=482228493X&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><blockquote>
-<p>この本で取り上げた偉大なアルゴリズムから導き出せる共通のテーマはあるだろうか。この本の著者として私がとても驚いたのは、これらの大きなアイデアは、どれもコンピュータプログラミングやコンピュータ科学の予備知識を一切必要とせずに説明できることだ。</p>
-<p></p>
-<p>この本のアルゴリズム全体に共通するもう1つの重要なテーマは、コンピュータ科学という学問分野がただのプログラミングよりもずっと大きな世界だということだ。</p>
-<p></p>
-<p>私が目指したのは、読者に偉大なアルゴリズムについての知識を仕入れてもらって、日常のコンピュータ操作の中でもこれはすごいと感じてもらえるようにすることだ。</p>
-<footer><strong>本書</strong></footer>
-</blockquote>
-
-
-<p>9つの偉大なアルゴリズム、<em>検索エンジンのインデクシング</em>、<em>ページランク</em>、<em>公開鍵暗号法</em>、<em>誤り訂正符号</em>、<em>パターン認識</em>、<em>データ圧縮</em>、<em>データベース</em>、<em>デジタル署名</em>、<em>決定不能性</em>を知ることで、僕達の周りでこれらのアルゴリズムがどうやって機能していて、何が担保されているのか理解できるようになります。</p>
-
-<p>これらのアルゴリズムを知ることで、コンピュータの世界はすごいことが起こっていると知ってもらい、新たに出てくる問題の解決の一つになるといいなと思います。</p>
-
-<p>読み物なので、どんな人にもおすすめです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2013/02/05/482228493X/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
   
 
 

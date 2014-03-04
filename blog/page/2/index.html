@@ -13,7 +13,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Rails 環境で RESTful API を提供する場面があると思います。API もコントローラで提供するので、コントローラのテストで記述してもいいのですが、RESTful API であれば、request spec を使うほうがよさそうなので request spec を書くメモです。 &hellip;">
+  <meta name="description" content="サードパーティ JavaScript とは 異なる Web アドレスから配信される、独立したクライアントコード のことを意味します。
+例えばソーシャルウィジェットやアナリティクス用のトラッカーがそうです。
+本書はこのサードパーティ JavaScript &hellip;">
   
 
   
@@ -24,7 +26,9 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/2/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Rails 環境で RESTful API を提供する場面があると思います。API もコントローラで提供するので、コントローラのテストで記述してもいいのですが、RESTful API であれば、request spec を使うほうがよさそうなので request spec を書くメモです。 &hellip;" />
+<meta property="og:description" content="サードパーティ JavaScript とは 異なる Web アドレスから配信される、独立したクライアントコード のことを意味します。
+例えばソーシャルウィジェットやアナリティクス用のトラッカーがそうです。
+本書はこのサードパーティ JavaScript &hellip;" />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -32,6 +36,11 @@
 
   
   <link rel="canonical" href="http://hamasyou.com/blog/page/2/">
+  
+  
+  <link rel="next" href="http://hamasyou.com/blog/page/3/">
+  
+
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <style type="text/css">
@@ -108,7 +117,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2014/02/17/rails-request-rspec/" class="excerpt-link">RailsでつくるRESTful APIのrequest specを書く</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/02/23/third-party-javascript/" class="excerpt-link">サードパーティJavaScript</a></h1>
     
     
       <p class="meta">
@@ -125,7 +134,7 @@
 
 
 
-<time datetime="2014-02-17T14:09:38+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 17<span>th</span>, 2014</time>
+<time datetime="2014-02-23T17:47:39+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 23<span>rd</span>, 2014</time>
         <span class="divider"></span>
         <span class="categories">
   
@@ -138,18 +147,16 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
+      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
     
-      <a class="tag label label-info" href="/blog/tags/restful/" rel="nofollow">RESTful</a>
-    
-      <a class="tag label label-info" href="/blog/tags/spec/" rel="nofollow">spec</a>
+      <a class="tag label label-info" href="/blog/tags/du-mubeki/" rel="nofollow">読むべき</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2014/02/17/rails-request-rspec/#disqus_thread">Comments</a>
+        <a href="/blog/2014/02/23/third-party-javascript/#disqus_thread">Comments</a>
         
         
         
@@ -158,7 +165,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/23/third-party-javascript/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -174,7 +181,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"></div>
   </li>
   
   
@@ -182,7 +189,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"></div>
   </li>
   
   
@@ -190,1016 +197,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"
+       data-url="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2014/02/23/third-party-javascript/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/17/rails-request-rspec/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Rails 環境で RESTful API を提供する場面があると思います。API もコントローラで提供するので、コントローラのテストで記述してもいいのですが、RESTful API であれば、<strong class="text-danger">request spec</strong> を使うほうがよさそうなので request spec を書くメモです。</p>
-
-<ul>
-<li>Rails 4.0.2</li>
-<li>rspec 2.14.1</li>
-</ul>
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/17/rails-request-rspec/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/17/titanium-http-client-restful/" class="excerpt-link">TitaniumのHTTPClientでRESTfulリクエストを送る</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-17T10:24:58+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 17<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/titanium/" rel="nofollow">Titanium</a>
-    
-      <a class="tag label label-info" href="/blog/tags/restful/" rel="nofollow">RESTful</a>
-    
-      <a class="tag label label-info" href="/blog/tags/api/" rel="nofollow">API</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/17/titanium-http-client-restful/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p><a href="http://www.appcelerator.com/titanium/" rel="external nofollow" title="Titanium Mobile">Titanium Mobile</a> の <code>Titanium.Network.HTTPClient</code> を使って RESTful リクエストを送る場合の注意点です。</p>
-
-<p>Titanium の <code>HTTPClient</code> で <code>DELETE</code> のときに <code>send</code> でパラメータを送ると <code>POST</code> リクエストになってしまいます。</p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://www.appcelerator.com/titanium/" rel="external nofollow" title="Titanium Mobile Development Environment">Titanium Mobile Development Environment</a></p>
-
-<ul>
-<li>Titanium 3.2.1.GA</li>
-</ul>
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/17/titanium-http-client-restful/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/16/ruby-open-uri-post-rest-client/" class="excerpt-link">open-uri-postを使うとrest-clientが変な動きするをする</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-16T21:45:53+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 16<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
-    
-      <a class="tag label label-info" href="/blog/tags/gem/" rel="nofollow">gem</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/16/ruby-open-uri-post-rest-client/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>ruby の <code>open-uri</code> を POST に対応させる <code>open-uri-post</code> というライブラリがありますが、これを使うと <code>rest-client</code> の gem が変な動きをするようです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/16/ruby-open-uri-post-rest-client/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/16/sm20183528/" class="excerpt-link">リア充爆発しろで本当に爆発したシーン</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-16T01:52:46+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 16<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/riachong/" rel="nofollow">リア充</a>
-    
-      <a class="tag label label-info" href="/blog/tags/gandamu/" rel="nofollow">ガンダム</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/16/sm20183528/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/16/sm20183528/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/16/sm20183528/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/16/sm20183528/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/16/sm20183528/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/16/sm20183528/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/16/sm20183528/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/16/sm20183528/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p><strong class="text-danger">リア充爆発しろ</strong> で、爆発した瞬間を初めて見た。。泣いた。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/16/sm20183528/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/15/kimono-api/" class="excerpt-link">ブラウザ操作で簡単にスクレイピングAPIが作れる「kimono」</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-15T19:57:19+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 15<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/kimono/" rel="nofollow">kimono</a>
-    
-      <a class="tag label label-info" href="/blog/tags/sukureipingu/" rel="nofollow">スクレイピング</a>
-    
-      <a class="tag label label-info" href="/blog/tags/api/" rel="nofollow">API</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/15/kimono-api/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/15/kimono-api/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/15/kimono-api/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/15/kimono-api/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/15/kimono-api/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/15/kimono-api/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/15/kimono-api/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/15/kimono-api/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>「<strong class="text-danger">kimono</strong>」はウェブサイトをブラウザ操作で簡単にスクレイピングして API 化してくれるサービスです。</p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://www.kimonolabs.com/" rel="external nofollow" title="kimono - Turn websites into structured APIs from your browser in seconds">kimono - Turn websites into structured APIs from your browser in seconds</a></p>
-
-<p><img src="/images/2014-02-15-kimono-api-01.png" alt="kimono" class="img-thumbnail" title="kimono"></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/15/kimono-api/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/15/gundam-unicorn/" class="excerpt-link">ガンダムUCのシナンジュが好き</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-15T16:25:45+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 15<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/gandamu/" rel="nofollow">ガンダム</a>
-    
-      <a class="tag label label-info" href="/blog/tags/sinanziyu/" rel="nofollow">シナンジュ</a>
-    
-      <a class="tag label label-info" href="/blog/tags/ganpura/" rel="nofollow">ガンプラ</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/15/gundam-unicorn/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p><a href="http://www.gundam-unicorn.net/" rel="external nofollow" title="ガンダムUC">ガンダムUC</a> にはまってます。2014年5月17日に final episode 7「虹の彼方に」も予定されてるので DVD とか見直しました。</p>
-
-<p>シナンジュのガンプラも作ったので、次はニューガンダムに挑戦したいなと。RX-0 ユニコーンガンダム3号機 フェネクスのガンプラも発売になりましたね。</p>
-
-<p><a href="http://www.amazon.co.jp/gp/product/B0032ZD5OI?ie=UTF8&amp;camp=247&amp;creativeASIN=B0032ZD5OI&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://www.1999.co.jp/itbig10/10106668.jpg" height="289" width="232" alt="MG 1/100 MSN-06S シナンジュ Ver.Ka チタニウムフィニッシュ (機動戦士ガンダムUC)" class="img-thumbnail" title="MG 1/100 MSN-06S シナンジュ Ver.Ka チタニウムフィニッシュ (機動戦士ガンダムUC)"></a>
-<a href="http://www.amazon.co.jp/gp/product/B00FKL68XM?ie=UTF8&amp;camp=247&amp;creativeASIN=B00FKL68XM&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/81QDARb2zTL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-93 vガンダムVer.Ka チタニウムフィニッシュ (機動戦士ガンダム 逆襲のシャア)" class="img-thumbnail" title="MG 1/100 RX-93 vガンダムVer.Ka チタニウムフィニッシュ (機動戦士ガンダム 逆襲のシャア)"></a>
-<a href="http://www.amazon.co.jp/gp/product/B00HCV6T6E?ie=UTF8&amp;camp=247&amp;creativeASIN=B00HCV6T6E&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/91HCl2myAGL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-0 ユニコーンガンダム3号機 フェネクス (機動戦士ガンダムUC)" class="img-thumbnail" title="MG 1/100 RX-0 ユニコーンガンダム3号機 フェネクス (機動戦士ガンダムUC)"></a></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/15/gundam-unicorn/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/15/octopress-canonical/" class="excerpt-link">Octopress の rel=&#8221;canonical&#8221; の設定がおかしい件</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-15T14:21:58+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 15<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/octopress/" rel="nofollow">Octopress</a>
-    
-      <a class="tag label label-info" href="/blog/tags/seo/" rel="nofollow">SEO</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/15/octopress-canonical/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/15/octopress-canonical/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/15/octopress-canonical/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/15/octopress-canonical/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/15/octopress-canonical/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/15/octopress-canonical/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/15/octopress-canonical/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/15/octopress-canonical/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Octopress の初期の <strong class="text-danger">rel=“canonical”</strong> の値がおかしいので直しました。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/15/octopress-canonical/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/14/4873113636/" class="excerpt-link">ビューティフルコード</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-14T21:19:05+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 14<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/puroguramingu/" rel="nofollow">プログラミング</a>
-    
-      <a class="tag label label-info" href="/blog/tags/orairi/" rel="nofollow">オライリー</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/14/4873113636/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/14/4873113636/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/14/4873113636/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/14/4873113636/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/14/4873113636/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/14/4873113636/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/14/4873113636/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/14/4873113636/"
+       data-save-url="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -1222,187 +236,56 @@
 
 <div class="row asin-detail">
   <div class="col-sm-4">
-    <a href="https://www.amazon.co.jp/dp/4873113636?tag=sorehabooks-22&amp;camp=243&amp;creative=1615&amp;linkCode=as1&amp;creativeASIN=4873113636&amp;adid=1C0H1AZ758XQ6EWYXCEM&amp;" title="ビューティフルコード" rel="external nofollow">
-      <img src="http://ecx.images-amazon.com/images/I/41P9jjFbtDL.-76_AA300_SH20_OU09_.jpg" class="asin-thumbnail" alt="ビューティフルコード" />
+    <a href="http://www.amazon.co.jp/gp/product/4048916580?ie=UTF8&amp;camp=247&amp;creativeASIN=4048916580&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="サードパーティJavaScript" rel="external nofollow">
+      <img src="http://ecx.images-amazon.com/images/I/51ptmwaAD1L._AA300_.jpg" class="asin-thumbnail" alt="サードパーティJavaScript" />
     </a>
   </div>
   <div class="col-sm-8 asin-meta">
     <dl>
       
       <dt>タイトル</dt>
-      <dd><a href="https://www.amazon.co.jp/dp/4873113636?tag=sorehabooks-22&amp;camp=243&amp;creative=1615&amp;linkCode=as1&amp;creativeASIN=4873113636&amp;adid=1C0H1AZ758XQ6EWYXCEM&amp;" title="ビューティフルコード" rel="external nofollow">ビューティフルコード</a></dd>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4048916580?ie=UTF8&amp;camp=247&amp;creativeASIN=4048916580&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="サードパーティJavaScript" rel="external nofollow">サードパーティJavaScript</a></dd>
       
       
       <dt>著者</dt>
-      <dd>Brian Kernighan (著), Jon Bentley (著), まつもとゆきひろ (著), Andy Oram (編集), Greg Wilson (編集), 久野 禎子 (翻訳), 久野 靖 (翻訳)</dd>
+      <dd>Ben Vinegar (著), Anton Kovalyov (著), 水野貴明 (翻訳)</dd>
       
       
       <dt>出版社</dt>
-      <dd>オライリージャパン</dd>
+      <dd>KADOKAWA/アスキー・メディアワークス</dd>
       
     </dl>
-    <a href="https://www.amazon.co.jp/dp/4873113636?tag=sorehabooks-22&amp;camp=243&amp;creative=1615&amp;linkCode=as1&amp;creativeASIN=4873113636&amp;adid=1C0H1AZ758XQ6EWYXCEM&amp;" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+    <a href="http://www.amazon.co.jp/gp/product/4048916580?ie=UTF8&amp;camp=247&amp;creativeASIN=4048916580&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
   </div>
 </div>
 
 
 
 
-  <div class="entry-content"><p>本書は、ブライアン・カーニハンをはじめ一流のプログラマが各々の考える「<em>美しいコード</em>」を紹介するエッセイです。</p>
+  <div class="entry-content"><p>サードパーティ JavaScript とは <em>異なる Web アドレスから配信される、独立したクライアントコード</em> のことを意味します。
+例えばソーシャルウィジェットやアナリティクス用のトラッカーがそうです。
+本書はこのサードパーティ JavaScript をどのように開発するとよいかについて書かれています。</p>
 
-<p>世界屈指の一流ハッカーがこれぞ！と思うコードを読むことができる貴重な一冊です。</p>
+<p>サードパーティ JavaScript には様々な難しいポイントがあります。</p>
 
-<p>名前付け、アルゴリズム、アーキテクチャ、ショートコードなどなど美しいコードとして紹介されているものは様々です。また、言語も様々なため、知らない言語のコードは美しさがよくわからないところもあるかもしれません。</p>
-
-<p>それでも、30人を越える偉人が紹介する <strong class="text-danger">ビューティフルコード</strong> は、プログラミング好きにはたまらないと思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/14/4873113636/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/14/microsoft-translator-api/" class="excerpt-link">RubyからMicrosoft Translator APIを呼び出す</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-14T15:40:59+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 14<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
-    
-      <a class="tag label label-info" href="/blog/tags/microsoft-translator-api/" rel="nofollow">Microsoft Translator API</a>
-    
-      <a class="tag label label-info" href="/blog/tags/restful/" rel="nofollow">RESTful</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/14/microsoft-translator-api/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/14/microsoft-translator-api/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/14/microsoft-translator-api/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/14/microsoft-translator-api/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/14/microsoft-translator-api/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/14/microsoft-translator-api/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/14/microsoft-translator-api/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/14/microsoft-translator-api/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
+<ul>
+<li>動的なスクリプト読み込み</li>
+<li>サードパーティ Cookie の保存と読み込み</li>
+<li>HTTP / HTTPS を使ったサーバとの通信</li>
 </ul>
+<p>多くの人に使われる JavaScript を開発するには、<strong class="text-danger">数多くの落とし穴や難関を乗り越えなければなりません</strong>。
+本書はこういった落とし穴や難関に対する解決策を手順を追って説明してくれます。</p>
 
-        
-      </p>
-    
-  </header>
+<p>本書の著者の一人は <a href="http://disqus.com/" rel="external nofollow" title="Disqus">Disqus</a> という Web サイトに即席のコメントシステムを導入することができる JavaScript アプリケーションを開発しています。
+実際に世界中で使われているアプリケーションの経験を元に書かれているので説得力がありますし、「こんな事にも注意しないといけなかったのか！」といった目からウロコな内容も盛りだくさんでおすすめです。</p>
 
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Google の翻訳 API が有料化されたことで、無料で使える翻訳 API が実質 <strong class="text-danger">Microsoft Translator API</strong> 一択になってしまいました。</p>
-
-<p>実際に使ってみようと思ったときに、いろいろなサイトをぐるぐる回ったり、API の呼び出し方が変わっていたりしてとまどったので、手順のおさらいをしておきます。</p>
+<p>本書を読み終わると「<span class="lead"><strong>IE 無くなったらいいのに！</strong></span>」って絶対に思います。そして「<span class="lead"><strong>iframe すげーな。使えるやつだ</strong></span>」って思います（笑</p>
 
 </div>
   
   
     <footer>
-      <a href="/blog/2014/02/14/microsoft-translator-api/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2014/02/23/third-party-javascript/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 
@@ -1414,7 +297,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2014/02/14/octopress-summary/" class="excerpt-link">Octopress参考リンクまとめ</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/02/22/readable-blog-unreadable-blog/" class="excerpt-link">読みやすいブログ、読みにくいブログ</a></h1>
     
     
       <p class="meta">
@@ -1431,7 +314,7 @@
 
 
 
-<time datetime="2014-02-14T12:18:53+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 14<span>th</span>, 2014</time>
+<time datetime="2014-02-22T23:07:05+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 22<span>nd</span>, 2014</time>
         <span class="divider"></span>
         <span class="categories">
   
@@ -1444,18 +327,18 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/octopress/" rel="nofollow">Octopress</a>
+      <a class="tag label label-info" href="/blog/tags/du-miyasui/" rel="nofollow">読みやすい</a>
     
-      <a class="tag label label-info" href="/blog/tags/jekyll/" rel="nofollow">Jekyll</a>
+      <a class="tag label label-info" href="/blog/tags/du-minikui/" rel="nofollow">読みにくい</a>
     
-      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
+      <a class="tag label label-info" href="/blog/tags/blog/" rel="nofollow">Blog</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2014/02/14/octopress-summary/#disqus_thread">Comments</a>
+        <a href="/blog/2014/02/22/readable-blog-unreadable-blog/#disqus_thread">Comments</a>
         
         
         
@@ -1464,7 +347,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/14/octopress-summary/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -1480,7 +363,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/14/octopress-summary/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"></div>
   </li>
   
   
@@ -1488,7 +371,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/14/octopress-summary/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"></div>
   </li>
   
   
@@ -1496,23 +379,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/14/octopress-summary/"
+       data-url="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/14/octopress-summary/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/14/octopress-summary/"></div>
+         data-href="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/14/octopress-summary/"
+       data-save-url="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -1536,13 +419,24 @@
 
 
 
-  <div class="entry-content"><p><strong class="text-danger">Octopress</strong> の設定や運用で参考にしたサイトのまとめです。</p>
+  <div class="entry-content"><p>読みやすいブログってどうしてあんなに読みやすいんでしょうかね？僕もかれこれサイトだけは9年ほどやってます。
+毎日ブログを綴っているわけではないのでアレですが、ブログ歴は3〜5年くらいにはなるんじゃないかなと思います。</p>
+
+<p>これまで3回くらいブログのデザインを変えました。デザインの賞味期限って、たぶん3年くらいなんじゃないかと思います。
+Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code> タグなんかをつかって派手なアクションをするサイトが流行りました。
+その後、Web デザイナさんが頑張って作るクール系のサイトが流行り、今やレスポンシブサイトですよ。</p>
+
+<p><span class="lead">（Google で「<em>blink html</em>」を検索すると検索結果が面白いことになってますねw）</span></p>
+
+<p>うちのサイトも一応それなりに時代の流れに合わせてデザインは変えてきたつもりですが、いつまで経っても読みやすいブログにならないのはなぜなんでしょうかね。。
+文字の大きさや背景色と文字色の調和、フォントや <code>line-height</code> なんかにも気を付けているつもりなんですが、そういう小手先のテクニックに惑わされているうちは、
+読みやすいブログにはならないってことですね、きっと。。。</p>
 
 </div>
   
   
     <footer>
-      <a href="/blog/2014/02/14/octopress-summary/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2014/02/22/readable-blog-unreadable-blog/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 

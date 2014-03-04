@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="まずびっくりしたのが、この本は２１５のポイントに分けてJAVAを説明しているのですが、その１ポイントずつにサンプルコードが載っている点です。 ">
+  <meta name="description" content="本書は、プログラミング後のコードレビューを行う視点で、どういった点を確認すれば良いのかを教えてくれるものです。 ソースコードレビューの目的については本書では触れられていませんが、僕が考えるソースコードレビューの目的は、コードの品質を高めるためです。 テストではソースコードの品質は高められません。 &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/29/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="まずびっくりしたのが、この本は２１５のポイントに分けてJAVAを説明しているのですが、その１ポイントずつにサンプルコードが載っている点です。 " />
+<meta property="og:description" content="本書は、プログラミング後のコードレビューを行う視点で、どういった点を確認すれば良いのかを教えてくれるものです。 ソースコードレビューの目的については本書では触れられていませんが、僕が考えるソースコードレビューの目的は、コードの品質を高めるためです。 テストではソースコードの品質は高められません。 &hellip;" />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -32,6 +32,11 @@
 
   
   <link rel="canonical" href="http://hamasyou.com/blog/page/29/">
+  
+  
+  <link rel="next" href="http://hamasyou.com/blog/page/30/">
+  
+
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <style type="text/css">
@@ -108,7 +113,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2004/05/24/4798000620/" class="excerpt-link">標準JAVAプログラミング</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/06/06/4798029181/" class="excerpt-link">俺のコードのどこが悪い?―コードレビューを攻略する40のルール</a></h1>
     
     
       <p class="meta">
@@ -125,7 +130,7 @@
 
 
 
-<time datetime="2004-05-24T16:18:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 24<span>th</span>, 2004</time>
+<time datetime="2011-06-06T00:01:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 6<span>th</span>, 2011</time>
         <span class="divider"></span>
         <span class="categories">
   
@@ -138,14 +143,14 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/java/" rel="nofollow">Java</a>
+      <a class="tag label label-info" href="/blog/tags/kodorebiyu/" rel="nofollow">コードレビュー</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2004/05/24/4798000620/#disqus_thread">Comments</a>
+        <a href="/blog/2011/06/06/4798029181/#disqus_thread">Comments</a>
         
         
         
@@ -154,7 +159,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/24/4798000620/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/06/4798029181/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -170,7 +175,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/24/4798000620/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/06/4798029181/"></div>
   </li>
   
   
@@ -178,7 +183,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/24/4798000620/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/06/4798029181/"></div>
   </li>
   
   
@@ -186,23 +191,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/24/4798000620/"
+       data-url="http://hamasyou.com/blog/2011/06/06/4798029181/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/24/4798000620/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2011/06/06/4798029181/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/24/4798000620/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/06/4798029181/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/24/4798000620/"
+       data-save-url="http://hamasyou.com/blog/2011/06/06/4798029181/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -225,39 +230,51 @@
 
 <div class="row asin-detail">
   <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798000620/sorehabooks-22" title="標準JAVAプログラミング" rel="external nofollow">
-      <img src="http://www.sam.hi-ho.ne.jp/hamasyou/gallery/img/books_value/java_programing.jpg" class="asin-thumbnail" alt="標準JAVAプログラミング" />
+    <a href="http://www.amazon.co.jp/gp/product/4798029181?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4798029181" title="俺のコードのどこが悪い?―コードレビューを攻略する40のルール" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/31vNF0LY76L._SL500_AA300_.jpg" class="asin-thumbnail" alt="俺のコードのどこが悪い?―コードレビューを攻略する40のルール" />
     </a>
   </div>
   <div class="col-sm-8 asin-meta">
     <dl>
       
       <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798000620/sorehabooks-22" title="標準JAVAプログラミング" rel="external nofollow">標準JAVAプログラミング</a></dd>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4798029181?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4798029181" title="俺のコードのどこが悪い?―コードレビューを攻略する40のルール" rel="external nofollow">俺のコードのどこが悪い?―コードレビューを攻略する40のルール</a></dd>
       
       
       <dt>著者</dt>
-      <dd>横井 与次郎 (著)</dd>
+      <dd>藤原 克則</dd>
       
       
       <dt>出版社</dt>
       <dd>秀和システム</dd>
       
     </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798000620/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+    <a href="http://www.amazon.co.jp/gp/product/4798029181?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4798029181" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
   </div>
 </div>
 
 
 
 
-  <div class="entry-content"><p>まずびっくりしたのが、この本は２１５のポイントに分けてJAVAを説明しているのですが、その１ポイントずつにサンプルコードが載っている点です。</p>
+  <div class="entry-content"><p>本書は、プログラミング後のコードレビューを行う視点で、どういった点を確認すれば良いのかを教えてくれるものです。</p>
+
+<p>ソースコードレビューの目的については本書では触れられていませんが、僕が考えるソースコードレビューの目的は、<strong class="text-danger">コードの品質を高める</strong>ためです。</p>
+
+<p>テストではソースコードの品質は高められません。単体テストはあくまでも、コードが意図したどおりに書かれているかを確認するものになります。<b>品質は、ソースコードを書くこと（書き直すこと）でしか高められません。</b></p>
+
+<dl>
+<dt>他人の目から見ることで複雑なところがわかる</dt>
+<dd><p>自分でコーディングしているときは気づきにくい、処理の複雑な部分が他人の目によって明らかになる</p></dd>
+<dt>他人の経験を生かせる</dt>
+<dd><p>リファクタリングが必要な部分や、もっとシンプルで効率のよいコードに直せるところを指摘してもらえる</p></dd>
+</dl>
+<p>本書では、こういった他人の目から見たコードの注意点を勉強できるものになっています。</p>
 
 </div>
   
   
     <footer>
-      <a href="/blog/2004/05/24/4798000620/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2011/06/06/4798029181/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 
@@ -269,7 +286,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2004/05/24/4894711400/" class="excerpt-link">Visual C++6.0入門   初級から学ぶVC++プログラミング</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/03/17/ruby-gmail/" class="excerpt-link">Ruby から Gmail を受信する（マルチパート編）</a></h1>
     
     
       <p class="meta">
@@ -286,12 +303,12 @@
 
 
 
-<time datetime="2004-05-24T05:54:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 24<span>th</span>, 2004</time>
+<time datetime="2011-03-17T22:24:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Mar 17<span>th</span>, 2011</time>
         <span class="divider"></span>
         <span class="categories">
   
     
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
     
   
 </span>
@@ -299,14 +316,18 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/c-plus-plus/" rel="nofollow">C++</a>
+      <a class="tag label label-info" href="/blog/tags/gmail/" rel="nofollow">Gmail</a>
+    
+      <a class="tag label label-info" href="/blog/tags/imap/" rel="nofollow">imap</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2004/05/24/4894711400/#disqus_thread">Comments</a>
+        <a href="/blog/2011/03/17/ruby-gmail/#disqus_thread">Comments</a>
         
         
         
@@ -315,7 +336,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/24/4894711400/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/03/17/ruby-gmail/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -331,7 +352,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/24/4894711400/"></div>
+         data-href="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"></div>
   </li>
   
   
@@ -339,7 +360,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/24/4894711400/"></div>
+         data-href="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"></div>
   </li>
   
   
@@ -347,23 +368,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/24/4894711400/"
+       data-url="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/24/4894711400/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2011/03/17/ruby-gmail/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/24/4894711400/"></div>
+         data-href="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/24/4894711400/"
+       data-save-url="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -384,1329 +405,35 @@
 
 
 
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894711400/sorehabooks-22" title="Visual C++6.0入門   初級から学ぶVC++プログラミング" rel="external nofollow">
-      <img src="http://images-jp.amazon.com/images/P/4894711400.09.MZZZZZZZ.jpg" class="asin-thumbnail" alt="Visual C++6.0入門   初級から学ぶVC++プログラミング" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894711400/sorehabooks-22" title="Visual C++6.0入門   初級から学ぶVC++プログラミング" rel="external nofollow">Visual C++6.0入門   初級から学ぶVC++プログラミング</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>横井 与次郎 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>ピアソン・エデュケーション</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894711400/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
+
+
+
+  <div class="entry-content"><p>Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。</p>
+
+<p>かなり力技的なところがあるので、もっといいプログラムになると思いいますが、メモということで。</p>
+
+<p><section></section></p>
+
+<h4>バージョン</h4>
 
 
 
 
-  <div class="entry-content"><p>この本を読むとVisualC++の基本操作がマスターできますね。簡単なプログラムも作れるようになるでしょう。たとえば、HelloWorldと表示させるプログラムとかね・・・。</p>
+<dl>
+<dt>Ruby</dt>
+<dd>1.9.2</dd>
+<dt>Rails</dt>
+<dd>3.0.4</dd>
+<dt>mail</dt>
+<dd>2.2</dd>
+</dl>
+<p></p>
 
 </div>
   
   
     <footer>
-      <a href="/blog/2004/05/24/4894711400/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/24/4774106607/" class="excerpt-link">MFCライブラリ標準リファレンス</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-24T05:47:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 24<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/mfc/" rel="nofollow">MFC</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/24/4774106607/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/24/4774106607/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/24/4774106607/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/24/4774106607/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/24/4774106607/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/24/4774106607/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/24/4774106607/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/24/4774106607/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774106607/sorehabooks-22" title="MFCライブラリ標準リファレンス" rel="external nofollow">
-      <img src="http://www.sam.hi-ho.ne.jp/hamasyou/gallery/img/books_value/mfc_library.jpg" class="asin-thumbnail" alt="MFCライブラリ標準リファレンス" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774106607/sorehabooks-22" title="MFCライブラリ標準リファレンス" rel="external nofollow">MFCライブラリ標準リファレンス</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>加藤 佐一 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774106607/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>読んでみての感想は、この本あったら便利だけど特には使わないなって感じでした。僕はめんどくさがりやなので、本で探すよりWebを使って調べものをしますので・・・。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/05/24/4774106607/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/24/4844312871/" class="excerpt-link">Visual C++ 言語リファレンス BlackBook</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-24T05:06:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 24<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/c-plus-plus/" rel="nofollow">C++</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/24/4844312871/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/24/4844312871/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/24/4844312871/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/24/4844312871/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/24/4844312871/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/24/4844312871/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/24/4844312871/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/24/4844312871/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4844312871/sorehabooks-22" title="Visual C++ 言語リファレンス BlackBook" rel="external nofollow">
-      <img src="http://images-jp.amazon.com/images/P/4844312871.09.MZZZZZZZ.jpg" class="asin-thumbnail" alt="Visual C++ 言語リファレンス BlackBook" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4844312871/sorehabooks-22" title="Visual C++ 言語リファレンス BlackBook" rel="external nofollow">Visual C++ 言語リファレンス BlackBook</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>野本 等 (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>インプレス</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4844312871/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>インプレスのBlackBookシリーズはほんとに読み応えのある本です。紙質も他の本に比べて薄く、たくさんの情報が載っているのがウリです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/05/24/4844312871/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/24/4774107816/" class="excerpt-link">はじめてのVisual C++６.０</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-24T03:12:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 24<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/c-plus-plus/" rel="nofollow">C++</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/24/4774107816/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/24/4774107816/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/24/4774107816/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/24/4774107816/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/24/4774107816/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/24/4774107816/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/24/4774107816/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/24/4774107816/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774107816/sorehabooks-22" title="はじめてのVisual C++６.０" rel="external nofollow">
-      <img src="http://www.sam.hi-ho.ne.jp/hamasyou/gallery/img/books_value/hazimeteno_visualc%2B%2B.jpg" class="asin-thumbnail" alt="はじめてのVisual C++６.０" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774107816/sorehabooks-22" title="はじめてのVisual C++６.０" rel="external nofollow">はじめてのVisual C++６.０</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>山地 秀美 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774107816/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>C++でクラスを作るサンプルをやった後、住所録プログラムで継承・動的処理、MFCへと入っていきます。段階的に勉強できるのも特徴の一つですが、作るサンプルがまた一味違って面白いものばかりです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/05/24/4774107816/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/23/4774110124/" class="excerpt-link">Software Technology26  はじめてのC++　[演習と解説]</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-23T23:52:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 23<span>rd</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/c-plus-plus/" rel="nofollow">C++</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/23/4774110124/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/23/4774110124/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/23/4774110124/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/23/4774110124/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/23/4774110124/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/23/4774110124/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/23/4774110124/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/23/4774110124/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774110124/sorehabooks-22" title="Software Technology26  はじめてのC++　[演習と解説]" rel="external nofollow">
-      <img src="http://www.sam.hi-ho.ne.jp/hamasyou/gallery/img/books_value/hazimeteno_c%2B%2B.jpg" class="asin-thumbnail" alt="Software Technology26  はじめてのC++　[演習と解説]" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774110124/sorehabooks-22" title="Software Technology26  はじめてのC++　[演習と解説]" rel="external nofollow">Software Technology26  はじめてのC++　[演習と解説]</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>塚越 一雄 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774110124/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>この本を読んで思ったことは、<a href="http://www.amazon.co.jp/exec/obidos/ASIN/477410843X/sorehabooks-22" rel="external nofollow" title="「決定版 はじめてのC++」">「決定版 はじめてのC++」</a>を読んだ人を対象にしているんだなってことです。まあ、ANSI標準のC++にのっとって解説してあるだろうから、C++を勉強した人ならこの本はさほど難しくないんじゃないかと思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/05/23/4774110124/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/23/4887186347/" class="excerpt-link">ハッカーの教科書</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-23T21:33:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 23<span>rd</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/network/">Network</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/hatuka/" rel="nofollow">ハッカー</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/23/4887186347/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/23/4887186347/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/23/4887186347/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/23/4887186347/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/23/4887186347/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/23/4887186347/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/23/4887186347/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/23/4887186347/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4887186347/sorehabooks-22" title="ハッカーの教科書" rel="external nofollow">
-      <img src="http://images-jp.amazon.com/images/P/4887186347.09.MZZZZZZZ.jpg" class="asin-thumbnail" alt="ハッカーの教科書" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4887186347/sorehabooks-22" title="ハッカーの教科書" rel="external nofollow">ハッカーの教科書</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>IPUSIRON (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>株式会社データハウス</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4887186347/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>ハッカーという言葉は、マスコミが取り上げる中では、コンピュータに進入して悪いことをする人だという認識が高まっています。しかし、実はこれはまったくの誤解で、ハッカーというのはコンピュータの扱いにかけては右に出るものがいないほどの天才のことをさすのです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/05/23/4887186347/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/23/478520107X/" class="excerpt-link">著作権が明解になる10章</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-23T19:46:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 23<span>rd</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/zhu-zuo-quan/" rel="nofollow">著作権</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/23/478520107X/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/23/478520107X/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/23/478520107X/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/23/478520107X/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/23/478520107X/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/23/478520107X/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/23/478520107X/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/23/478520107X/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/478520107X/sorehabooks-22" title="著作権が明解になる10章" rel="external nofollow">
-      <img src="http://images-jp.amazon.com/images/P/4785200839.09.MZZZZZZZ.jpg" class="asin-thumbnail" alt="著作権が明解になる10章" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/478520107X/sorehabooks-22" title="著作権が明解になる10章" rel="external nofollow">著作権が明解になる10章</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>吉田 大輔 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>出版ニュース社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/478520107X/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>最近何かと問題になる著作権についてわかりやすく解説しているのが本書の特徴です。インターネットが普及してきた現代において、固形物に対する著作権だけでなく、流体物に対する著作権の知識もますます必要になってきました。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/05/23/478520107X/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/23/4774110515/" class="excerpt-link">とってもかんたん！ Vine Linux 早わかりガイド</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-23T18:01:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 23<span>rd</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/network/">Network</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/linux/" rel="nofollow">Linux</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/23/4774110515/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/23/4774110515/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/23/4774110515/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/23/4774110515/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/23/4774110515/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/23/4774110515/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/23/4774110515/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/23/4774110515/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774110515/sorehabooks-22" title="とってもかんたん！ Vine Linux 早わかりガイド" rel="external nofollow">
-      <img src="http://www.sam.hi-ho.ne.jp/~hamasyou/gallery/img/books_value/vine_linux.jpg" class="asin-thumbnail" alt="とってもかんたん！ Vine Linux 早わかりガイド" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774110515/sorehabooks-22" title="とってもかんたん！ Vine Linux 早わかりガイド" rel="external nofollow">とってもかんたん！ Vine Linux 早わかりガイド</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>西井 淳 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774110515/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>LinuxはフリーのOSで、こういう解説書なんかを買うとついてくるんですが、インターネットで探しても見つかります。Linux自体はフリーで、インストールにお金はかかりません。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/05/23/4774110515/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/05/23/4894712741/" class="excerpt-link">達人プログラマー  〜システム開発の職人から名匠への道〜</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-05-23T12:16:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 23<span>rd</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/lifehack/">LifeHack</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/05/23/4894712741/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/05/23/4894712741/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/23/4894712741/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/05/23/4894712741/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/05/23/4894712741/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/05/23/4894712741/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/05/23/4894712741/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/05/23/4894712741/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712741/sorehabooks-22" title="達人プログラマー  〜システム開発の職人から名匠への道〜" rel="external nofollow">
-      <img src="http://images-jp.amazon.com/images/P/4894712741.09.MZZZZZZZ.jpg" class="asin-thumbnail" alt="達人プログラマー  〜システム開発の職人から名匠への道〜" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712741/sorehabooks-22" title="達人プログラマー  〜システム開発の職人から名匠への道〜" rel="external nofollow">達人プログラマー  〜システム開発の職人から名匠への道〜</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>村上 雅章 (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>ピアソン・エデュケーション</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712741/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>「猫がソースコードを食べちゃった」、「石のスープと蛙の煮物」、「表明プログラミング」、「リファクタリング」とふざけたようなタイトルから、しっかりしたタイトルまで非常に幅広く、プログラミングの達人における心構えを諭してくれる一冊です。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/05/23/4894712741/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2011/03/17/ruby-gmail/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 

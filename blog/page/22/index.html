@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="「コンピュータの仕組みを知りたいとは思わないかい？」一般にコンピュータを使っている人ならこの質問には「NO」と答えるだろう。電子工学を勉強している学生の中には、少なからず「YES」と答える人もいるかもしれない。 &hellip;">
+  <meta name="description" content="JavaScript のテストに関して書かれた、体系的な本がやっと出た！という感じにまとめられています。 本書では、JavaScript にスポットを当て、テストしやすい JavaScript のコードとはどんなものか、実際にテスト駆動で JavaScript &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/22/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="「コンピュータの仕組みを知りたいとは思わないかい？」一般にコンピュータを使っている人ならこの質問には「NO」と答えるだろう。電子工学を勉強している学生の中には、少なからず「YES」と答える人もいるかもしれない。 &hellip;" />
+<meta property="og:description" content="JavaScript のテストに関して書かれた、体系的な本がやっと出た！という感じにまとめられています。 本書では、JavaScript にスポットを当て、テストしやすい JavaScript のコードとはどんなものか、実際にテスト駆動で JavaScript &hellip;" />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -32,6 +32,11 @@
 
   
   <link rel="canonical" href="http://hamasyou.com/blog/page/22/">
+  
+  
+  <link rel="next" href="http://hamasyou.com/blog/page/23/">
+  
+
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <style type="text/css">
@@ -108,7 +113,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2004/10/23/4891003383/" class="excerpt-link">CODE コードから見たコンピュータのからくり</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/01/21/4048707868/" class="excerpt-link">テスト駆動JavaScript</a></h1>
     
     
       <p class="meta">
@@ -125,12 +130,12 @@
 
 
 
-<time datetime="2004-10-23T23:09:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 23<span>rd</span>, 2004</time>
+<time datetime="2012-01-21T10:35:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jan 21<span>st</span>, 2012</time>
         <span class="divider"></span>
         <span class="categories">
   
     
-      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
     
   
 </span>
@@ -138,16 +143,18 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/code/" rel="nofollow">CODE</a>
+      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
     
-      <a class="tag label label-info" href="/blog/tags/bainari/" rel="nofollow">バイナリ</a>
+      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a>
+    
+      <a class="tag label label-info" href="/blog/tags/tesutoqu-dong/" rel="nofollow">テスト駆動</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2004/10/23/4891003383/#disqus_thread">Comments</a>
+        <a href="/blog/2012/01/21/4048707868/#disqus_thread">Comments</a>
         
         
         
@@ -156,7 +163,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/23/4891003383/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2012/01/21/4048707868/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -172,7 +179,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/23/4891003383/"></div>
+         data-href="http://hamasyou.com/blog/2012/01/21/4048707868/"></div>
   </li>
   
   
@@ -180,7 +187,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/23/4891003383/"></div>
+         data-href="http://hamasyou.com/blog/2012/01/21/4048707868/"></div>
   </li>
   
   
@@ -188,23 +195,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/10/23/4891003383/"
+       data-url="http://hamasyou.com/blog/2012/01/21/4048707868/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/10/23/4891003383/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2012/01/21/4048707868/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/10/23/4891003383/"></div>
+         data-href="http://hamasyou.com/blog/2012/01/21/4048707868/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/10/23/4891003383/"
+       data-save-url="http://hamasyou.com/blog/2012/01/21/4048707868/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -227,208 +234,59 @@
 
 <div class="row asin-detail">
   <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4891003383/sorehabooks-22" title="CODE コードから見たコンピュータのからくり" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/41MMSFF3E5L._BO2,204,203,200_PIsitb-sticker-arrow-click,-76_AA300_SH20_OU09_.jpg" class="asin-thumbnail" alt="CODE コードから見たコンピュータのからくり" />
+    <a href="http://www.amazon.co.jp/gp/product/4048707868?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048707868" title="テスト駆動JavaScript" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/51g1mDqlfJL._SL500_AA300_.jpg" class="asin-thumbnail" alt="テスト駆動JavaScript" />
     </a>
   </div>
   <div class="col-sm-8 asin-meta">
     <dl>
       
       <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4891003383/sorehabooks-22" title="CODE コードから見たコンピュータのからくり" rel="external nofollow">CODE コードから見たコンピュータのからくり</a></dd>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4048707868?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048707868" title="テスト駆動JavaScript" rel="external nofollow">テスト駆動JavaScript</a></dd>
       
       
       <dt>著者</dt>
-      <dd>Charles Petzold (著), 永山 操 (翻訳)</dd>
+      <dd>Christian Johansen (著), 長尾高弘 (翻訳)</dd>
       
       
       <dt>出版社</dt>
-      <dd>日経BPソフトプレス</dd>
+      <dd>アスキー・メディアワークス</dd>
       
     </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4891003383/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+    <a href="http://www.amazon.co.jp/gp/product/4048707868?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4048707868" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
   </div>
 </div>
 
 
 
 
-  <div class="entry-content"><p>「コンピュータの仕組みを知りたいとは思わないかい？」一般にコンピュータを使っている人ならこの質問には「NO」と答えるだろう。電子工学を勉強している学生の中には、少なからず「YES」と答える人もいるかもしれない。本書はモールス信号からコンピュータの仕組みを理解するところまで持っていってしまうところがすごい。つまりコンピュータのことを知らなくても（モールス信号さえ知っていれば）誰でもコンピュータの仕組みまで理解できてしまうのである。ただし、順を追って読み進めていけばの話ではあるが・・・。</p>
+  <div class="entry-content"><p>JavaScript のテストに関して書かれた、体系的な本がやっと出た！という感じにまとめられています。</p>
 
-<p>コンピュータの動作原理は「0」と「1」との組み合わせがすべてである。コンピュータを知っている人なら誰でもこう答えるだろう。しかし、最近のコンピュータは音楽を聴いたり、ゲームをしたり、写真を取り込んだりできるのにほんとうに「0」と「1」とでしか出来ていないのかと思う人もいると思う。</p>
+<p>本書では、JavaScript にスポットを当て、テストしやすい JavaScript のコードとはどんなものか、実際にテスト駆動で JavaScript のコードを書くにはどういう手順で進めていけばよいかについて書かれています。</p>
 
-<p>500ページという本のなかに、著者のコンピュータを知ってもらいたいという熱い想いを感じ取って欲しいと思います。基本情報技術者試験の試験勉強でコンピュータの仕組みを勉強するよりも、はっきり言って本書で仕組みを理解したほうが深く身につきます。<strong class="text-danger">決して簡単には読み進められないかもしれません。</strong>しかし確実に感動を覚えることはできると思います。少し時間をとって頭の体操にどうぞ！</p>
+<p>本書は大まかに、次の4部に分けて解説されています。</p>
 
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/10/23/4891003383/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/18/4774116165/" class="excerpt-link">SOAP/UDDI/WSDL Webサービス技術基礎と実践 徹底解説</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-10-18T09:59:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 18<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/websabisu/" rel="nofollow">Webサービス</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/10/18/4774116165/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/18/4774116165/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/18/4774116165/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/18/4774116165/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/10/18/4774116165/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/10/18/4774116165/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/10/18/4774116165/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/10/18/4774116165/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
+<ul>
+<li>第1部: テスト駆動開発</li>
+<li>第2部: プログラマのためのJavaScript</li>
+<li>第3部: JavaScriptテスト駆動開発の実際</li>
+<li>第4部: テストのパターン</li>
 </ul>
+<p>第1部では、一般的な自動テストやテスト駆動開発（<strong class="text-danger">TDD</strong>）の概念を説明しながら、JavaScript 用の単体テストフレームワークを紹介しています。</p>
 
-        
-      </p>
-    
-  </header>
+<p>第2部では、JavaScript という言語をおさらいしながら、大きな特徴である<em>関数</em>、<em>クロージャ</em>、<em>プロトタイプ継承</em>、<em>ECMAScript 第五版</em>、<em>控えめなJavaScript</em>、<em>機能検出（クロスプラットフォーム）</em>について説明を掘り下げています。</p>
 
+<p>第3部では、実際に小さなプロジェクトを開発しながらテスト駆動による JavaScript の開発を体験できるようになっています。<em>Ajax</em>、<em>Comet</em> によるデータストリーミング、<em>Node.js</em> によるサーバサイド JavaScript、これらを使ったチャットプログラムの作成を体験できるようになっています。</p>
 
+<p>第4部では、<em>モック</em>や<em>スタブ</em>といったいわゆる単体テストのテクニックや、優れた単体テストを書くためのテスト名の付け方や、振る舞いのテストを書くときにはどう書いたらよいか、わかりやすい単体テストコードを書くためのテクニックが説明されています。</p>
 
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116165/sorehabooks-22" title="SOAP/UDDI/WSDL Webサービス技術基礎と実践 徹底解説" rel="external nofollow">
-      <img src="http://ecx.images-amazon.com/images/I/51H3TJCW59L._BO2,204,203,200_PIsitb-sticker-arrow-click,-76_AA300_SH20_OU09_.jpg" class="asin-thumbnail" alt="SOAP/UDDI/WSDL Webサービス技術基礎と実践 徹底解説" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116165/sorehabooks-22" title="SOAP/UDDI/WSDL Webサービス技術基礎と実践 徹底解説" rel="external nofollow">SOAP/UDDI/WSDL Webサービス技術基礎と実践 徹底解説</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>日本ユニテックDigital Xpress編集部 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774116165/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>「ビジネスサービスを動的に発見・接続できるようにする」という、Webサービスの目的。そこで使われる技術というのは、実際にはそれほど新しいものではありません。Webサービスは、既存の技術(例えばXMLやSOAP)の組み合わせによる新しい発想と壮大な思想から生まれたある技術仕様です。</p>
-
-<p>本書は、「サービスの動的発見・接続」を可能にする『SOAP』、『WSDL』、『UDDI』という基本仕様についての解説書になっています。Webサービスは発展途上の技術であるため、さまざまな仕様が検討されています。トランザクションに関するものから、セキュリティに関するものまでいくつかあります、が本書では扱っていません。</p>
-
-<p>『SOAP』、『WSDL』、『UDDI』の基本仕様とXMLの概要説明、Webサービスを .Net と Java で構築するというのが本書のテーマです。手っ取り早くWebサービスを構築したいという人には本書は向かないかもしれません。本書のターゲットは、Webサービスの基本技術をしっかりと学びたいという人向けです。</p>
+<p>『<strong class="text-danger">テスト駆動JavaScript</strong>』の名にふさわしい内容で、他の言語でも共通する単体テストのお作法も学べる本書は、TDD難民の人にオススメです。</p>
 
 </div>
   
   
     <footer>
-      <a href="/blog/2004/10/18/4774116165/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2012/01/21/4048707868/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 
@@ -440,7 +298,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2004/10/12/ant/" class="excerpt-link">Antを勉強する</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/09/12/game/" class="excerpt-link">『のほほんビレッジ〜みんなのカフェ〜』の御礼</a></h1>
     
     
       <p class="meta">
@@ -457,7 +315,7 @@
 
 
 
-<time datetime="2004-10-12T16:00:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 12<span>th</span>, 2004</time>
+<time datetime="2011-09-12T20:16:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 12<span>th</span>, 2011</time>
         <span class="divider"></span>
         <span class="categories">
   
@@ -470,14 +328,14 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/ant/" rel="nofollow">Ant</a>
+      <a class="tag label label-info" href="/blog/tags/sosiyarugemu/" rel="nofollow">ソーシャルゲーム</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2004/10/12/ant/#disqus_thread">Comments</a>
+        <a href="/blog/2011/09/12/game/#disqus_thread">Comments</a>
         
         
         
@@ -486,7 +344,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/12/ant/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/09/12/game/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -502,7 +360,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/12/ant/"></div>
+         data-href="http://hamasyou.com/blog/2011/09/12/game/"></div>
   </li>
   
   
@@ -510,7 +368,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/12/ant/"></div>
+         data-href="http://hamasyou.com/blog/2011/09/12/game/"></div>
   </li>
   
   
@@ -518,23 +376,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/10/12/ant/"
+       data-url="http://hamasyou.com/blog/2011/09/12/game/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/10/12/ant/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2011/09/12/game/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/10/12/ant/"></div>
+         data-href="http://hamasyou.com/blog/2011/09/12/game/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/10/12/ant/"
+       data-save-url="http://hamasyou.com/blog/2011/09/12/game/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -558,1199 +416,22 @@
 
 
 
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774120006/sorehabooks-22" rel="external nofollow" title=""></a>
-</p>
+  <div class="entry-content"><p>携帯向けの GREE ソーシャルアプリ『<strong class="text-danger">のほほんビレッジ〜みんなのカフェ〜</strong>』を遊んでくださっている皆様、本当にありがとうございます。</p>
 
+<p>のほほんビレッジは、<a href="http://www.ediva.jp/" rel="external nofollow" title="株式会社Ediva">株式会社Ediva</a>さんと共同で製作したゲームです。</p>
 
-<p>Antはビルドツールです。OSや環境に依存しないビルドツールということで幅広く使われています。</p>
+<p><a href="http://hamasyou.com/blog/archives/images/%E7%B4%B9%E4%BB%8B%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%86%E3%82%B9%E3%83%8805.jpg" rel="external nofollow" title=""></a></p>
 
-<p>個人的にAntを使う理由というのは、ビルド以外のいろんな設定が簡単に出来ることです。例えば、環境ごとに異なった設定ファイルを作りたいときに、ベースとなるファイルを一つ用意するだけで、Filterという機能を使って設定ファイルの内容を変化させることが出来ます。</p>
+<p><a href="http://gree.jp/community/3035925" rel="external nofollow" title="公式コミュニティ">公式コミュニティ</a>の方にもあげられていますが、<em>皆様からの要望</em>はすべて目を通しています。</p>
 
-<p>他にも、JUnitを使ったときに、Reportを自動で生成する機能や、Webアプリケーション用のwarファイルを作りそのままデプロイしたりと、色々なことが連続的に出来るのが気に入っています。作業と作業の間に人の手を入れずに実行できるので、作業忘れが発生しないというのが特徴です。　</p>
+<p>要望の中から少しずつですがプログラムを実装して、今後も皆様にお届けしていきたいと思います。</p>
 
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/10/12/ant/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/11/4894715775/" class="excerpt-link">ストリームラインオブジェクトモデリング―パターンとビジネスルールによるUML</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-10-11T22:34:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 11<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/uml/" rel="nofollow">UML</a>
-    
-      <a class="tag label label-info" href="/blog/tags/moderingu/" rel="nofollow">モデリング</a>
-    
-      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/10/11/4894715775/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/11/4894715775/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/11/4894715775/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/11/4894715775/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/10/11/4894715775/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/10/11/4894715775/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/10/11/4894715775/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/10/11/4894715775/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715775/sorehabooks-22" title="ストリームラインオブジェクトモデリング―パターンとビジネスルールによるUML" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51YJ30ZT85L._SL500_AA300_.jpg" class="asin-thumbnail" alt="ストリームラインオブジェクトモデリング―パターンとビジネスルールによるUML" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715775/sorehabooks-22" title="ストリームラインオブジェクトモデリング―パターンとビジネスルールによるUML" rel="external nofollow">ストリームラインオブジェクトモデリング―パターンとビジネスルールによるUML</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>ジル ニコラ (著), マイク アベニー (著), マーク メイフィールド (著), Jill Nicola (原著), Mike Abney (原著), Mark Mayfield (原著), 今野 睦 (翻訳), デュオシステムズ (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>ピアソンエデュケーション</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715775/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>モデリングの部分部分をパターン化して、モデリングに利用しようとしている印象を受けました。ビジネスのモデリングというのは細分化して分類してみると、12種類の「分子」に分けられるというのが著者の意見のようです。</p>
-
-<p>12種類のパターンは以下のようなものがあります。</p>
-
-<ul>
-<li>アクター-ロール</li>
-<li>外部の場所-場所</li>
-<li>品目-特定品目</li>
-<li>組立品-部品</li>
-<li>コンテナ-コンテンツ</li>
-<li>グループ-メンバー</li>
-<li>トランザクション-ロール</li>
-<li>トランザクション-場所</li>
-<li>トランザクション-特定品目</li>
-<li>コンポジットトランザクション-明細</li>
-<li>特定品目-明細</li>
-<li>トランザクション-後続トランザクション</li>
-</ul>
-<p>ビジネスモデルというものは、会社ごとに違っているのが普通だと思います。同じビジネスモデルでは、競争なんて出来ませからこれはきわめて普通なことだと思います。モデリングというのは、ビジネスを抽象化して捕らえるところに意味がある行為です。そして、抽象化したレベルではいくつかのパターンを見ることが出来る。これが本書の説明したかった事柄だと思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/10/11/4894715775/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/06/jsf/" class="excerpt-link">JSFフレームワーク覚書き</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-10-06T14:19:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 6<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/jsf/" rel="nofollow">JSF</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/10/06/jsf/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/06/jsf/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/06/jsf/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/06/jsf/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/10/06/jsf/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/10/06/jsf/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/10/06/jsf/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/10/06/jsf/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>JSFは今後期待されるWebアプリケーションフレームワークの一つです。標準規格ということで、普及してくるのではないかと思います。</p>
-
-<p>JSFはユーザインターフェース周りの処理を簡単に実装できるということを目標に開発されたフレームワークで、WebでGUIアプリケーションを作っているような感覚でコーディングが出来ます。</p>
-
-<p>アクションやイベントといった概念を扱っていて、非常に直感的に流れが分かるようなフレームワークになっています。ということで、今回はJSFフレームワークの流れについての覚書きです。</p>
-
-<p><section></section></p>
-
-<h4>参考</h4>
-
-
-
-
-<ul>
-<li>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" rel="external nofollow" title="はじめてのJSF">はじめてのJSF</a>』 日経BP社</li>
-<li><a href="http://www.atmarkit.co.jp/fjava/special/jsf01/jsf01.html" rel="external nofollow" title="@IT：特別企画  JavaServer Facesを理解する(前編)">@IT：特別企画  JavaServer Facesを理解する(前編)</a></li>
-</ul>
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/10/06/jsf/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/09/30/479810714X/" class="excerpt-link">バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-09-30T23:59:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 30<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/tdd/" rel="nofollow">TDD</a>
-    
-      <a class="tag label label-info" href="/blog/tags/tesutohuasuto/" rel="nofollow">テストファースト</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/09/30/479810714X/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/09/30/479810714X/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/09/30/479810714X/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/09/30/479810714X/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/09/30/479810714X/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/09/30/479810714X/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/09/30/479810714X/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/09/30/479810714X/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810714X/sorehabooks-22" title="バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51XPEMTPVTL._SL500_AA300_.jpg" class="asin-thumbnail" alt="バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810714X/sorehabooks-22" title="バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発" rel="external nofollow">バグがないプログラムのつくり方 JavaとEclipseで学ぶTDDテスト駆動開発</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>川端 光義 (著), 倉貫 義人 (著), 兒玉 督司 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>翔泳社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/479810714X/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>テスト駆動開発(TDD)は、アジャイル開発に非常に良く適した開発技法である。プログラムを書く前にテストケースを書くという、今までの開発のやり方とはまったく逆の「目的から解法を求める」やり方です。このやり方だと何がいいのかというと、目的が見えているから(テストケースを満足させること)、解法が非常にシンプルになることです。つまり無駄がなくなる。トヨタのカンバン方式をご存知ならば、ほとんど一緒の考え方がこの<strong class="text-danger">テスト駆動開発</strong>になるのです。</p>
-
-<p>本書は、今までの開発方法とは一風変わったテスト駆動開発を、日本人による解説と豊富なサンプルプログラムで分かりやすく理解できます。なぜテスト駆動がいいのかということを、余すことなくかかれています。</p>
-
-<p>開発者だけでなく管理者の方も、本書を読むことで品質の良いプログラムを作るためのきっかけが得られるのではないかと思います。とても良い本だと思うので、少しでもテスト駆動開発に興味のある方は読んでみてください。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/09/30/479810714X/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/09/27/4899770510/" class="excerpt-link">文字コード超研究</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-09-27T11:27:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 27<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/wen-zi-kodo/" rel="nofollow">文字コード</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/09/27/4899770510/#disqus_thread">Comments</a>
-        
-        
-        
+<p>致命的なバグに関しては出来る限り早く、要望の実装は定期メンテナンスで導入という感じで運営していますので、末永くお付き合い下さい。</p>
 
+<p>今回の定期メンテナンスで導入されなかった機能も、次回のメンテナンスには導入されるかも！？というような楽しみ方もしていただけると。。。</p>
 
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/09/27/4899770510/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/09/27/4899770510/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/09/27/4899770510/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/09/27/4899770510/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/09/27/4899770510/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/09/27/4899770510/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/09/27/4899770510/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4899770510/sorehabooks-22" title="文字コード超研究" rel="external nofollow">
-      <img src="http://ecx.images-amazon.com/images/I/41FK9AZ0EDL._SL500_AA300_.jpg" class="asin-thumbnail" alt="文字コード超研究" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4899770510/sorehabooks-22" title="文字コード超研究" rel="external nofollow">文字コード超研究</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>深沢 千尋 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>ラトルズ</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4899770510/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>本書は、コンピュータで扱う「文字」に関して非常に分かりやすく説明してくれています。扱っている文字コードの数も、15種類以上あります。コンピュータで文字がどのように扱われているかという原理を知りたい方は、一度読まれることをおすすめします。</p>
-
-<p>本書の特徴の一つとして、文字コードに対する実験があります。例えば、Macintoshで使われるデフォルトの改行コードをWindowsのデフォルト改行コードに変換するPerlのプログラムなど、Perlのソースコードがあちらこちらに出てきます。文字コードの研究をテーマに「Perlを学ぶ」本だと思ってもいいと思います。『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774108170/sorehabooks-22" rel="external nofollow" title="すぐわかるPerl">すぐわかるPerl</a>』片手にPerlのお勉強に使えます。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/09/27/4899770510/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/09/13/4774117218/" class="excerpt-link">体験オブジェクト指向 はじめるUMLモデリング</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-09-13T09:51:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 13<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/uml/" rel="nofollow">UML</a>
-    
-      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a>
-    
-      <a class="tag label label-info" href="/blog/tags/moderingu/" rel="nofollow">モデリング</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/09/13/4774117218/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/09/13/4774117218/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/09/13/4774117218/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/09/13/4774117218/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/09/13/4774117218/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/09/13/4774117218/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/09/13/4774117218/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/09/13/4774117218/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774117218/sorehabooks-22" title="体験オブジェクト指向 はじめるUMLモデリング" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51E6PN217BL._SL500_AA300_.jpg" class="asin-thumbnail" alt="体験オブジェクト指向 はじめるUMLモデリング" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774117218/sorehabooks-22" title="体験オブジェクト指向 はじめるUMLモデリング" rel="external nofollow">体験オブジェクト指向 はじめるUMLモデリング</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>山田 正樹 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774117218/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>「モデリング」という言葉が最近グッと身近に感じられる世の中になってきたような気がします。システム開発をやっていない人にはいまいちピンと来ないかも知れないのですが、上流工程ではビジネス要件をモデリングしますし、下流工程ではアプリケーション設計をモデリングします。</p>
-
-<p>本書は、最近主流の「UML(Unified Modeling Language)」という記法を使ったモデリング方法を解説しています。非常に初心者向けの易しい内容です。</p>
-
-<ul>
-<li>要求モデリング</li>
-<li>概念モデリング</li>
-<li>仕様モデリング</li>
-<li>実装モデリング</li>
-</ul>
-<p>の大きく分けて4レベルのモデリングを行います。実際のシステム開発でも、要求モデリング、概念モデリング、実装モデリング辺りは行っているのが現状ですので、実務経験が無い人でも『体験』的に学べると思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/09/13/4774117218/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/09/06/4822221253/" class="excerpt-link">はじめてのJSF―Web開発を変えるJavaフレームワークのすべて</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-09-06T09:45:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 6<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/jsf/" rel="nofollow">JSF</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/09/06/4822221253/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/09/06/4822221253/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/09/06/4822221253/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/09/06/4822221253/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/09/06/4822221253/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/09/06/4822221253/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/09/06/4822221253/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/09/06/4822221253/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" title="はじめてのJSF―Web開発を変えるJavaフレームワークのすべて" rel="external nofollow">
-      <img src="http://ecx.images-amazon.com/images/I/51TWVT4PZSL._BO2,204,203,200_PIsitb-sticker-arrow-click,-76_AA300_SH20_OU09_.jpg" class="asin-thumbnail" alt="はじめてのJSF―Web開発を変えるJavaフレームワークのすべて" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" title="はじめてのJSF―Web開発を変えるJavaフレームワークのすべて" rel="external nofollow">はじめてのJSF―Web開発を変えるJavaフレームワークのすべて</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>若尾 正樹 (著), 田添 英一 (著), 三浦 圭司 (著), 神山 淑朗 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>日経BP社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>本書は、JSFフレームワークがどんな流れで処理を進めていくのかがよくわかるので非常に初心者向けだと思います。実際、僕が最初にJSFをやることになって、いろいろと書籍を見た中では、フレームワークの流れが一番よくわかる本だと思いました。</p>
-
-<p>JSFにはライフサイクルというものがあり、6つのフェーズからできています。この6つのフェーズ（Viewの復元・リクエスト値の適用・入力値の検証・モデル値の更新・アプリケーションロジックの呼び出し・レスポンスレンダリング）のそれぞれに関してフレームワークがどのように処理を進めていくのかを、丁寧に解説しています。</p>
-
-<p>JSFは、これから使われてくる技術であり、これからのWebアプリケーション開発を変えてしまうものだと思っているので、本書を元に流れを理解しておくと、今後のJSF旋風に飲み込まれた時に役立つと思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/09/06/4822221253/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/08/23/4798104183/" class="excerpt-link">オブジェクト脳のつくり方</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-08-23T02:28:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Aug 23<span>rd</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/08/23/4798104183/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/08/23/4798104183/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/08/23/4798104183/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/08/23/4798104183/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/08/23/4798104183/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/08/23/4798104183/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/08/23/4798104183/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/08/23/4798104183/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104183/sorehabooks-22" title="オブジェクト脳のつくり方" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51MXTVQSZ7L._SL500_AA300_.jpg" class="asin-thumbnail" alt="オブジェクト脳のつくり方" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104183/sorehabooks-22" title="オブジェクト脳のつくり方" rel="external nofollow">オブジェクト脳のつくり方</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>牛尾 剛 (著), 長瀬 嘉秀 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>翔泳社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798104183/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>オブジェクト脳、略して『オブ脳』の芽生えはエンジニア人生の転機となる。と本書のカバーに書いてあります。最近のシステム開発の現場でオブジェクト指向という言葉を聞いたことが無い人はいないと思います。組み込みの業界でさえオブジェクト指向を取り入れた設計・実装が行われています。</p>
-
-<p>本書は、エンジニアに必須の知識となった『オブジェクト指向』を理解するための要領本です。本書を読めばきっとあなたにもオブジェクト脳が芽生えることでしょう。オブジェクト脳を持った人は、プログラミングの要素をオブジェクトとして捕らえます。</p>
-
-<p>オブジェクト指向を学ぶ理由なんて何でも良いんじゃないですか？「周りがやっているから自分もオブジェクト指向を身に付けたい」という理由でもいいと思います。どんな不純な動機でも本書を読めばオブ脳の芽が生えてくるのですから。オブジェクト指向を学びたいという人に、おすすめです。</p>
-
-</div>
-  
+<p><a href="http://mpf.gree.jp/2733" rel="external nofollow" title="のほほんビレッジ〜みんなのカフェ〜">のほほんビレッジ〜みんなのカフェ〜</a>（携帯用アプリトップ）</p></div>
   
-    <footer>
-      <a href="/blog/2004/08/23/4798104183/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
   
 
 

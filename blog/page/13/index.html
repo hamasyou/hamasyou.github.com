@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="『30日でできる！OS自作入門』 の覚書です。 本書を読んでいて気になったこと、整理したいことをメモしていこうと思います。ちゃんとした説明は、本書を読むほうが良いと思います。 プログラミングの基礎からはじめて、 &hellip;">
+  <meta name="description" content="値の欠落、形式から外れたレコード、エンコーディング形式が不明な文字列。「バッドデータ」と聞いた時に思い浮べる典型例です。しかし、これら以外にも「そもそもデータにアクセスできない」「消えてしまった」「昨日と違っている」「データはあるが形式が処理に適していない」など、データを収集・ &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/13/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="『30日でできる！OS自作入門』 の覚書です。 本書を読んでいて気になったこと、整理したいことをメモしていこうと思います。ちゃんとした説明は、本書を読むほうが良いと思います。 プログラミングの基礎からはじめて、 &hellip;" />
+<meta property="og:description" content="値の欠落、形式から外れたレコード、エンコーディング形式が不明な文字列。「バッドデータ」と聞いた時に思い浮べる典型例です。しかし、これら以外にも「そもそもデータにアクセスできない」「消えてしまった」「昨日と違っている」「データはあるが形式が処理に適していない」など、データを収集・ &hellip;" />
 <meta property="og:author" content="hamasyou" />
 <meta property="fb:app_id" content="130554843667643" />
 
@@ -32,6 +32,11 @@
 
   
   <link rel="canonical" href="http://hamasyou.com/blog/page/13/">
+  
+  
+  <link rel="next" href="http://hamasyou.com/blog/page/14/">
+  
+
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <style type="text/css">
@@ -108,7 +113,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2006/05/06/os/" class="excerpt-link">30日でできる! OS自作入門 覚書</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/11/14/4873116406/" class="excerpt-link">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a></h1>
     
     
       <p class="meta">
@@ -125,12 +130,12 @@
 
 
 
-<time datetime="2006-05-06T22:39:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 6<span>th</span>, 2006</time>
+<time datetime="2013-11-14T11:45:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 14<span>th</span>, 2013</time>
         <span class="divider"></span>
         <span class="categories">
   
     
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
     
   
 </span>
@@ -138,16 +143,18 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/os/" rel="nofollow">OS</a>
+      <a class="tag label label-info" href="/blog/tags/bitugudeta/" rel="nofollow">ビッグデータ</a>
     
-      <a class="tag label label-info" href="/blog/tags/zi-zuo/" rel="nofollow">自作</a>
+      <a class="tag label label-info" href="/blog/tags/enkodeingu/" rel="nofollow">エンコーディング</a>
+    
+      <a class="tag label label-info" href="/blog/tags/detahuomatuto/" rel="nofollow">データフォーマット</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2006/05/06/os/#disqus_thread">Comments</a>
+        <a href="/blog/2013/11/14/4873116406/#disqus_thread">Comments</a>
         
         
         
@@ -156,7 +163,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/05/06/os/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2013/11/14/4873116406/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -172,7 +179,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/05/06/os/"></div>
+         data-href="http://hamasyou.com/blog/2013/11/14/4873116406/"></div>
   </li>
   
   
@@ -180,7 +187,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/05/06/os/"></div>
+         data-href="http://hamasyou.com/blog/2013/11/14/4873116406/"></div>
   </li>
   
   
@@ -188,23 +195,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2006/05/06/os/"
+       data-url="http://hamasyou.com/blog/2013/11/14/4873116406/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2006/05/06/os/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2013/11/14/4873116406/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2006/05/06/os/"></div>
+         data-href="http://hamasyou.com/blog/2013/11/14/4873116406/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2006/05/06/os/"
+       data-save-url="http://hamasyou.com/blog/2013/11/14/4873116406/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -225,40 +232,46 @@
 
 
 
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/4873116406?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116406&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="バッドデータハンドブック ―データにまつわる問題への19の処方箋" rel="external nofollow">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/51WREvWeqbL._SL500_AA300_.jpg" class="asin-thumbnail" alt="バッドデータハンドブック ―データにまつわる問題への19の処方箋" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4873116406?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116406&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="バッドデータハンドブック ―データにまつわる問題への19の処方箋" rel="external nofollow">バッドデータハンドブック ―データにまつわる問題への19の処方箋</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>Q. Ethan McCallum (著), 磯 蘭水 (監訳) (翻訳), 笹井 崇司 (翻訳) </dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>オライリージャパン</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/4873116406?ie=UTF8&amp;camp=247&amp;creativeASIN=4873116406&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
 
 
 
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4839919844/sorehabooks-22/250-1891990-4739433?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title=""></a>
-</p>
 
-
-<p>『30日でできる！OS自作入門』 の覚書です。</p>
-
-<p>本書を読んでいて気になったこと、整理したいことをメモしていこうと思います。ちゃんとした説明は、本書を読むほうが良いと思います。</p>
-
-<blockquote>
-<p>プログラミングの基礎からはじめて、30日後にはウィンドウシステムを有する32bitマルチタスクOSをフルスクラッチで作り上げるという入門書。ビギナーでも無理なく作成できるようPCの仕組み・アセンブラ・Cの解説から始まり、試行錯誤を繰り返しながらアルゴリズムを学びつつ、たのしく自由な雰囲気でOSをゼロから構築していくという、他に類を見ない手法による、趣味と実用と学習を兼ね備えたOS作成の入門書です。</p>
-<footer><strong>「Amazon 出版社コメント」</strong></footer>
+  <div class="entry-content"><blockquote>
+<p>値の欠落、形式から外れたレコード、エンコーディング形式が不明な文字列。「バッドデータ」と聞いた時に思い浮べる典型例です。しかし、これら以外にも「そもそもデータにアクセスできない」「消えてしまった」「昨日と違っている」「データはあるが形式が処理に適していない」など、データを収集・分析するエンジニアは、これらの「バッドデータ」と正面から向きあわなければならないことが多々あります。本書では、これらの問題のあるデータのパターンを紹介し、その対処法を解説しています。<br>19人のデータ分析の専門家が、自らの経験を通して得た、さまざまな教訓、実践的な方法論等を詳述した本書は、ビッグデータ時代のエンジニアにとって必携の一冊となるでしょう。</p>
+<footer><strong>O&#8217;REILLY</strong></footer>
 </blockquote>
 
 
-<p><section></section></p>
+<p>本書はプログラミングやデータ解析の時に扱うデータの内容やフォーマットについて書かれています。プログラミングの時に扱いやすいデータフォーマット、こういう点に気をつけてデータを扱え、こういうフォーマットが使いやすいなどについて書かれています。</p>
 
-<h4>[参考]</h4>
+<p>コンピュータで扱うデータは大きく分けて<strong class="text-danger">コンピュータのためにフォーマットするデータ</strong>と<strong class="text-danger">人間のためにフォーマットするデータ</strong>があります。これらをごっちゃにしてしまうと扱いづらいデータ（<strong class="text-danger">バッドデータ</strong>）になってしまいます。本書はバッドデータをよりよく扱う方法、バッドデータにしない方法について、いろいろな点で考えられるようにアイデアや体験談を与えてくれます。</p>
 
-
-<ul>
-<li><a href="http://community.osdev.info/" rel="external nofollow" title="OS Wiki">OS Wiki</a></li>
-</ul>
-<p></p>
-
-</div>
+<p>最近 API をよく作ってるんだけど通信データのフォーマットに困ってるというような Web プログラマにオススメです！</p></div>
   
-  
-    <footer>
-      <a href="/blog/2006/05/06/os/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
   
 
 
@@ -269,7 +282,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2006/05/04/4883203476/" class="excerpt-link">孔子とドラッカー―ハートフル・マネジメント</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/06/24/4774156647/" class="excerpt-link">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a></h1>
     
     
       <p class="meta">
@@ -286,7 +299,7 @@
 
 
 
-<time datetime="2006-05-04T11:50:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 4<span>th</span>, 2006</time>
+<time datetime="2013-06-24T22:34:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 24<span>th</span>, 2013</time>
         <span class="divider"></span>
         <span class="categories">
   
@@ -299,16 +312,18 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/manezimento/" rel="nofollow">マネジメント</a>
+      <a class="tag label label-info" href="/blog/tags/arugorizumu/" rel="nofollow">アルゴリズム</a>
     
-      <a class="tag label label-info" href="/blog/tags/doratuka/" rel="nofollow">ドラッカー</a>
+      <a class="tag label label-info" href="/blog/tags/puroguramingu/" rel="nofollow">プログラミング</a>
+    
+      <a class="tag label label-info" href="/blog/tags/giku/" rel="nofollow">ギーク</a>
     
   
 </span>
 
         
         <span class="divider"></span>
-        <a href="/blog/2006/05/04/4883203476/#disqus_thread">Comments</a>
+        <a href="/blog/2013/06/24/4774156647/#disqus_thread">Comments</a>
         
         
         
@@ -317,7 +332,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/05/04/4883203476/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2013/06/24/4774156647/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -333,7 +348,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/05/04/4883203476/"></div>
+         data-href="http://hamasyou.com/blog/2013/06/24/4774156647/"></div>
   </li>
   
   
@@ -341,7 +356,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/05/04/4883203476/"></div>
+         data-href="http://hamasyou.com/blog/2013/06/24/4774156647/"></div>
   </li>
   
   
@@ -349,23 +364,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2006/05/04/4883203476/"
+       data-url="http://hamasyou.com/blog/2013/06/24/4774156647/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2006/05/04/4883203476/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2013/06/24/4774156647/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2006/05/04/4883203476/"></div>
+         data-href="http://hamasyou.com/blog/2013/06/24/4774156647/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2006/05/04/4883203476/"
+       data-save-url="http://hamasyou.com/blog/2013/06/24/4774156647/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -388,1346 +403,43 @@
 
 <div class="row asin-detail">
   <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4883203476/sorehabooks-22/250-1891990-4739433?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="孔子とドラッカー―ハートフル・マネジメント" rel="external nofollow">
-      <img src="http://ecx.images-amazon.com/images/I/51X7A90VTFL._BO2,204,203,200_PIsitb-sticker-arrow-click,-76_AA300_SH20_OU09_.jpg" class="asin-thumbnail" alt="孔子とドラッカー―ハートフル・マネジメント" />
+    <a href="http://www.amazon.co.jp/gp/product/4774156647?ie=UTF8&amp;camp=247&amp;creativeASIN=4774156647&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? " rel="external nofollow">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/519VcJWD13L._SL500_.jpg" class="asin-thumbnail" alt="小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? " />
     </a>
   </div>
   <div class="col-sm-8 asin-meta">
     <dl>
       
       <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4883203476/sorehabooks-22/250-1891990-4739433?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="孔子とドラッカー―ハートフル・マネジメント" rel="external nofollow">孔子とドラッカー―ハートフル・マネジメント</a></dd>
+      <dd><a href="http://www.amazon.co.jp/gp/product/4774156647?ie=UTF8&amp;camp=247&amp;creativeASIN=4774156647&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? " rel="external nofollow">小飼弾のコードなエッセイ ~我々は本当に世界を理解してコードしているのだろうか? </a></dd>
       
       
       <dt>著者</dt>
-      <dd>一条 真也 (著)</dd>
+      <dd>小飼 弾 (著) </dd>
       
       
       <dt>出版社</dt>
-      <dd>三五館</dd>
+      <dd>技術評論社</dd>
       
     </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4883203476/sorehabooks-22/250-1891990-4739433?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+    <a href="http://www.amazon.co.jp/gp/product/4774156647?ie=UTF8&amp;camp=247&amp;creativeASIN=4774156647&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
   </div>
 </div>
 
 
 
 
-  <div class="entry-content"><p>人間通である孔子と経済通であるドラッカーの共通点を法則集という形でまとめてあるのが本書です。人としての在り方、経営者・リーダーとしての在り方、その二つをいいとこ取りしてまとめられています。</p>
+  <div class="entry-content"><p>コード。ラテン語で codex。codex とはもともとローマ法大全のことを指し示す言葉だそうです。コードは読みとくべきであり、書き下されるべきものである。そしてそれができたとき、喜びが生まれる。弾さんのまえがきにある言葉ですが、コーディング好きなプログラマのみなさんはこの言葉がよくわかると思います。</p>
 
-<p>自己啓発本という位置づけにあたる本書ですが、経営者・リーダーが備えておくべき性質が満載です。もちろん、人の上に立つ人だけが読む本ではなくて、心を豊かにしたいと思う人にお薦めできる本です。</p>
+<p>本書は、プログラミングに関わるいろいろな事柄が短文のエッセイの形でまとめられています。もともと Software Design の連載だったものをまとめたもののようですが、まとめて読むことに価値があると思います。</p>
 
-<p>たまには、こういった本を読んで自分の中の気を高める必要があると思います。200ページくらいの薄い本ですので、さっと読めてしまいます。心が病んできたと感じたときに読んでみるといいと思います。かなりお薦めです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2006/05/04/4883203476/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2006/04/29/4894716895/" class="excerpt-link">Java Puzzlers 罠、落とし穴、コーナーケース</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2006-04-29T16:00:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 29<span>th</span>, 2006</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/java/" rel="nofollow">Java</a>
-    
-      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a>
-    
-      <a class="tag label label-info" href="/blog/tags/ideiomu/" rel="nofollow">イディオム</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2006/04/29/4894716895/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/04/29/4894716895/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/29/4894716895/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/29/4894716895/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2006/04/29/4894716895/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2006/04/29/4894716895/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2006/04/29/4894716895/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2006/04/29/4894716895/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894716895/sorehabooks-22/249-0274085-1341158?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Java Puzzlers 罠、落とし穴、コーナーケース" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51T7QZ4J5ML._BO2,204,203,200_PIsitb-sticker-arrow-click,-76_AA300_SH20_OU09_.jpg" class="asin-thumbnail" alt="Java Puzzlers 罠、落とし穴、コーナーケース" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894716895/sorehabooks-22/249-0274085-1341158?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Java Puzzlers 罠、落とし穴、コーナーケース" rel="external nofollow">Java Puzzlers 罠、落とし穴、コーナーケース</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>ジョシュア・ブロック (著), ニール・ガフター (著), 柴田 芳樹 (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>ピアソン・エデュケーション</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894716895/sorehabooks-22/249-0274085-1341158?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>パズラー(Puzzler) とタイトルがつけられていますが、この本は単なる遊びの本ではありません。見つかりにくいバグの原因になる問題ばかり載っています。なんとなくでコーディングしているとはまってしまうバグばかりが集められていて、「どうしてこんな動きをするの？」 と目を疑う問題も多くあります。</p>
-
-<p>本書に載っている問題はそのほとんどが、Java の言語仕様を理解しているか？、JavaAPI をちゃんと理解しているか？ という問いかけのようなものです。バグを出さないようにするには何に気をつけたらよいのか、を考えるきっかけになる本です。</p>
-
-<p>本書は、Java プログラミングの経験がそれなりにある人が対象読者です。結構歯ごたえのある問題が多いので期待して読んでみてください。</p>
+<p>弾さんのコンピュータの捉え方、プログラミングの姿勢、豊富な知識や知見がまとめられています。スイスイと読んでいける日本版の『<a href="http://www.amazon.co.jp/gp/product/4274066304?ie=UTF8&amp;camp=247&amp;creativeASIN=4274066304&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title="Joel on Software">Joel on Software</a>』です。</p>
 
 </div>
   
   
     <footer>
-      <a href="/blog/2006/04/29/4894716895/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2006/04/27/4797314087/" class="excerpt-link">たのしいRuby―Rubyではじめる気軽なプログラミング</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2006-04-27T01:21:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 27<span>th</span>, 2006</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
-    
-      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2006/04/27/4797314087/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/04/27/4797314087/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/27/4797314087/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/27/4797314087/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2006/04/27/4797314087/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2006/04/27/4797314087/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2006/04/27/4797314087/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2006/04/27/4797314087/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797314087/sorehabooks-22/250-1891990-4739433?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="たのしいRuby―Rubyではじめる気軽なプログラミング" rel="external nofollow">
-      <img src="http://ec3.images-amazon.com/images/I/41BNP2WNJGL._SL500_AA300_.jpg" class="asin-thumbnail" alt="たのしいRuby―Rubyではじめる気軽なプログラミング" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797314087/sorehabooks-22/250-1891990-4739433?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="たのしいRuby―Rubyではじめる気軽なプログラミング" rel="external nofollow">たのしいRuby―Rubyではじめる気軽なプログラミング</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>高橋 征義 (著), 後藤 裕蔵 (著), まつもと ゆきひろ (監修)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>ソフトバンククリエイティブ</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797314087/sorehabooks-22/250-1891990-4739433?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>Ruby をはじめるなら、この本からはじめるのをお勧めします。かなりわかりやすいです。わかりづらいだろうなという部分に関しては、ちゃんと詳しく説明がされているし、ちょっと気になるなということはコラムが別に用意されているという具合です。『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4274063852/sorehabooks-22/250-1891990-4739433?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title="Rubyプログラミング入門">Rubyプログラミング入門</a><img src="/images/linkext.gif" alt="linkext" class="img-thumbnail" title="linkext">』 より全然読みやすく理解しやすいです。</p>
-
-<p>この本で Ruby の基本を抑えたら、あとはWeb上の Ruby リファレンスマニュアルで何とかなるのではないかと思います。</p>
-
-<h4>参考</h4>
-
-
-<ul>
-<li><p><i class="fa fa-hand-o-right"></i> <a href="http://www.ruby-lang.org/ja/man/?cmd=view;name=Ruby%A5%EA%A5%D5%A5%A1%A5%EC%A5%F3%A5%B9%A5%DE%A5%CB%A5%E5%A5%A2%A5%EB;navi=Ruby%A5%EA%A5%D5%A5%A1%A5%EC%A5%F3%A5%B9%A5%DE%A5%CB%A5%E5%A5%A2%A5%EB" rel="external nofollow" title="Ruby リファレンスマニュアル">Ruby リファレンスマニュアル</a></p></li>
-<li><p><i class="fa fa-hand-o-right"></i> <a href="http://d.hatena.ne.jp/brazil/20050816/1124136877" rel="external nofollow" title="[翻訳]RubyについてJavaプログラマが知るべき10の事柄">[翻訳]RubyについてJavaプログラマが知るべき10の事柄</a></p></li>
-</ul>
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2006/04/27/4797314087/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2006/04/19/uportal/" class="excerpt-link">uPortal 覚書き</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2006-04-19T23:34:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 19<span>th</span>, 2006</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/uportal/" rel="nofollow">uPortal</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2006/04/19/uportal/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/04/19/uportal/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/19/uportal/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/19/uportal/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2006/04/19/uportal/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2006/04/19/uportal/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2006/04/19/uportal/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2006/04/19/uportal/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p><a href="http://www.uportal.org/" rel="external nofollow" title=""></a>
-　uPortal とは、北米の方で、大学ポータルとして実績が多いポータルアプリケーション構築のためのフレームワークです。大学での利用実績が多いことから、ログイン関係の機能が実用レベルで最初から取り入れられています。</p>
-
-<div class="infoframe">
-<img src="/images/info.gif" alt="Information" class="img-thumbnail" title="Information"><b>Information</b>
-<div>覚書環境：<ul>
-<li>JDK 5.0</li>
-<li>Tomcat 5.5.9</li>
-<li>HSQLDB 1.7</li>
-<li>ant 1.6.2</li>
-<li>uPortal 2.5.1 (pluto 1.0.1)</li>
-</ul>
-</div>
-</div>
-
-
-<p>[参考]
-+ <a href="http://www.uportal.org/" rel="external nofollow" title="uPortal Home Page">uPortal Home Page</a><img src="/images/linkext.gif" alt="linkext" class="img-thumbnail" title="linkext">
-+ <a href="http://www.ja-sig.org/wiki/homepage.action" rel="external nofollow" title="uPortal Wiki">uPortal Wiki</a><img src="/images/linkext.gif" alt="linkext" class="img-thumbnail" title="linkext">
-+ <a href="http://www.fair-portal.hull.ac.uk/downloads/uPortalGuide1.pdf" rel="external nofollow" title="Beginners Guide to uPortal">Beginners Guide to uPortal</a><img src="/images/linkext.gif" alt="linkext" class="img-thumbnail" title="linkext"> (PDF)</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2006/04/19/uportal/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2006/04/19/struts-bridge-portal-bridges/" class="excerpt-link">Struts Bridge - Portal Bridges</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2006-04-19T23:04:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 19<span>th</span>, 2006</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/struts/" rel="nofollow">Struts</a>
-    
-      <a class="tag label label-info" href="/blog/tags/uportal/" rel="nofollow">uPortal</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2006/04/19/struts-bridge-portal-bridges/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://portals.apache.org/pluto/" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>Portal Bridges は、Portlet 以外で作られた Web フレームワークと、JSR-168 に準拠した Portlet を橋渡しするライブラリです。The Apache Software Foundation によって提供されています。</p>
-
-<p>今回の覚書では、Portal Bridges の中の Struts Bridges について書き留めておきます。</p>
-
-<p>ちなみに、対応している Struts のバージョンは、1.2.4  と 1.2.7 だそうです。</p>
-
-<p><section></section></p>
-
-<h4>[参考]</h4>
-
-
-<ul>
-<li><a href="http://portals.apache.org/bridges/multiproject/portals-bridges-struts/index.html" rel="external nofollow" title="Struts Bridge - Portal Bridges">Struts Bridge - Portal Bridges</a></li>
-</ul>
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2006/04/19/struts-bridge-portal-bridges/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2006/04/19/apache-pluto/" class="excerpt-link">Apache Pluto1.1 を触ってみる その2</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2006-04-19T00:08:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 19<span>th</span>, 2006</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/apache/" rel="nofollow">Apache</a>
-    
-      <a class="tag label label-info" href="/blog/tags/java/" rel="nofollow">Java</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2006/04/19/apache-pluto/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/04/19/apache-pluto/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/19/apache-pluto/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/19/apache-pluto/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2006/04/19/apache-pluto/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2006/04/19/apache-pluto/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2006/04/19/apache-pluto/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2006/04/19/apache-pluto/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://portals.apache.org/pluto/" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>Apache Pluto の覚書きです。Apache Pluto は、Java Portlet 仕様 のリファレンス実装です。この覚書きを書いている段階では、Java Portlet Specification (JSR-168) が Java Portlet 仕様として、まとめられています。</p>
-
-<p>この覚書きで使っている環境は次の通りです。</p>
-
-<ul>
-<li>Eclipse 3.1.2</li>
-<li>Pluto 1.1 (alpha release 以前)</li>
-<li>Tomcat 5.5.9</li>
-<li>J2SE 5.0</li>
-</ul>
-<p>参考にしたリソースは次の通りです。</p>
-<ul><li><a href="http://jcp.org/aboutJava/communityprocess/final/jsr168/index.html" rel="external nofollow" title="Developing Portlets with Apache Pluto">Developing Portlets with Apache Pluto</a></li></ul>
-<p>Pluto の中を追っていったときの覚書です。ソースコードを手元に読んでいただければ、より理解できるのではないかと思います。</p>
-
-<p>間違い等に気づいた方は、ご連絡いただけると助かります。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2006/04/19/apache-pluto/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2006/04/16/apache-pluto/" class="excerpt-link">Apache Pluto1.1 を触ってみる その1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2006-04-16T17:52:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 16<span>th</span>, 2006</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/apache/" rel="nofollow">Apache</a>
-    
-      <a class="tag label label-info" href="/blog/tags/java/" rel="nofollow">Java</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2006/04/16/apache-pluto/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/04/16/apache-pluto/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/16/apache-pluto/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/16/apache-pluto/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2006/04/16/apache-pluto/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2006/04/16/apache-pluto/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2006/04/16/apache-pluto/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2006/04/16/apache-pluto/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://portals.apache.org/pluto/" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>Apache Pluto の覚書きです。Apache Pluto は、Java Portlet 仕様 のリファレンス実装です。この覚書きを書いている段階では、Java Portlet Specification (JSR-168) が Java Portlet 仕様として、まとめられています。今回は、Java Portlet Specification を読んだ覚書きを記録していこうと思います。その後で、Apache Pluto を触った覚書を記録していこうと思います。</p>
-
-<p>この覚書きで使っている環境は次の通りです。</p>
-
-<ul>
-<li>Eclipse 3.1.2</li>
-<li>Java Portlet Specification Version 1.0</li>
-<li>Pluto 1.1 (alpha release 前のもの)</li>
-<li>Tomcat 5.5.9</li>
-<li>J2SE 5.0</li>
-</ul>
-<p>参考にしたリソースは次の通りです。</p>
-
-<ul>
-<li><a href="http://jcp.org/aboutJava/communityprocess/final/jsr168/index.html" rel="external nofollow" title="Java Portlet Specification Version1.0 (JSR-168)">Java Portlet Specification Version1.0 (JSR-168)</a></li>
-<li><a href="http://www.developer.com/java/web/article.php/3554396" rel="external nofollow" title="Developing Portlets with Apache Pluto">Developing Portlets with Apache Pluto</a></li>
-<li><a href="http://www.onjava.com/pub/a/onjava/2006/02/01/what-is-a-portlet-2.html?page=1" rel="external nofollow" title="ONJava.com - What Is a Portlet, Part 2">ONJava.com - What Is a Portlet, Part 2</a></li>
-</ul>
-<p>間違い等に気づいた方は、ご連絡いただけると助かります。（英語が苦手なもので –;）</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2006/04/16/apache-pluto/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2006/04/02/4756147208/" class="excerpt-link">プロなら知っておきたいネットワークの重要知識</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2006-04-02T12:40:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 2<span>nd</span>, 2006</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/network/">Network</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/netutowaku/" rel="nofollow">ネットワーク</a>
-    
-      <a class="tag label label-info" href="/blog/tags/tcp-slash-ip/" rel="nofollow">TCP/IP</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2006/04/02/4756147208/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/04/02/4756147208/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/02/4756147208/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/04/02/4756147208/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2006/04/02/4756147208/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2006/04/02/4756147208/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2006/04/02/4756147208/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2006/04/02/4756147208/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756147208/sorehabooks-22/503-2767694-1914321?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="プロなら知っておきたいネットワークの重要知識" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51CMQNZT16L._SL500_AA300_.jpg" class="asin-thumbnail" alt="プロなら知っておきたいネットワークの重要知識" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756147208/sorehabooks-22/503-2767694-1914321?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="プロなら知っておきたいネットワークの重要知識" rel="external nofollow">プロなら知っておきたいネットワークの重要知識</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd></dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>アスキー</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756147208/sorehabooks-22/503-2767694-1914321?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>本書は、TCP/IPの仕組み、WWWで使われている技術、ネットワーク構築のノウハウの解説を集めたムックになっています。もともと『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B000EWQSKA/sorehabooks-22/503-2767694-1914321?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title="NetworkMagazin">NetworkMagazin</a>』 で紹介されていた記事を集めたものになっています。</p>
-
-<p>（※ ちなみに、ムックとは「雑誌(Magazine)」 + 「本(Book)」 = 「ムック(Mook)」 のことらしいです。 <a href="http://www.zasshipark.com/mook/about_mook.html" rel="external nofollow" title="ざっしパークとは">ざっしパークとは</a>）</p>
-
-<p>本書のおすすめポイントは、TCP/IP の仕組みについてかなり詳しく解説されている点です。TCP/IP なんて、普段はあまり意識していないと思います。Windowsならネットワーク設定できるけど、UnixやLinuxになるとちょっと設定できませんという人もいると思います。</p>
-
-<p>本書は、TCP/IP とは何かというところから、通信ではどういった情報を送っているのかをパケットレベルで解説しています。さらに、ルーティングプロトコルについてや、DNSの名前解決の仕組みなども解説されています。</p>
-
-<p>WWWの技術にも触れられていて、まあ、ネットワークを知っている人なら知らないことはないというくらいの軽いものです。他には、パケットを調べるツール（Ethereal）の使い方や、進入検知システム（Snort）の解説がされています。</p>
-
-<p>僕がおすすめなポイント2点目は、ネットワーク設計のノウハウがまとめられている点です。目的別ネットワーク設計のノウハウということで、近年要求されているネットワークに対する無理難題をどうやって解決するかと言うことがまとめられています。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2006/04/02/4756147208/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2006/03/12/click/" class="excerpt-link">Click@J2EE Web Application Framework</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2006-03-12T17:00:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Mar 12<span>th</span>, 2006</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/click/" rel="nofollow">Click</a>
-    
-      <a class="tag label label-info" href="/blog/tags/j2ee/" rel="nofollow">J2EE</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2006/03/12/click/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/03/12/click/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/03/12/click/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/03/12/click/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2006/03/12/click/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2006/03/12/click/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2006/03/12/click/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2006/03/12/click/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p><strong class="text-danger"><a href="http://click.sourceforge.net/" rel="external nofollow" title="Velocity">Velocity</a> を内部で使っていて、テンプレートモデルで、ページを作成します。</strong></p>
-
-<p>ここでは、Click の覚書きをしておきます。あくまで個人用なので、あてにしないようにお願いします。間違い等発見された方は、ご連絡いただけると助かります。</p>
-
-<dl>
-<dt class="info">使用バージョン</dt>
-<dd>
-<ul><li>version Click 0.1.8</li></ul>
-<p>Clickはドキュメントがしっかりできているので、ドキュメントを読むのが一番です</p>
-</dd>
-</dl>
-<p><section></section></p>
-
-<h4>参考</h4>
-
-
-<ul>
-<li><a href="http://click.sourceforge.net/" rel="external nofollow" title="[SourceForge]Click Home">[SourceForge]Click Home</a></li>
-<li><a href="http://www3.vis.ne.jp/~asaki/p_diary/diary.cgi?Search=%5BClick%5D" rel="external nofollow" title="新・たけぞう瀕死の日記">新・たけぞう瀕死の日記</a></li>
-<li><a href="http://d.hatena.ne.jp/tanigon/searchdiary?word=%2a%5bClick%5d" rel="external nofollow" title="Click 勉強記">Click 勉強記</a></li>
-</ul>
-<p></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2006/03/12/click/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+      <a href="/blog/2013/06/24/4774156647/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
     </footer>
   
 
