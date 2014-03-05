@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Rails | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/rails/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-03-05T01:04:35+09:00</updated>
+  <updated>2014-03-05T09:45:16+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,450 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Webサービスをスタートアップする10の手順（Rails編）]]></title>
+    <link href="http://hamasyou.com/blog/2014/03/05/rails-webservice-startup/"/>
+    <updated>2014-03-05T09:44:22+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/03/05/rails-webservice-startup</id>
+    <content type="html"><![CDATA[<p>アイデアを思いついたときに Web サービスを作ってスタートアップする手順メモです。Rails 編としていますが、たぶん別のバージョンは書かないでしょう。。</p>
+
+<p>手順は思いついた順（というか、前に作ったサービスの手順）で書いていますので、抜け漏れとかあると思いますがコメントあればよろしくおねがいします。</p>
+
+<p>ちなみに、最近作ったサービスはこちら。よかったら使ってみてください。</p>
+
+<p><a href="http://booboo.mountposition.co.jp/">Web上のメディアのすべてにヤジを飛ばすサービス - 野次る</a></p>
+
+<!-- more -->
+
+
+<h2>1. アイデアを揉む</h2>
+
+<p>思いついたアイデアをすぐに実現するのはいいことだと思いますが、世の中では2パターンで語られていますね。</p>
+
+<ol>
+<li>思いついたサービスは誰のためのサービス？</li>
+<li>そのサービスは自分で使う？</li>
+</ol>
+
+
+<p>誰のためのサービスかという問は、すなわちどんな問題を解決するサービスなのか？ってことです。
+「スタートアップが失敗する理由」みたいなキーワードで Google 先生に聞けばイロイロ教えてくれるかと。</p>
+
+<p>まぁでも、<strong>思いついたサービスを自分で使ってみたいと思えるのなら創るべき</strong> でしょう！僕はそう思います。</p>
+
+<h2>2. プロジェクトを作成する</h2>
+
+<p>さて、実際にサービスをつくっていきます。まずは Rails のプロジェクトを作らねばなりません。
+プロジェクトのスタートアップ手順は Qiita にメモを残していますのでそっちを参照してみてください。</p>
+
+<p><a href="http://qiita.com/hamasyou/items/dc319f399fc851e4ba42">Rails4プロジェクトを新規で立ち上げる時の設定メモ - Qiita</a></p>
+
+<h2>3. デザインを決める</h2>
+
+<p>デザインとか多少でもかじった人なんかはすんなり行くんでしょうけど、デザインだけはまるでダメっていう人もいると思います。
+そんなときは、<a href="http://getbootstrap.com/">Bootstrap</a> 使いましょう。</p>
+
+<p>Bootstrap も Sass が提供されるようになりましたので、Sass ファイルをダウンロードしておくと、後でデザインを弄りたい時とか便利です。
+ダウンロードした Sass ファイルは <code>vendor/assets</code> に入れましょう。</p>
+
+<pre><code>- vendor
+  - assets
+    - fonts
+      - bootstrap
+        glyphicons-halflings-regular.eot
+        glyphicons-halflings-regular.svg
+        glyphicons-halflings-regular.ttf
+        glyphicons-halflings-regular.woff
+    - javascripts
+      - bootstrap
+        affix.js
+        alert.js
+        button.js
+        carousel.js
+        collapse.js
+        dropdown.js
+        modal.js
+        popover.js
+        scrollspy.js
+        tab.js
+        tooltip.js
+        transition.js
+      bootstrap.js
+    - stylesheets
+      - bootstrap
+        _alerts.scss
+        _badges.scss
+        _breadcrumbs.scss
+        _button-groups.scss
+        _buttons.scss
+        _carousel.scss
+        _close.scss
+        _code.scss
+        _component-animations.scss
+        _dropdowns.scss
+        _forms.scss
+        _glyphicons.scss
+        _grid.scss
+        _input-groups.scss
+        _jumbotron.scss
+        _labels.scss
+        _list-group.scss
+        _media.scss
+        _mixins.scss
+        _modals.scss
+        _navbar.scss
+        _navs.scss
+        _normalize.scss
+        _pager.scss
+        _pagination.scss
+        _panels.scss
+        _popovers.scss
+        _print.scss
+        _progress-bars.scss
+        _responsive-utilities.scss
+        _scaffolding.scss
+        _tables.scss
+        _theme.scss
+        _thumbnails.scss
+        _tooltip.scss
+        _type.scss
+        _utilities.scss
+        _variables.scss
+        _wells.scss
+        bootstrap.scss
+</code></pre>
+
+<p><code>app/assets/javascripts/application.js</code> と <code>app/assets/stylesheets/application.css</code> に bootstrap のファイルを追加します。</p>
+
+<pre><code class="js app/assets/javascripts/application.js">//= require jquery
+//= require jquery_ujs
+//= require bootstrap
+//= require_self
+</code></pre>
+
+<pre><code class="css app/assets/stylesheets/application.css">/*
+ *= require bootstrap
+ *= require_self
+ */
+</code></pre>
+
+<p>僕は <code>require tree</code> は削除しちゃう派で、require が必要なファイルは自分で記述するようにしています。<code>fonts</code> フォルダは <code>asset pipeline</code> に含まれないので明示的に <code>config/application.rb</code> で読み込むようにします。</p>
+
+<pre><code class="ruby">#...
+module YourApplication
+  class Application &lt; Rails::Application
+    # ...
+    config.assets.paths &lt;&lt; "#{Rails.root}/vendor/assets/fonts"
+  end
+end
+</code></pre>
+
+<h2>4. テンプレートに BOILERPLATE を使う</h2>
+
+<p>デザインと順番が前後するかもしれませんが、最近はレスポンシブデザインがはやりですよね。
+HTML5 でレスポンシブ対応となるとキマリ文句みたいなテンプレートがあるわけなんですが、いちいち調べる物めんどくさいので僕は <strong>BOILERPLATE</strong> を使っています。</p>
+
+<p><a href="http://html5boilerplate.com/">HTML5 ★ BOILERPLATE - The web&rsquo;s most popular front-end template</a></p>
+
+<p>BOILERPLATE をダウンロードして、プロジェクトディレクトリに配置します。<code>index.html</code> の中身をごっそり <code>app/views/layouts/application.html.erb</code> にいれこみます。
+このとき、<code>csrf_meta_tags</code> を間違って消さないように注意です。</p>
+
+<p>BOILERPLATE を見ると分かるように、最近は JavaScript ファイルを body 部の最後に置くようになっています。DOM の構築をブロックしないようにするためですね。
+で、Rails では <code>turbolinks</code> っていう機能があって、まぁいろいろとこの辺がバッティングしてウザイので、<code>turbolinks</code> を使わないようにします。</p>
+
+<p><a href="http://qiita.com/kazz187/items/12737363d62b9c91993c">Rails 4 で turbolinks をオフにする方法 - Qiita</a></p>
+
+<h2>5. レイアウトファイルをいじる（SEO対策）</h2>
+
+<p>プログラムを書き始める前に、先にデザイン回りを調整しておくのがいいかと思います。</p>
+
+<p>いろいろ追加すると大体こんな感じのテンプレートになります。</p>
+
+<p>```html+erb
+&lt;!DOCTYPE html></p>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+
+
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+
+
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+
+
+<!--[if gt IE 8]><!-->
+
+
+<p> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>&lt;%= content_for?(:title) ? &ldquo;#{yield(:title)} - &rdquo; : &lsquo;&rsquo; %>&lt;%= Settings.app_name %></title>
+<meta name="viewport" content="width=device-width, initial-scale=1"></p>
+
+<p><meta name="keywords" content="<%= content_for?(:keywords) ? "#{yield(:keywords)}" : "#{Settings.keywords}" %>&ldquo;>
+<meta name="description" content="<%= content_for?(:description) ? "#{yield(:description)}" : "#{Settings.description}" %>&rdquo;></p>
+
+<p><meta property="og:title" content="<%= content_for?(:title) ? "#{yield(:title)} - " : '' %>&lt;%= Settings.app_name %>&ldquo; />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="<%= request.url %>&rdquo; />
+<meta property="og:site_name" content="<%= Settings.app_name %>&ldquo; />
+<meta property="og:description" content="<%= content_for?(:description) ? "#{yield(:description)}" : "#{Settings.description}" %>&rdquo; />
+<meta property="fb:app_id" content="<%= Settings.facebook.app_id %>&ldquo; /></p>
+
+<p>&lt;%= stylesheet_link_tag    &ldquo;normalize&rdquo;, media: &ldquo;all&rdquo; %>
+&lt;%= stylesheet_link_tag    &ldquo;application&rdquo;, media: &ldquo;all&rdquo; %>
+&lt;%= javascript_include_tag &lsquo;modernizr-2.6.2.min&rsquo; %>
+&lt;%= csrf_meta_tags %>
+</head>
+<body></p>
+
+<p><header class="navbar navbar-default" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="http://hamasyou.com/" class="navbar-brand">&lt;%= Settings.app_name %></a>
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="navbar-collapse collapse" id="navbar-main" rel="navigation">
+      <ul class="nav navbar-nav">
+        <li></li>
+      </ul>
+    </nav>
+  </div>
+</header></p>
+
+<!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+
+
+
+<div class="container" role="main">
+<%= yield %>
+</div>
+
+
+<p><footer role="contentinfo">
+  &copy; &lt;%= Date.today.year %> &lt;%= Settings.copyright %>
+</footer></p>
+
+<p>&lt;%= javascript_include_tag &ldquo;application&rdquo; %>
+</body>
+</html>
+```</p>
+
+<p><code>Settings</code> クラスは <code>rails_config</code> という gem を使った設定ファイルを読み込むものです。
+<strong>SEO</strong> 対策系の <code>title</code> タグや <code>og</code> タグ周りの設定を意識したほうがいいです。</p>
+
+<p>サイトマップの生成もここで検討しておいたほうがいいでしょう。</p>
+
+<p><a href="http://morizyun.github.io/blog/meta-tags-sitemap-generator-rails-seo/">meta-tagsとsitemap_generatorで始めるRails 4.0時代のSEO対策 - 酒と泪とRubyとRailsと</a></p>
+
+<h2>6. コア部分をつくり込む</h2>
+
+<p>やっとプログラミング開始です。コア部分を作りこんでいきます。ここは気合が続く限り一気に作ったほうがいいと思います。
+僕の場合は、サービス開発は結構集中力とやる気の持続がポイントになってくるので。</p>
+
+<p>やる気の部分は結構重要で、1ヶ月とかかけて作るようだと案外あきちゃったりするんですよね。。エラー表示のところとかもちゃんとつくっていきましょう。</p>
+
+<p><a href="http://qiita.com/hamasyou/items/22c50959490a3b52dbaf">RailsでBootstrapを使ったときにフォームエラーをキレイに表示する方法 - Qiita</a></p>
+
+<h2>7. 404ページと500ページを用意する</h2>
+
+<p>コア部分ができたら、404ページと500ページを用意します。
+Rails にはこの辺をうまく扱う方法がありますのでそれを使います。</p>
+
+<p><code>config/routes.rb</code> の最後のルートに、次のルールを追加します。</p>
+
+<pre><code class="ruby">match '*not_found' =&gt; 'application#render_404', via: :all
+</code></pre>
+
+<p>規定のルールにマッチしないルートは、<code>application_controller#render_404</code> に飛ばされます。ここで404エラーの処理を記述します。
+同じく、<code>application_controller</code> に500エラーをハンドリングする処理も記述します。</p>
+
+<p><code>``ruby app/controllers/application_controller.rb</code>
+class ApplicationController &lt; ActionController::Base
+  protect_from_forgery with: :exception</p>
+
+<p>  unless Rails.configuration.consider_all_requests_local
+    rescue_from Exception, with: :render_500
+    rescue_from AbstractController::ActionNotFound, with: :render_404
+    rescue_from ActionController::RoutingError, with: :render_404
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  end</p>
+
+<p>  def render_404(exception = nil)
+    if exception
+      logger.warn &ldquo;Rendering 404 with exception: #{exception.message}&rdquo;
+    end
+    render template: &lsquo;errors/error_404&rsquo;, status: 404, layout: &lsquo;application&rsquo;, content_type: &lsquo;text/html&rsquo;
+  end</p>
+
+<p>  def render_500(exception = nil)
+    if exception
+      logger.fatal &ldquo;Rendering 500 with exception: #{exception.message}&rdquo;
+      logger.fatal request.env.map { |key, val| &ldquo;#{key} => #{val}&rdquo; }
+      logger.fatal exception.backtrace.join(&ldquo;\n&rdquo;)
+    end</p>
+
+<pre><code>respond_to do |format|
+  format.html { render template: 'errors/error_500', status: 500, layout: 'application', content_type: 'text/html' }
+  format.json { render json: {message: exception.message}, status: 500 }
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p><code>app/views/errors</code> ディレクトリに <code>error_404.html.erb</code> と <code>error_500.html.erb</code> を作成して、それぞれ中身を記述します。</p>
+
+<h2>8. ソーシャル流入用のボタン類と Google Analytics を配置する</h2>
+
+<p>作ったサービスをユーザに宣伝してもらえるようにソーシャル系のボタンを用意するのを忘れないようにします。
+また、Google Analytics も忘れないように設定します。
+Facebook はアプリIDが必要になりますので別途登録してアプリIDを入手しておきます。Google Analytics も同じくですね。</p>
+
+<p>ちなみに、ソーシャル系サービスはいろいろありますが、Facebook、Twitter、はてな、Google+、Pocket あたりを僕は抑えています。</p>
+
+<p>ソーシャル系サービスで配布されている JavaScript を非同期で読み込むための JavaScript を作成します。
+忘れずに <code>application.js</code> にも追加しておきます。</p>
+
+<pre><code class="js+erb app/assets/javascripts/sharing.js.erb">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '&lt;%= Settings.google.analytics_tracking_id %&gt;', 'hamasyou.com');
+ga('send', 'pageview');
+
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  a('//connect.facebook.net/ja_JP/all.js#appId=&lt;%= Settings.facebook.app_id %&gt;&amp;xfbml=1','facebook-jssdk');
+  a('//widgets.getpocket.com/v1/j/btn.js?v=1','pocket-btn-js');
+})(this, document);
+</code></pre>
+
+<p>ボタンを集めた部分テンプレートを用意します。</p>
+
+<pre><code class="html+erb app/views/shared/_sharing.html.erb">&lt;% cache url do %&gt;
+  &lt;ul class="sharing list-inline"&gt;
+    &lt;li class="hatena"&gt;
+      &lt;a href="http://b.hatena.ne.jp/entry/&lt;%= url %&gt;"
+         class="hatena-bookmark-button"
+         rel="nofollow"
+         data-hatena-bookmark-layout="standard-balloon"
+      &gt;&lt;img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+            alt="Add to Hatena Bookmark" /&gt;&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;div id="fb-root"&gt;&lt;/div&gt;
+    &lt;li class="facebook"&gt;
+      &lt;div class="fb-like"
+           data-share="false"
+           data-layout="button_count"
+           data-show-faces="false"
+           data-font="verdana"
+           data-href="&lt;%= url %&gt;"&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="facebook_share"&gt;
+      &lt;div class="fb-share-button"
+           data-type="button_count"
+           data-font="verdana"
+           data-href="&lt;%= url %&gt;"&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="twitter"&gt;
+      &lt;a href="http://twitter.com/share"
+         class="twitter-share-button"
+         rel="nofollow"
+         data-url="&lt;%= url %&gt;"
+         data-via="&lt;%= Settings.twitter.data_via %&gt;"
+         data-counturl="&lt;%= url %&gt;"&gt;Tweet&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="googleplus"&gt;
+      &lt;div class="g-plusone"
+           data-size="medium"
+           data-href="&lt;%= url %&gt;"&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="pocket"&gt;
+      &lt;a href="https://getpocket.com/save"
+         class="pocket-btn" data-lang="en"
+         data-save-url="&lt;%= url %&gt;"
+         data-pocket-count="horizontal"
+         data-pocket-align="left"&gt;Pocket&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p><code>url</code> 変数は部分テンプレートを読み込むときに渡すシェアしたいページの URL です。最後に CSS も用意しておきます。</p>
+
+<pre><code class="scss app/assets/stylesheets/sharging.css.scss">.sharing {
+  li {
+    height: 23px;
+    vertical-align: bottom;
+  }
+}
+li.hatena {
+}
+li.twitter {
+}
+li.googleplus {
+}
+li.facebook {
+}
+.fb_iframe_widget &gt; span {
+  vertical-align: baseline !important;
+}
+li.facebook_share {
+}
+#fb-root { display: none; }
+li.pocket {
+}
+</code></pre>
+
+<p>ボタンの長さ等の調整が必要であれば、ここで調整します。<code>app/assets/stylesheets/application.css</code> に登録するのを忘れずに。</p>
+
+<h2>9. SCM にプロジェクトを保存する</h2>
+
+<p>ここまで来たら後はサーバに載っけて公開するだけですが、作ったプロジェクトはソースコードリポジトリに登録しておきましょう。
+リポジトリサービスとしては <a href="https://github.com/">GitHub</a> が有名ですが、GitHub は無料で使う分には公開リポジトリしか作れません。
+そこで、同じくリポジトリサービスで非公開リポジトリが作成できる <a href="https://bitbucket.org/">BitBucket</a> を使うといいと思います。</p>
+
+<h2>10. サービス公開用のサーバを用意する</h2>
+
+<p>最後にサービス公開用のサーバを用意するわけですが、いきなり <a href="http://aws.amazon.com/jp/">AWS</a> をつかうのもいいんですが AWS は個人で使うにはちょっとお高いんですよね。。
+VPS を借りるなら <a href="http://vps.sakura.ad.jp/">Sakura VPS</a> とかのほうが安くすみます。が、無料でサーバを利用したいのであれば <a href="https://www.heroku.com/%E2%80%8E">Heroku</a> がいいかと思います。</p>
+
+<p><a href="http://morizyun.github.io/blog/heroku-rails4-postgresql-introduction/">Rails4でheroku Pushまでの最短手順 [Haml/bootstrap 3.0/postgresql or MySQL] - 酒と泪とRubyとRailsと</a></p>
+
+<h2>サービスを大きくしていく</h2>
+
+<p>サービスが軌道に乗ってきたら機能追加したり、独自ドメインをとったりしてサービスを大きくしていくといいと思います。</p>
+
+<p>大体こんな感じで僕はいつもサービスを作っています。ちなみに、最近作ったサービスはこちら。よかったら使ってやってください。</p>
+
+<p><a href="http://booboo.mountposition.co.jp/">Web上のメディアのすべてにヤジを飛ばすサービス - 野次る</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[canonicalなURLってなにがいいんだろう？]]></title>
@@ -382,439 +826,6 @@ end
 <p>Rails で RESTful な API を作ることはよくあると思いますが、今までは API のテストもコントローラのテストで行っていました。</p>
 
 <p>でも、request spec を使ったほうが <strong>呼び出しのURL</strong>、<strong>必要なパラメータ</strong>、<strong>出力形式</strong> を素直にテストとして書けるので、API のテストは request spec を使うようにするといいかなと思います。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Railsで手書きの図や絵をプログラムに取り込む方法]]></title>
-    <link href="http://hamasyou.com/blog/2013/12/03/rails/"/>
-    <updated>2013-12-03T19:05:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2013/12/03/rails</id>
-    <content type="html"><![CDATA[<p>スマホやタブレットが増えてきて、Railsアプリでも手書きで書いた絵や図を取り込みたいというような案件があるのではないでしょうか？手書き画像が保存する方法はいろいろありますが、そのひとつをちょっとメモのため残しておきます。特別なgemとかは必要ありません。使うのは HTML5 の canvas だけです。</p>
-
-<!-- more -->
-
-
-
-
-<h2>環境</h2>
-
-
-
-
-<ul>
-<li>Ruby 2.0.0p353</li>
-<li>Rails 4.0.1</li>
-<li>bundler</li>
-</ul>
-
-
-
-
-<h2>手順</h2>
-
-
-<p>まず、Rails 環境を作成して足場をつくります。</p>
-
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>$</span>
-<span class='line-number'>$</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>$</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>$</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>rails new blog &ndash;skip-bundle</span><span class='line output'>      create
-</span><span class='line output'>      create  README.rdoc
-</span><span class='line output'>      create  Rakefile
-</span><span class='line output'>      create  config.ru
-</span><span class='line output'>      create  .gitignore
-</span><span class='line output'>      create  Gemfile
-</span><span class='line output'>      create  app
-</span><span class='line output'>      create  app/assets/javascripts/application.js
-</span><span class='line output'>      create  app/assets/stylesheets/application.css
-</span><span class='line output'>      create  app/controllers/application_controller.rb
-</span><span class='line output'>      create  app/helpers/application_helper.rb
-</span><span class='line output'>      create  app/views/layouts/application.html.erb
-</span><span class='line output'>      create  app/assets/images/.keep
-</span><span class='line output'>      create  app/mailers/.keep
-</span><span class='line output'>      create  app/models/.keep
-</span><span class='line output'>      create  app/controllers/concerns/.keep
-</span><span class='line output'>      create  app/models/concerns/.keep
-</span><span class='line output'>      create  bin
-</span><span class='line output'>      create  bin/bundle
-</span><span class='line output'>      create  bin/rails
-</span><span class='line output'>      create  bin/rake
-</span><span class='line output'>      create  config
-</span><span class='line output'>      create  config/routes.rb
-</span><span class='line output'>      create  config/application.rb
-</span><span class='line output'>      create  config/environment.rb
-</span><span class='line output'>      create  config/environments
-</span><span class='line output'>      create  config/environments/development.rb
-</span><span class='line output'>      create  config/environments/production.rb
-</span><span class='line output'>      create  config/environments/test.rb
-</span><span class='line output'>      create  config/initializers
-</span><span class='line output'>      create  config/initializers/backtrace_silencers.rb
-</span><span class='line output'>      create  config/initializers/filter_parameter_logging.rb
-</span><span class='line output'>      create  config/initializers/inflections.rb
-</span><span class='line output'>      create  config/initializers/mime_types.rb
-</span><span class='line output'>      create  config/initializers/secret_token.rb
-</span><span class='line output'>      create  config/initializers/session_store.rb
-</span><span class='line output'>      create  config/initializers/wrap_parameters.rb
-</span><span class='line output'>      create  config/locales
-</span><span class='line output'>      create  config/locales/en.yml
-</span><span class='line output'>      create  config/boot.rb
-</span><span class='line output'>      create  config/database.yml
-</span><span class='line output'>      create  db
-</span><span class='line output'>      create  db/seeds.rb
-</span><span class='line output'>      create  lib
-</span><span class='line output'>      create  lib/tasks
-</span><span class='line output'>      create  lib/tasks/.keep
-</span><span class='line output'>      create  lib/assets
-</span><span class='line output'>      create  lib/assets/.keep
-</span><span class='line output'>      create  log
-</span><span class='line output'>      create  log/.keep
-</span><span class='line output'>      create  public
-</span><span class='line output'>      create  public/404.html
-</span><span class='line output'>      create  public/422.html
-</span><span class='line output'>      create  public/500.html
-</span><span class='line output'>      create  public/favicon.ico
-</span><span class='line output'>      create  public/robots.txt
-</span><span class='line output'>      create  test/fixtures
-</span><span class='line output'>      create  test/fixtures/.keep
-</span><span class='line output'>      create  test/controllers
-</span><span class='line output'>      create  test/controllers/.keep
-</span><span class='line output'>      create  test/mailers
-</span><span class='line output'>      create  test/mailers/.keep
-</span><span class='line output'>      create  test/models
-</span><span class='line output'>      create  test/models/.keep
-</span><span class='line output'>      create  test/helpers
-</span><span class='line output'>      create  test/helpers/.keep
-</span><span class='line output'>      create  test/integration
-</span><span class='line output'>      create  test/integration/.keep
-</span><span class='line output'>      create  test/test_helper.rb
-</span><span class='line output'>      create  tmp/cache
-</span><span class='line output'>      create  tmp/cache/assets
-</span><span class='line output'>      create  vendor/assets/javascripts
-</span><span class='line output'>      create  vendor/assets/javascripts/.keep
-</span><span class='line output'>      create  vendor/assets/stylesheets
-</span><span class='line output'>      create  vendor/assets/stylesheets/.keep
-</span><span class='line command'>cd blog</span><span class='line command'>bundle install &ndash;path vendor/bundle</span><span class='line output'>Fetching gem metadata from https://rubygems.org/……….
-</span><span class='line output'>Fetching gem metadata from https://rubygems.org/..
-</span><span class='line output'>Resolving dependencies…
-</span><span class='line output'>Installing rake (10.1.0)
-</span><span class='line output'>Installing i18n (0.6.5)
-</span><span class='line output'>Installing minitest (4.7.5)
-</span><span class='line output'>Installing multi_json (1.8.2)
-</span><span class='line output'>Installing atomic (1.1.14)
-</span><span class='line output'>Installing thread_safe (0.1.3)
-</span><span class='line output'>Installing tzinfo (0.3.38)
-</span><span class='line output'>Installing activesupport (4.0.1)
-</span><span class='line output'>Installing builder (3.1.4)
-</span><span class='line output'>Installing erubis (2.7.0)
-</span><span class='line output'>Installing rack (1.5.2)
-</span><span class='line output'>Installing rack-test (0.6.2)
-</span><span class='line output'>Installing actionpack (4.0.1)
-</span><span class='line output'>Installing mime-types (1.25.1)
-</span><span class='line output'>Installing polyglot (0.3.3)
-</span><span class='line output'>Installing treetop (1.4.15)
-</span><span class='line output'>Installing mail (2.5.4)
-</span><span class='line output'>Installing actionmailer (4.0.1)
-</span><span class='line output'>Installing activemodel (4.0.1)
-</span><span class='line output'>Installing activerecord-deprecated_finders (1.0.3)
-</span><span class='line output'>Installing arel (4.0.1)
-</span><span class='line output'>Installing activerecord (4.0.1)
-</span><span class='line output'>Using bundler (1.3.1)
-</span><span class='line output'>Installing coffee-script-source (1.6.3)
-</span><span class='line output'>Installing execjs (2.0.2)
-</span><span class='line output'>Installing coffee-script (2.2.0)
-</span><span class='line output'>Installing thor (0.18.1)
-</span><span class='line output'>Installing railties (4.0.1)
-</span><span class='line output'>Installing coffee-rails (4.0.1)
-</span><span class='line output'>Installing hike (1.2.3)
-</span><span class='line output'>Installing jbuilder (1.5.2)
-</span><span class='line output'>Installing jquery-rails (3.0.4)
-</span><span class='line output'>Installing json (1.8.1)
-</span><span class='line output'>Installing tilt (1.4.1)
-</span><span class='line output'>Installing sprockets (2.10.1)
-</span><span class='line output'>Installing sprockets-rails (2.0.1)
-</span><span class='line output'>Installing rails (4.0.1)
-</span><span class='line output'>Installing rdoc (3.12.2)
-</span><span class='line output'>Installing sass (3.2.12)
-</span><span class='line output'>Installing sass-rails (4.0.1)
-</span><span class='line output'>Installing sdoc (0.3.20)
-</span><span class='line output'>Installing sqlite3 (1.3.8)
-</span><span class='line output'>Installing turbolinks (1.3.1)
-</span><span class='line output'>Installing uglifier (2.3.2)
-</span><span class='line command'>bundle exec rails g scaffold post</span><span class='line output'>      invoke  active_record
-</span><span class='line output'>      create    db/migrate/20131203101546_create_posts.rb
-</span><span class='line output'>      create    app/models/post.rb
-</span><span class='line output'>      invoke    test_unit
-</span><span class='line output'>      create      test/models/post_test.rb
-</span><span class='line output'>      create      test/fixtures/posts.yml
-</span><span class='line output'>      invoke  resource_route
-</span><span class='line output'>       route    resources :posts
-</span><span class='line output'>      invoke  scaffold_controller
-</span><span class='line output'>      create    app/controllers/posts_controller.rb
-</span><span class='line output'>      invoke    erb
-</span><span class='line output'>      create      app/views/posts
-</span><span class='line output'>      create      app/views/posts/index.html.erb
-</span><span class='line output'>      create      app/views/posts/edit.html.erb
-</span><span class='line output'>      create      app/views/posts/show.html.erb
-</span><span class='line output'>      create      app/views/posts/new.html.erb
-</span><span class='line output'>      create      app/views/posts/_form.html.erb
-</span><span class='line output'>      invoke    test_unit
-</span><span class='line output'>      create      test/controllers/posts_controller_test.rb
-</span><span class='line output'>      invoke    helper
-</span><span class='line output'>      create      app/helpers/posts_helper.rb
-</span><span class='line output'>      invoke      test_unit
-</span><span class='line output'>      create        test/helpers/posts_helper_test.rb
-</span><span class='line output'>      invoke    jbuilder
-</span><span class='line output'>      create      app/views/posts/index.json.jbuilder
-</span><span class='line output'>      create      app/views/posts/show.json.jbuilder
-</span><span class='line output'>      invoke  assets
-</span><span class='line output'>      invoke    coffee
-</span><span class='line output'>      create      app/assets/javascripts/posts.js.coffee
-</span><span class='line output'>      invoke    scss
-</span><span class='line output'>      create      app/assets/stylesheets/posts.css.scss
-</span><span class='line output'>      invoke  scss
-</span><span class='line output'>      create    app/assets/stylesheets/scaffolds.css.scss
-</span><span class='line command'>bundle exec rake db:migrate</span><span class='line output'>==  CreatePosts: migrating ====================================================
-</span><span class='line output'>– create_table(:posts)
-</span><span class='line output'>   -> 0.0010s
-</span><span class='line output'>==  CreatePosts: migrated (0.0011s) ===========================================</span></code></pre></td></tr></table></div></div>
-        </div></p>
-
-<p><code>app/views/posts/_form.html.erb</code> を開いて次のコードを追加します。このコードが手書き入力部分（canvas）になります。</p>
-
-<pre><code class="html+erb app/views/posts/_form.html.erb">  &lt;canvas id="paper" class="paper" width="400" height="400" data-target="#sign"&gt;
-    ご利用のブラウザではサインは表示できません。
-  &lt;/canvas&gt;
-  &lt;button type="button" name="clearCanvas" class="clear-canvas"&gt;クリア&lt;/button&gt;
-  &lt;input type="hidden" id="sign" name="sign" value="" /&gt;
-</code></pre>
-
-<p><code>app/assets/javascripts</code> に paint.js.coffee ファイルを作成し、次のコードをコピペします。</p>
-
-<pre><code class="coffeescript app/assets/javascripts/paint.js.coffee">jQuery ($) -&gt;
-    screen2client = (e) -&gt;
-        [px, py] = if e.type.startsWith('touch') then [e.originalEvent.touches[0].clientX, e.originalEvent.touches[0].clientY] else [e.clientX, e.clientY]
-        rect = e.target.getBoundingClientRect()
-        {x: px - rect.left, y: py - rect.top}
-    drawFlag = false
-    oldX = 0
-    oldY = 0
-    $canvas = $('#paper')
-    $canvas.on 'mousedown touchstart', (e) -&gt;
-        drawFlag = true
-        {x, y} = screen2client(e)
-        [oldX, oldY] = [x, y]
-    $canvas.on 'mouseup mouseout touchend touchcancel', -&gt;
-        drawFlag = false
-        data = $canvas[0].toDataURL()
-        $($canvas.data('target')).val(data)
-    $canvas.on 'mousemove touchmove', (e) -&gt;
-        return unless drawFlag
-        {x, y} = screen2client(e)
-        context = $canvas[0].getContext('2d')
-        context.strokeStyle = '#C71C22'
-        context.lineWidth = 1
-        context.beginPath()
-        context.moveTo(oldX, oldY)
-        context.lineTo(x, y)
-        context.stroke()
-        context.closePath()
-        oldX = x
-        oldY = y
-        e.preventDefault()
-        return
-    $('.clear-canvas').on 'click', -&gt;
-        context = $canvas[0].getContext('2d')
-        context.clearRect(0, 0, $canvas[0].width, $canvas[0].height)
-        $($canvas.data('target')).val(null)
-</code></pre>
-
-<p><code>app/assets/javascript/application.js</code> を開き、ファイルの最後に次のコードを追加します。</p>
-
-<pre><code class="javascript app/assets/javascript/application.js">if (typeof String.prototype.startsWith != 'function') {
-    String.prototype.startsWith = function(str) {
-        return this.substring(0, str.length) === str;
-    }
-}
-</code></pre>
-
-<p>最後に、画像データを受け取って画像ファイルにする処理をコントローラに追加します。<code>app/controllers/posts_controller.rb</code> を開き、<code>def create</code> に次のコードを追加します。</p>
-
-<pre><code class="ruby app/controllers/posts_controller.rb">f = Tempfile.new(['sign', '.png'], encoding: Encoding::BINARY)
-f.write Base64.decode64(params[:sign].sub('data:image/png;base64,', ''))
-f
-</code></pre>
-
-<p>これで、一時ファイルにキャンバスデータを書き込んでファイル化できます。サーバを起動して <code>http://localhost:3000/posts/new</code> にアクセスして試してみてください。</p>
-
-<p><img src="/images/2013-12-03-rails-ss.png" height="526" width="517" alt="スクリーンショット" /></p>
 ]]></content>
   </entry>
   
