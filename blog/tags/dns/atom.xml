@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: DNS | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/dns/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-03-05T13:31:34+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ムームードメイン+GitHub Pagesで独自ドメインを使う方法]]></title>
+    <link href="http://hamasyou.com/blog/2014/03/05/github-pages-custom-domain/"/>
+    <updated>2014-03-05T12:02:07+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/03/05/github-pages-custom-domain</id>
+    <content type="html"><![CDATA[<p>GitHub Pages を Naked Domain（サブドメインをつけない hamasyou.com みたいなやつ）で運用する場合の手順です。</p>
+
+<p><span class="small">GitHub Pages をサブドメイン（www.hamasyou.com みたいなやつ）で運用する場合は、DNS サービスの <strong>CNAME</strong> を <strong>hamasyou.github.io</strong> に設定すれば問題ないのでこの記事は読む必要がありません。</span></p>
+
+<p>hamasyou.com はムームードメインで取得していますので、ムームードメインを元に説明します。が、ムームードメインに限らず、Apex Alias を設定できない DNS サービスを使うときの参考にしてください。
+なんでこんな事をメモするかというと、GitHub Pages を独自ドメインで運用する際に Apex Alias を使わないと <strong>302 Found</strong> のステータスコードが返ってきて、SEO 的に嫌なのと <em>Facebook のシェアで404 Not Found が出てしまう</em> からです。</p>
+
+<p><a href="http://subosito.com/fix-302-redirect-response-for-github-hosted-site">Fix 302 Redirect Response For GitHub Hosted Site</a></p>
+
+<p>別に 302 Found がでても構わないっていうひとは GitHub Pages のヘルプを参考にしてやってみてください。</p>
+
+<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages - GitHub Help</a></p>
+
+<!-- more -->
+
+
+<h3>やりたいこと</h3>
+
+<p>やりたいことの整理です。</p>
+
+<ul>
+<li>GitHub Pages を hamasyou.com で運用する</li>
+<li>www.hamasyou.com を hamasyou.com の CNAME に設定する</li>
+</ul>
+
+
+<p>hamasyou.com の A レコードを GitHub Pages の IP に設定するだけだと CDN が効かないし、ステータスコードが302で返ってくることがあるのでちゃんと200で返して欲しい。</p>
+
+<h3>1. 独自ドメインを取得する</h3>
+
+<p>まず、独自ドメインを持っていない場合はドメインを取得しましょう。
+僕はすでにムームードメインでドメインを取得していたのでアレですが、もしこれからドメインを取るなら、Apex Alias が使えるサービスで取ったほうがいいかもしれません。
+そのほうが幸せになれるかも。</p>
+
+<h3>2. Apex Alias を設定する</h3>
+
+<p>ムームードメインのように、Apex Alias も使えないし、Naked Domain に CNAME を割り当てられないサービスの場合は、レンタル DNS サービスを利用します。
+<strong>Gehirn DNS</strong> がドメイン2つまで無料で使えるので、今回はここを利用しました。</p>
+
+<p><a href="http://www.gehirn.jp/dns.html">Gehirn DNS</a></p>
+
+<p>アカウント登録をして、ドメインの認証をまずは行います。TXT レコードを使って認証していきます。出てくるダイアログをよく読めば出来ると思います。</p>
+
+<p><a href="http://support.gehirn.jp/manual/dns/domain/">独自ドメインを追加する方法 - Gehirn DNS</a></p>
+
+<p>次に、Apex Alias を登録します。手順は次のサイトを見れば分かると思います。</p>
+
+<p><a href="http://news.gehirn.jp/information/325/">Gehirn DNS、ホスト名無しのドメインにエイリアス機能をサポート - ゲヒルンニュース</a></p>
+
+<p>コントロールパネルで CNAME も登録します。www.hamasyou.com を hamasyou.com に向けたいので、そのように設定します。
+レコードの登録のさいは、末尾に <code>.</code> が付くので忘れずに。</p>
+
+<p><img src="/images/2014-03-05-github-pages-custom-domain-01.png" alt="登録後01" /></p>
+
+<p><img src="/images/2014-03-05-github-pages-custom-domain-02.png" alt="登録後02" /></p>
+
+<p>Gehirn での設定は以上です。つぎは、ムームードメインのネームサーバの設定をします。</p>
+
+<h3>3. ネームサーバを変更する</h3>
+
+<p>ムームードメインの管理画面に入って、「ネームサーバ設定」で「弊社サービス以外のネームサーバ」を選びます。
+ここで、Gehirn のネームサーバの情報を入力します。</p>
+
+<p><img src="/images/2014-03-05-github-pages-custom-domain-03.png" alt="ネームサーバの設定" /></p>
+
+<p>これで、hamasyou.com の DNS レコードが Gehirn のネームサーバで参照されて、Alias レコードで hamasyou.github.io を見に行くようになります。
+Apex Alias を設定することで、GitHub Pages の CDN が利用出来るようになるので、参照のパフォーマンスもちょっとはあがるはず！らしいです。</p>
+]]></content>
+  </entry>
+  
+</feed>
