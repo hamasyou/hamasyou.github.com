@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Webサービスをスタートアップする11の手順（Rails編）"
-date: 2014-03-05 01:27:22 +0900
+title: "Webサービスをスタートアップする10の手順（Rails編）"
+date: 2014-03-05 09:44:22 +0900
 comments: true
 categories: [Tech]
 keywords: "WebService,startup,スタートアップ,手順,Rails"
@@ -238,7 +238,7 @@ BOILERPLATE を見ると分かるように、最近は JavaScript ファイル�
 ```
 
 `Settings` クラスは `rails_config` という gem を使った設定ファイルを読み込むものです。
-**SEO** 対策系の `title` タグや `og` タグ周りの設定を意識したほうがいいですよということです。
+**SEO** 対策系の `title` タグや `og` タグ周りの設定を意識したほうがいいです。
 
 サイトマップの生成もここで検討しておいたほうがいいでしょう。
 
@@ -442,7 +442,7 @@ VPS を借りるなら [Sakura VPS](http://vps.sakura.ad.jp/) とかのほうが
 [Rails4でheroku Pushまでの最短手順 [Haml/bootstrap 3.0/postgresql or MySQL] - 酒と泪とRubyとRailsと](http://morizyun.github.io/blog/heroku-rails4-postgresql-introduction/)
 
 
-## 11. 継続的インテグレーション
+## サービスを大きくしていく
 
 サービスが軌道に乗ってきたら機能追加したり、独自ドメインをとったりしてサービスを大きくしていくといいと思います。
 
