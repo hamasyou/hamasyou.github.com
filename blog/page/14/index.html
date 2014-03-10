@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Apache Pluto の覚書きです。Apache Pluto は、Java Portlet 仕様 のリファレンス実装です。この覚書きを書いている段階では、Java Portlet Specification (JSR-168) が Java Portlet 仕様として、まとめられています。 &hellip;">
+  <meta name="description" content="Portal Bridges は、Portlet 以外で作られた Web フレームワークと、JSR-168 に準拠した Portlet を橋渡しするライブラリです。The Apache Software Foundation によって提供されています。 今回の覚書では、Portal &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/14/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Apache Pluto の覚書きです。Apache Pluto は、Java Portlet 仕様 のリファレンス実装です。この覚書きを書いている段階では、Java Portlet Specification (JSR-168) が Java Portlet 仕様として、まとめられています。 &hellip;" />
+<meta property="og:description" content="Portal Bridges は、Portlet 以外で作られた Web フレームワークと、JSR-168 に準拠した Portlet を橋渡しするライブラリです。The Apache Software Foundation によって提供されています。 今回の覚書では、Portal &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +106,163 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2006/04/19/struts-bridge-portal-bridges/" class="excerpt-link">Struts Bridge - Portal Bridges</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2006-04-19T23:04:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 19<span>th</span>, 2006</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/struts/" rel="nofollow">Struts</a>
+    
+      <a class="tag label label-info" href="/blog/tags/uportal/" rel="nofollow">uPortal</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2006/04/19/struts-bridge-portal-bridges/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2006/04/19/struts-bridge-portal-bridges/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>
+<a href="http://portals.apache.org/pluto/" rel="external nofollow" title=""></a>
+</p>
+
+
+<p>Portal Bridges は、Portlet 以外で作られた Web フレームワークと、JSR-168 に準拠した Portlet を橋渡しするライブラリです。The Apache Software Foundation によって提供されています。</p>
+
+<p>今回の覚書では、Portal Bridges の中の Struts Bridges について書き留めておきます。</p>
+
+<p>ちなみに、対応している Struts のバージョンは、1.2.4  と 1.2.7 だそうです。</p>
+
+<p><section></section></p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://portals.apache.org/bridges/multiproject/portals-bridges-struts/index.html" rel="external nofollow" title="Struts Bridge - Portal Bridges">Struts Bridge - Portal Bridges</a></li>
+</ul>
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2006/04/19/struts-bridge-portal-bridges/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1593,168 +1750,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/12/31/hibernate/" class="excerpt-link">HIBERNATE覚書き</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2005-12-31T08:11:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Dec 31<span>st</span>, 2005</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/hibernate/" rel="nofollow">Hibernate</a>
-    
-      <a class="tag label label-info" href="/blog/tags/o-slash-rmatupingu/" rel="nofollow">O/Rマッピング</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2005/12/31/hibernate/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2005/12/31/hibernate/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2005/12/31/hibernate/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2005/12/31/hibernate/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2005/12/31/hibernate/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2005/12/31/hibernate/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2005/12/31/hibernate/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2005/12/31/hibernate/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797330805/sorehabooks-22/503-4739464-7671922?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>Hibernate は O/R マッピングツールと呼ばれる、リレーショナルデータベースとオブジェクトモデルとの間を埋めるフレームワークです。</p>
-
-<p>リレーショナルデータベースとオブジェクトモデルとのミスマッチには、下記のようなものがあります。</p>
-
-<ul>
-<li>オブジェクトの粒度に関する問題</li>
-<li>サブタイプ（継承）に関する問題</li>
-<li>オブジェクトの同一性（識別子）に関する問題</li>
-<li>オブジェクト同士の関連に関する問題</li>
-<li>オブジェクトの検索に関する問題</li>
-</ul>
-<p>Hibernateは、このようなミスマッチを解決する方法を提供します。</p>
-
-<blockquote>
-<p>リレーショナルシステムにおけるテーブル形式のデータ表現は、オブジェクト指向のJavaアプリケーションで使用されているオブジェクトのネットワークとは根本的に異なっている。この違いが、いわゆるオブジェクト/リレーショナルパラダイムのミスマッチだ。</p>
-<footer><strong>『Hibernate イン アクション』はじめに より</strong></footer>
-</blockquote>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2005/12/31/hibernate/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/15/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1798,6 +1793,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/03/10/4774162868/">インフラデザインパターン ~安定稼動に導く127の設計方式</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
       </li>
     
@@ -1833,10 +1832,6 @@
         <a href="/blog/2014/02/21/functional-javascript/">JavaScriptで学ぶ関数型プログラミング</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/21/hugo/">静的サイトを素早く構築するためにGoLangで作られたジェネレータHugo</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1844,7 +1839,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">118</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">118</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

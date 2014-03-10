@@ -13,10 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Rails4 から ActiveRecord::Base.transaction に分離レベルを手軽に設定できるようになったみたいです。 1
-2
-3 ActiveRecord::Base.transaction(isolation: :serializable) do ...
-end ">
+  <meta name="description" content="最近は静的サイトブームが再到来なんですかね？GoLang で作られた静的サイトジェネレータの Hugo なんていうものがありました。 うちのサイトも最近 Ruby の Octopress でサイトをリニューアルしましたが、Go にもあるんですね。 spf13 / hugo The Fast and &hellip;">
   
 
   
@@ -27,10 +24,7 @@ end ">
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/2/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Rails4 から ActiveRecord::Base.transaction に分離レベルを手軽に設定できるようになったみたいです。 1
-2
-3 ActiveRecord::Base.transaction(isolation: :serializable) do ...
-end " />
+<meta property="og:description" content="最近は静的サイトブームが再到来なんですかね？GoLang で作られた静的サイトジェネレータの Hugo なんていうものがありました。 うちのサイトも最近 Ruby の Octopress でサイトをリニューアルしましたが、Go にもあるんですね。 spf13 / hugo The Fast and &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -112,6 +106,156 @@ end " />
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/21/hugo/" class="excerpt-link">静的サイトを素早く構築するためにGoLangで作られたジェネレータHugo</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-02-21T15:43:47+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 21<span>st</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/jing-de-saito/" rel="nofollow">静的サイト</a>
+    
+      <a class="tag label label-info" href="/blog/tags/go/" rel="nofollow">Go</a>
+    
+      <a class="tag label label-info" href="/blog/tags/golang/" rel="nofollow">GoLang</a>
+    
+      <a class="tag label label-info" href="/blog/tags/hugo/" rel="nofollow">Hugo</a>
+    
+      <a class="tag label label-info" href="/blog/tags/blog/" rel="nofollow">Blog</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/02/21/hugo/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/21/hugo/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/21/hugo/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/02/21/hugo/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/02/21/hugo/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/02/21/hugo/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/02/21/hugo/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/02/21/hugo/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>最近は静的サイトブームが再到来なんですかね？<strong class="text-danger">GoLang</strong> で作られた静的サイトジェネレータの <strong class="text-danger">Hugo</strong> なんていうものがありました。</p>
+
+<p>うちのサイトも最近 Ruby の <em>Octopress</em> でサイトをリニューアルしましたが、Go にもあるんですね。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/spf13/hugo" rel="external nofollow" title="spf13 / hugo">spf13 / hugo</a></p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://hugo.spf13.com/" rel="external nofollow" title="The Fast and Flexible Static Site Generator - Hugo">The Fast and Flexible Static Site Generator - Hugo</a></p>
+
+<p>Go でビルドするので速いとのこと。また、Windows、Mac、Linux と環境を選ばないのがいいですね。</p>
+
+<p>記事は <strong class="text-danger">Markdown</strong> で記述します。カテゴリやタグなどの情報は <strong class="text-danger">YAML</strong> 形式でいけます。<a href="http://octopress.org/" rel="external nofollow" title="Octopress">Octopress</a> や <a href="http://jekyllrb.com/" rel="external nofollow" title="Jekyll">Jekyll</a> と似ています。</p>
+
+<p>最近 Go が人気急上昇なので、Go の環境が手元にある人は Hugo を使ってサイトを運営してみるのもありかもです。</p></div>
+  
+  
+
+
+    </article>
     
     
     <article>
@@ -1415,152 +1559,6 @@ end " />
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/15/gundam-unicorn/" class="excerpt-link">ガンダムUCのシナンジュが好き</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-15T16:25:45+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 15<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/gandamu/" rel="nofollow">ガンダム</a>
-    
-      <a class="tag label label-info" href="/blog/tags/sinanziyu/" rel="nofollow">シナンジュ</a>
-    
-      <a class="tag label label-info" href="/blog/tags/ganpura/" rel="nofollow">ガンプラ</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/15/gundam-unicorn/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p><a href="http://www.gundam-unicorn.net/" rel="external nofollow" title="ガンダムUC">ガンダムUC</a> にはまってます。2014年5月17日に final episode 7「虹の彼方に」も予定されてるので DVD とか見直しました。</p>
-
-<p>シナンジュのガンプラも作ったので、次はニューガンダムに挑戦したいなと。RX-0 ユニコーンガンダム3号機 フェネクスのガンプラも発売になりましたね。</p>
-
-<p><a href="http://www.amazon.co.jp/gp/product/B0032ZD5OI?ie=UTF8&amp;camp=247&amp;creativeASIN=B0032ZD5OI&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://www.1999.co.jp/itbig10/10106668.jpg" height="289" width="232" alt="MG 1/100 MSN-06S シナンジュ Ver.Ka チタニウムフィニッシュ (機動戦士ガンダムUC)" class="img-thumbnail" title="MG 1/100 MSN-06S シナンジュ Ver.Ka チタニウムフィニッシュ (機動戦士ガンダムUC)"></a>
-<a href="http://www.amazon.co.jp/gp/product/B00FKL68XM?ie=UTF8&amp;camp=247&amp;creativeASIN=B00FKL68XM&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/81QDARb2zTL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-93 vガンダムVer.Ka チタニウムフィニッシュ (機動戦士ガンダム 逆襲のシャア)" class="img-thumbnail" title="MG 1/100 RX-93 vガンダムVer.Ka チタニウムフィニッシュ (機動戦士ガンダム 逆襲のシャア)"></a>
-<a href="http://www.amazon.co.jp/gp/product/B00HCV6T6E?ie=UTF8&amp;camp=247&amp;creativeASIN=B00HCV6T6E&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/91HCl2myAGL._SX240_.jpg" height="289" width="232" alt="MG 1/100 RX-0 ユニコーンガンダム3号機 フェネクス (機動戦士ガンダムUC)" class="img-thumbnail" title="MG 1/100 RX-0 ユニコーンガンダム3号機 フェネクス (機動戦士ガンダムUC)"></a></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/15/gundam-unicorn/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/3/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1604,6 +1602,10 @@ end " />
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/03/10/4774162868/">インフラデザインパターン ~安定稼動に導く127の設計方式</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
       </li>
     
@@ -1639,10 +1641,6 @@ end " />
         <a href="/blog/2014/02/21/functional-javascript/">JavaScriptで学ぶ関数型プログラミング</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/21/hugo/">静的サイトを素早く構築するためにGoLangで作られたジェネレータHugo</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1650,7 +1648,7 @@ end " />
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">118</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">118</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

@@ -13,7 +13,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="本書は、プログラミング後のコードレビューを行う視点で、どういった点を確認すれば良いのかを教えてくれるものです。 ソースコードレビューの目的については本書では触れられていませんが、僕が考えるソースコードレビューの目的は、コードの品質を高めるためです。 テストではソースコードの品質は高められません。 &hellip;">
+  <meta name="description" content="コントローラの中で、ビューの image_tag 等で表示される画像の URL を取得したい時があります。 そんな時は view_context が使えます。 環境 Rails
+3.0.7
+Ruby
+1.9.2-p180
+Paperclip
+2.3.11 ">
   
 
   
@@ -24,7 +29,12 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/7/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="本書は、プログラミング後のコードレビューを行う視点で、どういった点を確認すれば良いのかを教えてくれるものです。 ソースコードレビューの目的については本書では触れられていませんが、僕が考えるソースコードレビューの目的は、コードの品質を高めるためです。 テストではソースコードの品質は高められません。 &hellip;" />
+<meta property="og:description" content="コントローラの中で、ビューの image_tag 等で表示される画像の URL を取得したい時があります。 そんな時は view_context が使えます。 環境 Rails
+3.0.7
+Ruby
+1.9.2-p180
+Paperclip
+2.3.11 " />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +116,163 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/14/rails-view-url/" class="excerpt-link">Rails のコントローラの中で View の画像URLを取得する方法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-14T09:09:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/rails3/" rel="nofollow">Rails3</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby1-dot-9/" rel="nofollow">Ruby1.9</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2011/06/14/rails-view-url/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/14/rails-view-url/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/06/14/rails-view-url/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/06/14/rails-view-url/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2011/06/14/rails-view-url/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2011/06/14/rails-view-url/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2011/06/14/rails-view-url/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2011/06/14/rails-view-url/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>コントローラの中で、ビューの image_tag 等で表示される画像の URL を取得したい時があります。</p>
+
+<p>そんな時は <em>view_context</em> が使えます。</p>
+
+<p><section></section></p>
+
+<h4>環境</h4>
+
+
+
+
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+<dt>Ruby</dt>
+<dd>1.9.2-p180</dd>
+<dt>Paperclip</dt>
+<dd>2.3.11</dd>
+</dl>
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2011/06/14/rails-view-url/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1582,152 +1749,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/19/rspec/" class="excerpt-link">[Rails] RSpec でコントローラのテストを記述する例</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-11-19T01:44:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 19<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/rails3/" rel="nofollow">Rails3</a>
-    
-      <a class="tag label label-info" href="/blog/tags/rspec/" rel="nofollow">RSpec</a>
-    
-      <a class="tag label label-info" href="/blog/tags/ruby1-dot-9/" rel="nofollow">Ruby1.9</a>
-    
-      <a class="tag label label-info" href="/blog/tags/sanpuru/" rel="nofollow">サンプル</a>
-    
-      <a class="tag label label-info" href="/blog/tags/tesutokodo/" rel="nofollow">テストコード</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/11/19/rspec/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/11/19/rspec/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/19/rspec/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/19/rspec/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/11/19/rspec/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/11/19/rspec/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/11/19/rspec/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/11/19/rspec/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Ruby on Railsで、RSpec を使ってコントローラのテストをしたテストコードの例を載せておきます。</p>
-
-<p>環境は、Ruby on Rails3、Ruby1.9.2 を使っています。RSpec の使い方の参考になれば幸いです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/11/19/rspec/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/8/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1771,6 +1792,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/03/10/4774162868/">インフラデザインパターン ~安定稼動に導く127の設計方式</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
       </li>
     
@@ -1806,10 +1831,6 @@
         <a href="/blog/2014/02/21/functional-javascript/">JavaScriptで学ぶ関数型プログラミング</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/21/hugo/">静的サイトを素早く構築するためにGoLangで作られたジェネレータHugo</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1817,7 +1838,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">7</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">118</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">118</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">
