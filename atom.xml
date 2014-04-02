@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-04-02T19:25:43+09:00</updated>
+  <updated>2014-04-02T19:38:14+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -112,8 +112,11 @@
 <span class="line-number">40</span>
 <span class="line-number">41</span>
 <span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
 </pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">currentUnit</span> <span class="o">=</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">Properties</span><span class="p">.</span><span class="nx">getString</span><span class="p">(</span><span class="s1">'ti.ui.defaultunit'</span><span class="p">)</span> <span class="o">||</span> <span class="s1">'system'</span><span class="p">;</span>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">currentUnit</span> <span class="o">=</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">Properties</span><span class="p">.</span><span class="nx">getString</span><span class="p">(</span><span class="s1">'ti.ui.defaultunit'</span><span class="p">,</span> <span class="s1">'system'</span><span class="p">);</span>
 </span><span class="line"><span class="nx">currentUnit</span> <span class="o">=</span> <span class="p">(</span><span class="nx">currentUnit</span> <span class="o">===</span> <span class="s1">'system'</span><span class="p">)</span> <span class="o">?</span> <span class="p">(</span><span class="nx">OS_IOS</span><span class="p">)</span> <span class="o">?</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span> <span class="o">:</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_PX</span> <span class="o">:</span> <span class="nx">currentUnit</span><span class="p">;</span>
 </span><span class="line">
 </span><span class="line"><span class="kd">function</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">fromUnit</span><span class="p">,</span> <span class="nx">toUnit</span><span class="p">)</span> <span class="p">{</span>
@@ -146,10 +149,13 @@
 </span><span class="line">        <span class="p">}</span>
 </span><span class="line">    <span class="p">},</span>
 </span><span class="line">    <span class="nx">convertToPX</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">valStr</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">return</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">convertUnits</span><span class="p">(</span><span class="nx">valStr</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_PX</span><span class="p">);</span>
+</span><span class="line">        <span class="k">return</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">convertUnits</span><span class="p">(</span><span class="nx">valStr</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_PX</span><span class="p">);</span>
 </span><span class="line">    <span class="p">},</span>
 </span><span class="line">    <span class="nx">convertToDP</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">valStr</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">return</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">convertUnits</span><span class="p">(</span><span class="nx">valStr</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span><span class="p">);</span>
+</span><span class="line">        <span class="k">return</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">convertUnits</span><span class="p">(</span><span class="nx">valStr</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span><span class="p">);</span>
+</span><span class="line">    <span class="p">},</span>
+</span><span class="line">    <span class="nx">convertToSystem</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">valStr</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">convertUnits</span><span class="p">(</span><span class="nx">valStr</span><span class="p">,</span> <span class="nx">currentUnit</span><span class="p">);</span>
 </span><span class="line">    <span class="p">},</span>
 </span><span class="line">    <span class="nx">pointPXToDP</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">pt</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">        <span class="k">return</span> <span class="p">{</span><span class="nx">x</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">pxToDP</span><span class="p">(</span><span class="nx">pt</span><span class="p">.</span><span class="nx">x</span><span class="p">),</span> <span class="nx">y</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">pxToDP</span><span class="p">(</span><span class="nx">pt</span><span class="p">.</span><span class="nx">y</span><span class="p">)};</span>
@@ -180,6 +186,7 @@
 <span class="line-number">16</span>
 <span class="line-number">17</span>
 <span class="line-number">18</span>
+<span class="line-number">19</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">unit</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'unit'</span><span class="p">);</span>
 </span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'----- iOS -----'</span><span class="p">);</span>
@@ -198,6 +205,7 @@
 </span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'systemToDP: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">systemToDP</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
 </span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'convertToPX: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">convertToPX</span><span class="p">(</span><span class="s1">'130dp'</span><span class="p">));</span>
 </span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'convertToDP: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">convertToDP</span><span class="p">(</span><span class="s1">'130dp'</span><span class="p">));</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'convertToSystem: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">convertToSystem</span><span class="p">(</span><span class="s1">'130dp'</span><span class="p">));</span>
 </span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'-----'</span><span class="p">);</span>
 </span></code></pre></td>
 </tr></table></div></figure></notextile></div>
@@ -238,6 +246,8 @@
 <span class="line-number"> </span>
 <span class="line-number"> </span>
 <span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
 <span class="line-number"> </span></pre></td>
 <td class="code"><pre><code><span class="line output">[INFO] :   ----- iPhone OS -----
 </span><span class="line output">[INFO] :   Ti.Platform.displayCaps.density: high
@@ -250,6 +260,7 @@
 </span><span class="line output">[INFO] :   systemToDP: 130
 </span><span class="line output">[INFO] :   convertToPX: 260
 </span><span class="line output">[INFO] :   convertToDP: 130
+</span><span class="line output">[INFO] :   convertToSystem: 130
 </span><span class="line output">[INFO] :   -----
 </span><span class="line output">
 </span><span class="line output">[INFO] :   ----- android -----
@@ -266,6 +277,7 @@
 </span><span class="line output">[INFO] :   systemToDP: 65
 </span><span class="line output">[INFO] :   convertToPX: 260
 </span><span class="line output">[INFO] :   convertToDP: 130
+</span><span class="line output">[INFO] :   convertToSystem: 260
 </span><span class="line output">[INFO] :   -----</span></code></pre></td>
 </tr></table></div></div>
         </div>]]></content>

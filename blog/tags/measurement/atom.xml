@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: measurement | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/measurement/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-04-02T19:25:43+09:00</updated>
+  <updated>2014-04-02T19:38:14+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -47,7 +47,7 @@ exports.pointPXToDP = function(pt) {
 
 <p><code>Ti.UI.convertUnits</code> を使って次のように実装しなおしました。</p>
 
-<pre><code class="javascript lib/unit.js">var currentUnit = Ti.App.Properties.getString('ti.ui.defaultunit') || 'system';
+<pre><code class="javascript lib/unit.js">var currentUnit = Ti.App.Properties.getString('ti.ui.defaultunit', 'system');
 currentUnit = (currentUnit === 'system') ? (OS_IOS) ? Ti.UI.UNIT_DIP : Ti.UI.UNIT_PX : currentUnit;
 
 function convert(val, fromUnit, toUnit) {
@@ -80,10 +80,13 @@ module.exports = exports = {
         }
     },
     convertToPX: function(valStr) {
-      return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_PX);
+        return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_PX);
     },
     convertToDP: function(valStr) {
-      return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_DIP);
+        return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_DIP);
+    },
+    convertToSystem: function(valStr) {
+        return Ti.UI.convertUnits(valStr, currentUnit);
     },
     pointPXToDP: function(pt) {
         return {x: this.pxToDP(pt.x), y: this.pxToDP(pt.y)};
@@ -110,6 +113,7 @@ console.log('systemToPX: ' + unit.systemToPX(130));
 console.log('systemToDP: ' + unit.systemToDP(130));
 console.log('convertToPX: ' + unit.convertToPX('130dp'));
 console.log('convertToDP: ' + unit.convertToDP('130dp'));
+console.log('convertToSystem: ' + unit.convertToSystem('130dp'));
 console.log('-----');
 </code></pre>
 
@@ -147,6 +151,8 @@ console.log('-----');
 <span class='line-number'>&nbsp;</span>
 <span class='line-number'>&nbsp;</span>
 <span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
 <span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line output'>[INFO] :   &mdash;&ndash; iPhone OS &mdash;&ndash;
 </span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.density: high
 </span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.dpi: 320
@@ -158,6 +164,7 @@ console.log('-----');
 </span><span class='line output'>[INFO] :   systemToDP: 130
 </span><span class='line output'>[INFO] :   convertToPX: 260
 </span><span class='line output'>[INFO] :   convertToDP: 130
+</span><span class='line output'>[INFO] :   convertToSystem: 130
 </span><span class='line output'>[INFO] :   &mdash;&ndash;</p>
 </span><span class='line output'>
 </span><span class='line output'><p>[INFO] :   &mdash;&ndash; android &mdash;&ndash;
@@ -174,6 +181,7 @@ console.log('-----');
 </span><span class='line output'>[INFO] :   systemToDP: 65
 </span><span class='line output'>[INFO] :   convertToPX: 260
 </span><span class='line output'>[INFO] :   convertToDP: 130
+</span><span class='line output'>[INFO] :   convertToSystem: 260
 </span><span class='line output'>[INFO] :   &mdash;&ndash;</span></code></pre></td></tr></table></div></div>
         </div></p>
 ]]></content>
