@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-04-02T19:38:14+09:00</updated>
+  <updated>2014-04-02T19:46:07+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -58,8 +58,14 @@ module.exports = exports = {
     dpToPX: function(val) {
         return convert(val, Ti.UI.UNIT_DIP, Ti.UI.UNIT_PX);
     },
+    dpToSystem: function(val) {
+        return convert(val, Ti.UI.UNIT_DIP, currentUnit);
+    },
     pxToDP: function(val) {
         return convert(val, Ti.UI.UNIT_PX, Ti.UI.UNIT_DIP);
+    },
+    pxToSystem: function(val) {
+        return convert(val, Ti.UI.UNIT_PX, currentUnit);
     },
     systemToPX: function(val) {
         if (currentUnit === Ti.UI.UNIT_DIP) {
@@ -89,7 +95,10 @@ module.exports = exports = {
         return Ti.UI.convertUnits(valStr, currentUnit);
     },
     pointPXToDP: function(pt) {
-        return {x: this.pxToDP(pt.x), y: this.pxToDP(pt.y)};
+        return {
+            x: this.pxToDP(pt.x),
+            y: this.pxToDP(pt.y)
+        };
     }
 };
 </code></pre>
@@ -108,7 +117,9 @@ if (Ti.Platform.osname === 'android'){
   Ti.API.info('Ti.Platform.displayCaps.logicalDensityFactor: ' + Ti.Platform.displayCaps.logicalDensityFactor);
 }
 console.log('dpToPX: ' + unit.dpToPX(130));
+console.log('dpToSystem: ' + unit.dpToSystem(130));
 console.log('pxToDP: ' + unit.pxToDP(130));
+console.log('pxToSystem: ' + unit.pxToSystem(130));
 console.log('systemToPX: ' + unit.systemToPX(130));
 console.log('systemToDP: ' + unit.systemToDP(130));
 console.log('convertToPX: ' + unit.convertToPX('130dp'));
@@ -153,13 +164,19 @@ console.log('-----');
 <span class='line-number'>&nbsp;</span>
 <span class='line-number'>&nbsp;</span>
 <span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
 <span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line output'>[INFO] :   &mdash;&ndash; iPhone OS &mdash;&ndash;
 </span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.density: high
 </span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.dpi: 320
 </span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.platformHeight: 568
 </span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.platformWidth: 320
 </span><span class='line output'>[INFO] :   dpToPX: 260
+</span><span class='line output'>[INFO] :   dpToSystem: 130
 </span><span class='line output'>[INFO] :   pxToDP: 65
+</span><span class='line output'>[INFO] :   pxToSystem: 65
 </span><span class='line output'>[INFO] :   systemToPX: 260
 </span><span class='line output'>[INFO] :   systemToDP: 130
 </span><span class='line output'>[INFO] :   convertToPX: 260
@@ -176,7 +193,9 @@ console.log('-----');
 </span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.ydpi: 342.2315673828125
 </span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.logicalDensityFactor: 2
 </span><span class='line output'>[INFO] :   dpToPX: 260
+</span><span class='line output'>[INFO] :   dpToSystem: 260
 </span><span class='line output'>[INFO] :   pxToDP: 65
+</span><span class='line output'>[INFO] :   pxToSystem: 130
 </span><span class='line output'>[INFO] :   systemToPX: 130
 </span><span class='line output'>[INFO] :   systemToDP: 65
 </span><span class='line output'>[INFO] :   convertToPX: 260
