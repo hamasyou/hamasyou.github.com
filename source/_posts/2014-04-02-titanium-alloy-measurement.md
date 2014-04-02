@@ -56,8 +56,14 @@ module.exports = exports = {
     dpToPX: function(val) {
         return convert(val, Ti.UI.UNIT_DIP, Ti.UI.UNIT_PX);
     },
+    dpToSystem: function(val) {
+        return convert(val, Ti.UI.UNIT_DIP, currentUnit);
+    },
     pxToDP: function(val) {
         return convert(val, Ti.UI.UNIT_PX, Ti.UI.UNIT_DIP);
+    },
+    pxToSystem: function(val) {
+        return convert(val, Ti.UI.UNIT_PX, currentUnit);
     },
     systemToPX: function(val) {
         if (currentUnit === Ti.UI.UNIT_DIP) {
@@ -87,9 +93,13 @@ module.exports = exports = {
         return Ti.UI.convertUnits(valStr, currentUnit);
     },
     pointPXToDP: function(pt) {
-        return {x: this.pxToDP(pt.x), y: this.pxToDP(pt.y)};
+        return {
+            x: this.pxToDP(pt.x),
+            y: this.pxToDP(pt.y)
+        };
     }
 };
+
 ```
 
 
@@ -108,7 +118,9 @@ if (Ti.Platform.osname === 'android'){
   Ti.API.info('Ti.Platform.displayCaps.logicalDensityFactor: ' + Ti.Platform.displayCaps.logicalDensityFactor);
 }
 console.log('dpToPX: ' + unit.dpToPX(130));
+console.log('dpToSystem: ' + unit.dpToSystem(130));
 console.log('pxToDP: ' + unit.pxToDP(130));
+console.log('pxToSystem: ' + unit.pxToSystem(130));
 console.log('systemToPX: ' + unit.systemToPX(130));
 console.log('systemToDP: ' + unit.systemToDP(130));
 console.log('convertToPX: ' + unit.convertToPX('130dp'));
@@ -124,7 +136,9 @@ console.log('-----');
 [INFO] :   Ti.Platform.displayCaps.platformHeight: 568
 [INFO] :   Ti.Platform.displayCaps.platformWidth: 320
 [INFO] :   dpToPX: 260
+[INFO] :   dpToSystem: 130
 [INFO] :   pxToDP: 65
+[INFO] :   pxToSystem: 65
 [INFO] :   systemToPX: 260
 [INFO] :   systemToDP: 130
 [INFO] :   convertToPX: 260
@@ -141,7 +155,9 @@ console.log('-----');
 [INFO] :   Ti.Platform.displayCaps.ydpi: 342.2315673828125
 [INFO] :   Ti.Platform.displayCaps.logicalDensityFactor: 2
 [INFO] :   dpToPX: 260
+[INFO] :   dpToSystem: 260
 [INFO] :   pxToDP: 65
+[INFO] :   pxToSystem: 130
 [INFO] :   systemToPX: 130
 [INFO] :   systemToDP: 65
 [INFO] :   convertToPX: 260
