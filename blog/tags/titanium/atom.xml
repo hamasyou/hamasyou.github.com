@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Titanium | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/titanium/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-04-02T19:46:07+09:00</updated>
+  <updated>2014-04-02T19:56:30+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -85,13 +85,13 @@ module.exports = exports = {
             return convert(val, '', Ti.UI.UNIT_DIP);
         }
     },
-    convertToPX: function(valStr) {
+    convertUnitToPX: function(valStr) {
         return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_PX);
     },
-    convertToDP: function(valStr) {
+    convertUnitToDP: function(valStr) {
         return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_DIP);
     },
-    convertToSystem: function(valStr) {
+    convertUnitToSystem: function(valStr) {
         return Ti.UI.convertUnits(valStr, currentUnit);
     },
     pointPXToDP: function(pt) {
@@ -122,9 +122,9 @@ console.log('pxToDP: ' + unit.pxToDP(130));
 console.log('pxToSystem: ' + unit.pxToSystem(130));
 console.log('systemToPX: ' + unit.systemToPX(130));
 console.log('systemToDP: ' + unit.systemToDP(130));
-console.log('convertToPX: ' + unit.convertToPX('130dp'));
-console.log('convertToDP: ' + unit.convertToDP('130dp'));
-console.log('convertToSystem: ' + unit.convertToSystem('130dp'));
+console.log('convertUnitToPX: ' + unit.convertUnitToPX('130dp'));
+console.log('convertUnitToDP: ' + unit.convertUnitToDP('130dp'));
+console.log('convertUnitToSystem: ' + unit.convertUnitToSystem('130dp'));
 console.log('-----');
 </code></pre>
 
@@ -179,9 +179,9 @@ console.log('-----');
 </span><span class='line output'>[INFO] :   pxToSystem: 65
 </span><span class='line output'>[INFO] :   systemToPX: 260
 </span><span class='line output'>[INFO] :   systemToDP: 130
-</span><span class='line output'>[INFO] :   convertToPX: 260
-</span><span class='line output'>[INFO] :   convertToDP: 130
-</span><span class='line output'>[INFO] :   convertToSystem: 130
+</span><span class='line output'>[INFO] :   convertUnitToPX: 260
+</span><span class='line output'>[INFO] :   convertUnitToDP: 130
+</span><span class='line output'>[INFO] :   convertUnitToSystem: 130
 </span><span class='line output'>[INFO] :   &mdash;&ndash;</p>
 </span><span class='line output'>
 </span><span class='line output'><p>[INFO] :   &mdash;&ndash; android &mdash;&ndash;
@@ -198,11 +198,13 @@ console.log('-----');
 </span><span class='line output'>[INFO] :   pxToSystem: 130
 </span><span class='line output'>[INFO] :   systemToPX: 130
 </span><span class='line output'>[INFO] :   systemToDP: 65
-</span><span class='line output'>[INFO] :   convertToPX: 260
-</span><span class='line output'>[INFO] :   convertToDP: 130
-</span><span class='line output'>[INFO] :   convertToSystem: 260
+</span><span class='line output'>[INFO] :   convertUnitToPX: 260
+</span><span class='line output'>[INFO] :   convertUnitToDP: 130
+</span><span class='line output'>[INFO] :   convertUnitToSystem: 260
 </span><span class='line output'>[INFO] :   &mdash;&ndash;</span></code></pre></td></tr></table></div></div>
         </div></p>
+
+<p>ご利用は計画的に。</p>
 ]]></content>
   </entry>
   

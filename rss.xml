@@ -2,7 +2,7 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Wed, 02 Apr 2014 19:46:07 +0900</pubDate>
+  <pubDate>Wed, 02 Apr 2014 19:56:30 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
@@ -159,13 +159,13 @@
 </span><span class="line">            <span class="k">return</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span><span class="p">);</span>
 </span><span class="line">        <span class="p">}</span>
 </span><span class="line">    <span class="p">},</span>
-</span><span class="line">    <span class="nx">convertToPX</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">valStr</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">convertUnitToPX</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">valStr</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">        <span class="k">return</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">convertUnits</span><span class="p">(</span><span class="nx">valStr</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_PX</span><span class="p">);</span>
 </span><span class="line">    <span class="p">},</span>
-</span><span class="line">    <span class="nx">convertToDP</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">valStr</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">convertUnitToDP</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">valStr</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">        <span class="k">return</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">convertUnits</span><span class="p">(</span><span class="nx">valStr</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span><span class="p">);</span>
 </span><span class="line">    <span class="p">},</span>
-</span><span class="line">    <span class="nx">convertToSystem</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">valStr</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">convertUnitToSystem</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">valStr</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">        <span class="k">return</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">convertUnits</span><span class="p">(</span><span class="nx">valStr</span><span class="p">,</span> <span class="nx">currentUnit</span><span class="p">);</span>
 </span><span class="line">    <span class="p">},</span>
 </span><span class="line">    <span class="nx">pointPXToDP</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">pt</span><span class="p">)</span> <span class="p">{</span>
@@ -221,9 +221,9 @@
 </span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'pxToSystem: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">pxToSystem</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
 </span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'systemToPX: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">systemToPX</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
 </span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'systemToDP: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">systemToDP</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'convertToPX: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">convertToPX</span><span class="p">(</span><span class="s1">'130dp'</span><span class="p">));</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'convertToDP: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">convertToDP</span><span class="p">(</span><span class="s1">'130dp'</span><span class="p">));</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'convertToSystem: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">convertToSystem</span><span class="p">(</span><span class="s1">'130dp'</span><span class="p">));</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'convertUnitToPX: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">convertUnitToPX</span><span class="p">(</span><span class="s1">'130dp'</span><span class="p">));</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'convertUnitToDP: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">convertUnitToDP</span><span class="p">(</span><span class="s1">'130dp'</span><span class="p">));</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'convertUnitToSystem: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">convertUnitToSystem</span><span class="p">(</span><span class="s1">'130dp'</span><span class="p">));</span>
 </span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'-----'</span><span class="p">);</span>
 </span></code></pre></td>
 </tr></table></div></figure></notextile></div>
@@ -282,9 +282,9 @@
 </span><span class="line output">[INFO] :   pxToSystem: 65
 </span><span class="line output">[INFO] :   systemToPX: 260
 </span><span class="line output">[INFO] :   systemToDP: 130
-</span><span class="line output">[INFO] :   convertToPX: 260
-</span><span class="line output">[INFO] :   convertToDP: 130
-</span><span class="line output">[INFO] :   convertToSystem: 130
+</span><span class="line output">[INFO] :   convertUnitToPX: 260
+</span><span class="line output">[INFO] :   convertUnitToDP: 130
+</span><span class="line output">[INFO] :   convertUnitToSystem: 130
 </span><span class="line output">[INFO] :   -----
 </span><span class="line output">
 </span><span class="line output">[INFO] :   ----- android -----
@@ -301,12 +301,15 @@
 </span><span class="line output">[INFO] :   pxToSystem: 130
 </span><span class="line output">[INFO] :   systemToPX: 130
 </span><span class="line output">[INFO] :   systemToDP: 65
-</span><span class="line output">[INFO] :   convertToPX: 260
-</span><span class="line output">[INFO] :   convertToDP: 130
-</span><span class="line output">[INFO] :   convertToSystem: 260
+</span><span class="line output">[INFO] :   convertUnitToPX: 260
+</span><span class="line output">[INFO] :   convertUnitToDP: 130
+</span><span class="line output">[INFO] :   convertUnitToSystem: 260
 </span><span class="line output">[INFO] :   -----</span></code></pre></td>
 </tr></table></div></div>
-        </div>]]>
+        </div>
+
+
+<p>ご利用は計画的に。</p>]]>
     </description>
     <pubDate>Wed, 02 Apr 2014 18:17:44 +0900</pubDate>
   </item>
