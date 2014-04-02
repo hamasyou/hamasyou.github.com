@@ -45,6 +45,10 @@ exports.pointPXToDP = function(pt) {
 `Ti.UI.convertUnits` を使って次のように実装しなおしました。
 
 ```javascript lib/unit.js
+// システムのUI単位から指定のUI単位に変換する
+var currentUnit = Ti.App.Properties.getString('ti.ui.defaultunit') || 'system';
+currentUnit = (currentUnit === 'system') ? (OS_IOS) ? Ti.UI.UNIT_DIP : Ti.UI.UNIT_PX : currentUnit;
+
 function convert(val, fromUnit, toUnit) {
     return Ti.UI.convertUnits('' + parseInt(val) + fromUnit, toUnit);
 }
@@ -57,10 +61,22 @@ module.exports = exports = {
         return convert(val, Ti.UI.UNIT_PX, Ti.UI.UNIT_DIP);
     },
     systemToPX: function(val) {
-        return convert(val, '', Ti.UI.UNIT_PX);
+        if (currentUnit === Ti.UI.UNIT_DIP) {
+            return this.dpToPX(val);
+        } else if (currentUnit === Ti.UI.UNIT_PX) {
+            return convert(val, Ti.UI.UNIT_PX, Ti.UI.UNIT_PX);
+        } else {
+            return convert(val, '', Ti.UI.UNIT_PX);
+        }
     },
     systemToDP: function(val) {
-        return convert(val, '', Ti.UI.UNIT_DIP);
+        if (currentUnit === Ti.UI.UNIT_DIP) {
+            return convert(val, Ti.UI.UNIT_DIP, Ti.UI.UNIT_DIP);
+        } else if (currentUnit === Ti.UI.UNIT_PX) {
+            return this.pxToDP(val);
+        } else {
+            return convert(val, '', Ti.UI.UNIT_DIP);
+        }
     },
     pointPXToDP: function(pt) {
         return {x: this.pxToDP(pt.x), y: this.pxToDP(pt.y)};
