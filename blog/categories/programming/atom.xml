@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-04-02T18:44:52+09:00</updated>
+  <updated>2014-04-02T19:19:10+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -47,7 +47,10 @@ exports.pointPXToDP = function(pt) {
 
 <p><code>Ti.UI.convertUnits</code> を使って次のように実装しなおしました。</p>
 
-<pre><code class="javascript lib/unit.js">function convert(val, fromUnit, toUnit) {
+<pre><code class="javascript lib/unit.js">var currentUnit = Ti.App.Properties.getString('ti.ui.defaultunit') || 'system';
+currentUnit = (currentUnit === 'system') ? (OS_IOS) ? Ti.UI.UNIT_DIP : Ti.UI.UNIT_PX : currentUnit;
+
+function convert(val, fromUnit, toUnit) {
     return Ti.UI.convertUnits('' + parseInt(val) + fromUnit, toUnit);
 }
 
@@ -59,10 +62,22 @@ module.exports = exports = {
         return convert(val, Ti.UI.UNIT_PX, Ti.UI.UNIT_DIP);
     },
     systemToPX: function(val) {
-        return convert(val, '', Ti.UI.UNIT_PX);
+        if (currentUnit === Ti.UI.UNIT_DIP) {
+            return this.dpToPX(val);
+        } else if (currentUnit === Ti.UI.UNIT_PX) {
+            return convert(val, Ti.UI.UNIT_PX, Ti.UI.UNIT_PX);
+        } else {
+            return convert(val, '', Ti.UI.UNIT_PX);
+        }
     },
     systemToDP: function(val) {
-        return convert(val, '', Ti.UI.UNIT_DIP);
+        if (currentUnit === Ti.UI.UNIT_DIP) {
+            return convert(val, Ti.UI.UNIT_DIP, Ti.UI.UNIT_DIP);
+        } else if (currentUnit === Ti.UI.UNIT_PX) {
+            return this.pxToDP(val);
+        } else {
+            return convert(val, '', Ti.UI.UNIT_DIP);
+        }
     },
     pointPXToDP: function(pt) {
         return {x: this.pxToDP(pt.x), y: this.pxToDP(pt.y)};
