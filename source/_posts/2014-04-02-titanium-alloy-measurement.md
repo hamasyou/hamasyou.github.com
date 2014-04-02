@@ -66,30 +66,18 @@ module.exports = exports = {
         return convert(val, Ti.UI.UNIT_PX, currentUnit);
     },
     systemToPX: function(val) {
-        if (currentUnit === Ti.UI.UNIT_DIP) {
-            return this.dpToPX(val);
-        } else if (currentUnit === Ti.UI.UNIT_PX) {
-            return convert(val, Ti.UI.UNIT_PX, Ti.UI.UNIT_PX);
-        } else {
-            return convert(val, '', Ti.UI.UNIT_PX);
-        }
+        return convert(val, currentUnit, Ti.UI.UNIT_PX);
     },
     systemToDP: function(val) {
-        if (currentUnit === Ti.UI.UNIT_DIP) {
-            return convert(val, Ti.UI.UNIT_DIP, Ti.UI.UNIT_DIP);
-        } else if (currentUnit === Ti.UI.UNIT_PX) {
-            return this.pxToDP(val);
-        } else {
-            return convert(val, '', Ti.UI.UNIT_DIP);
-        }
+        return convert(val, currentUnit, Ti.UI.UNIT_DIP);
     },
-    convertToPX: function(valStr) {
+    convertUnitToPX: function(valStr) {
         return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_PX);
     },
-    convertToDP: function(valStr) {
+    convertUnitToDP: function(valStr) {
         return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_DIP);
     },
-    convertToSystem: function(valStr) {
+    convertUnitToSystem: function(valStr) {
         return Ti.UI.convertUnits(valStr, currentUnit);
     },
     pointPXToDP: function(pt) {
@@ -99,7 +87,6 @@ module.exports = exports = {
         };
     }
 };
-
 ```
 
 
@@ -123,9 +110,9 @@ console.log('pxToDP: ' + unit.pxToDP(130));
 console.log('pxToSystem: ' + unit.pxToSystem(130));
 console.log('systemToPX: ' + unit.systemToPX(130));
 console.log('systemToDP: ' + unit.systemToDP(130));
-console.log('convertToPX: ' + unit.convertToPX('130dp'));
-console.log('convertToDP: ' + unit.convertToDP('130dp'));
-console.log('convertToSystem: ' + unit.convertToSystem('130dp'));
+console.log('convertUnitToPX: ' + unit.convertUnitToPX('130dp'));
+console.log('convertUnitToDP: ' + unit.convertUnitToDP('130dp'));
+console.log('convertUnitToSystem: ' + unit.convertUnitToSystem('130dp'));
 console.log('-----');
 ```
 
@@ -141,9 +128,9 @@ console.log('-----');
 [INFO] :   pxToSystem: 65
 [INFO] :   systemToPX: 260
 [INFO] :   systemToDP: 130
-[INFO] :   convertToPX: 260
-[INFO] :   convertToDP: 130
-[INFO] :   convertToSystem: 130
+[INFO] :   convertUnitToPX: 260
+[INFO] :   convertUnitToDP: 130
+[INFO] :   convertUnitToSystem: 130
 [INFO] :   -----
 
 [INFO] :   ----- android -----
@@ -160,8 +147,10 @@ console.log('-----');
 [INFO] :   pxToSystem: 130
 [INFO] :   systemToPX: 130
 [INFO] :   systemToDP: 65
-[INFO] :   convertToPX: 260
-[INFO] :   convertToDP: 130
-[INFO] :   convertToSystem: 260
+[INFO] :   convertUnitToPX: 260
+[INFO] :   convertUnitToDP: 130
+[INFO] :   convertUnitToSystem: 260
 [INFO] :   -----
 {% endterminal %}
+
+ご利用は計画的に。
