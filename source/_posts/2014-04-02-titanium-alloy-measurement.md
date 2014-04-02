@@ -45,7 +45,7 @@ exports.pointPXToDP = function(pt) {
 `Ti.UI.convertUnits` を使って次のように実装しなおしました。
 
 ```javascript lib/unit.js
-var currentUnit = Ti.App.Properties.getString('ti.ui.defaultunit') || 'system';
+var currentUnit = Ti.App.Properties.getString('ti.ui.defaultunit', 'system');
 currentUnit = (currentUnit === 'system') ? (OS_IOS) ? Ti.UI.UNIT_DIP : Ti.UI.UNIT_PX : currentUnit;
 
 function convert(val, fromUnit, toUnit) {
