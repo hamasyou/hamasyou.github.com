@@ -45,7 +45,6 @@ exports.pointPXToDP = function(pt) {
 `Ti.UI.convertUnits` を使って次のように実装しなおしました。
 
 ```javascript lib/unit.js
-// システムのUI単位から指定のUI単位に変換する
 var currentUnit = Ti.App.Properties.getString('ti.ui.defaultunit') || 'system';
 currentUnit = (currentUnit === 'system') ? (OS_IOS) ? Ti.UI.UNIT_DIP : Ti.UI.UNIT_PX : currentUnit;
 
@@ -78,6 +77,12 @@ module.exports = exports = {
             return convert(val, '', Ti.UI.UNIT_DIP);
         }
     },
+    convertToPX: function(valStr) {
+      return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_PX);
+    },
+    convertToDP: function(valStr) {
+      return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_DIP);
+    },
     pointPXToDP: function(pt) {
         return {x: this.pxToDP(pt.x), y: this.pxToDP(pt.y)};
     }
@@ -103,6 +108,8 @@ console.log('dpToPX: ' + unit.dpToPX(130));
 console.log('pxToDP: ' + unit.pxToDP(130));
 console.log('systemToPX: ' + unit.systemToPX(130));
 console.log('systemToDP: ' + unit.systemToDP(130));
+console.log('convertToPX: ' + unit.convertToPX('130dp'));
+console.log('convertToDP: ' + unit.convertToDP('130dp'));
 console.log('-----');
 ```
 
@@ -116,6 +123,8 @@ console.log('-----');
 [INFO] :   pxToDP: 65
 [INFO] :   systemToPX: 260
 [INFO] :   systemToDP: 130
+[INFO] :   convertToPX: 260
+[INFO] :   convertToDP: 130
 [INFO] :   -----
 
 [INFO] :   ----- android -----
@@ -130,5 +139,7 @@ console.log('-----');
 [INFO] :   pxToDP: 65
 [INFO] :   systemToPX: 130
 [INFO] :   systemToDP: 65
+[INFO] :   convertToPX: 260
+[INFO] :   convertToDP: 130
 [INFO] :   -----
 {% endterminal %}
