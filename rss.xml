@@ -2,12 +2,218 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Mon, 10 Mar 2014 19:05:52 +0900</pubDate>
+  <pubDate>Wed, 02 Apr 2014 18:44:52 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
   <atom:link href="http://hamasyou.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+  
+  <item>
+    <title><![CDATA[[Titanium] Alloyのmeasurementの実装がイケてなかったので再実装した]]></title>
+    <link>http://hamasyou.com/blog/2014/04/02/titanium-alloy-measurement/</link>
+    <guid>http://hamasyou.com/blog/2014/04/02/titanium-alloy-measurement/</guid>
+    <description>
+      <![CDATA[<p><a href="http://www.appcelerator.com/titanium/" rel="external nofollow" title="Titanium">Titanium</a> Alloy の <code>measurement</code> がイケてない感じだったので再実装しました。</p>
+
+<p><code>measurement</code> には <code>pxToDP</code> とか <code>dpToPX</code> とかの単位を変換するメソッドが用意されていますが、中身を見るとびっくりします。。</p>
+
+<!-- more -->
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>alloy/measurement.js (alloy 1.3.1)</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">dpi</span> <span class="o">=</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">dpi</span><span class="p">,</span> <span class="nx">density</span> <span class="o">=</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">density</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">exports</span><span class="p">.</span><span class="nx">dpToPX</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">val</span> <span class="o">*</span> <span class="p">(</span><span class="s2">"high"</span> <span class="o">===</span> <span class="nx">density</span> <span class="o">?</span> <span class="mi">2</span> <span class="o">:</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">exports</span><span class="p">.</span><span class="nx">pxToDP</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">val</span> <span class="o">/</span> <span class="p">(</span><span class="s2">"high"</span> <span class="o">===</span> <span class="nx">density</span> <span class="o">?</span> <span class="mi">2</span> <span class="o">:</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">exports</span><span class="p">.</span><span class="nx">pointPXToDP</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">pt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">x</span><span class="o">:</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">pxToDP</span><span class="p">(</span><span class="nx">pt</span><span class="p">.</span><span class="nx">x</span><span class="p">),</span>
+</span><span class="line">        <span class="nx">y</span><span class="o">:</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">pxToDP</span><span class="p">(</span><span class="nx">pt</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span>
+</span><span class="line">    <span class="p">};</span>
+</span><span class="line"><span class="p">};</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>これ、イケてなさすぎでしょ。。</p>
+
+<p><code>Ti.UI.convertUnits</code> を使って次のように実装しなおしました。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>lib/unit.js</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">fromUnit</span><span class="p">,</span> <span class="nx">toUnit</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">convertUnits</span><span class="p">(</span><span class="s1">''</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fromUnit</span><span class="p">,</span> <span class="nx">toUnit</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">dpToPX</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_PX</span><span class="p">);</span>
+</span><span class="line">    <span class="p">},</span>
+</span><span class="line">    <span class="nx">pxToDP</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_PX</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span><span class="p">);</span>
+</span><span class="line">    <span class="p">},</span>
+</span><span class="line">    <span class="nx">systemToPX</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_PX</span><span class="p">);</span>
+</span><span class="line">    <span class="p">},</span>
+</span><span class="line">    <span class="nx">systemToDP</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span><span class="p">);</span>
+</span><span class="line">    <span class="p">},</span>
+</span><span class="line">    <span class="nx">pointPXToDP</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">pt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="p">{</span><span class="nx">x</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">pxToDP</span><span class="p">(</span><span class="nx">pt</span><span class="p">.</span><span class="nx">x</span><span class="p">),</span> <span class="nx">y</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">pxToDP</span><span class="p">(</span><span class="nx">pt</span><span class="p">.</span><span class="nx">y</span><span class="p">)};</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">};</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>使い方と結果はこちら。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>sample.js</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">unit</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'unit'</span><span class="p">);</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'----- iOS -----'</span><span class="p">);</span>
+</span><span class="line"><span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.density: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">density</span><span class="p">);</span>
+</span><span class="line"><span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.dpi: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">dpi</span><span class="p">);</span>
+</span><span class="line"><span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.platformHeight: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">platformHeight</span><span class="p">);</span>
+</span><span class="line"><span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.platformWidth: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">platformWidth</span><span class="p">);</span>
+</span><span class="line"><span class="k">if</span> <span class="p">(</span><span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">osname</span> <span class="o">===</span> <span class="s1">'android'</span><span class="p">){</span>
+</span><span class="line">  <span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.xdpi: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">xdpi</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.ydpi: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">ydpi</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.logicalDensityFactor: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">logicalDensityFactor</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'dpToPX: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">dpToPX</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'pxToDP: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">pxToDP</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'systemToPX: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">systemToPX</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'systemToDP: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">systemToDP</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'-----'</span><span class="p">);</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="terminal-window">
+          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav><h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span>
+<span class="line-number"> </span></pre></td>
+<td class="code"><pre><code><span class="line output">[INFO] :   ----- iPhone OS -----
+</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.density: high
+</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.dpi: 320
+</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.platformHeight: 568
+</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.platformWidth: 320
+</span><span class="line output">[INFO] :   dpToPX: 260
+</span><span class="line output">[INFO] :   pxToDP: 65
+</span><span class="line output">[INFO] :   systemToPX: 260
+</span><span class="line output">[INFO] :   systemToDP: 130
+</span><span class="line output">[INFO] :   -----
+</span><span class="line output">
+</span><span class="line output">[INFO] :   ----- android -----
+</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.density: xhigh
+</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.dpi: 320
+</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.platformHeight: 1280
+</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.platformWidth: 720
+</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.xdpi: 345.0566101074219
+</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.ydpi: 342.2315673828125
+</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.logicalDensityFactor: 2
+</span><span class="line output">[INFO] :   dpToPX: 260
+</span><span class="line output">[INFO] :   pxToDP: 65
+</span><span class="line output">[INFO] :   systemToPX: 130
+</span><span class="line output">[INFO] :   systemToDP: 65
+</span><span class="line output">[INFO] :   -----</span></code></pre></td>
+</tr></table></div></div>
+        </div>]]>
+    </description>
+    <pubDate>Wed, 02 Apr 2014 18:17:44 +0900</pubDate>
+  </item>
   
   <item>
     <title><![CDATA[インフラデザインパターン ~安定稼動に導く127の設計方式]]></title>
@@ -4125,119 +4331,6 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <iframe width="312" height="176" src="http://ext.nicovideo.jp/thumb/sm20183528" scrolling="no" style="border:solid 1px #CCC;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm20183528" rel="external nofollow" title="【ニコニコ動画】ガンダム00　ライルvsアニュー　命がけの恋">【ニコニコ動画】ガンダム00　ライルvsアニュー　命がけの恋</a></iframe>]]>
     </description>
     <pubDate>Sun, 16 Feb 2014 01:52:46 +0900</pubDate>
-  </item>
-  
-  <item>
-    <title><![CDATA[ブラウザ操作で簡単にスクレイピングAPIが作れる「kimono」]]></title>
-    <link>http://hamasyou.com/blog/2014/02/15/kimono-api/</link>
-    <guid>http://hamasyou.com/blog/2014/02/15/kimono-api/</guid>
-    <description>
-      <![CDATA[<p>「<strong class="text-danger">kimono</strong>」はウェブサイトをブラウザ操作で簡単にスクレイピングして API 化してくれるサービスです。</p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://www.kimonolabs.com/" rel="external nofollow" title="kimono - Turn websites into structured APIs from your browser in seconds">kimono - Turn websites into structured APIs from your browser in seconds</a></p>
-
-<p><img src="http://hamasyou.com/images/2014-02-15-kimono-api-01.png" alt="kimono" class="img-thumbnail" title="kimono"></p>
-
-<!-- more -->
-
-
-<p>スクレイピングしたいサイトの URL を入力すると抜き出す要素を選択する画面になります。</p>
-
-<p>最近ページングにも対応したので、ページングのあるサイトも簡単に取得できるようになります。</p>
-
-<p><img src="http://hamasyou.com/images/2014-02-15-kimono-api-02.png" alt="要素の選択" class="img-thumbnail" title="要素の選択"></p>
-
-<p><img src="http://hamasyou.com/images/2014-02-15-kimono-api-03.png" alt="プレビュー画面" class="img-thumbnail" title="プレビュー画面"></p>
-
-<p>スクレイピングの頻度もリアルタイムや何時間毎のような設定ができます。</p>
-
-<p>できた API は言語ごとに呼び出し例が用意されているので便利です。こういう所気が効いていますね。</p>
-
-<p><img src="http://hamasyou.com/images/2014-02-15-kimono-api-04.png" alt="API 詳細" class="img-thumbnail" title="API 詳細"></p>
-
-<p>実際に呼び出してみるとちゃんと結果が取得できます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>misc/kimono.rb</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">'rest_client'</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">'json'</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">'pp'</span>
-</span><span class="line">
-</span><span class="line"><span class="n">response</span> <span class="o">=</span> <span class="no">RestClient</span><span class="o">.</span><span class="n">get</span> <span class="s1">'http://www.kimonolabs.com/api/4b5q146s?apikey=81c2b7add1263b7e459f5ed58b5f6504'</span>
-</span><span class="line"><span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">to_str</span><span class="p">)</span>
-</span><span class="line"><span class="n">pp</span> <span class="n">json</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<div class="terminal-window">
-          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav><h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
-<span class="line-number">$</span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span></pre></td>
-<td class="code"><pre><code><span class="line command">gem install rest-client</span><span class="line command">bundle exec ruby misc/kimono.rb</span><span class="line output">{"name"=&gt;"archives",
-</span><span class="line output"> "lastrunstatus"=&gt;"success",
-</span><span class="line output"> "lastsuccess"=&gt;"Sat Feb 15 2014 11:27:17 GMT+0000 (UTC)",
-</span><span class="line output"> "nextrun"=&gt;"Sat Feb 15 2014 11:57:15 GMT+0000 (UTC)",
-</span><span class="line output"> "frequency"=&gt;"halfhourly",
-</span><span class="line output"> "newdata"=&gt;false,
-</span><span class="line output"> "results"=&gt;
-</span><span class="line output">  {"collection1"=&gt;
-</span><span class="line output">    [{"title"=&gt;
-</span><span class="line output">       {"text"=&gt;"ガンダムUCのシナンジュが好き",
-</span><span class="line output">        "href"=&gt;"http://hamasyou.com/blog/2014/02/15/gundam-unicorn/"},
-</span><span class="line output">      "category"=&gt;
-</span><span class="line output">       {"text"=&gt;"Blog", "href"=&gt;"http://hamasyou.com/blog/categories/blog/"}},
-</span><span class="line output">     {"title"=&gt;
-</span><span class="line output">       {"text"=&gt;"Octopress の rel=”canonical” の設定がおかしい件",
-</span><span class="line output">        "href"=&gt;"http://hamasyou.com/blog/2014/02/15/octopress-canonical/"},
-</span><span class="line output">      "category"=&gt;
-</span><span class="line output">       {"text"=&gt;"Blog", "href"=&gt;"http://hamasyou.com/blog/categories/blog/"}},
-</span><span class="line output">     {"title"=&gt;
-</span><span class="line output">       {"text"=&gt;"ビューティフルコード",
-</span><span class="line output">        "href"=&gt;"http://hamasyou.com/blog/2014/02/14/4873113636/"},
-</span><span class="line output">...</span></code></pre></td>
-</tr></table></div></div>
-        </div>
-
-
-<p><a href="http://pipes.yahoo.com/pipes/" rel="external nofollow" title="Yahoo Pipes">Yahoo Pipes</a> のような有名なサービスもありますが、簡単にウェブサイトをスクレイピングしたい用途であれば <em>kimono</em> はオススメのサービスです。</p>]]>
-    </description>
-    <pubDate>Sat, 15 Feb 2014 19:57:19 +0900</pubDate>
   </item>
   
 </channel>
