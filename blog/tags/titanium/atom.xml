@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Titanium | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/titanium/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-04-02T19:56:30+09:00</updated>
+  <updated>2014-04-02T20:02:51+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -68,22 +68,10 @@ module.exports = exports = {
         return convert(val, Ti.UI.UNIT_PX, currentUnit);
     },
     systemToPX: function(val) {
-        if (currentUnit === Ti.UI.UNIT_DIP) {
-            return this.dpToPX(val);
-        } else if (currentUnit === Ti.UI.UNIT_PX) {
-            return convert(val, Ti.UI.UNIT_PX, Ti.UI.UNIT_PX);
-        } else {
-            return convert(val, '', Ti.UI.UNIT_PX);
-        }
+        return convert(val, currentUnit, Ti.UI.UNIT_PX);
     },
     systemToDP: function(val) {
-        if (currentUnit === Ti.UI.UNIT_DIP) {
-            return convert(val, Ti.UI.UNIT_DIP, Ti.UI.UNIT_DIP);
-        } else if (currentUnit === Ti.UI.UNIT_PX) {
-            return this.pxToDP(val);
-        } else {
-            return convert(val, '', Ti.UI.UNIT_DIP);
-        }
+        return convert(val, currentUnit, Ti.UI.UNIT_DIP);
     },
     convertUnitToPX: function(valStr) {
         return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_PX);
