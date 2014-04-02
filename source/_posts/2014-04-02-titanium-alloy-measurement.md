@@ -78,10 +78,13 @@ module.exports = exports = {
         }
     },
     convertToPX: function(valStr) {
-      return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_PX);
+        return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_PX);
     },
     convertToDP: function(valStr) {
-      return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_DIP);
+        return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_DIP);
+    },
+    convertToSystem: function(valStr) {
+        return Ti.UI.convertUnits(valStr, currentUnit);
     },
     pointPXToDP: function(pt) {
         return {x: this.pxToDP(pt.x), y: this.pxToDP(pt.y)};
@@ -110,6 +113,7 @@ console.log('systemToPX: ' + unit.systemToPX(130));
 console.log('systemToDP: ' + unit.systemToDP(130));
 console.log('convertToPX: ' + unit.convertToPX('130dp'));
 console.log('convertToDP: ' + unit.convertToDP('130dp'));
+console.log('convertToSystem: ' + unit.convertToSystem('130dp'));
 console.log('-----');
 ```
 
@@ -125,6 +129,7 @@ console.log('-----');
 [INFO] :   systemToDP: 130
 [INFO] :   convertToPX: 260
 [INFO] :   convertToDP: 130
+[INFO] :   convertToSystem: 130
 [INFO] :   -----
 
 [INFO] :   ----- android -----
@@ -141,5 +146,6 @@ console.log('-----');
 [INFO] :   systemToDP: 65
 [INFO] :   convertToPX: 260
 [INFO] :   convertToDP: 130
+[INFO] :   convertToSystem: 260
 [INFO] :   -----
 {% endterminal %}
