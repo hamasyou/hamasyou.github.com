@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-04-02T20:02:51+09:00</updated>
+  <updated>2014-04-04T18:52:37+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Railsが用意したasset precompile済みのgzファイルを返すapache confの設定]]></title>
+    <link href="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"/>
+    <updated>2014-04-04T18:45:30+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip</id>
+    <content type="html"><![CDATA[<p>Passenger で Rails アプリを動かすときに、<code>assets:precompile</code> 済みの <code>gz</code> ファイルを返すようにする apache の設定方法例のメモ。</p>
+
+<p>いただき物です。</p>
+
+<pre><code class="apache">&lt;VirtualHost *:80&gt;
+   # ...
+   &lt;LocationMatch "^/assets/.*$"&gt;
+     # Some browsers still send conditional-GET requests if there's a
+     # Last-Modified header or an ETag header even if they haven't
+     # reached the expiry date sent in the Expires header.
+     #Header unset Last-Modified
+     #Header unset ETag
+     FileETag Size
+     # RFC says only cache for 1 year
+     ExpiresActive On
+     ExpiresDefault "access plus 1 year"
+
+     SetEnv no-gzip
+
+     RewriteEngine on
+     #RewriteLog /tmp/rewrite.log
+     #RewriteLogLevel 15
+     # Make sure the browser supports gzip encoding before we send it
+     RewriteCond %{HTTP:Accept-Encoding} \b(x-)?gzip\b
+     RewriteCond %{REQUEST_FILENAME}.gz -f
+     RewriteRule ^(.+) \$1.gz [L]
+   &lt;/LocationMatch&gt;
+
+   &lt;FilesMatch \.css\.gz$&gt;
+       ForceType text/css
+       Header set Content-Encoding gzip
+   &lt;/FilesMatch&gt;
+
+   &lt;FilesMatch \.js\.gz$&gt;
+       ForceType text/javascript
+       Header set Content-Encoding gzip
+   &lt;/FilesMatch&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Webサービスをスタートアップする10の手順（Rails編）]]></title>
@@ -575,29 +622,6 @@ end
 <p><blockquote><p>Other modes for parallelism include:</p></p><p><pre><code class="ruby">    # Capistrano 3.0.x<br/>    on :all, in: :groups, max: 3, wait: 5 do<br/>      # Take all servers, in groups of three which execute in parallel<br/>      # wait five seconds between groups of servers.<br/>      # This is perfect for rolling restarts<br/>    end</p><p>    on :all, in: :sequence, wait: 15 do<br/>      # This takes all servers, in sequence and waits 15 seconds between<br/>      # each server, this might be perfect if you are afraid about<br/>      # overloading a shared resource, or want to defer the asset compilation<br/>      # over your cluster owing to worries about load<br/>    end</p><p>    on :all, in: :parallel do<br/>      # This will simply try and execute the commands contained within<br/>      # the block in parallel on all servers. This might be perfect for kicking<br/>      # off something like a Git checkout or similar.<br/>    end<br/></code></pre></p><p><p></p><footer><strong>Capistrano Version 3 Release Announcement</strong> <cite><a href='http://capistranorb.com/2013/06/01/release-announcement.html'>capistranorb.com/2013/06/01/&hellip;</a></cite></footer></blockquote></p>
 
 <p>Capistrano2 と互換性がないですが、新規プロジェクトには使えるんじゃないかと。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RailsのI18n.localizeでnilもゆるすようにすると捗る]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/"/>
-    <updated>2014-02-19T22:30:13+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/19/rails-i18n-localize</id>
-    <content type="html"><![CDATA[<p>Rails の <code>I18n.localize</code> は <code>nil</code> を渡すと例外が発生します。でも、コレだといろいろ使いづらいのでいつも</p>
-
-<pre><code class="ruby config/initializers/relaxed_i18n.rb">module I18n
-  class &lt;&lt; self
-    alias_method :original_localize, :localize
-    def localize(object, options = {})
-      object.present? ? original_localize(object, options) : ''
-    end
-  end
-end
-</code></pre>
-
-<p>こんな感じのコードを <code>config/initializers</code> の下において使っています。<code>nil</code> を渡すと空文字を返します。</p>
-
-<p>今のところコレで問題は起きていないのでオススメしてもいいかなと。</p>
 ]]></content>
   </entry>
   

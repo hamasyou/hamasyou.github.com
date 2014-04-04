@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: asset | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/asset/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-04-04T18:52:37+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Railsが用意したasset precompile済みのgzファイルを返すapache confの設定]]></title>
+    <link href="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"/>
+    <updated>2014-04-04T18:45:30+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip</id>
+    <content type="html"><![CDATA[<p>Passenger で Rails アプリを動かすときに、<code>assets:precompile</code> 済みの <code>gz</code> ファイルを返すようにする apache の設定方法例のメモ。</p>
+
+<p>いただき物です。</p>
+
+<pre><code class="apache">&lt;VirtualHost *:80&gt;
+   # ...
+   &lt;LocationMatch "^/assets/.*$"&gt;
+     # Some browsers still send conditional-GET requests if there's a
+     # Last-Modified header or an ETag header even if they haven't
+     # reached the expiry date sent in the Expires header.
+     #Header unset Last-Modified
+     #Header unset ETag
+     FileETag Size
+     # RFC says only cache for 1 year
+     ExpiresActive On
+     ExpiresDefault "access plus 1 year"
+
+     SetEnv no-gzip
+
+     RewriteEngine on
+     #RewriteLog /tmp/rewrite.log
+     #RewriteLogLevel 15
+     # Make sure the browser supports gzip encoding before we send it
+     RewriteCond %{HTTP:Accept-Encoding} \b(x-)?gzip\b
+     RewriteCond %{REQUEST_FILENAME}.gz -f
+     RewriteRule ^(.+) \$1.gz [L]
+   &lt;/LocationMatch&gt;
+
+   &lt;FilesMatch \.css\.gz$&gt;
+       ForceType text/css
+       Header set Content-Encoding gzip
+   &lt;/FilesMatch&gt;
+
+   &lt;FilesMatch \.js\.gz$&gt;
+       ForceType text/javascript
+       Header set Content-Encoding gzip
+   &lt;/FilesMatch&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

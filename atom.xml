@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-04-02T20:02:51+09:00</updated>
+  <updated>2014-04-04T18:52:37+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,89 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Railsが用意したasset precompile済みのgzファイルを返すapache confの設定]]></title>
+    <link href="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"/>
+    <updated>2014-04-04T18:45:30+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/</id>
+    <content type="html"><![CDATA[<p>Passenger で Rails アプリを動かすときに、<code>assets:precompile</code> 済みの <code>gz</code> ファイルを返すようにする apache の設定方法例のメモ。</p>
+
+<p>いただき物です。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+</pre></td>
+<td class="code"><pre><code class="apache"><span class="line"><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+</span><span class="line">   <span class="c"># ...</span>
+</span><span class="line">   <span class="nt">&lt;LocationMatch</span> <span class="s">"^/assets/.*$"</span><span class="nt">&gt;</span>
+</span><span class="line">     <span class="c"># Some browsers still send conditional-GET requests if there's a</span>
+</span><span class="line">     <span class="c"># Last-Modified header or an ETag header even if they haven't</span>
+</span><span class="line">     <span class="c"># reached the expiry date sent in the Expires header.</span>
+</span><span class="line">     <span class="c">#Header unset Last-Modified</span>
+</span><span class="line">     <span class="c">#Header unset ETag</span>
+</span><span class="line">     <span class="nb">FileETag</span> Size
+</span><span class="line">     <span class="c"># RFC says only cache for 1 year</span>
+</span><span class="line">     <span class="nb">ExpiresActive</span> <span class="k">On</span>
+</span><span class="line">     <span class="nb">ExpiresDefault</span> <span class="s2">"access plus 1 year"</span>
+</span><span class="line">
+</span><span class="line">     <span class="nb">SetEnv</span> no-gzip
+</span><span class="line">
+</span><span class="line">     <span class="nb">RewriteEngine</span> <span class="k">on</span>
+</span><span class="line">     <span class="c">#RewriteLog /tmp/rewrite.log</span>
+</span><span class="line">     <span class="c">#RewriteLogLevel 15</span>
+</span><span class="line">     <span class="c"># Make sure the browser supports gzip encoding before we send it</span>
+</span><span class="line">     <span class="nb">RewriteCond</span> %{HTTP:Accept-Encoding} \b(x-)?gzip\b
+</span><span class="line">     <span class="nb">RewriteCond</span> %{REQUEST_FILENAME}.gz -f
+</span><span class="line">     <span class="nb">RewriteRule</span> ^(.+) \$1.gz [L]
+</span><span class="line">   <span class="nt">&lt;/LocationMatch&gt;</span>
+</span><span class="line">
+</span><span class="line">   <span class="nt">&lt;FilesMatch</span> <span class="s">\.css\.gz$</span><span class="nt">&gt;</span>
+</span><span class="line">       <span class="nb">ForceType</span> text/css
+</span><span class="line">       <span class="nb">Header</span> set Content-Encoding gzip
+</span><span class="line">   <span class="nt">&lt;/FilesMatch&gt;</span>
+</span><span class="line">
+</span><span class="line">   <span class="nt">&lt;FilesMatch</span> <span class="s">\.js\.gz$</span><span class="nt">&gt;</span>
+</span><span class="line">       <span class="nb">ForceType</span> text/javascript
+</span><span class="line">       <span class="nb">Header</span> set Content-Encoding gzip
+</span><span class="line">   <span class="nt">&lt;/FilesMatch&gt;</span>
+</span><span class="line"><span class="nt">&lt;/VirtualHost&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Titanium] Alloyのmeasurementの実装がイケてなかったので再実装した]]></title>
@@ -4352,24 +4435,6 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 
 
 <p>RequestTimeout が出てしまいました。。ちなみに、<code>GET</code> リクエストの方はうまく動きます。<code>open-uri-post</code> と <code>rest-client</code> は一緒に使わないほうがいいですね。</p>]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[リア充爆発しろで本当に爆発したシーン]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/16/sm20183528/"/>
-    <updated>2014-02-16T01:52:46+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/16/sm20183528/</id>
-    <content type="html"><![CDATA[<p><strong class="text-danger">リア充爆発しろ</strong> で、爆発した瞬間を初めて見た。。泣いた。</p>
-
-<!-- more -->
-
-
-<p>ガンダム00 の「ライルvsアニュー 命がけの恋」より。リア充爆発しました。セッちゃん。。。</p>
-
-<script type="text/javascript" src="http://ext.nicovideo.jp/thumb_watch/sm20183528?w=698"></script><p></p>
-<noscript><a href="http://www.nicovideo.jp/watch/sm20183528" rel="external nofollow" title="【ニコニコ動画】ガンダム00　ライルvsアニュー　命がけの恋">【ニコニコ動画】ガンダム00　ライルvsアニュー　命がけの恋</a></noscript>
-
-<iframe width="312" height="176" src="http://ext.nicovideo.jp/thumb/sm20183528" scrolling="no" style="border:solid 1px #CCC;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm20183528" rel="external nofollow" title="【ニコニコ動画】ガンダム00　ライルvsアニュー　命がけの恋">【ニコニコ動画】ガンダム00　ライルvsアニュー　命がけの恋</a></iframe>]]></content>
   </entry>
   
 </feed>
