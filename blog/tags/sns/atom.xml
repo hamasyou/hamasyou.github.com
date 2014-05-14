@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: SNS | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/sns/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-05-14T14:31:29+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法]]></title>
+    <link href="http://hamasyou.com/blog/2014/05/14/titanium-sns-oauth-app-scheme/"/>
+    <updated>2014-05-14T13:39:48+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/05/14/titanium-sns-oauth-app-scheme</id>
+    <content type="html"><![CDATA[<p><strong>Titanium Alloy</strong> で SNS 認証 (<em>OAuth</em>) をアプリ側で行う方法のまとめです。</p>
+
+<p>iPhone や Android だと、アプリスキーマ （例: snsnet://twitter）を使ってブラウザのリンクからアプリを立ち上げることができます。
+この仕組を使って、アプリ内でブラウザを立ち上げるのではなく、アプリのブラウザを使って <strong>OAuth</strong> 認証を行い、アプリに戻ってくるということができるようになります。</p>
+
+<p>ここで紹介するやり方は、iPhone と Android の両方で使える方法ですが、一部ブラウザ側の画面を閉じるためにサーバサイドが必要になります。
+また、Facebook は認証後の戻りURL (redirect_url) にアプリスキーマを利用することができませんので、Facebook 連携を行うのもサーバサイドが必要です。</p>
+
+<p>まぁ、Facebook に関しては、Titanium にすでにモジュールが組み込まれていて、簡単に認証を行えるようになっているので、わざわざアプリのブラウザを使って認証を行う必要もないんですけど。。</p>
+
+<!-- more -->
+
+
+<p>ところどころ、処理を端折っていたりしますが、雰囲気だけ掴んでください。<code>OAuth</code> オブジェクトは <em>oauth_adapter</em> とかで検索するとでてくるライブラリを使っています。</p>
+
+<p>サンプルのプロジェクトフォルダは <a href="/assets/sample/snsnet.zip">snsnet.zip</a> にあります。これだけでは動きませんが雰囲気をつかむように利用してください。</p>
+
+<p><a href="http://wada811.blogspot.com/2014/01/android-twitter-oauth.html">参考: [Android]TwitterのOAuth認証を行う</a></p>
+
+<h2>1. アプリのブラウザを開く</h2>
+
+<p>SNS 認証を行うトリガーとなる処理で、まずはアプリのブラウザを開きます。アプリのブラウザを開くには <code>Ti.Platform.openURL</code> を使います。</p>
+
+<pre><code class="javascript /app/controllers/index.js">function onFacebookLogin(e) {
+    var url = OAuth.addToURL('https://www.facebook.com/dialog/oauth', {
+        client_id: Alloy.CFG.facebookConsumerKey,
+        redirect_uri: 'https://example.com/fbredirect',
+        scope: Alloy.CFG.facebookPermissions,
+        auth_type: 'reauthenticate'
+    });
+    Ti.Platform.openURL(url);
+}
+
+function onTwitterLogin(e) {
+    var oauth = new OAuth({
+        consumerKey: Alloy.CFG.twitterConsumerKey,
+        consumerSecret: Alloy.CFG.twitterConsumerSecret
+    });
+    oauth.get('https://api.twitter.com/oauth/request_token', {
+        oauth_callback: 'https://example.com/twredirect'
+    }, function(e) {
+        Ti.Platform.openURL(String.format('%s?%s&amp;force_login=false', 'https://api.twitter.com/oauth/authorize', this.responseText));
+    });
+}
+
+$.index.open();
+</code></pre>
+
+<p>ブラウザを開くときに、<em>twitter</em> の場合は <code>oauth_callback</code> で OAuth の戻りの URL を指定します。<code>twredirect</code> の処理は、サンプルプロジェクトの <code>/server</code> ディレクトリにあります。</p>
+
+<h3>OAuth の callback URL をサーバ側で受ける理由</h3>
+
+<p>callback URL にアプリスキーマをつけて、<code>snsnet://twitter</code> の URL に戻ってくるようにすれば、サーバサイドの処理は不要になりますが、これだとアプリのブラウザに認証画面が残ってしまいます。</p>
+
+<p>気にしないのであればいいですが、ブラウザで認証が終わったあとに閉じるように、JavaScript で画面を閉じるようにした画面をサーバサイドから返すようにして、そのなかで iframe を使ってアプリスキーマを呼び出しています。</p>
+
+<h2>2. 認証後の callback をアプリで受け取る</h2>
+
+<p>OAuth 後の callback URL にアプリスキーマを設定しておけば OAuth 後にアプリが開かれます。そこでは次のような処理を行います。</p>
+
+<pre><code class="javascript /app/alloy.js">Ti.App.addEventListener('resumed', function(e) {
+    var launchOptions = (OS_IOS) ? Ti.App.getArguments() : (e &amp;&amp; e.args),
+        host, queryString, parameters, oauth;
+
+    if (launchOptions &amp;&amp; launchOptions.url) {
+        host = launchOptions.url.split('?')[0];
+        queryString = launchOptions.url.split('?')[1];
+
+        if (queryString) {
+            parameters = OAuth.decodeForm(queryString);
+            if (host === 'snsnet://twitter') {
+                oauth = new OAuth({
+                    consumerKey: Alloy.CFG.twitterConsumerKey,
+                    consumerSecret: Alloy.CFG.twitterConsumerSecret
+                });
+                oauth.post('https://api.twitter.com/oauth/access_token', parameters, function(e) {
+                    // access_token 取得後の処理
+                });
+
+            } else if (host === 'snsnet://facebook') {
+                // Facebook callback
+                var url = Alloy.Globals.RestClient.addToURL('https://graph.facebook.com/oauth/access_token', _.extend(OAuth.getParameterMap(parameters), {
+                    client_id: Alloy.CFG.facebookConsumerKey,
+                    client_secret: Alloy.CFG.facebookConsumerSecret,
+                    redirect_uri: Alloy.CFG.facebookCallbackURL
+                }));
+                Alloy.Globals.RestClient.get(url, function(e) {
+                    // access_token 取得後の処理
+                });
+            }
+        }
+    }
+});
+
+// For SNS Activity
+if (OS_ANDROID) {
+    Ti.Android.currentActivity.addEventListener('app:resume', function(e) {
+        Ti.API.debug('***** app:resume:');
+        Ti.App.fireEvent('resumed', {
+            args: {
+                url: e.data
+            }
+        });
+    });
+}
+</code></pre>
+
+<p>アプリスキーマで戻ってきたときには、<code>resumed</code> が呼び出されますのでここで <code>access_token</code> を受け取るようにします。</p>
+
+<h3>Android の場合は、画面の途中で SNS 認証が入ると、元の画面にもどれない</h3>
+
+<p>Titanium のアーキテクチャの仕様上、Android で HeavyWeight Window で画面を複数立ち上げていると、OAuth 後に途中の画面に戻ってくることができません。</p>
+
+<p>そこで、OAuth のコールバックを受け取って終了するだけの Activity を作ってコレを利用します。</p>
+
+<pre><code class="java /platform/android/src/com/hamasyou/SnsAuthActivity.java">package com.hamasyou;
+
+import  android.app.Activity;
+import  android.os.Bundle;
+import  android.content.Intent;
+import  android.util.Log;
+import  android.net.Uri;
+
+import org.appcelerator.titanium.TiApplication;
+import org.appcelerator.titanium.TiRootActivity;
+import org.appcelerator.titanium.proxy.ActivityProxy;
+import org.appcelerator.kroll.KrollDict;
+
+public class SnsAuthActivity extends Activity {
+
+    private static final String TAG = "SnsAuthActivity";
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        Log.d(TAG, "********* onCreate");
+
+        Intent currentIntent = getIntent();
+        Uri uri = currentIntent.getData();
+        Log.d(TAG, "***** uri:" + uri);
+
+        TiRootActivity app = (TiRootActivity) TiApplication.getAppRootOrCurrentActivity();
+        ActivityProxy proxy = app.getActivityProxy();
+        Log.d(TAG, "**** app:" + app);
+        Log.d(TAG, "**** proxy:" + proxy);
+
+        KrollDict event = new KrollDict();
+        event.put("data", uri.toString());
+        proxy.fireEvent("app:resume", event);
+
+        finish();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent){
+        super.onNewIntent(intent);
+        Log.d(TAG, "********* onNewIntent");
+
+        finish();
+    }
+}
+</code></pre>
+
+<p>この Activity を <code>tiapp.xml</code> で設定してアプリスキーマの起動をここで受け取るようにします。</p>
+
+<pre><code class="xml tiapp.xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ti:app xmlns:ti="http://ti.appcelerator.org"&gt;
+    &lt;id&gt;com.hamasyou&lt;/id&gt;
+    &lt;name&gt;snsnet&lt;/name&gt;
+    &lt;version&gt;1.0&lt;/version&gt;
+    &lt;publisher&gt;hamasyou&lt;/publisher&gt;
+    &lt;url&gt;http://&lt;/url&gt;
+    &lt;description&gt;not specified&lt;/description&gt;
+    &lt;copyright&gt;2014 by hamasyou&lt;/copyright&gt;
+    &lt;icon&gt;appicon.png&lt;/icon&gt;
+    &lt;fullscreen&gt;false&lt;/fullscreen&gt;
+    &lt;navbar-hidden&gt;false&lt;/navbar-hidden&gt;
+    &lt;analytics&gt;true&lt;/analytics&gt;
+    &lt;guid&gt;749b688a-dc5e-4308-badd-d1013baaf13e&lt;/guid&gt;
+    &lt;property name="ti.ui.defaultunit" type="string"&gt;dp&lt;/property&gt;
+    &lt;property name="ti.android.bug2373.finishfalseroot" type="bool"&gt;true&lt;/property&gt;
+    &lt;ios&gt;
+        &lt;plist&gt;
+            &lt;dict&gt;
+                &lt;key&gt;UISupportedInterfaceOrientations~iphone&lt;/key&gt;
+                &lt;array&gt;
+                    &lt;string&gt;UIInterfaceOrientationPortrait&lt;/string&gt;
+                &lt;/array&gt;
+                &lt;key&gt;UISupportedInterfaceOrientations~ipad&lt;/key&gt;
+                &lt;array&gt;
+                    &lt;string&gt;UIInterfaceOrientationPortrait&lt;/string&gt;
+                    &lt;string&gt;UIInterfaceOrientationPortraitUpsideDown&lt;/string&gt;
+                    &lt;string&gt;UIInterfaceOrientationLandscapeLeft&lt;/string&gt;
+                    &lt;string&gt;UIInterfaceOrientationLandscapeRight&lt;/string&gt;
+                &lt;/array&gt;
+                &lt;key&gt;UIRequiresPersistentWiFi&lt;/key&gt;
+                &lt;false/&gt;
+                &lt;key&gt;UIPrerenderedIcon&lt;/key&gt;
+                &lt;false/&gt;
+                &lt;key&gt;UIStatusBarHidden&lt;/key&gt;
+                &lt;false/&gt;
+                &lt;key&gt;UIStatusBarStyle&lt;/key&gt;
+                &lt;string&gt;UIStatusBarStyleDefault&lt;/string&gt;
+            &lt;/dict&gt;
+        &lt;/plist&gt;
+    &lt;/ios&gt;
+    &lt;android xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+        &lt;manifest&gt;
+          &lt;application android:icon="@drawable/appicon" android:label="snsnet" android:name="SnsnetApplication" android:debuggable="false"&gt;
+            &lt;activity android:name=".SnsnetActivity" android:label="@string/app_name" android:theme="@style/Theme.Titanium" android:configChanges="keyboardHidden|orientation|screenSize"&gt;
+              &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN"/&gt;
+                &lt;category android:name="android.intent.category.LAUNCHER"/&gt;
+              &lt;/intent-filter&gt;
+            &lt;/activity&gt;
+            &lt;!-- SNS 連携用の Activity を作って処理させる --&gt;
+            &lt;!--  http://wada811.blogspot.com/2014/01/android-twitter-oauth.html --&gt;
+            &lt;activity android:launchMode="singleTask" android:name=".SnsAuthActivity"&gt;
+                &lt;intent-filter&gt;
+                    &lt;action android:name="android.intent.action.VIEW"/&gt;
+                    &lt;category android:name="android.intent.category.DEFAULT"/&gt;
+                    &lt;category android:name="android.intent.category.BROWSABLE"/&gt;
+                    &lt;data android:scheme="snsnet"/&gt;
+                &lt;/intent-filter&gt;
+            &lt;/activity&gt;
+          &lt;/application&gt;
+      &lt;/manifest&gt;
+    &lt;/android&gt;
+    &lt;mobileweb&gt;
+        &lt;precache/&gt;
+        &lt;splash&gt;
+            &lt;enabled&gt;true&lt;/enabled&gt;
+            &lt;inline-css-images&gt;true&lt;/inline-css-images&gt;
+        &lt;/splash&gt;
+        &lt;theme&gt;default&lt;/theme&gt;
+    &lt;/mobileweb&gt;
+    &lt;modules/&gt;
+    &lt;deployment-targets&gt;
+        &lt;target device="android"&gt;true&lt;/target&gt;
+        &lt;target device="blackberry"&gt;false&lt;/target&gt;
+        &lt;target device="ipad"&gt;true&lt;/target&gt;
+        &lt;target device="iphone"&gt;true&lt;/target&gt;
+        &lt;target device="mobileweb"&gt;false&lt;/target&gt;
+        &lt;target device="tizen"&gt;false&lt;/target&gt;
+    &lt;/deployment-targets&gt;
+    &lt;sdk-version&gt;3.2.3.GA&lt;/sdk-version&gt;
+    &lt;plugins&gt;
+        &lt;plugin version="1.0"&gt;ti.alloy&lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/ti:app&gt;
+</code></pre>
+
+<p><code>SnsAuthActivity</code> で OAuth のコールバックを受け取って、<code>Ti.Android.currentActivity</code> の <code>app:resume</code> イベントを fire して、元のアプリに戻しています。
+これで、元の画面を残したまま OAuth の処理を行うことができます。</p>
+
+<p>ちょっと説明が不足している気もしますが、サンプルプロジェクトでなんとなく雰囲気を感じ取っていただければ。</p>
+]]></content>
+  </entry>
+  
+</feed>

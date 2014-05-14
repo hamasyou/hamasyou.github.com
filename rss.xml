@@ -2,12 +2,492 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Fri, 04 Apr 2014 18:52:37 +0900</pubDate>
+  <pubDate>Wed, 14 May 2014 14:31:29 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
   <atom:link href="http://hamasyou.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+  
+  <item>
+    <title><![CDATA[Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法]]></title>
+    <link>http://hamasyou.com/blog/2014/05/14/titanium-sns-oauth-app-scheme/</link>
+    <guid>http://hamasyou.com/blog/2014/05/14/titanium-sns-oauth-app-scheme/</guid>
+    <description>
+      <![CDATA[<p><strong class="text-danger">Titanium Alloy</strong> で SNS 認証 (<em>OAuth</em>) をアプリ側で行う方法のまとめです。</p>
+
+<p>iPhone や Android だと、アプリスキーマ （例: snsnet://twitter）を使ってブラウザのリンクからアプリを立ち上げることができます。
+この仕組を使って、アプリ内でブラウザを立ち上げるのではなく、アプリのブラウザを使って <strong class="text-danger">OAuth</strong> 認証を行い、アプリに戻ってくるということができるようになります。</p>
+
+<p>ここで紹介するやり方は、iPhone と Android の両方で使える方法ですが、一部ブラウザ側の画面を閉じるためにサーバサイドが必要になります。
+また、Facebook は認証後の戻りURL (redirect_url) にアプリスキーマを利用することができませんので、Facebook 連携を行うのもサーバサイドが必要です。</p>
+
+<p>まぁ、Facebook に関しては、Titanium にすでにモジュールが組み込まれていて、簡単に認証を行えるようになっているので、わざわざアプリのブラウザを使って認証を行う必要もないんですけど。。</p>
+
+<!-- more -->
+
+
+<p>ところどころ、処理を端折っていたりしますが、雰囲気だけ掴んでください。<code>OAuth</code> オブジェクトは <em>oauth_adapter</em> とかで検索するとでてくるライブラリを使っています。</p>
+
+<p>サンプルのプロジェクトフォルダは <a href="http://hamasyou.com/assets/sample/snsnet.zip">snsnet.zip</a> にあります。これだけでは動きませんが雰囲気をつかむように利用してください。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://wada811.blogspot.com/2014/01/android-twitter-oauth.html" rel="external nofollow" title="参考: [Android]TwitterのOAuth認証を行う">参考: [Android]TwitterのOAuth認証を行う</a></p>
+
+<h2>1. アプリのブラウザを開く</h2>
+
+<p>SNS 認証を行うトリガーとなる処理で、まずはアプリのブラウザを開きます。アプリのブラウザを開くには <code>Ti.Platform.openURL</code> を使います。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/app/controllers/index.js</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">onFacebookLogin</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">OAuth</span><span class="p">.</span><span class="nx">addToURL</span><span class="p">(</span><span class="s1">'https://www.facebook.com/dialog/oauth'</span><span class="p">,</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">client_id</span><span class="o">:</span> <span class="nx">Alloy</span><span class="p">.</span><span class="nx">CFG</span><span class="p">.</span><span class="nx">facebookConsumerKey</span><span class="p">,</span>
+</span><span class="line">        <span class="nx">redirect_uri</span><span class="o">:</span> <span class="s1">'https://example.com/fbredirect'</span><span class="p">,</span>
+</span><span class="line">        <span class="nx">scope</span><span class="o">:</span> <span class="nx">Alloy</span><span class="p">.</span><span class="nx">CFG</span><span class="p">.</span><span class="nx">facebookPermissions</span><span class="p">,</span>
+</span><span class="line">        <span class="nx">auth_type</span><span class="o">:</span> <span class="s1">'reauthenticate'</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">    <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">openURL</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">onTwitterLogin</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">oauth</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OAuth</span><span class="p">({</span>
+</span><span class="line">        <span class="nx">consumerKey</span><span class="o">:</span> <span class="nx">Alloy</span><span class="p">.</span><span class="nx">CFG</span><span class="p">.</span><span class="nx">twitterConsumerKey</span><span class="p">,</span>
+</span><span class="line">        <span class="nx">consumerSecret</span><span class="o">:</span> <span class="nx">Alloy</span><span class="p">.</span><span class="nx">CFG</span><span class="p">.</span><span class="nx">twitterConsumerSecret</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">    <span class="nx">oauth</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'https://api.twitter.com/oauth/request_token'</span><span class="p">,</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">oauth_callback</span><span class="o">:</span> <span class="s1">'https://example.com/twredirect'</span>
+</span><span class="line">    <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">openURL</span><span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="s1">'%s?%s&amp;force_login=false'</span><span class="p">,</span> <span class="s1">'https://api.twitter.com/oauth/authorize'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">));</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">$</span><span class="p">.</span><span class="nx">index</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>ブラウザを開くときに、<em>twitter</em> の場合は <code>oauth_callback</code> で OAuth の戻りの URL を指定します。<code>twredirect</code> の処理は、サンプルプロジェクトの <code>/server</code> ディレクトリにあります。</p>
+
+<h3>OAuth の callback URL をサーバ側で受ける理由</h3>
+
+<p>callback URL にアプリスキーマをつけて、<code>snsnet://twitter</code> の URL に戻ってくるようにすれば、サーバサイドの処理は不要になりますが、これだとアプリのブラウザに認証画面が残ってしまいます。</p>
+
+<p>気にしないのであればいいですが、ブラウザで認証が終わったあとに閉じるように、JavaScript で画面を閉じるようにした画面をサーバサイドから返すようにして、そのなかで iframe を使ってアプリスキーマを呼び出しています。</p>
+
+<h2>2. 認証後の callback をアプリで受け取る</h2>
+
+<p>OAuth 後の callback URL にアプリスキーマを設定しておけば OAuth 後にアプリが開かれます。そこでは次のような処理を行います。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/app/alloy.js</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">Ti</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'resumed'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">launchOptions</span> <span class="o">=</span> <span class="p">(</span><span class="nx">OS_IOS</span><span class="p">)</span> <span class="o">?</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">getArguments</span><span class="p">()</span> <span class="o">:</span> <span class="p">(</span><span class="nx">e</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">args</span><span class="p">),</span>
+</span><span class="line">        <span class="nx">host</span><span class="p">,</span> <span class="nx">queryString</span><span class="p">,</span> <span class="nx">parameters</span><span class="p">,</span> <span class="nx">oauth</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="nx">launchOptions</span> <span class="o">&amp;&amp;</span> <span class="nx">launchOptions</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">host</span> <span class="o">=</span> <span class="nx">launchOptions</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">'?'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class="line">        <span class="nx">queryString</span> <span class="o">=</span> <span class="nx">launchOptions</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">'?'</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">if</span> <span class="p">(</span><span class="nx">queryString</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">            <span class="nx">parameters</span> <span class="o">=</span> <span class="nx">OAuth</span><span class="p">.</span><span class="nx">decodeForm</span><span class="p">(</span><span class="nx">queryString</span><span class="p">);</span>
+</span><span class="line">            <span class="k">if</span> <span class="p">(</span><span class="nx">host</span> <span class="o">===</span> <span class="s1">'snsnet://twitter'</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">                <span class="nx">oauth</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OAuth</span><span class="p">({</span>
+</span><span class="line">                    <span class="nx">consumerKey</span><span class="o">:</span> <span class="nx">Alloy</span><span class="p">.</span><span class="nx">CFG</span><span class="p">.</span><span class="nx">twitterConsumerKey</span><span class="p">,</span>
+</span><span class="line">                    <span class="nx">consumerSecret</span><span class="o">:</span> <span class="nx">Alloy</span><span class="p">.</span><span class="nx">CFG</span><span class="p">.</span><span class="nx">twitterConsumerSecret</span>
+</span><span class="line">                <span class="p">});</span>
+</span><span class="line">                <span class="nx">oauth</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'https://api.twitter.com/oauth/access_token'</span><span class="p">,</span> <span class="nx">parameters</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">                    <span class="c1">// access_token 取得後の処理</span>
+</span><span class="line">                <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">host</span> <span class="o">===</span> <span class="s1">'snsnet://facebook'</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">                <span class="c1">// Facebook callback</span>
+</span><span class="line">                <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">Alloy</span><span class="p">.</span><span class="nx">Globals</span><span class="p">.</span><span class="nx">RestClient</span><span class="p">.</span><span class="nx">addToURL</span><span class="p">(</span><span class="s1">'https://graph.facebook.com/oauth/access_token'</span><span class="p">,</span> <span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">OAuth</span><span class="p">.</span><span class="nx">getParameterMap</span><span class="p">(</span><span class="nx">parameters</span><span class="p">),</span> <span class="p">{</span>
+</span><span class="line">                    <span class="nx">client_id</span><span class="o">:</span> <span class="nx">Alloy</span><span class="p">.</span><span class="nx">CFG</span><span class="p">.</span><span class="nx">facebookConsumerKey</span><span class="p">,</span>
+</span><span class="line">                    <span class="nx">client_secret</span><span class="o">:</span> <span class="nx">Alloy</span><span class="p">.</span><span class="nx">CFG</span><span class="p">.</span><span class="nx">facebookConsumerSecret</span><span class="p">,</span>
+</span><span class="line">                    <span class="nx">redirect_uri</span><span class="o">:</span> <span class="nx">Alloy</span><span class="p">.</span><span class="nx">CFG</span><span class="p">.</span><span class="nx">facebookCallbackURL</span>
+</span><span class="line">                <span class="p">}));</span>
+</span><span class="line">                <span class="nx">Alloy</span><span class="p">.</span><span class="nx">Globals</span><span class="p">.</span><span class="nx">RestClient</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">                    <span class="c1">// access_token 取得後の処理</span>
+</span><span class="line">                <span class="p">});</span>
+</span><span class="line">            <span class="p">}</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// For SNS Activity</span>
+</span><span class="line"><span class="k">if</span> <span class="p">(</span><span class="nx">OS_ANDROID</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">Ti</span><span class="p">.</span><span class="nx">Android</span><span class="p">.</span><span class="nx">currentActivity</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'app:resume'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">'***** app:resume:'</span><span class="p">);</span>
+</span><span class="line">        <span class="nx">Ti</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">fireEvent</span><span class="p">(</span><span class="s1">'resumed'</span><span class="p">,</span> <span class="p">{</span>
+</span><span class="line">            <span class="nx">args</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="line">                <span class="nx">url</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">data</span>
+</span><span class="line">            <span class="p">}</span>
+</span><span class="line">        <span class="p">});</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>アプリスキーマで戻ってきたときには、<code>resumed</code> が呼び出されますのでここで <code>access_token</code> を受け取るようにします。</p>
+
+<h3>Android の場合は、画面の途中で SNS 認証が入ると、元の画面にもどれない</h3>
+
+<p>Titanium のアーキテクチャの仕様上、Android で HeavyWeight Window で画面を複数立ち上げていると、OAuth 後に途中の画面に戻ってくることができません。</p>
+
+<p>そこで、OAuth のコールバックを受け取って終了するだけの Activity を作ってコレを利用します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/platform/android/src/com/hamasyou/SnsAuthActivity.java</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+</pre></td>
+<td class="code"><pre><code class="java"><span class="line"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">hamasyou</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kn">import</span>  <span class="nn">android.app.Activity</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span>  <span class="nn">android.os.Bundle</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span>  <span class="nn">android.content.Intent</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span>  <span class="nn">android.util.Log</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span>  <span class="nn">android.net.Uri</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kn">import</span> <span class="nn">org.appcelerator.titanium.TiApplication</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">org.appcelerator.titanium.TiRootActivity</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">org.appcelerator.titanium.proxy.ActivityProxy</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">org.appcelerator.kroll.KrollDict</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SnsAuthActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TAG</span> <span class="o">=</span> <span class="s">"SnsAuthActivity"</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="nd">@Override</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">){</span>
+</span><span class="line">        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+</span><span class="line">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">"********* onCreate"</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">Intent</span> <span class="n">currentIntent</span> <span class="o">=</span> <span class="n">getIntent</span><span class="o">();</span>
+</span><span class="line">        <span class="n">Uri</span> <span class="n">uri</span> <span class="o">=</span> <span class="n">currentIntent</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+</span><span class="line">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">"***** uri:"</span> <span class="o">+</span> <span class="n">uri</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">TiRootActivity</span> <span class="n">app</span> <span class="o">=</span> <span class="o">(</span><span class="n">TiRootActivity</span><span class="o">)</span> <span class="n">TiApplication</span><span class="o">.</span><span class="na">getAppRootOrCurrentActivity</span><span class="o">();</span>
+</span><span class="line">        <span class="n">ActivityProxy</span> <span class="n">proxy</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="na">getActivityProxy</span><span class="o">();</span>
+</span><span class="line">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">"**** app:"</span> <span class="o">+</span> <span class="n">app</span><span class="o">);</span>
+</span><span class="line">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">"**** proxy:"</span> <span class="o">+</span> <span class="n">proxy</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">KrollDict</span> <span class="n">event</span> <span class="o">=</span> <span class="k">new</span> <span class="n">KrollDict</span><span class="o">();</span>
+</span><span class="line">        <span class="n">event</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"data"</span><span class="o">,</span> <span class="n">uri</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+</span><span class="line">        <span class="n">proxy</span><span class="o">.</span><span class="na">fireEvent</span><span class="o">(</span><span class="s">"app:resume"</span><span class="o">,</span> <span class="n">event</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">finish</span><span class="o">();</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="nd">@Override</span>
+</span><span class="line">    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onNewIntent</span><span class="o">(</span><span class="n">Intent</span> <span class="n">intent</span><span class="o">){</span>
+</span><span class="line">        <span class="kd">super</span><span class="o">.</span><span class="na">onNewIntent</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
+</span><span class="line">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">"********* onNewIntent"</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">finish</span><span class="o">();</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>この Activity を <code>tiapp.xml</code> で設定してアプリスキーマの起動をここで受け取るようにします。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>tiapp.xml</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+<span class="line-number">73</span>
+<span class="line-number">74</span>
+<span class="line-number">75</span>
+<span class="line-number">76</span>
+<span class="line-number">77</span>
+<span class="line-number">78</span>
+<span class="line-number">79</span>
+<span class="line-number">80</span>
+<span class="line-number">81</span>
+<span class="line-number">82</span>
+<span class="line-number">83</span>
+<span class="line-number">84</span>
+<span class="line-number">85</span>
+</pre></td>
+<td class="code"><pre><code class="xml"><span class="line"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+</span><span class="line"><span class="nt">&lt;ti:app</span> <span class="na">xmlns:ti=</span><span class="s">"http://ti.appcelerator.org"</span><span class="nt">&gt;</span>
+</span><span class="line">    <span class="nt">&lt;id&gt;</span>com.hamasyou<span class="nt">&lt;/id&gt;</span>
+</span><span class="line">    <span class="nt">&lt;name&gt;</span>snsnet<span class="nt">&lt;/name&gt;</span>
+</span><span class="line">    <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span>
+</span><span class="line">    <span class="nt">&lt;publisher&gt;</span>hamasyou<span class="nt">&lt;/publisher&gt;</span>
+</span><span class="line">    <span class="nt">&lt;url&gt;</span>http://<span class="nt">&lt;/url&gt;</span>
+</span><span class="line">    <span class="nt">&lt;description&gt;</span>not specified<span class="nt">&lt;/description&gt;</span>
+</span><span class="line">    <span class="nt">&lt;copyright&gt;</span>2014 by hamasyou<span class="nt">&lt;/copyright&gt;</span>
+</span><span class="line">    <span class="nt">&lt;icon&gt;</span>appicon.png<span class="nt">&lt;/icon&gt;</span>
+</span><span class="line">    <span class="nt">&lt;fullscreen&gt;</span>false<span class="nt">&lt;/fullscreen&gt;</span>
+</span><span class="line">    <span class="nt">&lt;navbar-hidden&gt;</span>false<span class="nt">&lt;/navbar-hidden&gt;</span>
+</span><span class="line">    <span class="nt">&lt;analytics&gt;</span>true<span class="nt">&lt;/analytics&gt;</span>
+</span><span class="line">    <span class="nt">&lt;guid&gt;</span>749b688a-dc5e-4308-badd-d1013baaf13e<span class="nt">&lt;/guid&gt;</span>
+</span><span class="line">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"ti.ui.defaultunit"</span> <span class="na">type=</span><span class="s">"string"</span><span class="nt">&gt;</span>dp<span class="nt">&lt;/property&gt;</span>
+</span><span class="line">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"ti.android.bug2373.finishfalseroot"</span> <span class="na">type=</span><span class="s">"bool"</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
+</span><span class="line">    <span class="nt">&lt;ios&gt;</span>
+</span><span class="line">        <span class="nt">&lt;plist&gt;</span>
+</span><span class="line">            <span class="nt">&lt;dict&gt;</span>
+</span><span class="line">                <span class="nt">&lt;key&gt;</span>UISupportedInterfaceOrientations~iphone<span class="nt">&lt;/key&gt;</span>
+</span><span class="line">                <span class="nt">&lt;array&gt;</span>
+</span><span class="line">                    <span class="nt">&lt;string&gt;</span>UIInterfaceOrientationPortrait<span class="nt">&lt;/string&gt;</span>
+</span><span class="line">                <span class="nt">&lt;/array&gt;</span>
+</span><span class="line">                <span class="nt">&lt;key&gt;</span>UISupportedInterfaceOrientations~ipad<span class="nt">&lt;/key&gt;</span>
+</span><span class="line">                <span class="nt">&lt;array&gt;</span>
+</span><span class="line">                    <span class="nt">&lt;string&gt;</span>UIInterfaceOrientationPortrait<span class="nt">&lt;/string&gt;</span>
+</span><span class="line">                    <span class="nt">&lt;string&gt;</span>UIInterfaceOrientationPortraitUpsideDown<span class="nt">&lt;/string&gt;</span>
+</span><span class="line">                    <span class="nt">&lt;string&gt;</span>UIInterfaceOrientationLandscapeLeft<span class="nt">&lt;/string&gt;</span>
+</span><span class="line">                    <span class="nt">&lt;string&gt;</span>UIInterfaceOrientationLandscapeRight<span class="nt">&lt;/string&gt;</span>
+</span><span class="line">                <span class="nt">&lt;/array&gt;</span>
+</span><span class="line">                <span class="nt">&lt;key&gt;</span>UIRequiresPersistentWiFi<span class="nt">&lt;/key&gt;</span>
+</span><span class="line">                <span class="nt">&lt;false/&gt;</span>
+</span><span class="line">                <span class="nt">&lt;key&gt;</span>UIPrerenderedIcon<span class="nt">&lt;/key&gt;</span>
+</span><span class="line">                <span class="nt">&lt;false/&gt;</span>
+</span><span class="line">                <span class="nt">&lt;key&gt;</span>UIStatusBarHidden<span class="nt">&lt;/key&gt;</span>
+</span><span class="line">                <span class="nt">&lt;false/&gt;</span>
+</span><span class="line">                <span class="nt">&lt;key&gt;</span>UIStatusBarStyle<span class="nt">&lt;/key&gt;</span>
+</span><span class="line">                <span class="nt">&lt;string&gt;</span>UIStatusBarStyleDefault<span class="nt">&lt;/string&gt;</span>
+</span><span class="line">            <span class="nt">&lt;/dict&gt;</span>
+</span><span class="line">        <span class="nt">&lt;/plist&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/ios&gt;</span>
+</span><span class="line">    <span class="nt">&lt;android</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span><span class="nt">&gt;</span>
+</span><span class="line">        <span class="nt">&lt;manifest&gt;</span>
+</span><span class="line">          <span class="nt">&lt;application</span> <span class="na">android:icon=</span><span class="s">"@drawable/appicon"</span> <span class="na">android:label=</span><span class="s">"snsnet"</span> <span class="na">android:name=</span><span class="s">"SnsnetApplication"</span> <span class="na">android:debuggable=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+</span><span class="line">            <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">".SnsnetActivity"</span> <span class="na">android:label=</span><span class="s">"@string/app_name"</span> <span class="na">android:theme=</span><span class="s">"@style/Theme.Titanium"</span> <span class="na">android:configChanges=</span><span class="s">"keyboardHidden|orientation|screenSize"</span><span class="nt">&gt;</span>
+</span><span class="line">              <span class="nt">&lt;intent-filter&gt;</span>
+</span><span class="line">                <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"android.intent.action.MAIN"</span><span class="nt">/&gt;</span>
+</span><span class="line">                <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">"android.intent.category.LAUNCHER"</span><span class="nt">/&gt;</span>
+</span><span class="line">              <span class="nt">&lt;/intent-filter&gt;</span>
+</span><span class="line">            <span class="nt">&lt;/activity&gt;</span>
+</span><span class="line">            <span class="c">&lt;!-- SNS 連携用の Activity を作って処理させる --&gt;</span>
+</span><span class="line">            <span class="c">&lt;!--  http://wada811.blogspot.com/2014/01/android-twitter-oauth.html --&gt;</span>
+</span><span class="line">            <span class="nt">&lt;activity</span> <span class="na">android:launchMode=</span><span class="s">"singleTask"</span> <span class="na">android:name=</span><span class="s">".SnsAuthActivity"</span><span class="nt">&gt;</span>
+</span><span class="line">                <span class="nt">&lt;intent-filter&gt;</span>
+</span><span class="line">                    <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"android.intent.action.VIEW"</span><span class="nt">/&gt;</span>
+</span><span class="line">                    <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">"android.intent.category.DEFAULT"</span><span class="nt">/&gt;</span>
+</span><span class="line">                    <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">"android.intent.category.BROWSABLE"</span><span class="nt">/&gt;</span>
+</span><span class="line">                    <span class="nt">&lt;data</span> <span class="na">android:scheme=</span><span class="s">"snsnet"</span><span class="nt">/&gt;</span>
+</span><span class="line">                <span class="nt">&lt;/intent-filter&gt;</span>
+</span><span class="line">            <span class="nt">&lt;/activity&gt;</span>
+</span><span class="line">          <span class="nt">&lt;/application&gt;</span>
+</span><span class="line">      <span class="nt">&lt;/manifest&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/android&gt;</span>
+</span><span class="line">    <span class="nt">&lt;mobileweb&gt;</span>
+</span><span class="line">        <span class="nt">&lt;precache/&gt;</span>
+</span><span class="line">        <span class="nt">&lt;splash&gt;</span>
+</span><span class="line">            <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+</span><span class="line">            <span class="nt">&lt;inline-css-images&gt;</span>true<span class="nt">&lt;/inline-css-images&gt;</span>
+</span><span class="line">        <span class="nt">&lt;/splash&gt;</span>
+</span><span class="line">        <span class="nt">&lt;theme&gt;</span>default<span class="nt">&lt;/theme&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/mobileweb&gt;</span>
+</span><span class="line">    <span class="nt">&lt;modules/&gt;</span>
+</span><span class="line">    <span class="nt">&lt;deployment-targets&gt;</span>
+</span><span class="line">        <span class="nt">&lt;target</span> <span class="na">device=</span><span class="s">"android"</span><span class="nt">&gt;</span>true<span class="nt">&lt;/target&gt;</span>
+</span><span class="line">        <span class="nt">&lt;target</span> <span class="na">device=</span><span class="s">"blackberry"</span><span class="nt">&gt;</span>false<span class="nt">&lt;/target&gt;</span>
+</span><span class="line">        <span class="nt">&lt;target</span> <span class="na">device=</span><span class="s">"ipad"</span><span class="nt">&gt;</span>true<span class="nt">&lt;/target&gt;</span>
+</span><span class="line">        <span class="nt">&lt;target</span> <span class="na">device=</span><span class="s">"iphone"</span><span class="nt">&gt;</span>true<span class="nt">&lt;/target&gt;</span>
+</span><span class="line">        <span class="nt">&lt;target</span> <span class="na">device=</span><span class="s">"mobileweb"</span><span class="nt">&gt;</span>false<span class="nt">&lt;/target&gt;</span>
+</span><span class="line">        <span class="nt">&lt;target</span> <span class="na">device=</span><span class="s">"tizen"</span><span class="nt">&gt;</span>false<span class="nt">&lt;/target&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/deployment-targets&gt;</span>
+</span><span class="line">    <span class="nt">&lt;sdk-version&gt;</span>3.2.3.GA<span class="nt">&lt;/sdk-version&gt;</span>
+</span><span class="line">    <span class="nt">&lt;plugins&gt;</span>
+</span><span class="line">        <span class="nt">&lt;plugin</span> <span class="na">version=</span><span class="s">"1.0"</span><span class="nt">&gt;</span>ti.alloy<span class="nt">&lt;/plugin&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/plugins&gt;</span>
+</span><span class="line"><span class="nt">&lt;/ti:app&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>SnsAuthActivity</code> で OAuth のコールバックを受け取って、<code>Ti.Android.currentActivity</code> の <code>app:resume</code> イベントを fire して、元のアプリに戻しています。
+これで、元の画面を残したまま OAuth の処理を行うことができます。</p>
+
+<p>ちょっと説明が不足している気もしますが、サンプルプロジェクトでなんとなく雰囲気を感じ取っていただければ。</p>]]>
+    </description>
+    <pubDate>Wed, 14 May 2014 13:39:48 +0900</pubDate>
+  </item>
   
   <item>
     <title><![CDATA[Railsが用意したasset precompile済みのgzファイルを返すapache confの設定]]></title>
@@ -4258,219 +4738,6 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <p>できるだけ、認証情報は HTTP Header を使うようにした方がいいのかもしれません。</p>]]>
     </description>
     <pubDate>Mon, 17 Feb 2014 10:24:58 +0900</pubDate>
-  </item>
-  
-  <item>
-    <title><![CDATA[open-uri-postを使うとrest-clientが変な動きするをする]]></title>
-    <link>http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/</link>
-    <guid>http://hamasyou.com/blog/2014/02/16/ruby-open-uri-post-rest-client/</guid>
-    <description>
-      <![CDATA[<p>ruby の <code>open-uri</code> を POST に対応させる <code>open-uri-post</code> というライブラリがありますが、これを使うと <code>rest-client</code> の gem が変な動きをするようです。</p>
-
-<!-- more -->
-
-
-<p><code>open-uri-post</code> を <code>require</code> すると <code>RestClient.post</code> が GET のリクエストになってうまくリクエストできなくなってしまいました。。</p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://d.hatena.ne.jp/urekat/20070201/1170349097" rel="external nofollow" title="[ruby]open-uriをPOST対応させる">[ruby]open-uriをPOST対応させる</a></p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/rest-client/rest-client" rel="external nofollow" title="rest-client/rest-client">rest-client/rest-client</a></p>
-
-<p>下のサンプルでは、そもそもリクエストが送れなかったりもします。。</p>
-
-<h3>open-uri-post だけの場合</h3>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">'./open-uri-post.rb'</span>
-</span><span class="line"><span class="nb">open</span><span class="p">(</span><span class="s1">'http://localhost:9292'</span><span class="p">,</span> <span class="p">{</span><span class="s1">'postdata'</span> <span class="o">=&gt;</span> <span class="s1">'name=hamasyou'</span><span class="p">})</span><span class="o">.</span><span class="n">read</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-</pre></td>
-<td class="code"><pre><code class="console"><span class="line"><span class="go">"CONTENT_LENGTH : 13"</span>
-</span><span class="line"><span class="go">"CONTENT_TYPE : application/x-www-form-urlencoded"</span>
-</span><span class="line"><span class="go">"GATEWAY_INTERFACE : CGI/1.1"</span>
-</span><span class="line"><span class="go">"PATH_INFO : /"</span>
-</span><span class="line"><span class="go">"QUERY_STRING : "</span>
-</span><span class="line"><span class="go">"REMOTE_ADDR : 127.0.0.1"</span>
-</span><span class="line"><span class="go">"REMOTE_HOST : localhost"</span>
-</span><span class="line"><span class="go">"REQUEST_METHOD : POST"</span>
-</span><span class="line"><span class="go">"REQUEST_URI : http://localhost:9292/"</span>
-</span><span class="line"><span class="go">"SCRIPT_NAME : "</span>
-</span><span class="line"><span class="go">"SERVER_NAME : localhost"</span>
-</span><span class="line"><span class="go">"SERVER_PORT : 9292"</span>
-</span><span class="line"><span class="go">"SERVER_PROTOCOL : HTTP/1.1"</span>
-</span><span class="line"><span class="go">"SERVER_SOFTWARE : WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)"</span>
-</span><span class="line"><span class="go">"HTTP_ACCEPT_ENCODING : gzip;q=1.0,deflate;q=0.6,identity;q=0.3"</span>
-</span><span class="line"><span class="go">"HTTP_ACCEPT : */*"</span>
-</span><span class="line"><span class="go">"HTTP_USER_AGENT : Ruby"</span>
-</span><span class="line"><span class="go">"HTTP_HOST : localhost:9292"</span>
-</span><span class="line"><span class="go">"rack.version : [1, 2]"</span>
-</span><span class="line"><span class="go">"rack.input : #&lt;Rack::Lint::InputWrapper:0x000001029c65f0&gt;"</span>
-</span><span class="line"><span class="go">"rack.errors : #&lt;Rack::Lint::ErrorWrapper:0x000001029c6578&gt;"</span>
-</span><span class="line"><span class="go">"rack.multithread : true"</span>
-</span><span class="line"><span class="go">"rack.multiprocess : false"</span>
-</span><span class="line"><span class="go">"rack.run_once : false"</span>
-</span><span class="line"><span class="go">"rack.url_scheme : http"</span>
-</span><span class="line"><span class="go">"HTTP_VERSION : HTTP/1.1"</span>
-</span><span class="line"><span class="go">"REQUEST_PATH : /"</span>
-</span><span class="line"><span class="go">{"name"=&gt;"hamasyou"}</span>
-</span><span class="line"><span class="go">127.0.0.1 - - [16/Feb/2014 22:02:26] "POST / HTTP/1.1" 200 - 0.0005</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p><code>CONTENT_LENGTH: 13</code> になっていて、パラメータもきちんと送れています。</p>
-
-<h3>rest-client だけの場合</h3>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">'rest_client'</span>
-</span><span class="line"><span class="no">RestClient</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'http://localhost:9292'</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s1">'hamasyou'</span><span class="p">)</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-</pre></td>
-<td class="code"><pre><code class="console"><span class="line"><span class="go">"CONTENT_LENGTH : 13"</span>
-</span><span class="line"><span class="go">"CONTENT_TYPE : application/x-www-form-urlencoded"</span>
-</span><span class="line"><span class="go">"GATEWAY_INTERFACE : CGI/1.1"</span>
-</span><span class="line"><span class="go">"PATH_INFO : /"</span>
-</span><span class="line"><span class="go">"QUERY_STRING : "</span>
-</span><span class="line"><span class="go">"REMOTE_ADDR : 127.0.0.1"</span>
-</span><span class="line"><span class="go">"REMOTE_HOST : localhost"</span>
-</span><span class="line"><span class="go">"REQUEST_METHOD : POST"</span>
-</span><span class="line"><span class="go">"REQUEST_URI : http://localhost:9292/"</span>
-</span><span class="line"><span class="go">"SCRIPT_NAME : "</span>
-</span><span class="line"><span class="go">"SERVER_NAME : localhost"</span>
-</span><span class="line"><span class="go">"SERVER_PORT : 9292"</span>
-</span><span class="line"><span class="go">"SERVER_PROTOCOL : HTTP/1.1"</span>
-</span><span class="line"><span class="go">"SERVER_SOFTWARE : WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)"</span>
-</span><span class="line"><span class="go">"HTTP_ACCEPT : */*; q=0.5, application/xml"</span>
-</span><span class="line"><span class="go">"HTTP_ACCEPT_ENCODING : gzip, deflate"</span>
-</span><span class="line"><span class="go">"HTTP_USER_AGENT : Ruby"</span>
-</span><span class="line"><span class="go">"HTTP_HOST : localhost:9292"</span>
-</span><span class="line"><span class="go">"rack.version : [1, 2]"</span>
-</span><span class="line"><span class="go">"rack.input : #&lt;Rack::Lint::InputWrapper:0x0000010299d380&gt;"</span>
-</span><span class="line"><span class="go">"rack.errors : #&lt;Rack::Lint::ErrorWrapper:0x0000010299d290&gt;"</span>
-</span><span class="line"><span class="go">"rack.multithread : true"</span>
-</span><span class="line"><span class="go">"rack.multiprocess : false"</span>
-</span><span class="line"><span class="go">"rack.run_once : false"</span>
-</span><span class="line"><span class="go">"rack.url_scheme : http"</span>
-</span><span class="line"><span class="go">"HTTP_VERSION : HTTP/1.1"</span>
-</span><span class="line"><span class="go">"REQUEST_PATH : /"</span>
-</span><span class="line"><span class="go">{"name"=&gt;"hamasyou"}</span>
-</span><span class="line"><span class="go">127.0.0.1 - - [16/Feb/2014 22:03:29] "POST / HTTP/1.1" 200 - 0.0005</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>こっちも、きちんとリクエストできています。</p>
-
-<h3>open-uri-post と rest-client を同時に使うと</h3>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">'./open-uri-post.rb'</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">'rest_client'</span>
-</span><span class="line">
-</span><span class="line"><span class="c1"># open('http://localhost:9292', {'postdata' =&gt; 'name=hamasyou'}).read</span>
-</span><span class="line"><span class="no">RestClient</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'http://localhost:9292'</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s1">'hamasyou'</span><span class="p">)</span>
-</span><span class="line"><span class="no">RestClient</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'http://localhost:9292'</span><span class="p">,</span> <span class="ss">params</span><span class="p">:</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">'hamasyou'</span><span class="p">})</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p><code>open-uri-post</code> の方の <code>open</code> メソッドはうまく動きますが、RestClient が動かなくなります。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td>
-<td class="code"><pre><code class="console"><span class="line"><span class="go">/vendor/bundle/ruby/2.1.0/gems/rest-client-1.6.7/lib/restclient/abstract_response.rb:48:in `return!': 408 Request Timeout (RestClient::RequestTimeout)</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>RequestTimeout が出てしまいました。。ちなみに、<code>GET</code> リクエストの方はうまく動きます。<code>open-uri-post</code> と <code>rest-client</code> は一緒に使わないほうがいいですね。</p>]]>
-    </description>
-    <pubDate>Sun, 16 Feb 2014 21:45:53 +0900</pubDate>
   </item>
   
 </channel>
