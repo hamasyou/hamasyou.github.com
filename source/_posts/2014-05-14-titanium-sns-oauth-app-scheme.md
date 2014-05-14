@@ -5,7 +5,7 @@ date: 2014-05-14 13:39:48 +0900
 comments: true
 categories: [Tech]
 keywords: "Titanium,Alloy,SNS,アプリスキーマ,OAuth"
-tags: [Titaniu,Alloy,SNS,OAuth,アプリスキーマ]
+tags: [Titanium,Alloy,SNS,OAuth,アプリスキーマ]
 sharing: true
 published: true
 amazon_url: ""
