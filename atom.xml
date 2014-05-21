@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-05-14T14:39:20+09:00</updated>
+  <updated>2014-05-21T10:05:23+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -100,6 +100,82 @@
 <p>callback URL にアプリスキーマをつけて、<code>snsnet://twitter</code> の URL に戻ってくるようにすれば、サーバサイドの処理は不要になりますが、これだとアプリのブラウザに認証画面が残ってしまいます。</p>
 
 <p>気にしないのであればいいですが、ブラウザで認証が終わったあとに閉じるように、JavaScript で画面を閉じるようにした画面をサーバサイドから返すようにして、そのなかで iframe を使ってアプリスキーマを呼び出しています。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>application_controller.rb</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="ruby"><span class="line"><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="ss">ActionController</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">fbredirect</span>
+</span><span class="line">    <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+</span><span class="line">    <span class="vi">@url</span> <span class="o">=</span> <span class="s2">"snsnet://facebook?</span><span class="si">#{</span><span class="n">uri</span><span class="o">.</span><span class="n">query</span><span class="si">}</span><span class="s2">"</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">twredirect</span>
+</span><span class="line">    <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+</span><span class="line">    <span class="vi">@url</span> <span class="o">=</span> <span class="s2">"snsnet://twitter?</span><span class="si">#{</span><span class="n">uri</span><span class="o">.</span><span class="n">query</span><span class="si">}</span><span class="s2">"</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>fbredirect.html.erb</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td>
+<td class="code"><pre><code class="html+erb"><span class="line"><span class="nt">&lt;html&gt;</span>
+</span><span class="line"><span class="nt">&lt;head&gt;</span>
+</span><span class="line"><span class="nt">&lt;title&gt;</span>start application automatically and kill myself.<span class="nt">&lt;/title&gt;</span>
+</span><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="kd">function</span> <span class="nx">init</span><span class="p">(){</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">iframe</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'iframe'</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">iframe</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'</span><span class="cp">&lt;%=</span> <span class="n">raw</span> <span class="vi">@url</span> <span class="cp">%&gt;</span><span class="s1">'</span><span class="p">;</span>
+</span><span class="line">  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">iframe</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">  <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span> <span class="o">=</span> <span class="nb">window</span><span class="p">;</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">win</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'about:blank'</span><span class="p">,</span> <span class="s1">'_self'</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">win</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span><span class="line"><span class="nt">&lt;/head&gt;</span>
+</span><span class="line"><span class="nt">&lt;body</span> <span class="na">onload=</span><span class="s">"init()"</span><span class="nt">&gt;</span>
+</span><span class="line">  このウィンドウは閉じてかまいません。
+</span><span class="line"><span class="nt">&lt;/body&gt;</span>
+</span><span class="line"><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>fbredirect.html.erb</code> と <code>twredirect.html.erb</code> は中身は同じでOKです。</p>
 
 <h2>2. 認証後の callback をアプリで受け取る</h2>
 

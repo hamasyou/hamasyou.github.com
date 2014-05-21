@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-05-14T14:39:20+09:00</updated>
+  <updated>2014-05-21T10:05:23+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -73,6 +73,46 @@ $.index.open();
 <p>callback URL にアプリスキーマをつけて、<code>snsnet://twitter</code> の URL に戻ってくるようにすれば、サーバサイドの処理は不要になりますが、これだとアプリのブラウザに認証画面が残ってしまいます。</p>
 
 <p>気にしないのであればいいですが、ブラウザで認証が終わったあとに閉じるように、JavaScript で画面を閉じるようにした画面をサーバサイドから返すようにして、そのなかで iframe を使ってアプリスキーマを呼び出しています。</p>
+
+<pre><code class="ruby application_controller.rb">class ApplicationController &lt; ActionController::Base
+  def fbredirect
+    uri = URI.parse(request.url)
+    @url = "snsnet://facebook?#{uri.query}"
+  end
+
+  def twredirect
+    uri = URI.parse(request.url)
+    @url = "snsnet://twitter?#{uri.query}"
+  end
+end
+</code></pre>
+
+<p>```html+erb fbredirect.html.erb
+<html>
+<head>
+<title>start application automatically and kill myself.</title></p>
+
+<script type="text/javascript">
+function init(){
+  var iframe = document.createElement('iframe');
+  iframe.src = '<%= raw @url %>';
+  document.body.appendChild(iframe);
+
+  window.opener = window;
+  var win = window.open('about:blank', '_self');
+  win.close();
+}
+</script>
+
+
+<p></head>
+<body onload="init()">
+  このウィンドウは閉じてかまいません。
+</body>
+</html>
+```</p>
+
+<p><code>fbredirect.html.erb</code> と <code>twredirect.html.erb</code> は中身は同じでOKです。</p>
 
 <h2>2. 認証後の callback をアプリで受け取る</h2>
 
