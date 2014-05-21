@@ -73,6 +73,44 @@ callback URL にアプリスキーマをつけて、`snsnet://twitter` の URL �
 
 気にしないのであればいいですが、ブラウザで認証が終わったあとに閉じるように、JavaScript で画面を閉じるようにした画面をサーバサイドから返すようにして、そのなかで iframe を使ってアプリスキーマを呼び出しています。
 
+```ruby application_controller.rb
+class ApplicationController < ActionController::Base
+  def fbredirect
+    uri = URI.parse(request.url)
+    @url = "snsnet://facebook?#{uri.query}"
+  end
+
+  def twredirect
+    uri = URI.parse(request.url)
+    @url = "snsnet://twitter?#{uri.query}"
+  end
+end
+```
+
+```html+erb fbredirect.html.erb
+<html>
+<head>
+<title>start application automatically and kill myself.</title>
+<script type="text/javascript">
+function init(){
+  var iframe = document.createElement('iframe');
+  iframe.src = '<%= raw @url %>';
+  document.body.appendChild(iframe);
+
+  window.opener = window;
+  var win = window.open('about:blank', '_self');
+  win.close();
+}
+</script>
+</head>
+<body onload="init()">
+  このウィンドウは閉じてかまいません。
+</body>
+</html>
+```
+
+`fbredirect.html.erb` と `twredirect.html.erb` は中身は同じでOKです。
+
 
 ## 2. 認証後の callback をアプリで受け取る
 
