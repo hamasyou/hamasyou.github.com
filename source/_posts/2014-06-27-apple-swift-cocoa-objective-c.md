@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Using Swift with Cocoa and Objective-C"
-date: 2014-06-26 22:43:15 +0900
+date: 2014-06-27 00:03:15 +0900
 comments: true
 categories: [Programming]
 keywords: "Swift,Apple,Cocoa,Objective-C"
