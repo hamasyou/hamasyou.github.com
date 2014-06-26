@@ -677,6 +677,16 @@ let me = MyClass()
 
 ## Type Casting
 
+型チェックには `is` を使う。
+
+```swift
+for item in library {
+    if item is Movie {
+        // execute movie logic
+    }
+}    
+```
+
 ダウンキャストに `as` が使える。Optional Type の場合は `as?` を使う。Dictionary とかから値を取り出すときに使える。
 
 ```swift
