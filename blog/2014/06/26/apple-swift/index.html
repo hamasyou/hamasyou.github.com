@@ -1351,6 +1351,24 @@
 
 <h2>Type Casting</h2>
 
+<p>型チェックには <code>is</code> を使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="n">item</span> <span class="kt">is</span> <span class="n">Movie</span> <span class="p">{</span>
+</span><span class="line">        <span class="c1">// execute movie logic</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
 <p>ダウンキャストに <code>as</code> が使える。Optional Type の場合は <code>as?</code> を使う。Dictionary とかから値を取り出すときに使える。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>

@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: iOS | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/ios/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-06-26T14:31:15+09:00</updated>
+  <updated>2014-06-26T19:16:26+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -628,6 +628,15 @@ let me = MyClass()
 </code></pre>
 
 <h2>Type Casting</h2>
+
+<p>型チェックには <code>is</code> を使う。</p>
+
+<pre><code class="swift">for item in library {
+    if item is Movie {
+        // execute movie logic
+    }
+}    
+</code></pre>
 
 <p>ダウンキャストに <code>as</code> が使える。Optional Type の場合は <code>as?</code> を使う。Dictionary とかから値を取り出すときに使える。</p>
 
