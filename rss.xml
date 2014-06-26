@@ -2,12 +2,433 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Thu, 26 Jun 2014 19:16:26 +0900</pubDate>
+  <pubDate>Thu, 26 Jun 2014 23:54:49 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
   <atom:link href="http://hamasyou.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+  
+  <item>
+    <title><![CDATA[Using Swift with Cocoa and Objective-C]]></title>
+    <link>http://hamasyou.com/blog/2014/06/26/apple-swift-cocoa-objective-c/</link>
+    <guid>http://hamasyou.com/blog/2014/06/26/apple-swift-cocoa-objective-c/</guid>
+    <description>
+      <![CDATA[<p><strong class="text-danger">Swift</strong> を Cocoa や Objective-C と一緒に使う方法の覚書です。</p>
+
+<p>なお、Swift で作成したアプリは iOS8 と OS X Yosemite がリリースされた時点で審査に入れるようです。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html" rel="external nofollow" title="Using Swift with Cocoa and Objective-C">Using Swift with Cocoa and Objective-C</a></p>
+
+<!-- more -->
+
+
+
+
+<div id="toc"></div>
+
+
+<h2>Basic Setup</h2>
+
+<p>Swift から Objective-C API を呼び出すことができる。逆に、Objective-C から Swift のコードを呼び出すこともできる。</p>
+
+<p>Swift と Objective-C のプロジェクトの大きな違いは、Swift にはヘッダーファイルがない。Swift には全ての情報が <code>.swift</code> ファイルに含まれている。</p>
+
+<h3>import</h3>
+
+<p>Swift でもフレームワークやライブラリを読み込むには <code>import</code> を使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">import</span> <span class="n">Foundation</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>Foundation</code> を読み込むことで、NSDate, NSURL, NSMutableData などを含む全ての Foundation API、全てのメソッド、プロパティ、カテゴリを利用出来るようになる。</p>
+
+<h3>Objective-C と Swift のマッピング</h3>
+
+<ul>
+<li>Objective-C の型は同等の Swift の型にマッピングされる。<code>id</code> は <code>AnyObject</code>
+</li>
+<li>Objective-C のコア型は Swift の型にマッピングされる。<code>NSString</code> が <code>String</code> のように</li>
+<li>Objective-C のコンセプト機能は同等の Swift のコンセプト機能にマッピングされる。ポインタが Optionals と対応するように</li>
+</ul>
+
+
+<p>C++ のコードは直接 Swift には取り込めない。代わりに Objective-C か C で作ったラッパーを作り、それを取り込む。</p>
+
+<h2>Interoperability</h2>
+
+<h3>Initialization</h3>
+
+<p>Objective-C の <code>init</code> メソッド、<code>initWith</code> メソッドは、<code>init</code> で切られて <code>With</code> の部分が捨てられる。捨てられて残った部分が第一引数のパラメータ名に対応する。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="objective-c"><span class="line"><span class="bp">UITableView</span> <span class="o">*</span><span class="n">myTableView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UITableVIew</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame</span><span class="p">:</span><span class="n">CGRectZero</span> <span class="nl">style</span><span class="p">:</span><span class="n">UITableViewStyleGrouped</span><span class="p">];</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="nl">myTableView</span><span class="p">:</span> <span class="bp">UITableView</span> <span class="o">=</span> <span class="bp">UITableView</span><span class="p">(</span><span class="nl">frame</span><span class="p">:</span> <span class="n">CGRectZero</span><span class="p">,</span> <span class="nl">style</span><span class="p">:</span> <span class="p">.</span><span class="n">Grouped</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Objective-C のファクトリメソッドは <code>convenience initializer</code> にマッピングされている。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="objective-c"><span class="line"><span class="bp">UIColor</span> <span class="o">*</span><span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithRed</span><span class="p">:</span><span class="mf">0.5</span> <span class="nl">green</span><span class="p">:</span><span class="mf">0.0</span> <span class="nl">blue</span><span class="p">:</span><span class="mf">0.5</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">1.0</span><span class="p">];</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">color</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">(</span><span class="nl">red</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nl">alpha</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Methods</h3>
+
+<p>Objective-C のメソッド名がそのまま Swift のメソッドになり、第一引数名が省略される。残りの引数名はそのまま残る。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="objective-c"><span class="line"><span class="p">[</span><span class="n">myTableView</span> <span class="nl">insertSubview</span><span class="p">:</span><span class="n">mySubview</span> <span class="nl">atIndex</span><span class="p">:</span><span class="mi">2</span><span class="p">];</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">myTableView</span><span class="p">.</span><span class="n">insertSubview</span><span class="p">(</span><span class="n">mySubview</span><span class="p">,</span> <span class="nl">atIndex</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>id</h3>
+
+<p>Swift ではどんな型も表すタイプとして <code>AnyObject</code> を用意している。Objective-C の <code>id</code> は <code>AnyObject</code> に対応する。</p>
+
+<p>Objective-C のメソッドを呼び出すのに、キャストは必要ない。<code>@objc</code> 属性がメソッドに修飾されているので、そのまま呼び出すことができる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">futureDate</span> <span class="o">=</span> <span class="n">myObject</span><span class="p">.</span><span class="n">dateByAddingTimeInterval</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span><span class="line"><span class="k">let</span> <span class="n">timeSinceNow</span> <span class="o">=</span> <span class="n">myObject</span><span class="p">.</span><span class="n">timeIntervalSinceNow</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>AnyObject から <code>as</code> によるキャストでは、ダウンキャストが成功するかどうかの保証ができない。そのため、<code>if-let</code> 構文を使ってチェックすること。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">userDefaults</span> <span class="o">=</span> <span class="bp">NSUserDefaults</span><span class="p">.</span><span class="n">standardUserDefaults</span><span class="p">()</span>
+</span><span class="line"><span class="k">let</span> <span class="nl">lastRefreshDate</span><span class="p">:</span> <span class="n">AnyObject</span><span class="o">?</span> <span class="o">=</span> <span class="n">userDefaults</span><span class="p">.</span><span class="n">objectForKey</span><span class="p">(</span><span class="s">"LastRefreshDate"</span><span class="p">)</span>
+</span><span class="line"><span class="k">if</span> <span class="k">let</span> <span class="n">date</span> <span class="o">=</span> <span class="n">lastRefreshDate</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">NSDate</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"\(date.timeIntervalSinceReferenceDate)"</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Closure and Block</h3>
+
+<p>Objective-C の <code>block</code> は Swift の <code>Closure</code> に対応する。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="objective-c"><span class="line"><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">completionBlock</span><span class="p">)(</span><span class="bp">NSData</span> <span class="o">*</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="bp">NSData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span><span class="cm">/* ... */</span><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="nl">completionBlock</span><span class="p">:</span> <span class="p">(</span><span class="bp">NSData</span><span class="p">,</span> <span class="bp">NSError</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span> <span class="o">=</span> <span class="p">{</span><span class="n">data</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span> <span class="cm">/* ... */</span><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>@objc アノテーション</h3>
+
+<p>@objc アノテーションを使うことで、Swift のコードを Objective-C の中から呼び出すことができるようになる。</p>
+
+<p><code>@IBOutlet</code>、<code>@IBAction</code>、<code>@NSManaged</code> を使うと暗黙的に @objc が付与される。</p>
+
+<h3>Swift コードから Objective-C コードへの変換</h3>
+
+<p>メソッドはほとんどそのままマッピングされる。init コンストラクタは、第一引数に <code>initWith</code> がつくように変換される。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="n">playSong</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span>
+</span><span class="line"><span class="k">init</span><span class="p">(</span><span class="nl">songName</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">artist</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="objective-c"><span class="line"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">playSong:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span>
+</span><span class="line"><span class="p">-</span> <span class="p">(</span><span class="kt">instancetype</span><span class="p">)</span><span class="nf">initWithSongName:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">songName</span> <span class="nf">artist:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">artist</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Selector</h3>
+
+<p>Objective-C のセレクタは Swift では Selector 構造体にマッピングされる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="nl">mySelector</span><span class="p">:</span> <span class="n">Selector</span> <span class="o">=</span> <span class="s">"tappedButton:"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">import</span> <span class="n">UIKit</span>
+</span><span class="line"><span class="k">class</span> <span class="nl">MyViewController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">let</span> <span class="n">myButton</span> <span class="o">=</span> <span class="bp">UIButton</span><span class="p">(</span><span class="nl">frame</span><span class="p">:</span> <span class="bp">CGRect</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mi">50</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">init</span><span class="p">(</span><span class="n">nibName</span> <span class="nl">nibNameOrNil</span><span class="p">:</span> <span class="n">String</span><span class="o">!</span><span class="p">,</span> <span class="n">bundle</span> <span class="nl">nibBundleOrNil</span><span class="p">:</span> <span class="bp">NSBundle</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">super</span><span class="p">.</span><span class="k">init</span><span class="p">(</span><span class="nl">nibName</span><span class="p">:</span> <span class="n">nibName</span><span class="p">,</span> <span class="nl">bundle</span><span class="p">:</span> <span class="n">nibBundle</span><span class="p">)</span>
+</span><span class="line">        <span class="n">myButton</span><span class="p">.</span><span class="n">targetForAction</span><span class="p">(</span><span class="s">"tappedButton:"</span><span class="p">,</span> <span class="nl">withSender</span><span class="p">:</span> <span class="nb">self</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">func</span> <span class="n">tappedButton</span><span class="p">(</span><span class="nl">sender</span><span class="p">:</span> <span class="bp">UIButton</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"tapped button"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Writing Swift Classes with Objective-C Behavior</h2>
+
+<p>Objective-C のプロトコルは Swift の protocol に対応する。Objective-C の NSObject プロトコルは <code>NSObjectProtocol</code> になっている。</p>
+
+<h3>Integrating with Interface builder</h3>
+
+<p>Swift でも Interface Builder の機能は利用出来る。Outlet、Actions、ライブレンダリングは Swift でも可能。</p>
+
+<p>Swift では @IBOutlet、@IBAction をプロパティやメソッドに付与する。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="nl">MyViewController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
+</span><span class="line">    <span class="p">@</span><span class="kt">IBOutlet</span> <span class="k">var</span> <span class="nl">button</span><span class="p">:</span> <span class="bp">UIButton</span>
+</span><span class="line">    <span class="p">@</span><span class="kt">IBOutlet</span> <span class="k">var</span> <span class="nl">textFields</span><span class="p">:</span> <span class="bp">UITextField</span><span class="p">[]</span>
+</span><span class="line">    <span class="p">@</span><span class="kt">IBAction</span> <span class="k">func</span> <span class="n">buttonTapped</span><span class="p">(</span><span class="n">AnyObject</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"button tapped!"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>@IBDesignable</code> と <code>@IBInspectable</code> をつかうと Interface Builder で編集が出来る。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="p">@</span><span class="n">IBDesignable</span>
+</span><span class="line"><span class="k">class</span> <span class="nl">MyCustomView</span><span class="p">:</span> <span class="bp">UIView</span> <span class="p">{</span>
+</span><span class="line">    <span class="p">@</span><span class="n">IBInspectable</span> <span class="k">var</span> <span class="nl">textColor</span><span class="p">:</span> <span class="bp">UIColor</span>
+</span><span class="line">    <span class="p">@</span><span class="n">IBInspectable</span> <span class="k">var</span> <span class="nl">iconHeight</span><span class="p">:</span> <span class="n">CGFloat</span>
+</span><span class="line">    <span class="cm">/* ... */</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Working with Cocoa Data Types</h2>
+
+<h3>String（NSString）、Number（NSNumber）</h3>
+
+<p>NSString を利用したい場合は <code>as</code> を使ってキャストする。もしくは、最初から <code>NSString</code> 型を使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"123"</span>
+</span><span class="line"><span class="p">(</span><span class="n">str</span> <span class="kt">as</span> <span class="bp">NSString</span><span class="p">).</span><span class="n">floatValue</span>
+</span><span class="line">
+</span><span class="line"><span class="k">import</span> <span class="n">Foundation</span>
+</span><span class="line"><span class="k">let</span> <span class="nl">myString</span><span class="p">:</span> <span class="bp">NSString</span> <span class="o">=</span> <span class="s">"123"</span>
+</span><span class="line"><span class="k">if</span> <span class="k">let</span> <span class="n">integerValue</span> <span class="o">=</span> <span class="p">(</span><span class="n">myString</span> <span class="kt">as</span> <span class="n">String</span><span class="p">).</span><span class="n">toInt</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"\(myString) is the integer \(integerValue)"</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>NSNumber も同じ。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">42</span>
+</span><span class="line"><span class="k">let</span> <span class="nl">m</span><span class="p">:</span> <span class="bp">NSNumber</span> <span class="o">=</span> <span class="n">n</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Array</h3>
+
+<p>NSArray は <code>AnyObject[]</code> にマッピングされる。</p>
+
+<h3>Foundation Data Types</h3>
+
+<p>NSSize、NSPoint はそのまま利用出来る。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">size</span> <span class="o">=</span> <span class="n">NSSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class="line"><span class="k">let</span> <span class="n">rect</span> <span class="o">=</span> <span class="n">NSRect</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>NSLog</h3>
+
+<p>NSLog はそのままの構文で利用出来る。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">NSLog</span><span class="p">(</span><span class="s">"%.7f"</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>NSError and Error Reporting</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="nl">writeError</span> <span class="p">:</span> <span class="bp">NSError</span><span class="o">?</span>
+</span><span class="line"><span class="k">let</span> <span class="n">written</span> <span class="o">=</span> <span class="n">myString</span><span class="p">.</span><span class="n">writeToFile</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nl">atomically</span><span class="p">:</span> <span class="nb">false</span><span class="p">,</span>
+</span><span class="line">    <span class="nl">encoding</span><span class="p">:</span> <span class="n">NSUTF8StringEncoding</span><span class="p">,</span>
+</span><span class="line">    <span class="nl">error</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">writeError</span><span class="p">)</span>
+</span><span class="line"><span class="k">if</span> <span class="o">!</span><span class="n">written</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="k">let</span> <span class="n">error</span> <span class="o">=</span> <span class="n">writeError</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"write failure: \(error.localizedDescription)"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">func</span> <span class="n">contentsForType</span><span class="p">(</span><span class="nl">typeName</span><span class="p">:</span> <span class="n">String</span><span class="o">!</span> <span class="nl">error</span><span class="p">:</span> <span class="n">NSErrorPointer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnyObject</span><span class="o">!</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="n">cannotProduceContentsForType</span><span class="p">(</span><span class="n">typeName</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">if</span> <span class="n">error</span> <span class="p">{</span>
+</span><span class="line">            <span class="n">error</span><span class="p">.</span><span class="n">memory</span> <span class="o">=</span> <span class="bp">NSError</span><span class="p">(</span><span class="nl">domain</span><span class="p">:</span> <span class="n">domain</span><span class="p">,</span> <span class="nl">code</span><span class="p">:</span> <span class="n">code</span><span class="p">,</span> <span class="nl">userInfo</span><span class="p">:</span> <span class="p">[</span><span class="o">:</span><span class="p">])</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">        <span class="k">return</span> <span class="nb">nil</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="c1">// ...</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+]]>
+    </description>
+    <pubDate>Thu, 26 Jun 2014 22:43:15 +0900</pubDate>
+  </item>
   
   <item>
     <title><![CDATA[Apple Swift プログラミング言語おぼえがき]]></title>
@@ -5592,308 +6013,6 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 ]]>
     </description>
     <pubDate>Wed, 19 Feb 2014 11:46:56 +0900</pubDate>
-  </item>
-  
-  <item>
-    <title><![CDATA[RailsでつくるRESTful APIのrequest specを書く]]></title>
-    <link>http://hamasyou.com/blog/2014/02/17/rails-request-rspec/</link>
-    <guid>http://hamasyou.com/blog/2014/02/17/rails-request-rspec/</guid>
-    <description>
-      <![CDATA[<p>Rails 環境で RESTful API を提供する場面があると思います。API もコントローラで提供するので、コントローラのテストで記述してもいいのですが、RESTful API であれば、<strong class="text-danger">request spec</strong> を使うほうがよさそうなので request spec を書くメモです。</p>
-
-<ul>
-<li>Rails 4.0.2</li>
-<li>rspec 2.14.1</li>
-</ul>
-
-
-<!-- more -->
-
-
-<h2>テスト用のプロジェクトを整える</h2>
-
-<p>まずは、チュートリアル用のプロジェクトを作成します。</p>
-
-<div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
-<span class="line-number">$</span></pre></td>
-<td class="code"><pre><code><span class="line command">rails new specbox --skip-bundle</span><span class="line command">cd specbox</span></code></pre></td>
-</tr></table></div></div>
-        </div>
-
-
-<p><code>Gemfile</code> を開いて次の gem を追記します。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="n">group</span> <span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span> <span class="k">do</span>
-</span><span class="line">  <span class="n">gem</span> <span class="s1">'rspec-rails'</span>
-</span><span class="line">  <span class="n">gem</span> <span class="s1">'guard-rspec'</span>
-</span><span class="line">  <span class="n">gem</span> <span class="s1">'factory_girl_rails'</span>
-</span><span class="line">  <span class="n">gem</span> <span class="s1">'spring'</span>
-</span><span class="line">  <span class="n">gem</span> <span class="s1">'spring-commands-rspec'</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>rspec と scaffold の設定を行います。</p>
-
-<div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
-<span class="line-number">$</span>
-<span class="line-number">$</span>
-<span class="line-number">$</span>
-<span class="line-number">$</span>
-<span class="line-number">$</span>
-<span class="line-number">$</span></pre></td>
-<td class="code"><pre><code><span class="line command">bundle install --path vendor/bundle</span><span class="line command">bundle exec rails g rspec:install</span><span class="line command">bundle exec guard init rspec</span><span class="line command">bundle exec rails g model Book title:string author:string price:integer</span><span class="line command">bundle exec rails g scaffold_controller Books</span><span class="line command">bundle exec rake db:migrate</span><span class="line command">bundle exec rake db:test:prepare</span></code></pre></td>
-</tr></table></div></div>
-        </div>
-
-
-<p><code>config/routes.rb</code> にルーティングを追加します。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>config/routes.rb</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="ss">Specbox</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
-</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class="line">  <span class="n">resources</span> <span class="ss">:books</span>
-</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>テストを実行します。</p>
-
-<div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span></pre></td>
-<td class="code"><pre><code><span class="line command">bundle exec guard</span><span class="line output">15:12:01 - INFO - Run all
-</span><span class="line output">15:12:01 - INFO - Running all specs
-</span><span class="line output">..**..........................
-</span><span class="line output">
-</span><span class="line output">Pending:
-</span><span class="line output">  Book add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/models/book_spec.rb
-</span><span class="line output">    # No reason given
-</span><span class="line output">    # ./spec/models/book_spec.rb:4
-</span><span class="line output">  BooksHelper add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/helpers/books_helper_spec.rb
-</span><span class="line output">    # No reason given
-</span><span class="line output">    # ./spec/helpers/books_helper_spec.rb:14
-</span><span class="line output">
-</span><span class="line output">Finished in 0.18066 seconds
-</span><span class="line output">30 examples, 0 failures, 2 pending
-</span><span class="line output">
-</span><span class="line output">Randomized with seed 14063</span></code></pre></td>
-</tr></table></div></div>
-        </div>
-
-
-<p>これで rspec の設定ができました。それでは <em>request spec</em> を書いていきます。</p>
-
-<h2>request spec を書く</h2>
-
-<p><em>request spec</em> は他の rspec のテストとほとんど変わりありません。テストは <code>spec/requests</code> フォルダの下に作成していきます。</p>
-
-<p><code>scaffold_controller</code> でコントローラを作成したので、すでに <code>spec/requests/books_spec.rb</code> があるはずです。テストコードを見てみます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>spec/requests/books_spec.rb</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">'spec_helper'</span>
-</span><span class="line">
-</span><span class="line"><span class="n">describe</span> <span class="s2">"Books"</span> <span class="k">do</span>
-</span><span class="line">  <span class="n">describe</span> <span class="s2">"GET /books"</span> <span class="k">do</span>
-</span><span class="line">    <span class="n">it</span> <span class="s2">"works! (now write some real specs)"</span> <span class="k">do</span>
-</span><span class="line">      <span class="c1"># Run the generator again with the --webrat flag if you want to use webrat methods/matchers</span>
-</span><span class="line">      <span class="n">get</span> <span class="n">books_path</span>
-</span><span class="line">      <span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">should</span> <span class="n">be</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>request spec もコントローラのテストと同じように、<code>get</code>、<code>post</code>、といったメソッドを使ってテストを行います。<code>books_spec.rb</code> を次のように書き換えてみます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>spec/requests/books_spec.rb</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">'spec_helper'</span>
-</span><span class="line">
-</span><span class="line"><span class="n">describe</span> <span class="s1">'Books'</span> <span class="k">do</span>
-</span><span class="line">  <span class="n">describe</span> <span class="s1">'GET /books'</span> <span class="k">do</span>
-</span><span class="line">
-</span><span class="line">    <span class="n">it</span> <span class="s1">'登録されている本が返されること'</span> <span class="k">do</span>
-</span><span class="line">      <span class="n">book</span> <span class="o">=</span> <span class="no">FactoryGirl</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:book</span><span class="p">)</span>
-</span><span class="line">      <span class="n">get</span> <span class="s1">'/books'</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="s1">'json'</span>
-</span><span class="line">      <span class="n">expect</span><span class="p">(</span><span class="n">response</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">be_success</span>
-</span><span class="line">      <span class="n">expect</span><span class="p">(</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">be_a_kind_of</span><span class="p">(</span><span class="nb">Array</span><span class="p">)</span>
-</span><span class="line">      <span class="n">expect</span><span class="p">(</span><span class="n">json</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="s1">'id'</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">eq</span> <span class="n">book</span><span class="o">.</span><span class="n">id</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>request spec はこういう感じで、<strong class="text-danger">実際に呼び出す URL を記述する</strong> のと、<strong class="text-danger">json の中身をチェックする</strong> のが大事だと思っています。</p>
-
-<p>コントローラのテストではビューの中身までチェックしませんし、ビューのテストとコントローラのテストを2つ書くのはテストを把握しづらいので、request spec のテストのように一箇所で同時にテストするのが効果的だと思います。</p>
-
-<p>API はインターフェース（<em>入力パラメータ</em> と <em>出力形式</em> ）が大事なのでここをきっちり押さえておくテストを書く必要があります。</p>
-
-<p>で、テストケースを変えると当然テストが失敗するので、テストが通るようにヘルパを書き換えます。</p>
-
-<h3>request_helpers.rb を作成する</h3>
-
-<p>request spec を書くときに便利なメソッドをいくつか用意しておきます。</p>
-
-<p>RESTful API は出力を json で返すものが多いと思うので、json を扱いやすくするヘルパーを用意します。</p>
-
-<p>また、 <code>AuthenticationHelper</code> は認証が必要な API を呼び出すときの便利メソッドとして記述してありますが、不要であれば削除、仕様が違うようであれば書きなおしてつかいます。</p>
-
-<p>次のファイルを <code>spec/support/request_helpers.rb</code> として作成します。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>spec/support/request_helpers.rb</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">Requests</span>
-</span><span class="line">  <span class="k">module</span> <span class="nn">JsonHelpers</span>
-</span><span class="line">    <span class="k">def</span> <span class="nf">json</span>
-</span><span class="line">      <span class="vi">@json</span> <span class="o">||=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">module</span> <span class="nn">AuthenticationHelper</span>
-</span><span class="line">    <span class="sx">%w(get post put delete)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">method_name</span><span class="o">|</span>
-</span><span class="line">      <span class="n">define_method</span><span class="p">(</span><span class="s2">"auth_</span><span class="si">#{</span><span class="n">method_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">uri</span><span class="p">,</span> <span class="n">auth_user</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">env</span> <span class="o">=</span> <span class="p">{},</span> <span class="o">&amp;</span><span class="n">block</span><span class="o">|</span>
-</span><span class="line">        <span class="nb">__send__</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">reverse_merge</span><span class="p">(</span><span class="no">HTTP_AUTHORIZATION</span><span class="p">:</span> <span class="s2">"token </span><span class="si">#{</span><span class="n">auth_user</span><span class="o">.</span><span class="n">access_token</span><span class="si">}</span><span class="s2">"</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-</span><span class="line">      <span class="k">end</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>このヘルパを <code>spec/spec_helper.rb</code> に追加します。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>spec/spec_helper.rb</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="no">RSpec</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class="line">  <span class="n">config</span><span class="o">.</span><span class="n">include</span> <span class="ss">Requests</span><span class="p">:</span><span class="ss">:JsonHelpers</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="ss">:request</span>
-</span><span class="line">  <span class="n">config</span><span class="o">.</span><span class="n">include</span> <span class="ss">Requests</span><span class="p">:</span><span class="ss">:AuthenticationHelper</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="ss">:request</span>
-</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>これでテストが通るようになりました。</p>
-
-<h2>まとめ</h2>
-
-<p>Rails で RESTful な API を作ることはよくあると思いますが、今までは API のテストもコントローラのテストで行っていました。</p>
-
-<p>でも、request spec を使ったほうが <strong class="text-danger">呼び出しのURL</strong>、<strong class="text-danger">必要なパラメータ</strong>、<strong class="text-danger">出力形式</strong> を素直にテストとして書けるので、API のテストは request spec を使うようにするといいかなと思います。</p>
-]]>
-    </description>
-    <pubDate>Mon, 17 Feb 2014 14:09:38 +0900</pubDate>
   </item>
   
 </channel>

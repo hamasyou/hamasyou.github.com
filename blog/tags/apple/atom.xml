@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Apple | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/apple/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-06-26T19:16:26+09:00</updated>
+  <updated>2014-06-26T23:54:49+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,245 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Using Swift with Cocoa and Objective-C]]></title>
+    <link href="http://hamasyou.com/blog/2014/06/26/apple-swift-cocoa-objective-c/"/>
+    <updated>2014-06-26T22:43:15+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/06/26/apple-swift-cocoa-objective-c</id>
+    <content type="html"><![CDATA[<p><strong>Swift</strong> を Cocoa や Objective-C と一緒に使う方法の覚書です。</p>
+
+<p>なお、Swift で作成したアプリは iOS8 と OS X Yosemite がリリースされた時点で審査に入れるようです。</p>
+
+<p><a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html">Using Swift with Cocoa and Objective-C</a></p>
+
+<!-- more -->
+
+
+
+
+<div id="toc"></div>
+
+
+<h2>Basic Setup</h2>
+
+<p>Swift から Objective-C API を呼び出すことができる。逆に、Objective-C から Swift のコードを呼び出すこともできる。</p>
+
+<p>Swift と Objective-C のプロジェクトの大きな違いは、Swift にはヘッダーファイルがない。Swift には全ての情報が <code>.swift</code> ファイルに含まれている。</p>
+
+<h3>import</h3>
+
+<p>Swift でもフレームワークやライブラリを読み込むには <code>import</code> を使う。</p>
+
+<pre><code class="swift">import Foundation
+</code></pre>
+
+<p><code>Foundation</code> を読み込むことで、NSDate, NSURL, NSMutableData などを含む全ての Foundation API、全てのメソッド、プロパティ、カテゴリを利用出来るようになる。</p>
+
+<h3>Objective-C と Swift のマッピング</h3>
+
+<ul>
+<li>Objective-C の型は同等の Swift の型にマッピングされる。<code>id</code> は <code>AnyObject</code></li>
+<li>Objective-C のコア型は Swift の型にマッピングされる。<code>NSString</code> が <code>String</code> のように</li>
+<li>Objective-C のコンセプト機能は同等の Swift のコンセプト機能にマッピングされる。ポインタが Optionals と対応するように</li>
+</ul>
+
+
+<p>C++ のコードは直接 Swift には取り込めない。代わりに Objective-C か C で作ったラッパーを作り、それを取り込む。</p>
+
+<h2>Interoperability</h2>
+
+<h3>Initialization</h3>
+
+<p>Objective-C の <code>init</code> メソッド、<code>initWith</code> メソッドは、<code>init</code> で切られて <code>With</code> の部分が捨てられる。捨てられて残った部分が第一引数のパラメータ名に対応する。</p>
+
+<pre><code class="objective-c Objective-C">UITableView *myTableView = [[UITableVIew alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+</code></pre>
+
+<pre><code class="swift Swift">let myTableView: UITableView = UITableView(frame: CGRectZero, style: .Grouped)
+</code></pre>
+
+<p>Objective-C のファクトリメソッドは <code>convenience initializer</code> にマッピングされている。</p>
+
+<pre><code class="objective-c Objective-C">UIColor *color = [UIColor colorWithRed:0.5 green:0.0 blue:0.5 alpha:1.0];
+</code></pre>
+
+<pre><code class="swift Swift">let color = UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 1.0)
+</code></pre>
+
+<h3>Methods</h3>
+
+<p>Objective-C のメソッド名がそのまま Swift のメソッドになり、第一引数名が省略される。残りの引数名はそのまま残る。</p>
+
+<pre><code class="objective-c Objective-C">[myTableView insertSubview:mySubview atIndex:2];
+</code></pre>
+
+<pre><code class="swift Swift">myTableView.insertSubview(mySubview, atIndex: 2)
+</code></pre>
+
+<h3>id</h3>
+
+<p>Swift ではどんな型も表すタイプとして <code>AnyObject</code> を用意している。Objective-C の <code>id</code> は <code>AnyObject</code> に対応する。</p>
+
+<p>Objective-C のメソッドを呼び出すのに、キャストは必要ない。<code>@objc</code> 属性がメソッドに修飾されているので、そのまま呼び出すことができる。</p>
+
+<pre><code class="swift">let futureDate = myObject.dateByAddingTimeInterval(10)
+let timeSinceNow = myObject.timeIntervalSinceNow
+</code></pre>
+
+<p>AnyObject から <code>as</code> によるキャストでは、ダウンキャストが成功するかどうかの保証ができない。そのため、<code>if-let</code> 構文を使ってチェックすること。</p>
+
+<pre><code class="swift">let userDefaults = NSUserDefaults.standardUserDefaults()
+let lastRefreshDate: AnyObject? = userDefaults.objectForKey("LastRefreshDate")
+if let date = lastRefreshDate as? NSDate {
+    println("\(date.timeIntervalSinceReferenceDate)")
+}
+</code></pre>
+
+<h3>Closure and Block</h3>
+
+<p>Objective-C の <code>block</code> は Swift の <code>Closure</code> に対応する。</p>
+
+<pre><code class="objective-c Objective-C">void (^completionBlock)(NSData *, NSError *) = ^(NSData *data, NSError *error) {/* ... */}
+</code></pre>
+
+<pre><code class="swift Swift">let completionBlock: (NSData, NSError) -&gt; Void = {data, error in /* ... */}
+</code></pre>
+
+<h3>@objc アノテーション</h3>
+
+<p>@objc アノテーションを使うことで、Swift のコードを Objective-C の中から呼び出すことができるようになる。</p>
+
+<p><code>@IBOutlet</code>、<code>@IBAction</code>、<code>@NSManaged</code> を使うと暗黙的に @objc が付与される。</p>
+
+<h3>Swift コードから Objective-C コードへの変換</h3>
+
+<p>メソッドはほとんどそのままマッピングされる。init コンストラクタは、第一引数に <code>initWith</code> がつくように変換される。</p>
+
+<pre><code class="swift Swift">func playSong(name: String)
+init(songName: String, artist: String)
+</code></pre>
+
+<pre><code class="objective-c Objective-C">- (void)playSong:(NSString *)name
+- (instancetype)initWithSongName:(NSString *)songName artist:(NSString *)artist
+</code></pre>
+
+<h3>Selector</h3>
+
+<p>Objective-C のセレクタは Swift では Selector 構造体にマッピングされる。</p>
+
+<pre><code class="swift">let mySelector: Selector = "tappedButton:"
+</code></pre>
+
+<pre><code class="swift">import UIKit
+class MyViewController: UIViewController {
+    let myButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+
+    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nibName, bundle: nibBundle)
+        myButton.targetForAction("tappedButton:", withSender: self)
+    }
+
+    func tappedButton(sender: UIButton!) {
+        println("tapped button")
+    }
+}
+</code></pre>
+
+<h2>Writing Swift Classes with Objective-C Behavior</h2>
+
+<p>Objective-C のプロトコルは Swift の protocol に対応する。Objective-C の NSObject プロトコルは <code>NSObjectProtocol</code> になっている。</p>
+
+<h3>Integrating with Interface builder</h3>
+
+<p>Swift でも Interface Builder の機能は利用出来る。Outlet、Actions、ライブレンダリングは Swift でも可能。</p>
+
+<p>Swift では @IBOutlet、@IBAction をプロパティやメソッドに付与する。</p>
+
+<pre><code class="swift">class MyViewController: UIViewController {
+    @IBOutlet var button: UIButton
+    @IBOutlet var textFields: UITextField[]
+    @IBAction func buttonTapped(AnyObject) {
+        println("button tapped!")
+    }
+}
+</code></pre>
+
+<p><code>@IBDesignable</code> と <code>@IBInspectable</code> をつかうと Interface Builder で編集が出来る。</p>
+
+<pre><code class="swift">@IBDesignable
+class MyCustomView: UIView {
+    @IBInspectable var textColor: UIColor
+    @IBInspectable var iconHeight: CGFloat
+    /* ... */
+}
+</code></pre>
+
+<h2>Working with Cocoa Data Types</h2>
+
+<h3>String（NSString）、Number（NSNumber）</h3>
+
+<p>NSString を利用したい場合は <code>as</code> を使ってキャストする。もしくは、最初から <code>NSString</code> 型を使う。</p>
+
+<pre><code class="swift">let str = "123"
+(str as NSString).floatValue
+
+import Foundation
+let myString: NSString = "123"
+if let integerValue = (myString as String).toInt() {
+    println("\(myString) is the integer \(integerValue)")
+}
+</code></pre>
+
+<p>NSNumber も同じ。</p>
+
+<pre><code class="swift">let n = 42
+let m: NSNumber = n
+</code></pre>
+
+<h3>Array</h3>
+
+<p>NSArray は <code>AnyObject[]</code> にマッピングされる。</p>
+
+<h3>Foundation Data Types</h3>
+
+<p>NSSize、NSPoint はそのまま利用出来る。</p>
+
+<pre><code class="swift">let size = NSSize(width: 20, height: 20)
+let rect = NSRect(x: 50, y: 50, width: 100, height: 100)
+</code></pre>
+
+<h3>NSLog</h3>
+
+<p>NSLog はそのままの構文で利用出来る。</p>
+
+<pre><code class="swift">NSLog("%.7f", pi)
+</code></pre>
+
+<h3>NSError and Error Reporting</h3>
+
+<pre><code class="swift">var writeError : NSError?
+let written = myString.writeToFile(path, atomically: false,
+    encoding: NSUTF8StringEncoding,
+    error: &amp;writeError)
+if !written {
+    if let error = writeError {
+        println("write failure: \(error.localizedDescription)")
+    }
+}
+
+func contentsForType(typeName: String! error: NSErrorPointer) -&gt; AnyObject! {
+    if cannotProduceContentsForType(typeName) {
+        if error {
+            error.memory = NSError(domain: domain, code: code, userInfo: [:])
+        }
+        return nil
+    }
+    // ...
+}
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Apple Swift プログラミング言語おぼえがき]]></title>
