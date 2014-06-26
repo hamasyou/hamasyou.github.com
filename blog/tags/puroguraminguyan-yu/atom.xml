@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: プログラミング言語 | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/puroguraminguyan-yu/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-05-21T10:05:23+09:00</updated>
+  <updated>2014-06-26T14:31:15+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,701 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Apple Swift プログラミング言語おぼえがき]]></title>
+    <link href="http://hamasyou.com/blog/2014/06/26/apple-swift/"/>
+    <updated>2014-06-26T08:00:55+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/06/26/apple-swift</id>
+    <content type="html"><![CDATA[<p>Apple が新しいプログラミング言語 <strong>Swift</strong> を2014年の WWDC で発表しました。言語仕様自体は色々なモダンプログラミング言語のいいとこ取りのような感じです。独特な仕様もいくつかあるのでおぼえがきしておきます。</p>
+
+<p>なお、Swift で作成したアプリは iOS8 と OS X Yosemite がリリースされた時点で審査に入れるようです。</p>
+
+<p><a href="https://developer.apple.com/swift/">Introducing Swift</a></p>
+
+<!-- more -->
+
+
+
+
+<div id="toc"></div>
+
+
+<h2>The Basics</h2>
+
+<p><code>NSLog</code> の代わりに <code>println</code> が使える。Xcode のコンソールにも表示される。文字列の変数展開は <code>\()</code> を使う。</p>
+
+<pre><code class="swift">let name = "hamasyou"
+println("Hello \(name)")  // Hello hamasyou
+</code></pre>
+
+<h3>基本型</h3>
+
+<p><code>Int</code>、<code>Double</code>、<code>Float</code>、<code>Bool</code>、<code>String</code>、<code>Array</code>、<code>Dictionary</code> などが用意されている。<code>Int16</code> や <code>UInt8</code> などもある。型の変換は <code>型名()</code> を使う。</p>
+
+<p>Swift では <code>nil</code> を特別な値として定義している。<code>Bool</code> 値は <code>true</code> と <code>false</code>。条件式では <code>Bool</code> 値のみが使える。</p>
+
+<pre><code class="swift">UInt8.max   // 255
+UInt8.min   // 0
+
+let three = 3
+let floatValue = 0.14159
+let pi = Double(three) + floatValue // 3.14159
+let integerPi = Int(pi) // 3
+
+if pi {
+    // この文法はコンパイルエラーになる。正しくは↓
+}
+
+if pi == 3.14159 {
+}
+</code></pre>
+
+<p>タプルも使える。不要な値を受け取るときは <code>_</code> を使う。</p>
+
+<pre><code class="swift">let httpError = (404, "Not Found")
+httpError.0   // 404
+httpError.1   // "Not Found"
+
+let otherError = (errorCode: 500, errorMessage: "Internal Server Error")
+otherError.errorCode    // 500
+otherError.errorMessage // "Internal Server Error"
+
+let (code, msg) = httpError
+code  // 404
+msg   // "Not Found"
+
+let (_, msg2) = otherError
+msg2  // "Internal Server Error"
+</code></pre>
+
+<h3>リテラルと変数</h3>
+
+<p>Swift ではリテラルの定義は <code>let</code> を使い、変数の定義は <code>var</code> を使う。<code>let</code> で定義したリテラルは変更できない。</p>
+
+<pre><code class="swift">let myName = "hamasyou"
+let π = 3.14
+var x = 0.0, y = 0.0, z = 0.0
+x = 3.0
+</code></pre>
+
+<p>文字列を数値に直すのに <code>toInt</code> メソッドが使える。この時返される値は <code>Int</code> 型でなく、<code>Int?</code> 型なので注意。</p>
+
+<pre><code class="swift">let str = "123"
+let num = str.toInt()   // num は Int? か Optional Int として型推論される
+</code></pre>
+
+<p>if 文の条件式には <code>Bool</code> しか記述できないが、この、<code>型 + ?</code> の形式で表される <code>Optional 型</code> も if 文の式に記述できる。この場合値が nil ではない場合に <code>true</code> と評価される。</p>
+
+<pre><code class="swift">var str = "123"
+var num = str.toInt()
+
+if num {
+    println("\(str) is number of \(num!)")
+}
+</code></pre>
+
+<p>このように、Swift では <code>nil</code> を返す可能性があるメソッドの戻り値の型は <code>Optional 型</code> になる。<code>Optional 型</code> から値を取り出すには <code>!</code> をつける。但し、nil が入っている変数から値を取り出そうとするとランタイムエラーになる。</p>
+
+<pre><code class="swift">str = "abc"
+num = str.toInt()
+
+println(num!)   // これはランタイムエラーになるので、必ず下の様に呼び出す
+
+if !num {
+    println("\(str) is not number")
+}
+</code></pre>
+
+<p>Optional 型から値を取り出す方法に、<code>!</code> をつける以外に次のようにも書ける。（Optional Binding）</p>
+
+<pre><code class="swift">let str = "123"
+let expectNum = str.toInt()
+if let actual = expectNum {
+    println(actual)
+}
+</code></pre>
+
+<h3>Implicity Unwrapped Optionals</h3>
+
+<p>Swift は Objective-C の nil ポインタとは違う <code>nil</code> を採用している。nil が格納される可能性がある変数は Optional 型として定義する必要がある。</p>
+
+<p>Optional 型の変数から値を取り出すには <code>!</code> を使う。必ず値が入っている確証が持てる場合は <code>型名 + !</code> の形で記述することもできる。値が入っていない時に <code>!</code> を使うとランタイムエラーがでるので注意。</p>
+
+<pre><code class="swift">var optioanValue: Int?   // Optional 型の変数は nil で初期化される
+
+let str = "123"
+let num: Int! = str.toInt()
+num   // num は 123 が入る Int! で定義しない場合は型推論によって Int? 型の Wrapped Value が入っているので 123 ではない
+</code></pre>
+
+<h3>Range</h3>
+
+<p><code>(a..b)</code>、<code>(a...b)</code> の形で範囲を求めることができる。<code>(a..b)</code> は b を含まない。Ruby とは逆の動きをする。。。</p>
+
+<pre><code class="swift">for i in (0..3) {
+    println(i)    // 0, 1, 2
+}
+</code></pre>
+
+<h2>String And Character</h2>
+
+<p><code>String</code> は <code>NSString</code> が使われているところでも使える。String は <code>Character</code> のコレクション型である。</p>
+
+<pre><code class="swift">let str = "Hello World"
+let c: Character = "!"
+
+let s = str + c
+
+str.isEmpty             // false
+str.hasPrefix("Hello")  // true
+str.hasSuffix("World")  // true
+</code></pre>
+
+<h2>Collection Types</h2>
+
+<h3>Array</h3>
+
+<p>Swift の配列は <code>Array</code> 型。<code>Array&lt;SomeType&gt;</code> で表す。略語として <code>型名[]</code> の形式も使える。<code>NSArray</code>、<code>NSMutableArray</code> が使われているところでも使える。</p>
+
+<pre><code class="swift">var list = ["Hello", "World", "Good"]
+list.count
+list += "Nice"      // ["Hello", "World", "Good", "Nice"]
+list.removeLast()   // "Nice"
+
+var stringList: String[]?             // nil
+var anyList: Array&lt;AnyObject&gt;?        // nil
+var stringList2: Array&lt;String&gt; = []   // empty String array
+</code></pre>
+
+<h3>Dictionary</h3>
+
+<p>Swift の Hash は <code>Dictionary</code> 型。<code>Dictionary&lt;KeyType, ValueType&gt;</code> で定義する。<code>NSDictionary</code>、<code>NSMutableDictionary</code> が使われているところでも使える。</p>
+
+<pre><code class="swift">var airports = ["TYO": "Tokyo", "DUB": "Dublin"]
+// var airports: Dictionary&lt;String, String&gt; = ["TYO": "Tokyo", "DUB": "Dublin"] とも書ける
+airports.count
+airports["OSK"] = "OSAKA"
+airports["HOGE"]    // nil
+airports.keys       // ["TYO", "DUB", "OSK"]
+airports.values
+
+for (code, name) in airports {
+}
+
+var dict: Dictionary&lt;String, String&gt;?             // nil
+var emptyDict = Dictionary&lt;String, String&gt;()      // empty Dictionary 
+var emptyDict2: Dictionary&lt;String, String&gt; = [:]  // empty Dictionary
+</code></pre>
+
+<h2>Functions</h2>
+
+<p>関数は <code>func メソッド名(引数: 型) -&gt; 戻り値の型</code> の形で書く。戻り値が必要ない場合は省略するか、<code>Void</code> を記述する。</p>
+
+<p>Swift の関数（メソッド）は <em>第一級関数</em> なので、変数や引数に渡すことができる。</p>
+
+<pre><code class="swift">func hello(name: String, greet: String) -&gt; String {
+    return "Hello \(name), \(greet)"
+} 
+println(hello("hamasyou", "Good Morning"))
+
+func sayHello(name: String) -&gt; Void {
+    println("Hello \(name)")
+}
+sayHello("hamasyou")
+</code></pre>
+
+<p>戻り値にはタプルを指定することもできる。</p>
+
+<pre><code class="swift">func count() -&gt; (vowels: Int, consonants: Int, others: Int) {
+    var n1 = 3, n2 = 5, n3 = 10
+    return (n1, n2, n3)
+}
+
+let ret = count()
+ret.vowels
+ret.consonants
+ret.others
+</code></pre>
+
+<h3>External Parameter Names</h3>
+
+<p>関数呼び出し時にキーワード引数として呼び出す名前を指定できる。</p>
+
+<pre><code class="swift">func someFunction(externalParameterName localParameterName: Int) {
+    var total = 10 + localParameterName
+}
+someFunction(externalParameterName: 5)
+
+func join(s1: String, s2: String, withJoiner joiner: String) -&gt; String {
+    return s1 + joiner + s2
+}
+join("Hello", "World", withJoiner: "-")
+</code></pre>
+
+<p><code>externalParameterName</code> と <code>localParameterName</code> を同じにしたいときは、<code>#</code> を使う。</p>
+
+<pre><code class="swift">func(containsCharacter(#string: String, #characterToFind: Character) -&gt; Bool {
+    for character in string {
+        if character == characterToFind {
+            return true
+        }
+    }
+    return false
+}
+</code></pre>
+
+<p>引数にデフォルト値を指定することもできる。デフォルト値を指定して、externalParameterName を指定しないときは、localParameterName が externalParameterName になる。</p>
+
+<pre><code class="swift">func join(s1: String, s2: String, joiner: String = "-") -&gt; String {
+    return s1 + joiner + s2
+}
+join("Hello", "World", joiner: " ")    
+</code></pre>
+
+<p><code>_</code> を externalParameterName に指定すれば、デフォルト値を設定しても呼び出し時に externalParameterName を指定する必要はなくなる。</p>
+
+<pre><code class="swift">func join(s1: String, s2: String, _ joiner: String = "-") -&gt; String {
+    return s1 + joiner + s2
+}
+join("Hello", "World", " ")
+</code></pre>
+
+<h3>In-Out Parameters</h3>
+
+<p>関数の引数は定数（<code>let</code>）として渡される。引数を変数（<code>var</code>）として渡したい場合は、引数名の前に <code>var</code> をつける。</p>
+
+<p>var をつけて引数を定義しても、変更の影響を受けるのは関数の中だけ。関数の外の変数にも影響を及ぼしたい場合には <code>inout</code> をつけて引数を定義して、引数を渡すときに <code>&amp;</code> を使う。</p>
+
+<pre><code class="swift">func swap(inout s1: String, inout s2: String) {
+    let tmp = s1
+    s1 = s2
+    s2 = tmp
+}
+
+var s1 = "Hello"
+var s2 = "World"
+swap(&amp;s1, &amp;s2)
+s1    // "World"
+s2    // "Hello"
+</code></pre>
+
+<h2>Closures</h2>
+
+<p>Swift の Closure は次の点が最適化されている。</p>
+
+<ul>
+<li>引数と戻り値の型が推論される</li>
+<li>Closre Body が単一式の場合はそれが暗黙の戻り値になる</li>
+<li>引数を略式で書ける</li>
+<li>Closure を最後の引数として取るメソッドの場合、Closure を <code>()</code> の外側に書くことができる</li>
+</ul>
+
+
+<pre><code class="swift Closure Syntax">{ (parameters) -&gt; returnType in
+    statements
+}
+</code></pre>
+
+<pre><code class="swift Closure syntaxes">let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+sort(names, { (s1: String, s2: String) -&gt; Bool in
+    return s1 &lt; s2
+})
+
+sort(names, { (s1: String, s2: String) -&gt; Bool in return s1 &lt; s2 })
+sort(names, { s1, s2 in return s1 &lt; s2 })
+sort(names, { s1, s2 in s2 &lt; s2 })
+sort(names, { $0 &lt; $1 })
+sort(names) { $0 &lt; $1 }  
+</code></pre>
+
+<pre><code class="swift map sample">let digitNames = [
+    0: "Zero", 1: "One", 2: "Two",   3: "Three", 4: "Four",
+    5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine"
+]
+let numbers = [16, 58, 510]
+let strings = numbers.map { (var num) -&gt; String in
+    var output = ""
+    while num &gt; 0 {
+        output = digitNames[num % 10]! + output
+        num /= 10
+    }
+    return output
+}
+strings
+</code></pre>
+
+<pre><code class="swift Closure sample">func makeIncrementor(forIncrement amount: Int) -&gt; (() -&gt; Int) {
+    var runningTotal = 0
+    func incrementor() -&gt; Int {
+        runningTotal += amount
+        return runningTotal
+    }
+    return incrementor
+}
+
+let incrementByTen = makeIncrementor(forIncrement: 10)
+incrementByTen()    // 10
+incrementByTen()    // 20
+incrementByTen()    // 30
+</code></pre>
+
+<h2>Enumerations</h2>
+
+<p>Swift では <code>Enumeration</code> も first-class type である。Swift ではデフォルト値を設定しない限り、自動で 0, 1, 2 の様な値がふられることはない。</p>
+
+<pre><code class="swift">enum CompassPoint {
+    case North
+    case South
+    case East
+    case West
+}
+CompassPoint.North
+
+enum Numbers: Int {
+    case Zero = 0, One, Two, Three, Four, Five, Six, Seven, Eight, Nine
+}
+Numbers.Four.toRaw()                // 4
+Numbers.fromRaw(7) == Numbers.Seven // true 
+</code></pre>
+
+<h3>Associated Values</h3>
+
+<p>Swift の enumerations は関連する値を保持することができる。</p>
+
+<pre><code class="swift">enum Barcode {
+    case UPCA(Int, Int, Int)
+    case QRCode(String)
+}
+
+let productBarcode = Barcode.UPCA(8, 85900_51226, 3)
+switch productBarcode {
+case let .UPCA(numberSystem, identifier, check):
+    println("UPC-A with value of \(numberSystem), \(identifier), \(check).")
+case let .QRCode(productCode):
+    println("QR code with value of \(productCode).")
+} 
+</code></pre>
+
+<h2>Classes and Structures</h2>
+
+<p>Swift では、クラスと構造体はほぼ同じ物と考えることができる。構造体は参照ではなく copy value で管理される。</p>
+
+<p><blockquote><p>Unlike value types, reference types are not copied when they are assigned to a variable or constant, or when they are passed to a function. Rather than a copy, a reference to the same existing instance is used instead.</p><footer><strong>Classes Are Reference Types</strong></footer></blockquote></p>
+
+<h4>クラスと構造体の共通点</h4>
+
+<ul>
+<li><strong>プロパティ</strong> を定義することができる</li>
+<li><strong>メソッド</strong> を定義することができる</li>
+<li><strong>subscripts</strong> （配列の<code>[0]</code> のようにアクセスできる仕組み）を提供することができる</li>
+<li><strong>イニシャライザ</strong> （コンストラクタ）を定義することができる</li>
+<li>デフォルトの振る舞いを拡張することができる</li>
+<li><strong>protocol</strong> を使うことができる</li>
+</ul>
+
+
+<h4>クラスだけがもつ機能</h4>
+
+<ul>
+<li><strong>継承</strong></li>
+<li>タイプキャストが可能</li>
+<li><strong>デイニシャライザ</strong> （デストラクタ）を定義することができる</li>
+<li>ひとつ以上の参照カウントが許される（構造体は copy-value、クラスは reference）</li>
+</ul>
+
+
+<pre><code class="swift syntax">struct Resolution {
+    var width = 0
+    var height = 0
+}
+
+class VideoMode {
+    var resolution = Resolution()
+    var interlaced = false
+    var frameRate = 0.0
+    var name: String?
+}
+let someResolution = Resolution()
+let someVideoMode = VideoMode()
+someVideoMode.resolution.width = 1280
+</code></pre>
+
+<p>Objective-C とは違って、参照をたどって直接値を設定することも可能。</p>
+
+<p>構造体は、暗黙のイニシャライザを使って、プロパティを初期化することが可能。クラスはイニシャライザを明示的に定義しなければいけない。</p>
+
+<pre><code class="swift">let rvga = Resolution(width: 640, height: 480)
+</code></pre>
+
+<h3>クラスと構造体のどちらを選ぶか</h3>
+
+<ul>
+<li>構造体を使う一番の理由は関係する値をまとめるため</li>
+<li>プロパティのデータを何かしら処理する場合には、クラスの方がいいかも</li>
+</ul>
+
+
+<h3>Array と Dictionary</h3>
+
+<p>Swift の Array と Dictionary は構造体の様に振舞う。</p>
+
+<p>Dictionary は変数に割り当てられる際にコピーされる。Key/Value の Value がさらに Dictionary の場合はそれもコピーされる。</p>
+
+<pre><code class="swift">var ages = ["Peter": 23, "Wei": 35, "Anish": 65, "Katya": 19]
+var copiedAges = ages
+ages["Peter"] = 24    // 24
+copiedAges["Peter"]   // 23
+</code></pre>
+
+<p>Array はもうちょっと複雑な動きをする。Array の値がコピーされるのは、コピーが必要になった時に起こる。</p>
+
+<p>変数への割り当て、メソッドの引数で渡しただけではコピーは起こらない。コピーが起こるのは、配列の長さ（<code>length</code>）が変わる処理が行ったとき。</p>
+
+<pre><code class="swift">var nums = [10, 20, 30, 40]
+var otherNums = nums
+
+nums[0] = 50
+otherNums[0]    // 50
+
+nums += 100     // occure copy, nums is [50, 20, 30, 40, 100]
+nums[0] = 10    // nums is [10, 20, 30, 40, 100]
+otherNums[0]    // 50, otherNums is [50, 20, 30, 40]
+</code></pre>
+
+<p>Array で参照を切りたいときは <code>unshare()</code> メソッドを使う。変数への割り当て時に強制的にコピーしたいときは <code>copy()</code> メソッドを使う。</p>
+
+<h2>Properties</h2>
+
+<h3>Lazy Stored Properties</h3>
+
+<p>最初にアクセスされるまで初期化されないようにするには、<code>@lazy</code> を使用する。変数（var）で定義するプロパティには @lazy をつけるようにするといい。</p>
+
+<p><blockquote><p>You must always declare a lazy property as a variable (with the var keyword), because its initial value may not be retrieved until after instance initialization completes. Constant properties must always have a value before initialization completes, and therefore cannot be declared as lazy.</p><footer><strong>Lazy Stored Properties</strong></footer></blockquote></p>
+
+<pre><code class="swift">class DataManager {
+    @lazy var importer = DataImporter()   // DataImporter is assumed to take a non-trivial amount of time to initialize.
+}
+</code></pre>
+
+<h3>Computed Properties</h3>
+
+<p><code>center</code> プロパティが Computed Property になる。<code>set</code> で受け取る引数は明示してもいいし、明示しない場合は <code>newValue</code> で受け取れる。</p>
+
+<pre><code class="swift">struct Rect {
+    var origin = Point()
+    var size = Size()
+    var center: Point {
+    get {
+        let centerX = origin.x + (size.width / 2)
+        let centerY = origin.y + (size.height / 2)
+        return Point(x: centerX, y: centerY)
+    }
+    set {
+        origin.x = newValue.x - (size.width / 2)
+        origin.y = newValue.y - (size.height / 2)
+    }
+    }
+}
+</code></pre>
+
+<h3>Property Observers</h3>
+
+<p><code>willSet</code>, <code>didSet</code> を使うと、プロパティが設定されるまえ、設定された後にコールバックを受け取ることができる。これらのコールバックは初期化時にはよばれない。</p>
+
+<pre><code class="swift">class StepCounter {
+    var totalSteps: Int = 0 {
+    willSet(newTotalSteps) {
+        println("About to set totalSteps to \(newTotalSteps)")
+    }
+    didSet {
+        if totalSteps &gt; oldValue  {
+            println("Added \(totalSteps - oldValue) steps")
+        }
+    }
+    }
+}
+let stepCounter = StepCounter()
+stepCounter.totalSteps = 200
+// About to set totalSteps to 200
+// Added 200 steps
+</code></pre>
+
+<h2>Methods</h2>
+
+<p>メソッドにも関数と同じく <code>externalParameterName</code> と <code>localParameterName</code> を指定できる。メソッドの場合は関数と違って、externalParameterName と localParameterName の定義の振る舞いが違う。</p>
+
+<p>メソッドは最初の引数の externalParameterName は、localParameterName と同じになり、呼び出し時は最初の引数の externalParameterName は省略できる。</p>
+
+<pre><code class="swift">class MyClass {
+    func hello(name: String, greet: String) -&gt; String {
+        return "Hello \(name) \(greet)"
+    }
+}
+
+let obj = MyClass()
+obj.hello("hamasyou", greet: "Good Morning")
+</code></pre>
+
+<p>第二引数以降の呼び出しで externalParameterName を指定したくない場合は <code>_</code> を使う。</p>
+
+<pre><code class="swift">class MyClass {
+    func hello(name: String, _ greet: String) -&gt; String {
+        return "Hello \(name) \(greet)"
+    }
+}
+
+let obj = MyClass()
+obj.hello("hamasyou", "Good Night")
+</code></pre>
+
+<h3>Modifying Value Types from Within Instance Methods</h3>
+
+<p>構造体と Enumerations はデフォルトでメソッドの中からプロパティの変更を行うことができない。変更できるようにするには <code>mutating</code> でメソッドを修飾する。</p>
+
+<pre><code class="swift">struct Point {
+    var x = 0.0, y = 0.0
+    mutating func moveByX(deltaX: Double, y deltaY: Double) {
+        x += deltaX
+        y += deltaY
+    }
+}
+</code></pre>
+
+<h2>Subscripts</h2>
+
+<p>Subscript はコレクションにアクセスするための略式を定義するもの。クラスや構造体、Enumeration に定義できる。定義すると <code>[0]</code> などでアクセスできるようになる。</p>
+
+<p><code>subscript</code> の引数は複数指定することもできる。</p>
+
+<pre><code class="swift">subscript(index: Int) -&gt; Int {
+    get {
+        // return an appropriate subscript value here
+    }
+    set(newValue) {
+        // perform a suitable setting action here
+    }
+}
+</code></pre>
+
+<h2>Inheritance</h2>
+
+<p>メソッドやプロパティのオーバーライドには <code>override</code> キーワードを使用する。override されたくないメソッドやプロパティには <code>@final</code> を指定する。</p>
+
+<h2>Initialization</h2>
+
+<p>イニシャライザは <code>init</code> で定義する。イニシャライザに引数を指定する場合、externalPropertyName を指定しなければ暗黙で localPropertyName が externalPropertyName に指定される。</p>
+
+<p>メソッドと違い、<em>イニシャライザの呼び出し時には全ての externalPropertyName の指定が必要</em>。</p>
+
+<pre><code class="swift">struct Color {
+    let red = 0.0, green = 0.0, blue = 0.0
+    init(red: Double, green: Double, blue: Double) {
+        self.red   = red
+        self.green = green
+        self.blue  = blue
+    }
+}
+let magenta = Color(red: 1.0, green: 0.0, blue: 1.0)
+</code></pre>
+
+<h3>Designated Initializers and Convenience Initializers</h3>
+
+<p><code>Designated Initializer</code> はインスタンスの初期化の目的で定義される。<code>Convenience Initializer</code> は Designated Intitializer を呼び出す際のデフォルト値などを設定する目的で使う。</p>
+
+<pre><code class="swift">class MyClass {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+
+    convenience init() {
+        self.init(name: "hamasyou")
+    }
+}
+let me = MyClass()
+</code></pre>
+
+<h2>Type Casting</h2>
+
+<p>ダウンキャストに <code>as</code> が使える。Optional Type の場合は <code>as?</code> を使う。Dictionary とかから値を取り出すときに使える。</p>
+
+<pre><code class="swift">for item in library {
+    if let movie = item as? Movie {
+        println("Movie: '\(movie.name)', dir. \(movie.director)")
+    } else if let song = item as? Song {
+        println("Song: '\(song.name)', by \(song.artist)")
+    }
+}
+</code></pre>
+
+<p>配列の型に <code>AnyObject</code> を使うと、利用時にキャストが必要だが何の型か指定しなくても入れれるようになる。</p>
+
+<pre><code class="swift">let someObjects: AnyObject[] = [
+    Movie(name: "2001: A Space Odyssey", director: "Stanley Kubrick"),
+    Movie(name: "Moon", director: "Duncan Jones"),
+    Movie(name: "Alien", director: "Ridley Scott")
+]
+for object in someObjects {
+    let movie = object as Movie
+    println("Movie: '\(movie.name)', dir. \(movie.director)")
+}
+</code></pre>
+
+<p>配列の型に <code>Any</code> を使うと、なんでもいれれるようになる。</p>
+
+<pre><code class="swift">var things = Any[]()
+
+things.append(0)
+things.append(0.0)
+things.append(42)
+things.append(3.14159)
+things.append("hello")
+things.append((3.0, 5.0))
+things.append(Movie(name: "Ghostbusters", director: "Ivan Reitman"))
+
+for thing in things {
+    switch thing {
+    case 0 as Int:
+        println("zero as an Int")
+    case 0 as Double:
+        println("zero as a Double")
+    case let someInt as Int:
+        println("an integer value of \(someInt)")
+    case let someDouble as Double where someDouble &gt; 0:
+        println("a positive double value of \(someDouble)")
+    case is Double:
+        println("some other double value that I don't want to print")
+    case let someString as String:
+        println("a string value of \"\(someString)\"")
+    case let (x, y) as (Double, Double):
+        println("an (x, y) point at \(x), \(y)")
+    case let movie as Movie:
+        println("a movie called '\(movie.name)', dir. \(movie.director)")
+    default:
+        println("something else")
+    }
+}
+</code></pre>
+
+<h2>Extensions</h2>
+
+<p>既存のクラス、構造体、Enumeration に機能を追加できる。</p>
+
+<pre><code class="swift">extension SomeType: SomeProtocol, AnotherProtocol {
+    // implementation of protocol requirements goes here
+}
+
+extension Double {
+    var km: Double { return self * 1_000.0 }
+    var m: Double { return self }
+    var cm: Double { return self / 100.0 }
+    var mm: Double { return self / 1_000.0 }
+    var ft: Double { return self / 3.28084 }
+}
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[７つの言語 ７つの世界]]></title>

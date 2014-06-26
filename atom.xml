@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-05-21T10:05:23+09:00</updated>
+  <updated>2014-06-26T14:31:15+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,1279 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Apple Swift プログラミング言語おぼえがき]]></title>
+    <link href="http://hamasyou.com/blog/2014/06/26/apple-swift/"/>
+    <updated>2014-06-26T08:00:55+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/06/26/apple-swift/</id>
+    <content type="html"><![CDATA[<p>Apple が新しいプログラミング言語 <strong class="text-danger">Swift</strong> を2014年の WWDC で発表しました。言語仕様自体は色々なモダンプログラミング言語のいいとこ取りのような感じです。独特な仕様もいくつかあるのでおぼえがきしておきます。</p>
+
+<p>なお、Swift で作成したアプリは iOS8 と OS X Yosemite がリリースされた時点で審査に入れるようです。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="https://developer.apple.com/swift/" rel="external nofollow" title="Introducing Swift">Introducing Swift</a></p>
+
+<!-- more -->
+
+
+
+
+<div id="toc"></div>
+
+
+<h2>The Basics</h2>
+
+<p><code>NSLog</code> の代わりに <code>println</code> が使える。Xcode のコンソールにも表示される。文字列の変数展開は <code>\()</code> を使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"hamasyou"</span>
+</span><span class="line"><span class="n">println</span><span class="p">(</span><span class="s">"Hello \(name)"</span><span class="p">)</span>  <span class="c1">// Hello hamasyou</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>基本型</h3>
+
+<p><code>Int</code>、<code>Double</code>、<code>Float</code>、<code>Bool</code>、<code>String</code>、<code>Array</code>、<code>Dictionary</code> などが用意されている。<code>Int16</code> や <code>UInt8</code> などもある。型の変換は <code>型名()</code> を使う。</p>
+
+<p>Swift では <code>nil</code> を特別な値として定義している。<code>Bool</code> 値は <code>true</code> と <code>false</code>。条件式では <code>Bool</code> 値のみが使える。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="kt">UInt8</span><span class="p">.</span><span class="n">max</span>   <span class="c1">// 255</span>
+</span><span class="line"><span class="kt">UInt8</span><span class="p">.</span><span class="n">min</span>   <span class="c1">// 0</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">three</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span class="line"><span class="k">let</span> <span class="n">floatValue</span> <span class="o">=</span> <span class="mf">0.14159</span>
+</span><span class="line"><span class="k">let</span> <span class="n">pi</span> <span class="o">=</span> <span class="n">Double</span><span class="p">(</span><span class="n">three</span><span class="p">)</span> <span class="o">+</span> <span class="n">floatValue</span> <span class="c1">// 3.14159</span>
+</span><span class="line"><span class="k">let</span> <span class="n">integerPi</span> <span class="o">=</span> <span class="n">Int</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span> <span class="c1">// 3</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="n">pi</span> <span class="p">{</span>
+</span><span class="line">    <span class="c1">// この文法はコンパイルエラーになる。正しくは↓</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="n">pi</span> <span class="o">==</span> <span class="mf">3.14159</span> <span class="p">{</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>タプルも使える。不要な値を受け取るときは <code>_</code> を使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">httpError</span> <span class="o">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">"Not Found"</span><span class="p">)</span>
+</span><span class="line"><span class="n">httpError</span><span class="mf">.0</span>   <span class="c1">// 404</span>
+</span><span class="line"><span class="n">httpError</span><span class="mf">.1</span>   <span class="c1">// "Not Found"</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">otherError</span> <span class="o">=</span> <span class="p">(</span><span class="nl">errorCode</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="nl">errorMessage</span><span class="p">:</span> <span class="s">"Internal Server Error"</span><span class="p">)</span>
+</span><span class="line"><span class="n">otherError</span><span class="p">.</span><span class="n">errorCode</span>    <span class="c1">// 500</span>
+</span><span class="line"><span class="n">otherError</span><span class="p">.</span><span class="n">errorMessage</span> <span class="c1">// "Internal Server Error"</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span> <span class="o">=</span> <span class="n">httpError</span>
+</span><span class="line"><span class="n">code</span>  <span class="c1">// 404</span>
+</span><span class="line"><span class="n">msg</span>   <span class="c1">// "Not Found"</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">msg2</span><span class="p">)</span> <span class="o">=</span> <span class="n">otherError</span>
+</span><span class="line"><span class="n">msg2</span>  <span class="c1">// "Internal Server Error"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>リテラルと変数</h3>
+
+<p>Swift ではリテラルの定義は <code>let</code> を使い、変数の定義は <code>var</code> を使う。<code>let</code> で定義したリテラルは変更できない。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">myName</span> <span class="o">=</span> <span class="s">"hamasyou"</span>
+</span><span class="line"><span class="k">let</span> <span class="err">π</span> <span class="o">=</span> <span class="mf">3.14</span>
+</span><span class="line"><span class="k">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span class="line"><span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>文字列を数値に直すのに <code>toInt</code> メソッドが使える。この時返される値は <code>Int</code> 型でなく、<code>Int?</code> 型なので注意。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"123"</span>
+</span><span class="line"><span class="k">let</span> <span class="n">num</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>   <span class="c1">// num は Int? か Optional Int として型推論される</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>if 文の条件式には <code>Bool</code> しか記述できないが、この、<code>型 + ?</code> の形式で表される <code>Optional 型</code> も if 文の式に記述できる。この場合値が nil ではない場合に <code>true</code> と評価される。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"123"</span>
+</span><span class="line"><span class="k">var</span> <span class="n">num</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="n">num</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"\(str) is number of \(num!)"</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>このように、Swift では <code>nil</code> を返す可能性があるメソッドの戻り値の型は <code>Optional 型</code> になる。<code>Optional 型</code> から値を取り出すには <code>!</code> をつける。但し、nil が入っている変数から値を取り出そうとするとランタイムエラーになる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">str</span> <span class="o">=</span> <span class="s">"abc"</span>
+</span><span class="line"><span class="n">num</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line"><span class="n">println</span><span class="p">(</span><span class="n">num</span><span class="o">!</span><span class="p">)</span>   <span class="c1">// これはランタイムエラーになるので、必ず下の様に呼び出す</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="o">!</span><span class="n">num</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"\(str) is not number"</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Optional 型から値を取り出す方法に、<code>!</code> をつける以外に次のようにも書ける。（Optional Binding）</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"123"</span>
+</span><span class="line"><span class="k">let</span> <span class="n">expectNum</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
+</span><span class="line"><span class="k">if</span> <span class="k">let</span> <span class="n">actual</span> <span class="o">=</span> <span class="n">expectNum</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Implicity Unwrapped Optionals</h3>
+
+<p>Swift は Objective-C の nil ポインタとは違う <code>nil</code> を採用している。nil が格納される可能性がある変数は Optional 型として定義する必要がある。</p>
+
+<p>Optional 型の変数から値を取り出すには <code>!</code> を使う。必ず値が入っている確証が持てる場合は <code>型名 + !</code> の形で記述することもできる。値が入っていない時に <code>!</code> を使うとランタイムエラーがでるので注意。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="nl">optioanValue</span><span class="p">:</span> <span class="n">Int</span><span class="o">?</span>   <span class="c1">// Optional 型の変数は nil で初期化される</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"123"</span>
+</span><span class="line"><span class="k">let</span> <span class="nl">num</span><span class="p">:</span> <span class="n">Int</span><span class="o">!</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
+</span><span class="line"><span class="n">num</span>   <span class="c1">// num は 123 が入る Int! で定義しない場合は型推論によって Int? 型の Wrapped Value が入っているので 123 ではない</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Range</h3>
+
+<p><code>(a..b)</code>、<code>(a...b)</code> の形で範囲を求めることができる。<code>(a..b)</code> は b を含まない。Ruby とは逆の動きをする。。。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">for</span> <span class="n">i</span> <span class="nf">in</span> <span class="p">(</span><span class="mf">0..3</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>    <span class="c1">// 0, 1, 2</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>String And Character</h2>
+
+<p><code>String</code> は <code>NSString</code> が使われているところでも使える。String は <code>Character</code> のコレクション型である。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"Hello World"</span>
+</span><span class="line"><span class="k">let</span> <span class="nl">c</span><span class="p">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">"!"</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">s</span> <span class="o">=</span> <span class="n">str</span> <span class="o">+</span> <span class="n">c</span>
+</span><span class="line">
+</span><span class="line"><span class="n">str</span><span class="p">.</span><span class="n">isEmpty</span>             <span class="c1">// false</span>
+</span><span class="line"><span class="n">str</span><span class="p">.</span><span class="n">hasPrefix</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>  <span class="c1">// true</span>
+</span><span class="line"><span class="n">str</span><span class="p">.</span><span class="n">hasSuffix</span><span class="p">(</span><span class="s">"World"</span><span class="p">)</span>  <span class="c1">// true</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Collection Types</h2>
+
+<h3>Array</h3>
+
+<p>Swift の配列は <code>Array</code> 型。<code>Array&lt;SomeType&gt;</code> で表す。略語として <code>型名[]</code> の形式も使える。<code>NSArray</code>、<code>NSMutableArray</code> が使われているところでも使える。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">,</span> <span class="s">"Good"</span><span class="p">]</span>
+</span><span class="line"><span class="n">list</span><span class="p">.</span><span class="n">count</span>
+</span><span class="line"><span class="n">list</span> <span class="o">+=</span> <span class="s">"Nice"</span>      <span class="c1">// ["Hello", "World", "Good", "Nice"]</span>
+</span><span class="line"><span class="n">list</span><span class="p">.</span><span class="n">removeLast</span><span class="p">()</span>   <span class="c1">// "Nice"</span>
+</span><span class="line">
+</span><span class="line"><span class="k">var</span> <span class="nl">stringList</span><span class="p">:</span> <span class="n">String</span><span class="p">[]</span><span class="o">?</span>             <span class="c1">// nil</span>
+</span><span class="line"><span class="k">var</span> <span class="nl">anyList</span><span class="p">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">AnyObject</span><span class="o">&gt;?</span>        <span class="c1">// nil</span>
+</span><span class="line"><span class="k">var</span> <span class="nl">stringList2</span><span class="p">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[]</span>   <span class="c1">// empty String array</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Dictionary</h3>
+
+<p>Swift の Hash は <code>Dictionary</code> 型。<code>Dictionary&lt;KeyType, ValueType&gt;</code> で定義する。<code>NSDictionary</code>、<code>NSMutableDictionary</code> が使われているところでも使える。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">airports</span> <span class="o">=</span> <span class="p">[</span><span class="s">"TYO"</span><span class="o">:</span> <span class="s">"Tokyo"</span><span class="p">,</span> <span class="s">"DUB"</span><span class="o">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
+</span><span class="line"><span class="c1">// var airports: Dictionary&lt;String, String&gt; = ["TYO": "Tokyo", "DUB": "Dublin"] とも書ける</span>
+</span><span class="line"><span class="n">airports</span><span class="p">.</span><span class="n">count</span>
+</span><span class="line"><span class="n">airports</span><span class="p">[</span><span class="s">"OSK"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"OSAKA"</span>
+</span><span class="line"><span class="n">airports</span><span class="p">[</span><span class="s">"HOGE"</span><span class="p">]</span>    <span class="c1">// nil</span>
+</span><span class="line"><span class="n">airports</span><span class="p">.</span><span class="n">keys</span>       <span class="c1">// ["TYO", "DUB", "OSK"]</span>
+</span><span class="line"><span class="n">airports</span><span class="p">.</span><span class="n">values</span>
+</span><span class="line">
+</span><span class="line"><span class="k">for</span> <span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">in</span> <span class="n">airports</span> <span class="p">{</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">var</span> <span class="nl">dict</span><span class="p">:</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;?</span>             <span class="c1">// nil</span>
+</span><span class="line"><span class="k">var</span> <span class="n">emptyDict</span> <span class="o">=</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">()</span>      <span class="c1">// empty Dictionary </span>
+</span><span class="line"><span class="k">var</span> <span class="nl">emptyDict2</span><span class="p">:</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="o">:</span><span class="p">]</span>  <span class="c1">// empty Dictionary</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Functions</h2>
+
+<p>関数は <code>func メソッド名(引数: 型) -&gt; 戻り値の型</code> の形で書く。戻り値が必要ない場合は省略するか、<code>Void</code> を記述する。</p>
+
+<p>Swift の関数（メソッド）は <em>第一級関数</em> なので、変数や引数に渡すことができる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="n">hello</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">greet</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="s">"Hello \(name), \(greet)"</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">println</span><span class="p">(</span><span class="n">hello</span><span class="p">(</span><span class="s">"hamasyou"</span><span class="p">,</span> <span class="s">"Good Morning"</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="k">func</span> <span class="n">sayHello</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"Hello \(name)"</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">sayHello</span><span class="p">(</span><span class="s">"hamasyou"</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>戻り値にはタプルを指定することもできる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="nf">count</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nl">vowels</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">consonants</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">others</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">n1</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n2</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">n3</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span class="line">    <span class="k">return</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">n3</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">count</span><span class="p">()</span>
+</span><span class="line"><span class="n">ret</span><span class="p">.</span><span class="n">vowels</span>
+</span><span class="line"><span class="n">ret</span><span class="p">.</span><span class="n">consonants</span>
+</span><span class="line"><span class="n">ret</span><span class="p">.</span><span class="n">others</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>External Parameter Names</h3>
+
+<p>関数呼び出し時にキーワード引数として呼び出す名前を指定できる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="nf">someFunction</span><span class="p">(</span><span class="n">externalParameterName</span> <span class="nl">localParameterName</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">localParameterName</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">someFunction</span><span class="p">(</span><span class="nl">externalParameterName</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="k">func</span> <span class="n">join</span><span class="p">(</span><span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">withJoiner</span> <span class="nl">joiner</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">joiner</span> <span class="o">+</span> <span class="n">s2</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">join</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">,</span> <span class="nl">withJoiner</span><span class="p">:</span> <span class="s">"-"</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>externalParameterName</code> と <code>localParameterName</code> を同じにしたいときは、<code>#</code> を使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span><span class="p">(</span><span class="n">containsCharacter</span><span class="p">(</span><span class="err">#</span><span class="nl">string</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="err">#</span><span class="nl">characterToFind</span><span class="p">:</span> <span class="n">Character</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">for</span> <span class="n">character</span> <span class="k">in</span> <span class="n">string</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">if</span> <span class="n">character</span> <span class="o">==</span> <span class="n">characterToFind</span> <span class="p">{</span>
+</span><span class="line">            <span class="k">return</span> <span class="nb">true</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="nb">false</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>引数にデフォルト値を指定することもできる。デフォルト値を指定して、externalParameterName を指定しないときは、localParameterName が externalParameterName になる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="n">join</span><span class="p">(</span><span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">joiner</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">"-"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">joiner</span> <span class="o">+</span> <span class="n">s2</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">join</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">,</span> <span class="nl">joiner</span><span class="p">:</span> <span class="s">" "</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>_</code> を externalParameterName に指定すれば、デフォルト値を設定しても呼び出し時に externalParameterName を指定する必要はなくなる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="n">join</span><span class="p">(</span><span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">_</span> <span class="nl">joiner</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">"-"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">joiner</span> <span class="o">+</span> <span class="n">s2</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">join</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">,</span> <span class="s">" "</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>In-Out Parameters</h3>
+
+<p>関数の引数は定数（<code>let</code>）として渡される。引数を変数（<code>var</code>）として渡したい場合は、引数名の前に <code>var</code> をつける。</p>
+
+<p>var をつけて引数を定義しても、変更の影響を受けるのは関数の中だけ。関数の外の変数にも影響を及ぼしたい場合には <code>inout</code> をつけて引数を定義して、引数を渡すときに <code>&amp;</code> を使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="nf">swap</span><span class="p">(</span><span class="k">inout</span> <span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="k">inout</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">let</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">s1</span>
+</span><span class="line">    <span class="n">s1</span> <span class="o">=</span> <span class="n">s2</span>
+</span><span class="line">    <span class="n">s2</span> <span class="o">=</span> <span class="n">tmp</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">var</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">"Hello"</span>
+</span><span class="line"><span class="k">var</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">"World"</span>
+</span><span class="line"><span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s2</span><span class="p">)</span>
+</span><span class="line"><span class="n">s1</span>    <span class="c1">// "World"</span>
+</span><span class="line"><span class="n">s2</span>    <span class="c1">// "Hello"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Closures</h2>
+
+<p>Swift の Closure は次の点が最適化されている。</p>
+
+<ul>
+<li>引数と戻り値の型が推論される</li>
+<li>Closre Body が単一式の場合はそれが暗黙の戻り値になる</li>
+<li>引数を略式で書ける</li>
+<li>Closure を最後の引数として取るメソッドの場合、Closure を <code>()</code> の外側に書くことができる</li>
+</ul>
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Closure Syntax</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="p">{</span> <span class="p">(</span><span class="n">parameters</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">returnType</span> <span class="k">in</span>
+</span><span class="line">    <span class="n">statements</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Closure syntaxes</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Chris"</span><span class="p">,</span> <span class="s">"Alex"</span><span class="p">,</span> <span class="s">"Ewa"</span><span class="p">,</span> <span class="s">"Barry"</span><span class="p">,</span> <span class="s">"Daniella"</span><span class="p">]</span>
+</span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="p">(</span><span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="k">in</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">s1</span> <span class="o">&lt;</span> <span class="n">s2</span>
+</span><span class="line"><span class="p">})</span>
+</span><span class="line">
+</span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="p">(</span><span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&lt;</span> <span class="n">s2</span> <span class="p">})</span>
+</span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&lt;</span> <span class="n">s2</span> <span class="p">})</span>
+</span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="n">s2</span> <span class="o">&lt;</span> <span class="n">s2</span> <span class="p">})</span>
+</span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="err">$</span><span class="mi">1</span> <span class="p">})</span>
+</span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="err">$</span><span class="mi">1</span> <span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>map sample</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">digitNames</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class="line">    <span class="mi">0</span><span class="o">:</span> <span class="s">"Zero"</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span> <span class="s">"One"</span><span class="p">,</span> <span class="mi">2</span><span class="o">:</span> <span class="s">"Two"</span><span class="p">,</span>   <span class="mi">3</span><span class="o">:</span> <span class="s">"Three"</span><span class="p">,</span> <span class="mi">4</span><span class="o">:</span> <span class="s">"Four"</span><span class="p">,</span>
+</span><span class="line">    <span class="mi">5</span><span class="o">:</span> <span class="s">"Five"</span><span class="p">,</span> <span class="mi">6</span><span class="o">:</span> <span class="s">"Six"</span><span class="p">,</span> <span class="mi">7</span><span class="o">:</span> <span class="s">"Seven"</span><span class="p">,</span> <span class="mi">8</span><span class="o">:</span> <span class="s">"Eight"</span><span class="p">,</span> <span class="mi">9</span><span class="o">:</span> <span class="s">"Nine"</span>
+</span><span class="line"><span class="p">]</span>
+</span><span class="line"><span class="k">let</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">510</span><span class="p">]</span>
+</span><span class="line"><span class="k">let</span> <span class="n">strings</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="p">(</span><span class="k">var</span> <span class="n">num</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="k">in</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">output</span> <span class="o">=</span> <span class="s">""</span>
+</span><span class="line">    <span class="k">while</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">output</span> <span class="o">=</span> <span class="n">digitNames</span><span class="p">[</span><span class="n">num</span> <span class="o">%</span> <span class="mi">10</span><span class="p">]</span><span class="o">!</span> <span class="o">+</span> <span class="n">output</span>
+</span><span class="line">        <span class="n">num</span> <span class="o">/=</span> <span class="mi">10</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">output</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">strings</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Closure sample</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="nf">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span> <span class="nl">amount</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">runningTotal</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line">    <span class="k">func</span> <span class="n">incrementor</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">runningTotal</span> <span class="o">+=</span> <span class="n">amount</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">runningTotal</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">incrementor</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">incrementByTen</span> <span class="o">=</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="nl">forIncrement</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+</span><span class="line"><span class="n">incrementByTen</span><span class="p">()</span>    <span class="c1">// 10</span>
+</span><span class="line"><span class="n">incrementByTen</span><span class="p">()</span>    <span class="c1">// 20</span>
+</span><span class="line"><span class="n">incrementByTen</span><span class="p">()</span>    <span class="c1">// 30</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Enumerations</h2>
+
+<p>Swift では <code>Enumeration</code> も first-class type である。Swift ではデフォルト値を設定しない限り、自動で 0, 1, 2 の様な値がふられることはない。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">enum</span> <span class="n">CompassPoint</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">North</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">South</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">East</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">West</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">CompassPoint</span><span class="p">.</span><span class="n">North</span>
+</span><span class="line">
+</span><span class="line"><span class="k">enum</span> <span class="nl">Numbers</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">Zero</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">One</span><span class="p">,</span> <span class="n">Two</span><span class="p">,</span> <span class="n">Three</span><span class="p">,</span> <span class="n">Four</span><span class="p">,</span> <span class="n">Five</span><span class="p">,</span> <span class="n">Six</span><span class="p">,</span> <span class="n">Seven</span><span class="p">,</span> <span class="n">Eight</span><span class="p">,</span> <span class="n">Nine</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">Numbers</span><span class="p">.</span><span class="n">Four</span><span class="p">.</span><span class="n">toRaw</span><span class="p">()</span>                <span class="c1">// 4</span>
+</span><span class="line"><span class="n">Numbers</span><span class="p">.</span><span class="n">fromRaw</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">Numbers</span><span class="p">.</span><span class="n">Seven</span> <span class="c1">// true </span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Associated Values</h3>
+
+<p>Swift の enumerations は関連する値を保持することができる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">enum</span> <span class="n">Barcode</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">UPCA</span><span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">QRCode</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">productBarcode</span> <span class="o">=</span> <span class="n">Barcode</span><span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">85900</span><span class="n">_51226</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span><span class="line"><span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
+</span><span class="line"><span class="k">case</span> <span class="k">let</span> <span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="n">numberSystem</span><span class="p">,</span> <span class="n">identifier</span><span class="p">,</span> <span class="n">check</span><span class="p">)</span><span class="o">:</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"UPC-A with value of \(numberSystem), \(identifier), \(check)."</span><span class="p">)</span>
+</span><span class="line"><span class="k">case</span> <span class="k">let</span> <span class="p">.</span><span class="n">QRCode</span><span class="p">(</span><span class="n">productCode</span><span class="p">)</span><span class="o">:</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"QR code with value of \(productCode)."</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Classes and Structures</h2>
+
+<p>Swift では、クラスと構造体はほぼ同じ物と考えることができる。構造体は参照ではなく copy value で管理される。</p>
+
+<blockquote>
+<p>Unlike value types, reference types are not copied when they are assigned to a variable or constant, or when they are passed to a function. Rather than a copy, a reference to the same existing instance is used instead.</p>
+<footer><strong>Classes Are Reference Types</strong></footer>
+</blockquote>
+
+
+<h4>クラスと構造体の共通点</h4>
+
+<ul>
+<li>
+<strong>プロパティ</strong> を定義することができる</li>
+<li>
+<strong>メソッド</strong> を定義することができる</li>
+<li>
+<strong>subscripts</strong> （配列の<code>[0]</code> のようにアクセスできる仕組み）を提供することができる</li>
+<li>
+<strong>イニシャライザ</strong> （コンストラクタ）を定義することができる</li>
+<li>デフォルトの振る舞いを拡張することができる</li>
+<li>
+<strong>protocol</strong> を使うことができる</li>
+</ul>
+
+
+<h4>クラスだけがもつ機能</h4>
+
+<ul>
+<li><strong>継承</strong></li>
+<li>タイプキャストが可能</li>
+<li>
+<strong>デイニシャライザ</strong> （デストラクタ）を定義することができる</li>
+<li>ひとつ以上の参照カウントが許される（構造体は copy-value、クラスは reference）</li>
+</ul>
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>syntax</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">struct</span> <span class="n">Resolution</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="n">VideoMode</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">resolution</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">()</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">interlaced</span> <span class="o">=</span> <span class="nb">false</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">frameRate</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="k">let</span> <span class="n">someResolution</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">()</span>
+</span><span class="line"><span class="k">let</span> <span class="n">someVideoMode</span> <span class="o">=</span> <span class="n">VideoMode</span><span class="p">()</span>
+</span><span class="line"><span class="n">someVideoMode</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1280</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Objective-C とは違って、参照をたどって直接値を設定することも可能。</p>
+
+<p>構造体は、暗黙のイニシャライザを使って、プロパティを初期化することが可能。クラスはイニシャライザを明示的に定義しなければいけない。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">rvga</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mi">480</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>クラスと構造体のどちらを選ぶか</h3>
+
+<ul>
+<li>構造体を使う一番の理由は関係する値をまとめるため</li>
+<li>プロパティのデータを何かしら処理する場合には、クラスの方がいいかも</li>
+</ul>
+
+
+<h3>Array と Dictionary</h3>
+
+<p>Swift の Array と Dictionary は構造体の様に振舞う。</p>
+
+<p>Dictionary は変数に割り当てられる際にコピーされる。Key/Value の Value がさらに Dictionary の場合はそれもコピーされる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Peter"</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s">"Wei"</span><span class="o">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s">"Anish"</span><span class="o">:</span> <span class="mi">65</span><span class="p">,</span> <span class="s">"Katya"</span><span class="o">:</span> <span class="mi">19</span><span class="p">]</span>
+</span><span class="line"><span class="k">var</span> <span class="n">copiedAges</span> <span class="o">=</span> <span class="n">ages</span>
+</span><span class="line"><span class="n">ages</span><span class="p">[</span><span class="s">"Peter"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span>    <span class="c1">// 24</span>
+</span><span class="line"><span class="n">copiedAges</span><span class="p">[</span><span class="s">"Peter"</span><span class="p">]</span>   <span class="c1">// 23</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Array はもうちょっと複雑な動きをする。Array の値がコピーされるのは、コピーが必要になった時に起こる。</p>
+
+<p>変数への割り当て、メソッドの引数で渡しただけではコピーは起こらない。コピーが起こるのは、配列の長さ（<code>length</code>）が変わる処理が行ったとき。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+</span><span class="line"><span class="k">var</span> <span class="n">otherNums</span> <span class="o">=</span> <span class="n">nums</span>
+</span><span class="line">
+</span><span class="line"><span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span>
+</span><span class="line"><span class="n">otherNums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="c1">// 50</span>
+</span><span class="line">
+</span><span class="line"><span class="n">nums</span> <span class="o">+=</span> <span class="mi">100</span>     <span class="c1">// occure copy, nums is [50, 20, 30, 40, 100]</span>
+</span><span class="line"><span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>    <span class="c1">// nums is [10, 20, 30, 40, 100]</span>
+</span><span class="line"><span class="n">otherNums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="c1">// 50, otherNums is [50, 20, 30, 40]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Array で参照を切りたいときは <code>unshare()</code> メソッドを使う。変数への割り当て時に強制的にコピーしたいときは <code>copy()</code> メソッドを使う。</p>
+
+<h2>Properties</h2>
+
+<h3>Lazy Stored Properties</h3>
+
+<p>最初にアクセスされるまで初期化されないようにするには、<code>@lazy</code> を使用する。変数（var）で定義するプロパティには @lazy をつけるようにするといい。</p>
+
+<blockquote>
+<p>You must always declare a lazy property as a variable (with the var keyword), because its initial value may not be retrieved until after instance initialization completes. Constant properties must always have a value before initialization completes, and therefore cannot be declared as lazy.</p>
+<footer><strong>Lazy Stored Properties</strong></footer>
+</blockquote>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="n">DataManager</span> <span class="p">{</span>
+</span><span class="line">    <span class="p">@</span><span class="n">lazy</span> <span class="k">var</span> <span class="n">importer</span> <span class="o">=</span> <span class="n">DataImporter</span><span class="p">()</span>   <span class="c1">// DataImporter is assumed to take a non-trivial amount of time to initialize.</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Computed Properties</h3>
+
+<p><code>center</code> プロパティが Computed Property になる。<code>set</code> で受け取る引数は明示してもいいし、明示しない場合は <code>newValue</code> で受け取れる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">struct</span> <span class="n">Rect</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">origin</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">size</span> <span class="o">=</span> <span class="n">Size</span><span class="p">()</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">center</span><span class="p">:</span> <span class="n">Point</span> <span class="p">{</span>
+</span><span class="line">    <span class="kr">get</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">let</span> <span class="n">centerX</span> <span class="o">=</span> <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class="line">        <span class="k">let</span> <span class="n">centerY</span> <span class="o">=</span> <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">centerX</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">centerY</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="kr">set</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">newValue</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class="line">        <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">newValue</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Property Observers</h3>
+
+<p><code>willSet</code>, <code>didSet</code> を使うと、プロパティが設定されるまえ、設定された後にコールバックを受け取ることができる。これらのコールバックは初期化時にはよばれない。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="n">StepCounter</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">totalSteps</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class="line">    <span class="kr">willSet</span><span class="p">(</span><span class="n">newTotalSteps</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"About to set totalSteps to \(newTotalSteps)"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="kr">didSet</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">if</span> <span class="n">totalSteps</span> <span class="o">&gt;</span> <span class="n">oldValue</span>  <span class="p">{</span>
+</span><span class="line">            <span class="n">println</span><span class="p">(</span><span class="s">"Added \(totalSteps - oldValue) steps"</span><span class="p">)</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="k">let</span> <span class="n">stepCounter</span> <span class="o">=</span> <span class="n">StepCounter</span><span class="p">()</span>
+</span><span class="line"><span class="n">stepCounter</span><span class="p">.</span><span class="n">totalSteps</span> <span class="o">=</span> <span class="mi">200</span>
+</span><span class="line"><span class="c1">// About to set totalSteps to 200</span>
+</span><span class="line"><span class="c1">// Added 200 steps</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Methods</h2>
+
+<p>メソッドにも関数と同じく <code>externalParameterName</code> と <code>localParameterName</code> を指定できる。メソッドの場合は関数と違って、externalParameterName と localParameterName の定義の振る舞いが違う。</p>
+
+<p>メソッドは最初の引数の externalParameterName は、localParameterName と同じになり、呼び出し時は最初の引数の externalParameterName は省略できる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="n">MyClass</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">func</span> <span class="n">hello</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">greet</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="s">"Hello \(name) \(greet)"</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+</span><span class="line"><span class="n">obj</span><span class="p">.</span><span class="n">hello</span><span class="p">(</span><span class="s">"hamasyou"</span><span class="p">,</span> <span class="nl">greet</span><span class="p">:</span> <span class="s">"Good Morning"</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>第二引数以降の呼び出しで externalParameterName を指定したくない場合は <code>_</code> を使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="n">MyClass</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">func</span> <span class="n">hello</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">_</span> <span class="nl">greet</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="s">"Hello \(name) \(greet)"</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+</span><span class="line"><span class="n">obj</span><span class="p">.</span><span class="n">hello</span><span class="p">(</span><span class="s">"hamasyou"</span><span class="p">,</span> <span class="s">"Good Night"</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Modifying Value Types from Within Instance Methods</h3>
+
+<p>構造体と Enumerations はデフォルトでメソッドの中からプロパティの変更を行うことができない。変更できるようにするには <code>mutating</code> でメソッドを修飾する。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span class="line">    <span class="kr">mutating</span> <span class="k">func</span> <span class="n">moveByX</span><span class="p">(</span><span class="nl">deltaX</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">y</span> <span class="nl">deltaY</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">x</span> <span class="o">+=</span> <span class="n">deltaX</span>
+</span><span class="line">        <span class="n">y</span> <span class="o">+=</span> <span class="n">deltaY</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Subscripts</h2>
+
+<p>Subscript はコレクションにアクセスするための略式を定義するもの。クラスや構造体、Enumeration に定義できる。定義すると <code>[0]</code> などでアクセスできるようになる。</p>
+
+<p><code>subscript</code> の引数は複数指定することもできる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">subscript</span><span class="p">(</span><span class="nl">index</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+</span><span class="line">    <span class="kr">get</span> <span class="p">{</span>
+</span><span class="line">        <span class="c1">// return an appropriate subscript value here</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="kr">set</span><span class="p">(</span><span class="n">newValue</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="c1">// perform a suitable setting action here</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Inheritance</h2>
+
+<p>メソッドやプロパティのオーバーライドには <code>override</code> キーワードを使用する。override されたくないメソッドやプロパティには <code>@final</code> を指定する。</p>
+
+<h2>Initialization</h2>
+
+<p>イニシャライザは <code>init</code> で定義する。イニシャライザに引数を指定する場合、externalPropertyName を指定しなければ暗黙で localPropertyName が externalPropertyName に指定される。</p>
+
+<p>メソッドと違い、<em>イニシャライザの呼び出し時には全ての externalPropertyName の指定が必要</em>。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">struct</span> <span class="n">Color</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">let</span> <span class="n">red</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">green</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">blue</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span class="line">    <span class="k">init</span><span class="p">(</span><span class="nl">red</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">self</span><span class="p">.</span><span class="n">red</span>   <span class="o">=</span> <span class="n">red</span>
+</span><span class="line">        <span class="nb">self</span><span class="p">.</span><span class="n">green</span> <span class="o">=</span> <span class="n">green</span>
+</span><span class="line">        <span class="nb">self</span><span class="p">.</span><span class="n">blue</span>  <span class="o">=</span> <span class="n">blue</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="k">let</span> <span class="n">magenta</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="nl">red</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Designated Initializers and Convenience Initializers</h3>
+
+<p><code>Designated Initializer</code> はインスタンスの初期化の目的で定義される。<code>Convenience Initializer</code> は Designated Intitializer を呼び出す際のデフォルト値などを設定する目的で使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="n">MyClass</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
+</span><span class="line">    <span class="k">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">convenience</span> <span class="k">init</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">self</span><span class="p">.</span><span class="k">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">"hamasyou"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="k">let</span> <span class="n">me</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Type Casting</h2>
+
+<p>ダウンキャストに <code>as</code> が使える。Optional Type の場合は <code>as?</code> を使う。Dictionary とかから値を取り出すときに使える。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="k">let</span> <span class="n">movie</span> <span class="o">=</span> <span class="n">item</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Movie</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"Movie: '\(movie.name)', dir. \(movie.director)"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="n">song</span> <span class="o">=</span> <span class="n">item</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Song</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"Song: '\(song.name)', by \(song.artist)"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>配列の型に <code>AnyObject</code> を使うと、利用時にキャストが必要だが何の型か指定しなくても入れれるようになる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="nl">someObjects</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class="line">    <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">"2001: A Space Odyssey"</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">"Stanley Kubrick"</span><span class="p">),</span>
+</span><span class="line">    <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">"Moon"</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">"Duncan Jones"</span><span class="p">),</span>
+</span><span class="line">    <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">"Alien"</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">"Ridley Scott"</span><span class="p">)</span>
+</span><span class="line"><span class="p">]</span>
+</span><span class="line"><span class="k">for</span> <span class="n">object</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">let</span> <span class="n">movie</span> <span class="o">=</span> <span class="n">object</span> <span class="kt">as</span> <span class="n">Movie</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"Movie: '\(movie.name)', dir. \(movie.director)"</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>配列の型に <code>Any</code> を使うと、なんでもいれれるようになる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">things</span> <span class="o">=</span> <span class="n">Any</span><span class="p">[]()</span>
+</span><span class="line">
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span>
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span>
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">))</span>
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">"Ghostbusters"</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">"Ivan Reitman"</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="k">for</span> <span class="n">thing</span> <span class="k">in</span> <span class="n">things</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">switch</span> <span class="n">thing</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">case</span> <span class="mi">0</span> <span class="kt">as</span> <span class="nl">Int</span><span class="p">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"zero as an Int"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="mi">0</span> <span class="kt">as</span> <span class="nl">Double</span><span class="p">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"zero as a Double"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="k">let</span> <span class="n">someInt</span> <span class="kt">as</span> <span class="nl">Int</span><span class="p">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"an integer value of \(someInt)"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="k">let</span> <span class="n">someDouble</span> <span class="kt">as</span> <span class="n">Double</span> <span class="k">where</span> <span class="n">someDouble</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"a positive double value of \(someDouble)"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="kt">is</span> <span class="nl">Double</span><span class="p">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"some other double value that I don't want to print"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="k">let</span> <span class="n">someString</span> <span class="kt">as</span> <span class="nl">String</span><span class="p">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"a string value of </span><span class="se">\"</span><span class="s">\(someString)</span><span class="se">\"</span><span class="s">"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="k">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="kt">as</span> <span class="p">(</span><span class="n">Double</span><span class="p">,</span> <span class="n">Double</span><span class="p">)</span><span class="o">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"an (x, y) point at \(x), \(y)"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="k">let</span> <span class="n">movie</span> <span class="kt">as</span> <span class="nl">Movie</span><span class="p">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"a movie called '\(movie.name)', dir. \(movie.director)"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">default</span><span class="o">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"something else"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Extensions</h2>
+
+<p>既存のクラス、構造体、Enumeration に機能を追加できる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">extension</span> <span class="nl">SomeType</span><span class="p">:</span> <span class="n">SomeProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+</span><span class="line">    <span class="c1">// implementation of protocol requirements goes here</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">extension</span> <span class="n">Double</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">km</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="o">*</span> <span class="mi">1</span><span class="n">_000</span><span class="mf">.0</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">m</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">cm</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="o">/</span> <span class="mf">100.0</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">mm</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="o">/</span> <span class="mi">1</span><span class="n">_000</span><span class="mf">.0</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">ft</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="o">/</span> <span class="mf">3.28084</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法]]></title>
@@ -564,7 +1837,8 @@
 <p><code>SnsAuthActivity</code> で OAuth のコールバックを受け取って、<code>Ti.Android.currentActivity</code> の <code>app:resume</code> イベントを fire して、元のアプリに戻しています。
 これで、元の画面を残したまま OAuth の処理を行うことができます。</p>
 
-<p>ちょっと説明が不足している気もしますが、サンプルプロジェクトでなんとなく雰囲気を感じ取っていただければ。</p>]]></content>
+<p>ちょっと説明が不足している気もしますが、サンプルプロジェクトでなんとなく雰囲気を感じ取っていただければ。</p>
+]]></content>
   </entry>
   
   <entry>
@@ -647,7 +1921,9 @@
 </span><span class="line">   <span class="nt">&lt;/FilesMatch&gt;</span>
 </span><span class="line"><span class="nt">&lt;/VirtualHost&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>]]></content>
+</tr></table></div></figure></notextile></div>
+
+]]></content>
   </entry>
   
   <entry>
@@ -849,10 +2125,12 @@
 
 
 <div class="terminal-window">
-          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
             <a href="#" class="terminal-minimize">minimize</a>
             <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav><h1 class="terminal-title">Terminal</h1>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
           <div class="terminal-container"><div class="terminal"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number"> </span>
 <span class="line-number"> </span>
@@ -926,7 +2204,8 @@
         </div>
 
 
-<p>ご利用は計画的に。</p>]]></content>
+<p>ご利用は計画的に。</p>
+]]></content>
   </entry>
   
   <entry>
@@ -943,12 +2222,15 @@
 <li>全てのデザインパターンは特定の製品に依存していない</li>
 <li>要件定義や基本設計などの上流工程で使うことを意識して構成されている</li>
 </ul>
+
+
 <p>本書には、パターンの特徴を把握しやすいように簡潔な図がそれぞれのパターンに用いられています。
 プロジェクトに必要な要点からインフラの設計が導き出せるようになっています。</p>
 
 <p>127のパターンが挙げられていて、インフラのパターンにそんなにあるのがびっくりですが、一通りパターンを抑えるだけでも結構なボリュームになります。
 が、それだけインフラ設計は細かく、大事なポイントを抑える必要があるということです。
-インフラ設計を担当するエンジニアにオススメの一冊です。</p>]]></content>
+インフラ設計を担当するエンジニアにオススメの一冊です。</p>
+]]></content>
   </entry>
   
   <entry>
@@ -980,6 +2262,8 @@
 <li>GitHub Pages を hamasyou.com で運用する</li>
 <li>www.hamasyou.com を hamasyou.com の CNAME に設定する</li>
 </ul>
+
+
 <p>hamasyou.com の A レコードを GitHub Pages の IP に設定するだけだと CDN が効かないし、ステータスコードが302で返ってくることがあるのでちゃんと200で返して欲しい。</p>
 
 <h3>1. 独自ドメインを取得する</h3>
@@ -1020,7 +2304,8 @@
 <p><img src="http://hamasyou.com/images/2014-03-05-github-pages-custom-domain-03.png" alt="ネームサーバの設定" class="img-thumbnail" title="ネームサーバの設定"></p>
 
 <p>これで、hamasyou.com の DNS レコードが Gehirn のネームサーバで参照されて、Alias レコードで hamasyou.github.io を見に行くようになります。
-Apex Alias を設定することで、GitHub Pages の CDN が利用出来るようになるので、参照のパフォーマンスもちょっとはあがるはず！らしいです。</p>]]></content>
+Apex Alias を設定することで、GitHub Pages の CDN が利用出来るようになるので、参照のパフォーマンスもちょっとはあがるはず！らしいです。</p>
+]]></content>
   </entry>
   
   <entry>
@@ -1047,6 +2332,8 @@ Apex Alias を設定することで、GitHub Pages の CDN が利用出来るよ
 <li>思いついたサービスは誰のためのサービス？</li>
 <li>そのサービスは自分で使う？</li>
 </ol>
+
+
 <p>誰のためのサービスかという問は、すなわちどんな問題を解決するサービスなのか？ってことです。
 「スタートアップが失敗する理由」みたいなキーワードで Google 先生に聞けばイロイロ教えてくれるかと。</p>
 
@@ -1751,7 +3038,8 @@ VPS を借りるなら <a href="http://vps.sakura.ad.jp/" rel="external nofollow
 
 <p>大体こんな感じで僕はいつもサービスを作っています。ちなみに、最近作ったサービスはこちら。よかったら使ってやってください。</p>
 
-<p><i class="fa fa-hand-o-right"></i> <a href="http://booboo.mountposition.co.jp/" rel="external nofollow" title="Web上のメディアのすべてにヤジを飛ばすサービス - 野次る">Web上のメディアのすべてにヤジを飛ばすサービス - 野次る</a></p>]]></content>
+<p><i class="fa fa-hand-o-right"></i> <a href="http://booboo.mountposition.co.jp/" rel="external nofollow" title="Web上のメディアのすべてにヤジを飛ばすサービス - 野次る">Web上のメディアのすべてにヤジを飛ばすサービス - 野次る</a></p>
+]]></content>
   </entry>
   
   <entry>
@@ -1766,6 +3054,8 @@ VPS を借りるなら <a href="http://vps.sakura.ad.jp/" rel="external nofollow
 <li>Node を使ってすぐに Web アプリケーションを作ってみたい</li>
 <li>Node の内部構造を理解したい</li>
 </ol>
+
+
 <p>これらのモデルケースに合う人にオススメの書籍です。</p>
 
 <!-- more -->
@@ -2103,7 +3393,9 @@ JavaScript はシングルスレッドモデルですし、イベントループ
 <li>環境</li>
 </ol>
 </li>
-</ol>]]></content>
+</ol>
+
+]]></content>
   </entry>
   
   <entry>
@@ -2165,6 +3457,8 @@ Rails なんかをやっていると、ルーティングが自動的に RESTful
 <li><code>/hypermedia/:id</code></li>
 <li><code>*url</code></li>
 </ol>
+
+
 <p>のどっちがいいんだろう？という疑問です。HTML 的に書くとこんな感じ。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
@@ -2177,7 +3471,8 @@ Rails なんかをやっていると、ルーティングが自動的に RESTful
 </tr></table></div></figure></notextile></div>
 
 
-<p>どっちでもいい。好みの問題って感じもしなくもないですが、皆さんどっちを選ぶのが多いんでしょう？</p>]]></content>
+<p>どっちでもいい。好みの問題って感じもしなくもないですが、皆さんどっちを選ぶのが多いんでしょう？</p>
+]]></content>
   </entry>
   
   <entry>
@@ -2270,6 +3565,8 @@ Rails なんかをやっていると、ルーティングが自動的に RESTful
 <li>良いデザインは集団で生起する</li>
 <li>良いデザインはしばしば大胆だ</li>
 </ul>
+
+
 <h3>素晴らしいハッカー</h3>
 
 <p>素晴らしいハッカーっていうのは集まる傾向がある。ハッカーは道具にこだわる。仕事場にもこだわる。
@@ -2286,7 +3583,8 @@ Rails なんかをやっていると、ルーティングが自動的に RESTful
 <p>プログラマやハッカーに関するエッセイ集では他にも『<a href="http://www.amazon.co.jp/gp/product/4274067939?ie=UTF8&amp;camp=247&amp;creativeASIN=4274067939&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title="情熱プログラマー ソフトウェア開発者の幸せな生き方">情熱プログラマー ソフトウェア開発者の幸せな生き方</a>』
 『<a href="http://www.amazon.co.jp/gp/product/4274066304?ie=UTF8&amp;camp=247&amp;creativeASIN=4274066304&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title="Joel on Software">Joel on Software</a>』
 『<a href="http://www.amazon.co.jp/gp/product/4798118923?ie=UTF8&amp;camp=247&amp;creativeASIN=4798118923&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title="More Joel on Software">More Joel on Software</a>』なんていうのもあります。
-どれもオススメです。</p>]]></content>
+どれもオススメです。</p>
+]]></content>
   </entry>
   
   <entry>
@@ -2483,7 +3781,8 @@ Rails なんかをやっていると、ルーティングが自動的に RESTful
 <p>Python の変数のスコープは、「ローカルスコープ」「グローバルスコープ」「ビルトインスコープ」があります。
 関数内で定義された変数は「ローカルスコープ」に所属します。</p>
 
-<p>関数の引数で渡された変数は参照渡しになります。変数の代入では元のオブジェクトは変更されませんが、オブジェクトの上書きは影響を及ぼします。</p>]]></content>
+<p>関数の引数で渡された変数は参照渡しになります。変数の代入では元のオブジェクトは変更されませんが、オブジェクトの上書きは影響を及ぼします。</p>
+]]></content>
   </entry>
   
   <entry>
@@ -2502,6 +3801,8 @@ Rails なんかをやっていると、ルーティングが自動的に RESTful
 <li>サードパーティ Cookie の保存と読み込み</li>
 <li>HTTP / HTTPS を使ったサーバとの通信</li>
 </ul>
+
+
 <p>多くの人に使われる JavaScript を開発するには、<strong class="text-danger">数多くの落とし穴や難関を乗り越えなければなりません</strong>。
 本書はこういった落とし穴や難関に対する解決策を手順を追って説明してくれます。</p>
 
@@ -2526,6 +3827,8 @@ Rails なんかをやっていると、ルーティングが自動的に RESTful
 <li>分析と計測</li>
 <li>Web サービス API のラッパー</li>
 </ul>
+
+
 <h3>サードパーティ JavaScript 開発が難しい理由</h3>
 
 <h4>未知のコンテキスト</h4>
@@ -2568,6 +3871,8 @@ OS の <code>hosts</code> ファイルを編集して、localhost の エイリ�
 <li>「ブロッキング」を行うタイプの <code>script</code> タグによる読み込み</li>
 <li>非同期でスクリプトを読み込むタイプ</li>
 </ul>
+
+
 <h4>ブロッキング読み込み</h4>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
@@ -2601,6 +3906,7 @@ OS の <code>hosts</code> ファイルを編集して、localhost の エイリ�
 <dd>
 <code>async</code> 属性が指定されたスクリプトは、<strong>ダウンロードが完了したすぐ直後</strong> から実行が開始されます。</dd>
 </dl>
+
 <p>JavaScript を使って DOM 上に <code>script</code> 要素を動的に生成することでも、<code>async</code> 属性と同じ挙動でスクリプトを読み込ませることができます。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>非同期のスクリプト読み込み</span></figcaption><div class="highlight"><table><tr>
@@ -2729,6 +4035,8 @@ OS の <code>hosts</code> ファイルを編集して、localhost の エイリ�
 <li>関連する CSS ファイルを別途動的に読み込む</li>
 <li>JavaScript にスタイルシートのルールを埋め込む</li>
 </ol>
+
+
 <h4>1. インラインスタイル</h4>
 
 <p>インラインスタイルは他の要素のスタイルと干渉する心配がありません。デメリットは一般の Web サイトでインラインスタイルを使うべきでない理由と同じになります。</p>
@@ -2798,6 +4106,8 @@ CSS が読み込まれたかどうかをチェックするには、要素にス�
 <li>クラス、属性および擬似クラス(:forcus, :hover)</li>
 <li>要素(div, span など)、擬似要素(:before, :after)</li>
 </ol>
+
+
 <p>ただし、<code>!important</code> というキーワードでタグ付けされたプロパティは優先順位が最も高くなります。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>!important の例</span></figcaption><div class="highlight"><table><tr>
@@ -2821,10 +4131,12 @@ CSS が読み込まれたかどうかをチェックするには、要素にス�
 <p>ブラウザはスコアシステムを使ってどのルールが優先されるかを計算しています。</p>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th> セレクタ / ルールタイプ  </th>
 <th> スコア (a, b, c, d) </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td> インラインの style 属性  </td>
@@ -2844,6 +4156,8 @@ CSS が読み込まれたかどうかをチェックするには、要素にス�
 </tr>
 </tbody>
 </table>
+
+
 <p>スコアは <code>a &gt; b</code>、<code>b &gt; c</code>、<code>c &gt; d</code> のように価値が高くなります。(1, 0, 0, 0) は (0, 100, 0, 0) よりも優先されるということです。</p>
 
 <ul>
@@ -2854,6 +4168,8 @@ CSS が読み込まれたかどうかをチェックするには、要素にス�
 <li>
 <code>.stork-container .strok-msg</code> (0, 0, 2, 0 - クラスセレクタ2つ)</li>
 </ul>
+
+
 <h4>CSS を過剰に指定すれば優先度は高くなる</h4>
 
 <p>パブリッシャのスタイルよりも優先的にスタイルを当てるための簡単な方法は、過剰にルールを指定することです。</p>
@@ -2917,6 +4233,8 @@ CSS が読み込まれたかどうかをチェックするには、要素にス�
 <li>サブドメインプロキシ</li>
 <li>クロスオリジンリソース共有 (CORS)</li>
 </ul>
+
+
 <h3>AJAX とブラウザの同一生成元ポリシー (SOP)</h3>
 
 <p>ブラウザは異なる生成元から配信されたドキュメントがそれぞれお互いに分離されることを保証するという、<strong class="text-danger">同一生成元ポリシー (SOP) </strong> を備えています。
@@ -3041,6 +4359,8 @@ info.json は JavaScript としては正しい構文ではありませんし、�
 <li>
 <code>document.domain</code> を変更することで、<strong>生成元のポートは80にリセット</strong> される</li>
 </ul>
+
+
 <h4>AJAX から呼び出すためのサブドメイントンネルファイル</h4>
 
 <p><code>document.domain</code> を変更することでドキュメントの生成元を変更することができるようになりましたが、まだこれだけでは AJAX を使ってサブドメインのドキュメントを読み込むことはできません。
@@ -3219,7 +4539,8 @@ CORS の仕様では特別なヘッダを使ってプリフライトリクエス
 <p>読んでみて、<strong class="text-danger">本書はサードパーティ JavaScript を書かなくても、サーバ側の API を実装するだけの人も読むべき</strong> だと思いました。
 クロスオリジン問題やセキュリティに関する話題も豊富に書かれていて、全てが有用な情報です。</p>
 
-<p>ブラウザとサーバがどんなことをやっているのかをきちんと理解したい人は、是非よんでみてください。絶対に為になります。</p>]]></content>
+<p>ブラウザとサーバがどんなことをやっているのかをきちんと理解したい人は、是非よんでみてください。絶対に為になります。</p>
+]]></content>
   </entry>
   
   <entry>
@@ -3275,7 +4596,8 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <p>読みやすいブログと読みにくいブログですが、うちのサイトは間違いなく <strong class="text-danger">読みにくいブログ</strong> なんでしょうね。。。毎日1記事で、だんだん読みやすいブログになっていけばいいなと思ってます。。
 頑張ります！</p>
 
-<p><a href="http://www.amazon.co.jp/gp/product/4799100874?ie=UTF8&amp;camp=247&amp;creativeASIN=4799100874&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="https://images-na.ssl-images-amazon.com/images/I/519LYdJLqIL._SS300_.jpg" height="230" width="230" alt="すっきり！　わかりやすい！　文章が書ける" class="img-thumbnail" title="すっきり！　わかりやすい！　文章が書ける"></a><a href="http://www.amazon.co.jp/gp/product/4820748270?ie=UTF8&amp;camp=247&amp;creativeASIN=4820748270&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="https://images-na.ssl-images-amazon.com/images/I/511vOWP0YeL._SS300_.jpg" height="230" width="230" alt="書くスキルUP すぐできる! 伝わる文章の書き方 確実に文章力がつく! 7つのステップ" class="img-thumbnail" title="書くスキルUP すぐできる! 伝わる文章の書き方 確実に文章力がつく! 7つのステップ"></a><a href="http://www.amazon.co.jp/gp/product/4620792993?ie=UTF8&amp;camp=247&amp;creativeASIN=4620792993&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="https://images-na.ssl-images-amazon.com/images/I/510Lvq7j7BL._SS300_.jpg" height="230" width="230" alt="1時間でできる ブログ &amp; SNS　――　大きな文字で読みやすい 初心者でもらくらく" class="img-thumbnail" title="1時間でできる ブログ &amp; SNS　――　大きな文字で読みやすい 初心者でもらくらく"></a></p>]]></content>
+<p><a href="http://www.amazon.co.jp/gp/product/4799100874?ie=UTF8&amp;camp=247&amp;creativeASIN=4799100874&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="https://images-na.ssl-images-amazon.com/images/I/519LYdJLqIL._SS300_.jpg" height="230" width="230" alt="すっきり！　わかりやすい！　文章が書ける" class="img-thumbnail" title="すっきり！　わかりやすい！　文章が書ける"></a><a href="http://www.amazon.co.jp/gp/product/4820748270?ie=UTF8&amp;camp=247&amp;creativeASIN=4820748270&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="https://images-na.ssl-images-amazon.com/images/I/511vOWP0YeL._SS300_.jpg" height="230" width="230" alt="書くスキルUP すぐできる! 伝わる文章の書き方 確実に文章力がつく! 7つのステップ" class="img-thumbnail" title="書くスキルUP すぐできる! 伝わる文章の書き方 確実に文章力がつく! 7つのステップ"></a><a href="http://www.amazon.co.jp/gp/product/4620792993?ie=UTF8&amp;camp=247&amp;creativeASIN=4620792993&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="https://images-na.ssl-images-amazon.com/images/I/510Lvq7j7BL._SS300_.jpg" height="230" width="230" alt="1時間でできる ブログ &amp; SNS　――　大きな文字で読みやすい 初心者でもらくらく" class="img-thumbnail" title="1時間でできる ブログ &amp; SNS　――　大きな文字で読みやすい 初心者でもらくらく"></a></p>
+]]></content>
   </entry>
   
   <entry>
@@ -3374,6 +4696,8 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <li>関数による抽象の定義（<code>existy</code> や <code>truthy</code>）</li>
 <li>関数を他の関数の引数に渡すことによる新たな動作の実現</li>
 </ul>
+
+
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -3675,12 +4999,16 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <li>可変の状態を隠蔽することができる</li>
 <li>遅延評価や無限データ構造の処理を行う手段のひとつ</li>
 </ul>
+
+
 <p>配列の長さを調べる関数を再帰の考え方で解くと。</p>
 
 <ol>
 <li>もし配列が空であれば長さは0</li>
 <li>配列の最初の要素を取り出し、残りを自身の関数に渡した実行結果に1を加える</li>
 </ol>
+
+
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>length</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -3718,6 +5046,8 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <li>関数の外部で変更される可能性のあるデータに一切依存しない</li>
 <li>関数実行部の外側に存在する何かの状態を一切変更しない</li>
 </ul>
+
+
 <p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/k3kaimu/d-manual/blob/master/function.md#%E7%B4%94%E7%B2%8B%E9%96%A2%E6%95%B0pure" rel="external nofollow" title="純粋関数">純粋関数</a></p>
 
 <h3>冪等（べきとう）</h3>
@@ -3765,6 +5095,8 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <li>深いコピーが必要な場合は <code>deepClone</code> を使う</li>
 <li>純粋関数を使ってコードを記述する</li>
 </ul>
+
+
 <h2>メモ</h2>
 
 <p><img src="http://hamasyou.com/images/2014-02-21-functional-javascript-04.jpg" alt="メモ" class="img-thumbnail" title="メモ"></p>
@@ -3832,6 +5164,8 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <li>他の関数の引数として渡すことができる</li>
 <li>関数の戻り値として返すことができる</li>
 </ul>
+
+
 <h3>コレクション中の <code>null</code> に対する防御用の関数 <code>fnull</code>
 </h3>
 
@@ -3941,7 +5275,8 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 
 <p>JavaScript で関数型プログラミングを学ぶというテーマですが、<em>関数型プログラミングを学ぶことで他の言語の面白い点も見えてくる</em> というのが読了しての感想です。</p>
 
-<p>JavaScript は Java に次いで最も多く利用されている言語ですので、<strong class="text-danger">JavaScript をよりよく使うため、他の関数型言語をより楽しむため</strong> に本書を活用してみてはいかがでしょうか。おすすめです。</p>]]></content>
+<p>JavaScript は Java に次いで最も多く利用されている言語ですので、<strong class="text-danger">JavaScript をよりよく使うため、他の関数型言語をより楽しむため</strong> に本書を活用してみてはいかがでしょうか。おすすめです。</p>
+]]></content>
   </entry>
   
   <entry>
@@ -3961,7 +5296,8 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 
 <p>記事は <strong class="text-danger">Markdown</strong> で記述します。カテゴリやタグなどの情報は <strong class="text-danger">YAML</strong> 形式でいけます。<a href="http://octopress.org/" rel="external nofollow" title="Octopress">Octopress</a> や <a href="http://jekyllrb.com/" rel="external nofollow" title="Jekyll">Jekyll</a> と似ています。</p>
 
-<p>最近 Go が人気急上昇なので、Go の環境が手元にある人は Hugo を使ってサイトを運営してみるのもありかもです。</p>]]></content>
+<p>最近 Go が人気急上昇なので、Go の環境が手元にある人は Hugo を使ってサイトを運営してみるのもありかもです。</p>
+]]></content>
   </entry>
   
   <entry>
@@ -3990,7 +5326,9 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <li><code>:read_committed</code></li>
 <li><code>:repeatable_read</code></li>
 <li><code>:serializable</code></li>
-</ul>]]></content>
+</ul>
+
+]]></content>
   </entry>
   
   <entry>
@@ -4122,7 +5460,8 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 </blockquote>
 
 
-<p>Capistrano2 と互換性がないですが、新規プロジェクトには使えるんじゃないかと。</p>]]></content>
+<p>Capistrano2 と互換性がないですが、新規プロジェクトには使えるんじゃないかと。</p>
+]]></content>
   </entry>
   
   <entry>
@@ -4156,7 +5495,8 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 
 <p>こんな感じのコードを <code>config/initializers</code> の下において使っています。<code>nil</code> を渡すと空文字を返します。</p>
 
-<p>今のところコレで問題は起きていないのでオススメしてもいいかなと。</p>]]></content>
+<p>今のところコレで問題は起きていないのでオススメしてもいいかなと。</p>
+]]></content>
   </entry>
   
   <entry>
@@ -4180,10 +5520,12 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <p>ターミナルを開いて次のコマンドを入力します。</p>
 
 <div class="terminal-window">
-          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
             <a href="#" class="terminal-minimize">minimize</a>
             <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav><h1 class="terminal-title">Terminal</h1>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
           <div class="terminal-container"><div class="terminal"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
 <span class="line-number">$</span></pre></td>
@@ -4196,7 +5538,8 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 
 <p><img src="http://hamasyou.com/images/2014-02-19-mac-app-store-account-01.png" alt="Spotlight 索引再構築" class="img-thumbnail" title="Spotlight 索引再構築"></p>
 
-<p>再構築は結構時間がかかりますが、全部終わるのをまたなくても、僕の場合はアップデートができるようになりました。</p>]]></content>
+<p>再構築は結構時間がかかりますが、全部終わるのをまたなくても、僕の場合はアップデートができるようになりました。</p>
+]]></content>
   </entry>
   
   <entry>
@@ -4210,15 +5553,22 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <li>Rails 4.0.2</li>
 <li>rspec 2.14.1</li>
 </ul>
-<!-- more --><h2>テスト用のプロジェクトを整える</h2>
+
+
+<!-- more -->
+
+
+<h2>テスト用のプロジェクトを整える</h2>
 
 <p>まずは、チュートリアル用のプロジェクトを作成します。</p>
 
 <div class="terminal-window">
-          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
             <a href="#" class="terminal-minimize">minimize</a>
             <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav><h1 class="terminal-title">Terminal</h1>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
           <div class="terminal-container"><div class="terminal"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
 <span class="line-number">$</span></pre></td>
@@ -4252,10 +5602,12 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <p>rspec と scaffold の設定を行います。</p>
 
 <div class="terminal-window">
-          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
             <a href="#" class="terminal-minimize">minimize</a>
             <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav><h1 class="terminal-title">Terminal</h1>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
           <div class="terminal-container"><div class="terminal"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
 <span class="line-number">$</span>
@@ -4290,10 +5642,12 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <p>テストを実行します。</p>
 
 <div class="terminal-window">
-          <nav class="terminal-control-window"><a href="#" class="terminal-close" data-rel="close">close</a>
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
             <a href="#" class="terminal-minimize">minimize</a>
             <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav><h1 class="terminal-title">Terminal</h1>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
           <div class="terminal-container"><div class="terminal"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
 <span class="line-number"> </span>
@@ -4484,300 +5838,8 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 
 <p>Rails で RESTful な API を作ることはよくあると思いますが、今までは API のテストもコントローラのテストで行っていました。</p>
 
-<p>でも、request spec を使ったほうが <strong class="text-danger">呼び出しのURL</strong>、<strong class="text-danger">必要なパラメータ</strong>、<strong class="text-danger">出力形式</strong> を素直にテストとして書けるので、API のテストは request spec を使うようにするといいかなと思います。</p>]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[TitaniumのHTTPClientでRESTfulリクエストを送る]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/"/>
-    <updated>2014-02-17T10:24:58+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/17/titanium-http-client-restful/</id>
-    <content type="html"><![CDATA[<p><a href="http://www.appcelerator.com/titanium/" rel="external nofollow" title="Titanium Mobile">Titanium Mobile</a> の <code>Titanium.Network.HTTPClient</code> を使って RESTful リクエストを送る場合の注意点です。</p>
-
-<p>Titanium の <code>HTTPClient</code> で <code>DELETE</code> のときに <code>send</code> でパラメータを送ると <code>POST</code> リクエストになってしまいます。</p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://www.appcelerator.com/titanium/" rel="external nofollow" title="Titanium Mobile Development Environment">Titanium Mobile Development Environment</a></p>
-
-<ul>
-<li>Titanium 3.2.1.GA</li>
-</ul>
-<!-- more --><p>Titanium の <code>HTTPClient</code> は <code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>DELETE</code> などのメソッドに対応していて、標準で RESTful リクエストを送れるようになっています。</p>
-
-<h3>GET の例</h3>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">'http://localhost:9292/'</span><span class="p">;</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Network</span><span class="p">.</span><span class="nx">createHTTPClient</span><span class="p">({</span>
-</span><span class="line">    <span class="nx">onload</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">"Received text: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span> <span class="p">},</span>
-</span><span class="line">    <span class="nx">onerror</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">"Receive Error: "</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span> <span class="p">}</span>
-</span><span class="line"><span class="p">});</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<pre><code class="console">"REQUEST_METHOD : GET"
-"REQUEST_URI : http://localhost:9292/"
-"QUERY_STRING : "
-"GATEWAY_INTERFACE : CGI/1.1"
-"PATH_INFO : /"
-"REMOTE_ADDR : 127.0.0.1"
-"REMOTE_HOST : localhost"
-"SCRIPT_NAME : "
-"SERVER_NAME : localhost"
-"SERVER_PORT : 9292"
-"SERVER_PROTOCOL : HTTP/1.1"
-"SERVER_SOFTWARE : WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)"
-"HTTP_HOST : localhost:9292"
-"HTTP_X_TITANIUM_ID : 3659d1d4-77c2-4ffc-96d6-20b9d2251f74"
-"HTTP_ACCEPT_ENCODING : gzip"
-"HTTP_USER_AGENT : Appcelerator Titanium/3.2.1.GA (iPhone Simulator/7.0.3; iPhone OS; ja_JP;)"
-"HTTP_CONNECTION : close"
-"HTTP_X_REQUESTED_WITH : XMLHttpRequest"
-"rack.version : [1, 2]"
-"rack.input : #&lt;Rack::Lint::InputWrapper:0x0000010286b4a8&gt;"
-"rack.errors : #&lt;Rack::Lint::ErrorWrapper:0x0000010286b318&gt;"
-"rack.multithread : true"
-"rack.multiprocess : false"
-"rack.run_once : false"
-"rack.url_scheme : http"
-"HTTP_VERSION : HTTP/1.1"
-"REQUEST_PATH : /"
-{}
-127.0.0.1 - - [17/Feb/2014 10:29:45] "GET / HTTP/1.1" 200 - 0.0006
-</code></pre>
-
-<h3>POST の例</h3>
-
-<p><code>client.open('GET', url)</code> を <code>client.open('POST', url)</code> に変えて実行します。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<pre><code class="console">"REQUEST_METHOD : POST"
-"REQUEST_URI : http://localhost:9292/"
-"QUERY_STRING : "
-...
-{}
-127.0.0.1 - - [17/Feb/2014 10:43:06] "POST / HTTP/1.1" 200 - 0.0005
-</code></pre>
-
-<h3>PUT と DELETE の例</h3>
-
-<p>同じように <code>PUT</code> と <code>DELETE</code> でも試してみます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'PUT'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<pre><code class="console">"REQUEST_METHOD : PUT"
-"REQUEST_URI : http://localhost:9292/"
-"QUERY_STRING : "
-...
-{}
-127.0.0.1 - - [17/Feb/2014 10:45:32] "PUT / HTTP/1.1" 200 - 0.0005
-</code></pre>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'DELETE'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<pre><code class="console">"REQUEST_METHOD : DELETE"
-"REQUEST_URI : http://localhost:9292/"
-"QUERY_STRING : "
-...
-{}
-127.0.0.1 - - [17/Feb/2014 10:46:28] "DELETE / HTTP/1.1" 200 - 0.0009
-</code></pre>
-
-<p><code>client.send</code> でパラメータを送信しなければ、<code>open</code> で渡したメソッドでリクエストが投げられています。</p>
-
-<h2>HTTPClient でパラメータを渡して <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code> してみる</h2>
-
-<p>次は、パラメータを渡して試してみます。</p>
-
-<p><code>GET</code> は <code>send</code> メソッドにパラメータを渡すのではなく URL にクエリを設定して送ります。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">'http://localhost:9292/'</span><span class="p">;</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Network</span><span class="p">.</span><span class="nx">createHTTPClient</span><span class="p">({</span>
-</span><span class="line">    <span class="nx">onload</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">"Received text: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span> <span class="p">},</span>
-</span><span class="line">    <span class="nx">onerror</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">"Receive Error: "</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span> <span class="p">}</span>
-</span><span class="line"><span class="p">});</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="nx">url</span> <span class="o">+</span> <span class="s1">'?name=hamasyou'</span><span class="p">);</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<pre><code class="console">"REQUEST_METHOD : GET"
-"REQUEST_URI : http://localhost:9292/?name=hamasyou"
-"QUERY_STRING : name=hamasyou"
-"GATEWAY_INTERFACE : CGI/1.1"
-"PATH_INFO : /"
-"REMOTE_ADDR : 127.0.0.1"
-"REMOTE_HOST : localhost"
-"SCRIPT_NAME : "
-"SERVER_NAME : localhost"
-"SERVER_PORT : 9292"
-"SERVER_PROTOCOL : HTTP/1.1"
-"SERVER_SOFTWARE : WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)"
-"HTTP_HOST : localhost:9292"
-"HTTP_X_TITANIUM_ID : 3659d1d4-77c2-4ffc-96d6-20b9d2251f74"
-"HTTP_ACCEPT_ENCODING : gzip"
-"HTTP_USER_AGENT : Appcelerator Titanium/3.2.1.GA (iPhone Simulator/7.0.3; iPhone OS; ja_JP;)"
-"HTTP_CONNECTION : close"
-"HTTP_X_REQUESTED_WITH : XMLHttpRequest"
-"rack.version : [1, 2]"
-"rack.input : #&lt;Rack::Lint::InputWrapper:0x000001019451b8&gt;"
-"rack.errors : #&lt;Rack::Lint::ErrorWrapper:0x00000101945140&gt;"
-"rack.multithread : true"
-"rack.multiprocess : false"
-"rack.run_once : false"
-"rack.url_scheme : http"
-"HTTP_VERSION : HTTP/1.1"
-"REQUEST_PATH : /"
-{"name"=&gt;"hamasyou"}
-127.0.0.1 - - [17/Feb/2014 10:49:41] "GET /?name=hamasyou HTTP/1.1" 200 - 0.0006
-</code></pre>
-
-<p><code>GET</code> で送られています。次は <code>POST</code> で送ってみます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'hamasyou'</span><span class="p">});</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p><code>POST</code> は <code>client.send</code> にパラメータを渡して送ります。<code>POST</code> のデフォルトの <code>Content-Type</code> は <code>application/x-www-form-urlencoded</code> になります。</p>
-
-<pre><code class="console">"REQUEST_METHOD : POST"
-"REQUEST_URI : http://localhost:9292/"
-"CONTENT_LENGTH : 13"
-"CONTENT_TYPE : application/x-www-form-urlencoded; charset=utf-8"
-"QUERY_STRING : "
-...
-{"name"=&gt;"hamasyou"}
-127.0.0.1 - - [17/Feb/2014 10:52:10] "POST / HTTP/1.1" 200 - 0.0006
-</code></pre>
-
-<p><code>POST</code> で <code>Content-Type: application/json</code> で送る場合は、<code>HTTPClient#setRequestHeader</code> で設定します。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'hamasyou'</span><span class="p">}));</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<pre><code class="console">"REQUEST_METHOD : POST"
-"REQUEST_URI : http://localhost:9292/"
-"CONTENT_LENGTH : 19"
-"CONTENT_TYPE : application/json"
-"QUERY_STRING : "
-...
-"{\"name\":\"hamasyou\"}"
-127.0.0.1 - - [17/Feb/2014 10:56:20] "POST / HTTP/1.1" 200 - 0.0009
-</code></pre>
-
-<p><code>PUT</code> と <code>DELETE</code> も <code>send</code> でパラメータを送ってみます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'PUT'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'hamasyou'</span><span class="p">}));</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<pre><code class="console">"REQUEST_METHOD : PUT"
-"REQUEST_URI : http://localhost:9292/"
-"CONTENT_LENGTH : 19"
-"CONTENT_TYPE : application/json"
-"QUERY_STRING : "
-...
-"{\"name\":\"hamasyou\"}"
-127.0.0.1 - - [17/Feb/2014 10:57:49] "PUT / HTTP/1.1" 200 - 0.0006
-</code></pre>
-
-<p><code>PUT</code> はうまくいきました。次は <code>DELETE</code> です。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'DELETE'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
-</span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'hamasyou'</span><span class="p">}));</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<pre><code class="console">"REQUEST_METHOD : POST"
-"REQUEST_URI : http://localhost:9292/"
-"CONTENT_LENGTH : 19"
-"CONTENT_TYPE : application/json"
-"QUERY_STRING : "
-...
-"{\"name\":\"hamasyou\"}"
-127.0.0.1 - - [17/Feb/2014 10:58:52] "POST / HTTP/1.1" 200 - 0.0006
-</code></pre>
-
-<p>なんと、<code>POST</code> リクエストになってしまいました。。<code>DELETE</code> メソッドだけ、パラメータを <code>body</code> 部分に含めると <code>POST</code> リクエストになってしまうみたいです。。</p>
-
-<p>OAuth 対応の API 等で access_token をパラメータに含めてリクエストする様な API を呼び出すときは要注意です。</p>
-
-<p>できるだけ、認証情報は HTTP Header を使うようにした方がいいのかもしれません。</p>]]></content>
+<p>でも、request spec を使ったほうが <strong class="text-danger">呼び出しのURL</strong>、<strong class="text-danger">必要なパラメータ</strong>、<strong class="text-danger">出力形式</strong> を素直にテストとして書けるので、API のテストは request spec を使うようにするといいかなと思います。</p>
+]]></content>
   </entry>
   
 </feed>

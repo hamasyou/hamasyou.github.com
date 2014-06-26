@@ -1,0 +1,1853 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta name="google-site-verification" content="0KEsMQaWAcvp2KBqvHmWsJ9rrIAXrxZCpFz-UBS9w9c" />
+  <meta charset="utf-8" />
+  <title>Apple Swift プログラミング言語おぼえがき - それはBooks</title>
+
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+  <meta name="description" content="Apple が新しいプログラミング言語 Swift を2014年の WWDC で発表しました。言語仕様自体は色々なモダンプログラミング言語のいいとこ取りのような感じです。独特な仕様もいくつかあるのでおぼえがきしておきます。 なお、Swift で作成したアプリは iOS8 と OS X &hellip;">
+  <meta name="keywords" content="Apple,Swift,iOS,プログラミング言語">
+
+  
+
+
+<meta property="og:title" content="Apple Swift プログラミング言語おぼえがき - それはBooks" />
+<meta property="og:type" content="article" />
+
+<meta property="og:url" content="http://hamasyou.com/blog/2014/06/26/apple-swift/" />
+<meta property="og:site_name" content="それはBooks" />
+<meta property="og:description" content="Apple が新しいプログラミング言語 Swift を2014年の WWDC で発表しました。言語仕様自体は色々なモダンプログラミング言語のいいとこ取りのような感じです。独特な仕様もいくつかあるのでおぼえがきしておきます。 なお、Swift で作成したアプリは iOS8 と OS X &hellip;" />
+<meta property="fb:app_id" content="130554843667643" />
+
+
+
+  
+  <link rel="canonical" href="http://hamasyou.com/blog/2014/06/26/apple-swift/">
+  
+  
+
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <link href="/atom.xml" rel="alternate" title="それはBooks" type="application/atom+xml">
+  <link href="/rss.xml" rel="alternate" title="それはBooks" type="application/rss+xml">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/" title="コンピュータ・IT関係の書評やIT技術のぶろぐ">それはBooks</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse navbar-inverse-collapse">
+      <ul class="nav navbar-nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives/">Archives</a></li>
+</ul>
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/atom.xml" rel="alternate" title="subscribe via Atom">
+            <img src="/images/feed-icon-28x28.png" />
+          </a>
+        </li>
+      </ul>
+
+      
+      <form class="navbar-form navbar-search navbar-right" action="http://google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="q" value="site:hamasyou.com" />
+          <input class="search-query form-control col-lg-8" type="text" name="q" data-results="0" placeholder="Search" />
+        </fieldset>
+      </form>
+      
+
+    </div>
+    <!-- /.nav-collapse -->
+  </div>
+</div>
+</nav>
+  <div id="container" role="main" class="container">
+    <div class="row">
+  
+  <article class="hentry col-sm-12 col-md-9 col-lg-offset-1 col-lg-8" role="article">
+  
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">Apple Swift プログラミング言語おぼえがき</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-06-26T08:00:55+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 26<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/swift/" rel="nofollow">Swift</a>
+    
+      <a class="tag label label-info" href="/blog/tags/apple/" rel="nofollow">Apple</a>
+    
+      <a class="tag label label-info" href="/blog/tags/puroguraminguyan-yu/" rel="nofollow">プログラミング言語</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ios/" rel="nofollow">iOS</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/06/26/apple-swift/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/06/26/apple-swift/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/06/26/apple-swift/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/06/26/apple-swift/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/06/26/apple-swift/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/06/26/apple-swift/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/06/26/apple-swift/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+<div class="entry-content"><p>Apple が新しいプログラミング言語 <strong class="text-danger">Swift</strong> を2014年の WWDC で発表しました。言語仕様自体は色々なモダンプログラミング言語のいいとこ取りのような感じです。独特な仕様もいくつかあるのでおぼえがきしておきます。</p>
+
+<p>なお、Swift で作成したアプリは iOS8 と OS X Yosemite がリリースされた時点で審査に入れるようです。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="https://developer.apple.com/swift/" rel="external nofollow" title="Introducing Swift">Introducing Swift</a></p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+
+
+<div id="toc"></div>
+
+
+<h2>The Basics</h2>
+
+<p><code>NSLog</code> の代わりに <code>println</code> が使える。Xcode のコンソールにも表示される。文字列の変数展開は <code>\()</code> を使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"hamasyou"</span>
+</span><span class="line"><span class="n">println</span><span class="p">(</span><span class="s">"Hello \(name)"</span><span class="p">)</span>  <span class="c1">// Hello hamasyou</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>基本型</h3>
+
+<p><code>Int</code>、<code>Double</code>、<code>Float</code>、<code>Bool</code>、<code>String</code>、<code>Array</code>、<code>Dictionary</code> などが用意されている。<code>Int16</code> や <code>UInt8</code> などもある。型の変換は <code>型名()</code> を使う。</p>
+
+<p>Swift では <code>nil</code> を特別な値として定義している。<code>Bool</code> 値は <code>true</code> と <code>false</code>。条件式では <code>Bool</code> 値のみが使える。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="kt">UInt8</span><span class="p">.</span><span class="n">max</span>   <span class="c1">// 255</span>
+</span><span class="line"><span class="kt">UInt8</span><span class="p">.</span><span class="n">min</span>   <span class="c1">// 0</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">three</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span class="line"><span class="k">let</span> <span class="n">floatValue</span> <span class="o">=</span> <span class="mf">0.14159</span>
+</span><span class="line"><span class="k">let</span> <span class="n">pi</span> <span class="o">=</span> <span class="n">Double</span><span class="p">(</span><span class="n">three</span><span class="p">)</span> <span class="o">+</span> <span class="n">floatValue</span> <span class="c1">// 3.14159</span>
+</span><span class="line"><span class="k">let</span> <span class="n">integerPi</span> <span class="o">=</span> <span class="n">Int</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span> <span class="c1">// 3</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="n">pi</span> <span class="p">{</span>
+</span><span class="line">    <span class="c1">// この文法はコンパイルエラーになる。正しくは↓</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="n">pi</span> <span class="o">==</span> <span class="mf">3.14159</span> <span class="p">{</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>タプルも使える。不要な値を受け取るときは <code>_</code> を使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">httpError</span> <span class="o">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">"Not Found"</span><span class="p">)</span>
+</span><span class="line"><span class="n">httpError</span><span class="mf">.0</span>   <span class="c1">// 404</span>
+</span><span class="line"><span class="n">httpError</span><span class="mf">.1</span>   <span class="c1">// "Not Found"</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">otherError</span> <span class="o">=</span> <span class="p">(</span><span class="nl">errorCode</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="nl">errorMessage</span><span class="p">:</span> <span class="s">"Internal Server Error"</span><span class="p">)</span>
+</span><span class="line"><span class="n">otherError</span><span class="p">.</span><span class="n">errorCode</span>    <span class="c1">// 500</span>
+</span><span class="line"><span class="n">otherError</span><span class="p">.</span><span class="n">errorMessage</span> <span class="c1">// "Internal Server Error"</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span> <span class="o">=</span> <span class="n">httpError</span>
+</span><span class="line"><span class="n">code</span>  <span class="c1">// 404</span>
+</span><span class="line"><span class="n">msg</span>   <span class="c1">// "Not Found"</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">msg2</span><span class="p">)</span> <span class="o">=</span> <span class="n">otherError</span>
+</span><span class="line"><span class="n">msg2</span>  <span class="c1">// "Internal Server Error"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>リテラルと変数</h3>
+
+<p>Swift ではリテラルの定義は <code>let</code> を使い、変数の定義は <code>var</code> を使う。<code>let</code> で定義したリテラルは変更できない。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">myName</span> <span class="o">=</span> <span class="s">"hamasyou"</span>
+</span><span class="line"><span class="k">let</span> <span class="err">π</span> <span class="o">=</span> <span class="mf">3.14</span>
+</span><span class="line"><span class="k">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span class="line"><span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>文字列を数値に直すのに <code>toInt</code> メソッドが使える。この時返される値は <code>Int</code> 型でなく、<code>Int?</code> 型なので注意。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"123"</span>
+</span><span class="line"><span class="k">let</span> <span class="n">num</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>   <span class="c1">// num は Int? か Optional Int として型推論される</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>if 文の条件式には <code>Bool</code> しか記述できないが、この、<code>型 + ?</code> の形式で表される <code>Optional 型</code> も if 文の式に記述できる。この場合値が nil ではない場合に <code>true</code> と評価される。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"123"</span>
+</span><span class="line"><span class="k">var</span> <span class="n">num</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="n">num</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"\(str) is number of \(num!)"</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>このように、Swift では <code>nil</code> を返す可能性があるメソッドの戻り値の型は <code>Optional 型</code> になる。<code>Optional 型</code> から値を取り出すには <code>!</code> をつける。但し、nil が入っている変数から値を取り出そうとするとランタイムエラーになる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">str</span> <span class="o">=</span> <span class="s">"abc"</span>
+</span><span class="line"><span class="n">num</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line"><span class="n">println</span><span class="p">(</span><span class="n">num</span><span class="o">!</span><span class="p">)</span>   <span class="c1">// これはランタイムエラーになるので、必ず下の様に呼び出す</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="o">!</span><span class="n">num</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"\(str) is not number"</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Optional 型から値を取り出す方法に、<code>!</code> をつける以外に次のようにも書ける。（Optional Binding）</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"123"</span>
+</span><span class="line"><span class="k">let</span> <span class="n">expectNum</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
+</span><span class="line"><span class="k">if</span> <span class="k">let</span> <span class="n">actual</span> <span class="o">=</span> <span class="n">expectNum</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Implicity Unwrapped Optionals</h3>
+
+<p>Swift は Objective-C の nil ポインタとは違う <code>nil</code> を採用している。nil が格納される可能性がある変数は Optional 型として定義する必要がある。</p>
+
+<p>Optional 型の変数から値を取り出すには <code>!</code> を使う。必ず値が入っている確証が持てる場合は <code>型名 + !</code> の形で記述することもできる。値が入っていない時に <code>!</code> を使うとランタイムエラーがでるので注意。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="nl">optioanValue</span><span class="p">:</span> <span class="n">Int</span><span class="o">?</span>   <span class="c1">// Optional 型の変数は nil で初期化される</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"123"</span>
+</span><span class="line"><span class="k">let</span> <span class="nl">num</span><span class="p">:</span> <span class="n">Int</span><span class="o">!</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
+</span><span class="line"><span class="n">num</span>   <span class="c1">// num は 123 が入る Int! で定義しない場合は型推論によって Int? 型の Wrapped Value が入っているので 123 ではない</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Range</h3>
+
+<p><code>(a..b)</code>、<code>(a...b)</code> の形で範囲を求めることができる。<code>(a..b)</code> は b を含まない。Ruby とは逆の動きをする。。。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">for</span> <span class="n">i</span> <span class="nf">in</span> <span class="p">(</span><span class="mf">0..3</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>    <span class="c1">// 0, 1, 2</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>String And Character</h2>
+
+<p><code>String</code> は <code>NSString</code> が使われているところでも使える。String は <code>Character</code> のコレクション型である。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"Hello World"</span>
+</span><span class="line"><span class="k">let</span> <span class="nl">c</span><span class="p">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">"!"</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">s</span> <span class="o">=</span> <span class="n">str</span> <span class="o">+</span> <span class="n">c</span>
+</span><span class="line">
+</span><span class="line"><span class="n">str</span><span class="p">.</span><span class="n">isEmpty</span>             <span class="c1">// false</span>
+</span><span class="line"><span class="n">str</span><span class="p">.</span><span class="n">hasPrefix</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>  <span class="c1">// true</span>
+</span><span class="line"><span class="n">str</span><span class="p">.</span><span class="n">hasSuffix</span><span class="p">(</span><span class="s">"World"</span><span class="p">)</span>  <span class="c1">// true</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Collection Types</h2>
+
+<h3>Array</h3>
+
+<p>Swift の配列は <code>Array</code> 型。<code>Array&lt;SomeType&gt;</code> で表す。略語として <code>型名[]</code> の形式も使える。<code>NSArray</code>、<code>NSMutableArray</code> が使われているところでも使える。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">,</span> <span class="s">"Good"</span><span class="p">]</span>
+</span><span class="line"><span class="n">list</span><span class="p">.</span><span class="n">count</span>
+</span><span class="line"><span class="n">list</span> <span class="o">+=</span> <span class="s">"Nice"</span>      <span class="c1">// ["Hello", "World", "Good", "Nice"]</span>
+</span><span class="line"><span class="n">list</span><span class="p">.</span><span class="n">removeLast</span><span class="p">()</span>   <span class="c1">// "Nice"</span>
+</span><span class="line">
+</span><span class="line"><span class="k">var</span> <span class="nl">stringList</span><span class="p">:</span> <span class="n">String</span><span class="p">[]</span><span class="o">?</span>             <span class="c1">// nil</span>
+</span><span class="line"><span class="k">var</span> <span class="nl">anyList</span><span class="p">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">AnyObject</span><span class="o">&gt;?</span>        <span class="c1">// nil</span>
+</span><span class="line"><span class="k">var</span> <span class="nl">stringList2</span><span class="p">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[]</span>   <span class="c1">// empty String array</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Dictionary</h3>
+
+<p>Swift の Hash は <code>Dictionary</code> 型。<code>Dictionary&lt;KeyType, ValueType&gt;</code> で定義する。<code>NSDictionary</code>、<code>NSMutableDictionary</code> が使われているところでも使える。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">airports</span> <span class="o">=</span> <span class="p">[</span><span class="s">"TYO"</span><span class="o">:</span> <span class="s">"Tokyo"</span><span class="p">,</span> <span class="s">"DUB"</span><span class="o">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
+</span><span class="line"><span class="c1">// var airports: Dictionary&lt;String, String&gt; = ["TYO": "Tokyo", "DUB": "Dublin"] とも書ける</span>
+</span><span class="line"><span class="n">airports</span><span class="p">.</span><span class="n">count</span>
+</span><span class="line"><span class="n">airports</span><span class="p">[</span><span class="s">"OSK"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"OSAKA"</span>
+</span><span class="line"><span class="n">airports</span><span class="p">[</span><span class="s">"HOGE"</span><span class="p">]</span>    <span class="c1">// nil</span>
+</span><span class="line"><span class="n">airports</span><span class="p">.</span><span class="n">keys</span>       <span class="c1">// ["TYO", "DUB", "OSK"]</span>
+</span><span class="line"><span class="n">airports</span><span class="p">.</span><span class="n">values</span>
+</span><span class="line">
+</span><span class="line"><span class="k">for</span> <span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">in</span> <span class="n">airports</span> <span class="p">{</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">var</span> <span class="nl">dict</span><span class="p">:</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;?</span>             <span class="c1">// nil</span>
+</span><span class="line"><span class="k">var</span> <span class="n">emptyDict</span> <span class="o">=</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">()</span>      <span class="c1">// empty Dictionary </span>
+</span><span class="line"><span class="k">var</span> <span class="nl">emptyDict2</span><span class="p">:</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="o">:</span><span class="p">]</span>  <span class="c1">// empty Dictionary</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Functions</h2>
+
+<p>関数は <code>func メソッド名(引数: 型) -&gt; 戻り値の型</code> の形で書く。戻り値が必要ない場合は省略するか、<code>Void</code> を記述する。</p>
+
+<p>Swift の関数（メソッド）は <em>第一級関数</em> なので、変数や引数に渡すことができる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="n">hello</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">greet</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="s">"Hello \(name), \(greet)"</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">println</span><span class="p">(</span><span class="n">hello</span><span class="p">(</span><span class="s">"hamasyou"</span><span class="p">,</span> <span class="s">"Good Morning"</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="k">func</span> <span class="n">sayHello</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"Hello \(name)"</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">sayHello</span><span class="p">(</span><span class="s">"hamasyou"</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>戻り値にはタプルを指定することもできる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="nf">count</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nl">vowels</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">consonants</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">others</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">n1</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n2</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">n3</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span class="line">    <span class="k">return</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">n3</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">count</span><span class="p">()</span>
+</span><span class="line"><span class="n">ret</span><span class="p">.</span><span class="n">vowels</span>
+</span><span class="line"><span class="n">ret</span><span class="p">.</span><span class="n">consonants</span>
+</span><span class="line"><span class="n">ret</span><span class="p">.</span><span class="n">others</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>External Parameter Names</h3>
+
+<p>関数呼び出し時にキーワード引数として呼び出す名前を指定できる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="nf">someFunction</span><span class="p">(</span><span class="n">externalParameterName</span> <span class="nl">localParameterName</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">localParameterName</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">someFunction</span><span class="p">(</span><span class="nl">externalParameterName</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="k">func</span> <span class="n">join</span><span class="p">(</span><span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">withJoiner</span> <span class="nl">joiner</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">joiner</span> <span class="o">+</span> <span class="n">s2</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">join</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">,</span> <span class="nl">withJoiner</span><span class="p">:</span> <span class="s">"-"</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>externalParameterName</code> と <code>localParameterName</code> を同じにしたいときは、<code>#</code> を使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span><span class="p">(</span><span class="n">containsCharacter</span><span class="p">(</span><span class="err">#</span><span class="nl">string</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="err">#</span><span class="nl">characterToFind</span><span class="p">:</span> <span class="n">Character</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">for</span> <span class="n">character</span> <span class="k">in</span> <span class="n">string</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">if</span> <span class="n">character</span> <span class="o">==</span> <span class="n">characterToFind</span> <span class="p">{</span>
+</span><span class="line">            <span class="k">return</span> <span class="nb">true</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="nb">false</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>引数にデフォルト値を指定することもできる。デフォルト値を指定して、externalParameterName を指定しないときは、localParameterName が externalParameterName になる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="n">join</span><span class="p">(</span><span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">joiner</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">"-"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">joiner</span> <span class="o">+</span> <span class="n">s2</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">join</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">,</span> <span class="nl">joiner</span><span class="p">:</span> <span class="s">" "</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>_</code> を externalParameterName に指定すれば、デフォルト値を設定しても呼び出し時に externalParameterName を指定する必要はなくなる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="n">join</span><span class="p">(</span><span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">_</span> <span class="nl">joiner</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">"-"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">joiner</span> <span class="o">+</span> <span class="n">s2</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">join</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">,</span> <span class="s">" "</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>In-Out Parameters</h3>
+
+<p>関数の引数は定数（<code>let</code>）として渡される。引数を変数（<code>var</code>）として渡したい場合は、引数名の前に <code>var</code> をつける。</p>
+
+<p>var をつけて引数を定義しても、変更の影響を受けるのは関数の中だけ。関数の外の変数にも影響を及ぼしたい場合には <code>inout</code> をつけて引数を定義して、引数を渡すときに <code>&amp;</code> を使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="nf">swap</span><span class="p">(</span><span class="k">inout</span> <span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="k">inout</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">let</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">s1</span>
+</span><span class="line">    <span class="n">s1</span> <span class="o">=</span> <span class="n">s2</span>
+</span><span class="line">    <span class="n">s2</span> <span class="o">=</span> <span class="n">tmp</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">var</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">"Hello"</span>
+</span><span class="line"><span class="k">var</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">"World"</span>
+</span><span class="line"><span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s2</span><span class="p">)</span>
+</span><span class="line"><span class="n">s1</span>    <span class="c1">// "World"</span>
+</span><span class="line"><span class="n">s2</span>    <span class="c1">// "Hello"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Closures</h2>
+
+<p>Swift の Closure は次の点が最適化されている。</p>
+
+<ul>
+<li>引数と戻り値の型が推論される</li>
+<li>Closre Body が単一式の場合はそれが暗黙の戻り値になる</li>
+<li>引数を略式で書ける</li>
+<li>Closure を最後の引数として取るメソッドの場合、Closure を <code>()</code> の外側に書くことができる</li>
+</ul>
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Closure Syntax</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="p">{</span> <span class="p">(</span><span class="n">parameters</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">returnType</span> <span class="k">in</span>
+</span><span class="line">    <span class="n">statements</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Closure syntaxes</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Chris"</span><span class="p">,</span> <span class="s">"Alex"</span><span class="p">,</span> <span class="s">"Ewa"</span><span class="p">,</span> <span class="s">"Barry"</span><span class="p">,</span> <span class="s">"Daniella"</span><span class="p">]</span>
+</span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="p">(</span><span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="k">in</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">s1</span> <span class="o">&lt;</span> <span class="n">s2</span>
+</span><span class="line"><span class="p">})</span>
+</span><span class="line">
+</span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="p">(</span><span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&lt;</span> <span class="n">s2</span> <span class="p">})</span>
+</span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&lt;</span> <span class="n">s2</span> <span class="p">})</span>
+</span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="n">s2</span> <span class="o">&lt;</span> <span class="n">s2</span> <span class="p">})</span>
+</span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="err">$</span><span class="mi">1</span> <span class="p">})</span>
+</span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="err">$</span><span class="mi">1</span> <span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>map sample</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">digitNames</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class="line">    <span class="mi">0</span><span class="o">:</span> <span class="s">"Zero"</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span> <span class="s">"One"</span><span class="p">,</span> <span class="mi">2</span><span class="o">:</span> <span class="s">"Two"</span><span class="p">,</span>   <span class="mi">3</span><span class="o">:</span> <span class="s">"Three"</span><span class="p">,</span> <span class="mi">4</span><span class="o">:</span> <span class="s">"Four"</span><span class="p">,</span>
+</span><span class="line">    <span class="mi">5</span><span class="o">:</span> <span class="s">"Five"</span><span class="p">,</span> <span class="mi">6</span><span class="o">:</span> <span class="s">"Six"</span><span class="p">,</span> <span class="mi">7</span><span class="o">:</span> <span class="s">"Seven"</span><span class="p">,</span> <span class="mi">8</span><span class="o">:</span> <span class="s">"Eight"</span><span class="p">,</span> <span class="mi">9</span><span class="o">:</span> <span class="s">"Nine"</span>
+</span><span class="line"><span class="p">]</span>
+</span><span class="line"><span class="k">let</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">510</span><span class="p">]</span>
+</span><span class="line"><span class="k">let</span> <span class="n">strings</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="p">(</span><span class="k">var</span> <span class="n">num</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="k">in</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">output</span> <span class="o">=</span> <span class="s">""</span>
+</span><span class="line">    <span class="k">while</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">output</span> <span class="o">=</span> <span class="n">digitNames</span><span class="p">[</span><span class="n">num</span> <span class="o">%</span> <span class="mi">10</span><span class="p">]</span><span class="o">!</span> <span class="o">+</span> <span class="n">output</span>
+</span><span class="line">        <span class="n">num</span> <span class="o">/=</span> <span class="mi">10</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">output</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">strings</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Closure sample</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="nf">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span> <span class="nl">amount</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">runningTotal</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line">    <span class="k">func</span> <span class="n">incrementor</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">runningTotal</span> <span class="o">+=</span> <span class="n">amount</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">runningTotal</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">incrementor</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">incrementByTen</span> <span class="o">=</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="nl">forIncrement</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+</span><span class="line"><span class="n">incrementByTen</span><span class="p">()</span>    <span class="c1">// 10</span>
+</span><span class="line"><span class="n">incrementByTen</span><span class="p">()</span>    <span class="c1">// 20</span>
+</span><span class="line"><span class="n">incrementByTen</span><span class="p">()</span>    <span class="c1">// 30</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Enumerations</h2>
+
+<p>Swift では <code>Enumeration</code> も first-class type である。Swift ではデフォルト値を設定しない限り、自動で 0, 1, 2 の様な値がふられることはない。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">enum</span> <span class="n">CompassPoint</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">North</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">South</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">East</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">West</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">CompassPoint</span><span class="p">.</span><span class="n">North</span>
+</span><span class="line">
+</span><span class="line"><span class="k">enum</span> <span class="nl">Numbers</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">Zero</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">One</span><span class="p">,</span> <span class="n">Two</span><span class="p">,</span> <span class="n">Three</span><span class="p">,</span> <span class="n">Four</span><span class="p">,</span> <span class="n">Five</span><span class="p">,</span> <span class="n">Six</span><span class="p">,</span> <span class="n">Seven</span><span class="p">,</span> <span class="n">Eight</span><span class="p">,</span> <span class="n">Nine</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">Numbers</span><span class="p">.</span><span class="n">Four</span><span class="p">.</span><span class="n">toRaw</span><span class="p">()</span>                <span class="c1">// 4</span>
+</span><span class="line"><span class="n">Numbers</span><span class="p">.</span><span class="n">fromRaw</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">Numbers</span><span class="p">.</span><span class="n">Seven</span> <span class="c1">// true </span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Associated Values</h3>
+
+<p>Swift の enumerations は関連する値を保持することができる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">enum</span> <span class="n">Barcode</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">UPCA</span><span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">QRCode</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">productBarcode</span> <span class="o">=</span> <span class="n">Barcode</span><span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">85900</span><span class="n">_51226</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span><span class="line"><span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
+</span><span class="line"><span class="k">case</span> <span class="k">let</span> <span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="n">numberSystem</span><span class="p">,</span> <span class="n">identifier</span><span class="p">,</span> <span class="n">check</span><span class="p">)</span><span class="o">:</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"UPC-A with value of \(numberSystem), \(identifier), \(check)."</span><span class="p">)</span>
+</span><span class="line"><span class="k">case</span> <span class="k">let</span> <span class="p">.</span><span class="n">QRCode</span><span class="p">(</span><span class="n">productCode</span><span class="p">)</span><span class="o">:</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"QR code with value of \(productCode)."</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Classes and Structures</h2>
+
+<p>Swift では、クラスと構造体はほぼ同じ物と考えることができる。構造体は参照ではなく copy value で管理される。</p>
+
+<blockquote>
+<p>Unlike value types, reference types are not copied when they are assigned to a variable or constant, or when they are passed to a function. Rather than a copy, a reference to the same existing instance is used instead.</p>
+<footer><strong>Classes Are Reference Types</strong></footer>
+</blockquote>
+
+
+<h4>クラスと構造体の共通点</h4>
+
+<ul>
+<li>
+<strong>プロパティ</strong> を定義することができる</li>
+<li>
+<strong>メソッド</strong> を定義することができる</li>
+<li>
+<strong>subscripts</strong> （配列の<code>[0]</code> のようにアクセスできる仕組み）を提供することができる</li>
+<li>
+<strong>イニシャライザ</strong> （コンストラクタ）を定義することができる</li>
+<li>デフォルトの振る舞いを拡張することができる</li>
+<li>
+<strong>protocol</strong> を使うことができる</li>
+</ul>
+
+
+<h4>クラスだけがもつ機能</h4>
+
+<ul>
+<li><strong>継承</strong></li>
+<li>タイプキャストが可能</li>
+<li>
+<strong>デイニシャライザ</strong> （デストラクタ）を定義することができる</li>
+<li>ひとつ以上の参照カウントが許される（構造体は copy-value、クラスは reference）</li>
+</ul>
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>syntax</span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">struct</span> <span class="n">Resolution</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="n">VideoMode</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">resolution</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">()</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">interlaced</span> <span class="o">=</span> <span class="nb">false</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">frameRate</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="k">let</span> <span class="n">someResolution</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">()</span>
+</span><span class="line"><span class="k">let</span> <span class="n">someVideoMode</span> <span class="o">=</span> <span class="n">VideoMode</span><span class="p">()</span>
+</span><span class="line"><span class="n">someVideoMode</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1280</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Objective-C とは違って、参照をたどって直接値を設定することも可能。</p>
+
+<p>構造体は、暗黙のイニシャライザを使って、プロパティを初期化することが可能。クラスはイニシャライザを明示的に定義しなければいけない。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">rvga</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mi">480</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>クラスと構造体のどちらを選ぶか</h3>
+
+<ul>
+<li>構造体を使う一番の理由は関係する値をまとめるため</li>
+<li>プロパティのデータを何かしら処理する場合には、クラスの方がいいかも</li>
+</ul>
+
+
+<h3>Array と Dictionary</h3>
+
+<p>Swift の Array と Dictionary は構造体の様に振舞う。</p>
+
+<p>Dictionary は変数に割り当てられる際にコピーされる。Key/Value の Value がさらに Dictionary の場合はそれもコピーされる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Peter"</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s">"Wei"</span><span class="o">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s">"Anish"</span><span class="o">:</span> <span class="mi">65</span><span class="p">,</span> <span class="s">"Katya"</span><span class="o">:</span> <span class="mi">19</span><span class="p">]</span>
+</span><span class="line"><span class="k">var</span> <span class="n">copiedAges</span> <span class="o">=</span> <span class="n">ages</span>
+</span><span class="line"><span class="n">ages</span><span class="p">[</span><span class="s">"Peter"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span>    <span class="c1">// 24</span>
+</span><span class="line"><span class="n">copiedAges</span><span class="p">[</span><span class="s">"Peter"</span><span class="p">]</span>   <span class="c1">// 23</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Array はもうちょっと複雑な動きをする。Array の値がコピーされるのは、コピーが必要になった時に起こる。</p>
+
+<p>変数への割り当て、メソッドの引数で渡しただけではコピーは起こらない。コピーが起こるのは、配列の長さ（<code>length</code>）が変わる処理が行ったとき。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+</span><span class="line"><span class="k">var</span> <span class="n">otherNums</span> <span class="o">=</span> <span class="n">nums</span>
+</span><span class="line">
+</span><span class="line"><span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span>
+</span><span class="line"><span class="n">otherNums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="c1">// 50</span>
+</span><span class="line">
+</span><span class="line"><span class="n">nums</span> <span class="o">+=</span> <span class="mi">100</span>     <span class="c1">// occure copy, nums is [50, 20, 30, 40, 100]</span>
+</span><span class="line"><span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>    <span class="c1">// nums is [10, 20, 30, 40, 100]</span>
+</span><span class="line"><span class="n">otherNums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="c1">// 50, otherNums is [50, 20, 30, 40]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Array で参照を切りたいときは <code>unshare()</code> メソッドを使う。変数への割り当て時に強制的にコピーしたいときは <code>copy()</code> メソッドを使う。</p>
+
+<h2>Properties</h2>
+
+<h3>Lazy Stored Properties</h3>
+
+<p>最初にアクセスされるまで初期化されないようにするには、<code>@lazy</code> を使用する。変数（var）で定義するプロパティには @lazy をつけるようにするといい。</p>
+
+<blockquote>
+<p>You must always declare a lazy property as a variable (with the var keyword), because its initial value may not be retrieved until after instance initialization completes. Constant properties must always have a value before initialization completes, and therefore cannot be declared as lazy.</p>
+<footer><strong>Lazy Stored Properties</strong></footer>
+</blockquote>
+
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="n">DataManager</span> <span class="p">{</span>
+</span><span class="line">    <span class="p">@</span><span class="n">lazy</span> <span class="k">var</span> <span class="n">importer</span> <span class="o">=</span> <span class="n">DataImporter</span><span class="p">()</span>   <span class="c1">// DataImporter is assumed to take a non-trivial amount of time to initialize.</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Computed Properties</h3>
+
+<p><code>center</code> プロパティが Computed Property になる。<code>set</code> で受け取る引数は明示してもいいし、明示しない場合は <code>newValue</code> で受け取れる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">struct</span> <span class="n">Rect</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">origin</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">size</span> <span class="o">=</span> <span class="n">Size</span><span class="p">()</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">center</span><span class="p">:</span> <span class="n">Point</span> <span class="p">{</span>
+</span><span class="line">    <span class="kr">get</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">let</span> <span class="n">centerX</span> <span class="o">=</span> <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class="line">        <span class="k">let</span> <span class="n">centerY</span> <span class="o">=</span> <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">centerX</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">centerY</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="kr">set</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">newValue</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class="line">        <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">newValue</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Property Observers</h3>
+
+<p><code>willSet</code>, <code>didSet</code> を使うと、プロパティが設定されるまえ、設定された後にコールバックを受け取ることができる。これらのコールバックは初期化時にはよばれない。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="n">StepCounter</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">totalSteps</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class="line">    <span class="kr">willSet</span><span class="p">(</span><span class="n">newTotalSteps</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"About to set totalSteps to \(newTotalSteps)"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="kr">didSet</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">if</span> <span class="n">totalSteps</span> <span class="o">&gt;</span> <span class="n">oldValue</span>  <span class="p">{</span>
+</span><span class="line">            <span class="n">println</span><span class="p">(</span><span class="s">"Added \(totalSteps - oldValue) steps"</span><span class="p">)</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="k">let</span> <span class="n">stepCounter</span> <span class="o">=</span> <span class="n">StepCounter</span><span class="p">()</span>
+</span><span class="line"><span class="n">stepCounter</span><span class="p">.</span><span class="n">totalSteps</span> <span class="o">=</span> <span class="mi">200</span>
+</span><span class="line"><span class="c1">// About to set totalSteps to 200</span>
+</span><span class="line"><span class="c1">// Added 200 steps</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Methods</h2>
+
+<p>メソッドにも関数と同じく <code>externalParameterName</code> と <code>localParameterName</code> を指定できる。メソッドの場合は関数と違って、externalParameterName と localParameterName の定義の振る舞いが違う。</p>
+
+<p>メソッドは最初の引数の externalParameterName は、localParameterName と同じになり、呼び出し時は最初の引数の externalParameterName は省略できる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="n">MyClass</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">func</span> <span class="n">hello</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">greet</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="s">"Hello \(name) \(greet)"</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+</span><span class="line"><span class="n">obj</span><span class="p">.</span><span class="n">hello</span><span class="p">(</span><span class="s">"hamasyou"</span><span class="p">,</span> <span class="nl">greet</span><span class="p">:</span> <span class="s">"Good Morning"</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>第二引数以降の呼び出しで externalParameterName を指定したくない場合は <code>_</code> を使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="n">MyClass</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">func</span> <span class="n">hello</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">_</span> <span class="nl">greet</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="s">"Hello \(name) \(greet)"</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+</span><span class="line"><span class="n">obj</span><span class="p">.</span><span class="n">hello</span><span class="p">(</span><span class="s">"hamasyou"</span><span class="p">,</span> <span class="s">"Good Night"</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Modifying Value Types from Within Instance Methods</h3>
+
+<p>構造体と Enumerations はデフォルトでメソッドの中からプロパティの変更を行うことができない。変更できるようにするには <code>mutating</code> でメソッドを修飾する。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span class="line">    <span class="kr">mutating</span> <span class="k">func</span> <span class="n">moveByX</span><span class="p">(</span><span class="nl">deltaX</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">y</span> <span class="nl">deltaY</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">x</span> <span class="o">+=</span> <span class="n">deltaX</span>
+</span><span class="line">        <span class="n">y</span> <span class="o">+=</span> <span class="n">deltaY</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Subscripts</h2>
+
+<p>Subscript はコレクションにアクセスするための略式を定義するもの。クラスや構造体、Enumeration に定義できる。定義すると <code>[0]</code> などでアクセスできるようになる。</p>
+
+<p><code>subscript</code> の引数は複数指定することもできる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">subscript</span><span class="p">(</span><span class="nl">index</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+</span><span class="line">    <span class="kr">get</span> <span class="p">{</span>
+</span><span class="line">        <span class="c1">// return an appropriate subscript value here</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="kr">set</span><span class="p">(</span><span class="n">newValue</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="c1">// perform a suitable setting action here</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Inheritance</h2>
+
+<p>メソッドやプロパティのオーバーライドには <code>override</code> キーワードを使用する。override されたくないメソッドやプロパティには <code>@final</code> を指定する。</p>
+
+<h2>Initialization</h2>
+
+<p>イニシャライザは <code>init</code> で定義する。イニシャライザに引数を指定する場合、externalPropertyName を指定しなければ暗黙で localPropertyName が externalPropertyName に指定される。</p>
+
+<p>メソッドと違い、<em>イニシャライザの呼び出し時には全ての externalPropertyName の指定が必要</em>。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">struct</span> <span class="n">Color</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">let</span> <span class="n">red</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">green</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">blue</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span class="line">    <span class="k">init</span><span class="p">(</span><span class="nl">red</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">self</span><span class="p">.</span><span class="n">red</span>   <span class="o">=</span> <span class="n">red</span>
+</span><span class="line">        <span class="nb">self</span><span class="p">.</span><span class="n">green</span> <span class="o">=</span> <span class="n">green</span>
+</span><span class="line">        <span class="nb">self</span><span class="p">.</span><span class="n">blue</span>  <span class="o">=</span> <span class="n">blue</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="k">let</span> <span class="n">magenta</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="nl">red</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Designated Initializers and Convenience Initializers</h3>
+
+<p><code>Designated Initializer</code> はインスタンスの初期化の目的で定義される。<code>Convenience Initializer</code> は Designated Intitializer を呼び出す際のデフォルト値などを設定する目的で使う。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="n">MyClass</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
+</span><span class="line">    <span class="k">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">convenience</span> <span class="k">init</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">self</span><span class="p">.</span><span class="k">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">"hamasyou"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="k">let</span> <span class="n">me</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Type Casting</h2>
+
+<p>ダウンキャストに <code>as</code> が使える。Optional Type の場合は <code>as?</code> を使う。Dictionary とかから値を取り出すときに使える。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="k">let</span> <span class="n">movie</span> <span class="o">=</span> <span class="n">item</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Movie</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"Movie: '\(movie.name)', dir. \(movie.director)"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="n">song</span> <span class="o">=</span> <span class="n">item</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Song</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"Song: '\(song.name)', by \(song.artist)"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>配列の型に <code>AnyObject</code> を使うと、利用時にキャストが必要だが何の型か指定しなくても入れれるようになる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="nl">someObjects</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class="line">    <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">"2001: A Space Odyssey"</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">"Stanley Kubrick"</span><span class="p">),</span>
+</span><span class="line">    <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">"Moon"</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">"Duncan Jones"</span><span class="p">),</span>
+</span><span class="line">    <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">"Alien"</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">"Ridley Scott"</span><span class="p">)</span>
+</span><span class="line"><span class="p">]</span>
+</span><span class="line"><span class="k">for</span> <span class="n">object</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">let</span> <span class="n">movie</span> <span class="o">=</span> <span class="n">object</span> <span class="kt">as</span> <span class="n">Movie</span>
+</span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"Movie: '\(movie.name)', dir. \(movie.director)"</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>配列の型に <code>Any</code> を使うと、なんでもいれれるようになる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">things</span> <span class="o">=</span> <span class="n">Any</span><span class="p">[]()</span>
+</span><span class="line">
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span>
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span>
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">))</span>
+</span><span class="line"><span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">"Ghostbusters"</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">"Ivan Reitman"</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="k">for</span> <span class="n">thing</span> <span class="k">in</span> <span class="n">things</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">switch</span> <span class="n">thing</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">case</span> <span class="mi">0</span> <span class="kt">as</span> <span class="nl">Int</span><span class="p">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"zero as an Int"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="mi">0</span> <span class="kt">as</span> <span class="nl">Double</span><span class="p">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"zero as a Double"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="k">let</span> <span class="n">someInt</span> <span class="kt">as</span> <span class="nl">Int</span><span class="p">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"an integer value of \(someInt)"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="k">let</span> <span class="n">someDouble</span> <span class="kt">as</span> <span class="n">Double</span> <span class="k">where</span> <span class="n">someDouble</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"a positive double value of \(someDouble)"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="kt">is</span> <span class="nl">Double</span><span class="p">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"some other double value that I don't want to print"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="k">let</span> <span class="n">someString</span> <span class="kt">as</span> <span class="nl">String</span><span class="p">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"a string value of </span><span class="se">\"</span><span class="s">\(someString)</span><span class="se">\"</span><span class="s">"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="k">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="kt">as</span> <span class="p">(</span><span class="n">Double</span><span class="p">,</span> <span class="n">Double</span><span class="p">)</span><span class="o">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"an (x, y) point at \(x), \(y)"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">case</span> <span class="k">let</span> <span class="n">movie</span> <span class="kt">as</span> <span class="nl">Movie</span><span class="p">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"a movie called '\(movie.name)', dir. \(movie.director)"</span><span class="p">)</span>
+</span><span class="line">    <span class="k">default</span><span class="o">:</span>
+</span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="s">"something else"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Extensions</h2>
+
+<p>既存のクラス、構造体、Enumeration に機能を追加できる。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">extension</span> <span class="nl">SomeType</span><span class="p">:</span> <span class="n">SomeProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+</span><span class="line">    <span class="c1">// implementation of protocol requirements goes here</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">extension</span> <span class="n">Double</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">km</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="o">*</span> <span class="mi">1</span><span class="n">_000</span><span class="mf">.0</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">m</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">cm</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="o">/</span> <span class="mf">100.0</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">mm</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="o">/</span> <span class="mi">1</span><span class="n">_000</span><span class="mf">.0</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">ft</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="o">/</span> <span class="mf">3.28084</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+</div>
+
+
+  
+
+<span class="byline author vcard hidden">Posted by <span class="fn">hamasyou</span></span>
+
+
+
+  <p>
+  <script type="text/javascript"><!--
+  amazon_ad_tag = "sorehabooks-22";
+  amazon_ad_width = "728";
+  amazon_ad_height = "90";
+  amazon_ad_logo = "hide";
+  amazon_ad_link_target = "new";
+  amazon_ad_discount = "remove";
+  amazon_color_border = "FAFAFA";
+  amazon_color_background = "FAFAFA";
+  amazon_color_text = "666666";
+  amazon_color_link = "3399F3";
+  amazon_color_price = "CD0200";
+  amazon_color_logo = "FF9900";//--></script>
+  <script type="text/javascript" src="http://ir-jp.amazon-adsystem.com/s/ads.js"></script>
+</p>
+
+  
+    
+  <hr />
+
+  <section>
+    <div class="related_posts">
+      <h3 class="h1">関連記事</h3>
+      <ul>
+        
+        <li><a href="/blog/2011/08/27/4274068579/">７つの言語 ７つの世界</a></li>
+        
+        <li><a href="/blog/2011/08/04/iosgame-center/">[iOS] Game Center を使った対戦プログラミングの手順メモ</a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+    <hr />
+    <footer>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-06-26T08:00:55+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 26<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/swift/" rel="nofollow">Swift</a>
+    
+      <a class="tag label label-info" href="/blog/tags/apple/" rel="nofollow">Apple</a>
+    
+      <a class="tag label label-info" href="/blog/tags/puroguraminguyan-yu/" rel="nofollow">プログラミング言語</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ios/" rel="nofollow">iOS</a>
+    
+  
+</span>
+
+      </p>
+      
+      
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/06/26/apple-swift/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/06/26/apple-swift/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/06/26/apple-swift/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/06/26/apple-swift/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/06/26/apple-swift/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/06/26/apple-swift/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/06/26/apple-swift/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+      
+
+      <div class="text-right"><a href="javascript:void(0)" title="Scroll to Top" class="scroll-to-top"><i class="fa fa-arrow-up"> Back to Top</i></a></div>
+
+      <ul class="pager">
+        
+        <li class="previous"><a class="basic-alignment left"
+                                href="/blog/2014/05/14/titanium-sns-oauth-app-scheme/" title="Previous Post:
+      Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法"><i class="fa fa-arrow-circle-left"></i> Titanium AlloyでSNS認証をア...</a></li>
+        
+        
+      </ul>
+
+      
+      <section>
+        <h1>Comments</h1>
+
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+      
+    </footer>
+    <div class="visible-md visible-lg"><div id="back-to-top" class="scroll-to-top" style="display: block;"><a href="#">Back to Top</a></div></div>
+  </article>
+  <div class="clearfix visible-sm"></div>
+  
+  <aside class="sidebar-nav col-md-3">
+    
+    <section class="well aboutme vcard">
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-5">
+      <img src="//www.gravatar.com/avatar/41366092a9f21b17d150af17f9caa591.png" alt="hamasyou" class="img-thumbnail photo" />
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-7">
+      <ul class="list-unstyled">
+        <li><span class="fn">濱田章吾</span></li>
+        <li><span class="nickname">hamasyou</span></li>
+        <li><ul class="list-inline">
+          <li><a href="https://twitter.com/hamasyou" rel="external nofollow" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/hamada.syougo" rel="external nofollow" title="Facebook"><i class="fa fa-facebook-square"></i></a></li>
+          <li><a href="https://github.com/hamasyou" rel="external nofollow" title="GitHub"><i class="fa fa-github"></i></a></li>
+          <li><a href="m&#97;i&#108;t&#111;:h&#97;&#109;&#97;&#115;y&#111;&#117;&#64;&#103;mail&#46;c&#111;&#109;" rel="external nofollow" title="E-mail"><i class="fa fa-envelope-o"></i></a></li>
+          <li><a href="http://mountposition.co.jp/" rel="external nofollow" title="MountPosition Inc."><i class="fa fa-building-o"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <span class="small">Ruby、JavaScript、Objective-C、PHP、Javaなど一通りできます。Web系の方が強いですがスマホアプリもできます。開発案件あればお声がけください。</span>
+    </div>
+  </div>
+</section>
+<section class="well">
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/26/apple-swift/">Apple Swift プログラミング言語おぼえがき</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/14/titanium-sns-oauth-app-scheme/">Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/04/passenger-js-css-gzip/">Railsが用意したasset precompile済みのgzファイルを返すapache confの設定</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/02/titanium-alloy-measurement/">[Titanium] Alloyのmeasurementの実装がイケてなかったので再実装した</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/10/4774162868/">インフラデザインパターン ~安定稼動に導く127の設計方式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/05/rails-webservice-startup/">Webサービスをスタートアップする10の手順（Rails編）</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/04/4048703676/">サーバサイドJavaScript Node.js入門</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/04/canonical-url/">canonicalなURLってなにがいいんだろう？</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/01/4274065979/">ハッカーと画家 コンピュータ時代の創造者たち</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+  <div class="list-group">
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">120</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+  </div>
+</section>
+<section class="panel panel-default taglist hidden-xs">
+  <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+  <div class="list-group">
+    <ul class="list-inline list-group-item"><li><a class="label label-default" href="/blog/tags/activerecord/" rel="nofollow">ActiveRecord</a></li><li><a class="label label-default" href="/blog/tags/ajax/" rel="nofollow">Ajax</a></li><li><a class="label label-default" href="/blog/tags/alloy/" rel="nofollow">Alloy</a></li><li><a class="label label-default" href="/blog/tags/amazon/" rel="nofollow">Amazon</a></li><li><a class="label label-default" href="/blog/tags/android/" rel="nofollow">Android</a></li><li><a class="label label-default" href="/blog/tags/ant/" rel="nofollow">Ant</a></li><li><a class="label label-default" href="/blog/tags/aop/" rel="nofollow">AOP</a></li><li><a class="label label-default" href="/blog/tags/apache/" rel="nofollow">Apache</a></li><li><a class="label label-default" href="/blog/tags/apache/" rel="nofollow">apache</a></li><li><a class="label label-default" href="/blog/tags/api/" rel="nofollow">API</a></li><li><a class="label label-default" href="/blog/tags/app-store/" rel="nofollow">App Store</a></li><li><a class="label label-default" href="/blog/tags/apple/" rel="nofollow">Apple</a></li><li><a class="label label-default" href="/blog/tags/aspectj/" rel="nofollow">AspectJ</a></li><li><a class="label label-default" href="/blog/tags/asset/" rel="nofollow">asset</a></li><li><a class="label label-default" href="/blog/tags/atl/" rel="nofollow">ATL</a></li><li><a class="label label-default" href="/blog/tags/aws/" rel="nofollow">AWS</a></li><li><a class="label label-default" href="/blog/tags/bbs/" rel="nofollow">BBS</a></li><li><a class="label label-default" href="/blog/tags/blog/" rel="nofollow">Blog</a></li><li><a class="label label-default" href="/blog/tags/c/" rel="nofollow">C</a></li><li><a class="label label-default" href="/blog/tags/c-number/" rel="nofollow">C#</a></li><li><a class="label label-default" href="/blog/tags/c-plus-plus/" rel="nofollow">C++</a></li><li><a class="label label-default" href="/blog/tags/canvas/" rel="nofollow">canvas</a></li><li><a class="label label-default" href="/blog/tags/capistrano3/" rel="nofollow">Capistrano3</a></li><li><a class="label label-default" href="/blog/tags/cgi/" rel="nofollow">CGI</a></li><li><a class="label label-default" href="/blog/tags/click/" rel="nofollow">Click</a></li><li><a class="label label-default" href="/blog/tags/cocos2d/" rel="nofollow">cocos2d</a></li><li><a class="label label-default" href="/blog/tags/code/" rel="nofollow">CODE</a></li><li><a class="label label-default" href="/blog/tags/com/" rel="nofollow">COM</a></li><li><a class="label label-default" href="/blog/tags/commons/" rel="nofollow">Commons</a></li><li><a class="label label-default" href="/blog/tags/css/" rel="nofollow">CSS</a></li><li><a class="label label-default" href="/blog/tags/css3/" rel="nofollow">CSS3</a></li><li><a class="label label-default" href="/blog/tags/cygwin/" rel="nofollow">Cygwin</a></li><li><a class="label label-default" href="/blog/tags/dao/" rel="nofollow">DAO</a></li><li><a class="label label-default" href="/blog/tags/dbunit/" rel="nofollow">DBUnit</a></li><li><a class="label label-default" href="/blog/tags/di/" rel="nofollow">DI</a></li><li><a class="label label-default" href="/blog/tags/direct3d/" rel="nofollow">Direct3D</a></li><li><a class="label label-default" href="/blog/tags/djunit/" rel="nofollow">djUnit</a></li><li><a class="label label-default" href="/blog/tags/dns/" rel="nofollow">DNS</a></li><li><a class="label label-default" href="/blog/tags/doa/" rel="nofollow">DOA</a></li><li><a class="label label-default" href="/blog/tags/dom/" rel="nofollow">DOM</a></li><li><a class="label label-default" href="/blog/tags/domain/" rel="nofollow">domain</a></li><li><a class="label label-default" href="/blog/tags/dreamweaver4/" rel="nofollow">Dreamweaver4</a></li><li><a class="label label-default" href="/blog/tags/dropbox/" rel="nofollow">Dropbox</a></li><li><a class="label label-default" href="/blog/tags/dsl/" rel="nofollow">DSL</a></li><li><a class="label label-default" href="/blog/tags/eclipse/" rel="nofollow">Eclipse</a></li><li><a class="label label-default" href="/blog/tags/ejb/" rel="nofollow">EJB</a></li><li><a class="label label-default" href="/blog/tags/facebook/" rel="nofollow">facebook</a></li><li><a class="label label-default" href="/blog/tags/ffftp/" rel="nofollow">FFFTP</a></li><li><a class="label label-default" href="/blog/tags/findbugs/" rel="nofollow">FindBugs</a></li><li><a class="label label-default" href="/blog/tags/fireworks4/" rel="nofollow">Fireworks4</a></li><li><a class="label label-default" href="/blog/tags/flash4/" rel="nofollow">FLASH4</a></li><li><a class="label label-default" href="/blog/tags/fql/" rel="nofollow">FQL</a></li><li><a class="label label-default" href="/blog/tags/gem/" rel="nofollow">gem</a></li><li><a class="label label-default" href="/blog/tags/geo/" rel="nofollow">geo</a></li><li><a class="label label-default" href="/blog/tags/git/" rel="nofollow">git</a></li><li><a class="label label-default" href="/blog/tags/github/" rel="nofollow">GitHub</a></li><li><a class="label label-default" href="/blog/tags/glade/" rel="nofollow">Glade</a></li><li><a class="label label-default" href="/blog/tags/gmail/" rel="nofollow">Gmail</a></li><li><a class="label label-default" href="/blog/tags/gmail/" rel="nofollow">GMail</a></li><li><a class="label label-default" href="/blog/tags/go/" rel="nofollow">Go</a></li><li><a class="label label-default" href="/blog/tags/golang/" rel="nofollow">GoLang</a></li><li><a class="label label-default" href="/blog/tags/google/" rel="nofollow">Google</a></li><li><a class="label label-default" href="/blog/tags/graph/" rel="nofollow">Graph</a></li><li><a class="label label-default" href="/blog/tags/gree/" rel="nofollow">GREE</a></li><li><a class="label label-default" href="/blog/tags/gtk/" rel="nofollow">GTK</a></li><li><a class="label label-default" href="/blog/tags/hibernate/" rel="nofollow">Hibernate</a></li><li><a class="label label-default" href="/blog/tags/html/" rel="nofollow">HTML</a></li><li><a class="label label-default" href="/blog/tags/html5/" rel="nofollow">HTML5</a></li><li><a class="label label-default" href="/blog/tags/hugo/" rel="nofollow">Hugo</a></li><li><a class="label label-default" href="/blog/tags/i18n/" rel="nofollow">I18n</a></li><li><a class="label label-default" href="/blog/tags/iconix/" rel="nofollow">ICONIX</a></li><li><a class="label label-default" href="/blog/tags/ie/" rel="nofollow">IE</a></li><li><a class="label label-default" href="/blog/tags/imap/" rel="nofollow">imap</a></li><li><a class="label label-default" href="/blog/tags/ios/" rel="nofollow">iOS</a></li><li><a class="label label-default" href="/blog/tags/iphone/" rel="nofollow">iPhone</a></li><li><a class="label label-default" href="/blog/tags/imodo/" rel="nofollow">iモード</a></li><li><a class="label label-default" href="/blog/tags/j2ee/" rel="nofollow">J2EE</a></li><li><a class="label label-default" href="/blog/tags/j2se/" rel="nofollow">J2SE</a></li><li><a class="label label-default" href="/blog/tags/java/" rel="nofollow">Java</a></li><li><a class="label label-default" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a></li><li><a class="label label-default" href="/blog/tags/jdk/" rel="nofollow">JDK</a></li><li><a class="label label-default" href="/blog/tags/jekyll/" rel="nofollow">Jekyll</a></li><li><a class="label label-default" href="/blog/tags/jndi/" rel="nofollow">JNDI</a></li><li><a class="label label-default" href="/blog/tags/jpmobile/" rel="nofollow">jpmobile</a></li><li><a class="label label-default" href="/blog/tags/jsdeferred/" rel="nofollow">JSDeferred</a></li><li><a class="label label-default" href="/blog/tags/jsf/" rel="nofollow">JSF</a></li><li><a class="label label-default" href="/blog/tags/json/" rel="nofollow">JSON</a></li><li><a class="label label-default" href="/blog/tags/jta/" rel="nofollow">JTA</a></li><li><a class="label label-default" href="/blog/tags/junit/" rel="nofollow">JUnit</a></li><li><a class="label label-default" href="/blog/tags/kaminari/" rel="nofollow">kaminari</a></li><li><a class="label label-default" href="/blog/tags/kimono/" rel="nofollow">kimono</a></li><li><a class="label label-default" href="/blog/tags/lifehack/" rel="nofollow">LifeHack</a></li><li><a class="label label-default" href="/blog/tags/linux/" rel="nofollow">Linux</a></li><li><a class="label label-default" href="/blog/tags/liquid/" rel="nofollow">Liquid</a></li><li><a class="label label-default" href="/blog/tags/mac/" rel="nofollow">Mac</a></li><li><a class="label label-default" href="/blog/tags/macosx/" rel="nofollow">MacOSX</a></li><li><a class="label label-default" href="/blog/tags/mda/" rel="nofollow">MDA</a></li><li><a class="label label-default" href="/blog/tags/measurement/" rel="nofollow">measurement</a></li><li><a class="label label-default" href="/blog/tags/mfc/" rel="nofollow">MFC</a></li><li><a class="label label-default" href="/blog/tags/microsoft-translator-api/" rel="nofollow">Microsoft Translator API</a></li><li><a class="label label-default" href="/blog/tags/mixi/" rel="nofollow">mixi</a></li><li><a class="label label-default" href="/blog/tags/movable-type/" rel="nofollow">Movable Type</a></li><li><a class="label label-default" href="/blog/tags/mvc/" rel="nofollow">MVC</a></li><li><a class="label label-default" href="/blog/tags/node/" rel="nofollow">Node</a></li><li><a class="label label-default" href="/blog/tags/nokogiri/" rel="nofollow">Nokogiri</a></li><li><a class="label label-default" href="/blog/tags/nosql/" rel="nofollow">NoSQL</a></li><li><a class="label label-default" href="/blog/tags/o-slash-rmatupingu/" rel="nofollow">O/Rマッピング</a></li><li><a class="label label-default" href="/blog/tags/oauth/" rel="nofollow">OAuth</a></li><li><a class="label label-default" href="/blog/tags/objective-c/" rel="nofollow">Objective-C</a></li><li><a class="label label-default" href="/blog/tags/octopress/" rel="nofollow">Octopress</a></li><li><a class="label label-default" href="/blog/tags/ocunit/" rel="nofollow">OCUnit</a></li><li><a class="label label-default" href="/blog/tags/opensocial/" rel="nofollow">OpenSocial</a></li><li><a class="label label-default" href="/blog/tags/os/" rel="nofollow">OS</a></li><li><a class="label label-default" href="/blog/tags/perl/" rel="nofollow">Perl</a></li><li><a class="label label-default" href="/blog/tags/php/" rel="nofollow">PHP</a></li><li><a class="label label-default" href="/blog/tags/plugin/" rel="nofollow">plugin</a></li><li><a class="label label-default" href="/blog/tags/pm/" rel="nofollow">PM</a></li><li><a class="label label-default" href="/blog/tags/postfix/" rel="nofollow">Postfix</a></li><li><a class="label label-default" href="/blog/tags/precompile/" rel="nofollow">precompile</a></li><li><a class="label label-default" href="/blog/tags/python/" rel="nofollow">python</a></li><li><a class="label label-default" href="/blog/tags/qiita/" rel="nofollow">qiita</a></li><li><a class="label label-default" href="/blog/tags/rails/" rel="nofollow">rails</a></li><li><a class="label label-default" href="/blog/tags/rails/" rel="nofollow">Rails</a></li><li><a class="label label-default" href="/blog/tags/rails3/" rel="nofollow">Rails3</a></li><li><a class="label label-default" href="/blog/tags/rails4/" rel="nofollow">Rails4</a></li><li><a class="label label-default" href="/blog/tags/rdbms/" rel="nofollow">RDBMS</a></li><li><a class="label label-default" href="/blog/tags/restful/" rel="nofollow">RESTful</a></li><li><a class="label label-default" href="/blog/tags/roa/" rel="nofollow">ROA</a></li><li><a class="label label-default" href="/blog/tags/rspec/" rel="nofollow">RSpec</a></li><li><a class="label label-default" href="/blog/tags/ruby/" rel="nofollow">Ruby</a></li><li><a class="label label-default" href="/blog/tags/ruby1-dot-9/" rel="nofollow">Ruby1.9</a></li><li><a class="label label-default" href="/blog/tags/s3/" rel="nofollow">S3</a></li><li><a class="label label-default" href="/blog/tags/se/" rel="nofollow">SE</a></li><li><a class="label label-default" href="/blog/tags/selinux/" rel="nofollow">SELinux</a></li><li><a class="label label-default" href="/blog/tags/seo/" rel="nofollow">SEO</a></li><li><a class="label label-default" href="/blog/tags/sns/" rel="nofollow">SNS</a></li><li><a class="label label-default" href="/blog/tags/spec/" rel="nofollow">spec</a></li><li><a class="label label-default" href="/blog/tags/spring/" rel="nofollow">Spring</a></li><li><a class="label label-default" href="/blog/tags/sql/" rel="nofollow">SQL</a></li><li><a class="label label-default" href="/blog/tags/ssh/" rel="nofollow">SSH</a></li><li><a class="label label-default" href="/blog/tags/ssl/" rel="nofollow">SSL</a></li><li><a class="label label-default" href="/blog/tags/startup/" rel="nofollow">StartUp</a></li><li><a class="label label-default" href="/blog/tags/struts/" rel="nofollow">Struts</a></li><li><a class="label label-default" href="/blog/tags/struts2/" rel="nofollow">Struts2</a></li><li><a class="label label-default" href="/blog/tags/sublimetext2/" rel="nofollow">SublimeText2</a></li><li><a class="label label-default" href="/blog/tags/swift/" rel="nofollow">Swift</a></li><li><a class="label label-default" href="/blog/tags/tcp-slash-ip/" rel="nofollow">TCP/IP</a></li><li><a class="label label-default" href="/blog/tags/tdd/" rel="nofollow">TDD</a></li><li><a class="label label-default" href="/blog/tags/textmate/" rel="nofollow">TextMate</a></li><li><a class="label label-default" href="/blog/tags/titanium/" rel="nofollow">Titanium</a></li><li><a class="label label-default" href="/blog/tags/uikit/" rel="nofollow">UIKit</a></li><li><a class="label label-default" href="/blog/tags/uml/" rel="nofollow">UML</a></li><li><a class="label label-default" href="/blog/tags/unix/" rel="nofollow">Unix</a></li><li><a class="label label-default" href="/blog/tags/uportal/" rel="nofollow">uPortal</a></li><li><a class="label label-default" href="/blog/tags/vmware/" rel="nofollow">VMWare</a></li><li><a class="label label-default" href="/blog/tags/web2-dot-0/" rel="nofollow">Web2.0</a></li><li><a class="label label-default" href="/blog/tags/weblogic/" rel="nofollow">WebLogic</a></li><li><a class="label label-default" href="/blog/tags/webservice/" rel="nofollow">WebService</a></li><li><a class="label label-default" href="/blog/tags/websaito/" rel="nofollow">Webサイト</a></li><li><a class="label label-default" href="/blog/tags/websabisu/" rel="nofollow">Webサービス</a></li><li><a class="label label-default" href="/blog/tags/windows/" rel="nofollow">Windows</a></li><li><a class="label label-default" href="/blog/tags/windows2000/" rel="nofollow">Windows2000</a></li><li><a class="label label-default" href="/blog/tags/windows98/" rel="nofollow">Windows98</a></li><li><a class="label label-default" href="/blog/tags/xml/" rel="nofollow">XML</a></li><li><a class="label label-default" href="/blog/tags/xp/" rel="nofollow">XP</a></li><li><a class="label label-default" href="/blog/tags/xsl/" rel="nofollow">XSL</a></li><li><a class="label label-default" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a></li><li><a class="label label-default" href="/blog/tags/falsehohonbiretuzi/" rel="nofollow">のほほんビレッジ</a></li><li><a class="label label-default" href="/blog/tags/aziyairu/" rel="nofollow">アジャイル</a></li><li><a class="label label-default" href="/blog/tags/atupudeto/" rel="nofollow">アップデート</a></li><li><a class="label label-default" href="/blog/tags/apuri/" rel="nofollow">アプリ</a></li><li><a class="label label-default" href="/blog/tags/apurisukima/" rel="nofollow">アプリスキーマ</a></li><li><a class="label label-default" href="/blog/tags/arugorizumu/" rel="nofollow">アルゴリズム</a></li><li><a class="label label-default" href="/blog/tags/antipatan/" rel="nofollow">アンチパターン</a></li><li><a class="label label-default" href="/blog/tags/akitekutiya/" rel="nofollow">アーキテクチャ</a></li><li><a class="label label-default" href="/blog/tags/akitekuto/" rel="nofollow">アーキテクト</a></li><li><a class="label label-default" href="/blog/tags/ideiomu/" rel="nofollow">イディオム</a></li><li><a class="label label-default" href="/blog/tags/intahuesu/" rel="nofollow">インターフェース</a></li><li><a class="label label-default" href="/blog/tags/inhura/" rel="nofollow">インフラ</a></li><li><a class="label label-default" href="/blog/tags/uebudezain/" rel="nofollow">ウェブデザイン</a></li><li><a class="label label-default" href="/blog/tags/uebuyuzabiritei/" rel="nofollow">ウェブユーザビリティ</a></li><li><a class="label label-default" href="/blog/tags/enkodeingu/" rel="nofollow">エンコーディング</a></li><li><a class="label label-default" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a></li><li><a class="label label-default" href="/blog/tags/orairi/" rel="nofollow">オライリー</a></li><li><a class="label label-default" href="/blog/tags/opunsosu/" rel="nofollow">オープンソース</a></li><li><a class="label label-default" href="/blog/tags/gandamu/" rel="nofollow">ガンダム</a></li><li><a class="label label-default" href="/blog/tags/ganpura/" rel="nofollow">ガンプラ</a></li><li><a class="label label-default" href="/blog/tags/kibodosiyotokatuto/" rel="nofollow">キーボードショートカット</a></li><li><a class="label label-default" href="/blog/tags/giku/" rel="nofollow">ギーク</a></li><li><a class="label label-default" href="/blog/tags/kutukubutuku/" rel="nofollow">クックブック</a></li><li><a class="label label-default" href="/blog/tags/kuraudo/" rel="nofollow">クラウド</a></li><li><a class="label label-default" href="/blog/tags/kurasushe-ji/" rel="nofollow">クラス設計</a></li><li><a class="label label-default" href="/blog/tags/gemu/" rel="nofollow">ゲーム</a></li><li><a class="label label-default" href="/blog/tags/gemupuroguramingu/" rel="nofollow">ゲームプログラミング</a></li><li><a class="label label-default" href="/blog/tags/konpiyutaji-chu/" rel="nofollow">コンピュータ基礎</a></li><li><a class="label label-default" href="/blog/tags/kodeingu/" rel="nofollow">コーディング</a></li><li><a class="label label-default" href="/blog/tags/kodeingusutairu/" rel="nofollow">コーディングスタイル</a></li><li><a class="label label-default" href="/blog/tags/kodeingugui-yue/" rel="nofollow">コーディング規約</a></li><li><a class="label label-default" href="/blog/tags/kodorideingu/" rel="nofollow">コードリーディング</a></li><li><a class="label label-default" href="/blog/tags/kodorebiyu/" rel="nofollow">コードレビュー</a></li><li><a class="label label-default" href="/blog/tags/sanpuru/" rel="nofollow">サンプル</a></li><li><a class="label label-default" href="/blog/tags/saburetuto/" rel="nofollow">サーブレット</a></li><li><a class="label label-default" href="/blog/tags/sisutemushe-ji/" rel="nofollow">システム設計</a></li><li><a class="label label-default" href="/blog/tags/sisutemukai-fa/" rel="nofollow">システム開発</a></li><li><a class="label label-default" href="/blog/tags/sinanziyu/" rel="nofollow">シナンジュ</a></li><li><a class="label label-default" href="/blog/tags/siyotokatuto/" rel="nofollow">ショートカット</a></li><li><a class="label label-default" href="/blog/tags/sukureipingu/" rel="nofollow">スクレイピング</a></li><li><a class="label label-default" href="/blog/tags/sutairu/" rel="nofollow">スタイル</a></li><li><a class="label label-default" href="/blog/tags/sumatohuon/" rel="nofollow">スマートフォン</a></li><li><a class="label label-default" href="/blog/tags/sekiyuritei/" rel="nofollow">セキュリティ</a></li><li><a class="label label-default" href="/blog/tags/sohutouea/" rel="nofollow">ソフトウェア</a></li><li><a class="label label-default" href="/blog/tags/sohutoueaenziniaringu/" rel="nofollow">ソフトウェアエンジニアリング</a></li><li><a class="label label-default" href="/blog/tags/sosiyaruapuri/" rel="nofollow">ソーシャルアプリ</a></li><li><a class="label label-default" href="/blog/tags/sosiyarugemu/" rel="nofollow">ソーシャルゲーム</a></li><li><a class="label label-default" href="/blog/tags/turu/" rel="nofollow">ツール</a></li><li><a class="label label-default" href="/blog/tags/tesuto/" rel="nofollow">テスト</a></li><li><a class="label label-default" href="/blog/tags/tesutokodo/" rel="nofollow">テストコード</a></li><li><a class="label label-default" href="/blog/tags/tesutohuasuto/" rel="nofollow">テストファースト</a></li><li><a class="label label-default" href="/blog/tags/tesutoji-fa/" rel="nofollow">テスト技法</a></li><li><a class="label label-default" href="/blog/tags/tesutoqu-dong/" rel="nofollow">テスト駆動</a></li><li><a class="label label-default" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a></li><li><a class="label label-default" href="/blog/tags/detahuomatuto/" rel="nofollow">データフォーマット</a></li><li><a class="label label-default" href="/blog/tags/detabesu/" rel="nofollow">データベース</a></li><li><a class="label label-default" href="/blog/tags/detabesushe-ji/" rel="nofollow">データベース設計</a></li><li><a class="label label-default" href="/blog/tags/detamoderingu/" rel="nofollow">データモデリング</a></li><li><a class="label label-default" href="/blog/tags/detamoderu/" rel="nofollow">データモデル</a></li><li><a class="label label-default" href="/blog/tags/toranzakusiyon/" rel="nofollow">トランザクション</a></li><li><a class="label label-default" href="/blog/tags/domeinqu-dong/" rel="nofollow">ドメイン駆動</a></li><li><a class="label label-default" href="/blog/tags/doratuka/" rel="nofollow">ドラッカー</a></li><li><a class="label label-default" href="/blog/tags/netutowaku/" rel="nofollow">ネットワーク</a></li><li><a class="label label-default" href="/blog/tags/falseuhau/" rel="nofollow">ノウハウ</a></li><li><a class="label label-default" href="/blog/tags/hatuka/" rel="nofollow">ハッカー</a></li><li><a class="label label-default" href="/blog/tags/hadouea/" rel="nofollow">ハードウェア</a></li><li><a class="label label-default" href="/blog/tags/bainari/" rel="nofollow">バイナリ</a></li><li><a class="label label-default" href="/blog/tags/bizinesu/" rel="nofollow">ビジネス</a></li><li><a class="label label-default" href="/blog/tags/bizinesururu/" rel="nofollow">ビジネスルール</a></li><li><a class="label label-default" href="/blog/tags/bitugudeta/" rel="nofollow">ビッグデータ</a></li><li><a class="label label-default" href="/blog/tags/huonto/" rel="nofollow">フォント</a></li><li><a class="label label-default" href="/blog/tags/huremuwaku/" rel="nofollow">フレームワーク</a></li><li><a class="label label-default" href="/blog/tags/burogu/" rel="nofollow">ブログ</a></li><li><a class="label label-default" href="/blog/tags/puresuririsu/" rel="nofollow">プレスリリース</a></li><li><a class="label label-default" href="/blog/tags/purogurama/" rel="nofollow">プログラマ</a></li><li><a class="label label-default" href="/blog/tags/puroguramingu/" rel="nofollow">プログラミング</a></li><li><a class="label label-default" href="/blog/tags/puroguraminguyan-yu/" rel="nofollow">プログラミング言語</a></li><li><a class="label label-default" href="/blog/tags/besutopurakuteisu/" rel="nofollow">ベストプラクティス</a></li><li><a class="label label-default" href="/blog/tags/peapuro/" rel="nofollow">ペアプロ</a></li><li><a class="label label-default" href="/blog/tags/porugureamu/" rel="nofollow">ポールグレアム</a></li><li><a class="label label-default" href="/blog/tags/maindomatupu/" rel="nofollow">マインドマップ</a></li><li><a class="label label-default" href="/blog/tags/matusiyuatupu/" rel="nofollow">マッシュアップ</a></li><li><a class="label label-default" href="/blog/tags/manezimento/" rel="nofollow">マネジメント</a></li><li><a class="label label-default" href="/blog/tags/maketeingu/" rel="nofollow">マーケティング</a></li><li><a class="label label-default" href="/blog/tags/mumudomein/" rel="nofollow">ムームードメイン</a></li><li><a class="label label-default" href="/blog/tags/metapuroguramingu/" rel="nofollow">メタプログラミング</a></li><li><a class="label label-default" href="/blog/tags/memori/" rel="nofollow">メモリ</a></li><li><a class="label label-default" href="/blog/tags/memoriguan-li/" rel="nofollow">メモリ管理</a></li><li><a class="label label-default" href="/blog/tags/moziyuru/" rel="nofollow">モジュール</a></li><li><a class="label label-default" href="/blog/tags/moderingu/" rel="nofollow">モデリング</a></li><li><a class="label label-default" href="/blog/tags/moderuqu-dong/" rel="nofollow">モデル駆動</a></li><li><a class="label label-default" href="/blog/tags/mobairu/" rel="nofollow">モバイル</a></li><li><a class="label label-default" href="/blog/tags/yunitutotesuto/" rel="nofollow">ユニットテスト</a></li><li><a class="label label-default" href="/blog/tags/yuzaintahuesu/" rel="nofollow">ユーザインターフェース</a></li><li><a class="label label-default" href="/blog/tags/yusukesu/" rel="nofollow">ユースケース</a></li><li><a class="label label-default" href="/blog/tags/raihuhatuku/" rel="nofollow">ライフハック</a></li><li><a class="label label-default" href="/blog/tags/riachong/" rel="nofollow">リア充</a></li><li><a class="label label-default" href="/blog/tags/rihuakutaringu/" rel="nofollow">リファクタリング</a></li><li><a class="label label-default" href="/blog/tags/rezisutori/" rel="nofollow">レジストリ</a></li><li><a class="label label-default" href="/blog/tags/bing-xing-puroguramingu/" rel="nofollow">並行プログラミング</a></li><li><a class="label label-default" href="/blog/tags/ren-jian-xue/" rel="nofollow">人間学</a></li><li><a class="label label-default" href="/blog/tags/dan-ti-tesuto/" rel="nofollow">単体テスト</a></li><li><a class="label label-default" href="/blog/tags/wen-ti-jie-jue/" rel="nofollow">問題解決</a></li><li><a class="label label-default" href="/blog/tags/shi-bai-xue/" rel="nofollow">失敗学</a></li><li><a class="label label-default" href="/blog/tags/xin-li-xue/" rel="nofollow">心理学</a></li><li><a class="label label-default" href="/blog/tags/xi-dai/" rel="nofollow">携帯</a></li><li><a class="label label-default" href="/blog/tags/gai-shan/" rel="nofollow">改善</a></li><li><a class="label label-default" href="/blog/tags/wen-zi-kodo/" rel="nofollow">文字コード</a></li><li><a class="label label-default" href="/blog/tags/fang-xiang/" rel="nofollow">方向</a></li><li><a class="label label-default" href="/blog/tags/shi-jian-guan-li/" rel="nofollow">時間管理</a></li><li><a class="label label-default" href="/blog/tags/an-hao-hua/" rel="nofollow">暗号化</a></li><li><a class="label label-default" href="/blog/tags/jing-du/" rel="nofollow">経度</a></li><li><a class="label label-default" href="/blog/tags/wei-du/" rel="nofollow">緯度</a></li><li><a class="label label-default" href="/blog/tags/zi-zuo/" rel="nofollow">自作</a></li><li><a class="label label-default" href="/blog/tags/zhu-zuo-quan/" rel="nofollow">著作権</a></li><li><a class="label label-default" href="/blog/tags/jiao-wan/" rel="nofollow">角丸</a></li><li><a class="label label-default" href="/blog/tags/she-ji/" rel="nofollow">設計</a></li><li><a class="label label-default" href="/blog/tags/du-minikui/" rel="nofollow">読みにくい</a></li><li><a class="label label-default" href="/blog/tags/du-miyasui/" rel="nofollow">読みやすい</a></li><li><a class="label label-default" href="/blog/tags/du-mubeki/" rel="nofollow">読むべき</a></li><li><a class="label label-default" href="/blog/tags/ju-li/" rel="nofollow">距離</a></li><li><a class="label label-default" href="/blog/tags/da-ren-purogurama/" rel="nofollow">達人プログラマ</a></li><li><a class="label label-default" href="/blog/tags/kai-fa-fang-fa-lun/" rel="nofollow">開発方法論</a></li><li><a class="label label-default" href="/blog/tags/guan-shu-xing/" rel="nofollow">関数型</a></li><li><a class="label label-default" href="/blog/tags/jing-de-saito/" rel="nofollow">静的サイト</a></li></ul>
+  </div>
+</section>
+
+    
+  </aside>
+  
+</div>
+
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2014 - hamasyou -
+  <span class="credit">Powered by Octopress</span>
+  <a href="javascript:void(0)" title="Scroll to Top" class="scroll-to-top pull-right"><i class="fa fa-arrow-up"> Back to Top</i></a>
+</p>
+
+</footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+<script src="/javascripts/hamasyou.js" type="text/javascript"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-18255094-1', 'hamasyou.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+<script>
+(function (w, d) {
+  var j, s = d.getElementsByTagName('script')[0],
+  a = function (u, i) {
+    if (!d.getElementById(i)) {
+      j = d.createElement('script');
+      j.type = 'text/javascript';
+      j.src = u;
+      j.async = true;
+      if (i) {j.id = i;}
+      s.parentNode.insertBefore(j, s);
+    }
+  };
+  
+  a('//platform.twitter.com/widgets.js', 'twitter-wjs');
+  
+  
+  a('//b.st-hatena.com/js/bookmark_button.js','hatebu-js');
+  
+  
+  
+  a('//apis.google.com/js/plusone.js','plusone-js');
+  
+  
+  a('//connect.facebook.net/ja_JP/all.js#appId=130554843667643&xfbml=1','facebook-jssdk');
+  
+  
+  a('//widgets.getpocket.com/v1/j/btn.js?v=1','pocket-btn-js');
+  
+  
+  
+  
+  var disqus_shortname = 'hamasyou';
+  
+  var disqus_identifier = 'http://hamasyou.com/blog/2014/06/26/apple-swift/';
+  var disqus_url = 'http://hamasyou.com/blog/2014/06/26/apple-swift/';
+  var disqus_script = 'embed.js';
+  
+  a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
+  
+})(this, document);
+</script>
+
+
+</body>
+</html>
