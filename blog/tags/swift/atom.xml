@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Swift | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/swift/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-06-27T00:04:15+09:00</updated>
+  <updated>2014-07-03T11:58:42+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Swift で UITableView 関連の操作をする際に NSIndexPath を作る方法]]></title>
+    <link href="http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath/"/>
+    <updated>2014-07-03T11:53:41+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath</id>
+    <content type="html"><![CDATA[<p>Swift で <code>UITableView</code> 関連のロジックを書くときに、<code>NSIndexPath</code> を作るときは</p>
+
+<pre><code class="swift">let row = 0, section = 0
+NSIndexPath(forRow: row, inSection: section)
+</code></pre>
+
+<p>のイニシャライザを使うべし。<code>NSIndexPath(index: row)</code> だと <code>row</code> の参照ができなくてエラーになる。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Swift with Cocoa and Objective-C]]></title>

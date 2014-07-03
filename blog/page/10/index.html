@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="本書は、Ruby プログラミングの中級者向け指南書のようなものです。様々なコーディングテクニック（例えば、順序付き引数の使いどころ、ブロックの使い方、メソッド名のつけ方、メタプログラミング、関数型プログラミングテクニック、プロジェクトでRubyを使う際の慣習などなど）が満載です。 &hellip;">
+  <meta name="description" content="Mac OS X 上で Windows アプリケーションを動かす WineBottler なるものを発見しました。 このアプリケーションを使うと、Windows OS を持っていなくても、VMWare や Boot Camp をもっていなくても、Windows アプリケーションを Mac OS X &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/10/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="本書は、Ruby プログラミングの中級者向け指南書のようなものです。様々なコーディングテクニック（例えば、順序付き引数の使いどころ、ブロックの使い方、メソッド名のつけ方、メタプログラミング、関数型プログラミングテクニック、プロジェクトでRubyを使う際の慣習などなど）が満載です。 &hellip;" />
+<meta property="og:description" content="Mac OS X 上で Windows アプリケーションを動かす WineBottler なるものを発見しました。 このアプリケーションを使うと、Windows OS を持っていなくても、VMWare や Boot Camp をもっていなくても、Windows アプリケーションを Mac OS X &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +106,165 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/20/mac-os-x-windows-winebottler/" class="excerpt-link">Mac OS X で Windows アプリケーションを動かす WineBottler</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-09-20T00:07:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 20<span>th</span>, 2010</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/macosx/" rel="nofollow">MacOSX</a>
+    
+      <a class="tag label label-info" href="/blog/tags/vmware/" rel="nofollow">VMWare</a>
+    
+      <a class="tag label label-info" href="/blog/tags/windows/" rel="nofollow">Windows</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2010/09/20/mac-os-x-windows-winebottler/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2010/09/20/mac-os-x-windows-winebottler/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>Mac OS X 上で Windows アプリケーションを動かす <em><a href="http://winebottler.kronenberg.org/" rel="external nofollow" title="WineBottler">WineBottler</a></em> なるものを発見しました。</p>
+
+<p>このアプリケーションを使うと、Windows OS を持っていなくても、VMWare や Boot Camp をもっていなくても、Windows アプリケーションを Mac OS X 上で動かすことができるようです。</p>
+
+<p>Web サイトを Mac で Windows の IE の表示確認をするために使ったので、そのメモです。WineBottler をもっと使いこなすには他のサイトを確認してみてください。</p>
+
+<p><section></section></p>
+
+<h4>WineBottler を使いこなすための参考サイト</h4>
+
+
+
+
+<ul>
+<li><a href="http://www.lifehacker.jp/2010/01/100110_winebottlerwindowsos_x.html" rel="external nofollow" title="『WineBottler』でWindowsのプログラムをスタンドアローン化し、OS Xアプリに - lifehacker">『WineBottler』でWindowsのプログラムをスタンドアローン化し、OS Xアプリに - lifehacker</a></li>
+<li><a href="http://www.moongift.jp/2010/01/winebottler/" rel="external nofollow" title="Windows用ソフトウェアをあたかもMac OSXソフトウェアのように変換する - MOONGIFT">Windows用ソフトウェアをあたかもMac OSXソフトウェアのように変換する - MOONGIFT</a></li>
+</ul>
+
+
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2010/09/20/mac-os-x-windows-winebottler/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1503,146 +1662,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/31/rails3/" class="excerpt-link">[Rails3] Rails3 がリリースされたのでまとめ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-08-31T10:52:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Aug 31<span>st</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/rails3/" rel="nofollow">Rails3</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/08/31/rails3/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/08/31/rails3/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/08/31/rails3/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/08/31/rails3/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/08/31/rails3/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/08/31/rails3/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/08/31/rails3/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/08/31/rails3/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>ついに、2010年8月30日（公式では Aug 29, 2010 ってなってるけど）に、<strong class="text-danger">Rails3</strong> がリリースされました。</p>
-
-<p><strong class="text-danger">Ruby1.9.2</strong> も2010年8月18日にリリースされているので、今後は Ruby1.9.2 と Rails3 での開発が増えてくる予感です。個人的には、Ruby1.9 から文字エンコーディング周りが大幅に変わっているので、View テンプレートにマジックコメントをいちいち書かないといけないのがめんどくさかったり。。</p>
-
-<p>ということで、Rails3 系の記事の簡易まとめメモです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/08/31/rails3/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/11/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1686,6 +1705,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/07/03/swift-uitableview-nsindexpath/">Swift で UITableView 関連の操作をする際に NSIndexPath を作る方法</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/06/27/apple-swift-cocoa-objective-c/">Using Swift with Cocoa and Objective-C</a>
       </li>
     
@@ -1721,10 +1744,6 @@
         <a href="/blog/2014/03/04/4048703676/">サーバサイドJavaScript Node.js入門</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/04/canonical-url/">canonicalなURLってなにがいいんだろう？</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1732,7 +1751,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">121</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">122</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

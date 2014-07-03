@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-06-27T00:04:15+09:00</updated>
+  <updated>2014-07-03T11:58:42+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Swift で UITableView 関連の操作をする際に NSIndexPath を作る方法]]></title>
+    <link href="http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath/"/>
+    <updated>2014-07-03T11:53:41+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath/</id>
+    <content type="html"><![CDATA[<p>Swift で <code>UITableView</code> 関連のロジックを書くときに、<code>NSIndexPath</code> を作るときは</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">section</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line"><span class="bp">NSIndexPath</span><span class="p">(</span><span class="nl">forRow</span><span class="p">:</span> <span class="n">row</span><span class="p">,</span> <span class="nl">inSection</span><span class="p">:</span> <span class="n">section</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>のイニシャライザを使うべし。<code>NSIndexPath(index: row)</code> だと <code>row</code> の参照ができなくてエラーになる。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Swift with Cocoa and Objective-C]]></title>
@@ -5933,49 +5954,6 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <p>こんな感じのコードを <code>config/initializers</code> の下において使っています。<code>nil</code> を渡すと空文字を返します。</p>
 
 <p>今のところコレで問題は起きていないのでオススメしてもいいかなと。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MacのApp Storeで「ほかのアカウントで使用可能なアップデートがあります」が出てアップデート出来ないときの対応]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/19/mac-app-store-account/"/>
-    <updated>2014-02-19T11:46:56+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/19/mac-app-store-account/</id>
-    <content type="html"><![CDATA[<p>先日、古い MacBook Pro の Xcode のアップデートを行おうとしたときに、「<strong class="text-danger">ほかのアカウントで使用可能なアップデートがあります。このアプリケーションをアップデートするには、購入時に使用したアカウントでサインインしてください。</strong>」ってでてアップデートできなかったときにやった対応メモです。</p>
-
-<!-- more -->
-
-
-<p>アップデートできなかった原因は、<em>Spotlight</em> のインデックス更新を止めていたからでした。なので、Spotlight のインデックスを再構築すればアップデートできるようになりました。</p>
-
-<p>Spotlight インデックスを再構築する以外にも、<strong class="text-danger">一回アプリをゴミ箱に入れてアップデート</strong> すれば直るというのも Google 先生に聞いたら教えてくれました。</p>
-
-<h2>Spotlight インデックスの再構築手順</h2>
-
-<p>まず、Spotlight のインデクサが起動していないと再構築できないので、先に起動させてから再構築します。</p>
-
-<p>ターミナルを開いて次のコマンドを入力します。</p>
-
-<div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">$</span>
-<span class="line-number">$</span></pre></td>
-<td class="code"><pre><code><span class="line command">sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist</span><span class="line command">sudo mdutil -E /</span></code></pre></td>
-</tr></table></div></div>
-        </div>
-
-
-<p>再構築が開始されると、画面の右上の Spotlight マークが点滅します。</p>
-
-<p><img src="http://hamasyou.com/images/2014-02-19-mac-app-store-account-01.png" alt="Spotlight 索引再構築" class="img-thumbnail" title="Spotlight 索引再構築"></p>
-
-<p>再構築は結構時間がかかりますが、全部終わるのをまたなくても、僕の場合はアップデートができるようになりました。</p>
 ]]></content>
   </entry>
   

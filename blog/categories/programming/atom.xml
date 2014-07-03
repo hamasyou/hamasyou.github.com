@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-06-27T00:04:15+09:00</updated>
+  <updated>2014-07-03T11:58:42+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Swift で UITableView 関連の操作をする際に NSIndexPath を作る方法]]></title>
+    <link href="http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath/"/>
+    <updated>2014-07-03T11:53:41+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath</id>
+    <content type="html"><![CDATA[<p>Swift で <code>UITableView</code> 関連のロジックを書くときに、<code>NSIndexPath</code> を作るときは</p>
+
+<pre><code class="swift">let row = 0, section = 0
+NSIndexPath(forRow: row, inSection: section)
+</code></pre>
+
+<p>のイニシャライザを使うべし。<code>NSIndexPath(index: row)</code> だと <code>row</code> の参照ができなくてエラーになる。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Swift with Cocoa and Objective-C]]></title>
@@ -1473,133 +1488,6 @@ module.exports = exports = {
 </li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Pythonメモ]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/25/python/"/>
-    <updated>2014-02-25T15:43:02+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/25/python</id>
-    <content type="html"><![CDATA[<p>プログラミング言語「<strong>Python</strong>」のメモです。v.2.5 のメモのなので最新だと違うかも。。</p>
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=FAFAFA&IS2=1&bg1=FAFAFA&fc1=666666&lc1=3399F3&t=sorehabooks-22&o=9&p=8&l=as1&m=amazon&f=ifr&ref=tf_til&asins=4873113938" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-
-
-<!-- more -->
-
-
-<h3>シーケンス</h3>
-
-<p>シーケンスとは、オブジェクトを一定の順序に並べたものです。シーケンスでは要素となるオブジェクトの順序は常に変わりません。シーケンスには、<em>文字列</em>、<em>リスト</em>、<em>タプル</em> などがあります。</p>
-
-<p>シーケンスに対して行える操作があります。要素の位置を指定して取り出す <strong>インデクシング</strong>、要素を範囲で取得する <strong>スライシング</strong> があります。</p>
-
-<pre><code class="python">str = 'Spam'
-str[0]   # S
-str[-1]  # m
-str[1:3] # pa
-str[1:]  # pam
-str[:3]  # Spa
-str[:-1] # Spa
-str[:]   # Spam
-
-str = 'abcdefghij'
-str[1:9:2]  # bdfh
-str[5:1:-1] # fedc
-str[::-1]   # jihgfedcba
-
-len('abc')      # 3
-len([1,2,3,4])  # 4
-</code></pre>
-
-<h3>リスト内包表記</h3>
-
-<p>リスト内包表記はシーケンスに属する要素のそれぞれに同じ演算を行うことができる表記法です。リスト内包表記は最終的にリストを作成します。</p>
-
-<pre><code class="python">matrix = [[1, 2, 3],
-          [4, 5, 6],
-          [7, 8, 9]]
-col2 = [row[1] for row in matrix]
-col2
-# [2, 5, 8]
-</code></pre>
-
-<h3>タプル</h3>
-
-<p><strong>タプル</strong> はリストと似ていますが、要素を変更することができません。タプルはカッコで作成します。<em>要素が一つの場合は、要素の後にカンマをつけなければいけません</em>。
-タプルは <em>オブジェクトの集合</em>、リストは <em>データ構造</em> と使い分けをするらしいです。</p>
-
-<pre><code class="python">tuple = (1, 2, 3, 4)
-tuple[1] = 5
-# TypeError: 'tuple' object does not support item assignment
-tuple = (1,)
-</code></pre>
-
-<h3>ヘルプを調べる</h3>
-
-<p>組み込み関数の <code>dir</code> を使うと、オブジェクトの全属性のリストが手に入ります。また、<code>help</code> 関数を使うとメソッドのヘルプ情報を出力可能です。</p>
-
-<pre><code class="python">dir('string')
-# ['__add__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__getslice__', '__gt__', '__hash__', '__init__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '_formatter_field_name_split', '_formatter_parser', 'capitalize', 'center', 'count', 'decode', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'index', 'isalnum', 'isalpha', 'isdigit', 'islower', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
-help('string'.index)
-# Help on built-in function index:
-#
-# index(...)
-#     S.index(sub [,start [,end]]) -&gt; int
-#
-#     Like S.find() but raise ValueError when the substring is not found.
-</code></pre>
-
-<h3>文字列</h3>
-
-<p><em>Python ではシングルクォートとダブルクォートは同じ意味を持ちます</em>。なので、他の言語のように、ダブルクォートの場合だけエスケープシーケンスが効くということはありません。</p>
-
-<pre><code class="python">print 'a\nb\tc'
-# a
-# b c
-</code></pre>
-
-<h3>リスト操作</h3>
-
-<p>Python のリストは <code>[]</code> を使って作ります。他の言語の配列操作と同じ処理は基本的にできます。Python 特有の操作だなと思ったものだけメモ。</p>
-
-<pre><code class="python">a = [1, 2, 3, 4, 5]
-
-# 特定の要素が含まれているかどうかの確認
-3 in a  # =&gt; True
-6 in a  # =&gt; False
-
-# リスト内包表記
-[x**2 for x in a] # =&gt; [1, 4, 9, 16, 25]
-</code></pre>
-
-<h3>ステートメント、構文に関する注意点</h3>
-
-<h4>コロンを忘れない</h4>
-
-<p>複合ステートメント（if、while、for などの最初の行）の末尾にはかならず <code>:</code> をつけます。</p>
-
-<h4>トップレベルのコードはインデントしない</h4>
-
-<p>トップレベルコードはかならず左端から書き始めます。</p>
-
-<h4><code>while</code> や <code>range</code> よりも、単純な <code>for</code> を使う</h4>
-
-<p>シーケンスを扱う場合は、できるだけ単純な <code>for</code> （<code>for x in seq:</code>）を使うようにします。</p>
-
-<h4>オブジェクトの上書きを行う関数は値を返さない</h4>
-
-<p><code>list.append</code> や <code>list.sort</code> などのオブジェクトを上書きするような関数は値を戻しません。<code>None</code> を返すようにします。</p>
-
-<h3>変数のスコープ</h3>
-
-<p>Python の変数のスコープは、「ローカルスコープ」「グローバルスコープ」「ビルトインスコープ」があります。
-関数内で定義された変数は「ローカルスコープ」に所属します。</p>
-
-<p>関数の引数で渡された変数は参照渡しになります。変数の代入では元のオブジェクトは変更されませんが、オブジェクトの上書きは影響を及ぼします。</p>
 ]]></content>
   </entry>
   
