@@ -22,6 +22,8 @@ Apple が新しいプログラミング言語 **Swift** を2014年の WWDC で�
 
 [Introducing Swift](https://developer.apple.com/swift/)
 
+※ Xcode6 Beta3 を元に記載しています。
+
 <!-- more -->
 
 <div id="toc"></div>
@@ -76,6 +78,12 @@ msg   // "Not Found"
 
 let (_, msg2) = otherError
 msg2  // "Internal Server Error"
+```
+
+配列は `[Int]` のように記述する。
+
+```swift
+let ary: [Int] = [10, 20, 30]
 ```
 
 
@@ -149,13 +157,15 @@ num   // num は 123 が入る Int! で定義しない場合は型推論によ�
 
 ### Range
 
-`(a..b)`、`(a...b)` の形で範囲を求めることができる。`(a..b)` は b を含まない。Ruby とは逆の動きをする。。。
+`(a..<b)`、`(a...b)` の形で範囲を求めることができる。`(a..<b)` は b を含まない。Ruby とは逆の動きをする。
 
 ```swift
-for i in (0..3) {
+for i in (0 ..< 3) {
     println(i)    // 0, 1, 2
 }
 ```
+
+Xcode6 Beta3 から終端を含まない範囲を `..<` で表すようになった。
 
 
 ## String And Character
@@ -488,9 +498,8 @@ ages["Peter"] = 24    // 24
 copiedAges["Peter"]   // 23
 ```
 
-Array はもうちょっと複雑な動きをする。Array の値がコピーされるのは、コピーが必要になった時に起こる。
+Xcode6 Beta3 からは、Array の動作も Dictionary と同じ動きをする。つまり、値がコピーされる。
 
-変数への割り当て、メソッドの引数で渡しただけではコピーは起こらない。コピーが起こるのは、配列の長さ（`length`）が変わる処理が行ったとき。
 
 ```swift
 var nums = [10, 20, 30, 40]
