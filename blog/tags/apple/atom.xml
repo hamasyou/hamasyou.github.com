@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Apple | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/apple/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-07-03T11:58:42+09:00</updated>
+  <updated>2014-07-08T12:15:42+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -263,6 +263,8 @@ func contentsForType(typeName: String! error: NSErrorPointer) -&gt; AnyObject! {
 
 <p><a href="https://developer.apple.com/swift/">Introducing Swift</a></p>
 
+<p>※ Xcode6 Beta3 を元に記載しています。</p>
+
 <!-- more -->
 
 
@@ -317,6 +319,11 @@ msg   // "Not Found"
 
 let (_, msg2) = otherError
 msg2  // "Internal Server Error"
+</code></pre>
+
+<p>配列は <code>[Int]</code> のように記述する。</p>
+
+<pre><code class="swift">let ary: [Int] = [10, 20, 30]
 </code></pre>
 
 <h3>リテラルと変数</h3>
@@ -381,12 +388,14 @@ num   // num は 123 が入る Int! で定義しない場合は型推論によ�
 
 <h3>Range</h3>
 
-<p><code>(a..b)</code>、<code>(a...b)</code> の形で範囲を求めることができる。<code>(a..b)</code> は b を含まない。Ruby とは逆の動きをする。。。</p>
+<p><code>(a..&lt;b)</code>、<code>(a...b)</code> の形で範囲を求めることができる。<code>(a..&lt;b)</code> は b を含まない。Ruby とは逆の動きをする。</p>
 
-<pre><code class="swift">for i in (0..3) {
+<pre><code class="swift">for i in (0 ..&lt; 3) {
     println(i)    // 0, 1, 2
 }
 </code></pre>
+
+<p>Xcode6 Beta3 から終端を含まない範囲を <code>..&lt;</code> で表すようになった。</p>
 
 <h2>String And Character</h2>
 
@@ -698,9 +707,7 @@ ages["Peter"] = 24    // 24
 copiedAges["Peter"]   // 23
 </code></pre>
 
-<p>Array はもうちょっと複雑な動きをする。Array の値がコピーされるのは、コピーが必要になった時に起こる。</p>
-
-<p>変数への割り当て、メソッドの引数で渡しただけではコピーは起こらない。コピーが起こるのは、配列の長さ（<code>length</code>）が変わる処理が行ったとき。</p>
+<p>Xcode6 Beta3 からは、Array の動作も Dictionary と同じ動きをする。つまり、値がコピーされる。</p>
 
 <pre><code class="swift">var nums = [10, 20, 30, 40]
 var otherNums = nums

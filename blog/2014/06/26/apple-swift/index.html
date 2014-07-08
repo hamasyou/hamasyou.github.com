@@ -238,6 +238,8 @@
 
 <p><i class="fa fa-hand-o-right"></i> <a href="https://developer.apple.com/swift/" rel="external nofollow" title="Introducing Swift">Introducing Swift</a></p>
 
+<p>※ Xcode6 Beta3 を元に記載しています。</p>
+
 <p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
 <script>
@@ -337,6 +339,16 @@
 </span><span class="line">
 </span><span class="line"><span class="k">let</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">msg2</span><span class="p">)</span> <span class="o">=</span> <span class="n">otherError</span>
 </span><span class="line"><span class="n">msg2</span>  <span class="c1">// "Internal Server Error"</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>配列は <code>[Int]</code> のように記述する。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="nl">ary</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
 </span></code></pre></td>
 </tr></table></div></figure></notextile></div>
 
@@ -457,19 +469,21 @@
 
 <h3>Range</h3>
 
-<p><code>(a..b)</code>、<code>(a...b)</code> の形で範囲を求めることができる。<code>(a..b)</code> は b を含まない。Ruby とは逆の動きをする。。。</p>
+<p><code>(a..&lt;b)</code>、<code>(a...b)</code> の形で範囲を求めることができる。<code>(a..&lt;b)</code> は b を含まない。Ruby とは逆の動きをする。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 </pre></td>
-<td class="code"><pre><code class="swift"><span class="line"><span class="k">for</span> <span class="n">i</span> <span class="nf">in</span> <span class="p">(</span><span class="mf">0..3</span><span class="p">)</span> <span class="p">{</span>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">for</span> <span class="n">i</span> <span class="nf">in</span> <span class="p">(</span><span class="mi">0</span> <span class="p">..</span><span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>    <span class="c1">// 0, 1, 2</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
 </tr></table></div></figure></notextile></div>
 
+
+<p>Xcode6 Beta3 から終端を含まない範囲を <code>..&lt;</code> で表すようになった。</p>
 
 <h2>String And Character</h2>
 
@@ -1041,9 +1055,7 @@
 </tr></table></div></figure></notextile></div>
 
 
-<p>Array はもうちょっと複雑な動きをする。Array の値がコピーされるのは、コピーが必要になった時に起こる。</p>
-
-<p>変数への割り当て、メソッドの引数で渡しただけではコピーは起こらない。コピーが起こるのは、配列の長さ（<code>length</code>）が変わる処理が行ったとき。</p>
+<p>Xcode6 Beta3 からは、Array の動作も Dictionary と同じ動きをする。つまり、値がコピーされる。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
