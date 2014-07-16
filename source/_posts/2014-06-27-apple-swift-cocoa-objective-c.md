@@ -50,6 +50,14 @@ import Foundation
 
 C++ のコードは直接 Swift には取り込めない。代わりに Objective-C か C で作ったラッパーを作り、それを取り込む。
 
+### Swift から Objective-C のコードを呼び出す方法
+
+**Bridging Header** というものを作る。
+
+[[Swift] SwiftとObjective-Cで相互に連携する](http://qiita.com/edo_m18/items/861d090a5471f4f0eeae)
+
+[SwiftでObjective-CのFrameworkを読み込む方法](http://qiita.com/skatata/items/1facd024d239b9545031)
+
 
 ## Interoperability
 
