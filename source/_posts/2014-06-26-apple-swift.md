@@ -20,9 +20,11 @@ Apple が新しいプログラミング言語 **Swift** を2014年の WWDC で�
 
 なお、Swift で作成したアプリは iOS8 と OS X Yosemite がリリースされた時点で審査に入れるようです。
 
+*Xcode6 Beta4 で Swift コンパイラでの minimum target が iOS7 と OS X10.9 に制限されました*
+
 [Introducing Swift](https://developer.apple.com/swift/)
 
-※ Xcode6 Beta3 を元に記載しています。
+※ Xcode6 Beta4 を元に記載しています。
 
 <!-- more -->
 
@@ -520,7 +522,7 @@ Array で参照を切りたいときは `unshare()` メソッドを使う。変�
 
 ### Lazy Stored Properties
 
-最初にアクセスされるまで初期化されないようにするには、`@lazy` を使用する。変数（var）で定義するプロパティには @lazy をつけるようにするといい。
+最初にアクセスされるまで初期化されないようにするには、`@lazy` を使用する。変数（var）で定義するプロパティには lazy をつけるようにするといい。
 
 {% blockquote Lazy Stored Properties %}
 You must always declare a lazy property as a variable (with the var keyword), because its initial value may not be retrieved until after instance initialization completes. Constant properties must always have a value before initialization completes, and therefore cannot be declared as lazy.
@@ -528,9 +530,11 @@ You must always declare a lazy property as a variable (with the var keyword), be
 
 ```swift
 class DataManager {
-    @lazy var importer = DataImporter()   // DataImporter is assumed to take a non-trivial amount of time to initialize.
+    lazy var importer = DataImporter()   // DataImporter is assumed to take a non-trivial amount of time to initialize.
 }
 ```
+
+Xcode6 Beta4 から `@final`、 `@lazy`、 `@optional`、`@required` に `@` が不要になった。 
      
 
 ### Computed Properties
@@ -622,6 +626,19 @@ struct Point {
     }
 }
 ```
+
+## Access Control Level
+
+Xcode6 Beta4 より 3つのアクセスレベルが用意された。
+
+private
+: 定義された *ソースファイル* 内からのみアクセスできる 
+internal
+: 定義されたエンティティ内からであればどこからでもアクセスできる
+public
+: どこからでもアクセスできる
+
+デフォルトは *internal*。
 
 
 ## Subscripts
