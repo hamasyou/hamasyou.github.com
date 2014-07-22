@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-07-16T09:40:40+09:00</updated>
+  <updated>2014-07-22T10:58:45+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -284,9 +284,11 @@ func contentsForType(typeName: String! error: NSErrorPointer) -&gt; AnyObject! {
 
 <p>なお、Swift で作成したアプリは iOS8 と OS X Yosemite がリリースされた時点で審査に入れるようです。</p>
 
+<p><em>Xcode6 Beta4 で Swift コンパイラでの minimum target が iOS7 と OS X10.9 に制限されました</em></p>
+
 <p><a href="https://developer.apple.com/swift/">Introducing Swift</a></p>
 
-<p>※ Xcode6 Beta3 を元に記載しています。</p>
+<p>※ Xcode6 Beta4 を元に記載しています。</p>
 
 <!-- more -->
 
@@ -749,14 +751,16 @@ otherNums[0]    // 50, otherNums is [50, 20, 30, 40]
 
 <h3>Lazy Stored Properties</h3>
 
-<p>最初にアクセスされるまで初期化されないようにするには、<code>@lazy</code> を使用する。変数（var）で定義するプロパティには @lazy をつけるようにするといい。</p>
+<p>最初にアクセスされるまで初期化されないようにするには、<code>@lazy</code> を使用する。変数（var）で定義するプロパティには lazy をつけるようにするといい。</p>
 
 <p><blockquote><p>You must always declare a lazy property as a variable (with the var keyword), because its initial value may not be retrieved until after instance initialization completes. Constant properties must always have a value before initialization completes, and therefore cannot be declared as lazy.</p><footer><strong>Lazy Stored Properties</strong></footer></blockquote></p>
 
 <pre><code class="swift">class DataManager {
-    @lazy var importer = DataImporter()   // DataImporter is assumed to take a non-trivial amount of time to initialize.
+    lazy var importer = DataImporter()   // DataImporter is assumed to take a non-trivial amount of time to initialize.
 }
 </code></pre>
+
+<p>Xcode6 Beta4 から <code>@final</code>、 <code>@lazy</code>、 <code>@optional</code>、<code>@required</code> に <code>@</code> が不要になった。</p>
 
 <h3>Computed Properties</h3>
 
@@ -841,6 +845,21 @@ obj.hello("hamasyou", "Good Night")
     }
 }
 </code></pre>
+
+<h2>Access Control Level</h2>
+
+<p>Xcode6 Beta4 より 3つのアクセスレベルが用意された。</p>
+
+<dl>
+<dt>private</dt>
+<dd>定義された <em>ソースファイル</em> 内からのみアクセスできる</dd>
+<dt>internal</dt>
+<dd>定義されたエンティティ内からであればどこからでもアクセスできる</dd>
+<dt>public</dt>
+<dd>どこからでもアクセスできる</dd>
+</dl>
+
+<p>デフォルトは <em>internal</em>。</p>
 
 <h2>Subscripts</h2>
 
