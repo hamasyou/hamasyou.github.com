@@ -314,9 +314,17 @@
 Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻り値にしていたりする箇所が <code>AnyObject</code> になってしまい、
 <code>enum</code> を利用することができません。</p>
 
-<p>変数に代入するだけなら <code>Any</code> 型にすればいいんですが、既存ライブラリとの連携では難しそうです。。</p>
+<p>変数に代入するだけなら <code>Any</code> 型にすればいいんですが、既存ライブラリとの連携では難しそうです。 <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>
+これ、何かやり方ないんでしょうかね。。</p>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Any 型にすれば代入できることを <a href="https://twitter.com/takabosoft" rel="external nofollow" title="@takabosoft">@takabosoft</a> さんに教えてもらいました。ありがとうございます！<a href="#fnref:1" rev="footnote">↩</a></p>
+</li>
+</ol>
+</div>
 
-<p>これ、何かやり方ないんでしょうかね。。</p>
 </div>
   
   

@@ -6,51 +6,41 @@
 <head>
   <meta name="google-site-verification" content="0KEsMQaWAcvp2KBqvHmWsJ9rrIAXrxZCpFz-UBS9w9c" />
   <meta charset="utf-8" />
-  <title>SwiftはenumをAnyObject型の変数に入れられない - それはBooks</title>
+  <title>jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応 - それはBooks</title>
 
   <meta name="HandheldFriendly" content="true" />
   <meta name="MobileOptimized" content="320" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Swift で enum を扱う際にハマった問題です。確認は Xcode6 beta4 で行っています。 Swift では enum を AnyObject 型の変数に入れることができません。コンパイルエラーになります。Any 型なら代入できます。 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11 &hellip;">
-  <meta name="keywords" content="Swift,Apple,Lang,Enum,AnyObject">
+  <meta name="description" content="jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。 環境 Rails
+3.0.7
+jpmobile
+0.1.6
+kaminari
+0.12.4 (adsbygoogle = &hellip;">
+  <meta name="keywords" content="Rails, Ruby, jpmobile, kaminari">
 
   
 
 
-<meta property="og:title" content="SwiftはenumをAnyObject型の変数に入れられない - それはBooks" />
+<meta property="og:title" content="jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応 - それはBooks" />
 <meta property="og:type" content="article" />
 
-<meta property="og:url" content="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/" />
+<meta property="og:url" content="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Swift で enum を扱う際にハマった問題です。確認は Xcode6 beta4 で行っています。 Swift では enum を AnyObject 型の変数に入れることができません。コンパイルエラーになります。Any 型なら代入できます。 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11 &hellip;" />
+<meta property="og:description" content="jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。 環境 Rails
+3.0.7
+jpmobile
+0.1.6
+kaminari
+0.12.4 (adsbygoogle = &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
 
   
-  <link rel="canonical" href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/">
+  <link rel="canonical" href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">
   
   
 
@@ -128,7 +118,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">SwiftはenumをAnyObject型の変数に入れられない</h1>
+      <h1 class="entry-title">jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応</h1>
     
     
       <p class="meta">
@@ -145,12 +135,12 @@
 
 
 
-<time datetime="2014-07-31T10:39:48+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jul 31<span>st</span>, 2014</time>
+<time datetime="2011-06-14T11:29:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
         <span class="divider"></span>
         <span class="categories">
   
     
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
     
   
 </span>
@@ -158,7 +148,13 @@
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/swift/" rel="nofollow">Swift</a>
+      <a class="tag label label-info" href="/blog/tags/jpmobile/" rel="nofollow">jpmobile</a>
+    
+      <a class="tag label label-info" href="/blog/tags/kaminari/" rel="nofollow">kaminari</a>
+    
+      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
     
   
 </span>
@@ -174,7 +170,7 @@
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -190,7 +186,7 @@
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
   </li>
   
   
@@ -198,7 +194,7 @@
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
   </li>
   
   
@@ -206,23 +202,23 @@
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"
+       data-url="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"
+       data-save-url="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -246,80 +242,57 @@
 
 
 
-<div class="entry-content"><p>Swift で <em>enum</em> を扱う際にハマった問題です。確認は <em>Xcode6 beta4</em> で行っています。</p>
+<div class="entry-content"><p>jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。</p>
 
-<p>Swift では <code>enum</code> を <code>AnyObject</code> 型の変数に入れることができません。コンパイルエラーになります。<code>Any</code> 型なら代入できます。</p>
+<p><section></section></p>
+
+<h4>環境</h4>
+
+
+
+
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+<dt>jpmobile</dt>
+<dd>0.1.6</dd>
+<dt>kaminari</dt>
+<dd>0.12.4</dd>
+</dl>
+
+
+<p></p>
+
+<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+
+
+<p>jpmobile の mobile_filter を通して kaminari でページングを行うときに、invalid byte sequence in Shift_JIS エラーが出る場合があります。</p>
+
+<p>これは、kaminari で生成するページングリンク内に、UTF-8 の文字エンコーディングの日本語文字が入っているのが原因です。</p>
+
+<p>kaminari がページリンクを作成するときに、日本語文字をパーセントエンコード（URLエンコード）していて、jpmobile の mobile_filter がエンコードされている文字を UTF-8 だと認識出来ずに表示してしまうのが原因になっています。</p>
+
+<p>この組み合わせで kaminari のページリンク内に日本語パラメータがはいってしまうのは、おそらくフォームのサブミットボタンの value が原因だと思います。</p>
+
+<p>ほとんどの場合、サブミットボタンの value は必要ないと思うので、submit_tag の :name オプションに nil を設定してサブミットボタンの value を送らないようにするといいかと思います。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
 </pre></td>
-<td class="code"><pre><code class="swift"><span class="line"><span class="k">enum</span> <span class="nl">SomeType</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">case</span> <span class="n">None</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class="line">    <span class="k">case</span> <span class="n">Something</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="k">let</span> <span class="n">something</span> <span class="o">=</span> <span class="n">SomeType</span><span class="p">.</span><span class="n">None</span>
-</span><span class="line"><span class="n">something</span>                                     <span class="c1">// Enum Value</span>
-</span><span class="line">
-</span><span class="line"><span class="k">let</span> <span class="nl">anything</span><span class="p">:</span> <span class="n">AnyObject</span> <span class="o">=</span> <span class="n">SomeType</span><span class="p">.</span><span class="n">Something</span>  <span class="c1">// error: type 'SomeType' does not conform to protocol 'AnyObject'</span>
-</span><span class="line">
-</span><span class="line"><span class="k">let</span> <span class="nl">any</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">SomeType</span><span class="p">.</span><span class="n">Something</span>             <span class="c1">// Enum Value</span>
+<td class="code"><pre><code class="html+erb"><span class="line"><span class="cp">&lt;%=</span> <span class="n">form_tag</span> <span class="n">user_path</span> <span class="k">do</span> <span class="cp">%&gt;</span>
+</span><span class="line">  <span class="cp">&lt;%=</span> <span class="n">select_tag</span> <span class="s2">"category"</span><span class="p">,</span> <span class="n">options_from_collection_for_select</span><span class="p">(</span><span class="no">Category</span><span class="o">.</span><span class="n">all</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:label</span><span class="p">,</span> <span class="n">params</span><span class="o">[</span><span class="ss">:category</span><span class="o">]</span><span class="p">)</span> <span class="cp">%&gt;</span>
+</span><span class="line">  <span class="cp">&lt;%=</span> <span class="n">submit_tag</span> <span class="s2">"表示"</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="kp">nil</span> <span class="cp">%&gt;</span>
+</span><span class="line"><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
 </span></code></pre></td>
 </tr></table></div></figure></notextile></div>
-
-
-<p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。
-これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" rel="external nofollow" title="ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
-<code>enum</code> で設定する例えば <code>UITableViewCellAccessoryType</code> なんかを使いたい場合にコンパイルエラーになってしまいます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td>
-<td class="code"><pre><code class="swift"><span class="line"><span class="c1">// これはコンパイルエラーになる</span>
-</span><span class="line"><span class="n">RAC</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"cell.accessoryType"</span><span class="p">)</span> <span class="o">=</span> <span class="n">RACObserve</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"viewModel.checked"</span><span class="p">).</span><span class="n">map</span> <span class="p">{</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Bool</span><span class="p">)</span> <span class="o">?</span> <span class="n">UITableViewCellAccessoryType</span><span class="p">.</span><span class="nl">Checkmark</span> <span class="p">:</span> <span class="n">UITableViewCellAccessoryType</span><span class="p">.</span><span class="n">None</span> <span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">// こうしないといけない。。</span>
-</span><span class="line"><span class="n">RACObserve</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">viewModel</span><span class="p">,</span> <span class="s">"checked"</span><span class="p">)</span>
-</span><span class="line">    <span class="p">.</span><span class="n">subscribeNext</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="nb">self</span><span class="p">]</span> <span class="n">arg</span> <span class="k">in</span>
-</span><span class="line">        <span class="k">let</span> <span class="n">checked</span> <span class="o">=</span> <span class="n">arg</span> <span class="kt">as</span> <span class="n">Bool</span>
-</span><span class="line">        <span class="nb">self</span><span class="o">!</span><span class="p">.</span><span class="n">accessoryType</span> <span class="o">=</span> <span class="n">checked</span> <span class="o">?</span> <span class="p">.</span><span class="nl">Checkmark</span> <span class="p">:</span> <span class="p">.</span><span class="n">None</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>既存の Objective-C ライブラリで <code>id</code> が使われている箇所が、Swift では <code>AnyObject</code> に対応するので、
-Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻り値にしていたりする箇所が <code>AnyObject</code> になってしまい、
-<code>enum</code> を利用することができません。</p>
-
-<p>変数に代入するだけなら <code>Any</code> 型にすればいいんですが、既存ライブラリとの連携では難しそうです。 <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>
-これ、何かやり方ないんでしょうかね。。</p>
-<div class="footnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>Any 型にすれば代入できることを <a href="https://twitter.com/takabosoft" rel="external nofollow" title="@takabosoft">@takabosoft</a> さんに教えてもらいました。ありがとうございます！<a href="#fnref:1" rev="footnote">↩</a></p>
-</li>
-</ol>
-</div>
 
 </div>
 
@@ -356,11 +329,15 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
       <h3 class="h1">関連記事</h3>
       <ul>
         
-        <li><a href="/blog/2014/07/03/swift-uitableview-nsindexpath/">Swift で UITableView 関連の操作をする際に NSIndexPath を作る方法</a></li>
+        <li><a href="/blog/2011/06/14/kaminari-paginate-array/">kaminari の paginate_array が便利</a></li>
         
-        <li><a href="/blog/2014/06/27/apple-swift-cocoa-objective-c/">Using Swift with Cocoa and Objective-C</a></li>
+        <li><a href="/blog/2010/11/20/rails-activerecord/">[Rails] ActiveRecord でツリー関係の関連を定義する</a></li>
         
-        <li><a href="/blog/2014/06/26/apple-swift/">Apple Swift プログラミング言語おぼえがき</a></li>
+        <li><a href="/blog/2014/03/05/rails-webservice-startup/">Webサービスをスタートアップする10の手順（Rails編）</a></li>
+        
+        <li><a href="/blog/2014/03/04/canonical-url/">canonicalなURLってなにがいいんだろう？</a></li>
+        
+        <li><a href="/blog/2014/02/20/capistrano3/">Capistrano3をRailsで使ってみた感想</a></li>
         
       </ul>
     </div>
@@ -384,12 +361,12 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
 
 
 
-<time datetime="2014-07-31T10:39:48+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jul 31<span>st</span>, 2014</time>
+<time datetime="2011-06-14T11:29:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
         <span class="divider"></span>
         <span class="categories">
   
     
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
     
   
 </span>
@@ -397,7 +374,13 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/swift/" rel="nofollow">Swift</a>
+      <a class="tag label label-info" href="/blog/tags/jpmobile/" rel="nofollow">jpmobile</a>
+    
+      <a class="tag label label-info" href="/blog/tags/kaminari/" rel="nofollow">kaminari</a>
+    
+      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
     
   
 </span>
@@ -410,7 +393,7 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -426,7 +409,7 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
   </li>
   
   
@@ -434,7 +417,7 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
   </li>
   
   
@@ -442,23 +425,23 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"
+       data-url="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"></div>
+         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"
+       data-save-url="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -474,9 +457,12 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
       <ul class="pager">
         
         <li class="previous"><a class="basic-alignment left"
-                                href="/blog/2014/07/03/swift-uitableview-nsindexpath/" title="Previous Post:
-      Swift で UITableView 関連の操作をする際に NSIndexPath を作る方法"><i class="fa fa-arrow-circle-left"></i> Swift で UITableView 関連...</a></li>
+                                href="/blog/2011/06/14/activerecordprevious-changes/" title="Previous Post:
+      ActiveRecord#previous_changes で変更のあった属性を取り出す"><i class="fa fa-arrow-circle-left"></i> ActiveRecord#previous_...</a></li>
         
+        
+        <li class="next"><a class="basic-alignment right" href="/blog/2011/06/18/4798123986/"
+                            title="Next Post: Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)">Titanium Mobileで開発するiP... <i class="fa fa-arrow-circle-right"></i></a></li>
         
       </ul>
 
@@ -654,8 +640,8 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
   
   var disqus_shortname = 'hamasyou';
   
-  var disqus_identifier = 'http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/';
-  var disqus_url = 'http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/';
+  var disqus_identifier = 'http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/';
+  var disqus_url = 'http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/';
   var disqus_script = 'embed.js';
   
   a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
