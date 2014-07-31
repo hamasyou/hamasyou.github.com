@@ -18,7 +18,7 @@ og_image: ""
 
 Swift で *enum* を扱う際にハマった問題です。確認は *Xcode6 beta4* で行っています。
 
-Swift では `enum` を `AnyObject` 型の変数に入れることができません。コンパイルエラーになります。
+Swift では `enum` を `AnyObject` 型の変数に入れることができません。コンパイルエラーになります。`Any` 型なら代入できます。
 
 ```swift
 enum SomeType: Int {
@@ -30,6 +30,8 @@ let something = SomeType.None
 something                                     // Enum Value
 
 let anything: AnyObject = SomeType.Something  // error: type 'SomeType' does not conform to protocol 'AnyObject'
+
+let any: Any = SomeType.Something             // Enum Value
 ```
 
 Swift の `enum` は `AnyObject` protocol を実装していないので、`AnyObject` 型の変数に入れることが出来ません。
@@ -51,5 +53,7 @@ RACObserve(self.viewModel, "checked")
 既存の Objective-C ライブラリで `id` が使われている箇所が、Swift では `AnyObject` に対応するので、
 Closure 等で `id` を引数に取ったり、`id` を戻り値にしていたりする箇所が `AnyObject` になってしまい、
 `enum` を利用することができません。
+
+変数に代入するだけなら `Any` 型にすればいいんですが、既存ライブラリとの連携では難しそうです。。
 
 これ、何かやり方ないんでしょうかね。。
