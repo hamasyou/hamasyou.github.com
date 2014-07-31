@@ -18,6 +18,8 @@ og_image: ""
 
 Swift で *enum* を扱う際にハマった問題です。確認は *Xcode6 beta4* で行っています。
 
+### Swift の enum は AnyObject 型変数に代入できない
+
 Swift では `enum` を `AnyObject` 型の変数に入れることができません。コンパイルエラーになります。`Any` 型なら代入できます。
 
 ```swift
@@ -35,6 +37,9 @@ let any: Any = SomeType.Something             // Enum Value
 ```
 
 Swift の `enum` は `AnyObject` protocol を実装していないので、`AnyObject` 型の変数に入れることが出来ません。
+
+#### ReactiveCocoa とかと組み合わせるときにこまる
+
 これの何が不便かというと、`enum` は UIKit でよく使われていて、[ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) を Swift で使う際に
 `enum` で設定する例えば `UITableViewCellAccessoryType` なんかを使いたい場合にコンパイルエラーになってしまいます。
 
@@ -58,4 +63,4 @@ Closure 等で `id` を引数に取ったり、`id` を戻り値にしていた�
 [^1]: Any 型にすれば代入できることを [@takabosoft](https://twitter.com/takabosoft) さんに教えてもらいました。ありがとうございます！
 
 
-これ、何かやり方ないんでしょうかね。。
+これ、何かやり方ないんでしょうかね。。ReactiveSwift 待ちかなぁ
