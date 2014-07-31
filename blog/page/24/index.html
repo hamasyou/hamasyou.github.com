@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="オブジェクト脳、略して『オブ脳』の芽生えはエンジニア人生の転機となる。と本書のカバーに書いてあります。最近のシステム開発の現場でオブジェクト指向という言葉を聞いたことが無い人はいないと思います。組み込みの業界でさえオブジェクト指向を取り入れた設計・実装が行われています。 本書は、 &hellip;">
+  <meta name="description" content="本書は、JSFフレームワークがどんな流れで処理を進めていくのかがよくわかるので非常に初心者向けだと思います。実際、僕が最初にJSFをやることになって、いろいろと書籍を見た中では、フレームワークの流れが一番よくわかる本だと思いました。 JSFにはライフサイクルというものがあり、 &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/24/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="オブジェクト脳、略して『オブ脳』の芽生えはエンジニア人生の転機となる。と本書のカバーに書いてあります。最近のシステム開発の現場でオブジェクト指向という言葉を聞いたことが無い人はいないと思います。組み込みの業界でさえオブジェクト指向を取り入れた設計・実装が行われています。 本書は、 &hellip;" />
+<meta property="og:description" content="本書は、JSFフレームワークがどんな流れで処理を進めていくのかがよくわかるので非常に初心者向けだと思います。実際、僕が最初にJSFをやることになって、いろいろと書籍を見た中では、フレームワークの流れが一番よくわかる本だと思いました。 JSFにはライフサイクルというものがあり、 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +106,171 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2004/09/06/4822221253/" class="excerpt-link">はじめてのJSF―Web開発を変えるJavaフレームワークのすべて</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-09-06T09:45:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 6<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/jsf/" rel="nofollow">JSF</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2004/09/06/4822221253/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/09/06/4822221253/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/09/06/4822221253/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/09/06/4822221253/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2004/09/06/4822221253/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2004/09/06/4822221253/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2004/09/06/4822221253/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2004/09/06/4822221253/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" title="はじめてのJSF―Web開発を変えるJavaフレームワークのすべて" rel="external nofollow">
+      <img src="http://ecx.images-amazon.com/images/I/51TWVT4PZSL._BO2,204,203,200_PIsitb-sticker-arrow-click,-76_AA300_SH20_OU09_.jpg" class="asin-thumbnail" alt="はじめてのJSF―Web開発を変えるJavaフレームワークのすべて" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" title="はじめてのJSF―Web開発を変えるJavaフレームワークのすべて" rel="external nofollow">はじめてのJSF―Web開発を変えるJavaフレームワークのすべて</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>若尾 正樹 (著), 田添 英一 (著), 三浦 圭司 (著), 神山 淑朗 (著)</dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>日経BP社</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822221253/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><p>本書は、JSFフレームワークがどんな流れで処理を進めていくのかがよくわかるので非常に初心者向けだと思います。実際、僕が最初にJSFをやることになって、いろいろと書籍を見た中では、フレームワークの流れが一番よくわかる本だと思いました。</p>
+
+<p>JSFにはライフサイクルというものがあり、6つのフェーズからできています。この6つのフェーズ（Viewの復元・リクエスト値の適用・入力値の検証・モデル値の更新・アプリケーションロジックの呼び出し・レスポンスレンダリング）のそれぞれに関してフレームワークがどのように処理を進めていくのかを、丁寧に解説しています。</p>
+
+<p>JSFは、これから使われてくる技術であり、これからのWebアプリケーション開発を変えてしまうものだと思っているので、本書を元に流れを理解しておくと、今後のJSF旋風に飲み込まれた時に役立つと思います。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2004/09/06/4822221253/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1580,175 +1745,6 @@ GoFの23のパターンが有名です。デザインパターンというのは
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/07/21/4798006084/" class="excerpt-link">Java/Eclipseソフトウェアテスト・チュートリアルブック</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-07-21T02:42:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jul 21<span>st</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/eclipse/" rel="nofollow">Eclipse</a>
-    
-      <a class="tag label label-info" href="/blog/tags/java/" rel="nofollow">Java</a>
-    
-      <a class="tag label label-info" href="/blog/tags/tesutoji-fa/" rel="nofollow">テスト技法</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/07/21/4798006084/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/07/21/4798006084/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/07/21/4798006084/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/07/21/4798006084/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/07/21/4798006084/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/07/21/4798006084/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/07/21/4798006084/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/07/21/4798006084/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798006084/sorehabooks-22" title="Java/Eclipseソフトウェアテスト・チュートリアルブック" rel="external nofollow">
-      <img src="http://ec3.images-amazon.com/images/I/51FR4BCEDZL._SL500_AA300_.jpg" class="asin-thumbnail" alt="Java/Eclipseソフトウェアテスト・チュートリアルブック" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798006084/sorehabooks-22" title="Java/Eclipseソフトウェアテスト・チュートリアルブック" rel="external nofollow">Java/Eclipseソフトウェアテスト・チュートリアルブック</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>安藤 利和 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>秀和システム</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4798006084/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>本書は、JavaプログラムのテストをJUnitを使ってEclipse上で行ってしまおうという、いかにもJavaプログラムにうけがいい内容をもってきています。しかし、中身はというと、非常に実践向けの、テストの何たるかを開発者の視点から語っているわかりやすい内容になっています。</p>
-
-<p>Eclipse上でJUnitを使う方法が後半に載っています。丁寧な解説とわかりやすい図で、こちらも迷うことはないと思います。</p>
-
-<p>プログラミング初心者の書いたコードに限らず、テストがしっかりとできていないコードというのは、品質に問題があります。動けばいいという考えはそろそろやめにして、とりあえず流行のテスティングにのっかってみましょう。絶対損はないはずですから。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/07/21/4798006084/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/25/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1792,6 +1788,10 @@ GoFの23のパターンが有名です。デザインパターンというのは
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/07/31/swift-enum-anyobject/">SwiftはenumをAnyObject型の変数に入れられない</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/03/swift-uitableview-nsindexpath/">Swift で UITableView 関連の操作をする際に NSIndexPath を作る方法</a>
       </li>
     
@@ -1827,10 +1827,6 @@ GoFの23のパターンが有名です。デザインパターンというのは
         <a href="/blog/2014/03/05/rails-webservice-startup/">Webサービスをスタートアップする10の手順（Rails編）</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/04/4048703676/">サーバサイドJavaScript Node.js入門</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1838,7 +1834,7 @@ GoFの23のパターンが有名です。デザインパターンというのは
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">122</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">123</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

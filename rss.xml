@@ -2,12 +2,89 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Tue, 22 Jul 2014 10:58:45 +0900</pubDate>
+  <pubDate>Thu, 31 Jul 2014 11:02:39 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
   <atom:link href="http://hamasyou.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+  
+  <item>
+    <title><![CDATA[SwiftはenumをAnyObject型の変数に入れられない]]></title>
+    <link>http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/</link>
+    <guid>http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/</guid>
+    <description>
+      <![CDATA[<p>Swift で <em>enum</em> を扱う際にハマった問題です。確認は <em>Xcode6 beta4</em> で行っています。</p>
+
+<p>Swift では <code>enum</code> を <code>AnyObject</code> 型の変数に入れることができません。コンパイルエラーになります。<code>Any</code> 型なら代入できます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">enum</span> <span class="nl">SomeType</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">None</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line">    <span class="k">case</span> <span class="n">Something</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">something</span> <span class="o">=</span> <span class="n">SomeType</span><span class="p">.</span><span class="n">None</span>
+</span><span class="line"><span class="n">something</span>                                     <span class="c1">// Enum Value</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="nl">anything</span><span class="p">:</span> <span class="n">AnyObject</span> <span class="o">=</span> <span class="n">SomeType</span><span class="p">.</span><span class="n">Something</span>  <span class="c1">// error: type 'SomeType' does not conform to protocol 'AnyObject'</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="nl">any</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">SomeType</span><span class="p">.</span><span class="n">Something</span>             <span class="c1">// Enum Value</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。
+これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" rel="external nofollow" title="ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
+<code>enum</code> で設定する例えば <code>UITableViewCellAccessoryType</code> なんかを使いたい場合にコンパイルエラーになってしまいます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="c1">// これはコンパイルエラーになる</span>
+</span><span class="line"><span class="n">RAC</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"cell.accessoryType"</span><span class="p">)</span> <span class="o">=</span> <span class="n">RACObserve</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"viewModel.checked"</span><span class="p">).</span><span class="n">map</span> <span class="p">{</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Bool</span><span class="p">)</span> <span class="o">?</span> <span class="n">UITableViewCellAccessoryType</span><span class="p">.</span><span class="nl">Checkmark</span> <span class="p">:</span> <span class="n">UITableViewCellAccessoryType</span><span class="p">.</span><span class="n">None</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// こうしないといけない。。</span>
+</span><span class="line"><span class="n">RACObserve</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">viewModel</span><span class="p">,</span> <span class="s">"checked"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">.</span><span class="n">subscribeNext</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="nb">self</span><span class="p">]</span> <span class="n">arg</span> <span class="k">in</span>
+</span><span class="line">        <span class="k">let</span> <span class="n">checked</span> <span class="o">=</span> <span class="n">arg</span> <span class="kt">as</span> <span class="n">Bool</span>
+</span><span class="line">        <span class="nb">self</span><span class="o">!</span><span class="p">.</span><span class="n">accessoryType</span> <span class="o">=</span> <span class="n">checked</span> <span class="o">?</span> <span class="p">.</span><span class="nl">Checkmark</span> <span class="p">:</span> <span class="p">.</span><span class="n">None</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>既存の Objective-C ライブラリで <code>id</code> が使われている箇所が、Swift では <code>AnyObject</code> に対応するので、
+Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻り値にしていたりする箇所が <code>AnyObject</code> になってしまい、
+<code>enum</code> を利用することができません。</p>
+
+<p>変数に代入するだけなら <code>Any</code> 型にすればいいんですが、既存ライブラリとの連携では難しそうです。。</p>
+
+<p>これ、何かやり方ないんでしょうかね。。</p>
+]]>
+    </description>
+    <pubDate>Thu, 31 Jul 2014 10:39:48 +0900</pubDate>
+  </item>
   
   <item>
     <title><![CDATA[Swift で UITableView 関連の操作をする際に NSIndexPath を作る方法]]></title>
@@ -5993,43 +6070,6 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 ]]>
     </description>
     <pubDate>Thu, 20 Feb 2014 11:25:05 +0900</pubDate>
-  </item>
-  
-  <item>
-    <title><![CDATA[RailsのI18n.localizeでnilもゆるすようにすると捗る]]></title>
-    <link>http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/</link>
-    <guid>http://hamasyou.com/blog/2014/02/19/rails-i18n-localize/</guid>
-    <description>
-      <![CDATA[<p>Rails の <code>I18n.localize</code> は <code>nil</code> を渡すと例外が発生します。でも、コレだといろいろ使いづらいのでいつも</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>config/initializers/relaxed_i18n.rb</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">I18n</span>
-</span><span class="line">  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
-</span><span class="line">    <span class="n">alias_method</span> <span class="ss">:original_localize</span><span class="p">,</span> <span class="ss">:localize</span>
-</span><span class="line">    <span class="k">def</span> <span class="nf">localize</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
-</span><span class="line">      <span class="n">object</span><span class="o">.</span><span class="n">present?</span> <span class="p">?</span> <span class="n">original_localize</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">:</span> <span class="s1">''</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>こんな感じのコードを <code>config/initializers</code> の下において使っています。<code>nil</code> を渡すと空文字を返します。</p>
-
-<p>今のところコレで問題は起きていないのでオススメしてもいいかなと。</p>
-]]>
-    </description>
-    <pubDate>Wed, 19 Feb 2014 22:30:13 +0900</pubDate>
   </item>
   
 </channel>

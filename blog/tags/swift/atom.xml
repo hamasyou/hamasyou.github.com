@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Swift | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/swift/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-07-22T10:58:45+09:00</updated>
+  <updated>2014-07-31T11:02:39+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SwiftはenumをAnyObject型の変数に入れられない]]></title>
+    <link href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"/>
+    <updated>2014-07-31T10:39:48+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject</id>
+    <content type="html"><![CDATA[<p>Swift で <em>enum</em> を扱う際にハマった問題です。確認は <em>Xcode6 beta4</em> で行っています。</p>
+
+<p>Swift では <code>enum</code> を <code>AnyObject</code> 型の変数に入れることができません。コンパイルエラーになります。<code>Any</code> 型なら代入できます。</p>
+
+<pre><code class="swift">enum SomeType: Int {
+    case None = 0
+    case Something
+}
+
+let something = SomeType.None
+something                                     // Enum Value
+
+let anything: AnyObject = SomeType.Something  // error: type 'SomeType' does not conform to protocol 'AnyObject'
+
+let any: Any = SomeType.Something             // Enum Value
+</code></pre>
+
+<p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。
+これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
+<code>enum</code> で設定する例えば <code>UITableViewCellAccessoryType</code> なんかを使いたい場合にコンパイルエラーになってしまいます。</p>
+
+<pre><code class="swift">// これはコンパイルエラーになる
+RAC(self, "cell.accessoryType") = RACObserve(self, "viewModel.checked").map { ($0 as Bool) ? UITableViewCellAccessoryType.Checkmark : UITableViewCellAccessoryType.None }
+
+// こうしないといけない。。
+RACObserve(self.viewModel, "checked")
+    .subscribeNext { [weak self] arg in
+        let checked = arg as Bool
+        self!.accessoryType = checked ? .Checkmark : .None
+}
+</code></pre>
+
+<p>既存の Objective-C ライブラリで <code>id</code> が使われている箇所が、Swift では <code>AnyObject</code> に対応するので、
+Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻り値にしていたりする箇所が <code>AnyObject</code> になってしまい、
+<code>enum</code> を利用することができません。</p>
+
+<p>変数に代入するだけなら <code>Any</code> 型にすればいいんですが、既存ライブラリとの連携では難しそうです。。</p>
+
+<p>これ、何かやり方ないんでしょうかね。。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Swift で UITableView 関連の操作をする際に NSIndexPath を作る方法]]></title>
