@@ -13,7 +13,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="公式の Titainum 掲示板の公開が遅いので、@masuidrive さんが非公式ながら BBS をオープンしてくださいました。 日本の Titanium Developer のみなさん、Titanium の質問はこっちにすると親切丁寧な回答を期待できるかも！ 非公式 Titanium BBS &hellip;">
+  <meta name="description" content="Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。 かなり力技的なところがあるので、もっといいプログラムになると思いいますが、メモということで。 バージョン Ruby
+1.9.2
+Rails
+3.0.4
+mail
+2.2 ">
   
 
   
@@ -24,7 +29,12 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/8/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="公式の Titainum 掲示板の公開が遅いので、@masuidrive さんが非公式ながら BBS をオープンしてくださいました。 日本の Titanium Developer のみなさん、Titanium の質問はこっちにすると親切丁寧な回答を期待できるかも！ 非公式 Titanium BBS &hellip;" />
+<meta property="og:description" content="Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。 かなり力技的なところがあるので、もっといいプログラムになると思いいますが、メモということで。 バージョン Ruby
+1.9.2
+Rails
+3.0.4
+mail
+2.2 " />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +116,167 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/17/ruby-gmail/" class="excerpt-link">Ruby から Gmail を受信する（マルチパート編）</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-03-17T22:24:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Mar 17<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/gmail/" rel="nofollow">Gmail</a>
+    
+      <a class="tag label label-info" href="/blog/tags/imap/" rel="nofollow">imap</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2011/03/17/ruby-gmail/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/03/17/ruby-gmail/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2011/03/17/ruby-gmail/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。</p>
+
+<p>かなり力技的なところがあるので、もっといいプログラムになると思いいますが、メモということで。</p>
+
+<p><section></section></p>
+
+<h4>バージョン</h4>
+
+
+
+
+<dl>
+<dt>Ruby</dt>
+<dd>1.9.2</dd>
+<dt>Rails</dt>
+<dd>3.0.4</dd>
+<dt>mail</dt>
+<dd>2.2</dd>
+</dl>
+
+
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2011/03/17/ruby-gmail/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1543,142 +1714,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/11/git/" class="excerpt-link">[Git] Git コマンドメモ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-11-11T23:34:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 11<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/git/" rel="nofollow">git</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/11/11/git/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/11/11/git/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/11/git/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/11/git/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/11/11/git/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/11/11/git/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/11/11/git/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/11/11/git/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Git のコマンドメモ。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/11/11/git/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/9/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1722,6 +1757,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/07/31/swift-array-force-unwrapping/">SwiftでForce Unwrapping型の配列に値を追加できない</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/31/swift-enum-anyobject/">SwiftはenumをAnyObject型の変数に入れられない</a>
       </li>
     
@@ -1757,10 +1796,6 @@
         <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/05/rails-webservice-startup/">Webサービスをスタートアップする10の手順（Rails編）</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1768,7 +1803,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">123</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">124</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-07-31T11:14:36+09:00</updated>
+  <updated>2014-07-31T11:49:18+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -14,11 +14,122 @@
 
   
   <entry>
+    <title type="html"><![CDATA[SwiftでForce Unwrapping型の配列に値を追加できない]]></title>
+    <link href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"/>
+    <updated>2014-07-31T11:28:11+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/</id>
+    <content type="html"><![CDATA[<p>この記事は Xcode6 beta4 を元に記述しています。</p>
+
+<h3>Swift の配列は mutable か immutable</h3>
+
+<p>Swift では配列を <strong class="text-danger">mutable/immutable</strong> の区別なく定義することができるようになりました。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span class="line"><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line"><span class="n">println</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>    <span class="c1">// [0, 2, 3]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>let</code> で定義すると <strong class="text-danger">immutable</strong>、<code>var</code> で定義すると <strong class="text-danger">mutable</strong> になり、配列の代入はすべてコピーで行われるようになっています。</p>
+
+<h3>Force UnWrapping 型!</h3>
+
+<p>で、ハマったのが次のようなコードです。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="nl">numbers</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span><span class="o">!</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span class="line"><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1">// error: '@lvalue $T7' is not identical to 'Int'</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Force Unwrapping 型とでも言うんでしょうかね？変数に必ず値が入ってることを保証するために <code>!</code> が付いた型です。
+この型で定義した配列には、値の追加や変更ができなくなっています。。</p>
+
+<p>これで何が困るかというと、<code>UIKit</code> 使って <code>UIViewController</code> のサブクラスにプロパティを定義する際に
+初期化を <code>viewDidLoad</code> で行う時には、<code>!</code> をつけないと <code>initializer</code> が必要になってしまうので、プロパティの定義には <code>!</code> を付けていました。</p>
+
+<p>そうすると、<em>mutable</em> で扱いたかったプロパティなのに、変更できないという問題にぶち当たったわけです。。どうすんだこれ。。。</p>
+
+<h4>コンパイルエラーの例</h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="nl">MyViewController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">var</span> <span class="nl">numbers</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span><span class="o">!</span>
+</span><span class="line">
+</span><span class="line">  <span class="kr">override</span> <span class="k">func</span> <span class="n">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nb">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line">    <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">  <span class="k">func</span> <span class="n">myFunc</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c1">// コンパイルエラー</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h4>うまくいく例</h4>
+
+<p>対応としては、一旦変数で受けて、変更後に元に戻すっていうので何とかなりますが、コンパイラの方でなんとかならんもんですかね。。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line">  <span class="k">func</span> <span class="nf">myFunc</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">nums</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span>
+</span><span class="line">    <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line">    <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span> <span class="o">=</span> <span class="n">nums</span>
+</span><span class="line">  <span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[SwiftはenumをAnyObject型の変数に入れられない]]></title>
     <link href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"/>
     <updated>2014-07-31T10:39:48+09:00</updated>
     <id>http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/</id>
     <content type="html"><![CDATA[<p>Swift で <em>enum</em> を扱う際にハマった問題です。確認は <em>Xcode6 beta4</em> で行っています。</p>
+
+<h3>Swift の enum は AnyObject 型変数に代入できない</h3>
 
 <p>Swift では <code>enum</code> を <code>AnyObject</code> 型の変数に入れることができません。コンパイルエラーになります。<code>Any</code> 型なら代入できます。</p>
 
@@ -50,8 +161,11 @@
 </tr></table></div></figure></notextile></div>
 
 
-<p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。
-これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" rel="external nofollow" title="ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
+<p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。</p>
+
+<h4>ReactiveCocoa とかと組み合わせるときにこまる</h4>
+
+<p>これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" rel="external nofollow" title="ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
 <code>enum</code> で設定する例えば <code>UITableViewCellAccessoryType</code> なんかを使いたい場合にコンパイルエラーになってしまいます。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
@@ -83,7 +197,7 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
 <code>enum</code> を利用することができません。</p>
 
 <p>変数に代入するだけなら <code>Any</code> 型にすればいいんですが、既存ライブラリとの連携では難しそうです。 <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>
-これ、何かやり方ないんでしょうかね。。</p>
+これ、何かやり方ないんでしょうかね。。ReactiveSwift 待ちかなぁ</p>
 <div class="footnotes">
 <hr>
 <ol>
@@ -5908,139 +6022,6 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <li><code>:serializable</code></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Capistrano3をRailsで使ってみた感想]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/20/capistrano3/"/>
-    <updated>2014-02-20T11:25:05+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/20/capistrano3/</id>
-    <content type="html"><![CDATA[<p><strong class="text-danger">Capistrano3</strong> がかなりシンプルになって使いやすくなったのでプロジェクトで使ってみました。うん。なかなかよさげです。</p>
-
-<p>Capistrano2 にあった <em>copy_via</em> がなくなっていたので、デプロイ先のサーバから Git リポジトリにアクセスできるようにしないといけなかったりとちょっと面倒なこともありましたが概ね良好です。</p>
-
-<!-- more -->
-
-
-<p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/capistrano/capistrano" rel="external nofollow" title="capistrano / capistrano">capistrano / capistrano</a></p>
-
-<p>Capistrano3 の導入はこの記事がオススメです。</p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://threetreeslight.com/post/68344998681/capistrano-3-x-rails" rel="external nofollow" title="capistrano 3.x系を使ってrailsをデプロイ">capistrano 3.x系を使ってrailsをデプロイ</a></p>
-
-<p>Capistrano3 になって、独自DSLから Rake に変わりました。なので、コマンドも結構すっきりして書きやすくなりました。</p>
-
-<p>サンプルプロジェクトで使った <code>config/deploy.rb</code> の例です。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>config/deploy.rb</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># config valid only for Capistrano 3.1</span>
-</span><span class="line"><span class="n">lock</span> <span class="s1">'3.1.0'</span>
-</span><span class="line">
-</span><span class="line"><span class="n">set</span> <span class="ss">:application</span><span class="p">,</span> <span class="s1">'capbox'</span>
-</span><span class="line"><span class="n">set</span> <span class="ss">:repo_url</span><span class="p">,</span> <span class="s1">'git@github.com:hamasyou/git_demo.git'</span>
-</span><span class="line"><span class="n">set</span> <span class="ss">:deploy_to</span><span class="p">,</span> <span class="s1">'/var/webapp/capbox'</span>
-</span><span class="line">
-</span><span class="line"><span class="n">set</span> <span class="ss">:linked_files</span><span class="p">,</span> <span class="sx">%w{config/database.yml}</span>
-</span><span class="line"><span class="n">set</span> <span class="ss">:linked_dirs</span><span class="p">,</span> <span class="sx">%w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system solr}</span>
-</span><span class="line">
-</span><span class="line"><span class="n">namespace</span> <span class="ss">:deploy</span> <span class="k">do</span>
-</span><span class="line">
-</span><span class="line">  <span class="n">before</span> <span class="ss">:restart</span><span class="p">,</span> <span class="ss">:start_solr</span> <span class="k">do</span>
-</span><span class="line">    <span class="n">on</span> <span class="n">roles</span><span class="p">(</span><span class="ss">:app</span><span class="p">),</span> <span class="k">in</span><span class="p">:</span> <span class="ss">:groups</span> <span class="k">do</span>
-</span><span class="line">      <span class="n">within</span> <span class="n">release_path</span> <span class="k">do</span>
-</span><span class="line">        <span class="n">with</span> <span class="n">rails_env</span><span class="p">:</span> <span class="n">fetch</span><span class="p">(</span><span class="ss">:rails_env</span><span class="p">)</span> <span class="k">do</span>
-</span><span class="line">          <span class="n">execute</span> <span class="ss">:rake</span><span class="p">,</span> <span class="s1">'sunspot:solr:stop'</span>
-</span><span class="line">          <span class="n">execute</span> <span class="ss">:rake</span><span class="p">,</span> <span class="s1">'sunspot:solr:start'</span>
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">      <span class="k">end</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="n">desc</span> <span class="s1">'Restart application'</span>
-</span><span class="line">  <span class="n">task</span> <span class="ss">:restart</span> <span class="k">do</span>
-</span><span class="line">    <span class="n">on</span> <span class="n">roles</span><span class="p">(</span><span class="ss">:app</span><span class="p">),</span> <span class="k">in</span><span class="p">:</span> <span class="ss">:sequence</span><span class="p">,</span> <span class="ss">wait</span><span class="p">:</span> <span class="mi">5</span> <span class="k">do</span>
-</span><span class="line">      <span class="n">execute</span> <span class="ss">:touch</span><span class="p">,</span> <span class="n">release_path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">'tmp/restart.txt'</span><span class="p">)</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">  <span class="n">after</span> <span class="ss">:publishing</span><span class="p">,</span> <span class="ss">:restart</span>
-</span><span class="line">
-</span><span class="line">  <span class="n">after</span> <span class="ss">:restart</span><span class="p">,</span> <span class="ss">:sitemap</span> <span class="k">do</span>
-</span><span class="line">    <span class="n">on</span> <span class="n">roles</span><span class="p">(</span><span class="ss">:app</span><span class="p">),</span> <span class="k">in</span><span class="p">:</span> <span class="ss">:groups</span><span class="p">,</span> <span class="ss">limit</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="ss">wait</span><span class="p">:</span> <span class="mi">10</span> <span class="k">do</span>
-</span><span class="line">      <span class="c1"># Here we can do anything such as:</span>
-</span><span class="line">      <span class="n">within</span> <span class="n">release_path</span> <span class="k">do</span>
-</span><span class="line">        <span class="n">with</span> <span class="n">rails_env</span><span class="p">:</span> <span class="n">fetch</span><span class="p">(</span><span class="ss">:rails_env</span><span class="p">)</span> <span class="k">do</span>
-</span><span class="line">          <span class="n">execute</span> <span class="ss">:rake</span><span class="p">,</span> <span class="s1">'tmp:cache:clear'</span>
-</span><span class="line">          <span class="n">execute</span> <span class="ss">:rake</span><span class="p">,</span> <span class="s1">'sitemap:refresh'</span>
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">      <span class="k">end</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>タスクの実行時に指定できる <code>sequence</code>、<code>groups</code>、<code>parallel</code> の説明はこちら。</p>
-
-<blockquote>
-<p>Other modes for parallelism include:</p>
-<p></p>
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># Capistrano 3.0.x</span><br></span><span class="line"><span class="n">on</span> <span class="ss">:all</span><span class="p">,</span> <span class="k">in</span><span class="p">:</span> <span class="ss">:groups</span><span class="p">,</span> <span class="ss">max</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="ss">wait</span><span class="p">:</span> <span class="mi">5</span> <span class="k">do</span><br></span><span class="line">  <span class="c1"># Take all servers, in groups of three which execute in parallel</span><br></span><span class="line">  <span class="c1"># wait five seconds between groups of servers.</span><br></span><span class="line">  <span class="c1"># This is perfect for rolling restarts</span><br></span><span class="line"><span class="k">end</span><br></span><span class="line"><br></span><span class="line"><span class="n">on</span> <span class="ss">:all</span><span class="p">,</span> <span class="k">in</span><span class="p">:</span> <span class="ss">:sequence</span><span class="p">,</span> <span class="ss">wait</span><span class="p">:</span> <span class="mi">15</span> <span class="k">do</span><br></span><span class="line">  <span class="c1"># This takes all servers, in sequence and waits 15 seconds between</span><br></span><span class="line">  <span class="c1"># each server, this might be perfect if you are afraid about</span><br></span><span class="line">  <span class="c1"># overloading a shared resource, or want to defer the asset compilation</span><br></span><span class="line">  <span class="c1"># over your cluster owing to worries about load</span><br></span><span class="line"><span class="k">end</span><br></span><span class="line"><br></span><span class="line"><span class="n">on</span> <span class="ss">:all</span><span class="p">,</span> <span class="k">in</span><span class="p">:</span> <span class="ss">:parallel</span> <span class="k">do</span><br></span><span class="line">  <span class="c1"># This will simply try and execute the commands contained within</span><br></span><span class="line">  <span class="c1"># the block in parallel on all servers. This might be perfect for kicking</span><br></span><span class="line">  <span class="c1"># off something like a Git checkout or similar.</span><br></span><span class="line"><span class="k">end</span><br></span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-<footer><strong>Capistrano Version 3 Release Announcement</strong> <cite><a href="http://capistranorb.com/2013/06/01/release-announcement.html" rel="external nofollow" title="capistranorb.com/2013/06/01/…">capistranorb.com/2013/06/01/…</a></cite></footer>
-</blockquote>
-
-
-<p>Capistrano2 と互換性がないですが、新規プロジェクトには使えるんじゃないかと。</p>
 ]]></content>
   </entry>
   

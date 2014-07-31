@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Swift | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/swift/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-07-31T11:14:36+09:00</updated>
+  <updated>2014-07-31T11:49:18+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -14,11 +14,79 @@
 
   
   <entry>
+    <title type="html"><![CDATA[SwiftでForce Unwrapping型の配列に値を追加できない]]></title>
+    <link href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"/>
+    <updated>2014-07-31T11:28:11+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping</id>
+    <content type="html"><![CDATA[<p>この記事は Xcode6 beta4 を元に記述しています。</p>
+
+<h3>Swift の配列は mutable か immutable</h3>
+
+<p>Swift では配列を <strong>mutable/immutable</strong> の区別なく定義することができるようになりました。</p>
+
+<pre><code class="swift">var numbers = [1, 2, 3]
+numbers[0] = 0
+println(numbers)    // [0, 2, 3]
+</code></pre>
+
+<p><code>let</code> で定義すると <strong>immutable</strong>、<code>var</code> で定義すると <strong>mutable</strong> になり、配列の代入はすべてコピーで行われるようになっています。</p>
+
+<h3>Force UnWrapping 型!</h3>
+
+<p>で、ハマったのが次のようなコードです。</p>
+
+<pre><code class="swift">var numbers: [Int]! = [1, 2, 3]
+numbers[0] = 0    // error: '@lvalue $T7' is not identical to 'Int'
+</code></pre>
+
+<p>Force Unwrapping 型とでも言うんでしょうかね？変数に必ず値が入ってることを保証するために <code>!</code> が付いた型です。
+この型で定義した配列には、値の追加や変更ができなくなっています。。</p>
+
+<p>これで何が困るかというと、<code>UIKit</code> 使って <code>UIViewController</code> のサブクラスにプロパティを定義する際に
+初期化を <code>viewDidLoad</code> で行う時には、<code>!</code> をつけないと <code>initializer</code> が必要になってしまうので、プロパティの定義には <code>!</code> を付けていました。</p>
+
+<p>そうすると、<em>mutable</em> で扱いたかったプロパティなのに、変更できないという問題にぶち当たったわけです。。どうすんだこれ。。。</p>
+
+<h4>コンパイルエラーの例</h4>
+
+<pre><code class="swift">class MyViewController: UIViewController {
+
+  var numbers: [Int]!
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    self.numbers = [1, 2, 3]
+  }
+
+
+  func myFunc() {
+    self.numbers[0] = 0     // コンパイルエラー
+  }
+}
+</code></pre>
+
+<h4>うまくいく例</h4>
+
+<p>対応としては、一旦変数で受けて、変更後に元に戻すっていうので何とかなりますが、コンパイラの方でなんとかならんもんですかね。。</p>
+
+<pre><code class="swift">  func myFunc() {
+    var nums: [Int] = self.numbers
+    nums[0] = 0
+    self.numbers = nums
+  }
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[SwiftはenumをAnyObject型の変数に入れられない]]></title>
     <link href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"/>
     <updated>2014-07-31T10:39:48+09:00</updated>
     <id>http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject</id>
     <content type="html"><![CDATA[<p>Swift で <em>enum</em> を扱う際にハマった問題です。確認は <em>Xcode6 beta4</em> で行っています。</p>
+
+<h3>Swift の enum は AnyObject 型変数に代入できない</h3>
 
 <p>Swift では <code>enum</code> を <code>AnyObject</code> 型の変数に入れることができません。コンパイルエラーになります。<code>Any</code> 型なら代入できます。</p>
 
@@ -35,8 +103,11 @@ let anything: AnyObject = SomeType.Something  // error: type 'SomeType' does not
 let any: Any = SomeType.Something             // Enum Value
 </code></pre>
 
-<p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。
-これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
+<p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。</p>
+
+<h4>ReactiveCocoa とかと組み合わせるときにこまる</h4>
+
+<p>これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
 <code>enum</code> で設定する例えば <code>UITableViewCellAccessoryType</code> なんかを使いたい場合にコンパイルエラーになってしまいます。</p>
 
 <pre><code class="swift">// これはコンパイルエラーになる
@@ -55,7 +126,7 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
 <code>enum</code> を利用することができません。</p>
 
 <p>変数に代入するだけなら <code>Any</code> 型にすればいいんですが、既存ライブラリとの連携では難しそうです。 <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>
-これ、何かやり方ないんでしょうかね。。</p>
+これ、何かやり方ないんでしょうかね。。ReactiveSwift 待ちかなぁ</p>
 <div class="footnotes">
 <hr/>
 <ol>

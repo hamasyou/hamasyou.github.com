@@ -13,7 +13,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Qiita を運営されている Increments さんが一周年ということで、白ワイン持参で参加させていただきました。 寿司職人が目の前で握ってくれる本格派！ 次の Qiita イベントにも是非参加します！今後とも、エンジニアのためのサービスをガンガンリリースしてもらいたいと思います。 &hellip;">
+  <meta name="description" content="モジュールを作成して、デモアプリ等で利用する際に実機転送時に [ERROR] : ** BUILD FAILED **
+[ERROR] : The following build commands failed:
+[ERROR] : Ld build/Debug-iphoneos/ &hellip;">
   
 
   
@@ -24,7 +26,9 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/5/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Qiita を運営されている Increments さんが一周年ということで、白ワイン持参で参加させていただきました。 寿司職人が目の前で握ってくれる本格派！ 次の Qiita イベントにも是非参加します！今後とも、エンジニアのためのサービスをガンガンリリースしてもらいたいと思います。 &hellip;" />
+<meta property="og:description" content="モジュールを作成して、デモアプリ等で利用する際に実機転送時に [ERROR] : ** BUILD FAILED **
+[ERROR] : The following build commands failed:
+[ERROR] : Ld build/Debug-iphoneos/ &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +110,180 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/05/titanium/" class="excerpt-link">[Titanium]モジュールを使ったアプリで実機転送時にリンカエラーが発生する場合の対処</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2013-03-05T08:52:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Mar 5<span>th</span>, 2013</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/titanium/" rel="nofollow">Titanium</a>
+    
+      <a class="tag label label-info" href="/blog/tags/moziyuru/" rel="nofollow">モジュール</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2013/03/05/titanium/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2013/03/05/titanium/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2013/03/05/titanium/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2013/03/05/titanium/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2013/03/05/titanium/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2013/03/05/titanium/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2013/03/05/titanium/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2013/03/05/titanium/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>モジュールを作成して、デモアプリ等で利用する際に実機転送時に</p>
+
+<pre><code>[ERROR] : ** BUILD FAILED **
+[ERROR] : The following build commands failed:
+[ERROR] :   Ld build/Debug-iphoneos/gpuimagedemo.app/gpuimagedemo normal armv7
+[ERROR] : (1 failure)
+</code></pre>
+
+<p>のようなエラーが発生する場合がある。
+これは、Titanium がビルド時に最適化で利用していない内部モジュールとのリンクを切ってしまうために起こる。</p>
+
+<p>build ディレクトリの下の Xcode のプロジェクトを開くと</p>
+
+<pre><code>Undefined symbols for architecture arvm7:
+    ...
+":_OBJC_CLASS_$_TiUIImageView":, referenced from:
+    ...
+</code></pre>
+
+<p>のようにビルドエラーが発生している。</p>
+
+<p>これを解決するには、モジュールで利用している内部クラスを、JavaScript 側のソースコードに現れるようにする。</p>
+
+<p>例えば、今回の場合だと、TiUIImageView の参照先が見つからないとなっているので JavaScript のコードの方に</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="javascript"><span class="line"><span class="k">if</span> <span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">createImageView</span><span class="p">({</span>
+</span><span class="line">        <span class="nx">image</span><span class="o">:</span> <span class="s1">'demo.jpg'</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>のようなコードを加えれば良い。バッドノウハウですね。。</p>
+</div>
+  
+  
+
+
+    </article>
     
     
     <article>
@@ -1637,167 +1815,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/13/4798126055/" class="excerpt-link">NoSQLプログラミング実践活用技法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2012-09-13T10:10:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 13<span>th</span>, 2012</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/nosql/" rel="nofollow">NoSQL</a>
-    
-      <a class="tag label label-info" href="/blog/tags/detabesu/" rel="nofollow">データベース</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2012/09/13/4798126055/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2012/09/13/4798126055/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2012/09/13/4798126055/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2012/09/13/4798126055/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2012/09/13/4798126055/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2012/09/13/4798126055/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2012/09/13/4798126055/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2012/09/13/4798126055/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4798126055?ie=UTF8&amp;camp=247&amp;creativeASIN=4798126055&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="NoSQLプログラミング実践活用技法" rel="external nofollow">
-      <img src="http://images.amazon.com/images/I/51HqiZKI5CL._SL500_.jpg" class="asin-thumbnail" alt="NoSQLプログラミング実践活用技法" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4798126055?ie=UTF8&amp;camp=247&amp;creativeASIN=4798126055&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="NoSQLプログラミング実践活用技法" rel="external nofollow">NoSQLプログラミング実践活用技法</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>Shashank Tiwari (著), 中村 泰久 (監修), 長尾 高弘 (翻訳) </dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>翔泳社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4798126055?ie=UTF8&amp;camp=247&amp;creativeASIN=4798126055&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"></div>
-  
-  
-    <footer>
-      <a href="/blog/2012/09/13/4798126055/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/6/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1841,6 +1858,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/07/31/swift-array-force-unwrapping/">SwiftでForce Unwrapping型の配列に値を追加できない</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/31/swift-enum-anyobject/">SwiftはenumをAnyObject型の変数に入れられない</a>
       </li>
     
@@ -1876,10 +1897,6 @@
         <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/05/rails-webservice-startup/">Webサービスをスタートアップする10の手順（Rails編）</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1887,7 +1904,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">123</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">124</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

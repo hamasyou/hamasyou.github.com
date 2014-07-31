@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="最近、ビジネスロジックがふんだんに盛り込まれた業務システムというのはあまりありません。 「データの出し入れ」が基本ということは、データの格納庫が必要になってくるわけで、それがデータベースになります。最近ではオブジェクト指向データベースも使われ始めましたが、 &hellip;">
+  <meta name="description" content="『『リファクタリング―プログラムの体質改善テクニック』の続編になっています。 例のごとく、自分で読み直したときにどんな場合にどのリファクタリングが使えるかのメモにしようと思ってます。2005年中くらいには、本書の和訳が出版される予定です。 現在、洋書読破中。記事もそのつど更新していくつもりです &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/23/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="最近、ビジネスロジックがふんだんに盛り込まれた業務システムというのはあまりありません。 「データの出し入れ」が基本ということは、データの格納庫が必要になってくるわけで、それがデータベースになります。最近ではオブジェクト指向データベースも使われ始めましたが、 &hellip;" />
+<meta property="og:description" content="『『リファクタリング―プログラムの体質改善テクニック』の続編になっています。 例のごとく、自分で読み直したときにどんな場合にどのリファクタリングが使えるかのメモにしようと思ってます。2005年中くらいには、本書の和訳が出版される予定です。 現在、洋書読破中。記事もそのつど更新していくつもりです &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +106,157 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2004/10/29/refactoring-to-patterns/" class="excerpt-link">Refactoring to Patterns メモ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-10-29T11:15:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 29<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/rihuakutaringu/" rel="nofollow">リファクタリング</a>
+    
+      <a class="tag label label-info" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2004/10/29/refactoring-to-patterns/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2004/10/29/refactoring-to-patterns/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321213351/sorehabooks-22" rel="external nofollow" title=""></a>
+</p>
+
+
+<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/0321213351/sorehabooks-22" rel="external nofollow" title="『リファクタリング―プログラムの体質改善テクニック』">『リファクタリング―プログラムの体質改善テクニック』</a>の続編になっています。</p>
+
+<p>例のごとく、自分で読み直したときにどんな場合にどのリファクタリングが使えるかのメモにしようと思ってます。2005年中くらいには、本書の和訳が出版される予定です。</p>
+
+<p>現在、洋書読破中。記事もそのつど更新していくつもりです。(最終更新日：2004/10/29)</p>
+
+<p>本家サイトはこちらになります。カタログ一覧あります。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://www.industriallogic.com/xp/refactoring/" rel="external nofollow" title="Refactoring To Patterns">Refactoring To Patterns</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2004/10/29/refactoring-to-patterns/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1580,183 +1731,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/09/13/4774117218/" class="excerpt-link">体験オブジェクト指向 はじめるUMLモデリング</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-09-13T09:51:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 13<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/uml/" rel="nofollow">UML</a>
-    
-      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a>
-    
-      <a class="tag label label-info" href="/blog/tags/moderingu/" rel="nofollow">モデリング</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/09/13/4774117218/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/09/13/4774117218/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/09/13/4774117218/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/09/13/4774117218/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/09/13/4774117218/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/09/13/4774117218/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/09/13/4774117218/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/09/13/4774117218/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774117218/sorehabooks-22" title="体験オブジェクト指向 はじめるUMLモデリング" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51E6PN217BL._SL500_AA300_.jpg" class="asin-thumbnail" alt="体験オブジェクト指向 はじめるUMLモデリング" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774117218/sorehabooks-22" title="体験オブジェクト指向 はじめるUMLモデリング" rel="external nofollow">体験オブジェクト指向 はじめるUMLモデリング</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>山田 正樹 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774117218/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>「モデリング」という言葉が最近グッと身近に感じられる世の中になってきたような気がします。システム開発をやっていない人にはいまいちピンと来ないかも知れないのですが、上流工程ではビジネス要件をモデリングしますし、下流工程ではアプリケーション設計をモデリングします。</p>
-
-<p>本書は、最近主流の「UML(Unified Modeling Language)」という記法を使ったモデリング方法を解説しています。非常に初心者向けの易しい内容です。</p>
-
-<ul>
-<li>要求モデリング</li>
-<li>概念モデリング</li>
-<li>仕様モデリング</li>
-<li>実装モデリング</li>
-</ul>
-
-
-<p>の大きく分けて4レベルのモデリングを行います。実際のシステム開発でも、要求モデリング、概念モデリング、実装モデリング辺りは行っているのが現状ですので、実務経験が無い人でも『体験』的に学べると思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/09/13/4774117218/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/24/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1800,6 +1774,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/07/31/swift-array-force-unwrapping/">SwiftでForce Unwrapping型の配列に値を追加できない</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/31/swift-enum-anyobject/">SwiftはenumをAnyObject型の変数に入れられない</a>
       </li>
     
@@ -1835,10 +1813,6 @@
         <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/05/rails-webservice-startup/">Webサービスをスタートアップする10の手順（Rails編）</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1846,7 +1820,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">123</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">124</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

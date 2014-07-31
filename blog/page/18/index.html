@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="概念モデリングでは、「関連」と「多重度」がモデルを読むときに大切な要素となります。 関連は、あるエンティティとエンティティを結ぶ線のことです。しかし、今回は、もう一歩進んだ関連の使い方である、「関連の属性のクラス」と「関連のクラス」の違いを整理したいと思います。 もう一つの目的として、「多重度」 &hellip;">
+  <meta name="description" content="「リファクタリング」とは、プログラムの振る舞いを変えずに、内部設計を改善する技術です。良い設計が生み出す利益は計り知れません。最初から良い設計を行うのは、非常に難しい技術が伴います。また、時間もかかります。 リファクタリングを行いながらプログラミングを進めることで、 &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/18/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="概念モデリングでは、「関連」と「多重度」がモデルを読むときに大切な要素となります。 関連は、あるエンティティとエンティティを結ぶ線のことです。しかし、今回は、もう一歩進んだ関連の使い方である、「関連の属性のクラス」と「関連のクラス」の違いを整理したいと思います。 もう一つの目的として、「多重度」 &hellip;" />
+<meta property="og:description" content="「リファクタリング」とは、プログラムの振る舞いを変えずに、内部設計を改善する技術です。良い設計が生み出す利益は計り知れません。最初から良い設計を行うのは、非常に難しい技術が伴います。また、時間もかかります。 リファクタリングを行いながらプログラミングを進めることで、 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +106,173 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/06/04/4756145027/" class="excerpt-link">リファクタリングワークブック</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-06-04T16:58:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 4<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/rihuakutaringu/" rel="nofollow">リファクタリング</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/06/04/4756145027/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2005/06/04/4756145027/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2005/06/04/4756145027/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2005/06/04/4756145027/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2005/06/04/4756145027/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2005/06/04/4756145027/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2005/06/04/4756145027/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2005/06/04/4756145027/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756145027/sorehabooks-22/250-3258762-7997812?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="リファクタリングワークブック" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/51Q1T3RZ8AL._SL500_AA300_.jpg" class="asin-thumbnail" alt="リファクタリングワークブック" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756145027/sorehabooks-22/250-3258762-7997812?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="リファクタリングワークブック" rel="external nofollow">リファクタリングワークブック</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>株式会社テクノロジックアート (著)</dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>アスキー</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756145027/sorehabooks-22/250-3258762-7997812?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><p>「リファクタリング」とは、プログラムの振る舞いを変えずに、内部設計を改善する技術です。良い設計が生み出す利益は計り知れません。最初から良い設計を行うのは、非常に難しい技術が伴います。また、時間もかかります。</p>
+
+<p>リファクタリングを行いながらプログラミングを進めることで、最初から良い設計を行おうとして時間がかかってしまうのを防ぐことが出来ます。本書は、そんな<b>リファクタリングを、ワーク形式で勉強できる本</b>になっています。</p>
+
+<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894712288/sorehabooks-22/250-3258762-7997812?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title="リファクタリング">リファクタリング</a>』に載っている数十個の臭いに対するリファクタリングが載っています。臭いとは、リファクタリングが必要だと思われる怪しい箇所のことです。</p>
+
+<p>本書の対象読者は、プログラミングをしたことがある人だと思います。一度でもプログラミングをしたことがあれば、臭いのする場所がなんとなく理解できるのではないかと思います。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/06/04/4756145027/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1609,171 +1776,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/04/03/4804715967/" class="excerpt-link">会社に入ったらすぐ読む本―最初の一歩でつまずかない即効のゴールデン・ルール</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2005-04-03T15:46:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 3<span>rd</span>, 2005</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/lifehack/">LifeHack</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/bizinesururu/" rel="nofollow">ビジネスルール</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2005/04/03/4804715967/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2005/04/03/4804715967/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2005/04/03/4804715967/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2005/04/03/4804715967/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2005/04/03/4804715967/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2005/04/03/4804715967/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2005/04/03/4804715967/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2005/04/03/4804715967/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4804715967/sorehabooks-22" title="会社に入ったらすぐ読む本―最初の一歩でつまずかない即効のゴールデン・ルール" rel="external nofollow">
-      <img src="http://ecx.images-amazon.com/images/I/51JDAERDGXL._SL500_AA300_.jpg" class="asin-thumbnail" alt="会社に入ったらすぐ読む本―最初の一歩でつまずかない即効のゴールデン・ルール" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4804715967/sorehabooks-22" title="会社に入ったらすぐ読む本―最初の一歩でつまずかない即効のゴールデン・ルール" rel="external nofollow">会社に入ったらすぐ読む本―最初の一歩でつまずかない即効のゴールデン・ルール</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>船井総合研究所 (著), 船井 幸雄 (監修)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>大和出版</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4804715967/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>本書は、新社会人が会社に入ってどういった考えを持つと良いかをまとめたものになっています。ビジネスマナーから仕事のやり方まで、ケーススタディを使ってポイントを解説してあります。</p>
-
-<p>ただ、<b>こういった場合はこうすればよいといったノウハウ本ではありません</b>。社会人になってからの常識とマナーを学ぶために、例となるケーススタディを分析し、<strong class="text-danger">こういう考え方をしたほうがより良い</strong>と思われる考え方や行動を示しています。</p>
-
-<p>特にケーススタディが最初に例示されているので、その状況というものがとてもよく分かります。そして、その状況ではこういう判断基準を持つ方がよりベターであるという感じで進めて行きますので、とても理解がしやすいです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2005/04/03/4804715967/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/19/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1817,6 +1819,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/07/31/swift-array-force-unwrapping/">SwiftでForce Unwrapping型の配列に値を追加できない</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/31/swift-enum-anyobject/">SwiftはenumをAnyObject型の変数に入れられない</a>
       </li>
     
@@ -1852,10 +1858,6 @@
         <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/05/rails-webservice-startup/">Webサービスをスタートアップする10の手順（Rails編）</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1863,7 +1865,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">123</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">124</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

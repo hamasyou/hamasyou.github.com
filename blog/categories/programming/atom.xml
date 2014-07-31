@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-07-31T11:14:36+09:00</updated>
+  <updated>2014-07-31T11:49:18+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -14,11 +14,79 @@
 
   
   <entry>
+    <title type="html"><![CDATA[SwiftでForce Unwrapping型の配列に値を追加できない]]></title>
+    <link href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"/>
+    <updated>2014-07-31T11:28:11+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping</id>
+    <content type="html"><![CDATA[<p>この記事は Xcode6 beta4 を元に記述しています。</p>
+
+<h3>Swift の配列は mutable か immutable</h3>
+
+<p>Swift では配列を <strong>mutable/immutable</strong> の区別なく定義することができるようになりました。</p>
+
+<pre><code class="swift">var numbers = [1, 2, 3]
+numbers[0] = 0
+println(numbers)    // [0, 2, 3]
+</code></pre>
+
+<p><code>let</code> で定義すると <strong>immutable</strong>、<code>var</code> で定義すると <strong>mutable</strong> になり、配列の代入はすべてコピーで行われるようになっています。</p>
+
+<h3>Force UnWrapping 型!</h3>
+
+<p>で、ハマったのが次のようなコードです。</p>
+
+<pre><code class="swift">var numbers: [Int]! = [1, 2, 3]
+numbers[0] = 0    // error: '@lvalue $T7' is not identical to 'Int'
+</code></pre>
+
+<p>Force Unwrapping 型とでも言うんでしょうかね？変数に必ず値が入ってることを保証するために <code>!</code> が付いた型です。
+この型で定義した配列には、値の追加や変更ができなくなっています。。</p>
+
+<p>これで何が困るかというと、<code>UIKit</code> 使って <code>UIViewController</code> のサブクラスにプロパティを定義する際に
+初期化を <code>viewDidLoad</code> で行う時には、<code>!</code> をつけないと <code>initializer</code> が必要になってしまうので、プロパティの定義には <code>!</code> を付けていました。</p>
+
+<p>そうすると、<em>mutable</em> で扱いたかったプロパティなのに、変更できないという問題にぶち当たったわけです。。どうすんだこれ。。。</p>
+
+<h4>コンパイルエラーの例</h4>
+
+<pre><code class="swift">class MyViewController: UIViewController {
+
+  var numbers: [Int]!
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    self.numbers = [1, 2, 3]
+  }
+
+
+  func myFunc() {
+    self.numbers[0] = 0     // コンパイルエラー
+  }
+}
+</code></pre>
+
+<h4>うまくいく例</h4>
+
+<p>対応としては、一旦変数で受けて、変更後に元に戻すっていうので何とかなりますが、コンパイラの方でなんとかならんもんですかね。。</p>
+
+<pre><code class="swift">  func myFunc() {
+    var nums: [Int] = self.numbers
+    nums[0] = 0
+    self.numbers = nums
+  }
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[SwiftはenumをAnyObject型の変数に入れられない]]></title>
     <link href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"/>
     <updated>2014-07-31T10:39:48+09:00</updated>
     <id>http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject</id>
     <content type="html"><![CDATA[<p>Swift で <em>enum</em> を扱う際にハマった問題です。確認は <em>Xcode6 beta4</em> で行っています。</p>
+
+<h3>Swift の enum は AnyObject 型変数に代入できない</h3>
 
 <p>Swift では <code>enum</code> を <code>AnyObject</code> 型の変数に入れることができません。コンパイルエラーになります。<code>Any</code> 型なら代入できます。</p>
 
@@ -35,8 +103,11 @@ let anything: AnyObject = SomeType.Something  // error: type 'SomeType' does not
 let any: Any = SomeType.Something             // Enum Value
 </code></pre>
 
-<p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。
-これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
+<p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。</p>
+
+<h4>ReactiveCocoa とかと組み合わせるときにこまる</h4>
+
+<p>これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
 <code>enum</code> で設定する例えば <code>UITableViewCellAccessoryType</code> なんかを使いたい場合にコンパイルエラーになってしまいます。</p>
 
 <pre><code class="swift">// これはコンパイルエラーになる
@@ -55,7 +126,7 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
 <code>enum</code> を利用することができません。</p>
 
 <p>変数に代入するだけなら <code>Any</code> 型にすればいいんですが、既存ライブラリとの連携では難しそうです。 <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>
-これ、何かやり方ないんでしょうかね。。</p>
+これ、何かやり方ないんでしょうかね。。ReactiveSwift 待ちかなぁ</p>
 <div class="footnotes">
 <hr/>
 <ol>
@@ -1056,189 +1127,6 @@ extension Double {
     var ft: Double { return self / 3.28084 }
 }
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Titanium] Alloyのmeasurementの実装がイケてなかったので再実装した]]></title>
-    <link href="http://hamasyou.com/blog/2014/04/02/titanium-alloy-measurement/"/>
-    <updated>2014-04-02T18:17:44+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/04/02/titanium-alloy-measurement</id>
-    <content type="html"><![CDATA[<p><a href="http://www.appcelerator.com/titanium/">Titanium</a> Alloy の <code>measurement</code> がイケてない感じだったので再実装しました。</p>
-
-<p><code>measurement</code> には <code>pxToDP</code> とか <code>dpToPX</code> とかの単位を変換するメソッドが用意されていますが、中身を見るとびっくりします。。</p>
-
-<!-- more -->
-
-
-<pre><code class="javascript alloy/measurement.js (alloy 1.3.1)">var dpi = Ti.Platform.displayCaps.dpi, density = Ti.Platform.displayCaps.density;
-
-exports.dpToPX = function(val) {
-    return val * ("high" === density ? 2 : 1);
-};
-
-exports.pxToDP = function(val) {
-    return val / ("high" === density ? 2 : 1);
-};
-
-exports.pointPXToDP = function(pt) {
-    return {
-        x: exports.pxToDP(pt.x),
-        y: exports.pxToDP(pt.y)
-    };
-};
-</code></pre>
-
-<p>これ、イケてなさすぎでしょ。。</p>
-
-<p><code>Ti.UI.convertUnits</code> を使って次のように実装しなおしました。</p>
-
-<pre><code class="javascript lib/unit.js">var currentUnit = Ti.App.Properties.getString('ti.ui.defaultunit', 'system');
-currentUnit = (currentUnit === 'system') ? (OS_IOS) ? Ti.UI.UNIT_DIP : Ti.UI.UNIT_PX : currentUnit;
-
-function convert(val, fromUnit, toUnit) {
-    return Ti.UI.convertUnits('' + parseInt(val) + fromUnit, toUnit);
-}
-
-module.exports = exports = {
-    dpToPX: function(val) {
-        return convert(val, Ti.UI.UNIT_DIP, Ti.UI.UNIT_PX);
-    },
-    dpToSystem: function(val) {
-        return convert(val, Ti.UI.UNIT_DIP, currentUnit);
-    },
-    pxToDP: function(val) {
-        return convert(val, Ti.UI.UNIT_PX, Ti.UI.UNIT_DIP);
-    },
-    pxToSystem: function(val) {
-        return convert(val, Ti.UI.UNIT_PX, currentUnit);
-    },
-    systemToPX: function(val) {
-        return convert(val, currentUnit, Ti.UI.UNIT_PX);
-    },
-    systemToDP: function(val) {
-        return convert(val, currentUnit, Ti.UI.UNIT_DIP);
-    },
-    convertUnitToPX: function(valStr) {
-        return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_PX);
-    },
-    convertUnitToDP: function(valStr) {
-        return Ti.UI.convertUnits(valStr, Ti.UI.UNIT_DIP);
-    },
-    convertUnitToSystem: function(valStr) {
-        return Ti.UI.convertUnits(valStr, currentUnit);
-    },
-    pointPXToDP: function(pt) {
-        return {
-            x: this.pxToDP(pt.x),
-            y: this.pxToDP(pt.y)
-        };
-    }
-};
-</code></pre>
-
-<p>使い方と結果はこちら。</p>
-
-<pre><code class="javascript sample.js">var unit = require('unit');
-console.log('----- iOS -----');
-Ti.API.info('Ti.Platform.displayCaps.density: ' + Ti.Platform.displayCaps.density);
-Ti.API.info('Ti.Platform.displayCaps.dpi: ' + Ti.Platform.displayCaps.dpi);
-Ti.API.info('Ti.Platform.displayCaps.platformHeight: ' + Ti.Platform.displayCaps.platformHeight);
-Ti.API.info('Ti.Platform.displayCaps.platformWidth: ' + Ti.Platform.displayCaps.platformWidth);
-if (Ti.Platform.osname === 'android'){
-  Ti.API.info('Ti.Platform.displayCaps.xdpi: ' + Ti.Platform.displayCaps.xdpi);
-  Ti.API.info('Ti.Platform.displayCaps.ydpi: ' + Ti.Platform.displayCaps.ydpi);
-  Ti.API.info('Ti.Platform.displayCaps.logicalDensityFactor: ' + Ti.Platform.displayCaps.logicalDensityFactor);
-}
-console.log('dpToPX: ' + unit.dpToPX(130));
-console.log('dpToSystem: ' + unit.dpToSystem(130));
-console.log('pxToDP: ' + unit.pxToDP(130));
-console.log('pxToSystem: ' + unit.pxToSystem(130));
-console.log('systemToPX: ' + unit.systemToPX(130));
-console.log('systemToDP: ' + unit.systemToDP(130));
-console.log('convertUnitToPX: ' + unit.convertUnitToPX('130dp'));
-console.log('convertUnitToDP: ' + unit.convertUnitToDP('130dp'));
-console.log('convertUnitToSystem: ' + unit.convertUnitToSystem('130dp'));
-console.log('-----');
-</code></pre>
-
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span>
-<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line output'>[INFO] :   &mdash;&ndash; iPhone OS &mdash;&ndash;
-</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.density: high
-</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.dpi: 320
-</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.platformHeight: 568
-</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.platformWidth: 320
-</span><span class='line output'>[INFO] :   dpToPX: 260
-</span><span class='line output'>[INFO] :   dpToSystem: 130
-</span><span class='line output'>[INFO] :   pxToDP: 65
-</span><span class='line output'>[INFO] :   pxToSystem: 65
-</span><span class='line output'>[INFO] :   systemToPX: 260
-</span><span class='line output'>[INFO] :   systemToDP: 130
-</span><span class='line output'>[INFO] :   convertUnitToPX: 260
-</span><span class='line output'>[INFO] :   convertUnitToDP: 130
-</span><span class='line output'>[INFO] :   convertUnitToSystem: 130
-</span><span class='line output'>[INFO] :   &mdash;&ndash;</p>
-</span><span class='line output'>
-</span><span class='line output'><p>[INFO] :   &mdash;&ndash; android &mdash;&ndash;
-</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.density: xhigh
-</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.dpi: 320
-</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.platformHeight: 1280
-</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.platformWidth: 720
-</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.xdpi: 345.0566101074219
-</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.ydpi: 342.2315673828125
-</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.logicalDensityFactor: 2
-</span><span class='line output'>[INFO] :   dpToPX: 260
-</span><span class='line output'>[INFO] :   dpToSystem: 260
-</span><span class='line output'>[INFO] :   pxToDP: 65
-</span><span class='line output'>[INFO] :   pxToSystem: 130
-</span><span class='line output'>[INFO] :   systemToPX: 130
-</span><span class='line output'>[INFO] :   systemToDP: 65
-</span><span class='line output'>[INFO] :   convertUnitToPX: 260
-</span><span class='line output'>[INFO] :   convertUnitToDP: 130
-</span><span class='line output'>[INFO] :   convertUnitToSystem: 260
-</span><span class='line output'>[INFO] :   &mdash;&ndash;</span></code></pre></td></tr></table></div></div>
-        </div></p>
-
-<p>ご利用は計画的に。</p>
 ]]></content>
   </entry>
   

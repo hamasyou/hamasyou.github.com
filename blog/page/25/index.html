@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="本書は、JavaプログラムのテストをJUnitを使ってEclipse上で行ってしまおうという、いかにもJavaプログラムにうけがいい内容をもってきています。しかし、中身はというと、非常に実践向けの、テストの何たるかを開発者の視点から語っているわかりやすい内容になっています。 &hellip;">
+  <meta name="description" content="「アジャイルソフトウェア開発の奥義」を読んで第二弾。オブジェクト指向設計の原則に関するメモです。自分で読んで思い出せるくらいの内容しかメモってないと思われるので、もっと詳しい解説が欲しければ本書を買ってください。 本書には、クラス設計の原則として5つの原則が載っています。 単一責任の原則 (The &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/25/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="本書は、JavaプログラムのテストをJUnitを使ってEclipse上で行ってしまおうという、いかにもJavaプログラムにうけがいい内容をもってきています。しかし、中身はというと、非常に実践向けの、テストの何たるかを開発者の視点から語っているわかりやすい内容になっています。 &hellip;" />
+<meta property="og:description" content="「アジャイルソフトウェア開発の奥義」を読んで第二弾。オブジェクト指向設計の原則に関するメモです。自分で読んで思い出せるくらいの内容しかメモってないと思われるので、もっと詳しい解説が欲しければ本書を買ってください。 本書には、クラス設計の原則として5つの原則が載っています。 単一責任の原則 (The &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +106,207 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2004/07/22/4797323361/" class="excerpt-link">オブジェクト指向設計の原則</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-07-22T13:43:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jul 22<span>nd</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a>
+    
+      <a class="tag label label-info" href="/blog/tags/aziyairu/" rel="nofollow">アジャイル</a>
+    
+      <a class="tag label label-info" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2004/07/22/4797323361/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/07/22/4797323361/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/07/22/4797323361/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/07/22/4797323361/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2004/07/22/4797323361/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2004/07/22/4797323361/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2004/07/22/4797323361/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2004/07/22/4797323361/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22" title="オブジェクト指向設計の原則" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/51YANQY595L._SL500_AA300_.jpg" class="asin-thumbnail" alt="オブジェクト指向設計の原則" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22" title="オブジェクト指向設計の原則" rel="external nofollow">オブジェクト指向設計の原則</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>ロバート・C・マーチン (著), 瀬谷 啓介 (翻訳) </dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>ソフトバンククリエイティブ</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4797323361/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><p>「アジャイルソフトウェア開発の奥義」を読んで第二弾。オブジェクト指向設計の原則に関するメモです。自分で読んで思い出せるくらいの内容しかメモってないと思われるので、もっと詳しい解説が欲しければ本書を買ってください。</p>
+
+<p>本書には、クラス設計の原則として5つの原則が載っています。</p>
+
+<ul>
+<li>
+<strong>単一責任の原則</strong> (The Single Responsibility Principle: SRP)</li>
+<li>
+<strong>オープン・クローズドの原則</strong> (The Open-ClosedPrinciple: OCP)</li>
+<li>
+<strong>Liskovの置換原則</strong> (The Liskov Substitution Principle: LSP)</li>
+<li>
+<strong>依存関係逆転の原則</strong> (The Dependency Inversion Principle: DIP)</li>
+<li>
+<strong>インターフェース分離の原則</strong> (The Interface Segregation Principle: ISP)</li>
+</ul>
+
+
+<p>パッケージ設計の原則として次6つの原則が載っています。</p>
+
+<ul>
+<li>
+<strong>再利用・リリース等価の原則</strong> (Resuse-Release Equivalency Principle: REP)</li>
+<li>
+<strong>全再利用の原則</strong> (Common Resue Principle: CRP)</li>
+<li>
+<strong>閉鎖性共通の原則</strong> (Common Closure Principle: CCP)</li>
+<li>
+<strong>非循環依存関係の原則</strong> (Acyclic Dependencies Principle: ADP)</li>
+<li>
+<strong>安定依存の原則</strong> (Stable Dependencies Principle: SDP)</li>
+<li>
+<strong>安定度・抽象度等価の原則</strong>(Stable Abstractions Principle: SAP)</li>
+</ul>
+
+
+<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715937/sorehabooks-22" rel="external nofollow" title="プログラマのためのJava設計ベストプラクティス">プログラマのためのJava設計ベストプラクティス</a>』という本にも、オブジェクト指向設計の原則に関しての解説があります。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2004/07/22/4797323361/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1558,171 +1759,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/06/30/4756136494/" class="excerpt-link">プログラミング作法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-06-30T03:25:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 30<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/kodeingugui-yue/" rel="nofollow">コーディング規約</a>
-    
-      <a class="tag label label-info" href="/blog/tags/puroguramingu/" rel="nofollow">プログラミング</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/06/30/4756136494/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/06/30/4756136494/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/30/4756136494/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/06/30/4756136494/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/06/30/4756136494/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/06/30/4756136494/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/06/30/4756136494/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/06/30/4756136494/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756136494/sorehabooks-22" title="プログラミング作法" rel="external nofollow">
-      <img src="http://ec3.images-amazon.com/images/I/515BKZF6GXL._SL500_AA300_.jpg" class="asin-thumbnail" alt="プログラミング作法" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756136494/sorehabooks-22" title="プログラミング作法" rel="external nofollow">プログラミング作法</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>ブライアン カーニハン (著), ロブ パイク (著), Brian Kernighan (原著), Rob Pike (原著), 福崎 俊博 (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>アスキー</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756136494/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>この世の中に、自分のソースコードを芸術のように扱うプログラマーがいったい何人いるのだろうか。本書を読み終わった後、プログラミングって芸術だよなーって、一人で納得してしまいました。</p>
-
-<p><strong class="text-danger">ソースコードは、コンピュータが解釈するもの。良いソースコードは、人が解釈できるもの。</strong>自らのプログラミングソースを優れたものとして自慢できるプログラマーに僕はなりたい。本書はそんな願いをかなえてくれる、すばらしきバイブルです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/06/30/4756136494/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/26/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1766,6 +1802,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/07/31/swift-array-force-unwrapping/">SwiftでForce Unwrapping型の配列に値を追加できない</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/31/swift-enum-anyobject/">SwiftはenumをAnyObject型の変数に入れられない</a>
       </li>
     
@@ -1801,10 +1841,6 @@
         <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/05/rails-webservice-startup/">Webサービスをスタートアップする10の手順（Rails編）</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1812,7 +1848,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">123</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">124</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

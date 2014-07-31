@@ -13,17 +13,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Swift で enum を扱う際にハマった問題です。確認は Xcode6 beta4 で行っています。 Swift では enum を AnyObject 型の変数に入れることができません。コンパイルエラーになります。Any 型なら代入できます。 1
+  <meta name="description" content="この記事は Xcode6 beta4 を元に記述しています。 Swift の配列は mutable か immutable Swift では配列を mutable/immutable の区別なく定義することができるようになりました。 1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11 &hellip;">
+3 var numbers = [1, 2, 3] &hellip;">
   
 
   
@@ -34,17 +26,9 @@
 
 <meta property="og:url" content="http://hamasyou.com/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Swift で enum を扱う際にハマった問題です。確認は Xcode6 beta4 で行っています。 Swift では enum を AnyObject 型の変数に入れることができません。コンパイルエラーになります。Any 型なら代入できます。 1
+<meta property="og:description" content="この記事は Xcode6 beta4 を元に記述しています。 Swift の配列は mutable か immutable Swift では配列を mutable/immutable の区別なく定義することができるようになりました。 1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11 &hellip;" />
+3 var numbers = [1, 2, 3] &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -126,6 +110,237 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/31/swift-array-force-unwrapping/" class="excerpt-link">SwiftでForce Unwrapping型の配列に値を追加できない</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-07-31T11:28:11+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jul 31<span>st</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/swift/" rel="nofollow">Swift</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/07/31/swift-array-force-unwrapping/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>この記事は Xcode6 beta4 を元に記述しています。</p>
+
+<h3>Swift の配列は mutable か immutable</h3>
+
+<p>Swift では配列を <strong class="text-danger">mutable/immutable</strong> の区別なく定義することができるようになりました。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span class="line"><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line"><span class="n">println</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>    <span class="c1">// [0, 2, 3]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>let</code> で定義すると <strong class="text-danger">immutable</strong>、<code>var</code> で定義すると <strong class="text-danger">mutable</strong> になり、配列の代入はすべてコピーで行われるようになっています。</p>
+
+<h3>Force UnWrapping 型!</h3>
+
+<p>で、ハマったのが次のようなコードです。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="nl">numbers</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span><span class="o">!</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span class="line"><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1">// error: '@lvalue $T7' is not identical to 'Int'</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Force Unwrapping 型とでも言うんでしょうかね？変数に必ず値が入ってることを保証するために <code>!</code> が付いた型です。
+この型で定義した配列には、値の追加や変更ができなくなっています。。</p>
+
+<p>これで何が困るかというと、<code>UIKit</code> 使って <code>UIViewController</code> のサブクラスにプロパティを定義する際に
+初期化を <code>viewDidLoad</code> で行う時には、<code>!</code> をつけないと <code>initializer</code> が必要になってしまうので、プロパティの定義には <code>!</code> を付けていました。</p>
+
+<p>そうすると、<em>mutable</em> で扱いたかったプロパティなのに、変更できないという問題にぶち当たったわけです。。どうすんだこれ。。。</p>
+
+<h4>コンパイルエラーの例</h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="nl">MyViewController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">var</span> <span class="nl">numbers</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span><span class="o">!</span>
+</span><span class="line">
+</span><span class="line">  <span class="kr">override</span> <span class="k">func</span> <span class="n">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nb">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line">    <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">  <span class="k">func</span> <span class="n">myFunc</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c1">// コンパイルエラー</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h4>うまくいく例</h4>
+
+<p>対応としては、一旦変数で受けて、変更後に元に戻すっていうので何とかなりますが、コンパイラの方でなんとかならんもんですかね。。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line">  <span class="k">func</span> <span class="nf">myFunc</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">nums</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span>
+</span><span class="line">    <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line">    <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span> <span class="o">=</span> <span class="n">nums</span>
+</span><span class="line">  <span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
     
     
     <article>
@@ -252,6 +467,8 @@
 
   <div class="entry-content"><p>Swift で <em>enum</em> を扱う際にハマった問題です。確認は <em>Xcode6 beta4</em> で行っています。</p>
 
+<h3>Swift の enum は AnyObject 型変数に代入できない</h3>
+
 <p>Swift では <code>enum</code> を <code>AnyObject</code> 型の変数に入れることができません。コンパイルエラーになります。<code>Any</code> 型なら代入できます。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
@@ -282,8 +499,11 @@
 </tr></table></div></figure></notextile></div>
 
 
-<p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。
-これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" rel="external nofollow" title="ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
+<p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。</p>
+
+<h4>ReactiveCocoa とかと組み合わせるときにこまる</h4>
+
+<p>これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" rel="external nofollow" title="ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
 <code>enum</code> で設定する例えば <code>UITableViewCellAccessoryType</code> なんかを使いたい場合にコンパイルエラーになってしまいます。</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
@@ -315,7 +535,7 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
 <code>enum</code> を利用することができません。</p>
 
 <p>変数に代入するだけなら <code>Any</code> 型にすればいいんですが、既存ライブラリとの連携では難しそうです。 <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>
-これ、何かやり方ないんでしょうかね。。</p>
+これ、何かやり方ないんでしょうかね。。ReactiveSwift 待ちかなぁ</p>
 <div class="footnotes">
 <hr>
 <ol>
@@ -1605,152 +1825,6 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/05/rails-webservice-startup/" class="excerpt-link">Webサービスをスタートアップする10の手順（Rails編）</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-03-05T09:44:22+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Mar 5<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/webservice/" rel="nofollow">WebService</a>
-    
-      <a class="tag label label-info" href="/blog/tags/startup/" rel="nofollow">StartUp</a>
-    
-      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/03/05/rails-webservice-startup/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/03/05/rails-webservice-startup/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/03/05/rails-webservice-startup/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/03/05/rails-webservice-startup/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/03/05/rails-webservice-startup/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/03/05/rails-webservice-startup/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/03/05/rails-webservice-startup/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/03/05/rails-webservice-startup/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>アイデアを思いついたときに Web サービスを作ってスタートアップする手順メモです。Rails 編としていますが、たぶん別のバージョンは書かないでしょう。。</p>
-
-<p>手順は思いついた順（というか、前に作ったサービスの手順）で書いていますので、抜け漏れとかあると思いますがコメントあればよろしくおねがいします。</p>
-
-<p>ちなみに、最近作ったサービスはこちら。よかったら使ってみてください。</p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://booboo.mountposition.co.jp/" rel="external nofollow" title="Web上のメディアのすべてにヤジを飛ばすサービス - 野次る">Web上のメディアのすべてにヤジを飛ばすサービス - 野次る</a></p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/03/05/rails-webservice-startup/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/2/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1792,6 +1866,10 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/07/31/swift-array-force-unwrapping/">SwiftでForce Unwrapping型の配列に値を追加できない</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/31/swift-enum-anyobject/">SwiftはenumをAnyObject型の変数に入れられない</a>
       </li>
     
@@ -1827,10 +1905,6 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
         <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/05/rails-webservice-startup/">Webサービスをスタートアップする10の手順（Rails編）</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1838,7 +1912,7 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">123</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">124</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

@@ -6,41 +6,35 @@
 <head>
   <meta name="google-site-verification" content="0KEsMQaWAcvp2KBqvHmWsJ9rrIAXrxZCpFz-UBS9w9c" />
   <meta charset="utf-8" />
-  <title>jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応 - それはBooks</title>
+  <title>SwiftでForce Unwrapping型の配列に値を追加できない - それはBooks</title>
 
   <meta name="HandheldFriendly" content="true" />
   <meta name="MobileOptimized" content="320" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。 環境 Rails
-3.0.7
-jpmobile
-0.1.6
-kaminari
-0.12.4 (adsbygoogle = &hellip;">
-  <meta name="keywords" content="Rails, Ruby, jpmobile, kaminari">
+  <meta name="description" content="この記事は Xcode6 beta4 を元に記述しています。 Swift の配列は mutable か immutable Swift では配列を mutable/immutable の区別なく定義することができるようになりました。 1
+2
+3 var numbers = [1, 2, 3] &hellip;">
+  <meta name="keywords" content="Swift,Apple,Lang,Force Unwrapping,!">
 
   
 
 
-<meta property="og:title" content="jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応 - それはBooks" />
+<meta property="og:title" content="SwiftでForce Unwrapping型の配列に値を追加できない - それはBooks" />
 <meta property="og:type" content="article" />
 
-<meta property="og:url" content="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/" />
+<meta property="og:url" content="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。 環境 Rails
-3.0.7
-jpmobile
-0.1.6
-kaminari
-0.12.4 (adsbygoogle = &hellip;" />
+<meta property="og:description" content="この記事は Xcode6 beta4 を元に記述しています。 Swift の配列は mutable か immutable Swift では配列を mutable/immutable の区別なく定義することができるようになりました。 1
+2
+3 var numbers = [1, 2, 3] &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
 
   
-  <link rel="canonical" href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">
+  <link rel="canonical" href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/">
   
   
 
@@ -118,7 +112,7 @@ kaminari
   
   <header class="page-header">
     
-      <h1 class="entry-title">jpmobile と kaminari を使ったときに invalid byte sequence in Shift_JIS が表示される対応</h1>
+      <h1 class="entry-title">SwiftでForce Unwrapping型の配列に値を追加できない</h1>
     
     
       <p class="meta">
@@ -135,12 +129,12 @@ kaminari
 
 
 
-<time datetime="2011-06-14T11:29:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
+<time datetime="2014-07-31T11:28:11+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jul 31<span>st</span>, 2014</time>
         <span class="divider"></span>
         <span class="categories">
   
     
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
     
   
 </span>
@@ -148,13 +142,7 @@ kaminari
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/jpmobile/" rel="nofollow">jpmobile</a>
-    
-      <a class="tag label label-info" href="/blog/tags/kaminari/" rel="nofollow">kaminari</a>
-    
-      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
-    
-      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
+      <a class="tag label label-info" href="/blog/tags/swift/" rel="nofollow">Swift</a>
     
   
 </span>
@@ -170,7 +158,7 @@ kaminari
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -186,7 +174,7 @@ kaminari
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
+         data-href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"></div>
   </li>
   
   
@@ -194,7 +182,7 @@ kaminari
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
+         data-href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"></div>
   </li>
   
   
@@ -202,23 +190,23 @@ kaminari
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
+       data-url="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
+         data-href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
+       data-save-url="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -242,57 +230,106 @@ kaminari
 
 
 
-<div class="entry-content"><p>jpmobile と kaminari を組み合わせたときに invalid byte sequence in Shift_JIS が表示される問題の原因と対策です。</p>
+<div class="entry-content"><p>この記事は Xcode6 beta4 を元に記述しています。</p>
 
-<p><section></section></p>
+<h3>Swift の配列は mutable か immutable</h3>
 
-<h4>環境</h4>
+<p>Swift では配列を <strong class="text-danger">mutable/immutable</strong> の区別なく定義することができるようになりました。</p>
 
-
-
-
-<dl>
-<dt>Rails</dt>
-<dd>3.0.7</dd>
-<dt>jpmobile</dt>
-<dd>0.1.6</dd>
-<dt>kaminari</dt>
-<dd>0.12.4</dd>
-</dl>
-
-
-<p></p>
-
-<p><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle" style="display:block;width:728px;height:90px" data-ad-client="ca-pub-0904452411138796" data-ad-slot="0907364863"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script></p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span class="line"><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line"><span class="n">println</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>    <span class="c1">// [0, 2, 3]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
+<p><code>let</code> で定義すると <strong class="text-danger">immutable</strong>、<code>var</code> で定義すると <strong class="text-danger">mutable</strong> になり、配列の代入はすべてコピーで行われるようになっています。</p>
 
-<p>jpmobile の mobile_filter を通して kaminari でページングを行うときに、invalid byte sequence in Shift_JIS エラーが出る場合があります。</p>
+<h3>Force UnWrapping 型!</h3>
 
-<p>これは、kaminari で生成するページングリンク内に、UTF-8 の文字エンコーディングの日本語文字が入っているのが原因です。</p>
+<p>で、ハマったのが次のようなコードです。</p>
 
-<p>kaminari がページリンクを作成するときに、日本語文字をパーセントエンコード（URLエンコード）していて、jpmobile の mobile_filter がエンコードされている文字を UTF-8 だと認識出来ずに表示してしまうのが原因になっています。</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="nl">numbers</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span><span class="o">!</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span class="line"><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1">// error: '@lvalue $T7' is not identical to 'Int'</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
-<p>この組み合わせで kaminari のページリンク内に日本語パラメータがはいってしまうのは、おそらくフォームのサブミットボタンの value が原因だと思います。</p>
 
-<p>ほとんどの場合、サブミットボタンの value は必要ないと思うので、submit_tag の :name オプションに nil を設定してサブミットボタンの value を送らないようにするといいかと思います。</p>
+<p>Force Unwrapping 型とでも言うんでしょうかね？変数に必ず値が入ってることを保証するために <code>!</code> が付いた型です。
+この型で定義した配列には、値の追加や変更ができなくなっています。。</p>
+
+<p>これで何が困るかというと、<code>UIKit</code> 使って <code>UIViewController</code> のサブクラスにプロパティを定義する際に
+初期化を <code>viewDidLoad</code> で行う時には、<code>!</code> をつけないと <code>initializer</code> が必要になってしまうので、プロパティの定義には <code>!</code> を付けていました。</p>
+
+<p>そうすると、<em>mutable</em> で扱いたかったプロパティなのに、変更できないという問題にぶち当たったわけです。。どうすんだこれ。。。</p>
+
+<h4>コンパイルエラーの例</h4>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
 </pre></td>
-<td class="code"><pre><code class="html+erb"><span class="line"><span class="cp">&lt;%=</span> <span class="n">form_tag</span> <span class="n">user_path</span> <span class="k">do</span> <span class="cp">%&gt;</span>
-</span><span class="line">  <span class="cp">&lt;%=</span> <span class="n">select_tag</span> <span class="s2">"category"</span><span class="p">,</span> <span class="n">options_from_collection_for_select</span><span class="p">(</span><span class="no">Category</span><span class="o">.</span><span class="n">all</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:label</span><span class="p">,</span> <span class="n">params</span><span class="o">[</span><span class="ss">:category</span><span class="o">]</span><span class="p">)</span> <span class="cp">%&gt;</span>
-</span><span class="line">  <span class="cp">&lt;%=</span> <span class="n">submit_tag</span> <span class="s2">"表示"</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="kp">nil</span> <span class="cp">%&gt;</span>
-</span><span class="line"><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="nl">MyViewController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">var</span> <span class="nl">numbers</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span><span class="o">!</span>
+</span><span class="line">
+</span><span class="line">  <span class="kr">override</span> <span class="k">func</span> <span class="n">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nb">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line">    <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">  <span class="k">func</span> <span class="n">myFunc</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c1">// コンパイルエラー</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
 </tr></table></div></figure></notextile></div>
+
+
+<h4>うまくいく例</h4>
+
+<p>対応としては、一旦変数で受けて、変更後に元に戻すっていうので何とかなりますが、コンパイラの方でなんとかならんもんですかね。。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line">  <span class="k">func</span> <span class="nf">myFunc</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">nums</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span>
+</span><span class="line">    <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line">    <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span> <span class="o">=</span> <span class="n">nums</span>
+</span><span class="line">  <span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
 
 </div>
 
@@ -329,15 +366,13 @@ kaminari
       <h3 class="h1">関連記事</h3>
       <ul>
         
-        <li><a href="/blog/2011/06/14/kaminari-paginate-array/">kaminari の paginate_array が便利</a></li>
+        <li><a href="/blog/2014/07/31/swift-enum-anyobject/">SwiftはenumをAnyObject型の変数に入れられない</a></li>
         
-        <li><a href="/blog/2010/11/20/rails-activerecord/">[Rails] ActiveRecord でツリー関係の関連を定義する</a></li>
+        <li><a href="/blog/2014/07/03/swift-uitableview-nsindexpath/">Swift で UITableView 関連の操作をする際に NSIndexPath を作る方法</a></li>
         
-        <li><a href="/blog/2014/03/05/rails-webservice-startup/">Webサービスをスタートアップする10の手順（Rails編）</a></li>
+        <li><a href="/blog/2014/06/27/apple-swift-cocoa-objective-c/">Using Swift with Cocoa and Objective-C</a></li>
         
-        <li><a href="/blog/2014/03/04/canonical-url/">canonicalなURLってなにがいいんだろう？</a></li>
-        
-        <li><a href="/blog/2014/02/20/capistrano3/">Capistrano3をRailsで使ってみた感想</a></li>
+        <li><a href="/blog/2014/06/26/apple-swift/">Apple Swift プログラミング言語おぼえがき</a></li>
         
       </ul>
     </div>
@@ -361,12 +396,12 @@ kaminari
 
 
 
-<time datetime="2011-06-14T11:29:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
+<time datetime="2014-07-31T11:28:11+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jul 31<span>st</span>, 2014</time>
         <span class="divider"></span>
         <span class="categories">
   
     
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
     
   
 </span>
@@ -374,13 +409,7 @@ kaminari
         <span class="tags">
   
     
-      <a class="tag label label-info" href="/blog/tags/jpmobile/" rel="nofollow">jpmobile</a>
-    
-      <a class="tag label label-info" href="/blog/tags/kaminari/" rel="nofollow">kaminari</a>
-    
-      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
-    
-      <a class="tag label label-info" href="/blog/tags/ruby/" rel="nofollow">Ruby</a>
+      <a class="tag label label-info" href="/blog/tags/swift/" rel="nofollow">Swift</a>
     
   
 </span>
@@ -393,7 +422,7 @@ kaminari
 <ul class="sharing">
   
   <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"
        class="hatena-bookmark-button"
        rel="nofollow"
        data-hatena-bookmark-layout="standard-balloon"
@@ -409,7 +438,7 @@ kaminari
          data-layout="button_count"
          data-show-faces="false"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
+         data-href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"></div>
   </li>
   
   
@@ -417,7 +446,7 @@ kaminari
     <div class="fb-share-button"
          data-type="button_count"
          data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
+         data-href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"></div>
   </li>
   
   
@@ -425,23 +454,23 @@ kaminari
     <a href="http://twitter.com/share"
        class="twitter-share-button"
        rel="nofollow"
-       data-url="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
+       data-url="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"
        data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/">Tweet</a>
+       data-counturl="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/">Tweet</a>
   </li>
   
   
   <li class="googleplus">
     <div class="g-plusone"
          data-size="medium"
-         data-href="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"></div>
+         data-href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"></div>
   </li>
   
   
   <li class="pocket">
     <a href="https://getpocket.com/save"
        class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/"
+       data-save-url="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"
        data-pocket-count="horizontal"
        data-pocket-align="left">Pocket</a>
   </li>
@@ -457,12 +486,9 @@ kaminari
       <ul class="pager">
         
         <li class="previous"><a class="basic-alignment left"
-                                href="/blog/2011/06/14/activerecordprevious-changes/" title="Previous Post:
-      ActiveRecord#previous_changes で変更のあった属性を取り出す"><i class="fa fa-arrow-circle-left"></i> ActiveRecord#previous_...</a></li>
+                                href="/blog/2014/07/31/swift-enum-anyobject/" title="Previous Post:
+      SwiftはenumをAnyObject型の変数に入れられない"><i class="fa fa-arrow-circle-left"></i> SwiftはenumをAnyObject型の...</a></li>
         
-        
-        <li class="next"><a class="basic-alignment right" href="/blog/2011/06/18/4798123986/"
-                            title="Next Post: Titanium Mobileで開発するiPhone/Androidアプリ (Smart Mobile Developer)">Titanium Mobileで開発するiP... <i class="fa fa-arrow-circle-right"></i></a></li>
         
       </ul>
 
@@ -512,6 +538,10 @@ kaminari
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/07/31/swift-array-force-unwrapping/">SwiftでForce Unwrapping型の配列に値を追加できない</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/31/swift-enum-anyobject/">SwiftはenumをAnyObject型の変数に入れられない</a>
       </li>
     
@@ -547,10 +577,6 @@ kaminari
         <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/05/rails-webservice-startup/">Webサービスをスタートアップする10の手順（Rails編）</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -558,7 +584,7 @@ kaminari
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">123</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">124</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">
@@ -640,8 +666,8 @@ kaminari
   
   var disqus_shortname = 'hamasyou';
   
-  var disqus_identifier = 'http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/';
-  var disqus_url = 'http://hamasyou.com/blog/2011/06/14/jpmobile-kaminari-invalid-byte-sequence-in-shift-jis/';
+  var disqus_identifier = 'http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/';
+  var disqus_url = 'http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/';
   var disqus_script = 'embed.js';
   
   a('//'+disqus_shortname+'.disqus.com/'+disqus_script);
