@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Hibernate は O/R マッピングツールと呼ばれる、リレーショナルデータベースとオブジェクトモデルとの間を埋めるフレームワークです。 Hibernate は独自のオブジェクトクエリ言語 HQL を使って、非常にハイパフォーマンスな検索を可能にしています。それだけでなく、 &hellip;">
+  <meta name="description" content="Hibernate は O/R マッピングツールと呼ばれる、リレーショナルデータベースとオブジェクトモデルとの間を埋めるフレームワークです。 関連するテーブルのオブジェクトを管理する方法が、十数種類あります。Index of Relationships&lt; のサイトに、Hibernate &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/22/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Hibernate は O/R マッピングツールと呼ばれる、リレーショナルデータベースとオブジェクトモデルとの間を埋めるフレームワークです。 Hibernate は独自のオブジェクトクエリ言語 HQL を使って、非常にハイパフォーマンスな検索を可能にしています。それだけでなく、 &hellip;" />
+<meta property="og:description" content="Hibernate は O/R マッピングツールと呼ばれる、リレーショナルデータベースとオブジェクトモデルとの間を埋めるフレームワークです。 関連するテーブルのオブジェクトを管理する方法が、十数種類あります。Index of Relationships&lt; のサイトに、Hibernate &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +106,166 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2004/11/18/hibernate1/" class="excerpt-link">Hibernate で O/Rマッピング してみる ： 基本編</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-11-18T14:01:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 18<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/hibernate/" rel="nofollow">Hibernate</a>
+    
+      <a class="tag label label-info" href="/blog/tags/o-slash-rmatupingu/" rel="nofollow">O/Rマッピング</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2004/11/18/hibernate1/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/11/18/hibernate1/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/11/18/hibernate1/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/11/18/hibernate1/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2004/11/18/hibernate1/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2004/11/18/hibernate1/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2004/11/18/hibernate1/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2004/11/18/hibernate1/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/193239415X/sorehabooks-22" rel="external nofollow" title=""></a>
+</p>
+
+
+<p>Hibernate は O/R マッピングツールと呼ばれる、リレーショナルデータベースとオブジェクトモデルとの間を埋めるフレームワークです。</p>
+
+<p>関連するテーブルのオブジェクトを管理する方法が、十数種類あります。<a href="http://www.xylax.net/hibernate/" rel="external nofollow" title="Index of Relationships">Index of Relationships</a>&lt; のサイトに、Hibernate でサポートされる関係の一覧が載っています。</p>
+
+<p>ドキュメントも豊富にそろっていて、<a href="http://www.hibernate.org/hib_docs/reference/ja/html/" rel="external nofollow" title="リファレンスマニュアル">リファレンスマニュアル</a> (日本語翻訳済み) が非常に参考になります。マニュアルの中から、気になった部分や使えそうな部分だけを抜き出しておきます。</p>
+
+<p><section></section></p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><p><i class="fa fa-hand-o-right"></i> <a href="http://www.hibernate.org/hib_docs/reference/ja/html/" rel="external nofollow" title="Hibernate リファレンスマニュアル">Hibernate リファレンスマニュアル</a></p></li>
+<li><p><i class="fa fa-hand-o-right"></i> <a href="http://wiki.bmedianode.com/Hibernate/" rel="external nofollow" title="Hibernate Pad">Hibernate Pad</a></p></li>
+</ul>
+
+
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2004/11/18/hibernate1/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1547,189 +1707,6 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/10/30/4816334114/" class="excerpt-link">はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-10-30T12:17:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 30<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/uml/" rel="nofollow">UML</a>
-    
-      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/10/30/4816334114/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/30/4816334114/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/30/4816334114/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/10/30/4816334114/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/10/30/4816334114/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/10/30/4816334114/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/10/30/4816334114/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/10/30/4816334114/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4816334114/sorehabooks-22" title="はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!" rel="external nofollow">
-      <img src="http://ec3.images-amazon.com/images/I/51WB9PTJNTL._SL500_AA300_.jpg" class="asin-thumbnail" alt="はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4816334114/sorehabooks-22" title="はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!" rel="external nofollow">はじめて学ぶUML―オブジェクト指向の基礎からUMLの利用法まで、しっかりよくわかる!</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>竹政 昭利 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>ナツメ社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4816334114/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>「ユースケース図」から「パッケージ図」までの全10個のUML図を<a href="http://www.umtp-japan.org/examination/index.html" rel="external nofollow" title="モデリング技能認定試験">モデリング技能認定試験</a>のL1,L2試験に合格できる程度で紹介されています。UMLは、世界標準のモデリング表記法です。モデリングの共通言語として使われています。</p>
-
-<p>本書では、下記の10個のUML図について説明しています。</p>
-
-<ol>
-<li>ユースケース図</li>
-<li>クラス図</li>
-<li>シーケンス図</li>
-<li>コラボレーション図</li>
-<li>ステートチャート図</li>
-<li>コンポーネント図</li>
-<li>配置図</li>
-<li>オブジェクト図</li>
-<li>アクティビティ図</li>
-<li>パッケージ図</li>
-</ol>
-
-
-<p>UML図以外にも簡単なオブジェクト指向の基本概念やモデリングの必要性などにも触れられています。モデリング技能認定試験の勉強本としての活用が考慮されているのか、Keyword や Step Up といった本文中に出てきた用語の解説も豊富に載っています。</p>
-
-<p>本書で扱われているUMLのバージョンは1.xです。今後は、UMLの2.0が使われ始めると思います。UML2.0では、1.xよりもさらに表現力豊かになった図が使えたり、現在のUML図のいくつかが変更されていたりします。ですが、UML2.0対応の本で始めるよりも、本書のような<b>全体図を見渡せる</b>入門書で基礎から作っていくのが、UMLの理解のコツかと思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/10/30/4816334114/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/23/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1773,6 +1750,10 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/08/27/swift-dictionary-anyobject/">Swift での Dictionary<String, AnyObject> の扱いメモ</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/31/swift-array-force-unwrapping/">SwiftでForce Unwrapping型の配列に値を追加できない</a>
       </li>
     
@@ -1808,10 +1789,6 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
         <a href="/blog/2014/03/10/4774162868/">インフラデザインパターン ~安定稼動に導く127の設計方式</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1819,7 +1796,7 @@ Springの詳細については、ほかにもっとよいサイト(<a href="http
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">124</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">125</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

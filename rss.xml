@@ -2,12 +2,81 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Thu, 31 Jul 2014 11:49:18 +0900</pubDate>
+  <pubDate>Thu, 28 Aug 2014 00:13:14 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
   <atom:link href="http://hamasyou.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+  
+  <item>
+    <title><![CDATA[Swift での Dictionary<String, AnyObject> の扱いメモ]]></title>
+    <link>http://hamasyou.com/blog/2014/08/27/swift-dictionary-anyobject/</link>
+    <guid>http://hamasyou.com/blog/2014/08/27/swift-dictionary-anyobject/</guid>
+    <description>
+      <![CDATA[<p>Swift で <code>Dictionary</code> を扱うときのメモです。API 呼び出しのレスポンスを JSON で扱いたい時に <code>Dictionary&lt;String, AnyObject&gt;</code> として扱う際のポイントです。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">typealias</span> <span class="n">JSONDictionary</span> <span class="o">=</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">AnyObject</span><span class="o">&gt;</span>
+</span><span class="line"><span class="k">let</span> <span class="n">json</span> <span class="o">=</span> <span class="bp">NSJSONSerialization</span><span class="p">.</span><span class="n">JSONObjectWithData</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">.</span><span class="n">MutableContainers</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span> <span class="kt">as</span> <span class="n">JSONDictionary</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">str1</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span><span class="o">!</span> <span class="kt">as</span> <span class="n">String</span>    <span class="c1">// String</span>
+</span><span class="line"><span class="k">let</span> <span class="n">str2</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span> <span class="kt">as</span> <span class="n">AnyObject</span><span class="o">?</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span>  <span class="c1">// String?</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">str3</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span> <span class="kt">as</span> <span class="n">String</span>     <span class="c1">// これはコンパイルエラー '(String, AnyObject)' is not convertible to 'String'</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>最後のはなぜコンパイルエラーになるかというと、<code>Dictionary</code> の <code>subscript</code> が2種類定義されていて、期待したのと違う方が呼び出されているからです。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">struct</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="nl">Key</span> <span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">Value</span><span class="o">&gt;</span> <span class="o">:</span> <span class="n">CollectionType</span><span class="p">,</span> <span class="n">DictionaryLiteralConvertible</span> <span class="p">{</span>
+</span><span class="line">    <span class="p">...</span>
+</span><span class="line">    <span class="k">subscript</span> <span class="p">(</span><span class="nl">i</span><span class="p">:</span> <span class="n">DictionaryIndex</span><span class="o">&lt;</span><span class="n">Key</span><span class="p">,</span> <span class="n">Value</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">Key</span><span class="p">,</span> <span class="n">Value</span><span class="p">)</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+</span><span class="line">    <span class="k">subscript</span> <span class="p">(</span><span class="nl">key</span><span class="p">:</span> <span class="n">Key</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Value</span><span class="o">?</span>
+</span><span class="line">    <span class="p">...</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>json["foobar"]</code> の戻り値は <code>(Key, Value)</code> か <code>Value?</code> のどちらかですが、<code>as String</code> を付けた際に Optional ではないと判断されてしまい <code>(Key, Value)</code> が戻り値の型と判定されます。それでコンパイルエラーになるわけですね。</p>
+
+<p>期待した通りに取得するには、<code>json["foobar"]</code> の戻り値を <code>Value?</code> として扱う必要があるので、</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span><span class="o">!</span>
+</span><span class="line"><span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span> <span class="kt">as</span> <span class="n">AnyObject</span><span class="o">?</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>のどちらかでアクセスする必要があるわけです。<code>!</code> を付けると unwrap されるので <code>nil</code> が入っていると実行時エラーになります。逆に <code>as AnyObject? as? String</code> でアクセスすると Optional 型になってしまいます。</p>
+
+<p>API のインターフェースと相談して、どちらの型で処理するか決めるといいんじゃないかと思います。</p>
+]]>
+    </description>
+    <pubDate>Wed, 27 Aug 2014 23:54:25 +0900</pubDate>
+  </item>
   
   <item>
     <title><![CDATA[SwiftでForce Unwrapping型の配列に値を追加できない]]></title>
@@ -6026,39 +6095,6 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 ]]>
     </description>
     <pubDate>Fri, 21 Feb 2014 15:43:47 +0900</pubDate>
-  </item>
-  
-  <item>
-    <title><![CDATA[Rails4でtransactionの分離レベルを設定する]]></title>
-    <link>http://hamasyou.com/blog/2014/02/20/rails4-transaction/</link>
-    <guid>http://hamasyou.com/blog/2014/02/20/rails4-transaction/</guid>
-    <description>
-      <![CDATA[<p>Rails4 から <code>ActiveRecord::Base.transaction</code> に分離レベルを手軽に設定できるようになったみたいです。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">transaction</span><span class="p">(</span><span class="ss">isolation</span><span class="p">:</span> <span class="ss">:serializable</span><span class="p">)</span> <span class="k">do</span>
-</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>分離レベルには次の4つを設定できます。</p>
-
-<ul>
-<li><code>:read_uncommitted</code></li>
-<li><code>:read_committed</code></li>
-<li><code>:repeatable_read</code></li>
-<li><code>:serializable</code></li>
-</ul>
-
-]]>
-    </description>
-    <pubDate>Thu, 20 Feb 2014 21:42:41 +0900</pubDate>
   </item>
   
 </channel>

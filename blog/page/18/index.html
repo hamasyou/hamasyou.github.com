@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="「リファクタリング」とは、プログラムの振る舞いを変えずに、内部設計を改善する技術です。良い設計が生み出す利益は計り知れません。最初から良い設計を行うのは、非常に難しい技術が伴います。また、時間もかかります。 リファクタリングを行いながらプログラミングを進めることで、 &hellip;">
+  <meta name="description" content="最初に断っておきます。本書は洋書です。ただ、この記事を執筆している現在(2005/06/14)で、この本より詳しく、この本より分かりやすくSpringを解説している本はないです。しかも洋書なので、下手な訳がない分逆に分かりやすいです。 本書は、Spring Framework(以下、Spring) &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/18/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="「リファクタリング」とは、プログラムの振る舞いを変えずに、内部設計を改善する技術です。良い設計が生み出す利益は計り知れません。最初から良い設計を行うのは、非常に難しい技術が伴います。また、時間もかかります。 リファクタリングを行いながらプログラミングを進めることで、 &hellip;" />
+<meta property="og:description" content="最初に断っておきます。本書は洋書です。ただ、この記事を執筆している現在(2005/06/14)で、この本より詳しく、この本より分かりやすくSpringを解説している本はないです。しかも洋書なので、下手な訳がない分逆に分かりやすいです。 本書は、Spring Framework(以下、Spring) &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +106,173 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/06/14/1590594614/" class="excerpt-link">Pro Spring</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-06-14T23:41:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/spring/" rel="nofollow">Spring</a>
+    
+      <a class="tag label label-info" href="/blog/tags/huremuwaku/" rel="nofollow">フレームワーク</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/06/14/1590594614/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2005/06/14/1590594614/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2005/06/14/1590594614/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2005/06/14/1590594614/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2005/06/14/1590594614/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2005/06/14/1590594614/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2005/06/14/1590594614/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2005/06/14/1590594614/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/1590594614/sorehabooks-22/249-4890987-6855557?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Pro Spring" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/51In5DSj7VL._BO2,204,203,200_PIsitb-sticker-arrow-click,-76_AA300_SH20_OU09_.jpg" class="asin-thumbnail" alt="Pro Spring" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/1590594614/sorehabooks-22/249-4890987-6855557?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Pro Spring" rel="external nofollow">Pro Spring</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>Jan Machacek (著)</dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>Apress</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/1590594614/sorehabooks-22/249-4890987-6855557?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><p>最初に断っておきます。本書は洋書です。ただ、この記事を執筆している現在(2005/06/14)で、<b>この本より詳しく、この本より分かりやすくSpringを解説している本はない</b>です。しかも洋書なので、下手な訳がない分逆に分かりやすいです。</p>
+
+<p>本書は、<a href="http://www.springframework.org/" rel="external nofollow" title="Spring Framework">Spring Framework</a>(以下、Spring)について解説した本です。Springは数あるフレームワークの一つで、最近話題のDIパターンを実装しています。</p>
+
+<p>本書は、DIパターンを実装しているフレームワークの中でも、アメリカで爆発的に人気の在るSpringの、仕組みや使い方を学ぶ本です。業務でSpringを使う予定がある人、Springを勉強したい人は、かなり買いの一冊です。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/06/14/1590594614/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1605,177 +1772,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/04/10/4774112755/" class="excerpt-link">まるごと図解 最新SQLがわかる</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2005-04-10T11:31:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 10<span>th</span>, 2005</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/database/">Database</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/sql/" rel="nofollow">SQL</a>
-    
-      <a class="tag label label-info" href="/blog/tags/detabesu/" rel="nofollow">データベース</a>
-    
-      <a class="tag label label-info" href="/blog/tags/rdbms/" rel="nofollow">RDBMS</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2005/04/10/4774112755/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2005/04/10/4774112755/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2005/04/10/4774112755/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2005/04/10/4774112755/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2005/04/10/4774112755/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2005/04/10/4774112755/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2005/04/10/4774112755/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2005/04/10/4774112755/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774112755/sorehabooks-22" title="まるごと図解 最新SQLがわかる" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51C87VT9KKL._SL500_AA300_.jpg" class="asin-thumbnail" alt="まるごと図解 最新SQLがわかる" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774112755/sorehabooks-22" title="まるごと図解 最新SQLがわかる" rel="external nofollow">まるごと図解 最新SQLがわかる</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>小野 哲 (著), 佐野 剛 (著), 天貝 伸次 (著), 鈴木 大岳 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774112755/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>本書は初心者向けのSQL解説本です。SQLとは何か？データベースとは何か？と言うことをまったく知らない人が導入段階で読むレベルの内容です。</p>
-
-<p>SQLはデータベース管理システム(DBMS)を扱うための言語で標準が定められています。もちろん、詳細部分では各DBMSに固有の関数などが加えられていたりしますが、本書ではDBMS固有の部分については省かれています。</p>
-
-<p>SQL文でできることには非常にたくさんの数があります。文法を覚えるだけでも大変なのに、実行結果をイメージしてSQL文を見つけるのは、最初の段階では至難の業だと思います。本書は、基本的に見開きで一つの項目を解説しています。</p>
-
-<p>左側のページではその項目の解説を、右側のページでは実行結果やデータ操作のイメージが図として載っています。SQL文のことだけでなくデータベースに関しての解説もあるので、本書を取っ掛かりにしてさらに詳しい書籍にチャレンジするのがいいと思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2005/04/10/4774112755/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/19/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1819,6 +1815,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/08/27/swift-dictionary-anyobject/">Swift での Dictionary<String, AnyObject> の扱いメモ</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/31/swift-array-force-unwrapping/">SwiftでForce Unwrapping型の配列に値を追加できない</a>
       </li>
     
@@ -1854,10 +1854,6 @@
         <a href="/blog/2014/03/10/4774162868/">インフラデザインパターン ~安定稼動に導く127の設計方式</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1865,7 +1861,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">124</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">125</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

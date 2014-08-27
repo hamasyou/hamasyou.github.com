@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="アイデアを思いついたときに Web サービスを作ってスタートアップする手順メモです。Rails 編としていますが、たぶん別のバージョンは書かないでしょう。。 手順は思いついた順（というか、前に作ったサービスの手順）で書いていますので、抜け漏れとかあると思いますがコメントあればよろしくおねがいします &hellip;">
+  <meta name="description" content="GitHub Pages を Naked Domain（サブドメインをつけない hamasyou.com みたいなやつ）で運用する場合の手順です。 GitHub Pages をサブドメイン（www.hamasyou.com みたいなやつ）で運用する場合は、DNS サービスの CNAME を &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/2/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="アイデアを思いついたときに Web サービスを作ってスタートアップする手順メモです。Rails 編としていますが、たぶん別のバージョンは書かないでしょう。。 手順は思いついた順（というか、前に作ったサービスの手順）で書いていますので、抜け漏れとかあると思いますがコメントあればよろしくおねがいします &hellip;" />
+<meta property="og:description" content="GitHub Pages を Naked Domain（サブドメインをつけない hamasyou.com みたいなやつ）で運用する場合の手順です。 GitHub Pages をサブドメイン（www.hamasyou.com みたいなやつ）で運用する場合は、DNS サービスの CNAME を &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -106,6 +106,159 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/05/github-pages-custom-domain/" class="excerpt-link">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-03-05T12:02:07+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Mar 5<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/github/" rel="nofollow">GitHub</a>
+    
+      <a class="tag label label-info" href="/blog/tags/domain/" rel="nofollow">domain</a>
+    
+      <a class="tag label label-info" href="/blog/tags/dns/" rel="nofollow">DNS</a>
+    
+      <a class="tag label label-info" href="/blog/tags/mumudomein/" rel="nofollow">ムームードメイン</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/03/05/github-pages-custom-domain/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/03/05/github-pages-custom-domain/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/03/05/github-pages-custom-domain/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/03/05/github-pages-custom-domain/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/03/05/github-pages-custom-domain/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/03/05/github-pages-custom-domain/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/03/05/github-pages-custom-domain/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/03/05/github-pages-custom-domain/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>GitHub Pages を Naked Domain（サブドメインをつけない hamasyou.com みたいなやつ）で運用する場合の手順です。</p>
+
+<p><span class="small">GitHub Pages をサブドメイン（www.hamasyou.com みたいなやつ）で運用する場合は、DNS サービスの <strong>CNAME</strong> を <strong>hamasyou.github.io</strong> に設定すれば問題ないのでこの記事は読む必要がありません。</span></p>
+
+<p>hamasyou.com はムームードメインで取得していますので、ムームードメインを元に説明します。が、ムームードメインに限らず、Apex Alias を設定できない DNS サービスを使うときの参考にしてください。
+なんでこんな事をメモするかというと、GitHub Pages を独自ドメインで運用する際に Apex Alias を使わないと <strong class="text-danger">302 Found</strong> のステータスコードが返ってきて、SEO 的に嫌なのと <em>Facebook のシェアで404 Not Found が出てしまう</em> からです。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://subosito.com/fix-302-redirect-response-for-github-hosted-site" rel="external nofollow" title="Fix 302 Redirect Response For GitHub Hosted Site">Fix 302 Redirect Response For GitHub Hosted Site</a></p>
+
+<p>別に 302 Found がでても構わないっていうひとは GitHub Pages のヘルプを参考にしてやってみてください。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" rel="external nofollow" title="Setting up a custom domain with Pages - GitHub Help">Setting up a custom domain with Pages - GitHub Help</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2014/03/05/github-pages-custom-domain/" class="excerpt-link"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1538,161 +1691,6 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/20/rails4-transaction/" class="excerpt-link">Rails4でtransactionの分離レベルを設定する</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-20T21:42:41+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 20<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/rails4/" rel="nofollow">Rails4</a>
-    
-      <a class="tag label label-info" href="/blog/tags/toranzakusiyon/" rel="nofollow">トランザクション</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/20/rails4-transaction/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/20/rails4-transaction/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/20/rails4-transaction/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/20/rails4-transaction/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/20/rails4-transaction/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/20/rails4-transaction/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/20/rails4-transaction/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/20/rails4-transaction/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Rails4 から <code>ActiveRecord::Base.transaction</code> に分離レベルを手軽に設定できるようになったみたいです。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">transaction</span><span class="p">(</span><span class="ss">isolation</span><span class="p">:</span> <span class="ss">:serializable</span><span class="p">)</span> <span class="k">do</span>
-</span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>分離レベルには次の4つを設定できます。</p>
-
-<ul>
-<li><code>:read_uncommitted</code></li>
-<li><code>:read_committed</code></li>
-<li><code>:repeatable_read</code></li>
-<li><code>:serializable</code></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/3/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1736,6 +1734,10 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/08/27/swift-dictionary-anyobject/">Swift での Dictionary<String, AnyObject> の扱いメモ</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/31/swift-array-force-unwrapping/">SwiftでForce Unwrapping型の配列に値を追加できない</a>
       </li>
     
@@ -1771,10 +1773,6 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
         <a href="/blog/2014/03/10/4774162868/">インフラデザインパターン ~安定稼動に導く127の設計方式</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/03/05/github-pages-custom-domain/">ムームードメイン+GitHub Pagesで独自ドメインを使う方法</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1782,7 +1780,7 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">124</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">38</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">125</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">
