@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-08-28T11:51:23+09:00</updated>
+  <updated>2014-08-29T20:06:39+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,109 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[ReactiveCocoa] catchTo の使いどころ]]></title>
+    <link href="http://hamasyou.com/blog/2014/08/29/reactivecocoa-catchto/"/>
+    <updated>2014-08-29T19:44:49+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/08/29/reactivecocoa-catchto/</id>
+    <content type="html"><![CDATA[<p><strong class="text-danger">ReactiveCocoa</strong> で <code>catchTo</code> の使い方を覚えたのでメモ。</p>
+
+<p>リアクティブプログラミングの詳細は省くとして、<code>RACSignal</code> のイベントには <code>next</code> と <code>completed</code> と <code>error</code> があります。それぞれ、<code>subscribeNext</code>、<code>subscribeCompleted</code>、<code>subscribeError</code> でハンドリングできるやつです。</p>
+
+<p>で、HTTP API 等を呼び出す際に API 呼び出しの結果を JSON にパースして、結果をモデルに設定するみたいなことをやりたい時に、次のように行います。（Swift で記述しています。）</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">RAC</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"model"</span><span class="p">)</span> <span class="o">&lt;~</span> <span class="n">API</span><span class="p">.</span><span class="n">loadData</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="n">API</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">class</span> <span class="k">func</span> <span class="n">loadData</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">RACSignal</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">RACSignal</span><span class="p">.</span><span class="n">createSignal</span><span class="p">({</span> <span class="p">(</span><span class="nl">subscriber</span><span class="p">:</span> <span class="n">RACSubscriber</span><span class="o">!</span><span class="p">)</span> <span class="k">in</span>
+</span><span class="line">            <span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">"http://localhost:300/search"</span><span class="p">)</span>
+</span><span class="line">            <span class="k">let</span> <span class="n">configuration</span> <span class="o">=</span> <span class="bp">NSURLSessionConfiguration</span><span class="p">.</span><span class="n">defaultSessionConfiguration</span><span class="p">()</span>
+</span><span class="line">            <span class="n">configuration</span><span class="p">.</span><span class="n">HTTPAdditionalHeaders</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Accept"</span><span class="o">:</span> <span class="s">"application/json"</span><span class="p">]</span>
+</span><span class="line">            <span class="k">let</span> <span class="nl">session</span><span class="p">:</span> <span class="bp">NSURLSession</span> <span class="o">=</span> <span class="bp">NSURLSession</span><span class="p">(</span><span class="nl">configuration</span><span class="p">:</span> <span class="n">configuration</span><span class="p">)</span>
+</span><span class="line">            <span class="k">let</span> <span class="nl">task</span><span class="p">:</span> <span class="bp">NSURLSessionDataTask</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">dataTaskWithURL</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nl">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="nl">data</span><span class="p">:</span> <span class="bp">NSData</span><span class="o">!</span><span class="p">,</span> <span class="nl">response</span><span class="p">:</span> <span class="bp">NSURLResponse</span><span class="o">!</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span> <span class="bp">NSError</span><span class="o">!</span><span class="p">)</span> <span class="k">in</span>
+</span><span class="line">                <span class="k">if</span> <span class="n">error</span> <span class="o">==</span> <span class="nb">nil</span> <span class="p">{</span>
+</span><span class="line">                    <span class="c1">// data をパースしてモデル化</span>
+</span><span class="line">                    <span class="n">subscriber</span><span class="p">.</span><span class="n">sendNext</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</span><span class="line">                    <span class="n">subscriber</span><span class="p">.</span><span class="n">sendCompleted</span><span class="p">()</span>
+</span><span class="line">                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">                    <span class="n">subscriber</span><span class="p">.</span><span class="n">sendError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</span><span class="line">                <span class="p">}</span>
+</span><span class="line">                <span class="n">session</span><span class="p">.</span><span class="n">invalidateAndCancel</span><span class="p">()</span>
+</span><span class="line">            <span class="p">})</span>
+</span><span class="line">            <span class="n">task</span><span class="p">.</span><span class="n">resume</span><span class="p">()</span>
+</span><span class="line">            <span class="k">return</span> <span class="nb">nil</span>
+</span><span class="line">        <span class="p">})</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>こうすると、API の呼び出しが成功した場合には <code>subscriber.sendNext</code> の結果がきちんと <code>self.model</code> に設定されるわけですが、API の呼び出しが失敗して <code>subscriber.sendError</code> が呼び出されてしまうと、例外がなげられます。</p>
+
+<p>ではどうするか。</p>
+
+<h3>catchTo を使って sendError に備える</h3>
+
+<p>そこで <code>catchTo</code> を使います。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">RAC</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"model"</span><span class="p">)</span> <span class="o">&lt;~</span> <span class="n">API</span><span class="p">.</span><span class="n">loadData</span><span class="p">().</span><span class="n">catchTo</span><span class="p">(</span><span class="n">RACSignal</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>catchTo</code> は <code>sendError</code> が呼び出された場合に代わりに投げる <code>RACSignal</code> を指定します。そうすることで、ネットワークエラー等で API の呼び出しが失敗した場合には、<code>RACSignal.empty()</code> で何も起きなかったことになる（正確には sendCompleted が呼び出される）ようになります。</p>
+
+<p>sendError 時に処理を行いたい場合には <code>catch</code> を代わりに使用します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">RAC</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"model"</span><span class="p">)</span> <span class="o">&lt;~</span> <span class="n">API</span><span class="p">.</span><span class="n">loadData</span><span class="p">()</span>
+</span><span class="line">    <span class="p">.</span><span class="n">catch</span><span class="p">({</span> <span class="p">(</span><span class="nl">error</span><span class="p">:</span> <span class="bp">NSError</span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RACSignal</span><span class="o">!</span> <span class="k">in</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">RACSignal</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span>
+</span><span class="line">    <span class="p">})</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>以上です。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Swift での Dictionary<String, AnyObject> の扱いメモ]]></title>
@@ -6037,27 +6140,6 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 <p>JavaScript で関数型プログラミングを学ぶというテーマですが、<em>関数型プログラミングを学ぶことで他の言語の面白い点も見えてくる</em> というのが読了しての感想です。</p>
 
 <p>JavaScript は Java に次いで最も多く利用されている言語ですので、<strong class="text-danger">JavaScript をよりよく使うため、他の関数型言語をより楽しむため</strong> に本書を活用してみてはいかがでしょうか。おすすめです。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[静的サイトを素早く構築するためにGoLangで作られたジェネレータHugo]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/21/hugo/"/>
-    <updated>2014-02-21T15:43:47+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/21/hugo/</id>
-    <content type="html"><![CDATA[<p>最近は静的サイトブームが再到来なんですかね？<strong class="text-danger">GoLang</strong> で作られた静的サイトジェネレータの <strong class="text-danger">Hugo</strong> なんていうものがありました。</p>
-
-<p>うちのサイトも最近 Ruby の <em>Octopress</em> でサイトをリニューアルしましたが、Go にもあるんですね。</p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/spf13/hugo" rel="external nofollow" title="spf13 / hugo">spf13 / hugo</a></p>
-
-<p><i class="fa fa-hand-o-right"></i> <a href="http://hugo.spf13.com/" rel="external nofollow" title="The Fast and Flexible Static Site Generator - Hugo">The Fast and Flexible Static Site Generator - Hugo</a></p>
-
-<p>Go でビルドするので速いとのこと。また、Windows、Mac、Linux と環境を選ばないのがいいですね。</p>
-
-<p>記事は <strong class="text-danger">Markdown</strong> で記述します。カテゴリやタグなどの情報は <strong class="text-danger">YAML</strong> 形式でいけます。<a href="http://octopress.org/" rel="external nofollow" title="Octopress">Octopress</a> や <a href="http://jekyllrb.com/" rel="external nofollow" title="Jekyll">Jekyll</a> と似ています。</p>
-
-<p>最近 Go が人気急上昇なので、Go の環境が手元にある人は Hugo を使ってサイトを運営してみるのもありかもです。</p>
 ]]></content>
   </entry>
   
