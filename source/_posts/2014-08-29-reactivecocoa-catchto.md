@@ -17,6 +17,8 @@ og_image: ""
 
 **ReactiveCocoa** で `catchTo` の使い方を覚えたのでメモ。
 
+[ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa)
+
 リアクティブプログラミングの詳細は省くとして、`RACSignal` のイベントには `next` と `completed` と `error` があります。それぞれ、`subscribeNext`、`subscribeCompleted`、`subscribeError` でハンドリングできるやつです。
 
 で、HTTP API 等を呼び出す際に API 呼び出しの結果を JSON にパースして、結果をモデルに設定するみたいなことをやりたい時に、次のように行います。（Swift で記述しています。）
