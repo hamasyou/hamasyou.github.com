@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: プログラミング | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/puroguramingu/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-08-30T11:57:48+09:00</updated>
+  <updated>2014-08-30T13:56:03+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,120 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[APIデザインの極意 Java/NetBeansアーキテクト探究ノート]]></title>
+    <link href="http://hamasyou.com/blog/2014/08/30/484433591x/"/>
+    <updated>2014-08-30T12:40:36+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/08/30/484433591x</id>
+    <content type="html"><![CDATA[<p>本書は <strong>プログラミング API</strong> の設計本です。Web API の設計極意に関して知りたい人は 『<a href="http://www.amazon.co.jp/gp/product/4873113539?ie=UTF8&amp;camp=247&amp;creativeASIN=4873113539&amp;linkCode=xm2&amp;tag=sorehabooks-22">RESTful Webサービス</a>』や『<a href="http://www.amazon.co.jp/gp/product/4774142042?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774142042">Webを支える技術 -HTTP、URI、HTML、そしてREST</a>』を読むのがいいと思います。本書は <a href="http://www.amazon.co.jp/gp/product/4797311126?ie=UTF8&amp;camp=247&amp;creativeASIN=4797311126&amp;linkCode=xm2&amp;tag=sorehabooks-22">GoF のデザインパターン
+</a> や <a href="http://www.amazon.co.jp/gp/product/4621066056?ie=UTF8&amp;camp=247&amp;creativeASIN=4621066056&amp;linkCode=xm2&amp;tag=sorehabooks-22">EFFECTIVE JAVA</a> を読んだ開発者が次に読むべき本として紹介されています。</p>
+
+<p><a href="http://www.amazon.co.jp/gp/product/4873113539?ie=UTF8&amp;camp=247&amp;creativeASIN=4873113539&amp;linkCode=xm2&amp;tag=sorehabooks-22"><img src="http://ecx.images-amazon.com/images/I/51ojIhXBP3L._SS140_.jpg" alt="RESTful Webサービス" /></a>
+<a href="http://www.amazon.co.jp/gp/product/4774142042?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774142042"><img src="http://ecx.images-amazon.com/images/I/51qo6pgjaSL._SS140_.jpg" alt="Webを支える技術 -HTTP、URI、HTML、そしてREST" /></a>
+<a href="http://www.amazon.co.jp/gp/product/4797311126?ie=UTF8&amp;camp=247&amp;creativeASIN=4797311126&amp;linkCode=xm2&amp;tag=sorehabooks-22"><img src="http://ecx.images-amazon.com/images/I/61YX3ZDFIwL._SS140_.jpg" alt="オブジェクト指向における再利用のためのデザインパターン" /></a>
+<a href="http://www.amazon.co.jp/gp/product/4621066056?ie=UTF8&amp;camp=247&amp;creativeASIN=4621066056&amp;linkCode=xm2&amp;tag=sorehabooks-22"><img src="http://ecx.images-amazon.com/images/I/91tYrFpKmLL._SS140_.jpg" alt="EFFECTIVE JAVA 第2版" /></a></p>
+
+<p>本書は、NetBeans API を構築した筆者がデザインパターンやコーディング作法だけではうまくいかない問題、後方互換性を維持したままライブラリを発展させる方法、を重点的に解説しています。なるほど、 <strong>デザインパターンや設計方法を学んだ次に読むべき本</strong> として挙げられている理由がよくわかる内容になっています。</p>
+
+<!-- more -->
+
+
+<h3>社内ライブラリと API 設計は別物</h3>
+
+<p>本書で扱う API という言葉は、例えばオープンソースライブラリのような、多くの人に共有されるものという位置づけになっています。社内で使うようなライブラリなどの API とはニュアンスが違う感じがしました。</p>
+
+<p>一度リリースしたら、後方互換性を維持して発展させていかなければならない、そういった類のライブラリや API を作る開発者向けの本です。</p>
+
+<h2>本書のテーマ</h2>
+
+<p>本書のテーマは、次の2つに集約されると思います。</p>
+
+<ul>
+<li>後方互換性を維持する API のデザインパターン</li>
+<li>優れた API であるためにどうするか</li>
+</ul>
+
+
+<p>NetBeans API で培った経験則を余す所なく記載してくれているため、ボリュームがスゴイことになっています。また、作って終わりの API の作り方を教えているわけではないので、おそらくほとんどの開発者には <em>なんとなくわかった気になるだけか難しくて後回しにする</em> ような内容かもしれません。</p>
+
+<p>はっきり言って、本書が役に立った！と感じる開発者は少ないかもしれませんが、少なくとも GitHub でソースコードを公開している開発者は頑張って読んでもらうのがいいと思いました。それくらい内容が濃く、経験者しかわからないことが書いてあります。</p>
+
+<h3>後方互換性を維持する API のデザインパターン</h3>
+
+<p><blockquote><p>開発者は、API の現在のバージョンをコーディングしている場合に、未来について考えることが求められます。私に言えることは、それは、今までの API 設計でよく行われた方法ではないということです。また、今日までに書かれた書籍やその中の助言は、この種の思考にはあまり役に立ちません。それらには、単一バージョンの場合のデザインパターンが説明されていることがほとんどです。</p><footer><strong>本書</strong></footer></blockquote></p>
+
+<p>これが、<strong>新しいデザイン本が必要な理由</strong> です。今日のシステムはコンポーネントの組み合わせで出来ています。おそらく今後もこの傾向は変わらないと思います。コンポーネント利用者の経験（投資）をムダにしない為に、よりよい発展を目指す上で、後方互換性を維持することは重要なことになります。これが、<strong>本書を読む理由</strong> です。</p>
+
+<h3>優れた API であるためにどうするか</h3>
+
+<p>では、どのように API 設計をすればいいか。その方法も本書に書かれています。</p>
+
+<ul>
+<li>メソッドとフィールドの優れたシグニチャ</li>
+<li>ファイル操作</li>
+<li>環境変数とコマンドラインオプション</li>
+<li>API としてのテキストメッセージ</li>
+<li>（ネットワーク）プロトコル</li>
+<li>API の振る舞い</li>
+<li>I18N と L10N のサポート</li>
+<li>API の品質検査方法（正しさの証明）</li>
+<li>理解しやすさ</li>
+<li>一貫性</li>
+<li>やりたいことが満たせる API を発見できること</li>
+<li>単純なことを簡単に行えること</li>
+<li>投資の保全（利用者を尊重すること）</li>
+</ul>
+
+
+<p>API に優れた名前をつけることや <strong>驚き最小の法則</strong>、シンプルで一貫性のある I/F にするというのは基本的にな事になります。こういったことを踏まえた上で、この API を利用してくれているユーザを尊重すること（次のバージョンでメソッド名を変更するなんてとんでもない！）が大切だと書かれています。</p>
+
+<p>後方互換性を保ち、API のユーザの投資をムダにしない設計の方法を学びたい人、新しい視点を身につけたい人に本書はおすすめです。</p>
+
+<p><blockquote><p>- オブジェクト指向アプリケーションフレームワークには、伝統的なデザインパターンとは異なるスキルが必要<br/>- クラスを API として扱って、頭痛の種を軽減<br/>- 将来、改善できるように API の発展計画を準備</p></blockquote></p>
+
+<h2>目次</h2>
+
+<ul>
+<li>【第1部　理論と正当性】
+
+<ul>
+<li>第1章　 現代的なソフトウェア構築の技芸</li>
+<li>第2章　 APIを作成する動機</li>
+<li>第3章　 優れたAPIを決定づけるもの</li>
+<li>第4章　 絶え間なく変わる標的</li>
+</ul>
+</li>
+<li>【第2部　実践的設計】
+
+<ul>
+<li>第5章　 必要以上に公開しない</li>
+<li>第6章　 実装ではなく、インタフェースに対してコーディングする</li>
+<li>第7章　 モジュール方式アーキテクチャの使用</li>
+<li>第8章　 クライアント用とプロバイダ用のAPIを分離</li>
+<li>第9章　 テストの容易性に留意する</li>
+<li>第10章　他のAPIとの協調</li>
+<li>第11章　APIの実行時の側面</li>
+<li>第12章　宣言型プログラミング</li>
+</ul>
+</li>
+<li>【第3部　日々の生活】
+
+<ul>
+<li>第13章　有害で極端な助言</li>
+<li>第14章　API設計のパラドックス</li>
+<li>第15章　API宇宙の発展</li>
+<li>第16章　チームワーク</li>
+<li>第17章　ゲームでAPI設計スキルを向上させる</li>
+<li>第18章　拡張可能なビジターパターンのケーススタディ</li>
+<li>第19章　終焉の手続き</li>
+</ul>
+</li>
+<li>終章：将来</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ビューティフルコード]]></title>
@@ -356,107 +470,6 @@ public final class Session {
 
 
 <p>他のプログラムを分析し、そのなかに含まれていてプログラムをクラッシュさせる原因になるようなバグをすべて見つけ出すプログラムは書けない。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[プログラマが知るべき97のこと]]></title>
-    <link href="http://hamasyou.com/blog/2011/08/16/4873114799/"/>
-    <updated>2011-08-16T09:45:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2011/08/16/4873114799</id>
-    <content type="html"><![CDATA[<p>本書は、「プログラマ」の、「プログラマ」による、「プログラマ」のための本です。</p>
-
-<ul><li>プログラマとして成功したい！</li>
-<li>プログラミングの腕を上達させたい！</li>
-<li>ソースコードの質を向上させたい！</li>
-<li>メンバーと上手くやりたい！</li></ul>
-
-
-<p>こういった願いを持つ人のために、世界中でよく知られた著者陣のエッセイがまとめられています。</p>
-
-<p>何か壁にぶち当たっている人、成功したプログラマはどんなことを考えていたのか知りたい人、どういうことを考えてプログラムを書けば質が上がるのか知りたい人。</p>
-
-<p>すべての「プログラマ」におすすめの一冊です。</p>
-
-<p><section></p>
-
-<h4 class="note">参考</h4>
-
-
-<p><a href="http://ja.wikisource.org/wiki/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%81%8C%E7%9F%A5%E3%82%8B%E3%81%B9%E3%81%8D97%E3%81%AE%E3%81%93%E3%81%A8" rel="external nofollow">プログラマが知るべき97のこと - Wikisource</a></p>
-
-<p></section></p>
-
-<!-- more -->
-
-
-
-
-<h2>カテゴリ別目次</h2>
-
-
-
-
-<ul>
-<li>バグとその修正</li>
-<li>ビルドとデプロイメント</li>
-<li>コーディングガイドラインとコードレイアウト</li>
-<li>設計原則とコーディングテクニック</li>
-<li>ドメインの考慮</li>
-<li>エラー、例外とその処理</li>
-<li>技術、知識の習得</li>
-<li>夜と魔法</li>
-<li>パフォーマンス向上、最適化、その具体策</li>
-<li>プロとしての心構え、態度</li>
-<li>プログラミング言語とパラダイム</li>
-<li>リファクタリングと保守</li>
-<li>再利用と重複</li>
-<li>スケジュールと納期、見積もり</li>
-<li>シンプルさ</li>
-<li>チームワークと強調</li>
-<li>テストとその実践、テスター</li>
-<li>ツール、自動化、開発環境</li>
-<li>コードと顧客</li>
-</ul>
-
-
-
-
-<h2>おぼえがき</h2>
-
-
-<p>本書は、良いことばかり書いてあり、おぼえがきを真面目に書こうとすると全部抜き出すことになっちゃうので適当に抜き出しました。</p>
-
-<p>すごくいいことがいっぱい書いてあるので、一度本屋で立ち読みしてみるといいと思います。</p>
-
-<h3>コードの再利用</h3>
-
-
-<p>コードの再利用をするときは、<em>コンテキスト</em>が同じかどうかを確認すること。システム内に同じことをするコードが二つあったとしてもそれぞれが違う役割をしていたら、それはコンテキストが違うから再利用のメリットは少ない。</p>
-
-<p><blockquote><p>「再利用」は一般に良いこととされており、確かに基本的には良いことだからです。コンテキストさえ適切なら、間違いなく有効です。しかし、コンテキストが不適切だと、メリットよりもコストのほうが大きくなるのです。</p></p><p><p></p><footer><strong>本書-共有は慎重により</strong></footer></blockquote></p>
-
-<h3>DRY原則</h3>
-
-
-<p>「<strong>DRY（Don&rsquo;t Repeat Yourself:繰り返しを避ける）原則</strong>」とは「すべての<em>知識</em>はシステム内において、単一、かつ明確な、そして信頼できる表現になっていなければならない」という条件をみたすこと。</p>
-
-<p>「知識」が唯一であるということがポイントで、その知識を取り出すコードの重複は DRY 原則違反ではない。その知識を取り出すコードの重複を一箇所にまとめることは、<strong>OAOO（Once and Only Once）</strong>と呼ぶ。</p>
-
-<h3>技術的例外とビジネス例外を明確に区別する</h3>
-
-
-<p>技術的例外、たとえばネットワークに繋がらない、データベースに繋がらない、配列のインデックスを超えてアクセスしたなどの例外と、預金額を超える額のお金を口座から引き出そうとしたというようなビジネス例外は、明確に別れた例外階層を使うべき。</p>
-
-<h3>良いインターフェース仕様の条件は「正しい使い方を簡単に、誤った使い方を困難に」</h3>
-
-
-<p>良いインターフェースは、<em>正しく使用することが操作ミスをするよりも簡単</em>である。良い API を設計するときに考えることは「<strong>それが一番自然かどうか</strong>」</p>
-
-<h3>名前重要</h3>
-
-
-<p>「<em>すべての人物・事物には真の名前があり、その名前を知るものはそれを支配することができる</em>」本当にしっくりくる名前を選択することは、とても重要なことで、適切な名前を選択できたら8割は設計が完成したと考えても大げさではない。</p>
 ]]></content>
   </entry>
   

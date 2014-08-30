@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-08-30T11:57:48+09:00</updated>
+  <updated>2014-08-30T13:56:03+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,125 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[APIデザインの極意 Java/NetBeansアーキテクト探究ノート]]></title>
+    <link href="http://hamasyou.com/blog/2014/08/30/484433591x/"/>
+    <updated>2014-08-30T12:40:36+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/08/30/484433591x/</id>
+    <content type="html"><![CDATA[<p>本書は <strong class="text-danger">プログラミング API</strong> の設計本です。Web API の設計極意に関して知りたい人は 『<a href="http://www.amazon.co.jp/gp/product/4873113539?ie=UTF8&amp;camp=247&amp;creativeASIN=4873113539&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title="RESTful Webサービス">RESTful Webサービス</a>』や『<a href="http://www.amazon.co.jp/gp/product/4774142042?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774142042" rel="external nofollow" title="Webを支える技術 -HTTP、URI、HTML、そしてREST">Webを支える技術 -HTTP、URI、HTML、そしてREST</a>』を読むのがいいと思います。本書は <a href="http://www.amazon.co.jp/gp/product/4797311126?ie=UTF8&amp;camp=247&amp;creativeASIN=4797311126&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title="GoF のデザインパターン">GoF のデザインパターン
+</a> や <a href="http://www.amazon.co.jp/gp/product/4621066056?ie=UTF8&amp;camp=247&amp;creativeASIN=4621066056&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title="EFFECTIVE JAVA">EFFECTIVE JAVA</a> を読んだ開発者が次に読むべき本として紹介されています。</p>
+
+<p><a href="http://www.amazon.co.jp/gp/product/4873113539?ie=UTF8&amp;camp=247&amp;creativeASIN=4873113539&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/51ojIhXBP3L._SS140_.jpg" alt="RESTful Webサービス" class="img-thumbnail" title="RESTful Webサービス"></a>
+<a href="http://www.amazon.co.jp/gp/product/4774142042?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774142042" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/51qo6pgjaSL._SS140_.jpg" alt="Webを支える技術 -HTTP、URI、HTML、そしてREST" class="img-thumbnail" title="Webを支える技術 -HTTP、URI、HTML、そしてREST"></a>
+<a href="http://www.amazon.co.jp/gp/product/4797311126?ie=UTF8&amp;camp=247&amp;creativeASIN=4797311126&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/61YX3ZDFIwL._SS140_.jpg" alt="オブジェクト指向における再利用のためのデザインパターン" class="img-thumbnail" title="オブジェクト指向における再利用のためのデザインパターン"></a>
+<a href="http://www.amazon.co.jp/gp/product/4621066056?ie=UTF8&amp;camp=247&amp;creativeASIN=4621066056&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="http://ecx.images-amazon.com/images/I/91tYrFpKmLL._SS140_.jpg" alt="EFFECTIVE JAVA 第2版" class="img-thumbnail" title="EFFECTIVE JAVA 第2版"></a></p>
+
+<p>本書は、NetBeans API を構築した筆者がデザインパターンやコーディング作法だけではうまくいかない問題、後方互換性を維持したままライブラリを発展させる方法、を重点的に解説しています。なるほど、 <strong class="text-danger">デザインパターンや設計方法を学んだ次に読むべき本</strong> として挙げられている理由がよくわかる内容になっています。</p>
+
+<!-- more -->
+
+
+<h3>社内ライブラリと API 設計は別物</h3>
+
+<p>本書で扱う API という言葉は、例えばオープンソースライブラリのような、多くの人に共有されるものという位置づけになっています。社内で使うようなライブラリなどの API とはニュアンスが違う感じがしました。</p>
+
+<p>一度リリースしたら、後方互換性を維持して発展させていかなければならない、そういった類のライブラリや API を作る開発者向けの本です。</p>
+
+<h2>本書のテーマ</h2>
+
+<p>本書のテーマは、次の2つに集約されると思います。</p>
+
+<ul>
+<li>後方互換性を維持する API のデザインパターン</li>
+<li>優れた API であるためにどうするか</li>
+</ul>
+
+
+<p>NetBeans API で培った経験則を余す所なく記載してくれているため、ボリュームがスゴイことになっています。また、作って終わりの API の作り方を教えているわけではないので、おそらくほとんどの開発者には <em>なんとなくわかった気になるだけか難しくて後回しにする</em> ような内容かもしれません。</p>
+
+<p>はっきり言って、本書が役に立った！と感じる開発者は少ないかもしれませんが、少なくとも GitHub でソースコードを公開している開発者は頑張って読んでもらうのがいいと思いました。それくらい内容が濃く、経験者しかわからないことが書いてあります。</p>
+
+<h3>後方互換性を維持する API のデザインパターン</h3>
+
+<blockquote>
+<p>開発者は、API の現在のバージョンをコーディングしている場合に、未来について考えることが求められます。私に言えることは、それは、今までの API 設計でよく行われた方法ではないということです。また、今日までに書かれた書籍やその中の助言は、この種の思考にはあまり役に立ちません。それらには、単一バージョンの場合のデザインパターンが説明されていることがほとんどです。</p>
+<footer><strong>本書</strong></footer>
+</blockquote>
+
+
+<p>これが、<strong class="text-danger">新しいデザイン本が必要な理由</strong> です。今日のシステムはコンポーネントの組み合わせで出来ています。おそらく今後もこの傾向は変わらないと思います。コンポーネント利用者の経験（投資）をムダにしない為に、よりよい発展を目指す上で、後方互換性を維持することは重要なことになります。これが、<strong class="text-danger">本書を読む理由</strong> です。</p>
+
+<h3>優れた API であるためにどうするか</h3>
+
+<p>では、どのように API 設計をすればいいか。その方法も本書に書かれています。</p>
+
+<ul>
+<li>メソッドとフィールドの優れたシグニチャ</li>
+<li>ファイル操作</li>
+<li>環境変数とコマンドラインオプション</li>
+<li>API としてのテキストメッセージ</li>
+<li>（ネットワーク）プロトコル</li>
+<li>API の振る舞い</li>
+<li>I18N と L10N のサポート</li>
+<li>API の品質検査方法（正しさの証明）</li>
+<li>理解しやすさ</li>
+<li>一貫性</li>
+<li>やりたいことが満たせる API を発見できること</li>
+<li>単純なことを簡単に行えること</li>
+<li>投資の保全（利用者を尊重すること）</li>
+</ul>
+
+
+<p>API に優れた名前をつけることや <strong class="text-danger">驚き最小の法則</strong>、シンプルで一貫性のある I/F にするというのは基本的にな事になります。こういったことを踏まえた上で、この API を利用してくれているユーザを尊重すること（次のバージョンでメソッド名を変更するなんてとんでもない！）が大切だと書かれています。</p>
+
+<p>後方互換性を保ち、API のユーザの投資をムダにしない設計の方法を学びたい人、新しい視点を身につけたい人に本書はおすすめです。</p>
+
+<blockquote><p>- オブジェクト指向アプリケーションフレームワークには、伝統的なデザインパターンとは異なるスキルが必要<br>- クラスを API として扱って、頭痛の種を軽減<br>- 将来、改善できるように API の発展計画を準備</p></blockquote>
+
+
+<h2>目次</h2>
+
+<ul>
+<li>【第1部　理論と正当性】
+
+<ul>
+<li>第1章　 現代的なソフトウェア構築の技芸</li>
+<li>第2章　 APIを作成する動機</li>
+<li>第3章　 優れたAPIを決定づけるもの</li>
+<li>第4章　 絶え間なく変わる標的</li>
+</ul>
+</li>
+<li>【第2部　実践的設計】
+
+<ul>
+<li>第5章　 必要以上に公開しない</li>
+<li>第6章　 実装ではなく、インタフェースに対してコーディングする</li>
+<li>第7章　 モジュール方式アーキテクチャの使用</li>
+<li>第8章　 クライアント用とプロバイダ用のAPIを分離</li>
+<li>第9章　 テストの容易性に留意する</li>
+<li>第10章　他のAPIとの協調</li>
+<li>第11章　APIの実行時の側面</li>
+<li>第12章　宣言型プログラミング</li>
+</ul>
+</li>
+<li>【第3部　日々の生活】
+
+<ul>
+<li>第13章　有害で極端な助言</li>
+<li>第14章　API設計のパラドックス</li>
+<li>第15章　API宇宙の発展</li>
+<li>第16章　チームワーク</li>
+<li>第17章　ゲームでAPI設計スキルを向上させる</li>
+<li>第18章　拡張可能なビジターパターンのケーススタディ</li>
+<li>第19章　終焉の手続き</li>
+</ul>
+</li>
+<li>終章：将来</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[ReactiveCocoa] catchTo の使いどころ]]></title>
@@ -5463,685 +5582,6 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
 頑張ります！</p>
 
 <p><a href="http://www.amazon.co.jp/gp/product/4799100874?ie=UTF8&amp;camp=247&amp;creativeASIN=4799100874&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="https://images-na.ssl-images-amazon.com/images/I/519LYdJLqIL._SS300_.jpg" height="230" width="230" alt="すっきり！　わかりやすい！　文章が書ける" class="img-thumbnail" title="すっきり！　わかりやすい！　文章が書ける"></a><a href="http://www.amazon.co.jp/gp/product/4820748270?ie=UTF8&amp;camp=247&amp;creativeASIN=4820748270&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="https://images-na.ssl-images-amazon.com/images/I/511vOWP0YeL._SS300_.jpg" height="230" width="230" alt="書くスキルUP すぐできる! 伝わる文章の書き方 確実に文章力がつく! 7つのステップ" class="img-thumbnail" title="書くスキルUP すぐできる! 伝わる文章の書き方 確実に文章力がつく! 7つのステップ"></a><a href="http://www.amazon.co.jp/gp/product/4620792993?ie=UTF8&amp;camp=247&amp;creativeASIN=4620792993&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title=""><img src="https://images-na.ssl-images-amazon.com/images/I/510Lvq7j7BL._SS300_.jpg" height="230" width="230" alt="1時間でできる ブログ &amp; SNS　――　大きな文字で読みやすい 初心者でもらくらく" class="img-thumbnail" title="1時間でできる ブログ &amp; SNS　――　大きな文字で読みやすい 初心者でもらくらく"></a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaScriptで学ぶ関数型プログラミング]]></title>
-    <link href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"/>
-    <updated>2014-02-21T19:39:56+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/02/21/functional-javascript/</id>
-    <content type="html"><![CDATA[<blockquote>
-<p>本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。JavaScriptビルトインのデータ型を上手に利用するための基本知識やJavaScriptにおける関数の持つ特性など、関数型プログラミングの技術とその考え方について解説します。また実際のJavaScriptコーディングに関数型プログラミングのエッセンスを加えるポイントをサンプルを使って丁寧に説明します。関数型プログラミングに精通した著者が書き下ろした本書は、テクニックを増やし、コーディングのイマジネーションを広げたいエンジニア必携の一冊です。</p>
-<footer><strong>内容紹介</strong></footer>
-</blockquote>
-
-
-<p>JavaScript は純粋な関数型プログラミング言語ではありません。が、<strong class="text-danger">関数型言語として JavaScript を理解し使用することでコードがより洗練され、読みやすいものになる</strong> はずという筆者の考えがこの本には現れています。</p>
-
-<p>JavaScript では関数型プログラミングは一つのスタイルにしかすぎず、必要な場面で適切に使うというアプローチをとることでよりよいコードや使いやすい関数になります。</p>
-
-<!-- more -->
-
-
-<h2>関数型プログラミング</h2>
-
-<p><img src="http://hamasyou.com/images/2014-02-21-functional-javascript-02.jpg" alt="関数型プログラミング" class="img-thumbnail" title="関数型プログラミング"></p>
-
-<p>本書のおぼえがきです。本書の中から気になった箇所だけ抜き出しているので、意味が通じないかもしれません。。気になったら買って読んでみてください。</p>
-
-<h3>関数型プログラミングとは</h3>
-
-<blockquote><p>関数型プログラミングとは、値を抽象の単位に変換する関数を使用して行うプログラミングであり、それらを使ってソフトウェアシステムを構築することである。</p></blockquote>
-
-
-<p>オブジェクト指向では、問題領域をオブジェクトという単位に分解して対処していきますが、関数型プログラミングでは、問題を <strong class="text-danger">関数</strong> のパーツに分解します。</p>
-
-<p>オブジェクト指向のアプローチは問題を「<strong class="text-danger">名詞</strong>」に分解して行う傾向があるのに対して、関数型プログラミングでは、問題を「<strong class="text-danger">動詞</strong>」に分解する傾向があります。</p>
-
-<p>関数を通して、与えられた値を「<strong class="text-danger">変換</strong>」することができます。</p>
-
-<pre><code class="plain">markdown → toHTML → postProcess → modifyDOM
-         │        │             │
-      テキスト   HTML       編集されたHTML
-</code></pre>
-
-<h3>高階関数</h3>
-
-<p><strong class="text-danger">高階関数</strong> とは、関数を引数にとり新しい関数を生成して返す関数のことです。</p>
-
-<p>例えば、JavaScript の Array には <code>sort</code> 関数があります。<code>sort</code> は引数に <code>compareFunction</code> を取ります。値の大小を比較する関数を <code>lessOrEqual</code>、この関数を <code>compareFunction</code> の仕様に変換する関数を <code>compare</code> とします。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">lessOrEqual</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">x</span> <span class="o">&lt;=</span> <span class="nx">y</span><span class="p">;</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">function</span> <span class="nx">compare</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">))</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">))</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class="line">    <span class="p">}</span>
-</span><span class="line">  <span class="p">};</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="nx">sort</span><span class="p">(</span><span class="nx">compare</span><span class="p">(</span><span class="nx">lessOrEqual</span><span class="p">));</span>
-</span><span class="line"><span class="c1">// =&gt; [-2, -1, -1, 0, 1, 10, 100]</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p><code>compare</code> 関数は大小比較を行う関数を引数にとり、<code>compareFunction</code> の仕様に則った関数を生成して返す高階関数になります。</p>
-
-<h3>JavaScript における関数型プログラミング</h3>
-
-<ul>
-<li>関数による抽象の定義（<code>existy</code> や <code>truthy</code>）</li>
-<li>関数を他の関数の引数に渡すことによる新たな動作の実現</li>
-</ul>
-
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">x</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span> <span class="p">}</span>
-</span><span class="line"><span class="kd">function</span> <span class="nx">truthy</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="nx">x</span> <span class="o">!==</span> <span class="kc">false</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span> <span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">false</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">existy</span><span class="p">);</span>
-</span><span class="line"><span class="c1">// =&gt; [false, false, true, true, true]</span>
-</span><span class="line"><span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">false</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">truthy</span><span class="p">);</span>
-</span><span class="line"><span class="c1">// =&gt; [false, false, true, true, false]</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>これこそが、<strong class="text-danger">関数型プログラミング</strong> です。関数型プログラミングは強力な <strong class="text-danger">データ抽象</strong> とともに実装されて役に立つものです。</p>
-
-<h3>命令型プログラミングと関数型プログラミングの違いの例</h3>
-
-<p>「99本のビール」の歌の歌詞を構築するプログラムを命令型プログラミングと関数型プログラミングで書いてみた例です。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>命令型プログラミング</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">lyrics</span> <span class="o">=</span> <span class="p">[];</span>
-</span><span class="line">
-</span><span class="line"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">bottles</span> <span class="o">=</span> <span class="mi">99</span><span class="p">;</span> <span class="nx">bottles</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">bottles</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">bottles</span> <span class="o">+</span> <span class="s1">'本のビールが残ってる'</span><span class="p">);</span>
-</span><span class="line">  <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">bottles</span> <span class="o">+</span> <span class="s1">'本のビール'</span><span class="p">);</span>
-</span><span class="line">  <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'ひとつ取って、隣に回せ'</span><span class="p">);</span>
-</span><span class="line">  <span class="k">if</span> <span class="p">(</span><span class="nx">bottles</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'もうビールは残ってない'</span><span class="p">);</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>関数型プログラミングのアプローチで書くとこうなります。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>関数型プログラミング</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="c1">// var _ = require('underscore');</span>
-</span><span class="line"><span class="kd">function</span> <span class="nx">lyricsSegment</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">chain</span><span class="p">([])</span>
-</span><span class="line">    <span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">n</span> <span class="o">+</span> <span class="s1">'本のビールが残ってる'</span><span class="p">)</span>
-</span><span class="line">    <span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">n</span> <span class="o">+</span> <span class="s1">'本のビール'</span><span class="p">)</span>
-</span><span class="line">    <span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'ひとつ取って、隣に回せ'</span><span class="p">)</span>
-</span><span class="line">    <span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">lyrics</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">          <span class="nx">lyrics</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'もうビールは残ってない'</span><span class="p">);</span>
-</span><span class="line">        <span class="p">}</span>
-</span><span class="line">    <span class="p">})</span>
-</span><span class="line">    <span class="p">.</span><span class="nx">value</span><span class="p">();</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">function</span> <span class="nx">song</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">,</span> <span class="nx">lyricGen</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-</span><span class="line">    <span class="kd">function</span><span class="p">(</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">return</span> <span class="nx">acc</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">lyricGen</span><span class="p">(</span><span class="nx">n</span><span class="p">));</span>
-</span><span class="line">    <span class="p">},</span> <span class="p">[]);</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">song</span><span class="p">(</span><span class="mi">99</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">lyricSegment</span><span class="p">);</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p><strong class="text-danger">命令型プログラミングは一度きりの実装となりがちで、再利用が難しいものになります</strong>。</p>
-
-<h3>コレクション中心プログラミング</h3>
-
-<p>関数型プログラミングは、<em>コレクションに入った多数のアイテムに同じ操作を適用するようなタスク</em> を行う際にとても便利です。</p>
-
-<p>一般的な関数型プログラミングによって主張されるコレクション中心の考え方のポイントは、その処理を行うために一貫性のある語彙を確立し、包括的に揃えた関数を再利用出来るようにすることです。</p>
-
-<blockquote>
-<p>10種類のデータ構造上で10の関数を動かすよりも、ひとつのデータ構造上で100の関数を動かすほうがよい。</p>
-<footer><strong>Alan Perlis</strong></footer>
-</blockquote>
-
-
-<p>関数型プログラミングでは、<strong class="text-danger">それぞれの関数がすこしずつデータを変換し、最後の解に至る</strong> ようにします。</p>
-
-<h3>値ではなく、関数を使え</h3>
-
-<p>ある値を何度か繰り返す関数はよい関数ですが、<strong class="text-danger">ある計算を何度か繰り返す関数のほうがよりよい</strong> 関数です。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>よい関数</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">repeat</span><span class="p">(</span><span class="nx">times</span><span class="p">,</span> <span class="nx">VALUE</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="nx">times</span><span class="p">),</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">VALUE</span><span class="p">;</span> <span class="p">});</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">'Major'</span><span class="p">);</span>
-</span><span class="line"><span class="c1">// =&gt; ["Major", "Major", "Major", "Major"]</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>よりよい関数</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">repeatedly</span><span class="p">(</span><span class="nx">times</span><span class="p">,</span> <span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="nx">times</span><span class="p">),</span> <span class="nx">func</span><span class="p">);</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">repeatedly</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'Major'</span><span class="p">;</span> <span class="p">});</span>
-</span><span class="line"><span class="c1">// =&gt; ["Major", "Major", "Major", "Major"]</span>
-</span><span class="line"><span class="nx">repeatedly</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="p">});</span>
-</span><span class="line"><span class="c1">// =&gt; [1, 3, 8]</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<h2>関数を作る関数を作る意義</h2>
-
-<h3>カリー化</h3>
-
-<p><img src="http://hamasyou.com/images/2014-02-21-functional-javascript-01.jpg" alt="カリー化" class="img-thumbnail" title="カリー化"></p>
-
-<p>カリー化された関数というのは、<em>引数を一つ受け取るたびに新しい関数を返す関数</em> のことです。<code>invoker</code> 関数はカリー化された関数といえます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>カリー化された関数</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">invoker</span><span class="p">(</span><span class="s1">'reverse'</span><span class="p">,</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">reverse</span><span class="p">)([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]);</span>
-</span><span class="line"><span class="c1">// =&gt; [3,2,1]</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>JavaScript は変数の値の変更に対しておおらかな言語です。オブジェクト指向のカプセル化のような事をする場合、クロージャを使うと便利です。</p>
-
-<p>クロージャを使うと、生成時のコンテキストにもとづいて特定の動作を行うように「<em>設定された</em>」関数を返すことができます。この設定された関数は外部からカプセル化されており、関数の抽象を高めます。</p>
-
-<p>カリー化された関数も同じ考え方になります。</p>
-
-<h3>JavaScript でカリー化を行う意味</h3>
-
-<p>まず、シンプルな高階関数をつくります。関数を引数に取り、引数をひとつだけ取るように限定された関数を返す関数です。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>curry</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">curry</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="nx">func</span><span class="p">(</span><span class="nx">arg</span><span class="p">);</span>
-</span><span class="line">  <span class="p">};</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>JavaScript の関数は <strong class="text-danger">引数をいくら渡してもエラーになりません</strong>。そこで、いくつかの「<em>専門化を行う</em>」引数をオプションで取る場合がよくあります。</p>
-
-<p>例えば <code>parseInt</code> という関数は、第2引数に n 進数の n をオプションで受け取ります。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>parseInt</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nb">parseInt</span><span class="p">(</span><span class="s1">'11'</span><span class="p">);</span>
-</span><span class="line"><span class="c1">// =&gt; 11</span>
-</span><span class="line"><span class="nb">parseInt</span><span class="p">(</span><span class="s1">'11'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-</span><span class="line"><span class="c1">// =&gt; 3</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p><code>parseInt</code> を第一級関数として使うと第2引数が原因で混乱するケースがあります。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="p">[</span><span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">);</span>
-</span><span class="line"><span class="c1">// =&gt; [11, NaN, 3, 4]</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>JavaScript の <code>map</code> は与えられた関数の第1引数に <em>要素</em>、第2引数に <em>インデックス</em>、第3引数に <em>元の配列</em> を渡します。そのため、こんな結果になってしまいます。</p>
-
-<p>ここで、先ほど定義した <code>curry</code> 関数を利用します。与えられた関数に一つだけ引数を渡すように強制してみます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="p">[</span><span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">curry</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">));</span>
-</span><span class="line"><span class="c1">// =&gt; [11, 11, 11, 11]</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>引数を2つ取るようにする <code>curry2</code> は次のようになります。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>curry2</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">curry2</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">secondArg</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstArg</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">return</span> <span class="nx">func</span><span class="p">(</span><span class="nx">firstArg</span><span class="p">,</span> <span class="nx">secondArg</span><span class="p">);</span>
-</span><span class="line">    <span class="p">};</span>
-</span><span class="line">  <span class="p">};</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">parseIntByBinary</span> <span class="o">=</span> <span class="nx">curry2</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">)(</span><span class="mi">2</span><span class="p">);</span>
-</span><span class="line"><span class="nx">parseIntByBinary</span><span class="p">(</span><span class="s1">'111'</span><span class="p">);</span>
-</span><span class="line"><span class="c1">// =&gt; 7</span>
-</span><span class="line"><span class="nx">parseIntByBinary</span><span class="p">(</span><span class="s1">'10'</span><span class="p">);</span>
-</span><span class="line"><span class="c1">// =&gt; 2</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>このように、<strong class="text-danger">カリー化は JavaScript の関数の動作を「専門化」させるための有効なテクニック</strong> になります。</p>
-
-<h2>再帰</h2>
-
-<p><img src="http://hamasyou.com/images/2014-02-21-functional-javascript-03.jpg" alt="再帰" class="img-thumbnail" title="再帰"></p>
-
-<p>再帰が関数型プログラミングに重要である3つの理由。</p>
-
-<ul>
-<li>共通の問題のサブセットに単一の抽象を使用する</li>
-<li>可変の状態を隠蔽することができる</li>
-<li>遅延評価や無限データ構造の処理を行う手段のひとつ</li>
-</ul>
-
-
-<p>配列の長さを調べる関数を再帰の考え方で解くと。</p>
-
-<ol>
-<li>もし配列が空であれば長さは0</li>
-<li>配列の最初の要素を取り出し、残りを自身の関数に渡した実行結果に1を加える</li>
-</ol>
-
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>length</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">length</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">if</span> <span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">(</span><span class="nx">array</span><span class="p">))</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class="line">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">length</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">rest</span><span class="p">(</span><span class="nx">array</span><span class="p">));</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>再帰をうまく実装するヒントは、「<strong class="text-danger">値は大きな問題に内包された小さな問題によって組み立てられるものである</strong>」と認識することです。</p>
-
-<p><em>基本的な場合を考える</em> ことで、分解の最初の一歩を踏み出しやすくなります。</p>
-
-<h2>純粋関数と冪等とデータの不変性</h2>
-
-<p><img src="http://hamasyou.com/images/2014-02-21-functional-javascript-05.jpg" alt="データの普遍性" class="img-thumbnail" title="データの普遍性"></p>
-
-<h3>純粋関数</h3>
-
-<p><strong class="text-danger">純粋関数</strong> とは、その関数が外部に一切の影響を与えないことが静的に保証されている関数です。純粋性のルールはつぎのようになります。</p>
-
-<ul>
-<li>結果は引数として与えられた値からのみ計算される</li>
-<li>関数の外部で変更される可能性のあるデータに一切依存しない</li>
-<li>関数実行部の外側に存在する何かの状態を一切変更しない</li>
-</ul>
-
-
-<p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/k3kaimu/d-manual/blob/master/function.md#%E7%B4%94%E7%B2%8B%E9%96%A2%E6%95%B0pure" rel="external nofollow" title="純粋関数">純粋関数</a></p>
-
-<h3>冪等（べきとう）</h3>
-
-<p>RESTful なアーキテクチャが一般化するにつれて <strong class="text-danger">冪等（べきとう）</strong> の考え方も一般に浸透してきました。冪等とは、<em>あるアクションを何度行っても一度行った場合とまったくおなじ効果をもたらす</em> というものです。冪等である関数は次の条件を満たします。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>冪等な関数</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">someFunc</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="o">==</span> <span class="nx">_</span><span class="p">.</span><span class="nx">compose</span><span class="p">(</span><span class="nx">someFunc</span><span class="p">,</span> <span class="nx">someFunc</span><span class="p">)(</span><span class="nx">arg</span><span class="p">);</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>ある引数を与えて実行するということは、その関数を2回連続で呼び出しても同じ結果を返します。</p>
-
-<h3>不変性</h3>
-
-<p>JavaScript はダイナミックな言語です。<em>純粋関数のポリシーに縛られるがゆえに、関数のダイナミックさを犠牲にする必要はありません</em>。</p>
-
-<p>しかし、変数は変更するたびにその変数を参照するタイミングによって異なる値が返ってきます。<em>プログラムのすべての状態変更を除去することは不可能ですが、可能なかぎり減らすほうがよい</em> です。</p>
-
-<p>そして、<em>関数型プログラミングの理想な状況とは、可変なものが全く存在しない</em> という状況です。</p>
-
-<p>関数を <strong class="text-danger">抽象の基本的な単位</strong> としてみる利点は、関数の実装内容が外部に「<em>漏れる</em>」ことがなければ、関数の利用側は関数の実装に無関係であることです。</p>
-
-<p>つまり、関数型プログラミングにおける関数でも、内部で命令的なプログラミングをしていたり、変数の状態を変更していたとしても、外部にもれなければ問題にはならないということです。</p>
-
-<p>JavaScript は <strong class="text-danger">関数が変数の境界をつくる</strong> ので、ローカル変数の状態変更は関数が外部に漏れるのを防いでくれます。</p>
-
-<blockquote>
-<p>誰もいない森で木が倒れたら、音がするでしょうか？<br>不変性を持った戻り値を生成するために、純粋関数がローカルデータを変異させたとしたら、それは良いことなのでしょうか？</p>
-<footer><strong>Rich Hickey</strong> <cite><a href="http://clojure.org/transients" rel="external nofollow" title="clojure.org/transients/…">clojure.org/transients/…</a></cite></footer>
-</blockquote>
-
-
-<p>結局のところ、答えは <strong class="text-danger">Yes</strong> です。</p>
-
-<h3>不変性を保つためにとりうる手段</h3>
-
-<p>JavaScript のオブジェクトフィールドは常に参照可能なので、オブジェクトは不変ではありません。不変性を保つために関数の実装側がとりえる手段は実質つぎの3つのどれかになります。</p>
-
-<ul>
-<li>浅いコピーで十分な場合は <code>_.clone</code> を使ってコピーする</li>
-<li>深いコピーが必要な場合は <code>deepClone</code> を使う</li>
-<li>純粋関数を使ってコードを記述する</li>
-</ul>
-
-
-<h2>メモ</h2>
-
-<p><img src="http://hamasyou.com/images/2014-02-21-functional-javascript-04.jpg" alt="メモ" class="img-thumbnail" title="メモ"></p>
-
-<p>本書の中に出てきた、関数とかのメモ。</p>
-
-<h3>predicate</h3>
-
-<p>常に真偽値（<code>true</code> or <code>false</code>）を返す関数を <strong class="text-danger">predicate</strong> と呼びます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">lessOrEqual</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">x</span> <span class="o">&lt;=</span> <span class="nx">y</span><span class="p">;</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<h3>existy と truthy</h3>
-
-<p><code>existy</code> は与えられた値が存在するかどうかを返す関数です。<code>truthy</code> は与えられた値が <code>true</code> とみなされるかどうかを返す関数です。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">x</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">function</span> <span class="nx">truthy</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="p">(</span><span class="nx">x</span> <span class="o">!==</span> <span class="kc">false</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p><code>truthy</code> は0を <code>true</code> と判定します。これは JavaScript の標準の動作とは違いますが、0を <code>false</code> と同一とみなすのは C 言語の遺物であると筆者は考えているようです。</p>
-
-<h3>JavaScript 関数の設計指針</h3>
-
-<p>JavaScript ではある条件が <code>true</code> の場合のみ処理を行い、それ以外の場合には <code>undefined</code> か <code>null</code> を返す動作が使いやすい場合が多い。</p>
-
-<h3>メタプログラミングとは</h3>
-
-<blockquote><p>プログラミングは何かを行うためにコードを書くものであるが、メタプログラミングは何かを解釈する方法を変更するためにコードを書くものである。</p></blockquote>
-
-
-<h3>第一級関数</h3>
-
-<p>第一級関数は他のデータ型と同じように、扱うことができる関数のことです。</p>
-
-<ul>
-<li>変数に格納できる</li>
-<li>必要に応じて生成できる</li>
-<li>他の関数の引数として渡すことができる</li>
-<li>関数の戻り値として返すことができる</li>
-</ul>
-
-
-<h3>コレクション中の <code>null</code> に対する防御用の関数 <code>fnull</code>
-</h3>
-
-<p><code>fnull</code> は関数と可変長引数をとる関数です。与えられた関数の実行を行う際に <code>undefined</code> か <code>null</code> の値の場合にはデフォルト値を使うようにして関数を呼び出します。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>fnull</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">fnull</span><span class="p">(</span><span class="nx">func</span> <span class="cm">/* , 可変長のデフォルト引数 */</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">rest</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
-</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span> <span class="cm">/* args */</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">?</span> <span class="nx">e</span> <span class="o">:</span> <span class="nx">defaults</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span> <span class="p">});</span>
-</span><span class="line">    <span class="k">return</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
-</span><span class="line">  <span class="p">};</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">safeMulti</span> <span class="o">=</span> <span class="nx">fnull</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">total</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">total</span> <span class="o">*</span> <span class="nx">n</span><span class="p">;</span> <span class="p">},</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-</span><span class="line"><span class="nx">_</span><span class="p">.</span><span class="nx">reduce</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nx">safeMulti</span><span class="p">);</span>
-</span><span class="line"><span class="c1">// =&gt; 30</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<h3>invoker</h3>
-
-<p><code>invoker</code> は関数を返す関数です。引数にメソッド名を取り、メソッドの実行主体のオブジェクトを渡すとそのオブジェクトでメソッドを実行する関数を返します。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>invoker</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">invoker</span><span class="p">(</span><span class="nx">NAME</span><span class="p">,</span> <span class="nx">METHOD</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">target</span> <span class="cm">/* , 任意の引数 */</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">existy</span><span class="p">(</span><span class="nx">target</span><span class="p">))</span> <span class="nx">fail</span><span class="p">(</span><span class="s1">'Must provide a target'</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">    <span class="kd">var</span> <span class="nx">targetMethod</span> <span class="o">=</span> <span class="nx">target</span><span class="p">[</span><span class="nx">NAME</span><span class="p">];</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">args</span>         <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">rest</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
-</span><span class="line">    <span class="k">return</span> <span class="nx">doWhen</span><span class="p">((</span><span class="nx">existy</span><span class="p">(</span><span class="nx">targetMethod</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">METHOD</span> <span class="o">==</span> <span class="nx">targetMethod</span><span class="p">),</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">return</span> <span class="nx">targetMethod</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
-</span><span class="line">    <span class="p">});</span>
-</span><span class="line">  <span class="p">};</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">rev</span> <span class="o">=</span> <span class="nx">invoker</span><span class="p">(</span><span class="s1">'reverse'</span><span class="p">,</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">reverse</span><span class="p">);</span>
-</span><span class="line"><span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="nx">rev</span><span class="p">);</span>
-</span><span class="line"><span class="c1">// =&gt; [[3, 2, 1]]</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>関数型のスタイルでは、<em>関数の実行主体となるオブジェクトを引数にとる関数の形が好まれます</em>。</p>
-
-<h3>メソッドチェーン</h3>
-
-<p>メソッドチェーンは「<em>流暢な</em>」API を構築するために有用なパターンです。流暢な API とは例えば次のようなものです。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>流暢な API の例</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="nx">createPerson</span><span class="p">()</span>
-</span><span class="line">  <span class="p">.</span><span class="nx">setFirstName</span><span class="p">(</span><span class="s1">'Mike'</span><span class="p">)</span>
-</span><span class="line">  <span class="p">.</span><span class="nx">setLastName</span><span class="p">(</span><span class="s1">'Fogus'</span><span class="p">)</span>
-</span><span class="line">  <span class="p">.</span><span class="nx">setAge</span><span class="p">(</span><span class="mi">108</span><span class="p">)</span>
-</span><span class="line">  <span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>メソッドチェーンを実現する「<em>魔法</em>」は <em>チェーン内のそれぞれのメソッドが同じホストのオブジェクトの参照を返す</em> ことです。</p>
-
-<p>上の方のメモで、関数が前提条件に合わない引数を受け取った場合は <code>undefined</code> か <code>null</code> を返すのがよいとありました。メソッドチェーンで使うことを考えている関数の場合は <code>undefined</code>、<code>null</code>、<code>同じホストのオブジェクト</code> のどれを返せばいいんでしょうかね。。。</p>
-
-<h2>感想</h2>
-
-<p>JavaScript の関数の基本的なところから説明をはじめて、<strong class="text-danger">関数型プログラミング</strong>、<strong class="text-danger">クロージャ</strong>、<strong class="text-danger">高階関数</strong>、<strong class="text-danger">カリー化</strong>、<strong class="text-danger">再帰</strong>、<strong class="text-danger">フィルタ</strong>、<strong class="text-danger">パイプライン</strong>等の関数の設計方法がふんだんに解説されています。</p>
-
-<p>説明がとても丁寧で分かりやすく、関数型プログラミングのことを知らない人でも理解しやすいと思います。</p>
-
-<p>関数型プログラミングを学ぶと、<strong class="text-danger">純粋関数</strong>、<strong class="text-danger">データの不変性</strong> というテーマに当たります。JavaScript にはないですが、Ruby ではメソッドに <code>!</code> が付いた自分自身を変更する破壊的なメソッドがあります。関数型プログラミングとオブジェクト指向プログラミングをうまい具合に取り入れている言語だと再認識しました。</p>
-
-<p>JavaScript で関数型プログラミングを学ぶというテーマですが、<em>関数型プログラミングを学ぶことで他の言語の面白い点も見えてくる</em> というのが読了しての感想です。</p>
-
-<p>JavaScript は Java に次いで最も多く利用されている言語ですので、<strong class="text-danger">JavaScript をよりよく使うため、他の関数型言語をより楽しむため</strong> に本書を活用してみてはいかがでしょうか。おすすめです。</p>
 ]]></content>
   </entry>
   
