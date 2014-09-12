@@ -75,3 +75,35 @@ Cannot convert the expression's type '[[NameAndValue]]' to type 'StringLiteralCo
 ```
 
 意味がわからんです。。
+
+仕方ないので
+
+```swift
+var dict: [[NameAndValue]] = [[],[]]
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+
+dict[1].append(["name": "",    "value": ""])
+dict[1].append(["name": "",    "value": ""])
+dict[1].append(["name": "",    "value": ""])
+dict[1].append(["name": "",    "value": ""])
+dict[1].append(["name": "",    "value": ""])
+```        
+
+こうやって、プログラムでデータ登録するようにしました。。
