@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-08-30T13:56:03+09:00</updated>
+  <updated>2014-09-12T11:32:16+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,101 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Swift] 多次元配列の定義の謎]]></title>
+    <link href="http://hamasyou.com/blog/2014/09/12/swift-mysterious-multi-dimensional-array/"/>
+    <updated>2014-09-12T11:21:20+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/09/12/swift-mysterious-multi-dimensional-array</id>
+    <content type="html"><![CDATA[<p>Xcode6 GM でましたね！ Beta1 の頃から Swift 触ってますが、まぁ言語仕様がよく変わること（笑。</p>
+
+<p>で、いつか直るだろうと思ってたけど、GM でも直っていない Swift の多次元配列の定義の謎に関してです。だれか理由分かる人いたら教えてください。。</p>
+
+<p>下のようなコードがあるとします。</p>
+
+<pre><code class="swift">
+typealias NameAndValue = Dictionary&lt;String, String&gt;
+
+let dict: [[NameAndValue]] = [
+  [
+     ["name": "",    "value": ""],
+  ],
+  [
+     ["name": "",    "value": ""],
+  ]]
+</code></pre>
+
+<p><code>typealias</code> で別名つけて2次元配列を定義しているだけです。要素が <code>Dictionary</code> になっています。ここまでは普通にコンパイルが通ります。</p>
+
+<p>ですが、これをこんなふうに&hellip;</p>
+
+<pre><code class="swift">
+let dict: [[NameAndValue]] = [
+  [
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],     
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],
+     ["name": "",    "value": ""],                         
+  ],
+  [
+     ["name": "",    "value": ""],
+  ]]
+</code></pre>
+
+<p>配列の要素を増やしていきます。そうするとだいたい <strong>10件くらい</strong> からコンパイルが遅くなり、<strong>15件過ぎたくらいから</strong> コンパイルエラーが出るようになります。</p>
+
+<pre><code>Cannot convert the expression's type '[[NameAndValue]]' to type 'StringLiteralConvertible'
+</code></pre>
+
+<p>意味がわからんです。。</p>
+
+<p>仕方ないので</p>
+
+<pre><code class="swift">var dict: [[NameAndValue]] = [[],[]]
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+dict[0].append(["name": "",    "value": ""])
+
+dict[1].append(["name": "",    "value": ""])
+dict[1].append(["name": "",    "value": ""])
+dict[1].append(["name": "",    "value": ""])
+dict[1].append(["name": "",    "value": ""])
+dict[1].append(["name": "",    "value": ""])
+</code></pre>
+
+<p>こうやって、プログラムでデータ登録するようにしました。。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[ReactiveCocoa] catchTo の使いどころ]]></title>
@@ -239,21 +334,6 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
 </ol>
 </div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Swift で UITableView 関連の操作をする際に NSIndexPath を作る方法]]></title>
-    <link href="http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath/"/>
-    <updated>2014-07-03T11:53:41+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath</id>
-    <content type="html"><![CDATA[<p>Swift で <code>UITableView</code> 関連のロジックを書くときに、<code>NSIndexPath</code> を作るときは</p>
-
-<pre><code class="swift">let row = 0, section = 0
-NSIndexPath(forRow: row, inSection: section)
-</code></pre>
-
-<p>のイニシャライザを使うべし。<code>NSIndexPath(index: row)</code> だと <code>row</code> の参照ができなくてエラーになる。</p>
 ]]></content>
   </entry>
   

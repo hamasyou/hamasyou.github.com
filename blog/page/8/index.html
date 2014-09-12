@@ -13,8 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="will_paginate に代わるページングのライブラリ、kaminari ですが、ページングが scope 扱いで配列に対して使えなかったのでちょっと不便なときがあったのですが、なんと paginate_array なるものを発見しました。 環境 kaminari
-0.12.4 ">
+  <meta name="description" content="ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。 環境 Rails
+3.0.7 ">
   
 
   
@@ -25,8 +25,8 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/8/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="will_paginate に代わるページングのライブラリ、kaminari ですが、ページングが scope 扱いで配列に対して使えなかったのでちょっと不便なときがあったのですが、なんと paginate_array なるものを発見しました。 環境 kaminari
-0.12.4 " />
+<meta property="og:description" content="ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。 環境 Rails
+3.0.7 " />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -110,6 +110,159 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/14/activerecordprevious-changes/" class="excerpt-link">ActiveRecord#previous_changes で変更のあった属性を取り出す</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-14T09:43:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 14<span>th</span>, 2011</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/activerecord/" rel="nofollow">ActiveRecord</a>
+    
+      <a class="tag label label-info" href="/blog/tags/rails3/" rel="nofollow">Rails3</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2011/06/14/activerecordprevious-changes/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2011/06/14/activerecordprevious-changes/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>ActiveRecord のモデルで変更のあった属性だけを抜き出す方法に、previous_changes メソッドが使える。</p>
+
+<p><section></section></p>
+
+<h4>環境</h4>
+
+
+
+
+<dl>
+<dt>Rails</dt>
+<dd>3.0.7</dd>
+</dl>
+
+
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2011/06/14/activerecordprevious-changes/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1590,181 +1743,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/20/4774143073/" class="excerpt-link">[Web開発者のための]大規模サービス技術入門 ―データ構造、メモリ、OS、DB、サーバ/インフラ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2010-11-20T19:32:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 20<span>th</span>, 2010</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a>
-    
-      <a class="tag label label-info" href="/blog/tags/arugorizumu/" rel="nofollow">アルゴリズム</a>
-    
-      <a class="tag label label-info" href="/blog/tags/inhura/" rel="nofollow">インフラ</a>
-    
-      <a class="tag label label-info" href="/blog/tags/sisutemushe-ji/" rel="nofollow">システム設計</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2010/11/20/4774143073/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2010/11/20/4774143073/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/20/4774143073/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2010/11/20/4774143073/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2010/11/20/4774143073/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2010/11/20/4774143073/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2010/11/20/4774143073/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2010/11/20/4774143073/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4774143073?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774143073" title="[Web開発者のための]大規模サービス技術入門 ―データ構造、メモリ、OS、DB、サーバ/インフラ" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/51GW5jxmdvL._SL500_AA300_.jpg" class="asin-thumbnail" alt="[Web開発者のための]大規模サービス技術入門 ―データ構造、メモリ、OS、DB、サーバ/インフラ" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4774143073?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774143073" title="[Web開発者のための]大規模サービス技術入門 ―データ構造、メモリ、OS、DB、サーバ/インフラ" rel="external nofollow">[Web開発者のための]大規模サービス技術入門 ―データ構造、メモリ、OS、DB、サーバ/インフラ</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>伊藤 直也 (著), 田中 慎司 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4774143073?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4774143073" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>大規模サービスの運営、大変だということは分かっていても、じゃあ実際にどういうふうに大変なのか。実際に体験してみないとこの大変さはわからないと思います。</p>
-
-<p>でも、実際に大規模サービスの開発・運営に携わることになったら！？</p>
-
-<p>本書は、はてなで実際に運用されているサービスを元に、大規模サービス技術のノウハウを解説しています。実際にはてなのインターンシップで講義資料として使われているものがベースになっているので、分かりやすくかつ、実用的です。</p>
-
-<p>Web サービスはいつユーザ数が爆発するかわからないという面白さがある一方、きちんとサービスのノウハウがないとシステムダウンにすぐに繋がってしまうという怖さがあります。</p>
-
-<p>すべてのWeb サービス開発エンジニアにおすすめです。本書で本質的な知識を得て、準備万端にしておくと良いと思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2010/11/20/4774143073/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/9/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1808,6 +1786,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/12/swift-mysterious-multi-dimensional-array/">[Swift] 多次元配列の定義の謎</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/08/30/484433591x/">APIデザインの極意 Java/NetBeansアーキテクト探究ノート</a>
       </li>
     
@@ -1843,10 +1825,6 @@
         <a href="/blog/2014/05/14/titanium-sns-oauth-app-scheme/">Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/04/passenger-js-css-gzip/">Railsが用意したasset precompile済みのgzファイルを返すapache confの設定</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1854,7 +1832,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">126</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">127</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

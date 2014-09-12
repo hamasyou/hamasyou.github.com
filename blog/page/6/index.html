@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="本書は、Clean Coder（プログラマのプロ）とはどんな人物で、どういうことに心がける必要があるのかを解説した本です。 プロとは、自分の行いに責任を持つ人物。責任とは、清く正しく働くということ。コミュニケーションをうまくとること。見積りを確実にすること。時間をかんりすること。 &hellip;">
+  <meta name="description" content="本書は、クライアントサイド（ブラウザ）で JavaScript を使ってリッチなアプリを作る際のプラクティスを説明しています。 前半では、JavaScript によるオブジェクト指向開発の方法や MVC 開発の方法を、後半では、JavaScript の MVC デザインパターンに則った、 &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/6/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="本書は、Clean Coder（プログラマのプロ）とはどんな人物で、どういうことに心がける必要があるのかを解説した本です。 プロとは、自分の行いに責任を持つ人物。責任とは、清く正しく働くということ。コミュニケーションをうまくとること。見積りを確実にすること。時間をかんりすること。 &hellip;" />
+<meta property="og:description" content="本書は、クライアントサイド（ブラウザ）で JavaScript を使ってリッチなアプリを作る際のプラクティスを説明しています。 前半では、JavaScript によるオブジェクト指向開発の方法や MVC 開発の方法を、後半では、JavaScript の MVC デザインパターンに則った、 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -108,6 +108,177 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/23/487311554X/" class="excerpt-link">ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-09-23T22:05:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 23<span>rd</span>, 2012</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
+    
+      <a class="tag label label-info" href="/blog/tags/mvc/" rel="nofollow">MVC</a>
+    
+      <a class="tag label label-info" href="/blog/tags/orairi/" rel="nofollow">オライリー</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2012/09/23/487311554X/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2012/09/23/487311554X/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2012/09/23/487311554X/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2012/09/23/487311554X/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2012/09/23/487311554X/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2012/09/23/487311554X/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2012/09/23/487311554X/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2012/09/23/487311554X/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/gp/product/487311554X?ie=UTF8&amp;camp=247&amp;creativeASIN=487311554X&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理" rel="external nofollow">
+      <img src="http://images.amazon.com/images/I/51dU7xncMJL._SL500.jpg" class="asin-thumbnail" alt="ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/gp/product/487311554X?ie=UTF8&amp;camp=247&amp;creativeASIN=487311554X&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理" rel="external nofollow">ステートフルJavaScript ―MVCアーキテクチャに基づくWebアプリケーションの状態管理</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>Alex MacCaw (著), 牧野 聡 (翻訳) </dd>
+      
+      
+      <dt>出版社</dt>
+      <dd> オライリージャパン</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/gp/product/487311554X?ie=UTF8&amp;camp=247&amp;creativeASIN=487311554X&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><p>本書は、クライアントサイド（ブラウザ）で JavaScript を使ってリッチなアプリを作る際のプラクティスを説明しています。</p>
+
+<p>前半では、JavaScript によるオブジェクト指向開発の方法や MVC 開発の方法を、後半では、JavaScript の MVC デザインパターンに則った、各種ライブラリの説明が行われています。</p>
+
+<p>最近では、ユーザビリティの良いアプリを開発するのに必須なクライアントサイドでの JavaScript の使い方が複雑になってきているように思います。ちょっと jQuery を使って DOM 操作していればよかった頃と比べて、最近では色々なライブラリを組み合わせる必要があったり、クライアントサイドでも MVC パターンが必要になったりと、大変です。</p>
+
+<p>本書は、そんな JavaScript でリッチアプリケーションを作成する際の取っ掛かりを学ぶのに良いと思います。オライリー本なので、読むのが簡単ということはなく、むしろ格式高い感じすらしますが、多少 JavaScript でオブジェクト指向の経験があれば、読み進めるのは難しく無いと思います。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2012/09/23/487311554X/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1684,151 +1855,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/12/game/" class="excerpt-link">『のほほんビレッジ〜みんなのカフェ〜』の御礼</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-09-12T20:16:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 12<span>th</span>, 2011</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/sosiyarugemu/" rel="nofollow">ソーシャルゲーム</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2011/09/12/game/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2011/09/12/game/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/09/12/game/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2011/09/12/game/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2011/09/12/game/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2011/09/12/game/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2011/09/12/game/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2011/09/12/game/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>携帯向けの GREE ソーシャルアプリ『<strong class="text-danger">のほほんビレッジ〜みんなのカフェ〜</strong>』を遊んでくださっている皆様、本当にありがとうございます。</p>
-
-<p>のほほんビレッジは、<a href="http://www.ediva.jp/" rel="external nofollow" title="株式会社Ediva">株式会社Ediva</a>さんと共同で製作したゲームです。</p>
-
-<p><a href="http://hamasyou.com/blog/archives/images/%E7%B4%B9%E4%BB%8B%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%86%E3%82%B9%E3%83%8805.jpg" rel="external nofollow" title=""></a></p>
-
-<p><a href="http://gree.jp/community/3035925" rel="external nofollow" title="公式コミュニティ">公式コミュニティ</a>の方にもあげられていますが、<em>皆様からの要望</em>はすべて目を通しています。</p>
-
-<p>要望の中から少しずつですがプログラムを実装して、今後も皆様にお届けしていきたいと思います。</p>
-
-<p>致命的なバグに関しては出来る限り早く、要望の実装は定期メンテナンスで導入という感じで運営していますので、末永くお付き合い下さい。</p>
-
-<p>今回の定期メンテナンスで導入されなかった機能も、次回のメンテナンスには導入されるかも！？というような楽しみ方もしていただけると。。。</p>
-
-<p><a href="http://mpf.gree.jp/2733" rel="external nofollow" title="のほほんビレッジ〜みんなのカフェ〜">のほほんビレッジ〜みんなのカフェ〜</a>（携帯用アプリトップ）</p>
-</div>
-  
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/7/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1872,6 +1898,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/12/swift-mysterious-multi-dimensional-array/">[Swift] 多次元配列の定義の謎</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/08/30/484433591x/">APIデザインの極意 Java/NetBeansアーキテクト探究ノート</a>
       </li>
     
@@ -1907,10 +1937,6 @@
         <a href="/blog/2014/05/14/titanium-sns-oauth-app-scheme/">Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/04/passenger-js-css-gzip/">Railsが用意したasset precompile済みのgzファイルを返すapache confの設定</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1918,7 +1944,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">126</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">127</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

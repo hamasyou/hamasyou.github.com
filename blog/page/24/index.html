@@ -13,7 +13,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="JSFは今後期待されるWebアプリケーションフレームワークの一つです。標準規格ということで、普及してくるのではないかと思います。 JSFはユーザインターフェース周りの処理を簡単に実装できるということを目標に開発されたフレームワークで、 &hellip;">
+  <meta name="description" content="モデリングの部分部分をパターン化して、モデリングに利用しようとしている印象を受けました。ビジネスのモデリングというのは細分化して分類してみると、12種類の「分子」に分けられるというのが著者の意見のようです。 12種類のパターンは以下のようなものがあります。 アクター-ロール
+外部の場所-場所
+品目 &hellip;">
   
 
   
@@ -24,7 +26,9 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/24/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="JSFは今後期待されるWebアプリケーションフレームワークの一つです。標準規格ということで、普及してくるのではないかと思います。 JSFはユーザインターフェース周りの処理を簡単に実装できるということを目標に開発されたフレームワークで、 &hellip;" />
+<meta property="og:description" content="モデリングの部分部分をパターン化して、モデリングに利用しようとしている印象を受けました。ビジネスのモデリングというのは細分化して分類してみると、12種類の「分子」に分けられるというのが著者の意見のようです。 12種類のパターンは以下のようなものがあります。 アクター-ロール
+外部の場所-場所
+品目 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -108,6 +112,191 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2004/10/11/4894715775/" class="excerpt-link">ストリームラインオブジェクトモデリング―パターンとビジネスルールによるUML</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-10-11T22:34:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 11<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/uml/" rel="nofollow">UML</a>
+    
+      <a class="tag label label-info" href="/blog/tags/moderingu/" rel="nofollow">モデリング</a>
+    
+      <a class="tag label label-info" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2004/10/11/4894715775/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/11/4894715775/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/10/11/4894715775/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/10/11/4894715775/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2004/10/11/4894715775/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2004/10/11/4894715775/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2004/10/11/4894715775/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2004/10/11/4894715775/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+<div class="row asin-detail">
+  <div class="col-sm-4">
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715775/sorehabooks-22" title="ストリームラインオブジェクトモデリング―パターンとビジネスルールによるUML" rel="external nofollow">
+      <img src="http://ec2.images-amazon.com/images/I/51YJ30ZT85L._SL500_AA300_.jpg" class="asin-thumbnail" alt="ストリームラインオブジェクトモデリング―パターンとビジネスルールによるUML" />
+    </a>
+  </div>
+  <div class="col-sm-8 asin-meta">
+    <dl>
+      
+      <dt>タイトル</dt>
+      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715775/sorehabooks-22" title="ストリームラインオブジェクトモデリング―パターンとビジネスルールによるUML" rel="external nofollow">ストリームラインオブジェクトモデリング―パターンとビジネスルールによるUML</a></dd>
+      
+      
+      <dt>著者</dt>
+      <dd>ジル ニコラ (著), マイク アベニー (著), マーク メイフィールド (著), Jill Nicola (原著), Mike Abney (原著), Mark Mayfield (原著), 今野 睦 (翻訳), デュオシステムズ (翻訳)</dd>
+      
+      
+      <dt>出版社</dt>
+      <dd>ピアソンエデュケーション</dd>
+      
+    </dl>
+    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4894715775/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
+  </div>
+</div>
+
+
+
+
+  <div class="entry-content"><p>モデリングの部分部分をパターン化して、モデリングに利用しようとしている印象を受けました。ビジネスのモデリングというのは細分化して分類してみると、12種類の「分子」に分けられるというのが著者の意見のようです。</p>
+
+<p>12種類のパターンは以下のようなものがあります。</p>
+
+<ul>
+<li>アクター-ロール</li>
+<li>外部の場所-場所</li>
+<li>品目-特定品目</li>
+<li>組立品-部品</li>
+<li>コンテナ-コンテンツ</li>
+<li>グループ-メンバー</li>
+<li>トランザクション-ロール</li>
+<li>トランザクション-場所</li>
+<li>トランザクション-特定品目</li>
+<li>コンポジットトランザクション-明細</li>
+<li>特定品目-明細</li>
+<li>トランザクション-後続トランザクション</li>
+</ul>
+
+
+<p>ビジネスモデルというものは、会社ごとに違っているのが普通だと思います。同じビジネスモデルでは、競争なんて出来ませからこれはきわめて普通なことだと思います。モデリングというのは、ビジネスを抽象化して捕らえるところに意味がある行為です。そして、抽象化したレベルではいくつかのパターンを見ることが出来る。これが本書の説明したかった事柄だと思います。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2004/10/11/4894715775/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1603,171 +1792,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/07/31/4774113794/" class="excerpt-link">逆引きサーブレット&JSPリファレンス</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-07-31T03:26:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jul 31<span>st</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/j2ee/" rel="nofollow">J2EE</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/07/31/4774113794/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/07/31/4774113794/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/07/31/4774113794/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/07/31/4774113794/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/07/31/4774113794/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/07/31/4774113794/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/07/31/4774113794/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/07/31/4774113794/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774113794/sorehabooks-22" title="逆引きサーブレット&JSPリファレンス" rel="external nofollow">
-      <img src="http://www.sam.hi-ho.ne.jp/hamasyou/gallery/img/021152950000.jpg" class="asin-thumbnail" alt="逆引きサーブレット&JSPリファレンス" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774113794/sorehabooks-22" title="逆引きサーブレット&JSPリファレンス" rel="external nofollow">逆引きサーブレット&JSPリファレンス</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>日立ソフトウェアエンジニアリングインターネットビジネス推進部 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>技術評論社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774113794/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>本書は、技術者必携の辞書の役割を十分果たしてくれるハンドブックです。「<strong class="text-danger">やりたいこと</strong>」から「<strong class="text-danger">実装方法</strong>」を導くためのサーブレット&amp;JSPの開発者のための本となっています。</p>
-
-<p>僕が本書をおすすめする理由は、良くある参考書と違って、クラスやメソッドの一覧が掲載されていないところです。本書の役割は、開発現場ですぐに使えるリファレンスだと思っています。開発現場に一冊あれば、サーブレット初心者の開発者から中級開発者まで広く利用できると思います。</p>
-
-<p>見出し、目的、ポイント、説明、サンプルコード、関連項目、仕様書の対応部分の7パートで一つのトピックを扱っています。不要な説明は極力省き、すぐに使える点が非常に魅力的な一冊です。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/07/31/4774113794/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/25/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1811,6 +1835,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/12/swift-mysterious-multi-dimensional-array/">[Swift] 多次元配列の定義の謎</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/08/30/484433591x/">APIデザインの極意 Java/NetBeansアーキテクト探究ノート</a>
       </li>
     
@@ -1846,10 +1874,6 @@
         <a href="/blog/2014/05/14/titanium-sns-oauth-app-scheme/">Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/04/passenger-js-css-gzip/">Railsが用意したasset precompile済みのgzファイルを返すapache confの設定</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1857,7 +1881,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">126</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">127</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

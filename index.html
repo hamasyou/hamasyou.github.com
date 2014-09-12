@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="本書は プログラミング API の設計本です。Web API の設計極意に関して知りたい人は 『RESTful Webサービス』や『Webを支える技術 -HTTP、URI、HTML、そしてREST』を読むのがいいと思います。本書は GoF のデザインパターン や EFFECTIVE JAVA &hellip;">
+  <meta name="description" content="Xcode6 GM でましたね！ Beta1 の頃から Swift 触ってますが、まぁ言語仕様がよく変わること（笑。 で、いつか直るだろうと思ってたけど、GM でも直っていない Swift の多次元配列の定義の謎に関してです。だれか理由分かる人いたら教えてください。。 &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="本書は プログラミング API の設計本です。Web API の設計極意に関して知りたい人は 『RESTful Webサービス』や『Webを支える技術 -HTTP、URI、HTML、そしてREST』を読むのがいいと思います。本書は GoF のデザインパターン や EFFECTIVE JAVA &hellip;" />
+<meta property="og:description" content="Xcode6 GM でましたね！ Beta1 の頃から Swift 触ってますが、まぁ言語仕様がよく変わること（笑。 で、いつか直るだろうと思ってたけど、GM でも直っていない Swift の多次元配列の定義の謎に関してです。だれか理由分かる人いたら教えてください。。 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -108,6 +108,299 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/12/swift-mysterious-multi-dimensional-array/" class="excerpt-link">[Swift] 多次元配列の定義の謎</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-09-12T11:21:20+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 12<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/swift/" rel="nofollow">Swift</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/09/12/swift-mysterious-multi-dimensional-array/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/09/12/swift-mysterious-multi-dimensional-array/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/09/12/swift-mysterious-multi-dimensional-array/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/09/12/swift-mysterious-multi-dimensional-array/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/09/12/swift-mysterious-multi-dimensional-array/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/09/12/swift-mysterious-multi-dimensional-array/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/09/12/swift-mysterious-multi-dimensional-array/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/09/12/swift-mysterious-multi-dimensional-array/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>Xcode6 GM でましたね！ Beta1 の頃から Swift 触ってますが、まぁ言語仕様がよく変わること（笑。</p>
+
+<p>で、いつか直るだろうと思ってたけど、GM でも直っていない Swift の多次元配列の定義の謎に関してです。だれか理由分かる人いたら教えてください。。</p>
+
+<p>下のようなコードがあるとします。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">typealias</span> <span class="n">NameAndValue</span> <span class="o">=</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="nl">dict</span><span class="p">:</span> <span class="p">[[</span><span class="n">NameAndValue</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class="line">  <span class="p">[</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">  <span class="p">],</span>
+</span><span class="line">  <span class="p">[</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">  <span class="p">]]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>typealias</code> で別名つけて2次元配列を定義しているだけです。要素が <code>Dictionary</code> になっています。ここまでは普通にコンパイルが通ります。</p>
+
+<p>ですが、これをこんなふうに…</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="nl">dict</span><span class="p">:</span> <span class="p">[[</span><span class="n">NameAndValue</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class="line">  <span class="p">[</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">  <span class="p">],</span>
+</span><span class="line">  <span class="p">[</span>
+</span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
+</span><span class="line">  <span class="p">]]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>配列の要素を増やしていきます。そうするとだいたい <strong class="text-danger">10件くらい</strong> からコンパイルが遅くなり、<strong class="text-danger">15件過ぎたくらいから</strong> コンパイルエラーが出るようになります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">Cannot</span> <span class="n">convert</span> <span class="n">the</span> <span class="n">expression</span><span class="err">'</span><span class="n">s</span> <span class="n">type</span> <span class="err">'</span><span class="p">[[</span><span class="n">NameAndValue</span><span class="p">]]</span><span class="err">'</span> <span class="n">to</span> <span class="n">type</span> <span class="err">'</span><span class="n">StringLiteralConvertible</span><span class="err">'</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>意味がわからんです。。</p>
+
+<p>仕方ないので</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="nl">dict</span><span class="p">:</span> <span class="p">[[</span><span class="n">NameAndValue</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[[],[]]</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line">
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p></p>
+
+<p>こうやって、プログラムでデータ登録するようにしました。。</p>
+</div>
+  
+  
+
+
+    </article>
     
     
     <article>
@@ -1734,219 +2027,6 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/04/passenger-js-css-gzip/" class="excerpt-link">Railsが用意したasset precompile済みのgzファイルを返すapache confの設定</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-04-04T18:45:30+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 4<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/apache/" rel="nofollow">apache</a>
-    
-      <a class="tag label label-info" href="/blog/tags/asset/" rel="nofollow">asset</a>
-    
-      <a class="tag label label-info" href="/blog/tags/precompile/" rel="nofollow">precompile</a>
-    
-      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">rails</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/04/04/passenger-js-css-gzip/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Passenger で Rails アプリを動かすときに、<code>assets:precompile</code> 済みの <code>gz</code> ファイルを返すようにする apache の設定方法例のメモ。</p>
-
-<p>いただき物です。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-</pre></td>
-<td class="code"><pre><code class="apache"><span class="line"><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
-</span><span class="line">   <span class="c"># ...</span>
-</span><span class="line">   <span class="nt">&lt;LocationMatch</span> <span class="s">"^/assets/.*$"</span><span class="nt">&gt;</span>
-</span><span class="line">     <span class="c"># Some browsers still send conditional-GET requests if there's a</span>
-</span><span class="line">     <span class="c"># Last-Modified header or an ETag header even if they haven't</span>
-</span><span class="line">     <span class="c"># reached the expiry date sent in the Expires header.</span>
-</span><span class="line">     <span class="c">#Header unset Last-Modified</span>
-</span><span class="line">     <span class="c">#Header unset ETag</span>
-</span><span class="line">     <span class="nb">FileETag</span> Size
-</span><span class="line">     <span class="c"># RFC says only cache for 1 year</span>
-</span><span class="line">     <span class="nb">ExpiresActive</span> <span class="k">On</span>
-</span><span class="line">     <span class="nb">ExpiresDefault</span> <span class="s2">"access plus 1 year"</span>
-</span><span class="line">
-</span><span class="line">     <span class="nb">SetEnv</span> no-gzip
-</span><span class="line">
-</span><span class="line">     <span class="nb">RewriteEngine</span> <span class="k">on</span>
-</span><span class="line">     <span class="c">#RewriteLog /tmp/rewrite.log</span>
-</span><span class="line">     <span class="c">#RewriteLogLevel 15</span>
-</span><span class="line">     <span class="c"># Make sure the browser supports gzip encoding before we send it</span>
-</span><span class="line">     <span class="nb">RewriteCond</span> %{HTTP:Accept-Encoding} \b(x-)?gzip\b
-</span><span class="line">     <span class="nb">RewriteCond</span> %{REQUEST_FILENAME}.gz -f
-</span><span class="line">     <span class="nb">RewriteRule</span> ^(.+) \$1.gz [L]
-</span><span class="line">   <span class="nt">&lt;/LocationMatch&gt;</span>
-</span><span class="line">
-</span><span class="line">   <span class="nt">&lt;FilesMatch</span> <span class="s">\.css\.gz$</span><span class="nt">&gt;</span>
-</span><span class="line">       <span class="nb">ForceType</span> text/css
-</span><span class="line">       <span class="nb">Header</span> set Content-Encoding gzip
-</span><span class="line">   <span class="nt">&lt;/FilesMatch&gt;</span>
-</span><span class="line">
-</span><span class="line">   <span class="nt">&lt;FilesMatch</span> <span class="s">\.js\.gz$</span><span class="nt">&gt;</span>
-</span><span class="line">       <span class="nb">ForceType</span> text/javascript
-</span><span class="line">       <span class="nb">Header</span> set Content-Encoding gzip
-</span><span class="line">   <span class="nt">&lt;/FilesMatch&gt;</span>
-</span><span class="line"><span class="nt">&lt;/VirtualHost&gt;</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-</div>
-  
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/2/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1988,6 +2068,10 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/12/swift-mysterious-multi-dimensional-array/">[Swift] 多次元配列の定義の謎</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/08/30/484433591x/">APIデザインの極意 Java/NetBeansアーキテクト探究ノート</a>
       </li>
     
@@ -2023,10 +2107,6 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
         <a href="/blog/2014/05/14/titanium-sns-oauth-app-scheme/">Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/04/passenger-js-css-gzip/">Railsが用意したasset precompile済みのgzファイルを返すapache confの設定</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -2034,7 +2114,7 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">126</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">127</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

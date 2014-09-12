@@ -13,8 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="WebLogic9.2J でカスタムキーストアを使ってSSL通信を行うおぼえがきです。 使用した WebLogic は、下記のサイトからダウンロードしました。 日本BEAシステムズ株式会社 Evaluation Center 環境 使用した環境は以下のとおりです。 Red Hat
-WebLogic &hellip;">
+  <meta name="description" content="Struts2 は WebWorks2 をベースとした MVC フレームワークです。Struts1 と変わらずコマンドパターンのフレームワークになっています。 コマンドパターンの実装部分では、OPENSYMHONY の XWork が使われています。 Struts2の特徴 WebWorks &hellip;">
   
 
   
@@ -25,8 +24,7 @@ WebLogic &hellip;">
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/13/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="WebLogic9.2J でカスタムキーストアを使ってSSL通信を行うおぼえがきです。 使用した WebLogic は、下記のサイトからダウンロードしました。 日本BEAシステムズ株式会社 Evaluation Center 環境 使用した環境は以下のとおりです。 Red Hat
-WebLogic &hellip;" />
+<meta property="og:description" content="Struts2 は WebWorks2 をベースとした MVC フレームワークです。Struts1 と変わらずコマンドパターンのフレームワークになっています。 コマンドパターンの実装部分では、OPENSYMHONY の XWork が使われています。 Struts2の特徴 WebWorks &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -110,6 +108,183 @@ WebLogic &hellip;" />
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2007/11/27/struts2/" class="excerpt-link">Struts2 おぼえがき</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2007-11-27T23:24:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Nov 27<span>th</span>, 2007</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/struts2/" rel="nofollow">Struts2</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2007/11/27/struts2/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2007/11/27/struts2/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2007/11/27/struts2/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2007/11/27/struts2/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2007/11/27/struts2/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2007/11/27/struts2/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2007/11/27/struts2/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2007/11/27/struts2/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>Struts2 は WebWorks2 をベースとした MVC フレームワークです。Struts1 と変わらずコマンドパターンのフレームワークになっています。</p>
+
+<p>コマンドパターンの実装部分では、OPENSYMHONY の XWork が使われています。</p>
+
+<h3>Struts2の特徴</h3>
+
+
+
+
+<ul>
+<li>WebWorks の後継となる WebWorks2 がベースの MVC フレームワーク</li>
+<li>コマンドパターンが使われている（XWork が使われている）</li>
+<li>アノテーションと XML ファイルによる設定</li>
+<li>ActionForm がない。代わりにアクションにフォームデータを格納する</li>
+<li>アクションは POJO で作成できる</li>
+<li>アクションがスレッドセーフ</li>
+<li>設定ファイルに OGNL 式が書ける</li>
+<li>View に JSP、Freemaker、Velocity、XSLT が使える</li>
+<li>SpringFramework との連携が考慮されている</li>
+<li>Ajax をサポートしている</li>
+<li>プラグインによりフレームワークの拡張が行える</li>
+</ul>
+
+
+<p>情報が正確ではない可能性が大いにあるので（ドキュメント読まずにソース見ながら書いているので・・・）、鵜呑みにしないでください。</p>
+
+<p>随時更新予定です。</p>
+
+<p><section></section></p>
+
+<h4>執筆時の環境</h4>
+
+
+
+
+<ul>
+<li>JDK1.5.12</li>
+<li><a href="http://struts.apache.org/2.x/" rel="external nofollow" title="Struts2 2.0.11">Struts2 2.0.11</a></li>
+</ul>
+
+
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2007/11/27/struts2/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1605,164 +1780,6 @@ WebLogic &hellip;" />
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2006/09/18/ejb/" class="excerpt-link">EJB3.0 プログラミング 覚書</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2006-09-18T21:44:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Sep 18<span>th</span>, 2006</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/ejb/" rel="nofollow">EJB</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2006/09/18/ejb/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2006/09/18/ejb/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/09/18/ejb/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2006/09/18/ejb/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2006/09/18/ejb/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2006/09/18/ejb/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2006/09/18/ejb/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2006/09/18/ejb/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>
-<a href="http://www.amazon.co.jp/gp/product/4797333367/250-5903137-8246621?ie=UTF8&amp;tag=sorehabooks-22&amp;linkCode=xm2&amp;camp=247&amp;creativeASIN=4797333367" rel="external nofollow" title=""></a>
-</p>
-
-
-<p>EJB3.0 を使ったプログラミング覚書です。EJB3.0は <a href="http://www.hibernate.org/" rel="external nofollow" title="SpringFramework">SpringFramework</a> の良いところを取り入れた、次期バージョンのの EJB です。</p>
-
-<p>EJB3.0 は、EJB2.1 の問題点をいろいろと改善し、ほぼデフェクトスタンダードと言える Hibernate や SpringFramework などのフレームワークを参考にした機能を、標準化しています。</p>
-
-<p>また、POJO の採用によるテストの効率化アップなど、 Ease of Development（EoD : 易しい開発）を追求しています。</p>
-
-<p>Ejb3.0 は、次のような特徴を持っています。</p>
-
-<ul>
-<li>Java Persistence API（JPA : 永続化 API ）による永続化フレームワークの標準化</li>
-<li>アノテーションの採用</li>
-<li>デフォルト値の多用</li>
-<li>POJO のサポート、EJB インターフェースからの開放</li>
-<li>Dependency Injection（DI : 依存性の注入）の採用</li>
-</ul>
-
-
-<p>Ejb3.0 の覚書をチョコチョコと書いていこうと思います。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2006/09/18/ejb/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/14/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1806,6 +1823,10 @@ WebLogic &hellip;" />
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/12/swift-mysterious-multi-dimensional-array/">[Swift] 多次元配列の定義の謎</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/08/30/484433591x/">APIデザインの極意 Java/NetBeansアーキテクト探究ノート</a>
       </li>
     
@@ -1841,10 +1862,6 @@ WebLogic &hellip;" />
         <a href="/blog/2014/05/14/titanium-sns-oauth-app-scheme/">Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/04/passenger-js-css-gzip/">Railsが用意したasset precompile済みのgzファイルを返すapache confの設定</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1852,7 +1869,7 @@ WebLogic &hellip;" />
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">126</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">127</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">
