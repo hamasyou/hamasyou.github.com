@@ -13,9 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="モデリングの部分部分をパターン化して、モデリングに利用しようとしている印象を受けました。ビジネスのモデリングというのは細分化して分類してみると、12種類の「分子」に分けられるというのが著者の意見のようです。 12種類のパターンは以下のようなものがあります。 アクター-ロール
-外部の場所-場所
-品目 &hellip;">
+  <meta name="description" content="Antはビルドツールです。OSや環境に依存しないビルドツールということで幅広く使われています。 個人的にAntを使う理由というのは、ビルド以外のいろんな設定が簡単に出来ることです。例えば、環境ごとに異なった設定ファイルを作りたいときに、ベースとなるファイルを一つ用意するだけで、 &hellip;">
   
 
   
@@ -26,9 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/24/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="モデリングの部分部分をパターン化して、モデリングに利用しようとしている印象を受けました。ビジネスのモデリングというのは細分化して分類してみると、12種類の「分子」に分けられるというのが著者の意見のようです。 12種類のパターンは以下のようなものがあります。 アクター-ロール
-外部の場所-場所
-品目 &hellip;" />
+<meta property="og:description" content="Antはビルドツールです。OSや環境に依存しないビルドツールということで幅広く使われています。 個人的にAntを使う理由というのは、ビルド以外のいろんな設定が簡単に出来ることです。例えば、環境ごとに異なった設定ファイルを作りたいときに、ベースとなるファイルを一つ用意するだけで、 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -112,6 +108,151 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2004/10/12/ant/" class="excerpt-link">Antを勉強する</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2004-10-12T16:00:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 12<span>th</span>, 2004</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/ant/" rel="nofollow">Ant</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2004/10/12/ant/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/10/12/ant/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/10/12/ant/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2004/10/12/ant/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2004/10/12/ant/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2004/10/12/ant/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2004/10/12/ant/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2004/10/12/ant/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774120006/sorehabooks-22" rel="external nofollow" title=""></a>
+</p>
+
+
+<p>Antはビルドツールです。OSや環境に依存しないビルドツールということで幅広く使われています。</p>
+
+<p>個人的にAntを使う理由というのは、ビルド以外のいろんな設定が簡単に出来ることです。例えば、環境ごとに異なった設定ファイルを作りたいときに、ベースとなるファイルを一つ用意するだけで、Filterという機能を使って設定ファイルの内容を変化させることが出来ます。</p>
+
+<p>他にも、JUnitを使ったときに、Reportを自動で生成する機能や、Webアプリケーション用のwarファイルを作りそのままデプロイしたりと、色々なことが連続的に出来るのが気に入っています。作業と作業の間に人の手を入れずに実行できるので、作業忘れが発生しないというのが特徴です。　</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2004/10/12/ant/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1629,169 +1770,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/08/06/4816336354/" class="excerpt-link">UMLシステム設計実践技大全―アッと驚く達人の技</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-08-06T01:51:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Aug 6<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/architecture/">Architecture</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/uml/" rel="nofollow">UML</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/08/06/4816336354/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/08/06/4816336354/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/08/06/4816336354/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/08/06/4816336354/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/08/06/4816336354/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/08/06/4816336354/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/08/06/4816336354/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/08/06/4816336354/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4816336354/sorehabooks-22" title="UMLシステム設計実践技大全―アッと驚く達人の技" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/61W82Z3HMJL._SL500_AA300_.jpg" class="asin-thumbnail" alt="UMLシステム設計実践技大全―アッと驚く達人の技" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4816336354/sorehabooks-22" title="UMLシステム設計実践技大全―アッと驚く達人の技" rel="external nofollow">UMLシステム設計実践技大全―アッと驚く達人の技</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>テクノロジックアート (著), C&amp;R研究所 (著), 橋本 大輔 (監修), 長瀬 嘉秀</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>ナツメ社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4816336354/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>タイトルは別として、UMLに関しての一般的な知識とある程度の使いどころを理解するには良い本だと思いました。全体的に絵や表をたくさん使っていて、UML初心者には非常にとっつきやすいと思います。ただ、タイトルの『アッと驚く達人の技』や『実践技大全』といった部分に引っかかったUMLの知識のある人には、少し物足りないかも知れません。</p>
-
-<p>本書はUMLをシステム開発の現場で使うための最初の一冊です。ユースケースの意味や使いどころ、クラス図の描き方や注意点、シーケンス図の流れやワンポイントなど、それなりに使える知識が載っていました。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/08/06/4816336354/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/25/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1835,6 +1813,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/19/reactivecocoa-raccommand-executing/">[iOS] ReactiveCocoa の RACCommand で、実行中にローディングを出す方法</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/12/swift-mysterious-multi-dimensional-array/">[Swift] 多次元配列の定義の謎</a>
       </li>
     
@@ -1870,10 +1852,6 @@
         <a href="/blog/2014/06/26/apple-swift/">Apple Swift プログラミング言語おぼえがき</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/05/14/titanium-sns-oauth-app-scheme/">Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1881,7 +1859,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">127</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">128</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

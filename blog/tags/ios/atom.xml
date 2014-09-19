@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: iOS | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/ios/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-09-12T11:32:16+09:00</updated>
+  <updated>2014-09-19T18:23:10+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[iOS] ReactiveCocoa の RACCommand で、実行中にローディングを出す方法]]></title>
+    <link href="http://hamasyou.com/blog/2014/09/19/reactivecocoa-raccommand-executing/"/>
+    <updated>2014-09-19T18:13:11+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/09/19/reactivecocoa-raccommand-executing</id>
+    <content type="html"><![CDATA[<p>最近 <a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> を使いまくってます。そのなかで調べた Signal の使い方イディオムのメモです。</p>
+
+<p>RACCommand で検索処理とかしてるときに、ローディング画面やインジケータを表示したいということがあると思います。そういうときに使える Signal のイディオムです。コードは Swift で書いています。</p>
+
+<p><em>MVVM</em> で viewModel が searchCommand を実装しているとします。また、ローディングインジケータの表示には <a href="https://github.com/jdg/MBProgressHUD">MBProgressHUD</a> を使っているとします。</p>
+
+<pre><code class="swift MyViewController#viewDidLoad">searchButton.rac_command = viewModel.searchCommand
+searchButton.rac_command.executing
+    .subscribeNext({ [weak self] (executing) in
+        if let weakSelf = self {
+            if executing as Bool {
+                MBProgressHUD.showHUDAddedTo(weakSelf.view, animated: true)
+            } else {
+                MBProgressHUD.hideHUDForView(weakSelf.view, animated: true)
+            }
+        }
+    })
+searchButton.rac_command.errors
+    .subscribeNext({ (error) in
+        // エラー時のメッセージ表示処理
+        println(error.localizedDescription)
+    })
+</code></pre>
+
+<p><code>executing</code> Signal はこういう風につかうんですね。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[ReactiveCocoa] catchTo の使いどころ]]></title>

@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="本書は、UMLモデリングを自主勉強するための問題集になっています。13のお題が与えられ、それに対して自由にモデリングを行うと言うものです。モデリングを行うときの視点や、よくある間違えなど、解説が丁寧なので一人でモデリングの勉強をすることができます。 本書のよい点は、解説が豊富である点です。 &hellip;">
+  <meta name="description" content="Javaの新バージョン「J2SE5.0 Tiger」の新機能のメモ。詳しい使い方などは、参考文献や他のサイトをご覧ください。 J2SE5.0 Tiger では、言語構文が大幅に追加されています。Generics や オートボクシング、Enum(列挙型)、可変長引数、アノテーション、拡張for &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/21/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="本書は、UMLモデリングを自主勉強するための問題集になっています。13のお題が与えられ、それに対して自由にモデリングを行うと言うものです。モデリングを行うときの視点や、よくある間違えなど、解説が丁寧なので一人でモデリングの勉強をすることができます。 本書のよい点は、解説が豊富である点です。 &hellip;" />
+<meta property="og:description" content="Javaの新バージョン「J2SE5.0 Tiger」の新機能のメモ。詳しい使い方などは、参考文献や他のサイトをご覧ください。 J2SE5.0 Tiger では、言語構文が大幅に追加されています。Generics や オートボクシング、Enum(列挙型)、可変長引数、アノテーション、拡張for &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -108,6 +108,167 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/01/27/j2se/" class="excerpt-link">J2SE5.0 覚書き</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-01-27T07:03:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jan 27<span>th</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/j2se/" rel="nofollow">J2SE</a>
+    
+      <a class="tag label label-info" href="/blog/tags/java/" rel="nofollow">Java</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/01/27/j2se/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2005/01/27/j2se/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2005/01/27/j2se/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2005/01/27/j2se/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2005/01/27/j2se/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2005/01/27/j2se/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2005/01/27/j2se/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2005/01/27/j2se/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873112141/sorehabooks-22" rel="external nofollow" title=""></a>
+</p>
+
+
+<p>Javaの新バージョン「<strong class="text-danger">J2SE5.0 Tiger</strong>」の新機能のメモ。詳しい使い方などは、参考文献や他のサイトをご覧ください。</p>
+
+<p>J2SE5.0 Tiger では、言語構文が大幅に追加されています。<strong class="text-danger">Generics</strong> や <strong class="text-danger">オートボクシング</strong>、<strong class="text-danger">Enum(列挙型)</strong>、<strong class="text-danger">可変長引数</strong>、<strong class="text-danger">アノテーション</strong>、<strong class="text-danger">拡張for ステートメント</strong>、<strong class="text-danger">Static インポート</strong>など、目を見張る機能がたくさん付け加わっています。</p>
+
+<p>J2SE5.0 Tiger は、EoD (Easy Of Development) を行うための道具です。今後はさらに普及してきて、J2SE1.4 に確実に置き換わると思います。今のうちに概要や変わったところをチェックしておくのがいいと思います。</p>
+
+<p><section></section></p>
+
+<h4>参考</h4>
+
+
+<ul>
+<li><p><i class="fa fa-hand-o-right"></i> <a href="http://java.sun.com/j2se/1.5.0/ja/docs/ja/api/index.html" rel="external nofollow" title="J2SE5.0 API JavaDoc">J2SE5.0 API JavaDoc</a></p></li>
+<li><p><i class="fa fa-hand-o-right"></i> <a href="http://java.sun.com/j2se/1.5.0/ja/download.html" rel="external nofollow" title="JDK5.0 Download">JDK5.0 Download</a></p></li>
+<li><p><i class="fa fa-hand-o-right"></i> <a href="http://www5.airnet.ne.jp/sakuraba/java/laboratory/J2SE1.5/contents.html" rel="external nofollow" title="J2SE5.0 虎の穴">J2SE5.0 虎の穴</a></p></li>
+</ul>
+
+
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/01/27/j2se/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1620,173 +1781,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2004/12/07/4822282082/" class="excerpt-link">プログラマの「本懐」 ~アーキテクトという選択</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2004-12-07T07:00:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Dec 7<span>th</span>, 2004</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/akitekuto/" rel="nofollow">アーキテクト</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2004/12/07/4822282082/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2004/12/07/4822282082/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/12/07/4822282082/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2004/12/07/4822282082/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2004/12/07/4822282082/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2004/12/07/4822282082/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2004/12/07/4822282082/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2004/12/07/4822282082/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282082/sorehabooks-22" title="プログラマの「本懐」 ~アーキテクトという選択" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/412XGQRPX2L._SL500_AA300_.jpg" class="asin-thumbnail" alt="プログラマの「本懐」 ~アーキテクトという選択" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282082/sorehabooks-22" title="プログラマの「本懐」 ~アーキテクトという選択" rel="external nofollow">プログラマの「本懐」 ~アーキテクトという選択</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>山本啓二 (著)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>日経BP出版センター</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4822282082/sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>「アーキテクト」という役職は、プログラマに近い場所から、ビジネスマンに歩み寄る綱渡しを行う職業です。ただ技術を極めれば良いと言うわけではなく、ビジネスだけを知っているのでもない。両方のいいところをあわせもった職業と言えます。</p>
-
-<p>本書は、アーキテクトという役職を、時には美しく、時にはシビアに紹介しています。単なるプログラマで終わりたくはない。それでも、プロジェクトマネージャーになるよりは、技術を極めたい人に、読んで欲しい一冊です。</p>
-
-<p>アーキテクトの役職を、仮想プロジェクトを通して説明しているため、実際の業務における仕事が分かりやすく解説されています。一つの例だとして受け取ればいいと思いますが、かなり面白そうな職業だと言うことが分かると思います。</p>
-
-<p><strong class="text-danger">アーキテクトは、チームプレイであるソフトウエア開発の中心で、ITスキルとヒューマンスキルを両輪に、プロジェクトを成功に導きます</strong>。そんなアーキテクトの役割を感じてもらえる一冊だと思います。プロジェクトマネージャーに関する書籍と言うのはあれど、アーキテクトに焦点を合わせた書籍と言うのはまだまだ少ないです。そんな中で「アーキテクトとはなんなのか」を身近に感じれる一冊になっています。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2004/12/07/4822282082/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/22/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1830,6 +1824,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/19/reactivecocoa-raccommand-executing/">[iOS] ReactiveCocoa の RACCommand で、実行中にローディングを出す方法</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/12/swift-mysterious-multi-dimensional-array/">[Swift] 多次元配列の定義の謎</a>
       </li>
     
@@ -1865,10 +1863,6 @@
         <a href="/blog/2014/06/26/apple-swift/">Apple Swift プログラミング言語おぼえがき</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/05/14/titanium-sns-oauth-app-scheme/">Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1876,7 +1870,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">127</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">128</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

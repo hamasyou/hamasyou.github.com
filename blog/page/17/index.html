@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="本書は、哲学や心理学といった学問の切り口からプログラミングという作業について書かれたものです。 プログラミングとは何か？ プロフェッショナルとアマチュアの違いは何か？ プログラミングの学習方法について プログラミング言語による設計について といったことについて書かれています。 &hellip;">
+  <meta name="description" content="JSFでカスタムコンポーネントを作るときの覚書きです。参考にした『JavaServer Faces完全ガイド』は、ツリーコンポーネントをカスタムコンポーネントとして作る手順が載っていました。 ここでは、カスタムコンポーネントを作るときに必要となるパーツと、注意点などをまとめておこうと思います。 &hellip;">
   
 
   
@@ -24,7 +24,7 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/17/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="本書は、哲学や心理学といった学問の切り口からプログラミングという作業について書かれたものです。 プログラミングとは何か？ プロフェッショナルとアマチュアの違いは何か？ プログラミングの学習方法について プログラミング言語による設計について といったことについて書かれています。 &hellip;" />
+<meta property="og:description" content="JSFでカスタムコンポーネントを作るときの覚書きです。参考にした『JavaServer Faces完全ガイド』は、ツリーコンポーネントをカスタムコンポーネントとして作る手順が載っていました。 ここでは、カスタムコンポーネントを作るときに必要となるパーツと、注意点などをまとめておこうと思います。 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -108,6 +108,163 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2005/10/22/jsf/" class="excerpt-link">JSF-カスタムコンポーネント覚書き</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2005-10-22T13:44:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Oct 22<span>nd</span>, 2005</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/jsf/" rel="nofollow">JSF</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2005/10/22/jsf/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2005/10/22/jsf/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2005/10/22/jsf/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2005/10/22/jsf/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2005/10/22/jsf/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2005/10/22/jsf/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2005/10/22/jsf/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2005/10/22/jsf/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/249-1404088-2131559?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title=""></a>
+</p>
+
+
+<p>JSFでカスタムコンポーネントを作るときの覚書きです。参考にした『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873111978/sorehabooks-22/249-1404088-2131559?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" rel="external nofollow" title="JavaServer Faces完全ガイド">JavaServer Faces完全ガイド</a>』は、ツリーコンポーネントをカスタムコンポーネントとして作る手順が載っていました。</p>
+
+<p>ここでは、カスタムコンポーネントを作るときに必要となるパーツと、注意点などをまとめておこうと思います。カスタムコンポーネントは大きく、入力用のコンポーネントと出力用のコンポーネントの2つに分けれます。入力用のコンポーネントはリクエスト間で値の保存・読み込みやデコードレンダリングなどを行わなければなりません。出力用のコンポーネントの場合は、値を保持し、エンコードレンダリングを行うことで機能を表現します。</p>
+
+<p>ここでは、出力用のコンポーネントの話をしています。説明が断片的なので、上記の本を読んだほうが手っ取り早いかも・・・ ^^;</p>
+
+<p><section></section></p>
+
+<h4>[参考]</h4>
+
+
+<ul>
+<li><a href="http://www.wakhok.ac.jp/~tomoharu/jsf2004/text/index_c11.html" rel="external nofollow" title="JSFによるWebアプリケーション開発/カスタム・コンポーネント">JSFによるWebアプリケーション開発/カスタム・コンポーネント</a></li>
+</ul>
+
+
+<p></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2005/10/22/jsf/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
     
     
     <article>
@@ -1629,181 +1786,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2005/07/23/4873112141/" class="excerpt-link">Java 5.0 Tiger 開発者ノートシリーズ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2005-07-23T11:23:00+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jul 23<span>rd</span>, 2005</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/java/" rel="nofollow">Java</a>
-    
-      <a class="tag label label-info" href="/blog/tags/jdk/" rel="nofollow">JDK</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2005/07/23/4873112141/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2005/07/23/4873112141/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2005/07/23/4873112141/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2005/07/23/4873112141/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2005/07/23/4873112141/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2005/07/23/4873112141/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2005/07/23/4873112141/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2005/07/23/4873112141/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873112141/sorehabooks-22/249-8983933-5965136?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Java 5.0 Tiger 開発者ノートシリーズ" rel="external nofollow">
-      <img src="http://ec2.images-amazon.com/images/I/5112QJ9JRZL._BO2,204,203,200_PIsitb-sticker-arrow-click,-76_AA300_SH20_OU09_.jpg" class="asin-thumbnail" alt="Java 5.0 Tiger 開発者ノートシリーズ" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873112141/sorehabooks-22/249-8983933-5965136?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Java 5.0 Tiger 開発者ノートシリーズ" rel="external nofollow">Java 5.0 Tiger 開発者ノートシリーズ</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>ブレット マクラフリン (著), デイビッド フラナガン (著), Brett McLaughlin (原著), David Flanagan (原著), 菅野 良二 (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>オライリー・ジャパン</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873112141/sorehabooks-22/249-8983933-5965136?%5Fencoding=UTF8&amp;camp=247&amp;link%5Fcode=xm2" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>Javaの最後の言語拡張と言われている「<strong class="text-danger">Java5.0</strong>」通称「<strong class="text-danger">Tiger</strong>」がついに登場しました。Tigerは言語仕様そのものが拡張されています。本書は、この拡張された仕様に関しての解説書になっています。</p>
-
-<p>内容はさすがオライリーと言う感じです。深く説明されているし、注意する点も抜け目なく解説しています。例えばこんなものがあります。</p>
-
-<blockquote>
-<p>Enum を実装する場合、toString()の振る舞いを変更したらvalueOf()の振る舞いも変更する必要がある。この２つのメソッドは常にペアの鏡像になる。</p>
-<footer><strong>本書</strong></footer>
-</blockquote>
-
-
-<p>この記事を書いている現在(2005/07/23)、本書が一番薄くて一番内容が濃いように思いました。本書の後半にあるスレッド処理の章を読んで、「なんか深いな」と感じました。</p>
-
-<p>Java5.0がどんなものか知りたい人、業務でJava5.0を使う人、いろんな人におすすめです。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2005/07/23/4873112141/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/18/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1847,6 +1829,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/19/reactivecocoa-raccommand-executing/">[iOS] ReactiveCocoa の RACCommand で、実行中にローディングを出す方法</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/12/swift-mysterious-multi-dimensional-array/">[Swift] 多次元配列の定義の謎</a>
       </li>
     
@@ -1882,10 +1868,6 @@
         <a href="/blog/2014/06/26/apple-swift/">Apple Swift プログラミング言語おぼえがき</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/05/14/titanium-sns-oauth-app-scheme/">Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1893,7 +1875,7 @@
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">127</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">104</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">128</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">
