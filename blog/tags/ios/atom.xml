@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: iOS | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/ios/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-09-21T14:00:23+09:00</updated>
+  <updated>2014-10-09T01:32:54+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,348 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[iOS] Auto Layout を使いこなす。UITableViewCell と UIScrollView 編]]></title>
+    <link href="http://hamasyou.com/blog/2014/10/09/ios-autolayout-scrollview-tablecell/"/>
+    <updated>2014-10-09T01:31:20+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/10/09/ios-autolayout-scrollview-tablecell</id>
+    <content type="html"><![CDATA[<p>iPhone6 と iPhone6 Plus が発売になり、本格的に iOS でも Android のように複数解像度に対応したやり方をしないといけなくなってきました。
+iPhone5S までは、縦幅が伸びただけだったので、なんとなく <code>Auto Layout</code> を使っていても問題は表面化しづらかったのですが、
+iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout</code> を使ってコーディングしていると残念なことになっているアプリが結構あります。</p>
+
+<p>僕も iPhone アプリを開発しているのでこのあたりは結構気を使ってはいるんですが、いかんせん自分のやり方がほんとに正しいのか、やや疑問なところもあります。
+そこで、今の自分のやり方を晒して、世の iPhone アプリ開発者の人に突っ込んでもらえればと思い記事を書くことにしました。</p>
+
+<p>間違っている箇所もあると思いますので、ドンドンツッコミをお願いします！</p>
+
+<!-- more -->
+
+
+<h2>この記事で何が出来るようになりたいか</h2>
+
+<p>このまとめ記事で、何が出来るようになりたいか。それは次の2点です。</p>
+
+<ol>
+<li><code>UITableViewCell</code> （可変長高さ）を <code>Auto Layout</code> を使ってキレイにつくりたい</li>
+<li><code>UIScrollView</code> （可変コンテンツ）を <code>Auto Layout</code> を使ってキレイにつくりたい</li>
+</ol>
+
+
+<p>こんな感じのやつです。</p>
+
+<p><img src="/images/20141008/SS1.png" width="240" title="&ldquo;可変長UITableViewCell&rdquo;" >
+<img src="/images/20141008/SS2.png" width="240" title="&ldquo;Auto Layout を使った横スクロールの UIScrollView&rdquo;" >
+<img src="/images/20141008/SS3.png" width="240" title="&ldquo;Auto Layout を使った横スクロールの UIScrollView&rdquo;" ></p>
+
+<p><code>UILabel</code> の中身によって <code>UITableViewCell</code> の高さが変わるやつと、<code>UIScrollView</code> の中身をページングで切り替えるときに中身の個数を動的に差し替えるやつです。</p>
+
+<p>それぞれ作り方をさらします。</p>
+
+<p>ソースコードは</p>
+
+<p><a href="https://github.com/hamasyou/autolayout">hamasyou/autolayout</a></p>
+
+<p>にあるので、参考にしたい方はどうぞ。</p>
+
+<h2>Auto Layout のおさらい</h2>
+
+<p>作り方を晒す前に、まずは <strong>Auto Layout</strong> のおさらいをしておきます。</p>
+
+<p>Auto Layout は Storyboard やプログラムから「制約」を利用してレイアウトを組み立てるものです。基本的に Auto Layout に対応したアプリでは、
+<code>UIView(frame: CGRectMake(xx, xx, xx, xx))</code> みたいな作成方法はしなくなります。</p>
+
+<p>Auto Layout を使うと、"画面のこのコンポーネントから◯pxずらしてこのコンポーネントを配置する" や &ldquo;このコンポーネントとこのコンポーネントのサイズを同じにする&rdquo;
+みたいなことをなんとなく直感的に記述（または、設定）できます。</p>
+
+<p>Auto Layout を Strobyboard 上で設定すると、その制約が実際にコンポーネントに反映されるのは、<code>UIViewController#viewDidLayoutSubviews</code> のタイミングになるようです。</p>
+
+<h2>UITableViewCell での Auto Layout の作用</h2>
+
+<p>UITableViewCell で Auto Layout を使うときに注意しなければならないのは、<code>awakeFromNib</code> のタイミングでは、セルの Auto Layout が設定されていないということです。</p>
+
+<p>まぁ、これは当然といえば当然で、カスタムの UITableViewCell は再利用を前提に作られるので、実際にセルのコンテンツが設定されるは <code>UITableViewDataSource#cellForRowAtIndexPath</code> の段階になるからです。
+このメソッドの中でセルのコンテンツを設定するわけです。</p>
+
+<h3>セルの高さが問い合わせられるのはセルのコンテンツを設定する前！！</h3>
+
+<p>で、まぁ普通に UITableView を使っているとドハマリするのが、セルの高さを返す <code>UITableViewDelegate#heightForRowAtIndexPath</code> のメソッドが呼び出されるのが、<code>cellForRowAtIndexPath</code> の前ということです。
+セルの高さを計算できるのはセルのコンテンツが設定された後なんじゃないの？って思うわけですが、高さの問い合わせが来るのはセルのコンテンツを設定する前なのです。。</p>
+
+<p>じゃあ、どうするかというと、僕はもう割りきって、<code>heightForRowAtIndexPath</code> の中で <code>cellForRowAtIndexPath</code> を呼び出して、セルにコンテンツを設定した後にセルの高さを計算するようにしています。</p>
+
+<pre><code class="swift UITableViewController">
+    // MARK: - UITableViewDataSource
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+        return 2
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("customCell") as CustomTableViewCell
+
+        switch indexPath.row {
+        case 0:
+            cell.thumbView.image = UIImage(named: "Image1")
+            cell.labelView.text  = "いろはにほへとちりぬるをわかよたれそつねならむうゐのおくやまけふこえてあさきゆめみしゑひもせす色はにほへど散りぬるを我が世たれぞ常ならむ有為の奥山今日越えて浅き夢見じ酔ひもせず"
+        case 1:
+            cell.thumbView.image = UIImage(named: "Image2")
+            cell.labelView.text  = "Cozy lummox gives smart squid who asks for job pen."
+        default:
+            break
+        }
+        return cell
+    }
+
+    // MARK: UITableViewDelegate
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -&gt; CGFloat {
+        let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath) as CustomTableViewCell
+        var newBounds = cell.bounds
+        newBounds.size.width = tableView.bounds.width
+        cell.bounds = newBounds
+
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        return cell.preferredView.bounds.height
+    }    
+</code></pre>
+
+<p>高さを計算するときに、<code>cellForRowAtIndexPath</code> を呼び出してセルにコンテンツを設定した後、セルの width にテーブルビューの width を設定してあげて、一度 cell のレイアウトを更新します。</p>
+
+<p><strong>セルの width にテーブルビューの width を設定しているのがミソ</strong> です。</p>
+
+<p>Storyboard 上ではカスタムセルの横幅がデフォルトで320pxで作成されるので、iPhone5S まではセルの横幅を気にしなくてもセルの <code>layoutIfNeeded</code> だけを呼び出せば勝手に中のコンテンツの高さ決まっているように錯覚していたのですが、
+実は Storyboard 上で320pxでセルが作られているのでたまたま偶然いままではうまくいっていただけっぽいです。</p>
+
+<p>本来は、セルの横幅が決まった上でセルのコンテンツの Auto Layout にしたがって <code>layoutIfNeeded</code> しないと行けないのです。セルの横幅を設定せずに <code>layoutIfNeeded</code> だけでコンテンツの高さに合わせてセルの高さを決めていると、
+iPhone6 Plus になったときにセルの高さがおかしくなってしまいます。</p>
+
+<h3>setNeedsLayout と layoutIfNeeded は何？</h3>
+
+<p><code>setNeedsLayout</code> はそのコンポーネントに、再レイアウトが必要なフラグを設定するメソッドになります。再レイアウトが必要なコンポネントは次のタイミングの <code>layoutSubviews</code> の呼び出しの時に再レイアウトされます。</p>
+
+<p><code>layoutIfNeeded</code> はそのコンポーネントが再レイアウトが必要なフラグが立っているかを確認して、再レイアウトが必要であれば <code>layoutSubviews</code> を呼び出してくれるメソッドです。</p>
+
+<p>コンポーネントのレイアウトを強制的に更新したい場合は</p>
+
+<pre><code class="swift">view.setNeedsLayout()
+view.layoutIfNeeded()
+</code></pre>
+
+<p>のコンボでレイアウトを更新します。この処理を行うと、Auto Layout にしたがってレイアウトが設定されます。</p>
+
+<p>レイアウトを更新したらセルの高さが決まっているはずなので <code>bounds.height</code> を返します。</p>
+
+<h3>preferredView って何？</h3>
+
+<p>UIView 関連のコンポーネントには、推奨サイズというのが設定されているコンポーネントがあります。例えば UILabel であれば、ラベルの文字数をきっちり表示できるサイズが推奨サイズになりますし、
+UIButton であればボタン名が表示できるサイズが推奨サイズになります。</p>
+
+<p>コンポーネントの推奨サイズを取得するメソッドが <code>UIView#intrinsicContentSize</code> になります。実はこのメソッド、Auto Layout と深い関係があります。</p>
+
+<p>例えば、UILabel の制約を次のように設定したとします。</p>
+
+<p><img src="/images/20141008/SS4.png" width="240" title="&ldquo;UILabel の制約&rdquo;" ></p>
+
+<p>親のコンポーネントに対して、Top、Trailing、Leading を 0 に設定しています。こうすることで UILabel が親のコンポーネントの上左右の padding が 0 で表示されるわけです。</p>
+
+<p>ここでのポイントは、bottom に制約を設定していないことです。bottom に制約を設定していないので、本来であればこのコンポーネントは高さが決まらずに ambiguity（曖昧）な状態なはずです。</p>
+
+<p>でも UILabel や UIButton は ambiguity にはなりません。これは、コンポーネントに推奨サイズが設定されているので、そのサイズでコンポーネントが表示されるからです。</p>
+
+<p>UILabel を使って、テキストがどれだけ多くなっても全て表示したいというときには、このように bottom に制約を設定せずに、<code>Lines</code> を 0 に、<code>Line Breaks</code> を <code>Character Wrap</code> に設定します。</p>
+
+<p><img src="/images/20141008/SS5.png" width="240" title="&ldquo;Lines 0 Line Breaks Character Wrap&rdquo;" >
+<img src="/images/20141008/SS6.png" width="240" title="&ldquo;Lines 0 Line Breaks Character Wrap&rdquo;" ></p>
+
+<h4>推奨サイズを持たないコンポーネントがある</h4>
+
+<p>コンポーネントの中には、推奨サイズを持たないコンポーネントが存在します。<code>UIView</code> がそうです。UIView は子のビューのサイズによって自身のサイズが変わるため、
+推奨サイズを持ちません。</p>
+
+<p>逆に考えると、中のコンテンツのサイズが動的に変わる場合でも、UIView が親にいる限り、子のコンポーネントは好きにサイズが変わってよく、子のサイズが決まった段階で UIView のサイズ（bounds）が決まるということです。</p>
+
+<p>この性質を使うと、UITableViewCell の中身が複雑に Auto Layout される場合でも、セルの高さを簡単に計算できるようになります。</p>
+
+<h3>セルの中に UIView を配置して、その中にコンテンツを並べる</h3>
+
+<p>カスタムの UITableViewCell には、<code>ContentView</code> という UIView が予め用意されていますが、この ContentView 、いまいち上手く Auto Layout してくれません。。
+やり方が悪いだけのような気もしますが、僕は ContentView の子に UIView を入れるようにして、この UIView の上左右の padding を 0 に設定してレイアウトを始めるようにしています。</p>
+
+<p><img src="/images/20141008/SS7.png" width="800" title="&ldquo;preferredView&rdquo;" ></p>
+
+<p>bottom の制約を設定しないのがミソです。bottom の制約を設定しないことで、UIView は縦方向に自由に伸び縮みして、子のコンポーネントのサイズに合わせて高さが勝手に変わるようになります。</p>
+
+<p>最後のコンポーネントを配置し終えたら、そのコンポーネントの bottom を親に対して設定をすれば、UIView の高さが子のコンポーネントの Auto Layout から決まるようになります。</p>
+
+<p><img src="/images/20141008/SS9.png" width="800"></p>
+
+<h3>推奨サイズをもつコンポーネントで位置とサイズで矛盾が起きた場合</h3>
+
+<p>上の画像では、最後の要素の UILabel の bottom を親の Preferred View に対して設定していますが、UILabel の推奨サイズの高さと Preferred View からの bottom の位置とでコンフリクトが起きます。</p>
+
+<p>Storyboard 上では、コンフリクトが起きると、赤い矢印マークがでます。実際には UILabel の高さを bottom の位置にまでの高さに設定することで矛盾は起きないのですが、
+コレだと、高さが結局 UIView の高さに依存してしまい、UIView の高さは bottom を設定していないことから曖昧なサイズになってしまいます。</p>
+
+<p>これだと思った様なレイアウトになりません。で、こんな時に設定するのが制約の <strong>priority</strong> です。制約同士でコンフリクトが起きた場合に、どちらの制約を優先的に適用するかを決めるのが priority になります。</p>
+
+<p>今回は、<em>ラベルの高さを推奨サイズで配置して、その位置を元に UIView の高さを決めたい</em> ので、UILabel の bottom の制約の priority を下げます。UILabel の推奨サイズが決まる priority (Content Hugging Priority) が 251 なので、bottom の priority を 250 以下に設定すれば、
+UILabel の推奨サイズを優先的に設定して、その高さからの bottom の位置が決まるようになります。</p>
+
+<p><img src="/images/20141008/SS10.png" width="240">
+<img src="/images/20141008/SS11.png" width="500"></p>
+
+<h4>高さが決まらない UIView を配置すると、Storyboard 上での作業がしずらい場合</h4>
+
+<p>高さが決まらない UIView を使うと、Storyboard 上で制約に合わせてコンポーネントの位置を自動調整するときに困ることがあります。</p>
+
+<p>そんな時は、高さ（height）を適当に設定して、制約のところの <em>Placeholder Remove at build time</em> にチェックを入れておきます。
+こうすることで、Storyboard 上の作業のときだけ制約が設定されて、実行時には制約が削除される状況を作ることができます。</p>
+
+<p><img src="/images/20141008/SS8.png" width="240" title="&ldquo;Remove at build time&rdquo;" ></p>
+
+<h3>UIView を使って擬似的な Preferred View を作ると高さ可変のセルが簡単につくれる</h3>
+
+<p>このように、セルの ContentView の子要素に Preferred View を用意して、コンテンツのサイズで UIView の高さが決まるようにすることで、
+Auto Layout を使った配置の中でセルの高さを可変にすることが結構簡単にできるようになります。</p>
+
+<p><img src="/images/20141008/SS1.png" width="240" title="&ldquo;iPhone5S&rdquo;" >
+<img src="/images/20141008/SS12.png" width="240" title="&ldquo;iPhone6 Plus&rdquo;" ></p>
+
+<p>他にもっと良いやり方があるかと思いますが、参考になればと思います。</p>
+
+<h2>UIScrollView で Auto Layout を上手く使う方法</h2>
+
+<p>UIScrollView も UITableViewCell と考え方は同じで、中のコンテンツを Auto Layout するときには Preferred View を用意して、
+こいつにサイズを計算させて UIScrollView の contentSize を決めてやるようにします。</p>
+
+<h3>UIScrollView のまとめ</h3>
+
+<p>UIScrollView はビュー自体の <code>frame</code> とコンテンツ部分の <code>contentSize</code> の二つの要素を持ちます。frame はスクロールビュー自身の位置やサイズを表します。
+contentSize はスクロールビューが表示するコンテンツのサイズを表していて、スクロールビューのサイズよりも大きい contentSize の場合には、スクロールビューの中でスクロールが発生するということになります。</p>
+
+<h3>UIScrollView と Auto Layout</h3>
+
+<p>UIScrollView で気を付けないといけないのは、<strong>contentSize は中に含まれるコンポーネントの frame や bounds で決まるわけではない</strong> ということです。</p>
+
+<p>UIScrollView の contentSize はコンポーネントの <code>intrinsicContentSize</code> によって決まります。ここが UIScrollView でハマる一番のポイントかなと思います。</p>
+
+<p>つまり、intrinsicContentSize （推奨サイズ）が決まるコンポーネントのみをコンテンツとして表示する場合には contentSize は Auto Layout が自動で計算してくれるということです。</p>
+
+<p>例えば UIImageView を UIScrollView の中に入れたとします。UIImageView の intrinsicContentSize は UIImageView の frame や bounds ではなく、表示する UIImage の size になります。
+なので、UIImageView だけを UIScrollView に入れると、UIImageView のサイズをいくら Storyboard 上で設定しても、勝手にスクロールされてしまうのです。</p>
+
+<p><img src="/images/20141008/SS13.png" width="800" title="&ldquo;UIScrollView の罠&rdquo;" ></p>
+
+<p><img src="/images/20141008/SS14.png" width="240" title="&ldquo;UIScrollView の罠&rdquo;" >
+<img src="/images/20141008/SS15.png" width="240" title="&ldquo;UIScrollView の罠&rdquo;" >
+<img src="/images/20141008/SS16.png" width="240" title="&ldquo;UIScrollView の罠&rdquo;" ></p>
+
+<h3>UIScrollView のサイズに合わせて画像をページングする方法</h3>
+
+<p>UIScrollView の contentSize は intrinsicContentSize によって決まるというのは、上で書きました。
+じゃあ、contentSize をプログラムで上書きしちゃえば上手くスクロールするんでは？ということで、さがすと出てくるのが大体 <code>viewDidLayoutSubviews</code> の中で
+contentSize を設定すればいいじゃんっていうプログラム例です。</p>
+
+<pre><code class="swift">    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let contentWidth = CGFloat(preferredViews.count) * scrollView.bounds.width
+        let contentHeight = scrollView.bounds.height
+        scrollView.contentSize = CGSizeMake(contentWidth, contentHeight)
+    }
+</code></pre>
+
+<p>ぶっちゃけ、僕もこの方法が結局妥当かなという結論に達しました。先に UIScrollView に画像を動的に追加して、ページングできるようにするコードを掲載します。</p>
+
+<pre><code class="swift">import UIKit
+
+class SecondViewController: UIViewController {
+
+    @IBOutlet weak var scrollView: UIScrollView!
+
+    var preferredViews: [UIView]!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let images = [UIImage(named: "Image1"), UIImage(named: "Image2"), UIImage(named: "Image3")]
+        self.preferredViews = [UIView]()
+
+        for image in images {
+            let preferredView = UIView(frame: CGRectMake(0, 0, image.size.width, image.size.height))
+            let imageView = UIImageView(frame: CGRectMake(0, 0, image.size.width, image.size.height))
+            imageView.image = image
+            imageView.contentMode = .ScaleAspectFill
+            imageView.clipsToBounds = true
+            preferredView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            preferredView.addSubview(imageView)
+            scrollView.addSubview(preferredView)
+
+            preferredViews.append(preferredView)
+        }
+    }
+
+
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+
+        var prevView: UIView? = nil
+        for preferredView in preferredViews {
+            let imageView = preferredView.subviews[0] as UIImageView
+            preferredView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[imageView]|",
+                options: nil, metrics: nil, views: ["imageView": imageView]))
+            preferredView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[imageView]|",
+                options: nil, metrics: nil, views: ["imageView": imageView]))
+
+            if prevView == nil {
+                scrollView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[preferredView(==scrollView)]",
+                    options: nil, metrics: nil, views: ["scrollView": scrollView, "preferredView": preferredView]))
+            } else {
+                scrollView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[prevView][preferredView(==scrollView)]",
+                    options: nil, metrics: nil, views: ["scrollView": scrollView, "prevView": prevView!, "preferredView": preferredView]))
+            }
+            scrollView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[preferredView(==scrollView)]",
+                options: nil, metrics: nil, views: ["scrollView": scrollView, "preferredView": preferredView]))
+
+            prevView = preferredView
+        }
+
+    }
+
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let contentWidth = CGFloat(preferredViews.count) * scrollView.bounds.width
+        let contentHeight = scrollView.bounds.height
+        scrollView.contentSize = CGSizeMake(contentWidth, contentHeight)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+</code></pre>
+
+<p><img src="/images/20141008/SS17.png" width="800"></p>
+
+<p><img src="/images/20141008/SS18.png" width="240">
+<img src="/images/20141008/SS19.png" width="240"></p>
+
+<p>UIScrollView の中に画像を3つ表示して、それをページングスクロールするコードになります。Paging Enabled のオプションは Storyboard 上で設定しています。</p>
+
+<p>画像を直接 UIScrollView にいれてしまうと、intrinsicContentSize の問題で表示が意図したとおりにならないので、UIImageView をラップする PreferredView を作成しています。</p>
+
+<p>PreferredView の中に UIImageView を隙間なく配置し、PreferredView を ScrollView の縦横のサイズと同じサイズにして、Auto Layout で左から順番に配置しています。
+ぶっちゃけ、この処理であれば、<code>UICollectionView</code> を使うほうが早いし楽だし美しいと思います。</p>
+
+<p>UIScrollView で Auto Layout を使って頑張ってスクロールコンテンツを配置したいときに、参考になるといいと思っています。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[iOS] ReactiveCocoa の RACCommand で、実行中にローディングを出す方法]]></title>
