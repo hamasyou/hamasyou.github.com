@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-10-09T01:32:54+09:00</updated>
+  <updated>2014-10-09T11:13:29+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -117,6 +117,10 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
         cell.layoutIfNeeded()
         return cell.preferredView.bounds.height
     }    
+
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -&gt; CGFloat {
+        return UITableViewAutomaticDimension
+    }
 </code></pre>
 
 <p>高さを計算するときに、<code>cellForRowAtIndexPath</code> を呼び出してセルにコンテンツを設定した後、セルの width にテーブルビューの width を設定してあげて、一度 cell のレイアウトを更新します。</p>
@@ -128,6 +132,24 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <p>本来は、セルの横幅が決まった上でセルのコンテンツの Auto Layout にしたがって <code>layoutIfNeeded</code> しないと行けないのです。セルの横幅を設定せずに <code>layoutIfNeeded</code> だけでコンテンツの高さに合わせてセルの高さを決めていると、
 iPhone6 Plus になったときにセルの高さがおかしくなってしまいます。</p>
+
+<h3>heightForRowAtIndexPath と estimatedHeightForRowAtIndexPath の違い</h3>
+
+<p>セルの高さを計算するメソッドは <code>heightForRowAtIndexPath</code> ですが <code>estimatedHeightForRowAtIndexPath</code> というメソッドも用意されています。
+このメソッドは何なのかというと、UITableView は大量のデータを表示する場合でも、表示領域+αの部分だけしかセルをインスタンス化しないという設計になっています。
+ですので、<code>cellForRowAtIndexPath</code> は表示領域+αの部分分だけ呼び出されるのですが、セルの高さの計算メソッドは、そうではありません。</p>
+
+<p>スクロールバーの範囲を計算したり色々するために、セルの高さの計算は、データがどれだけ大量にあっても全ての数分呼び出されてしまうのです。</p>
+
+<p>で、<code>heightForRowAtIndexPath</code> と <code>estimatedHeightForRowAtIndexPath</code> の違いですが、<code>estimatedHeightForRowAtIndexPath</code> はセルの大まかなサイズを返すメソッドとして用意されています。</p>
+
+<p><code>heightForRowAtIndexPath</code> と <code>estimatedHeightForRowAtIndexPath</code> が両方用意されている場合は、全てのセルの高さを一旦 <code>estimatedHeightForRowAtIndexPath</code> で計算したあと、
+表示領域+α分の回数だけ <code>heightForRowAtIndexPath</code> が呼び出されるという形になります。</p>
+
+<p><code>estimatedHeightForRowAtIndexPath</code> を定義しない場合は、全てのデータ分だけ <code>heightForRowAtIndexPath</code> が呼び出されるので、データが多い場合は結構きつくなります。
+なので、忘れずに <code>estimatedHeightForRowAtIndexPath</code> も定義しておきます。</p>
+
+<p>返す値はなんとなくの定数(44pxとか)でもいいですし、<code>UITableViewAutomaticDimension</code> を返すでもどちらでもよさそうです。</p>
 
 <h3>setNeedsLayout と layoutIfNeeded は何？</h3>
 

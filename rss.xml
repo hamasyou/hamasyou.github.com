@@ -2,7 +2,7 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Thu, 09 Oct 2014 01:32:54 +0900</pubDate>
+  <pubDate>Thu, 09 Oct 2014 11:13:29 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
@@ -115,6 +115,10 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 <span class="line-number">32</span>
 <span class="line-number">33</span>
 <span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line">    <span class="c1">// MARK: - UITableViewDataSource</span>
 </span><span class="line">
@@ -150,6 +154,10 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">        <span class="n">cell</span><span class="p">.</span><span class="n">layoutIfNeeded</span><span class="p">()</span>
 </span><span class="line">        <span class="k">return</span> <span class="n">cell</span><span class="p">.</span><span class="n">preferredView</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">height</span>
 </span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">func</span> <span class="n">tableView</span><span class="p">(</span><span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">estimatedHeightForRowAtIndexPath</span> <span class="nl">indexPath</span><span class="p">:</span> <span class="bp">NSIndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CGFloat</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">UITableViewAutomaticDimension</span>
+</span><span class="line">    <span class="p">}</span>
 </span></code></pre></td>
 </tr></table></div></figure></notextile></div>
 
@@ -163,6 +171,24 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <p>本来は、セルの横幅が決まった上でセルのコンテンツの Auto Layout にしたがって <code>layoutIfNeeded</code> しないと行けないのです。セルの横幅を設定せずに <code>layoutIfNeeded</code> だけでコンテンツの高さに合わせてセルの高さを決めていると、
 iPhone6 Plus になったときにセルの高さがおかしくなってしまいます。</p>
+
+<h3>heightForRowAtIndexPath と estimatedHeightForRowAtIndexPath の違い</h3>
+
+<p>セルの高さを計算するメソッドは <code>heightForRowAtIndexPath</code> ですが <code>estimatedHeightForRowAtIndexPath</code> というメソッドも用意されています。
+このメソッドは何なのかというと、UITableView は大量のデータを表示する場合でも、表示領域+αの部分だけしかセルをインスタンス化しないという設計になっています。
+ですので、<code>cellForRowAtIndexPath</code> は表示領域+αの部分分だけ呼び出されるのですが、セルの高さの計算メソッドは、そうではありません。</p>
+
+<p>スクロールバーの範囲を計算したり色々するために、セルの高さの計算は、データがどれだけ大量にあっても全ての数分呼び出されてしまうのです。</p>
+
+<p>で、<code>heightForRowAtIndexPath</code> と <code>estimatedHeightForRowAtIndexPath</code> の違いですが、<code>estimatedHeightForRowAtIndexPath</code> はセルの大まかなサイズを返すメソッドとして用意されています。</p>
+
+<p><code>heightForRowAtIndexPath</code> と <code>estimatedHeightForRowAtIndexPath</code> が両方用意されている場合は、全てのセルの高さを一旦 <code>estimatedHeightForRowAtIndexPath</code> で計算したあと、
+表示領域+α分の回数だけ <code>heightForRowAtIndexPath</code> が呼び出されるという形になります。</p>
+
+<p><code>estimatedHeightForRowAtIndexPath</code> を定義しない場合は、全てのデータ分だけ <code>heightForRowAtIndexPath</code> が呼び出されるので、データが多い場合は結構きつくなります。
+なので、忘れずに <code>estimatedHeightForRowAtIndexPath</code> も定義しておきます。</p>
+
+<p>返す値はなんとなくの定数(44pxとか)でもいいですし、<code>UITableViewAutomaticDimension</code> を返すでもどちらでもよさそうです。</p>
 
 <h3>setNeedsLayout と layoutIfNeeded は何？</h3>
 
