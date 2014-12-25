@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: スマホアプリ | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/categories/sumahoapuri/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2014-12-25T11:28:32+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[iOS8対応]UITableViewのSeparatorInsetsをゼロにする方法]]></title>
+    <link href="http://hamasyou.com/blog/2014/12/25/ios8-swift-uitableview-separatorinsets/"/>
+    <updated>2014-12-25T11:03:14+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/12/25/ios8-swift-uitableview-separatorinsets</id>
+    <content type="html"><![CDATA[<h2>iOS8 から separatorInset だけだと区切り線が広がらない</h2>
+
+<p>こんにちは。iOS8 から SeparatorInsets をゼロにする方法が変わりました。今までの <code>UITableView</code> の <code>separatorInset</code> に <code>UIEdgeInsetsZero</code> を入れるだけだと、iOS7 では効きますが、iOS8 では効かなくなりました。</p>
+
+<pre><code class="swift">tableView.separatorInset = UIEdgeInsetsZero
+</code></pre>
+
+<p><img src="/images/2014-12-25-tableview.png" width="320" title="&ldquo;図1&rdquo;" ></p>
+
+<h2>iOS8 にも対応するには</h2>
+
+<p>iOS8 からは <code>UIView</code> に追加された <code>layoutMargins</code> というプロパティにも <code>UIEdgeInsetsZero</code> をセットする必要があります。ただこのプロパティ、iOS8 以降でしか利用できないプロパティなので、分岐が必要になります。。</p>
+
+<pre><code class="swift">tableView.layoutMargins = UIEdgeInsetsZero
+cell.layoutMargins = UIEdgeInsetsZero
+</code></pre>
+
+<h3>全体に適用する簡単な例</h3>
+
+<p>全体に適用するには UIAppearance を使うと便利です。iOS7 と iOS8 に対応したコードは次のように書けます。</p>
+
+<pre><code class="swift">let version = NSString(string: UIDevice.currentDevice().systemVersion).doubleValue
+
+UITableView.appearance().separatorInset = UIEdgeInsetsZero
+UITableViewCell.appearance().separatorInset = UIEdgeInsetsZero
+if version &gt;= 8 {
+    UITableView.appearance().layoutMargins = UIEdgeInsetsZero
+    UITableViewCell.appearance().layoutMargins = UIEdgeInsetsZero
+}
+</code></pre>
+
+<p><img src="/images/2014-12-25-tableview2.png" width="320" title="&ldquo;図2&rdquo;" ></p>
+]]></content>
+  </entry>
+  
+</feed>
