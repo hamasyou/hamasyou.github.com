@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2014-12-25T11:29:54+09:00</updated>
+  <updated>2015-01-01T00:22:39+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[iOS8対応]UITableViewのSeparatorInsetsをゼロにする方法]]></title>
+    <link href="http://hamasyou.com/blog/2014/12/25/ios8-swift-uitableview-separatorinsets/"/>
+    <updated>2014-12-25T11:03:14+09:00</updated>
+    <id>http://hamasyou.com/blog/2014/12/25/ios8-swift-uitableview-separatorinsets</id>
+    <content type="html"><![CDATA[<h2>iOS8 から separatorInset だけだと区切り線が広がらない</h2>
+
+<p>こんにちは。iOS8 から SeparatorInsets をゼロにする方法が変わりました。今までの <code>UITableView</code> の <code>separatorInset</code> に <code>UIEdgeInsetsZero</code> を入れるだけだと、iOS7 では効きますが、iOS8 では効かなくなりました。</p>
+
+<pre><code class="swift">tableView.separatorInset = UIEdgeInsetsZero
+</code></pre>
+
+<p><img src="/images/2014-12-25-tableview.png" width="320" title="&ldquo;図1&rdquo;" ></p>
+
+<h2>iOS8 にも対応するには</h2>
+
+<p>iOS8 からは <code>UIView</code> に追加された <code>layoutMargins</code> というプロパティにも <code>UIEdgeInsetsZero</code> をセットする必要があります。ただこのプロパティ、iOS8 以降でしか利用できないプロパティなので、分岐が必要になります。。</p>
+
+<pre><code class="swift">tableView.layoutMargins = UIEdgeInsetsZero
+cell.layoutMargins = UIEdgeInsetsZero
+</code></pre>
+
+<h3>全体に適用する簡単な例</h3>
+
+<p>全体に適用するには UIAppearance を使うと便利です。iOS7 と iOS8 に対応したコードは次のように書けます。</p>
+
+<pre><code class="swift">let version = NSString(string: UIDevice.currentDevice().systemVersion).doubleValue
+
+UITableView.appearance().separatorInset = UIEdgeInsetsZero
+UITableViewCell.appearance().separatorInset = UIEdgeInsetsZero
+if version &gt;= 8 {
+    UITableView.appearance().layoutMargins = UIEdgeInsetsZero
+    UITableViewCell.appearance().layoutMargins = UIEdgeInsetsZero
+}
+</code></pre>
+
+<p><img src="/images/2014-12-25-tableview2.png" width="320" title="&ldquo;図2&rdquo;" ></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[iOS] Auto Layout を使いこなす。UITableViewCell と UIScrollView 編]]></title>
@@ -566,46 +606,6 @@ class API {
 </code></pre>
 
 <p>以上です。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Swift での Dictionary<String, AnyObject> の扱いメモ]]></title>
-    <link href="http://hamasyou.com/blog/2014/08/28/swift-dictionary-anyobject/"/>
-    <updated>2014-08-28T00:12:25+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/08/28/swift-dictionary-anyobject</id>
-    <content type="html"><![CDATA[<p>Swift で <code>Dictionary</code> を扱うときのメモです。API 呼び出しのレスポンスを JSON で扱いたい時に <code>Dictionary&lt;String, AnyObject&gt;</code> として扱う際のポイントです。</p>
-
-<pre><code class="swift">typealias JSONDictionary = Dictionary&lt;String, AnyObject&gt;
-let json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: nil) as JSONDictionary
-
-let str1 = json["foobar"]! as String    // String
-let str2 = json["foobar"] as AnyObject? as? String  // String?
-
-let str3 = json["foobar"] as String     // これはコンパイルエラー '(String, AnyObject)' is not convertible to 'String'
-</code></pre>
-
-<p>最後のはなぜコンパイルエラーになるかというと、<code>Dictionary</code> の <code>subscript</code> が2種類定義されていて、期待したのと違う方が呼び出されているからです。</p>
-
-<pre><code class="swift">struct Dictionary&lt;Key : Hashable, Value&gt; : CollectionType, DictionaryLiteralConvertible {
-    ...
-    subscript (i: DictionaryIndex&lt;Key, Value&gt;) -&gt; (Key, Value) { get }
-    subscript (key: Key) -&gt; Value?
-    ...
-}
-</code></pre>
-
-<p><code>json["foobar"]</code> の戻り値は <code>(Key, Value)</code> か <code>Value?</code> のどちらかですが、<code>as String</code> を付けた際に Optional ではないと判断されてしまい <code>(Key, Value)</code> が戻り値の型と判定されます。それでコンパイルエラーになるわけですね。</p>
-
-<p>期待した通りに取得するには、<code>json["foobar"]</code> の戻り値を <code>Value?</code> として扱う必要があるので、</p>
-
-<pre><code class="swift">json["foobar"]!
-json["foobar"] as AnyObject?
-</code></pre>
-
-<p>のどちらかでアクセスする必要があるわけです。<code>!</code> を付けると unwrap されるので <code>nil</code> が入っていると実行時エラーになります。逆に <code>as AnyObject? as? String</code> でアクセスすると Optional 型になってしまいます。</p>
-
-<p>API のインターフェースと相談して、どちらの型で処理するか決めるといいんじゃないかと思います。</p>
 ]]></content>
   </entry>
   
