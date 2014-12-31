@@ -3,9 +3,9 @@ layout: post
 title: "[iOS8対応]UITableViewのSeparatorInsetsをゼロにする方法"
 date: 2014-12-25 11:03:14 +0900
 comments: true
-categories: [iOS,Apple,スマホアプリ]
+categories: [Programming]
 keywords: "iOS8,UIAppearance,UITableView,UITableViewCell,SeparatorInsets,layoutMargins"
-tags: [iOS8,UIAppearance]
+tags: [iOS8,UIAppearance,iOS,Apple,スマホアプリ]
 sharing: true
 published: true
 amazon_url: ""
@@ -41,7 +41,7 @@ cell.layoutMargins = UIEdgeInsetsZero
 
 ```swift
 let version = NSString(string: UIDevice.currentDevice().systemVersion).doubleValue
-        
+
 UITableView.appearance().separatorInset = UIEdgeInsetsZero
 UITableViewCell.appearance().separatorInset = UIEdgeInsetsZero
 if version >= 8 {
