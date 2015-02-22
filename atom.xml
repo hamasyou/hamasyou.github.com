@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2015-01-01T00:22:39+09:00</updated>
+  <updated>2015-02-22T12:07:05+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[WEB+DB PRESS vol.85]]></title>
+    <link href="http://hamasyou.com/blog/2015/02/22/web-plus-db-press-vol-dot-85/"/>
+    <updated>2015-02-22T11:33:24+09:00</updated>
+    <id>http://hamasyou.com/blog/2015/02/22/web-plus-db-press-vol-dot-85/</id>
+    <content type="html"><![CDATA[<p>『<a href="http://www.amazon.co.jp/gp/product/4774171417?ie=UTF8&amp;camp=247&amp;creativeASIN=4774171417&amp;linkCode=xm2&amp;tag=sorehabooks-22" rel="external nofollow" title="WEB+DB PRESS vol.85">WEB+DB PRESS vol.85</a>』の特集2. <strong class="text-danger">速習 リアクティブプログラミング</strong> を寄稿しました。 <strong class="text-danger">リアクティブ</strong> という、去年辺りに盛り上がったキーワードを、Webプログラミングの観点から整理するとこういうものだよね？っていうふんわりした感じで解説しています。</p>
+
+<p>定義や概念などは、語るコンテキストで捉え方が違ったり、論争の元になるので、今回はあえてこういう定義付けをさけ、実践で利用する場合にどういうメリットがあるのか、どういうふうに使えばいいのかに焦点を当てました。</p>
+
+<p>一部、寝ぼけていたのかおかしな部分があったりもしますが（<em>React.js が Flux アーキテクチャに則っているとか変なこと書いてます。。。</em>）、今号はいろいろおもしろい話が満載ですので、是非読んでみてください。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[iOS8対応]UITableViewのSeparatorInsetsをゼロにする方法]]></title>
@@ -5165,83 +5178,6 @@ JavaScript はシングルスレッドモデルですし、イベントループ
 </li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[canonicalなURLってなにがいいんだろう？]]></title>
-    <link href="http://hamasyou.com/blog/2014/03/04/canonical-url/"/>
-    <updated>2014-03-04T12:27:08+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/03/04/canonical-url/</id>
-    <content type="html"><![CDATA[<p>ちょっと疑問に思ったこと。Web の SEO をやっていると <strong class="text-danger">canonical</strong> ページっていうのを聞いたことがあるとおもいます。
-canonical ページとは、Google 先生曰く「<em>複数の類似した内容のページの中で優先されるページです。</em>」だそうです。
-僕は <strong class="text-danger">URL の正規化</strong> に使うものだという認識ですが、間違ってませんよね？？</p>
-
-<p>で、この canonical URL ってどう付けたらいいんだろう？っていう疑問です。</p>
-
-<!-- more -->
-
-
-<h2>canonical URL ってどっち？</h2>
-
-<h3>RESTful リソースの URL</h3>
-
-<p>Web サービスやっていると、<strong class="text-danger">RESTful</strong> な URL 設計大事！ってなりますよね。
-Rails なんかをやっていると、ルーティングが自動的に RESTful になってて便利です。こんな感じ。</p>
-
-<pre><code class="console">
-       hypermedia GET    /hypermedia(.:format)            hypermedia#index
-                  POST   /hypermedia(.:format)            hypermedia#create
-  new_hypermedium GET    /hypermedia/new(.:format)        hypermedia#new
- edit_hypermedium GET    /hypermedia/:id/edit(.:format)   hypermedia#edit
-      hypermedium GET    /hypermedia/:id(.:format)        hypermedia#show
-                  PATCH  /hypermedia/:id(.:format)        hypermedia#update
-                  PUT    /hypermedia/:id(.:format)        hypermedia#update
-                  DELETE /hypermedia/:id(.:format)        hypermedia#destroy
-</code></pre>
-
-<p>こういうルーティングだと、<code>http://example.com/hypermedia/1</code> みたいな感じでリソースにアクセスできます。
-で、例えば、作ってる Web サービスで、<code>hypermedia/1</code> リソースの別名で、hypermedia の URL を使ってもアクセスできるようにしたい。こんな感じで。</p>
-
-<pre><code class="console">http://example.com/hamasyou.com
-</code></pre>
-
-<p>ルーティングに</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td>
-<td class="code"><pre><code class="ruby"><span class="line"><span class="n">get</span> <span class="s1">'*url'</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s1">'hypermedia#show'</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="kp">false</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>を追加しておくと <code>hypermedia#show</code> の中で <code>params[:url]</code> から <code>hamasyou.com</code> っていう値をとれるようになります。
-なので、こういう URL に別名付けてちょっとクールな感じの Web サービスを気取ってみたくなりました。</p>
-
-<h3>どっちがいいの？</h3>
-
-<p>で、本題ですが、こういうリソースの別名扱いの URL があるとき、canonical URL として指定するのは</p>
-
-<ol>
-<li><code>/hypermedia/:id</code></li>
-<li><code>*url</code></li>
-</ol>
-
-
-<p>のどっちがいいんだろう？という疑問です。HTML 的に書くとこんな感じ。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td>
-<td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"http://example.com/hypermedia/1"</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"http://example.com/hamasyou.com"</span><span class="nt">&gt;</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>どっちでもいい。好みの問題って感じもしなくもないですが、皆さんどっちを選ぶのが多いんでしょう？</p>
 ]]></content>
   </entry>
   
