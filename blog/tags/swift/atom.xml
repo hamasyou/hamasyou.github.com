@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Swift | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/swift/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2015-06-10T12:10:27+09:00</updated>
+  <updated>2015-06-10T18:07:18+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -59,11 +59,17 @@
 
 <p>このへん、<em>Generics</em> の達人のかたに、もっといい書き方あるよって教えて欲しいです。</p>
 
-<h2>Swift の Dictionary に map を実装した</h2>
+<h2>Swift の Dictionary に map を実装してみた。</h2>
+
+<p>ついでに <code>reduce</code> も。</p>
 
 <pre><code class="swift">extension Dictionary {
     func map&lt;T&gt;(transform: (Key, Value) -&gt; T) -&gt; [T] {
         return Swift.map(self, transform)
+    }
+
+    func reduce&lt;T&gt;(initial: T, combine: (T, (Key, Value)) -&gt; T) -&gt; T {
+        return Swift.reduce(self, initial, combine)
     }
 }
 </code></pre>
@@ -77,6 +83,15 @@ let array = dict.map { (k: String, v: String) -&gt; String in
     return v
 }
 println(array)      // ["world"]
+
+
+dict = [String: Int]()
+dict["a"] = 1
+dict["b"] = 2
+dict["c"] = 3
+dict["d"] = 4
+dict["e"] = 5
+let n = dict.reduce(0) { (n, d) -&gt; Int in n + d.1 }    // 15
 </code></pre>
 
 <p>Ruby の map っぽい感じで使えるにしたかったので。</p>
