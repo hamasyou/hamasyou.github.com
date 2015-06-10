@@ -13,7 +13,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="『WEB+DB PRESS vol.85』の特集2. 速習 リアクティブプログラミング を寄稿しました。 リアクティブ という、去年辺りに盛り上がったキーワードを、Webプログラミングの観点から整理するとこういうものだよね？っていうふんわりした感じで解説しています。 定義や概念などは、 &hellip;">
+  <meta name="description" content="Array に each を実装してみた。 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25 extension Array { func each(block: (T) -&gt; ()) { for item &hellip;">
   
 
   
@@ -24,7 +48,31 @@
 
 <meta property="og:url" content="http://hamasyou.com/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="『WEB+DB PRESS vol.85』の特集2. 速習 リアクティブプログラミング を寄稿しました。 リアクティブ という、去年辺りに盛り上がったキーワードを、Webプログラミングの観点から整理するとこういうものだよね？っていうふんわりした感じで解説しています。 定義や概念などは、 &hellip;" />
+<meta property="og:description" content="Array に each を実装してみた。 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25 extension Array { func each(block: (T) -&gt; ()) { for item &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -108,6 +156,255 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2015/06/10/swift-array-dictionary-extension/" class="excerpt-link">Swift の Array と Dictionary の Extension（each と map を実装した）</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-06-10T12:01:16+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 10<span>th</span>, 2015</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/swift/" rel="nofollow">Swift</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2015/06/10/swift-array-dictionary-extension/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2015/06/10/swift-array-dictionary-extension/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2015/06/10/swift-array-dictionary-extension/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2015/06/10/swift-array-dictionary-extension/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2015/06/10/swift-array-dictionary-extension/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2015/06/10/swift-array-dictionary-extension/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2015/06/10/swift-array-dictionary-extension/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2015/06/10/swift-array-dictionary-extension/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><h2>Array に each を実装してみた。</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">extension</span> <span class="n">Array</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">func</span> <span class="n">each</span><span class="p">(</span><span class="nl">block</span><span class="p">:</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="nb">self</span> <span class="p">{</span>
+</span><span class="line">            <span class="n">block</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">func</span> <span class="n">each</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">block</span><span class="p">:</span> <span class="p">(</span><span class="n">U</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="nb">self</span> <span class="p">{</span>
+</span><span class="line">            <span class="n">block</span><span class="p">(</span><span class="n">item</span> <span class="kt">as</span><span class="o">!</span> <span class="n">U</span><span class="p">)</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">func</span> <span class="n">eachWithIndex</span><span class="p">(</span><span class="nl">block</span><span class="p">:</span> <span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">            <span class="n">block</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">func</span> <span class="n">eachWithIndex</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">block</span><span class="p">:</span> <span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">            <span class="n">block</span><span class="p">(</span><span class="n">item</span> <span class="kt">as</span><span class="o">!</span> <span class="n">U</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>使い方はこんな感じ。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="n">each</span> <span class="p">{</span> <span class="p">(</span><span class="nl">n</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="k">in</span> <span class="n">println</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="n">each</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="n">eachWithIndex</span> <span class="p">{</span> <span class="p">(</span><span class="nl">n</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">i</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="k">in</span> <span class="n">println</span><span class="p">(</span><span class="s">"index \(i), n \(n)"</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="n">eachWithIndex</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">"index \($1), n \($0)"</span><span class="p">)</span> <span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>配列の中身が <code>AnyObject</code> だった時に、型指定するときとしない時でどっちも動くようにするのに、メソッドを2つ定義しました。</p>
+
+<p>このへん、<em>Generics</em> の達人のかたに、もっといい書き方あるよって教えて欲しいです。</p>
+
+<h2>Swift の Dictionary に map を実装した</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">extension</span> <span class="n">Dictionary</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">func</span> <span class="n">map</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">transform</span><span class="p">:</span> <span class="p">(</span><span class="n">Key</span><span class="p">,</span> <span class="n">Value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">Swift</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">transform</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>使い方はこんな感じ。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">dict</span> <span class="o">=</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">String</span><span class="p">]()</span>
+</span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="s">"hello"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"world"</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">array</span> <span class="o">=</span> <span class="n">dict</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="p">(</span><span class="nl">k</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">v</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="k">in</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">v</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="n">println</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>      <span class="c1">// ["world"]</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>Ruby の map っぽい感じで使えるにしたかったので。</p>
+</div>
+  
+  
+
+
+    </article>
     
     
     <article>
@@ -1903,216 +2200,6 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/07/31/swift-enum-anyobject/" class="excerpt-link">SwiftはenumをAnyObject型の変数に入れられない</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-07-31T10:39:48+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jul 31<span>st</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/swift/" rel="nofollow">Swift</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/07/31/swift-enum-anyobject/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>Swift で <em>enum</em> を扱う際にハマった問題です。確認は <em>Xcode6 beta4</em> で行っています。</p>
-
-<h3>Swift の enum は AnyObject 型変数に代入できない</h3>
-
-<p>Swift では <code>enum</code> を <code>AnyObject</code> 型の変数に入れることができません。コンパイルエラーになります。<code>Any</code> 型なら代入できます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td>
-<td class="code"><pre><code class="swift"><span class="line"><span class="k">enum</span> <span class="nl">SomeType</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">case</span> <span class="n">None</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class="line">    <span class="k">case</span> <span class="n">Something</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="k">let</span> <span class="n">something</span> <span class="o">=</span> <span class="n">SomeType</span><span class="p">.</span><span class="n">None</span>
-</span><span class="line"><span class="n">something</span>                                     <span class="c1">// Enum Value</span>
-</span><span class="line">
-</span><span class="line"><span class="k">let</span> <span class="nl">anything</span><span class="p">:</span> <span class="n">AnyObject</span> <span class="o">=</span> <span class="n">SomeType</span><span class="p">.</span><span class="n">Something</span>  <span class="c1">// error: type 'SomeType' does not conform to protocol 'AnyObject'</span>
-</span><span class="line">
-</span><span class="line"><span class="k">let</span> <span class="nl">any</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">SomeType</span><span class="p">.</span><span class="n">Something</span>             <span class="c1">// Enum Value</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。</p>
-
-<h4>ReactiveCocoa とかと組み合わせるときにこまる</h4>
-
-<p>これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" rel="external nofollow" title="ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
-<code>enum</code> で設定する例えば <code>UITableViewCellAccessoryType</code> なんかを使いたい場合にコンパイルエラーになってしまいます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td>
-<td class="code"><pre><code class="swift"><span class="line"><span class="c1">// これはコンパイルエラーになる</span>
-</span><span class="line"><span class="n">RAC</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"cell.accessoryType"</span><span class="p">)</span> <span class="o">=</span> <span class="n">RACObserve</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"viewModel.checked"</span><span class="p">).</span><span class="n">map</span> <span class="p">{</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Bool</span><span class="p">)</span> <span class="o">?</span> <span class="n">UITableViewCellAccessoryType</span><span class="p">.</span><span class="nl">Checkmark</span> <span class="p">:</span> <span class="n">UITableViewCellAccessoryType</span><span class="p">.</span><span class="n">None</span> <span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">// こうしないといけない。。</span>
-</span><span class="line"><span class="n">RACObserve</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">viewModel</span><span class="p">,</span> <span class="s">"checked"</span><span class="p">)</span>
-</span><span class="line">    <span class="p">.</span><span class="n">subscribeNext</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="nb">self</span><span class="p">]</span> <span class="n">arg</span> <span class="k">in</span>
-</span><span class="line">        <span class="k">let</span> <span class="n">checked</span> <span class="o">=</span> <span class="n">arg</span> <span class="kt">as</span> <span class="n">Bool</span>
-</span><span class="line">        <span class="nb">self</span><span class="o">!</span><span class="p">.</span><span class="n">accessoryType</span> <span class="o">=</span> <span class="n">checked</span> <span class="o">?</span> <span class="p">.</span><span class="nl">Checkmark</span> <span class="p">:</span> <span class="p">.</span><span class="n">None</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>既存の Objective-C ライブラリで <code>id</code> が使われている箇所が、Swift では <code>AnyObject</code> に対応するので、
-Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻り値にしていたりする箇所が <code>AnyObject</code> になってしまい、
-<code>enum</code> を利用することができません。</p>
-
-<p>変数に代入するだけなら <code>Any</code> 型にすればいいんですが、既存ライブラリとの連携では難しそうです。 <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>
-これ、何かやり方ないんでしょうかね。。ReactiveSwift 待ちかなぁ</p>
-<div class="footnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>Any 型にすれば代入できることを <a href="https://twitter.com/takabosoft" rel="external nofollow" title="@takabosoft">@takabosoft</a> さんに教えてもらいました。ありがとうございます！<a href="#fnref:1" rev="footnote">↩</a></p>
-</li>
-</ol>
-</div>
-
-</div>
-  
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/2/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -2154,6 +2241,10 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2015/06/10/swift-array-dictionary-extension/">Swift の Array と Dictionary の Extension（each と map を実装した）</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/22/web-plus-db-press-vol-dot-85/">WEB+DB PRESS vol.85</a>
       </li>
     
@@ -2189,10 +2280,6 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
         <a href="/blog/2014/07/31/swift-array-force-unwrapping/">SwiftでForce Unwrapping型の配列に値を追加できない</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/07/31/swift-enum-anyobject/">SwiftはenumをAnyObject型の変数に入れられない</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -2200,7 +2287,7 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">105</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">130</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">105</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">131</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">

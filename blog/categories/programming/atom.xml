@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2015-02-22T12:07:05+09:00</updated>
+  <updated>2015-06-10T12:10:27+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,76 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Swift の Array と Dictionary の Extension（each と map を実装した）]]></title>
+    <link href="http://hamasyou.com/blog/2015/06/10/swift-array-dictionary-extension/"/>
+    <updated>2015-06-10T12:01:16+09:00</updated>
+    <id>http://hamasyou.com/blog/2015/06/10/swift-array-dictionary-extension</id>
+    <content type="html"><![CDATA[<h2>Array に each を実装してみた。</h2>
+
+<pre><code class="swift">extension Array {
+    func each(block: (T) -&gt; ()) {
+        for item in self {
+            block(item)
+        }
+    }
+
+    func each&lt;U&gt;(block: (U) -&gt; ()) {
+        for item in self {
+            block(item as! U)
+        }
+    }
+
+    func eachWithIndex(block: (T, Int) -&gt; ()) {
+        for (i, item) in enumerate(self) {
+            block(item, i)
+        }
+    }
+
+    func eachWithIndex&lt;U&gt;(block: (U, Int) -&gt; ()) {
+        for (i, item) in enumerate(self) {
+            block(item as! U, i)
+        }
+    }
+}
+</code></pre>
+
+<p>使い方はこんな感じ。</p>
+
+<pre><code class="swift">[1, 2, 3].each { (n: Int) in println(n) }
+[1, 2, 3].each { println($0) }
+[1, 2, 3].eachWithIndex { (n: Int, i: Int) in println("index \(i), n \(n)") }
+[1, 2, 3].eachWithIndex { println("index \($1), n \($0)") }
+</code></pre>
+
+<p>配列の中身が <code>AnyObject</code> だった時に、型指定するときとしない時でどっちも動くようにするのに、メソッドを2つ定義しました。</p>
+
+<p>このへん、<em>Generics</em> の達人のかたに、もっといい書き方あるよって教えて欲しいです。</p>
+
+<h2>Swift の Dictionary に map を実装した</h2>
+
+<pre><code class="swift">extension Dictionary {
+    func map&lt;T&gt;(transform: (Key, Value) -&gt; T) -&gt; [T] {
+        return Swift.map(self, transform)
+    }
+}
+</code></pre>
+
+<p>使い方はこんな感じ。</p>
+
+<pre><code class="swift">var dict = [String: String]()
+dict["hello"] = "world"
+
+let array = dict.map { (k: String, v: String) -&gt; String in
+    return v
+}
+println(array)      // ["world"]
+</code></pre>
+
+<p>Ruby の map っぽい感じで使えるにしたかったので。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[iOS8対応]UITableViewのSeparatorInsetsをゼロにする方法]]></title>
@@ -542,70 +612,6 @@ dict[1].append(["name": "",    "value": ""])
 </code></pre>
 
 <p>こうやって、プログラムでデータ登録するようにしました。。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[ReactiveCocoa] catchTo の使いどころ]]></title>
-    <link href="http://hamasyou.com/blog/2014/08/29/reactivecocoa-catchto/"/>
-    <updated>2014-08-29T19:44:49+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/08/29/reactivecocoa-catchto</id>
-    <content type="html"><![CDATA[<p><strong>ReactiveCocoa</strong> で <code>catchTo</code> の使い方を覚えたのでメモ。</p>
-
-<p><a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a></p>
-
-<p>リアクティブプログラミングの詳細は省くとして、<code>RACSignal</code> のイベントには <code>next</code> と <code>completed</code> と <code>error</code> があります。それぞれ、<code>subscribeNext</code>、<code>subscribeCompleted</code>、<code>subscribeError</code> でハンドリングできるやつです。</p>
-
-<p>で、HTTP API 等を呼び出す際に API 呼び出しの結果を JSON にパースして、結果をモデルに設定するみたいなことをやりたい時に、次のように行います。（Swift で記述しています。）</p>
-
-<pre><code class="swift">RAC(self, "model") &lt;~ API.loadData()
-
-class API {
-    class func loadData() -&gt; RACSignal {
-        return RACSignal.createSignal({ (subscriber: RACSubscriber!) in
-            let url = NSURL(string: "http://localhost:300/search")
-            let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-            configuration.HTTPAdditionalHeaders = ["Accept": "application/json"]
-            let session: NSURLSession = NSURLSession(configuration: configuration)
-            let task: NSURLSessionDataTask = session.dataTaskWithURL(url, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) in
-                if error == nil {
-                    // data をパースしてモデル化
-                    subscriber.sendNext(model)
-                    subscriber.sendCompleted()
-                } else {
-                    subscriber.sendError(error)
-                }
-                session.invalidateAndCancel()
-            })
-            task.resume()
-            return nil
-        })
-    }
-}
-</code></pre>
-
-<p>こうすると、API の呼び出しが成功した場合には <code>subscriber.sendNext</code> の結果がきちんと <code>self.model</code> に設定されるわけですが、API の呼び出しが失敗して <code>subscriber.sendError</code> が呼び出されてしまうと、例外がなげられます。</p>
-
-<p>ではどうするか。</p>
-
-<h3>catchTo を使って sendError に備える</h3>
-
-<p>そこで <code>catchTo</code> を使います。</p>
-
-<pre><code class="swift">RAC(self, "model") &lt;~ API.loadData().catchTo(RACSignal.empty())
-</code></pre>
-
-<p><code>catchTo</code> は <code>sendError</code> が呼び出された場合に代わりに投げる <code>RACSignal</code> を指定します。そうすることで、ネットワークエラー等で API の呼び出しが失敗した場合には、<code>RACSignal.empty()</code> で何も起きなかったことになる（正確には sendCompleted が呼び出される）ようになります。</p>
-
-<p>sendError 時に処理を行いたい場合には <code>catch</code> を代わりに使用します。</p>
-
-<pre><code class="swift">RAC(self, "model") &lt;~ API.loadData()
-    .catch({ (error: NSError!) -&gt; RACSignal! in
-        return RACSignal.empty()
-    })
-</code></pre>
-
-<p>以上です。</p>
 ]]></content>
   </entry>
   
