@@ -60,12 +60,18 @@ extension Array {
 このへん、*Generics* の達人のかたに、もっといい書き方あるよって教えて欲しいです。
 
 
-## Swift の Dictionary に map を実装した
+## Swift の Dictionary に map を実装してみた。
+
+ついでに `reduce` も。
 
 ```swift
 extension Dictionary {
     func map<T>(transform: (Key, Value) -> T) -> [T] {
         return Swift.map(self, transform)
+    }
+
+    func reduce<T>(initial: T, combine: (T, (Key, Value)) -> T) -> T {
+        return Swift.reduce(self, initial, combine)
     }
 }
 ```
@@ -80,6 +86,15 @@ let array = dict.map { (k: String, v: String) -> String in
     return v
 }
 println(array)      // ["world"]
+
+
+dict = [String: Int]()
+dict["a"] = 1
+dict["b"] = 2
+dict["c"] = 3
+dict["d"] = 4
+dict["e"] = 5
+let n = dict.reduce(0) { (n, d) -> Int in n + d.1 }    // 15
 ```
 
 Ruby の map っぽい感じで使えるにしたかったので。
