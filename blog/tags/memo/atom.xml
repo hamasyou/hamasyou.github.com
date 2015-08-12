@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Memo | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/memo/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2015-08-12T17:08:46+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[iOS]Swift の Dollar ライブラリの each 関数を SequenceType に対応する拡張]]></title>
+    <link href="http://hamasyou.com/blog/2015/08/12/ios-swift-dollar-each-sequencetype/"/>
+    <updated>2015-08-12T16:47:11+09:00</updated>
+    <id>http://hamasyou.com/blog/2015/08/12/ios-swift-dollar-each-sequencetype</id>
+    <content type="html"><![CDATA[<p>Swift のメモ書きです。</p>
+
+<p><a href="https://github.com/ankurp/Dollar.swift">ankurp/Dollar.swift</a> という JavaScript の Lo-Dash や Underscore と同じ感じでコレクションを扱うためのライブラリがありますが、 <code>each</code> が配列しか受け付けることが出来ないので、<code>SequenceType</code> を受け取れるように拡張する方法のメモです。</p>
+
+<pre><code class="swift">import Dollar
+
+extension $ {
+    class func each&lt;T: SequenceType&gt;(array: T, callback: (T.Generator.Element) -&gt; ()) -&gt; T {
+        for elem in array {
+            callback(elem)
+        }
+        return array
+    }
+}
+
+$.each(["a", "b", "c"]) { (s: String) in println(s) }
+$.each(["key": "val"]) { (e: (String, String)) in println("\(e.0) = \(e.1)") }
+// a
+// b
+// c
+// key = val
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

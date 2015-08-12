@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Swift | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/swift/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2015-06-10T18:07:18+09:00</updated>
+  <updated>2015-08-12T17:08:46+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[iOS]Swift の Dollar ライブラリの each 関数を SequenceType に対応する拡張]]></title>
+    <link href="http://hamasyou.com/blog/2015/08/12/ios-swift-dollar-each-sequencetype/"/>
+    <updated>2015-08-12T16:47:11+09:00</updated>
+    <id>http://hamasyou.com/blog/2015/08/12/ios-swift-dollar-each-sequencetype</id>
+    <content type="html"><![CDATA[<p>Swift のメモ書きです。</p>
+
+<p><a href="https://github.com/ankurp/Dollar.swift">ankurp/Dollar.swift</a> という JavaScript の Lo-Dash や Underscore と同じ感じでコレクションを扱うためのライブラリがありますが、 <code>each</code> が配列しか受け付けることが出来ないので、<code>SequenceType</code> を受け取れるように拡張する方法のメモです。</p>
+
+<pre><code class="swift">import Dollar
+
+extension $ {
+    class func each&lt;T: SequenceType&gt;(array: T, callback: (T.Generator.Element) -&gt; ()) -&gt; T {
+        for elem in array {
+            callback(elem)
+        }
+        return array
+    }
+}
+
+$.each(["a", "b", "c"]) { (s: String) in println(s) }
+$.each(["key": "val"]) { (e: (String, String)) in println("\(e.0) = \(e.1)") }
+// a
+// b
+// c
+// key = val
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Swift の Array と Dictionary の Extension（each と map を実装した）]]></title>
@@ -594,72 +624,6 @@ json["foobar"] as AnyObject?
 <p>のどちらかでアクセスする必要があるわけです。<code>!</code> を付けると unwrap されるので <code>nil</code> が入っていると実行時エラーになります。逆に <code>as AnyObject? as? String</code> でアクセスすると Optional 型になってしまいます。</p>
 
 <p>API のインターフェースと相談して、どちらの型で処理するか決めるといいんじゃないかと思います。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[SwiftでForce Unwrapping型の配列に値を追加できない]]></title>
-    <link href="http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping/"/>
-    <updated>2014-07-31T11:28:11+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/07/31/swift-array-force-unwrapping</id>
-    <content type="html"><![CDATA[<p>この記事は Xcode6 beta4 を元に記述しています。</p>
-
-<h3>Swift の配列は mutable か immutable</h3>
-
-<p>Swift では配列を <strong>mutable/immutable</strong> の区別なく定義することができるようになりました。</p>
-
-<pre><code class="swift">var numbers = [1, 2, 3]
-numbers[0] = 0
-println(numbers)    // [0, 2, 3]
-</code></pre>
-
-<p><code>let</code> で定義すると <strong>immutable</strong>、<code>var</code> で定義すると <strong>mutable</strong> になり、配列の代入はすべてコピーで行われるようになっています。</p>
-
-<h3>Force UnWrapping 型!</h3>
-
-<p>で、ハマったのが次のようなコードです。</p>
-
-<pre><code class="swift">var numbers: [Int]! = [1, 2, 3]
-numbers[0] = 0    // error: '@lvalue $T7' is not identical to 'Int'
-</code></pre>
-
-<p>Force Unwrapping 型とでも言うんでしょうかね？変数に必ず値が入ってることを保証するために <code>!</code> が付いた型です。
-この型で定義した配列には、値の追加や変更ができなくなっています。。</p>
-
-<p>これで何が困るかというと、<code>UIKit</code> 使って <code>UIViewController</code> のサブクラスにプロパティを定義する際に
-初期化を <code>viewDidLoad</code> で行う時には、<code>!</code> をつけないと <code>initializer</code> が必要になってしまうので、プロパティの定義には <code>!</code> を付けていました。</p>
-
-<p>そうすると、<em>mutable</em> で扱いたかったプロパティなのに、変更できないという問題にぶち当たったわけです。。どうすんだこれ。。。</p>
-
-<h4>コンパイルエラーの例</h4>
-
-<pre><code class="swift">class MyViewController: UIViewController {
-
-  var numbers: [Int]!
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-    self.numbers = [1, 2, 3]
-  }
-
-
-  func myFunc() {
-    self.numbers[0] = 0     // コンパイルエラー
-  }
-}
-</code></pre>
-
-<h4>うまくいく例</h4>
-
-<p>対応としては、一旦変数で受けて、変更後に元に戻すっていうので何とかなりますが、コンパイラの方でなんとかならんもんですかね。。</p>
-
-<pre><code class="swift">  func myFunc() {
-    var nums: [Int] = self.numbers
-    nums[0] = 0
-    self.numbers = nums
-  }
-</code></pre>
 ]]></content>
   </entry>
   
