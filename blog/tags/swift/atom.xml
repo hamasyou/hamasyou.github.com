@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Swift | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/swift/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2015-08-12T17:08:46+09:00</updated>
+  <updated>2015-08-13T12:05:55+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[iOS/Swift]ReactiveCocoa 3.0 で ViewModel から Signal をセルフ・コントロールするイディオム]]></title>
+    <link href="http://hamasyou.com/blog/2015/08/13/ios-swift-reactivecocoa-signal-viewmodel/"/>
+    <updated>2015-08-13T11:57:28+09:00</updated>
+    <id>http://hamasyou.com/blog/2015/08/13/ios-swift-reactivecocoa-signal-viewmodel</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> が v.3.0-RC.1 がでて、そろそろ製品に Swift で ReactiveCocoa が使えるようになりそうな感じになってきました。</p>
+
+<p>いつも <code>Signal</code> を自分で制御するイディオムを忘れてしまうので、メモ書きです。</p>
+
+<pre><code class="swift">import Foundation
+import UIKit
+import ReactiveCocoa
+
+class MyViewModel {
+    let (changed, sink) = Signal&lt;Void, NoError&gt;.pipe()
+
+    func doAction() {
+        // do something
+        sendNext(sink, ())
+    }    
+}
+
+
+class MyViewController : UIViewController {
+    let viewModel = MyViewModel()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        viewModel.changed |&gt; observe(next: debugPrintln)
+
+        viewModel.doAction()              
+    }
+}
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[iOS]Swift の Dollar ライブラリの each 関数を SequenceType に対応する拡張]]></title>
@@ -584,46 +622,6 @@ dict[1].append(["name": "",    "value": ""])
 </code></pre>
 
 <p>こうやって、プログラムでデータ登録するようにしました。。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Swift での Dictionary<String, AnyObject> の扱いメモ]]></title>
-    <link href="http://hamasyou.com/blog/2014/08/28/swift-dictionary-anyobject/"/>
-    <updated>2014-08-28T00:12:25+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/08/28/swift-dictionary-anyobject</id>
-    <content type="html"><![CDATA[<p>Swift で <code>Dictionary</code> を扱うときのメモです。API 呼び出しのレスポンスを JSON で扱いたい時に <code>Dictionary&lt;String, AnyObject&gt;</code> として扱う際のポイントです。</p>
-
-<pre><code class="swift">typealias JSONDictionary = Dictionary&lt;String, AnyObject&gt;
-let json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: nil) as JSONDictionary
-
-let str1 = json["foobar"]! as String    // String
-let str2 = json["foobar"] as AnyObject? as? String  // String?
-
-let str3 = json["foobar"] as String     // これはコンパイルエラー '(String, AnyObject)' is not convertible to 'String'
-</code></pre>
-
-<p>最後のはなぜコンパイルエラーになるかというと、<code>Dictionary</code> の <code>subscript</code> が2種類定義されていて、期待したのと違う方が呼び出されているからです。</p>
-
-<pre><code class="swift">struct Dictionary&lt;Key : Hashable, Value&gt; : CollectionType, DictionaryLiteralConvertible {
-    ...
-    subscript (i: DictionaryIndex&lt;Key, Value&gt;) -&gt; (Key, Value) { get }
-    subscript (key: Key) -&gt; Value?
-    ...
-}
-</code></pre>
-
-<p><code>json["foobar"]</code> の戻り値は <code>(Key, Value)</code> か <code>Value?</code> のどちらかですが、<code>as String</code> を付けた際に Optional ではないと判断されてしまい <code>(Key, Value)</code> が戻り値の型と判定されます。それでコンパイルエラーになるわけですね。</p>
-
-<p>期待した通りに取得するには、<code>json["foobar"]</code> の戻り値を <code>Value?</code> として扱う必要があるので、</p>
-
-<pre><code class="swift">json["foobar"]!
-json["foobar"] as AnyObject?
-</code></pre>
-
-<p>のどちらかでアクセスする必要があるわけです。<code>!</code> を付けると unwrap されるので <code>nil</code> が入っていると実行時エラーになります。逆に <code>as AnyObject? as? String</code> でアクセスすると Optional 型になってしまいます。</p>
-
-<p>API のインターフェースと相談して、どちらの型で処理するか決めるといいんじゃないかと思います。</p>
 ]]></content>
   </entry>
   
