@@ -2,7 +2,7 @@
 <channel>
   <title><![CDATA[それはBooks]]></title>
   <link>http://hamasyou.com</link>
-  <pubDate>Thu, 13 Aug 2015 12:23:59 +0900</pubDate>
+  <pubDate>Fri, 14 Aug 2015 11:06:25 +0900</pubDate>
   <description>
   コンピュータ書籍, デザイン書籍, ビジネス書籍, その他の書評を行うぶろぐ
   </description>
@@ -412,6 +412,42 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 <p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/hamasyou/autolayout" rel="external nofollow" title="hamasyou/autolayout">hamasyou/autolayout</a></p>
 
 <p>にあるので、参考にしたい方はどうぞ。</p>
+
+<h2>iOS8 以降だけに対応するのであれば</h2>
+
+<p>ちなみに、iOS8 以降だけに対応するのであれば、<code>TableViewCell.xib</code> で <code>ContentView</code> に対して何も考えずに Auto Layout でレイアウトして、<code>TableViewController</code> を継承したクラスで次のように <code>tableView.rowHeight</code> に <code>UITableViewAutomaticDimension</code> を設定し、<code>tableView:estimatedHeightForRowAtIndexPath:</code> で <code>UITableViewAutomaticDimension</code> を返すようにするだけで解決します。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">class</span> <span class="nl">MyViewClass</span> <span class="p">:</span> <span class="bp">UIViewController</span><span class="p">,</span> <span class="bp">UITableViewDelegate</span> <span class="p">{</span>
+</span><span class="line">    <span class="p">@</span><span class="kt">IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="o">!</span>
+</span><span class="line">
+</span><span class="line">    <span class="kr">override</span> <span class="k">func</span> <span class="n">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+</span><span class="line">        <span class="n">tableView</span><span class="p">.</span><span class="n">rowHeight</span> <span class="o">=</span> <span class="n">UITableViewAutomaticDimension</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">func</span> <span class="n">tableView</span><span class="p">(</span><span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">estimatedHeightForRowAtIndexPath</span> <span class="nl">indexPath</span><span class="p">:</span> <span class="bp">NSIndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CGFloat</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">UITableViewAutomaticDimension</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>tableView</code> に <code>estimatedRowHeight</code> というプロパティがありますが、これに <code>UITableViewAutomaticDimension</code> を設定して、<code>tableView:estimatedHeightForRowAtIndexPath:</code> を実装しない方法だと上手くいきません。バグなんじゃないか？？。。。</p>
 
 <h2>Auto Layout のおさらい</h2>
 

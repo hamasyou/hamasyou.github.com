@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: iOS | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/ios/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2015-08-13T12:23:59+09:00</updated>
+  <updated>2015-08-14T11:06:25+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -133,6 +133,26 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 <p><a href="https://github.com/hamasyou/autolayout">hamasyou/autolayout</a></p>
 
 <p>にあるので、参考にしたい方はどうぞ。</p>
+
+<h2>iOS8 以降だけに対応するのであれば</h2>
+
+<p>ちなみに、iOS8 以降だけに対応するのであれば、<code>TableViewCell.xib</code> で <code>ContentView</code> に対して何も考えずに Auto Layout でレイアウトして、<code>TableViewController</code> を継承したクラスで次のように <code>tableView.rowHeight</code> に <code>UITableViewAutomaticDimension</code> を設定し、<code>tableView:estimatedHeightForRowAtIndexPath:</code> で <code>UITableViewAutomaticDimension</code> を返すようにするだけで解決します。</p>
+
+<pre><code class="swift">class MyViewClass : UIViewController, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
+
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -&gt; CGFloat {
+        return UITableViewAutomaticDimension
+    }
+}
+</code></pre>
+
+<p><code>tableView</code> に <code>estimatedRowHeight</code> というプロパティがありますが、これに <code>UITableViewAutomaticDimension</code> を設定して、<code>tableView:estimatedHeightForRowAtIndexPath:</code> を実装しない方法だと上手くいきません。バグなんじゃないか？？。。。</p>
 
 <h2>Auto Layout のおさらい</h2>
 
