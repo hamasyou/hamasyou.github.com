@@ -50,6 +50,27 @@ iPhone6 で横幅が伸びてしまったことで、適当に `Auto Layout` を
 にあるので、参考にしたい方はどうぞ。
 
 
+## iOS8 以降だけに対応するのであれば
+
+ちなみに、iOS8 以降だけに対応するのであれば、`TableViewCell.xib` で `ContentView` に対して何も考えずに Auto Layout でレイアウトして、`TableViewController` を継承したクラスで次のように `tableView.rowHeight` に `UITableViewAutomaticDimension` を設定し、`tableView:estimatedHeightForRowAtIndexPath:` で `UITableViewAutomaticDimension` を返すようにするだけで解決します。
+
+```swift
+class MyViewClass : UIViewController, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
+  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
+
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+}
+```
+
+`tableView` に `estimatedRowHeight` というプロパティがありますが、これに `UITableViewAutomaticDimension` を設定して、`tableView:estimatedHeightForRowAtIndexPath:` を実装しない方法だと上手くいきません。バグなんじゃないか？？。。。
+
 ## Auto Layout のおさらい
 
 作り方を晒す前に、まずは **Auto Layout** のおさらいをしておきます。
