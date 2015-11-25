@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Range | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/range/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2015-11-25T15:36:39+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Swift] RxSwift で iBeacon の RangeBeaconsInRegion を 5秒間隔で受け取る方法]]></title>
+    <link href="http://hamasyou.com/blog/2015/11/25/rxswift-de-ibeacon-false-rangebeaconsinregion-wo-5miao-jian-ge-deshou-kequ-rufang-fa/"/>
+    <updated>2015-11-25T15:25:47+09:00</updated>
+    <id>http://hamasyou.com/blog/2015/11/25/rxswift-de-ibeacon-false-rangebeaconsinregion-wo-5miao-jian-ge-deshou-kequ-rufang-fa</id>
+    <content type="html"><![CDATA[<p>CoreLocation を使って iBeacon の Ranging を行う場合、iOS だと 1秒間隔で通知されます。</p>
+
+<p><a href="http://enamelsystems.com/0011/z">[参考] iBeacon(3) - リージョン監視とレンジング - Enamel Systems</a></p>
+
+<p>そこで、1秒間隔だと通知間隔が短すぎるので、5秒間隔とか1分間隔とかに変えたい時にどうするかですが、<code>CLLocationManager</code> クラスに設定があればよかったのですが、特になさそうなので、<code>RxSwift</code> を使ってストリームのフィルタで対応する方法のメモです。</p>
+
+<p><code>CLLocationManager</code> の初期設定とかは参考サイトを見てください。</p>
+
+<p><a href="https://github.com/ReactiveX/RxSwift/">ReactiveX/RxSwift</a></p>
+
+<pre><code class="swift">locationManager.rx_didRangeBeaconsInRegion
+    .sample(interval(5, MainScheduler.sharedInstance))
+    .subscribeNext { (tuple: ([CLBeacon]!, CLBeaconRegion!)) in
+        debugPrint("beacons: \(tuple.0), region: \(tuple.1)")
+    }
+    .addDisposableTo(disposeBag)
+</code></pre>
+
+<p><code>Rx</code> の <code>sample</code> を使って、ストリームを <code>interval</code> 毎にサンプリングしてやるだけです。</p>
+
+<p><a href="http://www.introtorx.com/content/v1.0.10621.0/13_TimeShiftedSequences.html#Sample">Time-shifted sequences - Introduction to Rx</a></p>
+
+<p><code>RxSwift</code> も使いやすくて、めっちゃ便利です！</p>
+]]></content>
+  </entry>
+  
+</feed>

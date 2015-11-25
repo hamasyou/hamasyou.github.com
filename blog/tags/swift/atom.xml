@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Swift | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/swift/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2015-08-14T11:06:25+09:00</updated>
+  <updated>2015-11-25T15:36:39+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Swift] RxSwift で iBeacon の RangeBeaconsInRegion を 5秒間隔で受け取る方法]]></title>
+    <link href="http://hamasyou.com/blog/2015/11/25/rxswift-de-ibeacon-false-rangebeaconsinregion-wo-5miao-jian-ge-deshou-kequ-rufang-fa/"/>
+    <updated>2015-11-25T15:25:47+09:00</updated>
+    <id>http://hamasyou.com/blog/2015/11/25/rxswift-de-ibeacon-false-rangebeaconsinregion-wo-5miao-jian-ge-deshou-kequ-rufang-fa</id>
+    <content type="html"><![CDATA[<p>CoreLocation を使って iBeacon の Ranging を行う場合、iOS だと 1秒間隔で通知されます。</p>
+
+<p><a href="http://enamelsystems.com/0011/z">[参考] iBeacon(3) - リージョン監視とレンジング - Enamel Systems</a></p>
+
+<p>そこで、1秒間隔だと通知間隔が短すぎるので、5秒間隔とか1分間隔とかに変えたい時にどうするかですが、<code>CLLocationManager</code> クラスに設定があればよかったのですが、特になさそうなので、<code>RxSwift</code> を使ってストリームのフィルタで対応する方法のメモです。</p>
+
+<p><code>CLLocationManager</code> の初期設定とかは参考サイトを見てください。</p>
+
+<p><a href="https://github.com/ReactiveX/RxSwift/">ReactiveX/RxSwift</a></p>
+
+<pre><code class="swift">locationManager.rx_didRangeBeaconsInRegion
+    .sample(interval(5, MainScheduler.sharedInstance))
+    .subscribeNext { (tuple: ([CLBeacon]!, CLBeaconRegion!)) in
+        debugPrint("beacons: \(tuple.0), region: \(tuple.1)")
+    }
+    .addDisposableTo(disposeBag)
+</code></pre>
+
+<p><code>Rx</code> の <code>sample</code> を使って、ストリームを <code>interval</code> 毎にサンプリングしてやるだけです。</p>
+
+<p><a href="http://www.introtorx.com/content/v1.0.10621.0/13_TimeShiftedSequences.html#Sample">Time-shifted sequences - Introduction to Rx</a></p>
+
+<p><code>RxSwift</code> も使いやすくて、めっちゃ便利です！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[iOS/Swift]ReactiveCocoa 3.0 で ViewModel から Signal をセルフ・コントロールするイディオム]]></title>
@@ -547,101 +578,6 @@ class SecondViewController: UIViewController {
 ぶっちゃけ、この処理であれば、<code>UICollectionView</code> を使うほうが早いし楽だし美しいと思います。</p>
 
 <p>UIScrollView で Auto Layout を使って頑張ってスクロールコンテンツを配置したいときに、参考になるといいと思っています。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Swift] 多次元配列の定義の謎]]></title>
-    <link href="http://hamasyou.com/blog/2014/09/12/swift-mysterious-multi-dimensional-array/"/>
-    <updated>2014-09-12T11:21:20+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/09/12/swift-mysterious-multi-dimensional-array</id>
-    <content type="html"><![CDATA[<p>Xcode6 GM でましたね！ Beta1 の頃から Swift 触ってますが、まぁ言語仕様がよく変わること（笑。</p>
-
-<p>で、いつか直るだろうと思ってたけど、GM でも直っていない Swift の多次元配列の定義の謎に関してです。だれか理由分かる人いたら教えてください。。</p>
-
-<p>下のようなコードがあるとします。</p>
-
-<pre><code class="swift">
-typealias NameAndValue = Dictionary&lt;String, String&gt;
-
-let dict: [[NameAndValue]] = [
-  [
-     ["name": "",    "value": ""],
-  ],
-  [
-     ["name": "",    "value": ""],
-  ]]
-</code></pre>
-
-<p><code>typealias</code> で別名つけて2次元配列を定義しているだけです。要素が <code>Dictionary</code> になっています。ここまでは普通にコンパイルが通ります。</p>
-
-<p>ですが、これをこんなふうに&hellip;</p>
-
-<pre><code class="swift">
-let dict: [[NameAndValue]] = [
-  [
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],     
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],
-     ["name": "",    "value": ""],                         
-  ],
-  [
-     ["name": "",    "value": ""],
-  ]]
-</code></pre>
-
-<p>配列の要素を増やしていきます。そうするとだいたい <strong>10件くらい</strong> からコンパイルが遅くなり、<strong>15件過ぎたくらいから</strong> コンパイルエラーが出るようになります。</p>
-
-<pre><code>Cannot convert the expression's type '[[NameAndValue]]' to type 'StringLiteralConvertible'
-</code></pre>
-
-<p>意味がわからんです。。</p>
-
-<p>仕方ないので</p>
-
-<pre><code class="swift">var dict: [[NameAndValue]] = [[],[]]
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-dict[0].append(["name": "",    "value": ""])
-
-dict[1].append(["name": "",    "value": ""])
-dict[1].append(["name": "",    "value": ""])
-dict[1].append(["name": "",    "value": ""])
-dict[1].append(["name": "",    "value": ""])
-dict[1].append(["name": "",    "value": ""])
-</code></pre>
-
-<p>こうやって、プログラムでデータ登録するようにしました。。</p>
 ]]></content>
   </entry>
   

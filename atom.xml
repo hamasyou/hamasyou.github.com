@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2015-08-14T11:06:25+09:00</updated>
+  <updated>2015-11-25T15:36:39+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,47 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Swift] RxSwift で iBeacon の RangeBeaconsInRegion を 5秒間隔で受け取る方法]]></title>
+    <link href="http://hamasyou.com/blog/2015/11/25/rxswift-de-ibeacon-false-rangebeaconsinregion-wo-5miao-jian-ge-deshou-kequ-rufang-fa/"/>
+    <updated>2015-11-25T15:25:47+09:00</updated>
+    <id>http://hamasyou.com/blog/2015/11/25/rxswift-de-ibeacon-false-rangebeaconsinregion-wo-5miao-jian-ge-deshou-kequ-rufang-fa/</id>
+    <content type="html"><![CDATA[<p>CoreLocation を使って iBeacon の Ranging を行う場合、iOS だと 1秒間隔で通知されます。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://enamelsystems.com/0011/z" rel="external nofollow" title="[参考] iBeacon(3) - リージョン監視とレンジング - Enamel Systems">[参考] iBeacon(3) - リージョン監視とレンジング - Enamel Systems</a></p>
+
+<p>そこで、1秒間隔だと通知間隔が短すぎるので、5秒間隔とか1分間隔とかに変えたい時にどうするかですが、<code>CLLocationManager</code> クラスに設定があればよかったのですが、特になさそうなので、<code>RxSwift</code> を使ってストリームのフィルタで対応する方法のメモです。</p>
+
+<p><code>CLLocationManager</code> の初期設定とかは参考サイトを見てください。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/ReactiveX/RxSwift/" rel="external nofollow" title="ReactiveX/RxSwift">ReactiveX/RxSwift</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">locationManager</span><span class="p">.</span><span class="n">rx_didRangeBeaconsInRegion</span>
+</span><span class="line">    <span class="p">.</span><span class="n">sample</span><span class="p">(</span><span class="n">interval</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">MainScheduler</span><span class="p">.</span><span class="n">sharedInstance</span><span class="p">))</span>
+</span><span class="line">    <span class="p">.</span><span class="n">subscribeNext</span> <span class="p">{</span> <span class="p">(</span><span class="nl">tuple</span><span class="p">:</span> <span class="p">([</span><span class="bp">CLBeacon</span><span class="p">]</span><span class="o">!</span><span class="p">,</span> <span class="bp">CLBeaconRegion</span><span class="o">!</span><span class="p">))</span> <span class="k">in</span>
+</span><span class="line">        <span class="n">debugPrint</span><span class="p">(</span><span class="s">"beacons: \(tuple.0), region: \(tuple.1)"</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="p">.</span><span class="n">addDisposableTo</span><span class="p">(</span><span class="n">disposeBag</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p><code>Rx</code> の <code>sample</code> を使って、ストリームを <code>interval</code> 毎にサンプリングしてやるだけです。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="http://www.introtorx.com/content/v1.0.10621.0/13_TimeShiftedSequences.html#Sample" rel="external nofollow" title="Time-shifted sequences - Introduction to Rx">Time-shifted sequences - Introduction to Rx</a></p>
+
+<p><code>RxSwift</code> も使いやすくて、めっちゃ便利です！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[iOS/Swift]ReactiveCocoa 3.0 で ViewModel から Signal をセルフ・コントロールするイディオム]]></title>
@@ -4297,31 +4338,6 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
 
 
 <p>ご利用は計画的に。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[インフラデザインパターン ~安定稼動に導く127の設計方式]]></title>
-    <link href="http://hamasyou.com/blog/2014/03/10/4774162868/"/>
-    <updated>2014-03-10T18:43:56+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/03/10/4774162868/</id>
-    <content type="html"><![CDATA[<p>本書は、インフラの技術者たちがあみ出した設計方式を概念化・抽象化して名前をつけたインフラのデザインパターンを紹介するものです。
-プロジェクトマネージャ、システム企画や導入の意思決定を行う人、インフラの設計や評価を行う人のために技術書になっています。</p>
-
-<p>本書の特徴として次の点があげられます。</p>
-
-<ul>
-<li>全てのデザインパターンは特定の製品に依存していない</li>
-<li>要件定義や基本設計などの上流工程で使うことを意識して構成されている</li>
-</ul>
-
-
-<p>本書には、パターンの特徴を把握しやすいように簡潔な図がそれぞれのパターンに用いられています。
-プロジェクトに必要な要点からインフラの設計が導き出せるようになっています。</p>
-
-<p>127のパターンが挙げられていて、インフラのパターンにそんなにあるのがびっくりですが、一通りパターンを抑えるだけでも結構なボリュームになります。
-が、それだけインフラ設計は細かく、大事なポイントを抑える必要があるということです。
-インフラ設計を担当するエンジニアにオススメの一冊です。</p>
 ]]></content>
   </entry>
   
