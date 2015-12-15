@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "Reactive Extensions Basic"
-date: 2015-12-15 09:53:12 +0900
+date: 2015-12-15 11:11:45 +0900
 comments: true
 categories: [Programming]
 keywords: "Reactive Extensions,Rx,RxSwift"
-tags: [Reactive,Rx]
+tags: [Reactive,Rx,RxSwift,Swift]
 sharing: true
 published: true
 amazon_url: ""
