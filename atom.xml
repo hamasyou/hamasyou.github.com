@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2015-11-25T15:36:39+09:00</updated>
+  <updated>2015-12-15T11:11:50+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,299 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Reactive Extensions Basic]]></title>
+    <link href="http://hamasyou.com/blog/2015/12/15/reactive-extensions-basic/"/>
+    <updated>2015-12-15T11:11:45+09:00</updated>
+    <id>http://hamasyou.com/blog/2015/12/15/reactive-extensions-basic/</id>
+    <content type="html"><![CDATA[<p><strong class="text-danger">Reactive Extensions (Rx)</strong> の覚書です。主に RxSwift をベースにしていますが、ReactiveX 全般に通じると思います。</p>
+
+<p>細かいニュアンスは間違っているかも。。</p>
+
+<p>基本用語の整理です。</p>
+
+<!-- more -->
+
+
+
+
+<div id="toc"></div>
+
+
+<h2>Reactive Extensions</h2>
+
+<p>大雑把に言うと、<strong class="text-danger">Observer Pattern (オブザーバパターン)</strong> と <strong class="text-danger">Stream/Sequence Programming</strong> を合わせたものが <strong class="text-danger">Reactive Extensions</strong> です。</p>
+
+<h3>Observable</h3>
+
+<p>オブザーバパターンにおいて、観測される対象を Subject と呼びますが、Rx では観測される対象のことを <strong class="text-danger">Observable</strong> と呼びます。観測する側は <em>Observer (オブザーバ）</em> なので、観測される側は <em>Observable</em> なわけです。</p>
+
+<p>Rx では、Observable なものを <code>subscribe</code> (購読) することで、Observable から送られてくるデータを受け取ります。この、Observable からデータが流れてくることを <strong class="text-danger">Stream (ストリーム)</strong> と呼びます。流れてくるデータは <strong class="text-danger">Element</strong> と呼ばれます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">someObservable</span>
+</span><span class="line">    <span class="p">.</span><span class="n">subscribe</span> <span class="p">{</span> <span class="p">(</span><span class="nl">e</span><span class="p">:</span> <span class="n">Event</span><span class="o">&lt;</span><span class="n">Element</span><span class="o">&gt;</span><span class="p">)</span> <span class="k">in</span>
+</span><span class="line">        <span class="k">switch</span> <span class="n">e</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">case</span> <span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="k">let</span> <span class="n">val</span><span class="p">)</span><span class="o">:</span>
+</span><span class="line">        <span class="k">case</span> <span class="p">.</span><span class="n">Error</span><span class="p">(</span><span class="k">let</span> <span class="n">error</span><span class="p">)</span><span class="o">:</span>
+</span><span class="line">        <span class="k">case</span> <span class="p">.</span><span class="nl">Completed</span><span class="p">:</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">.</span><span class="n">scopedDispose</span><span class="p">()</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>ストリームには状態が3種類あり、それぞれ <code>Next</code>、<code>Error</code>、<code>Completed</code> になります。</p>
+
+<h4>Next</h4>
+
+<p>ストリームから次のデータが流れてきたことを表します。正常処理と考えて構いません。</p>
+
+<h4>Error</h4>
+
+<p>Observable な対象が何かしらエラーを起こし、観測したかったデータが流れてこなかったことを表します。Rx では、Error を起こしたストリームは閉じられます。つまり、次のデータが流れてこないことを表します。</p>
+
+<h4>Completed</h4>
+
+<p>Observable な対象のストリームが閉じられ、この Observable な対象からは今後データが流れてこないことを表します。</p>
+
+<h4>dispose</h4>
+
+<p>観測を取りやめたい時には、<code>dispose</code> を呼び出します。いつ dispose するかを使い分けられるように、<code>Dispose</code> の実装がいろいろあります。</p>
+
+<h3>Subject</h3>
+
+<p><strong class="text-danger">Observable</strong> は観測対象のことでしたが、Rx においては観測可能な事柄のことを <strong class="text-danger">Subject (事象)</strong> と呼ぶほうが一般的だったりします。Subject を観測するわけですが、観測するデータのことは <strong class="text-danger">Behavior (振る舞い)</strong> と呼ばれます。<code>Subject</code> / <code>Behavior</code> は Reactive Extensions における一般的な説明となりますが、こと Rx Programming においては、<code>Observable</code> と <code>Subject</code>、<code>Element</code> と <code>Behavior</code> は似て非なるものとして扱われています。</p>
+
+<h2>Hot and Cold Observables</h2>
+
+<p>Observable な対象は、2つの種類にわけられます。<code>Hot</code> と <code>Cold</code> です。</p>
+
+<h3>Hot Observable</h3>
+
+<p>Hot な Observable とは、観測対象である Observable が作られたときから、任意のタイミングでデータを送信することができるものになります。</p>
+
+<p>実はこの Hot Observable のことを、Rx Programming では <em>Subject</em> と呼ばれています。Subject は任意のタイミングでデータをストリームに流すことができ、同時に Observable なわけです。</p>
+
+<p>Subject は任意のタイミングで <strong class="text-danger">Behavior (振る舞い)</strong> を決められることから、Subject / Behavior はセットで使われる言葉になります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">PublishSubject</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line"><span class="n">msg</span><span class="p">.</span><span class="n">subscribeNext</span> <span class="p">{</span> <span class="n">print</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="n">msg</span><span class="p">.</span><span class="n">onNext</span><span class="p">(</span><span class="s">"Hello World"</span><span class="p">)</span>
+</span><span class="line"><span class="n">msg</span><span class="p">.</span><span class="n">onCompleted</span><span class="p">()</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>Cold Observable</h3>
+
+<p>Cold な Obserable は、任意のタイミングでデータを流すことができません。いつデータが流れてくるのかわかりませんし、観測対象がいなければ、そもそも振る舞いが起きることもありません。</p>
+
+<p>よく、API 通信を Observable にしますが、subscribe (観測) を忘れると、API 呼び出しがされないことになりますので注意が必要です。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">API</span><span class="p">.</span><span class="n">call</span><span class="p">()</span>
+</span><span class="line">    <span class="p">.</span><span class="n">subscribeNext</span> <span class="p">{</span>
+</span><span class="line">        <span class="c1">// When to occur?</span>
+</span><span class="line">    <span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Rx でプログラミングすると何が嬉しいか</h2>
+
+<h3>テスタビリティが向上</h3>
+
+<p>Rx は UI プログラミングで語られることが多いと思いますが、プログラムのあらゆる境界を Observable でつなぐことで、テスタビリティが向上します。</p>
+
+<p>Observable でつなぐことにより、直接のデータの生成元に依存せずにプログラムを記述することができるようになるので、テスト時だけデータ生成部分をいじることで、例えば API 通信結果を画面に表示するようなプログラムでも、API 通信を行うことなくデータを生成し、Stream に流すことで色々な依存関係を排除することが出来るのです。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="nf">something</span><span class="p">(</span><span class="nl">dataSource</span><span class="p">:</span> <span class="n">Observable</span><span class="o">&lt;</span><span class="n">DataSource</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">dataSource</span><span class="p">.</span>
+</span><span class="line">        <span class="n">subscribeNext</span> <span class="p">{</span>
+</span><span class="line">            <span class="c1">// do something</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// development</span>
+</span><span class="line"><span class="n">something</span><span class="p">(</span><span class="n">API</span><span class="p">.</span><span class="n">call</span><span class="p">())</span>
+</span><span class="line"><span class="c1">// test</span>
+</span><span class="line"><span class="n">something</span><span class="p">(</span><span class="n">just</span><span class="p">(</span><span class="n">DummyDataSource</span><span class="p">()))</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>非同期処理</h3>
+
+<p>また、Rx には Stream の観測を任意のスレッドで行うスケジューリングの機能が備わっているものがほとんどですので、時間の掛かるデータ生成処理はバックグラウンドで行い、UI の表示処理のところだけメインスレッドで行うといったことを容易に行なえます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">API</span><span class="p">.</span><span class="n">call</span><span class="p">()</span>
+</span><span class="line">    <span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">toViewModel</span><span class="p">()</span> <span class="p">}</span>
+</span><span class="line">    <span class="p">.</span><span class="n">subscribeOn</span><span class="p">(</span><span class="n">BackgroundScheduler</span><span class="p">.</span><span class="n">sharedInstance</span><span class="p">)</span>
+</span><span class="line">    <span class="p">.</span><span class="n">observeOn</span><span class="p">(</span><span class="n">MainScheduler</span><span class="p">.</span><span class="n">sharedInstance</span><span class="p">)</span>
+</span><span class="line">    <span class="p">.</span><span class="n">subscribeNext</span> <span class="p">{</span> <span class="p">(</span><span class="n">viewModel</span><span class="p">)</span> <span class="k">in</span>
+</span><span class="line">        <span class="c1">// UI バインディング</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="p">.</span><span class="n">addDisposeBag</span><span class="p">(</span><span class="n">disposeBag</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h3>データソースの更新をリアルタイムに同期</h3>
+
+<p>プログラムを書いていると、データソースの値を加工して別のところで使うという場面が多々あります。</p>
+
+<p>このとき、何も考えずにプログラムすると、データソースが変更されても結果は変わらないという挙動になります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="line"><span class="k">var</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="line"><span class="k">var</span> <span class="n">c</span> <span class="o">=</span> <span class="s">""</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">c</span> <span class="o">=</span> <span class="s">"\(a + b) is positive"</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span class="line">
+</span><span class="line"><span class="n">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>        <span class="c1">// ""</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>こういった挙動でかまわないという場合もあるでしょうが、ほとんどの場合データソースの変化に合わせて挙動が変わってくれたほうが嬉しかったりします。そんな時は全部 Observable にします。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class="line"><span class="k">let</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">c</span> <span class="o">=</span> <span class="n">combineLatest</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">+</span> <span class="err">$</span><span class="mi">1</span> <span class="p">}</span>
+</span><span class="line">            <span class="p">.</span><span class="n">filter</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="p">}</span>
+</span><span class="line">            <span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="err">\</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span> <span class="kt">is</span> <span class="n">positive</span><span class="s">" }            </span>
+</span><span class="line">
+</span><span class="line"><span class="n">c</span><span class="p">.</span><span class="n">subscribeNext</span> <span class="p">{</span>
+</span><span class="line">    <span class="n">print</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="n">a</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">4</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>Operators</h2>
+
+<p>Rx には、Stream を操作するためのいろいろな演算が用意されています。Stream を別の形に変換する <code>map</code> や、複数の Stream を結合する <code>merge</code> や <code>concat</code> がなどがあります。</p>
+
+<p>Stream の合成は使いドコロとしては API 通信などの時間の掛かる処理とキャッシュデータを返すストリームとを合成するなどが考えられます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">sequenceOf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span><span class="line">    <span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">*</span> <span class="err">$</span><span class="mi">0</span> <span class="p">}</span>
+</span><span class="line">    <span class="p">.</span><span class="n">subscribeNext</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">print</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="p">.</span><span class="n">scopedDispose</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line"><span class="k">let</span> <span class="n">dataFromCache</span> <span class="o">=</span> <span class="n">CacheStore</span><span class="p">.</span><span class="n">fromCache</span><span class="p">()</span>
+</span><span class="line"><span class="n">dataFromCache</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">API</span><span class="p">.</span><span class="n">call</span><span class="p">())</span>
+</span><span class="line">    <span class="p">.</span><span class="n">subscribeNext</span> <span class="p">{</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="p">.</span><span class="n">addDisposeBag</span><span class="p">(</span><span class="n">disposeBag</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Swift] RxSwift で iBeacon の RangeBeaconsInRegion を 5秒間隔で受け取る方法]]></title>
@@ -4056,288 +4349,6 @@ Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻
 </span></code></pre></td>
 </tr></table></div></figure></notextile></div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Titanium] Alloyのmeasurementの実装がイケてなかったので再実装した]]></title>
-    <link href="http://hamasyou.com/blog/2014/04/02/titanium-alloy-measurement/"/>
-    <updated>2014-04-02T18:17:44+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/04/02/titanium-alloy-measurement/</id>
-    <content type="html"><![CDATA[<p><a href="http://www.appcelerator.com/titanium/" rel="external nofollow" title="Titanium">Titanium</a> Alloy の <code>measurement</code> がイケてない感じだったので再実装しました。</p>
-
-<p><code>measurement</code> には <code>pxToDP</code> とか <code>dpToPX</code> とかの単位を変換するメソッドが用意されていますが、中身を見るとびっくりします。。</p>
-
-<!-- more -->
-
-
-
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>alloy/measurement.js (alloy 1.3.1)</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">dpi</span> <span class="o">=</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">dpi</span><span class="p">,</span> <span class="nx">density</span> <span class="o">=</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">density</span><span class="p">;</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">exports</span><span class="p">.</span><span class="nx">dpToPX</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="nx">val</span> <span class="o">*</span> <span class="p">(</span><span class="s2">"high"</span> <span class="o">===</span> <span class="nx">density</span> <span class="o">?</span> <span class="mi">2</span> <span class="o">:</span> <span class="mi">1</span><span class="p">);</span>
-</span><span class="line"><span class="p">};</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">exports</span><span class="p">.</span><span class="nx">pxToDP</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="nx">val</span> <span class="o">/</span> <span class="p">(</span><span class="s2">"high"</span> <span class="o">===</span> <span class="nx">density</span> <span class="o">?</span> <span class="mi">2</span> <span class="o">:</span> <span class="mi">1</span><span class="p">);</span>
-</span><span class="line"><span class="p">};</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">exports</span><span class="p">.</span><span class="nx">pointPXToDP</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">pt</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="p">{</span>
-</span><span class="line">        <span class="nx">x</span><span class="o">:</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">pxToDP</span><span class="p">(</span><span class="nx">pt</span><span class="p">.</span><span class="nx">x</span><span class="p">),</span>
-</span><span class="line">        <span class="nx">y</span><span class="o">:</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">pxToDP</span><span class="p">(</span><span class="nx">pt</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span>
-</span><span class="line">    <span class="p">};</span>
-</span><span class="line"><span class="p">};</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>これ、イケてなさすぎでしょ。。</p>
-
-<p><code>Ti.UI.convertUnits</code> を使って次のように実装しなおしました。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>lib/unit.js</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">currentUnit</span> <span class="o">=</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">Properties</span><span class="p">.</span><span class="nx">getString</span><span class="p">(</span><span class="s1">'ti.ui.defaultunit'</span><span class="p">,</span> <span class="s1">'system'</span><span class="p">);</span>
-</span><span class="line"><span class="nx">currentUnit</span> <span class="o">=</span> <span class="p">(</span><span class="nx">currentUnit</span> <span class="o">===</span> <span class="s1">'system'</span><span class="p">)</span> <span class="o">?</span> <span class="p">(</span><span class="nx">OS_IOS</span><span class="p">)</span> <span class="o">?</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span> <span class="o">:</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_PX</span> <span class="o">:</span> <span class="nx">currentUnit</span><span class="p">;</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">function</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">fromUnit</span><span class="p">,</span> <span class="nx">toUnit</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">convertUnits</span><span class="p">(</span><span class="s1">''</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fromUnit</span><span class="p">,</span> <span class="nx">toUnit</span><span class="p">);</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">dpToPX</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="k">return</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_PX</span><span class="p">);</span>
-</span><span class="line">    <span class="p">},</span>
-</span><span class="line">    <span class="nx">dpToSystem</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="k">return</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span><span class="p">,</span> <span class="nx">currentUnit</span><span class="p">);</span>
-</span><span class="line">    <span class="p">},</span>
-</span><span class="line">    <span class="nx">pxToDP</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="k">return</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_PX</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span><span class="p">);</span>
-</span><span class="line">    <span class="p">},</span>
-</span><span class="line">    <span class="nx">pxToSystem</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="k">return</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_PX</span><span class="p">,</span> <span class="nx">currentUnit</span><span class="p">);</span>
-</span><span class="line">    <span class="p">},</span>
-</span><span class="line">    <span class="nx">systemToPX</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="k">return</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">currentUnit</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_PX</span><span class="p">);</span>
-</span><span class="line">    <span class="p">},</span>
-</span><span class="line">    <span class="nx">systemToDP</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="k">return</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">currentUnit</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span><span class="p">);</span>
-</span><span class="line">    <span class="p">},</span>
-</span><span class="line">    <span class="nx">convertUnitToPX</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">valStr</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="k">return</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">convertUnits</span><span class="p">(</span><span class="nx">valStr</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_PX</span><span class="p">);</span>
-</span><span class="line">    <span class="p">},</span>
-</span><span class="line">    <span class="nx">convertUnitToDP</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">valStr</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="k">return</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">convertUnits</span><span class="p">(</span><span class="nx">valStr</span><span class="p">,</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">UNIT_DIP</span><span class="p">);</span>
-</span><span class="line">    <span class="p">},</span>
-</span><span class="line">    <span class="nx">convertUnitToSystem</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">valStr</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="k">return</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">convertUnits</span><span class="p">(</span><span class="nx">valStr</span><span class="p">,</span> <span class="nx">currentUnit</span><span class="p">);</span>
-</span><span class="line">    <span class="p">},</span>
-</span><span class="line">    <span class="nx">pointPXToDP</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">pt</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="k">return</span> <span class="p">{</span>
-</span><span class="line">            <span class="nx">x</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">pxToDP</span><span class="p">(</span><span class="nx">pt</span><span class="p">.</span><span class="nx">x</span><span class="p">),</span>
-</span><span class="line">            <span class="nx">y</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">pxToDP</span><span class="p">(</span><span class="nx">pt</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span>
-</span><span class="line">        <span class="p">};</span>
-</span><span class="line">    <span class="p">}</span>
-</span><span class="line"><span class="p">};</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>使い方と結果はこちら。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>sample.js</span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-</pre></td>
-<td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">unit</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'unit'</span><span class="p">);</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'----- iOS -----'</span><span class="p">);</span>
-</span><span class="line"><span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.density: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">density</span><span class="p">);</span>
-</span><span class="line"><span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.dpi: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">dpi</span><span class="p">);</span>
-</span><span class="line"><span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.platformHeight: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">platformHeight</span><span class="p">);</span>
-</span><span class="line"><span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.platformWidth: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">platformWidth</span><span class="p">);</span>
-</span><span class="line"><span class="k">if</span> <span class="p">(</span><span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">osname</span> <span class="o">===</span> <span class="s1">'android'</span><span class="p">){</span>
-</span><span class="line">  <span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.xdpi: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">xdpi</span><span class="p">);</span>
-</span><span class="line">  <span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.ydpi: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">ydpi</span><span class="p">);</span>
-</span><span class="line">  <span class="nx">Ti</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'Ti.Platform.displayCaps.logicalDensityFactor: '</span> <span class="o">+</span> <span class="nx">Ti</span><span class="p">.</span><span class="nx">Platform</span><span class="p">.</span><span class="nx">displayCaps</span><span class="p">.</span><span class="nx">logicalDensityFactor</span><span class="p">);</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'dpToPX: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">dpToPX</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'dpToSystem: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">dpToSystem</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'pxToDP: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">pxToDP</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'pxToSystem: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">pxToSystem</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'systemToPX: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">systemToPX</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'systemToDP: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">systemToDP</span><span class="p">(</span><span class="mi">130</span><span class="p">));</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'convertUnitToPX: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">convertUnitToPX</span><span class="p">(</span><span class="s1">'130dp'</span><span class="p">));</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'convertUnitToDP: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">convertUnitToDP</span><span class="p">(</span><span class="s1">'130dp'</span><span class="p">));</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'convertUnitToSystem: '</span> <span class="o">+</span> <span class="nx">unit</span><span class="p">.</span><span class="nx">convertUnitToSystem</span><span class="p">(</span><span class="s1">'130dp'</span><span class="p">));</span>
-</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'-----'</span><span class="p">);</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-
-
-<div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span>
-<span class="line-number"> </span></pre></td>
-<td class="code"><pre><code><span class="line output">[INFO] :   ----- iPhone OS -----
-</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.density: high
-</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.dpi: 320
-</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.platformHeight: 568
-</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.platformWidth: 320
-</span><span class="line output">[INFO] :   dpToPX: 260
-</span><span class="line output">[INFO] :   dpToSystem: 130
-</span><span class="line output">[INFO] :   pxToDP: 65
-</span><span class="line output">[INFO] :   pxToSystem: 65
-</span><span class="line output">[INFO] :   systemToPX: 260
-</span><span class="line output">[INFO] :   systemToDP: 130
-</span><span class="line output">[INFO] :   convertUnitToPX: 260
-</span><span class="line output">[INFO] :   convertUnitToDP: 130
-</span><span class="line output">[INFO] :   convertUnitToSystem: 130
-</span><span class="line output">[INFO] :   -----
-</span><span class="line output">
-</span><span class="line output">[INFO] :   ----- android -----
-</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.density: xhigh
-</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.dpi: 320
-</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.platformHeight: 1280
-</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.platformWidth: 720
-</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.xdpi: 345.0566101074219
-</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.ydpi: 342.2315673828125
-</span><span class="line output">[INFO] :   Ti.Platform.displayCaps.logicalDensityFactor: 2
-</span><span class="line output">[INFO] :   dpToPX: 260
-</span><span class="line output">[INFO] :   dpToSystem: 260
-</span><span class="line output">[INFO] :   pxToDP: 65
-</span><span class="line output">[INFO] :   pxToSystem: 130
-</span><span class="line output">[INFO] :   systemToPX: 130
-</span><span class="line output">[INFO] :   systemToDP: 65
-</span><span class="line output">[INFO] :   convertUnitToPX: 260
-</span><span class="line output">[INFO] :   convertUnitToDP: 130
-</span><span class="line output">[INFO] :   convertUnitToSystem: 260
-</span><span class="line output">[INFO] :   -----</span></code></pre></td>
-</tr></table></div></div>
-        </div>
-
-
-<p>ご利用は計画的に。</p>
 ]]></content>
   </entry>
   
