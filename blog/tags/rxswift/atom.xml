@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: RxSwift | それはBooks]]></title>
+  <link href="http://hamasyou.com/blog/tags/rxswift/atom.xml" rel="self"/>
+  <link href="http://hamasyou.com/"/>
+  <updated>2015-12-15T11:19:41+09:00</updated>
+  <id>http://hamasyou.com/</id>
+  <author>
+    <name><![CDATA[hamasyou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Reactive Extensions Basic]]></title>
+    <link href="http://hamasyou.com/blog/2015/12/15/reactive-extensions-basic/"/>
+    <updated>2015-12-15T11:11:45+09:00</updated>
+    <id>http://hamasyou.com/blog/2015/12/15/reactive-extensions-basic</id>
+    <content type="html"><![CDATA[<p><strong>Reactive Extensions (Rx)</strong> の覚書です。主に RxSwift をベースにしていますが、ReactiveX 全般に通じると思います。</p>
+
+<p>細かいニュアンスは間違っているかも。。</p>
+
+<p>基本用語の整理です。</p>
+
+<!-- more -->
+
+
+
+
+<div id="toc"></div>
+
+
+<h2>Reactive Extensions</h2>
+
+<p>大雑把に言うと、<strong>Observer Pattern (オブザーバパターン)</strong> と <strong>Stream/Sequence Programming</strong> を合わせたものが <strong>Reactive Extensions</strong> です。</p>
+
+<h3>Observable</h3>
+
+<p>オブザーバパターンにおいて、観測される対象を Subject と呼びますが、Rx では観測される対象のことを <strong>Observable</strong> と呼びます。観測する側は <em>Observer (オブザーバ）</em> なので、観測される側は <em>Observable</em> なわけです。</p>
+
+<p>Rx では、Observable なものを <code>subscribe</code> (購読) することで、Observable から送られてくるデータを受け取ります。この、Observable からデータが流れてくることを <strong>Stream (ストリーム)</strong> と呼びます。流れてくるデータは <strong>Element</strong> と呼ばれます。</p>
+
+<pre><code class="swift">someObservable
+    .subscribe { (e: Event&lt;Element&gt;) in
+        switch e {
+        case .Next(let val):
+        case .Error(let error):
+        case .Completed:
+        }
+    .scopedDispose()
+</code></pre>
+
+<p>ストリームには状態が3種類あり、それぞれ <code>Next</code>、<code>Error</code>、<code>Completed</code> になります。</p>
+
+<h4>Next</h4>
+
+<p>ストリームから次のデータが流れてきたことを表します。正常処理と考えて構いません。</p>
+
+<h4>Error</h4>
+
+<p>Observable な対象が何かしらエラーを起こし、観測したかったデータが流れてこなかったことを表します。Rx では、Error を起こしたストリームは閉じられます。つまり、次のデータが流れてこないことを表します。</p>
+
+<h4>Completed</h4>
+
+<p>Observable な対象のストリームが閉じられ、この Observable な対象からは今後データが流れてこないことを表します。</p>
+
+<h4>dispose</h4>
+
+<p>観測を取りやめたい時には、<code>dispose</code> を呼び出します。いつ dispose するかを使い分けられるように、<code>Dispose</code> の実装がいろいろあります。</p>
+
+<h3>Subject</h3>
+
+<p><strong>Observable</strong> は観測対象のことでしたが、Rx においては観測可能な事柄のことを <strong>Subject (事象)</strong> と呼ぶほうが一般的だったりします。Subject を観測するわけですが、観測するデータのことは <strong>Behavior (振る舞い)</strong> と呼ばれます。<code>Subject</code> / <code>Behavior</code> は Reactive Extensions における一般的な説明となりますが、こと Rx Programming においては、<code>Observable</code> と <code>Subject</code>、<code>Element</code> と <code>Behavior</code> は似て非なるものとして扱われています。</p>
+
+<h2>Hot and Cold Observables</h2>
+
+<p>Observable な対象は、2つの種類にわけられます。<code>Hot</code> と <code>Cold</code> です。</p>
+
+<h3>Hot Observable</h3>
+
+<p>Hot な Observable とは、観測対象である Observable が作られたときから、任意のタイミングでデータを送信することができるものになります。</p>
+
+<p>実はこの Hot Observable のことを、Rx Programming では <em>Subject</em> と呼ばれています。Subject は任意のタイミングでデータをストリームに流すことができ、同時に Observable なわけです。</p>
+
+<p>Subject は任意のタイミングで <strong>Behavior (振る舞い)</strong> を決められることから、Subject / Behavior はセットで使われる言葉になります。</p>
+
+<pre><code class="swift">    let msg = PublishSubject&lt;String&gt;()
+
+    msg.subscribeNext { print($0) }
+
+    msg.onNext("Hello World")
+    msg.onCompleted()
+</code></pre>
+
+<h3>Cold Observable</h3>
+
+<p>Cold な Obserable は、任意のタイミングでデータを流すことができません。いつデータが流れてくるのかわかりませんし、観測対象がいなければ、そもそも振る舞いが起きることもありません。</p>
+
+<p>よく、API 通信を Observable にしますが、subscribe (観測) を忘れると、API 呼び出しがされないことになりますので注意が必要です。</p>
+
+<pre><code class="swift">    API.call()
+        .subscribeNext {
+            // When to occur?
+        }        
+</code></pre>
+
+<h2>Rx でプログラミングすると何が嬉しいか</h2>
+
+<h3>テスタビリティが向上</h3>
+
+<p>Rx は UI プログラミングで語られることが多いと思いますが、プログラムのあらゆる境界を Observable でつなぐことで、テスタビリティが向上します。</p>
+
+<p>Observable でつなぐことにより、直接のデータの生成元に依存せずにプログラムを記述することができるようになるので、テスト時だけデータ生成部分をいじることで、例えば API 通信結果を画面に表示するようなプログラムでも、API 通信を行うことなくデータを生成し、Stream に流すことで色々な依存関係を排除することが出来るのです。</p>
+
+<pre><code class="swift">func something(dataSource: Observable&lt;DataSource&gt;) {
+    dataSource.
+        subscribeNext {
+            // do something
+        }
+}
+
+// development
+something(API.call())
+// test
+something(just(DummyDataSource()))
+</code></pre>
+
+<h3>非同期処理</h3>
+
+<p>また、Rx には Stream の観測を任意のスレッドで行うスケジューリングの機能が備わっているものがほとんどですので、時間の掛かるデータ生成処理はバックグラウンドで行い、UI の表示処理のところだけメインスレッドで行うといったことを容易に行なえます。</p>
+
+<pre><code class="swift">API.call()
+    .map { $0.toViewModel() }
+    .subscribeOn(BackgroundScheduler.sharedInstance)    
+    .observeOn(MainScheduler.sharedInstance)
+    .subscribeNext { (viewModel) in
+        // UI バインディング
+    }
+    .addDisposeBag(disposeBag)    
+</code></pre>
+
+<h3>データソースの更新をリアルタイムに同期</h3>
+
+<p>プログラムを書いていると、データソースの値を加工して別のところで使うという場面が多々あります。</p>
+
+<p>このとき、何も考えずにプログラムすると、データソースが変更されても結果は変わらないという挙動になります。</p>
+
+<pre><code class="swift">var a = 1
+var b = 2
+var c = ""
+
+if a + b &gt;= 0 {
+    c = "\(a + b) is positive"
+}
+
+a = 4
+
+print(c)        // ""
+</code></pre>
+
+<p>こういった挙動でかまわないという場合もあるでしょうが、ほとんどの場合データソースの変化に合わせて挙動が変わってくれたほうが嬉しかったりします。そんな時は全部 Observable にします。</p>
+
+<pre><code class="swift">let a = Variable(1)
+let b = Variable(2)
+
+let c = combineLatest(a, b) { $0 + $1 }
+            .filter { $0 &gt;= 0 }
+            .map { \($0) is positive" }            
+
+c.subscribeNext {
+    print($0)
+}
+
+a.value = 4
+</code></pre>
+
+<h2>Operators</h2>
+
+<p>Rx には、Stream を操作するためのいろいろな演算が用意されています。Stream を別の形に変換する <code>map</code> や、複数の Stream を結合する <code>merge</code> や <code>concat</code> がなどがあります。</p>
+
+<p>Stream の合成は使いドコロとしては API 通信などの時間の掛かる処理とキャッシュデータを返すストリームとを合成するなどが考えられます。</p>
+
+<pre><code class="swift">sequenceOf(1, 2, 3, 4, 5)
+    .map { $0 * $0 }
+    .subscribeNext {
+        print($0)
+    }
+    .scopedDispose()
+
+
+let dataFromCache = CacheStore.fromCache()
+dataFromCache.concat(API.call())
+    .subscribeNext {
+    }
+    .addDisposeBag(disposeBag)
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
