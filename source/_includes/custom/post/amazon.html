@@ -1,4 +1,8 @@
+{% if post.amazon_title %}
+{% capture title %}{{ page.amazon_title }}{{ post.amazon_title }}{% endcapture %}
+{% else %}
 {% capture title %}{{ page.title }}{{ post.title }}{% endcapture %}
+{% endif %}
 {% capture amazon_url %}{{ page.amazon_url }}{{ post.amazon_url }}{% endcapture %}
 {% capture amazon_image %}{{ page.amazon_image }}{{ post.amazon_image }}{% endcapture %}
 {% capture amazon_author %}{{ page.amazon_author }}{{ post.amazon_author }}{% endcapture %}

@@ -8,11 +8,12 @@ keywords: "iOS,Swift,ReactiveCocoa,ViewModel,Signal,pipe"
 tags: [iOS,Swift,メモ]
 sharing: true
 published: true
-amazon_url: ""
-amazon_author: ""
-amazon_image: ""
-amazon_publisher: ""
-og_image: ""
+amazon_url: "https://www.amazon.co.jp/dp/B018GGYUDM?tag=sorehabooks-22&camp=243&creative=1615&linkCode=as1&creativeASIN=B018GGYUDM&adid=1SJX75TJX473M6KG85MC&"
+amazon_title: "Reactive Programming with Swift [Kindle版]"
+amazon_author: "Cecil Costa"
+amazon_image: "http://ecx.images-amazon.com/images/I/51KsmrdZneL.SS300_.jpg"
+amazon_publisher: "Packt Publishing"
+og_image: "http://ecx.images-amazon.com/images/I/51KsmrdZneL.SS300_.jpg"
 
 ---
 

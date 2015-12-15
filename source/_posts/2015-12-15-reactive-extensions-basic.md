@@ -8,11 +8,12 @@ keywords: "Reactive Extensions,Rx,RxSwift"
 tags: [Reactive,Rx,RxSwift,Swift]
 sharing: true
 published: true
-amazon_url: ""
-amazon_author: ""
-amazon_image: ""
-amazon_publisher: ""
-og_image: ""
+amazon_url: "https://www.amazon.co.jp/dp/1633430103?tag=sorehabooks-22&camp=243&creative=1615&linkCode=as1&creativeASIN=1633430103&adid=1DR0X3R966WVF0ZJT9X1&"
+amazon_title: "Functional Reactive Programming"
+amazon_author: "Stephen Blackheath (著), Anthony Jones (著)"
+amazon_image: "http://ecx.images-amazon.com/images/I/41dTChTH8kL._SX397_BO1,SS300_.jpg"
+amazon_publisher: "Manning Pubns Co"
+og_image: "http://ecx.images-amazon.com/images/I/41dTChTH8kL._SX397_BO1,SS300_.jpg"
 
 ---
 

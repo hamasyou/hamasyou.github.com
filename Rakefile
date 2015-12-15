@@ -121,6 +121,7 @@ task :new_post, :title do |t, args|
     post.puts "sharing: true"
     post.puts "published: true"
     post.puts "amazon_url: \"\""
+    post.puts "amazon_title: \"\""
     post.puts "amazon_author: \"\""
     post.puts "amazon_image: \"\""
     post.puts "amazon_publisher: \"\""
