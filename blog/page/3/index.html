@@ -13,7 +13,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Titanium Alloy の measurement がイケてない感じだったので再実装しました。 measurement には pxToDP とか dpToPX とかの単位を変換するメソッドが用意されていますが、中身を見るとびっくりします。。 ">
+  <meta name="description" content="Swift で UITableView 関連のロジックを書くときに、NSIndexPath を作るときは 1
+2 let row = 0, section = 0
+NSIndexPath(forRow: row, inSection: section) ">
   
 
   
@@ -24,7 +26,9 @@
 
 <meta property="og:url" content="http://hamasyou.com/blog/page/3/index.html" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Titanium Alloy の measurement がイケてない感じだったので再実装しました。 measurement には pxToDP とか dpToPX とかの単位を変換するメソッドが用意されていますが、中身を見るとびっくりします。。 " />
+<meta property="og:description" content="Swift で UITableView 関連のロジックを書くときに、NSIndexPath を作るときは 1
+2 let row = 0, section = 0
+NSIndexPath(forRow: row, inSection: section) " />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -108,6 +112,820 @@
     <div class="row index">
   <div class="col-sm-12 col-md-9 col-lg-offset-1 col-lg-8">
     
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/03/swift-uitableview-nsindexpath/" class="excerpt-link">Swift で UITableView 関連の操作をする際に NSIndexPath を作る方法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-07-03T11:53:41+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jul 3<span>rd</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/swift/" rel="nofollow">Swift</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/07/03/swift-uitableview-nsindexpath/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/07/03/swift-uitableview-nsindexpath/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>Swift で <code>UITableView</code> 関連のロジックを書くときに、<code>NSIndexPath</code> を作るときは</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">section</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line"><span class="bp">NSIndexPath</span><span class="p">(</span><span class="nl">forRow</span><span class="p">:</span> <span class="n">row</span><span class="p">,</span> <span class="nl">inSection</span><span class="p">:</span> <span class="n">section</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>のイニシャライザを使うべし。<code>NSIndexPath(index: row)</code> だと <code>row</code> の参照ができなくてエラーになる。</p>
+</div>
+  
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/06/27/apple-swift-cocoa-objective-c/" class="excerpt-link">Using Swift with Cocoa and Objective-C</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-06-27T00:03:15+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 27<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/swift/" rel="nofollow">Swift</a>
+    
+      <a class="tag label label-info" href="/blog/tags/apple/" rel="nofollow">Apple</a>
+    
+      <a class="tag label label-info" href="/blog/tags/cocoa/" rel="nofollow">Cocoa</a>
+    
+      <a class="tag label label-info" href="/blog/tags/objective-c/" rel="nofollow">Objective-C</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/06/27/apple-swift-cocoa-objective-c/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/06/27/apple-swift-cocoa-objective-c/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/06/27/apple-swift-cocoa-objective-c/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/06/27/apple-swift-cocoa-objective-c/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/06/27/apple-swift-cocoa-objective-c/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/06/27/apple-swift-cocoa-objective-c/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/06/27/apple-swift-cocoa-objective-c/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/06/27/apple-swift-cocoa-objective-c/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p><strong class="text-danger">Swift</strong> を Cocoa や Objective-C と一緒に使う方法の覚書です。</p>
+
+<p>なお、Swift で作成したアプリは iOS8 と OS X Yosemite がリリースされた時点で審査に入れるようです。</p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html" rel="external nofollow" title="Using Swift with Cocoa and Objective-C">Using Swift with Cocoa and Objective-C</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2014/06/27/apple-swift-cocoa-objective-c/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/06/26/apple-swift/" class="excerpt-link">Apple Swift プログラミング言語おぼえがき</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-06-26T08:00:55+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Jun 26<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/swift/" rel="nofollow">Swift</a>
+    
+      <a class="tag label label-info" href="/blog/tags/apple/" rel="nofollow">Apple</a>
+    
+      <a class="tag label label-info" href="/blog/tags/puroguraminguyan-yu/" rel="nofollow">プログラミング言語</a>
+    
+      <a class="tag label label-info" href="/blog/tags/ios/" rel="nofollow">iOS</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/06/26/apple-swift/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/06/26/apple-swift/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/06/26/apple-swift/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/06/26/apple-swift/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/06/26/apple-swift/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/06/26/apple-swift/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/06/26/apple-swift/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/06/26/apple-swift/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>Apple が新しいプログラミング言語 <strong class="text-danger">Swift</strong> を2014年の WWDC で発表しました。言語仕様自体は色々なモダンプログラミング言語のいいとこ取りのような感じです。独特な仕様もいくつかあるのでおぼえがきしておきます。</p>
+
+<p>なお、Swift で作成したアプリは iOS8 と OS X Yosemite がリリースされた時点で審査に入れるようです。</p>
+
+<p><em>Xcode6 Beta4 で Swift コンパイラでの minimum target が iOS7 と OS X10.9 に制限されました</em></p>
+
+<p><i class="fa fa-hand-o-right"></i> <a href="https://developer.apple.com/swift/" rel="external nofollow" title="Introducing Swift">Introducing Swift</a></p>
+
+<p>※ Xcode6 Beta4 を元に記載しています。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2014/06/26/apple-swift/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/14/titanium-sns-oauth-app-scheme/" class="excerpt-link">Titanium AlloyでSNS認証をアプリスキーマを使ってクライアント側で行う方法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-05-14T13:39:48+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> May 14<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/titanium/" rel="nofollow">Titanium</a>
+    
+      <a class="tag label label-info" href="/blog/tags/alloy/" rel="nofollow">Alloy</a>
+    
+      <a class="tag label label-info" href="/blog/tags/sns/" rel="nofollow">SNS</a>
+    
+      <a class="tag label label-info" href="/blog/tags/oauth/" rel="nofollow">OAuth</a>
+    
+      <a class="tag label label-info" href="/blog/tags/apurisukima/" rel="nofollow">アプリスキーマ</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/05/14/titanium-sns-oauth-app-scheme/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/05/14/titanium-sns-oauth-app-scheme/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/05/14/titanium-sns-oauth-app-scheme/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/05/14/titanium-sns-oauth-app-scheme/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/05/14/titanium-sns-oauth-app-scheme/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/05/14/titanium-sns-oauth-app-scheme/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/05/14/titanium-sns-oauth-app-scheme/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/05/14/titanium-sns-oauth-app-scheme/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p><strong class="text-danger">Titanium Alloy</strong> で SNS 認証 (<em>OAuth</em>) をアプリ側で行う方法のまとめです。</p>
+
+<p>iPhone や Android だと、アプリスキーマ （例: snsnet://twitter）を使ってブラウザのリンクからアプリを立ち上げることができます。
+この仕組を使って、アプリ内でブラウザを立ち上げるのではなく、アプリのブラウザを使って <strong class="text-danger">OAuth</strong> 認証を行い、アプリに戻ってくるということができるようになります。</p>
+
+<p>ここで紹介するやり方は、iPhone と Android の両方で使える方法ですが、一部ブラウザ側の画面を閉じるためにサーバサイドが必要になります。
+また、Facebook は認証後の戻りURL (redirect_url) にアプリスキーマを利用することができませんので、Facebook 連携を行うのもサーバサイドが必要です。</p>
+
+<p>まぁ、Facebook に関しては、Titanium にすでにモジュールが組み込まれていて、簡単に認証を行えるようになっているので、わざわざアプリのブラウザを使って認証を行う必要もないんですけど。。</p>
+
+</div>
+  
+  
+    <footer>
+      <a href="/blog/2014/05/14/titanium-sns-oauth-app-scheme/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
+    </footer>
+  
+
+
+    </article>
+    
+    
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/04/passenger-js-css-gzip/" class="excerpt-link">Railsが用意したasset precompile済みのgzファイルを返すapache confの設定</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-04-04T18:45:30+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Apr 4<span>th</span>, 2014</time>
+        <span class="divider"></span>
+        <span class="categories">
+  
+    
+      <a class="category label label-success" href="/blog/categories/tech/">Tech</a>
+    
+  
+</span>
+
+        <span class="tags">
+  
+    
+      <a class="tag label label-info" href="/blog/tags/apache/" rel="nofollow">apache</a>
+    
+      <a class="tag label label-info" href="/blog/tags/asset/" rel="nofollow">asset</a>
+    
+      <a class="tag label label-info" href="/blog/tags/precompile/" rel="nofollow">precompile</a>
+    
+      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">rails</a>
+    
+  
+</span>
+
+        
+        <span class="divider"></span>
+        <a href="/blog/2014/04/04/passenger-js-css-gzip/#disqus_thread">Comments</a>
+        
+        
+        
+
+
+<ul class="sharing">
+  
+  <li class="hatena">
+    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"
+       class="hatena-bookmark-button"
+       rel="nofollow"
+       data-hatena-bookmark-layout="standard-balloon"
+        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
+              alt="Add to Hatena Bookmark" /></a>
+  </li>
+  
+  
+  <div id="fb-root"></div>
+  <li class="facebook">
+    <div class="fb-like"
+         data-share="false"
+         data-layout="button_count"
+         data-show-faces="false"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"></div>
+  </li>
+  
+  
+  <li class="facebook_share">
+    <div class="fb-share-button"
+         data-type="button_count"
+         data-font="verdana"
+         data-href="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"></div>
+  </li>
+  
+  
+  <li class="twitter">
+    <a href="http://twitter.com/share"
+       class="twitter-share-button"
+       rel="nofollow"
+       data-url="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"
+       data-via="hamasyou"
+       data-counturl="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/">Tweet</a>
+  </li>
+  
+  
+  <li class="googleplus">
+    <div class="g-plusone"
+         data-size="medium"
+         data-href="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"></div>
+  </li>
+  
+  
+  <li class="pocket">
+    <a href="https://getpocket.com/save"
+       class="pocket-btn" data-lang="en"
+       data-save-url="http://hamasyou.com/blog/2014/04/04/passenger-js-css-gzip/"
+       data-pocket-count="horizontal"
+       data-pocket-align="left">Pocket</a>
+  </li>
+  
+  
+  
+</ul>
+
+        
+      </p>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="entry-content"><p>Passenger で Rails アプリを動かすときに、<code>assets:precompile</code> 済みの <code>gz</code> ファイルを返すようにする apache の設定方法例のメモ。</p>
+
+<p>いただき物です。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+</pre></td>
+<td class="code"><pre><code class="apache"><span class="line"><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+</span><span class="line">   <span class="c"># ...</span>
+</span><span class="line">   <span class="nt">&lt;LocationMatch</span> <span class="s">"^/assets/.*$"</span><span class="nt">&gt;</span>
+</span><span class="line">     <span class="c"># Some browsers still send conditional-GET requests if there's a</span>
+</span><span class="line">     <span class="c"># Last-Modified header or an ETag header even if they haven't</span>
+</span><span class="line">     <span class="c"># reached the expiry date sent in the Expires header.</span>
+</span><span class="line">     <span class="c">#Header unset Last-Modified</span>
+</span><span class="line">     <span class="c">#Header unset ETag</span>
+</span><span class="line">     <span class="nb">FileETag</span> Size
+</span><span class="line">     <span class="c"># RFC says only cache for 1 year</span>
+</span><span class="line">     <span class="nb">ExpiresActive</span> <span class="k">On</span>
+</span><span class="line">     <span class="nb">ExpiresDefault</span> <span class="s2">"access plus 1 year"</span>
+</span><span class="line">
+</span><span class="line">     <span class="nb">SetEnv</span> no-gzip
+</span><span class="line">
+</span><span class="line">     <span class="nb">RewriteEngine</span> <span class="k">on</span>
+</span><span class="line">     <span class="c">#RewriteLog /tmp/rewrite.log</span>
+</span><span class="line">     <span class="c">#RewriteLogLevel 15</span>
+</span><span class="line">     <span class="c"># Make sure the browser supports gzip encoding before we send it</span>
+</span><span class="line">     <span class="nb">RewriteCond</span> %{HTTP:Accept-Encoding} \b(x-)?gzip\b
+</span><span class="line">     <span class="nb">RewriteCond</span> %{REQUEST_FILENAME}.gz -f
+</span><span class="line">     <span class="nb">RewriteRule</span> ^(.+) \$1.gz [L]
+</span><span class="line">   <span class="nt">&lt;/LocationMatch&gt;</span>
+</span><span class="line">
+</span><span class="line">   <span class="nt">&lt;FilesMatch</span> <span class="s">\.css\.gz$</span><span class="nt">&gt;</span>
+</span><span class="line">       <span class="nb">ForceType</span> text/css
+</span><span class="line">       <span class="nb">Header</span> set Content-Encoding gzip
+</span><span class="line">   <span class="nt">&lt;/FilesMatch&gt;</span>
+</span><span class="line">
+</span><span class="line">   <span class="nt">&lt;FilesMatch</span> <span class="s">\.js\.gz$</span><span class="nt">&gt;</span>
+</span><span class="line">       <span class="nb">ForceType</span> text/javascript
+</span><span class="line">       <span class="nb">Header</span> set Content-Encoding gzip
+</span><span class="line">   <span class="nt">&lt;/FilesMatch&gt;</span>
+</span><span class="line"><span class="nt">&lt;/VirtualHost&gt;</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+</div>
+  
+  
+
+
+    </article>
     
     
     <article>
@@ -906,805 +1724,6 @@
 
     </article>
     
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/04/canonical-url/" class="excerpt-link">canonicalなURLってなにがいいんだろう？</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-03-04T12:27:08+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Mar 4<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/blog/" rel="nofollow">Blog</a>
-    
-      <a class="tag label label-info" href="/blog/tags/rails/" rel="nofollow">Rails</a>
-    
-      <a class="tag label label-info" href="/blog/tags/restful/" rel="nofollow">RESTful</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/03/04/canonical-url/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/03/04/canonical-url/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/03/04/canonical-url/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/03/04/canonical-url/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/03/04/canonical-url/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/03/04/canonical-url/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/03/04/canonical-url/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/03/04/canonical-url/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>ちょっと疑問に思ったこと。Web の SEO をやっていると <strong class="text-danger">canonical</strong> ページっていうのを聞いたことがあるとおもいます。
-canonical ページとは、Google 先生曰く「<em>複数の類似した内容のページの中で優先されるページです。</em>」だそうです。
-僕は <strong class="text-danger">URL の正規化</strong> に使うものだという認識ですが、間違ってませんよね？？</p>
-
-<p>で、この canonical URL ってどう付けたらいいんだろう？っていう疑問です。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/03/04/canonical-url/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/01/4274065979/" class="excerpt-link">ハッカーと画家 コンピュータ時代の創造者たち</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-03-01T03:57:29+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Mar 1<span>st</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/essay/">Essay</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/hatuka/" rel="nofollow">ハッカー</a>
-    
-      <a class="tag label label-info" href="/blog/tags/porugureamu/" rel="nofollow">ポールグレアム</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/03/01/4274065979/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/03/01/4274065979/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/03/01/4274065979/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/03/01/4274065979/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/03/01/4274065979/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/03/01/4274065979/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/03/01/4274065979/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/03/01/4274065979/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4274065979?ie=UTF8&amp;camp=247&amp;creativeASIN=4274065979&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="ハッカーと画家 コンピュータ時代の創造者たち" rel="external nofollow">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/511SV9NXW2L._SS500_.jpg" class="asin-thumbnail" alt="ハッカーと画家 コンピュータ時代の創造者たち" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4274065979?ie=UTF8&amp;camp=247&amp;creativeASIN=4274065979&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="ハッカーと画家 コンピュータ時代の創造者たち" rel="external nofollow">ハッカーと画家 コンピュータ時代の創造者たち</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>ポール グレアム (著), Paul Graham (原著), 川合 史朗 (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>オーム社</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4274065979?ie=UTF8&amp;camp=247&amp;creativeASIN=4274065979&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><blockquote>
-<p>本書は、コンピュータの世界で今何が起こっているかを、より広い世界に向けて説明しょうとする試みだ。プログラマのためだけの本ではない。例えば第6章では、どうしたら裕福になれるかを論じている。一般の人々にとってもこれは興味ある話題だろう。</p>
-<footer><strong>はじめに</strong></footer>
-</blockquote>
-
-
-<p>本書は、コンピュータの世界に生きる人への <strong class="text-danger">金言集</strong>、あるいは <strong class="text-danger">道しるべ</strong> になる言葉であふれています。
-世界は今やコンピュータが身近な存在になっています。そして、コンピュータというのはハッカーがつくっています。
-ハッカーの頭の中を理解することで、世界がどのような方向に向かっているのか、そういうことを考えさせてくれるのが本書です。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/03/01/4274065979/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/25/python/" class="excerpt-link">Pythonメモ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-25T15:43:02+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 25<span>th</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/python/" rel="nofollow">python</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/25/python/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/25/python/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/25/python/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/25/python/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/25/python/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/25/python/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/25/python/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/25/python/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>プログラミング言語「<strong class="text-danger">Python</strong>」のメモです。v.2.5 のメモのなので最新だと違うかも。。</p>
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&amp;bc1=FAFAFA&amp;IS2=1&amp;bg1=FAFAFA&amp;fc1=666666&amp;lc1=3399F3&amp;t=sorehabooks-22&amp;o=9&amp;p=8&amp;l=as1&amp;m=amazon&amp;f=ifr&amp;ref=tf_til&amp;asins=4873113938" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/25/python/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/23/third-party-javascript/" class="excerpt-link">サードパーティJavaScript</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-23T17:47:39+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 23<span>rd</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/programming/">Programming</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a>
-    
-      <a class="tag label label-info" href="/blog/tags/du-mubeki/" rel="nofollow">読むべき</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/23/third-party-javascript/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/23/third-party-javascript/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/23/third-party-javascript/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/23/third-party-javascript/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-<div class="row asin-detail">
-  <div class="col-sm-4">
-    <a href="http://www.amazon.co.jp/gp/product/4048916580?ie=UTF8&amp;camp=247&amp;creativeASIN=4048916580&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="サードパーティJavaScript" rel="external nofollow">
-      <img src="http://ecx.images-amazon.com/images/I/51ptmwaAD1L._AA300_.jpg" class="asin-thumbnail" alt="サードパーティJavaScript" />
-    </a>
-  </div>
-  <div class="col-sm-8 asin-meta">
-    <dl>
-      
-      <dt>タイトル</dt>
-      <dd><a href="http://www.amazon.co.jp/gp/product/4048916580?ie=UTF8&amp;camp=247&amp;creativeASIN=4048916580&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="サードパーティJavaScript" rel="external nofollow">サードパーティJavaScript</a></dd>
-      
-      
-      <dt>著者</dt>
-      <dd>Ben Vinegar (著), Anton Kovalyov (著), 水野貴明 (翻訳)</dd>
-      
-      
-      <dt>出版社</dt>
-      <dd>KADOKAWA/アスキー・メディアワークス</dd>
-      
-    </dl>
-    <a href="http://www.amazon.co.jp/gp/product/4048916580?ie=UTF8&amp;camp=247&amp;creativeASIN=4048916580&amp;linkCode=xm2&amp;tag=sorehabooks-22" title="Amazonで購入する" rel="external nofollow" class="btn btn-sm btn-warning">Amazonで購入する</a>
-  </div>
-</div>
-
-
-
-
-  <div class="entry-content"><p>サードパーティ JavaScript とは <em>異なる Web アドレスから配信される、独立したクライアントコード</em> のことを意味します。
-例えばソーシャルウィジェットやアナリティクス用のトラッカーがそうです。
-本書はこのサードパーティ JavaScript をどのように開発するとよいかについて書かれています。</p>
-
-<p>サードパーティ JavaScript には様々な難しいポイントがあります。</p>
-
-<ul>
-<li>動的なスクリプト読み込み</li>
-<li>サードパーティ Cookie の保存と読み込み</li>
-<li>HTTP / HTTPS を使ったサーバとの通信</li>
-</ul>
-
-
-<p>多くの人に使われる JavaScript を開発するには、<strong class="text-danger">数多くの落とし穴や難関を乗り越えなければなりません</strong>。
-本書はこういった落とし穴や難関に対する解決策を手順を追って説明してくれます。</p>
-
-<p>本書の著者の一人は <a href="http://disqus.com/" rel="external nofollow" title="Disqus">Disqus</a> という Web サイトに即席のコメントシステムを導入することができる JavaScript アプリケーションを開発しています。
-実際に世界中で使われているアプリケーションの経験を元に書かれているので説得力がありますし、「こんな事にも注意しないといけなかったのか！」といった目からウロコな内容も盛りだくさんでおすすめです。</p>
-
-<p>本書を読み終わると「<span class="lead"><strong>IE 無くなったらいいのに！</strong></span>」って絶対に思います。そして「<span class="lead"><strong>iframe すげーな。使えるやつだ</strong></span>」って思います（笑</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/23/third-party-javascript/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
-    
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/22/readable-blog-unreadable-blog/" class="excerpt-link">読みやすいブログ、読みにくいブログ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-22T23:07:05+09:00" class="text-muted date updated" data-updated="true"><i class="fa fa-clock-o"></i> Feb 22<span>nd</span>, 2014</time>
-        <span class="divider"></span>
-        <span class="categories">
-  
-    
-      <a class="category label label-success" href="/blog/categories/blog/">Blog</a>
-    
-  
-</span>
-
-        <span class="tags">
-  
-    
-      <a class="tag label label-info" href="/blog/tags/du-miyasui/" rel="nofollow">読みやすい</a>
-    
-      <a class="tag label label-info" href="/blog/tags/du-minikui/" rel="nofollow">読みにくい</a>
-    
-      <a class="tag label label-info" href="/blog/tags/blog/" rel="nofollow">Blog</a>
-    
-  
-</span>
-
-        
-        <span class="divider"></span>
-        <a href="/blog/2014/02/22/readable-blog-unreadable-blog/#disqus_thread">Comments</a>
-        
-        
-        
-
-
-<ul class="sharing">
-  
-  <li class="hatena">
-    <a href="http://b.hatena.ne.jp/entry/http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"
-       class="hatena-bookmark-button"
-       rel="nofollow"
-       data-hatena-bookmark-layout="standard-balloon"
-        ><img src="http://b.st-hatena.com/images/entry-button/button-only.gif"
-              alt="Add to Hatena Bookmark" /></a>
-  </li>
-  
-  
-  <div id="fb-root"></div>
-  <li class="facebook">
-    <div class="fb-like"
-         data-share="false"
-         data-layout="button_count"
-         data-show-faces="false"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"></div>
-  </li>
-  
-  
-  <li class="facebook_share">
-    <div class="fb-share-button"
-         data-type="button_count"
-         data-font="verdana"
-         data-href="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"></div>
-  </li>
-  
-  
-  <li class="twitter">
-    <a href="http://twitter.com/share"
-       class="twitter-share-button"
-       rel="nofollow"
-       data-url="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"
-       data-via="hamasyou"
-       data-counturl="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/">Tweet</a>
-  </li>
-  
-  
-  <li class="googleplus">
-    <div class="g-plusone"
-         data-size="medium"
-         data-href="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"></div>
-  </li>
-  
-  
-  <li class="pocket">
-    <a href="https://getpocket.com/save"
-       class="pocket-btn" data-lang="en"
-       data-save-url="http://hamasyou.com/blog/2014/02/22/readable-blog-unreadable-blog/"
-       data-pocket-count="horizontal"
-       data-pocket-align="left">Pocket</a>
-  </li>
-  
-  
-  
-</ul>
-
-        
-      </p>
-    
-  </header>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="entry-content"><p>読みやすいブログってどうしてあんなに読みやすいんでしょうかね？僕もかれこれサイトだけは9年ほどやってます。
-毎日ブログを綴っているわけではないのでアレですが、ブログ歴は3〜5年くらいにはなるんじゃないかなと思います。</p>
-
-<p>これまで3回くらいブログのデザインを変えました。デザインの賞味期限って、たぶん3年くらいなんじゃないかと思います。
-Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code> タグなんかをつかって派手なアクションをするサイトが流行りました。
-その後、Web デザイナさんが頑張って作るクール系のサイトが流行り、今やレスポンシブサイトですよ。</p>
-
-<p><span class="lead">（Google で「<em>blink html</em>」を検索すると検索結果が面白いことになってますねw）</span></p>
-
-<p>うちのサイトも一応それなりに時代の流れに合わせてデザインは変えてきたつもりですが、いつまで経っても読みやすいブログにならないのはなぜなんでしょうかね。。
-文字の大きさや背景色と文字色の調和、フォントや <code>line-height</code> なんかにも気を付けているつもりなんですが、そういう小手先のテクニックに惑わされているうちは、
-読みやすいブログにはならないってことですね、きっと。。。</p>
-
-</div>
-  
-  
-    <footer>
-      <a href="/blog/2014/02/22/readable-blog-unreadable-blog/" class="excerpt-link btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> 続きを読む</a>
-    </footer>
-  
-
-
-    </article>
-    
     <ul class="pager">
       
       <li class="previous"><a href="/blog/page/4/"><i class="fa fa-arrow-circle-left"></i> Older</a></li>
@@ -1748,6 +1767,26 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2015/12/16/9784844338901/">Game Programming Patterns ソフトウェア開発の問題解決メニュー (impress top gear)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/16/9784797377484/">ゲームエンジン・アーキテクチャ 第2版</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/16/9784862462619/">ゲームデザイナーのための空間設計 歴史的建造物から学ぶレベルデザイン</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/16/9784844365242/">売れるゲームのUI/UX 制作現場の舞台裏</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/16/9784873116730/">シングルページWebアプリケーション ―Node.js、MongoDBを活用したJavaScript SPA</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/12/15/reactive-extensions-basic/">Reactive Extensions Basic</a>
       </li>
     
@@ -1767,26 +1806,6 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
         <a href="/blog/2015/06/10/swift-array-dictionary-extension/">Swift の Array と Dictionary の Extension（each と map を実装した）</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2015/02/22/web-plus-db-press-vol-dot-85/">WEB+DB PRESS vol.85</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/25/ios8-swift-uitableview-separatorinsets/">[iOS8対応]UITableViewのSeparatorInsetsをゼロにする方法</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/09/ios-autolayout-scrollview-tablecell/">[iOS] Auto Layout を使いこなす。UITableViewCell と UIScrollView 編</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/19/reactivecocoa-raccommand-executing/">[iOS] ReactiveCocoa の RACCommand で、実行中にローディングを出す方法</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/12/swift-mysterious-multi-dimensional-array/">[Swift] 多次元配列の定義の謎</a>
-      </li>
-    
   </ul>
 </section>
 <section class="panel panel-default">
@@ -1794,7 +1813,7 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
       <h3 class="panel-title">Categories</h3>
     </div>
   <div class="list-group">
-    <a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">39</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">105</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">135</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">4</span></a>
+    <a class='list-group-item' href='/blog/categories/architecture/'>architecture <span class="badge">1</span></a><a class='list-group-item' href='/blog/categories/architecture/'>Architecture <span class="badge">41</span></a><a class='list-group-item' href='/blog/categories/blog/'>Blog <span class="badge">105</span></a><a class='list-group-item' href='/blog/categories/database/'>Database <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/essay/'>Essay <span class="badge">15</span></a><a class='list-group-item' href='/blog/categories/lifehack/'>LifeHack <span class="badge">12</span></a><a class='list-group-item' href='/blog/categories/network/'>Network <span class="badge">8</span></a><a class='list-group-item' href='/blog/categories/programming/'>Programming <span class="badge">136</span></a><a class='list-group-item' href='/blog/categories/tech/'>Tech <span class="badge">10</span></a><a class='list-group-item' href='/blog/categories/webdesign/'>WebDesign <span class="badge">5</span></a>
   </div>
 </section>
 <section class="panel panel-default taglist hidden-xs">
@@ -1802,7 +1821,7 @@ Web の黎明期なんかは、<code>blink</code> タグや <code>marquee</code>
       <h3 class="panel-title">Tags</h3>
     </div>
   <div class="list-group">
-    <ul class="list-inline list-group-item"><li><a class="label label-default" href="/blog/tags/activerecord/" rel="nofollow">ActiveRecord</a></li><li><a class="label label-default" href="/blog/tags/ajax/" rel="nofollow">Ajax</a></li><li><a class="label label-default" href="/blog/tags/alloy/" rel="nofollow">Alloy</a></li><li><a class="label label-default" href="/blog/tags/amazon/" rel="nofollow">Amazon</a></li><li><a class="label label-default" href="/blog/tags/android/" rel="nofollow">Android</a></li><li><a class="label label-default" href="/blog/tags/ant/" rel="nofollow">Ant</a></li><li><a class="label label-default" href="/blog/tags/aop/" rel="nofollow">AOP</a></li><li><a class="label label-default" href="/blog/tags/apache/" rel="nofollow">apache</a></li><li><a class="label label-default" href="/blog/tags/apache/" rel="nofollow">Apache</a></li><li><a class="label label-default" href="/blog/tags/api/" rel="nofollow">API</a></li><li><a class="label label-default" href="/blog/tags/app-store/" rel="nofollow">App Store</a></li><li><a class="label label-default" href="/blog/tags/apple/" rel="nofollow">Apple</a></li><li><a class="label label-default" href="/blog/tags/aspectj/" rel="nofollow">AspectJ</a></li><li><a class="label label-default" href="/blog/tags/asset/" rel="nofollow">asset</a></li><li><a class="label label-default" href="/blog/tags/atl/" rel="nofollow">ATL</a></li><li><a class="label label-default" href="/blog/tags/autolayout/" rel="nofollow">AutoLayout</a></li><li><a class="label label-default" href="/blog/tags/aws/" rel="nofollow">AWS</a></li><li><a class="label label-default" href="/blog/tags/bbs/" rel="nofollow">BBS</a></li><li><a class="label label-default" href="/blog/tags/blog/" rel="nofollow">Blog</a></li><li><a class="label label-default" href="/blog/tags/c/" rel="nofollow">C</a></li><li><a class="label label-default" href="/blog/tags/c-number/" rel="nofollow">C#</a></li><li><a class="label label-default" href="/blog/tags/c-plus-plus/" rel="nofollow">C++</a></li><li><a class="label label-default" href="/blog/tags/canvas/" rel="nofollow">canvas</a></li><li><a class="label label-default" href="/blog/tags/capistrano3/" rel="nofollow">Capistrano3</a></li><li><a class="label label-default" href="/blog/tags/cgi/" rel="nofollow">CGI</a></li><li><a class="label label-default" href="/blog/tags/click/" rel="nofollow">Click</a></li><li><a class="label label-default" href="/blog/tags/cocoa/" rel="nofollow">Cocoa</a></li><li><a class="label label-default" href="/blog/tags/cocos2d/" rel="nofollow">cocos2d</a></li><li><a class="label label-default" href="/blog/tags/code/" rel="nofollow">CODE</a></li><li><a class="label label-default" href="/blog/tags/com/" rel="nofollow">COM</a></li><li><a class="label label-default" href="/blog/tags/commons/" rel="nofollow">Commons</a></li><li><a class="label label-default" href="/blog/tags/corelocation/" rel="nofollow">CoreLocation</a></li><li><a class="label label-default" href="/blog/tags/css/" rel="nofollow">CSS</a></li><li><a class="label label-default" href="/blog/tags/css3/" rel="nofollow">CSS3</a></li><li><a class="label label-default" href="/blog/tags/cygwin/" rel="nofollow">Cygwin</a></li><li><a class="label label-default" href="/blog/tags/dao/" rel="nofollow">DAO</a></li><li><a class="label label-default" href="/blog/tags/dbunit/" rel="nofollow">DBUnit</a></li><li><a class="label label-default" href="/blog/tags/di/" rel="nofollow">DI</a></li><li><a class="label label-default" href="/blog/tags/direct3d/" rel="nofollow">Direct3D</a></li><li><a class="label label-default" href="/blog/tags/djunit/" rel="nofollow">djUnit</a></li><li><a class="label label-default" href="/blog/tags/dns/" rel="nofollow">DNS</a></li><li><a class="label label-default" href="/blog/tags/doa/" rel="nofollow">DOA</a></li><li><a class="label label-default" href="/blog/tags/dom/" rel="nofollow">DOM</a></li><li><a class="label label-default" href="/blog/tags/domain/" rel="nofollow">domain</a></li><li><a class="label label-default" href="/blog/tags/dreamweaver4/" rel="nofollow">Dreamweaver4</a></li><li><a class="label label-default" href="/blog/tags/dropbox/" rel="nofollow">Dropbox</a></li><li><a class="label label-default" href="/blog/tags/dsl/" rel="nofollow">DSL</a></li><li><a class="label label-default" href="/blog/tags/eclipse/" rel="nofollow">Eclipse</a></li><li><a class="label label-default" href="/blog/tags/ejb/" rel="nofollow">EJB</a></li><li><a class="label label-default" href="/blog/tags/facebook/" rel="nofollow">facebook</a></li><li><a class="label label-default" href="/blog/tags/ffftp/" rel="nofollow">FFFTP</a></li><li><a class="label label-default" href="/blog/tags/findbugs/" rel="nofollow">FindBugs</a></li><li><a class="label label-default" href="/blog/tags/fireworks4/" rel="nofollow">Fireworks4</a></li><li><a class="label label-default" href="/blog/tags/flash4/" rel="nofollow">FLASH4</a></li><li><a class="label label-default" href="/blog/tags/fql/" rel="nofollow">FQL</a></li><li><a class="label label-default" href="/blog/tags/gem/" rel="nofollow">gem</a></li><li><a class="label label-default" href="/blog/tags/geo/" rel="nofollow">geo</a></li><li><a class="label label-default" href="/blog/tags/git/" rel="nofollow">git</a></li><li><a class="label label-default" href="/blog/tags/github/" rel="nofollow">GitHub</a></li><li><a class="label label-default" href="/blog/tags/glade/" rel="nofollow">Glade</a></li><li><a class="label label-default" href="/blog/tags/gmail/" rel="nofollow">GMail</a></li><li><a class="label label-default" href="/blog/tags/gmail/" rel="nofollow">Gmail</a></li><li><a class="label label-default" href="/blog/tags/go/" rel="nofollow">Go</a></li><li><a class="label label-default" href="/blog/tags/golang/" rel="nofollow">GoLang</a></li><li><a class="label label-default" href="/blog/tags/google/" rel="nofollow">Google</a></li><li><a class="label label-default" href="/blog/tags/graph/" rel="nofollow">Graph</a></li><li><a class="label label-default" href="/blog/tags/gree/" rel="nofollow">GREE</a></li><li><a class="label label-default" href="/blog/tags/gtk/" rel="nofollow">GTK</a></li><li><a class="label label-default" href="/blog/tags/hibernate/" rel="nofollow">Hibernate</a></li><li><a class="label label-default" href="/blog/tags/html/" rel="nofollow">HTML</a></li><li><a class="label label-default" href="/blog/tags/html5/" rel="nofollow">HTML5</a></li><li><a class="label label-default" href="/blog/tags/hugo/" rel="nofollow">Hugo</a></li><li><a class="label label-default" href="/blog/tags/i18n/" rel="nofollow">I18n</a></li><li><a class="label label-default" href="/blog/tags/ibeacon/" rel="nofollow">iBeacon</a></li><li><a class="label label-default" href="/blog/tags/iconix/" rel="nofollow">ICONIX</a></li><li><a class="label label-default" href="/blog/tags/ie/" rel="nofollow">IE</a></li><li><a class="label label-default" href="/blog/tags/imap/" rel="nofollow">imap</a></li><li><a class="label label-default" href="/blog/tags/ios/" rel="nofollow">iOS</a></li><li><a class="label label-default" href="/blog/tags/ios8/" rel="nofollow">iOS8</a></li><li><a class="label label-default" href="/blog/tags/iphone/" rel="nofollow">iPhone</a></li><li><a class="label label-default" href="/blog/tags/imodo/" rel="nofollow">iモード</a></li><li><a class="label label-default" href="/blog/tags/j2ee/" rel="nofollow">J2EE</a></li><li><a class="label label-default" href="/blog/tags/j2se/" rel="nofollow">J2SE</a></li><li><a class="label label-default" href="/blog/tags/java/" rel="nofollow">Java</a></li><li><a class="label label-default" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a></li><li><a class="label label-default" href="/blog/tags/jdk/" rel="nofollow">JDK</a></li><li><a class="label label-default" href="/blog/tags/jekyll/" rel="nofollow">Jekyll</a></li><li><a class="label label-default" href="/blog/tags/jndi/" rel="nofollow">JNDI</a></li><li><a class="label label-default" href="/blog/tags/jpmobile/" rel="nofollow">jpmobile</a></li><li><a class="label label-default" href="/blog/tags/jsdeferred/" rel="nofollow">JSDeferred</a></li><li><a class="label label-default" href="/blog/tags/jsf/" rel="nofollow">JSF</a></li><li><a class="label label-default" href="/blog/tags/json/" rel="nofollow">JSON</a></li><li><a class="label label-default" href="/blog/tags/jta/" rel="nofollow">JTA</a></li><li><a class="label label-default" href="/blog/tags/junit/" rel="nofollow">JUnit</a></li><li><a class="label label-default" href="/blog/tags/kaminari/" rel="nofollow">kaminari</a></li><li><a class="label label-default" href="/blog/tags/kimono/" rel="nofollow">kimono</a></li><li><a class="label label-default" href="/blog/tags/lifehack/" rel="nofollow">LifeHack</a></li><li><a class="label label-default" href="/blog/tags/linux/" rel="nofollow">Linux</a></li><li><a class="label label-default" href="/blog/tags/liquid/" rel="nofollow">Liquid</a></li><li><a class="label label-default" href="/blog/tags/mac/" rel="nofollow">Mac</a></li><li><a class="label label-default" href="/blog/tags/macosx/" rel="nofollow">MacOSX</a></li><li><a class="label label-default" href="/blog/tags/mda/" rel="nofollow">MDA</a></li><li><a class="label label-default" href="/blog/tags/measurement/" rel="nofollow">measurement</a></li><li><a class="label label-default" href="/blog/tags/memo/" rel="nofollow">Memo</a></li><li><a class="label label-default" href="/blog/tags/mfc/" rel="nofollow">MFC</a></li><li><a class="label label-default" href="/blog/tags/microsoft-translator-api/" rel="nofollow">Microsoft Translator API</a></li><li><a class="label label-default" href="/blog/tags/mixi/" rel="nofollow">mixi</a></li><li><a class="label label-default" href="/blog/tags/movable-type/" rel="nofollow">Movable Type</a></li><li><a class="label label-default" href="/blog/tags/mvc/" rel="nofollow">MVC</a></li><li><a class="label label-default" href="/blog/tags/node/" rel="nofollow">Node</a></li><li><a class="label label-default" href="/blog/tags/nokogiri/" rel="nofollow">Nokogiri</a></li><li><a class="label label-default" href="/blog/tags/nosql/" rel="nofollow">NoSQL</a></li><li><a class="label label-default" href="/blog/tags/o-slash-rmatupingu/" rel="nofollow">O/Rマッピング</a></li><li><a class="label label-default" href="/blog/tags/oauth/" rel="nofollow">OAuth</a></li><li><a class="label label-default" href="/blog/tags/objective-c/" rel="nofollow">Objective-C</a></li><li><a class="label label-default" href="/blog/tags/octopress/" rel="nofollow">Octopress</a></li><li><a class="label label-default" href="/blog/tags/ocunit/" rel="nofollow">OCUnit</a></li><li><a class="label label-default" href="/blog/tags/opensocial/" rel="nofollow">OpenSocial</a></li><li><a class="label label-default" href="/blog/tags/os/" rel="nofollow">OS</a></li><li><a class="label label-default" href="/blog/tags/perl/" rel="nofollow">Perl</a></li><li><a class="label label-default" href="/blog/tags/php/" rel="nofollow">PHP</a></li><li><a class="label label-default" href="/blog/tags/plugin/" rel="nofollow">plugin</a></li><li><a class="label label-default" href="/blog/tags/pm/" rel="nofollow">PM</a></li><li><a class="label label-default" href="/blog/tags/postfix/" rel="nofollow">Postfix</a></li><li><a class="label label-default" href="/blog/tags/precompile/" rel="nofollow">precompile</a></li><li><a class="label label-default" href="/blog/tags/python/" rel="nofollow">python</a></li><li><a class="label label-default" href="/blog/tags/qiita/" rel="nofollow">qiita</a></li><li><a class="label label-default" href="/blog/tags/rails/" rel="nofollow">Rails</a></li><li><a class="label label-default" href="/blog/tags/rails/" rel="nofollow">rails</a></li><li><a class="label label-default" href="/blog/tags/rails3/" rel="nofollow">Rails3</a></li><li><a class="label label-default" href="/blog/tags/rails4/" rel="nofollow">Rails4</a></li><li><a class="label label-default" href="/blog/tags/range/" rel="nofollow">Range</a></li><li><a class="label label-default" href="/blog/tags/rdbms/" rel="nofollow">RDBMS</a></li><li><a class="label label-default" href="/blog/tags/reactive/" rel="nofollow">Reactive</a></li><li><a class="label label-default" href="/blog/tags/reactivecocoa/" rel="nofollow">ReactiveCocoa</a></li><li><a class="label label-default" href="/blog/tags/restful/" rel="nofollow">RESTful</a></li><li><a class="label label-default" href="/blog/tags/roa/" rel="nofollow">ROA</a></li><li><a class="label label-default" href="/blog/tags/rspec/" rel="nofollow">RSpec</a></li><li><a class="label label-default" href="/blog/tags/ruby/" rel="nofollow">Ruby</a></li><li><a class="label label-default" href="/blog/tags/ruby1-dot-9/" rel="nofollow">Ruby1.9</a></li><li><a class="label label-default" href="/blog/tags/rx/" rel="nofollow">Rx</a></li><li><a class="label label-default" href="/blog/tags/rxswift/" rel="nofollow">RxSwift</a></li><li><a class="label label-default" href="/blog/tags/s3/" rel="nofollow">S3</a></li><li><a class="label label-default" href="/blog/tags/se/" rel="nofollow">SE</a></li><li><a class="label label-default" href="/blog/tags/selinux/" rel="nofollow">SELinux</a></li><li><a class="label label-default" href="/blog/tags/seo/" rel="nofollow">SEO</a></li><li><a class="label label-default" href="/blog/tags/sns/" rel="nofollow">SNS</a></li><li><a class="label label-default" href="/blog/tags/spec/" rel="nofollow">spec</a></li><li><a class="label label-default" href="/blog/tags/spring/" rel="nofollow">Spring</a></li><li><a class="label label-default" href="/blog/tags/sql/" rel="nofollow">SQL</a></li><li><a class="label label-default" href="/blog/tags/ssh/" rel="nofollow">SSH</a></li><li><a class="label label-default" href="/blog/tags/ssl/" rel="nofollow">SSL</a></li><li><a class="label label-default" href="/blog/tags/startup/" rel="nofollow">StartUp</a></li><li><a class="label label-default" href="/blog/tags/struts/" rel="nofollow">Struts</a></li><li><a class="label label-default" href="/blog/tags/struts2/" rel="nofollow">Struts2</a></li><li><a class="label label-default" href="/blog/tags/sublimetext2/" rel="nofollow">SublimeText2</a></li><li><a class="label label-default" href="/blog/tags/swift/" rel="nofollow">Swift</a></li><li><a class="label label-default" href="/blog/tags/tcp-slash-ip/" rel="nofollow">TCP/IP</a></li><li><a class="label label-default" href="/blog/tags/tdd/" rel="nofollow">TDD</a></li><li><a class="label label-default" href="/blog/tags/textmate/" rel="nofollow">TextMate</a></li><li><a class="label label-default" href="/blog/tags/titanium/" rel="nofollow">Titanium</a></li><li><a class="label label-default" href="/blog/tags/uiappearance/" rel="nofollow">UIAppearance</a></li><li><a class="label label-default" href="/blog/tags/uikit/" rel="nofollow">UIKit</a></li><li><a class="label label-default" href="/blog/tags/uml/" rel="nofollow">UML</a></li><li><a class="label label-default" href="/blog/tags/unix/" rel="nofollow">Unix</a></li><li><a class="label label-default" href="/blog/tags/uportal/" rel="nofollow">uPortal</a></li><li><a class="label label-default" href="/blog/tags/vmware/" rel="nofollow">VMWare</a></li><li><a class="label label-default" href="/blog/tags/web-plus-db-press/" rel="nofollow">WEB+DB PRESS</a></li><li><a class="label label-default" href="/blog/tags/web2-dot-0/" rel="nofollow">Web2.0</a></li><li><a class="label label-default" href="/blog/tags/weblogic/" rel="nofollow">WebLogic</a></li><li><a class="label label-default" href="/blog/tags/webservice/" rel="nofollow">WebService</a></li><li><a class="label label-default" href="/blog/tags/websaito/" rel="nofollow">Webサイト</a></li><li><a class="label label-default" href="/blog/tags/websabisu/" rel="nofollow">Webサービス</a></li><li><a class="label label-default" href="/blog/tags/windows/" rel="nofollow">Windows</a></li><li><a class="label label-default" href="/blog/tags/windows2000/" rel="nofollow">Windows2000</a></li><li><a class="label label-default" href="/blog/tags/windows98/" rel="nofollow">Windows98</a></li><li><a class="label label-default" href="/blog/tags/xml/" rel="nofollow">XML</a></li><li><a class="label label-default" href="/blog/tags/xp/" rel="nofollow">XP</a></li><li><a class="label label-default" href="/blog/tags/xsl/" rel="nofollow">XSL</a></li><li><a class="label label-default" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a></li><li><a class="label label-default" href="/blog/tags/falsehohonbiretuzi/" rel="nofollow">のほほんビレッジ</a></li><li><a class="label label-default" href="/blog/tags/aziyairu/" rel="nofollow">アジャイル</a></li><li><a class="label label-default" href="/blog/tags/atupudeto/" rel="nofollow">アップデート</a></li><li><a class="label label-default" href="/blog/tags/apuri/" rel="nofollow">アプリ</a></li><li><a class="label label-default" href="/blog/tags/apurisukima/" rel="nofollow">アプリスキーマ</a></li><li><a class="label label-default" href="/blog/tags/arugorizumu/" rel="nofollow">アルゴリズム</a></li><li><a class="label label-default" href="/blog/tags/antipatan/" rel="nofollow">アンチパターン</a></li><li><a class="label label-default" href="/blog/tags/akitekutiya/" rel="nofollow">アーキテクチャ</a></li><li><a class="label label-default" href="/blog/tags/akitekuto/" rel="nofollow">アーキテクト</a></li><li><a class="label label-default" href="/blog/tags/ideiomu/" rel="nofollow">イディオム</a></li><li><a class="label label-default" href="/blog/tags/intahuesu/" rel="nofollow">インターフェース</a></li><li><a class="label label-default" href="/blog/tags/inhura/" rel="nofollow">インフラ</a></li><li><a class="label label-default" href="/blog/tags/uebudezain/" rel="nofollow">ウェブデザイン</a></li><li><a class="label label-default" href="/blog/tags/uebuyuzabiritei/" rel="nofollow">ウェブユーザビリティ</a></li><li><a class="label label-default" href="/blog/tags/enkodeingu/" rel="nofollow">エンコーディング</a></li><li><a class="label label-default" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a></li><li><a class="label label-default" href="/blog/tags/orairi/" rel="nofollow">オライリー</a></li><li><a class="label label-default" href="/blog/tags/opunsosu/" rel="nofollow">オープンソース</a></li><li><a class="label label-default" href="/blog/tags/gandamu/" rel="nofollow">ガンダム</a></li><li><a class="label label-default" href="/blog/tags/ganpura/" rel="nofollow">ガンプラ</a></li><li><a class="label label-default" href="/blog/tags/kibodosiyotokatuto/" rel="nofollow">キーボードショートカット</a></li><li><a class="label label-default" href="/blog/tags/giku/" rel="nofollow">ギーク</a></li><li><a class="label label-default" href="/blog/tags/kutukubutuku/" rel="nofollow">クックブック</a></li><li><a class="label label-default" href="/blog/tags/kuraudo/" rel="nofollow">クラウド</a></li><li><a class="label label-default" href="/blog/tags/kurasushe-ji/" rel="nofollow">クラス設計</a></li><li><a class="label label-default" href="/blog/tags/gemu/" rel="nofollow">ゲーム</a></li><li><a class="label label-default" href="/blog/tags/gemupuroguramingu/" rel="nofollow">ゲームプログラミング</a></li><li><a class="label label-default" href="/blog/tags/konpiyutaji-chu/" rel="nofollow">コンピュータ基礎</a></li><li><a class="label label-default" href="/blog/tags/kodeingu/" rel="nofollow">コーディング</a></li><li><a class="label label-default" href="/blog/tags/kodeingusutairu/" rel="nofollow">コーディングスタイル</a></li><li><a class="label label-default" href="/blog/tags/kodeingugui-yue/" rel="nofollow">コーディング規約</a></li><li><a class="label label-default" href="/blog/tags/kodorideingu/" rel="nofollow">コードリーディング</a></li><li><a class="label label-default" href="/blog/tags/kodorebiyu/" rel="nofollow">コードレビュー</a></li><li><a class="label label-default" href="/blog/tags/sanpuru/" rel="nofollow">サンプル</a></li><li><a class="label label-default" href="/blog/tags/saburetuto/" rel="nofollow">サーブレット</a></li><li><a class="label label-default" href="/blog/tags/sisutemushe-ji/" rel="nofollow">システム設計</a></li><li><a class="label label-default" href="/blog/tags/sisutemukai-fa/" rel="nofollow">システム開発</a></li><li><a class="label label-default" href="/blog/tags/sinanziyu/" rel="nofollow">シナンジュ</a></li><li><a class="label label-default" href="/blog/tags/siyotokatuto/" rel="nofollow">ショートカット</a></li><li><a class="label label-default" href="/blog/tags/sukureipingu/" rel="nofollow">スクレイピング</a></li><li><a class="label label-default" href="/blog/tags/sutairu/" rel="nofollow">スタイル</a></li><li><a class="label label-default" href="/blog/tags/sumahoapuri/" rel="nofollow">スマホアプリ</a></li><li><a class="label label-default" href="/blog/tags/sumatohuon/" rel="nofollow">スマートフォン</a></li><li><a class="label label-default" href="/blog/tags/sekiyuritei/" rel="nofollow">セキュリティ</a></li><li><a class="label label-default" href="/blog/tags/sohutouea/" rel="nofollow">ソフトウェア</a></li><li><a class="label label-default" href="/blog/tags/sohutoueaenziniaringu/" rel="nofollow">ソフトウェアエンジニアリング</a></li><li><a class="label label-default" href="/blog/tags/sosiyaruapuri/" rel="nofollow">ソーシャルアプリ</a></li><li><a class="label label-default" href="/blog/tags/sosiyarugemu/" rel="nofollow">ソーシャルゲーム</a></li><li><a class="label label-default" href="/blog/tags/turu/" rel="nofollow">ツール</a></li><li><a class="label label-default" href="/blog/tags/tesuto/" rel="nofollow">テスト</a></li><li><a class="label label-default" href="/blog/tags/tesutokodo/" rel="nofollow">テストコード</a></li><li><a class="label label-default" href="/blog/tags/tesutohuasuto/" rel="nofollow">テストファースト</a></li><li><a class="label label-default" href="/blog/tags/tesutoji-fa/" rel="nofollow">テスト技法</a></li><li><a class="label label-default" href="/blog/tags/tesutoqu-dong/" rel="nofollow">テスト駆動</a></li><li><a class="label label-default" href="/blog/tags/dezain/" rel="nofollow">デザイン</a></li><li><a class="label label-default" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a></li><li><a class="label label-default" href="/blog/tags/detahuomatuto/" rel="nofollow">データフォーマット</a></li><li><a class="label label-default" href="/blog/tags/detabesu/" rel="nofollow">データベース</a></li><li><a class="label label-default" href="/blog/tags/detabesushe-ji/" rel="nofollow">データベース設計</a></li><li><a class="label label-default" href="/blog/tags/detamoderingu/" rel="nofollow">データモデリング</a></li><li><a class="label label-default" href="/blog/tags/detamoderu/" rel="nofollow">データモデル</a></li><li><a class="label label-default" href="/blog/tags/toranzakusiyon/" rel="nofollow">トランザクション</a></li><li><a class="label label-default" href="/blog/tags/domeinqu-dong/" rel="nofollow">ドメイン駆動</a></li><li><a class="label label-default" href="/blog/tags/doratuka/" rel="nofollow">ドラッカー</a></li><li><a class="label label-default" href="/blog/tags/netutowaku/" rel="nofollow">ネットワーク</a></li><li><a class="label label-default" href="/blog/tags/falseuhau/" rel="nofollow">ノウハウ</a></li><li><a class="label label-default" href="/blog/tags/hatuka/" rel="nofollow">ハッカー</a></li><li><a class="label label-default" href="/blog/tags/hadouea/" rel="nofollow">ハードウェア</a></li><li><a class="label label-default" href="/blog/tags/bainari/" rel="nofollow">バイナリ</a></li><li><a class="label label-default" href="/blog/tags/bizinesu/" rel="nofollow">ビジネス</a></li><li><a class="label label-default" href="/blog/tags/bizinesururu/" rel="nofollow">ビジネスルール</a></li><li><a class="label label-default" href="/blog/tags/bitugudeta/" rel="nofollow">ビッグデータ</a></li><li><a class="label label-default" href="/blog/tags/huonto/" rel="nofollow">フォント</a></li><li><a class="label label-default" href="/blog/tags/huremuwaku/" rel="nofollow">フレームワーク</a></li><li><a class="label label-default" href="/blog/tags/burogu/" rel="nofollow">ブログ</a></li><li><a class="label label-default" href="/blog/tags/puresuririsu/" rel="nofollow">プレスリリース</a></li><li><a class="label label-default" href="/blog/tags/purogurama/" rel="nofollow">プログラマ</a></li><li><a class="label label-default" href="/blog/tags/puroguramingu/" rel="nofollow">プログラミング</a></li><li><a class="label label-default" href="/blog/tags/puroguraminguyan-yu/" rel="nofollow">プログラミング言語</a></li><li><a class="label label-default" href="/blog/tags/besutopurakuteisu/" rel="nofollow">ベストプラクティス</a></li><li><a class="label label-default" href="/blog/tags/peapuro/" rel="nofollow">ペアプロ</a></li><li><a class="label label-default" href="/blog/tags/porugureamu/" rel="nofollow">ポールグレアム</a></li><li><a class="label label-default" href="/blog/tags/maindomatupu/" rel="nofollow">マインドマップ</a></li><li><a class="label label-default" href="/blog/tags/matusiyuatupu/" rel="nofollow">マッシュアップ</a></li><li><a class="label label-default" href="/blog/tags/manezimento/" rel="nofollow">マネジメント</a></li><li><a class="label label-default" href="/blog/tags/maketeingu/" rel="nofollow">マーケティング</a></li><li><a class="label label-default" href="/blog/tags/mumudomein/" rel="nofollow">ムームードメイン</a></li><li><a class="label label-default" href="/blog/tags/metapuroguramingu/" rel="nofollow">メタプログラミング</a></li><li><a class="label label-default" href="/blog/tags/memo/" rel="nofollow">メモ</a></li><li><a class="label label-default" href="/blog/tags/memori/" rel="nofollow">メモリ</a></li><li><a class="label label-default" href="/blog/tags/memoriguan-li/" rel="nofollow">メモリ管理</a></li><li><a class="label label-default" href="/blog/tags/moziyuru/" rel="nofollow">モジュール</a></li><li><a class="label label-default" href="/blog/tags/moderingu/" rel="nofollow">モデリング</a></li><li><a class="label label-default" href="/blog/tags/moderuqu-dong/" rel="nofollow">モデル駆動</a></li><li><a class="label label-default" href="/blog/tags/mobairu/" rel="nofollow">モバイル</a></li><li><a class="label label-default" href="/blog/tags/yunitutotesuto/" rel="nofollow">ユニットテスト</a></li><li><a class="label label-default" href="/blog/tags/yuzaintahuesu/" rel="nofollow">ユーザインターフェース</a></li><li><a class="label label-default" href="/blog/tags/yusukesu/" rel="nofollow">ユースケース</a></li><li><a class="label label-default" href="/blog/tags/raihuhatuku/" rel="nofollow">ライフハック</a></li><li><a class="label label-default" href="/blog/tags/riachong/" rel="nofollow">リア充</a></li><li><a class="label label-default" href="/blog/tags/rihuakutaringu/" rel="nofollow">リファクタリング</a></li><li><a class="label label-default" href="/blog/tags/rezisutori/" rel="nofollow">レジストリ</a></li><li><a class="label label-default" href="/blog/tags/bing-xing-puroguramingu/" rel="nofollow">並行プログラミング</a></li><li><a class="label label-default" href="/blog/tags/ren-jian-xue/" rel="nofollow">人間学</a></li><li><a class="label label-default" href="/blog/tags/dan-ti-tesuto/" rel="nofollow">単体テスト</a></li><li><a class="label label-default" href="/blog/tags/wen-ti-jie-jue/" rel="nofollow">問題解決</a></li><li><a class="label label-default" href="/blog/tags/shi-bai-xue/" rel="nofollow">失敗学</a></li><li><a class="label label-default" href="/blog/tags/xin-li-xue/" rel="nofollow">心理学</a></li><li><a class="label label-default" href="/blog/tags/xi-dai/" rel="nofollow">携帯</a></li><li><a class="label label-default" href="/blog/tags/gai-shan/" rel="nofollow">改善</a></li><li><a class="label label-default" href="/blog/tags/wen-zi-kodo/" rel="nofollow">文字コード</a></li><li><a class="label label-default" href="/blog/tags/fang-xiang/" rel="nofollow">方向</a></li><li><a class="label label-default" href="/blog/tags/shi-jian-guan-li/" rel="nofollow">時間管理</a></li><li><a class="label label-default" href="/blog/tags/an-hao-hua/" rel="nofollow">暗号化</a></li><li><a class="label label-default" href="/blog/tags/jing-du/" rel="nofollow">経度</a></li><li><a class="label label-default" href="/blog/tags/wei-du/" rel="nofollow">緯度</a></li><li><a class="label label-default" href="/blog/tags/zi-zuo/" rel="nofollow">自作</a></li><li><a class="label label-default" href="/blog/tags/zhu-zuo-quan/" rel="nofollow">著作権</a></li><li><a class="label label-default" href="/blog/tags/jiao-wan/" rel="nofollow">角丸</a></li><li><a class="label label-default" href="/blog/tags/she-ji/" rel="nofollow">設計</a></li><li><a class="label label-default" href="/blog/tags/du-minikui/" rel="nofollow">読みにくい</a></li><li><a class="label label-default" href="/blog/tags/du-miyasui/" rel="nofollow">読みやすい</a></li><li><a class="label label-default" href="/blog/tags/du-mubeki/" rel="nofollow">読むべき</a></li><li><a class="label label-default" href="/blog/tags/ju-li/" rel="nofollow">距離</a></li><li><a class="label label-default" href="/blog/tags/da-ren-purogurama/" rel="nofollow">達人プログラマ</a></li><li><a class="label label-default" href="/blog/tags/kai-fa-fang-fa-lun/" rel="nofollow">開発方法論</a></li><li><a class="label label-default" href="/blog/tags/guan-shu-xing/" rel="nofollow">関数型</a></li><li><a class="label label-default" href="/blog/tags/jing-de-saito/" rel="nofollow">静的サイト</a></li></ul>
+    <ul class="list-inline list-group-item"><li><a class="label label-default" href="/blog/tags/activerecord/" rel="nofollow">ActiveRecord</a></li><li><a class="label label-default" href="/blog/tags/ajax/" rel="nofollow">Ajax</a></li><li><a class="label label-default" href="/blog/tags/alloy/" rel="nofollow">Alloy</a></li><li><a class="label label-default" href="/blog/tags/amazon/" rel="nofollow">Amazon</a></li><li><a class="label label-default" href="/blog/tags/android/" rel="nofollow">Android</a></li><li><a class="label label-default" href="/blog/tags/ant/" rel="nofollow">Ant</a></li><li><a class="label label-default" href="/blog/tags/aop/" rel="nofollow">AOP</a></li><li><a class="label label-default" href="/blog/tags/apache/" rel="nofollow">apache</a></li><li><a class="label label-default" href="/blog/tags/apache/" rel="nofollow">Apache</a></li><li><a class="label label-default" href="/blog/tags/api/" rel="nofollow">API</a></li><li><a class="label label-default" href="/blog/tags/app-store/" rel="nofollow">App Store</a></li><li><a class="label label-default" href="/blog/tags/apple/" rel="nofollow">Apple</a></li><li><a class="label label-default" href="/blog/tags/aspectj/" rel="nofollow">AspectJ</a></li><li><a class="label label-default" href="/blog/tags/asset/" rel="nofollow">asset</a></li><li><a class="label label-default" href="/blog/tags/atl/" rel="nofollow">ATL</a></li><li><a class="label label-default" href="/blog/tags/autolayout/" rel="nofollow">AutoLayout</a></li><li><a class="label label-default" href="/blog/tags/aws/" rel="nofollow">AWS</a></li><li><a class="label label-default" href="/blog/tags/bbs/" rel="nofollow">BBS</a></li><li><a class="label label-default" href="/blog/tags/blog/" rel="nofollow">Blog</a></li><li><a class="label label-default" href="/blog/tags/c/" rel="nofollow">C</a></li><li><a class="label label-default" href="/blog/tags/c-number/" rel="nofollow">C#</a></li><li><a class="label label-default" href="/blog/tags/c-plus-plus/" rel="nofollow">C++</a></li><li><a class="label label-default" href="/blog/tags/canvas/" rel="nofollow">canvas</a></li><li><a class="label label-default" href="/blog/tags/capistrano3/" rel="nofollow">Capistrano3</a></li><li><a class="label label-default" href="/blog/tags/cgi/" rel="nofollow">CGI</a></li><li><a class="label label-default" href="/blog/tags/click/" rel="nofollow">Click</a></li><li><a class="label label-default" href="/blog/tags/cocoa/" rel="nofollow">Cocoa</a></li><li><a class="label label-default" href="/blog/tags/cocos2d/" rel="nofollow">cocos2d</a></li><li><a class="label label-default" href="/blog/tags/code/" rel="nofollow">CODE</a></li><li><a class="label label-default" href="/blog/tags/com/" rel="nofollow">COM</a></li><li><a class="label label-default" href="/blog/tags/commons/" rel="nofollow">Commons</a></li><li><a class="label label-default" href="/blog/tags/corelocation/" rel="nofollow">CoreLocation</a></li><li><a class="label label-default" href="/blog/tags/css/" rel="nofollow">CSS</a></li><li><a class="label label-default" href="/blog/tags/css3/" rel="nofollow">CSS3</a></li><li><a class="label label-default" href="/blog/tags/cygwin/" rel="nofollow">Cygwin</a></li><li><a class="label label-default" href="/blog/tags/dao/" rel="nofollow">DAO</a></li><li><a class="label label-default" href="/blog/tags/dbunit/" rel="nofollow">DBUnit</a></li><li><a class="label label-default" href="/blog/tags/di/" rel="nofollow">DI</a></li><li><a class="label label-default" href="/blog/tags/direct3d/" rel="nofollow">Direct3D</a></li><li><a class="label label-default" href="/blog/tags/djunit/" rel="nofollow">djUnit</a></li><li><a class="label label-default" href="/blog/tags/dns/" rel="nofollow">DNS</a></li><li><a class="label label-default" href="/blog/tags/doa/" rel="nofollow">DOA</a></li><li><a class="label label-default" href="/blog/tags/dom/" rel="nofollow">DOM</a></li><li><a class="label label-default" href="/blog/tags/domain/" rel="nofollow">domain</a></li><li><a class="label label-default" href="/blog/tags/dreamweaver4/" rel="nofollow">Dreamweaver4</a></li><li><a class="label label-default" href="/blog/tags/dropbox/" rel="nofollow">Dropbox</a></li><li><a class="label label-default" href="/blog/tags/dsl/" rel="nofollow">DSL</a></li><li><a class="label label-default" href="/blog/tags/eclipse/" rel="nofollow">Eclipse</a></li><li><a class="label label-default" href="/blog/tags/ejb/" rel="nofollow">EJB</a></li><li><a class="label label-default" href="/blog/tags/facebook/" rel="nofollow">facebook</a></li><li><a class="label label-default" href="/blog/tags/ffftp/" rel="nofollow">FFFTP</a></li><li><a class="label label-default" href="/blog/tags/findbugs/" rel="nofollow">FindBugs</a></li><li><a class="label label-default" href="/blog/tags/fireworks4/" rel="nofollow">Fireworks4</a></li><li><a class="label label-default" href="/blog/tags/flash4/" rel="nofollow">FLASH4</a></li><li><a class="label label-default" href="/blog/tags/fql/" rel="nofollow">FQL</a></li><li><a class="label label-default" href="/blog/tags/gem/" rel="nofollow">gem</a></li><li><a class="label label-default" href="/blog/tags/geo/" rel="nofollow">geo</a></li><li><a class="label label-default" href="/blog/tags/git/" rel="nofollow">git</a></li><li><a class="label label-default" href="/blog/tags/github/" rel="nofollow">GitHub</a></li><li><a class="label label-default" href="/blog/tags/glade/" rel="nofollow">Glade</a></li><li><a class="label label-default" href="/blog/tags/gmail/" rel="nofollow">GMail</a></li><li><a class="label label-default" href="/blog/tags/gmail/" rel="nofollow">Gmail</a></li><li><a class="label label-default" href="/blog/tags/go/" rel="nofollow">Go</a></li><li><a class="label label-default" href="/blog/tags/golang/" rel="nofollow">GoLang</a></li><li><a class="label label-default" href="/blog/tags/google/" rel="nofollow">Google</a></li><li><a class="label label-default" href="/blog/tags/graph/" rel="nofollow">Graph</a></li><li><a class="label label-default" href="/blog/tags/gree/" rel="nofollow">GREE</a></li><li><a class="label label-default" href="/blog/tags/gtk/" rel="nofollow">GTK</a></li><li><a class="label label-default" href="/blog/tags/hibernate/" rel="nofollow">Hibernate</a></li><li><a class="label label-default" href="/blog/tags/html/" rel="nofollow">HTML</a></li><li><a class="label label-default" href="/blog/tags/html5/" rel="nofollow">HTML5</a></li><li><a class="label label-default" href="/blog/tags/hugo/" rel="nofollow">Hugo</a></li><li><a class="label label-default" href="/blog/tags/i18n/" rel="nofollow">I18n</a></li><li><a class="label label-default" href="/blog/tags/ibeacon/" rel="nofollow">iBeacon</a></li><li><a class="label label-default" href="/blog/tags/iconix/" rel="nofollow">ICONIX</a></li><li><a class="label label-default" href="/blog/tags/ie/" rel="nofollow">IE</a></li><li><a class="label label-default" href="/blog/tags/imap/" rel="nofollow">imap</a></li><li><a class="label label-default" href="/blog/tags/ios/" rel="nofollow">iOS</a></li><li><a class="label label-default" href="/blog/tags/ios8/" rel="nofollow">iOS8</a></li><li><a class="label label-default" href="/blog/tags/iphone/" rel="nofollow">iPhone</a></li><li><a class="label label-default" href="/blog/tags/imodo/" rel="nofollow">iモード</a></li><li><a class="label label-default" href="/blog/tags/j2ee/" rel="nofollow">J2EE</a></li><li><a class="label label-default" href="/blog/tags/j2se/" rel="nofollow">J2SE</a></li><li><a class="label label-default" href="/blog/tags/java/" rel="nofollow">Java</a></li><li><a class="label label-default" href="/blog/tags/javascript/" rel="nofollow">JavaScript</a></li><li><a class="label label-default" href="/blog/tags/jdk/" rel="nofollow">JDK</a></li><li><a class="label label-default" href="/blog/tags/jekyll/" rel="nofollow">Jekyll</a></li><li><a class="label label-default" href="/blog/tags/jndi/" rel="nofollow">JNDI</a></li><li><a class="label label-default" href="/blog/tags/jpmobile/" rel="nofollow">jpmobile</a></li><li><a class="label label-default" href="/blog/tags/jsdeferred/" rel="nofollow">JSDeferred</a></li><li><a class="label label-default" href="/blog/tags/jsf/" rel="nofollow">JSF</a></li><li><a class="label label-default" href="/blog/tags/json/" rel="nofollow">JSON</a></li><li><a class="label label-default" href="/blog/tags/jta/" rel="nofollow">JTA</a></li><li><a class="label label-default" href="/blog/tags/junit/" rel="nofollow">JUnit</a></li><li><a class="label label-default" href="/blog/tags/kaminari/" rel="nofollow">kaminari</a></li><li><a class="label label-default" href="/blog/tags/kimono/" rel="nofollow">kimono</a></li><li><a class="label label-default" href="/blog/tags/lifehack/" rel="nofollow">LifeHack</a></li><li><a class="label label-default" href="/blog/tags/linux/" rel="nofollow">Linux</a></li><li><a class="label label-default" href="/blog/tags/liquid/" rel="nofollow">Liquid</a></li><li><a class="label label-default" href="/blog/tags/mac/" rel="nofollow">Mac</a></li><li><a class="label label-default" href="/blog/tags/macosx/" rel="nofollow">MacOSX</a></li><li><a class="label label-default" href="/blog/tags/mda/" rel="nofollow">MDA</a></li><li><a class="label label-default" href="/blog/tags/measurement/" rel="nofollow">measurement</a></li><li><a class="label label-default" href="/blog/tags/memo/" rel="nofollow">Memo</a></li><li><a class="label label-default" href="/blog/tags/mfc/" rel="nofollow">MFC</a></li><li><a class="label label-default" href="/blog/tags/microsoft-translator-api/" rel="nofollow">Microsoft Translator API</a></li><li><a class="label label-default" href="/blog/tags/mixi/" rel="nofollow">mixi</a></li><li><a class="label label-default" href="/blog/tags/mongodb/" rel="nofollow">MongoDB</a></li><li><a class="label label-default" href="/blog/tags/movable-type/" rel="nofollow">Movable Type</a></li><li><a class="label label-default" href="/blog/tags/mvc/" rel="nofollow">MVC</a></li><li><a class="label label-default" href="/blog/tags/node/" rel="nofollow">Node</a></li><li><a class="label label-default" href="/blog/tags/node-dot-js/" rel="nofollow">Node.js</a></li><li><a class="label label-default" href="/blog/tags/nokogiri/" rel="nofollow">Nokogiri</a></li><li><a class="label label-default" href="/blog/tags/nosql/" rel="nofollow">NoSQL</a></li><li><a class="label label-default" href="/blog/tags/o-slash-rmatupingu/" rel="nofollow">O/Rマッピング</a></li><li><a class="label label-default" href="/blog/tags/oauth/" rel="nofollow">OAuth</a></li><li><a class="label label-default" href="/blog/tags/objective-c/" rel="nofollow">Objective-C</a></li><li><a class="label label-default" href="/blog/tags/octopress/" rel="nofollow">Octopress</a></li><li><a class="label label-default" href="/blog/tags/ocunit/" rel="nofollow">OCUnit</a></li><li><a class="label label-default" href="/blog/tags/opensocial/" rel="nofollow">OpenSocial</a></li><li><a class="label label-default" href="/blog/tags/os/" rel="nofollow">OS</a></li><li><a class="label label-default" href="/blog/tags/perl/" rel="nofollow">Perl</a></li><li><a class="label label-default" href="/blog/tags/php/" rel="nofollow">PHP</a></li><li><a class="label label-default" href="/blog/tags/plugin/" rel="nofollow">plugin</a></li><li><a class="label label-default" href="/blog/tags/pm/" rel="nofollow">PM</a></li><li><a class="label label-default" href="/blog/tags/postfix/" rel="nofollow">Postfix</a></li><li><a class="label label-default" href="/blog/tags/precompile/" rel="nofollow">precompile</a></li><li><a class="label label-default" href="/blog/tags/python/" rel="nofollow">python</a></li><li><a class="label label-default" href="/blog/tags/qiita/" rel="nofollow">qiita</a></li><li><a class="label label-default" href="/blog/tags/rails/" rel="nofollow">Rails</a></li><li><a class="label label-default" href="/blog/tags/rails/" rel="nofollow">rails</a></li><li><a class="label label-default" href="/blog/tags/rails3/" rel="nofollow">Rails3</a></li><li><a class="label label-default" href="/blog/tags/rails4/" rel="nofollow">Rails4</a></li><li><a class="label label-default" href="/blog/tags/range/" rel="nofollow">Range</a></li><li><a class="label label-default" href="/blog/tags/rdbms/" rel="nofollow">RDBMS</a></li><li><a class="label label-default" href="/blog/tags/reactive/" rel="nofollow">Reactive</a></li><li><a class="label label-default" href="/blog/tags/reactivecocoa/" rel="nofollow">ReactiveCocoa</a></li><li><a class="label label-default" href="/blog/tags/restful/" rel="nofollow">RESTful</a></li><li><a class="label label-default" href="/blog/tags/roa/" rel="nofollow">ROA</a></li><li><a class="label label-default" href="/blog/tags/rspec/" rel="nofollow">RSpec</a></li><li><a class="label label-default" href="/blog/tags/ruby/" rel="nofollow">Ruby</a></li><li><a class="label label-default" href="/blog/tags/ruby1-dot-9/" rel="nofollow">Ruby1.9</a></li><li><a class="label label-default" href="/blog/tags/rx/" rel="nofollow">Rx</a></li><li><a class="label label-default" href="/blog/tags/rxswift/" rel="nofollow">RxSwift</a></li><li><a class="label label-default" href="/blog/tags/s3/" rel="nofollow">S3</a></li><li><a class="label label-default" href="/blog/tags/se/" rel="nofollow">SE</a></li><li><a class="label label-default" href="/blog/tags/selinux/" rel="nofollow">SELinux</a></li><li><a class="label label-default" href="/blog/tags/seo/" rel="nofollow">SEO</a></li><li><a class="label label-default" href="/blog/tags/sns/" rel="nofollow">SNS</a></li><li><a class="label label-default" href="/blog/tags/spa/" rel="nofollow">SPA</a></li><li><a class="label label-default" href="/blog/tags/spec/" rel="nofollow">spec</a></li><li><a class="label label-default" href="/blog/tags/spring/" rel="nofollow">Spring</a></li><li><a class="label label-default" href="/blog/tags/sql/" rel="nofollow">SQL</a></li><li><a class="label label-default" href="/blog/tags/ssh/" rel="nofollow">SSH</a></li><li><a class="label label-default" href="/blog/tags/ssl/" rel="nofollow">SSL</a></li><li><a class="label label-default" href="/blog/tags/startup/" rel="nofollow">StartUp</a></li><li><a class="label label-default" href="/blog/tags/struts/" rel="nofollow">Struts</a></li><li><a class="label label-default" href="/blog/tags/struts2/" rel="nofollow">Struts2</a></li><li><a class="label label-default" href="/blog/tags/sublimetext2/" rel="nofollow">SublimeText2</a></li><li><a class="label label-default" href="/blog/tags/swift/" rel="nofollow">Swift</a></li><li><a class="label label-default" href="/blog/tags/tcp-slash-ip/" rel="nofollow">TCP/IP</a></li><li><a class="label label-default" href="/blog/tags/tdd/" rel="nofollow">TDD</a></li><li><a class="label label-default" href="/blog/tags/textmate/" rel="nofollow">TextMate</a></li><li><a class="label label-default" href="/blog/tags/titanium/" rel="nofollow">Titanium</a></li><li><a class="label label-default" href="/blog/tags/ui/" rel="nofollow">UI</a></li><li><a class="label label-default" href="/blog/tags/uiappearance/" rel="nofollow">UIAppearance</a></li><li><a class="label label-default" href="/blog/tags/uikit/" rel="nofollow">UIKit</a></li><li><a class="label label-default" href="/blog/tags/uml/" rel="nofollow">UML</a></li><li><a class="label label-default" href="/blog/tags/unix/" rel="nofollow">Unix</a></li><li><a class="label label-default" href="/blog/tags/uportal/" rel="nofollow">uPortal</a></li><li><a class="label label-default" href="/blog/tags/ux/" rel="nofollow">UX</a></li><li><a class="label label-default" href="/blog/tags/vmware/" rel="nofollow">VMWare</a></li><li><a class="label label-default" href="/blog/tags/web-plus-db-press/" rel="nofollow">WEB+DB PRESS</a></li><li><a class="label label-default" href="/blog/tags/web2-dot-0/" rel="nofollow">Web2.0</a></li><li><a class="label label-default" href="/blog/tags/weblogic/" rel="nofollow">WebLogic</a></li><li><a class="label label-default" href="/blog/tags/webservice/" rel="nofollow">WebService</a></li><li><a class="label label-default" href="/blog/tags/websaito/" rel="nofollow">Webサイト</a></li><li><a class="label label-default" href="/blog/tags/websabisu/" rel="nofollow">Webサービス</a></li><li><a class="label label-default" href="/blog/tags/windows/" rel="nofollow">Windows</a></li><li><a class="label label-default" href="/blog/tags/windows2000/" rel="nofollow">Windows2000</a></li><li><a class="label label-default" href="/blog/tags/windows98/" rel="nofollow">Windows98</a></li><li><a class="label label-default" href="/blog/tags/xml/" rel="nofollow">XML</a></li><li><a class="label label-default" href="/blog/tags/xp/" rel="nofollow">XP</a></li><li><a class="label label-default" href="/blog/tags/xsl/" rel="nofollow">XSL</a></li><li><a class="label label-default" href="/blog/tags/korehadu-mubeki/" rel="nofollow">これは読むべき</a></li><li><a class="label label-default" href="/blog/tags/falsehohonbiretuzi/" rel="nofollow">のほほんビレッジ</a></li><li><a class="label label-default" href="/blog/tags/aziyairu/" rel="nofollow">アジャイル</a></li><li><a class="label label-default" href="/blog/tags/atupudeto/" rel="nofollow">アップデート</a></li><li><a class="label label-default" href="/blog/tags/apuri/" rel="nofollow">アプリ</a></li><li><a class="label label-default" href="/blog/tags/apurisukima/" rel="nofollow">アプリスキーマ</a></li><li><a class="label label-default" href="/blog/tags/arugorizumu/" rel="nofollow">アルゴリズム</a></li><li><a class="label label-default" href="/blog/tags/antipatan/" rel="nofollow">アンチパターン</a></li><li><a class="label label-default" href="/blog/tags/akitekutiya/" rel="nofollow">アーキテクチャ</a></li><li><a class="label label-default" href="/blog/tags/akitekuto/" rel="nofollow">アーキテクト</a></li><li><a class="label label-default" href="/blog/tags/ideiomu/" rel="nofollow">イディオム</a></li><li><a class="label label-default" href="/blog/tags/intahuesu/" rel="nofollow">インターフェース</a></li><li><a class="label label-default" href="/blog/tags/inhura/" rel="nofollow">インフラ</a></li><li><a class="label label-default" href="/blog/tags/uebudezain/" rel="nofollow">ウェブデザイン</a></li><li><a class="label label-default" href="/blog/tags/uebuyuzabiritei/" rel="nofollow">ウェブユーザビリティ</a></li><li><a class="label label-default" href="/blog/tags/enkodeingu/" rel="nofollow">エンコーディング</a></li><li><a class="label label-default" href="/blog/tags/obuziekutozhi-xiang/" rel="nofollow">オブジェクト指向</a></li><li><a class="label label-default" href="/blog/tags/orairi/" rel="nofollow">オライリー</a></li><li><a class="label label-default" href="/blog/tags/opunsosu/" rel="nofollow">オープンソース</a></li><li><a class="label label-default" href="/blog/tags/gandamu/" rel="nofollow">ガンダム</a></li><li><a class="label label-default" href="/blog/tags/ganpura/" rel="nofollow">ガンプラ</a></li><li><a class="label label-default" href="/blog/tags/kibodosiyotokatuto/" rel="nofollow">キーボードショートカット</a></li><li><a class="label label-default" href="/blog/tags/giku/" rel="nofollow">ギーク</a></li><li><a class="label label-default" href="/blog/tags/kutukubutuku/" rel="nofollow">クックブック</a></li><li><a class="label label-default" href="/blog/tags/kuraudo/" rel="nofollow">クラウド</a></li><li><a class="label label-default" href="/blog/tags/kurasushe-ji/" rel="nofollow">クラス設計</a></li><li><a class="label label-default" href="/blog/tags/gemu/" rel="nofollow">ゲーム</a></li><li><a class="label label-default" href="/blog/tags/gemuenzin/" rel="nofollow">ゲームエンジン</a></li><li><a class="label label-default" href="/blog/tags/gemupatan/" rel="nofollow">ゲームパターン</a></li><li><a class="label label-default" href="/blog/tags/gemupuroguramingu/" rel="nofollow">ゲームプログラミング</a></li><li><a class="label label-default" href="/blog/tags/konpiyutaji-chu/" rel="nofollow">コンピュータ基礎</a></li><li><a class="label label-default" href="/blog/tags/kodeingu/" rel="nofollow">コーディング</a></li><li><a class="label label-default" href="/blog/tags/kodeingusutairu/" rel="nofollow">コーディングスタイル</a></li><li><a class="label label-default" href="/blog/tags/kodeingugui-yue/" rel="nofollow">コーディング規約</a></li><li><a class="label label-default" href="/blog/tags/kodorideingu/" rel="nofollow">コードリーディング</a></li><li><a class="label label-default" href="/blog/tags/kodorebiyu/" rel="nofollow">コードレビュー</a></li><li><a class="label label-default" href="/blog/tags/sanpuru/" rel="nofollow">サンプル</a></li><li><a class="label label-default" href="/blog/tags/saburetuto/" rel="nofollow">サーブレット</a></li><li><a class="label label-default" href="/blog/tags/sisutemushe-ji/" rel="nofollow">システム設計</a></li><li><a class="label label-default" href="/blog/tags/sisutemukai-fa/" rel="nofollow">システム開発</a></li><li><a class="label label-default" href="/blog/tags/sinanziyu/" rel="nofollow">シナンジュ</a></li><li><a class="label label-default" href="/blog/tags/siyotokatuto/" rel="nofollow">ショートカット</a></li><li><a class="label label-default" href="/blog/tags/sukureipingu/" rel="nofollow">スクレイピング</a></li><li><a class="label label-default" href="/blog/tags/sutairu/" rel="nofollow">スタイル</a></li><li><a class="label label-default" href="/blog/tags/sumahoapuri/" rel="nofollow">スマホアプリ</a></li><li><a class="label label-default" href="/blog/tags/sumatohuon/" rel="nofollow">スマートフォン</a></li><li><a class="label label-default" href="/blog/tags/sekiyuritei/" rel="nofollow">セキュリティ</a></li><li><a class="label label-default" href="/blog/tags/sohutouea/" rel="nofollow">ソフトウェア</a></li><li><a class="label label-default" href="/blog/tags/sohutoueaenziniaringu/" rel="nofollow">ソフトウェアエンジニアリング</a></li><li><a class="label label-default" href="/blog/tags/sohutoueakai-fa/" rel="nofollow">ソフトウェア開発</a></li><li><a class="label label-default" href="/blog/tags/sosiyaruapuri/" rel="nofollow">ソーシャルアプリ</a></li><li><a class="label label-default" href="/blog/tags/sosiyarugemu/" rel="nofollow">ソーシャルゲーム</a></li><li><a class="label label-default" href="/blog/tags/turu/" rel="nofollow">ツール</a></li><li><a class="label label-default" href="/blog/tags/tesuto/" rel="nofollow">テスト</a></li><li><a class="label label-default" href="/blog/tags/tesutokodo/" rel="nofollow">テストコード</a></li><li><a class="label label-default" href="/blog/tags/tesutohuasuto/" rel="nofollow">テストファースト</a></li><li><a class="label label-default" href="/blog/tags/tesutoji-fa/" rel="nofollow">テスト技法</a></li><li><a class="label label-default" href="/blog/tags/tesutoqu-dong/" rel="nofollow">テスト駆動</a></li><li><a class="label label-default" href="/blog/tags/dezain/" rel="nofollow">デザイン</a></li><li><a class="label label-default" href="/blog/tags/dezainpatan/" rel="nofollow">デザインパターン</a></li><li><a class="label label-default" href="/blog/tags/detahuomatuto/" rel="nofollow">データフォーマット</a></li><li><a class="label label-default" href="/blog/tags/detabesu/" rel="nofollow">データベース</a></li><li><a class="label label-default" href="/blog/tags/detabesushe-ji/" rel="nofollow">データベース設計</a></li><li><a class="label label-default" href="/blog/tags/detamoderingu/" rel="nofollow">データモデリング</a></li><li><a class="label label-default" href="/blog/tags/detamoderu/" rel="nofollow">データモデル</a></li><li><a class="label label-default" href="/blog/tags/toranzakusiyon/" rel="nofollow">トランザクション</a></li><li><a class="label label-default" href="/blog/tags/domeinqu-dong/" rel="nofollow">ドメイン駆動</a></li><li><a class="label label-default" href="/blog/tags/doratuka/" rel="nofollow">ドラッカー</a></li><li><a class="label label-default" href="/blog/tags/netutowaku/" rel="nofollow">ネットワーク</a></li><li><a class="label label-default" href="/blog/tags/falseuhau/" rel="nofollow">ノウハウ</a></li><li><a class="label label-default" href="/blog/tags/hatuka/" rel="nofollow">ハッカー</a></li><li><a class="label label-default" href="/blog/tags/hadouea/" rel="nofollow">ハードウェア</a></li><li><a class="label label-default" href="/blog/tags/bainari/" rel="nofollow">バイナリ</a></li><li><a class="label label-default" href="/blog/tags/bizinesu/" rel="nofollow">ビジネス</a></li><li><a class="label label-default" href="/blog/tags/bizinesururu/" rel="nofollow">ビジネスルール</a></li><li><a class="label label-default" href="/blog/tags/bitugudeta/" rel="nofollow">ビッグデータ</a></li><li><a class="label label-default" href="/blog/tags/huonto/" rel="nofollow">フォント</a></li><li><a class="label label-default" href="/blog/tags/huremuwaku/" rel="nofollow">フレームワーク</a></li><li><a class="label label-default" href="/blog/tags/burogu/" rel="nofollow">ブログ</a></li><li><a class="label label-default" href="/blog/tags/puresuririsu/" rel="nofollow">プレスリリース</a></li><li><a class="label label-default" href="/blog/tags/purogurama/" rel="nofollow">プログラマ</a></li><li><a class="label label-default" href="/blog/tags/puroguramingu/" rel="nofollow">プログラミング</a></li><li><a class="label label-default" href="/blog/tags/puroguraminguyan-yu/" rel="nofollow">プログラミング言語</a></li><li><a class="label label-default" href="/blog/tags/besutopurakuteisu/" rel="nofollow">ベストプラクティス</a></li><li><a class="label label-default" href="/blog/tags/peapuro/" rel="nofollow">ペアプロ</a></li><li><a class="label label-default" href="/blog/tags/porugureamu/" rel="nofollow">ポールグレアム</a></li><li><a class="label label-default" href="/blog/tags/maindomatupu/" rel="nofollow">マインドマップ</a></li><li><a class="label label-default" href="/blog/tags/matusiyuatupu/" rel="nofollow">マッシュアップ</a></li><li><a class="label label-default" href="/blog/tags/manezimento/" rel="nofollow">マネジメント</a></li><li><a class="label label-default" href="/blog/tags/maketeingu/" rel="nofollow">マーケティング</a></li><li><a class="label label-default" href="/blog/tags/mumudomein/" rel="nofollow">ムームードメイン</a></li><li><a class="label label-default" href="/blog/tags/metapuroguramingu/" rel="nofollow">メタプログラミング</a></li><li><a class="label label-default" href="/blog/tags/memo/" rel="nofollow">メモ</a></li><li><a class="label label-default" href="/blog/tags/memori/" rel="nofollow">メモリ</a></li><li><a class="label label-default" href="/blog/tags/memoriguan-li/" rel="nofollow">メモリ管理</a></li><li><a class="label label-default" href="/blog/tags/moziyuru/" rel="nofollow">モジュール</a></li><li><a class="label label-default" href="/blog/tags/moderingu/" rel="nofollow">モデリング</a></li><li><a class="label label-default" href="/blog/tags/moderuqu-dong/" rel="nofollow">モデル駆動</a></li><li><a class="label label-default" href="/blog/tags/mobairu/" rel="nofollow">モバイル</a></li><li><a class="label label-default" href="/blog/tags/yunitutotesuto/" rel="nofollow">ユニットテスト</a></li><li><a class="label label-default" href="/blog/tags/yuzaintahuesu/" rel="nofollow">ユーザインターフェース</a></li><li><a class="label label-default" href="/blog/tags/yusukesu/" rel="nofollow">ユースケース</a></li><li><a class="label label-default" href="/blog/tags/raihuhatuku/" rel="nofollow">ライフハック</a></li><li><a class="label label-default" href="/blog/tags/riachong/" rel="nofollow">リア充</a></li><li><a class="label label-default" href="/blog/tags/rihuakutaringu/" rel="nofollow">リファクタリング</a></li><li><a class="label label-default" href="/blog/tags/rezisutori/" rel="nofollow">レジストリ</a></li><li><a class="label label-default" href="/blog/tags/reberudezain/" rel="nofollow">レベルデザイン</a></li><li><a class="label label-default" href="/blog/tags/bing-xing-puroguramingu/" rel="nofollow">並行プログラミング</a></li><li><a class="label label-default" href="/blog/tags/ren-jian-xue/" rel="nofollow">人間学</a></li><li><a class="label label-default" href="/blog/tags/dan-ti-tesuto/" rel="nofollow">単体テスト</a></li><li><a class="label label-default" href="/blog/tags/wen-ti-jie-jue/" rel="nofollow">問題解決</a></li><li><a class="label label-default" href="/blog/tags/shi-bai-xue/" rel="nofollow">失敗学</a></li><li><a class="label label-default" href="/blog/tags/xin-li-xue/" rel="nofollow">心理学</a></li><li><a class="label label-default" href="/blog/tags/xi-dai/" rel="nofollow">携帯</a></li><li><a class="label label-default" href="/blog/tags/gai-shan/" rel="nofollow">改善</a></li><li><a class="label label-default" href="/blog/tags/wen-zi-kodo/" rel="nofollow">文字コード</a></li><li><a class="label label-default" href="/blog/tags/fang-xiang/" rel="nofollow">方向</a></li><li><a class="label label-default" href="/blog/tags/shi-jian-guan-li/" rel="nofollow">時間管理</a></li><li><a class="label label-default" href="/blog/tags/an-hao-hua/" rel="nofollow">暗号化</a></li><li><a class="label label-default" href="/blog/tags/kong-jian-she-ji/" rel="nofollow">空間設計</a></li><li><a class="label label-default" href="/blog/tags/jing-du/" rel="nofollow">経度</a></li><li><a class="label label-default" href="/blog/tags/wei-du/" rel="nofollow">緯度</a></li><li><a class="label label-default" href="/blog/tags/zi-zuo/" rel="nofollow">自作</a></li><li><a class="label label-default" href="/blog/tags/zhu-zuo-quan/" rel="nofollow">著作権</a></li><li><a class="label label-default" href="/blog/tags/jiao-wan/" rel="nofollow">角丸</a></li><li><a class="label label-default" href="/blog/tags/she-ji/" rel="nofollow">設計</a></li><li><a class="label label-default" href="/blog/tags/du-minikui/" rel="nofollow">読みにくい</a></li><li><a class="label label-default" href="/blog/tags/du-miyasui/" rel="nofollow">読みやすい</a></li><li><a class="label label-default" href="/blog/tags/du-mubeki/" rel="nofollow">読むべき</a></li><li><a class="label label-default" href="/blog/tags/ju-li/" rel="nofollow">距離</a></li><li><a class="label label-default" href="/blog/tags/da-ren-purogurama/" rel="nofollow">達人プログラマ</a></li><li><a class="label label-default" href="/blog/tags/kai-fa-fang-fa-lun/" rel="nofollow">開発方法論</a></li><li><a class="label label-default" href="/blog/tags/guan-shu-xing/" rel="nofollow">関数型</a></li><li><a class="label label-default" href="/blog/tags/jing-de-saito/" rel="nofollow">静的サイト</a></li></ul>
   </div>
 </section>
 
