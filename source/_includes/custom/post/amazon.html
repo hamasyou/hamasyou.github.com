@@ -1,4 +1,4 @@
-{% if post.amazon_title %}
+{% if page.amazon_title.present? or post.amazon_title.present? %}
 {% capture title %}{{ page.amazon_title }}{{ post.amazon_title }}{% endcapture %}
 {% else %}
 {% capture title %}{{ page.title }}{{ post.title }}{% endcapture %}
