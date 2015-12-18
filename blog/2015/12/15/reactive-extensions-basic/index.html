@@ -535,6 +535,12 @@
 <span class="line-number">11</span>
 <span class="line-number">12</span>
 <span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">sequenceOf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </span><span class="line">    <span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">*</span> <span class="err">$</span><span class="mi">0</span> <span class="p">}</span>
@@ -549,10 +555,14 @@
 </span><span class="line">    <span class="p">.</span><span class="n">subscribeNext</span> <span class="p">{</span>
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line">    <span class="p">.</span><span class="n">addDisposeBag</span><span class="p">(</span><span class="n">disposeBag</span><span class="p">)</span>
+</span><span class="line"><span class="c1">// もしくは</span>
+</span><span class="line"><span class="n">API</span><span class="p">.</span><span class="n">call</span><span class="p">()</span>
+</span><span class="line">  <span class="p">.</span><span class="n">startWith</span><span class="p">(</span><span class="n">dataFromCache</span><span class="p">)</span>
+</span><span class="line">  <span class="p">.</span><span class="n">subscribeNext</span> <span class="p">{</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">  <span class="p">.</span><span class="n">addDisposeBag</span><span class="p">(</span><span class="n">disposeBag</span><span class="p">)</span>
 </span></code></pre></td>
 </tr></table></div></figure></notextile></div>
-
-
 
 </div>
 
