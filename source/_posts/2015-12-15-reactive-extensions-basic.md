@@ -85,9 +85,9 @@ Subject は任意のタイミングで **Behavior (振る舞い)** を決めら�
 
 ```swift
     let msg = PublishSubject<String>()
-    
+
     msg.subscribeNext { print($0) }
-    
+
     msg.onNext("Hello World")
     msg.onCompleted()
 ```
@@ -194,12 +194,17 @@ sequenceOf(1, 2, 3, 4, 5)
         print($0)
     }
     .scopedDispose()
-    
+
 
 let dataFromCache = CacheStore.fromCache()
 dataFromCache.concat(API.call())
     .subscribeNext {
     }
     .addDisposeBag(disposeBag)
+// もしくは
+API.call()
+  .startWith(dataFromCache)
+  .subscribeNext {    
+  }
+  .addDisposeBag(disposeBag)
 ```
-
