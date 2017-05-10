@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: RxSwift | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/rxswift/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2015-12-18T20:09:07+09:00</updated>
+  <updated>2017-05-10T11:48:29+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,227 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[iOS] ReSwift の State を RxSwift っぽく使えるようにする]]></title>
+    <link href="http://hamasyou.com/blog/2017/05/10/swift-reswift-rxswift/"/>
+    <updated>2017-05-10T11:08:30+09:00</updated>
+    <id>http://hamasyou.com/blog/2017/05/10/swift-reswift-rxswift</id>
+    <content type="html"><![CDATA[<p>Swift ライブラリの <a href="https://github.com/ReSwift/ReSwift">ReSwift</a> を <a href="https://github.com/ReactiveX/RxSwift">RxSwift</a> に合わせて使えるようにするメモです。</p>
+
+<h2>ReSwift とは</h2>
+
+<p>ReSwift とは、iOS アプリを <code>[Redux](https://github.com/reactjs/redux)</code> のように作れるようにしてくれるライブラリです。</p>
+
+<p>スマホアプリを作っていると</p>
+
+<ul>
+<li>アプリの状態管理を一元管理したい</li>
+<li>アプリの状態が変わったら、UI を最新に更新したい</li>
+</ul>
+
+
+<p>という要求が出てくると思います。そんなときに、ReSwift でステートを一元管理し、UI の更新を RxSwift の I/F に合わせて使えると結構便利です。</p>
+
+<!-- more -->
+
+
+<h2>ソースコード</h2>
+
+<p>ということで、メモ書きなので、さっとソースを貼り付けておきます。</p>
+
+<pre><code class="swift">
+/// アプリの `Store` クラス
+/// Rx 拡張を行うために独自クラスを作成する
+class AppStore : Store&lt;AppState&gt; {
+
+    required convenience init(reducer: @escaping (Action, AppState?) -&gt; AppState, state: State?) {
+        self.init(reducer: reducer, state: state, middleware: [])
+    }
+
+}
+
+/// AppStore を Rx 化するためのプロキシ
+class AppStoreProxy&lt;SelectedState&gt; : StoreSubscriber {
+
+    typealias StoreSubscriberStateType = SelectedState
+
+    private weak var source: AppStore?
+    private(set) var subject = PublishSubject&lt;StoreSubscriberStateType&gt;()
+
+    fileprivate init(source: AppStore) {
+        self.source = source
+    }
+
+    func newState(state: StoreSubscriberStateType) {
+        subject.on(.next(state))
+    }
+
+    deinit {
+        subject.on(.completed)
+    }
+}
+
+
+extension AppStore : ReactiveCompatible {
+}
+
+
+extension Reactive where Base: AppStore {
+
+    func state() -&gt; Observable&lt;AppStore.State&gt; {
+        return state { $0 }
+    }
+
+    func state&lt;SelectedState: StateType&gt;(selector: @escaping ((AppStore.State) -&gt; SelectedState)) -&gt; Observable&lt;SelectedState&gt; {
+        return Observable.create { observer in
+            let proxy = AppStoreProxy&lt;SelectedState&gt;(source: self.base)
+            _ = proxy.subject.bind(to: observer)
+
+            self.base.subscribe(proxy, transform: { (subscriber: Subscription&lt;AppState&gt;) -&gt; Subscription&lt;SelectedState&gt; in
+                subscriber.select(selector)
+            })
+
+            return Disposables.create {
+                self.base.unsubscribe(proxy)
+            }
+        }
+    }
+
+    func state&lt;SelectedState: StateType &amp; Identifiable&gt;(selector: @escaping ((AppStore.State) -&gt; SelectedState)) -&gt; Observable&lt;SelectedState&gt; {
+        return Observable.create { observer in
+            let proxy = AppStoreProxy&lt;SelectedState&gt;(source: self.base)
+            _ = proxy.subject.bind(to: observer)
+
+            self.base.subscribe(proxy, transform: { (subscriber: Subscription&lt;AppState&gt;) -&gt; Subscription&lt;SelectedState&gt; in
+                subscriber.select(selector)
+            })
+
+            return Disposables.create {
+                self.base.unsubscribe(proxy)
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>これで、ReSwift の <code>State</code> を次のように書くことができます。</p>
+
+<pre><code class="swift">store.rx.state { $0.userState }
+  .map { $0.name }
+  .bind(to: nameLabel.rx.text)
+  .disposed(by: disposeBag)
+</code></pre>
+
+<h2>オブザーブしているステートが更新されたときのみ通知して欲しい時</h2>
+
+<p>ReSwift を RxSwift のように使うだけであれば、上の拡張でいいのですが、たくさんステートが出来てくると、
+関係ないステートが更新されたときにも変更が通知されてしまって、パフォーマンスを気にすることが出てくるかもしれません。</p>
+
+<p>そんなときは、<code>distinctUntilChanged</code> を使って、監視しているステートが更新されたかどうかを確認するようにするといいと思います。</p>
+
+<p><code>State</code> 自体を <code>==</code> で比較できるように、State に <code>Identifier</code> を導入して、更新されたかどうかをチェック出来るようにしてみます。
+(というのも、State は構造体(<code>struct</code>) で作ることになると思うので、同一のステートかどうかの一致が大変なのです。)</p>
+
+<h3>State に一意性を持たせる</h3>
+
+<pre><code class="swift">/// 識別子コンポーネント
+struct IdentifiableComponent : Hashable {
+
+    typealias Identifier = UInt64
+
+    /// インスタンス生成毎に一意になる値を生成するクラス
+    private struct Counter {
+        static let lock = DispatchSemaphore(value: 1)
+        static var count: Identifier = 0
+        static func getAndIncrement() -&gt; Identifier {
+            lock.wait()
+            defer { lock.signal() }
+            count += 1
+            return count
+        }
+    }
+
+    /// インスタンスの識別子
+    private(set) var identifier: Identifier = Counter.getAndIncrement()
+
+    var hashValue: Int { return identifier.hashValue }
+
+    mutating func update() {
+        identifier = Counter.getAndIncrement()
+    }
+
+    static func ==(lhs: IdentifiableComponent, rhs: IdentifiableComponent) -&gt; Bool {
+        return lhs.identifier == rhs.identifier
+    }
+}
+
+protocol HasIdentifiableComponent : Equatable {
+    var identifiableComponent: IdentifiableComponent { get }
+}
+
+/// 識別子を持つタイプ
+protocol Identifiable : HasIdentifiableComponent {
+}
+
+extension Identifiable {
+
+    var identifier: IdentifiableComponent.Identifier {
+        return identifiableComponent.identifier
+    }    
+
+    static func ==(lhs: Self, rhs: Self) -&gt; Bool {
+        return lhs.identifiableComponent == rhs.identifiableComponent
+    }
+}
+</code></pre>
+
+<p>複雑そうなことをやっていますが、要はインスタンスを生成するたびに一意の数値を割り当てて、
+状態が更新されたらその値をインクリメントするという方法で、数値比較だけで状態が変わったかを判断できるようにしています。</p>
+
+<p>この識別子コンポーネントを State に持たせるようにして</p>
+
+<pre><code class="swift">
+struct UserState : StateType, Identifiable {
+
+  fileprivate(set) var identifiableComponent = IdentifiableComponent()
+
+  var name: String?
+}
+
+// MARK: - Reducer
+extension UserState {    
+    static func reducer(state: UserState?, action: Action) -&gt; UserState {
+        var state = state ?? UserState()
+
+        switch action {
+        case let action as UserActions.SetName:
+            state.name = action.name
+            state.identifiableComponent.update()
+
+        default:
+            break
+        }
+
+        return state
+    }
+</code></pre>
+
+<p>こんな感じで、ステートが更新したときに、<code>identifiableComponent.update()</code> を呼び出すと状態が更新されたことをマークします。
+これで、ステートが更新されたときだけ UI を更新するようなコードを次のように書けるようになります。</p>
+
+<pre><code class="swift">store.rx.state { $0.userState }
+  .distinctUntilChanged()
+  .map { $0.name }
+  .bind(to: nameLabel.rx.text)
+  .disposed(by: disposeBag)
+</code></pre>
+
+<p>パフォーマンスも気にせず使えるようになりました。</p>
+
+<p>既存のプロジェクトからの抜粋なので、一部省略している箇所があります。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Reactive Extensions Basic]]></title>

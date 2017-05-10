@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2015-12-18T20:09:07+09:00</updated>
+  <updated>2017-05-10T11:48:29+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -12,6 +12,398 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[iOS] ReSwift の State を RxSwift っぽく使えるようにする]]></title>
+    <link href="http://hamasyou.com/blog/2017/05/10/swift-reswift-rxswift/"/>
+    <updated>2017-05-10T11:08:30+09:00</updated>
+    <id>http://hamasyou.com/blog/2017/05/10/swift-reswift-rxswift/</id>
+    <content type="html"><![CDATA[<p>Swift ライブラリの <a href="https://github.com/ReSwift/ReSwift" rel="external nofollow" title="ReSwift">ReSwift</a> を <a href="https://github.com/ReactiveX/RxSwift" rel="external nofollow" title="RxSwift">RxSwift</a> に合わせて使えるようにするメモです。</p>
+
+<h2>ReSwift とは</h2>
+
+<p>ReSwift とは、iOS アプリを <code>[Redux](https://github.com/reactjs/redux)</code> のように作れるようにしてくれるライブラリです。</p>
+
+<p>スマホアプリを作っていると</p>
+
+<ul>
+<li>アプリの状態管理を一元管理したい</li>
+<li>アプリの状態が変わったら、UI を最新に更新したい</li>
+</ul>
+
+
+<p>という要求が出てくると思います。そんなときに、ReSwift でステートを一元管理し、UI の更新を RxSwift の I/F に合わせて使えると結構便利です。</p>
+
+<!-- more -->
+
+
+<h2>ソースコード</h2>
+
+<p>ということで、メモ書きなので、さっとソースを貼り付けておきます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="c1">/// アプリの `Store` クラス</span>
+</span><span class="line"><span class="c1">/// Rx 拡張を行うために独自クラスを作成する</span>
+</span><span class="line"><span class="k">class</span> <span class="nl">AppStore</span> <span class="p">:</span> <span class="n">Store</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">required</span> <span class="n">convenience</span> <span class="k">init</span><span class="p">(</span><span class="nl">reducer</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="n">Action</span><span class="p">,</span> <span class="n">AppState</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AppState</span><span class="p">,</span> <span class="nl">state</span><span class="p">:</span> <span class="n">State</span><span class="o">?</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">self</span><span class="p">.</span><span class="k">init</span><span class="p">(</span><span class="nl">reducer</span><span class="p">:</span> <span class="n">reducer</span><span class="p">,</span> <span class="nl">state</span><span class="p">:</span> <span class="n">state</span><span class="p">,</span> <span class="nl">middleware</span><span class="p">:</span> <span class="p">[])</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">/// AppStore を Rx 化するためのプロキシ</span>
+</span><span class="line"><span class="k">class</span> <span class="n">AppStoreProxy</span><span class="o">&lt;</span><span class="n">SelectedState</span><span class="o">&gt;</span> <span class="o">:</span> <span class="n">StoreSubscriber</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">typealias</span> <span class="n">StoreSubscriberStateType</span> <span class="o">=</span> <span class="n">SelectedState</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">private</span> <span class="k">weak</span> <span class="k">var</span> <span class="nl">source</span><span class="p">:</span> <span class="n">AppStore</span><span class="o">?</span>
+</span><span class="line">    <span class="n">private</span><span class="p">(</span><span class="kr">set</span><span class="p">)</span> <span class="k">var</span> <span class="n">subject</span> <span class="o">=</span> <span class="n">PublishSubject</span><span class="o">&lt;</span><span class="n">StoreSubscriberStateType</span><span class="o">&gt;</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">fileprivate</span> <span class="k">init</span><span class="p">(</span><span class="nl">source</span><span class="p">:</span> <span class="n">AppStore</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nb">self</span><span class="p">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">func</span> <span class="n">newState</span><span class="p">(</span><span class="nl">state</span><span class="p">:</span> <span class="n">StoreSubscriberStateType</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">subject</span><span class="p">.</span><span class="n">on</span><span class="p">(.</span><span class="n">next</span><span class="p">(</span><span class="n">state</span><span class="p">))</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">deinit</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">subject</span><span class="p">.</span><span class="n">on</span><span class="p">(.</span><span class="n">completed</span><span class="p">)</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line"><span class="k">extension</span> <span class="nl">AppStore</span> <span class="p">:</span> <span class="n">ReactiveCompatible</span> <span class="p">{</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line"><span class="k">extension</span> <span class="n">Reactive</span> <span class="k">where</span> <span class="nl">Base</span><span class="p">:</span> <span class="n">AppStore</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">func</span> <span class="n">state</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Observable</span><span class="o">&lt;</span><span class="n">AppStore</span><span class="p">.</span><span class="n">State</span><span class="o">&gt;</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">state</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">func</span> <span class="n">state</span><span class="o">&lt;</span><span class="nl">SelectedState</span><span class="p">:</span> <span class="n">StateType</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">selector</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">((</span><span class="n">AppStore</span><span class="p">.</span><span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SelectedState</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">Observable</span><span class="o">&lt;</span><span class="n">SelectedState</span><span class="o">&gt;</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">Observable</span><span class="p">.</span><span class="n">create</span> <span class="p">{</span> <span class="n">observer</span> <span class="k">in</span>
+</span><span class="line">            <span class="k">let</span> <span class="n">proxy</span> <span class="o">=</span> <span class="n">AppStoreProxy</span><span class="o">&lt;</span><span class="n">SelectedState</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">source</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">base</span><span class="p">)</span>
+</span><span class="line">            <span class="n">_</span> <span class="o">=</span> <span class="n">proxy</span><span class="p">.</span><span class="n">subject</span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="nl">to</span><span class="p">:</span> <span class="n">observer</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">            <span class="nb">self</span><span class="p">.</span><span class="n">base</span><span class="p">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">proxy</span><span class="p">,</span> <span class="nl">transform</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="nl">subscriber</span><span class="p">:</span> <span class="n">Subscription</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Subscription</span><span class="o">&lt;</span><span class="n">SelectedState</span><span class="o">&gt;</span> <span class="k">in</span>
+</span><span class="line">                <span class="n">subscriber</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span>
+</span><span class="line">            <span class="p">})</span>
+</span><span class="line">
+</span><span class="line">            <span class="k">return</span> <span class="n">Disposables</span><span class="p">.</span><span class="n">create</span> <span class="p">{</span>
+</span><span class="line">                <span class="nb">self</span><span class="p">.</span><span class="n">base</span><span class="p">.</span><span class="n">unsubscribe</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span>
+</span><span class="line">            <span class="p">}</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">func</span> <span class="n">state</span><span class="o">&lt;</span><span class="nl">SelectedState</span><span class="p">:</span> <span class="n">StateType</span> <span class="o">&amp;</span> <span class="n">Identifiable</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">selector</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">((</span><span class="n">AppStore</span><span class="p">.</span><span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SelectedState</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">Observable</span><span class="o">&lt;</span><span class="n">SelectedState</span><span class="o">&gt;</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">Observable</span><span class="p">.</span><span class="n">create</span> <span class="p">{</span> <span class="n">observer</span> <span class="k">in</span>
+</span><span class="line">            <span class="k">let</span> <span class="n">proxy</span> <span class="o">=</span> <span class="n">AppStoreProxy</span><span class="o">&lt;</span><span class="n">SelectedState</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">source</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">base</span><span class="p">)</span>
+</span><span class="line">            <span class="n">_</span> <span class="o">=</span> <span class="n">proxy</span><span class="p">.</span><span class="n">subject</span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="nl">to</span><span class="p">:</span> <span class="n">observer</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">            <span class="nb">self</span><span class="p">.</span><span class="n">base</span><span class="p">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">proxy</span><span class="p">,</span> <span class="nl">transform</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="nl">subscriber</span><span class="p">:</span> <span class="n">Subscription</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Subscription</span><span class="o">&lt;</span><span class="n">SelectedState</span><span class="o">&gt;</span> <span class="k">in</span>
+</span><span class="line">                <span class="n">subscriber</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span>
+</span><span class="line">            <span class="p">})</span>
+</span><span class="line">
+</span><span class="line">            <span class="k">return</span> <span class="n">Disposables</span><span class="p">.</span><span class="n">create</span> <span class="p">{</span>
+</span><span class="line">                <span class="nb">self</span><span class="p">.</span><span class="n">base</span><span class="p">.</span><span class="n">unsubscribe</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span>
+</span><span class="line">            <span class="p">}</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>これで、ReSwift の <code>State</code> を次のように書くことができます。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">store</span><span class="p">.</span><span class="n">rx</span><span class="p">.</span><span class="n">state</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">userState</span> <span class="p">}</span>
+</span><span class="line">  <span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">name</span> <span class="p">}</span>
+</span><span class="line">  <span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="nl">to</span><span class="p">:</span> <span class="n">nameLabel</span><span class="p">.</span><span class="n">rx</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</span><span class="line">  <span class="p">.</span><span class="n">disposed</span><span class="p">(</span><span class="nl">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<h2>オブザーブしているステートが更新されたときのみ通知して欲しい時</h2>
+
+<p>ReSwift を RxSwift のように使うだけであれば、上の拡張でいいのですが、たくさんステートが出来てくると、
+関係ないステートが更新されたときにも変更が通知されてしまって、パフォーマンスを気にすることが出てくるかもしれません。</p>
+
+<p>そんなときは、<code>distinctUntilChanged</code> を使って、監視しているステートが更新されたかどうかを確認するようにするといいと思います。</p>
+
+<p><code>State</code> 自体を <code>==</code> で比較できるように、State に <code>Identifier</code> を導入して、更新されたかどうかをチェック出来るようにしてみます。
+(というのも、State は構造体(<code>struct</code>) で作ることになると思うので、同一のステートかどうかの一致が大変なのです。)</p>
+
+<h3>State に一意性を持たせる</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="c1">/// 識別子コンポーネント</span>
+</span><span class="line"><span class="k">struct</span> <span class="nl">IdentifiableComponent</span> <span class="p">:</span> <span class="n">Hashable</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">typealias</span> <span class="n">Identifier</span> <span class="o">=</span> <span class="n">UInt64</span>
+</span><span class="line">
+</span><span class="line">    <span class="c1">/// インスタンス生成毎に一意になる値を生成するクラス</span>
+</span><span class="line">    <span class="n">private</span> <span class="k">struct</span> <span class="n">Counter</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">static</span> <span class="k">let</span> <span class="n">lock</span> <span class="o">=</span> <span class="n">DispatchSemaphore</span><span class="p">(</span><span class="nl">value</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class="line">        <span class="k">static</span> <span class="k">var</span> <span class="nl">count</span><span class="p">:</span> <span class="n">Identifier</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line">        <span class="k">static</span> <span class="k">func</span> <span class="n">getAndIncrement</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Identifier</span> <span class="p">{</span>
+</span><span class="line">            <span class="n">lock</span><span class="p">.</span><span class="n">wait</span><span class="p">()</span>
+</span><span class="line">            <span class="n">defer</span> <span class="p">{</span> <span class="n">lock</span><span class="p">.</span><span class="n">signal</span><span class="p">()</span> <span class="p">}</span>
+</span><span class="line">            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class="line">            <span class="k">return</span> <span class="n">count</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="c1">/// インスタンスの識別子</span>
+</span><span class="line">    <span class="n">private</span><span class="p">(</span><span class="kr">set</span><span class="p">)</span> <span class="k">var</span> <span class="nl">identifier</span><span class="p">:</span> <span class="n">Identifier</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">.</span><span class="n">getAndIncrement</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">var</span> <span class="nl">hashValue</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="k">return</span> <span class="n">identifier</span><span class="p">.</span><span class="n">hashValue</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="kr">mutating</span> <span class="k">func</span> <span class="n">update</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">        <span class="n">identifier</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">.</span><span class="n">getAndIncrement</span><span class="p">()</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">static</span> <span class="k">func</span> <span class="o">==</span><span class="p">(</span><span class="nl">lhs</span><span class="p">:</span> <span class="n">IdentifiableComponent</span><span class="p">,</span> <span class="nl">rhs</span><span class="p">:</span> <span class="n">IdentifiableComponent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">lhs</span><span class="p">.</span><span class="n">identifier</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">identifier</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">protocol</span> <span class="nl">HasIdentifiableComponent</span> <span class="p">:</span> <span class="n">Equatable</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">var</span> <span class="nl">identifiableComponent</span><span class="p">:</span> <span class="n">IdentifiableComponent</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">/// 識別子を持つタイプ</span>
+</span><span class="line"><span class="k">protocol</span> <span class="nl">Identifiable</span> <span class="p">:</span> <span class="n">HasIdentifiableComponent</span> <span class="p">{</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">extension</span> <span class="n">Identifiable</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">var</span> <span class="nl">identifier</span><span class="p">:</span> <span class="n">IdentifiableComponent</span><span class="p">.</span><span class="n">Identifier</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">identifiableComponent</span><span class="p">.</span><span class="n">identifier</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">static</span> <span class="k">func</span> <span class="o">==</span><span class="p">(</span><span class="nl">lhs</span><span class="p">:</span> <span class="kt">Self</span><span class="p">,</span> <span class="nl">rhs</span><span class="p">:</span> <span class="kt">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">lhs</span><span class="p">.</span><span class="n">identifiableComponent</span> <span class="o">==</span> <span class="n">rhs</span><span class="p">.</span><span class="n">identifiableComponent</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>複雑そうなことをやっていますが、要はインスタンスを生成するたびに一意の数値を割り当てて、
+状態が更新されたらその値をインクリメントするという方法で、数値比較だけで状態が変わったかを判断できるようにしています。</p>
+
+<p>この識別子コンポーネントを State に持たせるようにして</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="k">struct</span> <span class="nl">UserState</span> <span class="p">:</span> <span class="n">StateType</span><span class="p">,</span> <span class="n">Identifiable</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">  <span class="n">fileprivate</span><span class="p">(</span><span class="kr">set</span><span class="p">)</span> <span class="k">var</span> <span class="n">identifiableComponent</span> <span class="o">=</span> <span class="n">IdentifiableComponent</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// MARK: - Reducer</span>
+</span><span class="line"><span class="k">extension</span> <span class="n">UserState</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">static</span> <span class="k">func</span> <span class="n">reducer</span><span class="p">(</span><span class="nl">state</span><span class="p">:</span> <span class="n">UserState</span><span class="o">?</span><span class="p">,</span> <span class="nl">action</span><span class="p">:</span> <span class="n">Action</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UserState</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">var</span> <span class="n">state</span> <span class="o">=</span> <span class="n">state</span> <span class="o">??</span> <span class="n">UserState</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">switch</span> <span class="n">action</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">case</span> <span class="k">let</span> <span class="n">action</span> <span class="kt">as</span> <span class="n">UserActions</span><span class="p">.</span><span class="nl">SetName</span><span class="p">:</span>
+</span><span class="line">            <span class="n">state</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">action</span><span class="p">.</span><span class="n">name</span>
+</span><span class="line">            <span class="n">state</span><span class="p">.</span><span class="n">identifiableComponent</span><span class="p">.</span><span class="n">update</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">default</span><span class="o">:</span>
+</span><span class="line">            <span class="k">break</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">return</span> <span class="n">state</span>
+</span><span class="line">    <span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>こんな感じで、ステートが更新したときに、<code>identifiableComponent.update()</code> を呼び出すと状態が更新されたことをマークします。
+これで、ステートが更新されたときだけ UI を更新するようなコードを次のように書けるようになります。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td>
+<td class="code"><pre><code class="swift"><span class="line"><span class="n">store</span><span class="p">.</span><span class="n">rx</span><span class="p">.</span><span class="n">state</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">userState</span> <span class="p">}</span>
+</span><span class="line">  <span class="p">.</span><span class="n">distinctUntilChanged</span><span class="p">()</span>
+</span><span class="line">  <span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">name</span> <span class="p">}</span>
+</span><span class="line">  <span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="nl">to</span><span class="p">:</span> <span class="n">nameLabel</span><span class="p">.</span><span class="n">rx</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</span><span class="line">  <span class="p">.</span><span class="n">disposed</span><span class="p">(</span><span class="nl">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
+
+
+<p>パフォーマンスも気にせず使えるようになりました。</p>
+
+<p>既存のプロジェクトからの抜粋なので、一部省略している箇所があります。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Game Programming Patterns ソフトウェア開発の問題解決メニュー (impress top gear)]]></title>
@@ -2283,94 +2675,6 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </tr></table></div></figure></notextile></div>
 
 
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[SwiftはenumをAnyObject型の変数に入れられない]]></title>
-    <link href="http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/"/>
-    <updated>2014-07-31T10:39:48+09:00</updated>
-    <id>http://hamasyou.com/blog/2014/07/31/swift-enum-anyobject/</id>
-    <content type="html"><![CDATA[<p>Swift で <em>enum</em> を扱う際にハマった問題です。確認は <em>Xcode6 beta4</em> で行っています。</p>
-
-<h3>Swift の enum は AnyObject 型変数に代入できない</h3>
-
-<p>Swift では <code>enum</code> を <code>AnyObject</code> 型の変数に入れることができません。コンパイルエラーになります。<code>Any</code> 型なら代入できます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td>
-<td class="code"><pre><code class="swift"><span class="line"><span class="k">enum</span> <span class="nl">SomeType</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">case</span> <span class="n">None</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class="line">    <span class="k">case</span> <span class="n">Something</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="k">let</span> <span class="n">something</span> <span class="o">=</span> <span class="n">SomeType</span><span class="p">.</span><span class="n">None</span>
-</span><span class="line"><span class="n">something</span>                                     <span class="c1">// Enum Value</span>
-</span><span class="line">
-</span><span class="line"><span class="k">let</span> <span class="nl">anything</span><span class="p">:</span> <span class="n">AnyObject</span> <span class="o">=</span> <span class="n">SomeType</span><span class="p">.</span><span class="n">Something</span>  <span class="c1">// error: type 'SomeType' does not conform to protocol 'AnyObject'</span>
-</span><span class="line">
-</span><span class="line"><span class="k">let</span> <span class="nl">any</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">SomeType</span><span class="p">.</span><span class="n">Something</span>             <span class="c1">// Enum Value</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。</p>
-
-<h4>ReactiveCocoa とかと組み合わせるときにこまる</h4>
-
-<p>これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" rel="external nofollow" title="ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
-<code>enum</code> で設定する例えば <code>UITableViewCellAccessoryType</code> なんかを使いたい場合にコンパイルエラーになってしまいます。</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
-<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td>
-<td class="code"><pre><code class="swift"><span class="line"><span class="c1">// これはコンパイルエラーになる</span>
-</span><span class="line"><span class="n">RAC</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"cell.accessoryType"</span><span class="p">)</span> <span class="o">=</span> <span class="n">RACObserve</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"viewModel.checked"</span><span class="p">).</span><span class="n">map</span> <span class="p">{</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Bool</span><span class="p">)</span> <span class="o">?</span> <span class="n">UITableViewCellAccessoryType</span><span class="p">.</span><span class="nl">Checkmark</span> <span class="p">:</span> <span class="n">UITableViewCellAccessoryType</span><span class="p">.</span><span class="n">None</span> <span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">// こうしないといけない。。</span>
-</span><span class="line"><span class="n">RACObserve</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">viewModel</span><span class="p">,</span> <span class="s">"checked"</span><span class="p">)</span>
-</span><span class="line">    <span class="p">.</span><span class="n">subscribeNext</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="nb">self</span><span class="p">]</span> <span class="n">arg</span> <span class="k">in</span>
-</span><span class="line">        <span class="k">let</span> <span class="n">checked</span> <span class="o">=</span> <span class="n">arg</span> <span class="kt">as</span> <span class="n">Bool</span>
-</span><span class="line">        <span class="nb">self</span><span class="o">!</span><span class="p">.</span><span class="n">accessoryType</span> <span class="o">=</span> <span class="n">checked</span> <span class="o">?</span> <span class="p">.</span><span class="nl">Checkmark</span> <span class="p">:</span> <span class="p">.</span><span class="n">None</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
-
-
-<p>既存の Objective-C ライブラリで <code>id</code> が使われている箇所が、Swift では <code>AnyObject</code> に対応するので、
-Closure 等で <code>id</code> を引数に取ったり、<code>id</code> を戻り値にしていたりする箇所が <code>AnyObject</code> になってしまい、
-<code>enum</code> を利用することができません。</p>
-
-<p>変数に代入するだけなら <code>Any</code> 型にすればいいんですが、既存ライブラリとの連携では難しそうです。 <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>
-これ、何かやり方ないんでしょうかね。。ReactiveSwift 待ちかなぁ</p>
-<div class="footnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>Any 型にすれば代入できることを <a href="https://twitter.com/takabosoft" rel="external nofollow" title="@takabosoft">@takabosoft</a> さんに教えてもらいました。ありがとうございます！<a href="#fnref:1" rev="footnote">↩</a></p>
-</li>
-</ol>
-</div>
 
 ]]></content>
   </entry>
