@@ -19,7 +19,7 @@ Swift ライブラリの [ReSwift](https://github.com/ReSwift/ReSwift) を [RxSw
 
 ## ReSwift とは
 
-ReSwift とは、iOS アプリを `[Redux](https://github.com/reactjs/redux)` のように作れるようにしてくれるライブラリです。
+ReSwift とは、iOS アプリを [Redux](https://github.com/reactjs/redux) のように作れるようにしてくれるライブラリです。
 
 スマホアプリを作っていると
 
