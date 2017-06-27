@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: 距離 | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/ju-li/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-05-10T12:02:50+09:00</updated>
+  <updated>2017-06-27T15:39:53+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -27,10 +27,10 @@
 
 
 
-<ul><li><a href="http://prog47.blogdns.org/blog/index.php?e=283" rel="external nofollow">緯度、経度から距離と向きを算出 - 中年プログラマblog</a></li></ul>
+<ul><li>緯度、経度から距離と向きを算出 - 中年プログラマblog</li></ul>
 
 
-
+<p>※現在リンク切れのため、ページのタイトルのみ記載させていただきます。</p>
 
 <!-- more -->
 
@@ -55,17 +55,17 @@
     lng1 = lng1 * Math.PI / <span class="num">180</span>;
     lat2 = lat2 * Math.PI / <span class="num">180</span>;
     lng2 = lng2 * Math.PI / <span class="num">180</span>;
- 
+
     <span class="keyword">var</span> A = <span class="num">6378140</span>;
     <span class="keyword">var</span> B = <span class="num">6356755</span>;
     <span class="keyword">var</span> F = (A - B) / A;
- 
+
     <span class="keyword">var</span> P1 = Math.atan((B / A) * Math.tan(lat1));
     <span class="keyword">var</span> P2 = Math.atan((B / A) * Math.tan(lat2));
- 
+
     <span class="keyword">var</span> X = Math.acos(Math.sin(P1) * Math.sin(P2) + Math.cos(P1) * Math.cos(P2) * Math.cos(lng1 - lng2));
     <span class="keyword">var</span> L = (F / <span class="num">8</span>) * ((Math.sin(X) - X) * Math.pow((Math.sin(P1) + Math.sin(P2)), <span class="num">2</span>) / Math.pow(Math.cos(X / <span class="num">2</span>), <span class="num">2</span>) - (Math.sin(X) - X) * Math.pow(Math.sin(P1) - Math.sin(P2), <span class="num">2</span>) / Math.pow(Math.sin(X), <span class="num">2</span>));
- 
+
     distance = A * (X + L);
     <span class="keyword">var</span> decimal_no = Math.pow(<span class="num">10</span>, precision);
     distance = Math.round(decimal_no * distance / <span class="num">1</span>) / decimal_no;   <span class="rem">// kmに変換するときは(1000で割る)</span>
@@ -93,8 +93,6 @@
   <span class="keyword">var</span> dirN0 = (dirE0 + <span class="num">90</span>) % <span class="num">360</span>; <span class="rem">//(dirE0+90)÷360の余りを出力 北向きが０度の方向</span>
   <span class="keyword">return</span> dirN0;
 }</pre>
-
-
 
 ]]></content>
   </entry>
