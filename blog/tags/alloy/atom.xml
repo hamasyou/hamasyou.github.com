@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Alloy | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/alloy/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T15:18:24+09:00</updated>
+  <updated>2017-09-03T18:04:43+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -420,42 +420,81 @@ console.log('convertUnitToSystem: ' + unit.convertUnitToSystem('130dp'));
 console.log('-----');
 </code></pre>
 
-<p>{% terminal %}
-[INFO] :   &mdash;&ndash; iPhone OS &mdash;&ndash;
-[INFO] :   Ti.Platform.displayCaps.density: high
-[INFO] :   Ti.Platform.displayCaps.dpi: 320
-[INFO] :   Ti.Platform.displayCaps.platformHeight: 568
-[INFO] :   Ti.Platform.displayCaps.platformWidth: 320
-[INFO] :   dpToPX: 260
-[INFO] :   dpToSystem: 130
-[INFO] :   pxToDP: 65
-[INFO] :   pxToSystem: 65
-[INFO] :   systemToPX: 260
-[INFO] :   systemToDP: 130
-[INFO] :   convertUnitToPX: 260
-[INFO] :   convertUnitToDP: 130
-[INFO] :   convertUnitToSystem: 130
-[INFO] :   &mdash;&ndash;</p>
-
-<p>[INFO] :   &mdash;&ndash; android &mdash;&ndash;
-[INFO] :   Ti.Platform.displayCaps.density: xhigh
-[INFO] :   Ti.Platform.displayCaps.dpi: 320
-[INFO] :   Ti.Platform.displayCaps.platformHeight: 1280
-[INFO] :   Ti.Platform.displayCaps.platformWidth: 720
-[INFO] :   Ti.Platform.displayCaps.xdpi: 345.0566101074219
-[INFO] :   Ti.Platform.displayCaps.ydpi: 342.2315673828125
-[INFO] :   Ti.Platform.displayCaps.logicalDensityFactor: 2
-[INFO] :   dpToPX: 260
-[INFO] :   dpToSystem: 260
-[INFO] :   pxToDP: 65
-[INFO] :   pxToSystem: 130
-[INFO] :   systemToPX: 130
-[INFO] :   systemToDP: 65
-[INFO] :   convertUnitToPX: 260
-[INFO] :   convertUnitToDP: 130
-[INFO] :   convertUnitToSystem: 260
-[INFO] :   &mdash;&ndash;
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line output'>[INFO] :   &mdash;&ndash; iPhone OS &mdash;&ndash;
+</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.density: high
+</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.dpi: 320
+</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.platformHeight: 568
+</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.platformWidth: 320
+</span><span class='line output'>[INFO] :   dpToPX: 260
+</span><span class='line output'>[INFO] :   dpToSystem: 130
+</span><span class='line output'>[INFO] :   pxToDP: 65
+</span><span class='line output'>[INFO] :   pxToSystem: 65
+</span><span class='line output'>[INFO] :   systemToPX: 260
+</span><span class='line output'>[INFO] :   systemToDP: 130
+</span><span class='line output'>[INFO] :   convertUnitToPX: 260
+</span><span class='line output'>[INFO] :   convertUnitToDP: 130
+</span><span class='line output'>[INFO] :   convertUnitToSystem: 130
+</span><span class='line output'>[INFO] :   &mdash;&ndash;</p>
+</span><span class='line output'>
+</span><span class='line output'><p>[INFO] :   &mdash;&ndash; android &mdash;&ndash;
+</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.density: xhigh
+</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.dpi: 320
+</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.platformHeight: 1280
+</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.platformWidth: 720
+</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.xdpi: 345.0566101074219
+</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.ydpi: 342.2315673828125
+</span><span class='line output'>[INFO] :   Ti.Platform.displayCaps.logicalDensityFactor: 2
+</span><span class='line output'>[INFO] :   dpToPX: 260
+</span><span class='line output'>[INFO] :   dpToSystem: 260
+</span><span class='line output'>[INFO] :   pxToDP: 65
+</span><span class='line output'>[INFO] :   pxToSystem: 130
+</span><span class='line output'>[INFO] :   systemToPX: 130
+</span><span class='line output'>[INFO] :   systemToDP: 65
+</span><span class='line output'>[INFO] :   convertUnitToPX: 260
+</span><span class='line output'>[INFO] :   convertUnitToDP: 130
+</span><span class='line output'>[INFO] :   convertUnitToSystem: 260
+</span><span class='line output'>[INFO] :   &mdash;&ndash;</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p>ご利用は計画的に。</p>
 ]]></content>

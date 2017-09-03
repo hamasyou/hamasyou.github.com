@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: spec | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/spec/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T15:18:24+09:00</updated>
+  <updated>2017-09-03T18:04:43+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -33,10 +33,16 @@
 
 <p>まずは、チュートリアル用のプロジェクトを作成します。</p>
 
-<p>{% terminal %}
-$ rails new specbox &ndash;skip-bundle
-$ cd specbox
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>rails new specbox &ndash;skip-bundle</span><span class='line command'>cd specbox</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p><code>Gemfile</code> を開いて次の gem を追記します。</p>
 
@@ -51,15 +57,21 @@ end
 
 <p>rspec と scaffold の設定を行います。</p>
 
-<p>{% terminal %}
-$ bundle install &ndash;path vendor/bundle
-$ bundle exec rails g rspec:install
-$ bundle exec guard init rspec
-$ bundle exec rails g model Book title:string author:string price:integer
-$ bundle exec rails g scaffold_controller Books
-$ bundle exec rake db:migrate
-$ bundle exec rake db:test:prepare
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>bundle install &ndash;path vendor/bundle</span><span class='line command'>bundle exec rails g rspec:install</span><span class='line command'>bundle exec guard init rspec</span><span class='line command'>bundle exec rails g model Book title:string author:string price:integer</span><span class='line command'>bundle exec rails g scaffold_controller Books</span><span class='line command'>bundle exec rake db:migrate</span><span class='line command'>bundle exec rake db:test:prepare</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p><code>config/routes.rb</code> にルーティングを追加します。</p>
 
@@ -72,25 +84,46 @@ end
 
 <p>テストを実行します。</p>
 
-<p>{% terminal %}
-$ bundle exec guard
-15:12:01 - INFO - Run all
-15:12:01 - INFO - Running all specs
-..**&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</p>
-
-<p>Pending:
-  Book add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/models/book_spec.rb
-    # No reason given
-    # ./spec/models/book_spec.rb:4
-  BooksHelper add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/helpers/books_helper_spec.rb
-    # No reason given
-    # ./spec/helpers/books_helper_spec.rb:14</p>
-
-<p>Finished in 0.18066 seconds
-30 examples, 0 failures, 2 pending</p>
-
-<p>Randomized with seed 14063
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>bundle exec guard</span><span class='line output'>15:12:01 - INFO - Run all
+</span><span class='line output'>15:12:01 - INFO - Running all specs
+</span><span class='line output'>..**&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</p>
+</span><span class='line output'>
+</span><span class='line output'><p>Pending:
+</span><span class='line output'>  Book add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/models/book_spec.rb
+</span><span class='line output'>    # No reason given
+</span><span class='line output'>    # ./spec/models/book_spec.rb:4
+</span><span class='line output'>  BooksHelper add some examples to (or delete) /Users/hamasyou/tmp/specbox/spec/helpers/books_helper_spec.rb
+</span><span class='line output'>    # No reason given
+</span><span class='line output'>    # ./spec/helpers/books_helper_spec.rb:14</p>
+</span><span class='line output'>
+</span><span class='line output'><p>Finished in 0.18066 seconds
+</span><span class='line output'>30 examples, 0 failures, 2 pending</p>
+</span><span class='line output'>
+</span><span class='line output'><p>Randomized with seed 14063</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p>これで rspec の設定ができました。それでは <em>request spec</em> を書いていきます。</p>
 

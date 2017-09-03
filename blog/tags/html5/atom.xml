@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: HTML5 | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/html5/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T15:18:24+09:00</updated>
+  <updated>2017-09-03T18:04:43+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -44,172 +44,336 @@
 
 <p>まず、Rails 環境を作成して足場をつくります。</p>
 
-<p>{% terminal %}
-$ rails new blog &ndash;skip-bundle
-      create
-      create  README.rdoc
-      create  Rakefile
-      create  config.ru
-      create  .gitignore
-      create  Gemfile
-      create  app
-      create  app/assets/javascripts/application.js
-      create  app/assets/stylesheets/application.css
-      create  app/controllers/application_controller.rb
-      create  app/helpers/application_helper.rb
-      create  app/views/layouts/application.html.erb
-      create  app/assets/images/.keep
-      create  app/mailers/.keep
-      create  app/models/.keep
-      create  app/controllers/concerns/.keep
-      create  app/models/concerns/.keep
-      create  bin
-      create  bin/bundle
-      create  bin/rails
-      create  bin/rake
-      create  config
-      create  config/routes.rb
-      create  config/application.rb
-      create  config/environment.rb
-      create  config/environments
-      create  config/environments/development.rb
-      create  config/environments/production.rb
-      create  config/environments/test.rb
-      create  config/initializers
-      create  config/initializers/backtrace_silencers.rb
-      create  config/initializers/filter_parameter_logging.rb
-      create  config/initializers/inflections.rb
-      create  config/initializers/mime_types.rb
-      create  config/initializers/secret_token.rb
-      create  config/initializers/session_store.rb
-      create  config/initializers/wrap_parameters.rb
-      create  config/locales
-      create  config/locales/en.yml
-      create  config/boot.rb
-      create  config/database.yml
-      create  db
-      create  db/seeds.rb
-      create  lib
-      create  lib/tasks
-      create  lib/tasks/.keep
-      create  lib/assets
-      create  lib/assets/.keep
-      create  log
-      create  log/.keep
-      create  public
-      create  public/404.html
-      create  public/422.html
-      create  public/500.html
-      create  public/favicon.ico
-      create  public/robots.txt
-      create  test/fixtures
-      create  test/fixtures/.keep
-      create  test/controllers
-      create  test/controllers/.keep
-      create  test/mailers
-      create  test/mailers/.keep
-      create  test/models
-      create  test/models/.keep
-      create  test/helpers
-      create  test/helpers/.keep
-      create  test/integration
-      create  test/integration/.keep
-      create  test/test_helper.rb
-      create  tmp/cache
-      create  tmp/cache/assets
-      create  vendor/assets/javascripts
-      create  vendor/assets/javascripts/.keep
-      create  vendor/assets/stylesheets
-      create  vendor/assets/stylesheets/.keep
-$ cd blog
-$ bundle install &ndash;path vendor/bundle
-Fetching gem metadata from https://rubygems.org/……….
-Fetching gem metadata from https://rubygems.org/..
-Resolving dependencies…
-Installing rake (10.1.0)
-Installing i18n (0.6.5)
-Installing minitest (4.7.5)
-Installing multi_json (1.8.2)
-Installing atomic (1.1.14)
-Installing thread_safe (0.1.3)
-Installing tzinfo (0.3.38)
-Installing activesupport (4.0.1)
-Installing builder (3.1.4)
-Installing erubis (2.7.0)
-Installing rack (1.5.2)
-Installing rack-test (0.6.2)
-Installing actionpack (4.0.1)
-Installing mime-types (1.25.1)
-Installing polyglot (0.3.3)
-Installing treetop (1.4.15)
-Installing mail (2.5.4)
-Installing actionmailer (4.0.1)
-Installing activemodel (4.0.1)
-Installing activerecord-deprecated_finders (1.0.3)
-Installing arel (4.0.1)
-Installing activerecord (4.0.1)
-Using bundler (1.3.1)
-Installing coffee-script-source (1.6.3)
-Installing execjs (2.0.2)
-Installing coffee-script (2.2.0)
-Installing thor (0.18.1)
-Installing railties (4.0.1)
-Installing coffee-rails (4.0.1)
-Installing hike (1.2.3)
-Installing jbuilder (1.5.2)
-Installing jquery-rails (3.0.4)
-Installing json (1.8.1)
-Installing tilt (1.4.1)
-Installing sprockets (2.10.1)
-Installing sprockets-rails (2.0.1)
-Installing rails (4.0.1)
-Installing rdoc (3.12.2)
-Installing sass (3.2.12)
-Installing sass-rails (4.0.1)
-Installing sdoc (0.3.20)
-Installing sqlite3 (1.3.8)
-Installing turbolinks (1.3.1)
-Installing uglifier (2.3.2)
-$ bundle exec rails g scaffold post
-      invoke  active_record
-      create    db/migrate/20131203101546_create_posts.rb
-      create    app/models/post.rb
-      invoke    test_unit
-      create      test/models/post_test.rb
-      create      test/fixtures/posts.yml
-      invoke  resource_route
-       route    resources :posts
-      invoke  scaffold_controller
-      create    app/controllers/posts_controller.rb
-      invoke    erb
-      create      app/views/posts
-      create      app/views/posts/index.html.erb
-      create      app/views/posts/edit.html.erb
-      create      app/views/posts/show.html.erb
-      create      app/views/posts/new.html.erb
-      create      app/views/posts/_form.html.erb
-      invoke    test_unit
-      create      test/controllers/posts_controller_test.rb
-      invoke    helper
-      create      app/helpers/posts_helper.rb
-      invoke      test_unit
-      create        test/helpers/posts_helper_test.rb
-      invoke    jbuilder
-      create      app/views/posts/index.json.jbuilder
-      create      app/views/posts/show.json.jbuilder
-      invoke  assets
-      invoke    coffee
-      create      app/assets/javascripts/posts.js.coffee
-      invoke    scss
-      create      app/assets/stylesheets/posts.css.scss
-      invoke  scss
-      create    app/assets/stylesheets/scaffolds.css.scss
-$ bundle exec rake db:migrate
-==  CreatePosts: migrating ====================================================
-– create_table(:posts)
-   -> 0.0010s
-==  CreatePosts: migrated (0.0011s) ===========================================
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>rails new blog &ndash;skip-bundle</span><span class='line output'>      create
+</span><span class='line output'>      create  README.rdoc
+</span><span class='line output'>      create  Rakefile
+</span><span class='line output'>      create  config.ru
+</span><span class='line output'>      create  .gitignore
+</span><span class='line output'>      create  Gemfile
+</span><span class='line output'>      create  app
+</span><span class='line output'>      create  app/assets/javascripts/application.js
+</span><span class='line output'>      create  app/assets/stylesheets/application.css
+</span><span class='line output'>      create  app/controllers/application_controller.rb
+</span><span class='line output'>      create  app/helpers/application_helper.rb
+</span><span class='line output'>      create  app/views/layouts/application.html.erb
+</span><span class='line output'>      create  app/assets/images/.keep
+</span><span class='line output'>      create  app/mailers/.keep
+</span><span class='line output'>      create  app/models/.keep
+</span><span class='line output'>      create  app/controllers/concerns/.keep
+</span><span class='line output'>      create  app/models/concerns/.keep
+</span><span class='line output'>      create  bin
+</span><span class='line output'>      create  bin/bundle
+</span><span class='line output'>      create  bin/rails
+</span><span class='line output'>      create  bin/rake
+</span><span class='line output'>      create  config
+</span><span class='line output'>      create  config/routes.rb
+</span><span class='line output'>      create  config/application.rb
+</span><span class='line output'>      create  config/environment.rb
+</span><span class='line output'>      create  config/environments
+</span><span class='line output'>      create  config/environments/development.rb
+</span><span class='line output'>      create  config/environments/production.rb
+</span><span class='line output'>      create  config/environments/test.rb
+</span><span class='line output'>      create  config/initializers
+</span><span class='line output'>      create  config/initializers/backtrace_silencers.rb
+</span><span class='line output'>      create  config/initializers/filter_parameter_logging.rb
+</span><span class='line output'>      create  config/initializers/inflections.rb
+</span><span class='line output'>      create  config/initializers/mime_types.rb
+</span><span class='line output'>      create  config/initializers/secret_token.rb
+</span><span class='line output'>      create  config/initializers/session_store.rb
+</span><span class='line output'>      create  config/initializers/wrap_parameters.rb
+</span><span class='line output'>      create  config/locales
+</span><span class='line output'>      create  config/locales/en.yml
+</span><span class='line output'>      create  config/boot.rb
+</span><span class='line output'>      create  config/database.yml
+</span><span class='line output'>      create  db
+</span><span class='line output'>      create  db/seeds.rb
+</span><span class='line output'>      create  lib
+</span><span class='line output'>      create  lib/tasks
+</span><span class='line output'>      create  lib/tasks/.keep
+</span><span class='line output'>      create  lib/assets
+</span><span class='line output'>      create  lib/assets/.keep
+</span><span class='line output'>      create  log
+</span><span class='line output'>      create  log/.keep
+</span><span class='line output'>      create  public
+</span><span class='line output'>      create  public/404.html
+</span><span class='line output'>      create  public/422.html
+</span><span class='line output'>      create  public/500.html
+</span><span class='line output'>      create  public/favicon.ico
+</span><span class='line output'>      create  public/robots.txt
+</span><span class='line output'>      create  test/fixtures
+</span><span class='line output'>      create  test/fixtures/.keep
+</span><span class='line output'>      create  test/controllers
+</span><span class='line output'>      create  test/controllers/.keep
+</span><span class='line output'>      create  test/mailers
+</span><span class='line output'>      create  test/mailers/.keep
+</span><span class='line output'>      create  test/models
+</span><span class='line output'>      create  test/models/.keep
+</span><span class='line output'>      create  test/helpers
+</span><span class='line output'>      create  test/helpers/.keep
+</span><span class='line output'>      create  test/integration
+</span><span class='line output'>      create  test/integration/.keep
+</span><span class='line output'>      create  test/test_helper.rb
+</span><span class='line output'>      create  tmp/cache
+</span><span class='line output'>      create  tmp/cache/assets
+</span><span class='line output'>      create  vendor/assets/javascripts
+</span><span class='line output'>      create  vendor/assets/javascripts/.keep
+</span><span class='line output'>      create  vendor/assets/stylesheets
+</span><span class='line output'>      create  vendor/assets/stylesheets/.keep
+</span><span class='line command'>cd blog</span><span class='line command'>bundle install &ndash;path vendor/bundle</span><span class='line output'>Fetching gem metadata from https://rubygems.org/……….
+</span><span class='line output'>Fetching gem metadata from https://rubygems.org/..
+</span><span class='line output'>Resolving dependencies…
+</span><span class='line output'>Installing rake (10.1.0)
+</span><span class='line output'>Installing i18n (0.6.5)
+</span><span class='line output'>Installing minitest (4.7.5)
+</span><span class='line output'>Installing multi_json (1.8.2)
+</span><span class='line output'>Installing atomic (1.1.14)
+</span><span class='line output'>Installing thread_safe (0.1.3)
+</span><span class='line output'>Installing tzinfo (0.3.38)
+</span><span class='line output'>Installing activesupport (4.0.1)
+</span><span class='line output'>Installing builder (3.1.4)
+</span><span class='line output'>Installing erubis (2.7.0)
+</span><span class='line output'>Installing rack (1.5.2)
+</span><span class='line output'>Installing rack-test (0.6.2)
+</span><span class='line output'>Installing actionpack (4.0.1)
+</span><span class='line output'>Installing mime-types (1.25.1)
+</span><span class='line output'>Installing polyglot (0.3.3)
+</span><span class='line output'>Installing treetop (1.4.15)
+</span><span class='line output'>Installing mail (2.5.4)
+</span><span class='line output'>Installing actionmailer (4.0.1)
+</span><span class='line output'>Installing activemodel (4.0.1)
+</span><span class='line output'>Installing activerecord-deprecated_finders (1.0.3)
+</span><span class='line output'>Installing arel (4.0.1)
+</span><span class='line output'>Installing activerecord (4.0.1)
+</span><span class='line output'>Using bundler (1.3.1)
+</span><span class='line output'>Installing coffee-script-source (1.6.3)
+</span><span class='line output'>Installing execjs (2.0.2)
+</span><span class='line output'>Installing coffee-script (2.2.0)
+</span><span class='line output'>Installing thor (0.18.1)
+</span><span class='line output'>Installing railties (4.0.1)
+</span><span class='line output'>Installing coffee-rails (4.0.1)
+</span><span class='line output'>Installing hike (1.2.3)
+</span><span class='line output'>Installing jbuilder (1.5.2)
+</span><span class='line output'>Installing jquery-rails (3.0.4)
+</span><span class='line output'>Installing json (1.8.1)
+</span><span class='line output'>Installing tilt (1.4.1)
+</span><span class='line output'>Installing sprockets (2.10.1)
+</span><span class='line output'>Installing sprockets-rails (2.0.1)
+</span><span class='line output'>Installing rails (4.0.1)
+</span><span class='line output'>Installing rdoc (3.12.2)
+</span><span class='line output'>Installing sass (3.2.12)
+</span><span class='line output'>Installing sass-rails (4.0.1)
+</span><span class='line output'>Installing sdoc (0.3.20)
+</span><span class='line output'>Installing sqlite3 (1.3.8)
+</span><span class='line output'>Installing turbolinks (1.3.1)
+</span><span class='line output'>Installing uglifier (2.3.2)
+</span><span class='line command'>bundle exec rails g scaffold post</span><span class='line output'>      invoke  active_record
+</span><span class='line output'>      create    db/migrate/20131203101546_create_posts.rb
+</span><span class='line output'>      create    app/models/post.rb
+</span><span class='line output'>      invoke    test_unit
+</span><span class='line output'>      create      test/models/post_test.rb
+</span><span class='line output'>      create      test/fixtures/posts.yml
+</span><span class='line output'>      invoke  resource_route
+</span><span class='line output'>       route    resources :posts
+</span><span class='line output'>      invoke  scaffold_controller
+</span><span class='line output'>      create    app/controllers/posts_controller.rb
+</span><span class='line output'>      invoke    erb
+</span><span class='line output'>      create      app/views/posts
+</span><span class='line output'>      create      app/views/posts/index.html.erb
+</span><span class='line output'>      create      app/views/posts/edit.html.erb
+</span><span class='line output'>      create      app/views/posts/show.html.erb
+</span><span class='line output'>      create      app/views/posts/new.html.erb
+</span><span class='line output'>      create      app/views/posts/_form.html.erb
+</span><span class='line output'>      invoke    test_unit
+</span><span class='line output'>      create      test/controllers/posts_controller_test.rb
+</span><span class='line output'>      invoke    helper
+</span><span class='line output'>      create      app/helpers/posts_helper.rb
+</span><span class='line output'>      invoke      test_unit
+</span><span class='line output'>      create        test/helpers/posts_helper_test.rb
+</span><span class='line output'>      invoke    jbuilder
+</span><span class='line output'>      create      app/views/posts/index.json.jbuilder
+</span><span class='line output'>      create      app/views/posts/show.json.jbuilder
+</span><span class='line output'>      invoke  assets
+</span><span class='line output'>      invoke    coffee
+</span><span class='line output'>      create      app/assets/javascripts/posts.js.coffee
+</span><span class='line output'>      invoke    scss
+</span><span class='line output'>      create      app/assets/stylesheets/posts.css.scss
+</span><span class='line output'>      invoke  scss
+</span><span class='line output'>      create    app/assets/stylesheets/scaffolds.css.scss
+</span><span class='line command'>bundle exec rake db:migrate</span><span class='line output'>==  CreatePosts: migrating ====================================================
+</span><span class='line output'>– create_table(:posts)
+</span><span class='line output'>   -> 0.0010s
+</span><span class='line output'>==  CreatePosts: migrated (0.0011s) ===========================================</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p><code>app/views/posts/_form.html.erb</code> を開いて次のコードを追加します。このコードが手書き入力部分（canvas）になります。</p>
 

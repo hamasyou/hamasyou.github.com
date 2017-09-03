@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: SEO | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/seo/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T15:18:24+09:00</updated>
+  <updated>2017-09-03T18:04:43+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -25,11 +25,11 @@
 
 <p>初期値では <code>_includes/head.html</code> の中に</p>
 
-<p>{% raw %}
+<p>
 <code>html _includes/head.html
 &lt;link rel="canonical" href="{{ canonical }}"&gt;
 </code>
-{% endraw %}</p>
+</p>
 
 <p>となっていますが、これだと吐き出される個別ページの HTML は</p>
 
@@ -44,11 +44,11 @@
 
 <p>なので、<code>canonical</code> は</p>
 
-<p>{% raw %}
+<p>
 <code>html _includes/head.html
 &lt;link rel="canonical" href="{{ canonical }}/"&gt;
 </code>
-{% endraw %}</p>
+</p>
 
 <p>のように、末尾に <code>/</code> を入れてやる必要があります。</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: 読むべき | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/du-mubeki/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T15:18:24+09:00</updated>
+  <updated>2017-09-03T18:04:43+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -233,9 +233,7 @@ Stork.$ = Stork.jQuery = jQuery.noConflict(true);
 CSS が読み込まれたタイミングを知りたい場合には、少し変わった方法が必要になります。ブラウザによっては、<code>link</code> タグは <code>script</code> タグのように読み込みが終わったタイミングで <code>load</code> イベントを発生させない場合があるからです。
 CSS が読み込まれたかどうかをチェックするには、要素にスタイルが当たったかどうかを定期的にチェックする必要があります。</p>
 
-<p>{% blockquote %}
-JavaScript やその他のデータを読み込むためのライブラリである Yepnope.js では、document.styleSheets を使って新しく挿入されたスタイルシートをスキャンする方法をとっている。
-{% endblockquote %}</p>
+<p><blockquote><p>JavaScript やその他のデータを読み込むためのライブラリである Yepnope.js では、document.styleSheets を使って新しく挿入されたスタイルシートをスキャンする方法をとっている。</p></blockquote></p>
 
 <h5>JavaScript で要素の色を調べるときは注意！</h5>
 
@@ -589,9 +587,7 @@ window.addEventListener('message', receiver, false);
 
 <h3>ポップアップブロック機能を回避する方法</h3>
 
-<p>{% blockquote %}
-これを避けるには、新しいウィンドウを常に<strong>ユーザーのアクションの直接の結果</strong>として開くようにすることだ。ユーザーのアクションからウィンドウを開くまでの間に遅延が存在すると、多くのブラウザはそれを悪意ある動作とみなして処理を阻止してしまう。
-{% endblockquote %}</p>
+<p><blockquote><p>これを避けるには、新しいウィンドウを常に<strong>ユーザーのアクションの直接の結果</strong>として開くようにすることだ。ユーザーのアクションからウィンドウを開くまでの間に遅延が存在すると、多くのブラウザはそれを悪意ある動作とみなして処理を阻止してしまう。</p></blockquote></p>
 
 <h2>感想</h2>
 

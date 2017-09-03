@@ -268,36 +268,70 @@
 
 
 
-<pre class="code"><span class="rem">//</span>
-<span class="rem">// 測地線航海算法の公式</span>
-<span class="rem">//</span>
-<span class="keyword">function</span> geoDistance(lat1, lng1, lat2, lng2, precision) {
-  <span class="rem">// 引数　precision は小数点以下の桁数（距離の精度）</span>
-  <span class="keyword">var</span> distance = <span class="num">0</span>;
-  <span class="keyword">if</span> ((Math.abs(lat1 - lat2) &lt; <span class="num">0.00001</span>) &amp;&amp; (Math.abs(lng1 - lng2) &lt; <span class="num">0.00001</span>)) {
-    distance = <span class="num">0</span>;
-  } <span class="keyword">else</span> {
-    lat1 = lat1 * Math.PI / <span class="num">180</span>;
-    lng1 = lng1 * Math.PI / <span class="num">180</span>;
-    lat2 = lat2 * Math.PI / <span class="num">180</span>;
-    lng2 = lng2 * Math.PI / <span class="num">180</span>;
-
-    <span class="keyword">var</span> A = <span class="num">6378140</span>;
-    <span class="keyword">var</span> B = <span class="num">6356755</span>;
-    <span class="keyword">var</span> F = (A - B) / A;
-
-    <span class="keyword">var</span> P1 = Math.atan((B / A) * Math.tan(lat1));
-    <span class="keyword">var</span> P2 = Math.atan((B / A) * Math.tan(lat2));
-
-    <span class="keyword">var</span> X = Math.acos(Math.sin(P1) * Math.sin(P2) + Math.cos(P1) * Math.cos(P2) * Math.cos(lng1 - lng2));
-    <span class="keyword">var</span> L = (F / <span class="num">8</span>) * ((Math.sin(X) - X) * Math.pow((Math.sin(P1) + Math.sin(P2)), <span class="num">2</span>) / Math.pow(Math.cos(X / <span class="num">2</span>), <span class="num">2</span>) - (Math.sin(X) - X) * Math.pow(Math.sin(P1) - Math.sin(P2), <span class="num">2</span>) / Math.pow(Math.sin(X), <span class="num">2</span>));
-
-    distance = A * (X + L);
-    <span class="keyword">var</span> decimal_no = Math.pow(<span class="num">10</span>, precision);
-    distance = Math.round(decimal_no * distance / <span class="num">1</span>) / decimal_no;   <span class="rem">// kmに変換するときは(1000で割る)</span>
-  }
-  <span class="keyword">return</span> distance;
-}</pre>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+</pre></td>
+<td class="code"><pre><code class="js"><span class="line"><span class="c1">//</span>
+</span><span class="line"><span class="c1">// 測地線航海算法の公式</span>
+</span><span class="line"><span class="c1">//</span>
+</span><span class="line"><span class="kd">function</span> <span class="nx">geoDistance</span><span class="p">(</span><span class="nx">lat1</span><span class="p">,</span> <span class="nx">lng1</span><span class="p">,</span> <span class="nx">lat2</span><span class="p">,</span> <span class="nx">lng2</span><span class="p">,</span> <span class="nx">precision</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="c1">// 引数　precision は小数点以下の桁数（距離の精度）</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">distance</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">  <span class="k">if</span> <span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">lat1</span> <span class="o">-</span> <span class="nx">lat2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.00001</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">lng1</span> <span class="o">-</span> <span class="nx">lng2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.00001</span><span class="p">))</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">distance</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">lat1</span> <span class="o">=</span> <span class="nx">lat1</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">;</span>
+</span><span class="line">    <span class="nx">lng1</span> <span class="o">=</span> <span class="nx">lng1</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">;</span>
+</span><span class="line">    <span class="nx">lat2</span> <span class="o">=</span> <span class="nx">lat2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">;</span>
+</span><span class="line">    <span class="nx">lng2</span> <span class="o">=</span> <span class="nx">lng2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">var</span> <span class="nx">A</span> <span class="o">=</span> <span class="mi">6378140</span><span class="p">;</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">B</span> <span class="o">=</span> <span class="mi">6356755</span><span class="p">;</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">F</span> <span class="o">=</span> <span class="p">(</span><span class="nx">A</span> <span class="o">-</span> <span class="nx">B</span><span class="p">)</span> <span class="o">/</span> <span class="nx">A</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">var</span> <span class="nx">P1</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">atan</span><span class="p">((</span><span class="nx">B</span> <span class="o">/</span> <span class="nx">A</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">tan</span><span class="p">(</span><span class="nx">lat1</span><span class="p">));</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">P2</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">atan</span><span class="p">((</span><span class="nx">B</span> <span class="o">/</span> <span class="nx">A</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">tan</span><span class="p">(</span><span class="nx">lat2</span><span class="p">));</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">var</span> <span class="nx">X</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">acos</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">P1</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">P2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">P1</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">P2</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">lng1</span> <span class="o">-</span> <span class="nx">lng2</span><span class="p">));</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">L</span> <span class="o">=</span> <span class="p">(</span><span class="nx">F</span> <span class="o">/</span> <span class="mi">8</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span> <span class="o">-</span> <span class="nx">X</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">P1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">P2</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">X</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span> <span class="o">-</span> <span class="nx">X</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">P1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">P2</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">X</span><span class="p">),</span> <span class="mi">2</span><span class="p">));</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">distance</span> <span class="o">=</span> <span class="nx">A</span> <span class="o">*</span> <span class="p">(</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">L</span><span class="p">);</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">decimal_no</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">precision</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">distance</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">decimal_no</span> <span class="o">*</span> <span class="nx">distance</span> <span class="o">/</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="nx">decimal_no</span><span class="p">;</span>   <span class="c1">// kmに変換するときは(1000で割る)</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">distance</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 
 
@@ -307,18 +341,34 @@
 
 
 
-<pre class="code"><span class="keyword">function</span> geoDirection(lat1, lng1, lat2, lng2) {
-  <span class="rem">// 緯度経度 lat1, lng1 の点を出発として、緯度経度 lat2, lng2 への方位</span>
-  <span class="rem">// 北を０度で右回りの角度０～３６０度</span>
-  <span class="keyword">var</span> Y = Math.cos(lng2 * Math.PI / <span class="num">180</span>) * Math.sin(lat2 * Math.PI / <span class="num">180</span> - lat1 * Math.PI / <span class="num">180</span>);
-  <span class="keyword">var</span> X = Math.cos(lng1 * Math.PI / <span class="num">180</span>) * Math.sin(lng2 * Math.PI / <span class="num">180</span>) - Math.sin(lng1 * Math.PI / <span class="num">180</span>) * Math.cos(lng2 * Math.PI / <span class="num">180</span>) * Math.cos(lat2 * Math.PI / <span class="num">180</span> - lat1 * Math.PI / <span class="num">180</span>);
-  <span class="keyword">var</span> dirE0 = <span class="num">180</span> * Math.atan2(Y, X) / Math.PI; <span class="rem">// 東向きが０度の方向</span>
-  <span class="keyword">if</span> (dirE0 &lt; <span class="num">0</span>) {
-    dirE0 = dirE0 + <span class="num">360</span>; <span class="rem">//0～360 にする。</span>
-  }
-  <span class="keyword">var</span> dirN0 = (dirE0 + <span class="num">90</span>) % <span class="num">360</span>; <span class="rem">//(dirE0+90)÷360の余りを出力 北向きが０度の方向</span>
-  <span class="keyword">return</span> dirN0;
-}</pre>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td>
+<td class="code"><pre><code class="js"><span class="line"><span class="kd">function</span> <span class="nx">geoDirection</span><span class="p">(</span><span class="nx">lat1</span><span class="p">,</span> <span class="nx">lng1</span><span class="p">,</span> <span class="nx">lat2</span><span class="p">,</span> <span class="nx">lng2</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="c1">// 緯度経度 lat1, lng1 の点を出発として、緯度経度 lat2, lng2 への方位</span>
+</span><span class="line">  <span class="c1">// 北を０度で右回りの角度０～３６０度</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">Y</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">lng2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">lat2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">-</span> <span class="nx">lat1</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">);</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">X</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">lng1</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">lng2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span> <span class="o">-</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">lng1</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">lng2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">lat2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">-</span> <span class="nx">lat1</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">);</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">dirE0</span> <span class="o">=</span> <span class="mi">180</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">atan2</span><span class="p">(</span><span class="nx">Y</span><span class="p">,</span> <span class="nx">X</span><span class="p">)</span> <span class="o">/</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span> <span class="c1">// 東向きが０度の方向</span>
+</span><span class="line">  <span class="k">if</span> <span class="p">(</span><span class="nx">dirE0</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">dirE0</span> <span class="o">=</span> <span class="nx">dirE0</span> <span class="o">+</span> <span class="mi">360</span><span class="p">;</span> <span class="c1">//0～360 にする。</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">dirN0</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dirE0</span> <span class="o">+</span> <span class="mi">90</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span><span class="p">;</span> <span class="c1">//(dirE0+90)÷360の余りを出力 北向きが０度の方向</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">dirN0</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td>
+</tr></table></div></figure></notextile></div>
 
 </div>
 

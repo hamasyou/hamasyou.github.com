@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: これは読むべき | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/korehadu-mubeki/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T15:18:24+09:00</updated>
+  <updated>2017-09-03T18:04:43+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -423,15 +423,7 @@ true
 <h2>プロトタイプ</h2>
 
 
-<p>{% blockquote  %}</p>
-
-<ul>
-<li>このプロパティは関数がコンストラクタのときのみ使われる</li>
-<li>この関数を使って作られたオブジェクトも、prototype プロパティを持ち、関数の prototype と同じオブジェクトを参照する。このオブジェクトのプロパティは自分のプロパティと同じように使える</li>
-</ul>
-
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p></p></p><p><ul><br/><li>このプロパティは関数がコンストラクタのときのみ使われる</li><br/><li>この関数を使って作られたオブジェクトも、prototype プロパティを持ち、関数の prototype と同じオブジェクトを参照する。このオブジェクトのプロパティは自分のプロパティと同じように使える</li><br/></ul></p><p><br/><p></p></blockquote></p>
 
 <h3>prototype プロパティ</h3>
 
@@ -581,12 +573,7 @@ Triangle.prototype.constructor = Triangle;
 <h3>テスト駆動開発における設計</h3>
 
 
-<p>{% blockquote 本書 P.48 %}
-<strong>テスト駆動開発では、「あらかじめ決められた大きな設計」はないが「最初の段階では設計はない」というわけではない。</strong></p>
-
-<p>TDD は、何も無いところから優れた設計を自動的に生み出すわけではなく、作業の進展とともに設計を進化させやすくするのである。TDD は、単体テストに強く依存しているため、他の部分から切り離して単独のコンポーネントに力を注ぐ開発スタイルになる。そのため、<em>コードの疎結合を保ち</em>、<em>単一責任の原則を守り</em>、不必要にコードが水ぶくれすることを防ぐために大きな力になる。TDD は設計プロセスをしっかりと制御するため、<em>設計に関する多くの決定をどうしてもそれが必要な時まで先送りする</em>ことができる。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p><strong>テスト駆動開発では、「あらかじめ決められた大きな設計」はないが「最初の段階では設計はない」というわけではない。</strong></p></p><p><p>TDD は、何も無いところから優れた設計を自動的に生み出すわけではなく、作業の進展とともに設計を進化させやすくするのである。TDD は、単体テストに強く依存しているため、他の部分から切り離して単独のコンポーネントに力を注ぐ開発スタイルになる。そのため、<em>コードの疎結合を保ち</em>、<em>単一責任の原則を守り</em>、不必要にコードが水ぶくれすることを防ぐために大きな力になる。TDD は設計プロセスをしっかりと制御するため、<em>設計に関する多くの決定をどうしてもそれが必要な時まで先送りする</em>ことができる。</p></p><p><p></p><footer><strong>本書 P.48</strong></footer></blockquote></p>
 
 <p>TDD で開発を始める最初は、大きな設計は不要であるが、ある程度最初に時間を割いて設計を行う。最初の設計の時に考えることは、「<em>特定の状況下でコードがどのように振舞わなければならないか</em>（<strong>単一責任の原則</strong>）」、「<em>コンポーネント間でどのように仕事を委譲しあうのか</em>（<strong>GRASPパターン</strong>）」である。</p>
 
@@ -598,10 +585,7 @@ Triangle.prototype.constructor = Triangle;
 <h3>テストフレームワーク</h3>
 
 
-<p>{% blockquote 本書 P.64 %}
-JavaScript のテストをするための事実上の標準はない。実際、JavaScript は汎用の標準ライブラリというものを持たないので、ブラウザのスクリプティングと直接関係のないプログラミングタスクはどれでも事実上の標準を持たないのである。この状況を改善するために、もともとはサーバーサイド JavaScript の標準化を目指していた CommonJS という活動がある。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>JavaScript のテストをするための事実上の標準はない。実際、JavaScript は汎用の標準ライブラリというものを持たないので、ブラウザのスクリプティングと直接関係のないプログラミングタスクはどれでも事実上の標準を持たないのである。この状況を改善するために、もともとはサーバーサイド JavaScript の標準化を目指していた CommonJS という活動がある。</p></p><p><p></p><footer><strong>本書 P.64</strong></footer></blockquote></p>
 
 <p>JavaScript のテストを行おうとすると、ブラウザ毎の挙動の違いや JavaScript の実装の違いにより動作が異なってきてしまう。そのような問題を解決しようと、Google 作った <strong>JsTestDriver</strong> が注目を集めている。</p>
 
@@ -627,10 +611,7 @@ JavaScript のテストをするための事実上の標準はない。実際、
 
 <p>多くのオブジェクト指向言語で、this はレシーバオブジェクトを指すが、JavaScript ではthis の値は呼び出し元によって決まる。</p>
 
-<p>{% blockquote 本書 P.104 %}
-this は、かっこを受かって関数を呼び出したときに暗黙のうちに設定される。<em>関数として呼び出すとグローバルオブジェクト、メソッドとして呼び出すとその呼出に使ったオブジェクトが this になる</em>。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>this は、かっこを受かって関数を呼び出したときに暗黙のうちに設定される。<em>関数として呼び出すとグローバルオブジェクト、メソッドとして呼び出すとその呼出に使ったオブジェクトが this になる</em>。</p></p><p><p></p><footer><strong>本書 P.104</strong></footer></blockquote></p>
 
 <h3>名前空間</h3>
 
@@ -674,10 +655,7 @@ custome.namespace("dom.event");
 <h2>控えめなJavaScript</h2>
 
 
-<p>{% blockquote 本書 P.185 %}
-セマンティックマークアップは、文書の構造に関わるものであり、文書の構造だけを対象とする。セマンティックHTMLは、アクセシビリティ向上の可能性を広げるだけでなく、CSS と JavaScript とのフックを増やす。視覚的なスタイルやレイアウトは CSS の領域である。表示に関わる属性や要素は使わないようにすべきだ。動作は、JavaScript の領域であり、外部スクリプトを介して関わるようにすべきだ。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>セマンティックマークアップは、文書の構造に関わるものであり、文書の構造だけを対象とする。セマンティックHTMLは、アクセシビリティ向上の可能性を広げるだけでなく、CSS と JavaScript とのフックを増やす。視覚的なスタイルやレイアウトは CSS の領域である。表示に関わる属性や要素は使わないようにすべきだ。動作は、JavaScript の領域であり、外部スクリプトを介して関わるようにすべきだ。</p></p><p><p></p><footer><strong>本書 P.185</strong></footer></blockquote></p>
 
 <p>控えめな JavaScript の7つのルールは次のようになる。</p>
 
@@ -725,15 +703,9 @@ custome.namespace("dom.event");
 
 <p>本書を読むことで、各言語の長所、短所、原理、思想を知ることができます。プログラマとして一皮向けたい人に、おすすめです。</p>
 
-<p>{% blockquote 本書序文より %}
-禅の指導者は、数学ができるようになりたければラテン語を勉強せよと言うだろう。プログラミングでも同じだ。オブジェクト指向プログラミングの本質を深く理解するには、論理プログラミングや関数型プログラミング（FP）を勉強する必要がある。関数型プログラミングに上達したければ、アセンブラを勉強する必要がある。</p>
+<p><blockquote><p>禅の指導者は、数学ができるようになりたければラテン語を勉強せよと言うだろう。プログラミングでも同じだ。オブジェクト指向プログラミングの本質を深く理解するには、論理プログラミングや関数型プログラミング（FP）を勉強する必要がある。関数型プログラミングに上達したければ、アセンブラを勉強する必要がある。</p></p><p><p></p><footer><strong>本書序文より</strong></footer></blockquote></p>
 
-<p>{% endblockquote %}</p>
-
-<p>{% blockquote 本書序文より %}
-プログラミングとは結局、理解することであり、理解できるかどうかはどれだけアイデアの引き出しがあるかにかかっている。したがって、新しい言語を直接体験することは、プログラミングが何たるかをより深く理解するために欠かせない。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>プログラミングとは結局、理解することであり、理解できるかどうかはどれだけアイデアの引き出しがあるかにかかっている。したがって、新しい言語を直接体験することは、プログラミングが何たるかをより深く理解するために欠かせない。</p></p><p><p></p><footer><strong>本書序文より</strong></footer></blockquote></p>
 
 <!-- more -->
 
@@ -761,10 +733,7 @@ custome.namespace("dom.event");
 
 <p></section></p>
 
-<p>{% blockquote メリー・ポピンズ %}
-スプーン一杯の砂糖があるだけで、苦い薬も飲めるのよ。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>スプーン一杯の砂糖があるだけで、苦い薬も飲めるのよ。</p></p><p><p></p><footer><strong>メリー・ポピンズ</strong></footer></blockquote></p>
 
 <h2>Io</h2>
 
@@ -825,16 +794,7 @@ hamasyou := Person clone
 <h3>プロトタイプ・プログラミングのパラダイム</h3>
 
 
-<p>{% blockquote 本書P.48より %}
-- すべてのモノはオブジェクトである。
-- オブジェクトとのすべてのやり取りはメッセージを介して行う。
-- クラスをインスタンス化するのではなく、他のオブジェクト（プロトタイプという）を複製する（クローンを作成する）。
-- オブジェクトは自身のプロトタイプを記憶している。
-- オブジェクトにはスロットがある。
-- スロットにはオブジェクト（メソッドオブジェクトを含む）が格納される。
-- メッセージはスロットが保持している値を返したり、スロットに格納されているメソッドを呼び出したりする。
-- オブジェクトは、自分が応答できないメッセージを自分のプロトタイプに送信する。
-{% endblockquote %}</p>
+<p><blockquote><p>- すべてのモノはオブジェクトである。<br/>- オブジェクトとのすべてのやり取りはメッセージを介して行う。<br/>- クラスをインスタンス化するのではなく、他のオブジェクト（プロトタイプという）を複製する（クローンを作成する）。<br/>- オブジェクトは自身のプロトタイプを記憶している。<br/>- オブジェクトにはスロットがある。<br/>- スロットにはオブジェクト（メソッドオブジェクトを含む）が格納される。<br/>- メッセージはスロットが保持している値を返したり、スロットに格納されているメソッドを呼び出したりする。<br/>- オブジェクトは、自分が応答できないメッセージを自分のプロトタイプに送信する。</p><footer><strong>本書P.48より</strong></footer></blockquote></p>
 
 <p></section></p>
 
@@ -971,10 +931,7 @@ coloring(Alabama, Mississippi, Georgia, Tennessee, Florida) :-
 <h3>Prolog の得意とする問題</h3>
 
 
-<p>{% blockquote 本書P.84 %}
-Prolog では問題の解法を記述する必要はない。問題を記述するだけでよい。そして、問題を記述するための言語は純粋な論理だけだ。事実と推論から始めれば、あとは Prolog がやってくれる。Prolog のプログラムは高レベルの抽象化を実現する。この事例のスケジュール作成と行動パターンは、Prolog が得意とする問題だ。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>Prolog では問題の解法を記述する必要はない。問題を記述するだけでよい。そして、問題を記述するための言語は純粋な論理だけだ。事実と推論から始めれば、あとは Prolog がやってくれる。Prolog のプログラムは高レベルの抽象化を実現する。この事例のスケジュール作成と行動パターンは、Prolog が得意とする問題だ。</p></p><p><p></p><footer><strong>本書P.84</strong></footer></blockquote></p>
 
 <h3>再帰処理のメモリ不足</h3>
 
@@ -1427,9 +1384,15 @@ Pid = spawn(fun mymodule:loop/0).
 
 <p>Erlang を公式サイトからダウンロードしてきて make を行うと下のようなエラーがでた。</p>
 
-<p>{% terminal %}
-make[3]: *** No rule to make target <code>erl_alloc_types.h', needed by</code>obj/i386-apple-darwin10.8.0/opt/plain/atom.o'.  Stop.
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line output'>make[3]: *** No rule to make target <code>erl_alloc_types.h', needed by</code>obj/i386-apple-darwin10.8.0/opt/plain/atom.o'.  Stop.</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p>Makefile.in に erl_alloc_types のコンパイル方法が書かれていないせいらしい。github にパッチが上がっていたので、Makefile.in を書き換えると上手くコンパイルができた。</p>
 

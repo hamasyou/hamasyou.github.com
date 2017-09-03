@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: CSS | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/css/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T15:18:24+09:00</updated>
+  <updated>2017-09-03T18:04:43+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -49,9 +49,7 @@
 
 <p>引用には <em>q</em> タグか <em>blockquote</em> タグを使います。文章中で引用を行うときに q タグの方を使います。</p>
 
-<p>{% blockquote どこかしらから引用 %}
-段落を引用する場合は blockquote タグを使います。blockquote タグを使う場合には、cite タグを使って引用元を明記します。
-{% endblockquote %}</p>
+<p><blockquote><p>段落を引用する場合は blockquote タグを使います。blockquote タグを使う場合には、cite タグを使って引用元を明記します。</p><footer><strong>どこかしらから引用</strong></footer></blockquote></p>
 
 <h2>説明・定義</h2>
 
@@ -103,9 +101,15 @@
 
 <p>整形済みテキストをコンソールのように見せる。</p>
 
-<p>{% terminal %}
-$ sudo su -
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>sudo su -</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p></section></p>
 

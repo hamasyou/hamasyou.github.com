@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: API | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/api/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T15:18:24+09:00</updated>
+  <updated>2017-09-03T18:04:43+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -53,9 +53,7 @@
 
 <h3>後方互換性を維持する API のデザインパターン</h3>
 
-<p>{% blockquote 本書 %}
-開発者は、API の現在のバージョンをコーディングしている場合に、未来について考えることが求められます。私に言えることは、それは、今までの API 設計でよく行われた方法ではないということです。また、今日までに書かれた書籍やその中の助言は、この種の思考にはあまり役に立ちません。それらには、単一バージョンの場合のデザインパターンが説明されていることがほとんどです。
-{% endblockquote %}</p>
+<p><blockquote><p>開発者は、API の現在のバージョンをコーディングしている場合に、未来について考えることが求められます。私に言えることは、それは、今までの API 設計でよく行われた方法ではないということです。また、今日までに書かれた書籍やその中の助言は、この種の思考にはあまり役に立ちません。それらには、単一バージョンの場合のデザインパターンが説明されていることがほとんどです。</p><footer><strong>本書</strong></footer></blockquote></p>
 
 <p>これが、<strong>新しいデザイン本が必要な理由</strong> です。今日のシステムはコンポーネントの組み合わせで出来ています。おそらく今後もこの傾向は変わらないと思います。コンポーネント利用者の経験（投資）をムダにしない為に、よりよい発展を目指す上で、後方互換性を維持することは重要なことになります。これが、<strong>本書を読む理由</strong> です。</p>
 
@@ -84,11 +82,7 @@
 
 <p>後方互換性を保ち、API のユーザの投資をムダにしない設計の方法を学びたい人、新しい視点を身につけたい人に本書はおすすめです。</p>
 
-<p>{% blockquote %}
-- オブジェクト指向アプリケーションフレームワークには、伝統的なデザインパターンとは異なるスキルが必要
-- クラスを API として扱って、頭痛の種を軽減
-- 将来、改善できるように API の発展計画を準備
-{% endblockquote %}</p>
+<p><blockquote><p>- オブジェクト指向アプリケーションフレームワークには、伝統的なデザインパターンとは異なるスキルが必要<br/>- クラスを API として扱って、頭痛の種を軽減<br/>- 将来、改善できるように API の発展計画を準備</p></blockquote></p>
 
 <h2>目次</h2>
 
@@ -404,32 +398,59 @@ json = JSON.parse(response.to_str)
 pp json
 </code></pre>
 
-<p>{% terminal %}
-$ gem install rest-client
-$ bundle exec ruby misc/kimono.rb
-{&ldquo;name&rdquo;=>&ldquo;archives&rdquo;,
- &ldquo;lastrunstatus&rdquo;=>&ldquo;success&rdquo;,
- &ldquo;lastsuccess&rdquo;=>&ldquo;Sat Feb 15 2014 11:27:17 GMT+0000 (UTC)&rdquo;,
- &ldquo;nextrun&rdquo;=>&ldquo;Sat Feb 15 2014 11:57:15 GMT+0000 (UTC)&rdquo;,
- &ldquo;frequency&rdquo;=>&ldquo;halfhourly&rdquo;,
- &ldquo;newdata&rdquo;=>false,
- &ldquo;results&rdquo;=>
-  {&ldquo;collection1&rdquo;=>
-    [{&ldquo;title&rdquo;=>
-       {&ldquo;text&rdquo;=>&ldquo;ガンダムUCのシナンジュが好き&rdquo;,
-        &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/2014/02/15/gundam-unicorn/&rdquo;},
-      &ldquo;category&rdquo;=>
-       {&ldquo;text&rdquo;=>&ldquo;Blog&rdquo;, &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/categories/blog/&rdquo;}},
-     {&ldquo;title&rdquo;=>
-       {&ldquo;text&rdquo;=>&ldquo;Octopress の rel=”canonical” の設定がおかしい件&rdquo;,
-        &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/2014/02/15/octopress-canonical/&rdquo;},
-      &ldquo;category&rdquo;=>
-       {&ldquo;text&rdquo;=>&ldquo;Blog&rdquo;, &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/categories/blog/&rdquo;}},
-     {&ldquo;title&rdquo;=>
-       {&ldquo;text&rdquo;=>&ldquo;ビューティフルコード&rdquo;,
-        &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/2014/02/14/4873113636/&rdquo;},
-&hellip;
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>gem install rest-client</span><span class='line command'>bundle exec ruby misc/kimono.rb</span><span class='line output'>{&ldquo;name&rdquo;=>&ldquo;archives&rdquo;,
+</span><span class='line output'> &ldquo;lastrunstatus&rdquo;=>&ldquo;success&rdquo;,
+</span><span class='line output'> &ldquo;lastsuccess&rdquo;=>&ldquo;Sat Feb 15 2014 11:27:17 GMT+0000 (UTC)&rdquo;,
+</span><span class='line output'> &ldquo;nextrun&rdquo;=>&ldquo;Sat Feb 15 2014 11:57:15 GMT+0000 (UTC)&rdquo;,
+</span><span class='line output'> &ldquo;frequency&rdquo;=>&ldquo;halfhourly&rdquo;,
+</span><span class='line output'> &ldquo;newdata&rdquo;=>false,
+</span><span class='line output'> &ldquo;results&rdquo;=>
+</span><span class='line output'>  {&ldquo;collection1&rdquo;=>
+</span><span class='line output'>    [{&ldquo;title&rdquo;=>
+</span><span class='line output'>       {&ldquo;text&rdquo;=>&ldquo;ガンダムUCのシナンジュが好き&rdquo;,
+</span><span class='line output'>        &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/2014/02/15/gundam-unicorn/&rdquo;},
+</span><span class='line output'>      &ldquo;category&rdquo;=>
+</span><span class='line output'>       {&ldquo;text&rdquo;=>&ldquo;Blog&rdquo;, &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/categories/blog/&rdquo;}},
+</span><span class='line output'>     {&ldquo;title&rdquo;=>
+</span><span class='line output'>       {&ldquo;text&rdquo;=>&ldquo;Octopress の rel=”canonical” の設定がおかしい件&rdquo;,
+</span><span class='line output'>        &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/2014/02/15/octopress-canonical/&rdquo;},
+</span><span class='line output'>      &ldquo;category&rdquo;=>
+</span><span class='line output'>       {&ldquo;text&rdquo;=>&ldquo;Blog&rdquo;, &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/categories/blog/&rdquo;}},
+</span><span class='line output'>     {&ldquo;title&rdquo;=>
+</span><span class='line output'>       {&ldquo;text&rdquo;=>&ldquo;ビューティフルコード&rdquo;,
+</span><span class='line output'>        &ldquo;href&rdquo;=>&ldquo;http://hamasyou.com/blog/2014/02/14/4873113636/&rdquo;},
+</span><span class='line output'>&hellip;</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p><a href="http://pipes.yahoo.com/pipes/">Yahoo Pipes</a> のような有名なサービスもありますが、簡単にウェブサイトをスクレイピングしたい用途であれば <em>kimono</em> はオススメのサービスです。</p>
 ]]></content>

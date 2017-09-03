@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Ruby1.9 | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/ruby1-dot-9/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T15:18:24+09:00</updated>
+  <updated>2017-09-03T18:04:43+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -307,98 +307,188 @@ end
 
 <p>gemを使ってHeroku管理用のAPIをインストールします。</p>
 
-<p>{% terminal %}
-$ sudo gem install heroku
-Successfully installed heroku-1.9.9
-1 gem installed
-Installing ri documentation for heroku-1.9.9…
-Installing RDoc documentation for heroku-1.9.9…
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>sudo gem install heroku</span><span class='line output'>Successfully installed heroku-1.9.9
+</span><span class='line output'>1 gem installed
+</span><span class='line output'>Installing ri documentation for heroku-1.9.9…
+</span><span class='line output'>Installing RDoc documentation for heroku-1.9.9…</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <h3>ローカルにRails環境を構築する</h3>
 
 
 <p>railsコマンドを使用して、Railsの開発環境を作成します。</p>
 
-<p>{% terminal %}
-$ rails new heroku-demo
-      create
-      create README
-      create .gitignore
-      create Rakefile
-      create config.ru
-      create Gemfile
-      create app
-      create app/controllers/application_controller.rb
-      create app/helpers/application_helper.rb
-      create app/views/layouts/application.html.erb
-      create app/models
-      create config
-      create config/routes.rb
-      create config/application.rb
-      create config/environment.rb
-      create config/environments
-      create config/environments/development.rb
-      create config/environments/production.rb
-      create config/environments/test.rb
-      create config/initializers
-      create config/initializers/backtrace_silencers.rb
-      create config/initializers/inflections.rb
-      create config/initializers/mime_types.rb
-      create config/initializers/secret_token.rb
-      create config/initializers/session_store.rb
-      create config/locales
-      create config/locales/en.yml
-      create config/boot.rb
-      create config/database.yml
-      create db
-      create db/seeds.rb
-      create doc
-      create doc/README_FOR_APP
-      create lib
-      create lib/tasks
-      create lib/tasks/.gitkeep
-      create log
-      create log/server.log
-      create log/production.log
-      create log/development.log
-      create log/test.log
-      create public
-      create public/404.html
-      create public/422.html
-      create public/500.html
-      create public/favicon.ico
-      create public/index.html
-      create public/robots.txt
-      create public/images
-      create public/images/rails.png
-      create public/stylesheets
-      create public/stylesheets/.gitkeep
-      create public/javascripts
-      create public/javascripts/application.js
-      create public/javascripts/controls.js
-      create public/javascripts/dragdrop.js
-      create public/javascripts/effects.js
-      create public/javascripts/prototype.js
-      create public/javascripts/rails.js
-      create script
-      create script/rails
-      create test
-      create test/performance/browsing_test.rb
-      create test/test_helper.rb
-      create test/fixtures
-      create test/functional
-      create test/integration
-      create test/unit
-      create tmp
-      create tmp/sessions
-      create tmp/sockets
-      create tmp/cache
-      create tmp/pids
-      create vendor/plugins
-      create vendor/plugins/.gitkeep
-$ cd heroku-demo
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>rails new heroku-demo</span><span class='line output'>      create
+</span><span class='line output'>      create README
+</span><span class='line output'>      create .gitignore
+</span><span class='line output'>      create Rakefile
+</span><span class='line output'>      create config.ru
+</span><span class='line output'>      create Gemfile
+</span><span class='line output'>      create app
+</span><span class='line output'>      create app/controllers/application_controller.rb
+</span><span class='line output'>      create app/helpers/application_helper.rb
+</span><span class='line output'>      create app/views/layouts/application.html.erb
+</span><span class='line output'>      create app/models
+</span><span class='line output'>      create config
+</span><span class='line output'>      create config/routes.rb
+</span><span class='line output'>      create config/application.rb
+</span><span class='line output'>      create config/environment.rb
+</span><span class='line output'>      create config/environments
+</span><span class='line output'>      create config/environments/development.rb
+</span><span class='line output'>      create config/environments/production.rb
+</span><span class='line output'>      create config/environments/test.rb
+</span><span class='line output'>      create config/initializers
+</span><span class='line output'>      create config/initializers/backtrace_silencers.rb
+</span><span class='line output'>      create config/initializers/inflections.rb
+</span><span class='line output'>      create config/initializers/mime_types.rb
+</span><span class='line output'>      create config/initializers/secret_token.rb
+</span><span class='line output'>      create config/initializers/session_store.rb
+</span><span class='line output'>      create config/locales
+</span><span class='line output'>      create config/locales/en.yml
+</span><span class='line output'>      create config/boot.rb
+</span><span class='line output'>      create config/database.yml
+</span><span class='line output'>      create db
+</span><span class='line output'>      create db/seeds.rb
+</span><span class='line output'>      create doc
+</span><span class='line output'>      create doc/README_FOR_APP
+</span><span class='line output'>      create lib
+</span><span class='line output'>      create lib/tasks
+</span><span class='line output'>      create lib/tasks/.gitkeep
+</span><span class='line output'>      create log
+</span><span class='line output'>      create log/server.log
+</span><span class='line output'>      create log/production.log
+</span><span class='line output'>      create log/development.log
+</span><span class='line output'>      create log/test.log
+</span><span class='line output'>      create public
+</span><span class='line output'>      create public/404.html
+</span><span class='line output'>      create public/422.html
+</span><span class='line output'>      create public/500.html
+</span><span class='line output'>      create public/favicon.ico
+</span><span class='line output'>      create public/index.html
+</span><span class='line output'>      create public/robots.txt
+</span><span class='line output'>      create public/images
+</span><span class='line output'>      create public/images/rails.png
+</span><span class='line output'>      create public/stylesheets
+</span><span class='line output'>      create public/stylesheets/.gitkeep
+</span><span class='line output'>      create public/javascripts
+</span><span class='line output'>      create public/javascripts/application.js
+</span><span class='line output'>      create public/javascripts/controls.js
+</span><span class='line output'>      create public/javascripts/dragdrop.js
+</span><span class='line output'>      create public/javascripts/effects.js
+</span><span class='line output'>      create public/javascripts/prototype.js
+</span><span class='line output'>      create public/javascripts/rails.js
+</span><span class='line output'>      create script
+</span><span class='line output'>      create script/rails
+</span><span class='line output'>      create test
+</span><span class='line output'>      create test/performance/browsing_test.rb
+</span><span class='line output'>      create test/test_helper.rb
+</span><span class='line output'>      create test/fixtures
+</span><span class='line output'>      create test/functional
+</span><span class='line output'>      create test/integration
+</span><span class='line output'>      create test/unit
+</span><span class='line output'>      create tmp
+</span><span class='line output'>      create tmp/sessions
+</span><span class='line output'>      create tmp/sockets
+</span><span class='line output'>      create tmp/cache
+</span><span class='line output'>      create tmp/pids
+</span><span class='line output'>      create vendor/plugins
+</span><span class='line output'>      create vendor/plugins/.gitkeep
+</span><span class='line command'>cd heroku-demo</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <h3>gitでHeroku上のリポジトリにコミットする</h3>
 
@@ -407,71 +497,135 @@ $ cd heroku-demo
 
 <p>まずは、<code>git init</code> で開発環境をgitで管理します。</p>
 
-<p>{% terminal %}
-$ git init
-Initialized empty Git repository in /Users/hamasyou/Documents/Works/work/heroku-demo/.git/
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>git init</span><span class='line output'>Initialized empty Git repository in /Users/hamasyou/Documents/Works/work/heroku-demo/.git/</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p>次に、作ったばかりのRails環境をすべてローカルのgitリポジトリにコミットします。</p>
 
-<p>{% terminal %}
-$ git add .
-$ git commit -m &ldquo;new app&rdquo;
-[master (root-commit) 7b21637] new app
- 39 files changed, 9038 insertions(+), 0 deletions(-)
- create mode 100644 .gitignore
- create mode 100644 Gemfile
- create mode 100644 README
- create mode 100644 Rakefile
- create mode 100644 app/controllers/application_controller.rb
- create mode 100644 app/helpers/application_helper.rb
- create mode 100644 app/views/layouts/application.html.erb
- create mode 100644 config.ru
- create mode 100644 config/application.rb
- create mode 100644 config/boot.rb
- create mode 100644 config/database.yml
- create mode 100644 config/environment.rb
- create mode 100644 config/environments/development.rb
- create mode 100644 config/environments/production.rb
- create mode 100644 config/environments/test.rb
- create mode 100644 config/initializers/backtrace_silencers.rb
- create mode 100644 config/initializers/inflections.rb
- create mode 100644 config/initializers/mime_types.rb
- create mode 100644 config/initializers/secret_token.rb
- create mode 100644 config/initializers/session_store.rb
- create mode 100644 config/locales/en.yml
- create mode 100644 config/routes.rb
- create mode 100644 db/seeds.rb
- create mode 100644 doc/README_FOR_APP
- create mode 100644 lib/tasks/.gitkeep
- create mode 100644 public/404.html
- create mode 100644 public/422.html
- create mode 100644 public/500.html
- create mode 100644 public/favicon.ico
- create mode 100644 public/images/rails.png
- create mode 100644 public/index.html
- create mode 100644 public/javascripts/application.js
- create mode 100644 public/javascripts/controls.js
- create mode 100644 public/javascripts/dragdrop.js
- create mode 100644 public/javascripts/effects.js
- create mode 100644 public/javascripts/prototype.js
- create mode 100644 public/javascripts/rails.js
- create mode 100644 public/robots.txt
- create mode 100644 public/stylesheets/.gitkeep
- create mode 100755 script/rails
- create mode 100644 test/performance/browsing_test.rb
- create mode 100644 test/test_helper.rb
- create mode 100644 vendor/plugins/.gitkeep
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>git add .</span><span class='line command'>git commit -m &ldquo;new app&rdquo;</span><span class='line output'>[master (root-commit) 7b21637] new app
+</span><span class='line output'> 39 files changed, 9038 insertions(+), 0 deletions(-)
+</span><span class='line output'> create mode 100644 .gitignore
+</span><span class='line output'> create mode 100644 Gemfile
+</span><span class='line output'> create mode 100644 README
+</span><span class='line output'> create mode 100644 Rakefile
+</span><span class='line output'> create mode 100644 app/controllers/application_controller.rb
+</span><span class='line output'> create mode 100644 app/helpers/application_helper.rb
+</span><span class='line output'> create mode 100644 app/views/layouts/application.html.erb
+</span><span class='line output'> create mode 100644 config.ru
+</span><span class='line output'> create mode 100644 config/application.rb
+</span><span class='line output'> create mode 100644 config/boot.rb
+</span><span class='line output'> create mode 100644 config/database.yml
+</span><span class='line output'> create mode 100644 config/environment.rb
+</span><span class='line output'> create mode 100644 config/environments/development.rb
+</span><span class='line output'> create mode 100644 config/environments/production.rb
+</span><span class='line output'> create mode 100644 config/environments/test.rb
+</span><span class='line output'> create mode 100644 config/initializers/backtrace_silencers.rb
+</span><span class='line output'> create mode 100644 config/initializers/inflections.rb
+</span><span class='line output'> create mode 100644 config/initializers/mime_types.rb
+</span><span class='line output'> create mode 100644 config/initializers/secret_token.rb
+</span><span class='line output'> create mode 100644 config/initializers/session_store.rb
+</span><span class='line output'> create mode 100644 config/locales/en.yml
+</span><span class='line output'> create mode 100644 config/routes.rb
+</span><span class='line output'> create mode 100644 db/seeds.rb
+</span><span class='line output'> create mode 100644 doc/README_FOR_APP
+</span><span class='line output'> create mode 100644 lib/tasks/.gitkeep
+</span><span class='line output'> create mode 100644 public/404.html
+</span><span class='line output'> create mode 100644 public/422.html
+</span><span class='line output'> create mode 100644 public/500.html
+</span><span class='line output'> create mode 100644 public/favicon.ico
+</span><span class='line output'> create mode 100644 public/images/rails.png
+</span><span class='line output'> create mode 100644 public/index.html
+</span><span class='line output'> create mode 100644 public/javascripts/application.js
+</span><span class='line output'> create mode 100644 public/javascripts/controls.js
+</span><span class='line output'> create mode 100644 public/javascripts/dragdrop.js
+</span><span class='line output'> create mode 100644 public/javascripts/effects.js
+</span><span class='line output'> create mode 100644 public/javascripts/prototype.js
+</span><span class='line output'> create mode 100644 public/javascripts/rails.js
+</span><span class='line output'> create mode 100644 public/robots.txt
+</span><span class='line output'> create mode 100644 public/stylesheets/.gitkeep
+</span><span class='line output'> create mode 100755 script/rails
+</span><span class='line output'> create mode 100644 test/performance/browsing_test.rb
+</span><span class='line output'> create mode 100644 test/test_helper.rb
+</span><span class='line output'> create mode 100644 vendor/plugins/.gitkeep</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p>次に、<code>heroku create</code>コマンドを使って、Heroku上にリポジトリを作成します。</p>
 
-<p>{% terminal %}
-$ heroku create heroku-demo
-Creating heroku-demo…… done
-Created http://heroku-demo.heroku.com/ | git@heroku.com:heroku-demo.git
-Git remote heroku added
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>heroku create heroku-demo</span><span class='line output'>Creating heroku-demo…… done
+</span><span class='line output'>Created http://heroku-demo.heroku.com/ | git@heroku.com:heroku-demo.git
+</span><span class='line output'>Git remote heroku added</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <dl>
 <dt class="notice">Notice</dt>
@@ -484,88 +638,170 @@ Git remote heroku added
 
 <p><code>heroku stack</code>コマンドを実行すると現在Heroku上でどのRubyのバージョンが使われているのかがわかります。</p>
 
-<p>{% terminal %}
-$ heroku stack
-* aspen-mri-1.8.6
-  bamboo-ree-1.8.7 (beta)
-  bamboo-mri-1.9.1 (beta)
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>heroku stack</span><span class='line output'>* aspen-mri-1.8.6
+</span><span class='line output'>  bamboo-ree-1.8.7 (beta)
+</span><span class='line output'>  bamboo-mri-1.9.1 (beta)</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p>Rails3はRuby1.9.1で動かしますので、<code>heroku stack:migrate bamboo-mri-1.9.1</code>と入力してHeroku上のRubyの動作バージョンを変更します。</p>
 
-<p>{% terminal %}
-$ heroku stack:migrate bamboo-mri-1.9.1
-—–> Preparing to migrate heroku-demo
-       aspen-mri-1.8.6 -> bamboo-mri-1.9.1</p>
-
-<pre><code>   NOTE: You must specify ALL gems (including Rails) in manifest
-
-   Please read the migration guide:        http://docs.heroku.com/bamboo
-</code></pre>
-
-<p>—–> Migration prepared.
-       Run ‘git push heroku master’ to execute migration.
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>heroku stack:migrate bamboo-mri-1.9.1</span><span class='line output'>—–> Preparing to migrate heroku-demo
+</span><span class='line output'>       aspen-mri-1.8.6 -> bamboo-mri-1.9.1</p>
+</span><span class='line output'>
+</span><span class='line output'><pre><code>   NOTE: You must specify ALL gems (including Rails) in manifest
+</span><span class='line output'>
+</span><span class='line output'>   Please read the migration guide:        http://docs.heroku.com/bamboo
+</span><span class='line output'></code></pre>
+</span><span class='line output'>
+</span><span class='line output'><p>—–> Migration prepared.
+</span><span class='line output'>       Run ‘git push heroku master’ to execute migration.</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p>最後に、<code>git push heroku master</code>コマンドで、Herokuにローカルのコミットを反映させます。</p>
 
-<p>{% terminal %}
-$ git push heroku master
-Warning: Permanently added the RSA host key for IP address ‘xx.xxx.xxx.xx’ to the list of known hosts.
-Counting objects: 62, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (47/47), done.
-Writing objects: 100% (62/62), 80.12 KiB, done.
-Total 62 (delta 2), reused 0 (delta 0)</p>
-
-<p>—–> Heroku receiving push
-—–> Migrating from aspen-mri-1.8.6 to bamboo-mri-1.9.1</p>
-
-<p>—–> Gemfile detected, running Bundler
-       Unresolved dependencies detected; Installing…
-       Fetching source index from http://rubygems.org/
-       Using rake (0.8.7) from system gems
-       Installing abstract (1.0.0) from rubygems repository at http://rubygems.org/
-       Installing builder (2.1.2) from rubygems repository at http://rubygems.org/
-       Installing i18n (0.3.7) from rubygems repository at http://rubygems.org/
-       Installing memcache-client (1.8.3) from rubygems repository at http://rubygems.org/
-       Installing tzinfo (0.3.22) from rubygems repository at http://rubygems.org/
-       Installing activesupport (3.0.0.beta3) from rubygems repository at http://rubygems.org/
-       Installing activemodel (3.0.0.beta3) from rubygems repository at http://rubygems.org/
-       Installing erubis (2.6.5) from rubygems repository at http://rubygems.org/
-       Installing rack (1.1.0) from rubygems repository at http://rubygems.org/
-       Installing rack-mount (0.6.3) from rubygems repository at http://rubygems.org/
-       Installing rack-test (0.5.4) from rubygems repository at http://rubygems.org/
-       Installing actionpack (3.0.0.beta3) from rubygems repository at http://rubygems.org/
-       Using mime-types (1.16) from system gems
-       Installing polyglot (0.3.1) from rubygems repository at http://rubygems.org/
-       Installing treetop (1.4.8) from rubygems repository at http://rubygems.org/
-       Installing mail (2.2.1) from rubygems repository at http://rubygems.org/
-       Installing text-hyphen (1.0.0) from rubygems repository at http://rubygems.org/
-       Installing text-format (1.0.0) from rubygems repository at http://rubygems.org/
-       Installing actionmailer (3.0.0.beta3) from rubygems repository at http://rubygems.org/
-       Installing arel (0.3.3) from rubygems repository at http://rubygems.org/
-       Installing activerecord (3.0.0.beta3) from rubygems repository at http://rubygems.org/
-       Installing activeresource (3.0.0.beta3) from rubygems repository at http://rubygems.org/
-       Installing bundler (0.9.25) from rubygems repository at http://rubygems.org/
-       Installing thor (0.13.6) from rubygems repository at http://rubygems.org/
-       Installing railties (3.0.0.beta3) from rubygems repository at http://rubygems.org/
-       Installing rails (3.0.0.beta3) from rubygems repository at http://rubygems.org/
-       Installing sqlite3-ruby (1.2.5) from rubygems repository at http://rubygems.org/
-       with native extensions Your bundle is complete! Use <code>bundle show gemname</code> to see where a bundled gem is installed.
-       Locking environment
-—–> Rails app detected
-—–> Detected Rails is not set to serve static_assets
-       Installing rails3_serve_static_assets… done
-       Compiled slug size is 3.9MB
-—–> Launching……….. done
-       http://heroku-demo.heroku.com deployed to Heroku</p>
-
-<p>—–> Migration complete, your app is now running on bamboo-mri-1.9.1</p>
-
-<p>To git@heroku.com:heroku-demo.git
-* [new branch]      master -> master
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line command'>git push heroku master</span><span class='line output'>Warning: Permanently added the RSA host key for IP address ‘xx.xxx.xxx.xx’ to the list of known hosts.
+</span><span class='line output'>Counting objects: 62, done.
+</span><span class='line output'>Delta compression using up to 4 threads.
+</span><span class='line output'>Compressing objects: 100% (47/47), done.
+</span><span class='line output'>Writing objects: 100% (62/62), 80.12 KiB, done.
+</span><span class='line output'>Total 62 (delta 2), reused 0 (delta 0)</p>
+</span><span class='line output'>
+</span><span class='line output'><p>—–> Heroku receiving push
+</span><span class='line output'>—–> Migrating from aspen-mri-1.8.6 to bamboo-mri-1.9.1</p>
+</span><span class='line output'>
+</span><span class='line output'><p>—–> Gemfile detected, running Bundler
+</span><span class='line output'>       Unresolved dependencies detected; Installing…
+</span><span class='line output'>       Fetching source index from http://rubygems.org/
+</span><span class='line output'>       Using rake (0.8.7) from system gems
+</span><span class='line output'>       Installing abstract (1.0.0) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing builder (2.1.2) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing i18n (0.3.7) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing memcache-client (1.8.3) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing tzinfo (0.3.22) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing activesupport (3.0.0.beta3) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing activemodel (3.0.0.beta3) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing erubis (2.6.5) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing rack (1.1.0) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing rack-mount (0.6.3) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing rack-test (0.5.4) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing actionpack (3.0.0.beta3) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Using mime-types (1.16) from system gems
+</span><span class='line output'>       Installing polyglot (0.3.1) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing treetop (1.4.8) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing mail (2.2.1) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing text-hyphen (1.0.0) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing text-format (1.0.0) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing actionmailer (3.0.0.beta3) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing arel (0.3.3) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing activerecord (3.0.0.beta3) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing activeresource (3.0.0.beta3) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing bundler (0.9.25) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing thor (0.13.6) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing railties (3.0.0.beta3) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing rails (3.0.0.beta3) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       Installing sqlite3-ruby (1.2.5) from rubygems repository at http://rubygems.org/
+</span><span class='line output'>       with native extensions Your bundle is complete! Use <code>bundle show gemname</code> to see where a bundled gem is installed.
+</span><span class='line output'>       Locking environment
+</span><span class='line output'>—–> Rails app detected
+</span><span class='line output'>—–> Detected Rails is not set to serve static_assets
+</span><span class='line output'>       Installing rails3_serve_static_assets… done
+</span><span class='line output'>       Compiled slug size is 3.9MB
+</span><span class='line output'>—–> Launching……….. done
+</span><span class='line output'>       http://heroku-demo.heroku.com deployed to Heroku</p>
+</span><span class='line output'>
+</span><span class='line output'><p>—–> Migration complete, your app is now running on bamboo-mri-1.9.1</p>
+</span><span class='line output'>
+</span><span class='line output'><p>To git@heroku.com:heroku-demo.git
+</span><span class='line output'>* [new branch]      master -> master</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p><a href="http://heroku-demo.heroku.com/" rel="external nofollow">http://heroku-demo.heroku.com/</a>にアクセスして、Railsの画面が表示されれば完了です。あとは、ローカルで開発して、<code>git push heroku master</code>でHeroku上にコミットを反映するたびにRailsがデプロイされます。</p>
 ]]></content>

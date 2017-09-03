@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: オライリー | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/orairi/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T15:18:24+09:00</updated>
+  <updated>2017-09-03T18:04:43+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -18,9 +18,7 @@
     <link href="http://hamasyou.com/blog/2014/02/21/functional-javascript/"/>
     <updated>2014-02-21T19:39:56+09:00</updated>
     <id>http://hamasyou.com/blog/2014/02/21/functional-javascript</id>
-    <content type="html"><![CDATA[<p>{% blockquote 内容紹介 %}
-本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。JavaScriptビルトインのデータ型を上手に利用するための基本知識やJavaScriptにおける関数の持つ特性など、関数型プログラミングの技術とその考え方について解説します。また実際のJavaScriptコーディングに関数型プログラミングのエッセンスを加えるポイントをサンプルを使って丁寧に説明します。関数型プログラミングに精通した著者が書き下ろした本書は、テクニックを増やし、コーディングのイマジネーションを広げたいエンジニア必携の一冊です。
-{% endblockquote %}</p>
+    <content type="html"><![CDATA[<p><blockquote><p>本書はJavaScriptを使って関数型プログラミングを学ぶ書籍です。関数型言語としてJavaScriptを理解し、使用することにより、コードがより洗練され、美しく、そして読みやすいものになることを目的としています。JavaScriptビルトインのデータ型を上手に利用するための基本知識やJavaScriptにおける関数の持つ特性など、関数型プログラミングの技術とその考え方について解説します。また実際のJavaScriptコーディングに関数型プログラミングのエッセンスを加えるポイントをサンプルを使って丁寧に説明します。関数型プログラミングに精通した著者が書き下ろした本書は、テクニックを増やし、コーディングのイマジネーションを広げたいエンジニア必携の一冊です。</p><footer><strong>内容紹介</strong></footer></blockquote></p>
 
 <p>JavaScript は純粋な関数型プログラミング言語ではありません。が、<strong>関数型言語として JavaScript を理解し使用することでコードがより洗練され、読みやすいものになる</strong> はずという筆者の考えがこの本には現れています。</p>
 
@@ -37,9 +35,7 @@
 
 <h3>関数型プログラミングとは</h3>
 
-<p>{% blockquote %}
-関数型プログラミングとは、値を抽象の単位に変換する関数を使用して行うプログラミングであり、それらを使ってソフトウェアシステムを構築することである。
-{% endblockquote %}</p>
+<p><blockquote><p>関数型プログラミングとは、値を抽象の単位に変換する関数を使用して行うプログラミングであり、それらを使ってソフトウェアシステムを構築することである。</p></blockquote></p>
 
 <p>オブジェクト指向では、問題領域をオブジェクトという単位に分解して対処していきますが、関数型プログラミングでは、問題を <strong>関数</strong> のパーツに分解します。</p>
 
@@ -149,9 +145,7 @@ song(99, 0, lyricSegment);
 
 <p>一般的な関数型プログラミングによって主張されるコレクション中心の考え方のポイントは、その処理を行うために一貫性のある語彙を確立し、包括的に揃えた関数を再利用出来るようにすることです。</p>
 
-<p>{% blockquote Alan Perlis %}
-10種類のデータ構造上で10の関数を動かすよりも、ひとつのデータ構造上で100の関数を動かすほうがよい。
-{% endblockquote %}</p>
+<p><blockquote><p>10種類のデータ構造上で10の関数を動かすよりも、ひとつのデータ構造上で100の関数を動かすほうがよい。</p><footer><strong>Alan Perlis</strong></footer></blockquote></p>
 
 <p>関数型プログラミングでは、<strong>それぞれの関数がすこしずつデータを変換し、最後の解に至る</strong> ようにします。</p>
 
@@ -323,10 +317,7 @@ parseIntByBinary('10');
 
 <p>JavaScript は <strong>関数が変数の境界をつくる</strong> ので、ローカル変数の状態変更は関数が外部に漏れるのを防いでくれます。</p>
 
-<p>{% blockquote Rich Hickey http://clojure.org/transients %}
-誰もいない森で木が倒れたら、音がするでしょうか？
-不変性を持った戻り値を生成するために、純粋関数がローカルデータを変異させたとしたら、それは良いことなのでしょうか？
-{% endblockquote %}</p>
+<p><blockquote><p>誰もいない森で木が倒れたら、音がするでしょうか？<br/>不変性を持った戻り値を生成するために、純粋関数がローカルデータを変異させたとしたら、それは良いことなのでしょうか？</p><footer><strong>Rich Hickey</strong> <cite><a href='http://clojure.org/transients'>clojure.org/transients/&hellip;</a></cite></footer></blockquote></p>
 
 <p>結局のところ、答えは <strong>Yes</strong> です。</p>
 
@@ -377,9 +368,7 @@ function truthy(x) {
 
 <h3>メタプログラミングとは</h3>
 
-<p>{% blockquote %}
-プログラミングは何かを行うためにコードを書くものであるが、メタプログラミングは何かを解釈する方法を変更するためにコードを書くものである。
-{% endblockquote %}</p>
+<p><blockquote><p>プログラミングは何かを行うためにコードを書くものであるが、メタプログラミングは何かを解釈する方法を変更するためにコードを書くものである。</p></blockquote></p>
 
 <h3>第一級関数</h3>
 
@@ -486,9 +475,7 @@ _.map([[1, 2, 3]), rev);
 
 <p>美しいプログラムは、やさしい条件を先に扱って、難しい条件を後に書きます。</p>
 
-<p>{% blockquote %}
-デザイナーが自分は完璧に達成したんだと分かるのは、付け加えるべきものが何もない時ではなく、取り去るべきものが何もない時である。
-{% endblockquote %}</p>
+<p><blockquote><p>デザイナーが自分は完璧に達成したんだと分かるのは、付け加えるべきものが何もない時ではなく、取り去るべきものが何もない時である。</p></blockquote></p>
 
 <p>Jon Bentley が自分が書いた一番美しいコードとして紹介しているクイックソートのコードです。</p>
 
@@ -507,9 +494,7 @@ _.map([[1, 2, 3]), rev);
 }
 </code></pre>
 
-<p>{% blockquote %}
-プログラミングは実用的なスキルだと信じており、「実用的なスキルは、真似をすることと練習することで獲得する」
-{% endblockquote %}</p>
+<p><blockquote><p>プログラミングは実用的なスキルだと信じており、「実用的なスキルは、真似をすることと練習することで獲得する」</p></blockquote></p>
 
 <h3>プログラムの速度</h3>
 
@@ -572,9 +557,7 @@ public final class Session {
 
 <h3>ネットワーク</h3>
 
-<p>{% blockquote %}
-インターネットを使えば通信線でつながったハッカー達は世界中どこからでも仕事ができる。なんて言われているけど、そんなことを吹聴している奴らはカリフォルニアのごく狭い場所に集まっている。
-{% endblockquote %}</p>
+<p><blockquote><p>インターネットを使えば通信線でつながったハッカー達は世界中どこからでも仕事ができる。なんて言われているけど、そんなことを吹聴している奴らはカリフォルニアのごく狭い場所に集まっている。</p></blockquote></p>
 
 <p>エンドユーザ向けのアプリケーションでは、使いやすさが極めて重要です。また、スタートダッシュの為には、まず <em>動くプロトタイプで本質部分を作って</em> そこから製品レベルに持っていくのは常によいアイデア。</p>
 
@@ -597,13 +580,7 @@ public final class Session {
     <link href="http://hamasyou.com/blog/2012/09/27/487311568X/"/>
     <updated>2012-09-27T11:27:00+09:00</updated>
     <id>http://hamasyou.com/blog/2012/09/27/487311568X</id>
-    <content type="html"><![CDATA[<p>{% blockquote 本書背表紙より %}</p>
-
-<p>モバイルアプリのUIパターンを手軽に参照できるリファレンス。主要なプラットフォームで動くモバイルアプリの画面例を400点以上使いながら、ユーザーインタフェースの定番パターンをグラフィカルに解説します。本書で紹介する68個の基本パターンと5個のアンチパターンが、使いやすいモバイルアプリをデザインするうえでクリアしなければならない設計上の課題を解決してくれます。</p>
-
-<p><em>掲載UIパターン</em>:ナビゲーション、フォーム、テーブルとリスト、検索、並び替え、フィルター、ツール、グラフ、誘導、フィードバック、アフォーダンス、ヘルプ、アンチパターン</p>
-
-<p>{% endblockquote %}</p>
+    <content type="html"><![CDATA[<p><blockquote><p></p></p><p><p>モバイルアプリのUIパターンを手軽に参照できるリファレンス。主要なプラットフォームで動くモバイルアプリの画面例を400点以上使いながら、ユーザーインタフェースの定番パターンをグラフィカルに解説します。本書で紹介する68個の基本パターンと5個のアンチパターンが、使いやすいモバイルアプリをデザインするうえでクリアしなければならない設計上の課題を解決してくれます。</p></p><p><p><em>掲載UIパターン</em>:ナビゲーション、フォーム、テーブルとリスト、検索、並び替え、フィルター、ツール、グラフ、誘導、フィードバック、アフォーダンス、ヘルプ、アンチパターン</p></p><p><p></p><footer><strong>本書背表紙より</strong></footer></blockquote></p>
 
 <p>本書は、モバイルアプリ（スマートフォン上で動くアプリ）の UI デザインの定石をパターンとして紹介しているものになります。いいアプリを作っても、UI や見た目が悪いとそれだけで価値が下がってしまいます。アプリにとって本当に良い UI デザインを導ける人は、まだまだ少数だと思います。</p>
 
@@ -1113,19 +1090,13 @@ MyClass.new.my_method
 
 <p><em>method!</em> のようにメソッド名の末尾に感嘆符（!）をつける目的は、<strong>このメソッドは特別だ、「注意しろ！」</strong>になります。</p>
 
-<p>{% blockquote method?とmethod!が何を意味しているか理解しよう - 本書 P.57 %}
-よくある誤解は、受け取ったオブジェクトを変更することを知らせたいときに感嘆符を使う、というものだ。たいていの場合、感嘆符は私たちに何か警告をするものだからだろう。</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>よくある誤解は、受け取ったオブジェクトを変更することを知らせたいときに感嘆符を使う、というものだ。たいていの場合、感嘆符は私たちに何か警告をするものだからだろう。</p></p><p><p></p><footer><strong>method?とmethod!が何を意味しているか理解しよう - 本書 P.57</strong></footer></blockquote></p>
 
 <p>Ruby の組み込みクラスのメソッドには破壊的メソッドでも感嘆符がついているのとついていないものがあります。</p>
 
 <p>これはすなわち、メソッドに感嘆符をつける目的はこのメソッドが特別であることを知らせるのであって、破壊的であるとか危険であることを知らせるのではないということです。</p>
 
-<p>{% blockquote 本書 P.59 %}
-したがって、同じようなことをする　foo() メソッドがないのに foo!() メソッドだけがあるのは、あまり意味のないことだ。（中略）感嘆符は必ずしもそのメソッドが<em>破壊的な操作</em>をすることを意味するわけではないと考えると、&hellip;</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p>したがって、同じようなことをする　foo() メソッドがないのに foo!() メソッドだけがあるのは、あまり意味のないことだ。（中略）感嘆符は必ずしもそのメソッドが<em>破壊的な操作</em>をすることを意味するわけではないと考えると、&hellip;</p></p><p><p></p><footer><strong>本書 P.59</strong></footer></blockquote></p>
 
 <p></section></p>
 
@@ -1381,9 +1352,15 @@ y data
 
 <p>テスト用のデータ生成に、Faker というライブラリが使えます。gem install faker でインストールできます。</p>
 
-<p>{% terminal %}
-$ sudo gem install faker
-{% endterminal %}</p>
+<p><div class="terminal-window">
+          <nav class="terminal-control-window">
+            <a href="#" class="terminal-close" data-rel="close">close</a>
+            <a href="#" class="terminal-minimize">minimize</a>
+            <a href="#" class="terminal-deactivate">deactivate</a>
+          </nav>
+          <h1 class="terminal-title">Terminal</h1>
+          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>sudo gem install faker</span></code></pre></td></tr></table></div></div>
+        </div></p>
 
 <p>次のように使います。</p>
 

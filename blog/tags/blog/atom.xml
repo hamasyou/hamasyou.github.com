@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Blog | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/blog/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T15:18:24+09:00</updated>
+  <updated>2017-09-03T18:04:43+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -34,7 +34,7 @@ canonical ページとは、Google 先生曰く「<em>複数の類似した内�
 <p>Web サービスやっていると、<strong>RESTful</strong> な URL 設計大事！ってなりますよね。
 Rails なんかをやっていると、ルーティングが自動的に RESTful になってて便利です。こんな感じ。</p>
 
-<pre><code class="console-raw">{% raw %}
+<pre><code class="console-raw">
        hypermedia GET    /hypermedia(.:format)            hypermedia#index
                   POST   /hypermedia(.:format)            hypermedia#create
   new_hypermedium GET    /hypermedia/new(.:format)        hypermedia#new
@@ -43,7 +43,7 @@ Rails なんかをやっていると、ルーティングが自動的に RESTful
                   PATCH  /hypermedia/:id(.:format)        hypermedia#update
                   PUT    /hypermedia/:id(.:format)        hypermedia#update
                   DELETE /hypermedia/:id(.:format)        hypermedia#destroy
-{% endraw %}
+
 </code></pre>
 
 <p>こういうルーティングだと、<code>http://example.com/hypermedia/1</code> みたいな感じでリソースにアクセスできます。
