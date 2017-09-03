@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: 経度 | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/jing-du/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T15:14:29+09:00</updated>
+  <updated>2017-09-03T15:18:24+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -40,7 +40,7 @@
 <h2>緯度・経度から二点間の距離を計算する</h2>
 
 
-<pre><code class="javascript">//
+<pre><code class="js">//
 // 測地線航海算法の公式
 //
 function geoDistance(lat1, lng1, lat2, lng2, precision) {
@@ -75,7 +75,7 @@ function geoDistance(lat1, lng1, lat2, lng2, precision) {
 <h2>緯度・経度から方向（方角）を計算する</h2>
 
 
-<pre><code class="javascript">function geoDirection(lat1, lng1, lat2, lng2) {
+<pre><code class="js">function geoDirection(lat1, lng1, lat2, lng2) {
   // 緯度経度 lat1, lng1 の点を出発として、緯度経度 lat2, lng2 への方位
   // 北を０度で右回りの角度０～３６０度
   var Y = Math.cos(lng2 * Math.PI / 180) * Math.sin(lat2 * Math.PI / 180 - lat1 * Math.PI / 180);
