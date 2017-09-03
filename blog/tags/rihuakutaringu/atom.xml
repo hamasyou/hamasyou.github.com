@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: リファクタリング | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/rihuakutaringu/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-06-27T15:56:33+09:00</updated>
+  <updated>2017-09-03T15:14:29+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -18,7 +18,10 @@
     <link href="http://hamasyou.com/blog/2006/08/19/4873112729/"/>
     <updated>2006-08-19T13:34:00+09:00</updated>
     <id>http://hamasyou.com/blog/2006/08/19/4873112729</id>
-    <content type="html"><![CDATA[<p><blockquote><p>「プレファクタリング」（Prefactoring）とは、pre（事前に） + refactoring（リファクタリング）という意味の新造語です。リファクタリングとは、コーディング中にコードの動きを変えずにコードを改善する手法のこと。そして、プレファクタリングは、コーディング前にリファクタリングを行うことで、リファクタリングの効率をさらに上げようというもので、&hellip; （略）</p></p><p><p></p><footer><strong>本書裏表紙のコメントより抜粋</strong></footer></blockquote></p>
+    <content type="html"><![CDATA[<p>{% blockquote 本書裏表紙のコメントより抜粋 %}
+「プレファクタリング」（Prefactoring）とは、pre（事前に） + refactoring（リファクタリング）という意味の新造語です。リファクタリングとは、コーディング中にコードの動きを変えずにコードを改善する手法のこと。そして、プレファクタリングは、コーディング前にリファクタリングを行うことで、リファクタリングの効率をさらに上げようというもので、&hellip; （略）</p>
+
+<p>{% endblockquote %}</p>
 
 <p>プレファクタリングは、自分のこれまでの経験や知識さらには他人の経験や知識を元に、リファクタリングの効率を上げるような設計を行うというものです。かなり簡単に言ってしまうと、設計や実装時のイディオムを覚えるということになると思います。例えば、「コンポーネントは、どのように機能するのかよりもどう役に立つのかを考えることで、インターフェースに意識を集中し、抽象化を行うようにする」といった具合です。</p>
 
@@ -604,7 +607,12 @@
 
 <p>値を返す関数は、クラスの状態を変更するなどの副作用がないのが好ましい。<strong>副作用のあるメソッドと、ないメソッドを明確に分離するのは、非常によいこと</strong>です。問い合わせと更新は、明確に分離するべきです。</p>
 
-<p><blockquote><p>ファンクション(関数)とプロシージャ(手続き)を明確に区別したほうがプログラムは分かりやすくなります。ファンクションとは、戻り値を記述して値の取得を意図するもの。プロシージャは、オブジェクトに対して何かしらの処理を行うもの。</p></p><p><p><b>ファンクション名には、戻り値を記述するものをつけると良い。</b>例えば、cos()、sin()、currentPenColor()などは良い例です。<b>プロシージャ名には、動詞 + 目的語を記述する良い。</b>例えば、calcMoney()、printReport()、formatDocument()などは良い例です。</p></p><p><p></p><footer><strong>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756102107/sorehabooks-22" rel="external nofollow">コードコンプリート―完全なプログラミングを目指して</a>』 アスキー</strong></footer></blockquote></p>
+<p>{% blockquote 『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4756102107/sorehabooks-22" rel="external nofollow">コードコンプリート―完全なプログラミングを目指して</a>』 アスキー  %}
+ファンクション(関数)とプロシージャ(手続き)を明確に区別したほうがプログラムは分かりやすくなります。ファンクションとは、戻り値を記述して値の取得を意図するもの。プロシージャは、オブジェクトに対して何かしらの処理を行うもの。</p>
+
+<p><b>ファンクション名には、戻り値を記述するものをつけると良い。</b>例えば、cos()、sin()、currentPenColor()などは良い例です。<b>プロシージャ名には、動詞 + 目的語を記述する良い。</b>例えば、calcMoney()、printReport()、formatDocument()などは良い例です。</p>
+
+<p>{% endblockquote %}</p>
 
 <h3 id="引数オブジェクトの導入">引数オブジェクトの導入</h3>
 

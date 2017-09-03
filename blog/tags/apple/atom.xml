@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Apple | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/apple/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-06-27T15:56:33+09:00</updated>
+  <updated>2017-09-03T15:14:29+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -25,7 +25,7 @@
 <pre><code class="swift">tableView.separatorInset = UIEdgeInsetsZero
 </code></pre>
 
-<p><img src="/images/2014-12-25-tableview.png" width="320" title="&ldquo;図1&rdquo;" ></p>
+<p>{% img /images/2014-12-25-tableview.png 320 &ldquo;図1&rdquo; %}</p>
 
 <h2>iOS8 にも対応するには</h2>
 
@@ -49,7 +49,7 @@ if version &gt;= 8 {
 }
 </code></pre>
 
-<p><img src="/images/2014-12-25-tableview2.png" width="320" title="&ldquo;図2&rdquo;" ></p>
+<p>{% img /images/2014-12-25-tableview2.png 320 &ldquo;図2&rdquo; %}</p>
 ]]></content>
   </entry>
   
@@ -690,7 +690,9 @@ case let .QRCode(productCode):
 
 <p>Swift では、クラスと構造体はほぼ同じ物と考えることができる。構造体は参照ではなく copy value で管理される。</p>
 
-<p><blockquote><p>Unlike value types, reference types are not copied when they are assigned to a variable or constant, or when they are passed to a function. Rather than a copy, a reference to the same existing instance is used instead.</p><footer><strong>Classes Are Reference Types</strong></footer></blockquote></p>
+<p>{% blockquote Classes Are Reference Types %}
+Unlike value types, reference types are not copied when they are assigned to a variable or constant, or when they are passed to a function. Rather than a copy, a reference to the same existing instance is used instead.
+{% endblockquote %}</p>
 
 <h4>クラスと構造体の共通点</h4>
 
@@ -778,7 +780,9 @@ otherNums[0]    // 50, otherNums is [50, 20, 30, 40]
 
 <p>最初にアクセスされるまで初期化されないようにするには、<code>@lazy</code> を使用する。変数（var）で定義するプロパティには lazy をつけるようにするといい。</p>
 
-<p><blockquote><p>You must always declare a lazy property as a variable (with the var keyword), because its initial value may not be retrieved until after instance initialization completes. Constant properties must always have a value before initialization completes, and therefore cannot be declared as lazy.</p><footer><strong>Lazy Stored Properties</strong></footer></blockquote></p>
+<p>{% blockquote Lazy Stored Properties %}
+You must always declare a lazy property as a variable (with the var keyword), because its initial value may not be retrieved until after instance initialization completes. Constant properties must always have a value before initialization completes, and therefore cannot be declared as lazy.
+{% endblockquote %}</p>
 
 <pre><code class="swift">class DataManager {
     lazy var importer = DataImporter()   // DataImporter is assumed to take a non-trivial amount of time to initialize.

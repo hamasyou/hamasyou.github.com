@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: S3 | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/s3/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-06-27T15:56:33+09:00</updated>
+  <updated>2017-09-03T15:14:29+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -37,15 +37,9 @@
 <h3>carrierwave のインストール</h3>
 
 
-<p><div class="terminal-window">
-          <nav class="terminal-control-window">
-            <a href="#" class="terminal-close" data-rel="close">close</a>
-            <a href="#" class="terminal-minimize">minimize</a>
-            <a href="#" class="terminal-deactivate">deactivate</a>
-          </nav>
-          <h1 class="terminal-title">Terminal</h1>
-          <div class="terminal-container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>gem install carrierwave</span></code></pre></td></tr></table></div></div>
-        </div></p>
+<p>{% terminal %}
+$ gem install carrierwave
+{% endterminal %}</p>
 
 <h3>config の書き方</h3>
 

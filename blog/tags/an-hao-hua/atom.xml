@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: 暗号化 | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/an-hao-hua/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-06-27T15:56:33+09:00</updated>
+  <updated>2017-09-03T15:14:29+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -45,7 +45,10 @@
 
 <p>暗号方式の一つであるDES（デス)やRSAの暗号化の手順や復号化の手順が詳しく説明されています。また、PGPを使ったメールの暗号化の方法も書かれています。</p>
 
-<p><blockquote><p>DESの処理が面白いのは、暗号化と復号が同じ処理になること。同じ処理回路（「ファイステル構造」と呼ばれる）に暗号データを通すと必ず復号できる。実際のDESでは、鍵を使う順番だけを逆にして、暗号化と同じ処理を16回繰り返す。こうすれば、暗号データが元データに戻る。</p></p><p><p></p><footer><strong>本書</strong></footer></blockquote></p>
+<p>{% blockquote 本書 %}
+DESの処理が面白いのは、暗号化と復号が同じ処理になること。同じ処理回路（「ファイステル構造」と呼ばれる）に暗号データを通すと必ず復号できる。実際のDESでは、鍵を使う順番だけを逆にして、暗号化と同じ処理を16回繰り返す。こうすれば、暗号データが元データに戻る。</p>
+
+<p>{% endblockquote %}</p>
 
 <h3>安全な通信を行うための4つの条件</h3>
 

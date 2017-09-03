@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: AutoLayout | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/autolayout/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-06-27T15:56:33+09:00</updated>
+  <updated>2017-09-03T15:14:29+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -42,9 +42,9 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <p>こんな感じのやつです。</p>
 
-<p><img src="/images/20141008/SS1.png" width="240" title="&ldquo;可変長UITableViewCell&rdquo;" >
-<img src="/images/20141008/SS2.png" width="240" title="&ldquo;Auto Layout を使った横スクロールの UIScrollView&rdquo;" >
-<img src="/images/20141008/SS3.png" width="240" title="&ldquo;Auto Layout を使った横スクロールの UIScrollView&rdquo;" ></p>
+<p>{% img /images/20141008/SS1.png 240 &ldquo;可変長UITableViewCell&rdquo; %}
+{% img /images/20141008/SS2.png 240 &ldquo;Auto Layout を使った横スクロールの UIScrollView&rdquo; %}
+{% img /images/20141008/SS3.png 240 &ldquo;Auto Layout を使った横スクロールの UIScrollView&rdquo; %}</p>
 
 <p><code>UILabel</code> の中身によって <code>UITableViewCell</code> の高さが変わるやつと、<code>UIScrollView</code> の中身をページングで切り替えるときに中身の個数を動的に差し替えるやつです。</p>
 
@@ -196,7 +196,7 @@ UIButton であればボタン名が表示できるサイズが推奨サイズ�
 
 <p>例えば、UILabel の制約を次のように設定したとします。</p>
 
-<p><img src="/images/20141008/SS4.png" width="240" title="&ldquo;UILabel の制約&rdquo;" ></p>
+<p>{% img /images/20141008/SS4.png 240 &ldquo;UILabel の制約&rdquo; %}</p>
 
 <p>親のコンポーネントに対して、Top、Trailing、Leading を 0 に設定しています。こうすることで UILabel が親のコンポーネントの上左右の padding が 0 で表示されるわけです。</p>
 
@@ -206,8 +206,8 @@ UIButton であればボタン名が表示できるサイズが推奨サイズ�
 
 <p>UILabel を使って、テキストがどれだけ多くなっても全て表示したいというときには、このように bottom に制約を設定せずに、<code>Lines</code> を 0 に、<code>Line Breaks</code> を <code>Character Wrap</code> に設定します。</p>
 
-<p><img src="/images/20141008/SS5.png" width="240" title="&ldquo;Lines 0 Line Breaks Character Wrap&rdquo;" >
-<img src="/images/20141008/SS6.png" width="240" title="&ldquo;Lines 0 Line Breaks Character Wrap&rdquo;" ></p>
+<p>{% img /images/20141008/SS5.png 240 &ldquo;Lines 0 Line Breaks Character Wrap&rdquo; %}
+{% img /images/20141008/SS6.png 240 &ldquo;Lines 0 Line Breaks Character Wrap&rdquo; %}</p>
 
 <h4>推奨サイズを持たないコンポーネントがある</h4>
 
@@ -223,13 +223,13 @@ UIButton であればボタン名が表示できるサイズが推奨サイズ�
 <p>カスタムの UITableViewCell には、<code>ContentView</code> という UIView が予め用意されていますが、この ContentView 、いまいち上手く Auto Layout してくれません。。
 やり方が悪いだけのような気もしますが、僕は ContentView の子に UIView を入れるようにして、この UIView の上左右の padding を 0 に設定してレイアウトを始めるようにしています。</p>
 
-<p><img src="/images/20141008/SS7.png" width="800" title="&ldquo;preferredView&rdquo;" ></p>
+<p>{% img /images/20141008/SS7.png 800 &ldquo;preferredView&rdquo; %}</p>
 
 <p>bottom の制約を設定しないのがミソです。bottom の制約を設定しないことで、UIView は縦方向に自由に伸び縮みして、子のコンポーネントのサイズに合わせて高さが勝手に変わるようになります。</p>
 
 <p>最後のコンポーネントを配置し終えたら、そのコンポーネントの bottom を親に対して設定をすれば、UIView の高さが子のコンポーネントの Auto Layout から決まるようになります。</p>
 
-<p><img src="/images/20141008/SS9.png" width="800"></p>
+<p>{% img /images/20141008/SS9.png 800 %}</p>
 
 <h3>推奨サイズをもつコンポーネントで位置とサイズで矛盾が起きた場合</h3>
 
@@ -243,8 +243,8 @@ UIButton であればボタン名が表示できるサイズが推奨サイズ�
 <p>今回は、<em>ラベルの高さを推奨サイズで配置して、その位置を元に UIView の高さを決めたい</em> ので、UILabel の bottom の制約の priority を下げます。UILabel の推奨サイズが決まる priority (Content Hugging Priority) が 251 なので、bottom の priority を 250 以下に設定すれば、
 UILabel の推奨サイズを優先的に設定して、その高さからの bottom の位置が決まるようになります。</p>
 
-<p><img src="/images/20141008/SS10.png" width="240">
-<img src="/images/20141008/SS11.png" width="500"></p>
+<p>{% img /images/20141008/SS10.png 240 %}
+{% img /images/20141008/SS11.png 500 %}</p>
 
 <h4>高さが決まらない UIView を配置すると、Storyboard 上での作業がしずらい場合</h4>
 
@@ -253,15 +253,15 @@ UILabel の推奨サイズを優先的に設定して、その高さからの bo
 <p>そんな時は、高さ（height）を適当に設定して、制約のところの <em>Placeholder Remove at build time</em> にチェックを入れておきます。
 こうすることで、Storyboard 上の作業のときだけ制約が設定されて、実行時には制約が削除される状況を作ることができます。</p>
 
-<p><img src="/images/20141008/SS8.png" width="240" title="&ldquo;Remove at build time&rdquo;" ></p>
+<p>{% img /images/20141008/SS8.png 240 &ldquo;Remove at build time&rdquo; %}</p>
 
 <h3>UIView を使って擬似的な Preferred View を作ると高さ可変のセルが簡単につくれる</h3>
 
 <p>このように、セルの ContentView の子要素に Preferred View を用意して、コンテンツのサイズで UIView の高さが決まるようにすることで、
 Auto Layout を使った配置の中でセルの高さを可変にすることが結構簡単にできるようになります。</p>
 
-<p><img src="/images/20141008/SS1.png" width="240" title="&ldquo;iPhone5S&rdquo;" >
-<img src="/images/20141008/SS12.png" width="240" title="&ldquo;iPhone6 Plus&rdquo;" ></p>
+<p>{% img /images/20141008/SS1.png 240 &ldquo;iPhone5S&rdquo; %}
+{% img /images/20141008/SS12.png 240 &ldquo;iPhone6 Plus&rdquo; %}</p>
 
 <p>他にもっと良いやり方があるかと思いますが、参考になればと思います。</p>
 
@@ -286,11 +286,11 @@ contentSize はスクロールビューが表示するコンテンツのサイ�
 <p>例えば UIImageView を UIScrollView の中に入れたとします。UIImageView の intrinsicContentSize は UIImageView の frame や bounds ではなく、表示する UIImage の size になります。
 なので、UIImageView だけを UIScrollView に入れると、UIImageView のサイズをいくら Storyboard 上で設定しても、勝手にスクロールされてしまうのです。</p>
 
-<p><img src="/images/20141008/SS13.png" width="800" title="&ldquo;UIScrollView の罠&rdquo;" ></p>
+<p>{% img /images/20141008/SS13.png 800 &ldquo;UIScrollView の罠&rdquo; %}</p>
 
-<p><img src="/images/20141008/SS14.png" width="240" title="&ldquo;UIScrollView の罠&rdquo;" >
-<img src="/images/20141008/SS15.png" width="240" title="&ldquo;UIScrollView の罠&rdquo;" >
-<img src="/images/20141008/SS16.png" width="240" title="&ldquo;UIScrollView の罠&rdquo;" ></p>
+<p>{% img /images/20141008/SS14.png 240 &ldquo;UIScrollView の罠&rdquo; %}
+{% img /images/20141008/SS15.png 240 &ldquo;UIScrollView の罠&rdquo; %}
+{% img /images/20141008/SS16.png 240 &ldquo;UIScrollView の罠&rdquo; %}</p>
 
 <h3>UIScrollView のサイズに合わせて画像をページングする方法</h3>
 
@@ -381,10 +381,10 @@ class SecondViewController: UIViewController {
 }
 </code></pre>
 
-<p><img src="/images/20141008/SS17.png" width="800"></p>
+<p>{% img /images/20141008/SS17.png 800 %}</p>
 
-<p><img src="/images/20141008/SS18.png" width="240">
-<img src="/images/20141008/SS19.png" width="240"></p>
+<p>{% img /images/20141008/SS18.png 240 %}
+{% img /images/20141008/SS19.png 240 %}</p>
 
 <p>UIScrollView の中に画像を3つ表示して、それをページングスクロールするコードになります。Paging Enabled のオプションは Storyboard 上で設定しています。</p>
 

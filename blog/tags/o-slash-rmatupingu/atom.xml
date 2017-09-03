@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: O/Rマッピング | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/o-slash-rmatupingu/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-06-27T15:56:33+09:00</updated>
+  <updated>2017-09-03T15:14:29+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -32,7 +32,10 @@
 
 <p>Hibernateは、このようなミスマッチを解決する方法を提供します。</p>
 
-<p><blockquote><p>リレーショナルシステムにおけるテーブル形式のデータ表現は、オブジェクト指向のJavaアプリケーションで使用されているオブジェクトのネットワークとは根本的に異なっている。この違いが、いわゆるオブジェクト/リレーショナルパラダイムのミスマッチだ。</p></p><p><p></p><footer><strong>『Hibernate イン アクション』はじめに より</strong></footer></blockquote></p>
+<p>{% blockquote 『Hibernate イン アクション』はじめに より %}
+リレーショナルシステムにおけるテーブル形式のデータ表現は、オブジェクト指向のJavaアプリケーションで使用されているオブジェクトのネットワークとは根本的に異なっている。この違いが、いわゆるオブジェクト/リレーショナルパラダイムのミスマッチだ。</p>
+
+<p>{% endblockquote %}</p>
 
 <!-- more -->
 
@@ -1645,7 +1648,12 @@ q.setInteger(<span class="literal">"age"</span>, <span class="keyword">new</span
 
 <p>Hibernate は、テーブルの主キーとオブジェクトIDとを別々に考えるようです。</p>
 
-<p><blockquote><p>なんですが，単純に ID プロパティの同値性を判断してもいけないみたい．というのもですね，永続クラスの新しいインスタンスが生成された時点では，ID プロパティの値は設定されないらしいんですね．あう，だから ID プロパティは null にできる型を推奨なのでしょうか？ そんな気がする．</p></p><p><p>そんなわけで，結局のところは 「ビジネスキー」 の同値性を使って判定しろとのことです．．． つまり Hibernate を使う際には，主キーは Hibernate 用に INTEGER とかで無意味な ID にしておいて，業務的なキーは主キーにするなってことですか？ まぁ，主キーは候補キーの一つに過ぎないというのも事実な訳ですが．．． DB屋さんに反発食らわないかなぁ？(^^;</p></p><p><p></p><footer><strong><a href="http://d.hatena.ne.jp/koichik/20040521#1085133463" rel="external nofollow">Hibernate 入門記 - 永続クラス</a></strong></footer></blockquote></p>
+<p>{% blockquote <a href="http://d.hatena.ne.jp/koichik/20040521#1085133463" rel="external nofollow">Hibernate 入門記 - 永続クラス</a> %}
+なんですが，単純に ID プロパティの同値性を判断してもいけないみたい．というのもですね，永続クラスの新しいインスタンスが生成された時点では，ID プロパティの値は設定されないらしいんですね．あう，だから ID プロパティは null にできる型を推奨なのでしょうか？ そんな気がする．</p>
+
+<p>そんなわけで，結局のところは 「ビジネスキー」 の同値性を使って判定しろとのことです．．． つまり Hibernate を使う際には，主キーは Hibernate 用に INTEGER とかで無意味な ID にしておいて，業務的なキーは主キーにするなってことですか？ まぁ，主キーは候補キーの一つに過ぎないというのも事実な訳ですが．．． DB屋さんに反発食らわないかなぁ？(^^;</p>
+
+<p>{% endblockquote %}</p>
 
 <h3>主キーと候補キー</h3>
 
