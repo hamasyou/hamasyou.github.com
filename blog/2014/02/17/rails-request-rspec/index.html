@@ -272,7 +272,7 @@
 
 <p><code>Gemfile</code> を開いて次の gem を追記します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -289,7 +289,7 @@
 </span><span class="line">  <span class="n">gem</span> <span class="s1">'spring-commands-rspec'</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>rspec と scaffold の設定を行います。</p>
@@ -316,7 +316,7 @@
 
 <p><code>config/routes.rb</code> にルーティングを追加します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>config/routes.rb</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>config/routes.rb</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -329,7 +329,7 @@
 </span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>テストを実行します。</p>
@@ -387,7 +387,7 @@
 
 <p><code>scaffold_controller</code> でコントローラを作成したので、すでに <code>spec/requests/books_spec.rb</code> があるはずです。テストコードを見てみます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>spec/requests/books_spec.rb</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>spec/requests/books_spec.rb</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -412,12 +412,12 @@
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>request spec もコントローラのテストと同じように、<code>get</code>、<code>post</code>、といったメソッドを使ってテストを行います。<code>books_spec.rb</code> を次のように書き換えてみます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>spec/requests/books_spec.rb</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>spec/requests/books_spec.rb</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -448,7 +448,7 @@
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>request spec はこういう感じで、<strong class="text-danger">実際に呼び出す URL を記述する</strong> のと、<strong class="text-danger">json の中身をチェックする</strong> のが大事だと思っています。</p>
@@ -469,7 +469,7 @@
 
 <p>次のファイルを <code>spec/support/request_helpers.rb</code> として作成します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>spec/support/request_helpers.rb</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>spec/support/request_helpers.rb</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -502,12 +502,12 @@
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>このヘルパを <code>spec/spec_helper.rb</code> に追加します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>spec/spec_helper.rb</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>spec/spec_helper.rb</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -522,7 +522,7 @@
 </span><span class="line">  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>これでテストが通るようになりました。</p>

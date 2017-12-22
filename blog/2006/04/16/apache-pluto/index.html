@@ -583,7 +583,7 @@
 <pre>javax.portlet.p.&lt;ID&gt;?&lt;ATTRIBUTE_NAME&gt;</pre>
 
 
-<p>&lt;ID&gt; は、Portlet で一意に決められる値で、&#8217;?‘ は含まれません。&lt;ATTRIBUTE_NAME&gt; は、setAttribute メソッドの引数に渡した名前です。</p>
+<p>&lt;ID&gt; は、Portlet で一意に決められる値で、’?‘ は含まれません。&lt;ATTRIBUTE_NAME&gt; は、setAttribute メソッドの引数に渡した名前です。</p>
 
 <p>PortletSession に格納された情報は、HttpSession と共有されます。つまり、PortletSession に格納した値は、HttpSession で取得でき、HttpSession で格納した値は、PortletSession で取得できます。セッションキーに付ける名前は、パッケージ名を参考に付けるとよいようです。ただし、javax.portlet というプレフィックスは予約されているので、開発者は使わないようにしましょう。</p>
 
@@ -597,7 +597,7 @@
 <h3>ディスパッチの方法</h3>
 
 
-<p>Portlet#render メソッド中で、PortletRequestDispatcher を使ってリクエストをディスパッチすることができます。PortletRequestDispatcher は、PortletContext オブジェクトから取得することができます。ディスパッチするパスは、&#8217;/‘ で始まる必要があります。PortletContext のルートパスからの相対パスになります。パスには、クエリストリングを付けることが出来ます。getNamedDispatcher メソッドを使うと、サーブレット名を指定して、ディスパッチャを取得することが出来ます。</p>
+<p>Portlet#render メソッド中で、PortletRequestDispatcher を使ってリクエストをディスパッチすることができます。PortletRequestDispatcher は、PortletContext オブジェクトから取得することができます。ディスパッチするパスは、’/‘ で始まる必要があります。PortletContext のルートパスからの相対パスになります。パスには、クエリストリングを付けることが出来ます。getNamedDispatcher メソッドを使うと、サーブレット名を指定して、ディスパッチャを取得することが出来ます。</p>
 
 <p>PortletRequestDispacher によってディスパッチされたサーブレットや JSP には、<strong class="text-danger">HTTP GET</strong> がリクエストされます。</p>
 

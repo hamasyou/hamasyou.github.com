@@ -236,14 +236,14 @@ NSIndexPath(forRow: row, inSection: section) " />
 
 <div class="entry-content"><p>Swift で <code>UITableView</code> 関連のロジックを書くときに、<code>NSIndexPath</code> を作るときは</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">section</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span class="line"><span class="bp">NSIndexPath</span><span class="p">(</span><span class="nl">forRow</span><span class="p">:</span> <span class="n">row</span><span class="p">,</span> <span class="nl">inSection</span><span class="p">:</span> <span class="n">section</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>のイニシャライザを使うべし。<code>NSIndexPath(index: row)</code> だと <code>row</code> の参照ができなくてエラーになる。</p>

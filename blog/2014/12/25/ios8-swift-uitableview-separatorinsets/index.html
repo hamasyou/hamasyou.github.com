@@ -242,12 +242,12 @@
 
 <p>こんにちは。iOS8 から SeparatorInsets をゼロにする方法が変わりました。今までの <code>UITableView</code> の <code>separatorInset</code> に <code>UIEdgeInsetsZero</code> を入れるだけだと、iOS7 では効きますが、iOS8 では効かなくなりました。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">tableView</span><span class="p">.</span><span class="n">separatorInset</span> <span class="o">=</span> <span class="n">UIEdgeInsetsZero</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><img src="/images/2014-12-25-tableview.png" width="320" title='"図1"' alt='"図1"' class="img-thumbnail"></p>
@@ -256,21 +256,21 @@
 
 <p>iOS8 からは <code>UIView</code> に追加された <code>layoutMargins</code> というプロパティにも <code>UIEdgeInsetsZero</code> をセットする必要があります。ただこのプロパティ、iOS8 以降でしか利用できないプロパティなので、分岐が必要になります。。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">tableView</span><span class="p">.</span><span class="n">layoutMargins</span> <span class="o">=</span> <span class="n">UIEdgeInsetsZero</span>
 </span><span class="line"><span class="n">cell</span><span class="p">.</span><span class="n">layoutMargins</span> <span class="o">=</span> <span class="n">UIEdgeInsetsZero</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>全体に適用する簡単な例</h3>
 
 <p>全体に適用するには UIAppearance を使うと便利です。iOS7 と iOS8 に対応したコードは次のように書けます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -289,7 +289,7 @@
 </span><span class="line">    <span class="bp">UITableViewCell</span><span class="p">.</span><span class="n">appearance</span><span class="p">().</span><span class="n">layoutMargins</span> <span class="o">=</span> <span class="n">UIEdgeInsetsZero</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><img src="/images/2014-12-25-tableview2.png" width="320" title='"図2"' alt='"図2"' class="img-thumbnail"></p>

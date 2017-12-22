@@ -288,7 +288,7 @@
 
 <p>JavaScript ではクラスのプロトタイプに対して関数を追加することでインスタンスメソッドを定義できます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -297,19 +297,19 @@
 </span><span class="line"><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
 </span><span class="line"><span class="nx">person</span><span class="p">.</span><span class="nx">breath</span><span class="p">();</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>クラスのプロトタイプに <em>fn</em> というエイリアスを設定することが広く行われています。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="nx">Person</span><span class="p">.</span><span class="nx">fn</span> <span class="o">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
 </span><span class="line"><span class="nx">Person</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">run</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">};</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -319,7 +319,7 @@
 
 <p>apply() と call() を使うと、関数の呼び出しコンテキストを変更できます。jQuery の API ではイベントハンドラや each() による繰り返しの中で、コンテキスト（this の値）が変更されています。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -328,12 +328,12 @@
 </span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
 </span><span class="line"><span class="p">});</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>元のコンテキストにアクセスするには、良く self などの名前で this を保存しておき、後で参照する方法がとられます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -346,12 +346,12 @@
 </span><span class="line">  <span class="nx">self</span><span class="p">.</span><span class="nx">btnClicked</span><span class="p">();</span>
 </span><span class="line"><span class="p">});</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>apply() を使うと、self を使わなくても同じことができます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -372,7 +372,7 @@
 </span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">btnClicked</span><span class="p">();</span>
 </span><span class="line"><span class="p">},</span> <span class="k">this</span><span class="p">);</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>jQuery の proxy() メソッドがまさしく、これと同じことをしています。</p>
@@ -398,7 +398,7 @@
 
 <p>バブリングが行われている際には、イベントオブジェクトの stopPropagation() を呼び出すことによって、バブリングを中止することができます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -409,14 +409,14 @@
 </span><span class="line">  <span class="cm">/* ... */</span>
 </span><span class="line"><span class="p">});</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>ブラウザによってそれぞれのイベントに対するデフォルトのアクションが定義されています。たとえば、リンクのクリックでは、src で指定された URL に遷移する動作や、チェックボックスのクリックで項目が選択状態になる動作などです。</p>
 
 <p>これらのデフォルトのアクションはイベントの伝播が完了した後で実行されます。このデフォルトのアクションを中止するには、 preventDefault() 関数を呼び出します。また、イベントハンドラの戻り値で false を返すことで、preventDefault() を呼び出したのと同じ動作になります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -427,7 +427,7 @@
 </span><span class="line">  <span class="k">return</span> <span class="nx">confirm</span><span class="p">(</span><span class="s1">'本当に送信しますか？'</span><span class="p">);</span>
 </span><span class="line"><span class="p">});</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -439,7 +439,7 @@
 
 <p>jQuery では、これを delgate() メソッドを使って実装できます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -452,7 +452,7 @@
 </span><span class="line"><span class="c1">// こちらのほうが効率が良い</span>
 </span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">'ul'</span><span class="p">).</span><span class="nx">delegate</span><span class="p">(</span><span class="s1">'li'</span><span class="p">,</span> <span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">});</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>このように、イベント処理を委譲することによるメリットは、動的に追加された要素についても、自動でイベントリスナが適用されることです。</p>

@@ -489,11 +489,11 @@ tags: [Movable Type,GitHub,Octopress,Liquid,Jekyll,Ruby]
 
 <p>要約すると、<code>CNAME</code> というファイルを作成して、メインのサイトドメインを登録する。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>source/CNAME</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>source/CNAME</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class=""><span class="line">hamasyou.com</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>独自ドメインを取ったら、DNS の設定で <code>ALIAS</code> レコード を <code>username.github.io</code> に向ければ CDN で配信が行われるそうです。ALIAS レコードに対応していない DNS プロバイダの場合は、IP アドレスをハードコードしないといけないので CDN の恩恵を受けられないよということだそうです。。</p>

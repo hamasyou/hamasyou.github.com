@@ -457,11 +457,11 @@ myKeystore.jks  myserver_certreq.csr
  
 CA certificate filename (or enter to create) <kbd>[Enter]</kbd>
  
-Making CA certificate &#8230;
+Making CA certificate …
 Generating a 1024 bit RSA private key
-&#8230;&#8230;&#8230;.++++++
-&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;++++++
-writing new private key to &#8216;./demoCA/private/./cakey.pem&#8217;
+……….++++++
+………………………++++++
+writing new private key to ‘./demoCA/private/./cakey.pem’
 Enter PEM pass phrase: <kbd>weblogic</kbd>
 Verifying - Enter PEM pass phrase: <kbd>weblogic</kbd>
 You are about to be asked to enter information that will be incorporated 
@@ -469,13 +469,13 @@ into your certificate request.
 What you are about to enter is what is called a Distinguished Name or a DN.
 There are quite a few fields but you can leave some blank
 For some fields there will be a default value,
-If you enter &#8216;.&#8217;, the field will be left blank.
+If you enter ‘.’, the field will be left blank.
 Country Name (2 letter code) [GB]:<kbd>jp</kbd>
 State or Province Name (full name) [Berkshire]:<kbd>tokyo</kbd>
 Locality Name (eg, city) [Newbury]:<kbd>tokyo</kbd>
 Organization Name (eg, company) [My Company Ltd]:<kbd>hamasyou</kbd>
 Organizational Unit Name (eg, section) []:<kbd>hamasyou</kbd>
-Common Name (eg, your name or your server&#8217;s hostname) []:<kbd>oreoreca</kbd>
+Common Name (eg, your name or your server’s hostname) []:<kbd>oreoreca</kbd>
 Email Address []:<kbd>xxxxxx@hamasyou.com</kbd>
 </pre>
 
@@ -503,14 +503,14 @@ CA certificate (hamasyou) and the request (xxxxx)
 
 <pre class="console">[weblogic@localhost]# &gt; <kbd>tree demoCA</kbd>
 demoCA/
-    |&#8211; cacert.pem
-    |&#8211; certs
-    |&#8211; crl
-    |&#8211; index.txt
-    |&#8211; newcerts
-    |&#8211; private
-    |   `&#8211; cakey.pem
-    `&#8211; serial
+    |– cacert.pem
+    |– certs
+    |– crl
+    |– index.txt
+    |– newcerts
+    |– private
+    |   `– cakey.pem
+    `– serial
 </pre>
 
 
@@ -630,7 +630,7 @@ Certificate:
         v04:52:5e:c7:29:b0:79:3b:a6:4d:22:f7:5d:73:25:26:53:46:
         94:b2:e6:d0:50:5f:37:00:f0:5b:fc:7b:3c:20:76:f7:37:c5:
         f6:a4
-&#8212;&#8211;BEGIN CERTIFICATE&#8212;&#8211;
+—–BEGIN CERTIFICATE—–
 MIIDbTCCAtagAwIBAgIBATANBgkqhkiG9w0BAQQFADCBiTELMAkGA1UEBhMCanAx
 DjAMBgNVBAgTBXRva3lvMQ4wDAYDVQQHEwV0b2t5bzERMA8GA1UEChMIaGFtYXN5
 b3UxETAPBgNVBAsTCGhhbWFzeW91MREwDwYDVQQDEwhvcmVvcmVjYTEhMB8GCSqG
@@ -650,7 +650,7 @@ YW1hc3lvdS5jb22CAQAwDQYJKoZIhvcNAQEEBQADgYEAQvvuc1sD5WCVtutyrL1q
 wTcXiy/ma9Eo6HMt1hvZzcs0k11M3U1as4lHntyBytTQ4XloKlrW/jAlVug8shj8
 ZTXkGQyUZzZZZvSuKGtmfVq+UA+Ky6NyrzvHBFJexymweTumTSL3XXMlJlNGlLLm
 0FBfNwDwW/x7PCB29zfF9qQ=
-&#8212;&#8211;END CERTIFICATE&#8212;&#8211;
+—–END CERTIFICATE—–
 </pre>
 
 
@@ -662,7 +662,7 @@ ZTXkGQyUZzZZZvSuKGtmfVq+UA+Ky6NyrzvHBFJexymweTumTSL3XXMlJlNGlLLm
 
 
 <pre class="console">[weblogic@localhost]# &gt; <kbd>cat myserver_cert_after.csr</kbd>
-&#8212;&#8211;BEGIN CERTIFICATE&#8212;&#8211;
+—–BEGIN CERTIFICATE—–
 MIIDbTCCAtagAwIBAgIBATANBgkqhkiG9w0BAQQFADCBiTELMAkGA1UEBhMCanAx
 DjAMBgNVBAgTBXRva3lvMQ4wDAYDVQQHEwV0b2t5bzERMA8GA1UEChMIaGFtYXN5
 b3UxETAPBgNVBAsTCGhhbWFzeW91MREwDwYDVQQDEwhvcmVvcmVjYTEhMB8GCSqG
@@ -682,7 +682,7 @@ YW1hc3lvdS5jb22CAQAwDQYJKoZIhvcNAQEEBQADgYEAQvvuc1sD5WCVtutyrL1q
 wTcXiy/ma9Eo6HMt1hvZzcs0k11M3U1as4lHntyBytTQ4XloKlrW/jAlVug8shj8
 ZTXkGQyUZzZZZvSuKGtmfVq+UA+Ky6NyrzvHBFJexymweTumTSL3XXMlJlNGlLLm
 0FBfNwDwW/x7PCB29zfF9qQ=
-&#8212;&#8211;END CERTIFICATE&#8212;&#8211;
+—–END CERTIFICATE—–
 </pre>
 
 

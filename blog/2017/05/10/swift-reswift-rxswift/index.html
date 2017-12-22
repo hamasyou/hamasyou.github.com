@@ -265,7 +265,7 @@
 
 <p>ということで、メモ書きなので、さっとソースを貼り付けておきます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -412,12 +412,12 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>これで、ReSwift の <code>State</code> を次のように書くことができます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -428,7 +428,7 @@
 </span><span class="line">  <span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="nl">to</span><span class="p">:</span> <span class="n">nameLabel</span><span class="p">.</span><span class="n">rx</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
 </span><span class="line">  <span class="p">.</span><span class="n">disposed</span><span class="p">(</span><span class="nl">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>オブザーブしているステートが更新されたときのみ通知して欲しい時</h2>
@@ -443,7 +443,7 @@
 
 <h3>State に一意性を持たせる</h3>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -544,7 +544,7 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>複雑そうなことをやっていますが、要はインスタンスを生成するたびに一意の数値を割り当てて、
@@ -552,7 +552,7 @@
 
 <p>この識別子コンポーネントを State に持たせるようにして</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -601,13 +601,13 @@
 </span><span class="line">        <span class="k">return</span> <span class="n">state</span>
 </span><span class="line">    <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>こんな感じで、ステートが更新したときに、<code>identifiableComponent.update()</code> を呼び出すと状態が更新されたことをマークします。
 これで、ステートが更新されたときだけ UI を更新するようなコードを次のように書けるようになります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -620,7 +620,7 @@
 </span><span class="line">  <span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="nl">to</span><span class="p">:</span> <span class="n">nameLabel</span><span class="p">.</span><span class="n">rx</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
 </span><span class="line">  <span class="p">.</span><span class="n">disposed</span><span class="p">(</span><span class="nl">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>パフォーマンスも気にせず使えるようになりました。</p>

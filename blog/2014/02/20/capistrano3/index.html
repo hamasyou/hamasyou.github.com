@@ -255,7 +255,7 @@
 
 <p>サンプルプロジェクトで使った <code>config/deploy.rb</code> の例です。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>config/deploy.rb</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>config/deploy.rb</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -346,18 +346,17 @@
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>タスクの実行時に指定できる <code>sequence</code>、<code>groups</code>、<code>parallel</code> の説明はこちら。</p>
 
 <blockquote>
 <p>Other modes for parallelism include:</p>
-<p></p>
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<p><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></pre></td>
 <td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># Capistrano 3.0.x</span><br></span><span class="line"><span class="n">on</span> <span class="ss">:all</span><span class="p">,</span> <span class="k">in</span><span class="p">:</span> <span class="ss">:groups</span><span class="p">,</span> <span class="ss">max</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="ss">wait</span><span class="p">:</span> <span class="mi">5</span> <span class="k">do</span><br></span><span class="line">  <span class="c1"># Take all servers, in groups of three which execute in parallel</span><br></span><span class="line">  <span class="c1"># wait five seconds between groups of servers.</span><br></span><span class="line">  <span class="c1"># This is perfect for rolling restarts</span><br></span><span class="line"><span class="k">end</span><br></span><span class="line"><br></span><span class="line"><span class="n">on</span> <span class="ss">:all</span><span class="p">,</span> <span class="k">in</span><span class="p">:</span> <span class="ss">:sequence</span><span class="p">,</span> <span class="ss">wait</span><span class="p">:</span> <span class="mi">15</span> <span class="k">do</span><br></span><span class="line">  <span class="c1"># This takes all servers, in sequence and waits 15 seconds between</span><br></span><span class="line">  <span class="c1"># each server, this might be perfect if you are afraid about</span><br></span><span class="line">  <span class="c1"># overloading a shared resource, or want to defer the asset compilation</span><br></span><span class="line">  <span class="c1"># over your cluster owing to worries about load</span><br></span><span class="line"><span class="k">end</span><br></span><span class="line"><br></span><span class="line"><span class="n">on</span> <span class="ss">:all</span><span class="p">,</span> <span class="k">in</span><span class="p">:</span> <span class="ss">:parallel</span> <span class="k">do</span><br></span><span class="line">  <span class="c1"># This will simply try and execute the commands contained within</span><br></span><span class="line">  <span class="c1"># the block in parallel on all servers. This might be perfect for kicking</span><br></span><span class="line">  <span class="c1"># off something like a Git checkout or similar.</span><br></span><span class="line"><span class="k">end</span><br></span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure></p>
 <footer><strong>Capistrano Version 3 Release Announcement</strong> <cite><a href="http://capistranorb.com/2013/06/01/release-announcement.html" rel="external nofollow" title="capistranorb.com/2013/06/01/…">capistranorb.com/2013/06/01/…</a></cite></footer>
 </blockquote>
 

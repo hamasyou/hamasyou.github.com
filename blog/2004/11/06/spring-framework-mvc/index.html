@@ -338,7 +338,7 @@
 <dd><p>例外からエラーページビューを解決するためのクラスです。デフォルトは設定されていません（none）。</p></dd>
 <dt>ViewResolver</dt>
 <dd>
-<p>ビューと名前をマッピングさせるものです。 例えば、 prefix=&#8221;/WEB-INF/jsp&#8221;  suffix=&#8221;.jsp&#8221;  viewname=&#8221;test&#8221;  の場合、/WEB-INF/jsp/test.jsp  というビューを参照することになります。</p>
+<p>ビューと名前をマッピングさせるものです。 例えば、 prefix=”/WEB-INF/jsp”  suffix=”.jsp”  viewname=”test”  の場合、/WEB-INF/jsp/test.jsp  というビューを参照することになります。</p>
 
 <p><em>JSPファイルは、WEB-INF 以下のフォルダに置くことをおすすめします。</em>こうすることで、外部から直接アクセスが出来なくなります。コントローラを経由しなければファイルが読めないので、セキュリティ的にも非常に効果的です。</p>
 
@@ -434,7 +434,7 @@
 <dt>commandClass</dt>
 <dd><p>コマンドとして使われる完全クラス名(文字列)。デフォルトは『null』。</p></dd>
 <dt>validator</dt>
-<dd><p>妥当性チェックで使われる名前(Bean 参照)。リストも受け取れます。複数のバリデーションクラスを指定する場合は 「validators」を使います。設定する値は、「&lt;ref bean=&#8221;ValidatorID&#8221;/&gt;」のように書きます。デフォルトは『null』です。</p></dd>
+<dd><p>妥当性チェックで使われる名前(Bean 参照)。リストも受け取れます。複数のバリデーションクラスを指定する場合は 「validators」を使います。設定する値は、「&lt;ref bean="ValidatorID"/&gt;」のように書きます。デフォルトは『null』です。</p></dd>
 <dt>validateOnBinding</dt>
 <dd><p>リクエストと結び付けられたバリデータを有効にするかどうか(true, false)。デフォルトは『true』。</p></dd>
 </dl>
@@ -810,7 +810,7 @@ ModelAndView 《メソッド名》(HttpServletRequest request, HttpServletRespon
 </code></pre>
 
 
-<p>「<em>&lt;spring:bind path=&#8221;person.id&#8221;&gt;</em>」の部分が Bind している部分です。person という名前で定義されたコマンドオブジェクトの id フィールドと、入力フィールドの id を結び付けています。 「<em>{status.value} </em>」というのは Bind された値を表示する場合に使うものです。入力値を Bind して、妥当性チェックでエラーがあった場合に、元の画面で入力値を再表示させるときに使えます。</p>
+<p>「<em>&lt;spring:bind path="person.id"&gt;</em>」の部分が Bind している部分です。person という名前で定義されたコマンドオブジェクトの id フィールドと、入力フィールドの id を結び付けています。 「<em>{status.value} </em>」というのは Bind された値を表示する場合に使うものです。入力値を Bind して、妥当性チェックでエラーがあった場合に、元の画面で入力値を再表示させるときに使えます。</p>
 
 <p>「<em>{status.errorMessage}</em>」は妥当性チェック等で、Errors オブジェクトにエラーが設定された場合に表示されます。 Validation クラスのエラーチェック時に、 「errors.rejectValue(“id”, 《エラーコード》, “Default Message.”) メソッド」を呼び出してエラーを設定すると、画面に表示されるようになります。ちなみに「<em>{status.expression}</em>」はバインドするプロパティ名が取得できます。フィールドの name 属性にセットするという使い方が出来ます。</p>
 
@@ -964,7 +964,7 @@ typeMismatch.command.dateField={0} は yyyy/mm/dd の形で入力してくださ
 
 <dl>
 <dt>BeanNameUrlHandlerMapping</dt>
-<dd><p>Struts と同じようなマッピング方法で、スラッシュ(&#8220;/&#8221;)で始まるURLと Bean の名前をマッピングするクラス。DispatcherServlet がデフォルトで使う実装です。</p></dd>
+<dd><p>Struts と同じようなマッピング方法で、スラッシュ("/")で始まるURLと Bean の名前をマッピングするクラス。DispatcherServlet がデフォルトで使う実装です。</p></dd>
 <dt>SimpleUrlHandlerMapping</dt>
 <dd><p>URL からリクエストハンドラBean へのマッピングを提供します。「urlMap」プロパティにマッピンを定義します。この定義は Bean 定義ファイルに書きます。</p></dd>
 </dl>

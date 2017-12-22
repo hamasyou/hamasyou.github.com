@@ -565,7 +565,7 @@
 
 <dl>
 <dt>context-path タグ</dt>
-<dd><p>ここに、ポートレットのコンテキストパスを記述します。ポートレットは別の Web アプリケーションとして作成できるので、コンテキストも Pluto とは別になります。コンテキスト名に使える文字は 「a-z, A-Z, 0-9, _, /」 です。&#8217;.&#8217; や &#8216;-&#8217; は使えないので注意です。</p></dd>
+<dd><p>ここに、ポートレットのコンテキストパスを記述します。ポートレットは別の Web アプリケーションとして作成できるので、コンテキストも Pluto とは別になります。コンテキスト名に使える文字は 「a-z, A-Z, 0-9, _, /」 です。’.’ や ‘-’ は使えないので注意です。</p></dd>
 <dt>portlets タグ</dt>
 <dd><p>このタグを使って、このコンテキストに含まれるポートレットの名前を定義します。ここに記述するのは、portlet.xml に定義したポートレットです。</p></dd>
 </dl>
@@ -598,7 +598,7 @@
 
 <pre>[portlet-context-name].[portlet-name]</pre>
 
-<p><code>[portlet-context-name]</code> とは、ポートレットアプリケーションのコンテキスト名のことです。<code>[portlet-name]</code> は、文字通りポートレット名です。これらを &#8216;.&#8217; でつないだものが <strong class="text-danger">Portlet Definition ID</strong> と呼ばれるポートレットの一意な ID です。</p>
+<p><code>[portlet-context-name]</code> とは、ポートレットアプリケーションのコンテキスト名のことです。<code>[portlet-name]</code> は、文字通りポートレット名です。これらを ‘.’ でつないだものが <strong class="text-danger">Portlet Definition ID</strong> と呼ばれるポートレットの一意な ID です。</p>
 </dd>
 </dl>
 
@@ -716,7 +716,7 @@
 
 <p>ほとんどの処理が、<code>DriverConfiguration</code> の同じです。違うのは、<code>ServletContext</code> に格納するときのキーが違うくらいです。</p>
 
-<p>&#8220;driverAdminConfig&#8221; という値で格納されます。</p>
+<p>"driverAdminConfig" という値で格納されます。</p>
 
 <p><code>AdminConfiguration</code> は、ポートレットの追加や削除がシステム的に行えるものです。ポートレットを管理するツールを作るときに使えそうです。</p>
 

@@ -282,7 +282,7 @@
 <li><a href="#HTML%E3%81%AE%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%82%A8%E3%83%AC%E3%83%A1%E3%83%B3%E3%83%88%E3%82%92%E5%8B%95%E7%9A%84%E3%81%AB%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B" rel="external nofollow">HTMLのフォームエレメントを動的に作成する</a></li>
 <li><a href="#Jakarta%20Commons" rel="external nofollow">FTPバッチの作り方</a></li>
 <li><a href="#&lt;%@%20include%20%&gt;%20%E3%81%A8%20&lt;jsp:include%20&gt;%20%E3%81%AE%E9%81%95%E3%81%84" rel="external nofollow">&lt;%@ include %&gt; と &lt;jsp:include &gt; の違い</a></li>
-<li><a href="#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%AE%E5%B1%9E%E6%80%A7%E3%82%92%E5%9B%B2%E3%82%80%E3%82%AF%E3%82%A9%E3%83%BC%E3%83%88%E3%81%AF%E3%81%AB%E3%81%99%E3%82%8B%E3%81%B9%E3%81%97" rel="external nofollow">フォームの属性を囲むクォートは「&#8221;」にするべし</a></li>
+<li><a href="#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%AE%E5%B1%9E%E6%80%A7%E3%82%92%E5%9B%B2%E3%82%80%E3%82%AF%E3%82%A9%E3%83%BC%E3%83%88%E3%81%AF%E3%81%AB%E3%81%99%E3%82%8B%E3%81%B9%E3%81%97" rel="external nofollow">フォームの属性を囲むクォートは「”」にするべし</a></li>
 <li><a href="#HTML%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9%E6%96%87%E5%AD%97%E5%88%97%E4%B8%80%E8%A6%A7" rel="external nofollow">HTMLリファレンス文字列一覧</a></li>
 <li><a href="#Command%20%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3" rel="external nofollow">Command パターン</a></li>
 <li><a href="#%E6%A4%9C%E8%A8%BC(verification)%E3%81%A8%E5%A6%A5%E5%BD%93%E6%80%A7(validation)" rel="external nofollow">検証(verification)と妥当性(validation)</a></li>
@@ -510,7 +510,7 @@ response.setHeader(<span class="str">"Content-Disposition"</span>, <span class="
 
 <p></p>
 
-<p>“Shift_JIS&#8221;と&#8221;Windows-31J&#8221;は，IANAに正式に登録されている文字集合の名称であり，前者はJIS X 0208で定められており，後者はMicrosoftのコードページ932に相当します．この2つの文字集合には，次のような重要な違いがあります．</p>
+<p>“Shift_JIS”と”Windows-31J”は，IANAに正式に登録されている文字集合の名称であり，前者はJIS X 0208で定められており，後者はMicrosoftのコードページ932に相当します．この2つの文字集合には，次のような重要な違いがあります．</p>
 
 <pre>１．収録されている文字が異なります．たとえば，Windows-31JはNEC特殊文字，IBM特殊文字を含んでいますが，Shift_JISは含んでいません． 
 ２．Windows-31Jは，MS-DOSにおけるNECやIBMの拡張した文字群を収録していますが，一部の重複している文字は，Unicodeの同じコードポイントに割り当てられています．このために，一度読み込んでUnicodeに変換してしまうと，元のファイルに戻すことができないことがあります． 
@@ -575,11 +575,11 @@ AS SELECT deptno,AVG(sal) FROM emp GROUP　BY deptno　←元データのSELECT�
 
 
 <dl>
-<dt>&#8216;f&#8217;</dt>
+<dt>‘f’</dt>
 <dd>高速リフレッシュ</dd>
-<dt>&#8216;c&#8217;</dt>
+<dt>‘c’</dt>
 <dd>完全リフレッシュ</dd>
-<dt>&#8217;?&#8217;</dt>
+<dt>’?’</dt>
 <dd>デフォルトのリフレッシュ</dd>
 </dl>
 
@@ -754,10 +754,10 @@ quit</pre>
 
 <p>このタグは、指定されたファイルをJSPの一部としてインクルードするのではなく、指定されたURLにリクエストを送信し、その応答内容を動的にリクエスト元に挿入して表示します。インクルードされるページとインクルードを行うJSPとは独立したページとして存在するため、インクルードされたファイルが更新されれば、元のJSP自体が更新されていなくても、動的に更新内容が結果に反映されます。</p>
 
-<h3 id="フォームの属性を囲むクォートはにするべし">フォームの属性を囲むクォートは「&#8221;」にするべし</h3>
+<h3 id="フォームの属性を囲むクォートはにするべし">フォームの属性を囲むクォートは「”」にするべし</h3>
 
 
-<p>&lt;input type=“text”&gt; 等の属性を囲むクォートは「&#8221;」にしたほうがよい。なぜなら、初期値として「&#8221;」を含むような値を表示したい場合「&amp;quot;」を使用して「&#8221;」を表示すればよい。シングルクウォート「&#8217;」を表示する場合「&amp;#39;」を使用する。</p>
+<p>&lt;input type=“text”&gt; 等の属性を囲むクォートは「”」にしたほうがよい。なぜなら、初期値として「”」を含むような値を表示したい場合「&amp;quot;」を使用して「”」を表示すればよい。シングルクウォート「’」を表示する場合「&amp;#39;」を使用する。</p>
 
 <h3 id="HTMLリファレンス文字列一覧">HTMLリファレンス文字列一覧</h3>
 
@@ -1049,7 +1049,7 @@ Class#getResourceAsStream();</pre>
 
 <p>Linuxを使っていて、たまに変なファイル名を付けちゃったときに消す方法です。変なファイル名というのは、例えば「スペース」「\」「-」「*」とか入れちゃった場合です。</p>
 
-<h4>【ファイル名を「&#8217; (シングルクウォート)」で囲む方法】</h4>
+<h4>【ファイル名を「’ (シングルクウォート)」で囲む方法】</h4>
 
 
 
@@ -1064,7 +1064,7 @@ Class#getResourceAsStream();</pre>
 
 
 
-<h4>【「&#8217;」(シングルクウォート)を\(エスケープ)する方法】</h4>
+<h4>【「’」(シングルクウォート)を\(エスケープ)する方法】</h4>
 
 
 
@@ -1075,7 +1075,7 @@ Class#getResourceAsStream();</pre>
 
 
 
-<h4>【「&#8211;」でオプションを無効化する方法】</h4>
+<h4>【「–」でオプションを無効化する方法】</h4>
 
 
 
@@ -1110,7 +1110,7 @@ Class#getResourceAsStream();</pre>
 <li>$ (ドルマーク)</li>
 <li>% (パーセント)</li>
 <li>&amp; (アンパサンド)</li>
-<li>&#8217; (シングルクウォート)</li>
+<li>’ (シングルクウォート)</li>
 <li>+ (プラス)</li>
 <li>- (マイナス)</li>
 <li>/ (スラッシュ)</li>
@@ -1126,7 +1126,7 @@ Class#getResourceAsStream();</pre>
 
 <p>` (バッククウォート) や $ (ドルマーク） が使えるとは、結構びっくりでした。<b class="red">サーバ側でメールアドレスの処理をするときは、<a href="http://www.hotfix.jp/archives/word/2004/word04-17.html" rel="external nofollow" title="サニタイジング">サニタイジング</a> を忘れないようにしましょう。</b></p>
 
-<p>なお、使用にはいくつか制約があるので注意。例えば &#8220;.(ピリオド)&#8221; はテキスト文字に囲まれているときのみ利用可能で、ピリオドの連続や、@の直前のピリオドは無効となります。詳しくは、参考リンクを参照のこと。</p>
+<p>なお、使用にはいくつか制約があるので注意。例えば ".(ピリオド)" はテキスト文字に囲まれているときのみ利用可能で、ピリオドの連続や、@の直前のピリオドは無効となります。詳しくは、参考リンクを参照のこと。</p>
 
 <h4>[参考]</h4>
 
@@ -1347,12 +1347,12 @@ java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span>
 <h4>ELバージョンのJSTL coreライブラリー用taglib指示子</h4>
 
 
-<p>&lt;%@ taglib <span style="color:#993300;">uri</span>=<span style="color:#3399CC;">&#8220;http://java.sun.com/jsp/jstl/core&#8221;</span> <span style="color:#993300;">prefix</span>=<span style="color:#3399CC;">&#8220;c&#8221;</span> %&gt;</p>
+<p>&lt;%@ taglib <span style="color:#993300;">uri</span>=<span style="color:#3399CC;">"http://java.sun.com/jsp/jstl/core"</span> <span style="color:#993300;">prefix</span>=<span style="color:#3399CC;">"c"</span> %&gt;</p>
 
 <h4>formatライブラリ用のtaglib指示子</h4>
 
 
-<p>&lt;%@ taglib <span style="color:#993300;">uri</span>=<span style="color:#3399CC;">&#8220;http://java.sun.com/jsp/jstl/fmt&#8221;</span> <span style="color:#993300;">prefix</span>=<span style="color:#3399CC;">&#8220;fmt&#8221;</span> %&gt;</p>
+<p>&lt;%@ taglib <span style="color:#993300;">uri</span>=<span style="color:#3399CC;">"http://java.sun.com/jsp/jstl/fmt"</span> <span style="color:#993300;">prefix</span>=<span style="color:#3399CC;">"fmt"</span> %&gt;</p>
 
 <h4>[参考]</h4>
 
@@ -1378,7 +1378,7 @@ java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span>
 <p>これは接続先のlsのエイリアス設定やLANGなどの環境変数によって生じるエラーです。 WinSCPのオプション(「エイリアスのクリア」や「環境変数のクリア」)で解決できる場合もありますが、 できない場合には以下の方法から1つ選んで対応してください。</p>
 
 <ol>
-<li>WinSCPのログイン画面→[環境]→[SCP]のシェルで[入力]を選択し、&#8221;/bin/bash&#8221; と入力する。 </li>
+<li>WinSCPのログイン画面→[環境]→[SCP]のシェルで[入力]を選択し、”/bin/bash” と入力する。 </li>
 <li>サーバ側の ~/.login ファイルに次のように記述する(csh系の場合)。<pre>if ($?SSH_CLIENT &amp;&amp; ! $?SSH_TTY) setenv LANG C </pre>
 </li>
 </ol>
@@ -1425,7 +1425,7 @@ java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span>
 <li>「HKEY_CLASSES_ROOT」 - 「Folder」 - 「shell」の下に、新規キーで適当なキーを作成する</li>
 <li>作成したキーの「既定」をダブルクリックして、マウス右クリック時に表示される文言を入力する(例：ここからcmdを開く)</li>
 <li>作成したキーにさらにサブキーとして、「<em>command</em>」というキーを作成する</li>
-<li>commandキーの「既定」をダブルクリックして、「cmd.exe」のパス + 「/k」 + 「cd &#8220;%L&#8221;」を設定する(例：「C:\WINDOWS\system32\cmd.exe /k cd &#8220;%L&#8221;」)</li>
+<li>commandキーの「既定」をダブルクリックして、「cmd.exe」のパス + 「/k」 + 「cd "%L"」を設定する(例：「C:\WINDOWS\system32\cmd.exe /k cd "%L"」)</li>
 </ol>
 
 

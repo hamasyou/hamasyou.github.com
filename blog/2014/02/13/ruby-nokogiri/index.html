@@ -263,17 +263,17 @@ Nokogiriでスクレイピング &hellip;" />
 
 <p>使い方は</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="console"><span class="line"><span class="go">gem install 'nokogiri'</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -296,7 +296,7 @@ Nokogiriでスクレイピング &hellip;" />
 </span><span class="line"><span class="k">end</span>
 </span><span class="line"><span class="n">html_text</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">'body'</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">inner_html</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Nokogiri に渡す HTML 文字列は <code>&lt;html&gt;</code> から始まる必要はなく、部分的な HTML 文字列でも OK です。</p>
@@ -309,12 +309,12 @@ Nokogiriでスクレイピング &hellip;" />
 
 <p>そんな時は、次のようなコードで UTF-8 に変換してやれば OK です。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="ruby"><span class="line"><span class="n">doc</span> <span class="o">=</span> <span class="ss">Nokogiri</span><span class="p">:</span><span class="ss">:HTML</span><span class="p">(</span><span class="n">html_text</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="s1">'utf-8'</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 </div>
 

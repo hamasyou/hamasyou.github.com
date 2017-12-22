@@ -334,11 +334,11 @@ JavaScript の読み込まれる位置が <code>&lt;head&gt;</code> タグだっ
 <p>クロスドメインの問題はかなり厄介な問題ですので、開発時点から複数ドメインをシミュレートするのは役にたちます。
 OS の <code>hosts</code> ファイルを編集して、localhost の エイリアスを二つ用意するだけでこの環境が手に入ります。</p>
 
-<pre><code class="plain hosts">127.0.0.1 publisher.dev
-127.0.0.1 widget.dev
+<pre><code class="plain hosts">127.0.0.1 publisher.test
+127.0.0.1 widget.test
 </code></pre>
 
-<p><em>「.dev」のような存在しないトップレベルドメインを使う方が、実際に存在する Web サイトのアドレスを差してしまう問題がないので便利</em> です。</p>
+<p><em>「.test」のような存在しないトップレベルドメインを使う方が、実際に存在する Web サイトのアドレスを差してしまう問題がないので便利</em> です。</p>
 
 <h3>スクリプトを読み込むスニペット</h3>
 
@@ -352,12 +352,12 @@ OS の <code>hosts</code> ファイルを編集して、localhost の エイリ�
 
 <h4>ブロッキング読み込み</h4>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://camerastock.com/widget.js?product=1234"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h4>ノンブロッキング読み込み</h4>
@@ -365,14 +365,14 @@ OS の <code>hosts</code> ファイルを編集して、localhost の エイリ�
 <p>上のようなタグは、そのスクリプトが読み込まれるまでブラウザの処理をとめてしまいます。そのため、このようなスクリプトは <code>&lt;body&gt;</code> タグの最後におくことや、<code>defer</code> 属性、<code>async</code> 属性を使うことで回避できます。
 <code>defer</code> 属性、<code>async</code> 属性をスクリプトタグに指定することで、そのスクリプトが文書のコンテンツを生成しない（<code>document.write</code> を使わない）のでページブロッキングをしなくても完全にダウンロードが可能であるとブラウザに伝えることができます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"http://camerastock.com/widget.js?product=1234"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </span><span class="line"><span class="nt">&lt;script </span><span class="na">async</span> <span class="na">src=</span><span class="s">"http://camerastock.com/widget.js?product=1234"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <dl>
@@ -386,7 +386,7 @@ OS の <code>hosts</code> ファイルを編集して、localhost の エイリ�
 
 <p>JavaScript を使って DOM 上に <code>script</code> 要素を動的に生成することでも、<code>async</code> 属性と同じ挙動でスクリプトを読み込ませることができます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>非同期のスクリプト読み込み</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>非同期のスクリプト読み込み</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -409,14 +409,14 @@ OS の <code>hosts</code> ファイルを編集して、localhost の エイリ�
 </span><span class="line"><span class="p">})();</span>
 </span><span class="line"><span class="nt">&lt;/script&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>最初のスクリプトファイル</h3>
 
 <p>最初の JavaScript ファイルの中身はこんな感じになります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -429,7 +429,7 @@ OS の <code>hosts</code> ファイルを編集して、localhost の エイリ�
 </span><span class="line">  <span class="k">return</span> <span class="nx">Stork</span><span class="p">;</span>
 </span><span class="line"><span class="p">})(</span><span class="nb">window</span><span class="p">);</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>一番外側の <code>Stork</code> はアプリケーションをカプセル化するための名前空間オブジェクトです。<code>window</code> と <code>undefined</code> を引数に取っています。これは、<em>よく使う変数をローカル変数として定義することで、JavaScript のミニファイアが働くようになり変数名を短くすることができる</em> からです。
@@ -442,7 +442,7 @@ OS の <code>hosts</code> ファイルを編集して、localhost の エイリ�
 
 <p><em>サードパーティ JavaScript の開発者は依存ライブラリは外部に依存しない形で利用するようにするのが求められます</em>。次のコードは非同期の JavaScript ローダ関数です。必要なスクリプトの読み込みが完了したら、引数の <code>callback</code> 関数を呼び出します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -479,7 +479,7 @@ OS の <code>hosts</code> ファイルを編集して、localhost の エイリ�
 </span><span class="line">  <span class="p">};</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>このように、必要なライブラリは、アプリケーションが実行する前に読み込んでおくようにします。</p>
@@ -489,14 +489,14 @@ OS の <code>hosts</code> ファイルを編集して、localhost の エイリ�
 <p>jQuery のようなよく使われるライブラリをこの方法で読み込む際には、すでに存在するオブジェクトと衝突しないように注意しなければなりません。
 衝突を防ぐには <strong class="text-danger">名前空間</strong> を使います。jQuery の場合には衝突を避ける <code>noConflict</code> が用意されているので、これを使います。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">Stork</span> <span class="o">=</span> <span class="nx">Stork</span> <span class="o">||</span> <span class="p">{};</span>
 </span><span class="line"><span class="nx">Stork</span><span class="p">.</span><span class="nx">$</span> <span class="o">=</span> <span class="nx">Stork</span><span class="p">.</span><span class="nx">jQuery</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">noConflict</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>外部ライブラリを使う場合には、既に読み込まれていても衝突しないように注意する必要があります。</p>
@@ -522,7 +522,7 @@ OS の <code>hosts</code> ファイルを編集して、localhost の エイリ�
 
 <p>CSS ファイルを動的にロードする方法は、JavaScript を動的にロードする方法とほとんど同じになります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -543,7 +543,7 @@ OS の <code>hosts</code> ファイルを編集して、localhost の エイリ�
 </span><span class="line">  <span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">link</span><span class="p">,</span> <span class="nx">node</span><span class="p">);</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>link</code> タグは <code>rel</code> 属性と <code>type</code> 属性はどちらも必須の属性になります。
@@ -565,12 +565,12 @@ CSS が読み込まれたかどうかをチェックするには、要素にス�
 
 <p>サードパーティ CSS においては、名前空間 (prefix) をつけるようにするとよいです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="css"><span class="line"><span class="nc">.stork-container</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span> <span class="m">200px</span><span class="p">;</span> <span class="k">height</span><span class="o">:</span> <span class="m">200px</span><span class="p">;</span> <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h4>CSS 優先順位</h4>
@@ -587,7 +587,7 @@ CSS が読み込まれたかどうかをチェックするには、要素にス�
 
 <p>ただし、<code>!important</code> というキーワードでタグ付けされたプロパティは優先順位が最も高くなります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>!important の例</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>!important の例</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -602,7 +602,7 @@ CSS が読み込まれたかどうかをチェックするには、要素にス�
 </span><span class="line">  <span class="k">display</span><span class="o">:</span>         <span class="k">block</span> <span class="cp">!important</span><span class="p">;</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>ブラウザはスコアシステムを使ってどのルールが優先されるかを計算しています。</p>
@@ -651,7 +651,7 @@ CSS が読み込まれたかどうかをチェックするには、要素にス�
 
 <p>パブリッシャのスタイルよりも優先的にスタイルを当てるための簡単な方法は、過剰にルールを指定することです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -670,12 +670,12 @@ CSS が読み込まれたかどうかをチェックするには、要素にス�
 </span><span class="line">  <span class="nt">&lt;/div&gt;</span>
 </span><span class="line"><span class="nt">&lt;/div&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -684,7 +684,7 @@ CSS が読み込まれたかどうかをチェックするには、要素にス�
 </span><span class="line"><span class="nf">#stork-main</span> <span class="nf">#stork-container</span> <span class="nc">.stork-product</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
 </span><span class="line"><span class="nf">#stork-main</span> <span class="nf">#stork-container</span> <span class="nc">.stork-price</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>コンテンツを iframe に埋め込む</h3>
@@ -721,13 +721,13 @@ CSS が読み込まれたかどうかをチェックするには、要素にス�
 
 <p>重要な点が1つあります。<strong class="text-danger">HTML の script 要素は SOP の適用を受けません</strong>。つまり、外部の JavaScript ファイルの読み込みは可能になっています。
 ただし、<em>読み込まれた JavaScript はパブリッシャのコンテキストで実行されるということは注意が必要</em> です。
-例えば、camerastork.com の widget.js を publisher.dev の index.html で読み込まれたとしても、widget.js は camerastork.com への <code>XmlHttpRequest</code> を開始できません。</p>
+例えば、camerastork.com の widget.js を publisher.test の index.html で読み込まれたとしても、widget.js は camerastork.com への <code>XmlHttpRequest</code> を開始できません。</p>
 
 <h3>JSONP</h3>
 
 <p>SOP は「HTML の script 要素はチェックの対象外」という重要な例外をもっています。この例外を使って、例えば次のような JSON データを返す URL を script 要素を使って読み込んでみます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>http://thirdpartyjs.com/info.json</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>http://thirdpartyjs.com/info.json</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -740,17 +740,17 @@ CSS が読み込まれたかどうかをチェックするには、要素にス�
 </span><span class="line">  <span class="nt">"publisher"</span><span class="p">:</span> <span class="s2">"Manning"</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://thirdpartyjs.com/info.json"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>この読み込みはうまくいきます。ただし、問題は、info.json は JavaScript として実行されるということです。
@@ -758,7 +758,7 @@ info.json は JavaScript としては正しい構文ではありませんし、�
 
 <p>そこで、info.json を次のように変更します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>http://thirdpartyjs.com/info.js</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>http://thirdpartyjs.com/info.js</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -771,13 +771,13 @@ info.json は JavaScript としては正しい構文ではありませんし、�
 </span><span class="line">  <span class="s2">"publisher"</span><span class="o">:</span> <span class="s2">"Manning"</span>
 </span><span class="line"><span class="p">};</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>こうすると、JavaScript として正しい評価がされ、スクリプトの実行が終わると、グローバルの <code>jsonResponse</code> 変数にオブジェクトが設定され使えるようになります。
 変数ではなく、関数を呼び出すこともできます。そして、<strong class="text-danger">JSONP</strong> というのは、この <em>script を読み込む際に URL のクエリパラメータを使って呼び出し元がコールバック関数を指定できる仕組み</em> のことになります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -796,7 +796,7 @@ info.json は JavaScript としては正しい構文ではありませんし、�
 </span><span class="line"><span class="nx">script</span><span class="p">.</span><span class="nx">src</span>   <span class="o">=</span> <span class="s1">'http://thirdpartyjs.com/info.js?callback=jsonpCallback'</span><span class="p">;</span>
 </span><span class="line"><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h4>JSONP の制限</h4>
@@ -818,12 +818,12 @@ info.json は JavaScript としては正しい構文ではありませんし、�
 
 <p>ドキュメントの生成元を変えるには次のようなスクリプトを実行します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="nb">document</span><span class="p">.</span><span class="nx">domain</span> <span class="o">=</span> <span class="s1">'example.com'</span><span class="p">;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>生成元変更にはいくつか注意点があります。</p>
@@ -895,14 +895,14 @@ CORS の仕様では特別なヘッダを使ってプリフライトリクエス
 <p>デフォルトでは、ブラウザは CORS を行う際には Cookie や HTTP 認証ヘッダを送らないようになっています。
 こうした識別情報を送信するべきであると明示する場合には、<code>XmlHttpRequest</code> オブジェクトに <code>withCredentials</code> プロパティを設定します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XmlHttpRequest</span><span class="p">();</span>
 </span><span class="line"><span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>サーバ側は、識別情報を必要としている場合には <code>Access-Control-Allow-Origin</code> ヘッダに加えて、<code>Access-Control-Allow-Credentials</code> というヘッダもレスポンスに含める必要があります。
@@ -921,7 +921,7 @@ CORS の仕様では特別なヘッダを使ってプリフライトリクエス
 メッセージを送りたいウィンドウオブジェクトを取得して、<code>postMessage</code> を送るだけです。
 送られる側はウィンドウの <code>message</code> イベントで受け取ります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>http://publisher.dev/index.html</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>http://publisher.test/index.html</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -945,25 +945,25 @@ CORS の仕様では特別なヘッダを使ってプリフライトリクエス
 </span><span class="line"><span class="nt">&lt;body&gt;</span>
 </span><span class="line"><span class="nt">&lt;h1&gt;</span>Publisher<span class="nt">&lt;/h1&gt;</span>
 </span><span class="line">
-</span><span class="line"><span class="nt">&lt;iframe</span> <span class="na">id=</span><span class="s">"thirdparty"</span> <span class="na">src=</span><span class="s">"http://thirdparty.dev/index.html"</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;iframe</span> <span class="na">id=</span><span class="s">"thirdparty"</span> <span class="na">src=</span><span class="s">"http://thirdparty.test/index.html"</span><span class="nt">&gt;</span>
 </span><span class="line"><span class="nt">&lt;/iframe&gt;</span>
 </span><span class="line">
 </span><span class="line"><span class="nt">&lt;script&gt;</span>
 </span><span class="line"><span class="kd">var</span> <span class="nx">frame</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'thirdparty'</span><span class="p">);</span>
 </span><span class="line"><span class="nx">frame</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'load'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="line">    <span class="kd">var</span> <span class="nx">win</span> <span class="o">=</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">;</span>
-</span><span class="line">    <span class="nx">win</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="s1">'Hello World!'</span><span class="p">,</span> <span class="s1">'http://thirdparty.dev/'</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">win</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="s1">'Hello World!'</span><span class="p">,</span> <span class="s1">'http://thirdparty.test/'</span><span class="p">);</span>
 </span><span class="line"><span class="p">});</span>
 </span><span class="line"><span class="nt">&lt;/script&gt;</span>
 </span><span class="line"><span class="nt">&lt;/body&gt;</span>
 </span><span class="line"><span class="nt">&lt;/html&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>http://thirdparty.dev/index.html</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>http://thirdparty.test/index.html</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -994,7 +994,7 @@ CORS の仕様では特別なヘッダを使ってプリフライトリクエス
 </span><span class="line"><span class="nt">&lt;/body&gt;</span>
 </span><span class="line"><span class="nt">&lt;/html&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>easyXDM を利用したクロスドメインメッセージング</h3>

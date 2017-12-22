@@ -258,7 +258,7 @@
 
 <h3>GET の例</h3>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -275,7 +275,7 @@
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <pre><code class="console">"REQUEST_METHOD : GET"
@@ -313,14 +313,14 @@
 
 <p><code>client.open('GET', url)</code> を <code>client.open('POST', url)</code> に変えて実行します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <pre><code class="console">"REQUEST_METHOD : POST"
@@ -335,14 +335,14 @@
 
 <p>同じように <code>PUT</code> と <code>DELETE</code> でも試してみます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'PUT'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <pre><code class="console">"REQUEST_METHOD : PUT"
@@ -353,14 +353,14 @@
 127.0.0.1 - - [17/Feb/2014 10:45:32] "PUT / HTTP/1.1" 200 - 0.0005
 </code></pre>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'DELETE'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <pre><code class="console">"REQUEST_METHOD : DELETE"
@@ -379,7 +379,7 @@
 
 <p><code>GET</code> は <code>send</code> メソッドにパラメータを渡すのではなく URL にクエリを設定して送ります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -396,7 +396,7 @@
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="nx">url</span> <span class="o">+</span> <span class="s1">'?name=hamasyou'</span><span class="p">);</span>
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <pre><code class="console">"REQUEST_METHOD : GET"
@@ -432,14 +432,14 @@
 
 <p><code>GET</code> で送られています。次は <code>POST</code> で送ってみます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'hamasyou'</span><span class="p">});</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>POST</code> は <code>client.send</code> にパラメータを渡して送ります。<code>POST</code> のデフォルトの <code>Content-Type</code> は <code>application/x-www-form-urlencoded</code> になります。</p>
@@ -456,7 +456,7 @@
 
 <p><code>POST</code> で <code>Content-Type: application/json</code> で送る場合は、<code>HTTPClient#setRequestHeader</code> で設定します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -465,7 +465,7 @@
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'hamasyou'</span><span class="p">}));</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <pre><code class="console">"REQUEST_METHOD : POST"
@@ -480,7 +480,7 @@
 
 <p><code>PUT</code> と <code>DELETE</code> も <code>send</code> でパラメータを送ってみます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -489,7 +489,7 @@
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'hamasyou'</span><span class="p">}));</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <pre><code class="console">"REQUEST_METHOD : PUT"
@@ -504,7 +504,7 @@
 
 <p><code>PUT</code> はうまくいきました。次は <code>DELETE</code> です。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -513,7 +513,7 @@
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
 </span><span class="line"><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'hamasyou'</span><span class="p">}));</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <pre><code class="console">"REQUEST_METHOD : POST"

@@ -264,14 +264,14 @@
 
 <p><code>NSLog</code> の代わりに <code>println</code> が使える。Xcode のコンソールにも表示される。文字列の変数展開は <code>\()</code> を使う。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"hamasyou"</span>
 </span><span class="line"><span class="n">println</span><span class="p">(</span><span class="s">"Hello \(name)"</span><span class="p">)</span>  <span class="c1">// Hello hamasyou</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>基本型</h3>
@@ -280,7 +280,7 @@
 
 <p>Swift では <code>nil</code> を特別な値として定義している。<code>Bool</code> 値は <code>true</code> と <code>false</code>。条件式では <code>Bool</code> 値のみが使える。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -311,12 +311,12 @@
 </span><span class="line"><span class="k">if</span> <span class="n">pi</span> <span class="o">==</span> <span class="mf">3.14159</span> <span class="p">{</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>タプルも使える。不要な値を受け取るときは <code>_</code> を使う。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -347,24 +347,24 @@
 </span><span class="line"><span class="k">let</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">msg2</span><span class="p">)</span> <span class="o">=</span> <span class="n">otherError</span>
 </span><span class="line"><span class="n">msg2</span>  <span class="c1">// "Internal Server Error"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>配列は <code>[Int]</code> のように記述する。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="nl">ary</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>リテラルと変数</h3>
 
 <p>Swift ではリテラルの定義は <code>let</code> を使い、変数の定義は <code>var</code> を使う。<code>let</code> で定義したリテラルは変更できない。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -375,24 +375,24 @@
 </span><span class="line"><span class="k">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
 </span><span class="line"><span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>文字列を数値に直すのに <code>toInt</code> メソッドが使える。この時返される値は <code>Int</code> 型でなく、<code>Int?</code> 型なので注意。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"123"</span>
 </span><span class="line"><span class="k">let</span> <span class="n">num</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>   <span class="c1">// num は Int? か Optional Int として型推論される</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>if 文の条件式には <code>Bool</code> しか記述できないが、この、<code>型 + ?</code> の形式で表される <code>Optional 型</code> も if 文の式に記述できる。この場合値が nil ではない場合に <code>true</code> と評価される。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -407,12 +407,12 @@
 </span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"\(str) is number of \(num!)"</span><span class="p">)</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>このように、Swift では <code>nil</code> を返す可能性があるメソッドの戻り値の型は <code>Optional 型</code> になる。<code>Optional 型</code> から値を取り出すには <code>!</code> をつける。但し、nil が入っている変数から値を取り出そうとするとランタイムエラーになる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -431,12 +431,12 @@
 </span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"\(str) is not number"</span><span class="p">)</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Optional 型から値を取り出す方法に、<code>!</code> をつける以外に次のようにも書ける。（Optional Binding）</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -449,7 +449,7 @@
 </span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>Implicity Unwrapped Optionals</h3>
@@ -458,7 +458,7 @@
 
 <p>Optional 型の変数から値を取り出すには <code>!</code> を使う。必ず値が入っている確証が持てる場合は <code>型名 + !</code> の形で記述することもできる。値が入っていない時に <code>!</code> を使うとランタイムエラーがでるので注意。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -471,14 +471,14 @@
 </span><span class="line"><span class="k">let</span> <span class="nl">num</span><span class="p">:</span> <span class="n">Int</span><span class="o">!</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
 </span><span class="line"><span class="n">num</span>   <span class="c1">// num は 123 が入る Int! で定義しない場合は型推論によって Int? 型の Wrapped Value が入っているので 123 ではない</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>Range</h3>
 
 <p><code>(a..&lt;b)</code>、<code>(a...b)</code> の形で範囲を求めることができる。<code>(a..&lt;b)</code> は b を含まない。Ruby とは逆の動きをする。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -487,7 +487,7 @@
 </span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>    <span class="c1">// 0, 1, 2</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Xcode6 Beta3 から終端を含まない範囲を <code>..&lt;</code> で表すようになった。</p>
@@ -496,7 +496,7 @@
 
 <p><code>String</code> は <code>NSString</code> が使われているところでも使える。String は <code>Character</code> のコレクション型である。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -515,7 +515,7 @@
 </span><span class="line"><span class="n">str</span><span class="p">.</span><span class="n">hasPrefix</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>  <span class="c1">// true</span>
 </span><span class="line"><span class="n">str</span><span class="p">.</span><span class="n">hasSuffix</span><span class="p">(</span><span class="s">"World"</span><span class="p">)</span>  <span class="c1">// true</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Collection Types</h2>
@@ -524,7 +524,7 @@
 
 <p>Swift の配列は <code>Array</code> 型。<code>Array&lt;SomeType&gt;</code> で表す。略語として <code>型名[]</code> の形式も使える。<code>NSArray</code>、<code>NSMutableArray</code> が使われているところでも使える。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -543,14 +543,14 @@
 </span><span class="line"><span class="k">var</span> <span class="nl">anyList</span><span class="p">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">AnyObject</span><span class="o">&gt;?</span>        <span class="c1">// nil</span>
 </span><span class="line"><span class="k">var</span> <span class="nl">stringList2</span><span class="p">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[]</span>   <span class="c1">// empty String array</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>Dictionary</h3>
 
 <p>Swift の Hash は <code>Dictionary</code> 型。<code>Dictionary&lt;KeyType, ValueType&gt;</code> で定義する。<code>NSDictionary</code>、<code>NSMutableDictionary</code> が使われているところでも使える。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -581,7 +581,7 @@
 </span><span class="line"><span class="k">var</span> <span class="n">emptyDict</span> <span class="o">=</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">()</span>      <span class="c1">// empty Dictionary </span>
 </span><span class="line"><span class="k">var</span> <span class="nl">emptyDict2</span><span class="p">:</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="o">:</span><span class="p">]</span>  <span class="c1">// empty Dictionary</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Functions</h2>
@@ -590,7 +590,7 @@
 
 <p>Swift の関数（メソッド）は <em>第一級関数</em> なので、変数や引数に渡すことができる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -611,12 +611,12 @@
 </span><span class="line"><span class="p">}</span>
 </span><span class="line"><span class="n">sayHello</span><span class="p">(</span><span class="s">"hamasyou"</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>戻り値にはタプルを指定することもできる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -637,14 +637,14 @@
 </span><span class="line"><span class="n">ret</span><span class="p">.</span><span class="n">consonants</span>
 </span><span class="line"><span class="n">ret</span><span class="p">.</span><span class="n">others</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>External Parameter Names</h3>
 
 <p>関数呼び出し時にキーワード引数として呼び出す名前を指定できる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -665,12 +665,12 @@
 </span><span class="line"><span class="p">}</span>
 </span><span class="line"><span class="n">join</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">,</span> <span class="nl">withJoiner</span><span class="p">:</span> <span class="s">"-"</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>externalParameterName</code> と <code>localParameterName</code> を同じにしたいときは、<code>#</code> を使う。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -689,12 +689,12 @@
 </span><span class="line">    <span class="k">return</span> <span class="nb">false</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>引数にデフォルト値を指定することもできる。デフォルト値を指定して、externalParameterName を指定しないときは、localParameterName が externalParameterName になる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -705,12 +705,12 @@
 </span><span class="line"><span class="p">}</span>
 </span><span class="line"><span class="n">join</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">,</span> <span class="nl">joiner</span><span class="p">:</span> <span class="s">" "</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>_</code> を externalParameterName に指定すれば、デフォルト値を設定しても呼び出し時に externalParameterName を指定する必要はなくなる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -721,7 +721,7 @@
 </span><span class="line"><span class="p">}</span>
 </span><span class="line"><span class="n">join</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">,</span> <span class="s">" "</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>In-Out Parameters</h3>
@@ -730,7 +730,7 @@
 
 <p>var をつけて引数を定義しても、変更の影響を受けるのは関数の中だけ。関数の外の変数にも影響を及ぼしたい場合には <code>inout</code> をつけて引数を定義して、引数を渡すときに <code>&amp;</code> を使う。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -755,7 +755,7 @@
 </span><span class="line"><span class="n">s1</span>    <span class="c1">// "World"</span>
 </span><span class="line"><span class="n">s2</span>    <span class="c1">// "Hello"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Closures</h2>
@@ -770,7 +770,7 @@
 </ul>
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Closure Syntax</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Closure Syntax</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -779,12 +779,12 @@
 </span><span class="line">    <span class="n">statements</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Closure syntaxes</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Closure syntaxes</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -807,12 +807,12 @@
 </span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="err">$</span><span class="mi">1</span> <span class="p">})</span>
 </span><span class="line"><span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="err">$</span><span class="mi">1</span> <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>map sample</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>map sample</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -843,12 +843,12 @@
 </span><span class="line"><span class="p">}</span>
 </span><span class="line"><span class="n">strings</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Closure sample</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Closure sample</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -877,14 +877,14 @@
 </span><span class="line"><span class="n">incrementByTen</span><span class="p">()</span>    <span class="c1">// 20</span>
 </span><span class="line"><span class="n">incrementByTen</span><span class="p">()</span>    <span class="c1">// 30</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Enumerations</h2>
 
 <p>Swift では <code>Enumeration</code> も first-class type である。Swift ではデフォルト値を設定しない限り、自動で 0, 1, 2 の様な値がふられることはない。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -913,14 +913,14 @@
 </span><span class="line"><span class="n">Numbers</span><span class="p">.</span><span class="n">Four</span><span class="p">.</span><span class="n">toRaw</span><span class="p">()</span>                <span class="c1">// 4</span>
 </span><span class="line"><span class="n">Numbers</span><span class="p">.</span><span class="n">fromRaw</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">Numbers</span><span class="p">.</span><span class="n">Seven</span> <span class="c1">// true </span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>Associated Values</h3>
 
 <p>Swift の enumerations は関連する値を保持することができる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -947,7 +947,7 @@
 </span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"QR code with value of \(productCode)."</span><span class="p">)</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Classes and Structures</h2>
@@ -988,7 +988,7 @@
 </ul>
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>syntax</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>syntax</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1019,19 +1019,19 @@
 </span><span class="line"><span class="k">let</span> <span class="n">someVideoMode</span> <span class="o">=</span> <span class="n">VideoMode</span><span class="p">()</span>
 </span><span class="line"><span class="n">someVideoMode</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1280</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Objective-C とは違って、参照をたどって直接値を設定することも可能。</p>
 
 <p>構造体は、暗黙のイニシャライザを使って、プロパティを初期化することが可能。クラスはイニシャライザを明示的に定義しなければいけない。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">rvga</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mi">480</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>クラスと構造体のどちらを選ぶか</h3>
@@ -1048,7 +1048,7 @@
 
 <p>Dictionary は変数に割り当てられる際にコピーされる。Key/Value の Value がさらに Dictionary の場合はそれもコピーされる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1059,12 +1059,12 @@
 </span><span class="line"><span class="n">ages</span><span class="p">[</span><span class="s">"Peter"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span>    <span class="c1">// 24</span>
 </span><span class="line"><span class="n">copiedAges</span><span class="p">[</span><span class="s">"Peter"</span><span class="p">]</span>   <span class="c1">// 23</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Xcode6 Beta3 からは、Array の動作も Dictionary と同じ動きをする。つまり、値がコピーされる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1085,7 +1085,7 @@
 </span><span class="line"><span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>    <span class="c1">// nums is [10, 20, 30, 40, 100]</span>
 </span><span class="line"><span class="n">otherNums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="c1">// 50, otherNums is [50, 20, 30, 40]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Array で参照を切りたいときは <code>unshare()</code> メソッドを使う。変数への割り当て時に強制的にコピーしたいときは <code>copy()</code> メソッドを使う。</p>
@@ -1104,7 +1104,7 @@
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1113,7 +1113,7 @@
 </span><span class="line">    <span class="n">lazy</span> <span class="k">var</span> <span class="n">importer</span> <span class="o">=</span> <span class="n">DataImporter</span><span class="p">()</span>   <span class="c1">// DataImporter is assumed to take a non-trivial amount of time to initialize.</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Xcode6 Beta4 から <code>@final</code>、 <code>@lazy</code>、 <code>@optional</code>、<code>@required</code> に <code>@</code> が不要になった。</p>
@@ -1122,7 +1122,7 @@
 
 <p><code>center</code> プロパティが Computed Property になる。<code>set</code> で受け取る引数は明示してもいいし、明示しない場合は <code>newValue</code> で受け取れる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1155,14 +1155,14 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>Property Observers</h3>
 
 <p><code>willSet</code>, <code>didSet</code> を使うと、プロパティが設定されるまえ、設定された後にコールバックを受け取ることができる。これらのコールバックは初期化時にはよばれない。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1197,7 +1197,7 @@
 </span><span class="line"><span class="c1">// About to set totalSteps to 200</span>
 </span><span class="line"><span class="c1">// Added 200 steps</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Methods</h2>
@@ -1206,7 +1206,7 @@
 
 <p>メソッドは最初の引数の externalParameterName は、localParameterName と同じになり、呼び出し時は最初の引数の externalParameterName は省略できる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1225,12 +1225,12 @@
 </span><span class="line"><span class="k">let</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
 </span><span class="line"><span class="n">obj</span><span class="p">.</span><span class="n">hello</span><span class="p">(</span><span class="s">"hamasyou"</span><span class="p">,</span> <span class="nl">greet</span><span class="p">:</span> <span class="s">"Good Morning"</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>第二引数以降の呼び出しで externalParameterName を指定したくない場合は <code>_</code> を使う。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1249,14 +1249,14 @@
 </span><span class="line"><span class="k">let</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
 </span><span class="line"><span class="n">obj</span><span class="p">.</span><span class="n">hello</span><span class="p">(</span><span class="s">"hamasyou"</span><span class="p">,</span> <span class="s">"Good Night"</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>Modifying Value Types from Within Instance Methods</h3>
 
 <p>構造体と Enumerations はデフォルトでメソッドの中からプロパティの変更を行うことができない。変更できるようにするには <code>mutating</code> でメソッドを修飾する。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1273,7 +1273,7 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Access Control Level</h2>
@@ -1297,7 +1297,7 @@
 
 <p><code>subscript</code> の引数は複数指定することもできる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1316,7 +1316,7 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Inheritance</h2>
@@ -1329,7 +1329,7 @@
 
 <p>メソッドと違い、<em>イニシャライザの呼び出し時には全ての externalPropertyName の指定が必要</em>。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1350,14 +1350,14 @@
 </span><span class="line"><span class="p">}</span>
 </span><span class="line"><span class="k">let</span> <span class="n">magenta</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="nl">red</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>Designated Initializers and Convenience Initializers</h3>
 
 <p><code>Designated Initializer</code> はインスタンスの初期化の目的で定義される。<code>Convenience Initializer</code> は Designated Intitializer を呼び出す際のデフォルト値などを設定する目的で使う。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1382,14 +1382,14 @@
 </span><span class="line"><span class="p">}</span>
 </span><span class="line"><span class="k">let</span> <span class="n">me</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Type Casting</h2>
 
 <p>型チェックには <code>is</code> を使う。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1402,12 +1402,12 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>ダウンキャストに <code>as</code> が使える。Optional Type の場合は <code>as?</code> を使う。Dictionary とかから値を取り出すときに使える。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1424,12 +1424,12 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>配列の型に <code>AnyObject</code> を使うと、利用時にキャストが必要だが何の型か指定しなくても入れれるようになる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1450,12 +1450,12 @@
 </span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"Movie: '\(movie.name)', dir. \(movie.director)"</span><span class="p">)</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>配列の型に <code>Any</code> を使うと、なんでもいれれるようになる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1522,14 +1522,14 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Extensions</h2>
 
 <p>既存のクラス、構造体、Enumeration に機能を追加できる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1554,7 +1554,7 @@
 </span><span class="line">    <span class="k">var</span> <span class="nl">ft</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="o">/</span> <span class="mf">3.28084</span> <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 </div>
 

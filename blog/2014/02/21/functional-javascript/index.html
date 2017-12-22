@@ -306,7 +306,7 @@
 
 <p>例えば、JavaScript の Array には <code>sort</code> 関数があります。<code>sort</code> は引数に <code>compareFunction</code> を取ります。値の大小を比較する関数を <code>lessOrEqual</code>、この関数を <code>compareFunction</code> の仕様に変換する関数を <code>compare</code> とします。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -345,7 +345,7 @@
 </span><span class="line"><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="nx">sort</span><span class="p">(</span><span class="nx">compare</span><span class="p">(</span><span class="nx">lessOrEqual</span><span class="p">));</span>
 </span><span class="line"><span class="c1">// =&gt; [-2, -1, -1, 0, 1, 10, 100]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>compare</code> 関数は大小比較を行う関数を引数にとり、<code>compareFunction</code> の仕様に則った関数を生成して返す高階関数になります。</p>
@@ -358,7 +358,7 @@
 </ul>
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -375,7 +375,7 @@
 </span><span class="line"><span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">false</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">truthy</span><span class="p">);</span>
 </span><span class="line"><span class="c1">// =&gt; [false, false, true, true, false]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>これこそが、<strong class="text-danger">関数型プログラミング</strong> です。関数型プログラミングは強力な <strong class="text-danger">データ抽象</strong> とともに実装されて役に立つものです。</p>
@@ -384,7 +384,7 @@
 
 <p>「99本のビール」の歌の歌詞を構築するプログラムを命令型プログラミングと関数型プログラミングで書いてみた例です。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>命令型プログラミング</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>命令型プログラミング</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -407,12 +407,12 @@
 </span><span class="line">  <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>関数型プログラミングのアプローチで書くとこうなります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>関数型プログラミング</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>関数型プログラミング</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -459,7 +459,7 @@
 </span><span class="line">
 </span><span class="line"><span class="nx">song</span><span class="p">(</span><span class="mi">99</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">lyricSegment</span><span class="p">);</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><strong class="text-danger">命令型プログラミングは一度きりの実装となりがちで、再利用が難しいものになります</strong>。</p>
@@ -482,7 +482,7 @@
 
 <p>ある値を何度か繰り返す関数はよい関数ですが、<strong class="text-danger">ある計算を何度か繰り返す関数のほうがよりよい</strong> 関数です。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>よい関数</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>よい関数</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -497,12 +497,12 @@
 </span><span class="line"><span class="nx">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">'Major'</span><span class="p">);</span>
 </span><span class="line"><span class="c1">// =&gt; ["Major", "Major", "Major", "Major"]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>よりよい関数</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>よりよい関数</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -521,7 +521,7 @@
 </span><span class="line"><span class="nx">repeatedly</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="p">});</span>
 </span><span class="line"><span class="c1">// =&gt; [1, 3, 8]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>関数を作る関数を作る意義</h2>
@@ -532,14 +532,14 @@
 
 <p>カリー化された関数というのは、<em>引数を一つ受け取るたびに新しい関数を返す関数</em> のことです。<code>invoker</code> 関数はカリー化された関数といえます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>カリー化された関数</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>カリー化された関数</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="nx">invoker</span><span class="p">(</span><span class="s1">'reverse'</span><span class="p">,</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">reverse</span><span class="p">)([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]);</span>
 </span><span class="line"><span class="c1">// =&gt; [3,2,1]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>JavaScript は変数の値の変更に対しておおらかな言語です。オブジェクト指向のカプセル化のような事をする場合、クロージャを使うと便利です。</p>
@@ -552,7 +552,7 @@
 
 <p>まず、シンプルな高階関数をつくります。関数を引数に取り、引数をひとつだけ取るように限定された関数を返す関数です。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>curry</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>curry</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -565,14 +565,14 @@
 </span><span class="line">  <span class="p">};</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>JavaScript の関数は <strong class="text-danger">引数をいくら渡してもエラーになりません</strong>。そこで、いくつかの「<em>専門化を行う</em>」引数をオプションで取る場合がよくあります。</p>
 
 <p>例えば <code>parseInt</code> という関数は、第2引数に n 進数の n をオプションで受け取ります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>parseInt</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>parseInt</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -583,38 +583,38 @@
 </span><span class="line"><span class="nb">parseInt</span><span class="p">(</span><span class="s1">'11'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 </span><span class="line"><span class="c1">// =&gt; 3</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>parseInt</code> を第一級関数として使うと第2引数が原因で混乱するケースがあります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="p">[</span><span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">);</span>
 </span><span class="line"><span class="c1">// =&gt; [11, NaN, 3, 4]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>JavaScript の <code>map</code> は与えられた関数の第1引数に <em>要素</em>、第2引数に <em>インデックス</em>、第3引数に <em>元の配列</em> を渡します。そのため、こんな結果になってしまいます。</p>
 
 <p>ここで、先ほど定義した <code>curry</code> 関数を利用します。与えられた関数に一つだけ引数を渡すように強制してみます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="p">[</span><span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">curry</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">));</span>
 </span><span class="line"><span class="c1">// =&gt; [11, 11, 11, 11]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>引数を2つ取るようにする <code>curry2</code> は次のようになります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>curry2</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>curry2</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -643,7 +643,7 @@
 </span><span class="line"><span class="nx">parseIntByBinary</span><span class="p">(</span><span class="s1">'10'</span><span class="p">);</span>
 </span><span class="line"><span class="c1">// =&gt; 2</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>このように、<strong class="text-danger">カリー化は JavaScript の関数の動作を「専門化」させるための有効なテクニック</strong> になります。</p>
@@ -669,7 +669,7 @@
 </ol>
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>length</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>length</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -686,7 +686,7 @@
 </span><span class="line">  <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>再帰をうまく実装するヒントは、「<strong class="text-danger">値は大きな問題に内包された小さな問題によって組み立てられるものである</strong>」と認識することです。</p>
@@ -714,12 +714,12 @@
 
 <p>RESTful なアーキテクチャが一般化するにつれて <strong class="text-danger">冪等（べきとう）</strong> の考え方も一般に浸透してきました。冪等とは、<em>あるアクションを何度行っても一度行った場合とまったくおなじ効果をもたらす</em> というものです。冪等である関数は次の条件を満たします。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>冪等な関数</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>冪等な関数</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="nx">someFunc</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="o">==</span> <span class="nx">_</span><span class="p">.</span><span class="nx">compose</span><span class="p">(</span><span class="nx">someFunc</span><span class="p">,</span> <span class="nx">someFunc</span><span class="p">)(</span><span class="nx">arg</span><span class="p">);</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>ある引数を与えて実行するということは、その関数を2回連続で呼び出しても同じ結果を返します。</p>
@@ -767,7 +767,7 @@
 
 <p>常に真偽値（<code>true</code> or <code>false</code>）を返す関数を <strong class="text-danger">predicate</strong> と呼びます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -776,14 +776,14 @@
 </span><span class="line">  <span class="k">return</span> <span class="nx">x</span> <span class="o">&lt;=</span> <span class="nx">y</span><span class="p">;</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>existy と truthy</h3>
 
 <p><code>existy</code> は与えられた値が存在するかどうかを返す関数です。<code>truthy</code> は与えられた値が <code>true</code> とみなされるかどうかを返す関数です。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -800,7 +800,7 @@
 </span><span class="line">  <span class="k">return</span> <span class="p">(</span><span class="nx">x</span> <span class="o">!==</span> <span class="kc">false</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">existy</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>truthy</code> は0を <code>true</code> と判定します。これは JavaScript の標準の動作とは違いますが、0を <code>false</code> と同一とみなすのは C 言語の遺物であると筆者は考えているようです。</p>
@@ -831,7 +831,7 @@
 
 <p><code>fnull</code> は関数と可変長引数をとる関数です。与えられた関数の実行を行う際に <code>undefined</code> か <code>null</code> の値の場合にはデフォルト値を使うようにして関数を呼び出します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>fnull</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>fnull</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -856,14 +856,14 @@
 </span><span class="line"><span class="nx">_</span><span class="p">.</span><span class="nx">reduce</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nx">safeMulti</span><span class="p">);</span>
 </span><span class="line"><span class="c1">// =&gt; 30</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>invoker</h3>
 
 <p><code>invoker</code> は関数を返す関数です。引数にメソッド名を取り、メソッドの実行主体のオブジェクトを渡すとそのオブジェクトでメソッドを実行する関数を返します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>invoker</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>invoker</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -896,7 +896,7 @@
 </span><span class="line"><span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="nx">rev</span><span class="p">);</span>
 </span><span class="line"><span class="c1">// =&gt; [[3, 2, 1]]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>関数型のスタイルでは、<em>関数の実行主体となるオブジェクトを引数にとる関数の形が好まれます</em>。</p>
@@ -905,7 +905,7 @@
 
 <p>メソッドチェーンは「<em>流暢な</em>」API を構築するために有用なパターンです。流暢な API とは例えば次のようなものです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>流暢な API の例</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>流暢な API の例</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -918,7 +918,7 @@
 </span><span class="line">  <span class="p">.</span><span class="nx">setAge</span><span class="p">(</span><span class="mi">108</span><span class="p">)</span>
 </span><span class="line">  <span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>メソッドチェーンを実現する「<em>魔法</em>」は <em>チェーン内のそれぞれのメソッドが同じホストのオブジェクトの参照を返す</em> ことです。</p>

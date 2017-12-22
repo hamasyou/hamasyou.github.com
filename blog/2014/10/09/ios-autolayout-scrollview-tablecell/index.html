@@ -286,7 +286,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <p>ちなみに、iOS8 以降だけに対応するのであれば、<code>TableViewCell.xib</code> で <code>ContentView</code> に対して何も考えずに Auto Layout でレイアウトして、<code>TableViewController</code> を継承したクラスで次のように <code>tableView.rowHeight</code> に <code>UITableViewAutomaticDimension</code> を設定し、<code>tableView:estimatedHeightForRowAtIndexPath:</code> で <code>UITableViewAutomaticDimension</code> を返すようにするだけで解決します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -313,7 +313,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>tableView</code> に <code>estimatedRowHeight</code> というプロパティがありますが、これに <code>UITableViewAutomaticDimension</code> を設定して、<code>tableView:estimatedHeightForRowAtIndexPath:</code> を実装しない方法だと上手くいきません。バグなんじゃないか？？。。。</p>
@@ -325,7 +325,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 <p>Auto Layout は Storyboard やプログラムから「制約」を利用してレイアウトを組み立てるものです。基本的に Auto Layout に対応したアプリでは、
 <code>UIView(frame: CGRectMake(xx, xx, xx, xx))</code> みたいな作成方法はしなくなります。</p>
 
-<p>Auto Layout を使うと、&#8221;画面のこのコンポーネントから◯pxずらしてこのコンポーネントを配置する&#8221; や “このコンポーネントとこのコンポーネントのサイズを同じにする”
+<p>Auto Layout を使うと、”画面のこのコンポーネントから◯pxずらしてこのコンポーネントを配置する” や “このコンポーネントとこのコンポーネントのサイズを同じにする”
 みたいなことをなんとなく直感的に記述（または、設定）できます。</p>
 
 <p>Auto Layout を Strobyboard 上で設定すると、その制約が実際にコンポーネントに反映されるのは、<code>UIViewController#viewDidLayoutSubviews</code> のタイミングになるようです。</p>
@@ -344,7 +344,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <p>じゃあ、どうするかというと、僕はもう割りきって、<code>heightForRowAtIndexPath</code> の中で <code>cellForRowAtIndexPath</code> を呼び出して、セルにコンテンツを設定した後にセルの高さを計算するようにしています。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>UITableViewController</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>UITableViewController</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -423,7 +423,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">        <span class="k">return</span> <span class="n">UITableViewAutomaticDimension</span>
 </span><span class="line">    <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>高さを計算するときに、<code>cellForRowAtIndexPath</code> を呼び出してセルにコンテンツを設定した後、セルの width にテーブルビューの width を設定してあげて、一度 cell のレイアウトを更新します。</p>
@@ -462,14 +462,14 @@ iPhone6 Plus になったときにセルの高さがおかしくなってしま�
 
 <p>コンポーネントのレイアウトを強制的に更新したい場合は</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">view</span><span class="p">.</span><span class="n">setNeedsLayout</span><span class="p">()</span>
 </span><span class="line"><span class="n">view</span><span class="p">.</span><span class="n">layoutIfNeeded</span><span class="p">()</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>のコンボでレイアウトを更新します。この処理を行うと、Auto Layout にしたがってレイアウトが設定されます。</p>
@@ -587,7 +587,7 @@ contentSize はスクロールビューが表示するコンテンツのサイ�
 じゃあ、contentSize をプログラムで上書きしちゃえば上手くスクロールするんでは？ということで、さがすと出てくるのが大体 <code>viewDidLayoutSubviews</code> の中で
 contentSize を設定すればいいじゃんっていうプログラム例です。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -604,12 +604,12 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line">    <span class="n">scrollView</span><span class="p">.</span><span class="n">contentSize</span> <span class="o">=</span> <span class="n">CGSizeMake</span><span class="p">(</span><span class="n">contentWidth</span><span class="p">,</span> <span class="n">contentHeight</span><span class="p">)</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>ぶっちゃけ、僕もこの方法が結局妥当かなという結論に達しました。先に UIScrollView に画像を動的に追加して、ページングできるようにするコードを掲載します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -752,7 +752,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><img src="/images/20141008/SS17.png" width="800" class="img-thumbnail" title=""></p>

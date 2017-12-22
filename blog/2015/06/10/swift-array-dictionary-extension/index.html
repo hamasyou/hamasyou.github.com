@@ -280,7 +280,7 @@
 
 <div class="entry-content"><h2>Array に each を実装してみた。</h2>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -333,12 +333,12 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>使い方はこんな感じ。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -349,7 +349,7 @@
 </span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="n">eachWithIndex</span> <span class="p">{</span> <span class="p">(</span><span class="nl">n</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">i</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="k">in</span> <span class="n">println</span><span class="p">(</span><span class="s">"index \(i), n \(n)"</span><span class="p">)</span> <span class="p">}</span>
 </span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="n">eachWithIndex</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">"index \($1), n \($0)"</span><span class="p">)</span> <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>配列の中身が <code>AnyObject</code> だった時に、型指定するときとしない時でどっちも動くようにするのに、メソッドを2つ定義しました。</p>
@@ -360,7 +360,7 @@
 
 <p>ついでに <code>reduce</code> も。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -381,12 +381,12 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>使い方はこんな感じ。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -421,7 +421,7 @@
 </span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="s">"e"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 </span><span class="line"><span class="k">let</span> <span class="n">n</span> <span class="o">=</span> <span class="n">dict</span><span class="p">.</span><span class="n">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="k">in</span> <span class="n">n</span> <span class="o">+</span> <span class="n">d</span><span class="mf">.1</span> <span class="p">}</span>    <span class="c1">// 15</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Ruby の map っぽい感じで使えるにしたかったので。</p>

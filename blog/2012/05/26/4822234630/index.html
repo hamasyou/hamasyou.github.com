@@ -362,7 +362,7 @@
 
 <p>「関数オブジェクトから外側の変数がアクセス（参照や更新）できる」というのがクロージャを構成する要件の一つ。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -389,12 +389,12 @@
 </span><span class="line"><span class="o">&gt;</span> <span class="mi">1</span>
 </span><span class="line"><span class="o">&gt;</span> <span class="mi">4</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>外側のスコープに属する変数を参照している関数オブジェクトは、そのローカル変数を「閉じ込め」る。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -423,7 +423,7 @@
 </span><span class="line"><span class="nx">f</span><span class="p">();</span>
 </span><span class="line"><span class="o">&gt;</span> <span class="nx">n</span><span class="o">=</span><span class="mi">2</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -442,7 +442,7 @@
 
 <p>Go には例外機構がないが、戻り値の多値をもちいて、本来の戻り値とエラーが発生したかどうかを区別できる「<strong class="text-danger">コンマOK</strong>」スタイルをとっている。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -453,7 +453,7 @@
 </span><span class="line">  <span class="c1">//... open に失敗したときの処理</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Go の goroutine は、メモリ空間の共有を行い、軽量であり、コンテキストスイッチが自動でマルチコアを活用できる。</p>

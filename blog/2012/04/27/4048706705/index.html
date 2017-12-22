@@ -292,7 +292,7 @@
 <dt>Number</dt>
 <dd>1, 100, 3.14 などの数値。浮動小数点を含む。</dd>
 <dt>String</dt>
-<dd>&#8216;hoge&#8217;, &#8220;foo bar&#8221;, などで表現される文字列。</dd>
+<dd>‘hoge’, "foo bar", などで表現される文字列。</dd>
 <dt>Boolean</dt>
 <dd>true と false。</dd>
 <dt>undefined</dt>
@@ -307,14 +307,14 @@
 <h3>変数の型をしる <code>typeof</code> 演算子</h3>
 
 
-<p>変数や値の型を調べるときに使える <strong class="text-danger">typeof演算子</strong>は、<em>&#8220;number&#8221;</em>、<em>&#8220;string&#8221;</em>、<em>&#8220;boolean&#8221;</em>、<em>&#8220;undefined&#8221;</em>、<em>&#8220;object&#8221;</em>、<em>&#8220;function&#8221;</em> のいずれかの値（文字列）を返す。</p>
+<p>変数や値の型を調べるときに使える <strong class="text-danger">typeof演算子</strong>は、<em>"number"</em>、<em>"string"</em>、<em>"boolean"</em>、<em>"undefined"</em>、<em>"object"</em>、<em>"function"</em> のいずれかの値（文字列）を返す。</p>
 
 <h3>Infinity（無限）</h3>
 
 
 <p><strong class="text-danger">Infinity</strong> は JavaScript で扱えない大きな数値を表すのにつかう値。JavaScript で扱える最大の数値は 1.7976931348623157e+308、最小は 5e-324である。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -329,7 +329,7 @@
 </span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="mi">1</span><span class="nx">e309</span>
 </span><span class="line"><span class="kc">Infinity</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -340,7 +340,7 @@
 
 
 <ul>
-<li>空文字列&#8221;&#8221;</li>
+<li>空文字列""</li>
 <li>null</li>
 <li>undefined</li>
 <li>数値の 0</li>
@@ -356,7 +356,7 @@
 
 <p>数字のような文字列を数値に変換する方法は parseInt() 関数を使う方法の他に、1 を掛けるという方法もある。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -367,12 +367,12 @@
 </span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="k">typeof</span> <span class="nx">s</span><span class="p">;</span>
 </span><span class="line"><span class="s2">"number"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>文字列に変換する場合、空文字と結合する方法がある。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -383,7 +383,7 @@
 </span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="k">typeof</span> <span class="nx">n</span><span class="p">;</span>
 </span><span class="line"><span class="s2">"string"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -393,7 +393,7 @@
 
 <p>配列の要素の削除には delete 演算子を使うが、この演算子は配列の要素を減らすわけではなく、undefined を設定する。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -410,7 +410,7 @@
 </span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">a</span><span class="p">;</span>
 </span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -420,7 +420,7 @@
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -429,7 +429,7 @@
 </span><span class="line">  <span class="c1">// 何かの処理</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -439,7 +439,7 @@
 
 <p>自分自身を書き換える関数の仕組みは、初期化などの一度だけ行ないたい処理がある場合に使う。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -462,7 +462,7 @@
 </span><span class="line">  <span class="k">return</span> <span class="nx">actualWork</span><span class="p">;</span>
 </span><span class="line"><span class="p">}();</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -477,7 +477,7 @@
 
 <p>{} を使ってオブジェクトを定義することをオブジェクトリテラル表記を呼ぶ。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -488,7 +488,7 @@
 </span><span class="line">  <span class="nx">occupation</span><span class="o">:</span> <span class="s1">'Ninja'</span>
 </span><span class="line"><span class="p">};</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>オブジェクトのプロパティ名はクウォートしないのが推奨されている。ちなみに、連想配列（ハッシュ）のキーは文字列である。</p>
@@ -498,7 +498,7 @@
 
 <p>関数を new してオブジェクトを作ることで、関数をコンストラクタとして利用することができる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -515,7 +515,7 @@
 </span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">h1</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
 </span><span class="line"><span class="s2">"hamasyou"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -537,14 +537,14 @@
 
 <p>オブジェクトが作成されると、<em>constructor</em> プロパティと呼ばれる特別なプロパティに、オブジェクトを作成したときに使われたコンストラクタ関数がセットされる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">h1</span><span class="p">.</span><span class="nx">constructor</span><span class="p">;</span>
 </span><span class="line"><span class="nx">Hero</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -554,14 +554,14 @@
 
 <p><em>instanceof 演算子</em>を使うと constructor プロパティが指定した関数かどうかを調べることができる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">h1</span> <span class="k">instanceof</span> <span class="nx">Hero</span><span class="p">;</span>
 </span><span class="line"><span class="kc">true</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -586,7 +586,7 @@
 
 <p>関数は、<em>prototype</em> と呼ばれるプロパティを保持している。初期値は空のオブジェクトになっている。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -611,12 +611,12 @@
 </span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">multiply</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
 </span><span class="line"><span class="nx">multiply</span> <span class="p">{}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>prototype プロパティに設定されているオブジェクトには、プロパティとメソッドを追加していくことができる。このオブジェクトは、multiply 関数自身にはなんの影響も与えない。追加したプロパティとメソッドは、multiply をコンストラクタとして利用した場合にのみ使われる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -633,7 +633,7 @@
 </span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">hoge</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
 </span><span class="line"><span class="s2">"hamasyou"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>prototype プロパティをいつ変更しても、すべてのオブジェクトが影響を受ける点は注意が必要。</p>
@@ -643,7 +643,7 @@
 
 <p>オブジェクト自身のプロパティの方が、prototype オブジェクトのプロパティよりも優先して解決される。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -680,7 +680,7 @@
 </span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">hama_salary</span><span class="p">.</span><span class="nx">total</span><span class="p">();</span>
 </span><span class="line"><span class="mi">52500</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -697,7 +697,7 @@
 
 <p>次の例は、本書 P.183 のプロトタイプチェーンの例である。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -756,7 +756,7 @@
 </span><span class="line"><span class="o">&gt;&gt;&gt;</span> <span class="nx">my</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
 </span><span class="line"><span class="s2">"Triangle"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Triangle クラスには toString メソッドは定義されていないが、Shape 関数で定義されていることで、プロトタイプチェーンをたどって呼び出すことができる。</p>

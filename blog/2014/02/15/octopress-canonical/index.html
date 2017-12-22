@@ -247,17 +247,17 @@
 
 <p>初期値では <code>_includes/head.html</code> の中に</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>_includes/head.html</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>_includes/head.html</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"{{ canonical }}"</span><span class="nt">&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>となっていますが、これだと吐き出される個別ページの HTML は</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>view-source</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>view-source</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -270,19 +270,19 @@
 </span><span class="line">...
 </span><span class="line"><span class="nt">&lt;/head&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>のように、<code>href</code> の末尾が <code>/</code> で終わっていません。Octopress (Jekyll) は <code>title名</code> ディレクトリの下に index.html を生成するという形式になっているので、 <code>http://hamasyou.com/blog/2014/02/15/octopress-canonical/</code> が canonical として正しいはずです。</p>
 
 <p>なので、<code>canonical</code> は</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>_includes/head.html</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>_includes/head.html</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"{{ canonical }}/"</span><span class="nt">&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>のように、末尾に <code>/</code> を入れてやる必要があります。</p>

@@ -312,7 +312,7 @@
 
 <p>デフォルト値をもつパラメータが複数ある場合は、Ruby の「メソッドの引数の末尾に要素がひとつ以上のハッシュを渡す際は中括弧（{,}）を省略できる」という仕様を利用して、<strong class="text-danger">擬似キーワード引数</strong>が使えます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -333,7 +333,7 @@
 </span><span class="line"><span class="n">hello</span><span class="p">(</span><span class="s2">"Syougo"</span><span class="p">,</span> <span class="ss">age</span><span class="p">:</span> <span class="mi">27</span><span class="p">)</span>
 </span><span class="line"><span class="c1"># =&gt; "Hello Syougo! {:nickname=&gt;"hamasyou", :age=&gt;27}"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -343,7 +343,7 @@
 
 <p>Rails の Configuration に使われているオブジェクトショートカットのことです。次のようなコードを</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -360,12 +360,12 @@
 </span><span class="line">
 </span><span class="line"><span class="n">server</span><span class="o">.</span><span class="n">run</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>次のように書けるようにします。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -378,12 +378,12 @@
 </span><span class="line">  <span class="n">handle</span><span class="p">(</span><span class="sr">/name is (\w+)/</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="s2">"Nice to meet you </span><span class="si">#{</span><span class="n">m</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">!"</span> <span class="p">}</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>これを実現するには、次のようなコードになります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -400,14 +400,14 @@
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>インスタンス化したオブジェクトの <em>instance_eval()</em> メソッドにブロックを渡すことで、ブロックをそのインスタンスのコンテキストで実行しています。</p>
 
 <p>この方法を使うと、ブロックはインスタンス化したオブジェクトのコンテキストで実行されるため、ブロックのスコープ内で定義されたローカル変数にしかアクセスできません。つまり、次のコードは<em>動きません</em>。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -438,12 +438,12 @@
 </span><span class="line"><span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">my_method</span>
 </span><span class="line"><span class="c1"># =&gt; NameError: undefined local variable or method `nickname' for #&lt;Server:0x000001020478a8&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>この問題を解決するには、ブロックをインスタンスのコンテキストで評価するのではなく、クロージャとして実行すればよいです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -460,12 +460,12 @@
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -496,7 +496,7 @@
 </span><span class="line"><span class="no">MyClass</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">my_method</span>
 </span><span class="line"><span class="c1"># =&gt; "Hello hamasyou"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>block.arity を使ってコードブロックに引数がいくつあるかを調べて、引数がひとつ以上あればブロックをクロージャとして呼び出すようにしています。　</p>
@@ -533,7 +533,7 @@
 <p>これはすなわち、メソッドに感嘆符をつける目的はこのメソッドが特別であることを知らせるのであって、破壊的であるとか危険であることを知らせるのではないということです。</p>
 
 <blockquote>
-<p>したがって、同じようなことをする　foo() メソッドがないのに foo!() メソッドだけがあるのは、あまり意味のないことだ。（中略）感嘆符は必ずしもそのメソッドが<em>破壊的な操作</em>をすることを意味するわけではないと考えると、&#8230;</p>
+<p>したがって、同じようなことをする　foo() メソッドがないのに foo!() メソッドだけがあるのは、あまり意味のないことだ。（中略）感嘆符は必ずしもそのメソッドが<em>破壊的な操作</em>をすることを意味するわけではないと考えると、…</p>
 <footer><strong>本書 P.59</strong></footer>
 </blockquote>
 
@@ -583,7 +583,7 @@
 
 <p>メソッドを定義するというのは、クラスのインスタンスメソッドを定義するということなので、動的にインスタンスメソッドを定義するにはクラスのスコープで define_method() を呼び出します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -618,7 +618,7 @@
 </span><span class="line"><span class="n">obj</span><span class="o">.</span><span class="n">hello</span>
 </span><span class="line"><span class="c1"># =&gt; "Hello World"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -628,7 +628,7 @@
 
 <p>クラスメソッドを定義するには、クラスの特異クラスにメソッドを定義する必要があります。特異クラスをオープンするには、class &lt;&lt; obj 構文を使います。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -657,7 +657,7 @@
 </span><span class="line"><span class="no">MyClass</span><span class="o">.</span><span class="n">hello</span>
 </span><span class="line"><span class="c1"># =&gt; "Hello World"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><section></section></p>
@@ -679,7 +679,7 @@
 
 <p>extend self を使うと、自信のインスタンスメソッドを特異クラスに定義することになりクラスメソッド化することができます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -702,7 +702,7 @@
 </span><span class="line"><span class="no">MyModule</span><span class="o">.</span><span class="n">hello</span>
 </span><span class="line"><span class="c1"># =&gt; "Hello World"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -729,7 +729,7 @@
 
 <p>３章で学習したことが詰まったコードの読み解きです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -818,7 +818,7 @@
 </span><span class="line"><span class="no">NativeCampingRoutes</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="s1">'/goodbye'</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"joe"</span><span class="p">)</span>
 </span><span class="line"><span class="c1"># =&gt; goodbye joe</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -861,7 +861,7 @@
 
 <p>R() メソッドで @routes[url] に継承先クラスが格納されているので、Class#new を使ってインスタンス化し、get() メソッドを呼び出しています。</p>
 
-<h4>27, 28行目 class Hello &lt; R &#8216;/hello&#8217;</h4>
+<h4>27, 28行目 class Hello &lt; R ‘/hello’</h4>
 
 
 <p>定義した NativeCamppingRoutes モジュールのサブクラスとして Hello を定義し、R() メソッドで返される無名クラスを継承しています。</p>
@@ -878,7 +878,7 @@
 
 <p>YAML というデータシリアライゼーションのための標準ライブラリを使うと、データ構造をプリントしてくれる y() メソッドが使えるようになる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -903,7 +903,7 @@
 </span><span class="line"><span class="c1">#  :pref: Chiba</span>
 </span><span class="line"><span class="c1">#  :city: Ichikawa</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -929,7 +929,7 @@
 
 <p>次のように使います。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -958,7 +958,7 @@
 </span><span class="line"><span class="c1"># {:name=&gt;"Daniela Boyle", :phone=&gt;"956.964.3848"},</span>
 </span><span class="line"><span class="c1"># {:name=&gt;"Mrs. Jarret Wisozk", :phone=&gt;"(760)687-0168 x68429"}]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Faker で作れるダミーデータには次のようなものがあります。</p>
@@ -973,55 +973,55 @@
 <td>Faker::Address</td>
 <td>住所データ</td>
 <td><ul class="none">
-<li>zip_code<br>&#8220;15832-6995&#8221;</li>
-<li>city<br>&#8220;South Verlie&#8221;</li>
+<li>zip_code<br>“15832-6995”</li>
+<li>city<br>“South Verlie”</li>
 </ul></td>
 </tr>
   <tr>
 <td>Faker::Company</td>
 <td>会社データ</td>
 <td><ul class="none">
-<li>name<br>&#8220;Carroll, Kuhlman and Glover&#8221;</li>
-<li>bs<br>&#8220;orchestrate vertical action-items&#8221;</li>
+<li>name<br>“Carroll, Kuhlman and Glover”</li>
+<li>bs<br>“orchestrate vertical action-items”</li>
 </ul></td>
 </tr>
   <tr>
 <td>Faker::Internet</td>
 <td>ネットワークデータ</td>
 <td><ul class="none">
-<li>email<br>&#8220;wiley@andersoncrist.us&#8221;</li>
-<li>free_email<br>&#8220;aubree.waters@gmail.com&#8221;</li>
-<li>domain_name<br>&#8220;littel.com&#8221;</li>
+<li>email<br>“wiley@andersoncrist.us”</li>
+<li>free_email<br>“aubree.waters@gmail.com”</li>
+<li>domain_name<br>“littel.com”</li>
 </ul></td>
 </tr>
   <tr>
 <td>Faker::Lorem</td>
 <td>文章データ</td>
 <td><ul class="none">
-<li>words<br>[&#8220;quaerat&#8221;, &#8220;blanditiis&#8221;, &#8220;qui&#8221;]</li>
-<li>sentences<br>[&#8220;Maiores dicta sed voluptas corrupti repudiandae eos aliquam eligendi.&#8221;, &#8220;Dolorem eius ut nam esse nihil illum.&#8221;, &#8220;Non sapiente accusamus maiores neque eum est ea.&#8221;]</li>
+<li>words<br>[“quaerat”, “blanditiis”, “qui”]</li>
+<li>sentences<br>[“Maiores dicta sed voluptas corrupti repudiandae eos aliquam eligendi.”, “Dolorem eius ut nam esse nihil illum.”, “Non sapiente accusamus maiores neque eum est ea.”]</li>
 </ul></td>
 </tr>
   <tr>
 <td>Faker::Name</td>
 <td>名前データ</td>
 <td><ul class="none">
-<li>name<br>&#8220;Nicklaus Swift&#8221;</li>
-<li>first_name<br>&#8220;Angus&#8221;</li>
-<li>last_name<br>&#8220;Morissette&#8221;</li>
+<li>name<br>“Nicklaus Swift”</li>
+<li>first_name<br>“Angus”</li>
+<li>last_name<br>“Morissette”</li>
 </ul></td>
 </tr>
   <tr>
 <td>Faker::PhoneNumber</td>
 <td>電話番号</td>
-<td><ul class="none"><li>phone_number<br>&#8220;024-597-6027 x86091&#8221;</li></ul></td>
+<td><ul class="none"><li>phone_number<br>“024-597-6027 x86091”</li></ul></td>
 </tr>
 </table>
 
 
 <p>Faker::PhoneNumber::Formats に phone_number() メソッドで返される電話番号のフォーマットの一覧が入っています。テスト時にフォーマットをいじることで、phone_number() メソッドの戻り値の形式を変更できます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1030,7 +1030,7 @@
 </span><span class="line"><span class="ss">Faker</span><span class="p">:</span><span class="ss">:PhoneNumber</span><span class="o">::</span><span class="n">phone_number</span>
 </span><span class="line"><span class="c1"># =&gt; "(109)29-6592"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
@@ -1066,7 +1066,7 @@
 
 <p>例えば、EUC-JP で書かれたファイルを UTF-8 で書かれた Ruby のソースコード上で処理したい場合、次のようにします。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1075,14 +1075,14 @@
 </span><span class="line">  <span class="nb">p</span> <span class="n">line</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
-<p><em>encoding:</em> パラメータを指定してファイルを開きます。encoding パラメータは &#8220;&lt;ファイルのエンコード&gt;:&lt;処理するソースコードのエンコード&gt;&#8221; のように書きます。</p>
+<p><em>encoding:</em> パラメータを指定してファイルを開きます。encoding パラメータは "&lt;ファイルのエンコード&gt;:&lt;処理するソースコードのエンコード&gt;" のように書きます。</p>
 
-<p>例の場合、EUC-JP で書かれた euc.txt ファイルを UTF-8 のソースコードで処理するので、encoding:&#8221;EUC-JP:UTF-8&#8221; としています。</p>
+<p>例の場合、EUC-JP で書かれた euc.txt ファイルを UTF-8 のソースコードで処理するので、encoding:"EUC-JP:UTF-8" としています。</p>
 
-<p>なお、ファイルのエンコーディングがソースコードのエンコーディングと同じ場合は、encoding: &#8220;UTF-8&#8221; と書くことができます。</p>
+<p>なお、ファイルのエンコーディングがソースコードのエンコーディングと同じ場合は、encoding: "UTF-8" と書くことができます。</p>
 
 <p class="option">encodingオプションを指定しない場合、Ruby は Encoding#default_external で指定されているエンコーディングでファイルを解釈しようとします。</p>
 
@@ -1094,12 +1094,12 @@
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="ruby"><span class="line"><span class="n">img</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"hoge.png"</span><span class="p">);</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>上記のようにバイナリデータを読み込んでいる場合は注意が必要です。Ruby1.9 からは encoding が指定されない場合、<em>Encoding#default_external</em> の値がエンコーディングとして使われます。</p>
@@ -1113,7 +1113,7 @@
 
 <p>７章の P.223 に L10N の話題が載っています。そこで見つけたソースコード。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1124,7 +1124,7 @@
 </span><span class="line">  <span class="nb">p</span> <span class="n">T</span><span class="p">(</span><span class="s2">"{given_name}{surname}"</span><span class="p">,</span> <span class="o">[</span><span class="ss">:name</span><span class="p">,</span> <span class="n">data</span><span class="o">]</span><span class="p">)</span> <span class="c1">#=&gt; "姉ヶ崎寧々"</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>ね、寧々さん！！？</p>

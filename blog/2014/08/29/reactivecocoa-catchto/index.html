@@ -240,7 +240,7 @@
 
 <p>で、HTTP API 等を呼び出す際に API 呼び出しの結果を JSON にパースして、結果をモデルに設定するみたいなことをやりたい時に、次のように行います。（Swift で記述しています。）</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -291,7 +291,7 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>こうすると、API の呼び出しが成功した場合には <code>subscriber.sendNext</code> の結果がきちんと <code>self.model</code> に設定されるわけですが、API の呼び出しが失敗して <code>subscriber.sendError</code> が呼び出されてしまうと、例外がなげられます。</p>
@@ -302,19 +302,19 @@
 
 <p>そこで <code>catchTo</code> を使います。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">RAC</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"model"</span><span class="p">)</span> <span class="o">&lt;~</span> <span class="n">API</span><span class="p">.</span><span class="n">loadData</span><span class="p">().</span><span class="n">catchTo</span><span class="p">(</span><span class="n">RACSignal</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>catchTo</code> は <code>sendError</code> が呼び出された場合に代わりに投げる <code>RACSignal</code> を指定します。そうすることで、ネットワークエラー等で API の呼び出しが失敗した場合には、<code>RACSignal.empty()</code> で何も起きなかったことになる（正確には sendCompleted が呼び出される）ようになります。</p>
 
 <p>sendError 時に処理を行いたい場合には <code>catch</code> を代わりに使用します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -325,7 +325,7 @@
 </span><span class="line">        <span class="k">return</span> <span class="n">RACSignal</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span>
 </span><span class="line">    <span class="p">})</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>以上です。</p>

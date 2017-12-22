@@ -281,7 +281,7 @@
 <p>Bootstrap も Sass が提供されるようになりましたので、Sass ファイルをダウンロードしておくと、後でデザインを弄りたい時とか便利です。
 ダウンロードした Sass ファイルは <code>vendor/assets</code> に入れましょう。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr>
+<figure class="code"><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -413,12 +413,12 @@
 </span><span class="line">        _variables.scss
 </span><span class="line">        _wells.scss
 </span><span class="line">        bootstrap.scss</span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>app/assets/javascripts/application.js</code> と <code>app/assets/stylesheets/application.css</code> に bootstrap のファイルを追加します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>app/assets/javascripts/application.js</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>app/assets/javascripts/application.js</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -429,12 +429,12 @@
 </span><span class="line"><span class="c1">//= require bootstrap</span>
 </span><span class="line"><span class="c1">//= require_self</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>app/assets/stylesheets/application.css</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>app/assets/stylesheets/application.css</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -445,12 +445,12 @@
 </span><span class="line"><span class="c"> *= require_self</span>
 </span><span class="line"><span class="c"> */</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>僕は <code>require tree</code> は削除しちゃう派で、require が必要なファイルは自分で記述するようにしています。<code>fonts</code> フォルダは <code>asset pipeline</code> に含まれないので明示的に <code>config/application.rb</code> で読み込むようにします。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -467,7 +467,7 @@
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>4. テンプレートに BOILERPLATE を使う</h2>
@@ -491,7 +491,7 @@ HTML5 でレスポンシブ対応となるとキマリ文句みたいなテン�
 
 <p>いろいろ追加すると大体こんな感じのテンプレートになります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -616,7 +616,7 @@ HTML5 でレスポンシブ対応となるとキマリ文句みたいなテン�
 </span><span class="line"><span class="nt">&lt;/body&gt;</span>
 </span><span class="line"><span class="nt">&lt;/html&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>Settings</code> クラスは <code>rails_config</code> という gem を使った設定ファイルを読み込むものです。
@@ -642,18 +642,18 @@ Rails にはこの辺をうまく扱う方法がありますのでそれを使�
 
 <p><code>config/routes.rb</code> の最後のルートに、次のルールを追加します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="ruby"><span class="line"><span class="n">match</span> <span class="s1">'*not_found'</span> <span class="o">=&gt;</span> <span class="s1">'application#render_404'</span><span class="p">,</span> <span class="ss">via</span><span class="p">:</span> <span class="ss">:all</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>規定のルールにマッチしないルートは、<code>application_controller#render_404</code> に飛ばされます。ここで404エラーの処理を記述します。
 同じく、<code>application_controller</code> に500エラーをハンドリングする処理も記述します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>app/controllers/application_controller.rb`</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>app/controllers/application_controller.rb`</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -716,7 +716,7 @@ Rails にはこの辺をうまく扱う方法がありますのでそれを使�
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>app/views/errors</code> ディレクトリに <code>error_404.html.erb</code> と <code>error_500.html.erb</code> を作成して、それぞれ中身を記述します。</p>
@@ -732,7 +732,7 @@ Facebook はアプリIDが必要になりますので別途登録してアプリ
 <p>ソーシャル系サービスで配布されている JavaScript を非同期で読み込むための JavaScript を作成します。
 忘れずに <code>application.js</code> にも追加しておきます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>app/assets/javascripts/sharing.js.erb</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>app/assets/javascripts/sharing.js.erb</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -787,12 +787,12 @@ Facebook はアプリIDが必要になりますので別途登録してアプリ
 </span><span class="line">  <span class="nx">a</span><span class="p">(</span><span class="s1">'//widgets.getpocket.com/v1/j/btn.js?v=1'</span><span class="p">,</span><span class="s1">'pocket-btn-js'</span><span class="p">);</span>
 </span><span class="line"><span class="p">})(</span><span class="k">this</span><span class="p">,</span> <span class="nb">document</span><span class="p">);</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>ボタンを集めた部分テンプレートを用意します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>app/views/shared/_sharing.html.erb</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>app/views/shared/_sharing.html.erb</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -889,12 +889,12 @@ Facebook はアプリIDが必要になりますので別途登録してアプリ
 </span><span class="line">  <span class="nt">&lt;/ul&gt;</span>
 </span><span class="line"><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>url</code> 変数は部分テンプレートを読み込むときに渡すシェアしたいページの URL です。最後に CSS も用意しておきます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>app/assets/stylesheets/sharging.css.scss</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>app/assets/stylesheets/sharging.css.scss</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -941,7 +941,7 @@ Facebook はアプリIDが必要になりますので別途登録してアプリ
 </span><span class="line"><span class="nt">li</span><span class="nc">.pocket</span> <span class="p">{</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>ボタンの長さ等の調整が必要であれば、ここで調整します。<code>app/assets/stylesheets/application.css</code> に登録するのを忘れずに。</p>

@@ -279,12 +279,12 @@ Rails なんかをやっていると、ルーティングが自動的に RESTful
 
 <p>ルーティングに</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="ruby"><span class="line"><span class="n">get</span> <span class="s1">'*url'</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s1">'hypermedia#show'</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="kp">false</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>を追加しておくと <code>hypermedia#show</code> の中で <code>params[:url]</code> から <code>hamasyou.com</code> っていう値をとれるようになります。
@@ -302,14 +302,14 @@ Rails なんかをやっていると、ルーティングが自動的に RESTful
 
 <p>のどっちがいいんだろう？という疑問です。HTML 的に書くとこんな感じ。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"http://example.com/hypermedia/1"</span><span class="nt">&gt;</span>
 </span><span class="line"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"http://example.com/hamasyou.com"</span><span class="nt">&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>どっちでもいい。好みの問題って感じもしなくもないですが、皆さんどっちを選ぶのが多いんでしょう？</p>

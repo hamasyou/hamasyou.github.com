@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: Gmail | それはBooks]]></title>
+  <title><![CDATA[Tag: GMail | それはBooks]]></title>
   <link href="http://hamasyou.com/blog/tags/gmail/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T18:04:43+09:00</updated>
+  <updated>2017-12-22T11:43:15+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -14,94 +14,16 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Ruby から Gmail を受信する（マルチパート編）]]></title>
-    <link href="http://hamasyou.com/blog/2011/03/17/ruby-gmail/"/>
-    <updated>2011-03-17T22:24:00+09:00</updated>
-    <id>http://hamasyou.com/blog/2011/03/17/ruby-gmail</id>
-    <content type="html"><![CDATA[<p>Ruby1.9.2 で mail を使って Gmail から添付ファイルやメール本文を受信する方法のメモです。</p>
+    <title type="html"><![CDATA[Mac OS XでPostfixを使ってGMailをメールサーバにする]]></title>
+    <link href="http://hamasyou.com/blog/2010/07/29/mac-os-xpostfixgmail/"/>
+    <updated>2010-07-29T13:27:00+09:00</updated>
+    <id>http://hamasyou.com/blog/2010/07/29/mac-os-xpostfixgmail</id>
+    <content type="html"><![CDATA[<p>ここの手順そのまま。</p>
 
-<p>かなり力技的なところがあるので、もっといいプログラムになると思いいますが、メモということで。</p>
-
-<p><section></p>
-
-<h4>バージョン</h4>
+<ul><li><a href="http://www.riverturn.com/blog/?p=239" rel="external nofollow">Gmail Email Relay using Postfix on Mac OS X 10.5 Leopard</a></li></ul>
 
 
-
-
-<dl><dt>Ruby</dt><dd>1.9.2</dd>
-<dt>Rails</dt><dd>3.0.4</dd>
-<dt>mail</dt><dd>2.2</dd>
-</dl>
-
-
-<p></section></p>
-
-<!-- more -->
-
-
-
-
-<h2>必要なライブラリ</h2>
-
-
-
-
-<h3>mikel / mail</h3>
-
-
-
-
-<pre><a href="https://github.com/mikel/mail" rel="external nofollow">mail</a></pre>
-
-
-<p>Ruby1.8 までは、TMail というライブラリを使うとメール処理を簡易に書けるようですが、Ruby1.9から文字エンコーディング周りの問題でこのライブラリを使うと良いことを知りました。</p>
-
-<pre class="console">gem install mail</pre>
-
-
-<p>Rails で使う場合は次のようにします。</p>
-
-<pre class="console">rails plugin install https://github.com/mikel/mail</pre>
-
-
-
-
-<h2>サンプルソースコード</h2>
-
-
-<pre><code class="ruby">require "mail"
-
-Mail.defaults do
-  retriever_method :imap, {:address =&gt; "imap.gmail.com",
-                           :port =&gt; 993,
-                           :user_name =&gt; "&lt;mailaddress@domain.com&gt;",
-                           :password =&gt; "&lt;password&gt;",
-                           :enable_ssl =&gt; true}
-end
-
-Mail.all(:delete_after_find =&gt; true).each do |email|
-  begin
-    if !email.attachments.blank?
-      subject = email.subject   # =&gt; 件名（日本語可OK） UTF-8 で取得できる
-      body = email.parts[0].body.to_s.encode("UTF-8", "ISO-2022-JP")    # =&gt; 本文は UTF-8 に変換する必要がある
-      from = email[:from]       # =&gt; "\"濱田 章吾\" hamasyou@gmail.com"
-      sent_at = email.date
-      email.attachments.each do |attachment|
-        tmp = File.new("tmp/photos/#{attachment.filename}", "wb")
-        tmp &lt;&lt; attachment.read.force_encoding("UTF-8")
-        tmp.close
-      end
-    end
-  rescue =&gt; ignore
-    p "[error]:" + ignore.to_s
-  end
-end
-</code></pre>
-
-<p>ここでは、マルチパートの場合メールのパートの最初に本文があることを決め打ちしています。また、メールのエンコーディングが ISO-2022-JP であることも決め打ちしています。</p>
-
-<p>メール本文のエンコーディングを調べて、それを UTF-8 にするようにしたほうが良いです。</p>
+<p>これでローカル環境からメール送信テストが行える！</p>
 ]]></content>
   </entry>
   

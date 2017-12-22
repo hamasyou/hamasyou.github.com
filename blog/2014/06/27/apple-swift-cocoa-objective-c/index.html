@@ -266,12 +266,12 @@
 
 <p>Swift でもフレームワークやライブラリを読み込むには <code>import</code> を使う。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">import</span> <span class="n">Foundation</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>Foundation</code> を読み込むことで、NSDate, NSURL, NSMutableData などを含む全ての Foundation API、全てのメソッド、プロパティ、カテゴリを利用出来るようになる。</p>
@@ -302,64 +302,64 @@
 
 <p>Objective-C の <code>init</code> メソッド、<code>initWith</code> メソッドは、<code>init</code> で切られて <code>With</code> の部分が捨てられる。捨てられて残った部分が第一引数のパラメータ名に対応する。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="objective-c"><span class="line"><span class="bp">UITableView</span> <span class="o">*</span><span class="n">myTableView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UITableVIew</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame</span><span class="p">:</span><span class="n">CGRectZero</span> <span class="nl">style</span><span class="p">:</span><span class="n">UITableViewStyleGrouped</span><span class="p">];</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="nl">myTableView</span><span class="p">:</span> <span class="bp">UITableView</span> <span class="o">=</span> <span class="bp">UITableView</span><span class="p">(</span><span class="nl">frame</span><span class="p">:</span> <span class="n">CGRectZero</span><span class="p">,</span> <span class="nl">style</span><span class="p">:</span> <span class="p">.</span><span class="n">Grouped</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Objective-C のファクトリメソッドは <code>convenience initializer</code> にマッピングされている。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="objective-c"><span class="line"><span class="bp">UIColor</span> <span class="o">*</span><span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithRed</span><span class="p">:</span><span class="mf">0.5</span> <span class="nl">green</span><span class="p">:</span><span class="mf">0.0</span> <span class="nl">blue</span><span class="p">:</span><span class="mf">0.5</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">1.0</span><span class="p">];</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">color</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">(</span><span class="nl">red</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nl">alpha</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>Methods</h3>
 
 <p>Objective-C のメソッド名がそのまま Swift のメソッドになり、第一引数名が省略される。残りの引数名はそのまま残る。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="objective-c"><span class="line"><span class="p">[</span><span class="n">myTableView</span> <span class="nl">insertSubview</span><span class="p">:</span><span class="n">mySubview</span> <span class="nl">atIndex</span><span class="p">:</span><span class="mi">2</span><span class="p">];</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">myTableView</span><span class="p">.</span><span class="n">insertSubview</span><span class="p">(</span><span class="n">mySubview</span><span class="p">,</span> <span class="nl">atIndex</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>id</h3>
@@ -368,19 +368,19 @@
 
 <p>Objective-C のメソッドを呼び出すのに、キャストは必要ない。<code>@objc</code> 属性がメソッドに修飾されているので、そのまま呼び出すことができる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">futureDate</span> <span class="o">=</span> <span class="n">myObject</span><span class="p">.</span><span class="n">dateByAddingTimeInterval</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </span><span class="line"><span class="k">let</span> <span class="n">timeSinceNow</span> <span class="o">=</span> <span class="n">myObject</span><span class="p">.</span><span class="n">timeIntervalSinceNow</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>AnyObject から <code>as</code> によるキャストでは、ダウンキャストが成功するかどうかの保証ができない。そのため、<code>if-let</code> 構文を使ってチェックすること。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -393,29 +393,29 @@
 </span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"\(date.timeIntervalSinceReferenceDate)"</span><span class="p">)</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>Closure and Block</h3>
 
 <p>Objective-C の <code>block</code> は Swift の <code>Closure</code> に対応する。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="objective-c"><span class="line"><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">completionBlock</span><span class="p">)(</span><span class="bp">NSData</span> <span class="o">*</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="bp">NSData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span><span class="cm">/* ... */</span><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="nl">completionBlock</span><span class="p">:</span> <span class="p">(</span><span class="bp">NSData</span><span class="p">,</span> <span class="bp">NSError</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span> <span class="o">=</span> <span class="p">{</span><span class="n">data</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span> <span class="cm">/* ... */</span><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>@objc アノテーション</h3>
@@ -428,43 +428,43 @@
 
 <p>メソッドはほとんどそのままマッピングされる。init コンストラクタは、第一引数に <code>initWith</code> がつくように変換される。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Swift</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">func</span> <span class="n">playSong</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span>
 </span><span class="line"><span class="k">init</span><span class="p">(</span><span class="nl">songName</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">artist</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>Objective-C</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="objective-c"><span class="line"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">playSong:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span>
 </span><span class="line"><span class="p">-</span> <span class="p">(</span><span class="kt">instancetype</span><span class="p">)</span><span class="nf">initWithSongName:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">songName</span> <span class="nf">artist:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">artist</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>Selector</h3>
 
 <p>Objective-C のセレクタは Swift では Selector 構造体にマッピングされる。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="nl">mySelector</span><span class="p">:</span> <span class="n">Selector</span> <span class="o">=</span> <span class="s">"tappedButton:"</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -493,7 +493,7 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Writing Swift Classes with Objective-C Behavior</h2>
@@ -506,7 +506,7 @@
 
 <p>Swift では @IBOutlet、@IBAction をプロパティやメソッドに付与する。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -523,12 +523,12 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>@IBDesignable</code> と <code>@IBInspectable</code> をつかうと Interface Builder で編集が出来る。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -543,7 +543,7 @@
 </span><span class="line">    <span class="cm">/* ... */</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Working with Cocoa Data Types</h2>
@@ -552,7 +552,7 @@
 
 <p>NSString を利用したい場合は <code>as</code> を使ってキャストする。もしくは、最初から <code>NSString</code> 型を使う。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -571,19 +571,19 @@
 </span><span class="line">    <span class="n">println</span><span class="p">(</span><span class="s">"\(myString) is the integer \(integerValue)"</span><span class="p">)</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>NSNumber も同じ。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">42</span>
 </span><span class="line"><span class="k">let</span> <span class="nl">m</span><span class="p">:</span> <span class="bp">NSNumber</span> <span class="o">=</span> <span class="n">n</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>Array</h3>
@@ -594,31 +594,31 @@
 
 <p>NSSize、NSPoint はそのまま利用出来る。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">let</span> <span class="n">size</span> <span class="o">=</span> <span class="n">NSSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
 </span><span class="line"><span class="k">let</span> <span class="n">rect</span> <span class="o">=</span> <span class="n">NSRect</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>NSLog</h3>
 
 <p>NSLog はそのままの構文で利用出来る。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">NSLog</span><span class="p">(</span><span class="s">"%.7f"</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>NSError and Error Reporting</h3>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -659,7 +659,7 @@
 </span><span class="line">    <span class="c1">// ...</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 </div>
 

@@ -284,7 +284,7 @@
 
   <div class="entry-content"><h2>Array に each を実装してみた。</h2>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -337,12 +337,12 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>使い方はこんな感じ。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -353,7 +353,7 @@
 </span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="n">eachWithIndex</span> <span class="p">{</span> <span class="p">(</span><span class="nl">n</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">i</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="k">in</span> <span class="n">println</span><span class="p">(</span><span class="s">"index \(i), n \(n)"</span><span class="p">)</span> <span class="p">}</span>
 </span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="n">eachWithIndex</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">"index \($1), n \($0)"</span><span class="p">)</span> <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>配列の中身が <code>AnyObject</code> だった時に、型指定するときとしない時でどっちも動くようにするのに、メソッドを2つ定義しました。</p>
@@ -364,7 +364,7 @@
 
 <p>ついでに <code>reduce</code> も。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -385,12 +385,12 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>使い方はこんな感じ。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -425,7 +425,7 @@
 </span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="s">"e"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 </span><span class="line"><span class="k">let</span> <span class="n">n</span> <span class="o">=</span> <span class="n">dict</span><span class="p">.</span><span class="n">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="k">in</span> <span class="n">n</span> <span class="o">+</span> <span class="n">d</span><span class="mf">.1</span> <span class="p">}</span>    <span class="c1">// 15</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Ruby の map っぽい感じで使えるにしたかったので。</p>
@@ -735,12 +735,12 @@
 
 <p>こんにちは。iOS8 から SeparatorInsets をゼロにする方法が変わりました。今までの <code>UITableView</code> の <code>separatorInset</code> に <code>UIEdgeInsetsZero</code> を入れるだけだと、iOS7 では効きますが、iOS8 では効かなくなりました。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">tableView</span><span class="p">.</span><span class="n">separatorInset</span> <span class="o">=</span> <span class="n">UIEdgeInsetsZero</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><img src="/images/2014-12-25-tableview.png" width="320" title='"図1"' alt='"図1"' class="img-thumbnail"></p>
@@ -749,21 +749,21 @@
 
 <p>iOS8 からは <code>UIView</code> に追加された <code>layoutMargins</code> というプロパティにも <code>UIEdgeInsetsZero</code> をセットする必要があります。ただこのプロパティ、iOS8 以降でしか利用できないプロパティなので、分岐が必要になります。。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">tableView</span><span class="p">.</span><span class="n">layoutMargins</span> <span class="o">=</span> <span class="n">UIEdgeInsetsZero</span>
 </span><span class="line"><span class="n">cell</span><span class="p">.</span><span class="n">layoutMargins</span> <span class="o">=</span> <span class="n">UIEdgeInsetsZero</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>全体に適用する簡単な例</h3>
 
 <p>全体に適用するには UIAppearance を使うと便利です。iOS7 と iOS8 に対応したコードは次のように書けます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -782,7 +782,7 @@
 </span><span class="line">    <span class="bp">UITableViewCell</span><span class="p">.</span><span class="n">appearance</span><span class="p">().</span><span class="n">layoutMargins</span> <span class="o">=</span> <span class="n">UIEdgeInsetsZero</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><img src="/images/2014-12-25-tableview2.png" width="320" title='"図2"' alt='"図2"' class="img-thumbnail"></p>
@@ -1075,7 +1075,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <p><em>MVVM</em> で viewModel が searchCommand を実装しているとします。また、ローディングインジケータの表示には <a href="https://github.com/jdg/MBProgressHUD" rel="external nofollow" title="MBProgressHUD">MBProgressHUD</a> を使っているとします。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>MyViewController#viewDidLoad</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>MyViewController#viewDidLoad</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1110,7 +1110,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="n">error</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">)</span>
 </span><span class="line">    <span class="p">})</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>executing</code> Signal はこういう風につかうんですね。</p>
@@ -1252,7 +1252,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <p>下のようなコードがあるとします。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1273,14 +1273,14 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
 </span><span class="line">  <span class="p">]]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>typealias</code> で別名つけて2次元配列を定義しているだけです。要素が <code>Dictionary</code> になっています。ここまでは普通にコンパイルが通ります。</p>
 
 <p>ですが、これをこんなふうに…</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1333,24 +1333,24 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
 </span><span class="line">  <span class="p">]]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>配列の要素を増やしていきます。そうするとだいたい <strong class="text-danger">10件くらい</strong> からコンパイルが遅くなり、<strong class="text-danger">15件過ぎたくらいから</strong> コンパイルエラーが出るようになります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">Cannot</span> <span class="n">convert</span> <span class="n">the</span> <span class="n">expression</span><span class="err">'</span><span class="n">s</span> <span class="n">type</span> <span class="err">'</span><span class="p">[[</span><span class="n">NameAndValue</span><span class="p">]]</span><span class="err">'</span> <span class="n">to</span> <span class="n">type</span> <span class="err">'</span><span class="n">StringLiteralConvertible</span><span class="err">'</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>意味がわからんです。。</p>
 
 <p>仕方ないので</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1403,7 +1403,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
 </span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p></p>
@@ -1728,7 +1728,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <p>で、HTTP API 等を呼び出す際に API 呼び出しの結果を JSON にパースして、結果をモデルに設定するみたいなことをやりたい時に、次のように行います。（Swift で記述しています。）</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1779,7 +1779,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>こうすると、API の呼び出しが成功した場合には <code>subscriber.sendNext</code> の結果がきちんと <code>self.model</code> に設定されるわけですが、API の呼び出しが失敗して <code>subscriber.sendError</code> が呼び出されてしまうと、例外がなげられます。</p>
@@ -1790,19 +1790,19 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <p>そこで <code>catchTo</code> を使います。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">RAC</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"model"</span><span class="p">)</span> <span class="o">&lt;~</span> <span class="n">API</span><span class="p">.</span><span class="n">loadData</span><span class="p">().</span><span class="n">catchTo</span><span class="p">(</span><span class="n">RACSignal</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>catchTo</code> は <code>sendError</code> が呼び出された場合に代わりに投げる <code>RACSignal</code> を指定します。そうすることで、ネットワークエラー等で API の呼び出しが失敗した場合には、<code>RACSignal.empty()</code> で何も起きなかったことになる（正確には sendCompleted が呼び出される）ようになります。</p>
 
 <p>sendError 時に処理を行いたい場合には <code>catch</code> を代わりに使用します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1813,7 +1813,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">        <span class="k">return</span> <span class="n">RACSignal</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span>
 </span><span class="line">    <span class="p">})</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>以上です。</p>
@@ -1951,7 +1951,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
   <div class="entry-content"><p>Swift で <code>Dictionary</code> を扱うときのメモです。API 呼び出しのレスポンスを JSON で扱いたい時に <code>Dictionary&lt;String, AnyObject&gt;</code> として扱う際のポイントです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1968,12 +1968,12 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">
 </span><span class="line"><span class="k">let</span> <span class="n">str3</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span> <span class="kt">as</span> <span class="n">String</span>     <span class="c1">// これはコンパイルエラー '(String, AnyObject)' is not convertible to 'String'</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>最後のはなぜコンパイルエラーになるかというと、<code>Dictionary</code> の <code>subscript</code> が2種類定義されていて、期待したのと違う方が呼び出されているからです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1988,21 +1988,21 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">    <span class="p">...</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>json["foobar"]</code> の戻り値は <code>(Key, Value)</code> か <code>Value?</code> のどちらかですが、<code>as String</code> を付けた際に Optional ではないと判断されてしまい <code>(Key, Value)</code> が戻り値の型と判定されます。それでコンパイルエラーになるわけですね。</p>
 
 <p>期待した通りに取得するには、<code>json["foobar"]</code> の戻り値を <code>Value?</code> として扱う必要があるので、</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span><span class="o">!</span>
 </span><span class="line"><span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span> <span class="kt">as</span> <span class="n">AnyObject</span><span class="o">?</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>のどちらかでアクセスする必要があるわけです。<code>!</code> を付けると unwrap されるので <code>nil</code> が入っていると実行時エラーになります。逆に <code>as AnyObject? as? String</code> でアクセスすると Optional 型になってしまいます。</p>
@@ -2146,7 +2146,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <p>Swift では配列を <strong class="text-danger">mutable/immutable</strong> の区別なく定義することができるようになりました。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2155,7 +2155,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line"><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span class="line"><span class="n">println</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>    <span class="c1">// [0, 2, 3]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>let</code> で定義すると <strong class="text-danger">immutable</strong>、<code>var</code> で定義すると <strong class="text-danger">mutable</strong> になり、配列の代入はすべてコピーで行われるようになっています。</p>
@@ -2164,14 +2164,14 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <p>で、ハマったのが次のようなコードです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="nl">numbers</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span><span class="o">!</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </span><span class="line"><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1">// error: '@lvalue $T7' is not identical to 'Int'</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Force Unwrapping 型とでも言うんでしょうかね？変数に必ず値が入ってることを保証するために <code>!</code> が付いた型です。
@@ -2184,7 +2184,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <h4>コンパイルエラーの例</h4>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2217,14 +2217,14 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">  <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h4>うまくいく例</h4>
 
 <p>対応としては、一旦変数で受けて、変更後に元に戻すっていうので何とかなりますが、コンパイラの方でなんとかならんもんですかね。。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2237,7 +2237,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">    <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span> <span class="o">=</span> <span class="n">nums</span>
 </span><span class="line">  <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 

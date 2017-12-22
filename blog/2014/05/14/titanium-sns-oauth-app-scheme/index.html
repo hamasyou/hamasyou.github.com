@@ -269,7 +269,7 @@
 
 <p>SNS 認証を行うトリガーとなる処理で、まずはアプリのブラウザを開きます。アプリのブラウザを開くには <code>Ti.Platform.openURL</code> を使います。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/app/controllers/index.js</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>/app/controllers/index.js</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -318,7 +318,7 @@
 </span><span class="line">
 </span><span class="line"><span class="nx">$</span><span class="p">.</span><span class="nx">index</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>ブラウザを開くときに、<em>twitter</em> の場合は <code>oauth_callback</code> で OAuth の戻りの URL を指定します。<code>twredirect</code> の処理は、サンプルプロジェクトの <code>/server</code> ディレクトリにあります。</p>
@@ -329,7 +329,7 @@
 
 <p>気にしないのであればいいですが、ブラウザで認証が終わったあとに閉じるように、JavaScript で画面を閉じるようにした画面をサーバサイドから返すようにして、そのなかで iframe を使ってアプリスキーマを呼び出しています。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>application_controller.rb</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>application_controller.rb</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -354,12 +354,12 @@
 </span><span class="line">  <span class="k">end</span>
 </span><span class="line"><span class="k">end</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>fbredirect.html.erb</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>fbredirect.html.erb</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -400,7 +400,7 @@
 </span><span class="line"><span class="nt">&lt;/body&gt;</span>
 </span><span class="line"><span class="nt">&lt;/html&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>fbredirect.html.erb</code> と <code>twredirect.html.erb</code> は中身は同じでOKです。</p>
@@ -409,7 +409,7 @@
 
 <p>OAuth 後の callback URL にアプリスキーマを設定しておけば OAuth 後にアプリが開かれます。そこでは次のような処理を行います。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/app/alloy.js</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>/app/alloy.js</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -502,7 +502,7 @@
 </span><span class="line">    <span class="p">});</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>アプリスキーマで戻ってきたときには、<code>resumed</code> が呼び出されますのでここで <code>access_token</code> を受け取るようにします。</p>
@@ -513,7 +513,7 @@
 
 <p>そこで、OAuth のコールバックを受け取って終了するだけの Activity を作ってコレを利用します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/platform/android/src/com/hamasyou/SnsAuthActivity.java</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>/platform/android/src/com/hamasyou/SnsAuthActivity.java</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -608,12 +608,12 @@
 </span><span class="line">    <span class="o">}</span>
 </span><span class="line"><span class="o">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>この Activity を <code>tiapp.xml</code> で設定してアプリスキーマの起動をここで受け取るようにします。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>tiapp.xml</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>tiapp.xml</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -786,7 +786,7 @@
 </span><span class="line">    <span class="nt">&lt;/plugins&gt;</span>
 </span><span class="line"><span class="nt">&lt;/ti:app&gt;</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>SnsAuthActivity</code> で OAuth のコールバックを受け取って、<code>Ti.Android.currentActivity</code> の <code>app:resume</code> イベントを fire して、元のアプリに戻しています。

@@ -13,10 +13,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   
-  <meta name="description" content="Titanium で、JSDeferred を使って順次処理するサンプルです。 JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp バージョン &#8211; 追記（2011/03/23） Titanium
+  <meta name="description" content="Titanium で、JSDeferred を使って順次処理するサンプルです。 JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp バージョン – 追記（2011/03/23） Titanium
 1.5.1
 JSDeferred
-0.4.0 Titanium 1. &hellip;">
+0.4.0 Titanium 1.6.1 &hellip;">
   <meta name="keywords" content="Titanium, JSDeferred">
 
   
@@ -27,10 +27,10 @@ JSDeferred
 
 <meta property="og:url" content="http://hamasyou.com/blog/2011/02/04/titanium-jsdeferred/" />
 <meta property="og:site_name" content="それはBooks" />
-<meta property="og:description" content="Titanium で、JSDeferred を使って順次処理するサンプルです。 JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp バージョン &#8211; 追記（2011/03/23） Titanium
+<meta property="og:description" content="Titanium で、JSDeferred を使って順次処理するサンプルです。 JSDeferredで，面倒な非同期処理とサヨナラ - gihyo.jp バージョン – 追記（2011/03/23） Titanium
 1.5.1
 JSDeferred
-0.4.0 Titanium 1. &hellip;" />
+0.4.0 Titanium 1.6.1 &hellip;" />
 <meta property="fb:app_id" content="130554843667643" />
 
 
@@ -247,7 +247,7 @@ JSDeferred
 
 <p><section></section></p>
 
-<h4>バージョン &#8211; 追記（2011/03/23）</h4>
+<h4>バージョン – 追記（2011/03/23）</h4>
 
 
 
@@ -271,7 +271,7 @@ JSDeferred
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -308,7 +308,7 @@ JSDeferred
 </span><span class="line">
 </span><span class="line"><span class="nx">alert</span><span class="p">(</span><span class="s2">"ここは必ずしも、alert(currentLocation)の後に呼び出されるとはかぎらない!"</span><span class="p">);</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>alert(currentLocation) としているところに現在位置を取得した後のコードを記述することで、現在位置を取得して何か処理をするというのを順序を保証して処理することができるようになります。</p>
@@ -326,12 +326,12 @@ JSDeferred
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="javascript"><span class="line"><span class="nx">Titanium</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">Titanium</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">appURLToPath</span><span class="p">(</span><span class="s2">"app://lib/jsdeferred.js"</span><span class="p">));</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>上記の様に、 app: プロトコルを使用して、appURLToPath メソッドでファイルを読み込むことで、Titanium のResources フォルダからの相対パスで書けるようになります。</p>

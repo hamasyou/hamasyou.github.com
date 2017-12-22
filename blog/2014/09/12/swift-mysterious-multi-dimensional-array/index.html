@@ -236,7 +236,7 @@
 
 <p>下のようなコードがあるとします。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -257,14 +257,14 @@
 </span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
 </span><span class="line">  <span class="p">]]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>typealias</code> で別名つけて2次元配列を定義しているだけです。要素が <code>Dictionary</code> になっています。ここまでは普通にコンパイルが通ります。</p>
 
 <p>ですが、これをこんなふうに…</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -317,24 +317,24 @@
 </span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
 </span><span class="line">  <span class="p">]]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>配列の要素を増やしていきます。そうするとだいたい <strong class="text-danger">10件くらい</strong> からコンパイルが遅くなり、<strong class="text-danger">15件過ぎたくらいから</strong> コンパイルエラーが出るようになります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">Cannot</span> <span class="n">convert</span> <span class="n">the</span> <span class="n">expression</span><span class="err">'</span><span class="n">s</span> <span class="n">type</span> <span class="err">'</span><span class="p">[[</span><span class="n">NameAndValue</span><span class="p">]]</span><span class="err">'</span> <span class="n">to</span> <span class="n">type</span> <span class="err">'</span><span class="n">StringLiteralConvertible</span><span class="err">'</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>意味がわからんです。。</p>
 
 <p>仕方ないので</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -387,7 +387,7 @@
 </span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
 </span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p></p>

@@ -4,7 +4,7 @@
   <title><![CDATA[それはBooks]]></title>
   <link href="http://hamasyou.com/atom.xml" rel="self"/>
   <link href="http://hamasyou.com/"/>
-  <updated>2017-09-03T18:04:43+09:00</updated>
+  <updated>2017-12-22T11:43:15+09:00</updated>
   <id>http://hamasyou.com/</id>
   <author>
     <name><![CDATA[hamasyou]]></name>
@@ -41,7 +41,7 @@
 
 <p>ということで、メモ書きなので、さっとソースを貼り付けておきます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -188,12 +188,12 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>これで、ReSwift の <code>State</code> を次のように書くことができます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -204,7 +204,7 @@
 </span><span class="line">  <span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="nl">to</span><span class="p">:</span> <span class="n">nameLabel</span><span class="p">.</span><span class="n">rx</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
 </span><span class="line">  <span class="p">.</span><span class="n">disposed</span><span class="p">(</span><span class="nl">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>オブザーブしているステートが更新されたときのみ通知して欲しい時</h2>
@@ -219,7 +219,7 @@
 
 <h3>State に一意性を持たせる</h3>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -320,7 +320,7 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>複雑そうなことをやっていますが、要はインスタンスを生成するたびに一意の数値を割り当てて、
@@ -328,7 +328,7 @@
 
 <p>この識別子コンポーネントを State に持たせるようにして</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -377,13 +377,13 @@
 </span><span class="line">        <span class="k">return</span> <span class="n">state</span>
 </span><span class="line">    <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>こんな感じで、ステートが更新したときに、<code>identifiableComponent.update()</code> を呼び出すと状態が更新されたことをマークします。
 これで、ステートが更新されたときだけ UI を更新するようなコードを次のように書けるようになります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -396,7 +396,7 @@
 </span><span class="line">  <span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="nl">to</span><span class="p">:</span> <span class="n">nameLabel</span><span class="p">.</span><span class="n">rx</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
 </span><span class="line">  <span class="p">.</span><span class="n">disposed</span><span class="p">(</span><span class="nl">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>パフォーマンスも気にせず使えるようになりました。</p>
@@ -857,7 +857,7 @@
 
 <p>Rx では、Observable なものを <code>subscribe</code> (購読) することで、Observable から送られてくるデータを受け取ります。この、Observable からデータが流れてくることを <strong class="text-danger">Stream (ストリーム)</strong> と呼びます。流れてくるデータは <strong class="text-danger">Element</strong> と呼ばれます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -876,7 +876,7 @@
 </span><span class="line">        <span class="p">}</span>
 </span><span class="line">    <span class="p">.</span><span class="n">scopedDispose</span><span class="p">()</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>ストリームには状態が3種類あり、それぞれ <code>Next</code>、<code>Error</code>、<code>Completed</code> になります。</p>
@@ -913,7 +913,7 @@
 
 <p>Subject は任意のタイミングで <strong class="text-danger">Behavior (振る舞い)</strong> を決められることから、Subject / Behavior はセットで使われる言葉になります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -928,7 +928,7 @@
 </span><span class="line"><span class="n">msg</span><span class="p">.</span><span class="n">onNext</span><span class="p">(</span><span class="s">"Hello World"</span><span class="p">)</span>
 </span><span class="line"><span class="n">msg</span><span class="p">.</span><span class="n">onCompleted</span><span class="p">()</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>Cold Observable</h3>
@@ -937,7 +937,7 @@
 
 <p>よく、API 通信を Observable にしますが、subscribe (観測) を忘れると、API 呼び出しがされないことになりますので注意が必要です。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -948,7 +948,7 @@
 </span><span class="line">        <span class="c1">// When to occur?</span>
 </span><span class="line">    <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Rx でプログラミングすると何が嬉しいか</h2>
@@ -959,7 +959,7 @@
 
 <p>Observable でつなぐことにより、直接のデータの生成元に依存せずにプログラムを記述することができるようになるので、テスト時だけデータ生成部分をいじることで、例えば API 通信結果を画面に表示するようなプログラムでも、API 通信を行うことなくデータを生成し、Stream に流すことで色々な依存関係を排除することが出来るのです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -984,14 +984,14 @@
 </span><span class="line"><span class="c1">// test</span>
 </span><span class="line"><span class="n">something</span><span class="p">(</span><span class="n">just</span><span class="p">(</span><span class="n">DummyDataSource</span><span class="p">()))</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>非同期処理</h3>
 
 <p>また、Rx には Stream の観測を任意のスレッドで行うスケジューリングの機能が備わっているものがほとんどですので、時間の掛かるデータ生成処理はバックグラウンドで行い、UI の表示処理のところだけメインスレッドで行うといったことを容易に行なえます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1010,7 +1010,7 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line">    <span class="p">.</span><span class="n">addDisposeBag</span><span class="p">(</span><span class="n">disposeBag</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>データソースの更新をリアルタイムに同期</h3>
@@ -1019,7 +1019,7 @@
 
 <p>このとき、何も考えずにプログラムすると、データソースが変更されても結果は変わらないという挙動になります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1044,12 +1044,12 @@
 </span><span class="line">
 </span><span class="line"><span class="n">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>        <span class="c1">// ""</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>こういった挙動でかまわないという場合もあるでしょうが、ほとんどの場合データソースの変化に合わせて挙動が変わってくれたほうが嬉しかったりします。そんな時は全部 Observable にします。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1076,7 +1076,7 @@
 </span><span class="line">
 </span><span class="line"><span class="n">a</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">4</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Operators</h2>
@@ -1085,7 +1085,7 @@
 
 <p>Stream の合成は使いドコロとしては API 通信などの時間の掛かる処理とキャッシュデータを返すストリームとを合成するなどが考えられます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1126,7 +1126,7 @@
 </span><span class="line">  <span class="p">}</span>
 </span><span class="line">  <span class="p">.</span><span class="n">addDisposeBag</span><span class="p">(</span><span class="n">disposeBag</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 ]]></content>
   </entry>
@@ -1146,7 +1146,7 @@
 
 <p><i class="fa fa-hand-o-right"></i> <a href="https://github.com/ReactiveX/RxSwift/" rel="external nofollow" title="ReactiveX/RxSwift">ReactiveX/RxSwift</a></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1161,7 +1161,7 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line">    <span class="p">.</span><span class="n">addDisposableTo</span><span class="p">(</span><span class="n">disposeBag</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>Rx</code> の <code>sample</code> を使って、ストリームを <code>interval</code> 毎にサンプリングしてやるだけです。</p>
@@ -1181,7 +1181,7 @@
 
 <p>いつも <code>Signal</code> を自分で制御するイディオムを忘れてしまうので、メモ書きです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1234,7 +1234,7 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 ]]></content>
   </entry>
@@ -1248,7 +1248,7 @@
 
 <p><a href="https://github.com/ankurp/Dollar.swift" rel="external nofollow" title="ankurp/Dollar.swift">ankurp/Dollar.swift</a> という JavaScript の Lo-Dash や Underscore と同じ感じでコレクションを扱うためのライブラリがありますが、 <code>each</code> が配列しか受け付けることが出来ないので、<code>SequenceType</code> を受け取れるように拡張する方法のメモです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1285,7 +1285,7 @@
 </span><span class="line"><span class="c1">// c</span>
 </span><span class="line"><span class="c1">// key = val</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 ]]></content>
   </entry>
@@ -1297,7 +1297,7 @@
     <id>http://hamasyou.com/blog/2015/06/10/swift-array-dictionary-extension/</id>
     <content type="html"><![CDATA[<h2>Array に each を実装してみた。</h2>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1350,12 +1350,12 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>使い方はこんな感じ。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1366,7 +1366,7 @@
 </span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="n">eachWithIndex</span> <span class="p">{</span> <span class="p">(</span><span class="nl">n</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">i</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="k">in</span> <span class="n">println</span><span class="p">(</span><span class="s">"index \(i), n \(n)"</span><span class="p">)</span> <span class="p">}</span>
 </span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="n">eachWithIndex</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">"index \($1), n \($0)"</span><span class="p">)</span> <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>配列の中身が <code>AnyObject</code> だった時に、型指定するときとしない時でどっちも動くようにするのに、メソッドを2つ定義しました。</p>
@@ -1377,7 +1377,7 @@
 
 <p>ついでに <code>reduce</code> も。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1398,12 +1398,12 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>使い方はこんな感じ。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1438,7 +1438,7 @@
 </span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="s">"e"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 </span><span class="line"><span class="k">let</span> <span class="n">n</span> <span class="o">=</span> <span class="n">dict</span><span class="p">.</span><span class="n">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="k">in</span> <span class="n">n</span> <span class="o">+</span> <span class="n">d</span><span class="mf">.1</span> <span class="p">}</span>    <span class="c1">// 15</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Ruby の map っぽい感じで使えるにしたかったので。</p>
@@ -1467,12 +1467,12 @@
 
 <p>こんにちは。iOS8 から SeparatorInsets をゼロにする方法が変わりました。今までの <code>UITableView</code> の <code>separatorInset</code> に <code>UIEdgeInsetsZero</code> を入れるだけだと、iOS7 では効きますが、iOS8 では効かなくなりました。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">tableView</span><span class="p">.</span><span class="n">separatorInset</span> <span class="o">=</span> <span class="n">UIEdgeInsetsZero</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><img src="http://hamasyou.com/images/2014-12-25-tableview.png" width="320" title='"図1"' alt='"図1"' class="img-thumbnail"></p>
@@ -1481,21 +1481,21 @@
 
 <p>iOS8 からは <code>UIView</code> に追加された <code>layoutMargins</code> というプロパティにも <code>UIEdgeInsetsZero</code> をセットする必要があります。ただこのプロパティ、iOS8 以降でしか利用できないプロパティなので、分岐が必要になります。。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">tableView</span><span class="p">.</span><span class="n">layoutMargins</span> <span class="o">=</span> <span class="n">UIEdgeInsetsZero</span>
 </span><span class="line"><span class="n">cell</span><span class="p">.</span><span class="n">layoutMargins</span> <span class="o">=</span> <span class="n">UIEdgeInsetsZero</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>全体に適用する簡単な例</h3>
 
 <p>全体に適用するには UIAppearance を使うと便利です。iOS7 と iOS8 に対応したコードは次のように書けます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1514,7 +1514,7 @@
 </span><span class="line">    <span class="bp">UITableViewCell</span><span class="p">.</span><span class="n">appearance</span><span class="p">().</span><span class="n">layoutMargins</span> <span class="o">=</span> <span class="n">UIEdgeInsetsZero</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><img src="http://hamasyou.com/images/2014-12-25-tableview2.png" width="320" title='"図2"' alt='"図2"' class="img-thumbnail"></p>
@@ -1570,7 +1570,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <p>ちなみに、iOS8 以降だけに対応するのであれば、<code>TableViewCell.xib</code> で <code>ContentView</code> に対して何も考えずに Auto Layout でレイアウトして、<code>TableViewController</code> を継承したクラスで次のように <code>tableView.rowHeight</code> に <code>UITableViewAutomaticDimension</code> を設定し、<code>tableView:estimatedHeightForRowAtIndexPath:</code> で <code>UITableViewAutomaticDimension</code> を返すようにするだけで解決します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1597,7 +1597,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>tableView</code> に <code>estimatedRowHeight</code> というプロパティがありますが、これに <code>UITableViewAutomaticDimension</code> を設定して、<code>tableView:estimatedHeightForRowAtIndexPath:</code> を実装しない方法だと上手くいきません。バグなんじゃないか？？。。。</p>
@@ -1609,7 +1609,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 <p>Auto Layout は Storyboard やプログラムから「制約」を利用してレイアウトを組み立てるものです。基本的に Auto Layout に対応したアプリでは、
 <code>UIView(frame: CGRectMake(xx, xx, xx, xx))</code> みたいな作成方法はしなくなります。</p>
 
-<p>Auto Layout を使うと、&#8221;画面のこのコンポーネントから◯pxずらしてこのコンポーネントを配置する&#8221; や “このコンポーネントとこのコンポーネントのサイズを同じにする”
+<p>Auto Layout を使うと、”画面のこのコンポーネントから◯pxずらしてこのコンポーネントを配置する” や “このコンポーネントとこのコンポーネントのサイズを同じにする”
 みたいなことをなんとなく直感的に記述（または、設定）できます。</p>
 
 <p>Auto Layout を Strobyboard 上で設定すると、その制約が実際にコンポーネントに反映されるのは、<code>UIViewController#viewDidLayoutSubviews</code> のタイミングになるようです。</p>
@@ -1628,7 +1628,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 
 <p>じゃあ、どうするかというと、僕はもう割りきって、<code>heightForRowAtIndexPath</code> の中で <code>cellForRowAtIndexPath</code> を呼び出して、セルにコンテンツを設定した後にセルの高さを計算するようにしています。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>UITableViewController</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>UITableViewController</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1707,7 +1707,7 @@ iPhone6 で横幅が伸びてしまったことで、適当に <code>Auto Layout
 </span><span class="line">        <span class="k">return</span> <span class="n">UITableViewAutomaticDimension</span>
 </span><span class="line">    <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>高さを計算するときに、<code>cellForRowAtIndexPath</code> を呼び出してセルにコンテンツを設定した後、セルの width にテーブルビューの width を設定してあげて、一度 cell のレイアウトを更新します。</p>
@@ -1746,14 +1746,14 @@ iPhone6 Plus になったときにセルの高さがおかしくなってしま�
 
 <p>コンポーネントのレイアウトを強制的に更新したい場合は</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">view</span><span class="p">.</span><span class="n">setNeedsLayout</span><span class="p">()</span>
 </span><span class="line"><span class="n">view</span><span class="p">.</span><span class="n">layoutIfNeeded</span><span class="p">()</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>のコンボでレイアウトを更新します。この処理を行うと、Auto Layout にしたがってレイアウトが設定されます。</p>
@@ -1871,7 +1871,7 @@ contentSize はスクロールビューが表示するコンテンツのサイ�
 じゃあ、contentSize をプログラムで上書きしちゃえば上手くスクロールするんでは？ということで、さがすと出てくるのが大体 <code>viewDidLayoutSubviews</code> の中で
 contentSize を設定すればいいじゃんっていうプログラム例です。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1888,12 +1888,12 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line">    <span class="n">scrollView</span><span class="p">.</span><span class="n">contentSize</span> <span class="o">=</span> <span class="n">CGSizeMake</span><span class="p">(</span><span class="n">contentWidth</span><span class="p">,</span> <span class="n">contentHeight</span><span class="p">)</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>ぶっちゃけ、僕もこの方法が結局妥当かなという結論に達しました。先に UIScrollView に画像を動的に追加して、ページングできるようにするコードを掲載します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2036,7 +2036,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><img src="http://hamasyou.com/images/20141008/SS17.png" width="800" class="img-thumbnail" title=""></p>
@@ -2066,7 +2066,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 
 <p><em>MVVM</em> で viewModel が searchCommand を実装しているとします。また、ローディングインジケータの表示には <a href="https://github.com/jdg/MBProgressHUD" rel="external nofollow" title="MBProgressHUD">MBProgressHUD</a> を使っているとします。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>MyViewController#viewDidLoad</span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span>MyViewController#viewDidLoad</span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2101,7 +2101,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line">        <span class="n">println</span><span class="p">(</span><span class="n">error</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">)</span>
 </span><span class="line">    <span class="p">})</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>executing</code> Signal はこういう風につかうんですね。</p>
@@ -2119,7 +2119,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 
 <p>下のようなコードがあるとします。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2140,14 +2140,14 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
 </span><span class="line">  <span class="p">]]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>typealias</code> で別名つけて2次元配列を定義しているだけです。要素が <code>Dictionary</code> になっています。ここまでは普通にコンパイルが通ります。</p>
 
 <p>ですが、これをこんなふうに…</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2200,24 +2200,24 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line">     <span class="p">[</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">],</span>
 </span><span class="line">  <span class="p">]]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>配列の要素を増やしていきます。そうするとだいたい <strong class="text-danger">10件くらい</strong> からコンパイルが遅くなり、<strong class="text-danger">15件過ぎたくらいから</strong> コンパイルエラーが出るようになります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">Cannot</span> <span class="n">convert</span> <span class="n">the</span> <span class="n">expression</span><span class="err">'</span><span class="n">s</span> <span class="n">type</span> <span class="err">'</span><span class="p">[[</span><span class="n">NameAndValue</span><span class="p">]]</span><span class="err">'</span> <span class="n">to</span> <span class="n">type</span> <span class="err">'</span><span class="n">StringLiteralConvertible</span><span class="err">'</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>意味がわからんです。。</p>
 
 <p>仕方ないので</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2270,7 +2270,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
 </span><span class="line"><span class="n">dict</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">append</span><span class="p">([</span><span class="s">"name"</span><span class="o">:</span> <span class="s">""</span><span class="p">,</span>    <span class="s">"value"</span><span class="o">:</span> <span class="s">""</span><span class="p">])</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p></p>
@@ -2411,7 +2411,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 
 <p>で、HTTP API 等を呼び出す際に API 呼び出しの結果を JSON にパースして、結果をモデルに設定するみたいなことをやりたい時に、次のように行います。（Swift で記述しています。）</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2462,7 +2462,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>こうすると、API の呼び出しが成功した場合には <code>subscriber.sendNext</code> の結果がきちんと <code>self.model</code> に設定されるわけですが、API の呼び出しが失敗して <code>subscriber.sendError</code> が呼び出されてしまうと、例外がなげられます。</p>
@@ -2473,19 +2473,19 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 
 <p>そこで <code>catchTo</code> を使います。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">RAC</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="s">"model"</span><span class="p">)</span> <span class="o">&lt;~</span> <span class="n">API</span><span class="p">.</span><span class="n">loadData</span><span class="p">().</span><span class="n">catchTo</span><span class="p">(</span><span class="n">RACSignal</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>catchTo</code> は <code>sendError</code> が呼び出された場合に代わりに投げる <code>RACSignal</code> を指定します。そうすることで、ネットワークエラー等で API の呼び出しが失敗した場合には、<code>RACSignal.empty()</code> で何も起きなかったことになる（正確には sendCompleted が呼び出される）ようになります。</p>
 
 <p>sendError 時に処理を行いたい場合には <code>catch</code> を代わりに使用します。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2496,7 +2496,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line">        <span class="k">return</span> <span class="n">RACSignal</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span>
 </span><span class="line">    <span class="p">})</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>以上です。</p>
@@ -2510,7 +2510,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
     <id>http://hamasyou.com/blog/2014/08/28/swift-dictionary-anyobject/</id>
     <content type="html"><![CDATA[<p>Swift で <code>Dictionary</code> を扱うときのメモです。API 呼び出しのレスポンスを JSON で扱いたい時に <code>Dictionary&lt;String, AnyObject&gt;</code> として扱う際のポイントです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2527,12 +2527,12 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line">
 </span><span class="line"><span class="k">let</span> <span class="n">str3</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span> <span class="kt">as</span> <span class="n">String</span>     <span class="c1">// これはコンパイルエラー '(String, AnyObject)' is not convertible to 'String'</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>最後のはなぜコンパイルエラーになるかというと、<code>Dictionary</code> の <code>subscript</code> が2種類定義されていて、期待したのと違う方が呼び出されているからです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2547,21 +2547,21 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line">    <span class="p">...</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>json["foobar"]</code> の戻り値は <code>(Key, Value)</code> か <code>Value?</code> のどちらかですが、<code>as String</code> を付けた際に Optional ではないと判断されてしまい <code>(Key, Value)</code> が戻り値の型と判定されます。それでコンパイルエラーになるわけですね。</p>
 
 <p>期待した通りに取得するには、<code>json["foobar"]</code> の戻り値を <code>Value?</code> として扱う必要があるので、</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span><span class="o">!</span>
 </span><span class="line"><span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span> <span class="kt">as</span> <span class="n">AnyObject</span><span class="o">?</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>のどちらかでアクセスする必要があるわけです。<code>!</code> を付けると unwrap されるので <code>nil</code> が入っていると実行時エラーになります。逆に <code>as AnyObject? as? String</code> でアクセスすると Optional 型になってしまいます。</p>
@@ -2581,7 +2581,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 
 <p>Swift では配列を <strong class="text-danger">mutable/immutable</strong> の区別なく定義することができるようになりました。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2590,7 +2590,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line"><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span class="line"><span class="n">println</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>    <span class="c1">// [0, 2, 3]</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>let</code> で定義すると <strong class="text-danger">immutable</strong>、<code>var</code> で定義すると <strong class="text-danger">mutable</strong> になり、配列の代入はすべてコピーで行われるようになっています。</p>
@@ -2599,14 +2599,14 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 
 <p>で、ハマったのが次のようなコードです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="k">var</span> <span class="nl">numbers</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span><span class="o">!</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </span><span class="line"><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1">// error: '@lvalue $T7' is not identical to 'Int'</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Force Unwrapping 型とでも言うんでしょうかね？変数に必ず値が入ってることを保証するために <code>!</code> が付いた型です。
@@ -2619,7 +2619,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 
 <h4>コンパイルエラーの例</h4>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2652,14 +2652,14 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line">  <span class="p">}</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h4>うまくいく例</h4>
 
 <p>対応としては、一旦変数で受けて、変更後に元に戻すっていうので何とかなりますが、コンパイラの方でなんとかならんもんですかね。。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -2672,7 +2672,7 @@ contentSize を設定すればいいじゃんっていうプログラム例で�
 </span><span class="line">    <span class="nb">self</span><span class="p">.</span><span class="n">numbers</span> <span class="o">=</span> <span class="n">nums</span>
 </span><span class="line">  <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 

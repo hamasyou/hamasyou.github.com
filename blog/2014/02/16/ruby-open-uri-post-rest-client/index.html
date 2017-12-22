@@ -253,19 +253,19 @@
 
 <h3>open-uri-post だけの場合</h3>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">'./open-uri-post.rb'</span>
 </span><span class="line"><span class="nb">open</span><span class="p">(</span><span class="s1">'http://localhost:9292'</span><span class="p">,</span> <span class="p">{</span><span class="s1">'postdata'</span> <span class="o">=&gt;</span> <span class="s1">'name=hamasyou'</span><span class="p">})</span><span class="o">.</span><span class="n">read</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -326,26 +326,26 @@
 </span><span class="line"><span class="go">{"name"=&gt;"hamasyou"}</span>
 </span><span class="line"><span class="go">127.0.0.1 - - [16/Feb/2014 22:02:26] "POST / HTTP/1.1" 200 - 0.0005</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>CONTENT_LENGTH: 13</code> になっていて、パラメータもきちんと送れています。</p>
 
 <h3>rest-client だけの場合</h3>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">'rest_client'</span>
 </span><span class="line"><span class="no">RestClient</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'http://localhost:9292'</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s1">'hamasyou'</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -406,14 +406,14 @@
 </span><span class="line"><span class="go">{"name"=&gt;"hamasyou"}</span>
 </span><span class="line"><span class="go">127.0.0.1 - - [16/Feb/2014 22:03:29] "POST / HTTP/1.1" 200 - 0.0005</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>こっちも、きちんとリクエストできています。</p>
 
 <h3>open-uri-post と rest-client を同時に使うと</h3>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -428,17 +428,17 @@
 </span><span class="line"><span class="no">RestClient</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'http://localhost:9292'</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s1">'hamasyou'</span><span class="p">)</span>
 </span><span class="line"><span class="no">RestClient</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'http://localhost:9292'</span><span class="p">,</span> <span class="ss">params</span><span class="p">:</span> <span class="p">{</span><span class="nb">name</span><span class="p">:</span> <span class="s1">'hamasyou'</span><span class="p">})</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>open-uri-post</code> の方の <code>open</code> メソッドはうまく動きますが、RestClient が動かなくなります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td>
 <td class="code"><pre><code class="console"><span class="line"><span class="go">/vendor/bundle/ruby/2.1.0/gems/rest-client-1.6.7/lib/restclient/abstract_response.rb:48:in `return!': 408 Request Timeout (RestClient::RequestTimeout)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>RequestTimeout が出てしまいました。。ちなみに、<code>GET</code> リクエストの方はうまく動きます。<code>open-uri-post</code> と <code>rest-client</code> は一緒に使わないほうがいいですね。</p>

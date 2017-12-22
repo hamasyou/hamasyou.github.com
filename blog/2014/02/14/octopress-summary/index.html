@@ -284,14 +284,14 @@
 
 <p>カテゴリやタグなどに <code>/</code> が入るような単語（例えば O/Rマッピング）の場合に URL が一致しなくなってしまうので。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="ruby"><span class="line"><span class="o">-</span> <span class="n">category_url</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">category_dir</span><span class="p">,</span> <span class="n">category</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/_|\P{Word}/</span><span class="p">,</span> <span class="s1">'­'</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/­{2,}/</span><span class="p">,</span> <span class="s1">'­'</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span><span class="p">)</span>
 </span><span class="line"><span class="o">+</span> <span class="n">category_url</span> <span class="o">=</span> <span class="n">category_dir</span> <span class="o">+</span> <span class="n">category</span><span class="o">.</span><span class="n">to_url</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>関連ページ、ソーシャル系のボタンを表示する</h3>

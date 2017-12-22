@@ -293,7 +293,7 @@
 
 <p>Rx では、Observable なものを <code>subscribe</code> (購読) することで、Observable から送られてくるデータを受け取ります。この、Observable からデータが流れてくることを <strong class="text-danger">Stream (ストリーム)</strong> と呼びます。流れてくるデータは <strong class="text-danger">Element</strong> と呼ばれます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -312,7 +312,7 @@
 </span><span class="line">        <span class="p">}</span>
 </span><span class="line">    <span class="p">.</span><span class="n">scopedDispose</span><span class="p">()</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>ストリームには状態が3種類あり、それぞれ <code>Next</code>、<code>Error</code>、<code>Completed</code> になります。</p>
@@ -349,7 +349,7 @@
 
 <p>Subject は任意のタイミングで <strong class="text-danger">Behavior (振る舞い)</strong> を決められることから、Subject / Behavior はセットで使われる言葉になります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -364,7 +364,7 @@
 </span><span class="line"><span class="n">msg</span><span class="p">.</span><span class="n">onNext</span><span class="p">(</span><span class="s">"Hello World"</span><span class="p">)</span>
 </span><span class="line"><span class="n">msg</span><span class="p">.</span><span class="n">onCompleted</span><span class="p">()</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>Cold Observable</h3>
@@ -373,7 +373,7 @@
 
 <p>よく、API 通信を Observable にしますが、subscribe (観測) を忘れると、API 呼び出しがされないことになりますので注意が必要です。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -384,7 +384,7 @@
 </span><span class="line">        <span class="c1">// When to occur?</span>
 </span><span class="line">    <span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Rx でプログラミングすると何が嬉しいか</h2>
@@ -395,7 +395,7 @@
 
 <p>Observable でつなぐことにより、直接のデータの生成元に依存せずにプログラムを記述することができるようになるので、テスト時だけデータ生成部分をいじることで、例えば API 通信結果を画面に表示するようなプログラムでも、API 通信を行うことなくデータを生成し、Stream に流すことで色々な依存関係を排除することが出来るのです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -420,14 +420,14 @@
 </span><span class="line"><span class="c1">// test</span>
 </span><span class="line"><span class="n">something</span><span class="p">(</span><span class="n">just</span><span class="p">(</span><span class="n">DummyDataSource</span><span class="p">()))</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>非同期処理</h3>
 
 <p>また、Rx には Stream の観測を任意のスレッドで行うスケジューリングの機能が備わっているものがほとんどですので、時間の掛かるデータ生成処理はバックグラウンドで行い、UI の表示処理のところだけメインスレッドで行うといったことを容易に行なえます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -446,7 +446,7 @@
 </span><span class="line">    <span class="p">}</span>
 </span><span class="line">    <span class="p">.</span><span class="n">addDisposeBag</span><span class="p">(</span><span class="n">disposeBag</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h3>データソースの更新をリアルタイムに同期</h3>
@@ -455,7 +455,7 @@
 
 <p>このとき、何も考えずにプログラムすると、データソースが変更されても結果は変わらないという挙動になります。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -480,12 +480,12 @@
 </span><span class="line">
 </span><span class="line"><span class="n">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>        <span class="c1">// ""</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>こういった挙動でかまわないという場合もあるでしょうが、ほとんどの場合データソースの変化に合わせて挙動が変わってくれたほうが嬉しかったりします。そんな時は全部 Observable にします。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -512,7 +512,7 @@
 </span><span class="line">
 </span><span class="line"><span class="n">a</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">4</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <h2>Operators</h2>
@@ -521,7 +521,7 @@
 
 <p>Stream の合成は使いドコロとしては API 通信などの時間の掛かる処理とキャッシュデータを返すストリームとを合成するなどが考えられます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -562,7 +562,7 @@
 </span><span class="line">  <span class="p">}</span>
 </span><span class="line">  <span class="p">.</span><span class="n">addDisposeBag</span><span class="p">(</span><span class="n">disposeBag</span><span class="p">)</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 </div>
 

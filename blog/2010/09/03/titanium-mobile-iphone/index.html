@@ -300,7 +300,7 @@ group.name = <span class="literal">"HOGE"</span>;</code></pre>
 <h3><s>JavaScript で eval() は使えない</s></h3>
 
 
-<p><s>Titanium の JavaScript で <em>eval()</em> は使えません。試しに alert(eval(&#8220;1+1&#8221;)); と記述してみると、ブラウザでは2と表示されますが Titanium ではエラーになります。</s></p>
+<p><s>Titanium の JavaScript で <em>eval()</em> は使えません。試しに alert(eval("1+1")); と記述してみると、ブラウザでは2と表示されますが Titanium ではエラーになります。</s></p>
 
 <p><section></section></p>
 
@@ -318,7 +318,7 @@ group.name = <span class="literal">"HOGE"</span>;</code></pre>
 <h4>JSON データのパースには JSON.parse() が使える</h4>
 
 
-<p>ちなみに、Titanium.Network.HTTPClient を使って取得したデータを JSON 形式に変換するのに、eval(&#8220;(&#8221; + this.responseText + &#8220;)&#8221;); とする場面では、JSON.parse(this.responseText) が使えます。</p>
+<p>ちなみに、Titanium.Network.HTTPClient を使って取得したデータを JSON 形式に変換するのに、eval("(" + this.responseText + ")"); とする場面では、JSON.parse(this.responseText) が使えます。</p>
 
 <p></p>
 

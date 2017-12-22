@@ -478,7 +478,7 @@ print <span class="literal">"a  <span class="keyword">if</span> a # for - in 構
 </code></pre>
 
 
-<p>他のライブラリを取り込みたいときは 「 <code><span class="keyword">require</span></code> &#8220;ライブラリファイル名&#8221; 」 を使う。ライブラリファイル名には拡張子 「.rb」 は不要。</p>
+<p>他のライブラリを取り込みたいときは 「 <code><span class="keyword">require</span></code> "ライブラリファイル名" 」 を使う。ライブラリファイル名には拡張子 「.rb」 は不要。</p>
 
 <h3 id="chapter2">基本クラス</h3>
 
@@ -561,7 +561,7 @@ print <span class="literal">"a  <span class="keyword">if</span> a # for - in 構
 
 <dl>
 <dt class="tips">変数の式展開</dt>
-<dd>「 &#8221; &#8221; 」 で囲んだ文字列の中で変数を展開するには 「 <code><b>#{ }</b></code> 」 を使う。</dd>
+<dd>「 " " 」 で囲んだ文字列の中で変数を展開するには 「 <code><b>#{ }</b></code> 」 を使う。</dd>
 </dl>
 
 
@@ -1020,7 +1020,7 @@ array.reject! {|item| ...}
 
 <p>「 <code>"</code> 」 で囲まれた文字列中で 「 <code><b>#{ }</b></code> 」 を使うと、変数を展開できる。</p>
 
-<p>「 <code>%Q</code>、 <code>%q</code> 」 を使うと、「 &#8221; 」 と 「 ‘ 」 の代わりになる。「 <code>%Q</code> 」 が 「 &#8221; 」 の代わりで、「 <code>%q</code> 」 が 「 ’ 」 の代わりになる。</p>
+<p>「 <code>%Q</code>、 <code>%q</code> 」 を使うと、「 " 」 と 「 ‘ 」 の代わりになる。「 <code>%Q</code> 」 が 「 " 」 の代わりで、「 <code>%q</code> 」 が 「 ’ 」 の代わりになる。</p>
 
 <p>ヒアドキュメントも使える。</p>
 
@@ -1082,8 +1082,8 @@ str.capitalize!
 <dd>正規表現を使うと日本語も正しく文字数を調べられる。
 
 <ul>
-<li>&#8216;オブジェクト指向スクリプト言語Ruby&#8217;.split(//e).length # 文字コードが EUC-JP の場合</li>
-<li>&#8216;オブジェクト指向スクリプト言語Ruby&#8217;.split(//s).length # 文字コードが Shift_JIS の場合</li>
+<li>‘オブジェクト指向スクリプト言語Ruby’.split(//e).length # 文字コードが EUC-JP の場合</li>
+<li>‘オブジェクト指向スクリプト言語Ruby’.split(//s).length # 文字コードが Shift_JIS の場合</li>
 </ul>
 </dd>
 </dl>

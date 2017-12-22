@@ -236,7 +236,7 @@
 
 <p>Swift では <code>enum</code> を <code>AnyObject</code> 型の変数に入れることができません。コンパイルエラーになります。<code>Any</code> 型なら代入できます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -261,7 +261,7 @@
 </span><span class="line">
 </span><span class="line"><span class="k">let</span> <span class="nl">any</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">SomeType</span><span class="p">.</span><span class="n">Something</span>             <span class="c1">// Enum Value</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>Swift の <code>enum</code> は <code>AnyObject</code> protocol を実装していないので、<code>AnyObject</code> 型の変数に入れることが出来ません。</p>
@@ -271,7 +271,7 @@
 <p>これの何が不便かというと、<code>enum</code> は UIKit でよく使われていて、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" rel="external nofollow" title="ReactiveCocoa">ReactiveCocoa</a> を Swift で使う際に
 <code>enum</code> で設定する例えば <code>UITableViewCellAccessoryType</code> なんかを使いたい場合にコンパイルエラーになってしまいます。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -292,7 +292,7 @@
 </span><span class="line">        <span class="nb">self</span><span class="o">!</span><span class="p">.</span><span class="n">accessoryType</span> <span class="o">=</span> <span class="n">checked</span> <span class="o">?</span> <span class="p">.</span><span class="nl">Checkmark</span> <span class="p">:</span> <span class="p">.</span><span class="n">None</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>既存の Objective-C ライブラリで <code>id</code> が使われている箇所が、Swift では <code>AnyObject</code> に対応するので、

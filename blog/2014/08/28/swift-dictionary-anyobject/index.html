@@ -244,7 +244,7 @@
 
 <div class="entry-content"><p>Swift で <code>Dictionary</code> を扱うときのメモです。API 呼び出しのレスポンスを JSON で扱いたい時に <code>Dictionary&lt;String, AnyObject&gt;</code> として扱う際のポイントです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -261,12 +261,12 @@
 </span><span class="line">
 </span><span class="line"><span class="k">let</span> <span class="n">str3</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span> <span class="kt">as</span> <span class="n">String</span>     <span class="c1">// これはコンパイルエラー '(String, AnyObject)' is not convertible to 'String'</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>最後のはなぜコンパイルエラーになるかというと、<code>Dictionary</code> の <code>subscript</code> が2種類定義されていて、期待したのと違う方が呼び出されているからです。</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -281,21 +281,21 @@
 </span><span class="line">    <span class="p">...</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p><code>json["foobar"]</code> の戻り値は <code>(Key, Value)</code> か <code>Value?</code> のどちらかですが、<code>as String</code> を付けた際に Optional ではないと判断されてしまい <code>(Key, Value)</code> が戻り値の型と判定されます。それでコンパイルエラーになるわけですね。</p>
 
 <p>期待した通りに取得するには、<code>json["foobar"]</code> の戻り値を <code>Value?</code> として扱う必要があるので、</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr>
 <td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td>
 <td class="code"><pre><code class="swift"><span class="line"><span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span><span class="o">!</span>
 </span><span class="line"><span class="n">json</span><span class="p">[</span><span class="s">"foobar"</span><span class="p">]</span> <span class="kt">as</span> <span class="n">AnyObject</span><span class="o">?</span>
 </span></code></pre></td>
-</tr></table></div></figure></notextile></div>
+</tr></table></div></figure>
 
 
 <p>のどちらかでアクセスする必要があるわけです。<code>!</code> を付けると unwrap されるので <code>nil</code> が入っていると実行時エラーになります。逆に <code>as AnyObject? as? String</code> でアクセスすると Optional 型になってしまいます。</p>
